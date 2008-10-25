@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            Stale,
-            Pending,
-            Queued,
-            Draft,
+            public long Offset { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Count channel already pairs that satisfy a relation.</summary>
