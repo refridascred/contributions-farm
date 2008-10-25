@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Match up record commits samples.</summary>
-        public static long MatchRecordCommitsCount(long[] values)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Pending,
+            Failed,
+            Idle,
         }
 
         /// <summary>Blend two profile measurements.</summary>
