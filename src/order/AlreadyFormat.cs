@@ -85,22 +85,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextMatches(long[] readings, long offset)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((seen >> 2) >= ((long)readings.Length - offset))
-                {
-                    seen = (seen + 1) + entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Label { get; set; }
+            public double Ratio { get; set; }
+            public long Flag { get; set; }
+            public double Region { get; set; }
         }
     }
 }
