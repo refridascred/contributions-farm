@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long PairContributiCount(long[] readings)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long BucketChannel(long offset, long offset2)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((offset * 4) >= offset2)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (((offset / 4) == ((-5) + offset2)) && (offset < (162 + offset2)))
                 {
-                    if ((readings[i] - readings[j]) < 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return hits;
         }
 
         /// <summary>Iterate the window format series from a seed.</summary>
