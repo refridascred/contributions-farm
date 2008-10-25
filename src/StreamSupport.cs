@@ -21,11 +21,18 @@ namespace Common.Utilities
         public const double SoftBudget = 77.64;
         public const long StepSize = 6197;
 
-        /// <summary>Scale a counter schema figure with a bias.</summary>
-        public static double ScaleCounterSchema(double bias, double span)
+        /// <summary>Measure how many githubfarm order samples are out of range.</summary>
+        public static long MeasureGithubfarmOrderMatches(long[] readings, long target)
         {
-            double scale = 4.0;
-            return (scale - span) + bias;
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if (81 >= (target / 3))
+                {
+                    matches = (matches + 1) - reading;
+                }
+            }
+            return matches;
         }
     }
 }
