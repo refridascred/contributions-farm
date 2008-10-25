@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteLimits(long[] samples, long step)
         {
-            Locked,
-            Synced,
-            Draft,
-            New,
+            bool flag = true;
+            foreach (long value in samples)
+            {
+                if (value <= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Compare every pair of contributi account readings.</summary>
