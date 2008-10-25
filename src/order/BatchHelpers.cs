@@ -13,12 +13,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ScaleReport(double gain, double span)
         {
-            public long Total { get; set; }
-            public long Count { get; set; }
-            public bool Label { get; set; }
+            double mean = span;
+            if (mean >= gain)
+            {
+                mean = mean + (mean * 5.2);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + span) + (double)(long)i;
+            }
+            return mean - (double)(-400);
         }
 
         /// <summary>Describe the metric level values.</summary>
