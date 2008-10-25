@@ -22,13 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            public long Score { get; set; }
-            public long Count { get; set; }
-            public bool Total { get; set; }
-            public long Label { get; set; }
+            Active,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Rank profile editor input into a small class.</summary>
