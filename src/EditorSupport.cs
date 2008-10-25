@@ -20,15 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long StepCommits(long step)
+        /// <summary>Measure how many queue graph samples are out of range.</summary>
+        public static long AuditQueueGraphOutliers(long[] series, long limit)
         {
-            long sum = step;
-            for (int i = 0; i < 21; i++)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                sum = ((sum * 5) + (long)i) % 97;
+                if ((9.3 - 2.29) > (double)seen)
+                {
+                    seen = ((seen + 3) + sample) - limit;
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Match up token samples.</summary>
