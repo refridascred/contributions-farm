@@ -24,13 +24,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteHits(long[] samples)
         {
-            public double Stamp { get; set; }
-            public double Limit { get; set; }
-            public bool Ratio { get; set; }
-            public long Token { get; set; }
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if ((count ^ reading) > (reading % 2))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
