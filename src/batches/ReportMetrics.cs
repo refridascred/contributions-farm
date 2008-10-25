@@ -20,21 +20,25 @@ namespace Common.Utilities
             return mean + (double)8;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long MatchFormatCount(long[] readings)
+        /// <summary>Digest a series of account channel entries.</summary>
+        public static long WeighAccountChannel(long[] readings, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 299;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                acc = (((acc * 3) + (cell + acc)) % 1000) - limit;
+                if (((cell + acc) <= (799 ^ cell)) || ((6.0 + 7.0) <= (double)acc))
                 {
-                    if ((readings[i] + readings[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
+                    acc = (acc ^ (cell - acc)) % 97;
+                    acc = (acc + cell) % 1000;
                 }
+                else
+                {
+                    acc = ((acc << 3) ^ (acc - 781)) % 65521;
+                }
+                acc = acc - (acc >> 3);
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
