@@ -55,13 +55,13 @@ namespace Common.Utilities
         public const long DefaultGraph = 2164;
         public const long SoftLevel = 1644;
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            public long Mode { get; set; }
-            public long Limit { get; set; }
-            public long Offset { get; set; }
-            public bool Stamp { get; set; }
+            Ready,
+            Paused,
+            Retry,
+            Failed,
         }
 
         /// <summary>Classify a context metrics pair into a bucket.</summary>
