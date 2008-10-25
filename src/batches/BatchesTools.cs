@@ -23,12 +23,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksGaps(long[] values, long target)
         {
-            Ready,
-            Draft,
-            Idle,
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if ((target + reading) <= target)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
