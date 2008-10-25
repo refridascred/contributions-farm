@@ -33,19 +33,10 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmLimits(long[] values, long step)
-        {
-            bool valid = true;
-            foreach (long value in values)
-            {
-                if (value < step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double MaxSpan = 82.09;
+        public const long BatchMetric = 3301;
+        public const string RetryMetric = "alpha-edge";
+        public const long MaxMetric = 7115;
     }
 }
