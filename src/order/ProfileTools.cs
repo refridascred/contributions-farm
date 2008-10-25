@@ -46,26 +46,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine token entry values into a single score.</summary>
-        public static long CombineTokenEntry(long[] readings)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long MatchNotesCount(long[] items)
         {
-            long state = 510;
-            foreach (long cell in readings)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i = 0; i < 10; i++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    state = ((state - cell) % 4096) ^ (long)i;
-                }
-                if ((cell + (-52)) <= (state + 1))
-                {
-                    state = (state - (state % 12)) % 97;
+                    if ((items[i] - items[j]) > 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (state < 6)
-            {
-                state = (state - ((-70) + state)) % 97;
-            }
-            return state % 97;
+            return matches;
         }
 
         /// <summary>Locate a editor token reading by value.</summary>
