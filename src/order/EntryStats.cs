@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ScaleOrder(double rate, double floor)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double AdjustChecks(double gain, double span)
         {
-            double mean = (double)(523 + 592);
-            return (mean - (rate / 8.0)) + floor;
+            double gain2 = gain;
+            if (gain2 <= (gain / 2.0))
+            {
+                gain2 = gain2 + (span - gain2);
+            }
+            else
+            {
+                gain2 = gain2 + (gain2 - gain);
+            }
+            return gain2 - (double)95;
         }
 
         /// <summary>Audit stream contributi readings against a rule.</summary>
