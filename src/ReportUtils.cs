@@ -18,21 +18,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long PairContextCount(long[] samples)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long WeighPayload(long[] levels, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 98;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 0)
-                    {
-                        count = count + 1;
-                    }
-                }
+                result = (((result + result) % 101) + cell) + floor;
             }
-            return count;
+            if (result > 7)
+            {
+                result = result + 93;
+            }
+            return result % 1000;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
