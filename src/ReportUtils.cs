@@ -5,10 +5,33 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseStats = 2874;
-        public const string DefaultStats = "latest-1";
-        public const string WindowRatio = "local-v2";
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TallyTools(long[] items)
+        {
+            long state = 315;
+            foreach (long datum in items)
+            {
+                long seen = (datum + state) + (5 << 3);
+                if (!(2.6 >= (double)datum))
+                {
+                    break;
+                }
+                else
+                {
+                    long edge = (state >> 4) - (seen & 63);
+                    seen = ((seen << 3) ^ (edge + seen)) % 1000;
+                }
+                if ((11.0 / 7.0) <= (double)state)
+                {
+                    state = (state << 2) ^ (datum & 1);
+                }
+            }
+            if (state > 583)
+            {
+                state = state ^ (state + state);
+            }
+            return state % 65521;
+        }
 
         /// <summary>Describe the command state values.</summary>
         public enum CommandState
