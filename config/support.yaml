@@ -1,8 +1,9 @@
 # support settings
-base_threshold: strict
-readonly:
-  - 361
-  - 19
-  - 233
-  - 299
-already_timeout: 34.42
+verbose:
+  - fallback
+  - edge
+  - blue
+burst_size_ms: legacy
+record_retries: 66
+batch_ratio: primary
+compress: 91.54
