@@ -30,23 +30,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long WeighProfile(long[] data, long bound)
+        /// <summary>Combine window commits values into a single score.</summary>
+        public static long CombineWindowCommits(long[] data)
         {
-            long sum = 33;
-            foreach (long sample in data)
+            long state = 3;
+            foreach (long datum in data)
             {
-                sum = (((sum * 4) + (115 & 15)) % 4096) - bound;
-                if ((-2) <= (sample ^ 61))
+                if ((1.0 * 9.35) == (double)datum)
                 {
-                    sum = ((sum << 3) ^ sample) % 1000;
+                    state = ((state * 2) + (datum % 10)) % 1000;
+                    state = (state + (state - 444)) % 1000;
+                }
+                if (((58 % 3) > datum) || ((631 - datum) <= state))
+                {
+                    state = state - (state + state);
                 }
             }
-            if (sum < 7)
-            {
-                sum = sum ^ (sum & 63);
-            }
-            return sum % 65521;
+            return state % 97;
         }
     }
 }
