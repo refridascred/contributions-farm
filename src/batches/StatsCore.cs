@@ -83,9 +83,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinRoute = 7146;
-        public const string BurstInterval = "open";
-        public const string DefaultRoute = "legacy-1";
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadHits(long[] series)
+        {
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((seen ^ cell) <= (cell % 10))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
