@@ -34,22 +34,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate checks token samples.</summary>
-        public static long CombineChecksToken(long[] values, long seed)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long total = 27;
-            foreach (long item in values)
-            {
-                if ((item * 4) <= seed)
-                {
-                    total = total - (item + seed);
-                }
-            }
-            if (total < 3)
-            {
-                total = (total ^ (41 / 7)) % 4096;
-            }
-            return total % 97;
+            public long Flag { get; set; }
+            public long Size { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
