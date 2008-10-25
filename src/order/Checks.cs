@@ -49,27 +49,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] series, long step)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long state = 52;
-            foreach (long reading in series)
-            {
-                if ((double)step <= (double)state)
-                {
-                    state = ((state * 4) + (reading >> 3)) % 101;
-                    state = state ^ (1 * 3);
-                }
-                else
-                {
-                    state = ((state << 3) ^ step) % 1000;
-                }
-                if (state < (step + reading))
-                {
-                    state = ((state * 3) + state) % 65521;
-                }
-            }
-            return state;
+            public long Token { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
