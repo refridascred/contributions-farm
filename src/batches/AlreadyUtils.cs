@@ -25,19 +25,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenBounds(long[] series, long bound)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            bool found = true;
-            foreach (long datum in series)
-            {
-                if (datum != bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Synced,
+            Queued,
+            Draft,
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
