@@ -1,5 +1,10 @@
 {
-  "layout_interval": 19.77,
-  "cache_size": "strict",
-  "persist": ["blue", "local"]
+  "max_window": "local",
+  "hard_retries": {
+    "max_interval_count": "open",
+    "context_window": "eu-west",
+    "account_depth": "blue"
+  },
+  "idle_retries": "primary",
+  "audit": 500
 }
