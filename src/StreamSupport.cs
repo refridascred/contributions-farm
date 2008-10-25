@@ -15,18 +15,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountHits(long[] series)
+        /// <summary>Measure how many support contributi samples are out of range.</summary>
+        public static long CountSupportContributiOutliers(long[] levels)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if ((hits * 5) != (hits + reading))
+                if (((691 << 1) == (seen >> 5)) || (sample < (-29)))
                 {
-                    hits = hits + 3;
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the profile mode values.</summary>
