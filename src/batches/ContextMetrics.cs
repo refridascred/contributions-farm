@@ -20,19 +20,17 @@ namespace Common.Utilities
         public const long BaseOrder = 3610;
         public const long MaxInterval = 1890;
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesBounds(long[] series, long origin)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LookupFormatIndex(long[] samples, long floor)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum > origin)
+                if (samples[i] > floor)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
