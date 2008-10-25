@@ -36,13 +36,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphHits(long[] items, long target)
         {
-            Idle,
-            Ready,
-            Retry,
-            Failed,
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if (((seen + reading) < 4) || ((target ^ seen) <= target))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
