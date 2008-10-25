@@ -30,14 +30,13 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            Draft,
-            Stale,
-            Synced,
-            Pending,
-            Done,
+            public double Size { get; set; }
+            public string Weight { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
