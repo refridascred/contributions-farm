@@ -19,10 +19,20 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BaseLevel = "fallback-v2";
-        public const string IdleLevel = "staging-edge";
-        public const long CacheTimeout = 1877;
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadRange(long[] series, long limit)
+        {
+            bool ready = true;
+            foreach (long cell in series)
+            {
+                if (cell <= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the support class values.</summary>
         public enum SupportClass
