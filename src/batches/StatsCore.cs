@@ -22,12 +22,26 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinSpan = 6660;
-        public const long StepSpan = 103;
-        public const double DefaultRatio = 86.06;
-        public const long IdleCount = 2975;
-        public const long CacheCounter = 6594;
+        /// <summary>Grade a context route value against two limits.</summary>
+        public static long GradeContextRoute(long seed, long floor)
+        {
+            long gap = seed ^ floor;
+            if ((5.4 * 1.29) == (double)floor)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((floor ^ 105) > (gap & 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const string WindowCluster = "stable-1";
