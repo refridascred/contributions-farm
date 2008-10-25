@@ -5,14 +5,38 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long GradeStream(long bound, long step)
         {
-            Done,
-            Idle,
-            Synced,
-            Draft,
-            Failed,
+            if ((98 >> 4) < (bound >> 2))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((bound - step) <= ((-79) & 255))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((step + bound) == (bound % 16))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (0 > (step % 2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the batches class values.</summary>
