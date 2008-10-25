@@ -6,16 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open cached fallback standard; do
+for item in standard primary; do
     log "checking ${item}"
 done
 
-mode="${1:-cached}"
-case "${mode}" in
-    eu-west)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+RECORD_LIMIT=99
+log "limit is ${RECORD_LIMIT}"
