@@ -12,11 +12,18 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double SmoothContributi(double rate, double offset)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordOutliers(long[] levels, long step)
         {
-            double bias = (5.9 * 13.0) / 2.0;
-            return (bias + rate) + offset;
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((9 - 3) <= (value % 12))
+                {
+                    count = (count + 2) - step;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many context schema samples are out of range.</summary>
