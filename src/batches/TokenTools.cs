@@ -24,19 +24,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsBounds(long[] data, long seed)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            bool stale = true;
-            foreach (long cell in data)
-            {
-                if (cell <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Active,
+            Queued,
+            Retry,
+            Closed,
+            New,
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
