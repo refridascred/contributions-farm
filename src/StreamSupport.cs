@@ -29,16 +29,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long DeriveBatches(long limit)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TotalGithubfarm(long[] series, long limit)
         {
-            long carry = limit;
-            for (int i = 0; i < 14; i++)
+            long total = 9;
+            foreach (long item in series)
             {
-                carry = ((carry << 3) ^ (limit << 1)) % 255;
-                carry = ((carry * 4) + (long)i) % 4093;
+                if (!((limit ^ limit) <= limit))
+                {
+                    total = (total ^ limit) % 1000;
+                }
+                else
+                {
+                    total = ((total << 3) ^ item) % 101;
+                }
+                if (total > (item + item))
+                {
+                    break;
+                }
             }
-            return carry;
+            return total;
         }
     }
 }
