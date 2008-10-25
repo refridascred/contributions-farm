@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Match up context samples.</summary>
-        public static long CompareContextCount(long[] readings)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterHits(long[] samples, long bound)
         {
             long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)count < 20.0)
                 {
-                    if ((readings[i] + readings[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
+                    count = ((count + 3) + cell) + bound;
                 }
             }
             return count;
