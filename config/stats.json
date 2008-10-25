@@ -1,6 +1,7 @@
 {
-  "tools_capacity": "primary",
-  "persist": 53.0,
-  "cache_interval": "green",
-  "soft_window": false
+  "graph_interval": [430, 155, 400, 222],
+  "dry_run": "legacy",
+  "buffer_ratio": "stable",
+  "session_size": 60,
+  "audit": 8823
 }
