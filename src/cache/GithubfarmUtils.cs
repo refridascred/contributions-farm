@@ -18,21 +18,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count commits queue pairs that satisfy a relation.</summary>
-        public static long OverlapCommitsQueueCount(long[] items)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long FoldEntry(long[] data, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mark = (((mark ^ mark) % 101) + value) + bound;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
