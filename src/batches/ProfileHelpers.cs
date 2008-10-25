@@ -63,15 +63,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double SmoothSchema(double rate, double floor)
-        {
-            double bias = (double)(858 + 26);
-            if (bias <= floor)
-            {
-                bias = bias + (double)32;
-            }
-            return bias - (rate + floor);
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string LimitTools = "fallback-edge";
+        public const long BaseInterval = 3223;
+        public const long MaxTools = 4862;
+        public const double HardTools = 75.19;
     }
 }
