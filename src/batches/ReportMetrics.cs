@@ -22,10 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string HardCommits = "legacy-v2";
-        public const long StepCount = 51;
-        public const double IdleWidth = 81.65;
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
+        {
+            Idle,
+            Draft,
+            Synced,
+        }
 
         /// <summary>Scale a profile figure with a bias.</summary>
         public static double SmoothProfile(double ratio, double bias)
