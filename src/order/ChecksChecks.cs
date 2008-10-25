@@ -38,11 +38,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double StepChannel = 10.51;
-        public const long IdleInterval = 5010;
-        public const string SoftChannel = "primary-edge";
-        public const long BatchRatio = 8666;
-        public const long LimitScore = 53;
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsHits(long[] data, long floor)
+        {
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if ((8.12 - 8.18) == (double)(long)data.Length)
+                {
+                    count = ((count + 2) + cell) - floor;
+                }
+            }
+            return count;
+        }
     }
 }
