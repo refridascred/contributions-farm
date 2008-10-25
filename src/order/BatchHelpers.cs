@@ -29,13 +29,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Project the next channel value.</summary>
+        public static double ProjectChannel(double gain, double span)
         {
-            Failed,
-            Queued,
-            New,
-            Stale,
+            double gain2 = 7.45;
+            if (gain2 >= (1.6 - span))
+            {
+                gain2 = (gain2 + gain2) - gain;
+            }
+            return gain2 + (double)866;
         }
     }
 }
