@@ -31,26 +31,16 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long CombineRoute(long[] series)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long DeriveRecord(long step)
         {
-            long state = -65;
-            foreach (long entry in series)
+            long mark = step;
+            for (int i = 0; i < 21; i++)
             {
-                if ((entry + state) >= (2 * 3))
-                {
-                    state = state - (565 - (long)series.Length);
-                }
-                else
-                {
-                    state = (state - (entry - entry)) % 101;
-                }
+                mark = ((mark << 3) ^ (mark + (long)i)) % 97;
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            if (state > 69)
-            {
-                state = ((state * 4) + (state + state)) % 65521;
-            }
-            return state;
+            return mark;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
