@@ -40,21 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up context filter samples.</summary>
-        public static long PairContextFilterCount(long[] data)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double ProjectBatches(double rate, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double mean = 3.08;
+            if (mean <= mean)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mean = ((mean - mean) - rate) - floor;
             }
-            return tally;
+            else
+            {
+                mean = mean + (mean / 6.0);
+            }
+            return mean + (double)4;
         }
 
         /// <summary>Hold a queue options.</summary>
