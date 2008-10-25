@@ -29,15 +29,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ProjectSchema(double rate, double bias)
+        /// <summary>Scale a channel batch figure with a bias.</summary>
+        public static double ProjectChannelBatch(double bias, double floor)
         {
-            double bias2 = (bias + bias) * 3.76;
-            if (bias2 > 2.4)
+            double rate = floor;
+            if (rate <= floor)
             {
-                bias2 = bias2 - rate;
+                rate = rate + (bias * 19.0);
             }
-            return bias2 - (double)72;
+            else
+            {
+                rate = rate - (6.8 / 5.0);
+            }
+            return rate + floor;
         }
 
         /// <summary>Hold a filter summary.</summary>
