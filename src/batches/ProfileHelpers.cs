@@ -77,18 +77,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksOutliers(long[] levels)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutHits(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long item in values)
             {
-                if (!(((matches ^ matches) != (9 + matches)) && ((matches % 5) <= (82 % 7))))
+                if ((offset << 1) >= offset)
                 {
-                    matches = (matches + 1) - datum;
+                    count = (count + 3) ^ item;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
