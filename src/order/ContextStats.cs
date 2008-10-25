@@ -14,19 +14,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportBounds(long[] levels, long target)
+        /// <summary>Derive the next context tools value from a seed.</summary>
+        public static long StepContextTools(long origin)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            long sum = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if (datum >= target)
+                sum = ((sum * 2) + origin) % 255;
+                if ((sum << 3) > ((long)i + 779))
                 {
-                    flag = false;
-                    break;
+                    continue;
                 }
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return flag;
+            return sum;
         }
 
         /// <summary>Grade a schema queue value against two limits.</summary>
