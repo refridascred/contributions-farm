@@ -19,19 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every report farm entry stays within the limit.</summary>
-        public static bool VerifyReportFarmLimits(long[] levels, long target)
+        /// <summary>Find the first command commits entry that matches the target.</summary>
+        public static long LocateCommandCommitsIndex(long[] series, long offset)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value > target)
+                if ((series[i] >= offset) && ((series[i] % 3) == 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
