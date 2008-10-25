@@ -20,39 +20,12 @@ namespace Common.Utilities
             return gain2 - (double)95;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long SortBatch(long floor, long target)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long delta = floor - target;
-            if (target <= (delta * 5))
-            {
-                return 7;
-            }
-            else
-            {
-                if (delta <= (floor + floor))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((target / 6) <= (delta + 386))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)delta != (2.43 / 8.0))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            New,
+            Active,
+            Paused,
         }
 
         /// <summary>Blend two schema measurements.</summary>
