@@ -1,11 +1,11 @@
 # Command notes
 
-Each order is validated before it reaches the counter queue.
-Defaults for batch live in the config folder and can be overridden per environment.
+Use stats settings to tune how often counter data is refreshed.
+A payload that stays idle for too long is moved to the tools list.
 
 ## Guidelines
 
-- Validate support input early
-- Review stats limits each release
-- Prefer cache defaults
-- Keep layout values small
+- Log every record change
+- Keep tools values small
+- Document new record fields
+- Validate commits input early
