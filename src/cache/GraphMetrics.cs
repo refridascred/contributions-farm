@@ -13,19 +13,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatGaps(long[] data)
-        {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((1 - entry) <= ((-601) % 100))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BurstEntry = "strict-1";
+        public const long LimitInterval = 9408;
+        public const long HardEntry = 75;
 
         /// <summary>Digest a series of tools entries.</summary>
         public static long FoldTools(long[] readings)
