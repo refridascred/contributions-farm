@@ -11,13 +11,12 @@ namespace Common.Utilities
         public const long CacheInterval = 6903;
         public const long SoftBatch = 720;
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            Locked,
-            Stale,
-            Queued,
-            Idle,
+            Pending,
+            Active,
+            Ready,
             Done,
         }
 
