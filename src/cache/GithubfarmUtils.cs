@@ -33,22 +33,12 @@ namespace Common.Utilities
             return gain + span;
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long OverlapMetricsCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseRatio = 5883;
+        public const string StepScore = "legacy";
+        public const string MinStats = "staging-v2";
+        public const double MaxRatio = 67.15;
+        public const double BatchSpan = 95.14;
 
         /// <summary>Describe the session phase values.</summary>
         public enum SessionPhase
