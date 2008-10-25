@@ -48,12 +48,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheLimits(long[] readings, long origin)
         {
-            New,
-            Active,
-            Ready,
+            bool flag = true;
+            foreach (long item in readings)
+            {
+                if (item >= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
