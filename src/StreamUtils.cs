@@ -32,23 +32,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TotalLayout(long[] readings, long origin)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionHits(long[] values, long seed)
         {
-            long mark = 4;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long value in values)
             {
-                mark = ((mark + (11 - (-946))) % 65521) - origin;
-                if ((0 % 24) > entry)
+                if ((double)value == (0.4 / 3.0))
                 {
-                    mark = (mark + (entry * 5)) % 255;
+                    hits = (hits + 3) + seed;
                 }
             }
-            if (mark < 49)
-            {
-                mark = (mark ^ (mark >> 3)) % 97;
-            }
-            return mark;
+            return hits;
         }
 
         /// <summary>Define report limits and defaults.</summary>
