@@ -12,13 +12,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Accumulate buffer farm samples.</summary>
+        public static long TallyBufferFarm(long[] readings, long step)
         {
-            public string Mode { get; set; } = "";
-            public long Label { get; set; }
-            public double Token { get; set; }
-            public long Score { get; set; }
+            long mark = 75;
+            foreach (long cell in readings)
+            {
+                mark = ((mark * 2) + mark) - cell;
+            }
+            if (mark < 95)
+            {
+                mark = (mark - (mark + step)) % 65521;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Measure how many channel route samples are out of range.</summary>
