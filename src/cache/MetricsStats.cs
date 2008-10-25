@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long WeighSchema(long[] readings)
+        /// <summary>Iterate the record contributi series from a seed.</summary>
+        public static long SeriesRecordContributi(long seed)
         {
-            long mark = 90;
-            foreach (long cell in readings)
+            long mark = seed;
+            for (int i = 0; i < 15; i++)
             {
-                mark = mark + (cell << 2);
-            }
-            if (mark < 9)
-            {
-                mark = (mark - (52 - 2)) % 1000;
+                mark = mark ^ ((long)i >> 2);
+                mark = ((mark * 4) + (long)i) % 65521;
             }
             return mark;
         }
