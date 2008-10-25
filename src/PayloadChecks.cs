@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long SortFarm(long offset, long limit)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatHits(long[] items)
         {
-            if (!((limit / 9) < (offset >> 4)))
+            long count = 0;
+            foreach (long entry in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)offset <= (8.0 - 14.0))
+                if ((4.0 / 4.0) >= (double)entry)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)offset <= (14.0 - 1.57))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Define order limits and defaults.</summary>
