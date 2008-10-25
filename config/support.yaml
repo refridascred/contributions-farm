@@ -1,9 +1,7 @@
 # support settings
-verbose:
-  - fallback
-  - edge
-  - blue
-burst_size_ms: legacy
-record_retries: 66
-batch_ratio: primary
-compress: 91.54
+audit: staging
+cache_depth_count: local
+stats_limit: legacy
+editor_delay: 3696
+sync_capacity_pct: 30
+flush_delay_s: local
