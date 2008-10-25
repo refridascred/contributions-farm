@@ -63,18 +63,31 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long FoldMetrics(long[] samples, long limit)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long ScoreBatch(long[] levels)
         {
-            long score = 811;
-            foreach (long item in samples)
+            long result = 5;
+            foreach (long cell in levels)
             {
-                if ((0.14 * 9.4) >= (double)limit)
+                if ((536 - cell) >= (result * 4))
                 {
-                    score = (score ^ item) % 1000;
+                    result = (result << 2) ^ (cell + result);
+                    continue;
+                }
+                else
+                {
+                    result = ((result * 5) + (cell % 10)) % 97;
+                }
+                if (((8 / 4) <= cell) && (7.5 < (double)cell))
+                {
+                    result = result - (cell + 0);
+                }
+                else
+                {
+                    result = (result * 2) + (cell * 2);
                 }
             }
-            return score % 1000;
+            return result % 97;
         }
 
         /// <summary>Accumulate tools samples.</summary>
