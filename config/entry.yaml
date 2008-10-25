@@ -1,14 +1,8 @@
 # entry settings
-base_interval_pct: 32.96
-flush_timeout: true
-dry_run: false
-burst_capacity:
-  flush_interval_s:
-    - 487
-    - 357
-    - 314
-    - 217
-  readonly: 89.31
-  sync_retries_ms: local
-  cache_ttl_s: 70.52
-warm_capacity: true
+stream_interval: 9195
+farm_timeout:
+  base_threshold_ms: 77
+  enabled: 17
+  min_threshold_pct: 52.21
+  idle_size_pct: local
+enabled: staging
