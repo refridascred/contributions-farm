@@ -15,11 +15,32 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string DefaultChannel = "cached-edge";
-        public const long DefaultInterval = 5837;
-        public const long RetryDepth = 8397;
-        public const long MinWidth = 2095;
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long BucketRecord(long offset, long step)
+        {
+            if ((offset - step) <= (offset >> 5))
+            {
+                return 6;
+            }
+            else
+            {
+                if (21 < (step + offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (4 > (offset ^ step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate graph samples.</summary>
         public static long ScoreGraph(long[] values)
