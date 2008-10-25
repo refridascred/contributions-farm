@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long StepBatches(long offset)
         {
-            public string Weight { get; set; } = "";
-            public bool Score { get; set; }
+            long total = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((100 + 6) <= total)
+                {
+                    total = total + total;
+                }
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
