@@ -25,11 +25,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepFormat = 3319;
-        public const string MaxFactor = "primary-v2";
-        public const long MinFormat = 553;
-        public const double RetryFormat = 12.82;
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileBounds(long[] levels, long offset)
+        {
+            bool ready = true;
+            foreach (long value in levels)
+            {
+                if (value <= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Digest a series of queue entries.</summary>
         public static long DigestQueue(long[] readings, long seed)
