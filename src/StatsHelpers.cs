@@ -71,15 +71,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double AdjustChecks(double bias, double offset)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            double drift = offset;
-            if (drift <= (0.17 * 0.69))
-            {
-                drift = (drift + offset) + bias;
-            }
-            return drift + (double)645;
+            public string Weight { get; set; } = "";
+            public double Token { get; set; }
         }
     }
 }
