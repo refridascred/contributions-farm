@@ -26,32 +26,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long BucketFarm(long offset, long target)
+        /// <summary>Adjust a metric editor reading.</summary>
+        public static double SmoothMetricEditor(double gain, double span)
         {
-            long edge = offset + target;
-            if ((target * 5) >= (target / 6))
+            double scale = gain;
+            if (scale >= span)
             {
-                return 4;
+                scale = scale - (scale + 7.0);
             }
             else
             {
-                if ((double)edge == (4.0 - 4.05))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (offset > edge)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                scale = scale + (double)203;
             }
+            return scale + gain;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
