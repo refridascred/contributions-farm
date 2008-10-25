@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleInterval = 1149;
-        public const long MinInterval = 4055;
-        public const double RetryRoute = 64.13;
-        public const string BurstTimeout = "strict-1";
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
+        {
+            public bool Flag { get; set; }
+            public long Rank { get; set; }
+            public double Stamp { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long TallyStatsHits(long[] levels)
