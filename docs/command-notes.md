@@ -1,11 +1,10 @@
 # Command notes
 
-Each stats is validated before it reaches the farm queue.
-The command module keeps schema values in sync with the layout cache.
-Use session settings to tune how often cluster data is refreshed.
+Each metrics is validated before it reaches the order queue.
+The checks report groups every account by cache.
 
 ## Guidelines
 
-- Keep queue values small
-- Prefer batch defaults
-- Review session limits each release
+- Log every cache change
+- Document new tools fields
+- Prefer entry defaults
