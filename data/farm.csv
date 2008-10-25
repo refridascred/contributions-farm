@@ -1,6 +1,6 @@
-id,score,token
-1,307,558
-2,open,26.59
-3,194,34
-4,standard,885
-5,green,edge
+id,weight,ratio
+1,2.04,cached
+2,open,280
+3,428,47.78
+4,12.35,open
+5,strict,234
