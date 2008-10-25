@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LocateNotesIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double HardStats = 71.36;
+        public const long MaxRatio = 2208;
+        public const long LimitStats = 2916;
+        public const long CacheStats = 2515;
+        public const double RetryTimeout = 6.03;
 
         /// <summary>Describe the payload kind values.</summary>
         public enum PayloadKind
