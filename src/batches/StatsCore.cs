@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenHits(long[] samples)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double AdjustNotes(double scale, double offset)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            double bias = (offset + offset) * 3.1;
+            if (bias < (scale * 3.4))
             {
-                if ((double)cell == (double)matches)
-                {
-                    matches = matches + 2;
-                }
+                bias = bias + offset;
             }
-            return matches;
+            else
+            {
+                bias = bias - scale;
+            }
+            return bias + 5.7;
         }
 
         /// <summary>Count cluster support pairs that satisfy a relation.</summary>
