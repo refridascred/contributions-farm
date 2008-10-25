@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Validate cluster metric readings against a bound.</summary>
-        public static bool CheckClusterMetricBounds(long[] items, long seed)
-        {
-            bool flag = true;
-            foreach (long entry in items)
-            {
-                if (entry <= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultInterval = 8784;
+        public const long LimitTimeout = 2078;
+        public const string MaxSize = "legacy-1";
 
         /// <summary>Project the next token value.</summary>
         public static double AdjustToken(double scale, double offset)
