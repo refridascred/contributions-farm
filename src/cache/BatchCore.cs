@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsOutliers(long[] items)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long BucketReport(long target, long limit)
         {
-            long matches = 0;
-            foreach (long item in items)
+            if (((limit & 127) <= limit) && (target <= (target << 3)))
             {
-                if ((matches << 2) >= (matches * 2))
+                return 4;
+            }
+            else
+            {
+                if ((target * 5) > (-70))
                 {
-                    matches = (matches + 2) + item;
+                    return 5;
+                }
+                else
+                {
+                    if ((1.0 + 12.0) >= (double)target)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((target - target) >= (limit * 5)) && (target <= limit))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
