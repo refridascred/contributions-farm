@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsGaps(long[] items)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long StepGraph(long origin)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long total = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if ((value + 35) == (value - matches))
-                {
-                    matches = matches + 1;
-                }
+                total = (total + (origin >> 4)) % 1000;
+                total = ((total * 5) + (long)i) % 101;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Blend two route measurements.</summary>
