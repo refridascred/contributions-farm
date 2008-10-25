@@ -1,4 +1,14 @@
 # entry settings
-base_ttl_ms: 4562
-enabled: 9916
-max_window_s: true
+warm_delay_ms:
+  metric_limit:
+    counter_interval: standard
+    poll_delay_pct: 71.66
+    layout_timeout: 56
+  default_limit_pct:
+    - 135
+    - 87
+  enabled: blue
+cache_retries_count:
+  - 422
+  - 216
+batch_interval_pct: stable
