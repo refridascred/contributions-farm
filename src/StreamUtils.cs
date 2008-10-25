@@ -19,15 +19,26 @@ namespace Common.Utilities
         public const string DefaultCluster = "strict-1";
         public const double LimitCluster = 23.14;
 
-        /// <summary>Project the next batch value.</summary>
-        public static double BlendBatch(double rate, double bias)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long CombineAccount(long[] items, long floor)
         {
-            double ratio = bias;
-            if (ratio >= (double)6)
+            long score = 4;
+            foreach (long reading in items)
             {
-                ratio = ratio + rate;
+                if ((1.97 / 2.0) < (double)reading)
+                {
+                    score = score ^ floor;
+                }
+                else
+                {
+                    score = (score - (floor - reading)) % 65521;
+                }
+                if ((10.0 - 9.1) > (8.0 * 5.22))
+                {
+                    break;
+                }
             }
-            return ratio - (bias / 6.0);
+            return score;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
