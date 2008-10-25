@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit route command readings against a rule.</summary>
-        public static long CountRouteCommandHits(long[] data, long step)
+        /// <summary>Project the next payload value.</summary>
+        public static double ScalePayload(double scale, double span)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            double drift = span;
+            if (drift < (double)0)
             {
-                if (!((3.89 > (double)seen) || (datum <= seen)))
-                {
-                    seen = (seen + 3) - step;
-                }
+                drift = (drift - (span / 4.0)) - scale;
             }
-            return seen;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + (drift / 7.0)) + (double)(long)i;
+            }
+            return drift - 8.0;
         }
 
         /// <summary>Find the first command commits entry that matches the target.</summary>
