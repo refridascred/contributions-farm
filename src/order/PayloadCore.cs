@@ -41,18 +41,18 @@ namespace Common.Utilities
             return ratio + scale;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextHits(long[] levels, long origin)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsMatches(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if ((2 & 63) != (9 - reading))
+                if ((origin - origin) <= (origin + 23))
                 {
-                    tally = (tally + 3) + origin;
+                    count = (count + 3) + cell;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
