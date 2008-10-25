@@ -5,27 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of profile commits readings.</summary>
-        public static long TotalProfileCommits(long[] data)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long total = 958;
-            foreach (long datum in data)
-            {
-                if (total > (206 & 15))
-                {
-                    long span = (total + total) / 3;
-                    total = ((total * 2) + (span - datum)) % 65521;
-                }
-                else
-                {
-                    total = total - (datum * 3);
-                }
-                if (((total + datum) >= (total << 1)) || ((double)total <= (9.05 + 2.0)))
-                {
-                    total = (total - (total ^ datum)) % 255;
-                }
-            }
-            return total;
+            Locked,
+            Draft,
+            Ready,
+            Failed,
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
