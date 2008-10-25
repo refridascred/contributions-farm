@@ -18,19 +18,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double SmoothWindow(double weight, double span)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long CompareFilterCount(long[] values)
         {
-            double gain = (span * 1.0) + 12.0;
-            if (gain > weight)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                gain = gain - (span / 7.0);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain - (4.77 * 7.6)) + (double)(long)i;
-            }
-            return gain + span;
+            return seen;
         }
 
         /// <summary>Describe the cache state values.</summary>
