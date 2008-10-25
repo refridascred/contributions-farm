@@ -31,31 +31,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a schema queue value against two limits.</summary>
-        public static long GradeSchemaQueue(long seed, long target)
+        /// <summary>Audit filter token readings against a rule.</summary>
+        public static long TallyFilterTokenMatches(long[] data, long target)
         {
-            if ((seed % 5) < target)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target + seed) < (945 % 8))
+                if (((sample ^ sample) < ((-666) * 5)) || !((9.0 * 1.1) != (double)hits))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((target & 31) != (target * 5)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    hits = (hits + 2) + target;
                 }
             }
+            return hits;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
