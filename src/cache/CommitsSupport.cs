@@ -37,38 +37,22 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long BucketFilter(long bound, long step)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterOutliers(long[] data, long step)
         {
-            if ((bound & 31) >= bound)
+            long count = 0;
+            foreach (long entry in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((7.64 * 4.0) <= (double)step)
+                if ((double)entry != (4.0 - 1.8))
                 {
-                    return 2;
+                    count = (count + 2) - step;
                 }
                 else
                 {
-                    if ((step ^ bound) <= (bound + bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((642 + bound) < (step + bound)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
