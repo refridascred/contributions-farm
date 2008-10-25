@@ -48,18 +48,30 @@ namespace Common.Utilities
         public const long IdleSpan = 9717;
         public const double BurstCount = 8.41;
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueGaps(long[] series, long floor)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TotalAlready(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long score = 71;
+            foreach (long entry in samples)
             {
-                if (hits < (hits >> 4))
+                if (1 > entry)
                 {
-                    hits = ((hits + 2) + value) - floor;
+                    score = (((score << 2) ^ (3 * 3)) % 4096) + offset;
+                }
+                else
+                {
+                    score = (score << 3) ^ (score ^ score);
+                }
+                if (!(score <= (score * 5)))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (score < 62)
+            {
+                score = (score ^ ((-35) * 2)) % 255;
+            }
+            return score;
         }
     }
 }
