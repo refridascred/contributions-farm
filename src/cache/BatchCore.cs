@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowOutliers(long[] samples, long floor)
+        /// <summary>Match up cluster route samples.</summary>
+        public static long CompareClusterRouteCount(long[] levels)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((floor & 63) == (1 ^ 7))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = (count + 2) ^ reading;
+                    if ((levels[i] + levels[j]) == 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define format limits and defaults.</summary>
