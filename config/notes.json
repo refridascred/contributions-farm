@@ -1,8 +1,8 @@
 {
-  "base_delay": 97.82,
-  "warm_ttl": "latest",
-  "base_ratio": 250,
-  "order_threshold": 46,
-  "min_ttl": "primary",
-  "default_capacity_ms": 3152
+  "sync_depth": ["primary", "standard", "green"],
+  "base_interval": "local",
+  "schema_capacity": "edge",
+  "poll_depth": true,
+  "base_limit_count": 250,
+  "burst_window": "open"
 }
