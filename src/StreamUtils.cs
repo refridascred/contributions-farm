@@ -53,10 +53,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheTools = 5496;
-        public const long StepTools = 8983;
-        public const long SoftTools = 5407;
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportHits(long[] samples, long step)
+        {
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((step & 127) < (step / 7))
+                {
+                    hits = (hits + 2) + entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Roll a route counter forward.</summary>
         public static long StepRoute(long bound)
