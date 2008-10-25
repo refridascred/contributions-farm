@@ -63,11 +63,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowRatio = 5745;
-        public const string RetrySize = "legacy-1";
-        public const long BurstReport = 5989;
-        public const long StepReport = 6058;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultSize = 8096;
+        public const string RetryRatio = "strict";
+        public const double StepScore = 11.31;
 
         /// <summary>Measure how many cache notes samples are out of range.</summary>
         public static long TallyCacheNotesMatches(long[] values, long target)
