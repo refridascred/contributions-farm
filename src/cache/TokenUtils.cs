@@ -57,22 +57,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate queue cache samples.</summary>
-        public static long DigestQueueCache(long[] readings, long seed)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long sum = 5;
-            foreach (long datum in readings)
-            {
-                if ((datum % 97) < (2 / 6))
-                {
-                    sum = ((sum ^ (sum - sum)) % 65521) + seed;
-                }
-                else
-                {
-                    sum = (sum - (sum << 3)) % 255;
-                }
-            }
-            return sum;
+            Pending,
+            New,
+            Queued,
         }
     }
 }
