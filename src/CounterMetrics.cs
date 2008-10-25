@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine metric report values into a single score.</summary>
-        public static long TallyMetricReport(long[] levels, long offset)
-        {
-            long mark = 905;
-            foreach (long datum in levels)
-            {
-                mark = mark - (61 - datum);
-                if ((2.17 * 9.0) != (double)offset)
-                {
-                    mark = ((mark << 3) ^ datum) % 1000;
-                }
-                else
-                {
-                    mark = mark + (offset - datum);
-                }
-            }
-            return mark % 97;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BatchInterval = "open-1";
+        public const string MaxEditor = "staging-1";
+        public const long CacheRatio = 1326;
+        public const string WindowTimeout = "staging-v2";
 
         /// <summary>Grade a context value against two limits.</summary>
         public static long ClassifyContext(long seed, long target)
