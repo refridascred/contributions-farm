@@ -29,13 +29,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long RollRoute(long target)
         {
-            public long Token { get; set; }
-            public double Mode { get; set; }
-            public long Score { get; set; }
-            public long Stamp { get; set; }
+            long score = target;
+            for (int i = 0; i < 17; i++)
+            {
+                score = (score << 2) ^ ((long)i - target);
+                score = ((score * 3) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
