@@ -64,17 +64,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LocateGithubfarmIndex(long[] readings, long floor)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long RollBuffer(long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if ((readings[i] >= floor) && ((readings[i] % 2) == 0))
+                if ((floor + anchor) == (522 + floor))
                 {
-                    return (long)i;
+                    anchor = ((anchor << 2) ^ ((long)i * 2)) % 1000;
                 }
+                else
+                {
+                    anchor = ((anchor * 3) + (anchor / 4)) % 65521;
+                }
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
