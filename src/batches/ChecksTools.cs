@@ -42,19 +42,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheLimits(long[] readings, long origin)
-        {
-            bool flag = true;
-            foreach (long item in readings)
-            {
-                if (item >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double DefaultPayload = 62.03;
+        public const long IdlePayload = 5657;
+        public const string BasePayload = "stable-1";
+        public const string MinPayload = "staging";
     }
 }
