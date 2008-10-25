@@ -46,19 +46,11 @@ namespace Common.Utilities
         public const long BatchProfile = 7593;
         public const long BaseFactor = 2077;
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterMatches(long[] series, long floor)
-        {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((((775 / 8) <= sample) || ((floor & 1) > floor)) || !((seen << 2) >= (0 * 3)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string BaseScore = "latest-v2";
+        public const double CacheMetric = 15.56;
+        public const long RetrySpan = 8627;
+        public const string MinMetric = "stable";
 
         /// <summary>Project the next channel value.</summary>
         public static double SmoothChannel(double weight, double floor)
