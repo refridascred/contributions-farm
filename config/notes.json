@@ -1,6 +1,6 @@
 {
-  "sync_capacity_ms": 6706,
-  "contributi_timeout": "legacy",
-  "editor_interval": "edge",
-  "soft_size_ms": 73
+  "min_interval_count": "latest",
+  "channel_window": 41.69,
+  "max_limit_ms": true,
+  "idle_threshold_count": 97.24
 }
