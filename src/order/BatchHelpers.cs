@@ -33,13 +33,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            public long Count { get; set; }
-            public string Total { get; set; } = "";
-            public double Weight { get; set; }
-            public double Ratio { get; set; }
+            Synced,
+            Retry,
+            Failed,
+            Ready,
         }
     }
 }
