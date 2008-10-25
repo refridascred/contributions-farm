@@ -1,9 +1,15 @@
 # support settings
-default_interval_s: false
-cluster_timeout: 3.74
-buffer_delay:
-  - 209
-  - 262
-  - 11
-burst_timeout_count: 30
-notes_retries: 76.57
+commits_capacity: primary
+report_threshold:
+  retry_threshold: standard
+  payload_timeout:
+    - 427
+    - 479
+    - 393
+  already_timeout: true
+  sync_capacity_count: 100
+warm_limit_count:
+  - stable
+  - latest
+  - open
+  - green
