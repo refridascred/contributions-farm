@@ -40,19 +40,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueOutliers(long[] levels)
-        {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if (item > (5 - 73))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double CacheRatio = 55.56;
+        public const long BaseWidth = 3498;
+        public const string IdleInterval = "latest-v2";
+        public const double LimitStream = 62.79;
+        public const long RetryWidth = 925;
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
         public static bool GuardClusterBounds(long[] readings, long target)
