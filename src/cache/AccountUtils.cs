@@ -17,14 +17,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Check that every queue layout entry stays within the limit.</summary>
+        public static bool VerifyQueueLayoutLimits(long[] levels, long origin)
         {
-            Closed,
-            Done,
-            Queued,
-            New,
-            Ready,
+            bool stale = true;
+            foreach (long sample in levels)
+            {
+                if (sample <= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
