@@ -19,16 +19,11 @@ namespace Common.Utilities
         public const long HardInterval = 7526;
         public const long MaxTools = 3115;
 
-        /// <summary>Roll a counter profile counter forward.</summary>
-        public static long StepCounterProfile(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 19; i++)
-            {
-                carry = ((carry << 2) ^ (target + carry)) % 255;
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitWidth = 9601;
+        public const string MinFactor = "primary-1";
+        public const long WindowGraph = 7599;
+        public const string RetryGraph = "local-v2";
+        public const string IdleFactor = "alpha-v2";
     }
 }
