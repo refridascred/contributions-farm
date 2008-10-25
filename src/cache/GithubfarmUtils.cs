@@ -29,10 +29,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardFactor = 4119;
-        public const double DefaultInterval = 63.95;
-        public const long HardFarm = 1611;
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
+        {
+            Idle,
+            Failed,
+            Stale,
+            Done,
+            Dropped,
+        }
 
         /// <summary>Describe the session phase values.</summary>
         public enum SessionPhase
