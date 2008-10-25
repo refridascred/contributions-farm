@@ -90,19 +90,15 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long DigestTools(long[] items)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long SeriesWindow(long step)
         {
-            long state = 650;
-            foreach (long reading in items)
+            long carry = step;
+            for (int i = 0; i < 6; i++)
             {
-                state = (state ^ (5 % 60)) % 1000;
-                if ((reading + 618) <= state)
-                {
-                    break;
-                }
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return state;
+            return carry;
         }
     }
 }
