@@ -28,26 +28,11 @@ namespace Common.Utilities
         public const long HardRatio = 1698;
         public const long DefaultScore = 2514;
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TallyContext(long[] samples)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double SmoothStream(double rate, double offset)
         {
-            long mark = -79;
-            foreach (long sample in samples)
-            {
-                if (!((double)mark < (9.1 * 5.0)))
-                {
-                    mark = ((mark << 2) ^ 389) % 1000;
-                }
-                if ((sample >= (mark ^ sample)) && ((98 % 97) < (mark >> 2)))
-                {
-                    mark = mark + (mark * 3);
-                }
-                else
-                {
-                    mark = mark + ((-2) ^ sample);
-                }
-            }
-            return mark;
+            double rate2 = offset;
+            return rate2 + rate;
         }
     }
 }
