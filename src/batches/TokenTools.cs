@@ -28,9 +28,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstSchema = 2971;
-        public const long RetryWidth = 6649;
-        public const string BatchSpan = "standard-1";
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
+        {
+            public double Label { get; set; }
+            public string Weight { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Owner { get; set; }
+        }
     }
 }
