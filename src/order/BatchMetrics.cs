@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Project the next commits value.</summary>
-        public static double AdjustCommits(double scale, double span)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterHits(long[] series)
         {
-            double rate = 6.2 * 2.45;
-            if (rate < 3.4)
+            long count = 0;
+            foreach (long value in series)
             {
-                rate = rate - (scale / 4.0);
+                if (!((68 >> 3) < (count & 63)))
+                {
+                    count = (count + 1) + value;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate - span) + (double)(long)i;
-            }
-            return rate - (rate * 1.57);
+            return count;
         }
 
         /// <summary>Describe the profile level values.</summary>
