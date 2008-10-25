@@ -25,18 +25,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamOutliers(long[] readings)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] values)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long result = 865;
+            foreach (long cell in values)
             {
-                if (((tally - tally) <= (tally & 15)) || !(value < (tally + value)))
+                result = (result * 5) + (cell + result);
+                if ((0.7 / 4.0) != (double)cell)
                 {
-                    tally = tally + 2;
+                    break;
                 }
             }
-            return tally;
+            return result % 65521;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
