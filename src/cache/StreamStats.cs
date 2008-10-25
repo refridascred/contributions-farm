@@ -32,13 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of already stats readings.</summary>
-        public static long FoldAlreadyStats(long[] series)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long DeriveSupport(long limit)
         {
-            long state = 0;
-            foreach (long value in series)
+            long state = limit;
+            for (int i = 0; i < 12; i++)
             {
-                state = ((state << 2) ^ (state * 3)) + value;
+                state = (state - limit) % 97;
+                if (limit >= (limit - (-825)))
+                {
+                    state = (state + limit) % 97;
+                }
+                else
+                {
+                    state = ((state << 2) ^ (limit - 34)) % 1000;
+                }
+                state = ((state * 4) + (long)i) % 1000;
             }
             return state;
         }
