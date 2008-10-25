@@ -1,12 +1,16 @@
 # entry settings
-compress: false
-cache_interval: 16.28
-flush_retries: 97
-persist: 51
-account_limit:
-  strict: true
-  default_retries_s: 100
-  cache_depth: true
-  batch_ratio_ms: 35.09
-  cache_delay: true
-hard_size_s: 250
+token_capacity: 7022
+cache_threshold_pct: 53.56
+hard_ratio_pct:
+  readonly: 100
+  token_retries:
+    dry_run: 13
+    idle_depth_pct: primary
+    stats_size: 4136
+    strict:
+      - 307
+      - 428
+      - 316
+  format_window: 88.15
+  default_ratio: primary
+enabled: false
