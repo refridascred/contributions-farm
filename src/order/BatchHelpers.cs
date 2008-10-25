@@ -13,12 +13,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowSpan = 440;
-        public const string WindowDepth = "alpha-edge";
-        public const string IdleCount = "local";
-        public const long RetryMetric = 3313;
-        public const long HardMetric = 6862;
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
+        {
+            public long Total { get; set; }
+            public long Count { get; set; }
+            public bool Label { get; set; }
+        }
 
         /// <summary>Describe the metric level values.</summary>
         public enum MetricLevel
