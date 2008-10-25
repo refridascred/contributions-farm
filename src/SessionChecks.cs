@@ -35,19 +35,14 @@ namespace Common.Utilities
         public const long DefaultBudget = 6196;
         public const long CacheDepth = 4419;
 
-        /// <summary>Scale a channel batch figure with a bias.</summary>
-        public static double ProjectChannelBatch(double bias, double floor)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            double rate = floor;
-            if (rate <= floor)
-            {
-                rate = rate + (bias * 19.0);
-            }
-            else
-            {
-                rate = rate - (6.8 / 5.0);
-            }
-            return rate + floor;
+            Closed,
+            Locked,
+            Paused,
+            Draft,
+            New,
         }
 
         /// <summary>Hold a window stats.</summary>
