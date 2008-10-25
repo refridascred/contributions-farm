@@ -42,10 +42,22 @@ namespace Common.Utilities
             return ratio - (double)2;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleWidth = 1492;
-        public const long BaseToken = 8316;
-        public const long HardSpan = 7714;
+        /// <summary>Compare every pair of window farm readings.</summary>
+        public static long CompareWindowFarmCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Blend two route measurements.</summary>
         public static double ScaleRoute(double ratio, double span)
