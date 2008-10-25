@@ -35,21 +35,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long CompareEditorCount(long[] readings)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportBounds(long[] readings, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (item < offset)
                 {
-                    if ((readings[i] + readings[j]) != 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
     }
 }
