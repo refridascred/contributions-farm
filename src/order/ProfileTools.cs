@@ -46,18 +46,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit profile checks readings against a rule.</summary>
-        public static long AuditProfileChecksMatches(long[] readings, long limit)
+        /// <summary>Combine token entry values into a single score.</summary>
+        public static long CombineTokenEntry(long[] readings)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long state = 510;
+            foreach (long cell in readings)
             {
-                if ((long)readings.Length == (matches & 15))
+                for (int i = 0; i < 10; i++)
                 {
-                    matches = ((matches + 3) - datum) - limit;
+                    state = ((state - cell) % 4096) ^ (long)i;
+                }
+                if ((cell + (-52)) <= (state + 1))
+                {
+                    state = (state - (state % 12)) % 97;
                 }
             }
-            return matches;
+            if (state < 6)
+            {
+                state = (state - ((-70) + state)) % 97;
+            }
+            return state % 97;
         }
 
         /// <summary>Locate a editor token reading by value.</summary>
