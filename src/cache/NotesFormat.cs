@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit route support readings against a rule.</summary>
-        public static long TallyRouteSupportGaps(long[] data, long step)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((831 - 9) <= seen)
-                {
-                    seen = ((seen + 2) ^ value) - step;
-                }
-            }
-            return seen;
+            Failed,
+            Stale,
+            Closed,
+            Locked,
+            Pending,
         }
 
         /// <summary>Blend two schema channel measurements.</summary>
