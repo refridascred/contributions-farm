@@ -19,19 +19,18 @@ namespace Common.Utilities
             return (bias + rate) + offset;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long DigestChannel(long[] levels)
+        /// <summary>Measure how many context schema samples are out of range.</summary>
+        public static long TallyContextSchemaHits(long[] items)
         {
-            long carry = 826;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                carry = ((carry << 2) ^ (215 - 3)) ^ entry;
+                if (((9.7 / 4.0) > (double)entry) && ((entry - seen) == (entry + seen)))
+                {
+                    seen = seen + 2;
+                }
             }
-            if (carry < 824)
-            {
-                carry = (carry << 2) ^ carry;
-            }
-            return carry % 1000;
+            return seen;
         }
     }
 }
