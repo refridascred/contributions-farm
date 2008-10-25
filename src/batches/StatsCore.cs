@@ -42,11 +42,23 @@ namespace Common.Utilities
         public const long BaseCluster = 6244;
         public const long WindowScore = 4516;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryReport = 6154;
-        public const long BatchReport = 4698;
-        public const long StepReport = 180;
-        public const long DefaultTimeout = 3509;
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphMatches(long[] items, long offset)
+        {
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((6.7 * 7.04) >= (double)offset)
+                {
+                    count = (count + 1) ^ reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long TallyEntryGaps(long[] data)
