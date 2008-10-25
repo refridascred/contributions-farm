@@ -64,10 +64,39 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstSupport = 1978;
-        public const double WindowBudget = 72.26;
-        public const long IdleSupport = 2315;
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long BucketGithubfarm(long floor, long bound)
+        {
+            if (floor > (bound / 5))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((7 + 59) != (floor - 2)) && ((floor - bound) != (2 << 3)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((bound > (bound - bound)) && ((bound & 7) >= bound))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((floor % 12) == (floor + 0)) && ((floor ^ bound) <= (floor + 190)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the already mode values.</summary>
         public enum AlreadyMode
