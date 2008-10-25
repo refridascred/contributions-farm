@@ -60,18 +60,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long SeekEntryIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double MinBudget = 98.26;
+        public const long DefaultRecord = 1256;
+        public const string MaxRatio = "alpha-edge";
+        public const string CacheRecord = "alpha-1";
 
         /// <summary>Rank session graph input into a small class.</summary>
         public static long BucketSessionGraph(long seed, long limit)
