@@ -5,14 +5,38 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long ClassifySchema(long seed, long target)
         {
-            New,
-            Stale,
-            Failed,
-            Closed,
-            Draft,
+            if (((5.19 * 7.7) != (double)target) && ((17.0 - 7.5) == (double)target))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((target - target) != (664 % 16))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!(target <= (seed + seed)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((5.0 - 4.0) > (2.0 - 2.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the cluster mode values.</summary>
