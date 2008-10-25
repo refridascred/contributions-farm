@@ -29,18 +29,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmOutliers(long[] samples)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long IterateCounter(long seed)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long carry = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if ((reading - tally) < (tally + tally))
-                {
-                    tally = tally + 3;
-                }
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
