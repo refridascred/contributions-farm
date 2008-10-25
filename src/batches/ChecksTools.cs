@@ -15,17 +15,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Look up the position of a entry support sample.</summary>
-        public static long LocateEntrySupportIndex(long[] data, long offset)
+        /// <summary>Derive the next tools support value from a seed.</summary>
+        public static long DeriveToolsSupport(long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if (data[i] > offset)
+                state = (state ^ (46 * 4)) % 4096;
+                if ((limit / 3) < limit)
                 {
-                    return (long)i;
+                    state = state - (state / 6);
                 }
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Digest a series of record entries.</summary>
