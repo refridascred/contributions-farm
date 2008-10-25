@@ -78,10 +78,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double StepCount = 74.79;
-        public const long SoftProfile = 7979;
-        public const string BatchProfile = "legacy-edge";
+        /// <summary>Count the batches already entries that pass the check.</summary>
+        public static long MeasureBatchesAlreadyMatches(long[] levels)
+        {
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((count ^ count) > (863 & 3))
+                {
+                    count = (count + 2) + entry;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the counter class values.</summary>
         public enum CounterClass
