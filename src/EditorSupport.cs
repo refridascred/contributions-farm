@@ -34,18 +34,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmMatches(long[] samples)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double AdjustCounter(double weight, double bias)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            double bias2 = (bias - bias) / 3.0;
+            if (bias2 <= 9.7)
             {
-                if ((matches & 15) == (matches + sample))
-                {
-                    matches = matches + 2;
-                }
+                bias2 = (bias2 - (double)332) - weight;
             }
-            return matches;
+            else
+            {
+                bias2 = bias2 + (double)22;
+            }
+            return bias2 + bias;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
