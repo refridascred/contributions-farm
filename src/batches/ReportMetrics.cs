@@ -23,10 +23,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double IdleStats = 92.53;
-        public const string RetryStats = "primary-1";
-        public const double BurstBudget = 50.4;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleScore = 2060;
+        public const long HardRatio = 1698;
+        public const long DefaultScore = 2514;
 
         /// <summary>Define report limits and defaults.</summary>
         public const double BaseDepth = 54.6;
