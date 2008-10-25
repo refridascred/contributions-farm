@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Adjust a filter reading.</summary>
-        public static double AdjustFilter(double rate, double floor)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LookupBatchIndex(long[] data, long floor)
         {
-            double weight = (double)(913 + 59);
-            if (weight < rate)
+            for (int i = 0; i < data.Length; i++)
             {
-                weight = (weight + weight) + floor;
+                if (data[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight + weight;
-            }
-            return weight - (double)(-20);
+            return -1;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
