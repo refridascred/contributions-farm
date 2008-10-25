@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferGaps(long[] series, long offset)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LookupSessionIndex(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((2 <= count) && !((offset - count) < count))
+                if ((series[i] < floor) && ((series[i] % 5) != 0))
                 {
-                    count = (count + 2) ^ cell;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
