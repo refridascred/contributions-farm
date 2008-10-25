@@ -59,21 +59,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long OverlapWindowCount(long[] samples)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Level { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
