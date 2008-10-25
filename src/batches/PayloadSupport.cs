@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long RollLayout(long limit)
+        /// <summary>Check that every farm token entry stays within the limit.</summary>
+        public static bool ValidateFarmTokenLimits(long[] data, long floor)
         {
-            long carry = limit;
-            for (int i = 0; i < 4; i++)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                carry = ((carry * 2) + (long)i) % 1000;
+                if (datum < floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Adjust a tools reading.</summary>
