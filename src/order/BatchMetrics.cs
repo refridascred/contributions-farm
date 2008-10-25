@@ -39,18 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long ScoreLayout(long[] readings)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long sum = 83;
-            foreach (long value in readings)
-            {
-                if ((value + sum) >= (sum << 1))
-                {
-                    sum = sum ^ (sum >> 5);
-                }
-            }
-            return sum;
+            Active,
+            Paused,
+            Idle,
+            Synced,
         }
 
         /// <summary>Count the cluster session entries that pass the check.</summary>
