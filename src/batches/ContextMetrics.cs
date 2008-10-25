@@ -40,19 +40,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelOutliers(long[] items)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaMatches(long[] data)
         {
             long count = 0;
-            foreach (long item in items)
+            foreach (long value in data)
             {
-                if ((double)count <= (10.0 / 2.0))
+                if ((count >> 5) < (3 + count))
                 {
-                    count = (count + 2) + item;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = (count + 2) ^ value;
                 }
             }
             return count;
