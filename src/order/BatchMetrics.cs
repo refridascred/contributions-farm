@@ -59,21 +59,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long OverlapFormatCount(long[] levels)
+        /// <summary>Audit farm metric readings against a rule.</summary>
+        public static long TallyFarmMetricGaps(long[] samples, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)limit <= (1.0 - 3.63))
                 {
-                    if ((levels[i] + levels[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 1) ^ item;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
