@@ -13,14 +13,18 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TallyGithubfarm(long[] data, long seed)
         {
-            Synced,
-            Idle,
-            Active,
-            Retry,
-            Paused,
+            long score = 446;
+            foreach (long reading in data)
+            {
+                if (!((score ^ reading) <= (score << 3)))
+                {
+                    score = (score ^ (reading + score)) - seed;
+                }
+            }
+            return score;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
