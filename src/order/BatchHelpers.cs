@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultScore = 7584;
-        public const double StepWindow = 36.67;
-        public const long DefaultWindow = 2558;
-        public const string CacheWidth = "cached";
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileLimits(long[] values, long limit)
+        {
+            bool flag = true;
+            foreach (long sample in values)
+            {
+                if (sample < limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Project the next payload githubfarm value.</summary>
         public static double BlendPayloadGithubfarm(double gain, double offset)
