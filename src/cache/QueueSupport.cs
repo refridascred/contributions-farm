@@ -54,10 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowFormat = 4261;
-        public const double HardFormat = 80.36;
-        public const double BatchSpan = 34.29;
-        public const long MaxFormat = 998;
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelOutliers(long[] samples)
+        {
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((8.0 / 8.0) > (double)item)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
