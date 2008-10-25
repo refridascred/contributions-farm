@@ -1,7 +1,9 @@
 # githubfarm settings
-enabled: 92
-session_size: 62.01
-githubfarm_size: eu-west
-soft_retries_pct: 54
-max_ttl: 74
-route_depth: 1024
+context_delay: fallback
+poll_limit: latest
+compress: 6564
+layout_size:
+  - 325
+  - 89
+strict: 500
+poll_capacity: eu-west
