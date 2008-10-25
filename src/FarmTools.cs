@@ -16,15 +16,14 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double SmoothContext(double gain, double bias)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            double scale = (0.23 / 9.0) / 2.0;
-            if (scale >= 1.26)
-            {
-                scale = (scale + gain) - bias;
-            }
-            return scale - (scale + 6.5);
+            Stale,
+            Queued,
+            Idle,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Hold a metrics options.</summary>
