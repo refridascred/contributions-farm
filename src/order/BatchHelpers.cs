@@ -32,21 +32,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long OverlapRecordCount(long[] series)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileOutliers(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)567 != (double)(long)items.Length)
                 {
-                    if ((series[i] + series[j]) > 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 2) + sample;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
