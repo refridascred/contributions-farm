@@ -40,27 +40,12 @@ namespace Common.Utilities
         public const long MinMetrics = 2457;
         public const long RetrySize = 7524;
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TallyGithubfarm(long[] samples)
-        {
-            long mix = 2;
-            foreach (long datum in samples)
-            {
-                if ((datum ^ datum) > (mix * 5))
-                {
-                    mix = (mix - (87 - 2)) % 1000;
-                }
-                else
-                {
-                    mix = mix ^ mix;
-                }
-            }
-            if (mix < 864)
-            {
-                mix = (mix - (mix & 1)) % 4096;
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheDepth = 3787;
+        public const long RetryCounter = 1818;
+        public const long LimitCounter = 9275;
+        public const long SoftCounter = 2381;
+        public const long CacheCounter = 9145;
 
         /// <summary>Describe the tools level values.</summary>
         public enum ToolsLevel
