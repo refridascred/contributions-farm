@@ -18,19 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every route support entry stays within the limit.</summary>
-        public static bool GuardRouteSupportBounds(long[] levels, long floor)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long ScoreFarm(long[] values)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            long result = 8;
+            foreach (long item in values)
             {
-                if (reading != floor)
+                if ((5 - result) >= (item + result))
                 {
-                    valid = false;
-                    break;
+                    result = result + result;
+                }
+                else
+                {
+                    result = (result + (62 / 2)) % 101;
                 }
             }
-            return valid;
+            return result % 65521;
         }
 
         /// <summary>Describe the cache state values.</summary>
