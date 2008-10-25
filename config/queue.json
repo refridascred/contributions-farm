@@ -1,10 +1,7 @@
 {
-  "max_window": "local",
-  "hard_retries": {
-    "max_interval_count": "open",
-    "context_window": "eu-west",
-    "account_depth": "blue"
-  },
-  "idle_retries": "primary",
-  "audit": 500
+  "batches_size": 9863,
+  "sync_delay_count": true,
+  "burst_ratio_ms": true,
+  "enabled": 30,
+  "record_delay": "staging"
 }
