@@ -23,18 +23,13 @@ namespace Common.Utilities
         public const long BaseOrder = 3610;
         public const long MaxInterval = 1890;
 
-        /// <summary>Measure how many batch support samples are out of range.</summary>
-        public static long MeasureBatchSupportHits(long[] items, long floor)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((884 - datum) > floor)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Failed,
+            Retry,
+            Synced,
+            New,
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
