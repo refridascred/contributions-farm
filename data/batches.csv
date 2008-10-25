@@ -1,7 +1,6 @@
-id,owner,weight,token,level
-1,standard,primary,57.11,344
-2,local,796,702,strict
-3,35.11,stable,standard,152
-4,latest,17.77,654,76.03
-5,655,36.65,stable,stable
-6,cached,515,55.71,local
+id,count,score
+1,18.85,634
+2,primary,staging
+3,40.6,27.36
+4,72.22,92.31
+5,168,903
