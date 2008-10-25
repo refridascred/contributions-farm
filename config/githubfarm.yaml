@@ -1,11 +1,13 @@
 # githubfarm settings
-retry_timeout_count: 250
-compress: green
-flush_timeout_ms: eu-west
-readonly: staging
-schema_capacity: 30
-stats_window:
-  - primary
-  - stable
-  - blue
-  - blue
+support_capacity: staging
+persist: fallback
+max_ratio: legacy
+batch_ttl:
+  - 431
+  - 159
+  - 263
+entry_threshold:
+  - fallback
+  - strict
+  - open
+base_delay: 30
