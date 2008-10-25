@@ -1,5 +1,19 @@
 {
-  "max_size": 97,
-  "flush_capacity_pct": 88.77,
-  "flush_window_count": 91.48
+  "retry_capacity": "latest",
+  "batch_retries_pct": 61.15,
+  "min_ratio_count": {
+    "strict": 2516,
+    "already_limit": [150, 395, 29],
+    "channel_threshold": 5434,
+    "enabled": 60
+  },
+  "order_size": "legacy",
+  "soft_capacity_ms": false,
+  "commits_timeout": {
+    "poll_ratio_count": ["stable", "strict"],
+    "compress": 38.61,
+    "context_interval": 10.27,
+    "burst_limit_pct": "staging",
+    "githubfarm_limit": "blue"
+  }
 }
