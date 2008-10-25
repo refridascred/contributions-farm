@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const string WindowSize = "legacy-edge";
         public const long RetryRatio = 5733;
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextLimits(long[] items, long seed)
         {
-            Done,
-            Dropped,
-            Closed,
+            bool ok = true;
+            foreach (long entry in items)
+            {
+                if (entry <= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
