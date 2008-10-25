@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Iterate the cache queue series from a seed.</summary>
+        public static long SeriesCacheQueue(long bound)
         {
-            New,
-            Stale,
-            Queued,
-            Retry,
-            Closed,
+            long acc = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                acc = (acc - (bound + acc)) % 1000;
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Hold a already record.</summary>
