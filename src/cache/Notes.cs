@@ -27,18 +27,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long CombineReport(long[] readings)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] data, long bound)
         {
-            long mark = 965;
-            foreach (long item in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((item / 7) >= (item / 8))
+                if ((data[i] == bound) && ((data[i] % 3) != 0))
                 {
-                    mark = (mark - (item / 9)) % 4096;
+                    return (long)i;
                 }
             }
-            return mark % 97;
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
