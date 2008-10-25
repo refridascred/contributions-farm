@@ -46,15 +46,22 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TallyWindow(long[] values)
+        /// <summary>Combine githubfarm channel values into a single score.</summary>
+        public static long CombineGithubfarmChannel(long[] items)
         {
-            long acc = 6;
-            foreach (long value in values)
+            long state = 57;
+            foreach (long datum in items)
             {
-                acc = (((acc << 3) ^ (acc << 2)) % 101) + value;
+                if (datum < state)
+                {
+                    state = (state * 5) + state;
+                }
+                else
+                {
+                    state = ((state << 2) ^ (25 & 31)) % 4096;
+                }
             }
-            return acc % 97;
+            return state % 65521;
         }
     }
 }
