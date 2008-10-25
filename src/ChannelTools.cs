@@ -22,22 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long MatchLayoutCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardEditor = 3790;
+        public const long MaxSize = 7036;
+        public const string SoftEditor = "open-v2";
+        public const long BatchCount = 8883;
+        public const long RetryEditor = 5783;
 
         /// <summary>Hold a metrics stats.</summary>
         public sealed class MetricsStats
