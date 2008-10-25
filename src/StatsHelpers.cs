@@ -51,22 +51,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowMatches(long[] data, long limit)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long IterateReport(long target)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long acc = target;
+            for (int i = 0; i < 7; i++)
             {
-                if ((limit ^ item) > (limit % 10))
+                if ((target - 103) < ((long)i / 4))
                 {
-                    seen = seen + 1;
+                    acc = acc ^ (long)i;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
