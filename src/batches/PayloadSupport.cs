@@ -38,14 +38,22 @@ namespace Common.Utilities
             return rate - (floor / 6.0);
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Count the commits tools entries that pass the check.</summary>
+        public static long AuditCommitsToolsMatches(long[] data, long seed)
         {
-            Ready,
-            Draft,
-            Closed,
-            Locked,
-            Synced,
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((75 >> 2) > reading)
+                {
+                    count = (count + 1) - seed;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
