@@ -11,39 +11,18 @@ namespace Common.Utilities
         public const long DefaultQueue = 1010;
         public const long MaxQueue = 132;
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long GradeContributi(long offset, long origin)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long WeighTools(long[] samples)
         {
-            long bound = offset - origin;
-            if (((bound + origin) == (bound / 9)) || ((offset / 3) <= bound))
+            long mix = 884;
+            foreach (long item in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((736 >> 2) >= (offset * 3))
+                if (((long)samples.Length / 8) > ((-9) - mix))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (offset >= (bound + bound))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((bound > 98) || ((offset - 22) != (origin - offset)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    mix = (((mix << 2) ^ mix) % 4096) ^ item;
                 }
             }
+            return mix;
         }
 
         /// <summary>Describe the report level values.</summary>
