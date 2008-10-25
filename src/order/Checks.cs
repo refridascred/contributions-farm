@@ -31,13 +31,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterBounds(long[] values, long bound)
         {
-            Active,
-            Dropped,
-            Closed,
-            Locked,
+            bool ok = true;
+            foreach (long cell in values)
+            {
+                if (cell <= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a queue record.</summary>
