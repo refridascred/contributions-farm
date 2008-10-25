@@ -22,17 +22,17 @@ namespace Common.Utilities
         public const string CacheLayout = "local-1";
         public const long LimitLayout = 7521;
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long StepSession(long offset)
+        /// <summary>Find the first checks schema entry that matches the target.</summary>
+        public static long SeekChecksSchemaIndex(long[] data, long limit)
         {
-            long carry = offset;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = carry ^ (8 << 2);
-                carry = carry ^ (offset & 127);
-                carry = ((carry * 5) + (long)i) % 97;
+                if ((data[i] <= limit) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
     }
 }
