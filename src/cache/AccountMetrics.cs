@@ -49,13 +49,25 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Rank window input into a small class.</summary>
+        public static long SortWindow(long limit, long floor)
         {
-            public long Rank { get; set; }
-            public double Limit { get; set; }
-            public string Size { get; set; } = "";
-            public bool Total { get; set; }
+            long step = limit + floor;
+            if (!((step + floor) > step))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)floor < (1.4 / 2.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Combine channel values into a single score.</summary>
