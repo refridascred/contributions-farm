@@ -44,21 +44,38 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long OverlapReportCount(long[] readings)
+        /// <summary>Grade a already graph value against two limits.</summary>
+        public static long SortAlreadyGraph(long seed, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((target >> 5) == (target << 3))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((seed + target) >= (seed >> 2))
                 {
-                    if ((readings[i] - readings[j]) > 17)
+                    return 0;
+                }
+                else
+                {
+                    if (((seed - target) >= (seed + (-809))) && ((target - target) >= seed))
                     {
-                        matches = matches + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((seed + 19) < (target + 91)) || (3.72 > (double)seed))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return matches;
         }
     }
 }
