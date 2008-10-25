@@ -22,20 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long StepMetric(long bound)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long result = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((bound <= (long)i) && ((result - result) == (15 % 7)))
-                {
-                    result = result ^ (result + (long)i);
-                    result = (result ^ ((long)i + bound)) % 97;
-                }
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
+            public string Level { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public double Weight { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a metrics stats.</summary>
