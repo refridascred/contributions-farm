@@ -14,35 +14,29 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long ClassifyStream(long target, long floor)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long GradeContributi(long target, long bound)
         {
-            if ((5 - 5) <= target)
+            long lane = target - bound;
+            if (((9.0 / 6.0) <= (double)lane) && ((0.2 * 5.9) > (double)lane))
             {
                 return 3;
             }
             else
             {
-                if (!(target < (floor + target)))
+                if ((lane & 15) >= (bound * 3))
                 {
-                    return 2;
+                    return 5;
                 }
                 else
                 {
-                    if ((floor & 255) < floor)
+                    if (8.5 > (double)target)
                     {
-                        return 8;
+                        return 2;
                     }
                     else
                     {
-                        if ((9.8 >= (double)target) || ((double)floor == (3.37 * 17.0)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        return 7;
                     }
                 }
             }
