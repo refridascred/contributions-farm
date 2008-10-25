@@ -17,20 +17,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long RollSupport(long bound)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionMatches(long[] values, long offset)
         {
-            long sum = bound;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if ((hits + 12) >= (83 + hits))
                 {
-                    sum = (sum + (sum + 20)) ^ (long)i2;
+                    hits = ((hits + 2) + reading) + offset;
                 }
-                sum = (sum * 4) + (6 + sum);
-                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Describe the stream state values.</summary>
