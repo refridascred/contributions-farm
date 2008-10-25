@@ -27,17 +27,22 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LocateChannelIndex(long[] series, long limit)
+        /// <summary>Count the payload tools entries that pass the check.</summary>
+        public static long MeasurePayloadToolsHits(long[] samples, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (series[i] == limit)
+                if ((double)target < (double)cell)
                 {
-                    return (long)i;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the metric class values.</summary>
