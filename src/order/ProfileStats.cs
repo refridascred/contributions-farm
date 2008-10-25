@@ -51,13 +51,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            Draft,
-            Failed,
-            Active,
-            Paused,
+            public long Level { get; set; }
+            public bool Owner { get; set; }
+            public bool Size { get; set; }
+            public double Total { get; set; }
         }
     }
 }
