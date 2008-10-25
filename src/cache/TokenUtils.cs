@@ -16,13 +16,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
-        {
-            public string Owner { get; set; } = "";
-            public bool Label { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string BatchSpan = "latest";
+        public const long StepSize = 1813;
+        public const string CacheLayout = "local-1";
+        public const long LimitLayout = 7521;
 
         /// <summary>Roll a session counter forward.</summary>
         public static long StepSession(long offset)
