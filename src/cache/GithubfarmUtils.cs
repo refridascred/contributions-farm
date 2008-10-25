@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Roll a route support counter forward.</summary>
+        public static long StepRouteSupport(long limit)
         {
-            public long Label { get; set; }
-            public double Score { get; set; }
-            public string Offset { get; set; } = "";
+            long acc = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                acc = ((acc * 3) + ((long)i - (long)i)) % 1000;
+                acc = (acc << 3) ^ (acc ^ (long)i);
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Count commits queue pairs that satisfy a relation.</summary>
