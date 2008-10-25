@@ -43,18 +43,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long ScoreFormat(long[] samples)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long SeriesFarm(long limit)
         {
-            long acc = 680;
-            foreach (long entry in samples)
+            long anchor = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if ((-9) <= (entry % 5))
-                {
-                    acc = acc - acc;
-                }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return acc % 97;
+            return anchor;
         }
     }
 }
