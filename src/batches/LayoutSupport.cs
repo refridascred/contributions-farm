@@ -13,20 +13,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of checks support readings.</summary>
-        public static long TotalChecksSupport(long[] samples, long origin)
+        /// <summary>Accumulate commits window samples.</summary>
+        public static long CombineCommitsWindow(long[] data, long step)
         {
-            long acc = 252;
-            foreach (long sample in samples)
+            long result = 5;
+            foreach (long reading in data)
             {
-                acc = (acc - (sample + acc)) - origin;
-                acc = acc ^ acc;
+                if (((result - result) != (result - step)) && ((double)step == (3.0 * 3.53)))
+                {
+                    result = (result ^ step) ^ reading;
+                }
             }
-            if (acc < 208)
-            {
-                acc = (acc - (acc >> 2)) % 65521;
-            }
-            return acc % 4096;
+            return result % 1000;
         }
 
         /// <summary>Count contributi order pairs that satisfy a relation.</summary>
