@@ -24,12 +24,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            public long Count { get; set; }
             public long Size { get; set; }
-            public long Label { get; set; }
+            public long Limit { get; set; }
+            public double Owner { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
