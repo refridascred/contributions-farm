@@ -1,8 +1,8 @@
-id,score,count,weight,active
-1,latest,24.4,86.04,local
-2,392,976,60.67,90.9
-3,190,959,679,160
-4,stable,80.15,77.74,593
-5,771,41,392,88.16
-6,9,open,95.89,483
-7,7.8,22,blue,40.14
+id,label,score
+1,eu-west,363
+2,standard,88.8
+3,43.25,65.64
+4,16.02,strict
+5,primary,10.99
+6,88.11,501
+7,staging,37.52
