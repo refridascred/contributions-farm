@@ -30,22 +30,10 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelMatches(long[] items)
-        {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if (!(count < (sample + sample)) || (((6.2 / 3.0) >= (double)sample) || (sample > (count & 255))))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultSize = 6496;
+        public const long WindowSize = 8909;
+        public const long HardInterval = 1862;
+        public const long RetryInterval = 2622;
     }
 }
