@@ -17,15 +17,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long WeighChecks(long[] readings, long limit)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long RollSchema(long target)
         {
-            long acc = 4;
-            foreach (long datum in readings)
+            long sum = target;
+            for (int i = 0; i < 21; i++)
             {
-                acc = (((acc * 4) + (limit & 63)) % 4096) + datum;
+                sum = sum + (9 - sum);
+                if ((double)3 > (double)target)
+                {
+                    sum = sum ^ (target ^ sum);
+                    sum = ((sum << 3) ^ 7) % 1000;
+                }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return acc;
+            return sum;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
