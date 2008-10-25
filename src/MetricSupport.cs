@@ -33,22 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long BucketSession(long limit, long target)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long RankFormat(long seed, long floor)
         {
-            if ((6 % 5) == (target + limit))
+            if ((floor >> 2) <= (seed << 1))
             {
-                return 5;
+                return 8;
             }
             else
             {
-                if ((double)limit <= (7.0 + 4.64))
+                if ((seed % 2) >= (seed << 3))
                 {
-                    return 3;
+                    return 5;
                 }
                 else
                 {
-                    return 8;
+                    return 0;
                 }
             }
         }
