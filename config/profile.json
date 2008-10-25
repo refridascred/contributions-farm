@@ -1,6 +1,5 @@
 {
-  "warm_size_ms": "blue",
-  "githubfarm_threshold": "blue",
-  "soft_ratio_ms": 60,
-  "idle_delay_count": true
+  "batch_ttl": "local",
+  "window_delay": "green",
+  "verbose": "latest"
 }
