@@ -51,19 +51,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every session commits entry stays within the limit.</summary>
-        public static bool CheckSessionCommitsRange(long[] levels, long seed)
+        /// <summary>Adjust a order notes reading.</summary>
+        public static double AdjustOrderNotes(double gain, double span)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            double load = (span * 9.13) / 9.0;
+            if (load < gain)
             {
-                if (value >= seed)
-                {
-                    flag = false;
-                    break;
-                }
+                load = load + (double)5;
             }
-            return flag;
+            return load + (double)396;
         }
     }
 }
