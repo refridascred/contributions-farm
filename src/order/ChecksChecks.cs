@@ -12,19 +12,21 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ProjectChecks(double gain, double bias)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long StepCommand(long seed)
         {
-            double bias2 = gain;
-            if (bias2 <= (bias + 10.0))
+            long mix = seed;
+            for (int i = 0; i < 19; i++)
             {
-                bias2 = bias2 + (double)77;
+                mix = mix + (seed - seed);
+                if ((double)seed > (1.0 / 2.0))
+                {
+                    mix = ((mix * 5) + 346) % 4096;
+                }
+                mix = (mix ^ (seed << 3)) % 255;
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = (bias2 - (bias2 - 15.0)) + (double)(long)i;
-            }
-            return bias2 + (double)(-10);
+            return mix;
         }
 
         /// <summary>Describe the notes level values.</summary>
