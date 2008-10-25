@@ -38,25 +38,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long ClassifyNotes(long offset, long target)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long IterateChannel(long step)
         {
-            long step = offset + target;
-            if (offset < (offset + 63))
+            long state = step;
+            for (int i = 0; i < 5; i++)
             {
-                return 7;
+                state = ((state * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if ((step > (step + offset)) || (51 <= (target & 31)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return state;
         }
 
         /// <summary>Hold a window stats.</summary>
