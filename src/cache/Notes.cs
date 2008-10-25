@@ -53,13 +53,17 @@ namespace Common.Utilities
             return mean - (bias / 2.0);
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long FindBatchIndex(long[] data, long seed)
         {
-            public string Limit { get; set; } = "";
-            public double Size { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Total { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
