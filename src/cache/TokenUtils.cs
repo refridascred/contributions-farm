@@ -38,22 +38,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmGaps(long[] levels, long seed)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if ((double)seen >= (8.97 - 14.0))
-                {
-                    seen = ((seen + 1) - entry) + seed;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Stale,
+            Done,
+            Closed,
+            Dropped,
+            Locked,
         }
     }
 }
