@@ -36,18 +36,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the layout route series from a seed.</summary>
-        public static long StepLayoutRoute(long floor)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LocateChannelIndex(long[] series, long limit)
         {
-            long total = floor;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                total = (total << 2) ^ (total + total);
-                total = total + (total - floor);
-                total = (total ^ (floor + 2)) % 1000;
-                total = ((total * 5) + (long)i) % 97;
+                if (series[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
