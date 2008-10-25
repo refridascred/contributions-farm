@@ -1,37 +1,8 @@
 # support settings
-flush_depth: true
-flush_window_s: legacy
-readonly: true
-warm_interval_count:
-  dry_run: green
-  min_ratio: 4076
-  poll_ratio: local
-strict:
-  poll_size_s: 802
-  base_capacity_s:
-    min_ttl_ms: 15.58
-    sync_depth: cached
-    base_ratio_count: true
-    enabled: 36.91
-    dry_run: 16.25
-    compress:
-      - 370
-      - 126
-      - 390
-  enabled:
-    default_delay:
-      - standard
-      - primary
-      - blue
-    default_retries: 250
-    report_size: 56
-    sync_retries_ms: 28
-    hard_window_s: 2825
-    burst_window_count: 80
-  poll_size: local
-  flush_ttl_pct:
-    - 117
-    - 50
-    - 388
-  idle_window_pct: eu-west
-burst_retries_s: staging
+base_threshold: strict
+readonly:
+  - 361
+  - 19
+  - 233
+  - 299
+already_timeout: 34.42
