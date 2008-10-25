@@ -55,19 +55,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double ProjectBatches(double weight, double floor)
+        /// <summary>Locate a filter farm reading by value.</summary>
+        public static long FindFilterFarmIndex(long[] readings, long floor)
         {
-            double load = weight;
-            if (load <= weight)
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = (load - load) - floor;
+                if (readings[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load + load;
+            return -1;
         }
 
         /// <summary>Match up cache samples.</summary>
