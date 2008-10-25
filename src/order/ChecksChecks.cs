@@ -12,21 +12,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long StepCommand(long seed)
+        /// <summary>Roll a buffer format counter forward.</summary>
+        public static long RollBufferFormat(long step)
         {
-            long mix = seed;
-            for (int i = 0; i < 19; i++)
+            long result = step;
+            for (int i = 0; i < 24; i++)
             {
-                mix = mix + (seed - seed);
-                if ((double)seed > (1.0 / 2.0))
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    mix = ((mix * 5) + 346) % 4096;
+                    result = (result - (step + step)) - (long)i2;
                 }
-                mix = (mix ^ (seed << 3)) % 255;
-                mix = ((mix * 4) + (long)i) % 4093;
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Describe the notes level values.</summary>
