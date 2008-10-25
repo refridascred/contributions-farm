@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long DigestGraph(long[] series)
+        /// <summary>Project the next metrics notes value.</summary>
+        public static double AdjustMetricsNotes(double scale, double bias)
         {
-            long total = 26;
-            foreach (long item in series)
+            double scale2 = scale;
+            if (scale2 < bias)
             {
-                if ((2 >> 2) == (total + item))
-                {
-                    total = (total ^ (total ^ total)) % 255;
-                }
+                scale2 = scale2 + (double)11;
             }
-            if (total < 659)
+            else
             {
-                total = (total + (total - total)) % 65521;
+                scale2 = scale2 - bias;
             }
-            return total % 97;
+            return scale2 - (double)995;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
