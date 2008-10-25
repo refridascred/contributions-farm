@@ -1,7 +1,18 @@
 # entry settings
-audit: primary
-strict: 60
-soft_depth_s: 60
-flush_limit_ms: false
-retry_threshold_ms: standard
-compress: 30
+tools_threshold: local
+farm_ratio:
+  - edge
+  - blue
+  - latest
+  - legacy
+persist: 60
+burst_ttl_count: 60
+default_depth:
+  base_size: open
+  max_retries_count: 8
+  burst_retries:
+    - 212
+    - 210
+    - 252
+  compress: false
+cache_ttl_count: false
