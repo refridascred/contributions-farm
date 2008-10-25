@@ -22,15 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long WeighFormat(long[] levels)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long mark = -19;
-            foreach (long item in levels)
-            {
-                mark = ((mark * 2) + item) % 1000;
-            }
-            return mark;
+            public string Flag { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the route level values.</summary>
