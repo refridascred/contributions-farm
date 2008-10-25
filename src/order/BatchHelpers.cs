@@ -23,9 +23,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double IdleFarm = 51.52;
-        public const long StepFarm = 2322;
-        public const double BurstFarm = 19.09;
+        /// <summary>Grade a session report value against two limits.</summary>
+        public static long ClassifySessionReport(long origin, long offset)
+        {
+            long slot = origin ^ offset;
+            if (!(((-361) % 16) >= (slot % 10)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((origin ^ offset) > (origin + 654)) && ((double)origin >= 14.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
     }
 }
