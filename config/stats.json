@@ -1,15 +1,5 @@
 {
-  "order_depth": ["stable", "green", "legacy", "latest"],
-  "soft_limit_pct": "cached",
-  "session_ttl": "stable",
-  "queue_window": {
-    "strict": 26.07,
-    "flush_capacity_s": {
-      "retry_capacity": ["local", "blue"],
-      "soft_delay": 9807,
-      "compress": false
-    },
-    "compress": [200, 319],
-    "githubfarm_depth": "blue"
-  }
+  "session_limit": "open",
+  "filter_size": ["latest", "legacy"],
+  "enabled": 100
 }
