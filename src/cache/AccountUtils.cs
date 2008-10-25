@@ -19,21 +19,21 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long OverlapBufferCount(long[] samples)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long ScoreGraph(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 3;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                sum = ((sum * 5) + (875 - reading)) % 65521;
+                sum = sum + sum;
+                sum = ((sum << 2) ^ sum) % 101;
             }
-            return matches;
+            if (sum > 963)
+            {
+                sum = (sum - (664 + sum)) % 101;
+            }
+            return sum % 65521;
         }
     }
 }
