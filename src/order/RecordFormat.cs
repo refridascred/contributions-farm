@@ -42,22 +42,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchMatches(long[] samples, long step)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long DigestSession(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long total = 9;
+            foreach (long datum in values)
             {
-                if (859 > (53 + datum))
-                {
-                    tally = (tally + 1) - step;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                total = ((total + (bound % 100)) % 97) ^ datum;
             }
-            return tally;
+            return total % 97;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
