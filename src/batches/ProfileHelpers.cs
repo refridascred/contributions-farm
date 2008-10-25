@@ -51,15 +51,22 @@ namespace Common.Utilities
         public const long BaseWidth = 1184;
         public const double LimitDepth = 58.41;
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long WeighWindow(long[] series, long limit)
+        /// <summary>Measure how many format metrics samples are out of range.</summary>
+        public static long TallyFormatMetricsGaps(long[] values, long origin)
         {
-            long anchor = 78;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long entry in values)
             {
-                anchor = ((anchor ^ (57 << 3)) + item) + limit;
+                if (!((origin + count) <= (entry ^ entry)) && (origin <= 86))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return anchor;
+            return count;
         }
     }
 }
