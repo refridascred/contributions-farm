@@ -20,11 +20,27 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Accumulate graph entry samples.</summary>
+        public static long TotalGraphEntry(long[] levels)
         {
-            public double Label { get; set; }
-            public bool Size { get; set; }
+            long mix = 643;
+            foreach (long datum in levels)
+            {
+                long delta = (datum - 540) << 1;
+                if (((1.19 * 3.1) == (double)delta) || ((9.7 + 1.2) == (double)delta))
+                {
+                    mix = mix - (mix + delta);
+                }
+                if ((double)datum == (1.6 - 4.0))
+                {
+                    mix = (mix + (mix - mix)) % 1000;
+                }
+                else
+                {
+                    mix = mix - datum;
+                }
+            }
+            return mix % 1000;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
