@@ -27,19 +27,11 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutLimits(long[] series, long step)
-        {
-            bool valid = true;
-            foreach (long value in series)
-            {
-                if (value >= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long StepFactor = 1587;
+        public const long RetryChannel = 3599;
+        public const long MinWidth = 6034;
+        public const long LimitSpan = 5729;
+        public const double IdleTimeout = 13.89;
     }
 }
