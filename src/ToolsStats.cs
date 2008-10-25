@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamMatches(long[] readings, long limit)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((8.0 * 4.2) <= (double)limit)
-                {
-                    count = (count + 2) - entry;
-                }
-            }
-            return count;
+            public bool Region { get; set; }
+            public long Label { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Check that every buffer counter entry stays within the limit.</summary>
