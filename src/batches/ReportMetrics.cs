@@ -23,12 +23,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Audit support record readings against a rule.</summary>
+        public static long TallySupportRecordHits(long[] samples, long origin)
         {
-            Synced,
-            Dropped,
-            Draft,
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((((-879) * 4) <= (matches + entry)) && ((16.0 / 9.0) == (double)origin))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the route mode values.</summary>
