@@ -20,13 +20,22 @@ namespace Common.Utilities
             return bias2 - (double)33;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountMatches(long[] readings)
         {
-            public bool Score { get; set; }
-            public double Level { get; set; }
-            public bool Size { get; set; }
-            public double Region { get; set; }
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)tally >= (0.52 / 2.0))
+                {
+                    tally = (tally + 1) + entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first checks schema entry that matches the target.</summary>
