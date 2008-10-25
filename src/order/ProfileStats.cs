@@ -5,16 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Iterate the layout graph series from a seed.</summary>
-        public static long IterateLayoutGraph(long limit)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long SortFarm(long target, long target2)
         {
-            long state = limit;
-            for (int i = 0; i < 10; i++)
+            if (((65 ^ 85) > (7 + target2)) || ((8.06 / 5.0) > (double)target2))
             {
-                state = (state ^ (6 << 1)) % 1000;
-                state = ((state * 2) + (long)i) % 97;
+                return 4;
             }
-            return state;
+            else
+            {
+                if ((9.0 - 6.64) > (double)target2)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((8.8 / 8.0) >= (double)target)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
