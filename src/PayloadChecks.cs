@@ -40,21 +40,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Match up buffer cluster samples.</summary>
-        public static long OverlapBufferClusterCount(long[] samples)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileLimits(long[] readings, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (reading > bound)
                 {
-                    if ((samples[i] ^ samples[j]) != 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
