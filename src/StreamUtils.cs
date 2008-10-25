@@ -53,13 +53,12 @@ namespace Common.Utilities
             return (rate - offset) + gain;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
-        {
-            public long Mode { get; set; }
-            public string Region { get; set; } = "";
-            public bool Token { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstOrder = 3143;
+        public const long IdleOrder = 8474;
+        public const long BatchOrder = 8473;
+        public const long StepOrder = 9128;
+        public const double LimitBudget = 79.99;
 
         /// <summary>Grade a format filter value against two limits.</summary>
         public static long ClassifyFormatFilter(long step, long offset)
