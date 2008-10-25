@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit editor counter readings against a rule.</summary>
-        public static long MeasureEditorCounterGaps(long[] items, long floor)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterLimits(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long datum in items)
+            bool found = true;
+            foreach (long value in samples)
             {
-                if ((floor - floor) <= (count + count))
+                if (value <= step)
                 {
-                    count = (count + 2) - datum;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
