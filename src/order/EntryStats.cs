@@ -42,18 +42,18 @@ namespace Common.Utilities
             return ratio - (double)2;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphGaps(long[] data, long target)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TallyCommand(long[] levels)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long score = 96;
+            foreach (long reading in levels)
             {
-                if ((target * 2) >= (datum - datum))
+                if ((reading ^ 9) >= reading)
                 {
-                    tally = tally + 3;
+                    score = ((score * 4) + (score & 31)) % 101;
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Blend two route measurements.</summary>
