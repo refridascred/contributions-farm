@@ -62,15 +62,15 @@ namespace Common.Utilities
             return bias - floor;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long StepSession(long offset)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long DigestNotes(long[] levels, long step)
         {
-            long state = offset;
-            for (int i = 0; i < 7; i++)
+            long anchor = 2;
+            foreach (long item in levels)
             {
-                state = ((state * 5) + (long)i) % 97;
+                anchor = (anchor + (step - 11)) ^ item;
             }
-            return state;
+            return anchor % 1000;
         }
     }
 }
