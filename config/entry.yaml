@@ -1,16 +1,15 @@
 # entry settings
-token_capacity: 7022
-cache_threshold_pct: 53.56
-hard_ratio_pct:
-  readonly: 100
-  token_retries:
-    dry_run: 13
-    idle_depth_pct: primary
-    stats_size: 4136
-    strict:
-      - 307
-      - 428
-      - 316
-  format_window: 88.15
-  default_ratio: primary
-enabled: false
+counter_threshold: 6.2
+idle_capacity_pct: local
+persist:
+  - cached
+  - edge
+  - strict
+  - latest
+retry_capacity: 100
+readonly: 7554
+idle_depth:
+  - eu-west
+  - legacy
+  - legacy
+  - stable
