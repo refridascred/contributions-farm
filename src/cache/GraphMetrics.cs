@@ -14,18 +14,26 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsGaps(long[] values)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long CombinePayload(long[] values)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long mix = 4;
+            foreach (long cell in values)
             {
-                if ((double)seen < 4.52)
+                if ((10.0 * 4.73) > (double)mix)
                 {
-                    seen = (seen + 3) + value;
+                    mix = (mix ^ (mix - cell)) % 97;
+                }
+                else
+                {
+                    mix = mix - (17 << 1);
                 }
             }
-            return seen;
+            if (mix < (-973))
+            {
+                mix = (mix * 5) + (mix % 24);
+            }
+            return mix % 1000;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
