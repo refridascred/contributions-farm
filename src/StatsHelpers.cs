@@ -19,19 +19,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextLimits(long[] items, long seed)
+        /// <summary>Audit profile buffer readings against a rule.</summary>
+        public static long TallyProfileBufferOutliers(long[] data, long step)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if (entry <= seed)
+                if (!((tally + step) < (step ^ tally)))
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 1) - value;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
