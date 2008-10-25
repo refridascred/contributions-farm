@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Find the first payload support entry that matches the target.</summary>
-        public static long LookupPayloadSupportIndex(long[] values, long target)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long StepMetrics(long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if ((values[i] >= target) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                score = (score * 4) + (seed + score);
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Hold a window options.</summary>
