@@ -28,25 +28,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long StepEntry(long step)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long BucketBuffer(long offset, long limit)
         {
-            long sum = step;
-            for (int i = 0; i < 12; i++)
+            if ((70 & 255) >= (offset * 3))
             {
-                if (!((long)i > (sum * 2)))
+                return 4;
+            }
+            else
+            {
+                if ((limit >> 1) < (offset - 9))
                 {
-                    sum = (sum << 3) ^ (-177);
+                    return 6;
                 }
                 else
                 {
-                    sum = (sum + (step * 4)) % 255;
-                    sum = ((sum * 5) + (step << 3)) % 97;
+                    if ((4.2 + 9.0) != (double)limit)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
-                sum = (sum + 22) % 255;
-                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return sum;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
