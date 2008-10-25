@@ -52,14 +52,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
-        {
-            Closed,
-            Ready,
-            Locked,
-            Draft,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string WindowCluster = "stable-1";
+        public const long BaseCluster = 6244;
+        public const long WindowScore = 4516;
 
         /// <summary>Digest a series of stats checks entries.</summary>
         public static long WeighStatsChecks(long[] data)
