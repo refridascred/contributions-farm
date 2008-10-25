@@ -31,21 +31,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long MatchClusterCount(long[] samples)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long SeriesStats(long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = limit;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (5 < limit)
                 {
-                    if ((samples[i] ^ samples[j]) < 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = (mix ^ (limit % 64)) % 4096;
+                    mix = mix + 57;
                 }
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return tally;
+            return mix;
         }
     }
 }
