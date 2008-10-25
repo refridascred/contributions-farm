@@ -16,18 +16,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadGaps(long[] samples)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if (((-708) - 938) > hits)
-                {
-                    hits = (hits + 1) + reading;
-                }
-            }
-            return hits;
+            public string Flag { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
