@@ -19,18 +19,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaMatches(long[] samples, long seed)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsRange(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            bool ok = true;
+            foreach (long item in values)
             {
-                if (((double)hits < 7.0) || (7.0 >= (double)datum))
+                if (item >= origin)
                 {
-                    hits = (hits + 1) - seed;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
