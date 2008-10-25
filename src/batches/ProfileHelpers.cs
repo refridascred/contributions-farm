@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Project the next metric value.</summary>
-        public static double SmoothMetric(double ratio, double span)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LocateTokenIndex(long[] values, long offset)
         {
-            double mean = ratio + (ratio * 10.0);
-            if (mean <= (double)28)
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = mean - (double)841;
+                if ((values[i] <= offset) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean - ratio;
-            }
-            return mean + span;
+            return -1;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
