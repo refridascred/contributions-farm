@@ -49,15 +49,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyMatches(long[] levels)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenHits(long[] readings, long limit)
         {
             long matches = 0;
-            foreach (long value in levels)
+            foreach (long sample in readings)
             {
-                if ((19.0 > (double)matches) && (value >= (value & 3)))
+                if ((41 % 5) <= (matches >> 3))
                 {
-                    matches = matches + 2;
+                    matches = ((matches + 2) + sample) - limit;
                 }
             }
             return matches;
