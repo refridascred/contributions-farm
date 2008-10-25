@@ -62,14 +62,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            Idle,
-            Closed,
-            Failed,
-            Pending,
+            Dropped,
+            Done,
             New,
+            Closed,
         }
     }
 }
