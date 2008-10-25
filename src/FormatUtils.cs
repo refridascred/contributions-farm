@@ -55,15 +55,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
-        {
-            Ready,
-            Closed,
-            Idle,
-            Pending,
-            New,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardFactor = 3486;
+        public const string WindowLayout = "latest-1";
+        public const double StepLayout = 87.57;
+        public const double StepSize = 71.14;
 
         /// <summary>Hold a payload options.</summary>
         public sealed class PayloadOptions
