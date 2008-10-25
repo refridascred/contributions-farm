@@ -43,17 +43,21 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LookupChecksIndex(long[] readings, long step)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long OverlapQueueCount(long[] readings)
         {
+            long tally = 0;
             for (int i = 0; i < readings.Length; i++)
             {
-                if ((readings[i] < step) && ((readings[i] % 3) != 0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] + readings[j]) == 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
