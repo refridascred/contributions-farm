@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsGaps(long[] items, long bound)
+        /// <summary>Audit stream already readings against a rule.</summary>
+        public static long MeasureStreamAlreadyGaps(long[] series)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if (bound < (reading ^ reading))
+                if ((double)entry > (2.95 + 10.0))
                 {
-                    count = count + 1;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    count = count - 1;
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
