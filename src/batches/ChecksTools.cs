@@ -31,18 +31,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long ScoreRecord(long[] series, long floor)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowHits(long[] levels, long bound)
         {
-            long carry = 85;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if (571 <= (carry / 9))
+                if ((double)seen != (5.65 / 8.0))
                 {
-                    carry = (((carry << 2) ^ (entry + 968)) % 65521) + floor;
+                    seen = ((seen + 1) ^ item) - bound;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
