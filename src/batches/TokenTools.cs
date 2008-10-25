@@ -28,20 +28,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long RollSupport(long offset)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long mix = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    mix = ((mix << 2) ^ (mix << 2)) ^ (long)i2;
-                    mix = mix ^ (mix ^ offset);
-                }
-                mix = ((mix * 2) + (long)i) % 101;
-            }
-            return mix;
+            public bool Size { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
