@@ -101,16 +101,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long DeriveProfile(long floor)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyRange(long[] readings, long step)
         {
-            long sum = floor;
-            for (int i = 0; i < 13; i++)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                sum = ((sum * 4) + (floor - floor)) % 65521;
-                sum = ((sum * 4) + (long)i) % 101;
+                if (value != step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return sum;
+            return ok;
         }
     }
 }
