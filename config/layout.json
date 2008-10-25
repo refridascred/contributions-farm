@@ -1,8 +1,28 @@
 {
-  "batch_timeout_count": 500,
-  "default_capacity": "green",
-  "cache_limit": 92,
-  "compress": "legacy",
-  "hard_retries": "blue",
-  "enabled": "fallback"
+  "min_capacity": 49.97,
+  "channel_limit": 30,
+  "dry_run": {
+    "graph_capacity": 6305,
+    "audit": 37,
+    "contributi_retries": "local",
+    "base_ttl": 1024,
+    "githubfarm_ratio": false,
+    "hard_depth_s": 3086
+  },
+  "batch_size": {
+    "sync_threshold_ms": "cached",
+    "poll_interval": 87,
+    "window_ratio": {
+      "flush_size": 1363,
+      "retry_timeout": 33.04,
+      "base_capacity_count": [390, 130, 32],
+      "cache_limit": false
+    }
+  },
+  "compress": "strict",
+  "cache_retries": {
+    "buffer_interval": "fallback",
+    "soft_window_count": "cached",
+    "farm_delay": 47.56
+  }
 }
