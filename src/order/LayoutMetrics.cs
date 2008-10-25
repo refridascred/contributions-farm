@@ -14,21 +14,31 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long MatchFormatCount(long[] values)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long GradePayload(long limit, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (((double)limit == (3.62 * 8.2)) || ((1 - step) >= 1))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((step / 4) == (limit << 1))
                 {
-                    if ((values[i] ^ values[j]) != 3)
+                    return 8;
+                }
+                else
+                {
+                    if (7.9 < (double)limit)
                     {
-                        matches = matches + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a order summary.</summary>
