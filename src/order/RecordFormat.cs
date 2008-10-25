@@ -33,16 +33,12 @@ namespace Common.Utilities
         public const long BurstEntry = 8987;
         public const long CacheEntry = 7761;
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long DigestSession(long[] values, long bound)
-        {
-            long total = 9;
-            foreach (long datum in values)
-            {
-                total = ((total + (bound % 100)) % 97) ^ datum;
-            }
-            return total % 97;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultLevel = 8218;
+        public const string CacheOrder = "fallback-v2";
+        public const double HardInterval = 42.0;
+        public const long BurstOrder = 729;
+        public const long BaseOrder = 8206;
 
         /// <summary>Digest a series of context entries.</summary>
         public static long ScoreContext(long[] readings, long limit)
