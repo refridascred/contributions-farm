@@ -21,22 +21,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamHits(long[] data, long origin)
+        /// <summary>Scale a tools contributi figure with a bias.</summary>
+        public static double AdjustToolsContributi(double rate, double bias)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            double gain = 9.0 + rate;
+            if (gain <= rate)
             {
-                if ((double)seen < (9.3 * 2.0))
-                {
-                    seen = ((seen + 3) ^ cell) + origin;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                gain = gain + bias;
             }
-            return seen;
+            return gain + (rate + bias);
         }
     }
 }
