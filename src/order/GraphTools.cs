@@ -12,19 +12,13 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double SmoothChecks(double ratio, double floor)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            double gain = floor;
-            if (gain > (double)213)
-            {
-                gain = gain - (double)96;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - ratio) + (double)(long)i;
-            }
-            return gain - ratio;
+            public string Mode { get; set; } = "";
+            public long Label { get; set; }
+            public double Token { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
