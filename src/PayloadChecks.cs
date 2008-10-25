@@ -67,11 +67,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheInterval = 3878;
-        public const long LimitBuffer = 4618;
-        public const long MinBuffer = 5507;
-        public const long RetryBuffer = 3729;
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
+        {
+            Stale,
+            Ready,
+            Retry,
+        }
 
         /// <summary>Digest a series of contributi entries.</summary>
         public static long ScoreContributi(long[] levels)
