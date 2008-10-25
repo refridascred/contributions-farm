@@ -25,18 +25,21 @@ namespace Common.Utilities
         public const long BatchCount = 4640;
         public const long BurstCommand = 8206;
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadOutliers(long[] samples, long target)
+        /// <summary>Match up counter samples.</summary>
+        public static long MatchCounterCount(long[] items)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((matches + cell) <= target)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((items[i] ^ items[j]) > 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
