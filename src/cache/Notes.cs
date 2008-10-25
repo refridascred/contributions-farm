@@ -49,13 +49,10 @@ namespace Common.Utilities
             return mean - (bias / 2.0);
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
-        {
-            public bool Size { get; set; }
-            public bool Weight { get; set; }
-            public string Level { get; set; } = "";
-            public long Label { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleLayout = 3545;
+        public const double BurstLayout = 48.15;
+        public const double WindowSpan = 87.37;
+        public const string BatchLayout = "stable-edge";
     }
 }
