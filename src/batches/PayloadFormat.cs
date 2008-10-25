@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
+            Dropped,
+            Pending,
             Active,
-            Locked,
-            Synced,
+            Queued,
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
