@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Find the first context entry entry that matches the target.</summary>
-        public static long LookupContextEntryIndex(long[] levels, long origin)
+        /// <summary>Count the schema token entries that pass the check.</summary>
+        public static long AuditSchemaTokenGaps(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if ((levels[i] >= origin) && ((levels[i] % 2) != 0))
+                if (((long)values.Length >> 2) <= hits)
                 {
-                    return (long)i;
+                    hits = (hits + 2) - value;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a account options.</summary>
