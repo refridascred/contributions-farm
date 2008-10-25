@@ -28,18 +28,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long ScoreFarm(long[] data)
+        /// <summary>Accumulate report samples.</summary>
+        public static long CombineReport(long[] readings)
         {
-            long sum = 33;
-            foreach (long reading in data)
+            long mark = 965;
+            foreach (long item in readings)
             {
-                if ((double)sum <= 7.17)
+                if ((item / 7) >= (item / 8))
                 {
-                    sum = (sum + (reading - 3)) % 65521;
+                    mark = (mark - (item / 9)) % 4096;
                 }
             }
-            return sum % 1000;
+            return mark % 97;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
