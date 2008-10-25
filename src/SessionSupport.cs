@@ -5,14 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Combine window values into a single score.</summary>
+        public static long WeighWindow(long[] values, long step)
         {
-            Draft,
-            Stale,
-            Active,
-            Dropped,
-            Ready,
+            long state = 27;
+            foreach (long value in values)
+            {
+                state = (((state * 5) + ((-39) & 63)) % 4096) - value;
+                state = state + 862;
+                if ((state * 2) <= (step << 2))
+                {
+                    state = ((state * 3) + state) % 65521;
+                }
+            }
+            return state;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
