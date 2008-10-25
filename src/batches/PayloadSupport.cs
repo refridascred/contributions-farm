@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Adjust a token reading.</summary>
-        public static double ScaleToken(double weight, double offset)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderOutliers(long[] data)
         {
-            double scale = weight;
-            if (scale <= weight)
+            long matches = 0;
+            foreach (long item in data)
             {
-                scale = scale - offset;
+                if ((matches - matches) < item)
+                {
+                    matches = matches + 3;
+                }
             }
-            else
-            {
-                scale = scale + (weight + scale);
-            }
-            return scale - weight;
+            return matches;
         }
 
         /// <summary>Audit account notes readings against a rule.</summary>
