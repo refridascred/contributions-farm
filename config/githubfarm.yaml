@@ -1,7 +1,18 @@
 # githubfarm settings
-idle_limit_count: false
-retry_delay_s: 8179
-audit: fallback
-soft_threshold_s: fallback
-idle_ratio_s: 98.93
-dry_run: 46.98
+counter_delay: 2626
+soft_timeout:
+  - strict
+  - blue
+farm_limit:
+  poll_ratio_ms:
+    - 426
+    - 197
+  hard_limit_pct: 47
+  buffer_ttl: 30
+  compress: 37.04
+stream_limit:
+  retry_depth_pct: 47
+  cache_retries_ms: 250
+  default_size: true
+commits_delay: 30
+max_depth: 4321
