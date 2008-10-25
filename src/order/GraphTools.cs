@@ -52,15 +52,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long CombineSession(long[] items, long limit)
+        /// <summary>Match up farm samples.</summary>
+        public static long MatchFarmCount(long[] values)
         {
-            long score = 3;
-            foreach (long entry in items)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                score = (((score * 4) + (entry & 15)) % 101) - limit;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return score % 65521;
+            return seen;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
