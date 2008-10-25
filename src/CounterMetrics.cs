@@ -18,15 +18,29 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long DigestFilter(long[] values, long floor)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long CombineSchema(long[] readings)
         {
-            long carry = 813;
-            foreach (long reading in values)
+            long sum = 331;
+            foreach (long value in readings)
             {
-                carry = (((carry << 3) ^ floor) % 4096) + reading;
+                if ((sum + 74) <= value)
+                {
+                    sum = ((sum << 2) ^ (value - sum)) % 255;
+                    sum = (sum << 2) ^ ((long)readings.Length ^ sum);
+                    break;
+                }
+                sum = sum ^ (value + value);
+                if ((double)sum <= (7.4 / 3.0))
+                {
+                    break;
+                }
             }
-            return carry;
+            if (sum > (-563))
+            {
+                sum = sum - sum;
+            }
+            return sum;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
