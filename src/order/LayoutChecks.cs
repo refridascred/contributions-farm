@@ -26,12 +26,18 @@ namespace Common.Utilities
         public const long BatchCount = 4640;
         public const long BurstCommand = 8206;
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadOutliers(long[] samples, long target)
         {
-            Paused,
-            Stale,
-            Idle,
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if ((matches + cell) <= target)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
