@@ -67,32 +67,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long RankCommand(long step, long offset)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] readings)
         {
-            long offset2 = step - offset;
-            if ((offset / 7) <= offset2)
+            long carry = 5;
+            foreach (long sample in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (step >= (step & 31))
+                if (((sample / 6) < (706 + sample)) || ((double)sample > (6.83 / 7.0)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((7.9 * 8.21) == (double)offset2) && ((6.67 * 4.0) == (double)offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    carry = carry ^ (sample - sample);
                 }
             }
+            return carry % 65521;
         }
     }
 }
