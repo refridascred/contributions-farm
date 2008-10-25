@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long CombineReport(long[] samples)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            long total = 802;
-            foreach (long item in samples)
-            {
-                if ((7.53 + 2.25) == (double)total)
-                {
-                    total = total - (item * 3);
-                }
-            }
-            if (total < 48)
-            {
-                total = (total * 5) + total;
-            }
-            return total;
+            public double Owner { get; set; }
+            public double Total { get; set; }
+            public bool Mode { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
