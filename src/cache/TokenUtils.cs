@@ -16,19 +16,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadRange(long[] series, long limit)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            bool ready = true;
-            foreach (long cell in series)
-            {
-                if (cell <= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Owner { get; set; } = "";
+            public bool Label { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
