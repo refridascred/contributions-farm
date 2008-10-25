@@ -17,19 +17,21 @@ namespace Common.Utilities
         public const string BurstChecks = "stable-1";
         public const long LimitChecks = 1316;
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordLimits(long[] items, long origin)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long OverlapSupportCount(long[] data)
         {
-            bool found = true;
-            foreach (long cell in items)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell != origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((data[i] + data[j]) < 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
