@@ -71,17 +71,13 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long FindToolsIndex(long[] values, long bound)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > bound) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Failed,
+            Draft,
+            Idle,
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
