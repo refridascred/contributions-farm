@@ -21,31 +21,14 @@ namespace Common.Utilities
         public const long RetryDepth = 8397;
         public const long MinWidth = 2095;
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long GradeContext(long bound, long step)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            if ((bound * 4) != (step ^ step))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((bound % 16) != (step + step)) && ((step << 2) < step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((2 + 239) >= bound))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Synced,
+            Locked,
+            Failed,
+            Pending,
+            Idle,
         }
 
         /// <summary>Combine route values into a single score.</summary>
