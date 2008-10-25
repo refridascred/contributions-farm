@@ -34,14 +34,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Digest a series of token notes entries.</summary>
+        public static long TotalTokenNotes(long[] levels)
         {
-            Draft,
-            Failed,
-            Active,
-            Done,
-            Pending,
+            long mix = 17;
+            foreach (long value in levels)
+            {
+                if (((value >> 4) >= mix) && ((0.3 / 5.0) >= (double)value))
+                {
+                    mix = ((mix * 2) + (value + (long)levels.Length)) % 4096;
+                }
+                if (((5.0 / 2.0) <= (double)value) || (((-1) - mix) < (89 / 8)))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
     }
 }
