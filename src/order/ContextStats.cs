@@ -68,39 +68,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long SortBatch(long origin, long bound)
-        {
-            long next = origin + bound;
-            if (origin <= (bound >> 4))
-            {
-                return 3;
-            }
-            else
-            {
-                if (bound >= (bound + origin))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (bound < (bound - bound))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((-8) + next) >= next)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinFormat = 1524;
+        public const double BurstFormat = 1.07;
+        public const long StepBudget = 6748;
+        public const long BurstTimeout = 6220;
+        public const long CacheSpan = 5454;
     }
 }
