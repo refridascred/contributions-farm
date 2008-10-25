@@ -16,21 +16,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long CompareLayoutCount(long[] data)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long RankPayload(long bound, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long diff = bound + limit;
+            if (!(limit <= (limit % 60)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (!((bound + diff) < (596 % 16)))
                 {
-                    if ((data[i] - data[j]) == 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the stream level values.</summary>
