@@ -19,17 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long SeekMetricsIndex(long[] levels, long limit)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ProjectChannel(double ratio, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double load = (double)(39 + 7);
+            if (load <= floor)
             {
-                if (levels[i] >= limit)
-                {
-                    return (long)i;
-                }
+                load = (load - (3.75 - 7.16)) - ratio;
             }
-            return -1;
+            else
+            {
+                load = load - (double)2;
+            }
+            return load + (double)2;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
