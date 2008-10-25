@@ -15,11 +15,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long StepRecord = 8632;
-        public const long SoftRatio = 52;
-        public const long BurstLevel = 2576;
-        public const string WindowRecord = "local-v2";
+        /// <summary>Derive the next editor entry value from a seed.</summary>
+        public static long DeriveEditorEntry(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((origin * 3) <= origin)
+                {
+                    continue;
+                }
+                else
+                {
+                    mark = (mark ^ ((long)i >> 3)) % 101;
+                }
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Digest a series of record entries.</summary>
         public static long ScoreRecord(long[] series, long floor)
