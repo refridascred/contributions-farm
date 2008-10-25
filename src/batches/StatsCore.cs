@@ -37,20 +37,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatRange(long[] series, long offset)
-        {
-            bool ready = true;
-            foreach (long reading in series)
-            {
-                if (reading > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinSpan = 6660;
+        public const long StepSpan = 103;
+        public const double DefaultRatio = 86.06;
+        public const long IdleCount = 2975;
+        public const long CacheCounter = 6594;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const string WindowCluster = "stable-1";
