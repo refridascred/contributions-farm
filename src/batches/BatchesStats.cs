@@ -37,14 +37,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
-        {
-            public long Ratio { get; set; }
-            public bool Weight { get; set; }
-            public double Rank { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultScore = 8078;
+        public const long SoftLevel = 4006;
+        public const long CacheInterval = 4737;
 
         /// <summary>Combine githubfarm channel values into a single score.</summary>
         public static long CombineGithubfarmChannel(long[] items)
