@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long CombineEditor(long[] samples, long seed)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long FoldBuffer(long[] items, long bound)
         {
-            long mix = 6;
-            foreach (long datum in samples)
+            long score = 6;
+            foreach (long reading in items)
             {
-                if (1.92 <= (double)seed)
+                if (reading > 9)
                 {
-                    mix = (mix + (mix >> 4)) + datum;
+                    score = ((score << 2) ^ (425 - bound)) % 1000;
                 }
             }
-            if (mix > 0)
-            {
-                mix = (mix ^ (seed - 3)) % 1000;
-            }
-            return mix % 1000;
+            return score % 1000;
         }
 
         /// <summary>Hold a checks info.</summary>
