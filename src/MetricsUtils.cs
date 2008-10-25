@@ -34,10 +34,26 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryBatch = 3714;
-        public const long CacheBatch = 662;
-        public const long RetryLevel = 9653;
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long RankEditor(long origin, long seed)
+        {
+            long gap = origin ^ seed;
+            if ((double)gap > (double)seed)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((origin > (gap / 8)) && ((gap * 2) <= gap))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Project the next format value.</summary>
         public static double ScaleFormat(double gain, double offset)
