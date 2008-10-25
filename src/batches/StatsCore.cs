@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Adjust a notes reading.</summary>
-        public static double AdjustNotes(double scale, double offset)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            double bias = (offset + offset) * 3.1;
-            if (bias < (scale * 3.4))
-            {
-                bias = bias + offset;
-            }
-            else
-            {
-                bias = bias - scale;
-            }
-            return bias + 5.7;
+            public bool Owner { get; set; }
+            public string Rank { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Count cluster support pairs that satisfy a relation.</summary>
