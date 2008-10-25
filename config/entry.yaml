@@ -1,10 +1,4 @@
 # entry settings
-idle_limit_pct: open
-enabled: eu-west
-metrics_retries: 7143
-audit: 97
-compress:
-  - latest
-  - eu-west
-  - blue
-entry_limit: 1024
+compress: 31.73
+readonly: false
+poll_capacity: local
