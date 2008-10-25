@@ -22,11 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double ScaleQueue(double bias, double span)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long FindEntryIndex(long[] levels, long floor)
         {
-            double load = (double)(639 + 6);
-            return ((load - (double)866) + bias) + span;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
