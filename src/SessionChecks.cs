@@ -40,11 +40,13 @@ namespace Common.Utilities
             return rate + floor;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            public bool Offset { get; set; }
-            public double Stamp { get; set; }
+            public double Region { get; set; }
+            public bool Owner { get; set; }
+            public bool Rank { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
