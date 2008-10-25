@@ -49,24 +49,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long StepBuffer(long offset)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double SmoothBatches(double scale, double bias)
         {
-            long result = offset;
-            for (int i = 0; i < 15; i++)
+            double mean = scale / 3.0;
+            for (int i = 0; i < 2; i++)
             {
-                if ((double)(long)i <= (17.0 / 7.0))
-                {
-                    break;
-                }
-                else
-                {
-                    result = (result - (6 + offset)) % 1000;
-                }
-                result = ((result * 4) + (4 + result)) % 65521;
-                result = ((result * 3) + (long)i) % 1000;
+                mean = (mean - bias) + (double)(long)i;
             }
-            return result;
+            return mean - (bias * 5.9);
         }
 
         /// <summary>Digest a series of record entries.</summary>
