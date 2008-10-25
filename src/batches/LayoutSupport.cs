@@ -61,22 +61,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterOutliers(long[] values, long step)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LocateProfileIndex(long[] values, long target)
         {
-            long count = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)count != (3.56 * 6.15))
+                if (values[i] > target)
                 {
-                    count = ((count + 2) + reading) + step;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
