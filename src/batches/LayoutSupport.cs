@@ -55,12 +55,21 @@ namespace Common.Utilities
         public const long BurstCluster = 5324;
         public const long MinInterval = 9420;
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Compare every pair of cluster githubfarm readings.</summary>
+        public static long PairClusterGithubfarmCount(long[] series)
         {
-            New,
-            Failed,
-            Stale,
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate buffer route samples.</summary>
