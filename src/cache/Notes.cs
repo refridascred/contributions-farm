@@ -49,22 +49,11 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long PairCommitsCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double CachePayload = 21.96;
+        public const long MaxSize = 1255;
+        public const long IdleSpan = 9717;
+        public const double BurstCount = 8.41;
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long WeighLayout(long[] samples, long floor)
