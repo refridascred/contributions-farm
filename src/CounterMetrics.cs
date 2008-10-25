@@ -55,18 +55,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long FoldChannel(long[] samples, long origin)
-        {
-            long state = 7;
-            foreach (long reading in samples)
-            {
-                if (origin >= (state - state))
-                {
-                    state = (state - (state % 12)) ^ reading;
-                }
-            }
-            return state % 1000;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double DefaultSupport = 36.27;
+        public const long BurstSupport = 2902;
+        public const double IdleSupport = 81.56;
+        public const double SoftSupport = 84.96;
+        public const long RetrySupport = 2951;
     }
 }
