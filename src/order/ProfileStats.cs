@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Locate a batch tools reading by value.</summary>
-        public static long LocateBatchToolsIndex(long[] values, long target)
+        /// <summary>Iterate the support metrics series from a seed.</summary>
+        public static long DeriveSupportMetrics(long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if (values[i] > target)
-                {
-                    return (long)i;
-                }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Audit layout payload readings against a rule.</summary>
