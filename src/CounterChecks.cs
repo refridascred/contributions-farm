@@ -21,13 +21,31 @@ namespace Common.Utilities
         public const long RetryDepth = 8397;
         public const long MinWidth = 2095;
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long GradeContext(long bound, long step)
         {
-            public string Rank { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public long Label { get; set; }
-            public long Stamp { get; set; }
+            if ((bound * 4) != (step ^ step))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((bound % 16) != (step + step)) && ((step << 2) < step))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((2 + 239) >= bound))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine route values into a single score.</summary>
