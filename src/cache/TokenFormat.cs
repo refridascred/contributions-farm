@@ -25,11 +25,13 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            public string Rank { get; set; } = "";
             public long Total { get; set; }
+            public bool Rank { get; set; }
+            public string Limit { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Describe the stats kind values.</summary>
