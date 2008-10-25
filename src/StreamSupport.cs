@@ -13,14 +13,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
-        {
-            Locked,
-            Draft,
-            Failed,
-            Dropped,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardRatio = 3466;
+        public const long BatchMetric = 3530;
+        public const double SoftBudget = 77.64;
+        public const long StepSize = 6197;
 
         /// <summary>Scale a counter schema figure with a bias.</summary>
         public static double ScaleCounterSchema(double bias, double span)
