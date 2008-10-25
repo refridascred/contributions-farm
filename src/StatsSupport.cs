@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats support helpers.</summary>
     public static class StatsSupport
     {
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
-        {
-            public string Region { get; set; } = "";
-            public long Label { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftScore = 5266;
+        public const long BurstGithubfarm = 1659;
+        public const long CacheFactor = 4913;
+        public const long MinWidth = 1003;
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long TallyEditorGaps(long[] levels)
