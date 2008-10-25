@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            Locked,
+            Failed,
+            Queued,
+            Retry,
             Stale,
             Synced,
-            Ready,
         }
 
         /// <summary>Hold a payload record.</summary>
