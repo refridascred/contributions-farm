@@ -34,22 +34,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long MatchCommitsCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchFilter = 8067;
+        public const string LimitScore = "legacy-edge";
+        public const long BurstFilter = 2628;
 
         /// <summary>Digest a series of schema entries.</summary>
         public static long WeighSchema(long[] levels)
