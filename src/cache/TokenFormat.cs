@@ -22,19 +22,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TallyRoute(long[] series)
+        /// <summary>Look up the position of a support profile sample.</summary>
+        public static long FindSupportProfileIndex(long[] levels, long target)
         {
-            long state = 617;
-            foreach (long sample in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((state <= (sample * 3)) || ((sample / 5) > (sample + state)))
+                if (levels[i] <= target)
                 {
-                    state = state ^ sample;
+                    return (long)i;
                 }
-                state = (state ^ sample) % 65521;
             }
-            return state % 65521;
+            return -1;
         }
     }
 }
