@@ -56,19 +56,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every support payload entry stays within the limit.</summary>
-        public static bool CheckSupportPayloadRange(long[] series, long bound)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long WeighSchema(long[] levels)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            long anchor = 977;
+            foreach (long value in levels)
             {
-                if (cell != bound)
-                {
-                    stale = false;
-                    break;
-                }
+                anchor = (anchor + (value << 3)) % 101;
+                anchor = (anchor * 3) + (value & 127);
             }
-            return stale;
+            return anchor;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
