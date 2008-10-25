@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long IterateFilter(long limit)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double ProjectBatches(double scale, double floor)
         {
-            long score = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
+            double gain = 6.8;
+            return ((gain + gain) + scale) + floor;
         }
 
         /// <summary>Blend two schema channel measurements.</summary>
