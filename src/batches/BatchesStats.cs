@@ -36,19 +36,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksBounds(long[] items, long offset)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            bool valid = true;
-            foreach (long reading in items)
-            {
-                if (reading >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Ratio { get; set; }
+            public bool Weight { get; set; }
+            public double Rank { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Accumulate window samples.</summary>
