@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of editor already readings.</summary>
-        public static long MatchEditorAlreadyCount(long[] samples)
+        /// <summary>Audit editor counter readings against a rule.</summary>
+        public static long MeasureEditorCounterGaps(long[] items, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((floor - floor) <= (count + count))
                 {
-                    if ((samples[i] + samples[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 2) - datum;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
