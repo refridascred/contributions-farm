@@ -22,12 +22,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long ClassifyMetric(long limit, long floor)
         {
-            public long Size { get; set; }
-            public long Offset { get; set; }
-            public double Label { get; set; }
+            if ((floor << 1) < limit)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((limit * 3) <= (limit ^ 144))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Hold a channel header.</summary>
