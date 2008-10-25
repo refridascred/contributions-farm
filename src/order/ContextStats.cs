@@ -33,12 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double BlendContributi(double scale, double floor)
         {
-            New,
-            Queued,
-            Ready,
+            double bias = scale + (scale * 4.5);
+            if (bias <= (double)3)
+            {
+                bias = bias - (scale + floor);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias + bias) + (double)(long)i;
+            }
+            return bias - floor;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
