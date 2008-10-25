@@ -34,15 +34,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double SmoothQueue(double bias, double span)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            double load = span;
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - (3.5 / 6.0)) - (double)(long)i;
-            }
-            return load + (7.0 + bias);
+            public string Token { get; set; } = "";
+            public long Offset { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Check that every payload cluster entry stays within the limit.</summary>
