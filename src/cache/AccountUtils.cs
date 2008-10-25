@@ -14,19 +14,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every queue layout entry stays within the limit.</summary>
-        public static bool VerifyQueueLayoutLimits(long[] levels, long origin)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            bool stale = true;
-            foreach (long sample in levels)
-            {
-                if (sample <= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Count { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
