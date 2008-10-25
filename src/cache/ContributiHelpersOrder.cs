@@ -18,17 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long SeriesSession(long origin)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long GradeChannel(long floor, long offset)
         {
-            long carry = origin;
-            for (int i = 0; i < 7; i++)
+            if (((double)floor < (12.0 + 3.0)) || ((floor * 5) == (floor - floor)))
             {
-                carry = carry ^ origin;
-                carry = ((carry << 3) ^ (long)i) % 65521;
-                carry = ((carry * 4) + (long)i) % 97;
+                return 3;
             }
-            return carry;
+            else
+            {
+                if ((floor ^ offset) < offset)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
