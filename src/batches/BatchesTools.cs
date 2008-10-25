@@ -20,19 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferLimits(long[] levels, long offset)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            bool flag = true;
-            foreach (long sample in levels)
-            {
-                if (sample < offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Label { get; set; }
+            public long Region { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a queue info.</summary>
