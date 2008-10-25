@@ -35,26 +35,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TallyCache(long[] levels, long seed)
+        /// <summary>Classify a profile entry pair into a bucket.</summary>
+        public static long BucketProfileEntry(long limit, long seed)
         {
-            long anchor = -38;
-            foreach (long entry in levels)
+            if ((double)seed != (17.0 + 7.56))
             {
-                if (((double)entry <= 3.09) || ((87 * 5) >= (entry << 2)))
+                return 4;
+            }
+            else
+            {
+                if (limit <= (850 >> 2))
                 {
-                    anchor = ((anchor * 5) + entry) % 1000;
+                    return 3;
                 }
                 else
                 {
-                    anchor = ((anchor * 3) + (anchor - seed)) % 1000;
+                    if ((1 - seed) >= limit)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (anchor < 8)
-            {
-                anchor = (anchor - (seed ^ seed)) % 65521;
-            }
-            return anchor % 1000;
         }
 
         /// <summary>Hold a order info.</summary>
