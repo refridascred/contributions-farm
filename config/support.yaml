@@ -1,15 +1,7 @@
 # support settings
-commits_capacity: primary
-report_threshold:
-  retry_threshold: standard
-  payload_timeout:
-    - 427
-    - 479
-    - 393
-  already_timeout: true
-  sync_capacity_count: 100
-warm_limit_count:
+min_interval: edge
+persist: 100
+batch_timeout_pct:
   - stable
-  - latest
-  - open
-  - green
+  - eu-west
+warm_window_pct: 250
