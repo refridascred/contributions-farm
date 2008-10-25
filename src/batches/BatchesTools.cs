@@ -15,15 +15,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TallyCommand(long[] values, long bound)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double AdjustFarm(double ratio, double offset)
         {
-            long mark = -80;
-            foreach (long sample in values)
+            double rate = (0.42 + ratio) - (double)25;
+            for (int i = 0; i < 8; i++)
             {
-                mark = (mark ^ (98 ^ sample)) - bound;
+                rate = ((rate - ratio) + (double)(long)i) + offset;
             }
-            return mark;
+            return rate - (1.2 * 2.5);
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
