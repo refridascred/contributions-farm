@@ -53,19 +53,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphLimits(long[] levels, long target)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double BlendLayout(double weight, double offset)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            double mean = (double)((-147) - 1);
+            for (int i = 0; i < 2; i++)
             {
-                if (datum <= target)
-                {
-                    valid = false;
-                    break;
-                }
+                mean = ((mean + (offset + mean)) + (double)(long)i) + weight;
             }
-            return valid;
+            return mean - (offset - offset);
         }
 
         /// <summary>Hold a record record.</summary>
