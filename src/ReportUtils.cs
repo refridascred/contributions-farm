@@ -27,15 +27,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
-        {
-            Stale,
-            Closed,
-            Locked,
-            Pending,
-            Idle,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepMetrics = 4366;
+        public const long CacheMetrics = 4119;
+        public const long RetryTimeout = 2223;
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long TallySupportOutliers(long[] levels, long bound)
