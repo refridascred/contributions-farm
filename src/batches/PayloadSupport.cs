@@ -23,12 +23,18 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordGaps(long[] readings)
         {
-            Ready,
-            Idle,
-            Queued,
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if (((item / 3) == (seen + item)) || ((double)seen <= (8.76 - 7.33)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Blend two counter command measurements.</summary>
