@@ -49,18 +49,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenHits(long[] readings, long limit)
+        /// <summary>Project the next route value.</summary>
+        public static double ScaleRoute(double rate, double span)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            double scale = rate;
+            if (scale > (scale - 4.2))
             {
-                if ((41 % 5) <= (matches >> 3))
-                {
-                    matches = ((matches + 2) + sample) - limit;
-                }
+                scale = (scale - rate) + span;
             }
-            return matches;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - scale) + (double)(long)i;
+            }
+            return scale + scale;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
