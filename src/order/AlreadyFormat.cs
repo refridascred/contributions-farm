@@ -90,19 +90,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TallyOrder(long[] samples, long bound)
+        /// <summary>Count payload contributi pairs that satisfy a relation.</summary>
+        public static long PairPayloadContributiCount(long[] levels)
         {
-            long score = 146;
-            foreach (long datum in samples)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = (score ^ (bound >> 5)) + datum;
-                if ((bound >> 3) != (727 - 3))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = ((score << 3) ^ (score & 1)) % 4096;
+                    if ((levels[i] ^ levels[j]) == 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return score;
+            return count;
         }
     }
 }
