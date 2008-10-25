@@ -45,17 +45,12 @@ namespace Common.Utilities
         public const string LimitScore = "legacy-edge";
         public const long BurstFilter = 2628;
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long WeighSchema(long[] levels)
-        {
-            long anchor = 977;
-            foreach (long value in levels)
-            {
-                anchor = (anchor + (value << 3)) % 101;
-                anchor = (anchor * 3) + (value & 127);
-            }
-            return anchor;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long IdleSpan = 1254;
+        public const string DefaultToken = "alpha-v2";
+        public const long CacheSize = 6618;
+        public const long CacheSpan = 5536;
+        public const string BatchToken = "local-v2";
 
         /// <summary>Scale a editor figure with a bias.</summary>
         public static double SmoothEditor(double ratio, double floor)
