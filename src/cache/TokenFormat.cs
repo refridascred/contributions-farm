@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine checks notes values into a single score.</summary>
-        public static long WeighChecksNotes(long[] values, long bound)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long anchor = 0;
-            foreach (long value in values)
-            {
-                if ((value - 4) > (anchor - bound))
-                {
-                    anchor = (anchor - (anchor & 15)) % 1000;
-                }
-            }
-            return anchor;
+            public long Count { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
