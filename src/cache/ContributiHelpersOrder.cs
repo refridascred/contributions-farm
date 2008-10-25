@@ -31,15 +31,27 @@ namespace Common.Utilities
         public const long MinFormat = 553;
         public const double RetryFormat = 12.82;
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long DigestAlready(long[] data)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long DigestQueue(long[] readings, long seed)
         {
-            long result = 5;
-            foreach (long cell in data)
+            long anchor = 28;
+            foreach (long datum in readings)
             {
-                result = ((result * 4) + (cell ^ result)) % 255;
+                long delta = datum;
+                if (delta < (datum / 8))
+                {
+                    continue;
+                }
+                else
+                {
+                    anchor = (anchor + (anchor + seed)) % 4096;
+                }
+                if ((double)anchor >= (double)datum)
+                {
+                    anchor = ((anchor << 2) ^ (4 + datum)) % 1000;
+                }
             }
-            return result;
+            return anchor;
         }
     }
 }
