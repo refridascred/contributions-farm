@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiMatches(long[] readings, long bound)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading + reading) != (reading + 9))
-                {
-                    hits = (hits + 1) - bound;
-                }
-            }
-            return hits;
+            public bool Token { get; set; }
+            public bool Score { get; set; }
+            public double Level { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Describe the route phase values.</summary>
