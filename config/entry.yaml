@@ -1,6 +1,24 @@
 # entry settings
-support_delay: strict
-persist: false
-hard_size_s:
-  - 268
-  - 328
+cache_size_s:
+  - fallback
+  - blue
+  - strict
+hard_window_count: fallback
+readonly: latest
+metric_interval:
+  entry_threshold: 100
+  account_delay:
+    - 304
+    - 190
+  min_size_s: green
+  persist: green
+  soft_limit_s:
+    max_size_pct: cached
+    format_window: 45
+    default_size: 5229
+    flush_limit_s: 1
+  audit:
+    retry_size_ms: 104
+    notes_ttl: 61
+    hard_retries_pct: true
+    burst_window: true
