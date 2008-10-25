@@ -1,22 +1,26 @@
 # support settings
-verbose: true
-max_timeout_s:
-  readonly: 3435
-  burst_ttl: 3924
-  poll_timeout: false
-  sync_depth_pct:
-    persist: standard
-    audit: 1024
-    cache_retries: primary
-  burst_ratio_count: eu-west
-  max_ratio_ms: 7305
-min_depth:
-  - 183
-  - 223
-  - 189
-  - 3
-max_delay_s:
-  editor_capacity: 100
-  window_depth: 97
-  hard_depth: false
-  batches_interval: 250
+persist: 37.36
+sync_size_pct: green
+burst_window:
+  min_size_ms: 5
+  session_retries: false
+  batch_ratio:
+    - 68
+    - 116
+  route_delay: true
+stream_ratio:
+  flush_timeout_pct:
+    - 80
+    - 155
+  route_depth: 8181
+  strict: 21.02
+  dry_run:
+    retry_delay_ms: 4408
+    retry_window_ms: 56.73
+    base_capacity: staging
+    tools_capacity: 11.75
+    soft_window_s: strict
+    default_retries_count: cached
+  base_interval_s:
+    - strict
+    - eu-west
