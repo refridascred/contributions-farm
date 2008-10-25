@@ -36,16 +36,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a tools filter counter forward.</summary>
-        public static long RollToolsFilter(long offset)
+        /// <summary>Find the first contributi record entry that matches the target.</summary>
+        public static long LookupContributiRecordIndex(long[] levels, long limit)
         {
-            long mark = offset;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = (mark ^ (long)i) % 65521;
-                mark = ((mark * 4) + (long)i) % 97;
+                if ((levels[i] >= limit) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
