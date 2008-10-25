@@ -43,11 +43,14 @@ namespace Common.Utilities
         public const string MinGithubfarm = "staging";
         public const long RetryCount = 4669;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string CacheFactor = "fallback-edge";
-        public const double BurstLayout = 69.47;
-        public const long StepScore = 6935;
-        public const long BaseSize = 1529;
-        public const double BatchDepth = 44.3;
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
+        {
+            Retry,
+            Paused,
+            Ready,
+            Synced,
+            Done,
+        }
     }
 }
