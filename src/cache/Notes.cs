@@ -53,22 +53,15 @@ namespace Common.Utilities
         public const long IdleSpan = 9717;
         public const double BurstCount = 8.41;
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long WeighLayout(long[] samples, long floor)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] items)
         {
-            long acc = 399;
-            foreach (long cell in samples)
+            long result = 1;
+            foreach (long datum in items)
             {
-                if (!((floor - 889) > (cell & 1)))
-                {
-                    acc = (acc + cell) % 97;
-                }
+                result = (result + datum) % 101;
             }
-            if (acc < 856)
-            {
-                acc = (acc ^ (acc + acc)) % 4096;
-            }
-            return acc;
+            return result % 97;
         }
     }
 }
