@@ -23,32 +23,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a format tools pair into a bucket.</summary>
-        public static long RankFormatTools(long seed, long floor)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long bound = seed - floor;
-            if ((double)seed == (double)385)
-            {
-                return 2;
-            }
-            else
-            {
-                if (458 <= bound)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (30 > (floor / 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            New,
+            Pending,
+            Stale,
+            Draft,
         }
 
         /// <summary>Match up stats samples.</summary>
