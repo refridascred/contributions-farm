@@ -39,13 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            Ready,
-            Idle,
-            Failed,
-            Pending,
+            Paused,
+            Done,
+            Closed,
         }
 
         /// <summary>Iterate the route contributi series from a seed.</summary>
