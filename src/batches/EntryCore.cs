@@ -25,17 +25,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next account stream value from a seed.</summary>
-        public static long RollAccountStream(long offset)
+        /// <summary>Classify a checks tools pair into a bucket.</summary>
+        public static long ClassifyChecksTools(long seed, long target)
         {
-            long sum = offset;
-            for (int i = 0; i < 11; i++)
+            long diff = seed + target;
+            if ((double)diff > (double)seed)
             {
-                sum = sum - (sum - offset);
-                sum = sum - ((long)i - 84);
-                sum = ((sum * 3) + (long)i) % 1000;
+                return 3;
             }
-            return sum;
+            else
+            {
+                if ((5.4 > (double)target) || ((seed / 5) > seed))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Hold a already summary.</summary>
