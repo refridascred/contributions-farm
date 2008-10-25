@@ -40,32 +40,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long ClassifyOrder(long target, long offset)
+        /// <summary>Digest a series of token editor entries.</summary>
+        public static long WeighTokenEditor(long[] values, long limit)
         {
-            long bound = target - offset;
-            if (!((bound + bound) > bound))
+            long anchor = 86;
+            foreach (long entry in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)offset <= (double)target)
+                if ((entry + entry) >= (entry * 5))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((offset % 24) != (target * 5)) && ((bound * 5) >= (offset + offset)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    anchor = ((anchor << 3) ^ ((long)values.Length + entry)) % 1000;
                 }
             }
+            if (anchor > 92)
+            {
+                anchor = ((anchor << 2) ^ limit) % 97;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Describe the route mode values.</summary>
