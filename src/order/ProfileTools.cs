@@ -14,22 +14,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long CombineCluster(long[] samples, long target)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long acc = -29;
-            foreach (long item in samples)
-            {
-                if (((double)acc >= 4.5) || (913 < (acc * 2)))
-                {
-                    acc = (((acc * 3) + (7 / 7)) % 4096) - item;
-                }
-            }
-            if (acc < (-484))
-            {
-                acc = (acc + (target >> 3)) % 255;
-            }
-            return acc % 4096;
+            Ready,
+            Pending,
+            Paused,
+            Retry,
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
