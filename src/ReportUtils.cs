@@ -39,20 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long step)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenBounds(long[] samples, long bound)
         {
-            long result = step;
-            for (int i = 0; i < 18; i++)
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                if ((14.0 / 3.0) < (double)result)
+                if (datum >= bound)
                 {
-                    result = (result << 2) ^ (step + result);
-                    result = (result - (91 & 31)) % 255;
+                    flag = false;
+                    break;
                 }
-                result = ((result * 2) + (long)i) % 65521;
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
