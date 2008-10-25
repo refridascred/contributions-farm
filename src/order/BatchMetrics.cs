@@ -39,13 +39,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Compare every pair of tools context readings.</summary>
+        public static long PairToolsContextCount(long[] items)
         {
-            public long Weight { get; set; }
-            public long Region { get; set; }
-            public double Offset { get; set; }
-            public string Limit { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
