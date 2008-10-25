@@ -1,9 +1,7 @@
 # support settings
-audit:
-  - eu-west
-  - primary
-  - standard
-  - eu-west
-dry_run: 59
-soft_delay: 4020
-cache_capacity_count: 64.54
+support_size: true
+readonly: false
+default_ratio_count: blue
+default_window_pct:
+  - 10
+  - 239
