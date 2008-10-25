@@ -32,19 +32,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every notes already entry stays within the limit.</summary>
-        public static bool ValidateNotesAlreadyBounds(long[] data, long origin)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            bool stale = true;
-            foreach (long cell in data)
-            {
-                if (cell <= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Stamp { get; set; }
+            public long Ratio { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Validate report readings against a bound.</summary>
