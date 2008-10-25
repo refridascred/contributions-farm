@@ -1,6 +1,5 @@
 {
-  "stream_interval": false,
-  "context_ttl": 7481,
-  "min_ttl": "legacy",
-  "min_interval_count": true
+  "max_size": 97,
+  "flush_capacity_pct": 88.77,
+  "flush_window_count": 91.48
 }
