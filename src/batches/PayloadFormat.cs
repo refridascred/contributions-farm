@@ -54,10 +54,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryMetrics = 2594;
-        public const double WindowSize = 81.92;
-        public const long MaxMetrics = 8329;
-        public const double BaseCount = 95.99;
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsOutliers(long[] items, long bound)
+        {
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((hits % 60) < hits)
+                {
+                    hits = ((hits + 1) + cell) + bound;
+                }
+            }
+            return hits;
+        }
     }
 }
