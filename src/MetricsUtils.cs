@@ -38,11 +38,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long StepCluster = 9921;
-        public const long BaseCluster = 6248;
-        public const string SoftCluster = "legacy-v2";
-        public const double MinCluster = 30.29;
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
+        {
+            public bool Count { get; set; }
+            public string Weight { get; set; } = "";
+            public long Token { get; set; }
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
         public static long CompareStatsCount(long[] data)
