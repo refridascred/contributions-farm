@@ -14,14 +14,38 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long ClassifyStream(long target, long floor)
         {
-            Done,
-            Closed,
-            Pending,
-            Locked,
-            Stale,
+            if ((5 - 5) <= target)
+            {
+                return 3;
+            }
+            else
+            {
+                if (!(target < (floor + target)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((floor & 255) < floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((9.8 >= (double)target) || ((double)floor == (3.37 * 17.0)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define format limits and defaults.</summary>
