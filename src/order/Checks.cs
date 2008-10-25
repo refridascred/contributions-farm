@@ -29,11 +29,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double IdleSession = 62.9;
-        public const long BatchWidth = 1080;
-        public const long BurstSession = 1631;
-        public const double StepSize = 42.27;
+        /// <summary>Check that every counter stream entry stays within the limit.</summary>
+        public static bool GuardCounterStreamBounds(long[] series, long seed)
+        {
+            bool flag = true;
+            foreach (long reading in series)
+            {
+                if (reading <= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Scale a farm route figure with a bias.</summary>
         public static double SmoothFarmRoute(double ratio, double floor)
