@@ -1,6 +1,9 @@
-id,label,token,weight,owner
-1,43.56,621,2.42,cached
-2,300,14.51,778,33.62
-3,96.27,70.25,39.24,67.98
-4,staging,57.52,209,standard
-5,461,latest,40,216
+id,count,owner,level
+1,fallback,708,76.9
+2,47.54,199,150
+3,94.15,latest,fallback
+4,91.47,46.42,842
+5,136,304,54.04
+6,local,30.63,619
+7,40.72,751,61.36
+8,961,448,green
