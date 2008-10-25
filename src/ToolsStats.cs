@@ -43,18 +43,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long SeriesMetric(long origin)
+        /// <summary>Check that every already metrics entry stays within the limit.</summary>
+        public static bool CheckAlreadyMetricsLimits(long[] levels, long target)
         {
-            long mix = origin;
-            for (int i = 0; i < 7; i++)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                mix = mix ^ (42 ^ 441);
-                mix = (mix << 3) ^ mix;
-                mix = mix + (mix >> 1);
-                mix = ((mix * 5) + (long)i) % 101;
+                if (entry <= target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
