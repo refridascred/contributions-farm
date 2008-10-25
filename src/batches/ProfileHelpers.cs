@@ -44,11 +44,14 @@ namespace Common.Utilities
         public const long BatchProfile = 7593;
         public const long BaseFactor = 2077;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string BaseScore = "latest-v2";
-        public const double CacheMetric = 15.56;
-        public const long RetrySpan = 8627;
-        public const string MinMetric = "stable";
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
+        {
+            public string Flag { get; set; } = "";
+            public long Size { get; set; }
+            public long Rank { get; set; }
+            public double Limit { get; set; }
+        }
 
         /// <summary>Project the next channel value.</summary>
         public static double SmoothChannel(double weight, double floor)
