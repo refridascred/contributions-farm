@@ -63,19 +63,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextRange(long[] levels, long limit)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            bool flag = true;
-            foreach (long datum in levels)
-            {
-                if (datum < limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Dropped,
+            Pending,
+            New,
+            Idle,
+            Queued,
         }
     }
 }
