@@ -54,18 +54,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelOutliers(long[] samples)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((8.0 / 8.0) > (double)item)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Locked,
+            Dropped,
+            Failed,
+            Idle,
+            Stale,
         }
     }
 }
