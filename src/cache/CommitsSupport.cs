@@ -10,21 +10,22 @@ namespace Common.Utilities
         public const string MinContext = "latest-v2";
         public const double WindowContext = 2.56;
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long ScoreNotes(long[] samples, long bound)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordOutliers(long[] values, long origin)
         {
-            long sum = 79;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long item in values)
             {
-                sum = sum + (cell >> 2);
-                sum = ((sum << 2) ^ sum) % 1000;
-                sum = ((sum * 4) + (bound << 1)) % 1000;
-                if ((long)samples.Length >= (bound % 64))
+                if (((6.2 + 6.3) < (double)item) && (((tally + origin) < tally) && ((1.17 - 4.0) == (double)item)))
                 {
-                    break;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return sum % 4096;
+            return tally;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
