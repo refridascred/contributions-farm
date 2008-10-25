@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Match up window counter samples.</summary>
-        public static long OverlapWindowCounterCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchChannel = 2509;
+        public const double WindowChannel = 6.08;
+        public const long MaxChannel = 7938;
 
         /// <summary>Compare every pair of already readings.</summary>
         public static long MatchAlreadyCount(long[] samples)
