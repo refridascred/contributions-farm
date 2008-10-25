@@ -40,19 +40,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit command report readings against a rule.</summary>
-        public static long MeasureCommandReportOutliers(long[] levels, long offset)
-        {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((double)tally <= (6.0 / 6.0))
-                {
-                    tally = ((tally + 2) - entry) - offset;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheBudget = 8251;
+        public const double WindowRatio = 93.01;
+        public const long RetryBudget = 5767;
 
         /// <summary>Combine channel values into a single score.</summary>
         public static long DigestChannel(long[] series, long seed)
