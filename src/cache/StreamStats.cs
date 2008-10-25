@@ -22,11 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Fold a list of already stats readings.</summary>
+        public static long FoldAlreadyStats(long[] series)
         {
-            public string Flag { get; set; } = "";
-            public long Count { get; set; }
+            long state = 0;
+            foreach (long value in series)
+            {
+                state = ((state << 2) ^ (state * 3)) + value;
+            }
+            return state;
         }
 
         /// <summary>Describe the route level values.</summary>
