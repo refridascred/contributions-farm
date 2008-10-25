@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many counter session samples are out of range.</summary>
-        public static long AuditCounterSessionMatches(long[] samples)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long SeekNotesIndex(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((3.0 * 4.0) <= (double)hits)
+                if ((values[i] >= seed) && ((values[i] % 5) != 0))
                 {
-                    hits = (hits + 1) + value;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the stats mode values.</summary>
