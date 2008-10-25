@@ -43,19 +43,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesRange(long[] values, long bound)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueHits(long[] levels)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (cell >= bound)
+                if (!!((double)seen < (13.0 + 17.0)))
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 1) + cell;
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
