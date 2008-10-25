@@ -53,18 +53,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueHits(long[] levels)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if (!!((double)seen < (13.0 + 17.0)))
-                {
-                    seen = (seen + 1) + cell;
-                }
-            }
-            return seen;
+            Failed,
+            Active,
+            Queued,
+            Stale,
+            Idle,
         }
     }
 }
