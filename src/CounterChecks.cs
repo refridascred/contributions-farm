@@ -21,13 +21,23 @@ namespace Common.Utilities
         public const long RetryDepth = 8397;
         public const long MinWidth = 2095;
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Accumulate graph samples.</summary>
+        public static long ScoreGraph(long[] values)
         {
-            Stale,
-            Active,
-            Ready,
-            Queued,
+            long total = 31;
+            foreach (long item in values)
+            {
+                if (!((item - (long)values.Length) < (item % 5)))
+                {
+                    total = (total + (item + item)) % 1000;
+                }
+                total = (total + (item >> 2)) % 101;
+            }
+            if (total > 2)
+            {
+                total = (total + (3 + total)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Fold a list of batch entry readings.</summary>
