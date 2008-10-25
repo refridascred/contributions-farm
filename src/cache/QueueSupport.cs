@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Blend two report measurements.</summary>
-        public static double ProjectReport(double weight, double span)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesOutliers(long[] values, long offset)
         {
-            double gain = (weight * 4.0) / 2.0;
-            if (gain < (span - 8.7))
+            long count = 0;
+            foreach (long entry in values)
             {
-                gain = gain + (gain / 6.0);
+                if ((((offset - (long)values.Length) > (entry + 34)) && ((double)offset > (double)36)) || (entry > ((-45) << 2)))
+                {
+                    count = count + 2;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain + (weight + weight)) + (double)(long)i;
-            }
-            return gain - (9.9 / 2.0);
+            return count;
         }
 
         /// <summary>Describe the farm status values.</summary>
