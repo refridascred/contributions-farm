@@ -48,19 +48,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate batch already readings against a bound.</summary>
-        public static bool ValidateBatchAlreadyRange(long[] readings, long seed)
+        /// <summary>Iterate the route contributi series from a seed.</summary>
+        public static long RollRouteContributi(long limit)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            long mix = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if (item >= seed)
-                {
-                    ok = false;
-                    break;
-                }
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Describe the schema level values.</summary>
