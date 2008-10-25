@@ -1,4 +1,18 @@
 # githubfarm settings
-strict: false
-hard_timeout: 1120
-dry_run: 30
+min_depth_s:
+  - latest
+  - strict
+  - eu-west
+  - staging
+idle_ratio:
+  flush_timeout_ms: true
+  cache_delay: 26.7
+  min_size_count: stable
+  warm_size: false
+  stream_ratio: 8
+githubfarm_interval: 66
+hard_depth_pct: 54.42
+stream_limit: strict
+burst_limit_pct:
+  - 381
+  - 247
