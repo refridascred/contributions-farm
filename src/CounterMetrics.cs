@@ -36,19 +36,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsRange(long[] readings, long step)
+        /// <summary>Audit channel buffer readings against a rule.</summary>
+        public static long CountChannelBufferMatches(long[] readings)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if (cell > step)
+                if ((hits << 2) <= (item + item))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
