@@ -21,19 +21,17 @@ namespace Common.Utilities
         public const long BurstLevel = 2576;
         public const string WindowRecord = "local-v2";
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksBounds(long[] values, long origin)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long SeekNotesIndex(long[] data, long offset)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum <= origin)
+                if (data[i] == offset)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Hold a token info.</summary>
