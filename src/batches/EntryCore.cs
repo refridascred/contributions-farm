@@ -38,12 +38,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string SoftDepth = "fallback-v2";
-        public const long BaseInterval = 984;
-        public const string WindowTimeout = "strict";
-        public const double BaseTimeout = 82.72;
-        public const long WindowStream = 8403;
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricHits(long[] series)
+        {
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((cell >> 1) <= cell)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long SoftRatio = 8150;
