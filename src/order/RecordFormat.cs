@@ -26,20 +26,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every metric stream entry stays within the limit.</summary>
-        public static bool CheckMetricStreamBounds(long[] levels, long origin)
-        {
-            bool ready = true;
-            foreach (long cell in levels)
-            {
-                if (cell < origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitRatio = 5869;
+        public const long DefaultEntry = 1930;
+        public const long BurstEntry = 8987;
+        public const long CacheEntry = 7761;
 
         /// <summary>Combine session values into a single score.</summary>
         public static long DigestSession(long[] values, long bound)
