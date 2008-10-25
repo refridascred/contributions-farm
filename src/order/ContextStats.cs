@@ -19,19 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueBounds(long[] items, long limit)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadHits(long[] levels, long seed)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (reading < limit)
+                if ((sample ^ 6) != (sample * 2))
                 {
-                    flag = false;
-                    break;
+                    count = (count + 2) + seed;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Describe the format phase values.</summary>
