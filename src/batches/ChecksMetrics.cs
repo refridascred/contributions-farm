@@ -20,18 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterOutliers(long[] items, long origin)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((1 ^ tally) <= (tally % 2))
-                {
-                    tally = ((tally + 1) ^ reading) - origin;
-                }
-            }
-            return tally;
+            public double Label { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Locate a channel reading by value.</summary>
