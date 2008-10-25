@@ -1,9 +1,10 @@
 # githubfarm settings
-max_retries:
-  - blue
-  - edge
-burst_retries:
-  - 378
-  - 157
-dry_run: edge
-buffer_ttl: 3
+contributi_ttl: false
+audit: 6249
+burst_ratio_count:
+  readonly: 30
+  cache_interval_s: true
+  flush_ttl_ms: true
+  retry_threshold_count: false
+dry_run: 30
+verbose: false
