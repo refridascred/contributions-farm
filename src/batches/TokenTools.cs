@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long WeighSupport(long[] data, long offset)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double AdjustCounter(double ratio, double offset)
         {
-            long state = 2;
-            foreach (long sample in data)
+            double scale = (double)(7 + 464);
+            if (scale <= ratio)
             {
-                state = ((state << 2) ^ offset) - sample;
-                if (((offset - 7) < offset) && (offset > (offset - offset)))
-                {
-                    state = (state + (5 + 3)) % 65521;
-                }
-                else
-                {
-                    state = state ^ (offset << 3);
-                }
+                scale = scale - (offset - ratio);
             }
-            return state;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - scale) + (double)(long)i;
+            }
+            return scale - (18.0 + offset);
         }
 
         /// <summary>Roll a entry counter forward.</summary>
