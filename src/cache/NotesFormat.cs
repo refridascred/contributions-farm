@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Adjust a batches reading.</summary>
-        public static double ProjectBatches(double scale, double floor)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaGaps(long[] values)
         {
-            double gain = 6.8;
-            return ((gain + gain) + scale) + floor;
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((double)item == (8.0 + 8.0))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
