@@ -1,12 +1,9 @@
 {
-  "buffer_size": "edge",
-  "dry_run": {
-    "default_size": ["standard", "standard", "legacy", "stable"],
-    "warm_ttl": "stable",
-    "max_limit_pct": 70.0
+  "compress": {
+    "flush_interval_s": "blue",
+    "counter_depth": "eu-west",
+    "flush_ttl": "edge"
   },
-  "hard_depth_pct": 60,
-  "already_window": "standard",
-  "idle_size": "cached",
-  "stream_retries": 9841
+  "flush_window_ms": 9729,
+  "batch_ttl": "green"
 }
