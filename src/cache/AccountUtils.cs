@@ -11,18 +11,10 @@ namespace Common.Utilities
         public const double IdleLevel = 29.18;
         public const long IdleRecord = 6702;
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LookupFarmIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleGraph = 9303;
+        public const long RetryGraph = 3385;
+        public const long CacheGraph = 4520;
 
         /// <summary>Combine graph values into a single score.</summary>
         public static long ScoreGraph(long[] series)
