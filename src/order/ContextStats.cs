@@ -35,16 +35,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long IterateRecord(long seed)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long anchor = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                anchor = (anchor ^ (seed * 2)) % 4096;
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
+            New,
+            Done,
+            Closed,
+            Failed,
+            Locked,
         }
 
         /// <summary>Accumulate farm samples.</summary>
