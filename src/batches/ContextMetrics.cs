@@ -64,13 +64,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
-        {
-            New,
-            Synced,
-            Draft,
-            Dropped,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleWindow = 376;
+        public const string LimitWindow = "fallback";
+        public const long CacheWindow = 819;
     }
 }
