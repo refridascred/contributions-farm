@@ -15,16 +15,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long IterateLayout(long seed)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long mark = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                mark = mark - (seed << 2);
-                mark = ((mark * 2) + (long)i) % 101;
-            }
-            return mark;
+            Dropped,
+            Done,
+            Ready,
+            Paused,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
