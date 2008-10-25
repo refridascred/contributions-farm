@@ -1,13 +1,4 @@
 # entry settings
-flush_delay_s:
-  - legacy
-  - green
-  - stable
-persist: 500
-soft_limit:
-  - fallback
-  - latest
-  - fallback
-  - eu-west
-max_ratio_ms: staging
-enabled: 4187
+compress: false
+sync_ratio: 97.19
+retry_timeout: 6880
