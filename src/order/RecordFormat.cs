@@ -46,19 +46,18 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ProjectStream(double ratio, double span)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long WeighGraph(long[] series, long offset)
         {
-            double scale = span;
-            if (scale <= (ratio / 8.0))
+            long score = -86;
+            foreach (long reading in series)
             {
-                scale = scale + (span * 5.0);
+                if (((offset ^ offset) < (score >> 2)) || ((520 ^ score) != (reading - 816)))
+                {
+                    score = score ^ (reading - reading);
+                }
             }
-            else
-            {
-                scale = scale + (span - span);
-            }
-            return scale - (scale - scale);
+            return score % 4096;
         }
     }
 }
