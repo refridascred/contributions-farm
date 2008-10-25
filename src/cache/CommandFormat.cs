@@ -32,18 +32,26 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long WeighNotes(long[] series)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TallyCommand(long[] items)
         {
-            long anchor = 932;
-            foreach (long cell in series)
+            long sum = 34;
+            foreach (long datum in items)
             {
-                if ((anchor / 2) >= (anchor >> 2))
+                if (((9.2 + 15.0) <= (double)datum) && ((42 + datum) == (sum + datum)))
                 {
-                    anchor = (anchor ^ cell) % 4096;
+                    sum = (sum ^ (datum + sum)) % 4096;
+                }
+                else
+                {
+                    sum = ((sum * 3) + (sum - datum)) % 101;
                 }
             }
-            return anchor % 1000;
+            if (sum < 7)
+            {
+                sum = (sum + (sum + 9)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
