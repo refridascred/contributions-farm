@@ -62,14 +62,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            Failed,
-            Active,
-            Queued,
-            Stale,
             Idle,
+            Closed,
+            Failed,
+            Pending,
+            New,
         }
     }
 }
