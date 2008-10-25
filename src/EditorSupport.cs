@@ -30,12 +30,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string IdleTimeout = "cached-v2";
-        public const long StepMetrics = 9197;
-        public const double StepScore = 55.39;
-        public const string RetryRatio = "legacy-edge";
-        public const string LimitMetrics = "primary-edge";
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleInterval = 8783;
+        public const long MaxSession = 9681;
+        public const long MaxTimeout = 3679;
+        public const long IdleSession = 1692;
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long MeasureStatsOutliers(long[] readings, long target)
