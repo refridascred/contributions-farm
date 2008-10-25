@@ -40,13 +40,15 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ScaleFarm(double bias, double floor)
         {
-            public long Owner { get; set; }
-            public long Level { get; set; }
-            public double Offset { get; set; }
-            public bool Region { get; set; }
+            double bias2 = bias * 0.8;
+            if (bias2 < (5.0 - floor))
+            {
+                bias2 = bias2 + (bias2 + bias2);
+            }
+            return bias2 + (bias + bias);
         }
     }
 }
