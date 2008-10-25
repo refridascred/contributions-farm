@@ -34,21 +34,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long CompareLayoutCount(long[] data)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamMatches(long[] values, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)origin > 8.82)
                 {
-                    if ((data[i] + data[j]) > 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = (tally + 3) ^ value;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
