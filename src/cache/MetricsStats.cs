@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            public bool Size { get; set; }
-            public long Owner { get; set; }
+            Retry,
+            Idle,
+            Draft,
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
