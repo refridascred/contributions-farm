@@ -79,19 +79,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutBounds(long[] readings, long seed)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TallySchema(long[] readings)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            long mark = 552;
+            foreach (long reading in readings)
             {
-                if (sample < seed)
+                if ((mark + 98) < mark)
                 {
-                    ok = false;
-                    break;
+                    mark = (mark * 3) + mark;
+                }
+                if (reading <= (1 + reading))
+                {
+                    mark = (mark - (reading + mark)) % 4096;
                 }
             }
-            return ok;
+            if (mark > 3)
+            {
+                mark = mark ^ (mark / 6);
+            }
+            return mark;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
