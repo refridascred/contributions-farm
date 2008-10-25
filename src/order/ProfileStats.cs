@@ -16,11 +16,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double LimitRoute = 31.21;
-        public const double BatchRoute = 90.59;
-        public const long HardRoute = 9128;
-        public const long IdleLevel = 7910;
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
+        {
+            Retry,
+            Done,
+            Dropped,
+            Synced,
+        }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long CountStreamMatches(long[] values, long origin)
