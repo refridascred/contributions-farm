@@ -1,8 +1,10 @@
 {
-  "compress": false,
-  "default_window_count": true,
-  "batch_threshold_pct": [304, 236],
-  "metric_interval": "cached",
-  "min_size": 68.65,
-  "sync_depth_s": false
+  "sync_delay_s": "staging",
+  "enabled": {
+    "graph_timeout": 99,
+    "farm_retries": "legacy",
+    "compress": "latest"
+  },
+  "metric_timeout": "local",
+  "retry_delay_pct": 100
 }
