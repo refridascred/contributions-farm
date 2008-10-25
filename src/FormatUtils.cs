@@ -56,23 +56,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long RollBuffer(long floor)
+        /// <summary>Blend two record route measurements.</summary>
+        public static double SmoothRecordRoute(double gain, double bias)
         {
-            long anchor = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((floor + anchor) == (522 + floor))
-                {
-                    anchor = ((anchor << 2) ^ ((long)i * 2)) % 1000;
-                }
-                else
-                {
-                    anchor = ((anchor * 3) + (anchor / 4)) % 65521;
-                }
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
+            double mean = (double)67 * 15.0;
+            return (mean - bias) + gain;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
