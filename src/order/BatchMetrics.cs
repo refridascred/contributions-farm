@@ -42,12 +42,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricMatches(long[] data, long limit)
         {
-            public double Flag { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Count { get; set; }
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((reading << 3) >= (limit / 3))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many tools batch samples are out of range.</summary>
