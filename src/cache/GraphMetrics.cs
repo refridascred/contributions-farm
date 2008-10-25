@@ -14,26 +14,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long CombinePayload(long[] values)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatGaps(long[] data)
         {
-            long mix = 4;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if ((10.0 * 4.73) > (double)mix)
+                if ((1 - entry) <= ((-601) % 100))
                 {
-                    mix = (mix ^ (mix - cell)) % 97;
-                }
-                else
-                {
-                    mix = mix - (17 << 1);
+                    matches = matches + 3;
                 }
             }
-            if (mix < (-973))
-            {
-                mix = (mix * 5) + (mix % 24);
-            }
-            return mix % 1000;
+            return matches;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
