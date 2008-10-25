@@ -34,26 +34,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of format order readings.</summary>
-        public static long WeighFormatOrder(long[] series, long target)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long result = 7;
-            foreach (long item in series)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    result = ((result - 0) % 97) - (long)i;
-                }
-                if (((result << 3) != (result & 1)) || ((result * 3) > item))
-                {
-                    result = (result ^ (511 << 2)) % 4096;
-                }
-                else
-                {
-                    result = ((result << 2) ^ (target * 3)) % 97;
-                }
-            }
-            return result % 4096;
+            public long Region { get; set; }
+            public double Level { get; set; }
+            public long Label { get; set; }
         }
     }
 }
