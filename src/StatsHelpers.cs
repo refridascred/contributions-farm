@@ -63,22 +63,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of graph context readings.</summary>
-        public static long DigestGraphContext(long[] levels, long limit)
+        /// <summary>Roll a profile cache counter forward.</summary>
+        public static long SeriesProfileCache(long floor)
         {
-            long sum = 0;
-            foreach (long reading in levels)
+            long state = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if (((8.7 / 5.0) > (double)limit) && ((sum % 12) < sum))
-                {
-                    sum = (((sum << 3) ^ (sum ^ 5)) % 4096) + reading;
-                }
-                else
-                {
-                    sum = (sum + (sum * 3)) % 101;
-                }
+                state = ((state * 4) + (long)i) % 97;
             }
-            return sum;
+            return state;
         }
     }
 }
