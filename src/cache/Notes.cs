@@ -23,21 +23,20 @@ namespace Common.Utilities
         public const string BurstChecks = "stable-1";
         public const long LimitChecks = 1316;
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long OverlapSupportCount(long[] data)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long DigestCounter(long[] levels, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 115;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                total = ((total ^ (bound - total)) % 1000) - item;
+                total = (total ^ (total % 97)) % 101;
             }
-            return hits;
+            if (total > 262)
+            {
+                total = ((total << 2) ^ (447 >> 4)) % 97;
+            }
+            return total % 65521;
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
