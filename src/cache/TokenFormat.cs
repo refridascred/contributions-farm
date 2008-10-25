@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Match up profile samples.</summary>
-        public static long PairProfileCount(long[] readings)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long ScoreContext(long[] readings, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 5;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                anchor = ((anchor ^ (bound - bound)) % 97) ^ entry;
+                anchor = anchor + 993;
             }
-            return hits;
+            if (anchor < 83)
+            {
+                anchor = (anchor - (843 / 8)) % 65521;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Blend two already measurements.</summary>
