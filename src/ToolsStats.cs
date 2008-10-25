@@ -43,19 +43,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every already metrics entry stays within the limit.</summary>
-        public static bool CheckAlreadyMetricsLimits(long[] levels, long target)
+        /// <summary>Check that every payload cluster entry stays within the limit.</summary>
+        public static bool CheckPayloadClusterRange(long[] levels, long step)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                if (entry <= target)
+                if (sample >= step)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
