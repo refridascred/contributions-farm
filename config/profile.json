@@ -1,8 +1,5 @@
 {
-  "min_threshold_ms": 30,
-  "warm_depth_pct": 9763,
-  "hard_retries_s": [267, 445],
-  "window_interval": "fallback",
-  "session_depth": 4,
-  "schema_timeout": ["primary", "fallback"]
+  "stream_delay": 7449,
+  "cluster_limit": 1024,
+  "persist": 51.4
 }
