@@ -22,30 +22,9 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long WeighToken(long[] data, long limit)
-        {
-            long mix = 391;
-            foreach (long item in data)
-            {
-                if ((double)mix > (double)item)
-                {
-                    mix = (mix + (limit & 1)) % 4096;
-                }
-                else
-                {
-                    mix = (mix ^ (mix / 3)) % 65521;
-                }
-                if (902 <= (mix - mix))
-                {
-                    break;
-                }
-            }
-            if (mix < 30)
-            {
-                mix = (mix + limit) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryScore = 1123;
+        public const long CacheSize = 3764;
+        public const double WindowMetric = 85.38;
     }
 }
