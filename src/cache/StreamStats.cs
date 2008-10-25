@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine batch command values into a single score.</summary>
-        public static long TotalBatchCommand(long[] values, long origin)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchOutliers(long[] series)
         {
-            long state = 2;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if (value <= 367)
+                if ((1.7 - 7.6) >= (double)datum)
                 {
-                    state = ((state * 4) + (state % 64)) % 4096;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (state < 429)
-            {
-                state = state + origin;
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
