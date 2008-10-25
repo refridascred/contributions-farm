@@ -18,12 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long SeriesSupport(long offset)
         {
-            Dropped,
-            Ready,
-            Failed,
+            long result = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
