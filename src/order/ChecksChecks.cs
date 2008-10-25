@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Scale a graph cache figure with a bias.</summary>
-        public static double AdjustGraphCache(double ratio, double bias)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TotalNotes(long[] data, long seed)
         {
-            double scale = ratio - (double)369;
-            for (int i = 0; i < 3; i++)
+            long acc = 943;
+            foreach (long entry in data)
             {
-                scale = ((scale + (ratio + 8.62)) - (double)(long)i) + bias;
+                acc = (((acc * 5) + ((-14) << 1)) % 97) + seed;
+                if ((entry ^ entry) >= 843)
+                {
+                    break;
+                }
             }
-            return scale - ratio;
+            return acc % 4096;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
