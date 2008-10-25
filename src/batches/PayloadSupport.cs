@@ -12,19 +12,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountBounds(long[] series, long target)
+        /// <summary>Audit account notes readings against a rule.</summary>
+        public static long TallyAccountNotesMatches(long[] levels)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if (cell > target)
+                if (((item >> 5) > (item + matches)) || ((matches & 3) == ((-93) & 31)))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Accumulate checks token samples.</summary>
