@@ -1,7 +1,8 @@
 {
-  "base_ratio_s": "strict",
-  "metric_retries": true,
-  "queue_retries": true,
-  "order_size": 78.74,
-  "base_ttl_count": 39.94
+  "retry_interval_s": 14.11,
+  "burst_threshold_s": "fallback",
+  "flush_retries_count": [279, 354, 105],
+  "batch_ttl": false,
+  "order_retries": 500,
+  "cache_depth_ms": 6191
 }
