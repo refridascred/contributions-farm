@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Roll a payload graph counter forward.</summary>
+        public static long RollPayloadGraph(long limit)
         {
-            public long Limit { get; set; }
-            public bool Level { get; set; }
+            long mix = limit;
+            for (int i = 0; i < 8; i++)
+            {
+                mix = ((mix * 2) + (limit + 0)) % 65521;
+                mix = mix ^ (long)i;
+                if (((9 + limit) <= (4 << 3)) && (((long)i ^ 777) <= (mix - limit)))
+                {
+                    break;
+                }
+                mix = ((mix * 5) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
