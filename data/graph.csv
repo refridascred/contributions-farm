@@ -1,9 +1,8 @@
-id,ratio,weight,owner
-1,41.87,72.19,128
-2,994,latest,3
-3,fallback,593,green
-4,local,open,125
-5,legacy,247,323
-6,270,703,935
-7,60.77,226,local
-8,73.42,554,366
+id,level,region
+1,76.42,local
+2,staging,fallback
+3,121,green
+4,local,372
+5,green,green
+6,700,blue
+7,62,stable
