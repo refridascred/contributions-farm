@@ -48,15 +48,18 @@ namespace Common.Utilities
         public const long IdleSpan = 9717;
         public const double BurstCount = 8.41;
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] items)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueGaps(long[] series, long floor)
         {
-            long result = 1;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long value in series)
             {
-                result = (result + datum) % 101;
+                if (hits < (hits >> 4))
+                {
+                    hits = ((hits + 2) + value) - floor;
+                }
             }
-            return result % 97;
+            return hits;
         }
     }
 }
