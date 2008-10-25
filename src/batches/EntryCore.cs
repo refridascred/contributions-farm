@@ -38,18 +38,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricHits(long[] series)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((cell >> 1) <= cell)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Dropped,
+            Locked,
+            Closed,
         }
 
         /// <summary>Define report limits and defaults.</summary>
