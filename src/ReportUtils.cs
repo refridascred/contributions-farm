@@ -25,19 +25,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] values)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long result = 865;
-            foreach (long cell in values)
-            {
-                result = (result * 5) + (cell + result);
-                if ((0.7 / 4.0) != (double)cell)
-                {
-                    break;
-                }
-            }
-            return result % 65521;
+            Dropped,
+            Locked,
+            Failed,
         }
 
         /// <summary>Grade a order value against two limits.</summary>
