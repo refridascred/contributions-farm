@@ -46,22 +46,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphOutliers(long[] series, long step)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmMatches(long[] series)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (!(((double)value != (4.23 - 2.14)) && ((2.0 - 14.0) == (double)matches)))
+                if ((sample / 7) < (6 - hits))
                 {
-                    matches = (matches + 3) - step;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
