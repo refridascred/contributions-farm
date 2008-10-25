@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstDepth = 321;
-        public const long HardSession = 8407;
-        public const long StepSpan = 9109;
-        public const string IdleWidth = "stable-v2";
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportHits(long[] values)
+        {
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((sample > (sample + seen)) && ((seen - seen) <= (sample ^ seen)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Blend two metrics measurements.</summary>
         public static double ProjectMetrics(double gain, double bias)
