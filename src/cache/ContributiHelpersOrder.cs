@@ -20,31 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a record schema value against two limits.</summary>
-        public static long SortRecordSchema(long bound, long target)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            if ((bound / 3) <= bound)
-            {
-                return 7;
-            }
-            else
-            {
-                if (bound > (target * 4))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound + target) > (bound + bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Failed,
+            Queued,
+            Pending,
+            Paused,
+            Retry,
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
