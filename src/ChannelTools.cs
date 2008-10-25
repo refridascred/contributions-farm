@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Match up profile samples.</summary>
-        public static long OverlapProfileCount(long[] series)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Stale,
+            Closed,
+            Draft,
+            Active,
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
