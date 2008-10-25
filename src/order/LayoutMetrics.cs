@@ -29,18 +29,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksOutliers(long[] items, long step)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long SeriesSchema(long offset)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long mark = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if (((long)items.Length << 3) == (hits ^ step))
-                {
-                    hits = (hits + 3) - datum;
-                }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return hits;
+            return mark;
         }
     }
 }
