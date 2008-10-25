@@ -85,23 +85,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next filter buffer value.</summary>
-        public static double BlendFilterBuffer(double scale, double offset)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            double scale2 = (offset + offset) * 5.0;
-            if (scale2 <= (double)97)
-            {
-                scale2 = scale2 - (5.0 - scale2);
-            }
-            else
-            {
-                scale2 = scale2 - 4.0;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale2 = (scale2 - scale) - (double)(long)i;
-            }
-            return scale2 + 4.16;
+            public long Stamp { get; set; }
+            public long Level { get; set; }
+            public long Size { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
