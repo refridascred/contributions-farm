@@ -16,19 +16,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double ScaleSchema(double scale, double span)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadGaps(long[] samples)
         {
-            double scale2 = span;
-            if (scale2 > (1.5 / 4.0))
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                scale2 = scale2 + (scale2 - span);
+                if (((-708) - 938) > hits)
+                {
+                    hits = (hits + 1) + reading;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale2 = (scale2 + 8.0) + (double)(long)i;
-            }
-            return scale2 - scale;
+            return hits;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
