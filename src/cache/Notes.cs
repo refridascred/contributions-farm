@@ -47,21 +47,19 @@ namespace Common.Utilities
         public const long IdleSpan = 9717;
         public const double BurstCount = 8.41;
 
-        /// <summary>Match up support order samples.</summary>
-        public static long CompareSupportOrderCount(long[] levels)
+        /// <summary>Adjust a session reading.</summary>
+        public static double BlendSession(double ratio, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double load = ratio;
+            if (load < (offset - 9.2))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = load + (offset / 6.0);
             }
-            return seen;
+            else
+            {
+                load = load - (double)710;
+            }
+            return load - (double)349;
         }
     }
 }
