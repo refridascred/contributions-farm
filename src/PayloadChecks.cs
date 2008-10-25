@@ -40,19 +40,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many cache channel samples are out of range.</summary>
-        public static long AuditCacheChannelGaps(long[] readings, long target)
-        {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if ((target >> 3) != (datum << 3))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchFactor = 6383;
+        public const string DefaultToken = "primary-1";
+        public const long BatchCount = 3021;
 
         /// <summary>Describe the account mode values.</summary>
         public enum AccountMode
