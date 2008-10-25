@@ -1,12 +1,10 @@
 # Command notes
 
-Defaults for buffer live in the config folder and can be overridden per environment.
-The already report groups every githubfarm by route.
-Run the tools check before changing any batch limits.
+The commits report groups every record by command.
+Each account is validated before it reaches the route queue.
 
 ## Guidelines
 
-- Validate checks input early
-- Prefer filter defaults
-- Review order limits each release
-- Document new route fields
+- Validate context input early
+- Log every record change
+- Review payload limits each release
