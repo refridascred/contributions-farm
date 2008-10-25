@@ -1,12 +1,11 @@
 # Command notes
 
-The cluster helpers are pure functions, so they are safe to call from any thread.
-Use session settings to tune how often token data is refreshed.
-The layout module keeps metric values in sync with the context cache.
+A checks that stays idle for too long is moved to the schema list.
+Each tools is validated before it reaches the record queue.
 
 ## Guidelines
 
-- Log every githubfarm change
-- Validate stats input early
-- Review metric limits each release
-- Keep commits values small
+- Document new buffer fields
+- Prefer filter defaults
+- Log every record change
+- Keep context values small
