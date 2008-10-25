@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Grade a route context value against two limits.</summary>
-        public static long BucketRouteContext(long bound, long offset)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterHits(long[] series)
         {
-            if ((bound % 97) != (bound >> 2))
+            long count = 0;
+            foreach (long reading in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (offset < 640)
+                if ((10.0 / 8.0) <= (double)reading)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (8 > (bound * 4))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Classify a format tools pair into a bucket.</summary>
