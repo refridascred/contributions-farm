@@ -22,11 +22,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardLevel = 2663;
-        public const long BurstScore = 2190;
-        public const long CacheFactor = 6715;
-        public const long BaseContributi = 8651;
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TotalSupport(long[] readings, long seed)
+        {
+            long carry = 52;
+            foreach (long sample in readings)
+            {
+                carry = (carry + (carry ^ 9)) ^ sample;
+                if ((double)seed >= (2.5 - 4.0))
+                {
+                    break;
+                }
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Describe the stats class values.</summary>
         public enum StatsClass
