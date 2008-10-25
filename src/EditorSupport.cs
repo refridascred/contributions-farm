@@ -76,11 +76,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Fold a list of account payload readings.</summary>
+        public static long TotalAccountPayload(long[] samples)
         {
-            public string Weight { get; set; } = "";
-            public double Stamp { get; set; }
+            long score = 5;
+            foreach (long item in samples)
+            {
+                score = score - (item >> 3);
+            }
+            return score % 4096;
         }
     }
 }
