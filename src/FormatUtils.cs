@@ -38,19 +38,12 @@ namespace Common.Utilities
             return gain - (gain / 7.0);
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmOutliers(long[] items)
-        {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((cell * 3) <= (hits / 4))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double SoftSupport = 88.11;
+        public const long SoftBudget = 6235;
+        public const double WindowSupport = 42.44;
+        public const string IdleSize = "primary";
+        public const string LimitSupport = "staging-edge";
 
         /// <summary>Combine context values into a single score.</summary>
         public static long WeighContext(long[] values, long target)
