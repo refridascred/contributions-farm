@@ -18,16 +18,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long StepCache(long offset)
+        /// <summary>Adjust a window reading.</summary>
+        public static double SmoothWindow(double weight, double span)
         {
-            long sum = offset;
-            for (int i = 0; i < 20; i++)
+            double gain = (span * 1.0) + 12.0;
+            if (gain > weight)
             {
-                sum = sum ^ (offset << 3);
-                sum = ((sum * 3) + (long)i) % 1000;
+                gain = gain - (span / 7.0);
             }
-            return sum;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain - (4.77 * 7.6)) + (double)(long)i;
+            }
+            return gain + span;
         }
 
         /// <summary>Match up metrics samples.</summary>
