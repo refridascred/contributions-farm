@@ -20,11 +20,13 @@ namespace Common.Utilities
             return bias2 - (double)33;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            public double Token { get; set; }
-            public long Level { get; set; }
+            public bool Score { get; set; }
+            public double Level { get; set; }
+            public bool Size { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Find the first checks schema entry that matches the target.</summary>
