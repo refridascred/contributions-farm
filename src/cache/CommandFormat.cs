@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            public long Count { get; set; }
-            public long Token { get; set; }
-            public string Flag { get; set; } = "";
+            Stale,
+            Dropped,
+            Active,
+            Failed,
+            Done,
         }
 
         /// <summary>Hold a checks info.</summary>
