@@ -1,7 +1,5 @@
 {
-  "stats_timeout": 83,
-  "entry_capacity": false,
-  "metrics_window": false,
-  "batches_window": "local",
-  "burst_timeout_s": 6
+  "buffer_limit": ["cached", "local", "blue", "primary"],
+  "soft_ttl_ms": 500,
+  "flush_ratio": "edge"
 }
