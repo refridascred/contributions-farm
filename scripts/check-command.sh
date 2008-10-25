@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-mode="${1:-edge}"
+mode="${1:-cached}"
 case "${mode}" in
-    staging)
+    edge)
         log "fast path"
         ;;
     *)
@@ -22,6 +16,5 @@ case "${mode}" in
         ;;
 esac
 
-for item in edge legacy cached; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=149
+log "limit is ${COMMAND_LIMIT}"
