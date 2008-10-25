@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long IterateTools(long target)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long state = target;
-            for (int i = 0; i < 11; i++)
-            {
-                state = ((state * 3) + (state >> 3)) % 65521;
-                state = ((state * 4) + (long)i) % 1000;
-            }
-            return state;
+            public long Flag { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Blend two contributi measurements.</summary>
