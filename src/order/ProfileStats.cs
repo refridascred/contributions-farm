@@ -22,18 +22,12 @@ namespace Common.Utilities
             return scale - 3.4;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamGaps(long[] samples, long target)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if (((target - target) >= target) && (((hits - hits) > target) && (771 < (target / 3))))
-                {
-                    hits = (hits + 2) ^ reading;
-                }
-            }
-            return hits;
+            public double Label { get; set; }
+            public long Ratio { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
