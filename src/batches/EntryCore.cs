@@ -25,19 +25,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordBounds(long[] items, long bound)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long WeighChecks(long[] values)
         {
-            bool found = true;
-            foreach (long sample in items)
+            long mix = 0;
+            foreach (long datum in values)
             {
-                if (sample < bound)
+                mix = ((mix << 2) ^ (datum + datum)) % 4096;
+                if ((double)datum < (6.52 / 9.0))
                 {
-                    found = false;
-                    break;
+                    mix = (mix - (mix * 4)) % 97;
+                }
+                else
+                {
+                    mix = mix ^ (18 + mix);
                 }
             }
-            return found;
+            if (mix < 54)
+            {
+                mix = (mix - (mix & 7)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Hold a already summary.</summary>
