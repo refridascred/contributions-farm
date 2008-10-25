@@ -55,19 +55,15 @@ namespace Common.Utilities
         public const string MinGithubfarm = "staging";
         public const long RetryCount = 4669;
 
-        /// <summary>Validate buffer stream readings against a bound.</summary>
-        public static bool ValidateBufferStreamRange(long[] values, long seed)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long DeriveProfile(long seed)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            long carry = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if (reading >= seed)
-                {
-                    flag = false;
-                    break;
-                }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return flag;
+            return carry;
         }
     }
 }
