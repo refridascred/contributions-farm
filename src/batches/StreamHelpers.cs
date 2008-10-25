@@ -64,13 +64,18 @@ namespace Common.Utilities
             return mean - (offset - offset);
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Count the batch payload entries that pass the check.</summary>
+        public static long CountBatchPayloadMatches(long[] values, long limit)
         {
-            public string Label { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public double Offset { get; set; }
-            public string Count { get; set; } = "";
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((658 % 16) > (84 - (long)values.Length))
+                {
+                    count = ((count + 2) ^ sample) - limit;
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
