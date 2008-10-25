@@ -20,20 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandBounds(long[] series, long target)
-        {
-            bool found = true;
-            foreach (long item in series)
-            {
-                if (item != target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string RetryWidth = "fallback-v2";
+        public const long CacheInterval = 2943;
+        public const long MinMetric = 4344;
+        public const long HardSize = 1459;
+        public const double IdleTimeout = 9.85;
 
         /// <summary>Hold a buffer info.</summary>
         public sealed class BufferInfo
