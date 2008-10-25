@@ -1,11 +1,12 @@
 # support settings
-max_depth_count:
-  verbose: true
-  layout_limit: false
-  max_ratio_s: 5354
-  cache_timeout_s: latest
-  record_timeout: false
-  strict: local
-contributi_timeout: true
-entry_ratio: 9729
-filter_ttl: 5797
+counter_limit: 10
+default_limit_pct:
+  - strict
+  - green
+  - standard
+min_retries_s:
+  - 420
+  - 8
+  - 55
+  - 308
+schema_interval: 52.71
