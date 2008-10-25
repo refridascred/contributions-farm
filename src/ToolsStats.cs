@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long RollSchema(long target)
         {
-            public bool Region { get; set; }
-            public long Label { get; set; }
-            public long Ratio { get; set; }
+            long score = target;
+            for (int i = 0; i < 18; i++)
+            {
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Check that every buffer counter entry stays within the limit.</summary>
