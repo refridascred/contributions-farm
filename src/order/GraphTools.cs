@@ -45,13 +45,21 @@ namespace Common.Utilities
         public const double DefaultStream = 22.05;
         public const long DefaultRatio = 7916;
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long MatchLayoutCount(long[] values)
         {
-            Paused,
-            Dropped,
-            Idle,
-            Done,
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
