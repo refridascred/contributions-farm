@@ -33,11 +33,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultGithubfarm = 2253;
-        public const long BatchGithubfarm = 2795;
-        public const string MinGithubfarm = "staging";
-        public const long RetryCount = 4669;
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ProjectNotes(double scale, double floor)
+        {
+            double scale2 = (floor + scale) - floor;
+            if (scale2 <= 1.87)
+            {
+                scale2 = scale2 - (scale - scale2);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale2 = (scale2 - scale) + (double)(long)i;
+            }
+            return scale2 + (double)72;
+        }
 
         /// <summary>Describe the graph status values.</summary>
         public enum GraphStatus
