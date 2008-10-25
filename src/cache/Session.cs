@@ -27,21 +27,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long ScoreChecks(long[] readings)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long RollEditor(long offset)
         {
-            long result = 9;
-            foreach (long sample in readings)
+            long carry = offset;
+            for (int i = 0; i < 6; i++)
             {
-                result = result ^ (24 + result);
-                result = result + (sample % 16);
-                result = ((result << 3) ^ (sample * 4)) % 255;
+                carry = carry - ((long)i * 4);
+                carry = (carry + carry) % 65521;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            if (result > 37)
-            {
-                result = result + ((-67) + result);
-            }
-            return result % 65521;
+            return carry;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
