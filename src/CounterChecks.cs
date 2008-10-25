@@ -31,16 +31,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long DeriveRecord(long step)
+        /// <summary>Fold a list of batch entry readings.</summary>
+        public static long TotalBatchEntry(long[] samples, long limit)
         {
-            long mark = step;
-            for (int i = 0; i < 21; i++)
+            long acc = 6;
+            foreach (long cell in samples)
             {
-                mark = ((mark << 3) ^ (mark + (long)i)) % 97;
-                mark = ((mark * 2) + (long)i) % 97;
+                if ((13.0 - 5.9) >= (double)limit)
+                {
+                    acc = (((acc * 2) + (long)samples.Length) % 1000) ^ cell;
+                }
             }
-            return mark;
+            if (acc < 994)
+            {
+                acc = (acc << 3) ^ ((-7) - acc);
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
