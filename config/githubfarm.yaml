@@ -1,39 +1,9 @@
 # githubfarm settings
-flush_delay_s: 1024
-idle_size_ms: 85.08
-record_timeout:
-  retry_depth:
-    retry_threshold_count: blue
-    channel_limit: 500
-    base_ratio_s: 60
-    window_depth: strict
-  verbose: 43.13
-  compress:
-    - 180
-    - 84
-    - 2
-    - 94
-  burst_threshold: green
-  stream_retries: 15
-  max_retries_pct:
-    default_ttl_s: true
-    format_window:
-      - stable
-      - cached
-      - green
-    hard_threshold_count: true
-    burst_size: 2.1
-    cache_window_pct: staging
-min_window_count:
-  support_ratio: 34
-  dry_run: 23.78
-  idle_ttl_pct: 74.7
-  audit: false
-  sync_depth_count:
-    cache_size:
-      - stable
-      - fallback
-      - cached
-    idle_interval_count: true
-    format_size: standard
-  record_ratio: staging
+max_retries:
+  - blue
+  - edge
+burst_retries:
+  - 378
+  - 157
+dry_run: edge
+buffer_ttl: 3
