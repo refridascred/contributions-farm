@@ -1,10 +1,9 @@
 # githubfarm settings
-contributi_ttl: false
-audit: 6249
-burst_ratio_count:
-  readonly: 30
-  cache_interval_s: true
-  flush_ttl_ms: true
-  retry_threshold_count: false
-dry_run: 30
-verbose: false
+dry_run: staging
+retry_size: 4787
+filter_size: local
+warm_timeout_s:
+  - 88
+  - 150
+  - 286
+max_limit_ms: standard
