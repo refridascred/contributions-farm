@@ -19,22 +19,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordOutliers(long[] values, long origin)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaMatches(long[] samples, long seed)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if (((6.2 + 6.3) < (double)item) && (((tally + origin) < tally) && ((1.17 - 4.0) == (double)item)))
+                if (((double)hits < 7.0) || (7.0 >= (double)datum))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = (hits + 1) - seed;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
