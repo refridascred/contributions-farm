@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long IterateTools(long origin)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long SeekQueueIndex(long[] readings, long offset)
         {
-            long anchor = origin;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = ((anchor << 3) ^ (276 + anchor)) % 1000;
-                anchor = (anchor << 3) ^ (11 + 962);
-                if (origin <= (0 + origin))
+                if (readings[i] < offset)
                 {
-                    break;
+                    return (long)i;
                 }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (origin - anchor)) % 65521;
-                }
-                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Describe the batch state values.</summary>
