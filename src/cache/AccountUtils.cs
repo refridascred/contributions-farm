@@ -27,13 +27,21 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Count checks route pairs that satisfy a relation.</summary>
+        public static long CompareChecksRouteCount(long[] samples)
         {
-            Paused,
-            Failed,
-            Pending,
-            Ready,
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a commits header.</summary>
