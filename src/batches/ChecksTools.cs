@@ -15,20 +15,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next tools support value from a seed.</summary>
-        public static long DeriveToolsSupport(long limit)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long state = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                state = (state ^ (46 * 4)) % 4096;
-                if ((limit / 3) < limit)
-                {
-                    state = state - (state / 6);
-                }
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
+            public string Owner { get; set; } = "";
+            public bool Offset { get; set; }
+            public double Rank { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
