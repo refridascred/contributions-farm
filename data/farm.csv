@@ -1,9 +1,7 @@
-id,weight,token
-1,934,226
-2,676,eu-west
-3,strict,98.27
-4,standard,9.76
-5,950,11.32
-6,233,52
-7,520,947
-8,516,open
+id,score,owner
+1,17.81,73.19
+2,988,strict
+3,88.18,10.88
+4,61.25,71.5
+5,standard,local
+6,453,93.73
