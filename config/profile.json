@@ -1,11 +1,7 @@
 {
-  "notes_retries": 33.54,
-  "audit": {
-    "soft_capacity": "stable",
-    "cache_limit_ms": 30,
-    "payload_delay": 100,
-    "sync_timeout": 500,
-    "readonly": "blue"
-  },
-  "idle_interval_count": 9.14
+  "sync_retries_count": "strict",
+  "default_window": 51,
+  "cache_capacity_pct": "latest",
+  "hard_threshold": "primary",
+  "notes_capacity": 100
 }
