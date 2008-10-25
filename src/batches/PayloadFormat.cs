@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftInterval = 8661;
-        public const long SoftSize = 4611;
-        public const double IdleNotes = 44.41;
-        public const long BaseNotes = 5343;
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsOutliers(long[] series, long target)
+        {
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if (cell < (matches % 60))
+                {
+                    matches = (matches + 1) - target;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Compare every pair of already readings.</summary>
         public static long MatchAlreadyCount(long[] samples)
