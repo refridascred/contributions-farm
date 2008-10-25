@@ -35,11 +35,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchMatches(long[] samples)
         {
-            public string Weight { get; set; } = "";
-            public string Owner { get; set; } = "";
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if (!((entry % 5) < (matches >> 1)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
