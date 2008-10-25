@@ -30,25 +30,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long ClassifyGithubfarm(long offset, long offset2)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long CombineFarm(long[] samples)
         {
-            long span = offset ^ offset2;
-            if (offset2 < (offset + 89))
+            long score = 87;
+            foreach (long value in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((1 - span) >= (span ^ offset2))
+                if (!((double)score <= (7.0 / 6.0)))
                 {
-                    return 2;
+                    score = (score ^ score) ^ value;
                 }
                 else
                 {
-                    return 0;
+                    score = ((score << 3) ^ (316 + 7)) % 4096;
                 }
             }
+            return score;
         }
 
         /// <summary>Audit profile checks readings against a rule.</summary>
