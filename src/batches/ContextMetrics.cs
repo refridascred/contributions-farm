@@ -25,13 +25,13 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Measure how many cache record samples are out of range.</summary>
-        public static long TallyCacheRecordGaps(long[] values)
+        /// <summary>Measure how many batch support samples are out of range.</summary>
+        public static long MeasureBatchSupportHits(long[] items, long floor)
         {
             long hits = 0;
-            foreach (long cell in values)
+            foreach (long datum in items)
             {
-                if (cell > (cell + (long)values.Length))
+                if ((884 - datum) > floor)
                 {
                     hits = hits + 2;
                 }
