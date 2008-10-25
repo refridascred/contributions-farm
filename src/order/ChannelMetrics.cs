@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a session counter forward.</summary>
-        public static long SeriesSession(long floor)
-        {
-            long sum = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                sum = (sum ^ (sum + sum)) % 65521;
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double RetryRatio = 19.81;
+        public const string DefaultRoute = "alpha";
+        public const long MinRoute = 7938;
+        public const long HardScore = 8849;
+        public const long RetrySize = 3680;
 
         /// <summary>Combine route values into a single score.</summary>
         public static long WeighRoute(long[] readings)
