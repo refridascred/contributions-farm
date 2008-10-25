@@ -21,13 +21,9 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
-        {
-            Synced,
-            Retry,
-            Failed,
-            Ready,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double IdleFarm = 51.52;
+        public const long StepFarm = 2322;
+        public const double BurstFarm = 19.09;
     }
 }
