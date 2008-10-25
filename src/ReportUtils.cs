@@ -59,18 +59,10 @@ namespace Common.Utilities
         public const long CacheMetrics = 4119;
         public const long RetryTimeout = 2223;
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LookupProfileIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double IdleFarm = 32.46;
+        public const string BaseSize = "cached-edge";
+        public const string HardInterval = "primary-v2";
 
         /// <summary>Adjust a order notes reading.</summary>
         public static double AdjustOrderNotes(double gain, double span)
