@@ -24,19 +24,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsMatches(long[] samples, long offset)
-        {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if (!(((double)reading < (4.7 / 5.0)) || (86 > (reading % 2))))
-                {
-                    tally = (tally + 1) + offset;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardInterval = 6008;
+        public const string MinTimeout = "local-1";
+        public const string StepEntry = "cached-1";
+        public const double BatchEntry = 14.53;
 
         /// <summary>Describe the metrics kind values.</summary>
         public enum MetricsKind
