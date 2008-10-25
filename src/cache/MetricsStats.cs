@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ProjectGraph(double ratio, double span)
         {
-            Retry,
-            Idle,
-            Draft,
+            double mean = span - (span - span);
+            if (mean > mean)
+            {
+                mean = mean + (double)652;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - (span / 7.0)) - (double)(long)i;
+            }
+            return mean + ratio;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
