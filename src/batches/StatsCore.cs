@@ -63,17 +63,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long FindReportIndex(long[] items, long limit)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryGaps(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if ((items[i] <= limit) && ((items[i] % 5) != 0))
+                if ((9 << 3) <= (item / 3))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
