@@ -1,13 +1,20 @@
 # githubfarm settings
-window_timeout: open
-max_depth_pct:
-  - stable
-  - standard
-  - latest
-notes_ratio: 43.63
-verbose: 1664
-audit: latest
-farm_ttl:
-  - 207
-  - 261
-  - 410
+checks_ttl: staging
+idle_delay_pct:
+  warm_threshold_count: green
+  verbose: primary
+  default_delay_pct: true
+  flush_size_s:
+    - edge
+    - legacy
+    - strict
+    - stable
+  sync_capacity:
+    batch_ratio: 4098
+    idle_capacity:
+      - eu-west
+      - edge
+    batches_size:
+      - 361
+      - 249
+soft_ratio: 2307
