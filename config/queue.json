@@ -1,19 +1,7 @@
 {
-  "entry_delay": 9499,
-  "metric_ratio": 60,
-  "batch_depth_pct": {
-    "sync_size_s": ["local", "green"],
-    "cache_capacity_s": 25,
-    "base_timeout_s": false,
-    "graph_retries": 7408,
-    "idle_interval": {
-      "sync_ratio": "fallback",
-      "warm_timeout_pct": "green",
-      "audit": 91.49,
-      "commits_delay": 4.73
-    }
-  },
-  "metric_depth": "strict",
-  "stats_size": true,
-  "sync_interval_count": 2668
+  "contributi_limit": ["green", "standard", "edge", "green"],
+  "audit": "open",
+  "verbose": "strict",
+  "max_ttl_pct": "eu-west",
+  "default_delay_count": "strict"
 }
