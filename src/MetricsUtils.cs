@@ -25,13 +25,13 @@ namespace Common.Utilities
         public const long HardSize = 1459;
         public const double IdleTimeout = 9.85;
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            public double Limit { get; set; }
-            public bool Rank { get; set; }
-            public long Level { get; set; }
-            public long Label { get; set; }
+            Stale,
+            Paused,
+            Done,
+            Retry,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
