@@ -54,21 +54,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Compare every pair of cluster githubfarm readings.</summary>
-        public static long PairClusterGithubfarmCount(long[] series)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Retry,
+            Active,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Accumulate buffer route samples.</summary>
