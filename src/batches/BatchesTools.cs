@@ -15,15 +15,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double AdjustFarm(double ratio, double offset)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamLimits(long[] values, long origin)
         {
-            double rate = (0.42 + ratio) - (double)25;
-            for (int i = 0; i < 8; i++)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                rate = ((rate - ratio) + (double)(long)i) + offset;
+                if (sample > origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return rate - (1.2 * 2.5);
+            return valid;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
