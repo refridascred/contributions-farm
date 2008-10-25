@@ -1,10 +1,15 @@
 # Command notes
 
-Keep batch and route names short and lowercase.
-Defaults for batch live in the config folder and can be overridden per environment.
+Defaults for payload live in the config folder and can be overridden per environment.
+The cluster helpers are pure functions, so they are safe to call from any thread.
+
+A editor that stays idle for too long is moved to the filter list.
+Keep notes and commits names short and lowercase.
+Run the githubfarm check before changing any record limits.
 
 ## Guidelines
 
-- Review support limits each release
-- Log every token change
-- Document new stats fields
+- Prefer record defaults
+- Validate tools input early
+- Log every route change
+- Document new contributi fields
