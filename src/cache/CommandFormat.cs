@@ -41,13 +41,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmLimits(long[] values, long step)
         {
-            public bool Owner { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Limit { get; set; }
-            public bool Size { get; set; }
+            bool valid = true;
+            foreach (long value in values)
+            {
+                if (value < step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
