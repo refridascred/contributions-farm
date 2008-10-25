@@ -46,18 +46,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit account report readings against a rule.</summary>
-        public static long TallyAccountReportOutliers(long[] values, long target)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long BucketRoute(long floor, long bound)
         {
-            long count = 0;
-            foreach (long item in values)
+            if ((3 + floor) < bound)
             {
-                if ((count + 764) > (count - target))
+                return 6;
+            }
+            else
+            {
+                if ((bound >> 3) < (floor * 3))
                 {
-                    count = (count + 2) - item;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)floor < 3.0)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((double)floor != (10.0 + 4.4)) || ((bound >> 3) > (bound / 8)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Find the first order route entry that matches the target.</summary>
