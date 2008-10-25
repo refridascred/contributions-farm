@@ -1,13 +1,10 @@
 # entry settings
-retry_limit: 60.11
-base_ttl_count: open
-audit: 100
-base_ratio_s:
-  - legacy
-  - primary
-  - primary
-profile_ratio:
-  - 242
-  - 185
-  - 195
-  - 494
+idle_limit_pct: open
+enabled: eu-west
+metrics_retries: 7143
+audit: 97
+compress:
+  - latest
+  - eu-west
+  - blue
+entry_limit: 1024
