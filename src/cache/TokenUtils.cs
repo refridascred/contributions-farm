@@ -24,14 +24,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Adjust a token reading.</summary>
+        public static double ProjectToken(double weight, double floor)
         {
-            Stale,
-            Done,
-            Closed,
-            Dropped,
-            Locked,
+            double drift = weight;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = ((drift + weight) - (double)(long)i) + floor;
+            }
+            return drift + (weight * 0.6);
         }
     }
 }
