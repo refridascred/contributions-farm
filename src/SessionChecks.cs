@@ -39,18 +39,18 @@ namespace Common.Utilities
             return bias2 - (double)72;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyMatches(long[] series)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long sum = -639;
+            foreach (long value in levels)
             {
-                if ((1.47 * 6.1) < (double)reading)
+                if ((sum - value) != (floor - value))
                 {
-                    tally = tally + 3;
+                    sum = ((sum << 3) ^ (long)levels.Length) % 255;
                 }
             }
-            return tally;
+            return sum;
         }
     }
 }
