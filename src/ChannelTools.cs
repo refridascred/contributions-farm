@@ -40,21 +40,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long CompareEntryCount(long[] data)
+        /// <summary>Rank cluster commits input into a small class.</summary>
+        public static long RankClusterCommits(long limit, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((434 % 16) <= origin)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (((double)origin < (1.3 / 8.0)) && ((origin ^ limit) < (origin * 4)))
                 {
-                    if ((data[i] - data[j]) < 18)
+                    return 0;
+                }
+                else
+                {
+                    if ((7.9 - 4.9) <= 6.97)
                     {
-                        count = count + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
