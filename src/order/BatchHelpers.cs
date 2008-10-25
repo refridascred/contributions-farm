@@ -13,21 +13,20 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Match up queue payload samples.</summary>
-        public static long OverlapQueuePayloadCount(long[] series)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long WeighGithubfarm(long[] data, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = 59;
+            foreach (long item in data)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                result = (((result << 2) ^ 247) % 65521) ^ item;
+                result = (result ^ (bound + bound)) % 101;
             }
-            return tally;
+            if (result < 258)
+            {
+                result = (result << 3) ^ (result - result);
+            }
+            return result;
         }
 
         /// <summary>Describe the stream mode values.</summary>
