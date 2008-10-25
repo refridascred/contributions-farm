@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ProjectCache(double ratio, double span)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long PairContributiCount(long[] readings)
         {
-            double ratio2 = (double)(5 + 513);
-            return ((ratio2 + (3.2 * 15.0)) + ratio) + span;
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
