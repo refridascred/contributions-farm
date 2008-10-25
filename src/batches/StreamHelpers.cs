@@ -78,32 +78,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long GradeOrder(long origin, long bound)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextBounds(long[] values, long step)
         {
-            long slot = origin + bound;
-            if ((origin ^ slot) < origin)
+            bool flag = true;
+            foreach (long value in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((1.5 + 5.1) == (double)bound)
+                if (value <= step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((bound + 2) > (origin + slot)) || (origin <= (slot - 3)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
