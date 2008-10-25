@@ -24,19 +24,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderRange(long[] samples, long step)
-        {
-            bool valid = true;
-            foreach (long value in samples)
-            {
-                if (value >= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardTimeout = 800;
+        public const double BatchFormat = 45.38;
+        public const long BurstDepth = 729;
+        public const long HardScore = 7910;
     }
 }
