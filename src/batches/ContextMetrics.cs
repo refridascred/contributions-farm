@@ -33,38 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long SortSupport(long target, long offset)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmBounds(long[] values, long origin)
         {
-            if ((0.1 + 9.7) >= (double)offset)
+            bool found = true;
+            foreach (long datum in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (!(target >= offset))
+                if (datum < origin)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((0.05 + 3.0) <= (double)offset) && ((offset >> 4) <= (952 + 3)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((target < offset) && ((double)offset == (3.0 - 18.0)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
