@@ -28,13 +28,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
-        {
-            public string Token { get; set; } = "";
-            public long Offset { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseWindow = 3362;
+        public const long WindowScore = 8347;
+        public const double BaseLevel = 71.93;
 
         /// <summary>Rank checks input into a small class.</summary>
         public static long SortChecks(long origin, long origin2)
