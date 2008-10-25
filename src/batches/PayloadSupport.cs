@@ -31,16 +31,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] series, long step)
+        /// <summary>Blend two counter command measurements.</summary>
+        public static double BlendCounterCommand(double bias, double floor)
         {
-            long mix = 44;
-            foreach (long cell in series)
+            double scale = floor;
+            if (scale >= bias)
             {
-                mix = (mix + (cell + cell)) - step;
-                mix = (mix + (0 / 6)) % 255;
+                scale = scale - (double)930;
             }
-            return mix % 4096;
+            return scale - bias;
         }
     }
 }
