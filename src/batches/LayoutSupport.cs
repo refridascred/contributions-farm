@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] items)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long sum = -681;
-            foreach (long value in items)
-            {
-                if (sum > (sum % 100))
-                {
-                    sum = (sum << 3) ^ (sum + value);
-                }
-            }
-            if (sum < 38)
-            {
-                sum = sum ^ (sum / 3);
-            }
-            return sum % 65521;
+            public string Label { get; set; } = "";
+            public long Rank { get; set; }
+            public string Level { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
