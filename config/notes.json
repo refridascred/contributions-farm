@@ -1,23 +1,8 @@
 {
-  "retry_ratio_ms": {
-    "sync_delay": 6851,
-    "command_retries": {
-      "base_ttl": 88.26,
-      "dry_run": true,
-      "format_timeout": 30,
-      "payload_depth": 60
-    },
-    "cache_size_s": 88.51,
-    "profile_limit": {
-      "max_interval_s": ["eu-west", "strict", "legacy", "cached"],
-      "cluster_size": 250,
-      "batch_ttl_pct": 90.95,
-      "strict": 250,
-      "dry_run": "local"
-    },
-    "batch_ratio": 4988
-  },
-  "account_ratio": false,
-  "base_interval_s": false,
-  "idle_ratio": 92.15
+  "base_delay": 97.82,
+  "warm_ttl": "latest",
+  "base_ratio": 250,
+  "order_threshold": 46,
+  "min_ttl": "primary",
+  "default_capacity_ms": 3152
 }
