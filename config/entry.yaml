@@ -1,21 +1,6 @@
 # entry settings
-sync_timeout_pct:
-  dry_run: standard
-  sync_depth_ms: false
-  command_capacity: legacy
-  burst_interval_pct:
-    - 444
-    - 20
-    - 418
-  account_delay: 22
-poll_depth_ms:
-  default_retries_ms: true
-  route_ttl: 100
-  idle_delay: 1678
-  compress: 65.28
-  audit: false
-batch_ratio_ms: 55
-min_ttl_ms:
-  - stable
-  - fallback
-strict: false
+min_delay_s: false
+payload_capacity: 7971
+sync_size_s: legacy
+base_limit_count: 1
+token_depth: 55.25
