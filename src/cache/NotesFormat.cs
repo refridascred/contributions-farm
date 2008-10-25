@@ -28,18 +28,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TallyReport(long[] levels)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long mix = 11;
-            foreach (long entry in levels)
-            {
-                if (!((entry / 6) > mix))
-                {
-                    mix = mix ^ entry;
-                }
-            }
-            return mix;
+            Paused,
+            Failed,
+            Active,
+            Draft,
         }
     }
 }
