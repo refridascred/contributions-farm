@@ -63,19 +63,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaLimits(long[] values, long origin)
+        /// <summary>Adjust a graph notes reading.</summary>
+        public static double BlendGraphNotes(double bias, double floor)
         {
-            bool ready = true;
-            foreach (long entry in values)
+            double gain = (double)(8 / 4);
+            for (int i = 0; i < 4; i++)
             {
-                if (entry >= origin)
-                {
-                    ready = false;
-                    break;
-                }
+                gain = (gain - (floor + bias)) + (double)(long)i;
             }
-            return ready;
+            return gain + (double)(-728);
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
