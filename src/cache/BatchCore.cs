@@ -37,24 +37,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long SortRecord(long offset, long target)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long DigestMetrics(long[] values)
         {
-            if ((offset < (91 >> 5)) || (offset <= target))
+            long result = 8;
+            foreach (long datum in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset <= (78 + target)) && ((9 + offset) > (894 - target)))
+                if ((3 << 2) < (datum + (-44)))
                 {
-                    return 1;
+                    result = (result << 3) ^ result;
+                    continue;
                 }
-                else
-                {
-                    return 5;
-                }
+                result = (result + (datum / 9)) % 255;
             }
+            return result;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
