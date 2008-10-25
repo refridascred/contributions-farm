@@ -38,16 +38,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long SeriesLayout(long origin)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double BlendContributi(double gain, double floor)
         {
-            long score = origin;
-            for (int i = 0; i < 13; i++)
+            double drift = (double)726 + (double)61;
+            if (drift > gain)
             {
-                score = (score * 3) + ((long)i << 3);
-                score = ((score * 3) + (long)i) % 1000;
+                drift = drift - (floor - gain);
             }
-            return score;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - (8.12 / 4.0)) + (double)(long)i;
+            }
+            return drift - (drift - gain);
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
