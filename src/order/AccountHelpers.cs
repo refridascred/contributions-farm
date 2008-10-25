@@ -25,18 +25,18 @@ namespace Common.Utilities
             return weight + scale;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmMatches(long[] readings)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterMatches(long[] data, long seed)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if (!((datum < (matches & 7)) && ((datum >> 2) <= (datum << 1))))
+                if ((double)seed < (2.48 - 2.0))
                 {
-                    matches = matches + 1;
+                    count = (count + 2) + cell;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Classify a githubfarm account pair into a bucket.</summary>
