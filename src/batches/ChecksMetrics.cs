@@ -14,18 +14,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchMatches(long[] samples)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterOutliers(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if ((matches + (-9)) <= (sample + matches))
+                if ((1 ^ tally) <= (tally % 2))
                 {
-                    matches = matches + 3;
+                    tally = ((tally + 1) ^ reading) - origin;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Iterate the layout route series from a seed.</summary>
