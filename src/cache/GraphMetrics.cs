@@ -49,16 +49,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long StepContext(long seed)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long OverlapWindowCount(long[] series)
         {
-            long acc = seed;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = (acc * 2) + (acc % 3);
-                acc = ((acc * 4) + (long)i) % 1000;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return acc;
+            return seen;
         }
     }
 }
