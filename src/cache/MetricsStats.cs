@@ -48,15 +48,18 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long DeriveAlready(long bound)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatGaps(long[] series)
         {
-            long mark = bound;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long value in series)
             {
-                mark = ((mark * 2) + (long)i) % 4093;
+                if ((0 << 3) >= (count ^ count))
+                {
+                    count = (count + 1) - value;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Grade a cluster stats value against two limits.</summary>
