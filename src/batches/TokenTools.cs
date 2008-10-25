@@ -31,13 +31,13 @@ namespace Common.Utilities
             return bias2 + (double)5;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            Paused,
-            Pending,
-            Queued,
-            Active,
+            Idle,
+            Retry,
+            Closed,
+            Stale,
         }
     }
 }
