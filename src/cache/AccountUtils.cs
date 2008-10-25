@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long StepFarm(long bound)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long mix = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                mix = (mix ^ (long)i) % 97;
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
+            Idle,
+            Failed,
+            Locked,
+            Queued,
         }
 
         /// <summary>Check that every queue layout entry stays within the limit.</summary>
