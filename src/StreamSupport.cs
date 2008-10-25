@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            Synced,
-            Dropped,
-            Active,
-            Idle,
-            Closed,
+            public string Flag { get; set; } = "";
+            public long Level { get; set; }
+            public string Owner { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the layout kind values.</summary>
