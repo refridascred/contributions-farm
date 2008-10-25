@@ -49,23 +49,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Measure how many tools batch samples are out of range.</summary>
-        public static long TallyToolsBatchGaps(long[] levels, long origin)
-        {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((origin - 352) > (seen & 255))
-                {
-                    seen = (seen + 1) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchMetrics = 2764;
+        public const long IdleSpan = 8747;
+        public const long DefaultSpan = 663;
+        public const long MinScore = 7946;
 
         /// <summary>Audit farm metric readings against a rule.</summary>
         public static long TallyFarmMetricGaps(long[] samples, long limit)
