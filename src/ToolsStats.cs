@@ -61,14 +61,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LocateEditorIndex(long[] series, long origin)
         {
-            New,
-            Failed,
-            Done,
-            Ready,
-            Stale,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
