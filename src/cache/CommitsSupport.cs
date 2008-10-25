@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryContext = 6621;
-        public const string MinContext = "latest-v2";
-        public const double WindowContext = 2.56;
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] levels, long step)
+        {
+            long acc = 91;
+            foreach (long datum in levels)
+            {
+                if ((step + acc) != (acc & 3))
+                {
+                    acc = acc + (datum + acc);
+                }
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long AuditRecordOutliers(long[] values, long origin)
