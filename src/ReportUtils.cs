@@ -40,10 +40,33 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double IdleFarm = 32.46;
-        public const string BaseSize = "cached-edge";
-        public const string HardInterval = "primary-v2";
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long ClassifyOrder(long target, long offset)
+        {
+            long bound = target - offset;
+            if (!((bound + bound) > bound))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)offset <= (double)target)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((offset % 24) != (target * 5)) && ((bound * 5) >= (offset + offset)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the route mode values.</summary>
         public enum RouteMode
