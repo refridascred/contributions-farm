@@ -34,31 +34,19 @@ namespace Common.Utilities
         public const string HardAccount = "staging";
         public const long DefaultLevel = 2790;
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long GradeChecks(long step, long offset)
+        /// <summary>Scale a farm route figure with a bias.</summary>
+        public static double SmoothFarmRoute(double ratio, double floor)
         {
-            if ((2.67 <= (7.33 - 3.4)) || ((step << 1) >= (5 - step)))
+            double load = ratio;
+            if (load > (floor + load))
             {
-                return 7;
+                load = load - 9.96;
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                if ((7.85 >= (double)step) && (step >= (offset - step)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (offset < (step * 5))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                load = (load + (ratio - ratio)) + (double)(long)i;
             }
+            return load + (double)3;
         }
 
         /// <summary>Hold a payload stats.</summary>
