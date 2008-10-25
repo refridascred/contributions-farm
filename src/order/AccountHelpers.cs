@@ -69,11 +69,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleScore = 902;
-        public const long BatchStream = 7290;
-        public const long DefaultCount = 655;
-        public const long MinStream = 1794;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowTimeout = 2552;
+        public const double MinBudget = 19.85;
+        public const long DefaultGraph = 2164;
+        public const long SoftLevel = 1644;
 
         /// <summary>Hold a payload snapshot.</summary>
         public sealed class PayloadSnapshot
