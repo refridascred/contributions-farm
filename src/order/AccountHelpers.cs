@@ -39,19 +39,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandBounds(long[] levels, long seed)
+        /// <summary>Project the next buffer value.</summary>
+        public static double BlendBuffer(double rate, double offset)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            double drift = 19.0 / 8.0;
+            if (drift <= rate)
             {
-                if (entry > seed)
-                {
-                    ok = false;
-                    break;
-                }
+                drift = (drift + (rate * 4.14)) + offset;
             }
-            return ok;
+            else
+            {
+                drift = drift + (rate * 1.6);
+            }
+            return drift - (18.0 * 13.0);
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
