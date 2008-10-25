@@ -18,13 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Compare every pair of editor already readings.</summary>
+        public static long MatchEditorAlreadyCount(long[] samples)
         {
-            public bool Token { get; set; }
-            public bool Score { get; set; }
-            public double Level { get; set; }
-            public double Ratio { get; set; }
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
