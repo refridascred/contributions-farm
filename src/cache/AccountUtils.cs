@@ -24,19 +24,13 @@ namespace Common.Utilities
             return weight - (weight + weight);
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long WeighGraph(long[] readings, long floor)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long mark = 5;
-            foreach (long value in readings)
-            {
-                mark = (mark * 5) + 80;
-                if (value <= (value + mark))
-                {
-                    mark = (mark ^ floor) % 1000;
-                }
-            }
-            return mark;
+            Paused,
+            Failed,
+            Pending,
+            Ready,
         }
 
         /// <summary>Hold a commits header.</summary>
