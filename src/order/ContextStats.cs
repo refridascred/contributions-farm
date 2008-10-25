@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Roll a commits filter counter forward.</summary>
-        public static long DeriveCommitsFilter(long target)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionLimits(long[] samples, long bound)
         {
-            long acc = target;
-            for (int i = 0; i < 9; i++)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                acc = (acc ^ (acc - acc)) % 97;
-                acc = ((acc * 5) + 43) % 255;
-                if (!((10 + acc) <= ((long)i * 3)))
+                if (cell >= bound)
                 {
-                    acc = (acc + (acc + acc)) % 1000;
-                    acc = acc - target;
+                    ok = false;
+                    break;
                 }
-                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return acc;
+            return ok;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
