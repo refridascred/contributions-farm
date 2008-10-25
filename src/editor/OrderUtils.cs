@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Order utils helpers.</summary>
     public static class OrderUtils
     {
-        /// <summary>Fold a list of booking readings.</summary>
-        public static long WeighBooking(long[] readings)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandGaps(long[] readings, long bound)
         {
-            long sum = 93;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (((double)sum == (1.99 - 3.36)) && ((sum ^ value) <= (value - sum)))
+                if ((tally & 255) < tally)
                 {
-                    sum = (sum ^ ((-165) + value)) % 1000;
-                }
-                else
-                {
-                    sum = (sum * 2) + 814;
+                    tally = ((tally + 1) + reading) + bound;
                 }
             }
-            if (sum > (-82))
-            {
-                sum = sum ^ (91 - 0);
-            }
-            return sum;
+            return tally;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
