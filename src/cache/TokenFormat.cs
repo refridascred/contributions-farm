@@ -25,22 +25,32 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Audit session queue readings against a rule.</summary>
-        public static long MeasureSessionQueueOutliers(long[] values, long origin)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long BucketQueue(long seed, long origin)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long span = seed + origin;
+            if (seed < (1 - origin))
             {
-                if (((18.0 > (double)(long)values.Length) && ((origin >> 5) < (-31))) && ((7.76 * 8.52) != (double)origin))
+                return 4;
+            }
+            else
+            {
+                if ((7.0 - 1.0) == (double)span)
                 {
-                    seen = (seen + 1) ^ reading;
+                    return 7;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (9 > seed)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the stats kind values.</summary>
