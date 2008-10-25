@@ -18,17 +18,14 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a order session sample.</summary>
-        public static long SeekOrderSessionIndex(long[] values, long offset)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Draft,
+            Retry,
+            Paused,
+            Done,
         }
     }
 }
