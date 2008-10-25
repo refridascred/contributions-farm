@@ -6,22 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-staging}"
-case "${mode}" in
-    local)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-for item in primary eu-west latest; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
+CHANNEL_LIMIT=154
+log "limit is ${CHANNEL_LIMIT}"
