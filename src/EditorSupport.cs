@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long DeriveSupport(long offset)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderRange(long[] readings, long target)
         {
-            long result = offset;
-            for (int i = 0; i < 10; i++)
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                result = result ^ (9 - offset);
-                result = ((result * 5) + (long)i) % 65521;
+                if (cell > target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return result;
+            return stale;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
