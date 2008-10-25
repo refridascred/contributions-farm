@@ -23,15 +23,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Blend two counter command measurements.</summary>
-        public static double BlendCounterCommand(double bias, double floor)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            double scale = floor;
-            if (scale >= bias)
-            {
-                scale = scale - (double)930;
-            }
-            return scale - bias;
+            Ready,
+            Stale,
+            Active,
         }
     }
 }
