@@ -19,14 +19,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            Active,
-            Synced,
-            New,
-            Stale,
-            Paused,
+            public string Rank { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
