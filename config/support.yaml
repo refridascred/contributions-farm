@@ -1,14 +1,9 @@
 # support settings
-graph_timeout:
-  sync_capacity_pct: 88.45
-  flush_ratio_s: green
-  dry_run: 39.66
-  session_window:
-    - green
-    - stable
-  soft_ratio: 2.37
-  metric_ttl: 52
-max_limit_pct: 44.76
-burst_ttl: 60
-min_delay: 250
-retry_ttl_pct: 44
+audit:
+  - eu-west
+  - primary
+  - standard
+  - eu-west
+dry_run: 59
+soft_delay: 4020
+cache_capacity_count: 64.54
