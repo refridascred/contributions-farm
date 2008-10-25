@@ -20,27 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TallyCluster(long[] readings)
+        /// <summary>Blend two schema channel measurements.</summary>
+        public static double ScaleSchemaChannel(double ratio, double span)
         {
-            long anchor = 63;
-            foreach (long item in readings)
+            double gain = (double)(8 ^ 8);
+            if (gain <= (span * 5.5))
             {
-                bool ready = (anchor / 6) != (item + 36);
-                if (ready)
-                {
-                    anchor = (anchor + (item >> 2)) % 101;
-                }
-                if ((item ^ anchor) == (anchor - anchor))
-                {
-                    anchor = (anchor + (148 << 1)) % 4096;
-                }
+                gain = gain - 3.5;
             }
-            if (anchor < 183)
+            for (int i = 0; i < 8; i++)
             {
-                anchor = ((anchor * 2) + anchor) % 1000;
+                gain = (gain + ratio) + (double)(long)i;
             }
-            return anchor % 4096;
+            return gain + (span + ratio);
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
