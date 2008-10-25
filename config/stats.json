@@ -1,7 +1,5 @@
 {
-  "cluster_window": 5913,
-  "compress": 5823,
-  "metrics_timeout": "green",
-  "context_window": ["blue", "standard", "open"],
-  "account_delay": ["strict", "strict"]
+  "retry_delay_count": 30,
+  "poll_ratio_ms": "local",
+  "cache_depth": "blue"
 }
