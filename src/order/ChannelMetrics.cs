@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterHits(long[] samples, long bound)
-        {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)count < 20.0)
-                {
-                    count = ((count + 3) + cell) + bound;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double CachePayload = 4.07;
+        public const string MaxPayload = "alpha-1";
+        public const long BurstPayload = 6412;
 
         /// <summary>Combine route values into a single score.</summary>
         public static long WeighRoute(long[] readings)
