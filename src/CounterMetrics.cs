@@ -36,18 +36,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit channel buffer readings against a rule.</summary>
-        public static long CountChannelBufferMatches(long[] readings)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((hits << 2) <= (item + item))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Idle,
+            Ready,
+            Retry,
+            Failed,
         }
 
         /// <summary>Hold a window snapshot.</summary>
