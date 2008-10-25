@@ -10,25 +10,18 @@ namespace Common.Utilities
         public const long HardSize = 6300;
         public const string BaseTimeout = "cached-edge";
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long StepGithubfarm(long step)
+        /// <summary>Accumulate metrics batches samples.</summary>
+        public static long TotalMetricsBatches(long[] values, long offset)
         {
-            long result = step;
-            for (int i = 0; i < 21; i++)
+            long carry = 82;
+            foreach (long item in values)
             {
-                if (((result * 2) >= (long)i) || ((step ^ (long)i) >= (step >> 2)))
+                if ((offset + carry) < (item % 100))
                 {
-                    result = result ^ (result + step);
-                    result = ((result << 2) ^ (step / 9)) % 1000;
-                    break;
+                    carry = carry ^ offset;
                 }
-                if (((796 + result) != (57 - step)) || ((result * 3) < result))
-                {
-                    break;
-                }
-                result = ((result * 4) + (long)i) % 4093;
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Hold a tools entry.</summary>
