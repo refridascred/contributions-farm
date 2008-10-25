@@ -13,10 +13,11 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftDepth = 1208;
-        public const long StepSpan = 5526;
-        public const long LimitCounter = 1897;
+        /// <summary>Define context limits and defaults.</summary>
+        public const string SoftSpan = "latest";
+        public const long BurstTimeout = 6879;
+        public const long WindowContext = 4752;
+        public const long BaseContext = 4834;
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool VerifyStreamBounds(long[] items, long limit)
