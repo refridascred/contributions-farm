@@ -35,24 +35,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long CombineContributi(long[] series)
-        {
-            long total = 178;
-            foreach (long reading in series)
-            {
-                if (!((1.5 + 6.4) < (double)reading))
-                {
-                    total = total + (total / 9);
-                    total = ((total * 4) + (total / 4)) % 255;
-                }
-                total = total ^ (reading >> 2);
-            }
-            if (total < (-30))
-            {
-                total = (total + (total / 3)) % 4096;
-            }
-            return total;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepFactor = 2582;
+        public const string MaxTools = "standard-1";
+        public const long BurstLevel = 4019;
+        public const long BaseTools = 2751;
+        public const double WindowRatio = 39.24;
     }
 }
