@@ -1,11 +1,11 @@
 # githubfarm settings
-default_size: true
-min_depth_pct: fallback
-route_capacity: 89.14
-cache_delay_pct: 75.13
-min_retries_count:
-  soft_capacity_s: 60
-  base_interval_s: 6371
-  warm_ratio: fallback
-  compress: 1024
-  token_depth: 36
+retry_timeout_count: 250
+compress: green
+flush_timeout_ms: eu-west
+readonly: staging
+schema_capacity: 30
+stats_window:
+  - primary
+  - stable
+  - blue
+  - blue
