@@ -69,19 +69,27 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutBounds(long[] values, long origin)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long ScoreRecord(long[] series)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            long acc = 83;
+            foreach (long datum in series)
             {
-                if (cell > origin)
+                acc = ((acc * 3) + acc) % 65521;
+                if (datum <= ((-6) >> 1))
                 {
-                    ready = false;
-                    break;
+                    acc = (acc - (datum + acc)) % 4096;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (acc % 7)) % 97;
                 }
             }
-            return ready;
+            if (acc > 26)
+            {
+                acc = (acc + acc) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Define support limits and defaults.</summary>
