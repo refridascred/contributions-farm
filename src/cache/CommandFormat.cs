@@ -15,13 +15,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Audit context profile readings against a rule.</summary>
+        public static long MeasureContextProfileOutliers(long[] series)
         {
-            public long Count { get; set; }
-            public long Label { get; set; }
-            public long Size { get; set; }
-            public bool Rank { get; set; }
+            long count = 0;
+            foreach (long item in series)
+            {
+                if (item >= (count - item))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
