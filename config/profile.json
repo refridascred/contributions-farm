@@ -1,5 +1,6 @@
 {
-  "stream_delay": 7449,
-  "cluster_limit": 1024,
-  "persist": 51.4
+  "base_retries_count": [19, 321, 329, 217],
+  "verbose": 23,
+  "editor_ratio": true,
+  "poll_ratio_count": false
 }
