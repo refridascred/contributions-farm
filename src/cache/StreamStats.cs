@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchOutliers(long[] series)
-        {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if ((1.7 - 7.6) >= (double)datum)
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowLayout = 7900;
+        public const long MinLayout = 9057;
+        public const double CacheCount = 25.73;
+        public const string BurstSpan = "latest-v2";
 
         /// <summary>Describe the cluster mode values.</summary>
         public enum ClusterMode
