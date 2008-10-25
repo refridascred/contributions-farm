@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long origin, long target)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheLimits(long[] series, long origin)
         {
-            if ((6.7 > (double)target) || (origin < (target ^ origin)))
+            bool ok = true;
+            foreach (long cell in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin + 4) > (target >> 2))
+                if (cell >= origin)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((target + origin) == (21 & 127))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((0 - origin) >= (target + target))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Describe the queue kind values.</summary>
