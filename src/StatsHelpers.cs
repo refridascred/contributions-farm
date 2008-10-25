@@ -70,11 +70,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
-        {
-            public string Weight { get; set; } = "";
-            public double Token { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double IdleRatio = 50.11;
+        public const long SoftCommand = 4653;
+        public const long HardCommand = 2910;
     }
 }
