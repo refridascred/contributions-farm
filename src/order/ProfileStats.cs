@@ -63,10 +63,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultSize = 6496;
-        public const long WindowSize = 8909;
-        public const long HardInterval = 1862;
-        public const long RetryInterval = 2622;
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
+        {
+            public double Score { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Rank { get; set; }
+        }
     }
 }
