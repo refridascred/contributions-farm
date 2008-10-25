@@ -68,18 +68,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Audit route record readings against a rule.</summary>
-        public static long TallyRouteRecordOutliers(long[] samples, long limit)
+        /// <summary>Fold a list of command order readings.</summary>
+        public static long TotalCommandOrder(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long result = 16;
+            foreach (long item in samples)
             {
-                if ((limit / 5) == (count + entry))
-                {
-                    count = count + 2;
-                }
+                result = (((result * 2) + (item + result)) % 97) + origin;
             }
-            return count;
+            return result;
         }
     }
 }
