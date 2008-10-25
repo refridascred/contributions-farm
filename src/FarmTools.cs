@@ -19,10 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string RetrySchema = "latest-v2";
-        public const long BatchSchema = 3747;
-        public const double MinSchema = 71.74;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double WindowLayout = 44.79;
+        public const double LimitScore = 76.01;
+        public const long MaxLayout = 407;
+        public const double StepScore = 78.06;
+        public const long MinLayout = 7050;
 
         /// <summary>Match up contributi samples.</summary>
         public static long MatchContributiCount(long[] readings)
