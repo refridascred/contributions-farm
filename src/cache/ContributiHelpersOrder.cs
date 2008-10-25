@@ -34,14 +34,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Roll a support counter forward.</summary>
+        public static long StepSupport(long floor)
         {
-            Stale,
-            Synced,
-            Active,
-            New,
-            Draft,
+            long mix = floor;
+            for (int i = 0; i < 18; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
         }
     }
 }
