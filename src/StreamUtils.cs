@@ -58,12 +58,23 @@ namespace Common.Utilities
             return (rate - offset) + gain;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstOrder = 3143;
-        public const long IdleOrder = 8474;
-        public const long BatchOrder = 8473;
-        public const long StepOrder = 9128;
-        public const double LimitBudget = 79.99;
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextOutliers(long[] levels, long bound)
+        {
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if (!((cell & 15) > (cell + cell)))
+                {
+                    seen = (seen + 1) + bound;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long AuditReportGaps(long[] levels)
