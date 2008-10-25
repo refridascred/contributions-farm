@@ -20,22 +20,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesGaps(long[] readings)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if ((matches << 1) == (matches ^ sample))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Dropped,
+            Closed,
+            Retry,
+            Done,
         }
     }
 }
