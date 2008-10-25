@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Look up the position of a command profile sample.</summary>
-        public static long FindCommandProfileIndex(long[] values, long target)
+        /// <summary>Measure how many graph token samples are out of range.</summary>
+        public static long AuditGraphTokenHits(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if (values[i] >= target)
+                if ((item + matches) <= item)
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
