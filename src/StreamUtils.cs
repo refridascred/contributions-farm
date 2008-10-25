@@ -31,19 +31,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long CombineSchema(long[] series)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long ClassifyBuffer(long seed, long bound)
         {
-            long score = 975;
-            foreach (long value in series)
+            if ((double)bound <= 6.4)
             {
-                score = ((score * 4) + score) % 255;
-                if (((value - 93) > 59) && ((score - (long)series.Length) <= score))
+                return 7;
+            }
+            else
+            {
+                if (((bound * 5) >= (seed >> 3)) && ((seed << 1) <= bound))
                 {
-                    score = (score << 2) ^ (1 + score);
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return score;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
