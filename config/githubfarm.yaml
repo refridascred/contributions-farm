@@ -1,8 +1,8 @@
 # githubfarm settings
-checks_interval: legacy
-min_size_s: local
-profile_ttl: 40
-sync_timeout:
-  sync_limit: 60
-  max_retries: green
-  dry_run: latest
+base_depth: true
+poll_interval_count: strict
+stream_timeout: 5680
+hard_ratio_pct:
+  batch_ratio_count: 6437
+  base_retries: true
+  min_capacity_pct: false
