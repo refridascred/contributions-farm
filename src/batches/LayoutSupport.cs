@@ -61,12 +61,19 @@ namespace Common.Utilities
         public const long IdleReport = 4952;
         public const double RetryWidth = 2.01;
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmBounds(long[] values, long bound)
         {
-            public double Ratio { get; set; }
-            public long Total { get; set; }
-            public long Limit { get; set; }
+            bool valid = true;
+            foreach (long item in values)
+            {
+                if (item <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the queue status values.</summary>
