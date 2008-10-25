@@ -27,18 +27,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TallySchema(long[] samples)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long FoldCache(long[] values, long bound)
         {
-            long mix = 62;
-            foreach (long item in samples)
+            long total = 76;
+            foreach (long datum in values)
             {
-                if ((item / 3) >= mix)
-                {
-                    mix = (mix - item) % 97;
-                }
+                total = (total - (bound % 8)) ^ datum;
             }
-            return mix % 97;
+            if (total < 1)
+            {
+                total = total ^ (bound - bound);
+            }
+            return total % 97;
         }
     }
 }
