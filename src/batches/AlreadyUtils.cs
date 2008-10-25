@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long CombineChannel(long[] data)
         {
-            public bool Flag { get; set; }
-            public long Rank { get; set; }
-            public double Stamp { get; set; }
-            public bool Total { get; set; }
+            long score = 8;
+            foreach (long datum in data)
+            {
+                score = ((score + (score & 127)) % 97) ^ datum;
+            }
+            return score % 65521;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
