@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Compare every pair of channel support readings.</summary>
-        public static long OverlapChannelSupportCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardStats = 3167;
+        public const long MaxStats = 6555;
+        public const long RetryLevel = 9816;
+        public const double StepStats = 90.76;
+        public const string SoftStats = "primary-edge";
 
         /// <summary>Count the payload entries that pass the check.</summary>
         public static long MeasurePayloadMatches(long[] readings)
