@@ -5,28 +5,29 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long RankLayout(long bound, long step)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long RankStats(long target, long step)
         {
-            if ((569 >> 4) >= bound)
+            long lane = target - step;
+            if ((step - target) >= (target + lane))
             {
-                return 8;
+                return 6;
             }
             else
             {
-                if ((double)bound != (1.7 + 13.0))
+                if ((step - target) > (target - step))
                 {
-                    return 5;
+                    return 7;
                 }
                 else
                 {
-                    if ((3.6 * 1.77) >= (double)bound)
+                    if ((step >= (64 + lane)) && ((lane * 5) < ((-713) + step)))
                     {
-                        return 3;
+                        return 0;
                     }
                     else
                     {
-                        return 6;
+                        return 4;
                     }
                 }
             }
