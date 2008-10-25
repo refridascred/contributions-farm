@@ -38,19 +38,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate profile graph readings against a bound.</summary>
-        public static bool VerifyProfileGraphRange(long[] values, long offset)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            bool flag = true;
-            foreach (long entry in values)
-            {
-                if (entry <= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Limit { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Blend two layout measurements.</summary>
