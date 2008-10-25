@@ -15,16 +15,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long SeriesToken(long step)
-        {
-            long mark = step;
-            for (int i = 0; i < 15; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long StepRecord = 8632;
+        public const long SoftRatio = 52;
+        public const long BurstLevel = 2576;
+        public const string WindowRecord = "local-v2";
 
         /// <summary>Validate checks readings against a bound.</summary>
         public static bool VerifyChecksBounds(long[] values, long origin)
