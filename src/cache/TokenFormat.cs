@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsBounds(long[] samples, long step)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamHits(long[] readings, long step)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (datum >= step)
+                if ((cell / 3) <= (step / 2))
                 {
-                    stale = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Hold a payload record.</summary>
