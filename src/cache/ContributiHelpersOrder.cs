@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long SeekBatchIndex(long[] items, long limit)
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] values, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = -544;
+            foreach (long item in values)
             {
-                if ((items[i] >= limit) && ((items[i] % 3) != 0))
+                if ((item - item) <= floor)
                 {
-                    return (long)i;
+                    break;
                 }
+                mark = mark - (8 >> 1);
+                mark = ((mark * 5) + 7) % 1000;
             }
-            return -1;
+            if (mark < 0)
+            {
+                mark = (mark ^ (547 % 24)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Count the order notes entries that pass the check.</summary>
