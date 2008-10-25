@@ -19,18 +19,30 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutOutliers(long[] values)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long FoldGithubfarm(long[] samples, long origin)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long acc = 89;
+            foreach (long cell in samples)
             {
-                if ((tally * 5) >= (3 * 2))
+                if (!((4.89 - 20.0) < (double)origin))
                 {
-                    tally = (tally + 1) ^ value;
+                    acc = (acc + cell) % 97;
+                }
+                else
+                {
+                    acc = acc + cell;
+                }
+                if ((acc < (acc ^ cell)) || ((acc + origin) > (origin ^ origin)))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (acc < (-32))
+            {
+                acc = acc + (493 + acc);
+            }
+            return acc;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
