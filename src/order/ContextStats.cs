@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksHits(long[] data)
         {
-            Ready,
-            Idle,
-            Active,
-            New,
-            Locked,
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if ((count ^ count) > (count % 5))
+                {
+                    count = (count + 2) ^ cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Derive the next context tools value from a seed.</summary>
