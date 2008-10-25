@@ -14,13 +14,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every queue metric entry stays within the limit.</summary>
-        public static bool GuardQueueMetricRange(long[] items, long offset)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsLimits(long[] data, long offset)
         {
             bool flag = true;
-            foreach (long sample in items)
+            foreach (long cell in data)
             {
-                if (sample >= offset)
+                if (cell >= offset)
                 {
                     flag = false;
                     break;
