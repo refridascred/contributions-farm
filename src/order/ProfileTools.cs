@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BurstBatches = 66.78;
-        public const double BaseBatches = 8.31;
-        public const long DefaultDepth = 1728;
-        public const string IdleTimeout = "alpha-v2";
-        public const double MaxSpan = 86.61;
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long SortBuffer(long target, long step)
+        {
+            if (3.0 < (double)step)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((target - target) == (8 % 2)) && ((target & 63) >= (step >> 3)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((step + step) <= target) || ((5.5 - 1.16) != (double)target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the entry state values.</summary>
         public enum EntryState
