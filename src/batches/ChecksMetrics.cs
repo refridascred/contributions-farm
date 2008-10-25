@@ -72,19 +72,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TallyAccount(long[] values)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long total = 977;
-            foreach (long item in values)
-            {
-                total = (total - (total + item)) % 1000;
-            }
-            if (total > 7)
-            {
-                total = total ^ (total % 60);
-            }
-            return total;
+            Dropped,
+            Active,
+            Pending,
+            Draft,
+            Synced,
         }
     }
 }
