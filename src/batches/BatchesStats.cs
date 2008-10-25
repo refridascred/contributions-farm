@@ -42,22 +42,19 @@ namespace Common.Utilities
         public const long SoftLevel = 4006;
         public const long CacheInterval = 4737;
 
-        /// <summary>Combine githubfarm channel values into a single score.</summary>
-        public static long CombineGithubfarmChannel(long[] items)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextRange(long[] levels, long limit)
         {
-            long state = 57;
-            foreach (long datum in items)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                if (datum < state)
+                if (datum < limit)
                 {
-                    state = (state * 5) + state;
-                }
-                else
-                {
-                    state = ((state << 2) ^ (25 & 31)) % 4096;
+                    flag = false;
+                    break;
                 }
             }
-            return state % 65521;
+            return flag;
         }
     }
 }
