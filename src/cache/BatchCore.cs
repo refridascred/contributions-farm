@@ -52,18 +52,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsHits(long[] samples, long floor)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long SeekReportIndex(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((867 % 5) == (matches + matches)) || ((double)(long)samples.Length <= (3.0 + 4.57)))
+                if (items[i] >= step)
                 {
-                    matches = ((matches + 1) + value) + floor;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
