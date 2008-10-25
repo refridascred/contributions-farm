@@ -33,18 +33,26 @@ namespace Common.Utilities
             return gain + span;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TotalCommand(long[] levels)
+        /// <summary>Digest a series of layout profile entries.</summary>
+        public static long ScoreLayoutProfile(long[] data)
         {
-            long total = -407;
-            foreach (long cell in levels)
+            long result = 916;
+            foreach (long cell in data)
             {
-                if (total >= (total % 100))
+                if (result > cell)
                 {
-                    total = ((total ^ (13 % 3)) % 65521) - cell;
+                    result = result - (result * 2);
+                }
+                else
+                {
+                    result = (result * 5) + (cell + result);
                 }
             }
-            return total;
+            if (result < 467)
+            {
+                result = (result - (result % 64)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
