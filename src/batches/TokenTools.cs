@@ -24,19 +24,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TotalSupport(long[] readings, long seed)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsBounds(long[] data, long seed)
         {
-            long carry = 52;
-            foreach (long sample in readings)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                carry = (carry + (carry ^ 9)) ^ sample;
-                if ((double)seed >= (2.5 - 4.0))
+                if (cell <= seed)
                 {
+                    stale = false;
                     break;
                 }
             }
-            return carry % 1000;
+            return stale;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
