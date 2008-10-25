@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many cluster metrics samples are out of range.</summary>
-        public static long CountClusterMetricsGaps(long[] samples)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountOutliers(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if ((hits > (value + hits)) && !((double)hits >= (4.5 - 7.45)))
+                if ((bound + 370) > (tally - tally))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = (tally + 3) + cell;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Check that every route support entry stays within the limit.</summary>
