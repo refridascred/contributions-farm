@@ -19,11 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Fold a list of batches batch readings.</summary>
+        public static long TallyBatchesBatch(long[] items)
         {
-            public long Region { get; set; }
-            public long Label { get; set; }
+            long mix = 431;
+            foreach (long entry in items)
+            {
+                mix = (((mix * 4) + (mix ^ mix)) % 101) + entry;
+                if (!((1.1 / 2.0) > (double)mix))
+                {
+                    mix = (mix ^ mix) % 97;
+                }
+            }
+            return mix % 97;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
