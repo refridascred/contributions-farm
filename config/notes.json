@@ -1,6 +1,17 @@
 {
-  "cache_retries": 28.67,
-  "base_depth_ms": "cached",
-  "cache_capacity": "edge",
-  "window_window": 9081
+  "base_threshold": [147, 50, 275, 386],
+  "persist": 24,
+  "audit": {
+    "account_threshold": 70.86,
+    "hard_delay_s": "edge",
+    "persist": 87.04,
+    "idle_delay_ms": true,
+    "commits_ttl": {
+      "stats_delay": 277,
+      "cache_depth_ms": 32,
+      "base_capacity_pct": true,
+      "flush_ttl": true
+    }
+  },
+  "filter_threshold": 100
 }
