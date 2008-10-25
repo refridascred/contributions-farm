@@ -25,25 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a checks tools pair into a bucket.</summary>
-        public static long ClassifyChecksTools(long seed, long target)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordBounds(long[] items, long bound)
         {
-            long diff = seed + target;
-            if ((double)diff > (double)seed)
+            bool found = true;
+            foreach (long sample in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((5.4 > (double)target) || ((seed / 5) > seed))
+                if (sample < bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Hold a already summary.</summary>
