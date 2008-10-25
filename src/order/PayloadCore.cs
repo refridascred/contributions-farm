@@ -34,13 +34,32 @@ namespace Common.Utilities
             return weight + (double)1;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long GradeCommits(long origin, long bound)
         {
-            public double Offset { get; set; }
-            public long Limit { get; set; }
-            public double Score { get; set; }
-            public string Count { get; set; } = "";
+            long next = origin + bound;
+            if (((double)bound == (double)next) || ((0 >> 5) >= next))
+            {
+                return 3;
+            }
+            else
+            {
+                if (origin < (origin - 370))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((origin << 2) != (bound / 6))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a graph options.</summary>
