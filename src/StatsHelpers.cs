@@ -80,11 +80,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Fold a list of graph context readings.</summary>
+        public static long DigestGraphContext(long[] levels, long limit)
         {
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
+            long sum = 0;
+            foreach (long reading in levels)
+            {
+                if (((8.7 / 5.0) > (double)limit) && ((sum % 12) < sum))
+                {
+                    sum = (((sum << 3) ^ (sum ^ 5)) % 4096) + reading;
+                }
+                else
+                {
+                    sum = (sum + (sum * 3)) % 101;
+                }
+            }
+            return sum;
         }
     }
 }
