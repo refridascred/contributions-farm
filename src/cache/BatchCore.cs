@@ -31,12 +31,21 @@ namespace Common.Utilities
         public const long DefaultSession = 7675;
         public const long IdleTimeout = 9584;
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long OverlapReportCount(long[] readings)
         {
-            Synced,
-            Idle,
-            Stale,
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
