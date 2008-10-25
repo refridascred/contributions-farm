@@ -20,31 +20,22 @@ namespace Common.Utilities
         public const long RetryMetric = 3313;
         public const long HardMetric = 6862;
 
-        /// <summary>Grade a layout farm value against two limits.</summary>
-        public static long ClassifyLayoutFarm(long bound, long floor)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferHits(long[] samples)
         {
-            if ((double)floor != (7.87 - 4.5))
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (floor <= (805 << 1))
+                if (!((entry * 2) >= hits) && (hits <= (1 / 8)))
                 {
-                    return 5;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    if ((91 / 9) >= (bound >> 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
