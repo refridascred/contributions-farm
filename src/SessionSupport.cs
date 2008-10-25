@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long WeighWindow(long[] values, long step)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long DigestGraph(long[] series)
         {
-            long state = 27;
-            foreach (long value in values)
+            long total = 26;
+            foreach (long item in series)
             {
-                state = (((state * 5) + ((-39) & 63)) % 4096) - value;
-                state = state + 862;
-                if ((state * 2) <= (step << 2))
+                if ((2 >> 2) == (total + item))
                 {
-                    state = ((state * 3) + state) % 65521;
+                    total = (total ^ (total ^ total)) % 255;
                 }
             }
-            return state;
+            if (total < 659)
+            {
+                total = (total + (total - total)) % 65521;
+            }
+            return total % 97;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
