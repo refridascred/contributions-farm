@@ -5,18 +5,28 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmGaps(long[] samples, long floor)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long anchor = 10;
+            foreach (long reading in data)
             {
-                if ((datum >> 5) <= (floor % 60))
+                if ((offset - anchor) >= offset)
                 {
-                    count = count + 3;
+                    anchor = anchor + (offset - anchor);
+                    break;
+                }
+                anchor = (anchor ^ (anchor % 16)) % 1000;
+                if ((double)reading == (11.0 / 7.0))
+                {
+                    anchor = ((anchor << 3) ^ (reading & 63)) % 97;
+                }
+                if (((reading / 8) != (31 >> 3)) && (((-5) + reading) == ((long)data.Length / 8)))
+                {
+                    break;
                 }
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Define account limits and defaults.</summary>
