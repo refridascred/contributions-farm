@@ -11,30 +11,13 @@ namespace Common.Utilities
         public const double MinWindow = 29.09;
         public const double BatchCount = 68.93;
 
-        /// <summary>Accumulate queue layout samples.</summary>
-        public static long TallyQueueLayout(long[] readings)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long mix = 301;
-            foreach (long sample in readings)
-            {
-                if ((sample ^ 7) == (mix - sample))
-                {
-                    mix = mix - (mix * 4);
-                }
-                else
-                {
-                    mix = mix ^ ((long)readings.Length * 5);
-                }
-                if (((sample + sample) > mix) || (mix >= sample))
-                {
-                    mix = (mix << 3) ^ sample;
-                }
-            }
-            if (mix < 59)
-            {
-                mix = (mix ^ mix) % 65521;
-            }
-            return mix;
+            Ready,
+            Idle,
+            Failed,
+            Pending,
         }
 
         /// <summary>Define session limits and defaults.</summary>
