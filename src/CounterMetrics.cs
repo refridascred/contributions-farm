@@ -18,19 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextLimits(long[] items, long limit)
+        /// <summary>Match up checks record samples.</summary>
+        public static long CompareChecksRecordCount(long[] levels)
         {
-            bool ok = true;
-            foreach (long item in items)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item != limit)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((levels[i] ^ levels[j]) < 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
