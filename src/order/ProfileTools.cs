@@ -64,13 +64,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Locate a account reading by value.</summary>
+        public static long SeekAccountIndex(long[] samples, long bound)
         {
-            public bool Label { get; set; }
-            public long Count { get; set; }
-            public long Offset { get; set; }
-            public double Limit { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
