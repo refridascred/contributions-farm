@@ -1,7 +1,6 @@
 # support settings
-min_interval: edge
-persist: 100
-batch_timeout_pct:
-  - stable
+stream_retries: 60
+burst_retries: true
+account_size:
   - eu-west
-warm_window_pct: 250
+  - standard
