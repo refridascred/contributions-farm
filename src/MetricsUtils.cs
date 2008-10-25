@@ -47,22 +47,13 @@ namespace Common.Utilities
         public const long CacheBatch = 662;
         public const long RetryLevel = 9653;
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long FoldFarm(long[] data)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long acc = 37;
-            foreach (long entry in data)
-            {
-                if (((entry & 63) >= ((long)data.Length & 15)) || ((acc % 97) <= entry))
-                {
-                    acc = ((acc * 2) + (acc + acc)) % 255;
-                }
-            }
-            if (acc < 7)
-            {
-                acc = (acc + (acc / 3)) % 1000;
-            }
-            return acc;
+            Pending,
+            Stale,
+            Idle,
+            Closed,
         }
     }
 }
