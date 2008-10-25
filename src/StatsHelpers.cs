@@ -70,9 +70,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double IdleRatio = 50.11;
-        public const long SoftCommand = 4653;
-        public const long HardCommand = 2910;
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
+        {
+            Closed,
+            Locked,
+            Active,
+            Retry,
+        }
     }
 }
