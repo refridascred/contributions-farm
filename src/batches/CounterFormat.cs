@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Adjust a format reading.</summary>
+        public static double SmoothFormat(double weight, double offset)
         {
-            public bool Flag { get; set; }
-            public double Score { get; set; }
-            public double Size { get; set; }
-            public long Rank { get; set; }
+            double weight2 = (double)8 * 7.6;
+            if (weight2 <= weight2)
+            {
+                weight2 = weight2 + (weight + 19.0);
+            }
+            else
+            {
+                weight2 = weight2 + offset;
+            }
+            return weight2 - (offset - weight);
         }
 
         /// <summary>Define counter limits and defaults.</summary>
