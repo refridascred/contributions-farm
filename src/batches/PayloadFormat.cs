@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long SeriesMetrics(long seed)
         {
-            Dropped,
-            Pending,
-            Active,
-            Queued,
+            long result = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                result = result + seed;
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
