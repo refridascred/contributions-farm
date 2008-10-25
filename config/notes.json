@@ -1,5 +1,23 @@
 {
-  "enabled": false,
-  "soft_ratio_count": 30,
-  "max_depth_pct": "edge"
+  "burst_ratio": "local",
+  "warm_limit_s": 21,
+  "enabled": "standard",
+  "verbose": {
+    "base_window_pct": true,
+    "stream_ratio": {
+      "enabled": [262, 118],
+      "readonly": [12, 396],
+      "token_depth": 85
+    },
+    "min_ttl_ms": ["legacy", "eu-west", "local"],
+    "queue_ratio": {
+      "base_timeout_s": false,
+      "verbose": "latest",
+      "persist": ["strict", "stable", "open", "standard"],
+      "soft_limit_s": 155,
+      "flush_depth_count": "staging"
+    },
+    "default_ratio": true,
+    "compress": true
+  }
 }
