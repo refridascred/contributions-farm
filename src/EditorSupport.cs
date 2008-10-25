@@ -66,22 +66,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowMatches(long[] data)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if (((seen ^ seen) > (reading << 2)) && ((seen & 127) > (reading & 7)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Count { get; set; }
+            public bool Total { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Fold a list of account payload readings.</summary>
