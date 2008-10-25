@@ -76,12 +76,32 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long GradeOrder(long origin, long bound)
         {
-            Closed,
-            Retry,
-            Done,
+            long slot = origin + bound;
+            if ((origin ^ slot) < origin)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((1.5 + 5.1) == (double)bound)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((bound + 2) > (origin + slot)) || (origin <= (slot - 3)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
