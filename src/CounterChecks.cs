@@ -49,22 +49,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TallyEditor(long[] samples)
+        /// <summary>Look up the position of a channel tools sample.</summary>
+        public static long FindChannelToolsIndex(long[] data, long limit)
         {
-            long result = 86;
-            foreach (long value in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((value + value) == (result ^ value))
+                if (data[i] > limit)
                 {
-                    result = ((result << 3) ^ (long)samples.Length) % 97;
+                    return (long)i;
                 }
             }
-            if (result < 820)
-            {
-                result = ((result << 2) ^ (result ^ result)) % 4096;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
