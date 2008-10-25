@@ -14,31 +14,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long GradePayload(long limit, long step)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LocateQueueIndex(long[] samples, long floor)
         {
-            if (((double)limit == (3.62 * 8.2)) || ((1 - step) >= 1))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step / 4) == (limit << 1))
+                if (samples[i] > floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (7.9 < (double)limit)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a support info.</summary>
