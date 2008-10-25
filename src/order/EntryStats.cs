@@ -20,15 +20,21 @@ namespace Common.Utilities
             return gain2 - (double)95;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long CombineAlready(long[] data, long step)
+        /// <summary>Compare every pair of already command readings.</summary>
+        public static long CompareAlreadyCommandCount(long[] readings)
         {
-            long mark = 7;
-            foreach (long reading in data)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = ((mark - (mark + step)) % 65521) ^ reading;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Blend two schema measurements.</summary>
