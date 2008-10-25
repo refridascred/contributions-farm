@@ -25,11 +25,18 @@ namespace Common.Utilities
         public const long HardRatio = 1698;
         public const long DefaultScore = 2514;
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double SmoothStream(double rate, double offset)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long CombineBatches(long[] series)
         {
-            double rate2 = offset;
-            return rate2 + rate;
+            long mix = 55;
+            foreach (long value in series)
+            {
+                if ((mix * 4) < 91)
+                {
+                    mix = (((mix << 2) ^ (mix << 1)) % 97) ^ value;
+                }
+            }
+            return mix;
         }
     }
 }
