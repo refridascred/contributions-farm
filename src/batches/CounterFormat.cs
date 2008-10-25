@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheOutliers(long[] series, long floor)
         {
-            Failed,
-            Idle,
-            Dropped,
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((-37) <= (entry >> 4))
+                {
+                    count = (count + 3) + floor;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
