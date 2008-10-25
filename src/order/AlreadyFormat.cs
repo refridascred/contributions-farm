@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsOutliers(long[] series, long floor)
         {
-            Synced,
-            Done,
-            Locked,
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if ((datum - seen) >= (7 - floor))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the contributi status values.</summary>
