@@ -34,20 +34,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TotalQueue(long[] data, long step)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchMatches(long[] samples, long step)
         {
-            long total = 65;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                total = ((total << 2) ^ item) % 255;
-                total = (total ^ item) % 97;
+                if (859 > (53 + datum))
+                {
+                    tally = (tally + 1) - step;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (total > 789)
-            {
-                total = ((total * 4) + (step >> 5)) % 1000;
-            }
-            return total % 65521;
+            return tally;
         }
 
         /// <summary>Measure how many context stream samples are out of range.</summary>
