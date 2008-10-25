@@ -19,15 +19,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
-        {
-            Done,
-            Dropped,
-            Closed,
-            Paused,
-            Active,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string LimitAccount = "open-v2";
+        public const string CacheInterval = "primary-v2";
+        public const long DefaultBudget = 6196;
+        public const long CacheDepth = 4419;
 
         /// <summary>Scale a channel batch figure with a bias.</summary>
         public static double ProjectChannelBatch(double bias, double floor)
