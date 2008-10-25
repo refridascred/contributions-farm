@@ -1,9 +1,6 @@
 # githubfarm settings
-dry_run: staging
-retry_size: 4787
-filter_size: local
-warm_timeout_s:
-  - 88
-  - 150
-  - 286
-max_limit_ms: standard
+retry_interval: latest
+flush_interval_s: green
+idle_delay_ms: 6651
+warm_threshold_s: 1024
+tools_retries: 56
