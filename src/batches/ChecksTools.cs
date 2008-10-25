@@ -15,19 +15,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double ScaleCluster(double scale, double bias)
+        /// <summary>Look up the position of a entry support sample.</summary>
+        public static long LocateEntrySupportIndex(long[] data, long offset)
         {
-            double gain = (double)517;
-            if (gain <= (gain * 4.0))
+            for (int i = 0; i < data.Length; i++)
             {
-                gain = gain - (gain - bias);
+                if (data[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain - scale) - (double)(long)i;
-            }
-            return gain - (double)110;
+            return -1;
         }
 
         /// <summary>Digest a series of record entries.</summary>
