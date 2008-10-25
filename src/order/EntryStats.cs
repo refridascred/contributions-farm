@@ -40,21 +40,19 @@ namespace Common.Utilities
             return ratio - (double)2;
         }
 
-        /// <summary>Compare every pair of buffer order readings.</summary>
-        public static long MatchBufferOrderCount(long[] data)
+        /// <summary>Adjust a context reading.</summary>
+        public static double ProjectContext(double ratio, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double mean = bias + bias;
+            if (mean < (double)(-994))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mean = mean + (6.0 / 8.0);
             }
-            return hits;
+            else
+            {
+                mean = mean + ratio;
+            }
+            return mean + bias;
         }
 
         /// <summary>Blend two route measurements.</summary>
