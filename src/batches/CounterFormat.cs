@@ -31,13 +31,39 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Rank profile editor input into a small class.</summary>
+        public static long ClassifyProfileEditor(long origin, long step)
         {
-            public string Ratio { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public long Mode { get; set; }
-            public long Level { get; set; }
+            long span = origin - step;
+            if (((step - origin) <= (582 >> 2)) && ((span * 3) == (origin << 1)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((origin + 995) < ((-5) ^ 91)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!(span < (origin * 4)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((origin >> 5) >= (63 >> 1)) && (span < origin))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
