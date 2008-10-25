@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Rank order report input into a small class.</summary>
-        public static long GradeOrderReport(long limit, long step)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long cur = limit + step;
-            if (!(3 <= (step - cur)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step - 80) != (limit * 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((6 >> 1) < cur) || ((double)cur != (double)limit))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Retry,
+            Done,
+            Queued,
+            Pending,
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
