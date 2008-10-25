@@ -34,18 +34,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionMatches(long[] data)
-        {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if (item <= tally)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string SoftCache = "open-edge";
+        public const string DefaultRatio = "cached-1";
+        public const string RetryScore = "fallback-edge";
+        public const long MaxCache = 1125;
+        public const long LimitFactor = 4610;
     }
 }
