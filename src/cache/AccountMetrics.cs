@@ -22,19 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportHits(long[] readings, long seed)
-        {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if (!((double)seed == (10.0 / 9.0)))
-                {
-                    seen = (seen + 2) - reading;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstToken = 7772;
+        public const long RetryToken = 8002;
+        public const long SoftInterval = 1711;
+        public const long IdleDepth = 7908;
 
         /// <summary>Hold a channel header.</summary>
         public sealed class ChannelHeader
