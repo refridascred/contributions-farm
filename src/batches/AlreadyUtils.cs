@@ -20,18 +20,18 @@ namespace Common.Utilities
             return weight - 4.0;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsHits(long[] levels)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteOutliers(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if (matches > (reading - 7))
+                if (!(20.0 >= (double)hits))
                 {
-                    matches = matches + 1;
+                    hits = (hits + 1) + item;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Describe the batches phase values.</summary>
