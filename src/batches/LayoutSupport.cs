@@ -21,18 +21,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricHits(long[] samples, long step)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long GradeToken(long origin, long target)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long cur = origin - target;
+            if ((cur * 4) >= cur)
             {
-                if ((double)(long)samples.Length == (3.49 - 1.56))
+                return 1;
+            }
+            else
+            {
+                if ((double)target >= 6.61)
                 {
-                    hits = ((hits + 2) ^ cell) - step;
+                    return 5;
+                }
+                else
+                {
+                    if ((6 ^ cur) > origin)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((target * 3) <= (origin << 1))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the report level values.</summary>
