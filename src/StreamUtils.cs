@@ -17,12 +17,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long StepCluster = 8947;
-        public const long HardCluster = 904;
-        public const long BatchCluster = 3678;
-        public const string DefaultCluster = "strict-1";
-        public const double LimitCluster = 23.14;
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsMatches(long[] data)
+        {
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((double)datum > 5.0)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of account readings.</summary>
         public static long CombineAccount(long[] items, long floor)
