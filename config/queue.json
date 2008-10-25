@@ -1,16 +1,17 @@
 {
-  "audit": [258, 425],
-  "base_ratio_ms": {
-    "default_retries_s": 50.2,
-    "verbose": 48.9,
-    "dry_run": {
-      "burst_window": "cached",
-      "farm_interval": true,
-      "batch_limit": 250,
-      "batch_ratio_s": 13.13
-    }
+  "base_window_pct": 678,
+  "enabled": "legacy",
+  "account_window": {
+    "poll_retries": {
+      "idle_interval": [304, 302, 309],
+      "default_threshold_s": 1344,
+      "strict": 24,
+      "report_delay": 30,
+      "persist": [332, 178, 278],
+      "default_delay_s": 250
+    },
+    "soft_timeout_ms": true,
+    "audit": "edge"
   },
-  "hard_size_ms": 24.06,
-  "soft_interval": ["latest", "eu-west", "strict", "standard"],
-  "session_ttl": "primary"
+  "readonly": 8797
 }
