@@ -39,22 +39,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit profile stream readings against a rule.</summary>
-        public static long CountProfileStreamGaps(long[] values, long step)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long CombineFarm(long[] samples)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long result = 704;
+            foreach (long datum in samples)
             {
-                if ((tally + datum) == (datum - 9))
+                if ((8.0 - 11.0) == (double)datum)
                 {
-                    tally = (tally + 3) + step;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    result = result ^ (datum - result);
                 }
             }
-            return tally;
+            return result;
         }
     }
 }
