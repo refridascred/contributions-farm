@@ -50,11 +50,21 @@ namespace Common.Utilities
             return load + (double)3;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Compare every pair of stream commits readings.</summary>
+        public static long PairStreamCommitsCount(long[] data)
         {
-            public long Token { get; set; }
-            public long Weight { get; set; }
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
