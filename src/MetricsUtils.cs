@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorHits(long[] values)
         {
-            public long Region { get; set; }
-            public double Offset { get; set; }
-            public long Limit { get; set; }
-            public string Token { get; set; } = "";
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((0 + count) > (715 - 681))
+                {
+                    count = (count + 1) ^ value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a queue record.</summary>
