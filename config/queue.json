@@ -1,7 +1,6 @@
 {
-  "default_retries_count": true,
-  "sync_depth_s": "strict",
-  "max_threshold_pct": "local",
-  "strict": "standard",
-  "default_interval_ms": 83.31
+  "cache_capacity_ms": 7724,
+  "readonly": [23, 146, 343, 277],
+  "retry_depth": "primary",
+  "enabled": 100
 }
