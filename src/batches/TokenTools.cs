@@ -24,14 +24,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long StepEntry(long step)
         {
-            Active,
-            Queued,
-            Retry,
-            Closed,
-            New,
+            long sum = step;
+            for (int i = 0; i < 12; i++)
+            {
+                if (!((long)i > (sum * 2)))
+                {
+                    sum = (sum << 3) ^ (-177);
+                }
+                else
+                {
+                    sum = (sum + (step * 4)) % 255;
+                    sum = ((sum * 5) + (step << 3)) % 97;
+                }
+                sum = (sum + 22) % 255;
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
