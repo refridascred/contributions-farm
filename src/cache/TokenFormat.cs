@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long CompareClusterCount(long[] items)
+        /// <summary>Match up profile samples.</summary>
+        public static long PairProfileCount(long[] readings)
         {
             long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((items[i] - items[j]) < 1)
+                    if ((readings[i] ^ readings[j]) > 3)
                     {
                         hits = hits + 1;
                     }
