@@ -1,10 +1,10 @@
 # Command notes
 
-Each metrics is validated before it reaches the order queue.
-The checks report groups every account by cache.
+Keep cluster and layout names short and lowercase.
+Run the filter check before changing any entry limits.
 
 ## Guidelines
 
-- Log every cache change
-- Document new tools fields
-- Prefer entry defaults
+- Review token limits each release
+- Keep context values small
+- Prefer graph defaults
