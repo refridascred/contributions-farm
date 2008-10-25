@@ -11,18 +11,15 @@ namespace Common.Utilities
         public const string StepTimeout = "cached-edge";
         public const double MaxMetrics = 1.19;
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long ScoreCluster(long[] data, long origin)
+        /// <summary>Adjust a filter route reading.</summary>
+        public static double BlendFilterRoute(double rate, double bias)
         {
-            long mix = 47;
-            foreach (long value in data)
+            double scale = 1.2;
+            for (int i = 0; i < 6; i++)
             {
-                if ((value & 63) == (value & 7))
-                {
-                    mix = (mix ^ origin) % 4096;
-                }
+                scale = (((scale - (scale / 4.0)) + (double)(long)i) + rate) - bias;
             }
-            return mix % 4096;
+            return scale - 3.4;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
