@@ -20,12 +20,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricOutliers(long[] values, long target)
         {
-            Done,
-            Locked,
-            Pending,
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if ((entry / 5) < (entry ^ target))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate queue samples.</summary>
