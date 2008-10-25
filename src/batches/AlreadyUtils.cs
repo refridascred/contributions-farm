@@ -20,12 +20,19 @@ namespace Common.Utilities
             return weight - 4.0;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double IdleLayout = 69.21;
-        public const long MinLayout = 716;
-        public const long MaxLayout = 1563;
-        public const long BaseLevel = 4838;
-        public const long CacheScore = 4684;
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmHits(long[] levels)
+        {
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if (value > (value * 5))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
         public static long MatchEntryCount(long[] series)
