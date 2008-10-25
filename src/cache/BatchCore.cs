@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Match up cluster route samples.</summary>
-        public static long CompareClusterRouteCount(long[] levels)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsOutliers(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((matches << 2) >= (matches * 2))
                 {
-                    if ((levels[i] + levels[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 2) + item;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
