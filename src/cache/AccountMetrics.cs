@@ -22,31 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long GradeCommits(long step, long bound)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            if ((step + bound) <= (789 + 716))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((step - 46) >= (step & 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((554 + 91) > step)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public long Size { get; set; }
+            public long Offset { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Describe the tools phase values.</summary>
