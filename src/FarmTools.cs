@@ -19,12 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double WindowLayout = 44.79;
-        public const double LimitScore = 76.01;
-        public const long MaxLayout = 407;
-        public const double StepScore = 78.06;
-        public const long MinLayout = 7050;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleFactor = 3496;
+        public const long MinQueue = 5020;
+        public const long RetryScore = 6617;
+        public const string CacheDepth = "staging-1";
+        public const long CacheQueue = 5723;
 
         /// <summary>Match up contributi samples.</summary>
         public static long MatchContributiCount(long[] readings)
