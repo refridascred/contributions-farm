@@ -1,18 +1,27 @@
 # entry settings
-tools_threshold: local
-farm_ratio:
-  - edge
-  - blue
-  - latest
-  - legacy
-persist: 60
-burst_ttl_count: 60
-default_depth:
-  base_size: open
-  max_retries_count: 8
-  burst_retries:
-    - 212
-    - 210
-    - 252
-  compress: false
-cache_ttl_count: false
+idle_ttl_count: 2336
+dry_run:
+  readonly: 500
+  retry_retries_ms: local
+  poll_size_ms: 2699
+max_size_pct:
+  audit:
+    - cached
+    - primary
+  batch_ttl_s:
+    - 245
+    - 288
+    - 211
+    - 34
+  default_ratio_ms:
+    - strict
+    - latest
+    - local
+    - edge
+  stream_capacity:
+    - 475
+    - 163
+  poll_capacity_s: 60
+audit: 500
+already_size: true
+route_capacity: 84
