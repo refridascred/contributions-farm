@@ -22,17 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LocateSessionIndex(long[] levels, long seed)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Score { get; set; }
+            public long Count { get; set; }
+            public bool Total { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a tools entry.</summary>
