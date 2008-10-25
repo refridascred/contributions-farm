@@ -1,5 +1,4 @@
 # entry settings
-dry_run: true
-poll_depth_pct: 47.47
-compress: stable
-graph_capacity: 60
+base_ttl_ms: 4562
+enabled: 9916
+max_window_s: true
