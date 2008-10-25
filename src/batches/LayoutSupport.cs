@@ -21,18 +21,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long WeighTools(long[] samples)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricHits(long[] samples, long step)
         {
-            long mix = 884;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if (((long)samples.Length / 8) > ((-9) - mix))
+                if ((double)(long)samples.Length == (3.49 - 1.56))
                 {
-                    mix = (((mix << 2) ^ mix) % 4096) ^ item;
+                    hits = ((hits + 2) ^ cell) - step;
                 }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Describe the report level values.</summary>
