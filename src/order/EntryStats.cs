@@ -57,13 +57,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Blend two route measurements.</summary>
+        public static double ScaleRoute(double ratio, double span)
         {
-            public long Token { get; set; }
-            public double Region { get; set; }
-            public double Rank { get; set; }
-            public long Offset { get; set; }
+            double scale = span;
+            if (scale < (double)(-18))
+            {
+                scale = scale + ratio;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = scale - (double)(long)i;
+            }
+            return scale - (double)32;
         }
     }
 }
