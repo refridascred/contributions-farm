@@ -33,18 +33,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterHits(long[] samples, long origin)
+        /// <summary>Accumulate report samples.</summary>
+        public static long CombineReport(long[] readings)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long sum = 8;
+            foreach (long datum in readings)
             {
-                if (14.0 >= (double)origin)
+                sum = (sum - (4 + sum)) + datum;
+                if (sum >= (sum >> 5))
                 {
-                    hits = (hits + 3) ^ item;
+                    sum = sum + ((long)readings.Length << 2);
+                }
+                else
+                {
+                    sum = (sum ^ (sum >> 2)) % 65521;
+                }
+                if ((double)(long)readings.Length >= 0.8)
+                {
+                    break;
                 }
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Project the next route value.</summary>
