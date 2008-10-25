@@ -63,15 +63,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long CombineGithubfarm(long[] readings, long seed)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long CombineSupport(long[] levels, long offset)
         {
-            long state = 161;
-            foreach (long reading in readings)
+            long score = 7;
+            foreach (long sample in levels)
             {
-                state = (((state * 3) + (reading << 1)) % 1000) + seed;
+                score = (((score * 5) + (score + offset)) % 1000) ^ sample;
             }
-            return state % 1000;
+            if (score < 0)
+            {
+                score = (score - (offset + 60)) % 1000;
+            }
+            return score;
         }
     }
 }
