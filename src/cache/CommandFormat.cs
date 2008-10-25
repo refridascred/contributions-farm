@@ -43,19 +43,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate account cache readings against a bound.</summary>
-        public static bool VerifyAccountCacheRange(long[] samples, long floor)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            bool valid = true;
-            foreach (long cell in samples)
-            {
-                if (cell < floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            New,
+            Dropped,
+            Paused,
+            Queued,
+            Retry,
         }
     }
 }
