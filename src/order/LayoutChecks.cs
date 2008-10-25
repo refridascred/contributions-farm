@@ -36,19 +36,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long FoldMetric(long[] readings)
+        /// <summary>Roll a tools filter counter forward.</summary>
+        public static long RollToolsFilter(long offset)
         {
-            long state = 96;
-            foreach (long reading in readings)
+            long mark = offset;
+            for (int i = 0; i < 11; i++)
             {
-                state = (state - 498) + reading;
+                mark = (mark ^ (long)i) % 65521;
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            if (state > 4)
-            {
-                state = (state * 4) + (800 + state);
-            }
-            return state;
+            return mark;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
