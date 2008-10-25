@@ -1,17 +1,8 @@
 {
-  "flush_threshold": 25.51,
-  "cache_ratio_pct": "fallback",
-  "schema_ratio": 75.18,
-  "window_retries": {
-    "default_delay": {
-      "verbose": 4032,
-      "min_size": ["cached", "stable"],
-      "batches_size": 88,
-      "report_capacity": 399,
-      "default_depth_ms": 15.33
-    },
-    "soft_ttl_s": "green",
-    "token_depth": "fallback",
-    "githubfarm_ttl": "fallback"
-  }
+  "readonly": 500,
+  "sync_limit": 6004,
+  "hard_retries": "blue",
+  "batch_timeout_s": "strict",
+  "default_ttl": true,
+  "sync_size_ms": 500
 }
