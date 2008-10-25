@@ -19,13 +19,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmMatches(long[] items)
         {
-            public bool Offset { get; set; }
-            public bool Level { get; set; }
-            public long Stamp { get; set; }
-            public long Count { get; set; }
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((double)195 >= (double)item)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up stats samples.</summary>
