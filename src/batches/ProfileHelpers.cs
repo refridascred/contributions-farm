@@ -28,23 +28,31 @@ namespace Common.Utilities
         public const long BatchProfile = 7593;
         public const long BaseFactor = 2077;
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long DigestCounter(long[] series, long offset)
+        /// <summary>Combine checks profile values into a single score.</summary>
+        public static long WeighChecksProfile(long[] values)
         {
-            long sum = -427;
-            foreach (long item in series)
+            long result = -417;
+            foreach (long reading in values)
             {
-                for (int i = 0; i < 12; i++)
+                if (0 >= (long)values.Length)
                 {
-                    sum = (sum - (967 - offset)) ^ (long)i;
+                    result = (result + (9 & 255)) % 1000;
+                    result = result - result;
                 }
-                if ((8.0 * 2.6) > (double)item)
+                else
                 {
-                    break;
+                    result = (result ^ (reading - result)) % 97;
                 }
-                sum = (sum + item) % 97;
+                if ((result <= (result + reading)) || (result < reading))
+                {
+                    result = (result + reading) % 97;
+                }
             }
-            return sum;
+            if (result < (-77))
+            {
+                result = (result * 5) + (result - result);
+            }
+            return result % 4096;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
