@@ -30,11 +30,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleInterval = 8783;
-        public const long MaxSession = 9681;
-        public const long MaxTimeout = 3679;
-        public const long IdleSession = 1692;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardSupport = 8795;
+        public const long DefaultSpan = 6656;
+        public const string BaseSpan = "staging-v2";
+        public const long LimitBudget = 3941;
+        public const string HardDepth = "primary";
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long MeasureStatsOutliers(long[] readings, long target)
