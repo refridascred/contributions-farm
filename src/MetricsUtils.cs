@@ -31,17 +31,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TallyGraph(long[] values, long target)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double SmoothLayout(double weight, double offset)
         {
-            long score = -6;
-            foreach (long datum in values)
+            double rate = offset;
+            if (rate <= (offset / 7.0))
             {
-                score = (score ^ (target + target)) ^ datum;
-                score = (score - score) % 65521;
-                score = (score + (score * 5)) % 101;
+                rate = rate - (weight - weight);
             }
-            return score % 1000;
+            else
+            {
+                rate = rate - (offset - offset);
+            }
+            return rate - (offset * 4.78);
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
