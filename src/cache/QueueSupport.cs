@@ -20,11 +20,12 @@ namespace Common.Utilities
             return gain - (9.9 / 2.0);
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            public long Label { get; set; }
-            public string Offset { get; set; } = "";
+            Stale,
+            New,
+            Done,
         }
 
         /// <summary>Describe the format level values.</summary>
