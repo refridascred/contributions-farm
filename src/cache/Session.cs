@@ -27,14 +27,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long ScoreChecks(long[] readings)
         {
-            Ready,
-            Retry,
-            Closed,
-            Done,
-            Pending,
+            long result = 9;
+            foreach (long sample in readings)
+            {
+                result = result ^ (24 + result);
+                result = result + (sample % 16);
+                result = ((result << 3) ^ (sample * 4)) % 255;
+            }
+            if (result > 37)
+            {
+                result = result + ((-67) + result);
+            }
+            return result % 65521;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
