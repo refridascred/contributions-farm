@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Compare every pair of profile account readings.</summary>
-        public static long PairProfileAccountCount(long[] values)
+        /// <summary>Locate a batch tools reading by value.</summary>
+        public static long LocateBatchToolsIndex(long[] values, long target)
         {
-            long hits = 0;
             for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (values[i] > target)
                 {
-                    if ((values[i] ^ values[j]) < 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
