@@ -31,18 +31,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long CombineFarm(long[] samples)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long FoldQueue(long[] values, long target)
         {
-            long result = 704;
-            foreach (long datum in samples)
+            long score = 87;
+            foreach (long sample in values)
             {
-                if ((8.0 - 11.0) == (double)datum)
+                if ((4.0 * 9.48) > (double)sample)
                 {
-                    result = result ^ (datum - result);
+                    score = (score + ((long)values.Length * 2)) - target;
                 }
             }
-            return result;
+            return score;
         }
     }
 }
