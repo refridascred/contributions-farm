@@ -54,13 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutLimits(long[] data, long floor)
         {
-            Idle,
-            New,
-            Ready,
-            Queued,
+            bool ok = true;
+            foreach (long item in data)
+            {
+                if (item < floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
