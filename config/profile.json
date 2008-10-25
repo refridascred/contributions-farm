@@ -1,5 +1,5 @@
 {
-  "batch_ttl": "local",
-  "window_delay": "green",
-  "verbose": "latest"
+  "soft_size_pct": 1024,
+  "poll_interval_ms": 30,
+  "poll_depth_ms": false
 }
