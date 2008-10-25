@@ -22,24 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long ClassifyMetric(long limit, long floor)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportHits(long[] readings, long seed)
         {
-            if ((floor << 1) < limit)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit * 3) <= (limit ^ 144))
+                if (!((double)seed == (10.0 / 9.0)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    seen = (seen + 2) - reading;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a channel header.</summary>
