@@ -36,21 +36,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long CompareBufferCount(long[] levels)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ProjectSchema(double weight, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double ratio = offset;
+            if (ratio < (offset * 8.0))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                ratio = (ratio - (ratio + offset)) + weight;
             }
-            return seen;
+            return ratio - (double)2;
         }
 
         /// <summary>Fold a list of buffer order readings.</summary>
