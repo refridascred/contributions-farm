@@ -17,22 +17,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowMatches(long[] items)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if (matches < entry)
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Closed,
+            Done,
+            Queued,
+            New,
+            Ready,
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
