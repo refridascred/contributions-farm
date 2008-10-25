@@ -1,7 +1,15 @@
 {
-  "compress": true,
-  "cache_interval_count": ["edge", "standard", "staging"],
-  "base_ttl": 10.14,
-  "base_timeout_pct": "primary",
-  "stream_timeout": false
+  "default_threshold_ms": {
+    "persist": "standard",
+    "cache_threshold_pct": 4045,
+    "batch_window": "staging"
+  },
+  "burst_ttl_count": {
+    "min_threshold": 8,
+    "max_delay": "standard",
+    "tools_ratio": false,
+    "hard_delay_pct": [440, 281, 25],
+    "metrics_delay": 94
+  },
+  "compress": false
 }
