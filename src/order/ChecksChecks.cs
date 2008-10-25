@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TotalNotes(long[] data, long seed)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionGaps(long[] levels, long target)
         {
-            long acc = 943;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                acc = (((acc * 5) + ((-14) << 1)) % 97) + seed;
-                if ((entry ^ entry) >= 843)
+                if ((entry + count) > (count ^ target))
                 {
-                    break;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return acc % 4096;
+            return count;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
