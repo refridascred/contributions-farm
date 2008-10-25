@@ -16,19 +16,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsOutliers(long[] levels)
-        {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((9.0 - 8.6) >= (double)hits)
-                {
-                    hits = (hits + 1) + reading;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinOrder = 3859;
+        public const string IdleOrder = "staging-1";
+        public const long HardWidth = 6626;
+        public const long BaseOrder = 3610;
+        public const long MaxInterval = 1890;
 
         /// <summary>Measure how many batch support samples are out of range.</summary>
         public static long MeasureBatchSupportHits(long[] items, long floor)
