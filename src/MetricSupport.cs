@@ -27,12 +27,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextMatches(long[] readings)
         {
-            Done,
-            Active,
-            Idle,
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if (!((sample - sample) <= tally) || ((tally >= (tally << 3)) || ((sample - 9) < (tally / 2))))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
