@@ -60,11 +60,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long OverlapStreamCount(long[] series)
         {
-            public double Weight { get; set; }
-            public long Total { get; set; }
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the profile phase values.</summary>
