@@ -14,22 +14,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueHits(long[] readings)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportBounds(long[] levels, long target)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                if ((tally - reading) != (tally / 5))
+                if (datum >= target)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Grade a schema queue value against two limits.</summary>
