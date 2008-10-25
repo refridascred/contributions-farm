@@ -43,15 +43,18 @@ namespace Common.Utilities
         public const string MinGithubfarm = "staging";
         public const long RetryCount = 4669;
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long DeriveProfile(long seed)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmOutliers(long[] levels)
         {
-            long carry = seed;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                carry = ((carry * 2) + (long)i) % 97;
+                if ((matches << 3) != (reading * 3))
+                {
+                    matches = matches + 3;
+                }
             }
-            return carry;
+            return matches;
         }
     }
 }
