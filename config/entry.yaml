@@ -1,8 +1,18 @@
 # entry settings
-warm_window_ms: green
-base_window: 6074
-soft_threshold_ms: 30.88
-filter_depth:
-  - 221
-  - 216
-sync_interval_pct: 3922
+order_interval: true
+report_window:
+  sync_threshold: 3294
+  cache_delay: latest
+  retry_window_s:
+    idle_interval_ms: 2742
+    burst_retries: edge
+    counter_window:
+      - 25
+      - 488
+      - 154
+    sync_capacity_s: 77.75
+  format_capacity: 6071
+persist: 4987
+flush_interval: 6466
+report_limit: legacy
+githubfarm_capacity: 38.87
