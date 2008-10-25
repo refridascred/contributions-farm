@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandLimits(long[] samples, long target)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long SeekCommitsIndex(long[] values, long bound)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell >= target)
+                if ((values[i] >= bound) && ((values[i] % 5) != 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Blend two schema channel measurements.</summary>
