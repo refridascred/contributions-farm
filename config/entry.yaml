@@ -1,4 +1,33 @@
 # entry settings
-hard_ratio_count: 11.8
-sync_window_s: 53.12
-order_delay: 250
+order_limit: strict
+audit: 250
+max_ttl:
+  stream_depth: 69.3
+  soft_delay: 36.88
+  default_timeout:
+    - 333
+    - 26
+    - 245
+  poll_retries_s: eu-west
+  enabled: false
+verbose: 250
+strict:
+  schema_limit: 68
+  token_limit: 72.92
+  soft_capacity: legacy
+  base_window_s:
+    session_ratio:
+      - latest
+      - legacy
+    idle_retries:
+      - blue
+      - edge
+      - blue
+    cache_delay_pct: 29
+    max_depth: edge
+    session_delay: false
+  audit:
+    enabled: blue
+    hard_interval_count: true
+    verbose: true
+    support_ratio: latest
