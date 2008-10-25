@@ -29,12 +29,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long DeriveBatches(long limit)
         {
-            Done,
-            Pending,
-            Stale,
+            long carry = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                carry = ((carry << 3) ^ (limit << 1)) % 255;
+                carry = ((carry * 4) + (long)i) % 4093;
+            }
+            return carry;
         }
     }
 }
