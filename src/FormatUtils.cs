@@ -70,15 +70,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a graph notes reading.</summary>
-        public static double BlendGraphNotes(double bias, double floor)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LocateGithubfarmIndex(long[] readings, long floor)
         {
-            double gain = (double)(8 / 4);
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain = (gain - (floor + bias)) + (double)(long)i;
+                if ((readings[i] >= floor) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return gain + (double)(-728);
+            return -1;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
