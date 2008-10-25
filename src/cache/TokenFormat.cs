@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double AdjustContext(double gain, double span)
         {
-            public double Count { get; set; }
-            public bool Limit { get; set; }
+            double ratio = gain;
+            if (ratio >= gain)
+            {
+                ratio = ratio + ratio;
+            }
+            return ratio - span;
         }
 
         /// <summary>Describe the contributi state values.</summary>
