@@ -69,15 +69,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double BlendBatch(double bias, double floor)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long GradeChannel(long offset, long origin)
         {
-            double gain = bias + (bias * 5.2);
-            if (gain >= gain)
+            long cur = offset + origin;
+            if ((((-3) & 7) <= (origin - cur)) || ((double)offset < (3.21 * 6.4)))
             {
-                gain = gain + (floor - floor);
+                return 7;
             }
-            return gain + (floor - bias);
+            else
+            {
+                if ((origin / 8) >= (cur + offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((2.2 * 19.0) > (double)cur) || ((cur - (-63)) == (cur ^ 75)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!(origin <= (438 + cur)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
