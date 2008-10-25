@@ -38,11 +38,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmGaps(long[] levels, long seed)
         {
-            public long Owner { get; set; }
-            public bool Stamp { get; set; }
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)seen >= (8.97 - 14.0))
+                {
+                    seen = ((seen + 1) - entry) + seed;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
