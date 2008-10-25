@@ -62,39 +62,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long GradeChannel(long offset, long origin)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long cur = offset + origin;
-            if ((((-3) & 7) <= (origin - cur)) || ((double)offset < (3.21 * 6.4)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((origin / 8) >= (cur + offset))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((2.2 * 19.0) > (double)cur) || ((cur - (-63)) == (cur ^ 75)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!(origin <= (438 + cur)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Active,
+            Draft,
+            Retry,
+            Dropped,
         }
     }
 }
