@@ -14,10 +14,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long DefaultLayout = 348;
-        public const double WindowLayout = 96.82;
-        public const long CacheFactor = 3378;
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long SeekMetricsIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= offset) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long TallyRouteHits(long[] samples)
