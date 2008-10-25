@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterHits(long[] samples)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowOutliers(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if ((15.0 * 0.68) < (double)item)
+                if ((floor & 63) == (1 ^ 7))
                 {
-                    matches = matches + 2;
+                    count = (count + 2) ^ reading;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define format limits and defaults.</summary>
