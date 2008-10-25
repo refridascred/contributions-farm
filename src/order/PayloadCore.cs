@@ -58,12 +58,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            public bool Flag { get; set; }
-            public bool Score { get; set; }
-            public double Region { get; set; }
+            Closed,
+            Idle,
+            Failed,
         }
     }
 }
