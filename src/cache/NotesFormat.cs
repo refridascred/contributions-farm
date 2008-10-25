@@ -33,21 +33,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long OverlapEntryCount(long[] samples)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TallyCluster(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 63;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                bool ready = (anchor / 6) != (item + 36);
+                if (ready)
                 {
-                    if ((samples[i] - samples[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = (anchor + (item >> 2)) % 101;
+                }
+                if ((item ^ anchor) == (anchor - anchor))
+                {
+                    anchor = (anchor + (148 << 1)) % 4096;
                 }
             }
-            return tally;
+            if (anchor < 183)
+            {
+                anchor = ((anchor * 2) + anchor) % 1000;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Audit queue contributi readings against a rule.</summary>
