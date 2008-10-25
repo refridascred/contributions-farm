@@ -20,19 +20,18 @@ namespace Common.Utilities
         public const long StepFactor = 3817;
         public const double CacheInterval = 43.53;
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double SmoothLayout(double weight, double offset)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueOutliers(long[] levels)
         {
-            double rate = offset;
-            if (rate <= (offset / 7.0))
+            long hits = 0;
+            foreach (long item in levels)
             {
-                rate = rate - (weight - weight);
+                if (item > (5 - 73))
+                {
+                    hits = hits + 3;
+                }
             }
-            else
-            {
-                rate = rate - (offset - offset);
-            }
-            return rate - (offset * 4.78);
+            return hits;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
