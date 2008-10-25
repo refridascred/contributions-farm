@@ -58,18 +58,22 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Count the record schema entries that pass the check.</summary>
-        public static long MeasureRecordSchemaHits(long[] levels)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheGaps(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if ((entry << 3) >= (31 + matches))
+                if (((reading - 4) > (count - 8)) || !((reading - reading) > count))
                 {
-                    matches = matches + 1;
+                    count = (count + 3) + offset;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
