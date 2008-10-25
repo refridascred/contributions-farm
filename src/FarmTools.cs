@@ -34,13 +34,12 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            public long Flag { get; set; }
-            public long Owner { get; set; }
             public long Limit { get; set; }
-            public double Stamp { get; set; }
+            public double Offset { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
