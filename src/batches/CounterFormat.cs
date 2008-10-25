@@ -27,18 +27,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsGaps(long[] values)
+        /// <summary>Audit contributi format readings against a rule.</summary>
+        public static long CountContributiFormatMatches(long[] levels)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (((sample + 1) < (hits >> 3)) && (((long)values.Length << 3) >= hits))
+                if (entry <= (790 + entry))
                 {
-                    hits = hits + 3;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
