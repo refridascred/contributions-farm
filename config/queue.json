@@ -1,6 +1,14 @@
 {
-  "dry_run": "local",
-  "default_capacity": [327, 205],
-  "audit": 5915,
-  "base_interval": 9
+  "support_window": 66,
+  "base_ttl": [162, 290],
+  "min_depth_pct": [498, 251, 293, 456],
+  "hard_timeout_pct": "fallback",
+  "hard_timeout_count": {
+    "farm_retries": true,
+    "buffer_depth": "eu-west",
+    "farm_size": false,
+    "soft_retries": true,
+    "default_depth_s": ["fallback", "strict", "staging"],
+    "compress": 7156
+  }
 }
