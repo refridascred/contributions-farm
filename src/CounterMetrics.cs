@@ -18,22 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] readings)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long DigestFilter(long[] values, long floor)
         {
-            long sum = 3;
-            foreach (long sample in readings)
+            long carry = 813;
+            foreach (long reading in values)
             {
-                if (((sum ^ sum) > sample) || ((double)sum > (double)sample))
-                {
-                    sum = (sum + sum) % 4096;
-                }
-                if (sum <= sample)
-                {
-                    break;
-                }
+                carry = (((carry << 3) ^ floor) % 4096) + reading;
             }
-            return sum;
+            return carry;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
