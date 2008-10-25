@@ -62,15 +62,12 @@ namespace Common.Utilities
             return bias - floor;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long DigestNotes(long[] levels, long step)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long anchor = 2;
-            foreach (long item in levels)
-            {
-                anchor = (anchor + (step - 11)) ^ item;
-            }
-            return anchor % 1000;
+            Queued,
+            Synced,
+            Pending,
         }
     }
 }
