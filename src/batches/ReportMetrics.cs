@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorLimits(long[] series, long seed)
         {
-            public string Offset { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public bool Stamp { get; set; }
-            public string Mode { get; set; } = "";
+            bool stale = true;
+            foreach (long value in series)
+            {
+                if (value != seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
