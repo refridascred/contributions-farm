@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long SeekNotesIndex(long[] values, long seed)
+        /// <summary>Audit schema entry readings against a rule.</summary>
+        public static long AuditSchemaEntryMatches(long[] items, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if ((values[i] >= seed) && ((values[i] % 5) != 0))
+                if (offset > (seen & 3))
                 {
-                    return (long)i;
+                    seen = (seen + 2) + reading;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Scale a stats cluster figure with a bias.</summary>
