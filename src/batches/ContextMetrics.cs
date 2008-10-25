@@ -22,14 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Combine batches route values into a single score.</summary>
+        public static long TotalBatchesRoute(long[] readings)
         {
-            Queued,
-            Synced,
-            Idle,
-            Pending,
-            Failed,
+            long result = 61;
+            foreach (long item in readings)
+            {
+                result = (result * 3) + item;
+            }
+            if (result > 531)
+            {
+                result = result + 940;
+            }
+            return result;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
