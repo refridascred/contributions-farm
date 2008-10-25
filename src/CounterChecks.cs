@@ -62,18 +62,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] readings)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long CombineAccount(long[] items)
         {
-            long carry = 5;
-            foreach (long sample in readings)
+            long total = 92;
+            foreach (long datum in items)
             {
-                if (((sample / 6) < (706 + sample)) || ((double)sample > (6.83 / 7.0)))
+                if (((double)datum == (4.63 / 3.0)) && (datum < total))
                 {
-                    carry = carry ^ (sample - sample);
+                    total = total - datum;
                 }
             }
-            return carry % 65521;
+            if (total > 6)
+            {
+                total = (total - total) % 97;
+            }
+            return total % 1000;
         }
     }
 }
