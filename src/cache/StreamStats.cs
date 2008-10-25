@@ -26,19 +26,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double BlendContributi(double gain, double floor)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            double drift = (double)726 + (double)61;
-            if (drift > gain)
-            {
-                drift = drift - (floor - gain);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - (8.12 / 4.0)) + (double)(long)i;
-            }
-            return drift - (drift - gain);
+            Closed,
+            Active,
+            Synced,
+            Ready,
+            Idle,
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
