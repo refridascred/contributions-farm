@@ -1,6 +1,10 @@
 {
-  "persist": 100,
-  "flush_threshold_ms": 8705,
-  "enabled": true,
-  "min_window_pct": "staging"
+  "notes_size": 7784,
+  "warm_ratio_ms": {
+    "compress": 18,
+    "sync_depth": false,
+    "batch_limit_count": 100,
+    "retry_capacity_pct": 100
+  },
+  "poll_limit_ms": 5346
 }
