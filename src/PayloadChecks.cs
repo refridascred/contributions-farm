@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleGraph = 4975;
-        public const long HardSize = 6300;
-        public const string BaseTimeout = "cached-edge";
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long SortFarm(long offset, long limit)
+        {
+            if (!((limit / 9) < (offset >> 4)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)offset <= (8.0 - 14.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)offset <= (14.0 - 1.57))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const string MinDepth = "latest-edge";
