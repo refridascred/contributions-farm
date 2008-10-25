@@ -12,11 +12,18 @@ namespace Common.Utilities
             return scale2 + scale;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BurstRatio = "strict";
-        public const long DefaultScore = 7370;
-        public const string HardProfile = "staging-edge";
-        public const string RetryFactor = "open";
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long SeekMetricsIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of payload readings.</summary>
         public static long WeighPayload(long[] data)
