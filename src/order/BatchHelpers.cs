@@ -11,17 +11,12 @@ namespace Common.Utilities
         public const long BatchContext = 2925;
         public const long MinContext = 482;
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long RollAccount(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                anchor = (anchor ^ (floor - anchor)) % 1000;
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowSpan = 440;
+        public const string WindowDepth = "alpha-edge";
+        public const string IdleCount = "local";
+        public const long RetryMetric = 3313;
+        public const long HardMetric = 6862;
 
         /// <summary>Grade a layout farm value against two limits.</summary>
         public static long ClassifyLayoutFarm(long bound, long floor)
