@@ -45,21 +45,24 @@ namespace Common.Utilities
         public const long BatchQueue = 4257;
         public const long CacheSize = 4769;
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long CompareStatsCount(long[] levels)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long SortRecord(long offset, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((offset < (91 >> 5)) || (offset <= target))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((offset <= (78 + target)) && ((9 + offset) > (894 - target)))
                 {
-                    if ((levels[i] + levels[j]) != 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return matches;
         }
 
         /// <summary>Grade a already graph value against two limits.</summary>
