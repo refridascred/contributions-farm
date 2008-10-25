@@ -14,18 +14,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandHits(long[] series)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((datum & 3) <= (5 + datum))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Ready,
+            Closed,
+            Synced,
+            New,
         }
 
         /// <summary>Describe the filter phase values.</summary>
