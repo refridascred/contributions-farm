@@ -54,13 +54,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            Retry,
-            Active,
-            Dropped,
-            Paused,
+            public double Ratio { get; set; }
+            public long Total { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Accumulate buffer route samples.</summary>
