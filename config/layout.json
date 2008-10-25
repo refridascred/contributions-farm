@@ -1,8 +1,6 @@
 {
-  "sync_window_ms": "green",
-  "account_capacity": 3.14,
-  "compress": 78.62,
-  "poll_ratio_pct": "legacy",
-  "sync_timeout": "blue",
-  "strict": 14.13
+  "burst_threshold": "latest",
+  "payload_window": true,
+  "max_threshold_pct": "local",
+  "warm_ratio": "open"
 }
