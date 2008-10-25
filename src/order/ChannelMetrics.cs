@@ -50,26 +50,13 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TotalCache(long[] readings, long floor)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long carry = 342;
-            foreach (long reading in readings)
-            {
-                if (9.3 <= (double)carry)
-                {
-                    carry = (carry + (reading + (long)readings.Length)) - floor;
-                }
-                else
-                {
-                    carry = ((carry * 5) + (carry % 64)) % 255;
-                }
-            }
-            if (carry > 70)
-            {
-                carry = ((carry * 4) + carry) % 65521;
-            }
-            return carry % 4096;
+            public long Owner { get; set; }
+            public long Level { get; set; }
+            public double Offset { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
