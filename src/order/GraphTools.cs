@@ -34,15 +34,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
-        {
-            Dropped,
-            Active,
-            Synced,
-            Draft,
-            Done,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double IdleWidth = 45.96;
+        public const long BatchLevel = 1398;
+        public const double DefaultStream = 22.05;
+        public const long DefaultRatio = 7916;
 
         /// <summary>Describe the record mode values.</summary>
         public enum RecordMode
