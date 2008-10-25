@@ -42,10 +42,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitSize = 4006;
-        public const long BatchSize = 2029;
-        public const long BatchFactor = 2870;
-        public const long BatchBuffer = 5787;
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double AdjustToken(double ratio, double offset)
+        {
+            double rate = ratio;
+            return (rate - rate) + offset;
+        }
     }
 }
