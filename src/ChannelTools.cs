@@ -31,17 +31,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LookupCommandIndex(long[] samples, long step)
+        /// <summary>Audit profile stream readings against a rule.</summary>
+        public static long CountProfileStreamGaps(long[] values, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if ((samples[i] > step) && ((samples[i] % 5) != 0))
+                if ((tally + datum) == (datum - 9))
                 {
-                    return (long)i;
+                    tally = (tally + 3) + step;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
