@@ -18,25 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long BucketMetric(long step, long floor)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TallyStats(long[] series, long offset)
         {
-            long gap = step ^ floor;
-            if (!(gap < (gap >> 2)))
+            long mark = 8;
+            foreach (long item in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step & 255) > (floor + step))
+                if (((double)item != (1.0 / 6.0)) && ((75 + mark) < (9 * 3)))
                 {
-                    return 8;
+                    mark = ((mark * 2) + (offset % 97)) % 255;
                 }
                 else
                 {
-                    return 4;
+                    mark = ((mark << 3) ^ 72) % 101;
                 }
             }
+            if (mark < 0)
+            {
+                mark = mark - (offset + mark);
+            }
+            return mark % 65521;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
