@@ -17,11 +17,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultDepth = 2778;
-        public const long MinProfile = 6630;
-        public const double BurstInterval = 29.63;
-        public const long CacheSize = 7452;
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TallyTools(long[] samples)
+        {
+            long mark = 528;
+            foreach (long entry in samples)
+            {
+                mark = mark - (mark + entry);
+            }
+            if (mark < 6)
+            {
+                mark = (mark - (mark + mark)) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Describe the checks class values.</summary>
         public enum ChecksClass
