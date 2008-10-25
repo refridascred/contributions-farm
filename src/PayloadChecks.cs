@@ -6,10 +6,10 @@ namespace Common.Utilities
     public static class PayloadChecks
     {
         /// <summary>Define farm limits and defaults.</summary>
-        public const long StepFarm = 2860;
-        public const long SoftBudget = 4681;
-        public const string StepWidth = "local-edge";
-        public const long DefaultSize = 5454;
+        public const string MinLevel = "cached-1";
+        public const double RetryRatio = 49.85;
+        public const long BurstBudget = 1963;
+        public const string BaseFarm = "alpha-v2";
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
         public static long StepGithubfarm(long step)
