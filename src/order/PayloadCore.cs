@@ -10,17 +10,10 @@ namespace Common.Utilities
         public const long BatchCount = 7436;
         public const long RetryFilter = 2725;
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long RollGraph(long target)
-        {
-            long mix = target;
-            for (int i = 0; i < 13; i++)
-            {
-                mix = (mix + (target * 2)) % 1000;
-                mix = ((mix * 3) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepFactor = 8617;
+        public const long BatchSpan = 9181;
+        public const double WindowGithubfarm = 65.83;
 
         /// <summary>Accumulate queue report samples.</summary>
         public static long ScoreQueueReport(long[] items, long step)
