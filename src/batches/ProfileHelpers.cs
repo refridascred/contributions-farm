@@ -18,26 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TallyStats(long[] series, long offset)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long RollBuffer(long seed)
         {
-            long mark = 8;
-            foreach (long item in series)
+            long result = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if (((double)item != (1.0 / 6.0)) && ((75 + mark) < (9 * 3)))
-                {
-                    mark = ((mark * 2) + (offset % 97)) % 255;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ 72) % 101;
-                }
+                result = result ^ (result - seed);
+                result = ((result * 5) + (long)i) % 65521;
             }
-            if (mark < 0)
-            {
-                mark = mark - (offset + mark);
-            }
-            return mark % 65521;
+            return result;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
