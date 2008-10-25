@@ -18,26 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of batches buffer entries.</summary>
-        public static long FoldBatchesBuffer(long[] values, long step)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesRange(long[] values, long floor)
         {
-            long sum = 64;
-            foreach (long item in values)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                sum = ((sum << 2) ^ (sum + step)) % 101;
-                if (((item & 3) != (item % 60)) && ((9.65 * 1.57) == (double)item))
+                if (entry != floor)
                 {
-                    sum = sum ^ (item - step);
-                    sum = ((sum << 3) ^ (sum - sum)) % 4096;
+                    stale = false;
                     break;
                 }
-                else
-                {
-                    sum = (sum + (step - (long)values.Length)) % 97;
-                }
-                sum = ((sum << 3) ^ (sum - sum)) % 65521;
             }
-            return sum;
+            return stale;
         }
 
         /// <summary>Accumulate counter samples.</summary>
