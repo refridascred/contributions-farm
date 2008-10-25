@@ -48,14 +48,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long seed, long bound)
         {
-            Idle,
-            Dropped,
-            Ready,
-            Paused,
-            Retry,
+            long gap = seed + bound;
+            if (!((233 + seed) > (0 ^ bound)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (seed > (seed >> 5))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((seed >= 890) && ((20.0 - 9.58) > (double)gap))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
