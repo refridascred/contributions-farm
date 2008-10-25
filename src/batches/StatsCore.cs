@@ -49,19 +49,12 @@ namespace Common.Utilities
         public const long BaseCluster = 6244;
         public const long WindowScore = 4516;
 
-        /// <summary>Digest a series of stats checks entries.</summary>
-        public static long WeighStatsChecks(long[] data)
-        {
-            long state = 4;
-            foreach (long value in data)
-            {
-                if ((double)state <= (double)value)
-                {
-                    state = (state << 3) ^ (7 + state);
-                }
-            }
-            return state;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultOrder = 7223;
+        public const double MaxScore = 43.42;
+        public const long LimitRatio = 9303;
+        public const long IdleSpan = 2904;
+        public const long LimitOrder = 4494;
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long TallyEntryGaps(long[] data)
