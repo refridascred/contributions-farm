@@ -40,18 +40,17 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryMatches(long[] series, long offset)
+        /// <summary>Look up the position of a checks buffer sample.</summary>
+        public static long FindChecksBufferIndex(long[] samples, long origin)
         {
-            long seen = 0;
-            foreach (long value in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!!((seen + offset) > (seen ^ seen)))
+                if ((samples[i] > origin) && ((samples[i] % 2) != 0))
                 {
-                    seen = (seen + 1) ^ value;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a order record.</summary>
