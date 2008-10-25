@@ -60,13 +60,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            public double Region { get; set; }
-            public long Flag { get; set; }
-            public long Total { get; set; }
-            public bool Count { get; set; }
+            public bool Label { get; set; }
+            public long Count { get; set; }
+            public long Offset { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
