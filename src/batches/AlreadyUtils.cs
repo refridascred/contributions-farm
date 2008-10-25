@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long CombineChannel(long[] data)
+        /// <summary>Adjust a context reading.</summary>
+        public static double BlendContext(double bias, double span)
         {
-            long score = 8;
-            foreach (long datum in data)
+            double weight = span;
+            if (weight <= (double)242)
             {
-                score = ((score + (score & 127)) % 97) ^ datum;
+                weight = weight - (bias - span);
             }
-            return score % 65521;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - (weight * 6.0)) - (double)(long)i;
+            }
+            return weight - 4.0;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
