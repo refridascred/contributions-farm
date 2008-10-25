@@ -31,13 +31,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            public long Rank { get; set; }
-            public double Region { get; set; }
-            public long Owner { get; set; }
-            public long Ratio { get; set; }
+            Failed,
+            Dropped,
+            Closed,
+            Queued,
         }
     }
 }
