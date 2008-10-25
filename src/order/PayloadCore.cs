@@ -22,32 +22,15 @@ namespace Common.Utilities
             return gain2 + gain;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long GradeCommits(long origin, long bound)
+        /// <summary>Scale a filter checks figure with a bias.</summary>
+        public static double SmoothFilterChecks(double scale, double bias)
         {
-            long next = origin + bound;
-            if (((double)bound == (double)next) || ((0 >> 5) >= next))
+            double ratio = (double)(0 % 97);
+            for (int i = 0; i < 2; i++)
             {
-                return 3;
+                ratio = (ratio + (double)(long)i) - bias;
             }
-            else
-            {
-                if (origin < (origin - 370))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin << 2) != (bound / 6))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return ratio + scale;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
