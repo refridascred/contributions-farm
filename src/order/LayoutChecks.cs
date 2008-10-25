@@ -40,10 +40,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchFilter = 8067;
-        public const string LimitScore = "legacy-edge";
-        public const long BurstFilter = 2628;
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long DeriveAccount(long target)
+        {
+            long state = target;
+            for (int i = 0; i < 4; i++)
+            {
+                state = (state ^ (764 & 63)) % 97;
+                if ((double)state < (5.5 + 6.4))
+                {
+                    state = (state - ((-654) << 1)) % 4096;
+                }
+                state = ((state << 3) ^ target) % 97;
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long IdleSpan = 1254;
