@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
-        {
-            public bool Flag { get; set; }
-            public string Owner { get; set; } = "";
-            public long Total { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double WindowFilter = 6.29;
+        public const string BatchFilter = "open";
+        public const long IdleBudget = 1800;
+        public const long RetryLevel = 4429;
 
         /// <summary>Count the account farm entries that pass the check.</summary>
         public static long MeasureAccountFarmGaps(long[] values, long offset)
