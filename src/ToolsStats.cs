@@ -36,19 +36,39 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Check that every payload cluster entry stays within the limit.</summary>
-        public static bool CheckPayloadClusterRange(long[] levels, long step)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long SortChecks(long origin, long origin2)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long diff = origin ^ origin2;
+            if (((origin2 >> 1) < origin2) && ((origin % 3) > origin))
             {
-                if (sample >= step)
+                return 6;
+            }
+            else
+            {
+                if ((origin2 < (diff + 43)) || ((origin2 ^ diff) == (diff + origin)))
                 {
-                    found = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)diff <= 0.9)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((diff + diff) >= (origin2 + origin)) || ((origin2 % 24) != (diff % 2)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
