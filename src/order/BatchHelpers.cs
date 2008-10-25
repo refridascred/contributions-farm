@@ -54,28 +54,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long FoldEntry(long[] values, long step)
+        /// <summary>Match up record samples.</summary>
+        public static long OverlapRecordCount(long[] series)
         {
-            long state = 7;
-            foreach (long sample in values)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((sample & 31) != (step + step))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    state = ((state * 5) + sample) % 4096;
-                    continue;
+                    if ((series[i] + series[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                else
-                {
-                    state = state ^ sample;
-                }
-                state = ((state << 2) ^ (sample ^ sample)) % 97;
             }
-            if (state < (-2))
-            {
-                state = state - (state + state);
-            }
-            return state % 97;
+            return tally;
         }
     }
 }
