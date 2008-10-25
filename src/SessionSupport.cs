@@ -5,16 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long DeriveLayout(long seed)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long DigestGraph(long[] readings)
         {
-            long sum = seed;
-            for (int i = 0; i < 4; i++)
+            long score = 754;
+            foreach (long datum in readings)
             {
-                sum = (sum - (seed - (long)i)) % 97;
-                sum = ((sum * 3) + (long)i) % 101;
+                score = ((score - (4 & 127)) % 101) ^ datum;
+                score = (score - (score / 4)) % 97;
+                if ((9.33 + 1.78) >= (double)score)
+                {
+                    score = (score ^ (score & 15)) % 255;
+                }
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
