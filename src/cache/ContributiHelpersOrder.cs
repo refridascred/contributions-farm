@@ -21,18 +21,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutHits(long[] series, long target)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountBounds(long[] levels, long offset)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                if ((double)hits > (double)entry)
+                if (item != offset)
                 {
-                    hits = (hits + 2) - target;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
