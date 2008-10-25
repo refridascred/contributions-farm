@@ -1,10 +1,28 @@
 # entry settings
-githubfarm_threshold: open
-max_size:
-  - 214
-  - 49
-  - 488
-warm_threshold: standard
-metric_limit: 11.84
-hard_ttl_s: false
-flush_capacity_count: false
+default_ttl: stable
+soft_size_s: 55.92
+retry_delay:
+  commits_capacity:
+    - standard
+    - blue
+    - fallback
+  readonly:
+    warm_window: 66.74
+    poll_size_count:
+      - 133
+      - 306
+    max_limit: 22
+    stream_depth: false
+    graph_depth: true
+    base_interval_s: false
+  soft_delay: green
+batches_ttl: 46.28
+verbose: 79.76
+audit:
+  token_delay: standard
+  poll_limit: local
+  warm_ttl_count:
+    warm_threshold_count: 8467
+    compress: 12
+    window_window: 50.99
+    batch_ratio_count: legacy
