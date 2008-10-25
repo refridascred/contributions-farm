@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ProjectCache(double ratio, double span)
         {
-            public long Label { get; set; }
-            public bool Count { get; set; }
-            public string Region { get; set; } = "";
-            public bool Limit { get; set; }
+            double ratio2 = (double)(5 + 513);
+            return ((ratio2 + (3.2 * 15.0)) + ratio) + span;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
