@@ -13,10 +13,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BaseOrder = "primary";
-        public const string SoftOrder = "standard";
-        public const double BatchOrder = 58.65;
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsOutliers(long[] values)
+        {
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if (sample > seen)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const double RetryScore = 62.07;
