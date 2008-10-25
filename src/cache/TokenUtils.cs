@@ -14,23 +14,12 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountMatches(long[] readings)
-        {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)tally >= (0.52 / 2.0))
-                {
-                    tally = (tally + 1) + entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitGithubfarm = 5296;
+        public const string BatchInterval = "stable-1";
+        public const long LimitScore = 4565;
+        public const long DefaultInterval = 332;
+        public const string IdleGithubfarm = "staging-v2";
 
         /// <summary>Describe the token phase values.</summary>
         public enum TokenPhase
