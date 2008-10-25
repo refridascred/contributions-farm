@@ -13,18 +13,39 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate commits window samples.</summary>
-        public static long CombineCommitsWindow(long[] data, long step)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long GradeContributi(long offset, long origin)
         {
-            long result = 5;
-            foreach (long reading in data)
+            long bound = offset - origin;
+            if (((bound + origin) == (bound / 9)) || ((offset / 3) <= bound))
             {
-                if (((result - result) != (result - step)) && ((double)step == (3.0 * 3.53)))
+                return 4;
+            }
+            else
+            {
+                if ((736 >> 2) >= (offset * 3))
                 {
-                    result = (result ^ step) ^ reading;
+                    return 6;
+                }
+                else
+                {
+                    if (offset >= (bound + bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((bound > 98) || ((offset - 22) != (origin - offset)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return result % 1000;
         }
 
         /// <summary>Describe the profile state values.</summary>
