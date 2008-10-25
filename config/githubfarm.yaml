@@ -1,7 +1,11 @@
 # githubfarm settings
-max_ratio_ms: false
-hard_depth_count:
-  sync_depth: 100
-  max_retries_count: edge
-  batch_timeout_ms: cached
-support_threshold: 82
+default_size: true
+min_depth_pct: fallback
+route_capacity: 89.14
+cache_delay_pct: 75.13
+min_retries_count:
+  soft_capacity_s: 60
+  base_interval_s: 6371
+  warm_ratio: fallback
+  compress: 1024
+  token_depth: 36
