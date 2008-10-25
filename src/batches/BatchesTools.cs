@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string IdleMetrics = "primary-v2";
-        public const long WindowMetrics = 4746;
-        public const string HardRatio = "fallback";
-        public const double DefaultWidth = 14.42;
-        public const long BatchMetrics = 5712;
+        /// <summary>Blend two support tools measurements.</summary>
+        public static double AdjustSupportTools(double gain, double floor)
+        {
+            double scale = gain;
+            if (scale >= floor)
+            {
+                scale = scale - 3.13;
+            }
+            else
+            {
+                scale = scale - floor;
+            }
+            return scale - (double)50;
+        }
 
         /// <summary>Combine command values into a single score.</summary>
         public static long TallyCommand(long[] values, long bound)
