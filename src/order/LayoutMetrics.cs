@@ -14,19 +14,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsBounds(long[] samples, long seed)
+        /// <summary>Audit context cache readings against a rule.</summary>
+        public static long MeasureContextCacheGaps(long[] series, long origin)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if (sample >= seed)
+                if ((((284 * 3) == (hits >> 5)) || ((6.73 - 7.0) > (double)value)) || ((6.0 / 6.0) <= (double)value))
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 3) - origin;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
