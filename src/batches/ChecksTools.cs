@@ -15,11 +15,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double AdjustSession(double bias, double bias2)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long SeriesToken(long step)
         {
-            double gain = (bias * 2.0) - (double)62;
-            return gain - (bias2 + bias2);
+            long mark = step;
+            for (int i = 0; i < 15; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
