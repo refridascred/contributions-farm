@@ -1,5 +1,6 @@
 {
-  "flush_retries_ms": false,
-  "sync_delay": "fallback",
-  "context_ratio": "legacy"
+  "dry_run": [386, 155],
+  "profile_timeout": [139, 94],
+  "persist": true,
+  "enabled": 7628
 }
