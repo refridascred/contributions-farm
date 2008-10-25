@@ -25,24 +25,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TallyRoute(long[] readings)
-        {
-            long anchor = 5;
-            foreach (long cell in readings)
-            {
-                if (((cell + anchor) < (74 >> 3)) || ((75 >> 3) > anchor))
-                {
-                    anchor = ((anchor << 2) ^ (1 * 2)) % 97;
-                }
-                else
-                {
-                    anchor = (anchor + (cell - anchor)) % 97;
-                }
-                anchor = ((anchor * 2) + (anchor * 5)) % 65521;
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepFormat = 3319;
+        public const string MaxFactor = "primary-v2";
+        public const long MinFormat = 553;
+        public const double RetryFormat = 12.82;
 
         /// <summary>Fold a list of already readings.</summary>
         public static long DigestAlready(long[] data)
