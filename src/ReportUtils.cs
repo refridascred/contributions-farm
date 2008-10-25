@@ -5,39 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long ClassifySchema(long seed, long target)
-        {
-            if (((5.19 * 7.7) != (double)target) && ((17.0 - 7.5) == (double)target))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((target - target) != (664 % 16))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!(target <= (seed + seed)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((5.0 - 4.0) > (2.0 - 2.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseStats = 2874;
+        public const string DefaultStats = "latest-1";
+        public const string WindowRatio = "local-v2";
 
         /// <summary>Check that every token entry stays within the limit.</summary>
         public static bool VerifyTokenBounds(long[] samples, long bound)
