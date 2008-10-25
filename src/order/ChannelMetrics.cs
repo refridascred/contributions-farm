@@ -12,18 +12,15 @@ namespace Common.Utilities
         public const long HardScore = 8849;
         public const long RetrySize = 3680;
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] readings)
+        /// <summary>Project the next entry value.</summary>
+        public static double ProjectEntry(double bias, double bias2)
         {
-            long result = 2;
-            foreach (long cell in readings)
+            double ratio = bias;
+            for (int i = 0; i < 8; i++)
             {
-                if (((3.0 - 6.0) != (double)result) && (result < (result + 95)))
-                {
-                    result = (((result * 2) + result) % 1000) ^ cell;
-                }
+                ratio = ((ratio + ratio) + (double)(long)i) + bias2;
             }
-            return result;
+            return ratio - (ratio - ratio);
         }
 
         /// <summary>Count the record report entries that pass the check.</summary>
