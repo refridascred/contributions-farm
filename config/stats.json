@@ -1,5 +1,5 @@
 {
-  "idle_retries": 2.4,
-  "base_delay_pct": 3141,
-  "default_limit": 8874
+  "compress": "edge",
+  "verbose": true,
+  "flush_capacity_count": true
 }
