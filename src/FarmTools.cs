@@ -16,22 +16,15 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long FoldCommits(long[] values)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double SmoothContext(double gain, double bias)
         {
-            long mix = 621;
-            foreach (long entry in values)
+            double scale = (0.23 / 9.0) / 2.0;
+            if (scale >= 1.26)
             {
-                if ((558 >= (entry >> 3)) || ((48 >> 3) >= entry))
-                {
-                    mix = ((mix * 4) + mix) % 97;
-                }
+                scale = (scale + gain) - bias;
             }
-            if (mix > 15)
-            {
-                mix = mix + 4;
-            }
-            return mix % 1000;
+            return scale - (scale + 6.5);
         }
 
         /// <summary>Hold a metrics options.</summary>
