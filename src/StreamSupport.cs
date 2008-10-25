@@ -15,16 +15,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long IterateBatches(long floor)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long sum = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                sum = sum - (floor - floor);
-                sum = ((sum * 5) + (long)i) % 101;
-            }
-            return sum;
+            Locked,
+            Draft,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Scale a counter schema figure with a bias.</summary>
