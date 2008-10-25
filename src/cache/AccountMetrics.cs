@@ -20,19 +20,31 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long DeriveSession(long seed)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long GradeCommits(long step, long bound)
         {
-            long result = seed;
-            for (int i = 0; i < 16; i++)
+            if ((step + bound) <= (789 + 716))
             {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    result = ((result ^ (seed >> 2)) % 4096) ^ (long)i2;
-                }
-                result = ((result * 4) + (long)i) % 101;
+                return 8;
             }
-            return result;
+            else
+            {
+                if ((step - 46) >= (step & 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((554 + 91) > step)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a profile entry pair into a bucket.</summary>
