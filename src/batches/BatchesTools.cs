@@ -23,18 +23,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksGaps(long[] values, long target)
+        /// <summary>Locate a metric editor reading by value.</summary>
+        public static long SeekMetricEditorIndex(long[] series, long target)
         {
-            long count = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((target + reading) <= target)
+                if (series[i] == target)
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
