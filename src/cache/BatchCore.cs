@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the githubfarm cache entries that pass the check.</summary>
-        public static long MeasureGithubfarmCacheMatches(long[] data, long step)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long PairBatchCount(long[] values)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((step & 127) <= (cell + cell)) || ((460 + hits) > (36 * 3)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((values[i] - values[j]) > 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
