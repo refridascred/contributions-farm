@@ -32,11 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] levels)
         {
-            public string Region { get; set; } = "";
-            public bool Total { get; set; }
+            long mix = 11;
+            foreach (long entry in levels)
+            {
+                if (!((entry / 6) > mix))
+                {
+                    mix = mix ^ entry;
+                }
+            }
+            return mix;
         }
     }
 }
