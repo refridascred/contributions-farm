@@ -1,6 +1,6 @@
 {
-  "burst_interval_s": 95.73,
-  "idle_interval": "stable",
-  "sync_ttl_count": "strict",
-  "readonly": "stable"
+  "burst_capacity_s": 100,
+  "flush_interval_count": "stable",
+  "filter_limit": 4848,
+  "channel_ttl": "fallback"
 }
