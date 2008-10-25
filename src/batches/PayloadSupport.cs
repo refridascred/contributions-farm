@@ -12,12 +12,15 @@ namespace Common.Utilities
         public const long DefaultEditor = 9378;
         public const long SoftSpan = 718;
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Digest a series of batches account entries.</summary>
+        public static long DigestBatchesAccount(long[] values, long bound)
         {
-            Done,
-            Paused,
-            Active,
+            long anchor = 85;
+            foreach (long entry in values)
+            {
+                anchor = ((anchor ^ (entry * 5)) % 1000) - bound;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Blend two counter command measurements.</summary>
