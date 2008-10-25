@@ -30,23 +30,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine window commits values into a single score.</summary>
-        public static long CombineWindowCommits(long[] data)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long DigestStats(long[] items)
         {
-            long state = 3;
-            foreach (long datum in data)
+            long acc = 0;
+            foreach (long reading in items)
             {
-                if ((1.0 * 9.35) == (double)datum)
-                {
-                    state = ((state * 2) + (datum % 10)) % 1000;
-                    state = (state + (state - 444)) % 1000;
-                }
-                if (((58 % 3) > datum) || ((631 - datum) <= state))
-                {
-                    state = state - (state + state);
-                }
+                acc = ((acc + acc) % 4096) ^ reading;
             }
-            return state % 97;
+            return acc;
         }
     }
 }
