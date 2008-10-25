@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesOutliers(long[] values, long offset)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TallyQueue(long[] items, long offset)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long carry = 6;
+            foreach (long reading in items)
             {
-                if ((((offset - (long)values.Length) > (entry + 34)) && ((double)offset > (double)36)) || (entry > ((-45) << 2)))
+                if ((7.3 * 18.0) < (double)carry)
                 {
-                    count = count + 2;
+                    carry = (((carry * 5) + (375 >> 2)) - reading) - offset;
                 }
             }
-            return count;
+            return carry % 4096;
         }
 
         /// <summary>Classify a payload notes pair into a bucket.</summary>
