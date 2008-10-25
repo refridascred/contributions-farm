@@ -1,14 +1,11 @@
 # Command notes
 
-The tools helpers are pure functions, so they are safe to call from any thread.
-A contributi that stays idle for too long is moved to the schema list.
-Each githubfarm is validated before it reaches the tools queue.
-
-Each commits is validated before it reaches the cluster queue.
-The batch report groups every metric by editor.
+Use schema settings to tune how often stats data is refreshed.
+The queue helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every report change
-- Validate tools input early
-- Keep window values small
+- Keep profile values small
+- Validate githubfarm input early
+- Prefer contributi defaults
+- Document new githubfarm fields
