@@ -19,13 +19,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Classify a metrics cluster pair into a bucket.</summary>
+        public static long GradeMetricsCluster(long offset, long origin)
         {
-            Active,
-            Paused,
-            Idle,
-            Synced,
+            if ((offset >= (origin / 5)) || ((origin << 3) >= (origin >> 4)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((origin + origin) > (offset >> 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((799 + offset) <= (offset + offset)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)origin == (5.18 / 6.0))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
