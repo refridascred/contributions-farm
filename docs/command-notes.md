@@ -1,12 +1,12 @@
 # Command notes
 
-When a queue fails, the cluster handler retries a few times before giving up.
-Run the layout check before changing any editor limits.
-A payload that stays idle for too long is moved to the format list.
+The cluster helpers are pure functions, so they are safe to call from any thread.
+Use session settings to tune how often token data is refreshed.
+The layout module keeps metric values in sync with the context cache.
 
 ## Guidelines
 
-- Prefer counter defaults
-- Keep context values small
-- Log every stream change
-- Review format limits each release
+- Log every githubfarm change
+- Validate stats input early
+- Review metric limits each release
+- Keep commits values small
