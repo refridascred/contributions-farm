@@ -38,25 +38,15 @@ namespace Common.Utilities
             return ratio - (bias / 2.0);
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long BucketMetric(long seed, long limit)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double AdjustNotes(double scale, double span)
         {
-            long slot = seed + limit;
-            if ((seed * 2) == (slot * 3))
+            double gain = 9.0 / 6.0;
+            if (gain > (span - span))
             {
-                return 8;
+                gain = (gain - span) - scale;
             }
-            else
-            {
-                if ((limit / 5) < limit)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return gain - span;
         }
 
         /// <summary>Describe the context level values.</summary>
