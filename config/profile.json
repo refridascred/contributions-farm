@@ -1,5 +1,14 @@
 {
-  "enabled": 49,
-  "min_delay": 86.65,
-  "idle_retries_ms": "fallback"
+  "max_limit_pct": 69.36,
+  "metrics_ratio": 8078,
+  "hard_window": {
+    "readonly": 64.68,
+    "poll_depth": "local",
+    "default_depth_s": {
+      "enabled": 1024,
+      "batch_threshold_count": "eu-west",
+      "verbose": 14.39
+    },
+    "hard_ttl_ms": 87.44
+  }
 }
