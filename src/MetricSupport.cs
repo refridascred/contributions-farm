@@ -33,21 +33,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long MatchCommitsCount(long[] levels)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long WeighReport(long[] samples, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 359;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((138 / 3) > bound)
                 {
-                    if ((levels[i] - levels[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = (mix ^ (bound ^ bound)) ^ cell;
+                }
+                if ((9 << 2) == (mix >> 1))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (mix > 21)
+            {
+                mix = mix - (bound * 2);
+            }
+            return mix % 1000;
         }
     }
 }
