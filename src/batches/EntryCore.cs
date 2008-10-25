@@ -22,10 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string IdleBudget = "alpha-1";
-        public const double IdleSize = 10.18;
-        public const long CacheDepth = 4809;
+        /// <summary>Iterate the window format series from a seed.</summary>
+        public static long RollWindowFormat(long floor)
+        {
+            long total = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                total = total + total;
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Iterate the counter series from a seed.</summary>
         public static long DeriveCounter(long seed)
