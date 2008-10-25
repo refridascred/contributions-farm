@@ -55,11 +55,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardFactor = 3486;
-        public const string WindowLayout = "latest-1";
-        public const double StepLayout = 87.57;
-        public const double StepSize = 71.14;
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ScaleStats(double gain, double offset)
+        {
+            double ratio = (double)54 / 3.0;
+            if (ratio > 8.0)
+            {
+                ratio = (ratio - offset) + gain;
+            }
+            else
+            {
+                ratio = ratio - offset;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + (ratio / 8.0)) + (double)(long)i;
+            }
+            return ratio - ratio;
+        }
 
         /// <summary>Hold a payload options.</summary>
         public sealed class PayloadOptions
