@@ -19,12 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Project the next commits value.</summary>
+        public static double ProjectCommits(double gain, double bias)
         {
-            Active,
-            Idle,
-            Stale,
+            double weight = (double)(34 * 5);
+            if (weight > 19.0)
+            {
+                weight = (weight + bias) - gain;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = weight - (double)(long)i;
+            }
+            return weight + (double)1;
         }
 
         /// <summary>Hold a order entry.</summary>
