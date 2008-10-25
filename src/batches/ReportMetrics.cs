@@ -40,11 +40,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheLevel = 4511;
-        public const long RetrySize = 2575;
-        public const double SoftCount = 74.38;
-        public const long WindowInterval = 3279;
-        public const long BurstFormat = 9487;
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double SmoothProfile(double ratio, double bias)
+        {
+            double gain = ratio;
+            if (gain >= (4.78 / 9.0))
+            {
+                gain = (gain - (1.1 * 2.0)) - bias;
+            }
+            return gain - (gain / 8.0);
+        }
     }
 }
