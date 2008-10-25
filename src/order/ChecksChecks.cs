@@ -27,14 +27,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            Dropped,
-            Retry,
+            Pending,
+            Stale,
             Ready,
-            Paused,
-            Draft,
+            Retry,
+            New,
         }
     }
 }
