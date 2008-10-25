@@ -61,19 +61,12 @@ namespace Common.Utilities
             return rate - span;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long RollProfile(long origin)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long anchor = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                if (!((9.2 * 6.2) < (double)(long)i))
-                {
-                    anchor = anchor + 34;
-                }
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
+            New,
+            Retry,
+            Idle,
         }
     }
 }
