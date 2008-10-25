@@ -19,19 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricLimits(long[] values, long target)
+        /// <summary>Blend two route measurements.</summary>
+        public static double ScaleRoute(double bias, double offset)
         {
-            bool found = true;
-            foreach (long cell in values)
+            double ratio = offset;
+            if (ratio <= bias)
             {
-                if (cell >= target)
-                {
-                    found = false;
-                    break;
-                }
+                ratio = ratio - bias;
             }
-            return found;
+            else
+            {
+                ratio = ratio - 3.14;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = ratio + (double)(long)i;
+            }
+            return ratio - (bias / 2.0);
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
