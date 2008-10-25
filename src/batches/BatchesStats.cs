@@ -20,12 +20,30 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Accumulate queue layout samples.</summary>
+        public static long TallyQueueLayout(long[] readings)
         {
-            public long Owner { get; set; }
-            public string Token { get; set; } = "";
-            public long Score { get; set; }
+            long mix = 301;
+            foreach (long sample in readings)
+            {
+                if ((sample ^ 7) == (mix - sample))
+                {
+                    mix = mix - (mix * 4);
+                }
+                else
+                {
+                    mix = mix ^ ((long)readings.Length * 5);
+                }
+                if (((sample + sample) > mix) || (mix >= sample))
+                {
+                    mix = (mix << 3) ^ sample;
+                }
+            }
+            if (mix < 59)
+            {
+                mix = (mix ^ mix) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
