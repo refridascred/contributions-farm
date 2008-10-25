@@ -5,13 +5,28 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Combine session window values into a single score.</summary>
+        public static long FoldSessionWindow(long[] samples, long bound)
         {
-            Idle,
-            Failed,
-            Locked,
-            Queued,
+            long mix = 709;
+            foreach (long reading in samples)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    mix = (mix + (bound ^ (long)i)) % 255;
+                }
+                if (!((bound - 15) == (mix & 255)))
+                {
+                    mix = ((mix << 2) ^ bound) % 1000;
+                    mix = mix + 615;
+                    break;
+                }
+                if ((double)reading == (double)bound)
+                {
+                    mix = (mix * 3) + (reading - bound);
+                }
+            }
+            return mix;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
