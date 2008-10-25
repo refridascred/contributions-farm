@@ -23,19 +23,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double SmoothMetrics(double ratio, double span)
+        /// <summary>Match up queue samples.</summary>
+        public static long CompareQueueCount(long[] values)
         {
-            double gain = (double)4 * 2.5;
-            if (gain > (double)(-2))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                gain = ((gain - gain) - ratio) - span;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain + gain;
-            }
-            return gain - (gain / 7.0);
+            return hits;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
