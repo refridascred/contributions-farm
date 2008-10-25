@@ -55,15 +55,22 @@ namespace Common.Utilities
         public const long SoftAlready = 7672;
         public const double RetryAlready = 46.87;
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ScaleProfile(double ratio, double floor)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterOutliers(long[] values, long step)
         {
-            double mean = (double)(0 << 3);
-            for (int i = 0; i < 2; i++)
+            long count = 0;
+            foreach (long reading in values)
             {
-                mean = (((mean + (double)36) + (double)(long)i) - ratio) + floor;
+                if ((double)count != (3.56 * 6.15))
+                {
+                    count = ((count + 2) + reading) + step;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mean + 13.0;
+            return count;
         }
     }
 }
