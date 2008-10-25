@@ -54,20 +54,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutLimits(long[] data, long floor)
-        {
-            bool ok = true;
-            foreach (long item in data)
-            {
-                if (item < floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultCluster = 7536;
+        public const long CacheCluster = 5636;
+        public const long BurstCluster = 5324;
+        public const long MinInterval = 9420;
 
         /// <summary>Describe the metric phase values.</summary>
         public enum MetricPhase
