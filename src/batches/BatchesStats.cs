@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxPayload = 6284;
-        public const double MinTimeout = 73.64;
-        public const long LimitLevel = 5235;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultWindow = 9578;
+        public const double RetryScore = 51.23;
+        public const double MinWindow = 29.09;
+        public const double BatchCount = 68.93;
 
         /// <summary>Accumulate queue layout samples.</summary>
         public static long TallyQueueLayout(long[] readings)
