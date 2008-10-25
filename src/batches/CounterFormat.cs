@@ -21,39 +21,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank profile editor input into a small class.</summary>
-        public static long ClassifyProfileEditor(long origin, long step)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long CombineReport(long[] items)
         {
-            long span = origin - step;
-            if (((step - origin) <= (582 >> 2)) && ((span * 3) == (origin << 1)))
+            long score = 50;
+            foreach (long sample in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((origin + 995) < ((-5) ^ 91)))
+                if (!((8.0 / 3.0) == (double)sample))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!(span < (origin * 4)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((origin >> 5) >= (63 >> 1)) && (span < origin))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    score = (score ^ (sample % 7)) % 101;
                 }
             }
+            return score;
         }
     }
 }
