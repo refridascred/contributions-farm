@@ -28,10 +28,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseWindow = 3362;
-        public const long WindowScore = 8347;
-        public const double BaseLevel = 71.93;
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
+        {
+            public double Token { get; set; }
+            public long Mode { get; set; }
+            public long Owner { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Rank checks input into a small class.</summary>
         public static long SortChecks(long origin, long origin2)
