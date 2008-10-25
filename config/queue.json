@@ -1,6 +1,6 @@
 {
-  "warm_retries_ms": 79,
-  "entry_window": 500,
-  "warm_depth": [499, 139, 162, 465],
-  "order_window": false
+  "base_size": "primary",
+  "hard_threshold": true,
+  "default_depth": 100,
+  "enabled": 250
 }
