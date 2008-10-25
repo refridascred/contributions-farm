@@ -15,19 +15,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamLimits(long[] values, long origin)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountGaps(long[] series, long origin)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if (sample > origin)
+                if ((6.9 <= (double)hits) || !((origin - origin) != (hits << 2)))
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 3) + datum;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
