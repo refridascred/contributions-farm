@@ -1,7 +1,6 @@
 {
-  "persist": "fallback",
-  "strict": 6879,
-  "idle_timeout": false,
-  "sync_threshold_count": "local",
-  "warm_interval_count": 41
+  "default_delay_s": true,
+  "record_ttl": ["stable", "legacy"],
+  "layout_depth": "primary",
+  "retry_timeout_s": 60
 }
