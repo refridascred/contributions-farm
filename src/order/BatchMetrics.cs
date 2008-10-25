@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Rank account input into a small class.</summary>
-        public static long BucketAccount(long offset, long limit)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long SeekTokenIndex(long[] series, long bound)
         {
-            long gap = offset ^ limit;
-            if ((limit - limit) >= offset)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (gap < (limit ^ offset))
+                if (series[i] < bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
