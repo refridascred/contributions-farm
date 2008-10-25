@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchChannel = 2509;
-        public const double WindowChannel = 6.08;
-        public const long MaxChannel = 7938;
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
+        {
+            public long Limit { get; set; }
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Compare every pair of already readings.</summary>
         public static long MatchAlreadyCount(long[] samples)
