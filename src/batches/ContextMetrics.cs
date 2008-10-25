@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchScore = 1656;
-        public const long DefaultSchema = 516;
-        public const long StepBudget = 7118;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinBatches = 1181;
+        public const string StepDepth = "open";
+        public const double BatchSpan = 83.02;
+        public const long BaseBatches = 8985;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long MinOrder = 3859;
