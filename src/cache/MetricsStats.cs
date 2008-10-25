@@ -40,11 +40,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BaseFarm = "staging";
-        public const double BatchScore = 52.33;
-        public const long MinCount = 9774;
-        public const string WindowFarm = "open-v2";
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
+        {
+            public double Score { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Grade a tools value against two limits.</summary>
         public static long BucketTools(long origin, long limit)
