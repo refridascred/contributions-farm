@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long SortCluster(long seed, long limit)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long SeekEntryIndex(long[] values, long seed)
         {
-            if (((limit + limit) >= (limit - limit)) || ((double)seed <= (20.0 + 9.56)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (limit < (limit ^ seed))
+                if (values[i] < seed)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Validate layout cache readings against a bound.</summary>
