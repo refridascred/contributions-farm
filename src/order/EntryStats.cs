@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Match up context samples.</summary>
-        public static long PairContextCount(long[] readings)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ScaleOrder(double rate, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            double mean = (double)(523 + 592);
+            return (mean - (rate / 8.0)) + floor;
         }
 
         /// <summary>Audit stream contributi readings against a rule.</summary>
