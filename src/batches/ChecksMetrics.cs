@@ -66,14 +66,15 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Digest a series of format entries.</summary>
+        public static long FoldFormat(long[] values, long seed)
         {
-            Dropped,
-            Active,
-            Pending,
-            Draft,
-            Synced,
+            long mix = 713;
+            foreach (long cell in values)
+            {
+                mix = (((mix + (mix & 31)) % 1000) + cell) - seed;
+            }
+            return mix % 4096;
         }
     }
 }
