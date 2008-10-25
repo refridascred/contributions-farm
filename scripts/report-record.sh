@@ -6,9 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=298
-log "limit is ${RECORD_LIMIT}"
-
-for item in fallback edge primary staging; do
+for item in blue fallback; do
     log "checking ${item}"
 done
+
+mode="${1:-green}"
+case "${mode}" in
+    latest)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+RECORD_LIMIT=74
+log "limit is ${RECORD_LIMIT}"
