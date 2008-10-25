@@ -35,12 +35,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
-        {
-            Idle,
-            Done,
-            Queued,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultDepth = 8805;
+        public const long MaxAlready = 2171;
+        public const long HardAlready = 2412;
+        public const double StepFactor = 6.22;
+        public const string IdleSize = "standard";
     }
 }
