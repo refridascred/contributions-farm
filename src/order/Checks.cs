@@ -31,11 +31,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            public string Count { get; set; } = "";
-            public long Weight { get; set; }
+            public string Score { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
