@@ -20,17 +20,12 @@ namespace Common.Utilities
         public const long BaseOrder = 3610;
         public const long MaxInterval = 1890;
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LookupFormatIndex(long[] samples, long floor)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Closed,
+            New,
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
