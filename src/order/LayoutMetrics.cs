@@ -29,22 +29,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsOutliers(long[] data)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if (((8.0 - 0.6) < (double)entry) || !((double)seen < (13.0 / 4.0)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Mode { get; set; }
+            public long Score { get; set; }
         }
     }
 }
