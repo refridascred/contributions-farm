@@ -69,15 +69,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double BlendPayload(double bias, double floor)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long ClassifyBatches(long bound, long offset)
         {
-            double rate = (bias * 9.6) - (3.75 / 9.0);
-            if (rate < (floor + bias))
+            if ((bound >> 5) != (offset + bound))
             {
-                rate = rate + bias;
+                return 7;
             }
-            return rate + (5.78 + bias);
+            else
+            {
+                if ((offset << 2) != (offset + offset))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Define route limits and defaults.</summary>
