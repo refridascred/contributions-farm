@@ -23,22 +23,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TallyFilter(long[] values)
+        /// <summary>Fold a list of filter entry readings.</summary>
+        public static long DigestFilterEntry(long[] samples, long bound)
         {
-            long anchor = 62;
-            foreach (long datum in values)
+            long state = 4;
+            foreach (long value in samples)
             {
-                if ((anchor + datum) <= anchor)
+                state = ((state << 3) ^ 14) % 1000;
+                state = (state - (22 - state)) % 97;
+                if ((bound >= (6 >> 1)) && ((value + bound) < bound))
                 {
-                    anchor = (anchor * 4) + (anchor >> 5);
+                    state = (state ^ (39 * 3)) % 4096;
                 }
             }
-            if (anchor > 4)
+            if (state > 144)
             {
-                anchor = (anchor - (anchor * 2)) % 1000;
+                state = ((state * 2) + bound) % 4096;
             }
-            return anchor;
+            return state % 4096;
         }
 
         /// <summary>Fold a list of format readings.</summary>
