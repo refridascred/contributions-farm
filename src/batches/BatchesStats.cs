@@ -20,16 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long SeriesSession(long origin)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long carry = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                carry = ((carry * 3) + (origin % 10)) % 65521;
-                carry = ((carry * 3) + (long)i) % 1000;
-            }
-            return carry;
+            public long Owner { get; set; }
+            public string Token { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
