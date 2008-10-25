@@ -58,12 +58,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TallyPayload(long[] values, long limit)
         {
-            Closed,
-            Idle,
-            Failed,
+            long mix = 905;
+            foreach (long item in values)
+            {
+                mix = (mix ^ (mix >> 1)) ^ item;
+                mix = ((mix * 4) + (limit & 31)) % 97;
+            }
+            return mix % 4096;
         }
     }
 }
