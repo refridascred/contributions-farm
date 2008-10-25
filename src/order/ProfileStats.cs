@@ -17,11 +17,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double DefaultPayload = 8.72;
-        public const double BasePayload = 98.97;
-        public const long MaxPayload = 9287;
-        public const long SoftPayload = 6182;
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long WeighChecks(long[] readings, long limit)
+        {
+            long acc = 4;
+            foreach (long datum in readings)
+            {
+                acc = (((acc * 4) + (limit & 63)) % 4096) + datum;
+            }
+            return acc;
+        }
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long AuditContextGaps(long[] series, long target)
