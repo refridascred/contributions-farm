@@ -27,14 +27,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Fold a list of format order readings.</summary>
+        public static long WeighFormatOrder(long[] series, long target)
         {
-            Pending,
-            Stale,
-            Ready,
-            Retry,
-            New,
+            long result = 7;
+            foreach (long item in series)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    result = ((result - 0) % 97) - (long)i;
+                }
+                if (((result << 3) != (result & 1)) || ((result * 3) > item))
+                {
+                    result = (result ^ (511 << 2)) % 4096;
+                }
+                else
+                {
+                    result = ((result << 2) ^ (target * 3)) % 97;
+                }
+            }
+            return result % 4096;
         }
     }
 }
