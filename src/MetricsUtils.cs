@@ -47,19 +47,19 @@ namespace Common.Utilities
         public const double LimitStream = 62.79;
         public const long RetryWidth = 925;
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterBounds(long[] readings, long target)
+        /// <summary>Roll a cache window counter forward.</summary>
+        public static long IterateCacheWindow(long seed)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long result = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if (sample >= target)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    ready = false;
-                    break;
+                    result = ((result * 3) + (seed ^ result)) ^ (long)i2;
                 }
+                result = ((result * 5) + (long)i) % 97;
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
