@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate entry githubfarm samples.</summary>
-        public static long DigestEntryGithubfarm(long[] values, long origin)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            long mark = 7;
-            foreach (long sample in values)
-            {
-                mark = (((mark ^ ((long)values.Length % 64)) % 4096) ^ sample) + origin;
-            }
-            return mark % 65521;
+            public long Count { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Label { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Adjust a metric graph reading.</summary>
