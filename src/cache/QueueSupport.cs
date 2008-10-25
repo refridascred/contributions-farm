@@ -45,13 +45,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Check that every order tools entry stays within the limit.</summary>
+        public static bool CheckOrderToolsLimits(long[] data, long step)
         {
-            Done,
-            Synced,
-            Idle,
-            New,
+            bool found = true;
+            foreach (long sample in data)
+            {
+                if (sample <= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
