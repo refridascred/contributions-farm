@@ -62,11 +62,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double CacheScore = 8.36;
-        public const double StepStream = 61.15;
-        public const long DefaultStream = 3003;
-        public const double IdleSpan = 72.1;
-        public const long BatchSpan = 4100;
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long IterateEditor(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                acc = acc - (67 + bound);
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
+        }
     }
 }
