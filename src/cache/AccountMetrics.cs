@@ -56,23 +56,13 @@ namespace Common.Utilities
         public const double WindowRatio = 93.01;
         public const long RetryBudget = 5767;
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long DigestChannel(long[] series, long seed)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long total = 897;
-            foreach (long sample in series)
-            {
-                total = (total - (sample - total)) - seed;
-                if ((sample & 3) <= (sample & 255))
-                {
-                    break;
-                }
-            }
-            if (total < 2)
-            {
-                total = ((total * 4) + (total + total)) % 97;
-            }
-            return total;
+            public bool Count { get; set; }
+            public double Level { get; set; }
+            public double Weight { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the notes kind values.</summary>
