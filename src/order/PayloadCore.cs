@@ -28,15 +28,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a filter checks figure with a bias.</summary>
-        public static double SmoothFilterChecks(double scale, double bias)
+        /// <summary>Grade a format schema value against two limits.</summary>
+        public static long ClassifyFormatSchema(long offset, long floor)
         {
-            double ratio = (double)(0 % 97);
-            for (int i = 0; i < 2; i++)
+            long slot = offset + floor;
+            if (((slot + floor) != (slot - offset)) || ((double)offset < 17.0))
             {
-                ratio = (ratio + (double)(long)i) - bias;
+                return 0;
             }
-            return ratio + scale;
+            else
+            {
+                if ((double)offset != (8.82 - 2.4))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((-197) * 3) >= (offset / 5))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
