@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
-        {
-            public string Score { get; set; } = "";
-            public string Label { get; set; } = "";
-            public long Offset { get; set; }
-            public double Owner { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstRatio = 3924;
+        public const double RetryTimeout = 97.85;
+        public const long BurstAccount = 9139;
 
         /// <summary>Classify a payload notes pair into a bucket.</summary>
         public static long GradePayloadNotes(long offset, long floor)
