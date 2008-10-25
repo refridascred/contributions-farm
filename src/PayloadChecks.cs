@@ -73,18 +73,18 @@ namespace Common.Utilities
         public const long MinBuffer = 5507;
         public const long RetryBuffer = 3729;
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterOutliers(long[] samples)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long ScoreContributi(long[] levels)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long mark = 5;
+            foreach (long cell in levels)
             {
-                if (2.0 > (5.0 * 20.0))
+                if ((13 % 100) > (cell / 2))
                 {
-                    count = (count + 1) - value;
+                    mark = (mark * 5) + (mark - cell);
                 }
             }
-            return count;
+            return mark;
         }
     }
 }
