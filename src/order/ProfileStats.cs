@@ -16,22 +16,27 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit layout payload readings against a rule.</summary>
-        public static long TallyLayoutPayloadHits(long[] levels, long target)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long WeighBatch(long[] readings)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long result = -31;
+            foreach (long reading in readings)
             {
-                if (seen > (seen - target))
+                result = (result * 2) + (874 & 1);
+                if ((reading + result) != (reading << 2))
                 {
-                    seen = (seen + 3) - entry;
+                    result = (result ^ (result & 7)) % 4096;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    result = (result + result) % 101;
                 }
             }
-            return seen;
+            if (result < 72)
+            {
+                result = ((result << 3) ^ (result << 1)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
