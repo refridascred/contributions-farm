@@ -85,13 +85,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Project the next filter buffer value.</summary>
+        public static double BlendFilterBuffer(double scale, double offset)
         {
-            public long Label { get; set; }
-            public double Ratio { get; set; }
-            public long Flag { get; set; }
-            public double Region { get; set; }
+            double scale2 = (offset + offset) * 5.0;
+            if (scale2 <= (double)97)
+            {
+                scale2 = scale2 - (5.0 - scale2);
+            }
+            else
+            {
+                scale2 = scale2 - 4.0;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale2 = (scale2 - scale) - (double)(long)i;
+            }
+            return scale2 + 4.16;
         }
     }
 }
