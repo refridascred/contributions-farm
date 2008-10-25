@@ -15,38 +15,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long limit, long floor)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long IterateOrder(long bound)
         {
-            if (((limit ^ floor) < limit) || ((floor / 5) <= (floor - limit)))
+            long mix = bound;
+            for (int i = 0; i < 5; i++)
             {
-                return 6;
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if (!((5.7 + 19.0) > (double)limit))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor - limit) <= ((-8) - floor))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (1.11 > (double)floor)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
