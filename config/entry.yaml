@@ -1,14 +1,7 @@
 # entry settings
-min_ttl_ms: 2.99
-editor_retries: local
-sync_window_pct:
-  readonly: 100
-  soft_capacity: stable
-  checks_threshold: false
-  token_interval: false
-  metric_retries: strict
-  dry_run:
-    - local
-    - blue
-batch_size: 82.63
-max_timeout_ms: 36.51
+audit: primary
+strict: 60
+soft_depth_s: 60
+flush_limit_ms: false
+retry_threshold_ms: standard
+compress: 30
