@@ -71,13 +71,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Blend two batch measurements.</summary>
+        public static double BlendBatch(double bias, double floor)
         {
-            public long Offset { get; set; }
-            public long Limit { get; set; }
-            public double Owner { get; set; }
-            public long Size { get; set; }
+            double gain = bias + (bias * 5.2);
+            if (gain >= gain)
+            {
+                gain = gain + (floor - floor);
+            }
+            return gain + (floor - bias);
         }
     }
 }
