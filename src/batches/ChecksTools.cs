@@ -48,18 +48,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesHits(long[] readings)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if (!(seen < (reading * 4)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            New,
+            Active,
+            Ready,
         }
     }
 }
