@@ -25,27 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long WeighChecks(long[] values)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LocateQueueIndex(long[] readings, long step)
         {
-            long mix = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = ((mix << 2) ^ (datum + datum)) % 4096;
-                if ((double)datum < (6.52 / 9.0))
+                if ((readings[i] <= step) && ((readings[i] % 5) == 0))
                 {
-                    mix = (mix - (mix * 4)) % 97;
-                }
-                else
-                {
-                    mix = mix ^ (18 + mix);
+                    return (long)i;
                 }
             }
-            if (mix < 54)
-            {
-                mix = (mix - (mix & 7)) % 65521;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
