@@ -6,16 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest primary; do
+RECORD_LIMIT=298
+log "limit is ${RECORD_LIMIT}"
+
+for item in fallback edge primary staging; do
     log "checking ${item}"
 done
-
-mode="${1:-edge}"
-case "${mode}" in
-    edge)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
