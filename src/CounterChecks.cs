@@ -21,12 +21,25 @@ namespace Common.Utilities
         public const long RetryDepth = 8397;
         public const long MinWidth = 2095;
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long BucketMetrics(long offset, long seed)
         {
-            public double Flag { get; set; }
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
+            long diff = offset - seed;
+            if (diff < (14 + diff))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((offset >> 5) < (seed + diff))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Combine route values into a single score.</summary>
