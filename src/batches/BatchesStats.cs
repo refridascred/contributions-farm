@@ -28,19 +28,14 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long RollOrder(long floor)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long score = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                if (((long)i == ((long)i / 2)) || (247 < (356 ^ (long)i)))
-                {
-                    score = (score ^ floor) % 4096;
-                }
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
+            Dropped,
+            Synced,
+            Draft,
+            Done,
+            Ready,
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
