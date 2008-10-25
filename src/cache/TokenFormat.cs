@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            Done,
-            Retry,
-            Pending,
-            Failed,
-            New,
+            Locked,
+            Stale,
+            Synced,
+            Ready,
         }
 
         /// <summary>Describe the context mode values.</summary>
