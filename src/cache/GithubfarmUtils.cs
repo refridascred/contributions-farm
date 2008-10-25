@@ -35,24 +35,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the record filter series from a seed.</summary>
-        public static long RollRecordFilter(long limit)
-        {
-            long mix = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    mix = (((mix << 3) ^ 993) % 101) ^ (long)i2;
-                }
-                if ((limit + mix) != (mix + mix))
-                {
-                    mix = (mix - ((long)i + 98)) % 97;
-                }
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardFactor = 4119;
+        public const double DefaultInterval = 63.95;
+        public const long HardFarm = 1611;
 
         /// <summary>Describe the session phase values.</summary>
         public enum SessionPhase
