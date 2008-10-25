@@ -34,17 +34,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long DeriveCounter(long seed)
-        {
-            long score = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                score = (score ^ score) % 97;
-                score = ((score * 4) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BaseRatio = "staging-v2";
+        public const long RetryMetrics = 1994;
+        public const long MinMetrics = 2457;
+        public const long RetrySize = 7524;
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long TallyGithubfarm(long[] samples)
