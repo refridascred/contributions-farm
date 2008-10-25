@@ -46,12 +46,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string HardAlready = "staging-1";
-        public const long LimitBudget = 2540;
-        public const string CacheLevel = "alpha-1";
-        public const long SoftAlready = 7672;
-        public const double RetryAlready = 46.87;
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesLimits(long[] levels, long floor)
+        {
+            bool ok = true;
+            foreach (long entry in levels)
+            {
+                if (entry != floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long TallyCounterOutliers(long[] values, long step)
