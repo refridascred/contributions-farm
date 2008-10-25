@@ -42,16 +42,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long RollRoute(long target)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long SeriesCommand(long target)
         {
-            long score = target;
-            for (int i = 0; i < 17; i++)
+            long carry = target;
+            for (int i = 0; i < 7; i++)
             {
-                score = (score << 2) ^ ((long)i - target);
-                score = ((score * 3) + (long)i) % 1000;
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
