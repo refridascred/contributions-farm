@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of githubfarm counter readings.</summary>
-        public static long ScoreGithubfarmCounter(long[] levels)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandGaps(long[] series, long limit)
         {
-            long result = -414;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                result = (result + cell) % 4096;
+                if ((double)datum < (2.3 - 8.4))
+                {
+                    tally = (tally + 2) + limit;
+                }
             }
-            return result % 97;
+            return tally;
         }
 
         /// <summary>Describe the payload kind values.</summary>
