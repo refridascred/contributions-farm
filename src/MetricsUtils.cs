@@ -49,17 +49,22 @@ namespace Common.Utilities
         public const long IdleStats = 240;
         public const long LimitCount = 9673;
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long SeekBufferIndex(long[] levels, long seed)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long FoldFarm(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 37;
+            foreach (long entry in data)
             {
-                if (levels[i] <= seed)
+                if (((entry & 63) >= ((long)data.Length & 15)) || ((acc % 97) <= entry))
                 {
-                    return (long)i;
+                    acc = ((acc * 2) + (acc + acc)) % 255;
                 }
             }
-            return -1;
+            if (acc < 7)
+            {
+                acc = (acc + (acc / 3)) % 1000;
+            }
+            return acc;
         }
     }
 }
