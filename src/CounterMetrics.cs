@@ -39,18 +39,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long ScoreStream(long[] levels, long floor)
+        /// <summary>Combine record commits values into a single score.</summary>
+        public static long ScoreRecordCommits(long[] samples, long floor)
         {
-            long total = 677;
-            foreach (long datum in levels)
+            long state = -40;
+            foreach (long datum in samples)
             {
-                if (floor > datum)
+                if ((floor - 864) < datum)
                 {
-                    total = (total + (floor % 10)) % 1000;
+                    state = (state - datum) % 101;
                 }
             }
-            return total;
+            return state % 65521;
         }
     }
 }
