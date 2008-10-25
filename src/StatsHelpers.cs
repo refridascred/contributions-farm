@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string IdleFactor = "fallback";
-        public const double WindowSize = 28.67;
-        public const long CacheDepth = 8424;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double HardBudget = 93.64;
+        public const double RetryDepth = 24.26;
+        public const long DefaultDepth = 9187;
+        public const string WindowSize = "legacy-edge";
+        public const long RetryRatio = 5733;
 
         /// <summary>Combine entry session values into a single score.</summary>
         public static long ScoreEntrySession(long[] levels, long bound)
