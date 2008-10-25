@@ -49,20 +49,11 @@ namespace Common.Utilities
         public const double LimitStream = 62.79;
         public const long RetryWidth = 925;
 
-        /// <summary>Roll a cache window counter forward.</summary>
-        public static long IterateCacheWindow(long seed)
-        {
-            long result = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    result = ((result * 3) + (seed ^ result)) ^ (long)i2;
-                }
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string BurstGraph = "staging-v2";
+        public const long HardGraph = 6895;
+        public const long LimitGraph = 811;
+        public const long BatchGraph = 2871;
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
         public static long CompareStatsCount(long[] data)
