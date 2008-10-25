@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long SeekMetricsIndex(long[] values, long offset)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long CompareEntryCount(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (values[i] > offset)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] - data[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Digest a series of record entries.</summary>
