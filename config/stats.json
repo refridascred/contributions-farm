@@ -1,7 +1,8 @@
 {
-  "graph_interval": [430, 155, 400, 222],
-  "dry_run": "legacy",
-  "buffer_ratio": "stable",
-  "session_size": 60,
-  "audit": 8823
+  "dry_run": "standard",
+  "batch_timeout_count": true,
+  "entry_interval": "strict",
+  "graph_delay": false,
+  "verbose": 2252,
+  "max_ratio_ms": true
 }
