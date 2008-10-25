@@ -14,20 +14,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long StepBuffer(long target)
+        /// <summary>Count channel already pairs that satisfy a relation.</summary>
+        public static long MatchChannelAlreadyCount(long[] series)
         {
-            long total = target;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((total / 4) < (target + target))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = (total + (1 + target)) % 4096;
+                    if ((series[i] ^ series[j]) != 16)
+                    {
+                        count = count + 1;
+                    }
                 }
-                total = ((total * 5) + total) % 255;
-                total = ((total * 5) + (long)i) % 101;
             }
-            return total;
+            return count;
         }
 
         /// <summary>Describe the checks mode values.</summary>
