@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long GradeCounter(long seed, long offset)
         {
-            public long Score { get; set; }
-            public string Level { get; set; } = "";
-            public double Stamp { get; set; }
+            long lane = seed + offset;
+            if ((9.6 + 1.0) >= (double)offset)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((seed <= (offset ^ seed)) || ((seed + offset) == (lane % 100)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
