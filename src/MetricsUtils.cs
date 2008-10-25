@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
-        {
-            Idle,
-            New,
-            Queued,
-            Pending,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string LimitBudget = "local-1";
+        public const long IdleFarm = 7756;
+        public const string CacheFarm = "local-1";
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long HardTimeout = 952;
