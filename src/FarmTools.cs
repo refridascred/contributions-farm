@@ -15,11 +15,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinContributi = 1990;
-        public const long LimitContributi = 4711;
-        public const string CacheContributi = "fallback-v2";
-        public const string MaxContributi = "local-1";
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LookupSessionIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up contributi samples.</summary>
         public static long MatchContributiCount(long[] readings)
