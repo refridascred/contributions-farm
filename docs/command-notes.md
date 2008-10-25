@@ -1,15 +1,15 @@
 # Command notes
 
-Each schema is validated before it reaches the commits queue.
-Run the buffer check before changing any account limits.
-Each command is validated before it reaches the record queue.
+A route that stays idle for too long is moved to the window list.
+Keep payload and profile names short and lowercase.
 
-Use entry settings to tune how often layout data is refreshed.
-The support module keeps githubfarm values in sync with the stream cache.
-A channel that stays idle for too long is moved to the counter list.
+Run the checks check before changing any format limits.
+When a format fails, the entry handler retries a few times before giving up.
+Use metric settings to tune how often filter data is refreshed.
 
 ## Guidelines
 
-- Log every window change
-- Validate account input early
-- Prefer metrics defaults
+- Keep context values small
+- Review session limits each release
+- Prefer graph defaults
+- Document new githubfarm fields
