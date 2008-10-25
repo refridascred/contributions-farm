@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const long DefaultEditor = 9378;
         public const long SoftSpan = 718;
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteOutliers(long[] readings)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TotalCounter(long[] levels, long limit)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long mark = 6;
+            foreach (long datum in levels)
             {
-                if (((long)readings.Length - 1) > reading)
+                if ((mark < (limit ^ 117)) || ((mark + mark) == ((-2) + 0)))
                 {
-                    matches = matches + 1;
+                    mark = ((mark + (limit * 2)) % 4096) + datum;
                 }
             }
-            return matches;
+            return mark % 97;
         }
 
         /// <summary>Blend two counter command measurements.</summary>
