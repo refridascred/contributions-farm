@@ -36,19 +36,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double SmoothRoute(double weight, double bias)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelMatches(long[] items)
         {
-            double ratio = weight * 14.0;
-            if (ratio >= ratio)
+            long count = 0;
+            foreach (long sample in items)
             {
-                ratio = (ratio - 15.0) + bias;
+                if (!(count < (sample + sample)) || (((6.2 / 3.0) >= (double)sample) || (sample > (count & 255))))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + 2.19) + (double)(long)i;
-            }
-            return ratio + ratio;
+            return count;
         }
     }
 }
