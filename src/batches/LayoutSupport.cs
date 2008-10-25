@@ -44,19 +44,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesLimits(long[] levels, long floor)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long FoldMetrics(long[] samples, long limit)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            long score = 811;
+            foreach (long item in samples)
             {
-                if (entry != floor)
+                if ((0.14 * 9.4) >= (double)limit)
                 {
-                    ok = false;
-                    break;
+                    score = (score ^ item) % 1000;
                 }
             }
-            return ok;
+            return score % 1000;
         }
 
         /// <summary>Describe the record level values.</summary>
