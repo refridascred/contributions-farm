@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Blend two queue measurements.</summary>
-        public static double AdjustQueue(double scale, double span)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            double gain = span * 12.0;
-            for (int i = 0; i < 5; i++)
-            {
-                gain = ((gain - (gain + span)) + (double)(long)i) + scale;
-            }
-            return gain - (span * 7.6);
+            public double Label { get; set; }
+            public double Ratio { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
