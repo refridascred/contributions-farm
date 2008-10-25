@@ -35,18 +35,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextMatches(long[] readings)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if (!((sample - sample) <= tally) || ((tally >= (tally << 3)) || ((sample - 9) < (tally / 2))))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Idle,
+            Done,
+            Queued,
         }
     }
 }
