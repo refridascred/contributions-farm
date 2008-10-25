@@ -1,5 +1,6 @@
 # githubfarm settings
-readonly: 5
-cluster_depth: 1024
-metrics_limit: 17.52
-flush_limit_s: 49
+base_interval_pct: true
+cache_ttl_ms:
+  - stable
+  - open
+soft_size_s: false
