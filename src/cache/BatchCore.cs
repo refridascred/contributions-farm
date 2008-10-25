@@ -30,14 +30,17 @@ namespace Common.Utilities
         public const long CacheBudget = 7885;
         public const double HardFormat = 66.96;
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Look up the position of a route report sample.</summary>
+        public static long FindRouteReportIndex(long[] readings, long target)
         {
-            Pending,
-            Draft,
-            Locked,
-            Paused,
-            Synced,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
