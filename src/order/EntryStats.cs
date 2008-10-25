@@ -20,21 +20,18 @@ namespace Common.Utilities
             return gain2 - (double)95;
         }
 
-        /// <summary>Compare every pair of already command readings.</summary>
-        public static long CompareAlreadyCommandCount(long[] readings)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TallyCache(long[] readings, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 7;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((anchor - item) > (seed / 2))
                 {
-                    if ((readings[i] - readings[j]) < 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = ((anchor * 4) + (34 - anchor)) % 4096;
                 }
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Blend two schema measurements.</summary>
