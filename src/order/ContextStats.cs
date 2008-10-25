@@ -35,18 +35,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchMatches(long[] samples)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if (!((entry % 5) < (matches >> 1)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            New,
+            Queued,
+            Ready,
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
