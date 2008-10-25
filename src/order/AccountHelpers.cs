@@ -16,39 +16,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long ClassifyChecks(long origin, long seed)
+        /// <summary>Project the next schema value.</summary>
+        public static double ScaleSchema(double scale, double span)
         {
-            long slot = origin ^ seed;
-            if (((slot & 1) >= (origin << 3)) && ((seed % 24) <= (slot << 1)))
+            double scale2 = span;
+            if (scale2 > (1.5 / 4.0))
             {
-                return 1;
+                scale2 = scale2 + (scale2 - span);
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if ((origin + origin) == (seed - slot))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed * 3) <= (origin << 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (origin <= (5 + slot))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                scale2 = (scale2 + 8.0) + (double)(long)i;
             }
+            return scale2 - scale;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
