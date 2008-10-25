@@ -23,12 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleFactor = 3496;
-        public const long MinQueue = 5020;
-        public const long RetryScore = 6617;
-        public const string CacheDepth = "staging-1";
-        public const long CacheQueue = 5723;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinContributi = 1990;
+        public const long LimitContributi = 4711;
+        public const string CacheContributi = "fallback-v2";
+        public const string MaxContributi = "local-1";
 
         /// <summary>Match up contributi samples.</summary>
         public static long MatchContributiCount(long[] readings)
