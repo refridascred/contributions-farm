@@ -18,15 +18,18 @@ namespace Common.Utilities
         public const long LimitInterval = 9408;
         public const long HardEntry = 75;
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long FoldTools(long[] readings)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionMatches(long[] samples)
         {
-            long state = 347;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                state = ((state << 2) ^ (item & 63)) % 97;
+                if (matches >= cell)
+                {
+                    matches = matches + 1;
+                }
             }
-            return state % 97;
+            return matches;
         }
 
         /// <summary>Locate a token reading by value.</summary>
