@@ -52,31 +52,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a payload support pair into a bucket.</summary>
-        public static long GradePayloadSupport(long limit, long origin)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            if ((7.91 + 4.7) >= (double)limit)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((limit ^ origin) >= (origin ^ limit))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (limit <= (origin & 31))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Closed,
+            Ready,
+            Locked,
+            Draft,
         }
 
         /// <summary>Digest a series of stats checks entries.</summary>
