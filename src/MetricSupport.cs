@@ -18,24 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long RankFormat(long seed, long floor)
+        /// <summary>Look up the position of a farm layout sample.</summary>
+        public static long FindFarmLayoutIndex(long[] levels, long floor)
         {
-            if ((floor >> 2) <= (seed << 1))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed % 2) >= (seed << 3))
+                if ((levels[i] > floor) && ((levels[i] % 3) != 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
