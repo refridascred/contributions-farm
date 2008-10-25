@@ -1,5 +1,7 @@
 {
-  "persist": "fallback",
-  "profile_capacity": "standard",
-  "enabled": 90
+  "session_retries": "local",
+  "audit": true,
+  "strict": ["staging", "stable", "edge"],
+  "checks_capacity": 23.74,
+  "burst_threshold": true
 }
