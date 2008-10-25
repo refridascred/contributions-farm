@@ -17,11 +17,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstSpan = 3999;
-        public const long DefaultSize = 3586;
-        public const double MinToken = 43.52;
-        public const double IdleToken = 31.7;
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryRange(long[] values, long origin)
+        {
+            bool stale = true;
+            foreach (long sample in values)
+            {
+                if (sample <= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const long HardSupport = 8795;
