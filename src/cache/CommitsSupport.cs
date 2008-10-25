@@ -37,11 +37,38 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long BucketFilter(long bound, long step)
         {
-            public double Stamp { get; set; }
-            public long Owner { get; set; }
+            if ((bound & 31) >= bound)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((7.64 * 4.0) <= (double)step)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((step ^ bound) <= (bound + bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((642 + bound) < (step + bound)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
