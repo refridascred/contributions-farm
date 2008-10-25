@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long RollContext(long limit)
         {
-            public bool Owner { get; set; }
-            public long Offset { get; set; }
+            long result = limit;
+            for (int i = 0; i < 17; i++)
+            {
+                result = (result ^ (607 + (long)i)) % 65521;
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
