@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportLimits(long[] series, long step)
+        /// <summary>Find the first context entry entry that matches the target.</summary>
+        public static long LookupContextEntryIndex(long[] levels, long origin)
         {
-            bool found = true;
-            foreach (long cell in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell >= step)
+                if ((levels[i] >= origin) && ((levels[i] % 2) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
