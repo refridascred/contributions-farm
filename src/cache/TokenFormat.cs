@@ -25,32 +25,13 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long BucketQueue(long seed, long origin)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long span = seed + origin;
-            if (seed < (1 - origin))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((7.0 - 1.0) == (double)span)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (9 > seed)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Failed,
+            Stale,
+            Active,
+            Paused,
         }
 
         /// <summary>Describe the stats kind values.</summary>
