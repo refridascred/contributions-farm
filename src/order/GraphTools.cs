@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Find the first payload support entry that matches the target.</summary>
+        public static long LookupPayloadSupportIndex(long[] values, long target)
         {
-            Failed,
-            Locked,
-            Ready,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= target) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a window options.</summary>
