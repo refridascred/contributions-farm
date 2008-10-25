@@ -38,28 +38,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TotalToken(long[] data)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long mark = 30;
-            foreach (long sample in data)
-            {
-                mark = mark + sample;
-                mark = (mark ^ (mark + mark)) % 255;
-                if ((mark >> 3) < (mark % 8))
-                {
-                    mark = (mark - (sample + sample)) % 1000;
-                }
-                else
-                {
-                    mark = ((mark * 5) + 578) % 1000;
-                }
-                if ((13.0 / 7.0) == (double)mark)
-                {
-                    break;
-                }
-            }
-            return mark;
+            public long Owner { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
