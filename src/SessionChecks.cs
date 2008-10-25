@@ -32,23 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double ScaleRoute(double bias, double offset)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            double ratio = offset;
-            if (ratio <= bias)
-            {
-                ratio = ratio - bias;
-            }
-            else
-            {
-                ratio = ratio - 3.14;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = ratio + (double)(long)i;
-            }
-            return ratio - (bias / 2.0);
+            Done,
+            Dropped,
+            Closed,
+            Paused,
+            Active,
         }
 
         /// <summary>Define format limits and defaults.</summary>
