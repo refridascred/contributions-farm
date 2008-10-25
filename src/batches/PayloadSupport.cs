@@ -23,19 +23,12 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double BlendTools(double scale, double floor)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            double rate = 8.63;
-            if (rate <= (floor + rate))
-            {
-                rate = (rate + rate) - scale;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = rate + (double)(long)i;
-            }
-            return rate - (floor / 6.0);
+            Ready,
+            Idle,
+            Queued,
         }
 
         /// <summary>Count the commits tools entries that pass the check.</summary>
