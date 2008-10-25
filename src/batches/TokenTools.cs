@@ -30,18 +30,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportMatches(long[] values, long bound)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long RollSupport(long offset)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long mix = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if (tally > (tally + bound))
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    tally = (tally + 1) ^ datum;
+                    mix = ((mix << 2) ^ (mix << 2)) ^ (long)i2;
+                    mix = mix ^ (mix ^ offset);
                 }
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return tally;
+            return mix;
         }
     }
 }
