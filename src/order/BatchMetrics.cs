@@ -41,21 +41,22 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TallyOrder(long[] readings)
+        /// <summary>Measure how many tools batch samples are out of range.</summary>
+        public static long TallyToolsBatchGaps(long[] levels, long origin)
         {
-            long mark = -105;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                mark = (mark + 1) % 255;
-                for (int i = 0; i < 6; i++)
+                if ((origin - 352) > (seen & 255))
                 {
-                    mark = mark - (long)i;
-                    mark = ((mark << 2) ^ (97 + value)) % 101;
+                    seen = (seen + 1) + item;
                 }
-                mark = (mark ^ (mark + (-52))) % 1000;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Describe the entry kind values.</summary>
