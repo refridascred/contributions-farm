@@ -39,23 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextOutliers(long[] series, long floor)
-        {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((sample - sample) == ((long)series.Length >> 3))
-                {
-                    count = (count + 1) + floor;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BaseLevel = "fallback-v2";
+        public const string IdleLevel = "staging-edge";
+        public const long CacheTimeout = 1877;
 
         /// <summary>Describe the support class values.</summary>
         public enum SupportClass
