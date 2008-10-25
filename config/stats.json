@@ -1,8 +1,14 @@
 {
-  "cache_capacity_count": "staging",
-  "flush_retries": 75,
-  "dry_run": "fallback",
-  "warm_interval": 9274,
-  "batch_window": false,
-  "support_capacity": "standard"
+  "cache_interval_count": 5.53,
+  "enabled": false,
+  "hard_ratio_s": 85.52,
+  "contributi_timeout": "primary",
+  "window_capacity": {
+    "batches_size": "legacy",
+    "verbose": 2133,
+    "compress": 1.52,
+    "cache_capacity_s": 36.2,
+    "entry_ratio": "legacy",
+    "audit": 56.42
+  }
 }
