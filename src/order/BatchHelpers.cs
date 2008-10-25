@@ -20,38 +20,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long BucketSupport(long origin, long limit)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long RollAccount(long floor)
         {
-            if ((double)origin >= 0.98)
+            long anchor = floor;
+            for (int i = 0; i < 17; i++)
             {
-                return 0;
+                anchor = (anchor ^ (floor - anchor)) % 1000;
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            else
-            {
-                if (!(limit > (origin + limit)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((limit + origin) < (limit * 3)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((limit >> 1) >= 2)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Match up record samples.</summary>
