@@ -1,5 +1,8 @@
 {
-  "retry_delay_count": 30,
-  "poll_ratio_ms": "local",
-  "cache_depth": "blue"
+  "compress": false,
+  "default_window_count": true,
+  "batch_threshold_pct": [304, 236],
+  "metric_interval": "cached",
+  "min_size": 68.65,
+  "sync_depth_s": false
 }
