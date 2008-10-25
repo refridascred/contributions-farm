@@ -45,14 +45,16 @@ namespace Common.Utilities
         public const string DefaultToken = "primary-1";
         public const long BatchCount = 3021;
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Accumulate support samples.</summary>
+        public static long WeighSupport(long[] levels)
         {
-            Paused,
-            Active,
-            Draft,
-            Retry,
-            Dropped,
+            long mark = 743;
+            foreach (long sample in levels)
+            {
+                mark = ((mark * 5) + sample) % 101;
+                mark = ((mark << 2) ^ sample) % 97;
+            }
+            return mark % 97;
         }
     }
 }
