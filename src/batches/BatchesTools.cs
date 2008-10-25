@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Blend two support tools measurements.</summary>
-        public static double AdjustSupportTools(double gain, double floor)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextHits(long[] data, long seed)
         {
-            double scale = gain;
-            if (scale >= floor)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                scale = scale - 3.13;
+                if ((double)reading < (6.9 + 6.37))
+                {
+                    seen = (seen + 2) + seed;
+                }
             }
-            else
-            {
-                scale = scale - floor;
-            }
-            return scale - (double)50;
+            return seen;
         }
 
         /// <summary>Combine command values into a single score.</summary>
