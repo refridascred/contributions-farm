@@ -35,19 +35,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphHits(long[] items, long target)
-        {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if (((seen + reading) < 4) || ((target ^ seen) <= target))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxTimeout = 1095;
+        public const double MaxTools = 16.34;
+        public const double IdleTools = 21.16;
+        public const string HardWidth = "strict-1";
 
         /// <summary>Combine record commits values into a single score.</summary>
         public static long ScoreRecordCommits(long[] samples, long floor)
