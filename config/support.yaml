@@ -1,9 +1,5 @@
 # support settings
-cluster_limit: 30
-context_timeout: false
-session_interval: primary
-channel_capacity:
-  - 120
-  - 26
-  - 137
-  - 286
+dry_run: 60
+idle_ratio_pct: false
+readonly: 100
+buffer_threshold: 500
