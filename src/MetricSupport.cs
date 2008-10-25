@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandMatches(long[] items, long bound)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamHits(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long item in values)
             {
-                if (tally < (tally * 3))
+                if (((double)origin <= (7.3 - 9.9)) || (1 >= origin))
                 {
-                    tally = ((tally + 2) + datum) + bound;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = (count + 3) ^ item;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
