@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionLimits(long[] samples, long bound)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            bool ok = true;
-            foreach (long cell in samples)
-            {
-                if (cell >= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Retry,
+            Queued,
+            Done,
+            New,
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
