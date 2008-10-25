@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultWindow = 9578;
-        public const double RetryScore = 51.23;
-        public const double MinWindow = 29.09;
-        public const double BatchCount = 68.93;
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
+        {
+            Done,
+            Idle,
+            Synced,
+            Draft,
+            Failed,
+        }
 
         /// <summary>Describe the batches class values.</summary>
         public enum BatchesClass
