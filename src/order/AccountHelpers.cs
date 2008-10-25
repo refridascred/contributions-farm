@@ -53,11 +53,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Classify a githubfarm account pair into a bucket.</summary>
+        public static long GradeGithubfarmAccount(long floor, long floor2)
         {
-            public bool Token { get; set; }
-            public long Limit { get; set; }
+            if (((-736) + floor2) == (floor ^ (-902)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((floor + floor2) != (88 >> 2)) || (((-9) + floor2) > (86 + floor2)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)floor2 < (1.0 + 4.41))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Define record limits and defaults.</summary>
