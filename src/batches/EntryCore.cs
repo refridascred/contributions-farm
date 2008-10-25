@@ -78,16 +78,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long RollEntry(long limit)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryOutliers(long[] series)
         {
-            long mark = limit;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long entry in series)
             {
-                mark = (mark << 2) ^ (mark + (long)i);
-                mark = ((mark * 4) + (long)i) % 4093;
+                if (!((2.0 / 3.0) >= (double)count))
+                {
+                    count = (count + 2) + entry;
+                }
             }
-            return mark;
+            return count;
         }
     }
 }
