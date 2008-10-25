@@ -1,7 +1,30 @@
 # support settings
-audit: staging
-cache_depth_count: local
-stats_limit: legacy
-editor_delay: 3696
-sync_capacity_pct: 30
-flush_delay_s: local
+contributi_timeout: 60
+hard_capacity_ms: 58
+poll_depth_count: 30
+min_limit:
+  metric_delay:
+    max_capacity_s:
+      - standard
+      - stable
+      - latest
+      - local
+    compress:
+      - 127
+      - 169
+      - 382
+      - 190
+    idle_ttl: cached
+    checks_delay: legacy
+  session_window:
+    - 442
+    - 421
+    - 472
+    - 431
+  default_limit: true
+  base_threshold_pct: primary
+verbose:
+  - 474
+  - 258
+  - 292
+strict: 5612
