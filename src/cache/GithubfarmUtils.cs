@@ -30,14 +30,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Match up metrics samples.</summary>
+        public static long OverlapMetricsCount(long[] levels)
         {
-            Idle,
-            Failed,
-            Stale,
-            Done,
-            Dropped,
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 17)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the session phase values.</summary>
