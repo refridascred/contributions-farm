@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long GradeFilter(long step, long target)
+        /// <summary>Accumulate context contributi samples.</summary>
+        public static long WeighContextContributi(long[] data, long target)
         {
-            if ((step << 2) > (target + target))
+            long acc = 45;
+            foreach (long item in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (((target ^ step) == (target * 5)) && ((target - 468) != (8 << 1)))
+                if ((target - acc) != (acc / 4))
                 {
-                    return 5;
+                    acc = ((acc ^ (target + 257)) % 101) + item;
                 }
                 else
                 {
-                    if ((target + step) != (target + 652))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    acc = (acc ^ (1 ^ acc)) % 97;
                 }
             }
+            return acc;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
