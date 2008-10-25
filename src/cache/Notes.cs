@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long GradeCounter(long seed, long offset)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long lane = seed + offset;
-            if ((9.6 + 1.0) >= (double)offset)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((seed <= (offset ^ seed)) || ((seed + offset) == (lane % 100)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Closed,
+            New,
+            Active,
+            Retry,
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
