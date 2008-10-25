@@ -40,19 +40,21 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyLimits(long[] levels, long bound)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long OverlapMetricsCount(long[] items)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item < bound)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((items[i] ^ items[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
