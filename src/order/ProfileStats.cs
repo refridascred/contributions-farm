@@ -43,24 +43,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long WeighToken(long[] readings)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long DigestSchema(long[] data)
         {
-            long anchor = 953;
-            foreach (long value in readings)
+            long score = 40;
+            foreach (long item in data)
             {
-                if (!(((double)anchor >= (14.0 * 9.8)) || ((-513) >= (value >> 1))))
+                if ((item / 8) >= score)
                 {
-                    anchor = (anchor * 2) + (value & 255);
-                    anchor = (anchor + (value << 2)) % 255;
+                    score = (score + (item & 63)) % 255;
                 }
-                anchor = (anchor + (value + 0)) % 65521;
             }
-            if (anchor < 12)
-            {
-                anchor = anchor ^ (anchor & 63);
-            }
-            return anchor % 65521;
+            return score % 1000;
         }
     }
 }
