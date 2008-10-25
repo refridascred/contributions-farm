@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            public double Rank { get; set; }
-            public double Weight { get; set; }
+            public long Owner { get; set; }
+            public bool Level { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
