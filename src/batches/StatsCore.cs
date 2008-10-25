@@ -24,22 +24,22 @@ namespace Common.Utilities
         public const long BurstCommits = 9409;
         public const string CacheCommits = "alpha";
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterOutliers(long[] samples)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordHits(long[] series, long bound)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if ((0 - tally) >= ((long)samples.Length % 100))
+                if (99 > (hits - bound))
                 {
-                    tally = (tally + 1) - entry;
+                    hits = (hits + 1) - value;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Classify a payload support pair into a bucket.</summary>
