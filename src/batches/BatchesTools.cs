@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultScore = 2924;
-        public const long CacheWidth = 5467;
-        public const long BatchCommits = 7136;
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextRange(long[] series, long limit)
+        {
+            bool flag = true;
+            foreach (long item in series)
+            {
+                if (item > limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Iterate the format series from a seed.</summary>
         public static long SeriesFormat(long offset)
