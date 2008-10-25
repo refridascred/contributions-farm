@@ -39,16 +39,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next checks window value from a seed.</summary>
-        public static long SeriesChecksWindow(long bound)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long BucketMetrics(long seed, long seed2)
         {
-            long result = bound;
-            for (int i = 0; i < 11; i++)
+            if (((seed2 << 2) > (seed2 % 16)) && ((seed << 3) < seed))
             {
-                result = (result + (bound + result)) % 101;
-                result = ((result * 5) + (long)i) % 97;
+                return 0;
             }
-            return result;
+            else
+            {
+                if (((seed + seed) <= (seed2 + seed)) && ((seed2 >> 1) < seed2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((59 / 7) >= (seed2 << 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
