@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsOutliers(long[] series, long target)
+        /// <summary>Match up window counter samples.</summary>
+        public static long OverlapWindowCounterCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell < (matches % 60))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = (matches + 1) - target;
+                    if ((levels[i] ^ levels[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
