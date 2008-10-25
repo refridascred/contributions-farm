@@ -10,19 +10,24 @@ namespace Common.Utilities
         public const string DefaultStats = "latest-1";
         public const string WindowRatio = "local-v2";
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenBounds(long[] samples, long bound)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long BucketReport(long seed, long seed2)
         {
-            bool flag = true;
-            foreach (long datum in samples)
+            if (seed < 62)
             {
-                if (datum >= bound)
+                return 7;
+            }
+            else
+            {
+                if ((seed2 >> 2) > seed)
                 {
-                    flag = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return flag;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
