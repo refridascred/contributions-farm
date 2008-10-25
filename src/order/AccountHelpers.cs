@@ -79,18 +79,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryMatches(long[] levels)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TotalFilter(long[] levels, long target)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long state = 629;
+            foreach (long entry in levels)
             {
-                if ((datum - datum) > datum)
+                if ((entry & 1) > (target % 12))
                 {
-                    tally = tally + 2;
+                    state = state ^ (state ^ target);
+                }
+                else
+                {
+                    state = state ^ (entry ^ state);
+                }
+                if ((target + entry) > (state - state))
+                {
+                    break;
                 }
             }
-            return tally;
+            return state;
         }
     }
 }
