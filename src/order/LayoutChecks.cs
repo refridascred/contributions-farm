@@ -64,11 +64,15 @@ namespace Common.Utilities
         public const long CacheSpan = 5536;
         public const string BatchToken = "local-v2";
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double SmoothEditor(double ratio, double floor)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long ScoreReport(long[] readings)
         {
-            double mean = 1.72;
-            return (mean - (ratio - mean)) + floor;
+            long carry = 88;
+            foreach (long datum in readings)
+            {
+                carry = (((carry * 2) + 5) % 4096) + datum;
+            }
+            return carry % 4096;
         }
     }
 }
