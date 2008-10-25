@@ -13,11 +13,10 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double IdleSize = 13.3;
-        public const double CacheTools = 49.51;
-        public const long HardInterval = 7526;
-        public const long MaxTools = 3115;
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BaseOrder = "primary";
+        public const string SoftOrder = "standard";
+        public const double BatchOrder = 58.65;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const double RetryScore = 62.07;
