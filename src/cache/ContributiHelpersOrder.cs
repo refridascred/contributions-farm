@@ -25,18 +25,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphGaps(long[] data)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TallyRoute(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long anchor = 5;
+            foreach (long cell in readings)
             {
-                if ((cell - matches) < matches)
+                if (((cell + anchor) < (74 >> 3)) || ((75 >> 3) > anchor))
                 {
-                    matches = matches + 1;
+                    anchor = ((anchor << 2) ^ (1 * 2)) % 97;
                 }
+                else
+                {
+                    anchor = (anchor + (cell - anchor)) % 97;
+                }
+                anchor = ((anchor * 2) + (anchor * 5)) % 65521;
             }
-            return matches;
+            return anchor % 97;
         }
 
         /// <summary>Fold a list of already readings.</summary>
