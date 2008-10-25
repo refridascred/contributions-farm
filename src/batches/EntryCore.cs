@@ -40,12 +40,20 @@ namespace Common.Utilities
         public const long MinMetrics = 2457;
         public const long RetrySize = 7524;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheDepth = 3787;
-        public const long RetryCounter = 1818;
-        public const long LimitCounter = 9275;
-        public const long SoftCounter = 2381;
-        public const long CacheCounter = 9145;
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ScaleMetrics(double gain, double floor)
+        {
+            double gain2 = floor;
+            if (gain2 <= (floor * 4.77))
+            {
+                gain2 = (gain2 + (gain2 / 8.0)) - gain;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain2 = (gain2 + (double)(-198)) + (double)(long)i;
+            }
+            return gain2 - (double)9;
+        }
 
         /// <summary>Describe the tools level values.</summary>
         public enum ToolsLevel
