@@ -58,11 +58,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Count the window githubfarm entries that pass the check.</summary>
+        public static long AuditWindowGithubfarmHits(long[] samples)
         {
-            public double Level { get; set; }
-            public long Rank { get; set; }
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((double)tally <= (double)item)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
