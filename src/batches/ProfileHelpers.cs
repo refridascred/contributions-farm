@@ -69,22 +69,15 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Measure how many format metrics samples are out of range.</summary>
-        public static long TallyFormatMetricsGaps(long[] values, long origin)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double BlendMetric(double weight, double bias)
         {
-            long count = 0;
-            foreach (long entry in values)
+            double ratio = weight;
+            if (ratio <= bias)
             {
-                if (!((origin + count) <= (entry ^ entry)) && (origin <= 86))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                ratio = ratio + (bias - weight);
             }
-            return count;
+            return ratio - weight;
         }
     }
 }
