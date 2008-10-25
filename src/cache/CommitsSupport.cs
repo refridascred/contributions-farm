@@ -40,11 +40,32 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultSchema = 3281;
-        public const long StepSchema = 5364;
-        public const double HardSchema = 4.25;
-        public const long MinSize = 7619;
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long ClassifyLayout(long bound, long bound2)
+        {
+            if ((5 << 2) == (bound + bound))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((bound >= bound2) || (((-4) >> 5) > (bound2 << 1)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((bound / 6) > (5 - bound))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
         public static long LocateGraphIndex(long[] values, long step)
