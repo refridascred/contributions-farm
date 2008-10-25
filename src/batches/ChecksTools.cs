@@ -50,15 +50,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a commits format figure with a bias.</summary>
-        public static double BlendCommitsFormat(double rate, double offset)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long bound)
         {
-            double weight = (double)(632 / 4);
-            if (weight > weight)
+            long sum = bound;
+            for (int i = 0; i < 10; i++)
             {
-                weight = weight + rate;
+                sum = (sum - (bound * 4)) % 101;
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return weight - (offset - weight);
+            return sum;
         }
     }
 }
