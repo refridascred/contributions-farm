@@ -81,18 +81,14 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Accumulate buffer route samples.</summary>
-        public static long CombineBufferRoute(long[] data)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long anchor = 83;
-            foreach (long datum in data)
-            {
-                if ((datum + (long)data.Length) <= (anchor << 1))
-                {
-                    anchor = (anchor ^ (6 / 6)) % 255;
-                }
-            }
-            return anchor;
+            Done,
+            Idle,
+            New,
+            Ready,
+            Draft,
         }
     }
 }
