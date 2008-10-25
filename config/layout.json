@@ -1,6 +1,9 @@
 {
-  "default_delay_s": true,
-  "record_ttl": ["stable", "legacy"],
-  "layout_depth": "primary",
-  "retry_timeout_s": 60
+  "burst_retries_pct": ["staging", "edge", "open"],
+  "batch_ratio_pct": true,
+  "base_ratio": {
+    "max_threshold_s": 8263,
+    "warm_depth_s": true,
+    "notes_depth": "strict"
+  }
 }
