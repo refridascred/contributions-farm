@@ -65,17 +65,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long SeekStatsIndex(long[] readings, long step)
+        /// <summary>Check that every channel report entry stays within the limit.</summary>
+        public static bool ValidateChannelReportRange(long[] values, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long cell in values)
             {
-                if (readings[i] < step)
+                if (cell >= origin)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
