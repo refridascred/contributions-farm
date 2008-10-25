@@ -25,17 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the window format series from a seed.</summary>
-        public static long RollWindowFormat(long floor)
-        {
-            long total = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                total = total + total;
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstRecord = 8679;
+        public const long BaseRecord = 7896;
+        public const string SoftSpan = "strict-1";
+        public const double MinRecord = 38.21;
+        public const long CacheRecord = 7865;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string BaseRatio = "staging-v2";
