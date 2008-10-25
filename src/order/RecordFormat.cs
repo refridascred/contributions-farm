@@ -26,13 +26,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Check that every metric stream entry stays within the limit.</summary>
+        public static bool CheckMetricStreamBounds(long[] levels, long origin)
         {
-            public string Region { get; set; } = "";
-            public bool Count { get; set; }
-            public long Size { get; set; }
-            public bool Ratio { get; set; }
+            bool ready = true;
+            foreach (long cell in levels)
+            {
+                if (cell < origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Combine session values into a single score.</summary>
