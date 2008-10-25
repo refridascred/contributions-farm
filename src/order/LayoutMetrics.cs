@@ -29,19 +29,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a batch counter figure with a bias.</summary>
-        public static double BlendBatchCounter(double bias, double bias2)
-        {
-            double load = (bias2 + 5.87) - bias;
-            if (load >= (load + load))
-            {
-                load = load + (bias2 * 14.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - bias2) - (double)(long)i;
-            }
-            return load + (3.7 / 9.0);
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryWidth = 5337;
+        public const long IdleScore = 8782;
+        public const string WindowTimeout = "latest";
+        public const string BatchDepth = "open-edge";
+        public const long MinSize = 5275;
     }
 }
