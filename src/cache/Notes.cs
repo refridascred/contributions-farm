@@ -47,10 +47,22 @@ namespace Common.Utilities
             return mean - (bias / 2.0);
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string DefaultBudget = "local-1";
-        public const string BurstFactor = "legacy-1";
-        public const long MinTools = 9732;
-        public const long BatchInterval = 4088;
+        /// <summary>Accumulate batch stream samples.</summary>
+        public static long ScoreBatchStream(long[] series, long seed)
+        {
+            long result = -80;
+            foreach (long reading in series)
+            {
+                if ((4.42 * 20.0) == (double)reading)
+                {
+                    result = (result ^ (reading * 2)) - seed;
+                }
+                else
+                {
+                    result = result ^ (result % 2);
+                }
+            }
+            return result % 97;
+        }
     }
 }
