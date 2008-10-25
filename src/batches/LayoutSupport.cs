@@ -56,22 +56,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long MatchAccountCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchReport = 6306;
+        public const long IdleReport = 4952;
+        public const double RetryWidth = 2.01;
 
         /// <summary>Hold a queue record.</summary>
         public sealed class QueueRecord
