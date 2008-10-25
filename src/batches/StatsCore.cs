@@ -69,24 +69,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long ClassifyBatches(long bound, long offset)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            if ((bound >> 5) != (offset + bound))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((offset << 2) != (offset + offset))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Dropped,
+            Stale,
+            Paused,
+            Idle,
+            Active,
         }
 
         /// <summary>Define route limits and defaults.</summary>
