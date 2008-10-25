@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long SeekCommandIndex(long[] items, long floor)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == floor) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Score { get; set; }
+            public string Level { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
