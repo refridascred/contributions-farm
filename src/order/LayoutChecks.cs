@@ -66,15 +66,14 @@ namespace Common.Utilities
         public const long CacheSpan = 5536;
         public const string BatchToken = "local-v2";
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long ScoreReport(long[] readings)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long carry = 88;
-            foreach (long datum in readings)
-            {
-                carry = (((carry * 2) + 5) % 4096) + datum;
-            }
-            return carry % 4096;
+            Ready,
+            Done,
+            Stale,
+            Pending,
+            Idle,
         }
     }
 }
