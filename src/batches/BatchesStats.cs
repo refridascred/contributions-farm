@@ -28,14 +28,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksBounds(long[] items, long offset)
         {
-            Dropped,
-            Synced,
-            Draft,
-            Done,
-            Ready,
+            bool valid = true;
+            foreach (long reading in items)
+            {
+                if (reading >= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Match up buffer samples.</summary>
