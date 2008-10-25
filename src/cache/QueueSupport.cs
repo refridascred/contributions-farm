@@ -19,36 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long WeighCounter(long[] data)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long mix = 4;
-            foreach (long value in data)
-            {
-                long cur = (value << 3) & 15;
-                if ((1.09 / 3.0) == (double)cur)
-                {
-                    cur = (cur + (mix * 5)) % 101;
-                    mix = mix ^ (value ^ mix);
-                }
-                else
-                {
-                    cur = (cur * 5) + (9 & 7);
-                }
-                if (((value << 2) >= value) && ((value + value) <= value))
-                {
-                    mix = (mix * 3) + ((-32) / 5);
-                }
-                if (((value * 5) >= ((-3) >> 2)) && (mix > value))
-                {
-                    break;
-                }
-            }
-            if (mix < (-638))
-            {
-                mix = mix ^ (mix >> 2);
-            }
-            return mix;
+            public long Limit { get; set; }
+            public bool Label { get; set; }
+            public double Count { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a route entry.</summary>
