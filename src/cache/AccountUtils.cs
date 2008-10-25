@@ -29,19 +29,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportBounds(long[] readings, long offset)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamHits(long[] data, long origin)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if (item < offset)
+                if ((double)seen < (9.3 * 2.0))
                 {
-                    ok = false;
-                    break;
+                    seen = ((seen + 3) ^ cell) + origin;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
