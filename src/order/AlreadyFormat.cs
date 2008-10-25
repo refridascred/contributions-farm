@@ -44,27 +44,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long ScoreRecord(long[] series)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long acc = 83;
-            foreach (long datum in series)
-            {
-                acc = ((acc * 3) + acc) % 65521;
-                if (datum <= ((-6) >> 1))
-                {
-                    acc = (acc - (datum + acc)) % 4096;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (acc % 7)) % 97;
-                }
-            }
-            if (acc > 26)
-            {
-                acc = (acc + acc) % 255;
-            }
-            return acc;
+            Pending,
+            Active,
+            Dropped,
+            Retry,
+            Queued,
         }
 
         /// <summary>Count payload contributi pairs that satisfy a relation.</summary>
