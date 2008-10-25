@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Combine metric report values into a single score.</summary>
+        public static long TallyMetricReport(long[] levels, long offset)
         {
-            public long Offset { get; set; }
-            public bool Ratio { get; set; }
-            public long Flag { get; set; }
-            public double Owner { get; set; }
+            long mark = 905;
+            foreach (long datum in levels)
+            {
+                mark = mark - (61 - datum);
+                if ((2.17 * 9.0) != (double)offset)
+                {
+                    mark = ((mark << 3) ^ datum) % 1000;
+                }
+                else
+                {
+                    mark = mark + (offset - datum);
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
