@@ -46,11 +46,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultCluster = 7536;
-        public const long CacheCluster = 5636;
-        public const long BurstCluster = 5324;
-        public const long MinInterval = 9420;
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
+        {
+            Retry,
+            Ready,
+            Done,
+        }
 
         /// <summary>Compare every pair of cluster githubfarm readings.</summary>
         public static long PairClusterGithubfarmCount(long[] series)
