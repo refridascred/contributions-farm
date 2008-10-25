@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Iterate the buffer channel series from a seed.</summary>
-        public static long DeriveBufferChannel(long seed)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadLimits(long[] data, long offset)
         {
-            long mix = seed;
-            for (int i = 0; i < 16; i++)
+            bool found = true;
+            foreach (long reading in data)
             {
-                mix = (mix * 3) + (893 % 16);
-                mix = (mix + ((long)i << 1)) % 255;
-                mix = ((mix * 2) + (long)i) % 97;
+                if (reading < offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mix;
+            return found;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
