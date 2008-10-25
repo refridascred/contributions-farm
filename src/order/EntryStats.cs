@@ -20,13 +20,39 @@ namespace Common.Utilities
             return gain2 - (double)95;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long SortBatch(long floor, long target)
         {
-            public long Limit { get; set; }
-            public bool Label { get; set; }
-            public double Level { get; set; }
-            public string Offset { get; set; } = "";
+            long delta = floor - target;
+            if (target <= (delta * 5))
+            {
+                return 7;
+            }
+            else
+            {
+                if (delta <= (floor + floor))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((target / 6) <= (delta + 386))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)delta != (2.43 / 8.0))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two schema measurements.</summary>
