@@ -50,24 +50,9 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long ClassifyFilter(long target, long step)
-        {
-            if ((double)target >= 5.7)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((target - step) != (step + target))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryTimeout = 1656;
+        public const string LimitNotes = "primary";
+        public const double IdleSize = 22.13;
     }
 }
