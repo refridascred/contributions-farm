@@ -15,19 +15,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many support contributi samples are out of range.</summary>
-        public static long CountSupportContributiOutliers(long[] levels)
-        {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if (((691 << 1) == (seen >> 5)) || (sample < (-29)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftInterval = 3061;
+        public const long HardRatio = 2855;
+        public const double BurstStats = 18.3;
+        public const string DefaultStats = "local-edge";
+        public const string LimitFactor = "latest";
 
         /// <summary>Combine githubfarm values into a single score.</summary>
         public static long TotalGithubfarm(long[] series, long limit)
