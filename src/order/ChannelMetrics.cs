@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            public string Rank { get; set; } = "";
-            public string Limit { get; set; } = "";
+            public bool Weight { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Adjust a filter reading.</summary>
