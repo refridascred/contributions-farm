@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            public string Mode { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public bool Region { get; set; }
+            Dropped,
+            Ready,
+            New,
+            Retry,
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
