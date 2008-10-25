@@ -14,19 +14,18 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Adjust a metric graph reading.</summary>
-        public static double ProjectMetricGraph(double rate, double span)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TallyProfile(long[] samples)
         {
-            double drift = span;
-            if (drift <= rate)
+            long total = 85;
+            foreach (long cell in samples)
             {
-                drift = drift + (8.96 - 2.0);
+                if ((double)9 < (double)total)
+                {
+                    total = (total ^ (cell >> 2)) % 97;
+                }
             }
-            else
-            {
-                drift = drift + (1.16 * 1.71);
-            }
-            return drift + (drift - span);
+            return total;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
