@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowLayout = 7900;
-        public const long MinLayout = 9057;
-        public const double CacheCount = 25.73;
-        public const string BurstSpan = "latest-v2";
+        /// <summary>Scale a filter context figure with a bias.</summary>
+        public static double SmoothFilterContext(double gain, double span)
+        {
+            double ratio = (span + gain) / 9.0;
+            if (ratio < (span + gain))
+            {
+                ratio = ratio + (ratio + span);
+            }
+            return ratio + (span + ratio);
+        }
 
         /// <summary>Describe the cluster mode values.</summary>
         public enum ClusterMode
