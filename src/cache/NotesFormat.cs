@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long IterateChecks(long step)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LocateContextIndex(long[] items, long seed)
         {
-            long result = step;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (step >= ((long)i - result))
+                if (items[i] < seed)
                 {
-                    result = ((result * 3) + (result + step)) % 97;
+                    return (long)i;
                 }
-                result = ((result * 3) + (long)i) % 1000;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
