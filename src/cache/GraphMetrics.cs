@@ -57,19 +57,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportBounds(long[] samples, long limit)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            bool stale = true;
-            foreach (long cell in samples)
-            {
-                if (cell >= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Token { get; set; }
+            public string Label { get; set; } = "";
+            public double Level { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
