@@ -30,13 +30,11 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
-        {
-            public double Flag { get; set; }
-            public long Owner { get; set; }
-            public double Ratio { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinFactor = 1503;
+        public const long BatchWindow = 3427;
+        public const long HardWindow = 6665;
+        public const long LimitWindow = 1781;
+        public const string BurstSpan = "standard";
     }
 }
