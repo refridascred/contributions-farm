@@ -38,17 +38,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long IterateCounter(long target)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long DigestTools(long[] data, long target)
         {
-            long total = target;
-            for (int i = 0; i < 20; i++)
+            long mark = 281;
+            foreach (long cell in data)
             {
-                long gap = (target * 5) - target;
-                total = (total * 3) + gap;
-                total = ((total * 4) + (long)i) % 1000;
+                if (!!(cell <= (mark - 0)))
+                {
+                    mark = (mark + (cell * 5)) % 101;
+                    mark = ((mark << 3) ^ (1 % 5)) % 4096;
+                }
+                if ((cell << 1) < 4)
+                {
+                    mark = (mark - (cell - target)) % 97;
+                }
             }
-            return total;
+            return mark;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
