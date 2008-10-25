@@ -31,11 +31,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long GradeFilter(long seed, long offset)
         {
-            public string Score { get; set; } = "";
-            public string Token { get; set; } = "";
+            if ((double)seed >= (2.63 + 1.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((offset - seed) == (2 ^ 777))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((offset - seed) != (seed & 1)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate metric order samples.</summary>
