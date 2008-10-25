@@ -43,24 +43,11 @@ namespace Common.Utilities
         public const string MinGithubfarm = "staging";
         public const long RetryCount = 4669;
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long StepEditor(long seed)
-        {
-            long carry = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                long offset = seed;
-                if (((carry + offset) != (seed / 4)) || ((double)seed <= (2.79 - 9.44)))
-                {
-                    carry = carry - carry;
-                }
-                else
-                {
-                    carry = carry + (3 << 3);
-                }
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string CacheFactor = "fallback-edge";
+        public const double BurstLayout = 69.47;
+        public const long StepScore = 6935;
+        public const long BaseSize = 1529;
+        public const double BatchDepth = 44.3;
     }
 }
