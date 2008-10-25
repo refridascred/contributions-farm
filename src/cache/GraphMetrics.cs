@@ -45,16 +45,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long IterateWindow(long target)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LocateTokenIndex(long[] values, long origin)
         {
-            long mix = target;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = (mix ^ (mix - mix)) % 97;
-                mix = ((mix * 2) + (long)i) % 101;
+                if ((values[i] <= origin) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
