@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutGaps(long[] data)
         {
-            Closed,
-            New,
-            Idle,
-            Retry,
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if ((cell << 2) != (cell ^ hits))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define command limits and defaults.</summary>
