@@ -18,13 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long BucketMetric(long step, long floor)
         {
-            public bool Ratio { get; set; }
-            public long Owner { get; set; }
-            public bool Total { get; set; }
-            public bool Offset { get; set; }
+            long gap = step ^ floor;
+            if (!(gap < (gap >> 2)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((step & 255) > (floor + step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
