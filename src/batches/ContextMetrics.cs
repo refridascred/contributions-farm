@@ -16,21 +16,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long CompareMetricsCount(long[] series)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Stamp { get; set; } = "";
+            public long Label { get; set; }
+            public string Rank { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Measure how many cache record samples are out of range.</summary>
