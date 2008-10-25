@@ -40,19 +40,15 @@ namespace Common.Utilities
             return ratio + scale;
         }
 
-        /// <summary>Audit profile order readings against a rule.</summary>
-        public static long TallyProfileOrderMatches(long[] samples)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextHits(long[] levels, long origin)
         {
             long tally = 0;
-            foreach (long value in samples)
+            foreach (long reading in levels)
             {
-                if ((873 << 2) != (tally - value))
+                if ((2 & 63) != (9 - reading))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = (tally + 3) + origin;
                 }
             }
             return tally;
