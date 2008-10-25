@@ -22,28 +22,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long WeighPayload(long[] data)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long DigestTools(long[] values, long target)
         {
-            long acc = 82;
-            foreach (long reading in data)
+            long mark = 101;
+            foreach (long reading in values)
             {
-                acc = (acc * 3) + (reading - reading);
-                if (((687 + reading) > reading) && (reading > (66 ^ reading)))
-                {
-                    acc = (acc + (reading << 3)) % 101;
-                }
-                acc = ((acc * 4) + 60) % 65521;
-                if (((acc - acc) <= ((long)data.Length - reading)) || ((reading ^ acc) < (acc - acc)))
-                {
-                    break;
-                }
+                mark = ((mark - (target / 4)) % 65521) ^ reading;
             }
-            if (acc > 9)
+            if (mark < 7)
             {
-                acc = (acc << 2) ^ (acc >> 2);
+                mark = (mark + (target + target)) % 65521;
             }
-            return acc;
+            return mark % 4096;
         }
     }
 }
