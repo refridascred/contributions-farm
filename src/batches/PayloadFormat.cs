@@ -50,9 +50,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchQueue = 1805;
-        public const long MinSpan = 8812;
-        public const long CacheQueue = 5413;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheFactor = 5612;
+        public const string LimitSupport = "legacy-v2";
+        public const string DefaultSupport = "primary-1";
+        public const long HardSupport = 5258;
     }
 }
