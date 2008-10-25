@@ -14,11 +14,25 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double SmoothRoute(double ratio, double bias)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long ClassifyContext(long seed, long target)
         {
-            double gain = ratio;
-            return (gain - (gain / 9.0)) + bias;
+            long offset = seed - target;
+            if (!((double)target == (double)offset))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((seed - 68) <= (20 >> 4))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
