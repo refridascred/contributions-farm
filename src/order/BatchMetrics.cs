@@ -20,18 +20,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the cluster session entries that pass the check.</summary>
-        public static long AuditClusterSessionHits(long[] levels, long target)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long SeekBufferIndex(long[] readings, long target)
         {
-            long count = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((2.6 - 12.0) < (double)target))
+                if (readings[i] > target)
                 {
-                    count = (count + 2) + item;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
