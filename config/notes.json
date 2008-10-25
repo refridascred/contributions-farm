@@ -1,6 +1,13 @@
 {
-  "min_interval_count": "latest",
-  "channel_window": 41.69,
-  "max_limit_ms": true,
-  "idle_threshold_count": 97.24
+  "cache_window_pct": true,
+  "stats_size": [220, 436],
+  "schema_retries": "primary",
+  "sync_capacity": "stable",
+  "readonly": "open",
+  "flush_timeout_ms": {
+    "dry_run": false,
+    "min_delay_s": 57,
+    "burst_ratio_ms": 30,
+    "stream_retries": 40.92
+  }
 }
