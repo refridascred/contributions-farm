@@ -38,22 +38,18 @@ namespace Common.Utilities
             return gain - (gain / 7.0);
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long CombineLayout(long[] values, long offset)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmOutliers(long[] items)
         {
-            long total = 6;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if ((double)offset >= (double)item)
+                if ((cell * 3) <= (hits / 4))
                 {
-                    total = total - 90;
-                }
-                else
-                {
-                    total = (total + item) % 65521;
+                    hits = hits + 1;
                 }
             }
-            return total % 4096;
+            return hits;
         }
 
         /// <summary>Combine context values into a single score.</summary>
