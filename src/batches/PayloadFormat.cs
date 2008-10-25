@@ -38,24 +38,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long BucketNotes(long step, long origin)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenOutliers(long[] levels, long step)
         {
-            if ((step - step) != (574 << 3))
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((41 * 3) > (origin + step))
+                if ((sample - matches) <= sample)
                 {
-                    return 3;
+                    matches = (matches + 1) + step;
                 }
                 else
                 {
-                    return 2;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
     }
 }
