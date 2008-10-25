@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long FoldBuffer(long[] items, long bound)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long score = 6;
-            foreach (long reading in items)
-            {
-                if (reading > 9)
-                {
-                    score = ((score << 2) ^ (425 - bound)) % 1000;
-                }
-            }
-            return score % 1000;
+            public long Count { get; set; }
+            public long Token { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Hold a checks info.</summary>
