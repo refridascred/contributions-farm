@@ -38,12 +38,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
-        {
-            public long Region { get; set; }
-            public double Level { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double StepChannel = 10.51;
+        public const long IdleInterval = 5010;
+        public const string SoftChannel = "primary-edge";
+        public const long BatchRatio = 8666;
+        public const long LimitScore = 53;
     }
 }
