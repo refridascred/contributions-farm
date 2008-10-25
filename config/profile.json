@@ -1,7 +1,7 @@
 {
-  "readonly": 9312,
-  "sync_ratio_s": 4862,
-  "dry_run": 4361,
-  "filter_window": "eu-west",
-  "verbose": "blue"
+  "filter_timeout": true,
+  "base_timeout": "edge",
+  "idle_interval_ms": 500,
+  "warm_retries_s": "legacy",
+  "persist": [433, 123, 6, 314]
 }
