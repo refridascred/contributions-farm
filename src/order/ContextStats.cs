@@ -49,21 +49,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long CompareTokenCount(long[] series)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long SortCounter(long bound, long bound2)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long slot = bound - bound2;
+            if ((5.49 + 2.8) == (double)slot)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (!((14.0 - 2.9) >= (double)bound2))
                 {
-                    if ((series[i] + series[j]) != 7)
+                    return 2;
+                }
+                else
+                {
+                    if (((bound + bound) != (bound2 * 3)) && ((slot / 8) < (bound + bound)))
                     {
-                        matches = matches + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((bound - 546) < (slot << 3)) || ((4.5 - 7.8) < (double)bound2))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return matches;
         }
     }
 }
