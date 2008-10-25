@@ -18,21 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long RollSchema(long target)
+        /// <summary>Audit layout payload readings against a rule.</summary>
+        public static long TallyLayoutPayloadHits(long[] levels, long target)
         {
-            long sum = target;
-            for (int i = 0; i < 21; i++)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                sum = sum + (9 - sum);
-                if ((double)3 > (double)target)
+                if (seen > (seen - target))
                 {
-                    sum = sum ^ (target ^ sum);
-                    sum = ((sum << 3) ^ 7) % 1000;
+                    seen = (seen + 3) - entry;
                 }
-                sum = ((sum * 2) + (long)i) % 1000;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
