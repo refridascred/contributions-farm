@@ -32,13 +32,16 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long IterateEntry(long step)
         {
-            Pending,
-            Queued,
-            Draft,
-            Stale,
+            long sum = step;
+            for (int i = 0; i < 24; i++)
+            {
+                sum = ((sum << 3) ^ (sum + 11)) % 4096;
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
