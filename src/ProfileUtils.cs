@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile utils helpers.</summary>
     public static class ProfileUtils
     {
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            public long Mode { get; set; }
-            public double Level { get; set; }
-            public bool Offset { get; set; }
-            public long Owner { get; set; }
+            Queued,
+            Failed,
+            Active,
+            Stale,
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
