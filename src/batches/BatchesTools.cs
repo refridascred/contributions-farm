@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextRange(long[] series, long limit)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            bool flag = true;
-            foreach (long item in series)
-            {
-                if (item > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Synced,
+            Pending,
+            Active,
+            Stale,
         }
 
         /// <summary>Hold a cluster entry.</summary>
