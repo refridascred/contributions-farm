@@ -56,18 +56,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsMatches(long[] readings, long origin)
-        {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((origin - origin) <= (origin + 23))
-                {
-                    count = (count + 3) + cell;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string DefaultAlready = "fallback-v2";
+        public const long MaxFactor = 5315;
+        public const string WindowAlready = "alpha-1";
     }
 }
