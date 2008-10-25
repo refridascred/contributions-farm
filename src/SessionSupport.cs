@@ -34,11 +34,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string SoftCache = "open-edge";
-        public const string DefaultRatio = "cached-1";
-        public const string RetryScore = "fallback-edge";
-        public const long MaxCache = 1125;
-        public const long LimitFactor = 4610;
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long DeriveCommits(long bound)
+        {
+            long score = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                score = ((score * 5) + (long)i) % 101;
+            }
+            return score;
+        }
     }
 }
