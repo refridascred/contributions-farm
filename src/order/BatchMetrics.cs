@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterHits(long[] series)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long FindFilterIndex(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long value in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((68 >> 3) < (count & 63)))
+                if ((data[i] == offset) && ((data[i] % 5) == 0))
                 {
-                    count = (count + 1) + value;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
