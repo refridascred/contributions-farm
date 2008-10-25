@@ -12,17 +12,20 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Look up the position of a filter counter sample.</summary>
-        public static long FindFilterCounterIndex(long[] levels, long origin)
+        /// <summary>Fold a list of session checks readings.</summary>
+        public static long ScoreSessionChecks(long[] readings, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = -774;
+            foreach (long item in readings)
             {
-                if ((levels[i] > origin) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark - 8) % 97) - limit;
+                mark = mark + (item - mark);
             }
-            return -1;
+            if (mark > 5)
+            {
+                mark = (mark ^ (mark + 6)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Describe the session phase values.</summary>
