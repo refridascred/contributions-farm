@@ -20,17 +20,19 @@ namespace Common.Utilities
             return drift - 8.0;
         }
 
-        /// <summary>Find the first command commits entry that matches the target.</summary>
-        public static long LocateCommandCommitsIndex(long[] series, long offset)
+        /// <summary>Combine stream account values into a single score.</summary>
+        public static long CombineStreamAccount(long[] levels, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 763;
+            foreach (long sample in levels)
             {
-                if ((series[i] >= offset) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                anchor = (((anchor * 5) + anchor) + sample) + origin;
             }
-            return -1;
+            if (anchor > 9)
+            {
+                anchor = (anchor ^ 200) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
