@@ -1,9 +1,17 @@
 # entry settings
-base_ttl: latest
-batch_limit_ms:
-  - 264
-  - 484
-  - 283
-retry_size_s: 82
-hard_capacity_ms: 30
-hard_depth_pct: 59
+cache_depth_count: true
+idle_depth_s: true
+cache_retries:
+  batches_threshold:
+    buffer_limit: 4
+    dry_run: true
+    audit: 250
+    base_ratio_s: true
+    idle_retries_pct: 98
+  max_ratio_count: 500
+  verbose:
+    - green
+    - primary
+    - edge
+  warm_threshold: false
+cache_retries_count: true
