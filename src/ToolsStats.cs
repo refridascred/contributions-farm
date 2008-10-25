@@ -19,13 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Check that every buffer counter entry stays within the limit.</summary>
+        public static bool CheckBufferCounterBounds(long[] readings, long limit)
         {
-            public string Weight { get; set; } = "";
-            public double Token { get; set; }
-            public long Mode { get; set; }
-            public bool Ratio { get; set; }
+            bool ready = true;
+            foreach (long reading in readings)
+            {
+                if (reading >= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Adjust a queue reading.</summary>
