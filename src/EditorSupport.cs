@@ -35,12 +35,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardSupport = 8795;
-        public const long DefaultSpan = 6656;
-        public const string BaseSpan = "staging-v2";
-        public const long LimitBudget = 3941;
-        public const string HardDepth = "primary";
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long SeriesToken(long seed)
+        {
+            long total = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                total = (total ^ ((long)i % 100)) % 1000;
+                if (!(((345 ^ (long)i) > (total + seed)) && ((seed << 2) > (seed & 15))))
+                {
+                    total = ((total << 2) ^ (seed ^ seed)) % 101;
+                }
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long MeasureStatsOutliers(long[] readings, long target)
