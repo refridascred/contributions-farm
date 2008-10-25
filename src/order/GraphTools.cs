@@ -52,14 +52,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            Locked,
-            Draft,
+            Paused,
+            Dropped,
+            Idle,
             Done,
-            Retry,
-            Stale,
         }
     }
 }
