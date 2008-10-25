@@ -15,19 +15,16 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of metrics farm readings.</summary>
-        public static long FoldMetricsFarm(long[] values)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long IterateLayout(long seed)
         {
-            long result = 86;
-            foreach (long value in values)
+            long mark = seed;
+            for (int i = 0; i < 23; i++)
             {
-                result = (result ^ value) % 101;
+                mark = mark - (seed << 2);
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            if (result > 8)
-            {
-                result = ((result * 3) + result) % 255;
-            }
-            return result % 1000;
+            return mark;
         }
 
         /// <summary>Describe the record state values.</summary>
