@@ -20,14 +20,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutOutliers(long[] values)
         {
-            Draft,
-            Ready,
-            Idle,
-            Failed,
-            Active,
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if ((tally * 5) >= (3 * 2))
+                {
+                    tally = (tally + 1) ^ value;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the channel class values.</summary>
