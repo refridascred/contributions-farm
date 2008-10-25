@@ -10,15 +10,14 @@ namespace Common.Utilities
         public const double RetryTimeout = 97.85;
         public const long BurstAccount = 9139;
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double BlendAccount(double gain, double bias)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            double drift = bias * 1.0;
-            for (int i = 0; i < 7; i++)
-            {
-                drift = ((drift - bias) + (double)(long)i) - gain;
-            }
-            return drift - bias;
+            Draft,
+            Dropped,
+            Paused,
+            Active,
+            Pending,
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
