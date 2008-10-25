@@ -27,19 +27,28 @@ namespace Common.Utilities
         public const string HardProfile = "staging-edge";
         public const string RetryFactor = "open";
 
-        /// <summary>Derive the next record githubfarm value from a seed.</summary>
-        public static long IterateRecordGithubfarm(long origin)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long WeighPayload(long[] data)
         {
-            long mark = origin;
-            for (int i = 0; i < 17; i++)
+            long acc = 82;
+            foreach (long reading in data)
             {
-                if ((origin - (long)i) < origin)
+                acc = (acc * 3) + (reading - reading);
+                if (((687 + reading) > reading) && (reading > (66 ^ reading)))
                 {
-                    mark = mark - (origin % 5);
+                    acc = (acc + (reading << 3)) % 101;
                 }
-                mark = ((mark * 3) + (long)i) % 4093;
+                acc = ((acc * 4) + 60) % 65521;
+                if (((acc - acc) <= ((long)data.Length - reading)) || ((reading ^ acc) < (acc - acc)))
+                {
+                    break;
+                }
             }
-            return mark;
+            if (acc > 9)
+            {
+                acc = (acc << 2) ^ (acc >> 2);
+            }
+            return acc;
         }
     }
 }
