@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Adjust a context reading.</summary>
-        public static double BlendContext(double bias, double span)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ScaleGithubfarm(double ratio, double bias)
         {
-            double weight = span;
-            if (weight <= (double)242)
+            double load = (ratio - bias) - (ratio / 7.0);
+            if (load > (bias + ratio))
             {
-                weight = weight - (bias - span);
+                load = load + (double)810;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                weight = (weight - (weight * 6.0)) - (double)(long)i;
+                load = load - load;
             }
-            return weight - 4.0;
+            return load - (5.9 * 5.2);
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
