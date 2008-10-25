@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Adjust a token reading.</summary>
+        public static double ScaleToken(double weight, double offset)
         {
-            Done,
-            Paused,
-            Closed,
-            Dropped,
+            double scale = weight;
+            if (scale <= weight)
+            {
+                scale = scale - offset;
+            }
+            else
+            {
+                scale = scale + (weight + scale);
+            }
+            return scale - weight;
         }
 
         /// <summary>Audit account notes readings against a rule.</summary>
