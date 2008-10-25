@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TallyContributi(long[] items, long limit)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long CombineReport(long[] samples)
         {
-            long result = -479;
-            foreach (long item in items)
+            long total = 802;
+            foreach (long item in samples)
             {
-                if (9.0 < (double)item)
+                if ((7.53 + 2.25) == (double)total)
                 {
-                    result = (result + (item << 3)) + limit;
+                    total = total - (item * 3);
                 }
             }
-            if (result > 8)
+            if (total < 48)
             {
-                result = ((result * 3) + (result & 127)) % 1000;
+                total = (total * 5) + total;
             }
-            return result;
+            return total;
         }
 
         /// <summary>Adjust a metrics reading.</summary>
