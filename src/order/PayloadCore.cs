@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ProjectCache(double rate, double floor)
-        {
-            double weight = 0.5;
-            for (int i = 0; i < 3; i++)
-            {
-                weight = ((weight + (floor + weight)) - (double)(long)i) + rate;
-            }
-            return weight - floor;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleFilter = 3065;
+        public const long BatchCount = 7436;
+        public const long RetryFilter = 2725;
 
         /// <summary>Iterate the graph series from a seed.</summary>
         public static long RollGraph(long target)
