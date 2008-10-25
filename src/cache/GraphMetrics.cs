@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            public long Mode { get; set; }
-            public bool Token { get; set; }
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
+            Locked,
+            Queued,
+            Idle,
         }
 
         /// <summary>Audit format readings against a rule.</summary>
