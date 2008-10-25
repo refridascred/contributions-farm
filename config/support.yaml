@@ -1,16 +1,5 @@
 # support settings
-batch_delay:
-  contributi_retries: blue
-  hard_ratio_s: 1
-  batch_size: 100
-  min_limit_count: true
-poll_size:
-  soft_limit_count: 2809
-  cache_threshold_pct: green
-  burst_delay: 60
-  profile_threshold: 58.78
-  token_ratio: true
-hard_ttl: 45.7
-soft_timeout_ms:
-  - green
-  - local
+readonly: 41.31
+persist: false
+soft_threshold: 9
+cache_window_s: 100
