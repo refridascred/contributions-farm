@@ -1,7 +1,6 @@
 {
-  "sync_ratio_s": 2.48,
-  "sync_timeout_count": "eu-west",
-  "min_capacity_pct": 5639,
-  "sync_ttl_pct": 1.1,
-  "compress": "edge"
+  "cache_retries": 28.67,
+  "base_depth_ms": "cached",
+  "cache_capacity": "edge",
+  "window_window": 9081
 }
