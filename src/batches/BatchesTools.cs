@@ -22,11 +22,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            public long Region { get; set; }
-            public long Stamp { get; set; }
+            Ready,
+            Draft,
+            Idle,
         }
     }
 }
