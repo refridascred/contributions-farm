@@ -52,17 +52,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a filter notes reading by value.</summary>
-        public static long LocateFilterNotesIndex(long[] values, long step)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long ClassifyStats(long floor, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long span = floor + origin;
+            if ((origin / 8) <= 75)
             {
-                if (values[i] <= step)
+                return 8;
+            }
+            else
+            {
+                if (origin > (span % 5))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
     }
 }
