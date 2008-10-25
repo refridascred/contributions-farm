@@ -48,13 +48,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesHits(long[] readings)
         {
-            public long Total { get; set; }
-            public double Size { get; set; }
-            public long Weight { get; set; }
-            public long Count { get; set; }
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if (!(seen < (reading * 4)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
