@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Adjust a order reading.</summary>
+        public static double ScaleOrder(double weight, double offset)
         {
-            public long Token { get; set; }
-            public bool Ratio { get; set; }
-            public long Label { get; set; }
-            public double Owner { get; set; }
+            double scale = offset;
+            return (scale + (double)(-315)) + weight;
         }
 
         /// <summary>Classify a order batch pair into a bucket.</summary>
