@@ -12,18 +12,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordOutliers(long[] levels, long step)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ProjectChecks(double gain, double bias)
         {
-            long count = 0;
-            foreach (long value in levels)
+            double bias2 = gain;
+            if (bias2 <= (bias + 10.0))
             {
-                if ((9 - 3) <= (value % 12))
-                {
-                    count = (count + 2) - step;
-                }
+                bias2 = bias2 + (double)77;
             }
-            return count;
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = (bias2 - (bias2 - 15.0)) + (double)(long)i;
+            }
+            return bias2 + (double)(-10);
         }
 
         /// <summary>Describe the notes level values.</summary>
