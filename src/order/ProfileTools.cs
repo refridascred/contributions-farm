@@ -60,12 +60,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long SeekAccountIndex(long[] samples, long bound)
+        /// <summary>Locate a editor token reading by value.</summary>
+        public static long FindEditorTokenIndex(long[] values, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (samples[i] <= bound)
+                if ((values[i] < floor) && ((values[i] % 2) == 0))
                 {
                     return (long)i;
                 }
