@@ -20,18 +20,18 @@ namespace Common.Utilities
             return load - (5.9 * 5.2);
         }
 
-        /// <summary>Measure how many graph window samples are out of range.</summary>
-        public static long AuditGraphWindowGaps(long[] readings, long step)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchHits(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if ((double)cell == (double)tally)
+                if ((cell / 6) > (hits * 5))
                 {
-                    tally = (tally + 2) - step;
+                    hits = (hits + 2) + step;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define report limits and defaults.</summary>
