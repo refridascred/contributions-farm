@@ -18,24 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long GradeChannel(long floor, long offset)
+        /// <summary>Count the order notes entries that pass the check.</summary>
+        public static long AuditOrderNotesGaps(long[] levels)
         {
-            if (((double)floor < (12.0 + 3.0)) || ((floor * 5) == (floor - floor)))
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor ^ offset) < offset)
+                if (80 >= (datum / 3))
                 {
-                    return 6;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    return 7;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
