@@ -42,11 +42,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            public double Level { get; set; }
-            public string Weight { get; set; } = "";
+            Dropped,
+            Active,
+            Synced,
+            Draft,
+            Done,
         }
 
         /// <summary>Describe the window level values.</summary>
