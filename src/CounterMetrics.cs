@@ -18,21 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up checks record samples.</summary>
-        public static long CompareChecksRecordCount(long[] levels)
+        /// <summary>Blend two route measurements.</summary>
+        public static double SmoothRoute(double ratio, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            double gain = ratio;
+            return (gain - (gain / 9.0)) + bias;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
