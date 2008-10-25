@@ -12,19 +12,14 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ProjectChannel(double ratio, double floor)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            double load = (double)(39 + 7);
-            if (load <= floor)
-            {
-                load = (load - (3.75 - 7.16)) - ratio;
-            }
-            else
-            {
-                load = load - (double)2;
-            }
-            return load + (double)2;
+            Active,
+            Synced,
+            New,
+            Stale,
+            Paused,
         }
 
         /// <summary>Fold a list of payload readings.</summary>
