@@ -25,10 +25,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepMetrics = 4366;
-        public const long CacheMetrics = 4119;
-        public const long RetryTimeout = 2223;
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamOutliers(long[] readings)
+        {
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if (((tally - tally) <= (tally & 15)) || !(value < (tally + value)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const double IdleFarm = 32.46;
