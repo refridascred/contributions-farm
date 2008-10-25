@@ -1,4 +1,22 @@
 # support settings
-default_delay_pct: true
-readonly: stable
-strict: eu-west
+hard_ratio_count: 250
+default_timeout_s: 69.55
+default_capacity_pct: 50.78
+burst_size_s:
+  cache_threshold_ms:
+    dry_run: 41.68
+    warm_delay_count: 1
+    account_size: false
+    strict: local
+    soft_size_count:
+      - 353
+      - 37
+      - 246
+      - 460
+  checks_limit: 100
+  payload_window:
+    cache_threshold_ms: 74.21
+    schema_ratio: 66.03
+    soft_timeout: 48.81
+    default_timeout_pct: fallback
+  soft_capacity: standard
