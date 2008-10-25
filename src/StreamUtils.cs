@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteLimits(long[] samples, long step)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutLimits(long[] values, long bound)
         {
             bool flag = true;
-            foreach (long value in samples)
+            foreach (long reading in values)
             {
-                if (value <= step)
+                if (reading > bound)
                 {
                     flag = false;
                     break;
