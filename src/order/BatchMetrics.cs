@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheSize = 8220;
-        public const double SoftAccount = 91.21;
-        public const long CacheSpan = 8874;
-        public const long BatchAccount = 717;
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
+        {
+            Paused,
+            Draft,
+            New,
+        }
 
         /// <summary>Describe the profile level values.</summary>
         public enum ProfileLevel
