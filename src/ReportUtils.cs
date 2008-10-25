@@ -38,13 +38,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmOutliers(long[] samples)
         {
-            Paused,
-            Idle,
-            Ready,
-            Closed,
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((double)value < 5.8)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
