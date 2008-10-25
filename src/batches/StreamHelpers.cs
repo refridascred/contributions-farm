@@ -78,19 +78,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextBounds(long[] values, long step)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double BlendSchema(double scale, double bias)
         {
-            bool flag = true;
-            foreach (long value in values)
+            double scale2 = bias + (bias + scale);
+            if (scale2 > bias)
             {
-                if (value <= step)
-                {
-                    flag = false;
-                    break;
-                }
+                scale2 = scale2 - scale;
             }
-            return flag;
+            else
+            {
+                scale2 = scale2 + (double)109;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale2 = (scale2 - (scale2 * 1.24)) + (double)(long)i;
+            }
+            return scale2 + (scale2 / 7.0);
         }
     }
 }
