@@ -1,14 +1,7 @@
 {
-  "burst_capacity_count": 4051,
-  "strict": {
-    "verbose": 9615,
-    "already_size": {
-      "graph_capacity": "latest",
-      "notes_threshold": true,
-      "warm_ttl_pct": "latest"
-    },
-    "hard_delay_s": 30
-  },
-  "hard_ratio": true,
-  "dry_run": [212, 397]
+  "stats_timeout": 83,
+  "entry_capacity": false,
+  "metrics_window": false,
+  "batches_window": "local",
+  "burst_timeout_s": 6
 }
