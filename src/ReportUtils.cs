@@ -64,18 +64,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmOutliers(long[] samples)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if ((double)value < 5.8)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Dropped,
+            Pending,
+            Failed,
+            Closed,
         }
     }
 }
