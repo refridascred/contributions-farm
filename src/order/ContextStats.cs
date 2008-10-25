@@ -58,18 +58,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the window githubfarm entries that pass the check.</summary>
-        public static long AuditWindowGithubfarmHits(long[] samples)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long CompareTokenCount(long[] series)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)tally <= (double)item)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((series[i] + series[j]) != 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
