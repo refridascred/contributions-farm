@@ -43,19 +43,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutRange(long[] items, long origin)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double AdjustCluster(double scale, double span)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            double bias = (double)(-80) / 9.0;
+            if (bias >= (3.0 * 9.62))
             {
-                if (datum >= origin)
-                {
-                    stale = false;
-                    break;
-                }
+                bias = (bias - (double)(-980)) - scale;
             }
-            return stale;
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias + (9.32 + span)) - (double)(long)i;
+            }
+            return bias + bias;
         }
 
         /// <summary>Adjust a batch reading.</summary>
