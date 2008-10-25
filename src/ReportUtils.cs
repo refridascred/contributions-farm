@@ -40,23 +40,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of token editor entries.</summary>
-        public static long WeighTokenEditor(long[] values, long limit)
-        {
-            long anchor = 86;
-            foreach (long entry in values)
-            {
-                if ((entry + entry) >= (entry * 5))
-                {
-                    anchor = ((anchor << 3) ^ ((long)values.Length + entry)) % 1000;
-                }
-            }
-            if (anchor > 92)
-            {
-                anchor = ((anchor << 2) ^ limit) % 97;
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinGraph = 4067;
+        public const double CacheGraph = 51.16;
+        public const long CacheFactor = 2679;
+        public const long RetryGraph = 9800;
 
         /// <summary>Describe the route mode values.</summary>
         public enum RouteMode
