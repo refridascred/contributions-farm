@@ -40,12 +40,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long BucketNotes(long step, long origin)
         {
-            Draft,
-            Active,
-            Queued,
+            if ((step - step) != (574 << 3))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((41 * 3) > (origin + step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
