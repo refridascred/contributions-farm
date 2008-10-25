@@ -1,7 +1,7 @@
-id,owner,weight,count,state
-1,786,legacy,latest,5.51
-2,440,34.6,staging,staging
-3,333,open,open,415
-4,open,staging,986,94
-5,primary,465,525,32.16
-6,standard,377,3.63,eu-west
+id,label,ratio
+1,66.2,292
+2,primary,standard
+3,53.22,41.0
+4,78.36,latest
+5,legacy,71.26
+6,352,431
