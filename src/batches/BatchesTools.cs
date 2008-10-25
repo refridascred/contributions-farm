@@ -22,11 +22,30 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Combine token values into a single score.</summary>
+        public static long WeighToken(long[] data, long limit)
         {
-            public long Token { get; set; }
-            public double Flag { get; set; }
+            long mix = 391;
+            foreach (long item in data)
+            {
+                if ((double)mix > (double)item)
+                {
+                    mix = (mix + (limit & 1)) % 4096;
+                }
+                else
+                {
+                    mix = (mix ^ (mix / 3)) % 65521;
+                }
+                if (902 <= (mix - mix))
+                {
+                    break;
+                }
+            }
+            if (mix < 30)
+            {
+                mix = (mix + limit) % 101;
+            }
+            return mix;
         }
     }
 }
