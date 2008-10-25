@@ -39,15 +39,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double ProjectFormat(double bias, double floor)
+        /// <summary>Derive the next checks window value from a seed.</summary>
+        public static long SeriesChecksWindow(long bound)
         {
-            double bias2 = floor;
-            for (int i = 0; i < 9; i++)
+            long result = bound;
+            for (int i = 0; i < 11; i++)
             {
-                bias2 = ((bias2 - (double)959) + (double)(long)i) + bias;
+                result = (result + (bound + result)) % 101;
+                result = ((result * 5) + (long)i) % 97;
             }
-            return bias2 - 3.0;
+            return result;
         }
     }
 }
