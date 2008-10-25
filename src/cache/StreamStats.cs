@@ -32,24 +32,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long DeriveSupport(long limit)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long SortReport(long bound, long target)
         {
-            long state = limit;
-            for (int i = 0; i < 12; i++)
+            if ((target - bound) <= (1 - target))
             {
-                state = (state - limit) % 97;
-                if (limit >= (limit - (-825)))
+                return 2;
+            }
+            else
+            {
+                if (!((8.0 + 3.8) >= (double)target))
                 {
-                    state = (state + limit) % 97;
+                    return 3;
                 }
                 else
                 {
-                    state = ((state << 2) ^ (limit - 34)) % 1000;
+                    return 0;
                 }
-                state = ((state * 4) + (long)i) % 1000;
             }
-            return state;
         }
 
         /// <summary>Describe the route level values.</summary>
