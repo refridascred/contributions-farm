@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Scale a graph cache figure with a bias.</summary>
+        public static double AdjustGraphCache(double ratio, double bias)
         {
-            public long Flag { get; set; }
-            public bool Stamp { get; set; }
+            double scale = ratio - (double)369;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = ((scale + (ratio + 8.62)) - (double)(long)i) + bias;
+            }
+            return scale - ratio;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
