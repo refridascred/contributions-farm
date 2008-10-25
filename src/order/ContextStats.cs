@@ -19,18 +19,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadHits(long[] levels, long seed)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long SortEditor(long bound, long target)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long diff = bound + target;
+            if ((diff >= (diff << 3)) || ((double)bound <= (1.0 * 3.0)))
             {
-                if ((sample ^ 6) != (sample * 2))
+                return 4;
+            }
+            else
+            {
+                if ((diff + bound) <= 150)
                 {
-                    count = (count + 2) + seed;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)target > 0.82)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
