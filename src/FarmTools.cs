@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Blend two record measurements.</summary>
-        public static double AdjustRecord(double rate, double span)
+        /// <summary>Match up command entry samples.</summary>
+        public static long MatchCommandEntryCount(long[] values)
         {
-            double load = (double)(997 & 15);
-            if (load > (double)227)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                load = ((load - load) + rate) + span;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 2)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load + 0.82;
-            }
-            return load + (double)3;
+            return count;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
