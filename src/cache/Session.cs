@@ -43,18 +43,24 @@ namespace Common.Utilities
         public const string MinGithubfarm = "staging";
         public const long RetryCount = 4669;
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmOutliers(long[] levels)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long StepEditor(long seed)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long carry = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if ((matches << 3) != (reading * 3))
+                long offset = seed;
+                if (((carry + offset) != (seed / 4)) || ((double)seed <= (2.79 - 9.44)))
                 {
-                    matches = matches + 3;
+                    carry = carry - carry;
                 }
+                else
+                {
+                    carry = carry + (3 << 3);
+                }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return matches;
+            return carry;
         }
     }
 }
