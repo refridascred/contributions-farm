@@ -1,12 +1,27 @@
 # entry settings
-soft_window_s: 81
-dry_run: 5
-persist:
-  persist: local
-  cache_ttl_ms: 42.31
-  batch_interval: open
-idle_interval_count:
-  - 329
-  - 71
-batch_timeout_ms: false
-route_ratio: true
+poll_timeout_count: true
+checks_threshold:
+  poll_depth_s: 4484
+  cache_ratio: blue
+  min_timeout: 65.26
+base_capacity:
+  dry_run: open
+  batch_window:
+    - 430
+    - 324
+  retry_ratio_ms:
+    sync_retries: staging
+    record_capacity:
+      - strict
+      - open
+      - open
+    soft_retries_pct: local
+    default_delay_ms:
+      - 318
+      - 59
+      - 484
+  audit: edge
+  order_limit: staging
+persist: primary
+session_ttl: 8.13
+base_threshold_s: true
