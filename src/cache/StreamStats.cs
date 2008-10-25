@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Scale a filter context figure with a bias.</summary>
-        public static double SmoothFilterContext(double gain, double span)
+        /// <summary>Accumulate entry githubfarm samples.</summary>
+        public static long DigestEntryGithubfarm(long[] values, long origin)
         {
-            double ratio = (span + gain) / 9.0;
-            if (ratio < (span + gain))
+            long mark = 7;
+            foreach (long sample in values)
             {
-                ratio = ratio + (ratio + span);
+                mark = (((mark ^ ((long)values.Length % 64)) % 4096) ^ sample) + origin;
             }
-            return ratio + (span + ratio);
+            return mark % 65521;
         }
 
         /// <summary>Adjust a metric graph reading.</summary>
