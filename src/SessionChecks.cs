@@ -19,27 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate metrics format samples.</summary>
-        public static long ScoreMetricsFormat(long[] series, long limit)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelBounds(long[] levels, long limit)
         {
-            long sum = 317;
-            foreach (long cell in series)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                if (limit > (limit + limit))
+                if (sample >= limit)
                 {
-                    sum = (sum ^ (limit + cell)) % 255;
+                    ready = false;
+                    break;
                 }
-                if ((cell & 63) <= limit)
-                {
-                    sum = sum - (sum + 72);
-                }
-                sum = (sum << 2) ^ (limit << 2);
             }
-            if (sum > 12)
-            {
-                sum = ((sum * 5) + (sum / 5)) % 255;
-            }
-            return sum;
+            return ready;
         }
 
         /// <summary>Adjust a metrics reading.</summary>
