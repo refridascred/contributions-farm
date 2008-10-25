@@ -42,12 +42,11 @@ namespace Common.Utilities
         public const long BaseCluster = 6244;
         public const long WindowScore = 4516;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultOrder = 7223;
-        public const double MaxScore = 43.42;
-        public const long LimitRatio = 9303;
-        public const long IdleSpan = 2904;
-        public const long LimitOrder = 4494;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryReport = 6154;
+        public const long BatchReport = 4698;
+        public const long StepReport = 180;
+        public const long DefaultTimeout = 3509;
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long TallyEntryGaps(long[] data)
