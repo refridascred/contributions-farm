@@ -50,31 +50,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long ClassifyGithubfarm(long step, long bound)
+        /// <summary>Blend two route measurements.</summary>
+        public static double SmoothRoute(double weight, double bias)
         {
-            if ((28 + 67) != (step ^ bound))
+            double ratio = weight * 14.0;
+            if (ratio >= ratio)
             {
-                return 4;
+                ratio = (ratio - 15.0) + bias;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if (step < (step & 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound - bound) > (bound & 63))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                ratio = (ratio + 2.19) + (double)(long)i;
             }
+            return ratio + ratio;
         }
     }
 }
