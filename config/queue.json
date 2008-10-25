@@ -1,6 +1,8 @@
 {
-  "warm_interval_ms": false,
-  "cache_ttl_count": 58,
-  "verbose": 500,
-  "base_retries_pct": "strict"
+  "sync_threshold_pct": true,
+  "burst_delay_s": 1024,
+  "persist": 4960,
+  "layout_interval": false,
+  "enabled": ["strict", "open", "latest", "legacy"],
+  "checks_ratio": "local"
 }
