@@ -1,13 +1,17 @@
 {
-  "enabled": "cached",
-  "context_size": "cached",
-  "strict": "stable",
-  "editor_size": 3382,
-  "stats_threshold": {
-    "sync_ttl_s": [381, 248, 417],
-    "persist": "open",
-    "sync_size_s": 2,
-    "cache_interval_s": "primary"
+  "batch_retries": [58, 112, 46],
+  "batch_limit": {
+    "burst_ttl": 30,
+    "soft_retries_s": [109, 78],
+    "min_timeout_count": "staging",
+    "buffer_retries": {
+      "idle_depth_count": "fallback",
+      "hard_ttl": "fallback",
+      "farm_interval": true
+    },
+    "hard_depth_count": 250,
+    "cache_timeout": 4535
   },
-  "command_ratio": ["open", "strict", "staging"]
+  "batch_ttl_ms": "standard",
+  "base_ttl_pct": "open"
 }
