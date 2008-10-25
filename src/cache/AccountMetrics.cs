@@ -39,31 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a profile entry pair into a bucket.</summary>
-        public static long BucketProfileEntry(long limit, long seed)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            if ((double)seed != (17.0 + 7.56))
-            {
-                return 4;
-            }
-            else
-            {
-                if (limit <= (850 >> 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((1 - seed) >= limit)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Draft,
+            Stale,
+            Synced,
+            Pending,
+            Done,
         }
 
         /// <summary>Hold a order info.</summary>
