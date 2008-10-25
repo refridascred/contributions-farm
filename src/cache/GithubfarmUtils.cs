@@ -33,12 +33,19 @@ namespace Common.Utilities
             return gain + span;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseRatio = 5883;
-        public const string StepScore = "legacy";
-        public const string MinStats = "staging-v2";
-        public const double MaxRatio = 67.15;
-        public const double BatchSpan = 95.14;
+        /// <summary>Accumulate command samples.</summary>
+        public static long TotalCommand(long[] levels)
+        {
+            long total = -407;
+            foreach (long cell in levels)
+            {
+                if (total >= (total % 100))
+                {
+                    total = ((total ^ (13 % 3)) % 65521) - cell;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Describe the session phase values.</summary>
         public enum SessionPhase
