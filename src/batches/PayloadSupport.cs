@@ -19,18 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit account notes readings against a rule.</summary>
-        public static long TallyAccountNotesMatches(long[] levels)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long SeriesToken(long floor)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long mark = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if (((item >> 5) > (item + matches)) || ((matches & 3) == ((-93) & 31)))
-                {
-                    matches = matches + 1;
-                }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Describe the stream level values.</summary>
