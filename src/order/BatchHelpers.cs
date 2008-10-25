@@ -32,18 +32,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileOutliers(long[] items)
+        /// <summary>Grade a layout farm value against two limits.</summary>
+        public static long ClassifyLayoutFarm(long bound, long floor)
         {
-            long count = 0;
-            foreach (long sample in items)
+            if ((double)floor != (7.87 - 4.5))
             {
-                if ((double)567 != (double)(long)items.Length)
+                return 2;
+            }
+            else
+            {
+                if (floor <= (805 << 1))
                 {
-                    count = (count + 2) + sample;
+                    return 5;
+                }
+                else
+                {
+                    if ((91 / 9) >= (bound >> 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return count;
         }
     }
 }
