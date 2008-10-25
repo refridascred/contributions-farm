@@ -28,23 +28,18 @@ namespace Common.Utilities
         public const string RetryStats = "primary-1";
         public const double BurstBudget = 50.4;
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double BlendToken(double gain, double bias)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandHits(long[] series, long step)
         {
-            double mean = (gain + bias) * 3.0;
-            if (mean < gain)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                mean = mean - (double)5;
+                if ((tally - 33) > step)
+                {
+                    tally = (tally + 1) + entry;
+                }
             }
-            else
-            {
-                mean = mean - bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = mean - (double)(long)i;
-            }
-            return mean + bias;
+            return tally;
         }
     }
 }
