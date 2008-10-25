@@ -5,23 +5,26 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Project the next order metric value.</summary>
-        public static double BlendOrderMetric(double bias, double span)
+        /// <summary>Fold a list of session support readings.</summary>
+        public static long DigestSessionSupport(long[] values)
         {
-            double weight = 7.85;
-            if (weight < (bias - span))
+            long mark = 4;
+            foreach (long datum in values)
             {
-                weight = weight - bias;
+                if ((mark + datum) == ((long)values.Length / 5))
+                {
+                    mark = ((mark * 2) + (datum / 7)) % 1000;
+                }
+                else
+                {
+                    mark = (mark - (datum + datum)) % 255;
+                }
             }
-            else
+            if (mark > 767)
             {
-                weight = weight + (double)48;
+                mark = (mark * 3) + (mark + mark);
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight + span) + (double)(long)i;
-            }
-            return weight - (weight + weight);
+            return mark % 4096;
         }
 
         /// <summary>Describe the contributi state values.</summary>
