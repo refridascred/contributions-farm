@@ -19,15 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long SeriesToken(long floor)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long CompareLayoutCount(long[] data)
         {
-            long mark = floor;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = ((mark * 2) + (long)i) % 65521;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Describe the stream level values.</summary>
