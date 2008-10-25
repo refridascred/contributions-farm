@@ -18,15 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double AdjustChannel(double bias, double floor)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            double drift = (4.14 + bias) - (double)57;
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + (double)(long)i) - floor;
-            }
-            return drift + 0.23;
+            public long Flag { get; set; }
+            public double Level { get; set; }
+            public long Offset { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
