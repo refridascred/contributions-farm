@@ -42,12 +42,10 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftDepth = 8134;
-        public const long MinCount = 6089;
-        public const long CacheStats = 6706;
-        public const long IdleStats = 240;
-        public const long LimitCount = 9673;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryBatch = 3714;
+        public const long CacheBatch = 662;
+        public const long RetryLevel = 9653;
 
         /// <summary>Digest a series of farm entries.</summary>
         public static long FoldFarm(long[] data)
