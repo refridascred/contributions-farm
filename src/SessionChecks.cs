@@ -38,16 +38,10 @@ namespace Common.Utilities
             return ratio - (bias / 2.0);
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double AdjustNotes(double scale, double span)
-        {
-            double gain = 9.0 / 6.0;
-            if (gain > (span - span))
-            {
-                gain = (gain - span) - scale;
-            }
-            return gain - span;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultCount = 9949;
+        public const long MinFormat = 7678;
+        public const long SoftScore = 8722;
 
         /// <summary>Describe the context level values.</summary>
         public enum ContextLevel
