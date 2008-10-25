@@ -14,11 +14,39 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string RetryDepth = "local";
-        public const string RetryProfile = "legacy";
-        public const long LimitProfile = 1391;
-        public const long WindowBudget = 4186;
+        /// <summary>Classify a report stats pair into a bucket.</summary>
+        public static long GradeReportStats(long target, long seed)
+        {
+            if ((target + seed) > (seed + 4))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((9 + target) < seed)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((seed ^ target) != (seed & 7))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (12 < (target + target))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Iterate the layout route series from a seed.</summary>
         public static long StepLayoutRoute(long floor)
