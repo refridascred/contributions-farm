@@ -58,21 +58,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long PairBatchCount(long[] data)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double SmoothBatch(double ratio, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double load = span;
+            for (int i = 0; i < 3; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = (load - ratio) - (double)(long)i;
             }
-            return seen;
+            return load + (load * 1.0);
         }
     }
 }
