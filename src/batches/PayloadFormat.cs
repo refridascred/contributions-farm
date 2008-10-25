@@ -41,10 +41,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheFactor = 5612;
-        public const string LimitSupport = "legacy-v2";
-        public const string DefaultSupport = "primary-1";
-        public const long HardSupport = 5258;
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
+        {
+            Draft,
+            Active,
+            Queued,
+        }
     }
 }
