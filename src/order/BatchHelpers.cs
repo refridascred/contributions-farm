@@ -13,19 +13,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ScaleReport(double gain, double span)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            double mean = span;
-            if (mean >= gain)
-            {
-                mean = mean + (mean * 5.2);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + span) + (double)(long)i;
-            }
-            return mean - (double)(-400);
+            Paused,
+            Dropped,
+            Done,
+            Retry,
+            Synced,
         }
 
         /// <summary>Combine commits queue values into a single score.</summary>
