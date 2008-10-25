@@ -48,17 +48,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a channel tools sample.</summary>
-        public static long FindChannelToolsIndex(long[] data, long limit)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutBounds(long[] readings, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                if (data[i] > limit)
+                if (sample < seed)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
