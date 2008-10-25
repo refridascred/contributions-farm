@@ -34,9 +34,10 @@ namespace Common.Utilities
             return rate - offset;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchGithubfarm = 3887;
-        public const string IdleGithubfarm = "local-edge";
-        public const long SoftWidth = 6033;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string WindowChecks = "alpha-1";
+        public const string BaseFactor = "alpha";
+        public const long DefaultChecks = 5124;
+        public const long BaseChecks = 8976;
     }
 }
