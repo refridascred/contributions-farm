@@ -17,12 +17,18 @@ namespace Common.Utilities
         public const long MaxPayload = 9287;
         public const long SoftPayload = 6182;
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextGaps(long[] series, long target)
         {
-            public double Label { get; set; }
-            public long Ratio { get; set; }
-            public bool Level { get; set; }
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if ((501 + (-6)) > (value % 10))
+                {
+                    hits = (hits + 2) + target;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
