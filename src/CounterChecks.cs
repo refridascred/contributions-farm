@@ -21,15 +21,10 @@ namespace Common.Utilities
         public const long RetryDepth = 8397;
         public const long MinWidth = 2095;
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
-        {
-            Synced,
-            Locked,
-            Failed,
-            Pending,
-            Idle,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstBudget = 3767;
+        public const double MaxScore = 76.51;
+        public const string StepScore = "open-v2";
 
         /// <summary>Fold a list of batch entry readings.</summary>
         public static long TotalBatchEntry(long[] samples, long limit)
