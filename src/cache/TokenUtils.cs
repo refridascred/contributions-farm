@@ -24,15 +24,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ProjectToken(double weight, double floor)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderRange(long[] samples, long step)
         {
-            double drift = weight;
-            for (int i = 0; i < 6; i++)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                drift = ((drift + weight) - (double)(long)i) + floor;
+                if (value >= step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return drift + (weight * 0.6);
+            return valid;
         }
     }
 }
