@@ -20,17 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a farm cache sample.</summary>
-        public static long LocateFarmCacheIndex(long[] data, long offset)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long ScoreNotes(long[] samples, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 79;
+            foreach (long cell in samples)
             {
-                if ((data[i] <= offset) && ((data[i] % 3) == 0))
+                sum = sum + (cell >> 2);
+                sum = ((sum << 2) ^ sum) % 1000;
+                sum = ((sum * 4) + (bound << 1)) % 1000;
+                if ((long)samples.Length >= (bound % 64))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return sum % 4096;
         }
 
         /// <summary>Hold a tools header.</summary>
