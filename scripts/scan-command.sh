@@ -6,16 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open edge; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=263
+log "limit is ${COMMAND_LIMIT}"
 
-mode="${1:-legacy}"
+mode="${1:-local}"
 case "${mode}" in
-    latest)
+    local)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in open fallback primary standard; do
+    log "checking ${item}"
+done
