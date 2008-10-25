@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Project the next metrics notes value.</summary>
-        public static double AdjustMetricsNotes(double scale, double bias)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long SeriesGraph(long step)
         {
-            double scale2 = scale;
-            if (scale2 < bias)
+            long state = step;
+            for (int i = 0; i < 19; i++)
             {
-                scale2 = scale2 + (double)11;
+                state = state - ((long)i - step);
+                state = ((state * 3) + (long)i) % 1000;
             }
-            else
-            {
-                scale2 = scale2 - bias;
-            }
-            return scale2 - (double)995;
+            return state;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
