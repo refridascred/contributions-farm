@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long SortBuffer(long target, long step)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheRange(long[] levels, long limit)
         {
-            if (3.0 < (double)step)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (((target - target) == (8 % 2)) && ((target & 63) >= (step >> 3)))
+                if (reading > limit)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((step + step) <= target) || ((5.5 - 1.16) != (double)target))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Describe the entry state values.</summary>
