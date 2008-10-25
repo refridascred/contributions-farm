@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportHits(long[] values)
+        /// <summary>Find the first cluster batch entry that matches the target.</summary>
+        public static long FindClusterBatchIndex(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((sample > (sample + seen)) && ((seen - seen) <= (sample ^ seen)))
+                if ((series[i] > floor) && ((series[i] % 3) != 0))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Blend two metrics measurements.</summary>
