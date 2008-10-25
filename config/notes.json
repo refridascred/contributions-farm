@@ -1,8 +1,6 @@
 {
-  "sync_depth": ["primary", "standard", "green"],
-  "base_interval": "local",
-  "schema_capacity": "edge",
-  "poll_depth": true,
-  "base_limit_count": 250,
-  "burst_window": "open"
+  "sync_capacity_ms": 6706,
+  "contributi_timeout": "legacy",
+  "editor_interval": "edge",
+  "soft_size_ms": 73
 }
