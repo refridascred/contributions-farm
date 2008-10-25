@@ -1,16 +1,5 @@
 {
-  "idle_capacity": 30,
-  "readonly": [370, 497, 22],
-  "burst_depth": {
-    "idle_delay_count": {
-      "support_interval": 83.76,
-      "buffer_retries": false,
-      "hard_depth_pct": 31.19,
-      "retry_delay_ms": false,
-      "persist": "edge",
-      "max_size": 2519
-    },
-    "route_ttl": "strict",
-    "soft_ttl_count": "staging"
-  }
+  "idle_retries": 2.4,
+  "base_delay_pct": 3141,
+  "default_limit": 8874
 }
