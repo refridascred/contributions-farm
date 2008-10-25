@@ -48,19 +48,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next githubfarm record value.</summary>
-        public static double AdjustGithubfarmRecord(double ratio, double bias)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long PairFormatCount(long[] samples)
         {
-            double bias2 = bias * 12.0;
-            if (bias2 > (bias / 8.0))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias2 = bias2 + (6.12 / 7.0);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias2 = (bias2 - 4.4) - (double)(long)i;
-            }
-            return bias2 + (ratio * 0.9);
+            return hits;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
