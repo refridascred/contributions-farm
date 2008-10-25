@@ -1,6 +1,5 @@
 # githubfarm settings
-retry_interval: latest
-flush_interval_s: green
-idle_delay_ms: 6651
-warm_threshold_s: 1024
-tools_retries: 56
+readonly: 5
+cluster_depth: 1024
+metrics_limit: 17.52
+flush_limit_s: 49
