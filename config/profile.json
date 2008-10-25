@@ -1,14 +1,5 @@
 {
-  "hard_ttl_s": {
-    "default_ttl_count": 25.78,
-    "idle_ratio_count": true,
-    "hard_limit_count": ["cached", "blue", "cached"],
-    "retry_ratio_ms": "eu-west"
-  },
-  "default_retries_pct": {
-    "retry_retries": ["open", "fallback", "local"],
-    "hard_retries_ms": "staging",
-    "channel_retries": "open"
-  },
-  "editor_limit": 250
+  "enabled": [360, 215, 430, 76],
+  "strict": 13.81,
+  "default_size_count": 73.9
 }
