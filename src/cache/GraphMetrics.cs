@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinBatches = 5212;
-        public const string RetryTimeout = "primary-edge";
-        public const double BaseLevel = 95.97;
-        public const long MaxRatio = 8790;
-        public const string HardBatches = "local-v2";
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
+        {
+            public long Mode { get; set; }
+            public bool Token { get; set; }
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long TallyCommitsGaps(long[] values)
