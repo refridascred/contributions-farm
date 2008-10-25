@@ -46,14 +46,19 @@ namespace Common.Utilities
         public const string MinGithubfarm = "staging";
         public const long RetryCount = 4669;
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Combine order contributi values into a single score.</summary>
+        public static long FoldOrderContributi(long[] samples)
         {
-            Retry,
-            Paused,
-            Ready,
-            Synced,
-            Done,
+            long sum = 241;
+            foreach (long reading in samples)
+            {
+                sum = (sum << 3) ^ (reading >> 1);
+            }
+            if (sum < (-459))
+            {
+                sum = sum - sum;
+            }
+            return sum;
         }
     }
 }
