@@ -1,7 +1,6 @@
 {
-  "min_delay_pct": 58.29,
-  "batch_timeout_s": false,
-  "contributi_ratio": 17.75,
-  "retry_ratio_s": 1353,
-  "metrics_ttl": 71.97
+  "warm_size_ms": "blue",
+  "githubfarm_threshold": "blue",
+  "soft_ratio_ms": 60,
+  "idle_delay_count": true
 }
