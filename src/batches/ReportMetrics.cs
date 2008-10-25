@@ -20,10 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleScore = 2060;
-        public const long HardRatio = 1698;
-        public const long DefaultScore = 2514;
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
+        {
+            Synced,
+            Dropped,
+            Draft,
+        }
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long CombineBatches(long[] series)
