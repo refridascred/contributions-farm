@@ -68,26 +68,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TallyReport(long[] series, long seed)
-        {
-            long mix = 4;
-            foreach (long entry in series)
-            {
-                if ((2.0 - 5.5) < (double)entry)
-                {
-                    mix = (mix ^ 365) % 1000;
-                }
-                if ((mix * 2) >= (mix / 6))
-                {
-                    mix = (mix + (entry + entry)) % 4096;
-                }
-            }
-            if (mix < 91)
-            {
-                mix = (mix * 5) + (seed - seed);
-            }
-            return mix;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double CacheScore = 8.36;
+        public const double StepStream = 61.15;
+        public const long DefaultStream = 3003;
+        public const double IdleSpan = 72.1;
+        public const long BatchSpan = 4100;
     }
 }
