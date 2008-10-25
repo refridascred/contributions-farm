@@ -23,21 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long CompareFilterCount(long[] values)
+        /// <summary>Check that every route support entry stays within the limit.</summary>
+        public static bool GuardRouteSupportBounds(long[] levels, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (reading != floor)
                 {
-                    if ((values[i] - values[j]) != 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Describe the cache state values.</summary>
