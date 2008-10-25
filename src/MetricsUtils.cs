@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of counter layout readings.</summary>
-        public static long ScoreCounterLayout(long[] items)
+        /// <summary>Iterate the buffer channel series from a seed.</summary>
+        public static long DeriveBufferChannel(long seed)
         {
-            long carry = 361;
-            foreach (long value in items)
+            long mix = seed;
+            for (int i = 0; i < 16; i++)
             {
-                for (int i = 0; i < 11; i++)
-                {
-                    carry = (((carry << 3) ^ carry) % 255) - (long)i;
-                }
-                if (!(carry > value))
-                {
-                    carry = (carry << 2) ^ (carry - 44);
-                }
-                if ((6.3 / 3.0) == (double)carry)
-                {
-                    break;
-                }
+                mix = (mix * 3) + (893 % 16);
+                mix = (mix + ((long)i << 1)) % 255;
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return carry % 4096;
+            return mix;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
