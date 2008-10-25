@@ -1,4 +1,4 @@
 # githubfarm settings
-filter_ttl: local
-max_window_ms: false
-readonly: 60
+strict: false
+hard_timeout: 1120
+dry_run: 30
