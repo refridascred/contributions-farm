@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double CachePayload = 4.07;
-        public const string MaxPayload = "alpha-1";
-        public const long BurstPayload = 6412;
+        /// <summary>Roll a session counter forward.</summary>
+        public static long SeriesSession(long floor)
+        {
+            long sum = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                sum = (sum ^ (sum + sum)) % 65521;
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Combine route values into a single score.</summary>
         public static long WeighRoute(long[] readings)
