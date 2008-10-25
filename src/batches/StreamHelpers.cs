@@ -62,15 +62,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long SeriesQueue(long seed)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long state = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
+            public string Label { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public double Offset { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a profile stats.</summary>
