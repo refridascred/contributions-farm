@@ -18,19 +18,12 @@ namespace Common.Utilities
         public const long RetryDepth = 8397;
         public const long MinWidth = 2095;
 
-        /// <summary>Check that every buffer metric entry stays within the limit.</summary>
-        public static bool CheckBufferMetricLimits(long[] levels, long floor)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            bool found = true;
-            foreach (long reading in levels)
-            {
-                if (reading < floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Flag { get; set; }
+            public long Stamp { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Combine route values into a single score.</summary>
