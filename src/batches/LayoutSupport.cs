@@ -27,21 +27,13 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Count contributi order pairs that satisfy a relation.</summary>
-        public static long OverlapContributiOrderCount(long[] series)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Idle,
+            New,
+            Ready,
+            Queued,
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
