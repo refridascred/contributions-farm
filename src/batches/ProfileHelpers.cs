@@ -46,13 +46,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Project the next channel value.</summary>
+        public static double SmoothChannel(double weight, double floor)
         {
-            Dropped,
-            Draft,
-            Stale,
-            Synced,
+            double load = weight - 18.0;
+            if (load >= (weight + 1.47))
+            {
+                load = load - floor;
+            }
+            else
+            {
+                load = load + (9.0 * 1.64);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + 9.3) + (double)(long)i;
+            }
+            return load + load;
         }
 
         /// <summary>Measure how many format metrics samples are out of range.</summary>
