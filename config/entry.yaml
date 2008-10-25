@@ -1,9 +1,9 @@
 # entry settings
-max_size: 5
-max_threshold_s: eu-west
-cache_threshold: 1270
-readonly: 45.42
-default_threshold:
-  - 136
-  - 133
-warm_depth: 60
+base_ttl: latest
+batch_limit_ms:
+  - 264
+  - 484
+  - 283
+retry_size_s: 82
+hard_capacity_ms: 30
+hard_depth_pct: 59
