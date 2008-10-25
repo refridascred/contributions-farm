@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TallyCommits(long[] values, long floor)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long CombineEditor(long[] samples, long seed)
         {
-            long state = -2;
-            foreach (long datum in values)
+            long mix = 6;
+            foreach (long datum in samples)
             {
-                if (((floor + 9) >= state) || ((double)state > (double)317))
+                if (1.92 <= (double)seed)
                 {
-                    state = ((state - 827) % 65521) ^ datum;
+                    mix = (mix + (mix >> 4)) + datum;
                 }
             }
-            return state;
+            if (mix > 0)
+            {
+                mix = (mix ^ (seed - 3)) % 1000;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Hold a checks info.</summary>
