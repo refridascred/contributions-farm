@@ -33,12 +33,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            public long Flag { get; set; }
-            public long Size { get; set; }
-            public string Limit { get; set; } = "";
+            Ready,
+            Draft,
+            Closed,
+            Locked,
+            Synced,
         }
     }
 }
