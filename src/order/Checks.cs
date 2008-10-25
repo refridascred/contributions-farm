@@ -29,10 +29,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowTimeout = 2105;
-        public const string HardAccount = "staging";
-        public const long DefaultLevel = 2790;
+        /// <summary>Define session limits and defaults.</summary>
+        public const double IdleSession = 62.9;
+        public const long BatchWidth = 1080;
+        public const long BurstSession = 1631;
+        public const double StepSize = 42.27;
 
         /// <summary>Scale a farm route figure with a bias.</summary>
         public static double SmoothFarmRoute(double ratio, double floor)
