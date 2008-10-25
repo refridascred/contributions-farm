@@ -35,19 +35,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine stats order values into a single score.</summary>
-        public static long CombineStatsOrder(long[] levels, long target)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long MatchCommitsCount(long[] levels)
         {
-            long result = 971;
-            foreach (long reading in levels)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = (((result << 2) ^ (result + 122)) % 255) ^ reading;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (result > (-2))
-            {
-                result = (result * 3) + (target % 97);
-            }
-            return result;
+            return matches;
         }
     }
 }
