@@ -67,15 +67,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long FoldFormat(long[] values, long seed)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TotalRoute(long[] data, long target)
         {
-            long mix = 713;
-            foreach (long cell in values)
+            long score = 175;
+            foreach (long entry in data)
             {
-                mix = (((mix + (mix & 31)) % 1000) + cell) - seed;
+                score = (((score * 5) + entry) % 4096) - target;
+                if ((double)entry != (2.3 + 1.0))
+                {
+                    score = score - (score ^ 26);
+                }
             }
-            return mix % 4096;
+            return score % 1000;
         }
     }
 }
