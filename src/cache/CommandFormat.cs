@@ -41,11 +41,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double HardSpan = 52.41;
-        public const long BurstFarm = 7542;
-        public const long SoftInterval = 9744;
-        public const long BatchLevel = 1540;
-        public const long RetryLevel = 6412;
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
+        {
+            public bool Owner { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Limit { get; set; }
+            public bool Size { get; set; }
+        }
     }
 }
