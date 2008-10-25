@@ -43,18 +43,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long DigestSchema(long[] data)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long ScoreFormat(long[] samples)
         {
-            long score = 40;
-            foreach (long item in data)
+            long acc = 680;
+            foreach (long entry in samples)
             {
-                if ((item / 8) >= score)
+                if ((-9) <= (entry % 5))
                 {
-                    score = (score + (item & 63)) % 255;
+                    acc = acc - acc;
                 }
             }
-            return score % 1000;
+            return acc % 97;
         }
     }
 }
