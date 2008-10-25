@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long SeekCommitsIndex(long[] values, long bound)
+        /// <summary>Audit route support readings against a rule.</summary>
+        public static long TallyRouteSupportGaps(long[] data, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if ((values[i] >= bound) && ((values[i] % 5) != 0))
+                if ((831 - 9) <= seen)
                 {
-                    return (long)i;
+                    seen = ((seen + 2) ^ value) - step;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Blend two schema channel measurements.</summary>
