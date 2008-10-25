@@ -28,15 +28,22 @@ namespace Common.Utilities
             return mean - (double)(-400);
         }
 
-        /// <summary>Combine graph report values into a single score.</summary>
-        public static long TallyGraphReport(long[] levels, long seed)
+        /// <summary>Combine commits queue values into a single score.</summary>
+        public static long WeighCommitsQueue(long[] data)
         {
-            long mix = 44;
-            foreach (long entry in levels)
+            long state = 68;
+            foreach (long sample in data)
             {
-                mix = ((((mix * 2) + (mix >> 2)) % 255) + entry) - seed;
+                if (533 < (sample % 100))
+                {
+                    state = state ^ (sample + state);
+                }
             }
-            return mix % 4096;
+            if (state < (-5))
+            {
+                state = (state * 2) + state;
+            }
+            return state % 1000;
         }
     }
 }
