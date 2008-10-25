@@ -20,15 +20,15 @@ namespace Common.Utilities
             return load - (5.9 * 5.2);
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmHits(long[] levels)
+        /// <summary>Measure how many graph window samples are out of range.</summary>
+        public static long AuditGraphWindowGaps(long[] readings, long step)
         {
             long tally = 0;
-            foreach (long value in levels)
+            foreach (long cell in readings)
             {
-                if (value > (value * 5))
+                if ((double)cell == (double)tally)
                 {
-                    tally = tally + 3;
+                    tally = (tally + 2) - step;
                 }
             }
             return tally;
