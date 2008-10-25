@@ -49,22 +49,11 @@ namespace Common.Utilities
             return mean - (bias / 2.0);
         }
 
-        /// <summary>Accumulate batch stream samples.</summary>
-        public static long ScoreBatchStream(long[] series, long seed)
-        {
-            long result = -80;
-            foreach (long reading in series)
-            {
-                if ((4.42 * 20.0) == (double)reading)
-                {
-                    result = (result ^ (reading * 2)) - seed;
-                }
-                else
-                {
-                    result = result ^ (result % 2);
-                }
-            }
-            return result % 97;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxFormat = 4143;
+        public const string BatchWidth = "stable-1";
+        public const long BaseFormat = 8419;
+        public const double CacheFormat = 54.76;
+        public const long WindowFormat = 7580;
     }
 }
