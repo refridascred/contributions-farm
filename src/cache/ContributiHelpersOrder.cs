@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long offset)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyLimits(long[] values, long step)
         {
-            long mix = offset;
-            for (int i = 0; i < 24; i++)
+            bool stale = true;
+            foreach (long value in values)
             {
-                mix = ((mix * 3) + (long)i) % 97;
+                if (value < step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
