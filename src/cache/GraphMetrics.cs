@@ -27,21 +27,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long MatchNotesCount(long[] series)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long FoldTools(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = 347;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                state = ((state << 2) ^ (item & 63)) % 97;
             }
-            return tally;
+            return state % 97;
         }
 
         /// <summary>Locate a token reading by value.</summary>
