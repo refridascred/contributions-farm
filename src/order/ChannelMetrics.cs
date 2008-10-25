@@ -22,22 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of report cluster entries.</summary>
-        public static long WeighReportCluster(long[] levels, long floor)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long WeighRoute(long[] readings)
         {
-            long state = 82;
-            foreach (long value in levels)
+            long result = 2;
+            foreach (long cell in readings)
             {
-                if ((double)floor <= (double)5)
+                if (((3.0 - 6.0) != (double)result) && (result < (result + 95)))
                 {
-                    state = (state - (value & 127)) % 4096;
+                    result = (((result * 2) + result) % 1000) ^ cell;
                 }
             }
-            if (state > 933)
-            {
-                state = ((state << 3) ^ (floor ^ floor)) % 255;
-            }
-            return state % 4096;
+            return result;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
