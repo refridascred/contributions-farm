@@ -49,18 +49,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterMatches(long[] levels)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)6 < (double)cell)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Stale,
+            New,
+            Draft,
+            Done,
+            Paused,
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
