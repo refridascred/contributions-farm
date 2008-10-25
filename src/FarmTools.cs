@@ -19,23 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricGaps(long[] series)
-        {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if (((matches / 6) >= cell) && ((7.0 + 8.5) == (double)cell))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string RetrySchema = "latest-v2";
+        public const long BatchSchema = 3747;
+        public const double MinSchema = 71.74;
 
         /// <summary>Match up contributi samples.</summary>
         public static long MatchContributiCount(long[] readings)
