@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Find the first cluster batch entry that matches the target.</summary>
-        public static long FindClusterBatchIndex(long[] series, long floor)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ProjectCache(double rate, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double weight = 0.5;
+            for (int i = 0; i < 3; i++)
             {
-                if ((series[i] > floor) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                weight = ((weight + (floor + weight)) - (double)(long)i) + rate;
             }
-            return -1;
+            return weight - floor;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
