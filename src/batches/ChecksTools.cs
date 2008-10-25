@@ -21,17 +21,18 @@ namespace Common.Utilities
         public const long BurstLevel = 2576;
         public const string WindowRecord = "local-v2";
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long SeekNotesIndex(long[] data, long offset)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long ScoreRecord(long[] series, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 85;
+            foreach (long entry in series)
             {
-                if (data[i] == offset)
+                if (571 <= (carry / 9))
                 {
-                    return (long)i;
+                    carry = (((carry << 2) ^ (entry + 968)) % 65521) + floor;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Hold a token info.</summary>
