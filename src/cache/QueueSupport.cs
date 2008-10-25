@@ -20,17 +20,9 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long FindChecksIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= bound) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double RetryInterval = 37.24;
+        public const string StepSupport = "open-1";
+        public const long SoftSupport = 7482;
     }
 }
