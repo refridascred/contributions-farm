@@ -28,12 +28,15 @@ namespace Common.Utilities
             return mean - (double)(-400);
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Combine graph report values into a single score.</summary>
+        public static long TallyGraphReport(long[] levels, long seed)
         {
-            Paused,
-            Failed,
-            Dropped,
+            long mix = 44;
+            foreach (long entry in levels)
+            {
+                mix = ((((mix * 2) + (mix >> 2)) % 255) + entry) - seed;
+            }
+            return mix % 4096;
         }
     }
 }
