@@ -1,22 +1,27 @@
 # support settings
-hard_ratio_count: 250
-default_timeout_s: 69.55
-default_capacity_pct: 50.78
-burst_size_s:
-  cache_threshold_ms:
-    dry_run: 41.68
-    warm_delay_count: 1
-    account_size: false
-    strict: local
-    soft_size_count:
-      - 353
-      - 37
-      - 246
-      - 460
-  checks_limit: 100
-  payload_window:
-    cache_threshold_ms: 74.21
-    schema_ratio: 66.03
-    soft_timeout: 48.81
-    default_timeout_pct: fallback
-  soft_capacity: standard
+window_window:
+  sync_limit_pct: standard
+  batch_ratio_s: true
+  base_size_ms: 90.31
+  cache_size_pct:
+    - open
+    - legacy
+    - legacy
+  soft_ttl_s: true
+readonly:
+  burst_depth_count: edge
+  tools_limit: local
+  compress:
+    - strict
+    - open
+    - primary
+    - eu-west
+  max_window_count:
+    stream_limit: true
+    batch_window_s: blue
+    max_capacity_pct: 61
+token_timeout:
+  - cached
+  - legacy
+  - eu-west
+  - legacy
