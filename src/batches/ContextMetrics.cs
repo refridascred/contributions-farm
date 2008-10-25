@@ -50,22 +50,18 @@ namespace Common.Utilities
             return rate - (bias / 8.0);
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaOutliers(long[] readings)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyMatches(long[] levels)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if ((tally + tally) == (tally << 2))
+                if ((19.0 > (double)matches) && (value >= (value & 3)))
                 {
-                    tally = (tally + 1) ^ reading;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the editor phase values.</summary>
