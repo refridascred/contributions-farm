@@ -25,18 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountGaps(long[] series, long origin)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double AdjustProfile(double gain, double offset)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            double scale = (double)1 - (15.0 * 1.91);
+            if (scale < (double)7)
             {
-                if ((6.9 <= (double)hits) || !((origin - origin) != (hits << 2)))
-                {
-                    hits = (hits + 3) + datum;
-                }
+                scale = (scale - (double)74) - offset;
             }
-            return hits;
+            return scale - (gain / 2.0);
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
