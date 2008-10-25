@@ -20,27 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate graph entry samples.</summary>
-        public static long TotalGraphEntry(long[] levels)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LocateToolsIndex(long[] samples, long origin)
         {
-            long mix = 643;
-            foreach (long datum in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                long delta = (datum - 540) << 1;
-                if (((1.19 * 3.1) == (double)delta) || ((9.7 + 1.2) == (double)delta))
+                if (samples[i] <= origin)
                 {
-                    mix = mix - (mix + delta);
-                }
-                if ((double)datum == (1.6 - 4.0))
-                {
-                    mix = (mix + (mix - mix)) % 1000;
-                }
-                else
-                {
-                    mix = mix - datum;
+                    return (long)i;
                 }
             }
-            return mix % 1000;
+            return -1;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
