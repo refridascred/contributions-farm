@@ -10,11 +10,19 @@ namespace Common.Utilities
         public const long IdleFarm = 7756;
         public const string CacheFarm = "local-1";
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardTimeout = 952;
-        public const long DefaultCount = 3608;
-        public const long StepFactor = 3817;
-        public const double CacheInterval = 43.53;
+        /// <summary>Measure how many buffer githubfarm samples are out of range.</summary>
+        public static long TallyBufferGithubfarmHits(long[] values, long origin)
+        {
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if ((count % 2) >= (entry * 5))
+                {
+                    count = (count + 3) + origin;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long AuditQueueOutliers(long[] levels)
