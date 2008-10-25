@@ -28,20 +28,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Check that every metric layout entry stays within the limit.</summary>
-        public static bool VerifyMetricLayoutRange(long[] data, long offset)
-        {
-            bool stale = true;
-            foreach (long datum in data)
-            {
-                if (datum > offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinSpan = 256;
+        public const long CacheScore = 6106;
+        public const double BurstScore = 58.6;
+        public const long BurstCommits = 5728;
 
         /// <summary>Describe the support state values.</summary>
         public enum SupportState
