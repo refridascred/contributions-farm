@@ -17,19 +17,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate layout cache readings against a bound.</summary>
-        public static bool GuardLayoutCacheLimits(long[] series, long limit)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long SeekEditorIndex(long[] data, long limit)
         {
-            bool found = true;
-            foreach (long sample in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample > limit)
+                if (data[i] == limit)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Project the next token value.</summary>
