@@ -51,12 +51,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TallyEditor(long[] samples)
         {
-            Active,
-            Closed,
-            Retry,
+            long result = 86;
+            foreach (long value in samples)
+            {
+                if ((value + value) == (result ^ value))
+                {
+                    result = ((result << 3) ^ (long)samples.Length) % 97;
+                }
+            }
+            if (result < 820)
+            {
+                result = ((result << 2) ^ (result ^ result)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Check that every githubfarm commits entry stays within the limit.</summary>
