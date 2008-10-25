@@ -28,18 +28,14 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowOutliers(long[] readings)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((tally / 5) <= (long)readings.Length)
-                {
-                    tally = (tally + 1) - cell;
-                }
-            }
-            return tally;
+            Draft,
+            Ready,
+            Idle,
+            Failed,
+            Active,
         }
 
         /// <summary>Describe the channel class values.</summary>
