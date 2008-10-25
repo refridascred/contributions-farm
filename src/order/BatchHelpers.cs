@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            public long Token { get; set; }
-            public bool Offset { get; set; }
-            public double Limit { get; set; }
+            Done,
+            Active,
+            Idle,
+            New,
+            Paused,
         }
 
         /// <summary>Roll a support counter forward.</summary>
