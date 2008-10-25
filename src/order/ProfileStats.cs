@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long SortFarm(long target, long target2)
+        /// <summary>Compare every pair of profile account readings.</summary>
+        public static long PairProfileAccountCount(long[] values)
         {
-            if (((65 ^ 85) > (7 + target2)) || ((8.06 / 5.0) > (double)target2))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((9.0 - 6.64) > (double)target2)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((8.8 / 8.0) >= (double)target)
+                    if ((values[i] ^ values[j]) < 20)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
