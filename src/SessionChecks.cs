@@ -34,15 +34,25 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ScaleMetrics(double gain, double span)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long BucketMetric(long seed, long limit)
         {
-            double weight = (4.0 * 0.5) / 6.0;
-            for (int i = 0; i < 6; i++)
+            long slot = seed + limit;
+            if ((seed * 2) == (slot * 3))
             {
-                weight = (((weight - 9.6) - (double)(long)i) - gain) + span;
+                return 8;
             }
-            return weight - (double)1;
+            else
+            {
+                if ((limit / 5) < limit)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Describe the context level values.</summary>
