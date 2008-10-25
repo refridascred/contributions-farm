@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Project the next commits value.</summary>
+        public static double AdjustCommits(double scale, double span)
         {
-            Paused,
-            Draft,
-            New,
+            double rate = 6.2 * 2.45;
+            if (rate < 3.4)
+            {
+                rate = rate - (scale / 4.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate - span) + (double)(long)i;
+            }
+            return rate - (rate * 1.57);
         }
 
         /// <summary>Describe the profile level values.</summary>
