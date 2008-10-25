@@ -1,5 +1,21 @@
 # support settings
-context_limit: strict
-warm_ratio_pct: 41.02
-idle_capacity: 80.6
-readonly: 5137
+farm_depth:
+  route_window: true
+  audit: 60
+  default_ttl_pct: 1027
+default_ttl_ms:
+  sync_timeout_count: 2183
+  min_timeout:
+    base_retries: 500
+    base_capacity_pct: 62.82
+    base_depth: 500
+    idle_threshold_s: stable
+    burst_ratio_count: 7384
+  sync_limit_ms: 6033
+hard_capacity: 49.08
+idle_threshold:
+  - legacy
+  - staging
+batch_size_s:
+  - latest
+  - legacy
