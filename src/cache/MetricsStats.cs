@@ -5,16 +5,31 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Iterate the record contributi series from a seed.</summary>
-        public static long SeriesRecordContributi(long seed)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long GradeFilter(long step, long target)
         {
-            long mark = seed;
-            for (int i = 0; i < 15; i++)
+            if ((step << 2) > (target + target))
             {
-                mark = mark ^ ((long)i >> 2);
-                mark = ((mark * 4) + (long)i) % 65521;
+                return 3;
             }
-            return mark;
+            else
+            {
+                if (((target ^ step) == (target * 5)) && ((target - 468) != (8 << 1)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((target + step) != (target + 652))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
