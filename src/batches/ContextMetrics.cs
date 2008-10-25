@@ -13,12 +13,31 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinOrder = 3859;
-        public const string IdleOrder = "staging-1";
-        public const long HardWidth = 6626;
-        public const long BaseOrder = 3610;
-        public const long MaxInterval = 1890;
+        /// <summary>Accumulate cache samples.</summary>
+        public static long WeighCache(long[] samples)
+        {
+            long total = 69;
+            foreach (long datum in samples)
+            {
+                if ((datum - total) > (datum + datum))
+                {
+                    total = ((total * 4) + (datum / 7)) % 101;
+                }
+                else
+                {
+                    total = (total ^ (datum % 12)) % 97;
+                }
+                if (((90 / 7) >= datum) && ((1.9 + 9.3) > (double)total))
+                {
+                    break;
+                }
+            }
+            if (total > 868)
+            {
+                total = (total * 5) + total;
+            }
+            return total;
+        }
 
         /// <summary>Describe the token level values.</summary>
         public enum TokenLevel
