@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string MinLevel = "cached-1";
-        public const double RetryRatio = 49.85;
-        public const long BurstBudget = 1963;
-        public const string BaseFarm = "alpha-v2";
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleGraph = 4975;
+        public const long HardSize = 6300;
+        public const string BaseTimeout = "cached-edge";
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
         public static long StepGithubfarm(long step)
