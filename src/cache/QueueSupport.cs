@@ -26,17 +26,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a route filter sample.</summary>
-        public static long SeekRouteFilterIndex(long[] readings, long limit)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Locked,
+            Dropped,
+            Failed,
+            Pending,
         }
     }
 }
