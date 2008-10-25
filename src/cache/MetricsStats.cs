@@ -5,17 +5,27 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LookupBatchIndex(long[] data, long floor)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long FoldWindow(long[] items, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 9;
+            foreach (long item in items)
             {
-                if (data[i] >= floor)
+                sum = (sum + (target + sum)) % 1000;
+                if ((18.0 / 5.0) > (double)item)
                 {
-                    return (long)i;
+                    sum = (sum ^ (item * 3)) % 65521;
+                }
+                else
+                {
+                    sum = (sum + (sum % 97)) % 101;
+                }
+                if ((sum % 7) != (sum << 1))
+                {
+                    sum = (sum - (target & 1)) % 255;
                 }
             }
-            return -1;
+            return sum % 4096;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
