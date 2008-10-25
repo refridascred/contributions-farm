@@ -17,18 +17,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountHits(long[] items)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double ScaleQueue(double bias, double span)
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((seen + cell) < (cell ^ cell))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            double load = (double)(639 + 6);
+            return ((load - (double)866) + bias) + span;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
