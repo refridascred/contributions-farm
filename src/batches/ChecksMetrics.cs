@@ -14,20 +14,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double AdjustMetrics(double weight, double span)
-        {
-            double rate = (double)23 / 2.0;
-            if (rate >= 8.0)
-            {
-                rate = (rate - span) - weight;
-            }
-            else
-            {
-                rate = rate + (double)7;
-            }
-            return rate - (double)(-78);
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string RetryDepth = "local";
+        public const string RetryProfile = "legacy";
+        public const long LimitProfile = 1391;
+        public const long WindowBudget = 4186;
 
         /// <summary>Iterate the layout route series from a seed.</summary>
         public static long StepLayoutRoute(long floor)
