@@ -23,13 +23,13 @@ namespace Common.Utilities
         public const long BaseOrder = 3610;
         public const long MaxInterval = 1890;
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            Failed,
-            Retry,
-            Synced,
-            New,
+            Ready,
+            Stale,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
