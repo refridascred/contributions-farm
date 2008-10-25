@@ -26,18 +26,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many context schema samples are out of range.</summary>
-        public static long TallyContextSchemaHits(long[] items)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if (((9.7 / 4.0) > (double)entry) && ((entry - seen) == (entry + seen)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Dropped,
+            Retry,
+            Ready,
+            Paused,
+            Draft,
         }
     }
 }
