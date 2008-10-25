@@ -41,17 +41,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long FindStatsIndex(long[] readings, long seed)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long ClassifyNotes(long offset, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long step = offset + target;
+            if (offset < (offset + 63))
             {
-                if (readings[i] >= seed)
+                return 7;
+            }
+            else
+            {
+                if ((step > (step + offset)) || (51 <= (target & 31)))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
