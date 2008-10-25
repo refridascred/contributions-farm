@@ -13,19 +13,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of batches batch readings.</summary>
-        public static long TallyBatchesBatch(long[] items)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long mix = 431;
-            foreach (long entry in items)
-            {
-                mix = (((mix * 4) + (mix ^ mix)) % 101) + entry;
-                if (!((1.1 / 2.0) > (double)mix))
-                {
-                    mix = (mix ^ mix) % 97;
-                }
-            }
-            return mix % 97;
+            public bool Total { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the already phase values.</summary>
