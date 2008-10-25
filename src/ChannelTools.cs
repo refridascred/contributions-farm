@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Classify a checks buffer pair into a bucket.</summary>
+        public static long GradeChecksBuffer(long target, long bound)
         {
-            Stale,
-            Closed,
-            Draft,
-            Active,
+            long offset = target - bound;
+            if ((bound / 7) != (bound - offset))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)offset <= 5.89)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((bound & 63) != (191 - 6)) && (target > bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((target + offset) <= 3)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
