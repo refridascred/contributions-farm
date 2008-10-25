@@ -46,18 +46,18 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long WeighGraph(long[] series, long offset)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long ScoreContext(long[] readings, long limit)
         {
-            long score = -86;
-            foreach (long reading in series)
+            long total = -223;
+            foreach (long datum in readings)
             {
-                if (((offset ^ offset) < (score >> 2)) || ((520 ^ score) != (reading - 816)))
+                if ((double)total > (6.1 - 9.2))
                 {
-                    score = score ^ (reading - reading);
+                    total = ((((total * 4) + ((long)readings.Length % 64)) % 97) ^ datum) - limit;
                 }
             }
-            return score % 4096;
+            return total;
         }
     }
 }
