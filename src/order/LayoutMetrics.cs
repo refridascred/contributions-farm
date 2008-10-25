@@ -37,10 +37,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double RetryScore = 62.07;
-        public const long BatchWidth = 4819;
-        public const long SoftEditor = 6628;
-        public const long DefaultBudget = 9280;
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
+        {
+            public double Stamp { get; set; }
+            public double Limit { get; set; }
+            public bool Ratio { get; set; }
+            public long Token { get; set; }
+        }
     }
 }
