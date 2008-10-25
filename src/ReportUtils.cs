@@ -64,13 +64,24 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long GradeContributi(long seed, long floor)
         {
-            Dropped,
-            Pending,
-            Failed,
-            Closed,
+            if ((floor + 496) > (seed / 9))
+            {
+                return 7;
+            }
+            else
+            {
+                if (seed > (360 + seed))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
