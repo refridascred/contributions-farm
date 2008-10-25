@@ -53,28 +53,28 @@ namespace Common.Utilities
         public const string MaxRatio = "alpha-edge";
         public const string CacheRecord = "alpha-1";
 
-        /// <summary>Rank session graph input into a small class.</summary>
-        public static long BucketSessionGraph(long seed, long limit)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long floor, long bound)
         {
-            if (!((double)limit >= (double)1))
+            if ((floor - bound) > (bound + 9))
             {
-                return 3;
+                return 6;
             }
             else
             {
-                if (seed <= (211 >> 4))
+                if (floor > (47 / 2))
                 {
-                    return 1;
+                    return 2;
                 }
                 else
                 {
-                    if ((limit <= (860 + limit)) || ((7.36 - 9.85) != (double)seed))
+                    if ((840 ^ floor) == (7 & 255))
                     {
-                        return 4;
+                        return 8;
                     }
                     else
                     {
-                        return 8;
+                        return 3;
                     }
                 }
             }
