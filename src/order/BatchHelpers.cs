@@ -20,22 +20,12 @@ namespace Common.Utilities
         public const long RetryMetric = 3313;
         public const long HardMetric = 6862;
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferHits(long[] samples)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if (!((entry * 2) >= hits) && (hits <= (1 / 8)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Paused,
+            Failed,
+            Dropped,
         }
     }
 }
