@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Project the next stats value.</summary>
-        public static double SmoothStats(double weight, double span)
-        {
-            double load = weight / 7.0;
-            if (load > (span + load))
-            {
-                load = load - (span / 9.0);
-            }
-            else
-            {
-                load = load - span;
-            }
-            return load + weight;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultScore = 2924;
+        public const long CacheWidth = 5467;
+        public const long BatchCommits = 7136;
 
         /// <summary>Iterate the format series from a seed.</summary>
         public static long SeriesFormat(long offset)
