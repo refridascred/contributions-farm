@@ -47,14 +47,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountOutliers(long[] items, long floor)
         {
-            Active,
-            Draft,
-            Stale,
-            Dropped,
-            Closed,
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((double)reading >= (15.0 - 5.0))
+                {
+                    matches = (matches + 1) + floor;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
