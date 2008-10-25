@@ -20,18 +20,31 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportHits(long[] samples)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long GradeCache(long offset, long step)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            if (step <= (offset - offset))
             {
-                if (((cell - 8) >= (cell ^ cell)) || ((double)seen <= (11.0 * 8.2)))
+                return 0;
+            }
+            else
+            {
+                if ((3.1 + 9.6) >= (double)offset)
                 {
-                    seen = seen + 2;
+                    return 4;
+                }
+                else
+                {
+                    if ((step * 5) <= 90)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
