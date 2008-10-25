@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const long BatchTools = 5714;
         public const double StepTools = 21.41;
 
-        /// <summary>Audit already queue readings against a rule.</summary>
-        public static long TallyAlreadyQueueGaps(long[] items, long limit)
-        {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if (2.5 < (double)count)
-                {
-                    count = ((count + 3) ^ entry) - limit;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstSpan = 3999;
+        public const long DefaultSize = 3586;
+        public const double MinToken = 43.52;
+        public const double IdleToken = 31.7;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long HardSupport = 8795;
