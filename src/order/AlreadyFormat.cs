@@ -58,17 +58,31 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long SeekFarmIndex(long[] samples, long origin)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long GradeEditor(long limit, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((target > ((-2) * 3)) || (target < (target & 7)))
             {
-                if (samples[i] >= origin)
+                return 7;
+            }
+            else
+            {
+                if (((double)limit < 0.2) || ((target * 3) != (target << 3)))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((limit + limit) == (target & 7))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
