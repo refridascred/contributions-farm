@@ -78,13 +78,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Measure how many cache notes samples are out of range.</summary>
+        public static long TallyCacheNotesMatches(long[] values, long target)
         {
-            New,
-            Locked,
-            Dropped,
-            Queued,
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if ((cell & 15) == (target + cell))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
