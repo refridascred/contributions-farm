@@ -39,22 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long PairReportCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string CacheQueue = "latest-1";
+        public const double SoftRatio = 94.63;
+        public const long BatchQueue = 4257;
+        public const long CacheSize = 4769;
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long FoldChecks(long[] values)
