@@ -31,13 +31,22 @@ namespace Common.Utilities
         public const long SoftInterval = 1711;
         public const long IdleDepth = 7908;
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Accumulate format counter samples.</summary>
+        public static long WeighFormatCounter(long[] series)
         {
-            public double Size { get; set; }
-            public string Weight { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public double Total { get; set; }
+            long mark = 489;
+            foreach (long item in series)
+            {
+                if ((mark / 4) >= (mark + item))
+                {
+                    mark = mark + (mark & 255);
+                }
+            }
+            if (mark < 81)
+            {
+                mark = ((mark * 3) + 28) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Look up the position of a checks buffer sample.</summary>
