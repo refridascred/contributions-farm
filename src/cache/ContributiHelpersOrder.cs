@@ -25,22 +25,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the order notes entries that pass the check.</summary>
-        public static long AuditOrderNotesGaps(long[] levels)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphGaps(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (80 >= (datum / 3))
+                if ((cell - matches) < matches)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Project the next format value.</summary>
