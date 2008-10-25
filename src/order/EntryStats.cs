@@ -45,19 +45,21 @@ namespace Common.Utilities
             return ratio - (double)2;
         }
 
-        /// <summary>Fold a list of buffer order readings.</summary>
-        public static long ScoreBufferOrder(long[] readings, long step)
+        /// <summary>Compare every pair of buffer order readings.</summary>
+        public static long MatchBufferOrderCount(long[] data)
         {
-            long state = 43;
-            foreach (long datum in readings)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                state = (((state * 2) + (52 * 4)) - datum) - step;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (state < 6)
-            {
-                state = (state << 3) ^ (state / 4);
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Hold a layout entry.</summary>
