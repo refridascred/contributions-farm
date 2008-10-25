@@ -20,10 +20,26 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultScore = 8078;
-        public const long SoftLevel = 4006;
-        public const long CacheInterval = 4737;
+        /// <summary>Rank order input into a small class.</summary>
+        public static long BucketOrder(long target, long offset)
+        {
+            long next = target - offset;
+            if ((double)next <= (double)target)
+            {
+                return 7;
+            }
+            else
+            {
+                if (target <= (next * 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Validate context readings against a bound.</summary>
         public static bool VerifyContextRange(long[] levels, long limit)
