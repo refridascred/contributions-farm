@@ -14,19 +14,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesRange(long[] values, long floor)
+        /// <summary>Find the first payload profile entry that matches the target.</summary>
+        public static long FindPayloadProfileIndex(long[] values, long limit)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry != floor)
+                if (values[i] > limit)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Accumulate report samples.</summary>
