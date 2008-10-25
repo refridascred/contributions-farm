@@ -92,9 +92,38 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string IdleSupport = "cached-edge";
-        public const long RetryRatio = 1079;
-        public const long WindowSupport = 673;
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long limit, long bound)
+        {
+            if ((limit >> 3) >= bound)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((8.8 + 6.12) != (double)limit)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((limit - limit) < limit)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((limit + limit) > limit) && ((double)limit < (4.0 - 8.0)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
