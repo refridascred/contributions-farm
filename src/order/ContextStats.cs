@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            Retry,
-            Queued,
-            Done,
+            Ready,
+            Idle,
+            Active,
             New,
+            Locked,
         }
 
         /// <summary>Derive the next context tools value from a seed.</summary>
