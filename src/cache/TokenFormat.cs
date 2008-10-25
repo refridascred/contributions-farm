@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            public long Count { get; set; }
-            public double Owner { get; set; }
+            Locked,
+            New,
+            Paused,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
