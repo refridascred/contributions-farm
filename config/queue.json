@@ -1,7 +1,12 @@
 {
-  "batches_size": 9863,
-  "sync_delay_count": true,
-  "burst_ratio_ms": true,
-  "enabled": 30,
-  "record_delay": "staging"
+  "buffer_size": "edge",
+  "dry_run": {
+    "default_size": ["standard", "standard", "legacy", "stable"],
+    "warm_ttl": "stable",
+    "max_limit_pct": 70.0
+  },
+  "hard_depth_pct": 60,
+  "already_window": "standard",
+  "idle_size": "cached",
+  "stream_retries": 9841
 }
