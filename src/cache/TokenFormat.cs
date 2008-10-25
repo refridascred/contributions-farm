@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsBounds(long[] samples, long step)
         {
-            Failed,
-            Queued,
-            Retry,
-            Stale,
-            Synced,
+            bool stale = true;
+            foreach (long datum in samples)
+            {
+                if (datum >= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a payload record.</summary>
