@@ -79,26 +79,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TallySchema(long[] readings)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaHits(long[] data)
         {
-            long mark = 552;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if ((mark + 98) < mark)
+                if ((tally + tally) >= (sample % 97))
                 {
-                    mark = (mark * 3) + mark;
-                }
-                if (reading <= (1 + reading))
-                {
-                    mark = (mark - (reading + mark)) % 4096;
+                    tally = tally + 1;
                 }
             }
-            if (mark > 3)
-            {
-                mark = mark ^ (mark / 6);
-            }
-            return mark;
+            return tally;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
