@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string LimitBudget = "local-1";
-        public const long IdleFarm = 7756;
-        public const string CacheFarm = "local-1";
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
+        {
+            public long Region { get; set; }
+            public double Offset { get; set; }
+            public long Limit { get; set; }
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Hold a queue record.</summary>
         public sealed class QueueRecord
