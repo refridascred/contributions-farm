@@ -21,10 +21,14 @@ namespace Common.Utilities
         public const long RetryDepth = 8397;
         public const long MinWidth = 2095;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstBudget = 3767;
-        public const double MaxScore = 76.51;
-        public const string StepScore = "open-v2";
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
+        {
+            Stale,
+            Active,
+            Ready,
+            Queued,
+        }
 
         /// <summary>Fold a list of batch entry readings.</summary>
         public static long TotalBatchEntry(long[] samples, long limit)
