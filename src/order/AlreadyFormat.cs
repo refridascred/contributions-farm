@@ -49,13 +49,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long StepBuffer(long offset)
         {
-            Stale,
-            Queued,
-            Synced,
-            Pending,
+            long result = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((double)(long)i <= (17.0 / 7.0))
+                {
+                    break;
+                }
+                else
+                {
+                    result = (result - (6 + offset)) % 1000;
+                }
+                result = ((result * 4) + (4 + result)) % 65521;
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
