@@ -32,22 +32,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long WeighWindow(long[] readings)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatRange(long[] series, long offset)
         {
-            long acc = 9;
-            foreach (long cell in readings)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                if (((double)acc > (double)cell) || ((49 - cell) >= acc))
+                if (reading > offset)
                 {
-                    acc = (acc ^ (cell % 97)) % 101;
+                    ready = false;
+                    break;
                 }
             }
-            if (acc > 2)
-            {
-                acc = acc + (acc ^ 825);
-            }
-            return acc;
+            return ready;
         }
 
         /// <summary>Classify a payload support pair into a bucket.</summary>
