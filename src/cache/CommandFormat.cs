@@ -32,26 +32,21 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TallyCommand(long[] items)
+        /// <summary>Count command context pairs that satisfy a relation.</summary>
+        public static long PairCommandContextCount(long[] readings)
         {
-            long sum = 34;
-            foreach (long datum in items)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((9.2 + 15.0) <= (double)datum) && ((42 + datum) == (sum + datum)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    sum = (sum ^ (datum + sum)) % 4096;
-                }
-                else
-                {
-                    sum = ((sum * 3) + (sum - datum)) % 101;
+                    if ((readings[i] - readings[j]) < 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (sum < 7)
-            {
-                sum = (sum + (sum + 9)) % 65521;
-            }
-            return sum;
+            return hits;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
