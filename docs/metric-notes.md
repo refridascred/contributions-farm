@@ -1,15 +1,12 @@
 # Metric notes
 
-Defaults for window live in the config folder and can be overridden per environment.
-When a booking fails, the account handler retries a few times before giving up.
-Use format settings to tune how often stats data is refreshed.
-
-Defaults for buffer live in the config folder and can be overridden per environment.
-Keep metrics and token names short and lowercase.
+A tools that stays idle for too long is moved to the metrics list.
+A booking that stays idle for too long is moved to the editor list.
+Use already settings to tune how often metrics data is refreshed.
 
 ## Guidelines
 
-- Prefer payload defaults
-- Validate stream input early
-- Keep githubfarm values small
-- Log every cluster change
+- Review batch limits each release
+- Document new stream fields
+- Keep checks values small
+- Prefer metric defaults
