@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchChannel = 8657;
-        public const double RetryRatio = 34.01;
-        public const string MaxCount = "open-v2";
-        public const string HardChannel = "standard-1";
-        public const double WindowChannel = 47.68;
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long DeriveMetrics(long bound)
+        {
+            long mix = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((bound % 100) >= (bound * 4))
+                {
+                    break;
+                }
+                mix = ((mix * 2) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Describe the batch state values.</summary>
         public enum BatchState
