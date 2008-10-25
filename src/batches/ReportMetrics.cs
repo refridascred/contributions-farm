@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsMatches(long[] readings, long seed)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample % 10) != (hits + seed))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Offset { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public bool Stamp { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
