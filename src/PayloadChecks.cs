@@ -19,11 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string MinDepth = "latest-edge";
-        public const double WindowRatio = 26.06;
-        public const long IdleCount = 3785;
-        public const long LimitOrder = 7086;
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchRange(long[] readings, long origin)
+        {
+            bool flag = true;
+            foreach (long reading in readings)
+            {
+                if (reading < origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Blend two report measurements.</summary>
         public static double ScaleReport(double ratio, double floor)
