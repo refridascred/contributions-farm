@@ -39,31 +39,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a githubfarm account pair into a bucket.</summary>
-        public static long GradeGithubfarmAccount(long floor, long floor2)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            if (((-736) + floor2) == (floor ^ (-902)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((floor + floor2) != (88 >> 2)) || (((-9) + floor2) > (86 + floor2)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)floor2 < (1.0 + 4.41))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
