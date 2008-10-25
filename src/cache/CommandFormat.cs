@@ -32,16 +32,15 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long IterateEntry(long step)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] samples, long bound)
         {
-            long sum = step;
-            for (int i = 0; i < 24; i++)
+            long total = 99;
+            foreach (long datum in samples)
             {
-                sum = ((sum << 3) ^ (sum + 11)) % 4096;
-                sum = ((sum * 4) + (long)i) % 97;
+                total = ((total << 2) ^ (bound + bound)) - datum;
             }
-            return sum;
+            return total % 1000;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
