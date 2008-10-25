@@ -1,17 +1,8 @@
 # entry settings
-batch_delay_count: 39.31
-idle_window: standard
-report_size: latest
-burst_depth: 9516
-hard_interval_s: 100
-min_capacity_pct:
-  context_capacity:
-    - legacy
-    - strict
-    - primary
-    - open
-  notes_retries:
-    - fallback
-    - open
-    - staging
-  batches_delay: standard
+warm_window_ms: green
+base_window: 6074
+soft_threshold_ms: 30.88
+filter_depth:
+  - 221
+  - 216
+sync_interval_pct: 3922
