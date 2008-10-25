@@ -1,11 +1,10 @@
 # Command notes
 
-Defaults for commits live in the config folder and can be overridden per environment.
-Keep contributi and schema names short and lowercase.
-When a commits fails, the queue handler retries a few times before giving up.
+The format report groups every window by notes.
+Each support is validated before it reaches the format queue.
 
 ## Guidelines
 
-- Validate graph input early
-- Log every entry change
-- Prefer schema defaults
+- Review queue limits each release
+- Keep layout values small
+- Document new token fields
