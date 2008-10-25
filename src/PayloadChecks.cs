@@ -75,18 +75,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long ScoreContributi(long[] levels)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long mark = 5;
-            foreach (long cell in levels)
-            {
-                if ((13 % 100) > (cell / 2))
-                {
-                    mark = (mark * 5) + (mark - cell);
-                }
-            }
-            return mark;
+            Locked,
+            Dropped,
+            Idle,
         }
     }
 }
