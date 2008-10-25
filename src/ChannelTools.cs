@@ -22,31 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank cluster commits input into a small class.</summary>
-        public static long RankClusterCommits(long limit, long origin)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long MatchLayoutCount(long[] series)
         {
-            if ((434 % 16) <= origin)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)origin < (1.3 / 8.0)) && ((origin ^ limit) < (origin * 4)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((7.9 - 4.9) <= 6.97)
+                    if ((series[i] + series[j]) != 19)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a metrics stats.</summary>
