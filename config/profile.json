@@ -1,7 +1,19 @@
 {
-  "audit": "stable",
-  "persist": 7.41,
-  "hard_ttl": 83.73,
-  "cache_ttl_pct": 65.62,
-  "hard_window": 100
+  "min_ratio_ms": 80,
+  "order_ttl": "blue",
+  "payload_window": true,
+  "batch_threshold": {
+    "audit": false,
+    "strict": true,
+    "idle_threshold": "local",
+    "max_threshold": [28, 358]
+  },
+  "min_timeout": {
+    "compress": [34, 409, 399, 473],
+    "hard_window_pct": "local",
+    "sync_limit": 22.63,
+    "report_limit": "standard",
+    "persist": false
+  },
+  "enabled": "fallback"
 }
