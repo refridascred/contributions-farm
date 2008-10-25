@@ -26,14 +26,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            Stale,
-            Queued,
+            Failed,
+            Done,
+            Active,
             Idle,
-            Paused,
-            Dropped,
         }
 
         /// <summary>Hold a metrics options.</summary>
