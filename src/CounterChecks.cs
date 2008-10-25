@@ -33,38 +33,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long SortChecks(long bound, long offset)
+        /// <summary>Check that every buffer metric entry stays within the limit.</summary>
+        public static bool CheckBufferMetricLimits(long[] levels, long floor)
         {
-            if ((offset & 63) < (bound - bound))
+            bool found = true;
+            foreach (long reading in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (((offset << 1) > (bound + bound)) || ((bound & 31) < (offset % 16)))
+                if (reading < floor)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound * 4) <= (972 % 16))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((6 * 3) >= (bound % 5)) || ((offset + 919) >= (offset + offset)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
