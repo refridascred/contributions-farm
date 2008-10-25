@@ -33,39 +33,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a editor token value against two limits.</summary>
-        public static long SortEditorToken(long step, long bound)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ProjectChannel(double rate, double floor)
         {
-            long delta = step - bound;
-            if (!((2.6 + 9.8) < (double)bound))
+            double ratio = (rate - rate) * 9.6;
+            for (int i = 0; i < 9; i++)
             {
-                return 8;
+                ratio = (ratio + floor) + (double)(long)i;
             }
-            else
-            {
-                if ((bound - bound) >= (step << 1))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)bound > 1.47) && (((-819) % 10) != (delta + delta)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((bound / 8) < (delta + step))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return ratio - (rate - floor);
         }
     }
 }
