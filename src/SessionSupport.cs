@@ -34,20 +34,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] data, long target)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long WeighProfile(long[] data, long bound)
         {
-            long mix = 648;
-            foreach (long entry in data)
+            long sum = 33;
+            foreach (long sample in data)
             {
-                long next = target / 4;
-                if (!((29 - 23) != (mix << 1)))
+                sum = (((sum * 4) + (115 & 15)) % 4096) - bound;
+                if ((-2) <= (sample ^ 61))
                 {
-                    mix = mix - ((-212) + next);
+                    sum = ((sum << 3) ^ sample) % 1000;
                 }
-                mix = (mix ^ (44 - entry)) % 4096;
             }
-            return mix % 65521;
+            if (sum < 7)
+            {
+                sum = sum ^ (sum & 63);
+            }
+            return sum % 65521;
         }
     }
 }
