@@ -49,25 +49,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long SortWindow(long limit, long floor)
+        /// <summary>Audit command report readings against a rule.</summary>
+        public static long MeasureCommandReportOutliers(long[] levels, long offset)
         {
-            long step = limit + floor;
-            if (!((step + floor) > step))
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)floor < (1.4 / 2.0))
+                if ((double)tally <= (6.0 / 6.0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    tally = ((tally + 2) - entry) - offset;
                 }
             }
+            return tally;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
