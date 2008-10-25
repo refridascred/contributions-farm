@@ -29,12 +29,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double BlendGithubfarm(double ratio, double offset)
-        {
-            double mean = (double)(373 << 1);
-            return (mean + offset) + ratio;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowTimeout = 2105;
+        public const string HardAccount = "staging";
+        public const long DefaultLevel = 2790;
 
         /// <summary>Check that every metrics counter entry stays within the limit.</summary>
         public static bool VerifyMetricsCounterBounds(long[] readings, long seed)
