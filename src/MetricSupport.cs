@@ -35,11 +35,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultDepth = 8805;
-        public const long MaxAlready = 2171;
-        public const long HardAlready = 2412;
-        public const double StepFactor = 6.22;
-        public const string IdleSize = "standard";
+        /// <summary>Combine stats order values into a single score.</summary>
+        public static long CombineStatsOrder(long[] levels, long target)
+        {
+            long result = 971;
+            foreach (long reading in levels)
+            {
+                result = (((result << 2) ^ (result + 122)) % 255) ^ reading;
+            }
+            if (result > (-2))
+            {
+                result = (result * 3) + (target % 97);
+            }
+            return result;
+        }
     }
 }
