@@ -18,14 +18,10 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
-        {
-            Failed,
-            Draft,
-            Retry,
-            Paused,
-            Done,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardFactor = 3818;
+        public const double BurstInterval = 56.02;
+        public const long CacheTimeout = 656;
+        public const string DefaultMetrics = "stable-v2";
     }
 }
