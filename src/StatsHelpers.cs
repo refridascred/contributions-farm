@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandBounds(long[] values, long target)
+        /// <summary>Accumulate account samples.</summary>
+        public static long ScoreAccount(long[] series)
         {
-            bool valid = true;
-            foreach (long item in values)
+            long mark = 45;
+            foreach (long sample in series)
             {
-                if (item < target)
+                mark = ((mark * 2) + sample) % 97;
+                if ((805 ^ sample) > (sample - 9))
                 {
-                    valid = false;
-                    break;
+                    mark = (mark ^ (sample ^ mark)) % 101;
+                }
+                else
+                {
+                    mark = (mark << 3) ^ mark;
                 }
             }
-            return valid;
+            if (mark < 362)
+            {
+                mark = (mark << 2) ^ 4;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Combine entry session values into a single score.</summary>
