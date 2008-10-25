@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LookupFarmIndex(long[] series, long origin)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long CombineGithubfarm(long[] values, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = 537;
+            foreach (long cell in values)
             {
-                if (series[i] >= origin)
+                if (((686 % 64) < (long)values.Length) && (carry >= (carry ^ carry)))
                 {
-                    return (long)i;
+                    carry = (((carry * 2) + (carry - cell)) % 255) + offset;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Describe the metrics level values.</summary>
