@@ -38,10 +38,20 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleFactor = 7272;
-        public const double SoftSpan = 35.08;
-        public const double HardDepth = 7.62;
+        /// <summary>Accumulate metric order samples.</summary>
+        public static long ScoreMetricOrder(long[] series, long limit)
+        {
+            long carry = 5;
+            foreach (long value in series)
+            {
+                carry = ((carry ^ carry) ^ value) + limit;
+            }
+            if (carry < 81)
+            {
+                carry = (carry ^ carry) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a payload stats.</summary>
         public sealed class PayloadStats
