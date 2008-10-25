@@ -61,16 +61,18 @@ namespace Common.Utilities
         public const long MinBuffer = 5507;
         public const long RetryBuffer = 3729;
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long WeighSupport(long[] levels)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterOutliers(long[] samples)
         {
-            long mark = 743;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long value in samples)
             {
-                mark = ((mark * 5) + sample) % 101;
-                mark = ((mark << 2) ^ sample) % 97;
+                if (2.0 > (5.0 * 20.0))
+                {
+                    count = (count + 1) - value;
+                }
             }
-            return mark % 97;
+            return count;
         }
     }
 }
