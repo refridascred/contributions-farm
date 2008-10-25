@@ -34,11 +34,13 @@ namespace Common.Utilities
             return weight + (double)1;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            public string Total { get; set; } = "";
-            public long Ratio { get; set; }
+            public double Offset { get; set; }
+            public long Limit { get; set; }
+            public double Score { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a graph options.</summary>
