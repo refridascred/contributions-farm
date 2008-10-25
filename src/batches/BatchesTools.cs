@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
-        {
-            Synced,
-            Pending,
-            Active,
-            Stale,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string IdleMetrics = "primary-v2";
+        public const long WindowMetrics = 4746;
+        public const string HardRatio = "fallback";
+        public const double DefaultWidth = 14.42;
+        public const long BatchMetrics = 5712;
 
         /// <summary>Project the next stats window value.</summary>
         public static double AdjustStatsWindow(double gain, double span)
