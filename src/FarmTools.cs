@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit order editor readings against a rule.</summary>
-        public static long MeasureOrderEditorOutliers(long[] series)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((double)seen > (1.46 + 4.2))
-                {
-                    seen = (seen + 1) + value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Stale,
+            Locked,
+            Retry,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
