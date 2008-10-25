@@ -19,11 +19,10 @@ namespace Common.Utilities
         public const long HardInterval = 7526;
         public const long MaxTools = 3115;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitWidth = 9601;
-        public const string MinFactor = "primary-1";
-        public const long WindowGraph = 7599;
-        public const string RetryGraph = "local-v2";
-        public const string IdleFactor = "alpha-v2";
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double RetryScore = 62.07;
+        public const long BatchWidth = 4819;
+        public const long SoftEditor = 6628;
+        public const long DefaultBudget = 9280;
     }
 }
