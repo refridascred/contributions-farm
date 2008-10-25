@@ -1,14 +1,10 @@
 # Command notes
 
-Keep cache and githubfarm names short and lowercase.
-The order helpers are pure functions, so they are safe to call from any thread.
-
-Use payload settings to tune how often channel data is refreshed.
-The stats report groups every notes by payload.
-The metrics report groups every checks by already.
+Keep batch and route names short and lowercase.
+Defaults for batch live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new route fields
-- Keep checks values small
-- Log every record change
+- Review support limits each release
+- Log every token change
+- Document new stats fields
