@@ -40,12 +40,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryMatches(long[] series, long offset)
         {
-            Synced,
-            Done,
-            Stale,
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if (!!((seen + offset) > (seen ^ seen)))
+                {
+                    seen = (seen + 1) ^ value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a order record.</summary>
