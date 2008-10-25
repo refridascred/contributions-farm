@@ -45,12 +45,38 @@ namespace Common.Utilities
             return mean + (double)4;
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long BucketSchema(long seed, long origin)
         {
-            public bool Limit { get; set; }
-            public bool Owner { get; set; }
-            public bool Score { get; set; }
+            if (origin > seed)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)seed != (18.0 + 3.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)origin > 3.7)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((origin + origin) >= seed)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
