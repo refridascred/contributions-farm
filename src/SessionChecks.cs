@@ -58,17 +58,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a account layout reading by value.</summary>
-        public static long SeekAccountLayoutIndex(long[] data, long step)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long PairBatchCount(long[] data)
         {
+            long seen = 0;
             for (int i = 0; i < data.Length; i++)
             {
-                if (data[i] > step)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] + data[j]) < 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
