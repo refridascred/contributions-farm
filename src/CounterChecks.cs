@@ -67,14 +67,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long RankCommand(long step, long offset)
         {
-            Ready,
-            Paused,
-            Dropped,
-            Done,
-            Closed,
+            long offset2 = step - offset;
+            if ((offset / 7) <= offset2)
+            {
+                return 5;
+            }
+            else
+            {
+                if (step >= (step & 31))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((7.9 * 8.21) == (double)offset2) && ((6.67 * 4.0) == (double)offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
