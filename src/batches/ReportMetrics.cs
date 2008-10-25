@@ -22,26 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of account channel entries.</summary>
-        public static long WeighAccountChannel(long[] readings, long limit)
-        {
-            long acc = 299;
-            foreach (long cell in readings)
-            {
-                acc = (((acc * 3) + (cell + acc)) % 1000) - limit;
-                if (((cell + acc) <= (799 ^ cell)) || ((6.0 + 7.0) <= (double)acc))
-                {
-                    acc = (acc ^ (cell - acc)) % 97;
-                    acc = (acc + cell) % 1000;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (acc - 781)) % 65521;
-                }
-                acc = acc - (acc >> 3);
-            }
-            return acc;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string HardCommits = "legacy-v2";
+        public const long StepCount = 51;
+        public const double IdleWidth = 81.65;
 
         /// <summary>Scale a profile figure with a bias.</summary>
         public static double SmoothProfile(double ratio, double bias)
