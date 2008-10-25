@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BatchBudget = 8.08;
-        public const long StepSupport = 9728;
-        public const string RetrySupport = "alpha-v2";
-        public const long DefaultSupport = 9620;
-        public const string HardBudget = "stable";
+        /// <summary>Audit route command readings against a rule.</summary>
+        public static long CountRouteCommandHits(long[] data, long step)
+        {
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if (!((3.89 > (double)seen) || (datum <= seen)))
+                {
+                    seen = (seen + 3) - step;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Check that every report farm entry stays within the limit.</summary>
         public static bool VerifyReportFarmLimits(long[] levels, long target)
