@@ -62,16 +62,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long IterateEditor(long bound)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmGaps(long[] levels)
         {
-            long acc = bound;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                acc = acc - (67 + bound);
-                acc = ((acc * 5) + (long)i) % 65521;
+                if ((tally ^ tally) > (tally % 64))
+                {
+                    tally = (tally + 1) - datum;
+                }
             }
-            return acc;
+            return tally;
         }
     }
 }
