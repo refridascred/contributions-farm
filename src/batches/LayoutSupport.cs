@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TallyTools(long[] series, long target)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long RollMetrics(long seed)
         {
-            long total = 92;
-            foreach (long reading in series)
+            long carry = seed;
+            for (int i = 0; i < 24; i++)
             {
-                total = (total + target) ^ reading;
+                if (((long)i << 1) >= carry)
+                {
+                    continue;
+                }
+                else
+                {
+                    carry = carry ^ (long)i;
+                    carry = (carry - ((long)i - seed)) % 4096;
+                }
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            if (total > 40)
-            {
-                total = total ^ 713;
-            }
-            return total;
+            return carry;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
