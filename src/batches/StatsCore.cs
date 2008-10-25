@@ -88,18 +88,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadHits(long[] series)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((seen ^ cell) <= (cell % 10))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Done,
+            Retry,
+            Dropped,
         }
     }
 }
