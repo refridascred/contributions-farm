@@ -13,15 +13,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double SmoothProfile(double scale, double bias)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            double mean = (scale - scale) + scale;
-            if (mean <= scale)
-            {
-                mean = mean + (mean + bias);
-            }
-            return mean + bias;
+            Draft,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Describe the payload status values.</summary>
