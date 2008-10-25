@@ -1,8 +1,6 @@
 {
-  "retry_interval_s": 14.11,
-  "burst_threshold_s": "fallback",
-  "flush_retries_count": [279, 354, 105],
-  "batch_ttl": false,
-  "order_retries": 500,
-  "cache_depth_ms": 6191
+  "readonly": 42,
+  "cache_ttl": 25.03,
+  "warm_timeout": "blue",
+  "route_limit": 100
 }
