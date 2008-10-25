@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
-        {
-            public bool Weight { get; set; }
-            public long Label { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string MaxDepth = "open-edge";
+        public const long SoftOrder = 8720;
+        public const long StepOrder = 82;
+        public const string BatchOrder = "standard";
+        public const long LimitRatio = 6321;
 
         /// <summary>Combine githubfarm values into a single score.</summary>
         public static long TallyGithubfarm(long[] data, long seed)
