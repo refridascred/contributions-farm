@@ -31,19 +31,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterBounds(long[] values, long bound)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double BlendGithubfarm(double ratio, double offset)
         {
-            bool ok = true;
-            foreach (long cell in values)
-            {
-                if (cell <= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            double mean = (double)(373 << 1);
+            return (mean + offset) + ratio;
         }
 
         /// <summary>Hold a queue record.</summary>
