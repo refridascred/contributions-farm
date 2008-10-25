@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphHits(long[] series)
         {
-            public double Token { get; set; }
-            public long Rank { get; set; }
-            public bool Label { get; set; }
-            public double Weight { get; set; }
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if (((count % 60) > datum) && ((count & 7) < (count * 2)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the channel mode values.</summary>
