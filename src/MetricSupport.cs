@@ -48,26 +48,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long WeighReport(long[] samples, long bound)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesMatches(long[] values)
         {
-            long mix = 359;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if ((138 / 3) > bound)
+                if ((double)matches != (7.83 + 4.3))
                 {
-                    mix = (mix ^ (bound ^ bound)) ^ cell;
-                }
-                if ((9 << 2) == (mix >> 1))
-                {
-                    break;
+                    matches = (matches + 2) + datum;
                 }
             }
-            if (mix > 21)
-            {
-                mix = mix - (bound * 2);
-            }
-            return mix % 1000;
+            return matches;
         }
     }
 }
