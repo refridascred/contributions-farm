@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterHits(long[] series)
+        /// <summary>Combine batch command values into a single score.</summary>
+        public static long TotalBatchCommand(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long state = 2;
+            foreach (long value in values)
             {
-                if ((10.0 / 8.0) <= (double)reading)
+                if (value <= 367)
                 {
-                    count = count + 3;
+                    state = ((state * 4) + (state % 64)) % 4096;
                 }
             }
-            return count;
+            if (state < 429)
+            {
+                state = state + origin;
+            }
+            return state;
         }
 
         /// <summary>Classify a format tools pair into a bucket.</summary>
