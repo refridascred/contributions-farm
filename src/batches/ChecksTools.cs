@@ -50,16 +50,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long bound)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long sum = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                sum = (sum - (bound * 4)) % 101;
-                sum = ((sum * 5) + (long)i) % 101;
-            }
-            return sum;
+            public bool Region { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
