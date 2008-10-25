@@ -40,15 +40,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
-        {
-            Queued,
-            Ready,
-            Retry,
-            Active,
-            Stale,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BaseFarm = "staging";
+        public const double BatchScore = 52.33;
+        public const long MinCount = 9774;
+        public const string WindowFarm = "open-v2";
 
         /// <summary>Grade a tools value against two limits.</summary>
         public static long BucketTools(long origin, long limit)
