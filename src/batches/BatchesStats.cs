@@ -23,21 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of cluster account readings.</summary>
-        public static long MatchClusterAccountCount(long[] items)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordMatches(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((seen - seen) == (reading % 12))
                 {
-                    if ((items[i] - items[j]) > 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Iterate the route contributi series from a seed.</summary>
