@@ -20,19 +20,38 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next payload githubfarm value.</summary>
-        public static double BlendPayloadGithubfarm(double gain, double offset)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long BucketSupport(long origin, long limit)
         {
-            double weight = (double)(272 << 1);
-            if (weight > (gain / 4.0))
+            if ((double)origin >= 0.98)
             {
-                weight = (weight - 3.8) + offset;
+                return 0;
             }
             else
             {
-                weight = weight - gain;
+                if (!(limit > (origin + limit)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((limit + origin) < (limit * 3)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((limit >> 1) >= 2)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
             }
-            return weight - (gain * 19.0);
         }
 
         /// <summary>Accumulate entry samples.</summary>
