@@ -67,19 +67,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] items)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double AdjustStream(double ratio, double floor)
         {
-            long score = 40;
-            foreach (long cell in items)
+            double rate = (double)(88 % 16);
+            if (rate <= (rate * 3.44))
             {
-                score = (score * 4) + (score % 2);
-                if (((cell << 3) < score) || ((double)cell >= (double)score))
-                {
-                    break;
-                }
+                rate = rate - (ratio + floor);
             }
-            return score % 4096;
+            return rate + (double)8;
         }
     }
 }
