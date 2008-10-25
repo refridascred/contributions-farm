@@ -55,17 +55,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a filter farm reading by value.</summary>
-        public static long FindFilterFarmIndex(long[] readings, long floor)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Closed,
+            Retry,
         }
 
         /// <summary>Match up cache samples.</summary>
