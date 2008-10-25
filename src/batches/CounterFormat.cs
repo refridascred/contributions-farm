@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Project the next cluster value.</summary>
-        public static double AdjustCluster(double scale, double offset)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            double gain = 7.7;
-            if (gain < (scale / 8.0))
-            {
-                gain = (gain + (scale * 3.67)) - offset;
-            }
-            else
-            {
-                gain = gain - gain;
-            }
-            return gain + gain;
+            public string Stamp { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Describe the context class values.</summary>
