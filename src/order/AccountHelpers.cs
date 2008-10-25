@@ -50,13 +50,17 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long SeekEntryIndex(long[] items, long bound)
         {
-            Ready,
-            Paused,
-            Retry,
-            Failed,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank session graph input into a small class.</summary>
