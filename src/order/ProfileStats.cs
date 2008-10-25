@@ -16,14 +16,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
-        {
-            Draft,
-            Dropped,
-            Retry,
-            New,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double LimitRoute = 31.21;
+        public const double BatchRoute = 90.59;
+        public const long HardRoute = 9128;
+        public const long IdleLevel = 7910;
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long CountStreamMatches(long[] values, long origin)
