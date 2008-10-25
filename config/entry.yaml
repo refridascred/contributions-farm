@@ -1,7 +1,13 @@
 # entry settings
-retry_timeout_pct: legacy
-base_interval_pct: edge
-default_delay_ms: 10
-soft_interval_count: false
-idle_timeout_pct: 3699
-warm_ttl: cached
+retry_limit: 60.11
+base_ttl_count: open
+audit: 100
+base_ratio_s:
+  - legacy
+  - primary
+  - primary
+profile_ratio:
+  - 242
+  - 185
+  - 195
+  - 494
