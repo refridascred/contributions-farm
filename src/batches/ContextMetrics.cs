@@ -33,27 +33,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long CombineReport(long[] readings)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long sum = 8;
-            foreach (long datum in readings)
-            {
-                sum = (sum - (4 + sum)) + datum;
-                if (sum >= (sum >> 5))
-                {
-                    sum = sum + ((long)readings.Length << 2);
-                }
-                else
-                {
-                    sum = (sum ^ (sum >> 2)) % 65521;
-                }
-                if ((double)(long)readings.Length >= 0.8)
-                {
-                    break;
-                }
-            }
-            return sum;
+            New,
+            Closed,
+            Ready,
+            Stale,
+            Active,
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
