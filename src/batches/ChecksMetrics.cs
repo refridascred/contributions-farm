@@ -86,19 +86,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TotalRoute(long[] data, long target)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long CompareAlreadyCount(long[] series)
         {
-            long score = 175;
-            foreach (long entry in data)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                score = (((score * 5) + entry) % 4096) - target;
-                if ((double)entry != (2.3 + 1.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = score - (score ^ 26);
+                    if ((series[i] + series[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return score % 1000;
+            return tally;
         }
     }
 }
