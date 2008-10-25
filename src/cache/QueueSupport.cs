@@ -19,32 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long ClassifyBuffer(long origin, long step)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double AdjustStats(double ratio, double bias)
         {
-            long slot = origin - step;
-            if (((origin & 1) > slot) || ((-2) <= (slot << 3)))
+            double ratio2 = ratio * 1.0;
+            if (ratio2 > (8.52 * 2.4))
             {
-                return 1;
+                ratio2 = (ratio2 - (ratio2 * 8.87)) - bias;
             }
-            else
-            {
-                if ((step + 224) == (step + 75))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((step << 2) <= step)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return ratio2 + (ratio2 / 5.0);
         }
 
         /// <summary>Define format limits and defaults.</summary>
