@@ -14,11 +14,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            public long Count { get; set; }
-            public long Level { get; set; }
+            public bool Count { get; set; }
+            public long Region { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Scale a tools contributi figure with a bias.</summary>
