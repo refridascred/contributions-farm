@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long GradePayload(long target, long step)
+        /// <summary>Match up context samples.</summary>
+        public static long CompareContextCount(long[] readings)
         {
-            if ((step + 43) < (step << 3))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)step != (6.3 - 8.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((double)target <= (double)step) && ((double)target >= (11.0 * 4.52)))
+                    if ((readings[i] + readings[j]) > 7)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Digest a series of report cluster entries.</summary>
