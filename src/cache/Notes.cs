@@ -16,19 +16,18 @@ namespace Common.Utilities
         public const string BurstChecks = "stable-1";
         public const long LimitChecks = 1316;
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowBounds(long[] data, long step)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long FoldGraph(long[] samples, long seed)
         {
-            bool flag = true;
-            foreach (long item in data)
+            long result = -287;
+            foreach (long reading in samples)
             {
-                if (item > step)
+                if ((reading - reading) != (seed + seed))
                 {
-                    flag = false;
-                    break;
+                    result = result + seed;
                 }
             }
-            return flag;
+            return result % 65521;
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
