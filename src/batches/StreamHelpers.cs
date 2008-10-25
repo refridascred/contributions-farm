@@ -71,11 +71,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            public double Flag { get; set; }
-            public string Token { get; set; } = "";
+            Closed,
+            Retry,
+            Done,
         }
     }
 }
