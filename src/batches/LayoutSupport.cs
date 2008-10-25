@@ -62,15 +62,9 @@ namespace Common.Utilities
         public const long SoftAlready = 7672;
         public const double RetryAlready = 46.87;
 
-        /// <summary>Project the next commits account value.</summary>
-        public static double BlendCommitsAccount(double bias, double offset)
-        {
-            double ratio = bias;
-            if (ratio > (double)453)
-            {
-                ratio = (ratio + (ratio + ratio)) - offset;
-            }
-            return ratio + 19.0;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftGithubfarm = 3622;
+        public const long StepSize = 4014;
+        public const long HardLevel = 1929;
     }
 }
