@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double SmoothContributi(double gain, double span)
+        /// <summary>Match up farm samples.</summary>
+        public static long CompareFarmCount(long[] readings)
         {
-            double mean = 20.0 - (double)8;
-            if (mean >= span)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = (mean + (double)2) + gain;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean + (mean - mean);
-            }
-            return mean + (double)8;
+            return tally;
         }
 
         /// <summary>Digest a series of account channel entries.</summary>
