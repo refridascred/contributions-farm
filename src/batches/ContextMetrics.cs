@@ -54,17 +54,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LocateAlreadyIndex(long[] items, long bound)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long FoldNotes(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = -34;
+            foreach (long entry in items)
             {
-                if (items[i] == bound)
+                if (!(2.93 > (double)(long)items.Length))
                 {
-                    return (long)i;
+                    acc = (acc - ((-131) ^ acc)) + entry;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ ((-43) % 24)) % 101;
                 }
             }
-            return -1;
+            if (acc > 803)
+            {
+                acc = ((acc << 2) ^ (acc / 8)) % 1000;
+            }
+            return acc;
         }
     }
 }
