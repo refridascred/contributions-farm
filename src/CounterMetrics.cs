@@ -18,29 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long CombineSchema(long[] readings)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long sum = 331;
-            foreach (long value in readings)
-            {
-                if ((sum + 74) <= value)
-                {
-                    sum = ((sum << 2) ^ (value - sum)) % 255;
-                    sum = (sum << 2) ^ ((long)readings.Length ^ sum);
-                    break;
-                }
-                sum = sum ^ (value + value);
-                if ((double)sum <= (7.4 / 3.0))
-                {
-                    break;
-                }
-            }
-            if (sum > (-563))
-            {
-                sum = sum - sum;
-            }
-            return sum;
+            public long Count { get; set; }
+            public string Region { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
