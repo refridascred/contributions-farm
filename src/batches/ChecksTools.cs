@@ -45,14 +45,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
-        {
-            Dropped,
-            Stale,
-            Draft,
-            Idle,
-            Done,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchSpan = 1879;
+        public const long StepWidth = 9477;
+        public const string BatchContributi = "local-edge";
+        public const long HardDepth = 7992;
     }
 }
