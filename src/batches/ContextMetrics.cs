@@ -33,14 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Measure how many cache record samples are out of range.</summary>
+        public static long TallyCacheRecordGaps(long[] values)
         {
-            New,
-            Closed,
-            Ready,
-            Stale,
-            Active,
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if (cell > (cell + (long)values.Length))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
