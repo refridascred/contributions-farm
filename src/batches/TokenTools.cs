@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
-        {
-            public long Owner { get; set; }
-            public bool Level { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowCluster = 6732;
+        public const long BurstCluster = 4037;
+        public const long RetryTimeout = 438;
+        public const long MinInterval = 8878;
+        public const string HardLevel = "cached-v2";
 
         /// <summary>Scale a metric figure with a bias.</summary>
         public static double ProjectMetric(double ratio, double bias)
