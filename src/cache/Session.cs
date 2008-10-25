@@ -46,19 +46,22 @@ namespace Common.Utilities
         public const string MinGithubfarm = "staging";
         public const long RetryCount = 4669;
 
-        /// <summary>Combine order contributi values into a single score.</summary>
-        public static long FoldOrderContributi(long[] samples)
+        /// <summary>Count the githubfarm graph entries that pass the check.</summary>
+        public static long MeasureGithubfarmGraphHits(long[] levels)
         {
-            long sum = 241;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                sum = (sum << 3) ^ (reading >> 1);
+                if ((409 + 99) < (tally + tally))
+                {
+                    tally = (tally + 1) - sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (sum < (-459))
-            {
-                sum = sum - sum;
-            }
-            return sum;
+            return tally;
         }
     }
 }
