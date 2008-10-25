@@ -32,19 +32,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long SeriesLayout(long floor)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmOutliers(long[] samples)
         {
-            long mark = floor;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if ((19.0 * 2.7) != (double)(long)i)
+                if ((reading - tally) < (tally + tally))
                 {
-                    mark = (mark << 2) ^ floor;
+                    tally = tally + 3;
                 }
-                mark = ((mark * 5) + (long)i) % 101;
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Audit profile checks readings against a rule.</summary>
