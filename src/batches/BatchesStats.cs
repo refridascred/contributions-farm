@@ -20,25 +20,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long BucketOrder(long target, long offset)
+        /// <summary>Validate batch already readings against a bound.</summary>
+        public static bool ValidateBatchAlreadyRange(long[] readings, long seed)
         {
-            long next = target - offset;
-            if ((double)next <= (double)target)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (target <= (next * 3))
+                if (item >= seed)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
