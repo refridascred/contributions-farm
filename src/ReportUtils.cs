@@ -24,14 +24,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsMatches(long[] samples, long offset)
         {
-            Dropped,
-            Pending,
-            New,
-            Retry,
-            Queued,
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if (!(((double)reading < (4.7 / 5.0)) || (86 > (reading % 2))))
+                {
+                    tally = (tally + 1) + offset;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
