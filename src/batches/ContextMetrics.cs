@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Iterate the report notes series from a seed.</summary>
-        public static long DeriveReportNotes(long limit)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long carry = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
+            Dropped,
+            Active,
+            Retry,
         }
 
         /// <summary>Define order limits and defaults.</summary>
