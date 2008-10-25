@@ -62,12 +62,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
+            public double Total { get; set; }
+            public long Region { get; set; }
+            public long Size { get; set; }
             public long Count { get; set; }
-            public bool Total { get; set; }
-            public string Limit { get; set; } = "";
         }
 
         /// <summary>Audit session readings against a rule.</summary>
