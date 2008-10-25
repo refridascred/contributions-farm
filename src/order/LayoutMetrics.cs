@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long DigestCache(long[] items, long floor)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long mark = 168;
-            foreach (long entry in items)
-            {
-                if ((mark ^ floor) >= mark)
-                {
-                    mark = ((mark * 2) + ((-20) + mark)) ^ entry;
-                    break;
-                }
-                mark = (mark + (mark & 31)) % 255;
-                mark = ((mark << 3) ^ floor) % 101;
-            }
-            return mark;
+            Active,
+            Stale,
+            Ready,
+            Locked,
         }
 
         /// <summary>Describe the layout class values.</summary>
