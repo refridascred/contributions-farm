@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Rank report input into a small class.</summary>
-        public static long BucketReport(long target, long limit)
+        /// <summary>Count the githubfarm cache entries that pass the check.</summary>
+        public static long MeasureGithubfarmCacheMatches(long[] data, long step)
         {
-            if (((limit & 127) <= limit) && (target <= (target << 3)))
+            long hits = 0;
+            foreach (long cell in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((target * 5) > (-70))
+                if (((step & 127) <= (cell + cell)) || ((460 + hits) > (36 * 3)))
                 {
-                    return 5;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    if ((1.0 + 12.0) >= (double)target)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((target - target) >= (limit * 5)) && (target <= limit))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
