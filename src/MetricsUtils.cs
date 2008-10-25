@@ -33,13 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterBounds(long[] readings, long target)
         {
-            public bool Count { get; set; }
-            public string Weight { get; set; } = "";
-            public long Token { get; set; }
-            public bool Flag { get; set; }
+            bool ready = true;
+            foreach (long sample in readings)
+            {
+                if (sample >= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
