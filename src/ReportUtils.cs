@@ -53,18 +53,17 @@ namespace Common.Utilities
         public const long CacheMetrics = 4119;
         public const long RetryTimeout = 2223;
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportOutliers(long[] levels, long bound)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LookupProfileIndex(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((bound << 2) >= 965) && ((cell / 8) < (cell << 3)))
+                if (samples[i] < limit)
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Adjust a order notes reading.</summary>
