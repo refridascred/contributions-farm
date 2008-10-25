@@ -26,18 +26,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelGaps(long[] levels, long limit)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if ((7 << 3) > item)
-                {
-                    tally = (tally + 3) + limit;
-                }
-            }
-            return tally;
+            Paused,
+            Pending,
+            Queued,
+            Active,
         }
     }
 }
