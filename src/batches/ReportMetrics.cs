@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorLimits(long[] series, long seed)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TotalContributi(long[] items)
         {
-            bool stale = true;
-            foreach (long value in series)
+            long total = 683;
+            foreach (long entry in items)
             {
-                if (value != seed)
+                if ((double)total >= (3.0 - 7.0))
                 {
-                    stale = false;
-                    break;
+                    total = (((total << 3) ^ (long)items.Length) % 4096) - entry;
                 }
             }
-            return stale;
+            if (total < 1)
+            {
+                total = (total - (61 - (-70))) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Describe the context kind values.</summary>
