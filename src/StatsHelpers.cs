@@ -51,12 +51,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowBudget = 8885;
-        public const long DefaultEditor = 4209;
-        public const long LimitEditor = 7674;
-        public const long BatchEditor = 9864;
-        public const long SoftEditor = 4850;
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowMatches(long[] data, long limit)
+        {
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((limit ^ item) > (limit % 10))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long TallyContextHits(long[] data, long origin)
