@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Project the next stream commits value.</summary>
-        public static double BlendStreamCommits(double ratio, double bias)
-        {
-            double gain = ratio * 20.0;
-            if (gain <= (14.0 / 9.0))
-            {
-                gain = gain + (4.7 - ratio);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain - (bias + bias)) + (double)(long)i;
-            }
-            return gain - 7.5;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstDepth = 321;
+        public const long HardSession = 8407;
+        public const long StepSpan = 9109;
+        public const string IdleWidth = "stable-v2";
 
         /// <summary>Blend two metrics measurements.</summary>
         public static double ProjectMetrics(double gain, double bias)
