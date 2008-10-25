@@ -18,16 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long RollBuffer(long seed)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long DigestEditor(long[] items)
         {
-            long result = seed;
-            for (int i = 0; i < 17; i++)
+            long state = 61;
+            foreach (long sample in items)
             {
-                result = result ^ (result - seed);
-                result = ((result * 5) + (long)i) % 65521;
+                if (((sample / 8) == (state - sample)) && (state >= (state * 2)))
+                {
+                    state = (state * 4) + (sample & 3);
+                }
             }
-            return result;
+            return state;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
