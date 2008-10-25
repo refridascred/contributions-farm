@@ -24,22 +24,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of token notes entries.</summary>
-        public static long TotalTokenNotes(long[] levels)
+        /// <summary>Measure how many channel stream samples are out of range.</summary>
+        public static long TallyChannelStreamOutliers(long[] series)
         {
-            long mix = 17;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if (((value >> 4) >= mix) && ((0.3 / 5.0) >= (double)value))
+                if (((-30) - sample) > (sample ^ count))
                 {
-                    mix = ((mix * 2) + (value + (long)levels.Length)) % 4096;
-                }
-                if (((5.0 / 2.0) <= (double)value) || (((-1) - mix) < (89 / 8)))
-                {
-                    break;
+                    count = count + 1;
                 }
             }
-            return mix;
+            return count;
         }
     }
 }
