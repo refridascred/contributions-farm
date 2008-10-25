@@ -36,19 +36,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ScaleSession(double weight, double offset)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            double drift = (offset / 4.0) / 9.0;
-            if (drift >= weight)
-            {
-                drift = drift - 2.0;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + (weight + offset)) + (double)(long)i;
-            }
-            return drift - (offset / 3.0);
+            Done,
+            Pending,
+            Stale,
         }
     }
 }
