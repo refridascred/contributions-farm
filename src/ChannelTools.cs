@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Classify a checks buffer pair into a bucket.</summary>
-        public static long GradeChecksBuffer(long target, long bound)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long OverlapSupportCount(long[] readings)
         {
-            long offset = target - bound;
-            if ((bound / 7) != (bound - offset))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)offset <= 5.89)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((bound & 63) != (191 - 6)) && (target > bound))
+                    if ((readings[i] ^ readings[j]) != 7)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((target + offset) <= 3)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Rank cluster commits input into a small class.</summary>
