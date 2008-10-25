@@ -22,15 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double ProjectEntry(double bias, double bias2)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmHits(long[] samples, long floor)
         {
-            double ratio = bias;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                ratio = ((ratio + ratio) + (double)(long)i) + bias2;
+                if (entry >= (entry / 9))
+                {
+                    hits = (hits + 2) - floor;
+                }
             }
-            return ratio - (ratio - ratio);
+            return hits;
         }
 
         /// <summary>Count the record report entries that pass the check.</summary>
