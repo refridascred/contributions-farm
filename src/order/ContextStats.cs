@@ -42,18 +42,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportHits(long[] values)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportRange(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long value in values)
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                if (!(value < (seen ^ 693)))
+                if (sample > step)
                 {
-                    seen = seen + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
     }
 }
