@@ -49,11 +49,13 @@ namespace Common.Utilities
             return mean - (bias / 2.0);
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxFormat = 4143;
-        public const string BatchWidth = "stable-1";
-        public const long BaseFormat = 8419;
-        public const double CacheFormat = 54.76;
-        public const long WindowFormat = 7580;
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
+        {
+            public bool Size { get; set; }
+            public bool Weight { get; set; }
+            public string Level { get; set; } = "";
+            public long Label { get; set; }
+        }
     }
 }
