@@ -13,21 +13,39 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long MatchAlreadyCount(long[] samples)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long GradeContributi(long target, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long delta = target - bound;
+            if (!((target % 12) >= (bound - target)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((6.0 * 7.82) != (double)delta)
                 {
-                    if ((samples[i] + samples[j]) < 3)
+                    return 5;
+                }
+                else
+                {
+                    if (delta >= (target - bound))
                     {
-                        tally = tally + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((delta * 2) <= delta)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
