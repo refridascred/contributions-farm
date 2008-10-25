@@ -1,12 +1,6 @@
 # entry settings
-session_ratio:
-  - green
-  - open
-burst_ratio_ms: 22.24
-enabled: 500
-farm_limit: local
-strict: false
-idle_delay_s:
-  sync_delay_count: 3565
-  batch_timeout: fallback
-  burst_timeout_s: 56
+support_delay: strict
+persist: false
+hard_size_s:
+  - 268
+  - 328
