@@ -20,22 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long CombineEditor(long[] series)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferLimits(long[] levels, long offset)
         {
-            long mark = 8;
-            foreach (long item in series)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                if ((item << 3) <= (mark - mark))
+                if (sample < offset)
                 {
-                    mark = (mark ^ (mark / 2)) % 255;
-                }
-                else
-                {
-                    mark = (mark * 3) + (mark / 6);
+                    flag = false;
+                    break;
                 }
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
