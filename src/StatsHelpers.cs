@@ -71,11 +71,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Project the next checks value.</summary>
+        public static double AdjustChecks(double bias, double offset)
         {
-            public string Level { get; set; } = "";
-            public long Region { get; set; }
+            double drift = offset;
+            if (drift <= (0.17 * 0.69))
+            {
+                drift = (drift + offset) + bias;
+            }
+            return drift + (double)645;
         }
     }
 }
