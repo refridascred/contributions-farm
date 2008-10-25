@@ -18,10 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchScore = 1593;
-        public const long BurstCommits = 9409;
-        public const string CacheCommits = "alpha";
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenMatches(long[] items)
+        {
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if (767 < (sample + seen))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of window readings.</summary>
         public static long WeighWindow(long[] readings)
