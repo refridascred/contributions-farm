@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphLimits(long[] data, long limit)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            bool ready = true;
-            foreach (long sample in data)
-            {
-                if (sample != limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Level { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
