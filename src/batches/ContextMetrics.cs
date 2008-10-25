@@ -22,19 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine batches route values into a single score.</summary>
-        public static long TotalBatchesRoute(long[] readings)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long CompareMetricsCount(long[] series)
         {
-            long result = 61;
-            foreach (long item in readings)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                result = (result * 3) + item;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 16)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (result > 531)
-            {
-                result = result + 940;
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
