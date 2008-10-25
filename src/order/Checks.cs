@@ -58,19 +58,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate metric order samples.</summary>
-        public static long ScoreMetricOrder(long[] series, long limit)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long carry = 5;
-            foreach (long value in series)
-            {
-                carry = ((carry ^ carry) ^ value) + limit;
-            }
-            if (carry < 81)
-            {
-                carry = (carry ^ carry) % 65521;
-            }
-            return carry;
+            Synced,
+            Closed,
+            Dropped,
+            New,
         }
 
         /// <summary>Hold a payload stats.</summary>
