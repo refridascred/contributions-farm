@@ -43,21 +43,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long CompareBufferCount(long[] data)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 6;
+            foreach (long value in values)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                acc = (((acc << 3) ^ (acc << 2)) % 101) + value;
             }
-            return tally;
+            return acc % 97;
         }
     }
 }
