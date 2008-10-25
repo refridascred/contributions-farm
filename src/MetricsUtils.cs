@@ -23,13 +23,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LocateCommandIndex(long[] readings, long target)
         {
-            public string Count { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public long Total { get; set; }
-            public bool Level { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
