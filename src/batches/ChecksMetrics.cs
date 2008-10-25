@@ -49,11 +49,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultPayload = 1556;
-        public const long RetryPayload = 6107;
-        public const long MinScore = 4727;
-        public const double BatchPayload = 24.01;
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
+        {
+            Queued,
+            Ready,
+            Stale,
+            Paused,
+            Idle,
+        }
 
         /// <summary>Hold a order summary.</summary>
         public sealed class OrderSummary
