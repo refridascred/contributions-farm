@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long ScoreContext(long[] readings, long bound)
+        /// <summary>Adjust a session reading.</summary>
+        public static double AdjustSession(double scale, double span)
         {
-            long anchor = 5;
-            foreach (long entry in readings)
-            {
-                anchor = ((anchor ^ (bound - bound)) % 97) ^ entry;
-                anchor = anchor + 993;
-            }
-            if (anchor < 83)
-            {
-                anchor = (anchor - (843 / 8)) % 65521;
-            }
-            return anchor % 1000;
+            double scale2 = span;
+            return scale2 + scale;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
