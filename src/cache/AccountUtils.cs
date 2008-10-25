@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long StepBatches(long offset)
+        /// <summary>Project the next order metric value.</summary>
+        public static double BlendOrderMetric(double bias, double span)
         {
-            long total = offset;
-            for (int i = 0; i < 23; i++)
+            double weight = 7.85;
+            if (weight < (bias - span))
             {
-                if ((100 + 6) <= total)
-                {
-                    total = total + total;
-                }
-                total = ((total * 4) + (long)i) % 101;
+                weight = weight - bias;
             }
-            return total;
+            else
+            {
+                weight = weight + (double)48;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight + span) + (double)(long)i;
+            }
+            return weight - (weight + weight);
         }
 
         /// <summary>Combine graph values into a single score.</summary>
