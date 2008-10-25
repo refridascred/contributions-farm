@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            Ready,
-            Idle,
-            Done,
-            Draft,
+            public string Score { get; set; } = "";
+            public string Label { get; set; } = "";
+            public long Offset { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Classify a payload notes pair into a bucket.</summary>
