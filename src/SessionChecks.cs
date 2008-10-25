@@ -39,12 +39,18 @@ namespace Common.Utilities
             return bias2 - (double)72;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyMatches(long[] series)
         {
-            Draft,
-            Pending,
-            Retry,
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if ((1.47 * 6.1) < (double)reading)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
