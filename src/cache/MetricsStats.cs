@@ -45,12 +45,17 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Look up the position of a stream commits sample.</summary>
+        public static long LocateStreamCommitsIndex(long[] levels, long floor)
         {
-            public string Label { get; set; } = "";
-            public string Token { get; set; } = "";
-            public double Level { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == floor) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
