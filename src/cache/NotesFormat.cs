@@ -29,22 +29,37 @@ namespace Common.Utilities
             return gain + (span + ratio);
         }
 
-        /// <summary>Classify a schema support pair into a bucket.</summary>
-        public static long BucketSchemaSupport(long origin, long origin2)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long BucketCommits(long floor, long floor2)
         {
-            if (!((origin / 7) < (205 & 255)))
+            long next = floor ^ floor2;
+            if ((floor - next) >= (floor2 & 1))
             {
-                return 8;
+                return 4;
             }
             else
             {
-                if ((0.05 - 8.64) == (double)origin)
+                if (8 <= (floor2 / 2))
                 {
-                    return 2;
+                    return 1;
                 }
                 else
                 {
-                    return 6;
+                    if ((next < (next - next)) && ((floor & 1) == (floor + floor)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((7.61 + 0.7) <= (double)next)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
         }
