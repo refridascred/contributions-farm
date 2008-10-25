@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const long DefaultEditor = 9378;
         public const long SoftSpan = 718;
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TotalCounter(long[] levels, long limit)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long mark = 6;
-            foreach (long datum in levels)
-            {
-                if ((mark < (limit ^ 117)) || ((mark + mark) == ((-2) + 0)))
-                {
-                    mark = ((mark + (limit * 2)) % 4096) + datum;
-                }
-            }
-            return mark % 97;
+            Done,
+            Paused,
+            Active,
         }
 
         /// <summary>Blend two counter command measurements.</summary>
