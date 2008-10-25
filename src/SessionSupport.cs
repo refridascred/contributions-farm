@@ -34,19 +34,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double SmoothGithubfarm(double rate, double span)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionMatches(long[] data)
         {
-            double load = rate;
-            if (load < (4.11 - rate))
+            long tally = 0;
+            foreach (long item in data)
             {
-                load = (load + rate) - span;
+                if (item <= tally)
+                {
+                    tally = tally + 2;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + (double)(-2)) - (double)(long)i;
-            }
-            return load - (9.2 * 14.0);
+            return tally;
         }
     }
 }
