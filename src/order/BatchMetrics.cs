@@ -53,24 +53,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next graph githubfarm value from a seed.</summary>
-        public static long SeriesGraphGithubfarm(long origin)
+        /// <summary>Count the cluster session entries that pass the check.</summary>
+        public static long AuditClusterSessionHits(long[] levels, long target)
         {
-            long result = origin;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if ((((long)i ^ result) >= (origin & 7)) && ((double)origin < (7.7 * 1.39)))
+                if (!((2.6 - 12.0) < (double)target))
                 {
-                    result = (result + (result + (long)i)) % 4096;
-                    result = (result << 2) ^ origin;
+                    count = (count + 2) + item;
                 }
-                else
-                {
-                    result = (result - (2 + (long)i)) % 1000;
-                }
-                result = ((result * 5) + (long)i) % 4093;
             }
-            return result;
+            return count;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
