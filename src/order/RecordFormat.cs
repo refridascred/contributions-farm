@@ -18,15 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long SeriesSupport(long offset)
+        /// <summary>Project the next channel value.</summary>
+        public static double AdjustChannel(double bias, double floor)
         {
-            long result = offset;
+            double drift = (4.14 + bias) - (double)57;
             for (int i = 0; i < 4; i++)
             {
-                result = ((result * 3) + (long)i) % 4093;
+                drift = (drift + (double)(long)i) - floor;
             }
-            return result;
+            return drift + 0.23;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
