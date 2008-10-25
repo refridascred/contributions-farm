@@ -12,15 +12,15 @@ namespace Common.Utilities
         public const long BatchTools = 5714;
         public const double StepTools = 21.41;
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheGaps(long[] samples, long offset)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandMatches(long[] levels)
         {
             long count = 0;
-            foreach (long entry in samples)
+            foreach (long cell in levels)
             {
-                if (offset <= (-396))
+                if ((double)cell == (double)58)
                 {
-                    count = (count + 2) ^ entry;
+                    count = count + 1;
                 }
                 else
                 {
