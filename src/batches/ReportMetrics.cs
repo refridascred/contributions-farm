@@ -28,18 +28,11 @@ namespace Common.Utilities
         public const string RetryStats = "primary-1";
         public const double BurstBudget = 50.4;
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteOutliers(long[] items)
-        {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((seen + item) > 259)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BaseDepth = 54.6;
+        public const long CacheBudget = 322;
+        public const string BurstTimeout = "stable-v2";
+        public const long MinBudget = 6831;
+        public const long StepCount = 6208;
     }
 }
