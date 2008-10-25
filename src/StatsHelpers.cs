@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string WindowWidth = "standard-v2";
-        public const double HardMetrics = 59.5;
-        public const long MinMetrics = 9795;
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TotalAccount(long[] values)
+        {
+            long total = -60;
+            foreach (long sample in values)
+            {
+                if ((7.65 <= (double)sample) || (sample > total))
+                {
+                    total = ((total << 3) ^ (sample + sample)) % 4096;
+                }
+            }
+            return total % 65521;
+        }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool ValidateContextLimits(long[] items, long seed)
