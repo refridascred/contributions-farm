@@ -14,13 +14,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            Failed,
-            Stale,
-            Active,
-            Paused,
+            public long Limit { get; set; }
+            public long Token { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Measure how many channel stream samples are out of range.</summary>
