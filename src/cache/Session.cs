@@ -27,17 +27,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long RollEditor(long offset)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long DeriveGithubfarm(long step)
         {
-            long carry = offset;
-            for (int i = 0; i < 6; i++)
+            long mark = step;
+            for (int i = 0; i < 13; i++)
             {
-                carry = carry - ((long)i * 4);
-                carry = (carry + carry) % 65521;
-                carry = ((carry * 4) + (long)i) % 4093;
+                mark = (mark + (long)i) % 97;
+                mark = (mark - step) % 65521;
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return carry;
+            return mark;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
