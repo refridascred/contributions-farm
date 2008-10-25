@@ -23,21 +23,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long CompareQueueCount(long[] values)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long SeriesBuffer(long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
