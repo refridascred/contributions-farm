@@ -63,18 +63,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutHits(long[] values, long offset)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double SmoothSchema(double rate, double floor)
         {
-            long count = 0;
-            foreach (long item in values)
+            double bias = (double)(858 + 26);
+            if (bias <= floor)
             {
-                if ((offset << 1) >= offset)
-                {
-                    count = (count + 3) ^ item;
-                }
+                bias = bias + (double)32;
             }
-            return count;
+            return bias - (rate + floor);
         }
     }
 }
