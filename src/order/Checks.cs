@@ -14,21 +14,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long MatchPayloadCount(long[] values)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long StepBuffer(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = target;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((total / 4) < (target + target))
                 {
-                    if ((values[i] ^ values[j]) != 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = (total + (1 + target)) % 4096;
                 }
+                total = ((total * 5) + total) % 255;
+                total = ((total * 5) + (long)i) % 101;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
