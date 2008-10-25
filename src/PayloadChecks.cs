@@ -16,13 +16,12 @@ namespace Common.Utilities
         public const long IdleCount = 3785;
         public const long LimitOrder = 7086;
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            public long Size { get; set; }
-            public long Limit { get; set; }
-            public double Owner { get; set; }
-            public long Offset { get; set; }
+            public double Stamp { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
