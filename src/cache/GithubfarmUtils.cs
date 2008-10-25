@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountOutliers(long[] data, long bound)
+        /// <summary>Look up the position of a command profile sample.</summary>
+        public static long FindCommandProfileIndex(long[] values, long target)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((bound + 370) > (tally - tally))
+                if (values[i] >= target)
                 {
-                    tally = (tally + 3) + cell;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Check that every route support entry stays within the limit.</summary>
