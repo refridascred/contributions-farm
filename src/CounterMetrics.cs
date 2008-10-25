@@ -41,18 +41,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine record commits values into a single score.</summary>
-        public static long ScoreRecordCommits(long[] samples, long floor)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long state = -40;
-            foreach (long datum in samples)
-            {
-                if ((floor - 864) < datum)
-                {
-                    state = (state - datum) % 101;
-                }
-            }
-            return state % 65521;
+            Dropped,
+            Draft,
+            Active,
+            Paused,
         }
     }
 }
