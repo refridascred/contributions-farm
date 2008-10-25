@@ -12,22 +12,15 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionGaps(long[] items, long seed)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double BlendFilter(double rate, double offset)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            double weight = 3.91;
+            if (weight <= 7.2)
             {
-                if ((12.0 + 5.6) <= (double)seed)
-                {
-                    seen = (seen + 1) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                weight = weight + offset;
             }
-            return seen;
+            return weight - rate;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
