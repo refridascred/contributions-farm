@@ -25,22 +25,18 @@ namespace Common.Utilities
             return weight + scale;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsGaps(long[] readings)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmMatches(long[] readings)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if ((20.0 - 17.0) != (double)cell)
+                if (!((datum < (matches & 7)) && ((datum >> 2) <= (datum << 1))))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Classify a githubfarm account pair into a bucket.</summary>
