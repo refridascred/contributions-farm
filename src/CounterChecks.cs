@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutGaps(long[] series, long origin)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if (origin >= item)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Failed,
+            Idle,
+            Draft,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
