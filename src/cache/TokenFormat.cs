@@ -32,17 +32,14 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Look up the position of a support profile sample.</summary>
-        public static long FindSupportProfileIndex(long[] levels, long target)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Failed,
+            Active,
+            Done,
+            Pending,
         }
     }
 }
