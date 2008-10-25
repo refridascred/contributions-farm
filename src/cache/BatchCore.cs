@@ -65,38 +65,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a already graph value against two limits.</summary>
-        public static long SortAlreadyGraph(long seed, long target)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsHits(long[] samples, long floor)
         {
-            if ((target >> 5) == (target << 3))
+            long matches = 0;
+            foreach (long value in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed + target) >= (seed >> 2))
+                if (((867 % 5) == (matches + matches)) || ((double)(long)samples.Length <= (3.0 + 4.57)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((seed - target) >= (seed + (-809))) && ((target - target) >= seed))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((seed + 19) < (target + 91)) || (3.72 > (double)seed))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    matches = ((matches + 1) + value) + floor;
                 }
             }
+            return matches;
         }
     }
 }
