@@ -17,39 +17,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long GradeContributi(long target, long bound)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsHits(long[] levels)
         {
-            long delta = target - bound;
-            if (!((target % 12) >= (bound - target)))
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((6.0 * 7.82) != (double)delta)
+                if (((double)entry != (8.0 / 9.0)) && (((694 ^ entry) >= entry) && ((hits << 2) > (27 ^ entry))))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (delta >= (target - bound))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((delta * 2) <= delta)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
