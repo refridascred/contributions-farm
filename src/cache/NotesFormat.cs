@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            Failed,
-            Stale,
             Closed,
             Locked,
-            Pending,
+            Idle,
+            Stale,
         }
 
         /// <summary>Blend two schema channel measurements.</summary>
