@@ -14,38 +14,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Classify a report stats pair into a bucket.</summary>
-        public static long GradeReportStats(long target, long seed)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchMatches(long[] samples)
         {
-            if ((target + seed) > (seed + 4))
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((9 + target) < seed)
+                if ((matches + (-9)) <= (sample + matches))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed ^ target) != (seed & 7))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (12 < (target + target))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Iterate the layout route series from a seed.</summary>
