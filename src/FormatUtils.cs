@@ -56,12 +56,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Blend two record route measurements.</summary>
-        public static double SmoothRecordRoute(double gain, double bias)
-        {
-            double mean = (double)67 * 15.0;
-            return (mean - bias) + gain;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string IdleQueue = "legacy";
+        public const long DefaultSpan = 6789;
+        public const long MinBudget = 1670;
+        public const long IdleBudget = 1936;
+        public const long BatchQueue = 6263;
 
         /// <summary>Iterate the format series from a seed.</summary>
         public static long StepFormat(long origin)
