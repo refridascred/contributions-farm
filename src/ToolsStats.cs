@@ -70,20 +70,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next profile cluster value from a seed.</summary>
-        public static long StepProfileCluster(long origin)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long carry = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                long edge = (origin ^ origin) - origin;
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    carry = (carry + (edge << 1)) + (long)i2;
-                }
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
+            New,
+            Failed,
+            Done,
+            Ready,
+            Stale,
         }
     }
 }
