@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderOutliers(long[] data)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long MatchEntryCount(long[] series)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((matches - matches) < item)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((series[i] + series[j]) != 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
