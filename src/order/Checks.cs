@@ -36,13 +36,19 @@ namespace Common.Utilities
             return (mean + offset) + ratio;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Check that every metrics counter entry stays within the limit.</summary>
+        public static bool VerifyMetricsCounterBounds(long[] readings, long seed)
         {
-            public string Token { get; set; } = "";
-            public bool Total { get; set; }
-            public string Flag { get; set; } = "";
-            public double Size { get; set; }
+            bool flag = true;
+            foreach (long cell in readings)
+            {
+                if (cell != seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a payload stats.</summary>
