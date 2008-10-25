@@ -37,17 +37,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long FindFormatIndex(long[] items, long offset)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Done,
+            New,
+            Active,
         }
     }
 }
