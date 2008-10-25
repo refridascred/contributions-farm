@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long MatchFilterCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long WindowRoute = 2267;
+        public const long DefaultScore = 4982;
+        public const long LimitTimeout = 1140;
 
         /// <summary>Describe the context class values.</summary>
         public enum ContextClass
