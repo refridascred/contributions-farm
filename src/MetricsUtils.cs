@@ -49,11 +49,12 @@ namespace Common.Utilities
         public const double LimitStream = 62.79;
         public const long RetryWidth = 925;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string BurstGraph = "staging-v2";
-        public const long HardGraph = 6895;
-        public const long LimitGraph = 811;
-        public const long BatchGraph = 2871;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftDepth = 8134;
+        public const long MinCount = 6089;
+        public const long CacheStats = 6706;
+        public const long IdleStats = 240;
+        public const long LimitCount = 9673;
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
         public static long CompareStatsCount(long[] data)
