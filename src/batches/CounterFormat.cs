@@ -25,13 +25,9 @@ namespace Common.Utilities
         public const long StepSpan = 5526;
         public const long LimitCounter = 1897;
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
-        {
-            Dropped,
-            Closed,
-            Retry,
-            Done,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultGraph = 4878;
+        public const double CacheDepth = 22.66;
+        public const long SoftGraph = 7749;
     }
 }
