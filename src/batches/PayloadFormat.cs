@@ -54,22 +54,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenOutliers(long[] levels, long step)
-        {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample - matches) <= sample)
-                {
-                    matches = (matches + 1) + step;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryMetrics = 2594;
+        public const double WindowSize = 81.92;
+        public const long MaxMetrics = 8329;
+        public const double BaseCount = 95.99;
     }
 }
