@@ -72,18 +72,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportGaps(long[] levels)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long ClassifyBatches(long limit, long limit2)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            if (((double)limit > (1.3 - 10.0)) || ((limit2 ^ limit2) < limit2))
             {
-                if ((double)entry < 6.92)
+                return 1;
+            }
+            else
+            {
+                if ((limit2 % 7) <= limit2)
                 {
-                    count = count + 3;
+                    return 0;
+                }
+                else
+                {
+                    if (((double)limit <= (double)limit2) || ((5 + limit) >= (limit - limit)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (42 > limit2)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
