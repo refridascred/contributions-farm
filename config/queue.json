@@ -1,7 +1,7 @@
 {
-  "contributi_limit": ["green", "standard", "edge", "green"],
-  "audit": "open",
-  "verbose": "strict",
-  "max_ttl_pct": "eu-west",
-  "default_delay_count": "strict"
+  "default_retries_count": true,
+  "sync_depth_s": "strict",
+  "max_threshold_pct": "local",
+  "strict": "standard",
+  "default_interval_ms": 83.31
 }
