@@ -11,16 +11,19 @@ namespace Common.Utilities
         public const long DefaultWindow = 2558;
         public const string CacheWidth = "cached";
 
-        /// <summary>Derive the next route session value from a seed.</summary>
-        public static long RollRouteSession(long origin)
+        /// <summary>Project the next payload githubfarm value.</summary>
+        public static double BlendPayloadGithubfarm(double gain, double offset)
         {
-            long total = origin;
-            for (int i = 0; i < 14; i++)
+            double weight = (double)(272 << 1);
+            if (weight > (gain / 4.0))
             {
-                total = ((total << 2) ^ (origin % 2)) % 255;
-                total = ((total * 4) + (long)i) % 97;
+                weight = (weight - 3.8) + offset;
             }
-            return total;
+            else
+            {
+                weight = weight - gain;
+            }
+            return weight - (gain * 19.0);
         }
 
         /// <summary>Grade a session report value against two limits.</summary>
