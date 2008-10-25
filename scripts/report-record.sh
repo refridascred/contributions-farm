@@ -6,9 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard primary; do
+mode="${1:-latest}"
+case "${mode}" in
+    green)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+RECORD_LIMIT=119
+log "limit is ${RECORD_LIMIT}"
+
+for item in staging latest cached strict; do
     log "checking ${item}"
 done
-
-RECORD_LIMIT=99
-log "limit is ${RECORD_LIMIT}"
