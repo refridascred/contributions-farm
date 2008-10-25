@@ -46,13 +46,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowGaps(long[] data, long offset)
         {
-            Dropped,
-            Draft,
-            Active,
-            Paused,
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if (value < (value + 535))
+                {
+                    hits = (hits + 2) - offset;
+                }
+            }
+            return hits;
         }
     }
 }
