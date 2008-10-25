@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowCluster = 6732;
-        public const long BurstCluster = 4037;
-        public const long RetryTimeout = 438;
-        public const long MinInterval = 8878;
-        public const string HardLevel = "cached-v2";
+        /// <summary>Match up layout samples.</summary>
+        public static long CompareLayoutCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Scale a metric figure with a bias.</summary>
         public static double ProjectMetric(double ratio, double bias)
