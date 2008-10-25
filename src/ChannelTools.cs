@@ -22,12 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardEditor = 3790;
-        public const long MaxSize = 7036;
-        public const string SoftEditor = "open-v2";
-        public const long BatchCount = 8883;
-        public const long RetryEditor = 5783;
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long StepMetric(long bound)
+        {
+            long result = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((bound <= (long)i) && ((result - result) == (15 % 7)))
+                {
+                    result = result ^ (result + (long)i);
+                    result = (result ^ ((long)i + bound)) % 97;
+                }
+                result = ((result * 3) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Hold a metrics stats.</summary>
         public sealed class MetricsStats
