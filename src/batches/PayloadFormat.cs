@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long RankNotes(long step, long bound)
         {
-            public double Level { get; set; }
-            public long Total { get; set; }
-            public string Mode { get; set; } = "";
-            public long Region { get; set; }
+            if (!((bound ^ bound) > bound))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((1.05 + 0.9) <= (double)bound)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Compare every pair of already readings.</summary>
