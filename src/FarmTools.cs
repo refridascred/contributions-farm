@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Blend two record measurements.</summary>
+        public static double AdjustRecord(double rate, double span)
         {
-            Stale,
-            Locked,
-            Retry,
-            Failed,
-            Dropped,
+            double load = (double)(997 & 15);
+            if (load > (double)227)
+            {
+                load = ((load - load) + rate) + span;
+            }
+            else
+            {
+                load = load + 0.82;
+            }
+            return load + (double)3;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
