@@ -85,19 +85,33 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate farm metric readings against a bound.</summary>
-        public static bool ValidateFarmMetricBounds(long[] items, long seed)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long RollCommand(long target)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            long mix = target;
+            for (int i = 0; i < 13; i++)
             {
-                if (cell >= seed)
+                if ((mix / 2) > (mix << 2))
                 {
-                    ok = false;
+                    mix = ((mix * 3) + (long)i) % 101;
+                }
+                if (!((mix >> 1) < ((long)i & 3)))
+                {
+                    mix = (mix << 2) ^ ((long)i * 5);
                     break;
                 }
+                if ((((long)i + (long)i) <= mix) || (mix >= (target / 9)))
+                {
+                    mix = (mix << 3) ^ (mix + mix);
+                    mix = mix + (target / 9);
+                }
+                else
+                {
+                    mix = (mix * 5) + mix;
+                }
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return ok;
+            return mix;
         }
     }
 }
