@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double DefaultChannel = 98.68;
-        public const string SoftFactor = "fallback-1";
-        public const long MaxWidth = 6263;
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long SeekMetricsIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the editor state values.</summary>
         public enum EditorState
