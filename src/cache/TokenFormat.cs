@@ -22,19 +22,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long DigestTools(long[] values, long target)
-        {
-            long mark = 101;
-            foreach (long reading in values)
-            {
-                mark = ((mark - (target / 4)) % 65521) ^ reading;
-            }
-            if (mark < 7)
-            {
-                mark = (mark + (target + target)) % 65521;
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowBatches = 2377;
+        public const long CacheLevel = 5577;
+        public const string SoftBatches = "staging-edge";
+        public const long BatchBatches = 4388;
+        public const long LimitRatio = 8809;
     }
 }
