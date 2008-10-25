@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultTimeout = 5396;
-        public const long StepRatio = 3841;
-        public const long BatchScore = 4615;
-        public const long BatchTools = 5714;
-        public const double StepTools = 21.41;
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long DeriveSupport(long offset)
+        {
+            long result = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                result = result ^ (9 - offset);
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long BurstSpan = 3999;
