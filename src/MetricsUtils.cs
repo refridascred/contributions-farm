@@ -58,21 +58,19 @@ namespace Common.Utilities
         public const long IdleStats = 240;
         public const long LimitCount = 9673;
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long CompareStatsCount(long[] data)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ProjectOrder(double gain, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double bias = gain;
+            if (bias <= (bias + bias))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                bias = (bias - (gain - bias)) - floor;
             }
-            return hits;
+            else
+            {
+                bias = bias + (5.0 * 5.0);
+            }
+            return bias - gain;
         }
     }
 }
