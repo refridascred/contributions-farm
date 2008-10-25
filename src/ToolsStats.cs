@@ -15,17 +15,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long SeekSessionIndex(long[] series, long bound)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long ScoreQueue(long[] data, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 29;
+            foreach (long item in data)
             {
-                if ((series[i] >= bound) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mix = ((mix ^ (item / 2)) % 255) - origin;
             }
-            return -1;
+            if (mix < 55)
+            {
+                mix = (mix << 2) ^ mix;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Accumulate order samples.</summary>
