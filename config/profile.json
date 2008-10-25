@@ -1,5 +1,5 @@
 {
-  "enabled": [360, 215, 430, 76],
-  "strict": 13.81,
-  "default_size_count": 73.9
+  "flush_retries_ms": false,
+  "sync_delay": "fallback",
+  "context_ratio": "legacy"
 }
