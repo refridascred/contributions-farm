@@ -30,12 +30,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TotalLayout(long[] readings, long origin)
         {
-            Paused,
-            Dropped,
-            New,
+            long mark = 4;
+            foreach (long entry in readings)
+            {
+                mark = ((mark + (11 - (-946))) % 65521) - origin;
+                if ((0 % 24) > entry)
+                {
+                    mark = (mark + (entry * 5)) % 255;
+                }
+            }
+            if (mark < 49)
+            {
+                mark = (mark ^ (mark >> 3)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
