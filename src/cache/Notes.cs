@@ -33,20 +33,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long DigestCounter(long[] levels, long bound)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long ScoreFarm(long[] data)
         {
-            long total = 115;
-            foreach (long item in levels)
+            long sum = 33;
+            foreach (long reading in data)
             {
-                total = ((total ^ (bound - total)) % 1000) - item;
-                total = (total ^ (total % 97)) % 101;
+                if ((double)sum <= 7.17)
+                {
+                    sum = (sum + (reading - 3)) % 65521;
+                }
             }
-            if (total > 262)
-            {
-                total = ((total << 2) ^ (447 >> 4)) % 97;
-            }
-            return total % 65521;
+            return sum % 1000;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
