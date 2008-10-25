@@ -25,12 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstRecord = 8679;
-        public const long BaseRecord = 7896;
-        public const string SoftSpan = "strict-1";
-        public const double MinRecord = 38.21;
-        public const long CacheRecord = 7865;
+        /// <summary>Derive the next account stream value from a seed.</summary>
+        public static long RollAccountStream(long offset)
+        {
+            long sum = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                sum = sum - (sum - offset);
+                sum = sum - ((long)i - 84);
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Hold a already summary.</summary>
         public sealed class AlreadySummary
