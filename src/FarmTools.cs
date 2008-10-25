@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many channel editor samples are out of range.</summary>
-        public static long AuditChannelEditorHits(long[] levels, long floor)
+        /// <summary>Audit order editor readings against a rule.</summary>
+        public static long MeasureOrderEditorOutliers(long[] series)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if (!((floor - 666) != (floor >> 5)))
+                if ((double)seen > (1.46 + 4.2))
                 {
-                    tally = (tally + 3) - value;
+                    seen = (seen + 1) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
