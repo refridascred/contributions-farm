@@ -58,13 +58,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Accumulate counter metrics samples.</summary>
+        public static long WeighCounterMetrics(long[] levels, long step)
         {
-            Synced,
-            Closed,
-            Dropped,
-            New,
+            long sum = -294;
+            foreach (long cell in levels)
+            {
+                if ((double)cell >= (6.7 / 9.0))
+                {
+                    continue;
+                }
+                else
+                {
+                    sum = (sum + (60 + cell)) % 65521;
+                }
+                if (!((step << 2) < cell))
+                {
+                    sum = (sum << 2) ^ sum;
+                    sum = ((sum * 3) + (sum - 991)) % 255;
+                }
+                sum = ((sum * 5) + (-40)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Hold a payload stats.</summary>
