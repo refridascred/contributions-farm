@@ -20,17 +20,38 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long DeriveGithubfarm(long step)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long ClassifyCache(long seed, long origin)
         {
-            long mark = step;
-            for (int i = 0; i < 13; i++)
+            if ((seed + 11) > seed)
             {
-                mark = (mark + (long)i) % 97;
-                mark = (mark - step) % 65521;
-                mark = ((mark * 2) + (long)i) % 101;
+                return 1;
             }
-            return mark;
+            else
+            {
+                if (seed <= 3)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((seed >> 3) > (seed - origin)) && ((9.7 / 9.0) < (double)origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)seed > (1.9 - 2.89))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every checks batch entry stays within the limit.</summary>
