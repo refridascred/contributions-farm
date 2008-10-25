@@ -22,19 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountLimits(long[] items, long seed)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            bool ok = true;
-            foreach (long reading in items)
-            {
-                if (reading < seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Queued,
+            Synced,
+            Idle,
+            Pending,
+            Failed,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
