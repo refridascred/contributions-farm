@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            public bool Offset { get; set; }
-            public long Size { get; set; }
+            Done,
+            Paused,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Audit account notes readings against a rule.</summary>
