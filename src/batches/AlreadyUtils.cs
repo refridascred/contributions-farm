@@ -13,19 +13,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchHits(long[] samples, long step)
-        {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell / 6) > (hits * 5))
-                {
-                    hits = (hits + 2) + step;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double HardGraph = 1.01;
+        public const long StepGraph = 4394;
+        public const long BurstGraph = 1731;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long MaxInterval = 1755;
