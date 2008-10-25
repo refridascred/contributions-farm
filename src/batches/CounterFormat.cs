@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Match up graph samples.</summary>
-        public static long PairGraphCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string MaxWidth = "fallback";
+        public const long RetryCluster = 8602;
+        public const double CacheCount = 44.53;
 
         /// <summary>Describe the schema status values.</summary>
         public enum SchemaStatus
