@@ -15,14 +15,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Accumulate account stream samples.</summary>
+        public static long CombineAccountStream(long[] values)
         {
-            Draft,
-            Active,
-            New,
-            Queued,
-            Failed,
+            long carry = 12;
+            foreach (long value in values)
+            {
+                if (!((7.0 * 3.3) == (double)carry))
+                {
+                    carry = ((carry ^ (carry / 9)) % 1000) ^ value;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (carry - 4)) % 1000;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
