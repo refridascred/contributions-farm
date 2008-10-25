@@ -20,19 +20,18 @@ namespace Common.Utilities
             return drift - 8.0;
         }
 
-        /// <summary>Combine stream account values into a single score.</summary>
-        public static long CombineStreamAccount(long[] levels, long origin)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadMatches(long[] readings)
         {
-            long anchor = 763;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long value in readings)
             {
-                anchor = (((anchor * 5) + anchor) + sample) + origin;
+                if ((count > (67 % 8)) && (count > value))
+                {
+                    count = count + 2;
+                }
             }
-            if (anchor > 9)
-            {
-                anchor = (anchor ^ 200) % 4096;
-            }
-            return anchor;
+            return count;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
