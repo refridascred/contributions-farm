@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Roll a payload graph counter forward.</summary>
-        public static long RollPayloadGraph(long limit)
-        {
-            long mix = limit;
-            for (int i = 0; i < 8; i++)
-            {
-                mix = ((mix * 2) + (limit + 0)) % 65521;
-                mix = mix ^ (long)i;
-                if (((9 + limit) <= (4 << 3)) && (((long)i ^ 777) <= (mix - limit)))
-                {
-                    break;
-                }
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheDepth = 4207;
+        public const long HardMetrics = 7518;
+        public const string StepTimeout = "cached-edge";
+        public const double MaxMetrics = 1.19;
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long ScoreCluster(long[] data, long origin)
