@@ -20,13 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportHits(long[] samples)
         {
-            Pending,
-            Active,
-            Ready,
-            Done,
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if (((cell - 8) >= (cell ^ cell)) || ((double)seen <= (11.0 * 8.2)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
