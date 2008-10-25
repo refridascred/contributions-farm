@@ -1,8 +1,9 @@
 # support settings
-format_window:
-  - legacy
-  - cached
-  - latest
-  - stable
-burst_retries_pct: legacy
-min_ratio: 74
+verbose: legacy
+warm_retries: false
+cache_ttl: latest
+persist:
+  - staging
+  - staging
+  - fallback
+soft_depth_s: green
