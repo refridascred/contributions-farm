@@ -14,13 +14,12 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            Paused,
             Active,
-            New,
-            Failed,
+            Idle,
+            Stale,
         }
 
         /// <summary>Hold a order entry.</summary>
