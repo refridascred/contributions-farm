@@ -48,15 +48,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandGaps(long[] levels, long step)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueGaps(long[] values, long floor)
         {
             long seen = 0;
-            foreach (long cell in levels)
+            foreach (long datum in values)
             {
-                if ((double)seen == (4.63 - 6.4))
+                if ((floor & 127) == (floor + datum))
                 {
-                    seen = ((seen + 2) + cell) + step;
+                    seen = seen + 2;
                 }
             }
             return seen;
