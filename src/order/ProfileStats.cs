@@ -16,27 +16,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long WeighBatch(long[] readings)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long result = -31;
-            foreach (long reading in readings)
-            {
-                result = (result * 2) + (874 & 1);
-                if ((reading + result) != (reading << 2))
-                {
-                    result = (result ^ (result & 7)) % 4096;
-                }
-                else
-                {
-                    result = (result + result) % 101;
-                }
-            }
-            if (result < 72)
-            {
-                result = ((result << 3) ^ (result << 1)) % 65521;
-            }
-            return result;
+            Draft,
+            Dropped,
+            Retry,
+            New,
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
