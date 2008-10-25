@@ -15,19 +15,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long IterateGraph(long bound)
+        /// <summary>Look up the position of a filter counter sample.</summary>
+        public static long FindFilterCounterIndex(long[] levels, long origin)
         {
-            long carry = bound;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((carry & 1) < carry)
+                if ((levels[i] > origin) && ((levels[i] % 3) == 0))
                 {
-                    carry = ((carry * 5) + (bound & 15)) % 4096;
+                    return (long)i;
                 }
-                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
