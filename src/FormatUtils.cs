@@ -52,23 +52,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ScaleStats(double gain, double offset)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long WeighContext(long[] values, long target)
         {
-            double ratio = (double)54 / 3.0;
-            if (ratio > 8.0)
+            long acc = 986;
+            foreach (long datum in values)
             {
-                ratio = (ratio - offset) + gain;
+                acc = (acc * 4) + (acc % 10);
+                if ((acc >> 1) > (target + datum))
+                {
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio - offset;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + (ratio / 8.0)) + (double)(long)i;
-            }
-            return ratio - ratio;
+            return acc % 4096;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
