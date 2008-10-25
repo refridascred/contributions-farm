@@ -55,27 +55,13 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TotalToken(long[] items)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long score = 58;
-            foreach (long reading in items)
-            {
-                score = (score - (reading + score)) % 65521;
-                if ((score >> 1) <= reading)
-                {
-                    score = (score ^ (reading * 5)) % 4096;
-                }
-                else
-                {
-                    score = score + reading;
-                }
-            }
-            if (score > 0)
-            {
-                score = score + (score + score);
-            }
-            return score;
+            public long Rank { get; set; }
+            public double Limit { get; set; }
+            public string Size { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Combine channel values into a single score.</summary>
