@@ -58,31 +58,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long GradeEditor(long limit, long target)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutBounds(long[] values, long origin)
         {
-            if ((target > ((-2) * 3)) || (target < (target & 7)))
+            bool ready = true;
+            foreach (long cell in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)limit < 0.2) || ((target * 3) != (target << 3)))
+                if (cell > origin)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((limit + limit) == (target & 7))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Roll a support metric counter forward.</summary>
