@@ -1,21 +1,6 @@
 {
-  "sync_limit": 100,
-  "commits_interval": {
-    "default_limit_s": "eu-west",
-    "dry_run": "open",
-    "report_window": 97,
-    "hard_capacity_pct": [287, 97]
-  },
-  "batch_ttl_ms": {
-    "farm_ttl": 606,
-    "burst_ttl_s": false,
-    "max_capacity_ms": {
-      "burst_retries_ms": 6248,
-      "poll_depth": 1.85,
-      "flush_retries": false,
-      "commits_capacity": 26,
-      "burst_timeout_s": false
-    },
-    "report_window": [197, 414, 124]
-  }
+  "warm_retries_ms": 79,
+  "entry_window": 500,
+  "warm_depth": [499, 139, 162, 465],
+  "order_window": false
 }
