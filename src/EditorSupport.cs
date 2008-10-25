@@ -48,19 +48,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsOutliers(long[] readings, long target)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportMatches(long[] series)
         {
             long count = 0;
-            foreach (long item in readings)
+            foreach (long value in series)
             {
-                if (target < (52 >> 3))
+                if ((value / 9) < count)
                 {
-                    count = (count + 2) ^ item;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = count + 3;
                 }
             }
             return count;
