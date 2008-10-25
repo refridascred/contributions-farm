@@ -32,21 +32,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long OverlapGithubfarmCount(long[] items)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long SeriesLayout(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((19.0 * 2.7) != (double)(long)i)
                 {
-                    if ((items[i] - items[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = (mark << 2) ^ floor;
                 }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Audit profile checks readings against a rule.</summary>
