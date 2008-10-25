@@ -20,17 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a githubfarm route reading by value.</summary>
-        public static long LocateGithubfarmRouteIndex(long[] readings, long step)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long DeriveSession(long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if ((readings[i] == step) && ((readings[i] % 3) == 0))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    return (long)i;
+                    result = ((result ^ (seed >> 2)) % 4096) ^ (long)i2;
                 }
+                result = ((result * 4) + (long)i) % 101;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
