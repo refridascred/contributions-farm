@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            public string Stamp { get; set; } = "";
-            public bool Mode { get; set; }
+            Failed,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Describe the context class values.</summary>
