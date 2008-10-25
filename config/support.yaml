@@ -1,31 +1,14 @@
 # support settings
-strict:
-  - strict
-  - legacy
-  - legacy
-cache_depth_s: strict
-batch_timeout_s:
-  stream_ratio:
-    - 232
-    - 293
-    - 80
-    - 286
-  burst_threshold: false
-  readonly:
-    - cached
+graph_timeout:
+  sync_capacity_pct: 88.45
+  flush_ratio_s: green
+  dry_run: 39.66
+  session_window:
+    - green
     - stable
-    - local
-    - edge
-  cache_limit_s: false
-  poll_timeout_ms:
-    - strict
-    - legacy
-    - stable
-    - latest
-flush_interval:
-  metrics_delay: 30
-  context_interval: 85.78
-  audit: 500
-  default_ratio_s: latest
-  poll_interval_s: 31
-editor_ratio: true
+  soft_ratio: 2.37
+  metric_ttl: 52
+max_limit_pct: 44.76
+burst_ttl: 60
+min_delay: 250
+retry_ttl_pct: 44
