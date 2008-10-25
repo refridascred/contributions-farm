@@ -33,12 +33,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long HardRoute = 7676;
-        public const double MaxSize = 31.08;
-        public const long WindowSize = 8569;
-        public const long DefaultRoute = 4803;
-        public const string RetryRoute = "standard-1";
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long BucketSession(long limit, long target)
+        {
+            if ((6 % 5) == (target + limit))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)limit <= (7.0 + 4.64))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long TallyBatchesMatches(long[] values)
