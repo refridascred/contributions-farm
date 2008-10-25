@@ -1,22 +1,5 @@
 {
-  "base_ratio_s": true,
-  "entry_ratio": 32.42,
-  "idle_interval": 2273,
-  "cache_delay": {
-    "batch_window_count": 17.27,
-    "channel_threshold": 100,
-    "soft_timeout": true,
-    "metric_retries": 60
-  },
-  "burst_threshold_s": {
-    "editor_interval": false,
-    "burst_delay_s": 250,
-    "editor_ratio": {
-      "burst_retries": 30,
-      "default_depth_s": "green",
-      "strict": "primary"
-    },
-    "base_retries_pct": 250
-  },
-  "verbose": [139, 418, 313]
+  "layout_interval": 19.77,
+  "cache_size": "strict",
+  "persist": ["blue", "local"]
 }
