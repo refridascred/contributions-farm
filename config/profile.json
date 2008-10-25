@@ -1,8 +1,7 @@
 {
-  "readonly": 500,
-  "sync_limit": 6004,
-  "hard_retries": "blue",
-  "batch_timeout_s": "strict",
-  "default_ttl": true,
-  "sync_size_ms": 500
+  "warm_retries_ms": 30,
+  "default_retries_pct": ["eu-west", "stable", "green"],
+  "flush_timeout_s": false,
+  "poll_depth": false,
+  "enabled": true
 }
