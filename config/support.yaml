@@ -1,5 +1,11 @@
 # support settings
-readonly: 41.31
-persist: false
-soft_threshold: 9
-cache_window_s: 100
+max_depth_count:
+  verbose: true
+  layout_limit: false
+  max_ratio_s: 5354
+  cache_timeout_s: latest
+  record_timeout: false
+  strict: local
+contributi_timeout: true
+entry_ratio: 9729
+filter_ttl: 5797
