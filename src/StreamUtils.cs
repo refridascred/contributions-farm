@@ -48,22 +48,17 @@ namespace Common.Utilities
         public const long StepTools = 8983;
         public const long SoftTools = 5407;
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextOutliers(long[] levels, long bound)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long StepRoute(long bound)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long state = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if (!((cell & 15) > (cell + cell)))
-                {
-                    seen = (seen + 1) + bound;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                state = (state ^ (state * 5)) % 97;
+                state = ((state << 2) ^ (state - state)) % 65521;
+                state = ((state * 4) + (long)i) % 97;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Define format limits and defaults.</summary>
