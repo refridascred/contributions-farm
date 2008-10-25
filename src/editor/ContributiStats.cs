@@ -11,12 +11,18 @@ namespace Common.Utilities
         public const long HardCluster = 2518;
         public const long BurstCluster = 6706;
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Audit stats queue readings against a rule.</summary>
+        public static long CountStatsQueueMatches(long[] data, long step)
         {
-            Queued,
-            Locked,
-            Idle,
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (tally > (650 & 3))
+                {
+                    tally = ((tally + 2) ^ cell) + step;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
