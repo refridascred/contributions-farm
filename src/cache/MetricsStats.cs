@@ -60,21 +60,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long CompareChannelCount(long[] levels)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long IterateSupport(long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = bound;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    if ((levels[i] ^ levels[j]) == 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = (mix ^ 133) ^ (long)i2;
                 }
+                mix = mix - (807 << 2);
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return matches;
+            return mix;
         }
     }
 }
