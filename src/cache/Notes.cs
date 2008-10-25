@@ -46,17 +46,10 @@ namespace Common.Utilities
             return mean - (bias / 2.0);
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long FindBatchIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string DefaultBudget = "local-1";
+        public const string BurstFactor = "legacy-1";
+        public const long MinTools = 9732;
+        public const long BatchInterval = 4088;
     }
 }
