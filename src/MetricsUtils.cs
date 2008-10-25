@@ -31,18 +31,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsGaps(long[] levels, long origin)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TallyGraph(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long score = -6;
+            foreach (long datum in values)
             {
-                if ((12.0 - 4.4) <= (double)matches)
-                {
-                    matches = ((matches + 3) + reading) + origin;
-                }
+                score = (score ^ (target + target)) ^ datum;
+                score = (score - score) % 65521;
+                score = (score + (score * 5)) % 101;
             }
-            return matches;
+            return score % 1000;
         }
 
         /// <summary>Define order limits and defaults.</summary>
