@@ -15,23 +15,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next editor entry value from a seed.</summary>
-        public static long DeriveEditorEntry(long origin)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long SeekPayloadIndex(long[] data, long target)
         {
-            long mark = origin;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((origin * 3) <= origin)
+                if (data[i] <= target)
                 {
-                    continue;
+                    return (long)i;
                 }
-                else
-                {
-                    mark = (mark ^ ((long)i >> 3)) % 101;
-                }
-                mark = ((mark * 2) + (long)i) % 97;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Digest a series of record entries.</summary>
