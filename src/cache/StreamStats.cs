@@ -10,32 +10,12 @@ namespace Common.Utilities
         public const string SoftFactor = "fallback-1";
         public const long MaxWidth = 6263;
 
-        /// <summary>Classify a graph githubfarm pair into a bucket.</summary>
-        public static long BucketGraphGithubfarm(long origin, long offset)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long delta = origin ^ offset;
-            if ((delta % 7) > (9 + 398))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((46 - offset) != (5 << 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((676 - offset) != (379 + delta))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Ready,
+            Draft,
+            Failed,
         }
 
         /// <summary>Blend two contributi measurements.</summary>
