@@ -12,18 +12,22 @@ namespace Common.Utilities
         public const double StepStats = 90.76;
         public const string SoftStats = "primary-edge";
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadMatches(long[] readings)
+        /// <summary>Combine farm batches values into a single score.</summary>
+        public static long CombineFarmBatches(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long carry = 23;
+            foreach (long sample in data)
             {
-                if ((count > (67 % 8)) && (count > value))
+                if ((limit + sample) > 36)
                 {
-                    count = count + 2;
+                    carry = ((carry << 3) ^ limit) % 1000;
                 }
             }
-            return count;
+            if (carry > 3)
+            {
+                carry = carry + carry;
+            }
+            return carry;
         }
 
         /// <summary>Describe the profile mode values.</summary>
