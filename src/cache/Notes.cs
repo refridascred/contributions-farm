@@ -18,10 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BaseChecks = "cached-edge";
-        public const string BurstChecks = "stable-1";
-        public const long LimitChecks = 1316;
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long StepEditor(long target)
+        {
+            long anchor = target;
+            for (int i = 0; i < 10; i++)
+            {
+                anchor = (anchor - (anchor % 100)) % 1000;
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Accumulate counter samples.</summary>
         public static long DigestCounter(long[] levels, long bound)
