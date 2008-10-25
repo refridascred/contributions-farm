@@ -12,25 +12,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Iterate the tools stream series from a seed.</summary>
-        public static long SeriesToolsStream(long floor)
-        {
-            long state = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                if (floor > state)
-                {
-                    state = state ^ (floor + state);
-                    state = ((state * 5) + (state % 64)) % 97;
-                }
-                if (floor <= (floor ^ floor))
-                {
-                    state = (state ^ (state + (long)i)) % 4096;
-                }
-                state = ((state * 4) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long StepCluster = 8947;
+        public const long HardCluster = 904;
+        public const long BatchCluster = 3678;
+        public const string DefaultCluster = "strict-1";
+        public const double LimitCluster = 23.14;
 
         /// <summary>Project the next batch value.</summary>
         public static double BlendBatch(double rate, double bias)
