@@ -1,6 +1,7 @@
 {
-  "dry_run": [386, 155],
-  "profile_timeout": [139, 94],
-  "persist": true,
-  "enabled": 7628
+  "min_delay_pct": 58.29,
+  "batch_timeout_s": false,
+  "contributi_ratio": 17.75,
+  "retry_ratio_s": 1353,
+  "metrics_ttl": 71.97
 }
