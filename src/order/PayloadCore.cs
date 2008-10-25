@@ -19,19 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double ProjectCommits(double gain, double bias)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ProjectMetrics(double gain, double bias)
         {
-            double weight = (double)(34 * 5);
-            if (weight > 19.0)
+            double gain2 = (double)(5 + 91);
+            for (int i = 0; i < 3; i++)
             {
-                weight = (weight + bias) - gain;
+                gain2 = (gain2 + (bias * 5.4)) + (double)(long)i;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = weight - (double)(long)i;
-            }
-            return weight + (double)1;
+            return gain2 + gain;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
