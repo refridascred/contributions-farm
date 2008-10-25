@@ -48,10 +48,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string CacheRoute = "alpha-1";
-        public const long SoftRatio = 5143;
-        public const long MinRoute = 8033;
-        public const long HardBudget = 4358;
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
+        {
+            public long Weight { get; set; }
+            public bool Size { get; set; }
+        }
     }
 }
