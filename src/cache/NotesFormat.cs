@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long SortCounter(long target, long limit)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandLimits(long[] samples, long target)
         {
-            long lane = target - limit;
-            if (!((target << 2) != (limit - 1)))
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((8.4 + 8.0) >= (double)limit)
+                if (cell >= target)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((limit + target) < (lane + lane)) && (limit <= (target / 6)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
