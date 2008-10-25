@@ -25,13 +25,19 @@ namespace Common.Utilities
         public const long BaseOrder = 3610;
         public const long MaxInterval = 1890;
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesBounds(long[] series, long origin)
         {
-            Ready,
-            Stale,
-            Queued,
-            Dropped,
+            bool ready = true;
+            foreach (long datum in series)
+            {
+                if (datum > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
