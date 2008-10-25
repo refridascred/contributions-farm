@@ -30,31 +30,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long GradeFilter(long seed, long offset)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            if ((double)seed >= (2.63 + 1.0))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset - seed) == (2 ^ 777))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((offset - seed) != (seed & 1)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Active,
+            Dropped,
+            Closed,
+            Locked,
         }
 
         /// <summary>Hold a queue record.</summary>
