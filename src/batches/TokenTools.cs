@@ -28,11 +28,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            public bool Size { get; set; }
-            public string Stamp { get; set; } = "";
+            New,
+            Failed,
+            Locked,
         }
     }
 }
