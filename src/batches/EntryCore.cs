@@ -48,12 +48,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Project the next githubfarm record value.</summary>
+        public static double AdjustGithubfarmRecord(double ratio, double bias)
         {
-            public string Label { get; set; } = "";
-            public long Flag { get; set; }
-            public long Weight { get; set; }
+            double bias2 = bias * 12.0;
+            if (bias2 > (bias / 8.0))
+            {
+                bias2 = bias2 + (6.12 / 7.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = (bias2 - 4.4) - (double)(long)i;
+            }
+            return bias2 + (ratio * 0.9);
         }
 
         /// <summary>Locate a profile reading by value.</summary>
