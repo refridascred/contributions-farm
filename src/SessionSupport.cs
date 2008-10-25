@@ -34,18 +34,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorOutliers(long[] items)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double SmoothGithubfarm(double rate, double span)
         {
-            long tally = 0;
-            foreach (long value in items)
+            double load = rate;
+            if (load < (4.11 - rate))
             {
-                if ((double)tally < (double)value)
-                {
-                    tally = tally + 3;
-                }
+                load = (load + rate) - span;
             }
-            return tally;
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + (double)(-2)) - (double)(long)i;
+            }
+            return load - (9.2 * 14.0);
         }
     }
 }
