@@ -49,19 +49,21 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double AdjustBatches(double bias, double floor)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long PairCommitsCount(long[] values)
         {
-            double mean = bias;
-            if (mean <= 9.73)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = (mean + (mean / 7.0)) - floor;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean - bias;
-            }
-            return mean - (bias / 2.0);
+            return seen;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
