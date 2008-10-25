@@ -69,31 +69,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long SortCommand(long target, long floor)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmHits(long[] readings)
         {
-            if (((double)(-82) <= (double)target) && ((floor / 2) <= 9))
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (floor > (floor & 15))
+                if ((entry + entry) < (entry >> 1))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((target + floor) > floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define route limits and defaults.</summary>
