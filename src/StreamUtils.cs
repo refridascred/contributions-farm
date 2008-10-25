@@ -49,12 +49,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double BlendGithubfarm(double gain, double offset)
-        {
-            double rate = (double)(4 - 51);
-            return (rate - offset) + gain;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double RetryReport = 29.64;
+        public const double RetryRatio = 93.32;
+        public const long DefaultReport = 7097;
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long AuditContextOutliers(long[] levels, long bound)
