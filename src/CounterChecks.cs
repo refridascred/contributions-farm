@@ -12,25 +12,19 @@ namespace Common.Utilities
         public const long SoftTimeout = 9371;
         public const long StepSpan = 2509;
 
-        /// <summary>Accumulate already session samples.</summary>
-        public static long TotalAlreadySession(long[] values, long origin)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportLimits(long[] levels, long seed)
         {
-            long mix = 23;
-            foreach (long sample in values)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                long gap = (7 & 15) & 3;
-                if (!((origin * 4) <= gap))
+                if (cell < seed)
                 {
-                    mix = (mix - (sample % 7)) % 255;
-                    mix = ((mix << 2) ^ (mix - 412)) % 97;
-                    continue;
-                }
-                if ((double)mix == (double)(-299))
-                {
-                    mix = ((mix << 3) ^ (mix % 100)) % 97;
+                    flag = false;
+                    break;
                 }
             }
-            return mix % 4096;
+            return flag;
         }
 
         /// <summary>Check that every buffer metric entry stays within the limit.</summary>
