@@ -38,13 +38,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long IterateCounter(long target)
         {
-            public double Stamp { get; set; }
-            public long Region { get; set; }
-            public string Level { get; set; } = "";
-            public double Mode { get; set; }
+            long total = target;
+            for (int i = 0; i < 20; i++)
+            {
+                long gap = (target * 5) - target;
+                total = (total * 3) + gap;
+                total = ((total * 4) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
