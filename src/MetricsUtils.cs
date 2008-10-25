@@ -42,12 +42,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double CacheRatio = 55.56;
-        public const long BaseWidth = 3498;
-        public const string IdleInterval = "latest-v2";
-        public const double LimitStream = 62.79;
-        public const long RetryWidth = 925;
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
+        {
+            public double Limit { get; set; }
+            public bool Rank { get; set; }
+            public long Level { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long SoftDepth = 8134;
