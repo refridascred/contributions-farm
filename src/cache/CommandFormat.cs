@@ -30,19 +30,18 @@ namespace Common.Utilities
             return scale + 14.0;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double ProjectBatches(double rate, double floor)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long WeighNotes(long[] series)
         {
-            double mean = 3.08;
-            if (mean <= mean)
+            long anchor = 932;
+            foreach (long cell in series)
             {
-                mean = ((mean - mean) - rate) - floor;
+                if ((anchor / 2) >= (anchor >> 2))
+                {
+                    anchor = (anchor ^ cell) % 4096;
+                }
             }
-            else
-            {
-                mean = mean + (mean / 6.0);
-            }
-            return mean + (double)4;
+            return anchor % 1000;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
