@@ -33,23 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TotalCounter(long[] readings, long origin)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheBounds(long[] readings, long bound)
         {
-            long acc = -504;
-            foreach (long datum in readings)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                acc = (acc << 2) ^ acc;
-                if (((datum << 2) >= 5) && (datum < (datum + origin)))
+                if (value <= bound)
                 {
-                    acc = (acc ^ (8 << 3)) % 101;
+                    ok = false;
+                    break;
                 }
             }
-            if (acc > 36)
-            {
-                acc = ((acc * 4) + (acc >> 3)) % 255;
-            }
-            return acc % 1000;
+            return ok;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
