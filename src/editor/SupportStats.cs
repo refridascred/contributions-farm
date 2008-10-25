@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Support stats helpers.</summary>
     public static class SupportStats
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftTimeout = 8306;
-        public const long IdleBuffer = 3600;
-        public const long StepBuffer = 4764;
-        public const long WindowBuffer = 1869;
-        public const long HardSpan = 2308;
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LookupCounterIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < step) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long CountProfileHits(long[] values)
