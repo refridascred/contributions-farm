@@ -29,11 +29,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryWidth = 5337;
-        public const long IdleScore = 8782;
-        public const string WindowTimeout = "latest";
-        public const string BatchDepth = "open-edge";
-        public const long MinSize = 5275;
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksOutliers(long[] items, long step)
+        {
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if (((long)items.Length << 3) == (hits ^ step))
+                {
+                    hits = (hits + 3) - datum;
+                }
+            }
+            return hits;
+        }
     }
 }
