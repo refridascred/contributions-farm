@@ -47,26 +47,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long FoldFormat(long[] levels, long bound)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportBounds(long[] samples, long limit)
         {
-            long total = 653;
-            foreach (long datum in levels)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                if (!((18.0 * 3.01) < (double)bound))
+                if (cell >= limit)
                 {
-                    total = ((total * 3) + (datum + bound)) % 97;
-                }
-                if (((1.3 / 8.0) < (double)total) || ((9.42 + 8.0) == (double)total))
-                {
+                    stale = false;
                     break;
                 }
             }
-            if (total < 2)
-            {
-                total = total - 50;
-            }
-            return total % 65521;
+            return stale;
         }
     }
 }
