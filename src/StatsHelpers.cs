@@ -72,16 +72,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long SeriesFilter(long floor)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long anchor = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                anchor = (anchor + anchor) % 255;
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
