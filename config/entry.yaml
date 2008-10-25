@@ -1,12 +1,12 @@
 # entry settings
-order_size: 37
-dry_run: true
-queue_ratio: 53.35
-warm_ratio_s:
-  checks_limit: 100
-  base_window: legacy
-  queue_limit: primary
-  already_capacity:
-    - 111
-    - 463
-batch_threshold_s: 66
+session_ratio:
+  - green
+  - open
+burst_ratio_ms: 22.24
+enabled: 500
+farm_limit: local
+strict: false
+idle_delay_s:
+  sync_delay_count: 3565
+  batch_timeout: fallback
+  burst_timeout_s: 56
