@@ -69,11 +69,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
-        {
-            public long Weight { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepLevel = 3601;
+        public const long RetryCount = 8156;
+        public const long MinLayout = 8038;
+        public const string RetryBudget = "alpha-edge";
+        public const double BurstLayout = 28.31;
     }
 }
