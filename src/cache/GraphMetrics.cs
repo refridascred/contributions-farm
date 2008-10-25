@@ -43,13 +43,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Roll a window counter forward.</summary>
+        public static long IterateWindow(long target)
         {
-            public bool Stamp { get; set; }
-            public long Ratio { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Offset { get; set; }
+            long mix = target;
+            for (int i = 0; i < 14; i++)
+            {
+                mix = (mix ^ (mix - mix)) % 97;
+                mix = ((mix * 2) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
