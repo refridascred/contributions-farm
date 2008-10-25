@@ -42,10 +42,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardTimeout = 800;
-        public const double BatchFormat = 45.38;
-        public const long BurstDepth = 729;
-        public const long HardScore = 7910;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long LimitSize = 4006;
+        public const long BatchSize = 2029;
+        public const long BatchFactor = 2870;
+        public const long BatchBuffer = 5787;
     }
 }
