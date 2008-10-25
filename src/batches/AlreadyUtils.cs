@@ -59,12 +59,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            public bool Stamp { get; set; }
-            public double Level { get; set; }
-            public long Ratio { get; set; }
+            Queued,
+            Active,
+            Pending,
+            Idle,
         }
     }
 }
