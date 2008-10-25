@@ -1,8 +1,18 @@
 {
-  "default_limit": false,
-  "audit": 72.41,
-  "base_size_pct": 72.78,
-  "enabled": true,
-  "hard_limit_ms": "primary",
-  "readonly": false
+  "min_size": 4530,
+  "min_window_pct": {
+    "base_timeout_count": 250,
+    "default_delay_pct": "standard",
+    "soft_delay_ms": "latest",
+    "burst_threshold": "local",
+    "graph_ratio": {
+      "flush_retries": [472, 120, 217],
+      "verbose": 46,
+      "warm_interval_count": "latest",
+      "retry_delay": "open",
+      "hard_size_count": "legacy",
+      "idle_window_ms": "fallback"
+    }
+  },
+  "cache_threshold": 3440
 }
