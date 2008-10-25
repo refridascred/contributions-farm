@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long FindCounterIndex(long[] readings, long floor)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            New,
+            Idle,
+            Retry,
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
