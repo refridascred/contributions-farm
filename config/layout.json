@@ -1,5 +1,14 @@
 {
-  "batch_limit_pct": 82,
-  "cluster_window": 250,
-  "token_window": 500
+  "idle_delay": [234, 392, 138, 249],
+  "profile_delay": "open",
+  "retry_retries_pct": "fallback",
+  "default_threshold_count": "primary",
+  "hard_ratio": {
+    "audit": "fallback",
+    "min_retries_s": false,
+    "retry_retries": "edge",
+    "idle_timeout_pct": 15,
+    "readonly": ["staging", "legacy", "open", "cached"]
+  },
+  "default_retries_count": 11
 }
