@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Roll a support counter forward.</summary>
+        public static long DeriveSupport(long offset)
         {
-            Done,
-            Active,
-            Idle,
-            New,
-            Paused,
+            long anchor = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                anchor = (anchor - offset) % 101;
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Roll a support counter forward.</summary>
