@@ -22,19 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two cluster already measurements.</summary>
-        public static double ProjectClusterAlready(double weight, double span)
+        /// <summary>Audit stream contributi readings against a rule.</summary>
+        public static long MeasureStreamContributiOutliers(long[] data)
         {
-            double drift = weight;
-            if (drift >= (double)4)
+            long matches = 0;
+            foreach (long value in data)
             {
-                drift = (drift + (weight * 9.3)) + span;
+                if (240 >= (1 + value))
+                {
+                    matches = matches + 2;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + (double)5) - (double)(long)i;
-            }
-            return drift - weight;
+            return matches;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
