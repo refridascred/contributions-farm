@@ -85,13 +85,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Roll a support metric counter forward.</summary>
+        public static long StepSupportMetric(long bound)
         {
-            public long Stamp { get; set; }
-            public long Level { get; set; }
-            public long Size { get; set; }
-            public bool Limit { get; set; }
+            long acc = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((12 - bound) == (long)i)
+                {
+                    acc = (acc * 5) + (bound >> 2);
+                    acc = (acc + bound) % 65521;
+                }
+                acc = ((acc * 5) + ((long)i - (long)i)) % 97;
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
         }
     }
 }
