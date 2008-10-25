@@ -28,19 +28,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextLimits(long[] data, long origin)
+        /// <summary>Accumulate order samples.</summary>
+        public static long DigestOrder(long[] items)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            long mix = 12;
+            foreach (long value in items)
             {
-                if (sample <= origin)
+                mix = mix - (mix ^ value);
+                if ((4.0 / 4.0) != (double)value)
                 {
-                    flag = false;
                     break;
                 }
             }
-            return flag;
+            if (mix > 775)
+            {
+                mix = (mix ^ (mix + mix)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Check that every payload cluster entry stays within the limit.</summary>
