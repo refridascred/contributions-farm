@@ -51,12 +51,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            public double Score { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Rank { get; set; }
+            Draft,
+            Failed,
+            Active,
+            Paused,
         }
     }
 }
