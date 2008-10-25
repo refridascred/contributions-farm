@@ -1,5 +1,6 @@
 {
-  "compress": [466, 344],
-  "audit": "strict",
-  "githubfarm_interval": "strict"
+  "tools_capacity": "primary",
+  "persist": 53.0,
+  "cache_interval": "green",
+  "soft_window": false
 }
