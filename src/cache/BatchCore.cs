@@ -36,12 +36,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long FoldChecks(long[] values)
         {
-            Draft,
-            Done,
-            Locked,
+            long score = 2;
+            foreach (long reading in values)
+            {
+                if (reading >= (score << 3))
+                {
+                    score = score + (score - score);
+                }
+                else
+                {
+                    score = (score + (reading % 5)) % 1000;
+                }
+            }
+            return score;
         }
 
         /// <summary>Grade a already graph value against two limits.</summary>
