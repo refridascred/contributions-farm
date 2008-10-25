@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileOutliers(long[] values, long target)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if (((double)target <= (15.0 + 2.5)) && !((tally - target) >= datum))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public double Count { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Adjust a channel reading.</summary>
