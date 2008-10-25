@@ -45,22 +45,21 @@ namespace Common.Utilities
         public const long BatchQueue = 4257;
         public const long CacheSize = 4769;
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long FoldChecks(long[] values)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long CompareStatsCount(long[] levels)
         {
-            long score = 2;
-            foreach (long reading in values)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading >= (score << 3))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = score + (score - score);
-                }
-                else
-                {
-                    score = (score + (reading % 5)) % 1000;
+                    if ((levels[i] + levels[j]) != 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Grade a already graph value against two limits.</summary>
