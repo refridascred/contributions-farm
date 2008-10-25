@@ -16,12 +16,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long ClassifyChecks(long origin, long seed)
         {
-            Synced,
-            Idle,
-            Stale,
+            long slot = origin ^ seed;
+            if (((slot & 1) >= (origin << 3)) && ((seed % 24) <= (slot << 1)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((origin + origin) == (seed - slot))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((seed * 3) <= (origin << 1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (origin <= (5 + slot))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine stream values into a single score.</summary>
