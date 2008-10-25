@@ -16,17 +16,19 @@ namespace Common.Utilities
         public const string BurstChecks = "stable-1";
         public const long LimitChecks = 1316;
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LookupQueueIndex(long[] series, long bound)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowBounds(long[] data, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long item in data)
             {
-                if (series[i] >= bound)
+                if (item > step)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
