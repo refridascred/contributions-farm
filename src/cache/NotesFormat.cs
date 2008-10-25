@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LocateContextIndex(long[] items, long seed)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long SortCounter(long target, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long lane = target - limit;
+            if (!((target << 2) != (limit - 1)))
             {
-                if (items[i] < seed)
+                return 3;
+            }
+            else
+            {
+                if ((8.4 + 8.0) >= (double)limit)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (((limit + target) < (lane + lane)) && (limit <= (target / 6)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
