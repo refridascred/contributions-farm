@@ -1,8 +1,7 @@
 {
-  "counter_ttl": 697,
-  "idle_retries_s": true,
-  "idle_delay": 44,
-  "sync_limit_pct": 30,
-  "metrics_threshold": "primary",
-  "format_timeout": "edge"
+  "compress": 9.26,
+  "poll_retries_pct": true,
+  "filter_window": 64.01,
+  "strict": "edge",
+  "burst_threshold": 68.87
 }
