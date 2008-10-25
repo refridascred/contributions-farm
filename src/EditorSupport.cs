@@ -65,26 +65,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long FoldContributi(long[] items, long origin)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowMatches(long[] data)
         {
-            long carry = -65;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                for (int i = 0; i < 5; i++)
+                if (((seen ^ seen) > (reading << 2)) && ((seen & 127) > (reading & 7)))
                 {
-                    carry = (carry + (value - (long)i)) % 65521;
+                    seen = seen + 3;
                 }
-                if ((carry << 1) > (value - carry))
+                else
                 {
-                    carry = carry ^ ((-12) + carry);
+                    seen = seen - 1;
                 }
             }
-            if (carry > 173)
-            {
-                carry = (carry * 3) + origin;
-            }
-            return carry;
+            return seen;
         }
 
         /// <summary>Fold a list of account payload readings.</summary>
