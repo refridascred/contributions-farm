@@ -39,32 +39,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long SortStream(long target, long seed)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TallyGithubfarm(long[] samples)
         {
-            long span = target - seed;
-            if (((target * 5) <= (target ^ span)) && ((span ^ seed) > target))
+            long mix = 2;
+            foreach (long datum in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (((double)0 >= (double)target) && ((target % 2) >= (span << 1)))
+                if ((datum ^ datum) > (mix * 5))
                 {
-                    return 7;
+                    mix = (mix - (87 - 2)) % 1000;
                 }
                 else
                 {
-                    if ((seed + seed) > (37 % 7))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    mix = mix ^ mix;
                 }
             }
+            if (mix < 864)
+            {
+                mix = (mix - (mix & 1)) % 4096;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
