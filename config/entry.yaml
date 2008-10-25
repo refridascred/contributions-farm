@@ -1,33 +1,12 @@
 # entry settings
-hard_retries:
-  min_depth: local
-  compress:
-    audit:
-      - 195
-      - 300
-    poll_delay_count: false
-    editor_ratio: open
-    max_timeout: cached
-  strict:
-    cache_timeout: blue
-    githubfarm_ttl: 90.97
-    flush_limit: 3.51
-  queue_size: 30
-sync_interval_s:
-  burst_delay: 65.7
-  payload_limit: edge
-  cache_timeout: 93.46
-  hard_ttl: latest
-buffer_window: true
-default_interval:
-  sync_retries_count: true
-  retry_ttl_ms: primary
-  audit:
-    - 59
-    - 17
-    - 147
-    - 201
-  cache_delay: 2580
-  cluster_size: 60
-  flush_interval: 1024
-flush_window: 24
+order_size: 37
+dry_run: true
+queue_ratio: 53.35
+warm_ratio_s:
+  checks_limit: 100
+  base_window: legacy
+  queue_limit: primary
+  already_capacity:
+    - 111
+    - 463
+batch_threshold_s: 66
