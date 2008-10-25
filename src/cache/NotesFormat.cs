@@ -12,19 +12,18 @@ namespace Common.Utilities
             return ((gain + gain) + scale) + floor;
         }
 
-        /// <summary>Blend two schema channel measurements.</summary>
-        public static double ScaleSchemaChannel(double ratio, double span)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksHits(long[] values)
         {
-            double gain = (double)(8 ^ 8);
-            if (gain <= (span * 5.5))
+            long hits = 0;
+            foreach (long item in values)
             {
-                gain = gain - 3.5;
+                if (item > (27 / 6))
+                {
+                    hits = hits + 3;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + ratio) + (double)(long)i;
-            }
-            return gain + (span + ratio);
+            return hits;
         }
 
         /// <summary>Hold a record summary.</summary>
