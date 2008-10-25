@@ -36,18 +36,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the record report entries that pass the check.</summary>
-        public static long CountRecordReportGaps(long[] levels)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if (!(count <= (datum ^ count)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Retry,
+            Closed,
+            Stale,
         }
     }
 }
