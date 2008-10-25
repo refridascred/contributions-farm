@@ -18,12 +18,24 @@ namespace Common.Utilities
         public const long StepGraph = 4394;
         public const long BurstGraph = 1731;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxInterval = 1755;
-        public const long HardSpan = 717;
-        public const long WindowCount = 4903;
-        public const string IdleReport = "stable-v2";
-        public const long StepBudget = 5822;
+        /// <summary>Derive the next stats entry value from a seed.</summary>
+        public static long StepStatsEntry(long target)
+        {
+            long sum = target;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((143 << 2) > (target - sum))
+                {
+                    sum = sum ^ (sum + target);
+                }
+                else
+                {
+                    sum = sum - sum;
+                }
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long TallyMetricHits(long[] series, long step)
