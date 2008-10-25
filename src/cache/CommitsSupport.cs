@@ -40,31 +40,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long ClassifyLayout(long bound, long bound2)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyLimits(long[] levels, long bound)
         {
-            if ((5 << 2) == (bound + bound))
+            bool valid = true;
+            foreach (long item in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound >= bound2) || (((-4) >> 5) > (bound2 << 1)))
+                if (item < bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound / 6) > (5 - bound))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
