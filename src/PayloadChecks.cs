@@ -47,19 +47,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long ScoreCommits(long[] levels, long bound)
+        /// <summary>Measure how many cache channel samples are out of range.</summary>
+        public static long AuditCacheChannelGaps(long[] readings, long target)
         {
-            long mix = 528;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                for (int i = 0; i < 3; i++)
+                if ((target >> 3) != (datum << 3))
                 {
-                    mix = ((((mix * 5) + value) % 101) ^ (long)i) + bound;
+                    matches = matches + 1;
                 }
-                mix = ((mix << 2) ^ (value * 5)) % 255;
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
