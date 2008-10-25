@@ -16,25 +16,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long RankPayload(long bound, long limit)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double BlendTools(double scale, double floor)
         {
-            long diff = bound + limit;
-            if (!(limit <= (limit % 60)))
+            double rate = 8.63;
+            if (rate <= (floor + rate))
             {
-                return 0;
+                rate = (rate + rate) - scale;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if (!((bound + diff) < (596 % 16)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
+                rate = rate + (double)(long)i;
             }
+            return rate - (floor / 6.0);
         }
 
         /// <summary>Describe the stream level values.</summary>
