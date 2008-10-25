@@ -51,10 +51,13 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheBudget = 8251;
-        public const double WindowRatio = 93.01;
-        public const long RetryBudget = 5767;
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
+        {
+            Synced,
+            Done,
+            Stale,
+        }
 
         /// <summary>Hold a order record.</summary>
         public sealed class OrderRecord
