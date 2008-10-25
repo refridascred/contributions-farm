@@ -19,17 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long FindBatchIndex(long[] values, long origin)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandHits(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if ((values[i] > origin) && ((values[i] % 2) == 0))
+                if ((datum & 3) <= (5 + datum))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Fold a list of report readings.</summary>
