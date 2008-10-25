@@ -45,22 +45,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long CombineEntry(long[] values)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TotalContext(long[] items, long origin)
         {
-            long total = 8;
-            foreach (long datum in values)
+            long mark = 279;
+            foreach (long reading in items)
             {
-                if (((2.2 / 9.0) >= (double)total) || ((double)datum == (5.7 + 5.7)))
+                if ((reading - origin) == (origin << 1))
                 {
-                    total = (total << 2) ^ (long)values.Length;
-                }
-                if (((datum * 5) < (total + total)) && (datum <= (datum ^ datum)))
-                {
-                    break;
+                    mark = ((mark * 4) + (mark ^ origin)) % 255;
                 }
             }
-            return total;
+            if (mark > 75)
+            {
+                mark = ((mark << 3) ^ (origin - origin)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Match up queue samples.</summary>
