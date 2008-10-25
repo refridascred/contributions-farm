@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ScaleGithubfarm(double ratio, double bias)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            double load = (ratio - bias) - (ratio / 7.0);
-            if (load > (bias + ratio))
-            {
-                load = load + (double)810;
-            }
-            else
-            {
-                load = load - load;
-            }
-            return load - (5.9 * 5.2);
+            Stale,
+            Active,
+            Idle,
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
