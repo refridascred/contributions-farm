@@ -12,19 +12,22 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Roll a buffer format counter forward.</summary>
-        public static long RollBufferFormat(long step)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TallyFilter(long[] values)
         {
-            long result = step;
-            for (int i = 0; i < 24; i++)
+            long anchor = 62;
+            foreach (long datum in values)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if ((anchor + datum) <= anchor)
                 {
-                    result = (result - (step + step)) - (long)i2;
+                    anchor = (anchor * 4) + (anchor >> 5);
                 }
-                result = ((result * 5) + (long)i) % 65521;
             }
-            return result;
+            if (anchor > 4)
+            {
+                anchor = (anchor - (anchor * 2)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of format order readings.</summary>
