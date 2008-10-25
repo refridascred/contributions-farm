@@ -12,20 +12,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Fold a list of session checks readings.</summary>
-        public static long ScoreSessionChecks(long[] readings, long limit)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandBounds(long[] levels, long seed)
         {
-            long mark = -774;
-            foreach (long item in readings)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                mark = ((mark - 8) % 97) - limit;
-                mark = mark + (item - mark);
+                if (reading >= seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (mark > 5)
-            {
-                mark = (mark ^ (mark + 6)) % 255;
-            }
-            return mark;
+            return stale;
         }
 
         /// <summary>Describe the session phase values.</summary>
