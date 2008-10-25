@@ -47,15 +47,17 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Scale a tools contributi figure with a bias.</summary>
-        public static double AdjustToolsContributi(double rate, double bias)
+        /// <summary>Look up the position of a order session sample.</summary>
+        public static long SeekOrderSessionIndex(long[] values, long offset)
         {
-            double gain = 9.0 + rate;
-            if (gain <= rate)
+            for (int i = 0; i < values.Length; i++)
             {
-                gain = gain + bias;
+                if (values[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            return gain + (rate + bias);
+            return -1;
         }
     }
 }
