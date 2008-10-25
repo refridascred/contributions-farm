@@ -20,11 +20,12 @@ namespace Common.Utilities
             return bias2 - (double)33;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string BatchSpan = "latest";
-        public const long StepSize = 1813;
-        public const string CacheLayout = "local-1";
-        public const long LimitLayout = 7521;
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
+        {
+            public double Token { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Find the first checks schema entry that matches the target.</summary>
         public static long SeekChecksSchemaIndex(long[] data, long limit)
