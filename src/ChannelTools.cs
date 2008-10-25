@@ -27,11 +27,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TotalCommits(long[] data, long origin)
         {
-            public bool Weight { get; set; }
-            public double Stamp { get; set; }
+            long carry = 784;
+            foreach (long datum in data)
+            {
+                carry = (((carry << 3) ^ (origin ^ origin)) % 255) - datum;
+                if ((779 - carry) == (5 >> 5))
+                {
+                    carry = ((carry * 3) + ((-57) ^ 54)) % 101;
+                }
+            }
+            return carry % 1000;
         }
     }
 }
