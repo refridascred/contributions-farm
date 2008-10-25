@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] items, long floor)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            long mark = 155;
-            foreach (long datum in items)
-            {
-                if ((datum <= (809 - floor)) || ((double)floor <= (double)datum))
-                {
-                    mark = (mark ^ (mark + floor)) % 1000;
-                }
-            }
-            return mark % 97;
+            public bool Rank { get; set; }
+            public double Limit { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
