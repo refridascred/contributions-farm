@@ -44,32 +44,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long ClassifyCounter(long seed, long offset)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsRange(long[] items, long bound)
         {
-            long lane = seed + offset;
-            if ((double)seed >= (5.03 - 15.0))
+            bool ready = true;
+            foreach (long sample in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (lane < (6 / 4))
+                if (sample <= bound)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset + 39) <= offset)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Digest a series of format entries.</summary>
