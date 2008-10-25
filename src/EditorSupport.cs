@@ -20,12 +20,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxCommand = 7174;
-        public const string CacheCommand = "open-1";
-        public const string LimitDepth = "staging-1";
-        public const long RetryCommand = 3874;
-        public const long MinCommand = 9938;
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long StepCommits(long step)
+        {
+            long sum = step;
+            for (int i = 0; i < 21; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Derive the next token value from a seed.</summary>
         public static long SeriesToken(long seed)
