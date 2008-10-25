@@ -18,9 +18,19 @@ namespace Common.Utilities
         public const long StepSpan = 5526;
         public const long LimitCounter = 1897;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultGraph = 4878;
-        public const double CacheDepth = 22.66;
-        public const long SoftGraph = 7749;
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamBounds(long[] items, long limit)
+        {
+            bool found = true;
+            foreach (long cell in items)
+            {
+                if (cell > limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
