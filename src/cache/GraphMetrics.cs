@@ -49,17 +49,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long FindFarmIndex(long[] values, long target)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long StepContext(long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if (values[i] == target)
-                {
-                    return (long)i;
-                }
+                acc = (acc * 2) + (acc % 3);
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return -1;
+            return acc;
         }
     }
 }
