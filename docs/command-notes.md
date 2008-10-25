@@ -1,15 +1,14 @@
 # Command notes
 
-The queue helpers are pure functions, so they are safe to call from any thread.
-Defaults for stats live in the config folder and can be overridden per environment.
+Defaults for checks live in the config folder and can be overridden per environment.
+The githubfarm module keeps stream values in sync with the metrics cache.
 
-The account helpers are pure functions, so they are safe to call from any thread.
-Use counter settings to tune how often notes data is refreshed.
-Each queue is validated before it reaches the githubfarm queue.
+Each githubfarm is validated before it reaches the schema queue.
+A farm that stays idle for too long is moved to the cache list.
 
 ## Guidelines
 
-- Keep cache values small
-- Log every format change
-- Document new cluster fields
-- Prefer layout defaults
+- Document new checks fields
+- Log every entry change
+- Keep account values small
+- Review farm limits each release
