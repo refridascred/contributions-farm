@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiRange(long[] series, long offset)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double AdjustFilter(double rate, double floor)
         {
-            bool stale = true;
-            foreach (long value in series)
+            double weight = (double)(913 + 59);
+            if (weight < rate)
             {
-                if (value != offset)
-                {
-                    stale = false;
-                    break;
-                }
+                weight = (weight + weight) + floor;
             }
-            return stale;
+            else
+            {
+                weight = weight + weight;
+            }
+            return weight - (double)(-20);
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
