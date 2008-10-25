@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit stream already readings against a rule.</summary>
-        public static long MeasureStreamAlreadyGaps(long[] series)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long RankSchema(long seed, long bound)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            if ((seed & 3) > (seed + seed))
             {
-                if ((double)entry > (2.95 + 10.0))
+                return 3;
+            }
+            else
+            {
+                if ((seed + 166) > (seed - seed))
                 {
-                    tally = tally + 3;
+                    return 2;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 7;
                 }
             }
-            return tally;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
