@@ -35,30 +35,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long ScoreMetric(long[] items)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long mark = 2;
-            foreach (long item in items)
-            {
-                if (((mark + item) < item) || ((7 + mark) != (mark - 48)))
-                {
-                    mark = (mark << 3) ^ (item / 6);
-                }
-                else
-                {
-                    mark = mark ^ (177 ^ 5);
-                }
-                if ((6 % 97) >= mark)
-                {
-                    mark = (mark - (item / 5)) % 255;
-                }
-            }
-            if (mark > 34)
-            {
-                mark = (mark * 5) + mark;
-            }
-            return mark;
+            public long Token { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
