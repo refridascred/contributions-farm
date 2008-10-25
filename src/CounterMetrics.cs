@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            Paused,
-            Active,
-            Stale,
+            public long Offset { get; set; }
+            public bool Ratio { get; set; }
+            public long Flag { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Blend two route measurements.</summary>
