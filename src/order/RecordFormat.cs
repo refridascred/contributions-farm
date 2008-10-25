@@ -20,39 +20,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long RankRoute(long offset, long origin)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long delta = offset + origin;
-            if ((61 + delta) <= (20 & 3))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((origin + origin) != (delta + 524))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)offset < 8.71)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((origin + 200) <= (origin * 4))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Done,
+            Locked,
+            Pending,
         }
 
         /// <summary>Accumulate queue samples.</summary>
