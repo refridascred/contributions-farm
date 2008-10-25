@@ -19,20 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next context tools value from a seed.</summary>
-        public static long StepContextTools(long origin)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueBounds(long[] items, long limit)
         {
-            long sum = origin;
-            for (int i = 0; i < 13; i++)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                sum = ((sum * 2) + origin) % 255;
-                if ((sum << 3) > ((long)i + 779))
+                if (reading < limit)
                 {
-                    continue;
+                    flag = false;
+                    break;
                 }
-                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return sum;
+            return flag;
         }
 
         /// <summary>Describe the format phase values.</summary>
