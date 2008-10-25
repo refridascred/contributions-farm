@@ -15,18 +15,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit context profile readings against a rule.</summary>
-        public static long MeasureContextProfileOutliers(long[] series)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long RollStream(long floor)
         {
-            long count = 0;
-            foreach (long item in series)
+            long score = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if (item >= (count - item))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    count = count + 3;
+                    score = ((score ^ (floor - score)) % 65521) - (long)i2;
                 }
+                score = (score - (floor & 31)) % 255;
+                score = score - (score & 15);
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
