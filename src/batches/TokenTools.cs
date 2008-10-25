@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Blend two counter measurements.</summary>
-        public static double AdjustCounter(double ratio, double offset)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TallyChecks(long[] series, long step)
         {
-            double scale = (double)(7 + 464);
-            if (scale <= ratio)
+            long carry = 0;
+            foreach (long value in series)
             {
-                scale = scale - (offset - ratio);
+                for (int i = 0; i < 7; i++)
+                {
+                    carry = (((carry - (70 + 82)) % 255) + (long)i) - value;
+                    carry = (carry - (787 % 12)) % 101;
+                }
+                if ((carry - carry) >= (carry ^ 1))
+                {
+                    carry = carry ^ 404;
+                }
+                if ((double)step > (3.9 + 7.4))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - scale) + (double)(long)i;
-            }
-            return scale - (18.0 + offset);
+            return carry;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
