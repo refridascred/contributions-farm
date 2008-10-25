@@ -21,18 +21,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryMatches(long[] items, long floor)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((floor / 7) < (floor >> 4))
-                {
-                    count = (count + 2) + entry;
-                }
-            }
-            return count;
+            New,
+            Ready,
+            Stale,
         }
 
         /// <summary>Match up farm samples.</summary>
