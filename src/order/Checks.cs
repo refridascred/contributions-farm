@@ -38,18 +38,10 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long SeekFilterIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleFactor = 7272;
+        public const double SoftSpan = 35.08;
+        public const double HardDepth = 7.62;
 
         /// <summary>Hold a payload stats.</summary>
         public sealed class PayloadStats
