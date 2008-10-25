@@ -28,12 +28,10 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
-        {
-            public bool Rank { get; set; }
-            public string Size { get; set; } = "";
-            public long Limit { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowFormat = 4261;
+        public const double HardFormat = 80.36;
+        public const double BatchSpan = 34.29;
+        public const long MaxFormat = 998;
     }
 }
