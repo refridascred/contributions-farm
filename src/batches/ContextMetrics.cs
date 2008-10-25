@@ -35,18 +35,38 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaMatches(long[] data)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long SortSupport(long target, long offset)
         {
-            long count = 0;
-            foreach (long value in data)
+            if ((0.1 + 9.7) >= (double)offset)
             {
-                if ((count >> 5) < (3 + count))
+                return 3;
+            }
+            else
+            {
+                if (!(target >= offset))
                 {
-                    count = (count + 2) ^ value;
+                    return 7;
+                }
+                else
+                {
+                    if (((0.05 + 3.0) <= (double)offset) && ((offset >> 4) <= (952 + 3)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((target < offset) && ((double)offset == (3.0 - 18.0)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
