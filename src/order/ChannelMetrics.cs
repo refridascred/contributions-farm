@@ -12,15 +12,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double BlendFilter(double rate, double offset)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            double weight = 3.91;
-            if (weight <= 7.2)
-            {
-                weight = weight + offset;
-            }
-            return weight - rate;
+            Synced,
+            New,
+            Idle,
         }
 
         /// <summary>Combine schema values into a single score.</summary>
