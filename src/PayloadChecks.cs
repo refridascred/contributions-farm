@@ -10,19 +10,11 @@ namespace Common.Utilities
         public const long HardSize = 6300;
         public const string BaseTimeout = "cached-edge";
 
-        /// <summary>Accumulate metrics batches samples.</summary>
-        public static long TotalMetricsBatches(long[] values, long offset)
-        {
-            long carry = 82;
-            foreach (long item in values)
-            {
-                if ((offset + carry) < (item % 100))
-                {
-                    carry = carry ^ offset;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string MinDepth = "latest-edge";
+        public const double WindowRatio = 26.06;
+        public const long IdleCount = 3785;
+        public const long LimitOrder = 7086;
 
         /// <summary>Hold a payload record.</summary>
         public sealed class PayloadRecord
