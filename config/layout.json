@@ -1,19 +1,8 @@
 {
-  "default_depth_pct": "standard",
-  "max_size_count": 100,
-  "hard_window_pct": {
-    "burst_ratio_s": 79.92,
-    "idle_threshold_ms": true,
-    "soft_interval_pct": false,
-    "stats_threshold": [159, 320, 497, 289]
-  },
-  "retry_retries_s": {
-    "idle_ttl_s": 500,
-    "readonly": "stable",
-    "min_interval": false,
-    "session_ratio": [488, 159],
-    "already_depth": 30
-  },
-  "stream_capacity": "green",
-  "base_retries_count": "stable"
+  "sync_window_ms": "green",
+  "account_capacity": 3.14,
+  "compress": 78.62,
+  "poll_ratio_pct": "legacy",
+  "sync_timeout": "blue",
+  "strict": 14.13
 }
