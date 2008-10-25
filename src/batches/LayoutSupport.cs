@@ -69,31 +69,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long ScoreBatch(long[] levels)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long result = 5;
-            foreach (long cell in levels)
-            {
-                if ((536 - cell) >= (result * 4))
-                {
-                    result = (result << 2) ^ (cell + result);
-                    continue;
-                }
-                else
-                {
-                    result = ((result * 5) + (cell % 10)) % 97;
-                }
-                if (((8 / 4) <= cell) && (7.5 < (double)cell))
-                {
-                    result = result - (cell + 0);
-                }
-                else
-                {
-                    result = (result * 2) + (cell * 2);
-                }
-            }
-            return result % 97;
+            New,
+            Failed,
+            Stale,
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
