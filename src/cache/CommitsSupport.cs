@@ -63,20 +63,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextBounds(long[] data, long bound)
-        {
-            bool flag = true;
-            foreach (long cell in data)
-            {
-                if (cell <= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowRatio = 5745;
+        public const string RetrySize = "legacy-1";
+        public const long BurstReport = 5989;
+        public const long StepReport = 6058;
 
         /// <summary>Measure how many cache notes samples are out of range.</summary>
         public static long TallyCacheNotesMatches(long[] values, long target)
