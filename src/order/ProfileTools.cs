@@ -32,16 +32,21 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long SeriesGraph(long target)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long OverlapGithubfarmCount(long[] items)
         {
-            long mix = target;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = ((mix << 3) ^ (target - target)) % 65521;
-                mix = ((mix * 5) + (long)i) % 1000;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Audit profile checks readings against a rule.</summary>
