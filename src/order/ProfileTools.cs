@@ -20,14 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long CombineCluster(long[] samples, long target)
         {
-            Failed,
-            Retry,
-            Done,
-            Draft,
-            Locked,
+            long acc = -29;
+            foreach (long item in samples)
+            {
+                if (((double)acc >= 4.5) || (913 < (acc * 2)))
+                {
+                    acc = (((acc * 3) + (7 / 7)) % 4096) - item;
+                }
+            }
+            if (acc < (-484))
+            {
+                acc = (acc + (target >> 3)) % 255;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
