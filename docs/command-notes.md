@@ -1,16 +1,14 @@
 # Command notes
 
-Each metric is validated before it reaches the notes queue.
-Keep tools and filter names short and lowercase.
-A schema that stays idle for too long is moved to the profile list.
+The schema report groups every counter by token.
+A metric that stays idle for too long is moved to the contributi list.
 
-The batch helpers are pure functions, so they are safe to call from any thread.
-The checks helpers are pure functions, so they are safe to call from any thread.
-The schema module keeps stream values in sync with the counter cache.
+The command module keeps tools values in sync with the cluster cache.
+Keep buffer and stats names short and lowercase.
+Run the session check before changing any route limits.
 
 ## Guidelines
 
-- Prefer batch defaults
-- Validate commits input early
-- Review commits limits each release
-- Document new channel fields
+- Validate contributi input early
+- Prefer schema defaults
+- Log every support change
