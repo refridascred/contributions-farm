@@ -20,15 +20,18 @@ namespace Common.Utilities
             return rate + 0.6;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsOutliers(long[] values)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long PairWindowCount(long[] samples)
         {
             long seen = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample > seen)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((samples[i] ^ samples[j]) != 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
