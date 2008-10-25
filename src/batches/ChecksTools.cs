@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            public long Label { get; set; }
-            public long Flag { get; set; }
+            Synced,
+            Pending,
+            Done,
+            Queued,
+            Closed,
         }
 
         /// <summary>Describe the graph kind values.</summary>
