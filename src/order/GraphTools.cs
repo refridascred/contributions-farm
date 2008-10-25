@@ -21,12 +21,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Measure how many channel route samples are out of range.</summary>
+        public static long AuditChannelRouteGaps(long[] levels)
         {
-            New,
-            Ready,
-            Stale,
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((((tally + tally) < 15) || ((double)cell >= (double)tally)) && ((6.2 * 7.59) == (double)tally))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up farm samples.</summary>
