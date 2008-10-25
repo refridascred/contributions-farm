@@ -61,10 +61,22 @@ namespace Common.Utilities
             return mean - (bias / 2.0);
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double IdleChannel = 94.27;
-        public const long SoftTimeout = 8315;
-        public const long IdleLevel = 3950;
-        public const long LimitChannel = 3577;
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long WeighLayout(long[] samples, long floor)
+        {
+            long acc = 399;
+            foreach (long cell in samples)
+            {
+                if (!((floor - 889) > (cell & 1)))
+                {
+                    acc = (acc + cell) % 97;
+                }
+            }
+            if (acc < 856)
+            {
+                acc = (acc ^ (acc + acc)) % 4096;
+            }
+            return acc;
+        }
     }
 }
