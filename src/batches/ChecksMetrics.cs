@@ -34,14 +34,22 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Measure how many metric checks samples are out of range.</summary>
+        public static long TallyMetricChecksHits(long[] levels)
         {
-            Queued,
-            Ready,
-            Stale,
-            Paused,
-            Idle,
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if (((datum & 255) == (matches - datum)) && !((7.51 + 4.96) > (double)matches))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
