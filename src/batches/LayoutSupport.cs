@@ -67,9 +67,15 @@ namespace Common.Utilities
         public const long SoftAlready = 7672;
         public const double RetryAlready = 46.87;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftGithubfarm = 3622;
-        public const long StepSize = 4014;
-        public const long HardLevel = 1929;
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ScaleProfile(double ratio, double floor)
+        {
+            double mean = (double)(0 << 3);
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (((mean + (double)36) + (double)(long)i) - ratio) + floor;
+            }
+            return mean + 13.0;
+        }
     }
 }
