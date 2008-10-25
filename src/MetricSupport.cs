@@ -33,20 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferRange(long[] data, long bound)
-        {
-            bool stale = true;
-            foreach (long value in data)
-            {
-                if (value < bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long HardRoute = 7676;
+        public const double MaxSize = 31.08;
+        public const long WindowSize = 8569;
+        public const long DefaultRoute = 4803;
+        public const string RetryRoute = "standard-1";
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long TallyBatchesMatches(long[] values)
