@@ -1,13 +1,17 @@
 # githubfarm settings
-support_capacity: staging
-persist: fallback
-max_ratio: legacy
-batch_ttl:
-  - 431
-  - 159
-  - 263
-entry_threshold:
-  - fallback
-  - strict
-  - open
-base_delay: 30
+flush_retries_s:
+  strict: local
+  flush_ttl_count: 23.15
+  burst_depth_pct: 500
+  dry_run: cached
+  warm_threshold: 3356
+burst_threshold_s: strict
+sync_threshold: 8590
+default_size:
+  flush_threshold: false
+  min_interval: 6
+  retry_threshold_pct: stable
+  record_ttl: 60
+  enabled: local
+base_depth: false
+poll_depth: false
