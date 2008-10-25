@@ -1,16 +1,13 @@
 # entry settings
-verbose:
-  hard_limit: 39.17
-  soft_ratio_ms: 24
-  cache_timeout_pct: 1888
-  cache_ttl_s: staging
-  default_retries: green
-  hard_retries: 63.92
-metric_limit:
-  retry_window: 250
-  compress: eu-west
-  verbose: 100
-  max_size_ms: blue
-  max_ttl_count: 594
-  burst_delay_ms: 34.48
-hard_size_ms: true
+flush_delay_s:
+  - legacy
+  - green
+  - stable
+persist: 500
+soft_limit:
+  - fallback
+  - latest
+  - fallback
+  - eu-west
+max_ratio_ms: staging
+enabled: 4187
