@@ -48,15 +48,15 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Derive the next tools token value from a seed.</summary>
-        public static long IterateToolsToken(long seed)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long DeriveAlready(long bound)
         {
-            long sum = seed;
-            for (int i = 0; i < 10; i++)
+            long mark = bound;
+            for (int i = 0; i < 4; i++)
             {
-                sum = ((sum * 5) + (long)i) % 4093;
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return sum;
+            return mark;
         }
 
         /// <summary>Grade a cluster stats value against two limits.</summary>
