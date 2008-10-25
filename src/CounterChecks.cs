@@ -15,31 +15,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long BucketRecord(long offset, long step)
+        /// <summary>Check that every context format entry stays within the limit.</summary>
+        public static bool GuardContextFormatBounds(long[] readings, long bound)
         {
-            if ((offset - step) <= (offset >> 5))
+            bool valid = true;
+            foreach (long item in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (21 < (step + offset))
+                if (item >= bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (4 > (offset ^ step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Accumulate graph samples.</summary>
