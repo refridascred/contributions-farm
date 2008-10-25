@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Adjust a order reading.</summary>
-        public static double ScaleOrder(double weight, double offset)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            double scale = offset;
-            return (scale + (double)(-315)) + weight;
+            public long Label { get; set; }
+            public bool Count { get; set; }
+            public string Region { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Classify a order batch pair into a bucket.</summary>
