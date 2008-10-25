@@ -28,12 +28,9 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
-        {
-            public bool Token { get; set; }
-            public string Count { get; set; } = "";
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstSchema = 2971;
+        public const long RetryWidth = 6649;
+        public const string BatchSpan = "standard-1";
     }
 }
