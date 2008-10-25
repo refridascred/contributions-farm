@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double RetryRatio = 19.81;
-        public const string DefaultRoute = "alpha";
-        public const long MinRoute = 7938;
-        public const long HardScore = 8849;
-        public const long RetrySize = 3680;
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long PairReportCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Project the next entry value.</summary>
         public static double ProjectEntry(double bias, double bias2)
