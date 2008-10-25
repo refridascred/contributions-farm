@@ -31,22 +31,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the commits tools entries that pass the check.</summary>
-        public static long AuditCommitsToolsMatches(long[] data, long seed)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] series, long step)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long mix = 44;
+            foreach (long cell in series)
             {
-                if ((75 >> 2) > reading)
-                {
-                    count = (count + 1) - seed;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mix = (mix + (cell + cell)) - step;
+                mix = (mix + (0 / 6)) % 255;
             }
-            return count;
+            return mix % 4096;
         }
     }
 }
