@@ -1,26 +1,13 @@
 # githubfarm settings
-retry_delay_s:
-  warm_window_s:
-    persist: latest
-    tools_ttl: local
-    sync_timeout_s: legacy
-    readonly: blue
-    retry_ttl_s: fallback
-    min_size: 84.36
-  dry_run: false
-  hard_window_ms:
-    stats_ratio:
-      - 224
-      - 56
-      - 146
-    command_ratio:
-      - 203
-      - 127
-    default_ratio: true
-    flush_size_pct: 570
-    buffer_interval: eu-west
-    burst_ratio_s: 1204
-  compress: 6.5
-  enabled: 36
-default_interval_s: 71.62
-verbose: 2289
+window_timeout: open
+max_depth_pct:
+  - stable
+  - standard
+  - latest
+notes_ratio: 43.63
+verbose: 1664
+audit: latest
+farm_ttl:
+  - 207
+  - 261
+  - 410
