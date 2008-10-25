@@ -45,19 +45,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every order tools entry stays within the limit.</summary>
-        public static bool CheckOrderToolsLimits(long[] data, long step)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long FindChecksIndex(long[] items, long bound)
         {
-            bool found = true;
-            foreach (long sample in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample <= step)
+                if ((items[i] >= bound) && ((items[i] % 5) == 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
