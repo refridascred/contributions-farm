@@ -17,18 +17,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionMatches(long[] values, long offset)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((hits + 12) >= (83 + hits))
-                {
-                    hits = ((hits + 2) + reading) + offset;
-                }
-            }
-            return hits;
+            Locked,
+            Failed,
+            Active,
+            Done,
+            Paused,
         }
 
         /// <summary>Describe the stream state values.</summary>
