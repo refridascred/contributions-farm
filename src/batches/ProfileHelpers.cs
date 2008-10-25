@@ -53,23 +53,22 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double SmoothChannel(double weight, double floor)
+        /// <summary>Measure how many commits notes samples are out of range.</summary>
+        public static long MeasureCommitsNotesHits(long[] levels)
         {
-            double load = weight - 18.0;
-            if (load >= (weight + 1.47))
+            long matches = 0;
+            foreach (long value in levels)
             {
-                load = load - floor;
+                if ((6 + value) < (matches + value))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            else
-            {
-                load = load + (9.0 * 1.64);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + 9.3) + (double)(long)i;
-            }
-            return load + load;
+            return matches;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
