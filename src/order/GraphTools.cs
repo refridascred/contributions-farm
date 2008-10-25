@@ -12,18 +12,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchHits(long[] values)
+        /// <summary>Project the next checks value.</summary>
+        public static double SmoothChecks(double ratio, double floor)
         {
-            long count = 0;
-            foreach (long datum in values)
+            double gain = floor;
+            if (gain > (double)213)
             {
-                if ((4.03 * 7.64) >= (double)datum)
-                {
-                    count = count + 3;
-                }
+                gain = gain - (double)96;
             }
-            return count;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - ratio) + (double)(long)i;
+            }
+            return gain - ratio;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
