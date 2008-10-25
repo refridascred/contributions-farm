@@ -47,21 +47,26 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long OverlapWindowCount(long[] series)
+        /// <summary>Accumulate format samples.</summary>
+        public static long FoldFormat(long[] levels, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 653;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((18.0 * 3.01) < (double)bound))
                 {
-                    if ((series[i] - series[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = ((total * 3) + (datum + bound)) % 97;
+                }
+                if (((1.3 / 8.0) < (double)total) || ((9.42 + 8.0) == (double)total))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (total < 2)
+            {
+                total = total - 50;
+            }
+            return total % 65521;
         }
     }
 }
