@@ -5,39 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long RankSession(long floor, long offset)
-        {
-            if ((floor - offset) <= (offset ^ floor))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((floor + 72) >= (floor / 8))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor >> 5) == (572 + 461))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((offset << 2) != (offset - offset)) || ((offset - floor) <= (floor - offset)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double LimitCluster = 38.37;
+        public const long BatchCluster = 6234;
+        public const string MinCluster = "latest";
 
         /// <summary>Hold a entry snapshot.</summary>
         public sealed class EntrySnapshot
