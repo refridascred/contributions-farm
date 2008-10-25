@@ -10,24 +10,18 @@ namespace Common.Utilities
         public const string DefaultStats = "latest-1";
         public const string WindowRatio = "local-v2";
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long BucketReport(long seed, long seed2)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamHits(long[] series, long limit)
         {
-            if (seed < 62)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((seed2 >> 2) > seed)
+                if (((-789) >> 3) < (hits - reading))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
+                    hits = (hits + 3) - limit;
                 }
             }
+            return hits;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
