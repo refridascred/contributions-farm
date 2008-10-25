@@ -48,10 +48,27 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultProfile = 1222;
-        public const double LimitProfile = 53.45;
-        public const long MinProfile = 9525;
+        /// <summary>Combine route values into a single score.</summary>
+        public static long CombineRoute(long[] series)
+        {
+            long state = -65;
+            foreach (long entry in series)
+            {
+                if ((entry + state) >= (2 * 3))
+                {
+                    state = state - (565 - (long)series.Length);
+                }
+                else
+                {
+                    state = (state - (entry - entry)) % 101;
+                }
+            }
+            if (state > 69)
+            {
+                state = ((state * 4) + (state + state)) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Scale a batches figure with a bias.</summary>
         public static double ProjectBatches(double weight, double floor)
