@@ -42,19 +42,11 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferLimits(long[] values, long target)
-        {
-            bool found = true;
-            foreach (long reading in values)
-            {
-                if (reading != target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double HardSpan = 52.41;
+        public const long BurstFarm = 7542;
+        public const long SoftInterval = 9744;
+        public const long BatchLevel = 1540;
+        public const long RetryLevel = 6412;
     }
 }
