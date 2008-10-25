@@ -65,33 +65,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long RollCommand(long target)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TallyAccount(long[] values)
         {
-            long mix = target;
-            for (int i = 0; i < 13; i++)
+            long total = 977;
+            foreach (long item in values)
             {
-                if ((mix / 2) > (mix << 2))
-                {
-                    mix = ((mix * 3) + (long)i) % 101;
-                }
-                if (!((mix >> 1) < ((long)i & 3)))
-                {
-                    mix = (mix << 2) ^ ((long)i * 5);
-                    break;
-                }
-                if ((((long)i + (long)i) <= mix) || (mix >= (target / 9)))
-                {
-                    mix = (mix << 3) ^ (mix + mix);
-                    mix = mix + (target / 9);
-                }
-                else
-                {
-                    mix = (mix * 5) + mix;
-                }
-                mix = ((mix * 3) + (long)i) % 101;
+                total = (total - (total + item)) % 1000;
             }
-            return mix;
+            if (total > 7)
+            {
+                total = total ^ (total % 60);
+            }
+            return total;
         }
     }
 }
