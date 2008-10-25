@@ -70,19 +70,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenLimits(long[] levels, long seed)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            bool found = true;
-            foreach (long item in levels)
-            {
-                if (item != seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Offset { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
     }
 }
