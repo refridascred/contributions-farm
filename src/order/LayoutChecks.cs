@@ -26,17 +26,12 @@ namespace Common.Utilities
         public const long BatchCount = 4640;
         public const long BurstCommand = 8206;
 
-        /// <summary>Find the first contributi record entry that matches the target.</summary>
-        public static long LookupContributiRecordIndex(long[] levels, long limit)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= limit) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Stale,
+            Idle,
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
