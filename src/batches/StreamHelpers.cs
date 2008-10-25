@@ -38,19 +38,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsBounds(long[] samples, long seed)
+        /// <summary>Audit account report readings against a rule.</summary>
+        public static long TallyAccountReportOutliers(long[] values, long target)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long item in values)
             {
-                if (reading >= seed)
+                if ((count + 764) > (count - target))
                 {
-                    stale = false;
-                    break;
+                    count = (count + 2) - item;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Find the first order route entry that matches the target.</summary>
