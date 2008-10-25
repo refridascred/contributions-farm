@@ -1,6 +1,23 @@
 {
-  "persist": 56.43,
-  "default_delay": false,
-  "max_retries_ms": false,
-  "enabled": false
+  "enabled": false,
+  "flush_interval_pct": {
+    "max_timeout_ms": 100,
+    "poll_retries_s": {
+      "cache_window": 66.11,
+      "entry_delay": "strict",
+      "flush_depth_ms": true
+    },
+    "hard_threshold_s": {
+      "batches_ttl": "fallback",
+      "idle_timeout": "blue",
+      "max_retries_pct": [35, 277],
+      "soft_depth": 97.47,
+      "readonly": "primary"
+    },
+    "base_limit_pct": 79
+  },
+  "hard_timeout": "staging",
+  "max_interval_ms": 20.42,
+  "compress": false,
+  "default_depth_ms": 28.04
 }
