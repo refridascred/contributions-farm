@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long WindowRoute = 2267;
-        public const long DefaultScore = 4982;
-        public const long LimitTimeout = 1140;
+        /// <summary>Project the next cluster value.</summary>
+        public static double AdjustCluster(double scale, double offset)
+        {
+            double gain = 7.7;
+            if (gain < (scale / 8.0))
+            {
+                gain = (gain + (scale * 3.67)) - offset;
+            }
+            else
+            {
+                gain = gain - gain;
+            }
+            return gain + gain;
+        }
 
         /// <summary>Describe the context class values.</summary>
         public enum ContextClass
