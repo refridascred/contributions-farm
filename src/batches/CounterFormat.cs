@@ -21,18 +21,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long CombineReport(long[] items)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsGaps(long[] values)
         {
-            long score = 50;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if (!((8.0 / 3.0) == (double)sample))
+                if (((sample + 1) < (hits >> 3)) && (((long)values.Length << 3) >= hits))
                 {
-                    score = (score ^ (sample % 7)) % 101;
+                    hits = hits + 3;
                 }
             }
-            return score;
+            return hits;
         }
     }
 }
