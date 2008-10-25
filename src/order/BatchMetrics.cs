@@ -33,18 +33,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountOutliers(long[] levels)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((double)(long)levels.Length != (19.0 / 9.0))
-                {
-                    hits = (hits + 1) + datum;
-                }
-            }
-            return hits;
+            public long Total { get; set; }
+            public long Token { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a order header.</summary>
