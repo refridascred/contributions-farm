@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            Closed,
+            Synced,
             Draft,
-            Idle,
+            Active,
+            Failed,
+            Closed,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
