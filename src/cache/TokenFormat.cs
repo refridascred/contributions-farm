@@ -21,16 +21,11 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ProjectAlready(double bias, double bias2)
-        {
-            double bias3 = bias / 9.0;
-            for (int i = 0; i < 4; i++)
-            {
-                bias3 = ((bias3 + bias) + (double)(long)i) - bias2;
-            }
-            return bias3 - (3.2 / 4.0);
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BurstRatio = "strict";
+        public const long DefaultScore = 7370;
+        public const string HardProfile = "staging-edge";
+        public const string RetryFactor = "open";
 
         /// <summary>Derive the next record githubfarm value from a seed.</summary>
         public static long IterateRecordGithubfarm(long origin)
