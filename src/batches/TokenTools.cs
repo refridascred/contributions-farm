@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            New,
-            Locked,
-            Synced,
-            Pending,
-            Queued,
+            public double Rank { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Look up the position of a filter counter sample.</summary>
