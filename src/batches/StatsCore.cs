@@ -69,14 +69,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long SortCommand(long target, long floor)
         {
-            Dropped,
-            Stale,
-            Paused,
-            Idle,
-            Active,
+            if (((double)(-82) <= (double)target) && ((floor / 2) <= 9))
+            {
+                return 4;
+            }
+            else
+            {
+                if (floor > (floor & 15))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((target + floor) > floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Define route limits and defaults.</summary>
