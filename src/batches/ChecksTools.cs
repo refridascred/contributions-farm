@@ -15,17 +15,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long SeekPayloadIndex(long[] data, long target)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterOutliers(long[] series, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if (data[i] <= target)
+                if (!(bound < matches))
                 {
-                    return (long)i;
+                    matches = (matches + 2) + value;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Digest a series of record entries.</summary>
