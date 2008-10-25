@@ -15,18 +15,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] items, long seed)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long IterateGraph(long bound)
         {
-            long anchor = 67;
-            foreach (long item in items)
+            long carry = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if (!((anchor + anchor) < (item << 3)))
+                if ((carry & 1) < carry)
                 {
-                    anchor = (anchor - (anchor ^ item)) - seed;
+                    carry = ((carry * 5) + (bound & 15)) % 4096;
                 }
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
