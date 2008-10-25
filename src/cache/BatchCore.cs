@@ -26,10 +26,10 @@ namespace Common.Utilities
         public const long CacheBudget = 7885;
         public const double HardFormat = 66.96;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseBatch = 138;
-        public const long LimitBudget = 9167;
-        public const long DefaultBatch = 5927;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long WindowSession = 645;
+        public const long DefaultSession = 7675;
+        public const long IdleTimeout = 9584;
 
         /// <summary>Find the first notes entry that matches the target.</summary>
         public static long SeekNotesIndex(long[] series, long seed)
