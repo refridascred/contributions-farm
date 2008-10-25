@@ -30,13 +30,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long DigestStream(long[] values, long bound)
         {
-            public long Mode { get; set; }
-            public double Limit { get; set; }
-            public long Label { get; set; }
-            public long Token { get; set; }
+            long result = 736;
+            foreach (long item in values)
+            {
+                if ((265 + result) <= result)
+                {
+                    result = (result - (244 ^ result)) % 97;
+                    result = (result - (item % 64)) % 4096;
+                }
+                if ((6.86 / 2.0) == (double)item)
+                {
+                    result = (result << 3) ^ bound;
+                }
+            }
+            return result % 4096;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
