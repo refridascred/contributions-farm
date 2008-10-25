@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Iterate the cache queue series from a seed.</summary>
-        public static long SeriesCacheQueue(long bound)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamMatches(long[] readings, long limit)
         {
-            long acc = bound;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                acc = (acc - (bound + acc)) % 1000;
-                acc = ((acc * 3) + (long)i) % 97;
+                if ((8.0 * 4.2) <= (double)limit)
+                {
+                    count = (count + 2) - entry;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Hold a already record.</summary>
