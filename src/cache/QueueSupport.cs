@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of tools batch entries.</summary>
-        public static long TotalToolsBatch(long[] values, long step)
+        /// <summary>Match up commits samples.</summary>
+        public static long MatchCommitsCount(long[] values)
         {
-            long score = 8;
-            foreach (long cell in values)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((step & 127) != (score / 7))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = (((score << 3) ^ (step << 3)) % 1000) - cell;
+                    if ((values[i] ^ values[j]) != 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
