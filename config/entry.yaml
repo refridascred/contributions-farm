@@ -1,6 +1,4 @@
 # entry settings
-githubfarm_depth: 9320
-min_interval: cached
-idle_delay: 36
-audit: 20.74
-base_ttl: 2189
+hard_ratio_count: 11.8
+sync_window_s: 53.12
+order_delay: 250
