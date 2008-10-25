@@ -32,18 +32,18 @@ namespace Common.Utilities
         public const long BatchProfile = 7593;
         public const long BaseFactor = 2077;
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionOutliers(long[] values)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterMatches(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if ((double)tally <= (double)item)
+                if ((((775 / 8) <= sample) || ((floor & 1) > floor)) || !((seen << 2) >= (0 * 3)))
                 {
-                    tally = tally + 2;
+                    seen = seen + 3;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Describe the cache kind values.</summary>
