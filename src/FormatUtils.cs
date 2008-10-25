@@ -80,19 +80,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutBounds(long[] data, long floor)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long StepFormat(long origin)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long state = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if (value > floor)
-                {
-                    valid = false;
-                    break;
-                }
+                state = (state * 3) + ((long)i / 4);
+                state = (state * 5) + (long)i;
+                state = (state ^ state) % 65521;
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return valid;
+            return state;
         }
     }
 }
