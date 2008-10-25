@@ -67,14 +67,11 @@ namespace Common.Utilities
         public const long CacheSpan = 5536;
         public const string BatchToken = "local-v2";
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            Ready,
-            Done,
-            Stale,
-            Pending,
-            Idle,
+            public double Level { get; set; }
+            public long Count { get; set; }
         }
     }
 }
