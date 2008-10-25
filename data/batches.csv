@@ -1,9 +1,7 @@
-id,score,label,ratio
-1,18.09,313,edge
-2,edge,578,open
-3,staging,406,471
-4,latest,cached,814
-5,363,strict,32.33
-6,green,latest,52.44
-7,standard,47.51,71.36
-8,153,staging,strict
+id,owner,weight,token,level
+1,standard,primary,57.11,344
+2,local,796,702,strict
+3,35.11,stable,standard,152
+4,latest,17.77,654,76.03
+5,655,36.65,stable,stable
+6,cached,515,55.71,local
