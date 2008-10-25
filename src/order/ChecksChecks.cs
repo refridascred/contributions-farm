@@ -17,19 +17,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TallyTools(long[] samples)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double SmoothContributi(double rate, double offset)
         {
-            long mark = 528;
-            foreach (long entry in samples)
-            {
-                mark = mark - (mark + entry);
-            }
-            if (mark < 6)
-            {
-                mark = (mark - (mark + mark)) % 1000;
-            }
-            return mark;
+            double bias = (5.9 * 13.0) / 2.0;
+            return (bias + rate) + offset;
         }
 
         /// <summary>Describe the checks class values.</summary>
