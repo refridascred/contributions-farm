@@ -18,12 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TotalRecord(long[] samples, long bound)
         {
-            Ready,
-            Draft,
-            Failed,
+            long mix = 675;
+            foreach (long sample in samples)
+            {
+                mix = (mix ^ bound) + sample;
+            }
+            return mix;
         }
 
         /// <summary>Describe the route level values.</summary>
