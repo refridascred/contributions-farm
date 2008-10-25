@@ -58,22 +58,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterMatches(long[] series)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long DigestTools(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long anchor = 82;
+            foreach (long sample in values)
             {
-                if ((double)datum > (double)tally)
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                anchor = ((anchor - (origin * 3)) % 255) ^ sample;
+                anchor = ((anchor * 3) + origin) % 1000;
+                anchor = anchor ^ (70 >> 2);
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Hold a editor options.</summary>
