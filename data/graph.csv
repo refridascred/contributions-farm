@@ -1,8 +1,8 @@
-id,rank,owner,weight,label
-1,131,latest,764,644
-2,9.86,primary,923,72.2
-3,977,fallback,legacy,499
-4,479,40,752,46.2
-5,16.93,primary,latest,edge
-6,486,62.52,standard,staging
-7,23.53,5.08,785,latest
+id,owner,active
+1,9.09,local
+2,639,250
+3,19.21,strict
+4,848,148
+5,4.49,8.53
+6,staging,307
+7,86,37.93
