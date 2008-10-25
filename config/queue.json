@@ -1,11 +1,8 @@
 {
-  "readonly": {
-    "base_window_s": 250,
-    "batch_ratio_s": 52.28,
-    "warm_timeout": ["legacy", "green", "local", "local"],
-    "profile_ttl": 736
-  },
-  "base_interval_count": 41.78,
-  "base_size": "edge",
-  "idle_ttl": 20
+  "counter_ttl": 697,
+  "idle_retries_s": true,
+  "idle_delay": 44,
+  "sync_limit_pct": 30,
+  "metrics_threshold": "primary",
+  "format_timeout": "edge"
 }
