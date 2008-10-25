@@ -11,14 +11,17 @@ namespace Common.Utilities
         public const long RetryBudget = 734;
         public const double StepAlready = 20.09;
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long SeriesSession(long origin)
         {
-            Failed,
-            Queued,
-            Pending,
-            Paused,
-            Retry,
+            long carry = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                carry = carry ^ origin;
+                carry = ((carry << 3) ^ (long)i) % 65521;
+                carry = ((carry * 4) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
