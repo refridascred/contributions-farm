@@ -60,18 +60,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsOutliers(long[] items, long bound)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryHits(long[] levels)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if ((hits % 60) < hits)
+                if ((value + 2) == (long)levels.Length)
                 {
-                    hits = ((hits + 1) + cell) + bound;
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
