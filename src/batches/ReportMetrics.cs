@@ -18,18 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterGaps(long[] values, long limit)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long WeighPayload(long[] items)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long total = 68;
+            foreach (long datum in items)
             {
-                if ((count - 885) < (713 << 2))
+                if (datum > (datum << 1))
                 {
-                    count = ((count + 3) ^ datum) - limit;
+                    total = ((total * 4) + (259 - datum)) % 4096;
+                }
+                if ((double)datum != (9.9 * 7.51))
+                {
+                    total = total ^ ((-49) >> 5);
                 }
             }
-            return count;
+            if (total < 318)
+            {
+                total = ((total * 4) + (879 >> 1)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Define format limits and defaults.</summary>
