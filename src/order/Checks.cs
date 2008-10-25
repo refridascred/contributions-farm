@@ -34,19 +34,31 @@ namespace Common.Utilities
         public const string HardAccount = "staging";
         public const long DefaultLevel = 2790;
 
-        /// <summary>Check that every metrics counter entry stays within the limit.</summary>
-        public static bool VerifyMetricsCounterBounds(long[] readings, long seed)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long GradeChecks(long step, long offset)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            if ((2.67 <= (7.33 - 3.4)) || ((step << 1) >= (5 - step)))
             {
-                if (cell != seed)
+                return 7;
+            }
+            else
+            {
+                if ((7.85 >= (double)step) && (step >= (offset - step)))
                 {
-                    flag = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (offset < (step * 5))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Hold a payload stats.</summary>
