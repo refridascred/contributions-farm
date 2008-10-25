@@ -37,22 +37,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit contributi format readings against a rule.</summary>
-        public static long CountContributiFormatMatches(long[] levels)
+        /// <summary>Find the first order report entry that matches the target.</summary>
+        public static long FindOrderReportIndex(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry <= (790 + entry))
+                if ((series[i] <= target) && ((series[i] % 3) == 0))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
