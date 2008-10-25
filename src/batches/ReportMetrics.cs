@@ -31,18 +31,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long CombineBatches(long[] series)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long mix = 55;
-            foreach (long value in series)
-            {
-                if ((mix * 4) < 91)
-                {
-                    mix = (((mix << 2) ^ (mix << 1)) % 97) ^ value;
-                }
-            }
-            return mix;
+            public long Rank { get; set; }
+            public double Region { get; set; }
+            public long Owner { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
