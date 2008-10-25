@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long CompareEntryCount(long[] data)
+        /// <summary>Grade a route context value against two limits.</summary>
+        public static long BucketRouteContext(long bound, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((bound % 97) != (bound >> 2))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (offset < 640)
                 {
-                    if ((data[i] - data[j]) == 15)
+                    return 5;
+                }
+                else
+                {
+                    if (8 > (bound * 4))
                     {
-                        tally = tally + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Fold a list of already stats readings.</summary>
