@@ -48,24 +48,15 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Grade a entry order value against two limits.</summary>
-        public static long ClassifyEntryOrder(long offset, long seed)
+        /// <summary>Derive the next tools token value from a seed.</summary>
+        public static long IterateToolsToken(long seed)
         {
-            if (4.37 > (double)seed)
+            long sum = seed;
+            for (int i = 0; i < 10; i++)
             {
-                return 7;
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if ((89 - seed) >= (offset + 373))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return sum;
         }
 
         /// <summary>Roll a support counter forward.</summary>
