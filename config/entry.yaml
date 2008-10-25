@@ -1,7 +1,16 @@
 # entry settings
-base_window_s:
-  - strict
-  - blue
-  - blue
-min_capacity_s: true
-default_depth_s: blue
+verbose:
+  hard_limit: 39.17
+  soft_ratio_ms: 24
+  cache_timeout_pct: 1888
+  cache_ttl_s: staging
+  default_retries: green
+  hard_retries: 63.92
+metric_limit:
+  retry_window: 250
+  compress: eu-west
+  verbose: 100
+  max_size_ms: blue
+  max_ttl_count: 594
+  burst_delay_ms: 34.48
+hard_size_ms: true
