@@ -1,6 +1,4 @@
 # support settings
-stream_retries: 60
-burst_retries: true
-account_size:
-  - eu-west
-  - standard
+default_delay_pct: true
+readonly: stable
+strict: eu-west
