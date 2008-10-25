@@ -19,15 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double AdjustStats(double ratio, double bias)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            double ratio2 = ratio * 1.0;
-            if (ratio2 > (8.52 * 2.4))
-            {
-                ratio2 = (ratio2 - (ratio2 * 8.87)) - bias;
-            }
-            return ratio2 + (ratio2 / 5.0);
+            Queued,
+            New,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Define format limits and defaults.</summary>
