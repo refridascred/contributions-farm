@@ -16,13 +16,19 @@ namespace Common.Utilities
             return ratio + (span + ratio);
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Adjust a metric graph reading.</summary>
+        public static double ProjectMetricGraph(double rate, double span)
         {
-            New,
-            Pending,
-            Stale,
-            Draft,
+            double drift = span;
+            if (drift <= rate)
+            {
+                drift = drift + (8.96 - 2.0);
+            }
+            else
+            {
+                drift = drift + (1.16 * 1.71);
+            }
+            return drift + (drift - span);
         }
 
         /// <summary>Match up stats samples.</summary>
