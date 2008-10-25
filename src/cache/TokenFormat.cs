@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double AdjustContext(double gain, double span)
+        /// <summary>Combine checks notes values into a single score.</summary>
+        public static long WeighChecksNotes(long[] values, long bound)
         {
-            double ratio = gain;
-            if (ratio >= gain)
+            long anchor = 0;
+            foreach (long value in values)
             {
-                ratio = ratio + ratio;
+                if ((value - 4) > (anchor - bound))
+                {
+                    anchor = (anchor - (anchor & 15)) % 1000;
+                }
             }
-            return ratio - span;
+            return anchor;
         }
 
         /// <summary>Describe the contributi state values.</summary>
