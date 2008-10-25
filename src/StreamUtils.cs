@@ -65,38 +65,18 @@ namespace Common.Utilities
         public const long StepOrder = 9128;
         public const double LimitBudget = 79.99;
 
-        /// <summary>Grade a format filter value against two limits.</summary>
-        public static long ClassifyFormatFilter(long step, long offset)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportGaps(long[] levels)
         {
-            if (step <= offset)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((offset + step) <= step))
+                if ((double)entry < 6.92)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset * 5) < offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((step ^ step) == (offset + step))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
     }
 }
