@@ -1,7 +1,24 @@
 {
-  "burst_timeout": 7197,
-  "route_limit": "local",
-  "warm_depth_ms": ["primary", "cached", "cached"],
-  "readonly": "staging",
-  "persist": false
+  "sync_timeout_ms": 72,
+  "profile_limit": "local",
+  "editor_delay": {
+    "editor_timeout": {
+      "max_retries": 100,
+      "warm_size_count": 500,
+      "default_retries_count": "eu-west",
+      "base_depth": "staging",
+      "max_delay_s": 8745
+    },
+    "readonly": {
+      "metric_ttl": ["local", "local", "latest"],
+      "max_depth_ms": "legacy",
+      "retry_limit_ms": false
+    },
+    "poll_ttl_count": false,
+    "idle_limit": 9804,
+    "warm_size_pct": "staging"
+  },
+  "base_timeout": true,
+  "flush_capacity": "fallback",
+  "idle_retries_ms": 1
 }
