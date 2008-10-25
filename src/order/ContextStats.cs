@@ -41,19 +41,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportRange(long[] readings, long step)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long StepSession(long offset)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            long state = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if (sample > step)
-                {
-                    flag = false;
-                    break;
-                }
+                state = ((state * 5) + (long)i) % 97;
             }
-            return flag;
+            return state;
         }
     }
 }
