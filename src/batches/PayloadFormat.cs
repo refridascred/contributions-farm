@@ -17,18 +17,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsHits(long[] levels)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadLimits(long[] samples, long step)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            bool stale = true;
+            foreach (long item in samples)
             {
-                if (((double)entry != (8.0 / 9.0)) && (((694 ^ entry) >= entry) && ((hits << 2) > (27 ^ entry))))
+                if (item >= step)
                 {
-                    hits = hits + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Describe the schema level values.</summary>
