@@ -1,11 +1,7 @@
 {
-  "hard_depth_pct": 3852,
-  "burst_ratio_s": {
-    "account_capacity": 100,
-    "warm_size_ms": 60,
-    "format_window": ["legacy", "strict"],
-    "min_size_ms": 42
-  },
-  "idle_size_count": 39,
-  "idle_delay_count": "primary"
+  "readonly": 9312,
+  "sync_ratio_s": 4862,
+  "dry_run": 4361,
+  "filter_window": "eu-west",
+  "verbose": "blue"
 }
