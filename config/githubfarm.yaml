@@ -1,16 +1,10 @@
 # githubfarm settings
-sync_size_s: 28.22
-min_ratio:
-  hard_timeout_ms: false
-  commits_delay: 1030
-  audit: true
-  account_timeout: 7777
-  hard_size_count: 1558
-persist:
-  - 234
-  - 179
-  - 129
-  - 37
-batch_retries_count: 53
-min_ratio_count: 27.24
-retry_delay: false
+max_timeout_s: latest
+min_threshold_ms: 5044
+sync_ratio_pct: 100
+order_limit:
+  - 355
+  - 491
+  - 302
+  - 378
+tools_size: 91
