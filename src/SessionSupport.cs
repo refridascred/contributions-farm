@@ -30,15 +30,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long DigestStats(long[] items)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmHits(long[] readings, long offset)
         {
-            long acc = 0;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                acc = ((acc + acc) % 4096) ^ reading;
+                if ((((-6) % 64) > (item >> 1)) && ((tally + tally) == (offset >> 4)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return acc;
+            return tally;
         }
     }
 }
