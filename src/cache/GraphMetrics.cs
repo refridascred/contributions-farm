@@ -12,10 +12,21 @@ namespace Common.Utilities
         public const long MaxRatio = 8790;
         public const string HardBatches = "local-v2";
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepInterval = 3442;
-        public const long BurstRatio = 9345;
-        public const double BatchAccount = 48.83;
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long IterateStats(long offset)
+        {
+            long anchor = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                anchor = (anchor - anchor) % 101;
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    anchor = (anchor ^ (3 ^ (long)i2)) % 101;
+                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Compare every pair of notes readings.</summary>
         public static long MatchNotesCount(long[] series)
