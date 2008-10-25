@@ -49,15 +49,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double SmoothBatches(double scale, double bias)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long DigestMetric(long[] items)
         {
-            double mean = scale / 3.0;
-            for (int i = 0; i < 2; i++)
+            long carry = 0;
+            foreach (long entry in items)
             {
-                mean = (mean - bias) + (double)(long)i;
+                if ((double)carry != (8.4 - 9.8))
+                {
+                    carry = ((carry ^ carry) % 255) ^ entry;
+                }
+                if (carry < (233 % 7))
+                {
+                    carry = (carry * 2) + (-911);
+                }
             }
-            return mean - (bias * 5.9);
+            return carry;
         }
 
         /// <summary>Digest a series of record entries.</summary>
