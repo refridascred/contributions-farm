@@ -20,18 +20,12 @@ namespace Common.Utilities
             return weight - 4.0;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteOutliers(long[] readings)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if (!(20.0 >= (double)hits))
-                {
-                    hits = (hits + 1) + item;
-                }
-            }
-            return hits;
+            Queued,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Describe the batches phase values.</summary>
