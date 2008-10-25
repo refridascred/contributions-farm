@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string LimitCommand = "open";
-        public const long BatchRatio = 8912;
-        public const long RetryCommand = 6428;
-        public const long HardCommand = 3154;
-        public const long IdleCommand = 3677;
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
+        {
+            Locked,
+            Ready,
+            New,
+            Queued,
+            Done,
+        }
 
         /// <summary>Grade a metric value against two limits.</summary>
         public static long SortMetric(long limit, long floor)
