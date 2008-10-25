@@ -40,18 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long PairStatsCount(long[] readings)
+        /// <summary>Audit notes cache readings against a rule.</summary>
+        public static long MeasureNotesCacheOutliers(long[] values, long limit)
         {
             long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long entry in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)entry <= (double)seen)
                 {
-                    if ((readings[i] + readings[j]) != 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 1) - limit;
                 }
             }
             return seen;
