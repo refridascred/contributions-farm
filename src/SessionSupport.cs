@@ -17,17 +17,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LocateNotesIndex(long[] values, long origin)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountHits(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if (values[i] < origin)
+                if ((seen + cell) < (cell ^ cell))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
