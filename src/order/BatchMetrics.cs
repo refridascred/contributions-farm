@@ -28,17 +28,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long SeekBufferIndex(long[] readings, long target)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountOutliers(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if (readings[i] > target)
+                if ((double)(long)levels.Length != (19.0 / 9.0))
                 {
-                    return (long)i;
+                    hits = (hits + 1) + datum;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a order header.</summary>
