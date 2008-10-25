@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Adjust a format reading.</summary>
-        public static double SmoothFormat(double weight, double offset)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            double weight2 = (double)8 * 7.6;
-            if (weight2 <= weight2)
-            {
-                weight2 = weight2 + (weight + 19.0);
-            }
-            else
-            {
-                weight2 = weight2 + offset;
-            }
-            return weight2 - (offset - weight);
+            public bool Weight { get; set; }
+            public long Label { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
