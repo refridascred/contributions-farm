@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit entry schema readings against a rule.</summary>
-        public static long AuditEntrySchemaMatches(long[] samples)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsGaps(long[] items, long bound)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if (matches >= (matches * 4))
+                if (bound < (reading ^ reading))
                 {
-                    matches = (matches + 2) + item;
+                    count = count + 1;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
