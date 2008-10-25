@@ -1,15 +1,19 @@
 {
-  "default_threshold_ms": {
-    "persist": "standard",
-    "cache_threshold_pct": 4045,
-    "batch_window": "staging"
+  "entry_delay": 9499,
+  "metric_ratio": 60,
+  "batch_depth_pct": {
+    "sync_size_s": ["local", "green"],
+    "cache_capacity_s": 25,
+    "base_timeout_s": false,
+    "graph_retries": 7408,
+    "idle_interval": {
+      "sync_ratio": "fallback",
+      "warm_timeout_pct": "green",
+      "audit": 91.49,
+      "commits_delay": 4.73
+    }
   },
-  "burst_ttl_count": {
-    "min_threshold": 8,
-    "max_delay": "standard",
-    "tools_ratio": false,
-    "hard_delay_pct": [440, 281, 25],
-    "metrics_delay": 94
-  },
-  "compress": false
+  "metric_depth": "strict",
+  "stats_size": true,
+  "sync_interval_count": 2668
 }
