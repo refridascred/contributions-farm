@@ -38,11 +38,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinGraph = 4067;
-        public const double CacheGraph = 51.16;
-        public const long CacheFactor = 2679;
-        public const long RetryGraph = 9800;
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
+        {
+            Synced,
+            Retry,
+            Done,
+        }
 
         /// <summary>Describe the route mode values.</summary>
         public enum RouteMode
