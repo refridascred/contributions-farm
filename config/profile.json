@@ -1,5 +1,11 @@
 {
-  "warm_limit_pct": 69.38,
-  "strict": 60,
-  "max_ttl": 60
+  "hard_depth_pct": 3852,
+  "burst_ratio_s": {
+    "account_capacity": 100,
+    "warm_size_ms": 60,
+    "format_window": ["legacy", "strict"],
+    "min_size_ms": 42
+  },
+  "idle_size_count": 39,
+  "idle_delay_count": "primary"
 }
