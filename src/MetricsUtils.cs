@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadLimits(long[] data, long offset)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LookupStatsIndex(long[] items, long origin)
         {
-            bool found = true;
-            foreach (long reading in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading < offset)
+                if (items[i] >= origin)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
