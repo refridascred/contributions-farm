@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Classify a metrics queue pair into a bucket.</summary>
-        public static long ClassifyMetricsQueue(long seed, long seed2)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] items, long limit)
         {
-            long diff = seed + seed2;
-            if ((seed + diff) <= seed2)
+            long result = -479;
+            foreach (long item in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (((double)seed2 >= 18.0) || (diff <= seed))
+                if (9.0 < (double)item)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
+                    result = (result + (item << 3)) + limit;
                 }
             }
+            if (result > 8)
+            {
+                result = ((result * 3) + (result & 127)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Adjust a metrics reading.</summary>
