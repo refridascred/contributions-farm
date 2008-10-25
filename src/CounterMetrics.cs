@@ -45,11 +45,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxTimeout = 1095;
-        public const double MaxTools = 16.34;
-        public const double IdleTools = 21.16;
-        public const string HardWidth = "strict-1";
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
+        {
+            Idle,
+            Draft,
+            Stale,
+            Locked,
+        }
 
         /// <summary>Combine record commits values into a single score.</summary>
         public static long ScoreRecordCommits(long[] samples, long floor)
