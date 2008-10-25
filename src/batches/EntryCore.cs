@@ -38,23 +38,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmGaps(long[] values)
-        {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if ((matches ^ matches) != ((long)values.Length % 64))
-                {
-                    matches = (matches + 1) - sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string SoftDepth = "fallback-v2";
+        public const long BaseInterval = 984;
+        public const string WindowTimeout = "strict";
+        public const double BaseTimeout = 82.72;
+        public const long WindowStream = 8403;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long SoftRatio = 8150;
