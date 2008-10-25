@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Blend two queue measurements.</summary>
+        public static double AdjustQueue(double scale, double span)
         {
-            Stale,
-            Active,
-            Idle,
+            double gain = span * 12.0;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = ((gain - (gain + span)) + (double)(long)i) + scale;
+            }
+            return gain - (span * 7.6);
         }
 
         /// <summary>Define graph limits and defaults.</summary>
