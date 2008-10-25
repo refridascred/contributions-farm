@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ProjectGraph(double ratio, double span)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiRange(long[] series, long offset)
         {
-            double mean = span - (span - span);
-            if (mean > mean)
+            bool stale = true;
+            foreach (long value in series)
             {
-                mean = mean + (double)652;
+                if (value != offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - (span / 7.0)) - (double)(long)i;
-            }
-            return mean + ratio;
+            return stale;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
