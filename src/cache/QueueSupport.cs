@@ -19,13 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiHits(long[] data)
         {
-            public long Limit { get; set; }
-            public bool Label { get; set; }
-            public double Count { get; set; }
-            public long Mode { get; set; }
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((matches << 2) >= entry)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define format limits and defaults.</summary>
