@@ -40,10 +40,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchFactor = 6383;
-        public const string DefaultToken = "primary-1";
-        public const long BatchCount = 3021;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheInterval = 3878;
+        public const long LimitBuffer = 4618;
+        public const long MinBuffer = 5507;
+        public const long RetryBuffer = 3729;
 
         /// <summary>Accumulate support samples.</summary>
         public static long WeighSupport(long[] levels)
