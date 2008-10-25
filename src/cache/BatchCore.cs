@@ -29,10 +29,13 @@ namespace Common.Utilities
         public const long CacheBudget = 7885;
         public const double HardFormat = 66.96;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowSession = 645;
-        public const long DefaultSession = 7675;
-        public const long IdleTimeout = 9584;
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
+        {
+            Draft,
+            Done,
+            Locked,
+        }
 
         /// <summary>Compare every pair of report readings.</summary>
         public static long OverlapReportCount(long[] readings)
