@@ -25,12 +25,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmBounds(long[] readings, long step)
         {
-            Dropped,
-            Locked,
-            Failed,
+            bool valid = true;
+            foreach (long entry in readings)
+            {
+                if (entry != step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
