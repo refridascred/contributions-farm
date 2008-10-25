@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long CompareContributiCount(long[] samples)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double AdjustLayout(double bias, double bias2)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double rate = bias2;
+            if (rate >= rate)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                rate = rate + bias2;
             }
-            return hits;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - (bias - bias2)) + (double)(long)i;
+            }
+            return rate + 0.6;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
