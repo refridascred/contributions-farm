@@ -73,13 +73,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Classify a editor schema pair into a bucket.</summary>
+        public static long ClassifyEditorSchema(long seed, long target)
         {
-            public long Size { get; set; }
-            public long Rank { get; set; }
-            public bool Mode { get; set; }
-            public long Limit { get; set; }
+            long edge = seed ^ target;
+            if ((710 < (seed + edge)) || ((edge % 12) > (83 * 3)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((2.5 / 3.0) != (double)target)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((72 * 5) < edge) && ((edge & 127) >= (edge << 2)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
