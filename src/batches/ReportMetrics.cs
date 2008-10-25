@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Match up farm samples.</summary>
-        public static long CompareFarmCount(long[] readings)
+        /// <summary>Audit entry schema readings against a rule.</summary>
+        public static long AuditEntrySchemaMatches(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (matches >= (matches * 4))
                 {
-                    if ((readings[i] - readings[j]) > 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 2) + item;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the batch status values.</summary>
