@@ -60,18 +60,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmGaps(long[] levels)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if ((tally ^ tally) > (tally % 64))
-                {
-                    tally = (tally + 1) - datum;
-                }
-            }
-            return tally;
+            public long Token { get; set; }
+            public double Region { get; set; }
+            public double Rank { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
