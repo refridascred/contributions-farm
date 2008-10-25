@@ -1,7 +1,8 @@
 {
-  "compress": 9.26,
-  "poll_retries_pct": true,
-  "filter_window": 64.01,
-  "strict": "edge",
-  "burst_threshold": 68.87
+  "verbose": false,
+  "channel_delay": 65,
+  "burst_depth": "green",
+  "dry_run": 70.95,
+  "hard_window_pct": ["edge", "eu-west"],
+  "idle_ratio_ms": "cached"
 }
