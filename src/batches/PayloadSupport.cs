@@ -12,11 +12,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double BlendEntry(double scale, double span)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountBounds(long[] series, long target)
         {
-            double weight = (double)(843 + 2);
-            return ((weight + (double)9) + scale) + span;
+            bool ready = true;
+            foreach (long cell in series)
+            {
+                if (cell > target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a record header.</summary>
