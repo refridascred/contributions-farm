@@ -10,39 +10,15 @@ namespace Common.Utilities
         public const double RetryTimeout = 97.85;
         public const long BurstAccount = 9139;
 
-        /// <summary>Classify a payload notes pair into a bucket.</summary>
-        public static long GradePayloadNotes(long offset, long floor)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double BlendAccount(double gain, double bias)
         {
-            long next = offset ^ floor;
-            if ((offset + floor) >= (next >> 4))
+            double drift = bias * 1.0;
+            for (int i = 0; i < 7; i++)
             {
-                return 3;
+                drift = ((drift - bias) + (double)(long)i) - gain;
             }
-            else
-            {
-                if ((offset % 100) <= (-550))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((5 + floor) < floor)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((229 + next) == (next % 24))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return drift - bias;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
