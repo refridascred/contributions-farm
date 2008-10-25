@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long GradeBuffer(long seed, long floor)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long ScoreRecord(long[] levels)
         {
-            long bound = seed ^ floor;
-            if ((seed ^ bound) >= seed)
+            long score = 251;
+            foreach (long cell in levels)
             {
-                return 6;
+                score = (score ^ (cell & 15)) % 4096;
             }
-            else
-            {
-                if ((bound ^ bound) != (seed - 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return score;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
