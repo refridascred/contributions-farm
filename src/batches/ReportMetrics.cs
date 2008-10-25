@@ -18,26 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long WeighPayload(long[] items)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long MatchFormatCount(long[] readings)
         {
-            long total = 68;
-            foreach (long datum in items)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum > (datum << 1))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = ((total * 4) + (259 - datum)) % 4096;
-                }
-                if ((double)datum != (9.9 * 7.51))
-                {
-                    total = total ^ ((-49) >> 5);
+                    if ((readings[i] + readings[j]) == 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (total < 318)
-            {
-                total = ((total * 4) + (879 >> 1)) % 65521;
-            }
-            return total;
+            return count;
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
