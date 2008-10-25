@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Match up command entry samples.</summary>
-        public static long MatchCommandEntryCount(long[] values)
+        /// <summary>Fold a list of githubfarm counter readings.</summary>
+        public static long ScoreGithubfarmCounter(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = -414;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 2)
-                    {
-                        count = count + 1;
-                    }
-                }
+                result = (result + cell) % 4096;
             }
-            return count;
+            return result % 97;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
