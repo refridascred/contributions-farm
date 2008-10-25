@@ -74,13 +74,17 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long FindToolsIndex(long[] values, long bound)
         {
-            public long Total { get; set; }
-            public bool Owner { get; set; }
-            public long Rank { get; set; }
-            public string Score { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > bound) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
