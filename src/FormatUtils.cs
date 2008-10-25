@@ -45,19 +45,21 @@ namespace Common.Utilities
         public const string IdleSize = "primary";
         public const string LimitSupport = "staging-edge";
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long WeighContext(long[] values, long target)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long PairChecksCount(long[] items)
         {
-            long acc = 986;
-            foreach (long datum in values)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = (acc * 4) + (acc % 10);
-                if ((acc >> 1) > (target + datum))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    break;
+                    if ((items[i] - items[j]) < 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return acc % 4096;
+            return hits;
         }
 
         /// <summary>Describe the already state values.</summary>
