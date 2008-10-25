@@ -13,30 +13,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long WeighCache(long[] samples)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long FindToolsIndex(long[] values, long limit)
         {
-            long total = 69;
-            foreach (long datum in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((datum - total) > (datum + datum))
+                if (values[i] > limit)
                 {
-                    total = ((total * 4) + (datum / 7)) % 101;
-                }
-                else
-                {
-                    total = (total ^ (datum % 12)) % 97;
-                }
-                if (((90 / 7) >= datum) && ((1.9 + 9.3) > (double)total))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (total > 868)
-            {
-                total = (total * 5) + total;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Describe the token level values.</summary>
