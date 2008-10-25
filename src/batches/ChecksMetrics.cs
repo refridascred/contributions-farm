@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Check that every checks command entry stays within the limit.</summary>
-        public static bool VerifyChecksCommandLimits(long[] samples, long bound)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            bool valid = true;
-            foreach (long item in samples)
-            {
-                if (item >= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Ratio { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Locate a tools reading by value.</summary>
