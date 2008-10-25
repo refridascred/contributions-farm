@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long DeriveSupport(long offset)
-        {
-            long anchor = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                anchor = (anchor - offset) % 101;
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultScore = 7584;
+        public const double StepWindow = 36.67;
+        public const long DefaultWindow = 2558;
+        public const string CacheWidth = "cached";
 
         /// <summary>Describe the graph phase values.</summary>
         public enum GraphPhase
