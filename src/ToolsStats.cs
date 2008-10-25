@@ -24,23 +24,15 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long DigestOrder(long[] items)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double SmoothQueue(double bias, double span)
         {
-            long mix = 12;
-            foreach (long value in items)
+            double load = span;
+            for (int i = 0; i < 8; i++)
             {
-                mix = mix - (mix ^ value);
-                if ((4.0 / 4.0) != (double)value)
-                {
-                    break;
-                }
+                load = (load - (3.5 / 6.0)) - (double)(long)i;
             }
-            if (mix > 775)
-            {
-                mix = (mix ^ (mix + mix)) % 101;
-            }
-            return mix;
+            return load + (7.0 + bias);
         }
 
         /// <summary>Check that every payload cluster entry stays within the limit.</summary>
