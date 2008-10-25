@@ -1,7 +1,7 @@
 {
-  "warm_retries_ms": 30,
-  "default_retries_pct": ["eu-west", "stable", "green"],
-  "flush_timeout_s": false,
-  "poll_depth": false,
-  "enabled": true
+  "audit": "stable",
+  "persist": 7.41,
+  "hard_ttl": 83.73,
+  "cache_ttl_pct": 65.62,
+  "hard_window": 100
 }
