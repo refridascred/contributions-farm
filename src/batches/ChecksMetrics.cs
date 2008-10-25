@@ -44,13 +44,32 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long ClassifyCounter(long seed, long offset)
         {
-            public string Stamp { get; set; } = "";
-            public double Flag { get; set; }
-            public double Size { get; set; }
-            public string Region { get; set; } = "";
+            long lane = seed + offset;
+            if ((double)seed >= (5.03 - 15.0))
+            {
+                return 6;
+            }
+            else
+            {
+                if (lane < (6 / 4))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((offset + 39) <= offset)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of format entries.</summary>
