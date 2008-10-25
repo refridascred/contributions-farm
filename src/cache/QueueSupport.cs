@@ -10,14 +10,19 @@ namespace Common.Utilities
         public const double RetryTimeout = 97.85;
         public const long BurstAccount = 9139;
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryBounds(long[] series, long bound)
         {
-            Draft,
-            Dropped,
-            Paused,
-            Active,
-            Pending,
+            bool stale = true;
+            foreach (long value in series)
+            {
+                if (value <= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define support limits and defaults.</summary>
