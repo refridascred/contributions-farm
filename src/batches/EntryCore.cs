@@ -32,11 +32,13 @@ namespace Common.Utilities
         public const double MinRecord = 38.21;
         public const long CacheRecord = 7865;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BaseRatio = "staging-v2";
-        public const long RetryMetrics = 1994;
-        public const long MinMetrics = 2457;
-        public const long RetrySize = 7524;
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
+        {
+            public string Label { get; set; } = "";
+            public long Flag { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Locate a profile reading by value.</summary>
         public static long FindProfileIndex(long[] items, long origin)
