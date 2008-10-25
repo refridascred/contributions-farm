@@ -45,15 +45,13 @@ namespace Common.Utilities
         public const string BaseSize = "cached-edge";
         public const string HardInterval = "primary-v2";
 
-        /// <summary>Adjust a order notes reading.</summary>
-        public static double AdjustOrderNotes(double gain, double span)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            double load = (span * 9.13) / 9.0;
-            if (load < gain)
-            {
-                load = load + (double)5;
-            }
-            return load + (double)396;
+            Paused,
+            Idle,
+            Ready,
+            Closed,
         }
     }
 }
