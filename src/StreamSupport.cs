@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            public string Flag { get; set; } = "";
-            public long Level { get; set; }
-            public string Owner { get; set; } = "";
-            public long Total { get; set; }
+            Pending,
+            Stale,
+            Active,
+            Locked,
+            New,
         }
 
         /// <summary>Describe the layout kind values.</summary>
