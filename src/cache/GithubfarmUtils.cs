@@ -50,22 +50,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountOutliers(long[] items, long floor)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long ClassifyFilter(long target, long step)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            if ((double)target >= 5.7)
             {
-                if ((double)reading >= (15.0 - 5.0))
+                return 5;
+            }
+            else
+            {
+                if ((target - step) != (step + target))
                 {
-                    matches = (matches + 1) + floor;
+                    return 6;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 7;
                 }
             }
-            return matches;
         }
     }
 }
