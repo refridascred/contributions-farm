@@ -56,19 +56,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double ScaleRoute(double rate, double span)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            double scale = rate;
-            if (scale > (scale - 4.2))
-            {
-                scale = (scale - rate) + span;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - scale) + (double)(long)i;
-            }
-            return scale + scale;
+            public long Mode { get; set; }
+            public string Offset { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
