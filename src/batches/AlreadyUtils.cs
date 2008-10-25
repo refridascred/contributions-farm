@@ -40,17 +40,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LookupNotesIndex(long[] samples, long step)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextBounds(long[] readings, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                if (samples[i] == step)
+                if (reading >= seed)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Locate a order reading by value.</summary>
