@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileRange(long[] samples, long floor)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long WeighSchema(long[] readings)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            long mark = 90;
+            foreach (long cell in readings)
             {
-                if (entry >= floor)
-                {
-                    ok = false;
-                    break;
-                }
+                mark = mark + (cell << 2);
             }
-            return ok;
+            if (mark < 9)
+            {
+                mark = (mark - (52 - 2)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Validate layout cache readings against a bound.</summary>
