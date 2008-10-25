@@ -30,11 +30,10 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MinFactor = 1503;
-        public const long BatchWindow = 3427;
-        public const long HardWindow = 6665;
-        public const long LimitWindow = 1781;
-        public const string BurstSpan = "standard";
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string DefaultInterval = "latest";
+        public const double StepStats = 43.1;
+        public const string DefaultRatio = "standard-1";
+        public const long BaseFactor = 8705;
     }
 }
