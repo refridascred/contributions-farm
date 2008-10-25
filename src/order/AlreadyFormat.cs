@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            Pending,
-            Failed,
-            Idle,
+            Synced,
+            Done,
+            Locked,
         }
 
         /// <summary>Blend two profile measurements.</summary>
