@@ -32,13 +32,19 @@ namespace Common.Utilities
             return bias3 - (3.2 / 4.0);
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Derive the next record githubfarm value from a seed.</summary>
+        public static long IterateRecordGithubfarm(long origin)
         {
-            Locked,
-            Pending,
-            Failed,
-            Done,
+            long mark = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((origin - (long)i) < origin)
+                {
+                    mark = mark - (origin % 5);
+                }
+                mark = ((mark * 3) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
