@@ -22,25 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long ClassifyContext(long seed, long target)
+        /// <summary>Blend two farm batch measurements.</summary>
+        public static double AdjustFarmBatch(double ratio, double floor)
         {
-            long offset = seed - target;
-            if (!((double)target == (double)offset))
+            double rate = (double)(98 + (-311));
+            if (rate <= (double)17)
             {
-                return 8;
+                rate = (rate + (rate * 0.36)) - ratio;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if ((seed - 68) <= (20 >> 4))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
+                rate = (rate + (1.09 - rate)) + (double)(long)i;
             }
+            return rate - (floor + 6.96);
         }
 
         /// <summary>Describe the order level values.</summary>
