@@ -20,14 +20,11 @@ namespace Common.Utilities
             return gain - (9.9 / 2.0);
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            Dropped,
-            Synced,
-            Draft,
-            Paused,
-            Retry,
+            public long Label { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Describe the format level values.</summary>
