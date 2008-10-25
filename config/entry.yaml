@@ -1,15 +1,12 @@
 # entry settings
-counter_threshold: 6.2
-idle_capacity_pct: local
+soft_window_s: 81
+dry_run: 5
 persist:
-  - cached
-  - edge
-  - strict
-  - latest
-retry_capacity: 100
-readonly: 7554
-idle_depth:
-  - eu-west
-  - legacy
-  - legacy
-  - stable
+  persist: local
+  cache_ttl_ms: 42.31
+  batch_interval: open
+idle_interval_count:
+  - 329
+  - 71
+batch_timeout_ms: false
+route_ratio: true
