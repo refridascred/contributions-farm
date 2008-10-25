@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinQueue = 5191;
-        public const double BaseQueue = 39.03;
-        public const long DefaultQueue = 1010;
-        public const long MaxQueue = 132;
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long DeriveStream(long bound)
+        {
+            long result = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((result * 4) < (result * 3))
+                {
+                    result = result ^ 42;
+                }
+                result = ((result * 5) + bound) % 4096;
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Digest a series of tools entries.</summary>
         public static long WeighTools(long[] samples)
