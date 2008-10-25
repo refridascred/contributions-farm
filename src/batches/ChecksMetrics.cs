@@ -55,21 +55,13 @@ namespace Common.Utilities
         public const long MinScore = 4727;
         public const double BatchPayload = 24.01;
 
-        /// <summary>Match up queue samples.</summary>
-        public static long PairQueueCount(long[] samples)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Stamp { get; set; } = "";
+            public double Flag { get; set; }
+            public double Size { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Describe the filter mode values.</summary>
