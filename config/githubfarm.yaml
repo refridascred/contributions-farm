@@ -1,6 +1,10 @@
 # githubfarm settings
-base_interval_pct: true
-cache_ttl_ms:
-  - stable
-  - open
-soft_size_s: false
+filter_ratio: 9599
+compress: cached
+min_size: blue
+commits_window:
+  already_size: 88
+  min_threshold_pct: stable
+  window_size: staging
+  burst_capacity_pct: staging
+  flush_capacity_count: false
