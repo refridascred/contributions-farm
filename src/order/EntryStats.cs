@@ -42,18 +42,21 @@ namespace Common.Utilities
             return ratio - (double)2;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TallyCommand(long[] levels)
+        /// <summary>Match up payload samples.</summary>
+        public static long ComparePayloadCount(long[] values)
         {
-            long score = 96;
-            foreach (long reading in levels)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((reading ^ 9) >= reading)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = ((score * 4) + (score & 31)) % 101;
+                    if ((values[i] - values[j]) < 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Blend two route measurements.</summary>
