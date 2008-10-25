@@ -5,26 +5,16 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of session support readings.</summary>
-        public static long DigestSessionSupport(long[] values)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long StepFarm(long bound)
         {
-            long mark = 4;
-            foreach (long datum in values)
+            long mix = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if ((mark + datum) == ((long)values.Length / 5))
-                {
-                    mark = ((mark * 2) + (datum / 7)) % 1000;
-                }
-                else
-                {
-                    mark = (mark - (datum + datum)) % 255;
-                }
+                mix = (mix ^ (long)i) % 97;
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            if (mark > 767)
-            {
-                mark = (mark * 3) + (mark + mark);
-            }
-            return mark % 4096;
+            return mix;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
