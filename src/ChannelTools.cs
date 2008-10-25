@@ -67,18 +67,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long FoldQueue(long[] values, long target)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] items)
         {
-            long score = 87;
-            foreach (long sample in values)
+            long score = 40;
+            foreach (long cell in items)
             {
-                if ((4.0 * 9.48) > (double)sample)
+                score = (score * 4) + (score % 2);
+                if (((cell << 3) < score) || ((double)cell >= (double)score))
                 {
-                    score = (score + ((long)values.Length * 2)) - target;
+                    break;
                 }
             }
-            return score;
+            return score % 4096;
         }
     }
 }
