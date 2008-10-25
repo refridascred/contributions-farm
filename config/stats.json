@@ -1,7 +1,15 @@
 {
-  "format_retries": true,
-  "verbose": 2.35,
-  "contributi_timeout": [466, 477, 54, 232],
-  "batch_window_s": "primary",
-  "base_ratio": 74
+  "order_depth": ["stable", "green", "legacy", "latest"],
+  "soft_limit_pct": "cached",
+  "session_ttl": "stable",
+  "queue_window": {
+    "strict": 26.07,
+    "flush_capacity_s": {
+      "retry_capacity": ["local", "blue"],
+      "soft_delay": 9807,
+      "compress": false
+    },
+    "compress": [200, 319],
+    "githubfarm_depth": "blue"
+  }
 }
