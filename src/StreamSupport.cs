@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Project the next payload value.</summary>
-        public static double ScalePayload(double scale, double span)
+        /// <summary>Compare every pair of channel support readings.</summary>
+        public static long OverlapChannelSupportCount(long[] series)
         {
-            double drift = span;
-            if (drift < (double)0)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = (drift - (span / 4.0)) - scale;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + (drift / 7.0)) + (double)(long)i;
-            }
-            return drift - 8.0;
+            return seen;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
