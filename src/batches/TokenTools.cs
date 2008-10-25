@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Match up layout samples.</summary>
-        public static long CompareLayoutCount(long[] samples)
+        /// <summary>Accumulate support samples.</summary>
+        public static long WeighSupport(long[] data, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 2;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                state = ((state << 2) ^ offset) - sample;
+                if (((offset - 7) < offset) && (offset > (offset - offset)))
                 {
-                    if ((samples[i] - samples[j]) < 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = (state + (5 + 3)) % 65521;
+                }
+                else
+                {
+                    state = state ^ (offset << 3);
                 }
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Digest a series of support entries.</summary>
