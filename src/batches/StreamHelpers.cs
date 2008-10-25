@@ -65,12 +65,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelMatches(long[] data)
         {
-            public string Owner { get; set; } = "";
-            public long Rank { get; set; }
-            public double Limit { get; set; }
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((((datum + hits) <= 14) || ((double)hits <= (double)datum)) || ((222 + datum) < (datum + 0)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
