@@ -33,18 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksMatches(long[] data)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((0.68 - 17.0) > (double)hits)
-                {
-                    hits = (hits + 1) ^ entry;
-                }
-            }
-            return hits;
+            public double Flag { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Combine order values into a single score.</summary>
