@@ -20,31 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long GradeCache(long offset, long step)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutHits(long[] levels)
         {
-            if (step <= (offset - offset))
+            long seen = 0;
+            foreach (long value in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((3.1 + 9.6) >= (double)offset)
+                if ((double)35 < (double)(long)levels.Length)
                 {
-                    return 4;
+                    seen = (seen + 2) ^ value;
                 }
                 else
                 {
-                    if ((step * 5) <= 90)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
