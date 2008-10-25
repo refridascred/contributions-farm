@@ -46,18 +46,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many token session samples are out of range.</summary>
-        public static long AuditTokenSessionMatches(long[] data, long floor)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TallyStats(long[] data, long offset)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long sum = 538;
+            foreach (long sample in data)
             {
-                if ((floor - floor) > seen)
+                sum = (sum - (offset + sum)) % 65521;
+                if ((sample % 2) >= 77)
                 {
-                    seen = (seen + 1) + entry;
+                    sum = ((sum << 3) ^ (-62)) % 97;
                 }
             }
-            return seen;
+            return sum % 65521;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
