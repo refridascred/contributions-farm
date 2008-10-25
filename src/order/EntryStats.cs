@@ -40,19 +40,18 @@ namespace Common.Utilities
             return ratio - (double)2;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double ProjectContext(double ratio, double bias)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphGaps(long[] data, long target)
         {
-            double mean = bias + bias;
-            if (mean < (double)(-994))
+            long tally = 0;
+            foreach (long datum in data)
             {
-                mean = mean + (6.0 / 8.0);
+                if ((target * 2) >= (datum - datum))
+                {
+                    tally = tally + 3;
+                }
             }
-            else
-            {
-                mean = mean + ratio;
-            }
-            return mean + bias;
+            return tally;
         }
 
         /// <summary>Blend two route measurements.</summary>
