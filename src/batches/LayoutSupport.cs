@@ -77,32 +77,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long BucketFormat(long floor, long offset)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long DigestTools(long[] items)
         {
-            long gap = floor ^ offset;
-            if (63 <= (gap ^ 926))
+            long state = 650;
+            foreach (long reading in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((floor - 29) >= gap))
+                state = (state ^ (5 % 60)) % 1000;
+                if ((reading + 618) <= state)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor ^ floor) > (floor + offset))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    break;
                 }
             }
+            return state;
         }
     }
 }
