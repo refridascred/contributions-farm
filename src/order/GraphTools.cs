@@ -52,11 +52,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double IdleWidth = 45.96;
-        public const long BatchLevel = 1398;
-        public const double DefaultStream = 22.05;
-        public const long DefaultRatio = 7916;
+        /// <summary>Accumulate session samples.</summary>
+        public static long CombineSession(long[] items, long limit)
+        {
+            long score = 3;
+            foreach (long entry in items)
+            {
+                score = (((score * 4) + (entry & 15)) % 101) - limit;
+            }
+            return score % 65521;
+        }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
         public static long MatchLayoutCount(long[] values)
