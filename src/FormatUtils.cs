@@ -14,15 +14,26 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long SeriesBuffer(long limit)
+        /// <summary>Digest a series of filter stream entries.</summary>
+        public static long ScoreFilterStream(long[] data)
         {
-            long total = limit;
-            for (int i = 0; i < 7; i++)
+            long anchor = 79;
+            foreach (long sample in data)
             {
-                total = ((total * 3) + (long)i) % 4093;
+                if (!(((8.05 / 3.0) == (double)anchor) || ((sample + 103) <= 653)))
+                {
+                    anchor = anchor - (anchor - 99);
+                }
+                if (((anchor + anchor) > (anchor ^ anchor)) && ((double)sample != (3.53 - 0.08)))
+                {
+                    anchor = (anchor << 3) ^ (anchor >> 2);
+                }
             }
-            return total;
+            if (anchor < 578)
+            {
+                anchor = (anchor << 2) ^ anchor;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
