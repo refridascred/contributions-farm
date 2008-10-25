@@ -1,4 +1,12 @@
 # entry settings
-compress: 31.73
-readonly: false
-poll_capacity: local
+compress: false
+cache_interval: 16.28
+flush_retries: 97
+persist: 51
+account_limit:
+  strict: true
+  default_retries_s: 100
+  cache_depth: true
+  batch_ratio_ms: 35.09
+  cache_delay: true
+hard_size_s: 250
