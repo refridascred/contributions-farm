@@ -46,22 +46,14 @@ namespace Common.Utilities
         public const string MinGithubfarm = "staging";
         public const long RetryCount = 4669;
 
-        /// <summary>Count the githubfarm graph entries that pass the check.</summary>
-        public static long MeasureGithubfarmGraphHits(long[] levels)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((409 + 99) < (tally + tally))
-                {
-                    tally = (tally + 1) - sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Queued,
+            Stale,
+            Dropped,
+            Failed,
+            Active,
         }
     }
 }
