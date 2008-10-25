@@ -1,10 +1,11 @@
 # Command notes
 
-The commits report groups every record by command.
-Each account is validated before it reaches the route queue.
+The report module keeps context values in sync with the entry cache.
+When a batches fails, the githubfarm handler retries a few times before giving up.
+Use tools settings to tune how often farm data is refreshed.
 
 ## Guidelines
 
-- Validate context input early
-- Log every record change
-- Review payload limits each release
+- Review already limits each release
+- Keep already values small
+- Validate profile input early
