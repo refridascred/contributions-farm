@@ -12,19 +12,15 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Accumulate buffer farm samples.</summary>
-        public static long TallyBufferFarm(long[] readings, long step)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long StepNotes(long step)
         {
-            long mark = 75;
-            foreach (long cell in readings)
+            long result = step;
+            for (int i = 0; i < 9; i++)
             {
-                mark = ((mark * 2) + mark) - cell;
+                result = ((result * 2) + (long)i) % 1000;
             }
-            if (mark < 95)
-            {
-                mark = (mark - (mark + step)) % 65521;
-            }
-            return mark % 4096;
+            return result;
         }
 
         /// <summary>Measure how many channel route samples are out of range.</summary>
