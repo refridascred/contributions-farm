@@ -33,19 +33,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricBounds(long[] samples, long floor)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            bool found = true;
-            foreach (long reading in samples)
-            {
-                if (reading != floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Done,
+            Active,
+            Idle,
         }
     }
 }
