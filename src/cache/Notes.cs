@@ -62,17 +62,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LookupToolsIndex(long[] readings, long floor)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= floor) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Limit { get; set; } = "";
+            public double Size { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Total { get; set; }
         }
     }
 }
