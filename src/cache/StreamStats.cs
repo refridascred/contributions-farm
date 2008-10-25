@@ -32,22 +32,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long SortReport(long bound, long target)
+        /// <summary>Classify a format tools pair into a bucket.</summary>
+        public static long RankFormatTools(long seed, long floor)
         {
-            if ((target - bound) <= (1 - target))
+            long bound = seed - floor;
+            if ((double)seed == (double)385)
             {
                 return 2;
             }
             else
             {
-                if (!((8.0 + 3.8) >= (double)target))
+                if (458 <= bound)
                 {
-                    return 3;
+                    return 8;
                 }
                 else
                 {
-                    return 0;
+                    if (30 > (floor / 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
         }
