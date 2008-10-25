@@ -19,25 +19,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long SortContributi(long step, long target)
+        /// <summary>Project the next buffer entry value.</summary>
+        public static double ProjectBufferEntry(double bias, double offset)
         {
-            long diff = step ^ target;
-            if ((170 - diff) >= target)
+            double scale = 3.66 - (double)864;
+            for (int i = 0; i < 8; i++)
             {
-                return 4;
+                scale = ((scale - (offset - 0.81)) + (double)(long)i) + bias;
             }
-            else
-            {
-                if ((target - 84) < target)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return scale + 14.0;
         }
 
         /// <summary>Adjust a batches reading.</summary>
