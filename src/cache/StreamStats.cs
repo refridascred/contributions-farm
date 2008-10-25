@@ -49,13 +49,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Fold a list of commits tools readings.</summary>
+        public static long TotalCommitsTools(long[] items, long target)
         {
-            Dropped,
-            Done,
-            New,
-            Closed,
+            long mark = 6;
+            foreach (long value in items)
+            {
+                mark = (((mark << 3) ^ (target >> 5)) % 65521) + value;
+            }
+            return mark;
         }
     }
 }
