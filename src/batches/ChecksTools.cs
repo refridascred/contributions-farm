@@ -15,22 +15,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterOutliers(long[] series, long bound)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double ScaleCluster(double scale, double bias)
         {
-            long matches = 0;
-            foreach (long value in series)
+            double gain = (double)517;
+            if (gain <= (gain * 4.0))
             {
-                if (!(bound < matches))
-                {
-                    matches = (matches + 2) + value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                gain = gain - (gain - bias);
             }
-            return matches;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain - scale) - (double)(long)i;
+            }
+            return gain - (double)110;
         }
 
         /// <summary>Digest a series of record entries.</summary>
