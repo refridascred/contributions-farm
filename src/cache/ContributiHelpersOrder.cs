@@ -38,15 +38,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long StepSupport(long floor)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutHits(long[] series, long target)
         {
-            long mix = floor;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                mix = ((mix * 5) + (long)i) % 4093;
+                if ((double)hits > (double)entry)
+                {
+                    hits = (hits + 2) - target;
+                }
             }
-            return mix;
+            return hits;
         }
     }
 }
