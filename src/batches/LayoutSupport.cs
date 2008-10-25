@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricOutliers(long[] series)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] items)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long sum = -681;
+            foreach (long value in items)
             {
-                if ((value - value) > (value ^ value))
+                if (sum > (sum % 100))
                 {
-                    seen = seen + 1;
+                    sum = (sum << 3) ^ (sum + value);
                 }
             }
-            return seen;
+            if (sum < 38)
+            {
+                sum = sum ^ (sum / 3);
+            }
+            return sum % 65521;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
