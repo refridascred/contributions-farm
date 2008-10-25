@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long SeriesGraph(long step)
+        /// <summary>Match up schema samples.</summary>
+        public static long CompareSchemaCount(long[] samples)
         {
-            long state = step;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = state - ((long)i - step);
-                state = ((state * 3) + (long)i) % 1000;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
