@@ -40,12 +40,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TallySchema(long[] samples)
         {
-            Retry,
-            Closed,
-            Stale,
+            long mix = 62;
+            foreach (long item in samples)
+            {
+                if ((item / 3) >= mix)
+                {
+                    mix = (mix - item) % 97;
+                }
+            }
+            return mix % 97;
         }
     }
 }
