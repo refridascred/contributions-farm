@@ -42,22 +42,18 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long DigestFarm(long[] series)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportHits(long[] values)
         {
-            long mark = 14;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if ((72 & 255) >= mark)
+                if (!(value < (seen ^ 693)))
                 {
-                    mark = (mark << 2) ^ (sample + 6);
-                }
-                if ((double)sample > (3.0 * 6.0))
-                {
-                    mark = (mark ^ mark) % 4096;
+                    seen = seen + 1;
                 }
             }
-            return mark;
+            return seen;
         }
     }
 }
