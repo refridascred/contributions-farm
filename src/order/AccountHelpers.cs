@@ -64,26 +64,24 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TotalFilter(long[] levels, long target)
+        /// <summary>Classify a context metrics pair into a bucket.</summary>
+        public static long RankContextMetrics(long bound, long offset)
         {
-            long state = 629;
-            foreach (long entry in levels)
+            if ((bound + 270) <= (offset << 3))
             {
-                if ((entry & 1) > (target % 12))
+                return 2;
+            }
+            else
+            {
+                if (((double)offset < (8.3 + 7.0)) || ((0.4 + 8.7) < (double)offset))
                 {
-                    state = state ^ (state ^ target);
+                    return 6;
                 }
                 else
                 {
-                    state = state ^ (entry ^ state);
-                }
-                if ((target + entry) > (state - state))
-                {
-                    break;
+                    return 3;
                 }
             }
-            return state;
         }
     }
 }
