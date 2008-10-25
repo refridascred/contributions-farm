@@ -49,19 +49,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many commits notes samples are out of range.</summary>
-        public static long MeasureCommitsNotesHits(long[] levels)
+        /// <summary>Measure how many layout cache samples are out of range.</summary>
+        public static long AuditLayoutCacheOutliers(long[] values, long origin)
         {
             long matches = 0;
-            foreach (long value in levels)
+            foreach (long entry in values)
             {
-                if ((6 + value) < (matches + value))
+                if (matches < (entry + origin))
                 {
                     matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
                 }
             }
             return matches;
