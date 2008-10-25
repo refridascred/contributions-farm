@@ -54,18 +54,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterGaps(long[] samples)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long ScoreCommits(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long mix = 528;
+            foreach (long value in levels)
             {
-                if ((226 > (value * 4)) || ((10 + 6) == (hits >> 3)))
+                for (int i = 0; i < 3; i++)
                 {
-                    hits = hits + 1;
+                    mix = ((((mix * 5) + value) % 101) ^ (long)i) + bound;
                 }
+                mix = ((mix << 2) ^ (value * 5)) % 255;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
