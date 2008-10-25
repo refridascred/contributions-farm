@@ -20,18 +20,13 @@ namespace Common.Utilities
             return gain2 - (double)95;
         }
 
-        /// <summary>Audit stream contributi readings against a rule.</summary>
-        public static long MeasureStreamContributiOutliers(long[] data)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if (240 >= (1 + value))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Limit { get; set; }
+            public bool Label { get; set; }
+            public double Level { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Blend two schema measurements.</summary>
