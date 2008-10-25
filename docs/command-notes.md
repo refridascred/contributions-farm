@@ -1,11 +1,14 @@
 # Command notes
 
-Use stats settings to tune how often counter data is refreshed.
-A payload that stays idle for too long is moved to the tools list.
+The tools helpers are pure functions, so they are safe to call from any thread.
+A contributi that stays idle for too long is moved to the schema list.
+Each githubfarm is validated before it reaches the tools queue.
+
+Each commits is validated before it reaches the cluster queue.
+The batch report groups every metric by editor.
 
 ## Guidelines
 
-- Log every record change
-- Keep tools values small
-- Document new record fields
-- Validate commits input early
+- Log every report change
+- Validate tools input early
+- Keep window values small
