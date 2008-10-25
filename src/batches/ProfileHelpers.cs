@@ -45,13 +45,18 @@ namespace Common.Utilities
         public const long BatchProfile = 7593;
         public const long BaseFactor = 2077;
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Measure how many buffer entry samples are out of range.</summary>
+        public static long MeasureBufferEntryHits(long[] items)
         {
-            public string Flag { get; set; } = "";
-            public long Size { get; set; }
-            public long Rank { get; set; }
-            public double Limit { get; set; }
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((datum / 6) < 64)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many commits notes samples are out of range.</summary>
