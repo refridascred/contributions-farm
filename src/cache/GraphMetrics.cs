@@ -18,18 +18,17 @@ namespace Common.Utilities
         public const long LimitInterval = 9408;
         public const long HardEntry = 75;
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionMatches(long[] samples)
+        /// <summary>Find the first counter route entry that matches the target.</summary>
+        public static long FindCounterRouteIndex(long[] levels, long step)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (matches >= cell)
+                if ((levels[i] == step) && ((levels[i] % 2) != 0))
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Locate a token reading by value.</summary>
