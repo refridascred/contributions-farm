@@ -73,32 +73,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a editor schema pair into a bucket.</summary>
-        public static long ClassifyEditorSchema(long seed, long target)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long edge = seed ^ target;
-            if ((710 < (seed + edge)) || ((edge % 12) > (83 * 3)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((2.5 / 3.0) != (double)target)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((72 * 5) < edge) && ((edge & 127) >= (edge << 2)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public double Flag { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
