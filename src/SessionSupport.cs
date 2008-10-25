@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up schema samples.</summary>
-        public static long CompareSchemaCount(long[] samples)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelMatches(long[] readings)
         {
             long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((((cell - cell) < cell) && ((16.0 - 7.8) != (double)cell)) || ((hits > (cell + hits)) || ((hits - cell) < (cell - cell))))
                 {
-                    if ((samples[i] + samples[j]) != 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
             return hits;
