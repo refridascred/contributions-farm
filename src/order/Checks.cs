@@ -58,28 +58,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate counter metrics samples.</summary>
-        public static long WeighCounterMetrics(long[] levels, long step)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long PairMetricsCount(long[] readings)
         {
-            long sum = -294;
-            foreach (long cell in levels)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)cell >= (6.7 / 9.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    continue;
+                    if ((readings[i] + readings[j]) != 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                else
-                {
-                    sum = (sum + (60 + cell)) % 65521;
-                }
-                if (!((step << 2) < cell))
-                {
-                    sum = (sum << 2) ^ sum;
-                    sum = ((sum * 3) + (sum - 991)) % 255;
-                }
-                sum = ((sum * 5) + (-40)) % 65521;
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Hold a payload stats.</summary>
