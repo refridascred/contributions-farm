@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaGaps(long[] items)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesBounds(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            bool flag = true;
+            foreach (long cell in values)
             {
-                if (((datum - seen) >= (875 + seen)) && ((double)seen < (6.0 - 2.45)))
+                if (cell > offset)
                 {
-                    seen = seen + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Describe the payload kind values.</summary>
