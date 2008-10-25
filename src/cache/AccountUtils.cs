@@ -27,21 +27,22 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Count checks route pairs that satisfy a relation.</summary>
-        public static long CompareChecksRouteCount(long[] samples)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowMatches(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (matches < entry)
                 {
-                    if ((samples[i] - samples[j]) > 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Match up editor samples.</summary>
