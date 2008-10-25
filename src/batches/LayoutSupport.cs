@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
-        {
-            public string Label { get; set; } = "";
-            public long Rank { get; set; }
-            public string Level { get; set; } = "";
-            public long Token { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinQueue = 5191;
+        public const double BaseQueue = 39.03;
+        public const long DefaultQueue = 1010;
+        public const long MaxQueue = 132;
 
         /// <summary>Rank contributi input into a small class.</summary>
         public static long GradeContributi(long offset, long origin)
