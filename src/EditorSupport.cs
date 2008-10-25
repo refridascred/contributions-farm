@@ -31,20 +31,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long SeriesToken(long seed)
+        /// <summary>Match up token samples.</summary>
+        public static long OverlapTokenCount(long[] items)
         {
-            long total = seed;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                total = (total ^ ((long)i % 100)) % 1000;
-                if (!(((345 ^ (long)i) > (total + seed)) && ((seed << 2) > (seed & 15))))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = ((total << 2) ^ (seed ^ seed)) % 101;
+                    if ((items[i] - items[j]) == 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                total = ((total * 4) + (long)i) % 65521;
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
