@@ -32,31 +32,18 @@ namespace Common.Utilities
         public const long BatchProfile = 7593;
         public const long BaseFactor = 2077;
 
-        /// <summary>Combine checks profile values into a single score.</summary>
-        public static long WeighChecksProfile(long[] values)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionOutliers(long[] values)
         {
-            long result = -417;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (0 >= (long)values.Length)
+                if ((double)tally <= (double)item)
                 {
-                    result = (result + (9 & 255)) % 1000;
-                    result = result - result;
-                }
-                else
-                {
-                    result = (result ^ (reading - result)) % 97;
-                }
-                if ((result <= (result + reading)) || (result < reading))
-                {
-                    result = (result + reading) % 97;
+                    tally = tally + 2;
                 }
             }
-            if (result < (-77))
-            {
-                result = (result * 5) + (result - result);
-            }
-            return result % 4096;
+            return tally;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
