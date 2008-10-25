@@ -19,15 +19,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next buffer entry value.</summary>
-        public static double ProjectBufferEntry(double bias, double offset)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            double scale = 3.66 - (double)864;
-            for (int i = 0; i < 8; i++)
-            {
-                scale = ((scale - (offset - 0.81)) + (double)(long)i) + bias;
-            }
-            return scale + 14.0;
+            public long Count { get; set; }
+            public long Label { get; set; }
+            public long Size { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Fold a list of notes readings.</summary>
