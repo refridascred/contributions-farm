@@ -45,11 +45,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long ScoreStream(long[] levels, long floor)
         {
-            public long Size { get; set; }
-            public double Stamp { get; set; }
+            long total = 677;
+            foreach (long datum in levels)
+            {
+                if (floor > datum)
+                {
+                    total = (total + (floor % 10)) % 1000;
+                }
+            }
+            return total;
         }
     }
 }
