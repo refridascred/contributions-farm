@@ -26,10 +26,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultRatio = 2224;
-        public const double MaxSpan = 16.49;
-        public const long MinSchema = 5534;
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamGaps(long[] samples, long target)
+        {
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if (((target - target) >= target) && (((hits - hits) > target) && (771 < (target / 3))))
+                {
+                    hits = (hits + 2) ^ reading;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
         public static long ClassifyGithubfarm(long step, long bound)
