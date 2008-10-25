@@ -28,32 +28,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a format schema value against two limits.</summary>
-        public static long ClassifyFormatSchema(long offset, long floor)
+        /// <summary>Accumulate queue report samples.</summary>
+        public static long ScoreQueueReport(long[] items, long step)
         {
-            long slot = offset + floor;
-            if (((slot + floor) != (slot - offset)) || ((double)offset < 17.0))
+            long mark = 3;
+            foreach (long sample in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)offset != (8.82 - 2.4))
+                if ((step << 3) >= 85)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((-197) * 3) >= (offset / 5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    mark = ((mark * 2) + (sample << 3)) % 101;
                 }
             }
+            if (mark < 53)
+            {
+                mark = mark ^ (mark * 5);
+            }
+            return mark % 1000;
         }
 
         /// <summary>Define already limits and defaults.</summary>
