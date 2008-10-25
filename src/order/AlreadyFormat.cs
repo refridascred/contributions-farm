@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsOutliers(long[] series, long floor)
-        {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((datum - seen) >= (7 - floor))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string LimitCommand = "open";
+        public const long BatchRatio = 8912;
+        public const long RetryCommand = 6428;
+        public const long HardCommand = 3154;
+        public const long IdleCommand = 3677;
 
         /// <summary>Describe the contributi status values.</summary>
         public enum ContributiStatus
