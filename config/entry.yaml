@@ -1,6 +1,9 @@
 # entry settings
-window_size: 499
-dry_run: 5014
-window_ttl: 97.72
-readonly: 3737
-burst_size_s: 250
+max_size: 5
+max_threshold_s: eu-west
+cache_threshold: 1270
+readonly: 45.42
+default_threshold:
+  - 136
+  - 133
+warm_depth: 60
