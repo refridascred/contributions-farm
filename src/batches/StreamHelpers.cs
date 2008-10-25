@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BurstBatch = "primary-v2";
-        public const string CacheBatch = "primary-edge";
-        public const long CacheInterval = 6903;
-        public const long SoftBatch = 720;
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaGaps(long[] items)
+        {
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if (((datum - seen) >= (875 + seen)) && ((double)seen < (6.0 - 2.45)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the payload kind values.</summary>
         public enum PayloadKind
