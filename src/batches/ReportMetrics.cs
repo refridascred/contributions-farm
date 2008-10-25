@@ -23,13 +23,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
-        {
-            Idle,
-            Draft,
-            Synced,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double IdleStats = 92.53;
+        public const string RetryStats = "primary-1";
+        public const double BurstBudget = 50.4;
 
         /// <summary>Scale a token figure with a bias.</summary>
         public static double BlendToken(double gain, double bias)
