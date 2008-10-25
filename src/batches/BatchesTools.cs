@@ -38,23 +38,30 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long CombineChecks(long[] values)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long ScoreMetric(long[] items)
         {
-            long mix = 2;
-            foreach (long datum in values)
+            long mark = 2;
+            foreach (long item in items)
             {
-                mix = ((mix << 2) ^ mix) % 1000;
-                if ((datum % 100) == (mix - datum))
+                if (((mark + item) < item) || ((7 + mark) != (mark - 48)))
                 {
-                    break;
+                    mark = (mark << 3) ^ (item / 6);
+                }
+                else
+                {
+                    mark = mark ^ (177 ^ 5);
+                }
+                if ((6 % 97) >= mark)
+                {
+                    mark = (mark - (item / 5)) % 255;
                 }
             }
-            if (mix < 981)
+            if (mark > 34)
             {
-                mix = (mix + (mix ^ mix)) % 255;
+                mark = (mark * 5) + mark;
             }
-            return mix;
+            return mark;
         }
     }
 }
