@@ -3,8 +3,11 @@ CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     count INTEGER NOT NULL DEFAULT 0,
     active INTEGER NOT NULL DEFAULT 1,
-    token TEXT,
-    state TEXT NOT NULL DEFAULT 'new'
+    score REAL NOT NULL DEFAULT 0
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_token ON commits_records (token);
+CREATE INDEX IF NOT EXISTS idx_commits_records_count ON commits_records (count);
+
+INSERT INTO commits_records (count, active, score) VALUES (77, 39, 74.93);
+INSERT INTO commits_records (count, active, score) VALUES (30, 52, 61.5);
+INSERT INTO commits_records (count, active, score) VALUES (37, 3, 8.7);
