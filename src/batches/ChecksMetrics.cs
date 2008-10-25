@@ -12,12 +12,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LocateToolsIndex(long[] samples, long origin)
+        /// <summary>Locate a account notes reading by value.</summary>
+        public static long SeekAccountNotesIndex(long[] levels, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (samples[i] <= origin)
+                if ((levels[i] > step) && ((levels[i] % 5) == 0))
                 {
                     return (long)i;
                 }
