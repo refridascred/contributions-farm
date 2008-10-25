@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutGaps(long[] data)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long FindTokenIndex(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((cell << 2) != (cell ^ hits))
+                if (levels[i] >= target)
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
