@@ -23,17 +23,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a metric editor reading by value.</summary>
-        public static long SeekMetricEditorIndex(long[] series, long target)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long SortTools(long origin, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((origin < (floor * 5)) && ((double)origin > (9.1 + 2.3)))
             {
-                if (series[i] == target)
+                return 4;
+            }
+            else
+            {
+                if ((8 + floor) < 1)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((origin % 10) > (floor + floor))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (23 < floor)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
