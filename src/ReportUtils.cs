@@ -39,13 +39,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long DeriveBatches(long step)
         {
-            Dropped,
-            Done,
-            Ready,
-            Paused,
+            long result = step;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((14.0 / 3.0) < (double)result)
+                {
+                    result = (result << 2) ^ (step + result);
+                    result = (result - (91 & 31)) % 255;
+                }
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
