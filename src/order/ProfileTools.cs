@@ -51,13 +51,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Audit profile checks readings against a rule.</summary>
+        public static long AuditProfileChecksMatches(long[] readings, long limit)
         {
-            Active,
-            Queued,
-            Ready,
-            Draft,
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if ((long)readings.Length == (matches & 15))
+                {
+                    matches = ((matches + 3) - datum) - limit;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a counter entry.</summary>
