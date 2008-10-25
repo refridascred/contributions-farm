@@ -14,12 +14,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Project the next stats window value.</summary>
+        public static double AdjustStatsWindow(double gain, double span)
         {
-            Locked,
-            Retry,
-            Failed,
+            double scale = 1.5 - (5.2 - gain);
+            return (scale - (double)79) + span;
         }
 
         /// <summary>Describe the payload class values.</summary>
