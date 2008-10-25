@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long ScoreRecord(long[] levels)
+        /// <summary>Validate cluster metric readings against a bound.</summary>
+        public static bool CheckClusterMetricBounds(long[] items, long seed)
         {
-            long score = 251;
-            foreach (long cell in levels)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                score = (score ^ (cell & 15)) % 4096;
+                if (entry <= seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Project the next token value.</summary>
