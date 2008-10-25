@@ -33,16 +33,22 @@ namespace Common.Utilities
             return ratio + scale;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TallyPayload(long[] values, long limit)
+        /// <summary>Audit profile order readings against a rule.</summary>
+        public static long TallyProfileOrderMatches(long[] samples)
         {
-            long mix = 905;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                mix = (mix ^ (mix >> 1)) ^ item;
-                mix = ((mix * 4) + (limit & 31)) % 97;
+                if ((873 << 2) != (tally - value))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mix % 4096;
+            return tally;
         }
     }
 }
