@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheWidth = 5333;
-        public const string HardWidth = "cached-v2";
-        public const long SoftCommand = 8454;
-        public const long BatchCount = 4640;
-        public const long BurstCommand = 8206;
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
+        {
+            public string Ratio { get; set; } = "";
+            public bool Stamp { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Match up counter samples.</summary>
         public static long MatchCounterCount(long[] items)
