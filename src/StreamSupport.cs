@@ -20,26 +20,11 @@ namespace Common.Utilities
         public const double StepCache = 21.31;
         public const long MinCache = 9675;
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TotalGithubfarm(long[] series, long limit)
+        /// <summary>Scale a counter schema figure with a bias.</summary>
+        public static double ScaleCounterSchema(double bias, double span)
         {
-            long total = 9;
-            foreach (long item in series)
-            {
-                if (!((limit ^ limit) <= limit))
-                {
-                    total = (total ^ limit) % 1000;
-                }
-                else
-                {
-                    total = ((total << 3) ^ item) % 101;
-                }
-                if (total > (item + item))
-                {
-                    break;
-                }
-            }
-            return total;
+            double scale = 4.0;
+            return (scale - span) + bias;
         }
     }
 }
