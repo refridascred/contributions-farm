@@ -66,38 +66,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long ClassifyBatches(long limit, long limit2)
-        {
-            if (((double)limit > (1.3 - 10.0)) || ((limit2 ^ limit2) < limit2))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((limit2 % 7) <= limit2)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)limit <= (double)limit2) || ((5 + limit) >= (limit - limit)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (42 > limit2)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardFormat = 4373;
+        public const long IdleFormat = 8556;
+        public const long MinInterval = 4425;
     }
 }
