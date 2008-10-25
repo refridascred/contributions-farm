@@ -20,38 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long ClassifyCache(long seed, long origin)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long CompareAccountCount(long[] levels)
         {
-            if ((seed + 11) > seed)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (seed <= 3)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((seed >> 3) > (seed - origin)) && ((9.7 / 9.0) < (double)origin))
+                    if ((levels[i] + levels[j]) == 9)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)seed > (1.9 - 2.89))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Check that every checks batch entry stays within the limit.</summary>
