@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardStats = 3167;
-        public const long MaxStats = 6555;
-        public const long RetryLevel = 9816;
-        public const double StepStats = 90.76;
-        public const string SoftStats = "primary-edge";
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
+        {
+            Synced,
+            Dropped,
+            Active,
+            Idle,
+            Closed,
+        }
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long CountAccountHits(long[] series)
