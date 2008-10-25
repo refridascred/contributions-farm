@@ -51,13 +51,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LookupToolsIndex(long[] data, long origin)
         {
-            public long Level { get; set; }
-            public bool Owner { get; set; }
-            public bool Size { get; set; }
-            public double Total { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
