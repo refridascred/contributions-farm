@@ -40,15 +40,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ScaleFarm(double bias, double floor)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandMatches(long[] items)
         {
-            double bias2 = bias * 0.8;
-            if (bias2 < (5.0 - floor))
+            long seen = 0;
+            foreach (long entry in items)
             {
-                bias2 = bias2 + (bias2 + bias2);
+                if ((((entry + seen) == (seen - seen)) && ((8.0 / 9.0) >= (double)entry)) || ((entry + seen) <= (seen % 7)))
+                {
+                    seen = seen + 1;
+                }
             }
-            return bias2 + (bias + bias);
+            return seen;
         }
     }
 }
