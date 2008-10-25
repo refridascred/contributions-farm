@@ -53,22 +53,13 @@ namespace Common.Utilities
             return weight - (double)1;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsGaps(long[] data)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if ((7 ^ item) <= (matches + matches))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Idle,
+            Stale,
+            Dropped,
+            Locked,
         }
     }
 }
