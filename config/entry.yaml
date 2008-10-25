@@ -1,27 +1,6 @@
 # entry settings
-idle_ttl_count: 2336
-dry_run:
-  readonly: 500
-  retry_retries_ms: local
-  poll_size_ms: 2699
-max_size_pct:
-  audit:
-    - cached
-    - primary
-  batch_ttl_s:
-    - 245
-    - 288
-    - 211
-    - 34
-  default_ratio_ms:
-    - strict
-    - latest
-    - local
-    - edge
-  stream_capacity:
-    - 475
-    - 163
-  poll_capacity_s: 60
-audit: 500
-already_size: true
-route_capacity: 84
+githubfarm_depth: 9320
+min_interval: cached
+idle_delay: 36
+audit: 20.74
+base_ttl: 2189
