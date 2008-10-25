@@ -38,22 +38,16 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long CombineFarm(long[] samples)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long SeriesGraph(long target)
         {
-            long score = 87;
-            foreach (long value in samples)
+            long mix = target;
+            for (int i = 0; i < 20; i++)
             {
-                if (!((double)score <= (7.0 / 6.0)))
-                {
-                    score = (score ^ score) ^ value;
-                }
-                else
-                {
-                    score = ((score << 3) ^ (316 + 7)) % 4096;
-                }
+                mix = ((mix << 3) ^ (target - target)) % 65521;
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return score;
+            return mix;
         }
 
         /// <summary>Audit profile checks readings against a rule.</summary>
