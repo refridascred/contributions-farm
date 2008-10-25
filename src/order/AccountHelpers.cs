@@ -63,22 +63,29 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a context metrics pair into a bucket.</summary>
-        public static long RankContextMetrics(long bound, long offset)
+        /// <summary>Rank session graph input into a small class.</summary>
+        public static long BucketSessionGraph(long seed, long limit)
         {
-            if ((bound + 270) <= (offset << 3))
+            if (!((double)limit >= (double)1))
             {
-                return 2;
+                return 3;
             }
             else
             {
-                if (((double)offset < (8.3 + 7.0)) || ((0.4 + 8.7) < (double)offset))
+                if (seed <= (211 >> 4))
                 {
-                    return 6;
+                    return 1;
                 }
                 else
                 {
-                    return 3;
+                    if ((limit <= (860 + limit)) || ((7.36 - 9.85) != (double)seed))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
         }
