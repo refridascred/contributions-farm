@@ -20,22 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long ScoreSchema(long[] samples)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long carry = 317;
-            foreach (long entry in samples)
-            {
-                if ((entry & 127) < (entry + carry))
-                {
-                    carry = (carry ^ (carry & 7)) % 1000;
-                }
-                else
-                {
-                    carry = carry + entry;
-                }
-            }
-            return carry;
+            Locked,
+            Done,
+            Idle,
+            New,
+            Stale,
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
