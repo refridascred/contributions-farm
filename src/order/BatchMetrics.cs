@@ -28,20 +28,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two layout counter measurements.</summary>
-        public static double BlendLayoutCounter(double ratio, double offset)
-        {
-            double gain = offset;
-            if (gain < (double)0)
-            {
-                gain = (gain - (12.0 / 9.0)) + ratio;
-            }
-            else
-            {
-                gain = gain - (gain * 6.68);
-            }
-            return gain - offset;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinRoute = 9060;
+        public const double StepTimeout = 22.63;
+        public const long DefaultFactor = 1744;
+        public const long SoftBudget = 4587;
+        public const double MaxTimeout = 57.07;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long CacheCount = 9565;
