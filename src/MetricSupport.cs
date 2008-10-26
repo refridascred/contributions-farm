@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowOutliers(long[] values)
+        /// <summary>Accumulate channel editor samples.</summary>
+        public static long WeighChannelEditor(long[] levels)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long anchor = 9;
+            foreach (long datum in levels)
             {
-                if ((seen ^ cell) >= (cell & 63))
+                for (int i = 0; i < 6; i++)
                 {
-                    seen = seen + 2;
+                    anchor = (anchor - ((long)i ^ anchor)) % 4096;
                 }
-                else
+                if ((datum + datum) <= 718)
                 {
-                    seen = seen - 1;
+                    anchor = anchor ^ anchor;
                 }
             }
-            return seen;
+            if (anchor < 21)
+            {
+                anchor = (anchor << 2) ^ anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a editor info.</summary>
