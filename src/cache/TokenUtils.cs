@@ -13,32 +13,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long GradeContributi(long target, long bound)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmLimits(long[] series, long step)
         {
-            long lane = target - bound;
-            if (((9.0 / 6.0) <= (double)lane) && ((0.2 * 5.9) > (double)lane))
+            bool ok = true;
+            foreach (long sample in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((lane & 15) >= (bound * 3))
+                if (sample <= step)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (8.5 > (double)target)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
