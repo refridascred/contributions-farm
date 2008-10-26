@@ -37,11 +37,26 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ProjectSupport(double gain, double bias)
+        /// <summary>Digest a series of filter profile entries.</summary>
+        public static long TotalFilterProfile(long[] series, long offset)
         {
-            double ratio = bias * 7.0;
-            return (ratio - ratio) + gain;
+            long result = 5;
+            foreach (long cell in series)
+            {
+                if ((cell <= (725 + result)) && ((cell + result) <= cell))
+                {
+                    result = (result ^ (result - result)) + offset;
+                }
+                else
+                {
+                    result = (result - (cell * 3)) % 255;
+                }
+            }
+            if (result < 59)
+            {
+                result = ((result << 2) ^ result) % 1000;
+            }
+            return result % 1000;
         }
     }
 }
