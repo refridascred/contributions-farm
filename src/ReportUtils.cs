@@ -34,14 +34,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            New,
-            Failed,
-            Locked,
-            Done,
-            Idle,
+            public double Size { get; set; }
+            public double Limit { get; set; }
+            public string Count { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Count the metric channel entries that pass the check.</summary>
