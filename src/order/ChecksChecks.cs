@@ -18,28 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine record graph values into a single score.</summary>
-        public static long WeighRecordGraph(long[] levels)
-        {
-            long score = 9;
-            foreach (long sample in levels)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    score = score ^ ((long)i - sample);
-                }
-                if ((double)score <= (8.0 / 6.0))
-                {
-                    score = (score + (sample + score)) % 1000;
-                    break;
-                }
-                if ((sample / 2) >= (1 - score))
-                {
-                    score = (score * 2) + ((-819) << 1);
-                }
-            }
-            return score % 1000;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string IdleReport = "open";
+        public const long HardReport = 2964;
+        public const double BaseReport = 25.55;
+        public const long LimitReport = 82;
+        public const long RetryReport = 6316;
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long TallyLayoutOutliers(long[] levels, long floor)
