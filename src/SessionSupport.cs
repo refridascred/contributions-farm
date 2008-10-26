@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterHits(long[] values, long origin)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long RollContext(long target)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long total = target;
+            for (int i = 0; i < 8; i++)
             {
-                if ((matches - 207) < (matches / 2))
-                {
-                    matches = ((matches + 2) + sample) - origin;
-                }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
