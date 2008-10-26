@@ -34,18 +34,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterMatches(long[] data, long seed)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((double)seed < (2.48 - 2.0))
-                {
-                    count = (count + 2) + cell;
-                }
-            }
-            return count;
+            Draft,
+            Stale,
+            Pending,
+            Failed,
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
