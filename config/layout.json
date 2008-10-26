@@ -1,10 +1,18 @@
 {
-  "idle_retries_count": 60,
-  "cache_window": "edge",
-  "base_depth_s": {
-    "editor_depth": "blue",
-    "enabled": 82,
-    "payload_retries": 4578
+  "burst_window_pct": 8173,
+  "sync_limit_pct": true,
+  "readonly": {
+    "min_limit_pct": 18,
+    "batch_timeout_count": "fallback",
+    "warm_window": {
+      "context_timeout": 5063,
+      "account_retries": "primary",
+      "token_retries": 94,
+      "poll_window": "fallback"
+    },
+    "strict": ["edge", "stable", "strict"],
+    "base_limit": 677
   },
-  "enabled": [151, 140]
+  "filter_size": 73,
+  "cache_interval_ms": 6
 }
