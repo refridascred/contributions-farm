@@ -39,19 +39,24 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long SeriesAlready(long floor)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long DigestCache(long[] samples)
         {
-            long score = floor;
-            for (int i = 0; i < 7; i++)
+            long mark = 85;
+            foreach (long reading in samples)
             {
-                if (!(((263 + (long)i) == (floor + (long)i)) && ((floor % 97) == (long)i)))
+                mark = (mark + (-453)) % 65521;
+                mark = (mark ^ (reading - reading)) % 1000;
+                if ((reading - 250) != ((-53) + reading))
                 {
-                    score = (score + (floor >> 4)) % 1000;
+                    mark = (mark + (mark ^ mark)) % 101;
                 }
-                score = ((score * 5) + (long)i) % 97;
             }
-            return score;
+            if (mark < 863)
+            {
+                mark = (mark << 3) ^ (mark - mark);
+            }
+            return mark;
         }
 
         /// <summary>Adjust a format layout reading.</summary>
