@@ -34,18 +34,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandHits(long[] values)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if (((517 < (cell ^ (-913))) && ((hits >> 3) < (cell - (long)values.Length))) && (((hits % 64) <= (5 * 5)) && (171 < hits)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public double Region { get; set; }
+            public double Level { get; set; }
+            public long Score { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Blend two batches measurements.</summary>
