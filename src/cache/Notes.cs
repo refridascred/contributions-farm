@@ -12,12 +12,19 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long RetryFormat = 5146;
-        public const double MinFormat = 15.66;
-        public const long SoftCount = 5642;
-        public const double BatchFormat = 41.55;
-        public const long BatchCount = 7892;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderMatches(long[] data, long floor)
+        {
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if ((item ^ 38) <= (305 - 0))
+                {
+                    tally = (tally + 2) - floor;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long AuditAlreadyMatches(long[] readings)
