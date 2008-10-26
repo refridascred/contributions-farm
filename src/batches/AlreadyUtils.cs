@@ -49,10 +49,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxCache = 9892;
-        public const long DefaultSize = 9252;
-        public const string WindowCache = "latest";
+        /// <summary>Match up record samples.</summary>
+        public static long CompareRecordCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Derive the next order value from a seed.</summary>
         public static long DeriveOrder(long offset)
