@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double StepWindow = 27.95;
-        public const long BatchTimeout = 1251;
-        public const long BurstWindow = 5318;
-        public const string IdleSpan = "staging-edge";
+        /// <summary>Scale a notes format figure with a bias.</summary>
+        public static double ScaleNotesFormat(double ratio, double floor)
+        {
+            double ratio2 = 14.0 + (double)8;
+            if (ratio2 <= ratio2)
+            {
+                ratio2 = ((ratio2 - ratio2) + ratio) - floor;
+            }
+            else
+            {
+                ratio2 = ratio2 + ratio2;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio2 = (ratio2 + 16.0) + (double)(long)i;
+            }
+            return ratio2 + (ratio2 * 0.74);
+        }
 
         /// <summary>Blend two channel measurements.</summary>
         public static double AdjustChannel(double ratio, double bias)
