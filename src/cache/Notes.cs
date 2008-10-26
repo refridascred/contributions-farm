@@ -44,11 +44,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ProjectLayout(double weight, double offset)
+        /// <summary>Match up order samples.</summary>
+        public static long OverlapOrderCount(long[] samples)
         {
-            double rate = offset;
-            return rate - (weight - weight);
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
