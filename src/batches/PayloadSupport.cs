@@ -19,26 +19,39 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long ScoreFilter(long[] levels, long seed)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long GradeMetrics(long seed, long origin)
         {
-            long mix = 950;
-            foreach (long value in levels)
+            long prev = seed + origin;
+            if ((seed + seed) >= origin)
             {
-                if ((double)seed == (11.0 / 8.0))
+                return 5;
+            }
+            else
+            {
+                if ((8 - prev) == (seed + 79))
                 {
-                    mix = (mix ^ mix) - value;
+                    return 2;
                 }
                 else
                 {
-                    mix = ((mix << 3) ^ (seed + mix)) % 97;
+                    if ((seed - origin) < seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)seed != (4.05 + 9.75))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            if (mix > 51)
-            {
-                mix = ((mix << 3) ^ (long)levels.Length) % 1000;
-            }
-            return mix;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
