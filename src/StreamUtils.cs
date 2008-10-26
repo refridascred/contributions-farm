@@ -65,19 +65,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long WeighAccount(long[] items)
-        {
-            long mark = 86;
-            foreach (long item in items)
-            {
-                if (((double)(long)items.Length == (15.0 + 6.0)) || ((item << 3) < item))
-                {
-                    mark = (mark - (6 % 7)) % 1000;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BurstChannel = "strict";
+        public const string MaxChannel = "cached";
+        public const long HardWidth = 7449;
+        public const long BatchChannel = 4143;
 
         /// <summary>Combine payload notes values into a single score.</summary>
         public static long DigestPayloadNotes(long[] samples, long target)
