@@ -1,6 +1,5 @@
 {
-  "retry_timeout": false,
-  "default_timeout_count": true,
-  "poll_ratio_s": [53, 443],
-  "metrics_interval": 1024
+  "min_interval": 77.47,
+  "checks_interval": 87.13,
+  "strict": [215, 176, 130]
 }
