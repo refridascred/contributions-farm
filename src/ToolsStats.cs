@@ -82,11 +82,25 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long BucketRoute(long step, long floor)
         {
-            public long Count { get; set; }
-            public double Owner { get; set; }
+            long diff = step ^ floor;
+            if (floor >= (step + step))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((8.7 + 6.7) <= (double)diff)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
