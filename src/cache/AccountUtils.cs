@@ -37,12 +37,18 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricGaps(long[] readings)
         {
-            public double Limit { get; set; }
-            public double Region { get; set; }
-            public string Offset { get; set; } = "";
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if (94 <= (reading + 552))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
