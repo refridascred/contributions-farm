@@ -51,16 +51,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long StepBatches(long limit)
-        {
-            long carry = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftCommand = 6715;
+        public const long HardCommand = 2046;
+        public const string BurstCommand = "primary-v2";
+        public const string DefaultCommand = "primary-1";
 
         /// <summary>Describe the metric state values.</summary>
         public enum MetricState
