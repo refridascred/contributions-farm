@@ -13,19 +13,13 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksBounds(long[] readings, long step)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            bool found = true;
-            foreach (long item in readings)
-            {
-                if (item <= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Idle,
+            New,
+            Retry,
+            Draft,
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
