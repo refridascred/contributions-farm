@@ -56,15 +56,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long DeriveAccount(long step)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long anchor = step;
-            for (int i = 0; i < 22; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
+            Pending,
+            Queued,
+            Failed,
         }
     }
 }
