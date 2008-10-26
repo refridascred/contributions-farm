@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long OverlapBatchCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheBudget = 6732;
+        public const string SoftFilter = "standard-v2";
+        public const string MinCount = "cached-edge";
+        public const long StepFilter = 4300;
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool GuardFarmLimits(long[] series, long step)
