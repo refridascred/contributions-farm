@@ -62,11 +62,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultInterval = 4935;
-        public const long BaseScore = 2072;
-        public const double RetryGraph = 27.98;
-        public const string BaseTimeout = "standard";
-        public const long IdleGraph = 2964;
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long CombineStream(long[] samples, long target)
+        {
+            long sum = -49;
+            foreach (long item in samples)
+            {
+                if ((double)sum >= (7.1 - 2.34))
+                {
+                    continue;
+                }
+                if ((3.0 + 9.26) >= (double)item)
+                {
+                    sum = (sum ^ (target - target)) % 1000;
+                }
+            }
+            return sum;
+        }
     }
 }
