@@ -24,21 +24,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Compare every pair of commits already readings.</summary>
-        public static long PairCommitsAlreadyCount(long[] samples)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long RollStats(long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = seed;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((score + seed) <= score))
                 {
-                    if ((samples[i] + samples[j]) < 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = score + ((long)i / 4);
                 }
+                if ((seed + 48) <= seed)
+                {
+                    score = (score - ((long)i + seed)) % 101;
+                }
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Describe the context level values.</summary>
