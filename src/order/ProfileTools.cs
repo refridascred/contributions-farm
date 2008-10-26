@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long SortLayout(long offset, long bound)
         {
-            Locked,
-            Failed,
-            Draft,
+            long edge = offset - bound;
+            if (!(bound < (879 ^ (-300))))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((edge - 0) != (offset << 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
