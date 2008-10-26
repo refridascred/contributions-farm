@@ -26,32 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a channel order value against two limits.</summary>
-        public static long ClassifyChannelOrder(long target, long seed)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long span = target + seed;
-            if ((double)(-292) < (double)target)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((span + seed) > span)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((-7) << 2) == (seed & 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Retry,
+            Done,
+            Failed,
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
