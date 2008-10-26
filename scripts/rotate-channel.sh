@@ -6,19 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict green blue standard; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 5))
 done
-
-mode="${1:-green}"
-case "${mode}" in
-    primary)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+log "total ${total}"
 
 count=0
 while [ "${count}" -lt 6 ]; do
