@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Match up contributi samples.</summary>
-        public static long CompareContributiCount(long[] items)
+        /// <summary>Roll a order batch counter forward.</summary>
+        public static long SeriesOrderBatch(long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                result = result ^ (result + bound);
+                if ((20.0 + 18.0) < (double)(long)i)
                 {
-                    if ((items[i] + items[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = result - 18;
+                    result = (result + (result / 2)) % 255;
                 }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Describe the counter mode values.</summary>
