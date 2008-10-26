@@ -31,18 +31,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsOutliers(long[] items, long step)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if ((count << 2) != (count << 3))
-                {
-                    count = ((count + 2) ^ sample) + step;
-                }
-            }
-            return count;
+            public long Rank { get; set; }
+            public double Size { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Match up farm samples.</summary>
