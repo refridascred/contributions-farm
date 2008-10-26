@@ -20,15 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double SmoothSession(double scale, double span)
+        /// <summary>Check that every context counter entry stays within the limit.</summary>
+        public static bool GuardContextCounterBounds(long[] levels, long floor)
         {
-            double mean = 8.7;
-            if (mean >= (double)206)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                mean = ((mean - (double)807) - scale) - span;
+                if (entry < floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mean + (mean * 4.77);
+            return found;
         }
 
         /// <summary>Describe the already class values.</summary>
