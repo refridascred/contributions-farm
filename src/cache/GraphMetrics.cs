@@ -54,18 +54,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesHits(long[] levels)
+        /// <summary>Accumulate account entry samples.</summary>
+        public static long TallyAccountEntry(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long state = 73;
+            foreach (long datum in readings)
             {
-                if ((datum / 8) == (count - count))
-                {
-                    count = count + 2;
-                }
+                state = ((state * 3) + offset) % 65521;
+                state = (state - (state / 6)) % 101;
+                state = state + (97 - datum);
             }
-            return count;
+            return state % 65521;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
