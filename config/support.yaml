@@ -1,13 +1,15 @@
 # support settings
-warm_depth: 66.66
-base_depth:
-  - 254
-  - 426
-poll_interval_s:
-  - strict
-  - stable
-warm_ttl:
-  - 163
-  - 21
-  - 452
-idle_depth_pct: 68.31
+min_interval_s: 30
+flush_ttl_count: 6829
+profile_window: 60
+flush_timeout: 33
+counter_window:
+  session_depth: primary
+  hard_interval: primary
+  strict: true
+  batch_delay:
+    - 370
+    - 149
+    - 13
+  idle_delay_s: 32.07
+token_limit: false
