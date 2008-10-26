@@ -40,22 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorGaps(long[] levels)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((seen + cell) > (seen * 3))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Weight { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
