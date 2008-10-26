@@ -62,14 +62,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiGaps(long[] series)
         {
-            Stale,
-            Pending,
-            Active,
-            Idle,
-            Retry,
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((double)sample == (1.93 * 2.0))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a channel info.</summary>
