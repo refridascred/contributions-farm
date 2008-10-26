@@ -98,15 +98,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileGaps(long[] samples, long floor)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long CompareCommandCount(long[] items)
         {
             long tally = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)9 > (double)value)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = (tally + 3) + floor;
+                    if ((items[i] + items[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
