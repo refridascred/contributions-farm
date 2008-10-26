@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long CombineProfile(long[] levels, long origin)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long CompareQueueCount(long[] items)
         {
-            long result = 845;
-            foreach (long item in levels)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (origin >= (item & 63))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = result + (origin % 7);
-                }
-                else
-                {
-                    result = result + item;
+                    if ((items[i] ^ items[j]) < 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (result > 6)
-            {
-                result = (result ^ origin) % 97;
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
