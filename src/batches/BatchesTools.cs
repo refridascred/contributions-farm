@@ -41,9 +41,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleCommand = 1190;
-        public const long SoftCommand = 5775;
-        public const string BatchCount = "alpha-v2";
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleOrder = 3492;
+        public const double StepSpan = 93.16;
+        public const double MaxInterval = 72.03;
+        public const string BatchSpan = "stable-v2";
     }
 }
