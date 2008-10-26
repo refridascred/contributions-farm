@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
-        {
-            public bool Weight { get; set; }
-            public long Flag { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double StepWindow = 27.95;
+        public const long BatchTimeout = 1251;
+        public const long BurstWindow = 5318;
+        public const string IdleSpan = "staging-edge";
 
         /// <summary>Describe the farm state values.</summary>
         public enum FarmState
