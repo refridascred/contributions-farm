@@ -22,13 +22,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long CombineProfile(long[] data, long bound)
         {
-            public long Size { get; set; }
-            public double Label { get; set; }
-            public string Flag { get; set; } = "";
-            public double Limit { get; set; }
+            long score = 27;
+            foreach (long item in data)
+            {
+                score = ((score * 4) + (bound + 504)) % 97;
+                score = (score - item) % 101;
+            }
+            return score;
         }
 
         /// <summary>Describe the context kind values.</summary>
