@@ -1,22 +1,11 @@
 # githubfarm settings
-cache_ttl: latest
-retry_threshold:
-  - edge
-  - green
-  - latest
-context_size:
-  - edge
-  - standard
-  - strict
-  - standard
-idle_retries_pct:
-  - staging
-  - edge
-  - edge
-  - staging
-default_timeout: false
-retry_depth_ms:
-  - fallback
-  - eu-west
-  - primary
-  - green
+already_limit: false
+hard_size:
+  - 217
+  - 345
+  - 489
+batch_delay_count:
+  - 188
+  - 94
+max_size_s: 99
+dry_run: local
