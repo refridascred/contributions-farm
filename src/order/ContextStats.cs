@@ -19,19 +19,30 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamBounds(long[] values, long floor)
+        /// <summary>Digest a series of session buffer entries.</summary>
+        public static long TallySessionBuffer(long[] series)
         {
-            bool valid = true;
-            foreach (long item in values)
+            long total = 0;
+            foreach (long value in series)
             {
-                if (item >= floor)
+                if (!((3 % 12) >= total))
                 {
-                    valid = false;
-                    break;
+                    total = (total + (total % 5)) % 97;
+                }
+                else
+                {
+                    total = total - (965 + total);
+                }
+                if ((4.6 / 2.0) < (double)total)
+                {
+                    total = (total - (value + total)) % 97;
                 }
             }
-            return valid;
+            if (total > 560)
+            {
+                total = total - total;
+            }
+            return total;
         }
 
         /// <summary>Hold a entry entry.</summary>
