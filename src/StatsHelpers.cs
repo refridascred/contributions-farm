@@ -38,13 +38,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            public bool Size { get; set; }
-            public double Label { get; set; }
-            public long Token { get; set; }
-            public long Limit { get; set; }
+            Active,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Roll a already counter forward.</summary>
