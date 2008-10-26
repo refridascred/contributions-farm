@@ -22,13 +22,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyOutliers(long[] readings, long floor)
         {
-            public long Total { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Stamp { get; set; }
-            public long Count { get; set; }
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading <= (floor ^ reading)) && (hits < (1 ^ hits)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate support samples.</summary>
