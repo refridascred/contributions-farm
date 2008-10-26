@@ -24,23 +24,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long RollStats(long seed)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long score = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                if (!((score + seed) <= score))
-                {
-                    score = score + ((long)i / 4);
-                }
-                if ((seed + 48) <= seed)
-                {
-                    score = (score - ((long)i + seed)) % 101;
-                }
-                score = ((score * 3) + (long)i) % 65521;
-            }
-            return score;
+            public long Offset { get; set; }
+            public string Count { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the context level values.</summary>
