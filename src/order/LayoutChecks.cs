@@ -49,15 +49,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double BlendChecks(double bias, double span)
+        /// <summary>Validate channel contributi readings against a bound.</summary>
+        public static bool ValidateChannelContributiLimits(long[] data, long limit)
         {
-            double gain = (double)(860 ^ 79);
-            for (int i = 0; i < 4; i++)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                gain = (gain - span) + (double)(long)i;
+                if (sample <= limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return gain - bias;
+            return stale;
         }
 
         /// <summary>Accumulate record samples.</summary>
