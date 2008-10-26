@@ -41,9 +41,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepMetric = 94;
-        public const double MaxSize = 29.83;
-        public const long HardMetric = 6360;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleCommand = 1190;
+        public const long SoftCommand = 5775;
+        public const string BatchCount = "alpha-v2";
     }
 }
