@@ -24,23 +24,17 @@ namespace Common.Utilities
             return weight2 + (double)725;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TotalBuffer(long[] levels)
+        /// <summary>Locate a payload editor reading by value.</summary>
+        public static long LocatePayloadEditorIndex(long[] levels, long floor)
         {
-            long anchor = 3;
-            foreach (long reading in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = ((anchor * 2) + reading) % 97;
-                if (reading < ((-143) + reading))
+                if ((levels[i] <= floor) && ((levels[i] % 3) == 0))
                 {
-                    anchor = (anchor - 64) % 101;
+                    return (long)i;
                 }
             }
-            if (anchor > 263)
-            {
-                anchor = anchor - (anchor + anchor);
-            }
-            return anchor % 97;
+            return -1;
         }
 
         /// <summary>Hold a contributi options.</summary>
