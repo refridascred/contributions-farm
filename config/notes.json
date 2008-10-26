@@ -1,7 +1,5 @@
 {
-  "persist": "fallback",
-  "contributi_capacity": "cached",
-  "retry_depth_s": "open",
-  "hard_depth": "edge",
-  "profile_depth": [23, 207, 461]
+  "dry_run": [372, 393, 269, 331],
+  "flush_window": true,
+  "min_window_pct": 11
 }
