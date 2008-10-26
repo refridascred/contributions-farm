@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            public double Owner { get; set; }
-            public bool Flag { get; set; }
-            public long Count { get; set; }
-            public double Score { get; set; }
+            Queued,
+            Retry,
+            Locked,
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
