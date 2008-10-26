@@ -34,20 +34,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] levels, long step)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsRange(long[] values, long step)
         {
-            long carry = 830;
-            foreach (long reading in levels)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                carry = ((carry + (9 & 127)) % 4096) ^ reading;
-                carry = (carry ^ 78) % 65521;
+                if (reading != step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (carry < 84)
-            {
-                carry = (carry - step) % 255;
-            }
-            return carry;
+            return valid;
         }
     }
 }
