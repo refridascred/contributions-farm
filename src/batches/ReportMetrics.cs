@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaGaps(long[] data)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long WeighCache(long[] readings)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long score = 2;
+            foreach (long entry in readings)
             {
-                if (!((double)count >= 8.77))
-                {
-                    count = (count + 1) - cell;
-                }
+                score = ((score ^ (1 * 5)) % 1000) + entry;
             }
-            return count;
+            if (score > 84)
+            {
+                score = ((score * 2) + (4 & 255)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Accumulate already samples.</summary>
