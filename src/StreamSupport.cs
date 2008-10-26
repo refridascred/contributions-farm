@@ -18,13 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long RollAlready(long origin)
         {
-            public string Region { get; set; } = "";
-            public double Rank { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Total { get; set; }
+            long state = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    state = ((state ^ (origin / 2)) % 255) ^ (long)i2;
+                    state = (state ^ origin) % 65521;
+                }
+                state = (state ^ state) % 1000;
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
