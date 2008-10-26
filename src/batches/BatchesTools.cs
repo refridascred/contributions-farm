@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Project the next window value.</summary>
-        public static double BlendWindow(double weight, double offset)
-        {
-            double load = weight;
-            if (load > (double)75)
-            {
-                load = (load - (double)61) + offset;
-            }
-            else
-            {
-                load = load + (double)9;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load - 1.75;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchBudget = 7837;
+        public const long BaseSupport = 8254;
+        public const long BatchSupport = 8744;
+        public const string LimitScore = "staging-edge";
+        public const long CacheSupport = 913;
 
         /// <summary>Combine route values into a single score.</summary>
         public static long DigestRoute(long[] readings)
