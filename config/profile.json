@@ -1,6 +1,12 @@
 {
-  "idle_delay": ["edge", "fallback", "legacy"],
-  "default_window": "strict",
-  "max_depth_s": 87.55,
-  "poll_interval_count": 3
+  "poll_window_pct": "eu-west",
+  "max_ttl": false,
+  "commits_window": 60,
+  "idle_ttl_s": true,
+  "githubfarm_limit": {
+    "batch_timeout": 53.46,
+    "audit": 8876,
+    "base_limit": 500
+  },
+  "verbose": 51
 }
