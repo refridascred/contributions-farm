@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long RollContext(long limit)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long result = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                result = (result ^ (607 + (long)i)) % 65521;
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
+            public long Stamp { get; set; }
+            public bool Flag { get; set; }
+            public long Size { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Match up queue samples.</summary>
