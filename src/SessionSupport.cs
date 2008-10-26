@@ -19,13 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricOutliers(long[] readings)
         {
-            public string Rank { get; set; } = "";
-            public string Region { get; set; } = "";
-            public bool Limit { get; set; }
-            public long Stamp { get; set; }
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if (!(3 <= (cell - cell)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
