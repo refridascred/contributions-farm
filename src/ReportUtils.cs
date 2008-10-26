@@ -48,12 +48,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            public bool Region { get; set; }
-            public bool Score { get; set; }
-            public long Weight { get; set; }
+            Active,
+            Idle,
+            Dropped,
+            Retry,
         }
     }
 }
