@@ -40,19 +40,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long FoldCache(long[] values, long bound)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmMatches(long[] series, long bound)
         {
-            long total = 76;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                total = (total - (bound % 8)) ^ datum;
+                if ((bound >= (hits << 2)) && ((bound - 488) > cell))
+                {
+                    hits = hits + 1;
+                }
             }
-            if (total < 1)
-            {
-                total = total ^ (bound - bound);
-            }
-            return total % 97;
+            return hits;
         }
     }
 }
