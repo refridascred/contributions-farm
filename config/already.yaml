@@ -1,30 +1,4 @@
 # already settings
-max_window:
-  - 478
-  - 291
-min_interval: true
-persist: false
-readonly:
-  hard_timeout:
-    retry_window_count:
-      - stable
-      - legacy
-      - local
-      - strict
-    base_capacity_s: 8039
-    base_window_count: eu-west
-  idle_interval_ms:
-    dry_run: 82.62
-    cache_retries_ms: 8406
-    flush_timeout_count: false
-    warm_ratio: 60
-    default_depth: open
-  idle_ratio_s: standard
-  counter_depth: 12.21
-  base_ratio_pct:
-    persist: staging
-    idle_size_s: true
-    base_size_pct:
-      - primary
-      - local
-      - staging
+order_depth: local
+cache_limit_s: 76.93
+min_threshold_s: 5.4
