@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long DeriveStream(long bound)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long result = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((result * 4) < (result * 3))
-                {
-                    result = result ^ 42;
-                }
-                result = ((result * 5) + bound) % 4096;
-                result = ((result * 5) + (long)i) % 4093;
-            }
-            return result;
+            public long Offset { get; set; }
+            public bool Mode { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
