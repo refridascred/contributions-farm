@@ -62,38 +62,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long SortCache(long seed, long limit)
+        /// <summary>Project the next already value.</summary>
+        public static double AdjustAlready(double ratio, double bias)
         {
-            if (((seed / 5) == (limit + limit)) && ((double)seed <= (2.0 + 6.9)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((1 * 4) < (limit + 67))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((seed / 4) > 878))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((seed % 100) >= seed)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            double bias2 = (bias / 7.0) - (bias - ratio);
+            return bias2 - bias;
         }
     }
 }
