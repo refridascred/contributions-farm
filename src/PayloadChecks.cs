@@ -30,17 +30,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long SeekEntryIndex(long[] samples, long origin)
+        /// <summary>Measure how many record format samples are out of range.</summary>
+        public static long CountRecordFormatOutliers(long[] levels, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if (samples[i] < origin)
+                if ((entry << 1) < (floor << 1))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Grade a report farm value against two limits.</summary>
