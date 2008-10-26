@@ -15,19 +15,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every stream filter entry stays within the limit.</summary>
-        public static bool VerifyStreamFilterRange(long[] samples, long seed)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterMatches(long[] samples)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (cell >= seed)
+                if (!((matches >> 3) != (737 + matches)))
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 3) ^ entry;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Blend two schema measurements.</summary>
