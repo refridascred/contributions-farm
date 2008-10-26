@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphGaps(long[] samples)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if (matches > (matches ^ sample))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Active,
+            Paused,
+            Stale,
+            Ready,
+            New,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
