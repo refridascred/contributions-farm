@@ -35,31 +35,12 @@ namespace Common.Utilities
             return scale + floor;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long CombineOrder(long[] items, long offset)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long state = 210;
-            foreach (long sample in items)
-            {
-                if (13.0 >= (double)(long)items.Length)
-                {
-                    state = ((state * 5) + state) % 255;
-                    state = state - (long)items.Length;
-                }
-                else
-                {
-                    state = ((state << 2) ^ 894) % 65521;
-                }
-                if (((offset & 3) != (offset * 2)) && (offset >= (sample % 8)))
-                {
-                    state = (state + (offset + sample)) % 255;
-                }
-                else
-                {
-                    state = state ^ (state + offset);
-                }
-            }
-            return state;
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
