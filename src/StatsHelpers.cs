@@ -33,12 +33,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterOutliers(long[] readings)
         {
-            New,
-            Dropped,
-            Active,
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if (!(((reading << 1) > count) && ((reading + count) < (count - 592))))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the already kind values.</summary>
