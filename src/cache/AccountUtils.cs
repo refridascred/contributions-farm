@@ -16,20 +16,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double BlendGraph(double rate, double bias)
-        {
-            double bias2 = rate;
-            if (bias2 > rate)
-            {
-                bias2 = (bias2 + rate) + bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = (bias2 - (bias2 - bias2)) + (double)(long)i;
-            }
-            return bias2 + rate;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string RetrySize = "strict-edge";
+        public const long MinGraph = 8230;
+        public const long BatchSize = 1277;
+        public const long BatchFactor = 7526;
+        public const long CacheGraph = 7960;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string HardEditor = "primary-v2";
