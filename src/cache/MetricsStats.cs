@@ -61,22 +61,17 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] levels, long seed)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long SeekBufferIndex(long[] levels, long target)
         {
-            long sum = -27;
-            foreach (long value in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)(long)levels.Length >= 10.0)
+                if (levels[i] > target)
                 {
-                    sum = sum ^ (sum + value);
+                    return (long)i;
                 }
             }
-            if (sum > 97)
-            {
-                sum = (sum ^ (seed / 6)) % 4096;
-            }
-            return sum;
+            return -1;
         }
     }
 }
