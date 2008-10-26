@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long GradeProfile(long target, long step)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long step2 = target ^ step;
-            if ((518 >= target) && ((step << 3) >= step2))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((step2 >> 3) == (step2 >> 1)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((10.0 / 7.0) <= (double)target))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public double Region { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Fold a list of order readings.</summary>
