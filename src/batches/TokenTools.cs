@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksMatches(long[] series, long offset)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutLimits(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long sample in series)
+            bool ok = true;
+            foreach (long value in items)
             {
-                if ((sample + offset) != (sample + 199))
+                if (value < floor)
                 {
-                    count = count + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Define token limits and defaults.</summary>
