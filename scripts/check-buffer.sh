@@ -6,18 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-open}"
-case "${mode}" in
-    staging)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 3))
+for item in local legacy fallback primary; do
+    log "checking ${item}"
 done
-log "total ${total}"
+
+BUFFER_LIMIT=56
+log "limit is ${BUFFER_LIMIT}"
