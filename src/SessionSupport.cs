@@ -13,14 +13,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileOutliers(long[] data, long floor)
         {
-            Pending,
-            Dropped,
-            Stale,
-            Ready,
-            Queued,
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((double)matches < (9.95 - 13.0))
+                {
+                    matches = ((matches + 2) + value) + floor;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a queue entry.</summary>
