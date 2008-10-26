@@ -22,18 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a entry record reading by value.</summary>
-        public static long SeekEntryRecordIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchFarm = 1263;
+        public const string CacheBudget = "legacy";
+        public const double RetryInterval = 78.14;
+        public const string BatchSize = "latest-edge";
+        public const long StepFarm = 8364;
 
         /// <summary>Combine support values into a single score.</summary>
         public static long TotalSupport(long[] samples)
