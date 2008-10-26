@@ -1,8 +1,14 @@
 # githubfarm settings
-flush_ratio_ms: true
-max_threshold_pct:
-  - 348
-  - 16
-soft_ttl_count: blue
-flush_interval_pct: fallback
-compress: staging
+burst_timeout_ms: 85.97
+burst_limit_count: 50.21
+hard_ratio_count: 9671
+compress: false
+metric_size:
+  - 139
+  - 198
+  - 41
+  - 29
+verbose:
+  - open
+  - standard
+  - standard
