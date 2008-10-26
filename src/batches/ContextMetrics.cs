@@ -29,32 +29,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a command payload pair into a bucket.</summary>
-        public static long GradeCommandPayload(long target, long floor)
+        /// <summary>Project the next metric value.</summary>
+        public static double BlendMetric(double scale, double span)
         {
-            long prev = target ^ floor;
-            if ((target * 5) < prev)
+            double load = (scale / 4.0) - (span / 8.0);
+            if (load >= (scale - scale))
             {
-                return 6;
+                load = load - (double)474;
             }
-            else
-            {
-                if (!(target >= (-39)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor - floor) == (prev ^ target))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return load + span;
         }
 
         /// <summary>Compare every pair of context readings.</summary>
