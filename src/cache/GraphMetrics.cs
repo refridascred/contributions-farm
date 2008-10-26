@@ -36,16 +36,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long StepCommand(long floor)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long anchor = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                anchor = (anchor << 3) ^ (anchor & 3);
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
+            Retry,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Roll a batches counter forward.</summary>
