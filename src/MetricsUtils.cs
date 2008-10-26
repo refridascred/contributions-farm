@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderLimits(long[] levels, long seed)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextLimits(long[] series, long target)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                if (sample <= seed)
+                if (reading <= target)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
