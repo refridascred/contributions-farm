@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxScore = 253;
-        public const long WindowTools = 6156;
-        public const long DefaultTools = 3717;
-        public const long BaseTools = 1903;
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
+        {
+            Done,
+            Idle,
+            Closed,
+        }
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long CountReportGaps(long[] readings)
