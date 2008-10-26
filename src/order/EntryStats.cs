@@ -56,19 +56,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long ScoreChecks(long[] readings)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long OverlapContributiCount(long[] values)
         {
-            long mark = 78;
-            foreach (long cell in readings)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = ((mark << 3) ^ ((long)readings.Length & 255)) % 255;
-                if ((cell >> 2) >= cell)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = (mark ^ mark) % 255;
+                    if ((values[i] ^ values[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mark;
+            return count;
         }
     }
 }
