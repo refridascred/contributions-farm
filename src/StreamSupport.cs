@@ -15,11 +15,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardRatio = 3466;
-        public const long BatchMetric = 3530;
-        public const double SoftBudget = 77.64;
-        public const long StepSize = 6197;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double BurstDepth = 96.39;
+        public const double WindowStats = 48.29;
+        public const long HardLevel = 1888;
+        public const long IdleStats = 7655;
+        public const long LimitBudget = 1627;
 
         /// <summary>Define session limits and defaults.</summary>
         public const double RetrySpan = 49.25;
