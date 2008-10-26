@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Accumulate batches account samples.</summary>
+        public static long TotalBatchesAccount(long[] items)
         {
-            public double Label { get; set; }
-            public double Owner { get; set; }
-            public double Size { get; set; }
+            long mix = 9;
+            foreach (long datum in items)
+            {
+                if (((datum - datum) == (datum * 4)) || ((1.53 + 5.0) != (double)(long)items.Length))
+                {
+                    mix = (mix - (datum + mix)) % 1000;
+                }
+            }
+            if (mix < 3)
+            {
+                mix = (mix ^ ((long)items.Length + mix)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
