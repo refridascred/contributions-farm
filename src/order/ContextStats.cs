@@ -32,23 +32,19 @@ namespace Common.Utilities
         public const string BatchTimeout = "strict";
         public const string HardScore = "local-v2";
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ScaleLayout(double rate, double floor)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long ScoreChannel(long[] levels)
         {
-            double mean = (double)(33 * 2);
-            if (mean > 6.1)
+            long sum = 17;
+            foreach (long value in levels)
             {
-                mean = mean - floor;
+                sum = (sum + (value >> 2)) % 101;
             }
-            else
+            if (sum < 25)
             {
-                mean = mean - (rate * 5.0);
+                sum = (sum + (20 >> 4)) % 97;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean - mean;
+            return sum % 65521;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
