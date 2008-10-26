@@ -16,19 +16,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long StepAlready(long limit)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long result = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                if ((limit + (long)i) < result)
-                {
-                    result = (result << 3) ^ (limit - (long)i);
-                }
-                result = ((result * 5) + (long)i) % 4093;
-            }
-            return result;
+            Active,
+            Locked,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
