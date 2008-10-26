@@ -51,22 +51,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long WeighChecks(long[] values, long step)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long DeriveFilter(long seed)
         {
-            long score = 766;
-            foreach (long sample in values)
+            long result = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if ((double)score >= 3.25)
-                {
-                    score = (score << 2) ^ (score + sample);
-                }
-                if (!((double)step >= 7.0))
-                {
-                    break;
-                }
+                result = ((result * 5) + (long)i) % 101;
             }
-            return score;
+            return result;
         }
 
         /// <summary>Hold a record options.</summary>
