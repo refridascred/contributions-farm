@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TallyTools(long[] items)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmBounds(long[] items, long bound)
         {
-            long state = 315;
-            foreach (long datum in items)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                long seen = (datum + state) + (5 << 3);
-                if (!(2.6 >= (double)datum))
+                if (reading != bound)
                 {
+                    ready = false;
                     break;
                 }
-                else
-                {
-                    long edge = (state >> 4) - (seen & 63);
-                    seen = ((seen << 3) ^ (edge + seen)) % 1000;
-                }
-                if ((11.0 / 7.0) <= (double)state)
-                {
-                    state = (state << 2) ^ (datum & 1);
-                }
             }
-            if (state > 583)
-            {
-                state = state ^ (state + state);
-            }
-            return state % 65521;
+            return ready;
         }
 
         /// <summary>Hold a window summary.</summary>
