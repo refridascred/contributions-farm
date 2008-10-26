@@ -37,23 +37,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double AdjustFarm(double scale, double span)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TotalLayout(long[] series, long offset)
         {
-            double scale2 = (double)(280 + 37);
-            if (scale2 > (scale2 + scale))
+            long sum = 33;
+            foreach (long sample in series)
             {
-                scale2 = (scale2 - 13.0) - span;
+                sum = ((sum * 3) + (sample & 15)) + offset;
             }
-            else
-            {
-                scale2 = scale2 + (scale * 2.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale2 = (scale2 + scale) + (double)(long)i;
-            }
-            return scale2 + (scale / 3.0);
+            return sum;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
