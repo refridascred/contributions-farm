@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long ClassifyChecks(long step, long floor)
         {
-            Ready,
-            Idle,
-            Paused,
-            New,
+            long step2 = step ^ floor;
+            if ((step << 3) > (step2 * 5))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((564 * 3) <= step2) && (74 < (floor ^ 6)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (step2 > floor)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit window readings against a rule.</summary>
