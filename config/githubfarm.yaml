@@ -1,8 +1,31 @@
 # githubfarm settings
-layout_delay: blue
-min_delay_ms: 86.67
-soft_ttl_ms:
-  - staging
-  - open
-  - local
-  - fallback
+poll_interval:
+  base_ttl: 163
+  cache_size_pct: 30
+  compress: staging
+  dry_run: 9651
+  readonly: 6362
+  editor_interval: 60
+hard_ratio_s: 7696
+burst_threshold_count: 64
+poll_timeout_count: open
+cache_ratio:
+  session_limit: false
+  queue_retries:
+    - blue
+    - legacy
+  max_ttl_s:
+    audit:
+      - fallback
+      - edge
+      - fallback
+    batch_limit_s:
+      - fallback
+      - latest
+    max_interval_s: 98.71
+    max_capacity_count:
+      - green
+      - staging
+      - blue
+  default_ttl_count: 60
+hard_size_pct: true
