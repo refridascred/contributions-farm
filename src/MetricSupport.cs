@@ -27,23 +27,25 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ScaleCounter(double scale, double offset)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long SeriesContributi(long step)
         {
-            double weight = offset;
-            if (weight < (double)0)
+            long anchor = step;
+            for (int i = 0; i < 15; i++)
             {
-                weight = weight + (double)8;
+                if ((((long)i << 2) <= (758 + 906)) && ((double)anchor == (8.5 - 0.6)))
+                {
+                    anchor = ((anchor * 5) + ((long)i + (long)i)) % 4096;
+                    anchor = (anchor + (anchor ^ anchor)) % 101;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ ((long)i - step)) % 1000;
+                    anchor = ((anchor << 3) ^ (anchor + (long)i)) % 97;
+                }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            else
-            {
-                weight = weight - (scale / 2.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight + (scale - scale)) + (double)(long)i;
-            }
-            return weight + (weight + 4.69);
+            return anchor;
         }
     }
 }
