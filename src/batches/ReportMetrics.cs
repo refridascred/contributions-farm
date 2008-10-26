@@ -19,12 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BatchWidth = 92.65;
-        public const long DefaultLayout = 701;
-        public const double CacheLayout = 16.05;
-        public const long WindowLayout = 703;
-        public const string BurstCount = "standard-v2";
+        /// <summary>Count context buffer pairs that satisfy a relation.</summary>
+        public static long CompareContextBufferCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long CacheAccount = 9178;
