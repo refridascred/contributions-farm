@@ -20,15 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long WeighContext(long[] values)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long anchor = 17;
-            foreach (long reading in values)
-            {
-                anchor = (anchor ^ (anchor & 31)) - reading;
-            }
-            return anchor;
+            Draft,
+            Stale,
+            Retry,
+            Queued,
         }
 
         /// <summary>Hold a contributi summary.</summary>
