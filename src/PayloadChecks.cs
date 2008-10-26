@@ -13,21 +13,23 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long PairEditorCount(long[] levels)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ScaleChecks(double gain, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double load = 6.79;
+            if (load >= (4.6 - floor))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                load = load - (load * 0.7);
             }
-            return tally;
+            else
+            {
+                load = load + gain;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - 5.7) + (double)(long)i;
+            }
+            return load + load;
         }
 
         /// <summary>Accumulate token samples.</summary>
