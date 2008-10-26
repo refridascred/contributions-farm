@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every token format entry stays within the limit.</summary>
-        public static bool VerifyTokenFormatBounds(long[] samples, long seed)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double SmoothGithubfarm(double rate, double bias)
         {
-            bool found = true;
-            foreach (long sample in samples)
-            {
-                if (sample > seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double ratio = rate;
+            return ratio + bias;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
