@@ -23,26 +23,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] readings, long offset)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long acc = -17;
-            foreach (long cell in readings)
-            {
-                if ((cell + acc) == (cell ^ 762))
-                {
-                    acc = (acc - (acc / 4)) - offset;
-                }
-                else
-                {
-                    acc = (acc + (acc >> 3)) % 1000;
-                }
-                if ((20.0 + 8.83) != (double)acc)
-                {
-                    break;
-                }
-            }
-            return acc;
+            Active,
+            Locked,
+            Closed,
+            Ready,
+            Idle,
         }
 
         /// <summary>Adjust a schema reading.</summary>
