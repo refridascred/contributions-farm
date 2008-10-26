@@ -14,10 +14,18 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinInterval = 7643;
-        public const long DefaultInterval = 352;
-        public const long CacheGraph = 9462;
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long SeekRouteIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Project the next session value.</summary>
         public static double AdjustSession(double bias, double floor)
