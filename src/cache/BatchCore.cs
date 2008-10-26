@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long PairBatchCount(long[] values)
+        /// <summary>Blend two githubfarm commits measurements.</summary>
+        public static double BlendGithubfarmCommits(double bias, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            double drift = (double)(53 & 63);
+            if (drift >= (drift / 9.0))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 15)
-                    {
-                        count = count + 1;
-                    }
-                }
+                drift = (drift - (19.0 - 10.0)) + bias;
             }
-            return count;
+            else
+            {
+                drift = drift + (double)70;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - 16.0) + (double)(long)i;
+            }
+            return drift + floor;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
