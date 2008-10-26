@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaGaps(long[] data)
         {
-            public double Total { get; set; }
-            public string Score { get; set; } = "";
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if (!((double)count >= 8.77))
+                {
+                    count = (count + 1) - cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up record format samples.</summary>
