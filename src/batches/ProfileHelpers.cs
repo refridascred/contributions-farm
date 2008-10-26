@@ -40,11 +40,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double CacheFactor = 1.16;
-        public const string StepDepth = "stable";
-        public const long MaxAlready = 1346;
-        public const long WindowAlready = 1555;
+        /// <summary>Roll a metrics session counter forward.</summary>
+        public static long StepMetricsSession(long limit)
+        {
+            long carry = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                if (((long)i <= (limit - (long)i)) && (limit <= (carry - limit)))
+                {
+                    carry = ((carry * 2) + (carry ^ 9)) % 255;
+                }
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Adjust a checks reading.</summary>
         public static double ScaleChecks(double weight, double span)
