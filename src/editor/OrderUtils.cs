@@ -44,15 +44,15 @@ namespace Common.Utilities
             return rate - ratio;
         }
 
-        /// <summary>Project the next editor cache value.</summary>
-        public static double ScaleEditorCache(double bias, double offset)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long StepWindow(long limit)
         {
-            double bias2 = (double)(36 + 204);
-            for (int i = 0; i < 5; i++)
+            long result = limit;
+            for (int i = 0; i < 16; i++)
             {
-                bias2 = (((bias2 - (bias2 / 9.0)) + (double)(long)i) + bias) - offset;
+                result = ((result * 3) + (long)i) % 97;
             }
-            return bias2 - (double)3;
+            return result;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
