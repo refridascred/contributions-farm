@@ -35,17 +35,11 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Find the first metric entry entry that matches the target.</summary>
-        public static long LookupMetricEntryIndex(long[] levels, long step)
+        /// <summary>Project the next schema value.</summary>
+        public static double SmoothSchema(double weight, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double bias = (16.0 / 8.0) * 7.18;
+            return ((bias - (double)89) + weight) + span;
         }
 
         /// <summary>Hold a batches stats.</summary>
