@@ -63,18 +63,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowHits(long[] series)
-        {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if (!!((hits + 88) >= (sample & 7)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultAlready = 2080;
+        public const long HardAlready = 4461;
+        public const long BaseRatio = 1525;
     }
 }
