@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Locate a record payload reading by value.</summary>
-        public static long SeekRecordPayloadIndex(long[] series, long target)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long IterateMetric(long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if ((series[i] <= target) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
