@@ -25,19 +25,17 @@ namespace Common.Utilities
         public const long LimitReport = 82;
         public const long RetryReport = 6316;
 
-        /// <summary>Check that every format batches entry stays within the limit.</summary>
-        public static bool GuardFormatBatchesLimits(long[] readings, long offset)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long SeekStatsIndex(long[] items, long floor)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry > offset)
+                if (items[i] > floor)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
