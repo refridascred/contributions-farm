@@ -14,11 +14,14 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string RetryMetric = "staging-1";
-        public const long BaseMetric = 4374;
-        public const long MinMetric = 978;
-        public const string IdleMetric = "strict-v2";
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
+        {
+            public double Mode { get; set; }
+            public long Level { get; set; }
+            public bool Weight { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long AuditGraphOutliers(long[] values, long seed)
