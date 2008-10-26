@@ -27,19 +27,19 @@ namespace Common.Utilities
         public const string WindowRatio = "local-v2";
         public const long StepNotes = 9334;
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksLimits(long[] items, long origin)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchLimits(long[] readings, long origin)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                if (cell <= origin)
+                if (reading > origin)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
     }
 }
