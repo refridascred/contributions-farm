@@ -44,12 +44,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricHits(long[] readings, long target)
         {
-            Retry,
-            New,
-            Draft,
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((target << 1) < (matches - target))
+                {
+                    matches = (matches + 3) ^ reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define already limits and defaults.</summary>
