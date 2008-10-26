@@ -21,13 +21,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            Stale,
-            Idle,
-            Retry,
-            Locked,
+            public string Region { get; set; } = "";
+            public double Rank { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Rank command input into a small class.</summary>
