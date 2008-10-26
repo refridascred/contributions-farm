@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LookupToolsIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= floor) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftCommand = 106;
+        public const long MinCommand = 869;
+        public const long LimitCommand = 1378;
+        public const string WindowRatio = "fallback-1";
+        public const string WindowCommand = "latest-edge";
 
         /// <summary>Derive the next queue value from a seed.</summary>
         public static long RollQueue(long seed)
