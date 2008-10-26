@@ -1,15 +1,14 @@
 # Command notes
 
-The notes module keeps layout values in sync with the record cache.
-Defaults for payload live in the config folder and can be overridden per environment.
-Each filter is validated before it reaches the payload queue.
+The graph report groups every session by batch.
+Each account is validated before it reaches the farm queue.
+Keep metric and batches names short and lowercase.
 
-When a farm fails, the entry handler retries a few times before giving up.
-The contributi module keeps format values in sync with the cluster cache.
-Each layout is validated before it reaches the token queue.
+The notes report groups every metric by cluster.
+Keep command and entry names short and lowercase.
 
 ## Guidelines
 
-- Review queue limits each release
-- Keep record values small
-- Log every route change
+- Document new channel fields
+- Validate checks input early
+- Prefer filter defaults
