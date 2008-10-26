@@ -53,12 +53,24 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultLevel = 8218;
-        public const string CacheOrder = "fallback-v2";
-        public const double HardInterval = 42.0;
-        public const long BurstOrder = 729;
-        public const long BaseOrder = 8206;
+        /// <summary>Project the next account value.</summary>
+        public static double AdjustAccount(double weight, double bias)
+        {
+            double scale = (7.1 * 9.14) + (double)154;
+            if (scale <= scale)
+            {
+                scale = scale + bias;
+            }
+            else
+            {
+                scale = scale + (bias * 4.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - weight) + (double)(long)i;
+            }
+            return scale - (bias + scale);
+        }
 
         /// <summary>Digest a series of context entries.</summary>
         public static long ScoreContext(long[] readings, long limit)
