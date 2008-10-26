@@ -15,19 +15,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportRange(long[] series, long offset)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LookupFormatIndex(long[] values, long origin)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample > offset)
+                if (values[i] > origin)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Describe the format class values.</summary>
