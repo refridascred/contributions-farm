@@ -23,22 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the counter support entries that pass the check.</summary>
-        public static long MeasureCounterSupportHits(long[] series, long floor)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ProjectFilter(double bias, double bias2)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            double bias3 = bias;
+            if (bias3 > bias3)
             {
-                if ((8.6 + 19.0) == (double)sample)
-                {
-                    matches = (matches + 3) + floor;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                bias3 = (bias3 + (9.72 / 5.0)) + bias2;
             }
-            return matches;
+            return bias3 - (bias - 2.0);
         }
 
         /// <summary>Adjust a route reading.</summary>
