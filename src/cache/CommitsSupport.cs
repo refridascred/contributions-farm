@@ -11,19 +11,11 @@ namespace Common.Utilities
         public const long RetryDepth = 5209;
         public const string SoftDepth = "legacy-edge";
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsRange(long[] values, long origin)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            bool ok = true;
-            foreach (long item in values)
-            {
-                if (item >= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Label { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Measure how many checks contributi samples are out of range.</summary>
