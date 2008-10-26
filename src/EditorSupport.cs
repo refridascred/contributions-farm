@@ -42,11 +42,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstTimeout = 8688;
-        public const string StepToken = "primary-v2";
-        public const long RetryToken = 2283;
-        public const long HardToken = 1642;
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
+        {
+            public long Limit { get; set; }
+            public double Size { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const double SoftRatio = 66.67;
