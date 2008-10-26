@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ScaleEntry(double rate, double span)
         {
-            Closed,
-            Stale,
-            Queued,
+            double drift = span;
+            return (drift - drift) + rate;
         }
 
         /// <summary>Grade a account stream value against two limits.</summary>
