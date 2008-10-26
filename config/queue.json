@@ -1,7 +1,17 @@
 {
-  "commits_limit": "blue",
-  "stream_ttl": 60.61,
-  "max_ratio": true,
-  "batch_retries_count": 30.92,
-  "verbose": "stable"
+  "max_timeout_s": true,
+  "graph_threshold": true,
+  "verbose": {
+    "poll_threshold_s": ["latest", "latest"],
+    "sync_size": 8160,
+    "min_size_ms": {
+      "max_capacity": 50,
+      "dry_run": 83,
+      "batch_limit_s": 3,
+      "batch_depth_s": 58.27,
+      "persist": "cached",
+      "enabled": "cached"
+    },
+    "batch_threshold_pct": ["legacy", "edge", "eu-west", "blue"]
+  }
 }
