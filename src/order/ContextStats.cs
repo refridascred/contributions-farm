@@ -46,20 +46,12 @@ namespace Common.Utilities
         public const long BatchChannel = 2025;
         public const long StepSpan = 8113;
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double SmoothMetrics(double bias, double floor)
-        {
-            double weight = (double)96;
-            if (weight <= bias)
-            {
-                weight = weight - (double)3;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight - (floor / 7.0)) + (double)(long)i;
-            }
-            return weight + 20.0;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string LimitCluster = "open";
+        public const long MinBudget = 6103;
+        public const long DefaultCluster = 6236;
+        public const string CacheTimeout = "open";
+        public const long MaxCluster = 3299;
 
         /// <summary>Describe the record kind values.</summary>
         public enum RecordKind
