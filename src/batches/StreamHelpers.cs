@@ -10,20 +10,11 @@ namespace Common.Utilities
         public const string IdleGithubfarm = "latest";
         public const long StepScore = 8132;
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportRange(long[] data, long origin)
-        {
-            bool flag = true;
-            foreach (long cell in data)
-            {
-                if (cell <= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxQueue = 2229;
+        public const long IdleLevel = 3812;
+        public const long CacheSize = 7338;
+        public const long LimitBudget = 8654;
 
         /// <summary>Find the first schema entry that matches the target.</summary>
         public static long SeekSchemaIndex(long[] readings, long step)
