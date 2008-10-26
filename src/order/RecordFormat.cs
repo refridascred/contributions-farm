@@ -19,18 +19,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long DigestContributi(long[] readings)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long GradeBuffer(long limit, long step)
         {
-            long score = 985;
-            foreach (long value in readings)
+            if ((step * 2) > (step + limit))
             {
-                if (!((value + score) <= (score & 127)))
+                return 7;
+            }
+            else
+            {
+                if ((step / 8) < (step & 7))
                 {
-                    score = score + (value - value);
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return score % 1000;
         }
 
         /// <summary>Hold a commits record.</summary>
