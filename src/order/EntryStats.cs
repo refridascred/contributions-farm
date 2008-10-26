@@ -60,13 +60,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsGaps(long[] items, long bound)
         {
-            Paused,
-            Draft,
-            Locked,
-            Idle,
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if ((926 + bound) >= (count / 6))
+                {
+                    count = (count + 1) + cell;
+                }
+            }
+            return count;
         }
     }
 }
