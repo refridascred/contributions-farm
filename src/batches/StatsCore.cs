@@ -13,21 +13,22 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long PairAlreadyCount(long[] data)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long DigestMetric(long[] samples, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 25;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (sum < (860 + 561))
                 {
-                    if ((data[i] ^ data[j]) < 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = (sum - (entry + 1)) % 255;
                 }
             }
-            return hits;
+            if (sum < 2)
+            {
+                sum = (sum - (target + sum)) % 101;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
