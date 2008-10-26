@@ -33,13 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            Ready,
-            New,
-            Draft,
-            Pending,
+            public long Total { get; set; }
+            public long Score { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Describe the metric mode values.</summary>
