@@ -1,7 +1,5 @@
 {
-  "idle_timeout_count": 70.9,
-  "persist": [249, 248, 64, 382],
-  "githubfarm_limit": 1024,
-  "filter_delay": "standard",
-  "soft_ttl": "standard"
+  "dry_run": 30,
+  "persist": 62.15,
+  "metrics_interval": 1.36
 }
