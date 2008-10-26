@@ -21,17 +21,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long SeekReportIndex(long[] series, long seed)
+        /// <summary>Count the payload profile entries that pass the check.</summary>
+        public static long TallyPayloadProfileMatches(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if (series[i] >= seed)
+                if ((7.3 * 18.0) == (double)entry)
                 {
-                    return (long)i;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the counter status values.</summary>
