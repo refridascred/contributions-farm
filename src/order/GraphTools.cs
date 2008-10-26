@@ -37,18 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyMatches(long[] data)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ScaleCounter(double rate, double offset)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            double bias = (double)(9 * 5);
+            if (bias <= rate)
             {
-                if ((seen * 5) <= (datum % 5))
-                {
-                    seen = seen + 2;
-                }
+                bias = bias - (double)992;
             }
-            return seen;
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias + bias) - (double)(long)i;
+            }
+            return bias - (offset - offset);
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
