@@ -33,25 +33,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long GradeContext(long offset, long target)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long lane = offset ^ target;
-            if (5 >= ((-62) + lane))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((offset & 3) > offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public bool Count { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
