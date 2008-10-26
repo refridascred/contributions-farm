@@ -22,19 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every context format entry stays within the limit.</summary>
-        public static bool GuardContextFormatBounds(long[] readings, long bound)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            bool valid = true;
-            foreach (long item in readings)
-            {
-                if (item >= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Owner { get; set; }
+            public long Level { get; set; }
+            public long Stamp { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
