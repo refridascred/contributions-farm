@@ -38,12 +38,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleSize = 8845;
-        public const long IdleWidth = 296;
-        public const long LimitSpan = 6467;
-        public const long SoftBudget = 2405;
-        public const string RetryDepth = "latest-edge";
+        /// <summary>Digest a series of stats tools entries.</summary>
+        public static long CombineStatsTools(long[] levels)
+        {
+            long state = 991;
+            foreach (long entry in levels)
+            {
+                state = state + (entry & 15);
+            }
+            if (state < 236)
+            {
+                state = ((state << 3) ^ (state - state)) % 4096;
+            }
+            return state;
+        }
 
         /// <summary>Compare every pair of record readings.</summary>
         public static long PairRecordCount(long[] data)
