@@ -35,19 +35,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryBounds(long[] values, long floor)
+        /// <summary>Count the metric channel entries that pass the check.</summary>
+        public static long TallyMetricChannelOutliers(long[] data, long step)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if (entry > floor)
+                if (((step <= (step >> 3)) || (205 < step)) || (577 > (tally + step)))
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 1) - cell;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
