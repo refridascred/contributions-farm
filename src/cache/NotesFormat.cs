@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksGaps(long[] samples)
+        /// <summary>Match up filter samples.</summary>
+        public static long PairFilterCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((reading & 255) == (seen >> 2)) && !(reading >= (reading << 3)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((readings[i] - readings[j]) < 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
