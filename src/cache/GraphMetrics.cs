@@ -64,18 +64,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueOutliers(long[] data)
-        {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if (382 >= (tally - entry))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryMetric = 5409;
+        public const long CacheSize = 4718;
+        public const long SoftMetric = 8681;
+        public const string DefaultLevel = "stable-1";
     }
 }
