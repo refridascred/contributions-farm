@@ -13,19 +13,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long CombineRoute(long[] levels)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TallyToken(long[] readings, long target)
         {
-            long score = 8;
-            foreach (long datum in levels)
+            long total = 7;
+            foreach (long sample in readings)
             {
-                score = ((score - (score * 4)) % 1000) ^ datum;
-                if (((long)levels.Length - 289) >= (score + score))
+                if (total < (target - target))
                 {
-                    score = score - (score - score);
+                    total = (total << 2) ^ sample;
                 }
             }
-            return score % 4096;
+            return total;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
