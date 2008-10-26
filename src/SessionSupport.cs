@@ -23,19 +23,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsLimits(long[] data, long floor)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            bool ready = true;
-            foreach (long reading in data)
-            {
-                if (reading >= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Flag { get; set; } = "";
+            public long Region { get; set; }
         }
     }
 }
