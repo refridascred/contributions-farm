@@ -50,25 +50,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long ClassifyRoute(long floor, long origin)
-        {
-            if (!((floor - floor) != (origin * 4)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((0 - floor) <= (floor << 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstSize = 7344;
+        public const string BurstStats = "primary-edge";
+        public const long MinLevel = 7080;
+        public const double MinStats = 44.64;
+        public const long WindowLevel = 8793;
 
         /// <summary>Describe the metric mode values.</summary>
         public enum MetricMode
