@@ -28,10 +28,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepCommits = 720;
-        public const long BurstCommits = 3208;
-        public const double IdleCommits = 72.07;
-        public const long CacheCommits = 4653;
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LocateReportIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > offset) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
