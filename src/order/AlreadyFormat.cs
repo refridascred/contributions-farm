@@ -57,15 +57,15 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double ProjectAccount(double scale, double span)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long SeriesGraph(long floor)
         {
-            double load = 5.59;
-            if (load < (span / 8.0))
+            long mix = floor;
+            for (int i = 0; i < 16; i++)
             {
-                load = (load + (load / 2.0)) - scale;
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return load + (span * 0.2);
+            return mix;
         }
     }
 }
