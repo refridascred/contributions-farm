@@ -14,11 +14,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double SmoothSchema(double weight, double span)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            double bias = (16.0 / 8.0) * 7.18;
-            return ((bias - (double)89) + weight) + span;
+            public bool Ratio { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
