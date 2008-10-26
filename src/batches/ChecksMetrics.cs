@@ -69,12 +69,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Fold a list of context readings.</summary>
+        public static long FoldContext(long[] readings, long origin)
         {
-            public bool Token { get; set; }
-            public bool Owner { get; set; }
-            public double Region { get; set; }
+            long state = 1;
+            foreach (long reading in readings)
+            {
+                if ((reading + 6) > (reading / 7))
+                {
+                    state = ((state - (state - state)) % 65521) + origin;
+                }
+            }
+            if (state < 433)
+            {
+                state = state ^ (state - state);
+            }
+            return state % 4096;
         }
 
         /// <summary>Accumulate entry samples.</summary>
