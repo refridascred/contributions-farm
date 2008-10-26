@@ -42,11 +42,39 @@ namespace Common.Utilities
             return ((bias - (double)89) + weight) + span;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long RankBatches(long target, long origin)
         {
-            public long Rank { get; set; }
-            public string Level { get; set; } = "";
+            long edge = target + origin;
+            if (!((edge + target) >= (origin >> 2)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((origin / 8) < origin)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)origin < 8.0)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((origin <= edge) && ((double)origin == (8.0 * 5.75)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
