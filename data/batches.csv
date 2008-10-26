@@ -1,9 +1,6 @@
-id,label,owner,region
-1,49.03,84.5,39.22
-2,93.44,595,77.21
-3,19,32.41,37
-4,789,786,235
-5,594,820,99
-6,fallback,36.26,staging
-7,373,eu-west,42.45
-8,green,green,43.56
+id,count,score
+1,186,legacy
+2,196,512
+3,985,latest
+4,staging,cached
+5,standard,stable
