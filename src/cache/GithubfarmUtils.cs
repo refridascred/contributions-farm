@@ -19,22 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long ScoreFarm(long[] values)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long result = 8;
-            foreach (long item in values)
-            {
-                if ((5 - result) >= (item + result))
-                {
-                    result = result + result;
-                }
-                else
-                {
-                    result = (result + (62 / 2)) % 101;
-                }
-            }
-            return result % 65521;
+            public string Ratio { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Describe the cache state values.</summary>
