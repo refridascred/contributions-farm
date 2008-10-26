@@ -84,18 +84,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueGaps(long[] values, long floor)
+        /// <summary>Combine payload notes values into a single score.</summary>
+        public static long DigestPayloadNotes(long[] samples, long target)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long mark = 52;
+            foreach (long sample in samples)
             {
-                if ((floor & 127) == (floor + datum))
-                {
-                    seen = seen + 2;
-                }
+                mark = (((mark << 3) ^ (sample + mark)) % 4096) - target;
             }
-            return seen;
+            return mark % 97;
         }
     }
 }
