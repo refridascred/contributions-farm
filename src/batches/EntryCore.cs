@@ -26,12 +26,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long SoftRatio = 8150;
-        public const string LimitBudget = "cached-edge";
-        public const long WindowDepth = 7721;
-        public const string MinReport = "legacy-1";
-        public const string BaseBudget = "local";
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
+        {
+            Pending,
+            Draft,
+            Closed,
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double BaseCluster = 36.1;
