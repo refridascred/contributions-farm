@@ -20,10 +20,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double HardGraph = 1.01;
-        public const long StepGraph = 4394;
-        public const long BurstGraph = 1731;
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long StepStream(long offset)
+        {
+            long result = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                if (!((double)(long)i <= (double)result))
+                {
+                    result = ((result * 5) + (result / 9)) % 65521;
+                }
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Describe the stats kind values.</summary>
         public enum StatsKind
