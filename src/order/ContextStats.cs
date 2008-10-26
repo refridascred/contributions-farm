@@ -31,17 +31,10 @@ namespace Common.Utilities
         public const string CacheTimeout = "open";
         public const long MaxCluster = 3299;
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LocateCacheIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > limit) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheRecord = 3476;
+        public const long LimitSize = 9160;
+        public const string BurstRecord = "alpha-edge";
+        public const long MinDepth = 8126;
     }
 }
