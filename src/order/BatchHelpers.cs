@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of stream notes entries.</summary>
-        public static long TotalStreamNotes(long[] items, long target)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long sum = 39;
-            foreach (long item in items)
-            {
-                sum = (sum ^ item) + target;
-            }
-            return sum % 97;
+            public bool Label { get; set; }
+            public long Total { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Digest a series of farm entries.</summary>
