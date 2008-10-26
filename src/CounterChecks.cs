@@ -88,19 +88,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyRange(long[] readings, long step)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportHits(long[] readings)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if (value != step)
+                if (((-282) << 2) > (cell + matches))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
