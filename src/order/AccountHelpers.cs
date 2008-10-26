@@ -76,19 +76,19 @@ namespace Common.Utilities
             return drift + (weight + drift);
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchLimits(long[] readings, long target)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountBounds(long[] items, long target)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            bool stale = true;
+            foreach (long item in items)
             {
-                if (reading != target)
+                if (item >= target)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
     }
 }
