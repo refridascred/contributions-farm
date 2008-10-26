@@ -1,7 +1,14 @@
 {
-  "default_window": "legacy",
-  "queue_threshold": 45.34,
-  "verbose": "eu-west",
-  "burst_size": "stable",
-  "editor_threshold": 70.56
+  "sync_interval_s": "stable",
+  "min_timeout_ms": 1024,
+  "flush_depth": "fallback",
+  "sync_threshold": "legacy",
+  "max_timeout_pct": {
+    "default_ttl_s": 25.58,
+    "base_delay_pct": 3393,
+    "strict": "primary",
+    "farm_threshold": "primary",
+    "session_threshold": ["staging", "latest", "cached"]
+  },
+  "min_ratio_count": "staging"
 }
