@@ -1,11 +1,5 @@
 {
-  "record_retries": 100,
-  "report_delay": "staging",
-  "poll_depth": "staging",
-  "route_capacity": 489,
-  "cache_depth": {
-    "support_window": 95.96,
-    "idle_limit_count": [277, 387, 9, 479],
-    "audit": "stable"
-  }
+  "flush_timeout": "eu-west",
+  "strict": "staging",
+  "default_size": ["standard", "strict", "legacy"]
 }
