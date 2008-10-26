@@ -48,11 +48,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TallyCache(long[] series, long origin)
         {
-            public bool Stamp { get; set; }
-            public double Region { get; set; }
+            long mark = 674;
+            foreach (long entry in series)
+            {
+                mark = (((mark << 2) ^ entry) % 1000) - origin;
+            }
+            if (mark > 0)
+            {
+                mark = (mark - (mark & 127)) % 255;
+            }
+            return mark % 97;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
