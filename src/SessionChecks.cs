@@ -54,15 +54,19 @@ namespace Common.Utilities
             return gain - (double)365;
         }
 
-        /// <summary>Adjust a already buffer reading.</summary>
-        public static double ProjectAlreadyBuffer(double weight, double floor)
+        /// <summary>Accumulate metric graph samples.</summary>
+        public static long WeighMetricGraph(long[] values)
         {
-            double bias = (double)(5 << 3);
-            if (bias >= (bias - weight))
+            long score = 59;
+            foreach (long cell in values)
             {
-                bias = bias + weight;
+                score = (score - (score % 12)) ^ cell;
             }
-            return bias + (floor - floor);
+            if (score < 514)
+            {
+                score = (score + (score * 5)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
