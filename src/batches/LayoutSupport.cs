@@ -26,10 +26,14 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string LimitScore = "fallback-edge";
-        public const string WindowProfile = "fallback";
-        public const long SoftProfile = 7245;
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
+        {
+            Closed,
+            Ready,
+            Dropped,
+            Idle,
+        }
 
         /// <summary>Measure how many format layout samples are out of range.</summary>
         public static long TallyFormatLayoutHits(long[] samples, long origin)
