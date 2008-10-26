@@ -19,22 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteMatches(long[] values)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if ((count + entry) != ((long)values.Length * 4))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Rank { get; set; } = "";
+            public string Region { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Blend two filter farm measurements.</summary>
