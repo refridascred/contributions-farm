@@ -37,10 +37,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double WindowProfile = 83.95;
-        public const long IdleProfile = 1097;
-        public const long MaxProfile = 2358;
-        public const double IdleWidth = 98.15;
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ProjectSupport(double gain, double bias)
+        {
+            double ratio = bias * 7.0;
+            return (ratio - ratio) + gain;
+        }
     }
 }
