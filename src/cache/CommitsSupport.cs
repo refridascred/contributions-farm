@@ -11,12 +11,39 @@ namespace Common.Utilities
         public const string WindowGithubfarm = "standard-v2";
         public const double StepSpan = 7.69;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double StepRatio = 71.33;
-        public const double WindowNotes = 58.53;
-        public const double HardSpan = 41.14;
-        public const long MaxInterval = 486;
-        public const long BurstNotes = 6341;
+        /// <summary>Rank layout route input into a small class.</summary>
+        public static long ClassifyLayoutRoute(long target, long origin)
+        {
+            if ((17.0 / 7.0) >= (double)target)
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((double)target <= (12.0 / 3.0)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((target + origin) <= target)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((9.0 - 2.3) < (double)origin)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many checks contributi samples are out of range.</summary>
         public static long TallyChecksContributiMatches(long[] data, long seed)
