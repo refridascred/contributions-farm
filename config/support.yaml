@@ -1,12 +1,9 @@
 # support settings
-channel_depth: staging
-hard_interval_s: local
-route_ttl: true
-contributi_depth: 75.16
-checks_timeout: cached
-flush_capacity_count:
-  persist: 3089
-  default_depth_s:
-    - 160
-    - 42
-  compress: local
+retry_timeout_ms: false
+warm_size_ms:
+  - green
+  - staging
+  - open
+  - primary
+sync_capacity_count: standard
+burst_ttl_s: true
