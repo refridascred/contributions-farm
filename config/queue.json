@@ -1,6 +1,7 @@
 {
-  "hard_size_count": 2117,
-  "audit": 30,
-  "compress": "primary",
-  "filter_window": 24
+  "hard_ratio_pct": "eu-west",
+  "profile_ttl": true,
+  "warm_limit_s": "latest",
+  "command_ratio": 76.55,
+  "base_interval_s": 8103
 }
