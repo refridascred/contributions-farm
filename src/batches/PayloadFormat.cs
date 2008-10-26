@@ -52,15 +52,31 @@ namespace Common.Utilities
             return scale2 + (scale / 3.0);
         }
 
-        /// <summary>Combine entry order values into a single score.</summary>
-        public static long TallyEntryOrder(long[] series)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long RankMetric(long seed, long step)
         {
-            long result = 6;
-            foreach (long item in series)
+            if (((seed + step) == (step + step)) || (step >= (step + step)))
             {
-                result = (result + (item % 100)) % 97;
+                return 2;
             }
-            return result % 97;
+            else
+            {
+                if ((step << 3) < (seed - seed))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (seed > (111 << 1))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
