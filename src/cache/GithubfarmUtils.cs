@@ -26,12 +26,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first layout report entry that matches the target.</summary>
-        public static long FindLayoutReportIndex(long[] values, long offset)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LocateFormatIndex(long[] levels, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (values[i] == offset)
+                if (levels[i] == origin)
                 {
                     return (long)i;
                 }
