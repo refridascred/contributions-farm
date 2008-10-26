@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmRange(long[] data, long seed)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long SeriesRecord(long step)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            long carry = step;
+            for (int i = 0; i < 23; i++)
             {
-                if (sample <= seed)
+                carry = (carry - (carry / 4)) % 1000;
+                if ((carry - carry) <= ((long)i & 63))
                 {
-                    stale = false;
-                    break;
+                    continue;
                 }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return stale;
+            return carry;
         }
 
         /// <summary>Describe the queue phase values.</summary>
