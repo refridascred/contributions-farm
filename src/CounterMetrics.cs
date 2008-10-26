@@ -22,13 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TallyContext(long[] samples)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TotalCommand(long[] items)
         {
-            long result = 8;
-            foreach (long datum in samples)
+            long result = 5;
+            foreach (long entry in items)
             {
-                result = (result ^ result) ^ datum;
+                result = ((result << 3) ^ (result * 3)) - entry;
             }
             return result;
         }
