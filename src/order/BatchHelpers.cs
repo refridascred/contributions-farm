@@ -12,14 +12,24 @@ namespace Common.Utilities
         public const long WindowGithubfarm = 9107;
         public const long RetryCount = 4358;
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long RankPayload(long limit, long floor)
         {
-            Paused,
-            Dropped,
-            Done,
-            Retry,
-            Synced,
+            if ((floor * 5) > (floor + 74))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((11.0 / 9.0) != (double)floor))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Combine commits queue values into a single score.</summary>
