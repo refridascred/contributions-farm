@@ -10,14 +10,13 @@ namespace Common.Utilities
         public const long DefaultWidth = 198;
         public const long WindowBudget = 6949;
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            Failed,
+            Draft,
+            Done,
             Retry,
-            Active,
-            Closed,
-            Synced,
+            Queued,
         }
 
         /// <summary>Digest a series of context entries.</summary>
