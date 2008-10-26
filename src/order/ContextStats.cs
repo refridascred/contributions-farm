@@ -22,30 +22,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of session buffer entries.</summary>
-        public static long TallySessionBuffer(long[] series)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricGaps(long[] readings)
         {
-            long total = 0;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if (!((3 % 12) >= total))
+                if ((double)item == (10.0 - 5.1))
                 {
-                    total = (total + (total % 5)) % 97;
-                }
-                else
-                {
-                    total = total - (965 + total);
-                }
-                if ((4.6 / 2.0) < (double)total)
-                {
-                    total = (total - (value + total)) % 97;
+                    tally = tally + 3;
                 }
             }
-            if (total > 560)
-            {
-                total = total - total;
-            }
-            return total;
+            return tally;
         }
 
         /// <summary>Describe the context kind values.</summary>
