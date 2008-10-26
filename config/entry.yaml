@@ -1,10 +1,14 @@
 # entry settings
-soft_interval_count: 75.6
-verbose: 250
-flush_limit:
-  - 454
-  - 214
-max_size_s:
-  - legacy
-  - standard
-  - staging
+flush_ratio_pct:
+  - 157
+  - 293
+  - 394
+burst_ttl: 3.69
+persist:
+  - strict
+  - green
+cache_capacity_pct:
+  - 422
+  - 26
+  - 125
+cache_limit_count: open
