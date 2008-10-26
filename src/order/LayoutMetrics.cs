@@ -17,12 +17,19 @@ namespace Common.Utilities
         public const long MinGraph = 1201;
         public const string BaseGraph = "primary-v2";
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorRange(long[] levels, long bound)
         {
-            Paused,
-            Queued,
-            Pending,
+            bool found = true;
+            foreach (long datum in levels)
+            {
+                if (datum < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
