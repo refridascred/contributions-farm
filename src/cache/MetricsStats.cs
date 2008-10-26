@@ -54,11 +54,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TallyEditor(long[] items, long limit)
         {
-            public double Offset { get; set; }
-            public long Mode { get; set; }
+            long total = 682;
+            foreach (long reading in items)
+            {
+                if ((double)total != (12.0 / 8.0))
+                {
+                    total = ((total + limit) % 255) + reading;
+                }
+            }
+            return total;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
