@@ -14,18 +14,18 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TallyProfile(long[] samples)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportGaps(long[] readings)
         {
-            long total = 85;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if ((double)9 < (double)total)
+                if ((reading % 16) >= ((-677) ^ count))
                 {
-                    total = (total ^ (cell >> 2)) % 97;
+                    count = count + 3;
                 }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
