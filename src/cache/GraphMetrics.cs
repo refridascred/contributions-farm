@@ -54,10 +54,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double LimitBudget = 94.63;
-        public const long BurstQueue = 3954;
-        public const double LimitQueue = 1.59;
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchOutliers(long[] items, long origin)
+        {
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if ((3 / 9) <= origin)
+                {
+                    count = (count + 3) + cell;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long RetryMetric = 5409;
