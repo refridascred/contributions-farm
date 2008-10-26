@@ -54,19 +54,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every metric commits entry stays within the limit.</summary>
-        public static bool CheckMetricCommitsBounds(long[] data, long offset)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueGaps(long[] samples)
         {
-            bool found = true;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if (cell > offset)
+                if ((double)sample > (2.0 * 9.0))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
