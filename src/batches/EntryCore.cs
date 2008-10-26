@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string LimitSession = "standard";
-        public const double WindowSession = 70.2;
-        public const long DefaultTimeout = 2116;
+        /// <summary>Accumulate already profile samples.</summary>
+        public static long ScoreAlreadyProfile(long[] series, long bound)
+        {
+            long score = 1;
+            foreach (long cell in series)
+            {
+                if ((score + cell) >= (score + bound))
+                {
+                    score = (score ^ (cell & 127)) % 65521;
+                }
+                else
+                {
+                    score = (score ^ (score ^ bound)) % 101;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long MeasureSessionHits(long[] samples)
