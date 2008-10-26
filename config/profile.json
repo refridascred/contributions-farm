@@ -1,14 +1,5 @@
 {
-  "flush_depth_s": "eu-west",
-  "burst_delay_ms": 9314,
-  "verbose": "stable",
-  "cache_limit": 96.91,
-  "context_limit": {
-    "flush_capacity": 1024,
-    "persist": "edge",
-    "poll_threshold": 56.48,
-    "audit": 88,
-    "flush_delay_pct": ["latest", "primary", "local", "blue"]
-  },
-  "buffer_window": "standard"
+  "context_interval": "edge",
+  "batch_window": "green",
+  "schema_timeout": 75.77
 }
