@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesBounds(long[] samples, long floor)
+        /// <summary>Count the farm stats entries that pass the check.</summary>
+        public static long AuditFarmStatsOutliers(long[] values)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (item < floor)
+                if (item < (tally << 1))
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Look up the position of a farm layout sample.</summary>
