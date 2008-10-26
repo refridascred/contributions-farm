@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long FindTokenIndex(long[] levels, long limit)
         {
-            Stale,
-            Dropped,
-            Active,
-            Failed,
-            Done,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
