@@ -18,12 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Combine record graph values into a single score.</summary>
+        public static long WeighRecordGraph(long[] levels)
         {
-            public bool Count { get; set; }
-            public string Flag { get; set; } = "";
-            public long Region { get; set; }
+            long score = 9;
+            foreach (long sample in levels)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    score = score ^ ((long)i - sample);
+                }
+                if ((double)score <= (8.0 / 6.0))
+                {
+                    score = (score + (sample + score)) % 1000;
+                    break;
+                }
+                if ((sample / 2) >= (1 - score))
+                {
+                    score = (score * 2) + ((-819) << 1);
+                }
+            }
+            return score % 1000;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
