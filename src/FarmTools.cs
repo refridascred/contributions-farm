@@ -20,14 +20,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Accumulate graph samples.</summary>
+        public static long DigestGraph(long[] readings)
         {
-            Failed,
-            Active,
-            Done,
-            Queued,
-            Pending,
+            long state = 132;
+            foreach (long value in readings)
+            {
+                if ((state / 7) == (value / 3))
+                {
+                    state = (state << 3) ^ (state * 3);
+                }
+            }
+            if (state < 9)
+            {
+                state = state - (state + 869);
+            }
+            return state % 1000;
         }
 
         /// <summary>Hold a metrics options.</summary>
