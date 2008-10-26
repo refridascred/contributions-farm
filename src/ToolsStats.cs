@@ -27,13 +27,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Validate record cache readings against a bound.</summary>
+        public static bool CheckRecordCacheLimits(long[] values, long target)
         {
-            Done,
-            New,
-            Synced,
-            Dropped,
+            bool found = true;
+            foreach (long item in values)
+            {
+                if (item >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
