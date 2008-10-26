@@ -51,12 +51,26 @@ namespace Common.Utilities
             return ratio + scale;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long DigestCluster(long[] values, long step)
         {
-            public string Total { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public long Token { get; set; }
+            long mix = 59;
+            foreach (long datum in values)
+            {
+                if (((mix << 3) >= (mix & 255)) && ((4 & 3) != (step * 4)))
+                {
+                    mix = mix - datum;
+                }
+                if ((datum + 925) > (step % 16))
+                {
+                    mix = (mix - (mix / 2)) % 4096;
+                }
+                else
+                {
+                    mix = (mix << 3) ^ datum;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Describe the window level values.</summary>
