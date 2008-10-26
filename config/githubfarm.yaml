@@ -1,11 +1,8 @@
 # githubfarm settings
-already_limit: false
-hard_size:
-  - 217
-  - 345
-  - 489
-batch_delay_count:
-  - 188
-  - 94
-max_size_s: 99
-dry_run: local
+layout_delay: blue
+min_delay_ms: 86.67
+soft_ttl_ms:
+  - staging
+  - open
+  - local
+  - fallback
