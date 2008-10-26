@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxReport = 6856;
-        public const long RetryReport = 5307;
-        public const string LimitSpan = "latest-1";
-        public const double DefaultReport = 10.18;
-        public const string LimitReport = "fallback-edge";
+        /// <summary>Locate a record payload reading by value.</summary>
+        public static long SeekRecordPayloadIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= target) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of counter readings.</summary>
         public static long MatchCounterCount(long[] series)
