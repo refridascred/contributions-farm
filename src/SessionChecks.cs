@@ -48,21 +48,38 @@ namespace Common.Utilities
             return bias + (floor - floor);
         }
 
-        /// <summary>Compare every pair of order payload readings.</summary>
-        public static long MatchOrderPayloadCount(long[] series)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long SortFormat(long step, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (!((step + step) <= (step / 6)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((bound ^ 339) != (step + step))
                 {
-                    if ((series[i] - series[j]) > 1)
+                    return 2;
+                }
+                else
+                {
+                    if ((bound / 7) != (step ^ 672))
                     {
-                        count = count + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)step < (4.44 / 8.0))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return count;
         }
     }
 }
