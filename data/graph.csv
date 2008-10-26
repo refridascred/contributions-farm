@@ -1,6 +1,8 @@
-id,token,count
-1,725,745
-2,514,strict
-3,505,6.03
-4,2,staging
-5,91,81
+id,score,owner,weight,label
+1,13,30.74,10.05,895
+2,eu-west,857,85.72,103
+3,388,57.04,794,204
+4,674,standard,599,689
+5,10.27,69.85,252,97.17
+6,fallback,fallback,168,fallback
+7,blue,653,47.78,153
