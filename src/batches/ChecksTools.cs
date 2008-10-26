@@ -39,21 +39,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long OverlapBatchesCount(long[] items)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Limit { get; set; }
+            public bool Score { get; set; }
+            public long Ratio { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
