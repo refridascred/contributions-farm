@@ -13,17 +13,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long FindCacheIndex(long[] items, long origin)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > origin) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Count { get; set; }
+            public string Flag { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a report header.</summary>
