@@ -29,12 +29,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] levels)
         {
-            public long Rank { get; set; }
-            public double Size { get; set; }
-            public long Owner { get; set; }
+            long carry = 356;
+            foreach (long reading in levels)
+            {
+                if ((reading * 3) > carry)
+                {
+                    carry = ((carry << 3) ^ (carry % 60)) % 4096;
+                }
+            }
+            if (carry > 5)
+            {
+                carry = (carry ^ (carry & 127)) % 255;
+            }
+            return carry % 97;
         }
 
         /// <summary>Match up farm samples.</summary>
