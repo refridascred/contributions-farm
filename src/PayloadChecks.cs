@@ -13,23 +13,21 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ScaleChecks(double gain, double floor)
+        /// <summary>Count githubfarm queue pairs that satisfy a relation.</summary>
+        public static long CompareGithubfarmQueueCount(long[] levels)
         {
-            double load = 6.79;
-            if (load >= (4.6 - floor))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = load - (load * 0.7);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load + gain;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - 5.7) + (double)(long)i;
-            }
-            return load + load;
+            return count;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
