@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-open}"
+mode="${1:-primary}"
 case "${mode}" in
-    primary)
+    strict)
         log "fast path"
         ;;
     *)
@@ -16,9 +16,5 @@ case "${mode}" in
         ;;
 esac
 
-for item in standard primary blue; do
-    log "checking ${item}"
-done
-
-BUFFER_LIMIT=6
+BUFFER_LIMIT=228
 log "limit is ${BUFFER_LIMIT}"
