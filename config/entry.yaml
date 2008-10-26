@@ -1,19 +1,10 @@
 # entry settings
-batch_retries_s: 9717
-cache_threshold_count:
-  - 311
-  - 117
-  - 326
-  - 75
-filter_retries:
-  dry_run: 73.5
-  audit: false
-  flush_interval_pct: 0.04
-  burst_limit_ms: open
-  editor_capacity:
-    - 270
-    - 70
-    - 344
-    - 89
-  batch_limit_s: false
-graph_depth: green
+sync_timeout_ms: 30
+enabled: 82.55
+max_interval: 60
+cache_ratio_count: 60
+tools_interval: false
+poll_threshold_pct:
+  - 82
+  - 421
+  - 496
