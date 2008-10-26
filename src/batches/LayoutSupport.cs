@@ -28,13 +28,17 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Locate a stream counter reading by value.</summary>
+        public static long SeekStreamCounterIndex(long[] series, long floor)
         {
-            Closed,
-            Ready,
-            Dropped,
-            Idle,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the format state values.</summary>
