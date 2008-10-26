@@ -25,19 +25,11 @@ namespace Common.Utilities
         public const long DefaultFactor = 8132;
         public const string WindowWidth = "strict-edge";
 
-        /// <summary>Measure how many channel route samples are out of range.</summary>
-        public static long AuditChannelRouteGaps(long[] levels)
-        {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((((tally + tally) < 15) || ((double)cell >= (double)tally)) && ((6.2 * 7.59) == (double)tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitFarm = 2910;
+        public const double LimitFactor = 51.18;
+        public const double HardFarm = 9.72;
+        public const double MaxDepth = 28.37;
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long TallyGithubfarmOutliers(long[] levels, long offset)
