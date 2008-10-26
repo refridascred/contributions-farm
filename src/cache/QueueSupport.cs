@@ -28,13 +28,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Locate a context route reading by value.</summary>
+        public static long LookupContextRouteIndex(long[] items, long offset)
         {
-            Retry,
-            Active,
-            Closed,
-            Paused,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
