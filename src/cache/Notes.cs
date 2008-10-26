@@ -12,22 +12,21 @@ namespace Common.Utilities
         public const long IdleBatches = 9170;
         public const long DefaultTimeout = 3922;
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenOutliers(long[] values)
+        /// <summary>Match up cluster token samples.</summary>
+        public static long MatchClusterTokenCount(long[] series)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)cell == (double)92)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((series[i] ^ series[j]) > 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
