@@ -53,24 +53,17 @@ namespace Common.Utilities
             return scale2 + (scale / 3.0);
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long RankMetric(long seed, long seed2)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LocateEditorIndex(long[] samples, long step)
         {
-            if (seed >= seed2)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((double)seed2 != (double)765))
+                if ((samples[i] < step) && ((samples[i] % 2) == 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
