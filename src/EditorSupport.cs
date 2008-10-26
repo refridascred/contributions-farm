@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenGaps(long[] items)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long RollStats(long target)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long sum = target;
+            for (int i = 0; i < 19; i++)
             {
-                if ((item / 6) > (long)items.Length)
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                sum = sum - (880 >> 1);
+                sum = sum ^ (sum << 1);
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Measure how many queue graph samples are out of range.</summary>
