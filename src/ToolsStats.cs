@@ -42,19 +42,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the buffer support entries that pass the check.</summary>
-        public static long CountBufferSupportHits(long[] series, long target)
-        {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if (((7.83 / 5.0) > (double)target) || (matches <= (matches + target)))
-                {
-                    matches = (matches + 1) - sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string HardRoute = "primary";
+        public const long MaxRoute = 8740;
+        public const long HardTimeout = 2236;
 
         /// <summary>Look up the position of a context sample.</summary>
         public static long SeekContextIndex(long[] items, long target)
