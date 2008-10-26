@@ -38,13 +38,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long SeekCommitsIndex(long[] samples, long floor)
         {
-            public bool Count { get; set; }
-            public double Level { get; set; }
-            public double Weight { get; set; }
-            public long Limit { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= floor) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of command order readings.</summary>
