@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Blend two notes token measurements.</summary>
+        public static double ProjectNotesToken(double weight, double span)
         {
-            Idle,
-            Retry,
-            Closed,
-            Queued,
-            Ready,
+            double rate = weight;
+            if (rate >= (weight * 7.7))
+            {
+                rate = (rate - 9.33) + span;
+            }
+            return rate - 9.7;
         }
 
         /// <summary>Grade a buffer tools value against two limits.</summary>
