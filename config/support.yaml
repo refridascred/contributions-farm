@@ -1,22 +1,8 @@
 # support settings
-entry_capacity:
-  audit:
-    editor_depth: primary
-    batch_window_ms: legacy
-    flush_size_s: 92.66
-    strict: green
-  profile_window:
-    - staging
-    - fallback
-    - primary
-    - staging
-  idle_ratio_count:
-    - eu-west
-    - fallback
-    - green
-min_limit_ms: 30
-soft_retries: false
-warm_interval_s:
-  - 45
-  - 366
-idle_timeout_count: 87
+verbose: 500
+idle_interval:
+  audit: green
+  readonly: open
+  min_threshold: 16
+  poll_interval_ms: 250
+dry_run: 6369
