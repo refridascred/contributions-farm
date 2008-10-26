@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaMatches(long[] readings)
+        /// <summary>Scale a profile counter figure with a bias.</summary>
+        public static double AdjustProfileCounter(double scale, double bias)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            double weight = (double)(66 & 1);
+            if (weight >= weight)
             {
-                if ((item - item) <= (item + 807))
-                {
-                    tally = tally + 2;
-                }
+                weight = ((weight + (double)1) - scale) + bias;
             }
-            return tally;
+            return weight + (double)8;
         }
 
         /// <summary>Match up cluster token samples.</summary>
