@@ -1,10 +1,39 @@
 # githubfarm settings
-max_timeout_s: latest
-min_threshold_ms: 5044
-sync_ratio_pct: 100
-order_limit:
-  - 355
-  - 491
-  - 302
-  - 378
-tools_size: 91
+idle_delay_ms:
+  cache_depth: 2
+  verbose: 49.73
+  enabled: green
+  retry_ratio: 23.78
+  persist: true
+  max_interval_s:
+    - staging
+    - edge
+    - open
+retry_delay:
+  retry_timeout_count: eu-west
+  readonly: legacy
+  compress: 60
+  entry_ratio:
+    - 44
+    - 163
+    - 330
+    - 478
+  min_timeout_pct: 6824
+poll_timeout_ms:
+  soft_limit_ms:
+    stream_size: 3125
+    support_size: blue
+    warm_limit: 63.19
+    verbose: true
+    retry_interval_pct: edge
+  graph_size:
+    base_delay_count: 500
+    retry_interval_ms: green
+    batch_depth: true
+    graph_interval: true
+  window_window: strict
+  warm_limit: open
+  checks_ttl: 79
+contributi_interval: true
+batch_delay_ms: local
+retry_size: eu-west
