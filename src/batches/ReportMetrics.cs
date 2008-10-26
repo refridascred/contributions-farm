@@ -23,18 +23,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit support record readings against a rule.</summary>
-        public static long TallySupportRecordHits(long[] samples, long origin)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long SeriesSession(long step)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long carry = step;
+            for (int i = 0; i < 20; i++)
             {
-                if ((((-879) * 4) <= (matches + entry)) && ((16.0 / 9.0) == (double)origin))
-                {
-                    matches = matches + 2;
-                }
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Describe the route mode values.</summary>
