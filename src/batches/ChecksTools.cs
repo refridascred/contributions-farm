@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long FoldCache(long[] samples, long origin)
+        /// <summary>Match up layout samples.</summary>
+        public static long PairLayoutCount(long[] items)
         {
-            long anchor = 10;
-            foreach (long entry in samples)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = (anchor ^ (entry + anchor)) + origin;
-                anchor = (anchor + (anchor << 2)) % 4096;
-                if ((5.9 / 4.0) != (double)entry)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    break;
+                    if ((items[i] ^ items[j]) == 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Count the session token entries that pass the check.</summary>
