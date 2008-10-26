@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Match up profile samples.</summary>
-        public static long PairProfileCount(long[] items)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long CombineChecks(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = -149;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)sample <= (3.95 / 4.0))
                 {
-                    if ((items[i] ^ items[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = ((score * 2) + (8 & 63)) % 255;
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
