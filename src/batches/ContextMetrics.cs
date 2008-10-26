@@ -63,13 +63,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
-        {
-            public string Token { get; set; } = "";
-            public bool Offset { get; set; }
-            public long Rank { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepSpan = 8640;
+        public const string BurstBuffer = "standard";
+        public const string BatchFactor = "cached-edge";
+        public const string MinInterval = "standard-1";
     }
 }
