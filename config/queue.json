@@ -1,16 +1,14 @@
 {
-  "poll_window": {
-    "max_timeout_count": {
-      "retry_limit_s": true,
-      "default_capacity": 38.4,
-      "record_size": false
+  "entry_ttl": 100,
+  "burst_threshold_pct": "eu-west",
+  "contributi_ratio": {
+    "channel_retries": {
+      "stream_delay": 41,
+      "enabled": "cached",
+      "already_limit": [453, 421]
     },
-    "min_limit_ms": "staging",
-    "soft_ratio_s": ["staging", "legacy", "stable"],
-    "audit": "fallback",
-    "soft_delay_pct": "standard",
-    "filter_threshold": true
-  },
-  "persist": "primary",
-  "channel_delay": "green"
+    "stats_window": "stable",
+    "batch_limit_s": "green",
+    "dry_run": "staging"
+  }
 }
