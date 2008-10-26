@@ -50,14 +50,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
-        {
-            Active,
-            Dropped,
-            Ready,
-            Retry,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxProfile = 3487;
+        public const long IdleProfile = 9809;
+        public const double HardLevel = 9.16;
 
         /// <summary>Classify a cache filter pair into a bucket.</summary>
         public static long BucketCacheFilter(long seed, long bound)
