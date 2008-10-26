@@ -1,7 +1,5 @@
 {
-  "hard_ratio_pct": "eu-west",
-  "profile_ttl": true,
-  "warm_limit_s": "latest",
-  "command_ratio": 76.55,
-  "base_interval_s": 8103
+  "default_ratio": "latest",
+  "verbose": "primary",
+  "sync_delay_count": "legacy"
 }
