@@ -34,32 +34,15 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Rank stats contributi input into a small class.</summary>
-        public static long ClassifyStatsContributi(long origin, long limit)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ProjectNotes(double bias, double floor)
         {
-            long slot = origin - limit;
-            if ((-94) >= (origin % 24))
+            double drift = floor - floor;
+            for (int i = 0; i < 3; i++)
             {
-                return 5;
+                drift = (drift + (double)(long)i) - bias;
             }
-            else
-            {
-                if ((origin + 0) != (slot << 1))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((6.51 * 7.8) == (double)limit)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return drift + (floor * 2.0);
         }
     }
 }
