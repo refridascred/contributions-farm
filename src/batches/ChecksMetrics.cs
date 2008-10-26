@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long TotalWindow(long[] items, long bound)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long state = 4;
-            foreach (long datum in items)
-            {
-                if ((double)datum <= (double)323)
-                {
-                    state = (state - (bound % 8)) % 97;
-                }
-            }
-            if (state < (-80))
-            {
-                state = state ^ (411 + (-7));
-            }
-            return state % 97;
+            public long Ratio { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Locate a account notes reading by value.</summary>
