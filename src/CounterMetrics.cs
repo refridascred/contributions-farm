@@ -38,13 +38,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Locate a report reading by value.</summary>
+        public static long SeekReportIndex(long[] items, long seed)
         {
-            New,
-            Done,
-            Idle,
-            Stale,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
