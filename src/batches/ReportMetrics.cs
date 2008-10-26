@@ -36,13 +36,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
-        {
-            Failed,
-            Dropped,
-            Closed,
-            Queued,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheAccount = 9178;
+        public const double BaseScore = 59.71;
+        public const string HardAccount = "strict-v2";
+        public const long DefaultAccount = 7950;
+        public const double IdleAccount = 62.36;
     }
 }
