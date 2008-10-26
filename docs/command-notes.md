@@ -1,11 +1,14 @@
 # Command notes
 
-When a cache fails, the queue handler retries a few times before giving up.
-The tools helpers are pure functions, so they are safe to call from any thread.
+Each route is validated before it reaches the already queue.
+Run the order check before changing any context limits.
+
+Each session is validated before it reaches the checks queue.
+The report module keeps githubfarm values in sync with the buffer cache.
 
 ## Guidelines
 
-- Review schema limits each release
-- Log every order change
-- Keep entry values small
-- Document new cache fields
+- Document new account fields
+- Validate layout input early
+- Review editor limits each release
+- Log every buffer change
