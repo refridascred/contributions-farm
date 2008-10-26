@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            Retry,
-            Done,
-            Queued,
-            Pending,
+            Locked,
+            Failed,
+            Draft,
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
