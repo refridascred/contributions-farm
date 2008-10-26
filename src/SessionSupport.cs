@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many report already samples are out of range.</summary>
-        public static long TallyReportAlreadyMatches(long[] data, long bound)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if (!(((count + count) < (sample % 2)) || ((bound - bound) == (count ^ count))))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Stale,
+            Synced,
+            New,
+            Queued,
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
