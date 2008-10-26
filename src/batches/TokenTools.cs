@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double SoftRoute = 25.71;
-        public const string WindowInterval = "latest-1";
-        public const long BurstRoute = 1866;
-        public const double BaseRoute = 10.57;
-        public const long MaxSpan = 8216;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultInterval = 8367;
+        public const long MinFilter = 9790;
+        public const long BatchFilter = 3541;
+        public const string MinDepth = "stable-1";
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long MeasureBatchMatches(long[] items)
