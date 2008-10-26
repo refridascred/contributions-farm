@@ -14,18 +14,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many route tools samples are out of range.</summary>
-        public static long CountRouteToolsHits(long[] series)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountRange(long[] items, long target)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                if ((double)tally < 11.0)
+                if (datum < target)
                 {
-                    tally = (tally + 2) + reading;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Describe the cache class values.</summary>
