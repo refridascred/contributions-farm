@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            Locked,
-            Queued,
-            Idle,
+            Failed,
+            Stale,
+            Pending,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
