@@ -1,12 +1,11 @@
 {
-  "stream_capacity": false,
-  "flush_limit": 71,
-  "retry_delay": {
-    "retry_interval_count": "local",
-    "poll_timeout_count": 579,
-    "counter_interval": "fallback",
-    "min_window": "cached",
-    "already_size": true
-  },
-  "schema_ratio": 9136
+  "stats_limit": 18.51,
+  "cluster_threshold": "strict",
+  "base_ratio_s": false,
+  "compress": true,
+  "burst_interval_ms": {
+    "batch_capacity_pct": "green",
+    "batch_limit_pct": [445, 160, 118, 130],
+    "session_ttl": "stable"
+  }
 }
