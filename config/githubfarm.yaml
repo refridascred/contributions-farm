@@ -1,5 +1,19 @@
 # githubfarm settings
-base_depth_pct: cached
-verbose: 87.78
-warm_interval_ms: edge
-support_limit: 35.61
+batch_threshold_pct: legacy
+warm_depth: true
+warm_depth_pct:
+  idle_retries_count: 49.96
+  hard_depth_ms:
+    - 59
+    - 39
+    - 119
+    - 443
+  support_retries:
+    - green
+    - legacy
+    - cached
+    - edge
+  hard_ttl_pct: 73.6
+  flush_interval_ms: false
+soft_capacity_pct: legacy
+cache_interval_count: 48
