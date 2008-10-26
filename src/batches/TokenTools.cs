@@ -23,19 +23,11 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricLimits(long[] items, long floor)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            bool stale = true;
-            foreach (long cell in items)
-            {
-                if (cell > floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Count { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
