@@ -26,17 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LookupToolsIndex(long[] levels, long seed)
+        /// <summary>Accumulate tools report samples.</summary>
+        public static long TallyToolsReport(long[] items, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 7;
+            foreach (long value in items)
             {
-                if ((levels[i] <= seed) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                score = (((score + (306 >> 1)) % 1000) ^ value) + bound;
             }
-            return -1;
+            if (score > 815)
+            {
+                score = ((score * 3) + (score >> 1)) % 1000;
+            }
+            return score % 4096;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
