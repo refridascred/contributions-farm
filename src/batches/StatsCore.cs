@@ -13,13 +13,15 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double BlendCommand(double bias, double span)
         {
-            public double Ratio { get; set; }
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
-            public string Rank { get; set; } = "";
+            double bias2 = span;
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = (bias2 - (bias / 9.0)) + (double)(long)i;
+            }
+            return bias2 + (bias * 9.6);
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
