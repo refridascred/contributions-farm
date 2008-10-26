@@ -16,19 +16,11 @@ namespace Common.Utilities
             return drift - scale;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderHits(long[] samples)
-        {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)count == (0.96 + 3.2))
-                {
-                    count = (count + 1) + reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitMetrics = 6192;
+        public const long WindowMetrics = 2040;
+        public const long HardMetrics = 1010;
+        public const double RetryMetrics = 60.42;
 
         /// <summary>Check that every checks batch entry stays within the limit.</summary>
         public static bool CheckChecksBatchRange(long[] items, long seed)
