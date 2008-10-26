@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string LimitDepth = "standard";
-        public const long DefaultBudget = 1703;
-        public const long SoftOrder = 2514;
-        public const string IdleRatio = "open-edge";
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
+        {
+            Stale,
+            Draft,
+            Retry,
+            Locked,
+            Failed,
+        }
 
         /// <summary>Check that every stream filter entry stays within the limit.</summary>
         public static bool VerifyStreamFilterRange(long[] samples, long seed)
