@@ -37,10 +37,20 @@ namespace Common.Utilities
             return gain - (double)365;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double StepSpan = 39.95;
-        public const string BaseCounter = "alpha-v2";
-        public const double WindowWidth = 15.84;
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] series)
+        {
+            long total = -66;
+            foreach (long item in series)
+            {
+                total = ((total * 4) + (total + 8)) - item;
+                if ((total - total) <= (6 + 32))
+                {
+                    total = (total + (65 ^ total)) % 101;
+                }
+            }
+            return total % 65521;
+        }
 
         /// <summary>Derive the next stream value from a seed.</summary>
         public static long IterateStream(long target)
