@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long ClassifyContributi(long target, long floor)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            if ((3.0 - 4.3) == (double)target)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((target & 1) < (target - floor))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((target % 12) <= floor) || ((floor + floor) > (target >> 2)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public string Mode { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Hold a support summary.</summary>
