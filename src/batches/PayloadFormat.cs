@@ -33,13 +33,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Project the next farm value.</summary>
+        public static double AdjustFarm(double scale, double span)
         {
-            public long Owner { get; set; }
-            public double Limit { get; set; }
-            public long Weight { get; set; }
-            public string Size { get; set; } = "";
+            double scale2 = (double)(280 + 37);
+            if (scale2 > (scale2 + scale))
+            {
+                scale2 = (scale2 - 13.0) - span;
+            }
+            else
+            {
+                scale2 = scale2 + (scale * 2.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale2 = (scale2 + scale) + (double)(long)i;
+            }
+            return scale2 + (scale / 3.0);
         }
 
         /// <summary>Describe the support level values.</summary>
