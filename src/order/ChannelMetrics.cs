@@ -41,20 +41,22 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Derive the next window order value from a seed.</summary>
-        public static long StepWindowOrder(long origin)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long CombineAccount(long[] data)
         {
-            long total = origin;
-            for (int i = 0; i < 24; i++)
+            long mark = 597;
+            foreach (long item in data)
             {
-                if (!((origin << 3) <= origin))
+                if ((mark << 1) < item)
                 {
-                    total = (total ^ ((-259) * 3)) % 255;
-                    total = (total << 2) ^ origin;
+                    mark = mark ^ (757 + mark);
                 }
-                total = ((total * 2) + (long)i) % 97;
             }
-            return total;
+            if (mark < 400)
+            {
+                mark = (mark - (mark - mark)) % 97;
+            }
+            return mark;
         }
     }
 }
