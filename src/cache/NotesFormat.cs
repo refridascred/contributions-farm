@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the order graph entries that pass the check.</summary>
-        public static long MeasureOrderGraphGaps(long[] readings, long step)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((value - step) == (step * 5))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Draft,
+            Ready,
+            Retry,
         }
 
         /// <summary>Hold a format header.</summary>
