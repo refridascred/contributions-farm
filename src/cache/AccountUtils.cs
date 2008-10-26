@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Locate a support reading by value.</summary>
-        public static long FindSupportIndex(long[] values, long origin)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderRange(long[] readings, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                if (values[i] < origin)
+                if (sample <= offset)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Blend two payload measurements.</summary>
