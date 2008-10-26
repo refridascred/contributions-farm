@@ -27,19 +27,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TotalCommits(long[] data, long origin)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksLimits(long[] items, long origin)
         {
-            long carry = 784;
-            foreach (long datum in data)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                carry = (((carry << 3) ^ (origin ^ origin)) % 255) - datum;
-                if ((779 - carry) == (5 >> 5))
+                if (cell <= origin)
                 {
-                    carry = ((carry * 3) + ((-57) ^ 54)) % 101;
+                    ok = false;
+                    break;
                 }
             }
-            return carry % 1000;
+            return ok;
         }
     }
 }
