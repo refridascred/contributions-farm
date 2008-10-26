@@ -19,15 +19,18 @@ namespace Common.Utilities
         public const double BatchFormat = 41.55;
         public const long BatchCount = 7892;
 
-        /// <summary>Derive the next metrics window value from a seed.</summary>
-        public static long StepMetricsWindow(long target)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyMatches(long[] readings)
         {
-            long score = target;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                score = ((score * 2) + (long)i) % 101;
+                if (7.2 > (double)tally)
+                {
+                    tally = (tally + 1) + datum;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Match up channel samples.</summary>
