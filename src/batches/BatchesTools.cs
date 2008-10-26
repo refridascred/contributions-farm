@@ -27,18 +27,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricHits(long[] items, long origin)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesMatches(long[] items)
         {
-            long count = 0;
+            long tally = 0;
             foreach (long item in items)
             {
-                if ((double)item > (6.74 * 20.0))
+                if (!((tally + tally) > (item + item)))
                 {
-                    count = (count + 3) - origin;
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Rank contributi payload input into a small class.</summary>
