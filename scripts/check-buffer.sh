@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=69
+BUFFER_LIMIT=421
 log "limit is ${BUFFER_LIMIT}"
 
-for item in staging legacy stable; do
+for item in fallback standard legacy; do
     log "checking ${item}"
 done
