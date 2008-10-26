@@ -64,12 +64,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsGaps(long[] readings, long step)
         {
-            public long Size { get; set; }
-            public long Score { get; set; }
-            public string Level { get; set; } = "";
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if ((6.7 / 5.0) == (double)matches)
+                {
+                    matches = ((matches + 1) + sample) - step;
+                }
+            }
+            return matches;
         }
     }
 }
