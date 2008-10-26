@@ -28,11 +28,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double WindowDepth = 87.15;
-        public const long HardScore = 8245;
-        public const string LimitFarm = "latest-v2";
-        public const double CacheSpan = 81.86;
-        public const string MaxFarm = "open";
+        /// <summary>Project the next batches metric value.</summary>
+        public static double AdjustBatchesMetric(double gain, double offset)
+        {
+            double load = (gain - offset) * 6.5;
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + (load + load)) + (double)(long)i;
+            }
+            return load - gain;
+        }
     }
 }
