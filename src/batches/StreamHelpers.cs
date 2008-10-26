@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyLimits(long[] items, long bound)
-        {
-            bool ok = true;
-            foreach (long sample in items)
-            {
-                if (sample > bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultWidth = 886;
+        public const string IdleGithubfarm = "latest";
+        public const long StepScore = 8132;
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long MeasureLayoutHits(long[] levels)
