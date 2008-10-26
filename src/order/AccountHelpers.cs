@@ -71,19 +71,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double SmoothToken(double ratio, double floor)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long ClassifyQueue(long origin, long floor)
         {
-            double load = 2.4 - ratio;
-            if (load < ratio)
+            long edge = origin ^ floor;
+            if (((origin & 7) != (origin + edge)) && ((floor * 3) == (edge & 7)))
             {
-                load = load - floor;
+                return 2;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                load = load + (double)(long)i;
+                if (6.4 <= (double)floor)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((-1) <= (91 - edge))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((edge / 6) < (floor / 9))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            return load + (load * 14.0);
         }
 
         /// <summary>Fold a list of route readings.</summary>
