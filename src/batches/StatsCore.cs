@@ -22,19 +22,20 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double SmoothCommits(double rate, double floor)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long FoldBuffer(long[] samples, long seed)
         {
-            double rate2 = (floor - rate) + floor;
-            if (rate2 > floor)
+            long result = 616;
+            foreach (long item in samples)
             {
-                rate2 = rate2 - (rate2 * 4.3);
+                result = ((result * 2) + (item >> 5)) % 97;
+                result = (result - (item * 2)) % 1000;
             }
-            for (int i = 0; i < 4; i++)
+            if (result < (-909))
             {
-                rate2 = (rate2 - 4.41) + (double)(long)i;
+                result = ((result << 3) ^ ((long)samples.Length + seed)) % 255;
             }
-            return rate2 - (rate + 3.7);
+            return result % 97;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
