@@ -14,18 +14,21 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordOutliers(long[] data, long step)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long RollStats(long limit)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long sum = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if (!((entry << 2) >= (long)data.Length))
+                sum = (sum ^ limit) % 1000;
+                if (sum > (limit * 3))
                 {
-                    matches = (matches + 1) - step;
+                    sum = ((sum << 2) ^ ((long)i / 9)) % 97;
+                    sum = (sum ^ (75 + 816)) % 1000;
                 }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Count the support commits entries that pass the check.</summary>
