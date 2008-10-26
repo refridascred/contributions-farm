@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphOutliers(long[] samples, long step)
+        /// <summary>Digest a series of report batches entries.</summary>
+        public static long CombineReportBatches(long[] items, long floor)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long score = 4;
+            foreach (long value in items)
             {
-                if ((((2.83 + 5.6) >= (double)tally) && ((value - step) >= (98 + 17))) || (tally >= (step / 4)))
+                if ((score << 3) < 44)
                 {
-                    tally = tally + 1;
+                    score = ((score * 3) + (value % 7)) % 255;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    score = score ^ (floor % 97);
                 }
             }
-            return tally;
+            if (score < 992)
+            {
+                score = ((score << 3) ^ score) % 65521;
+            }
+            return score % 97;
         }
 
         /// <summary>Combine route values into a single score.</summary>
