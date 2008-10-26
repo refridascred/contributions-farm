@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferOutliers(long[] readings)
+        /// <summary>Count the record token entries that pass the check.</summary>
+        public static long TallyRecordTokenOutliers(long[] series)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if (!((6.9 - 1.26) <= (double)matches) && (((matches << 1) < (matches & 7)) || ((double)matches < (9.0 * 5.82))))
+                if ((8 & 63) > (reading * 3))
                 {
-                    matches = (matches + 2) ^ reading;
+                    hits = hits + 2;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
