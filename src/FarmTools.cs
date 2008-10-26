@@ -42,9 +42,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string WindowInterval = "latest";
-        public const double BurstCount = 88.41;
-        public const long LimitRatio = 8967;
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamOutliers(long[] data, long step)
+        {
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (step >= (tally + step))
+                {
+                    tally = (tally + 1) ^ cell;
+                }
+            }
+            return tally;
+        }
     }
 }
