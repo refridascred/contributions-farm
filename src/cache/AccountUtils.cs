@@ -23,13 +23,19 @@ namespace Common.Utilities
         public const long RetryGraph = 3385;
         public const long CacheGraph = 4520;
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesLimits(long[] items, long offset)
         {
-            Draft,
-            Failed,
-            Idle,
-            Paused,
+            bool ready = true;
+            foreach (long value in items)
+            {
+                if (value >= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
