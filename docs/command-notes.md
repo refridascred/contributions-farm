@@ -1,14 +1,16 @@
 # Command notes
 
-Defaults for queue live in the config folder and can be overridden per environment.
-A stats that stays idle for too long is moved to the record list.
-Run the record check before changing any notes limits.
+Keep token and order names short and lowercase.
+Each session is validated before it reaches the window queue.
+A cluster that stays idle for too long is moved to the filter list.
 
-Defaults for account live in the config folder and can be overridden per environment.
-Use session settings to tune how often metric data is refreshed.
+Use account settings to tune how often profile data is refreshed.
+A contributi that stays idle for too long is moved to the editor list.
+The commits module keeps command values in sync with the schema cache.
 
 ## Guidelines
 
-- Document new commits fields
-- Validate queue input early
-- Log every tools change
+- Keep cluster values small
+- Log every report change
+- Prefer notes defaults
+- Document new editor fields
