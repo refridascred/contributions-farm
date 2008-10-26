@@ -1,7 +1,7 @@
-id,count,token,level,rank
-1,27.0,63,152,staging
-2,blue,staging,764,62.47
-3,275,21.39,primary,873
-4,63.65,555,793,legacy
-5,83.82,24,21.85,569
-6,645,27.7,729,24.5
+id,owner,rank,state,score
+1,local,cached,legacy,staging
+2,75.98,blue,55.23,staging
+3,981,924,primary,16.6
+4,998,17.84,386,89.58
+5,edge,56.73,primary,529
+6,open,36.39,297,488
