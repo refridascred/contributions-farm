@@ -19,22 +19,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long ScoreStats(long[] levels)
+        /// <summary>Digest a series of commits notes entries.</summary>
+        public static long CombineCommitsNotes(long[] samples)
         {
-            long total = 9;
-            foreach (long cell in levels)
+            long carry = 47;
+            foreach (long reading in samples)
             {
-                if (((total % 16) >= (cell + total)) && ((6.91 * 2.27) > (double)cell))
+                if ((carry + carry) > (carry >> 4))
                 {
-                    total = (total + (total * 5)) % 97;
+                    break;
                 }
+                else
+                {
+                    carry = ((carry << 3) ^ (carry + reading)) % 255;
+                }
+                carry = (carry - ((-29) + reading)) % 65521;
             }
-            if (total > 93)
+            if (carry > 4)
             {
-                total = (total + (total + 797)) % 1000;
+                carry = (carry ^ (carry * 5)) % 255;
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
