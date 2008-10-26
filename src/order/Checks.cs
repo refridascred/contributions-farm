@@ -36,31 +36,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long FoldGraph(long[] readings)
+        /// <summary>Count the contributi editor entries that pass the check.</summary>
+        public static long CountContributiEditorMatches(long[] levels)
         {
-            long result = 608;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if (!(((cell << 3) >= 1) && ((double)result != (double)cell)))
+                if ((tally + tally) <= (-3))
                 {
-                    result = (result + (result ^ result)) % 97;
-                }
-                result = ((result << 3) ^ (576 + result)) % 65521;
-                if (((result ^ cell) >= (cell ^ 283)) || ((cell + cell) < (cell << 1)))
-                {
-                    result = (result + (result & 31)) % 255;
-                }
-                else
-                {
-                    result = (result ^ cell) % 4096;
+                    tally = (tally + 3) + cell;
                 }
             }
-            if (result < 680)
-            {
-                result = ((result << 2) ^ ((-42) / 5)) % 97;
-            }
-            return result;
+            return tally;
         }
 
         /// <summary>Define already limits and defaults.</summary>
