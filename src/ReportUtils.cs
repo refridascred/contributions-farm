@@ -20,11 +20,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsHits(long[] data)
         {
-            public long Total { get; set; }
-            public long Offset { get; set; }
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((double)reading > (4.4 + 1.69))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
