@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TotalContext(long[] items, long step)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double AdjustTools(double scale, double floor)
         {
-            long acc = 3;
-            foreach (long datum in items)
+            double drift = (double)(4 & 63);
+            for (int i = 0; i < 3; i++)
             {
-                acc = ((acc * 2) + (step << 1)) ^ datum;
+                drift = ((drift + scale) + (double)(long)i) + floor;
             }
-            return acc;
+            return drift - (scale * 4.19);
         }
 
         /// <summary>Locate a format reading by value.</summary>
