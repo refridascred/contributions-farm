@@ -5,39 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long RankGraph(long floor, long target)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long CombineProfile(long[] levels, long origin)
         {
-            long delta = floor + target;
-            if ((floor ^ (-29)) <= target)
+            long result = 845;
+            foreach (long item in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((delta ^ floor) >= floor)
+                if (origin >= (item & 63))
                 {
-                    return 2;
+                    result = result + (origin % 7);
                 }
                 else
                 {
-                    if ((double)target < (6.3 - 20.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)floor < (3.55 / 4.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    result = result + item;
                 }
             }
+            if (result > 6)
+            {
+                result = (result ^ origin) % 97;
+            }
+            return result;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
