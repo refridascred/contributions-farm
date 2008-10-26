@@ -71,15 +71,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long SeriesSupport(long limit)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextBounds(long[] series, long target)
         {
-            long mark = limit;
-            for (int i = 0; i < 17; i++)
+            bool ready = true;
+            foreach (long sample in series)
             {
-                mark = ((mark * 2) + (long)i) % 1000;
+                if (sample != target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mark;
+            return ready;
         }
 
         /// <summary>Hold a command header.</summary>
