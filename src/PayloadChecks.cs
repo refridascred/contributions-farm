@@ -34,19 +34,18 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double ScaleReport(double ratio, double floor)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TotalToken(long[] levels, long limit)
         {
-            double gain = ratio;
-            if (gain <= (double)995)
+            long result = 784;
+            foreach (long cell in levels)
             {
-                gain = (gain - gain) + floor;
+                if ((double)cell > (double)result)
+                {
+                    result = result - (limit & 3);
+                }
             }
-            else
-            {
-                gain = gain - ratio;
-            }
-            return gain + (ratio / 3.0);
+            return result;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
