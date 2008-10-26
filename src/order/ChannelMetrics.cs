@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            public string Mode { get; set; } = "";
-            public double Label { get; set; }
+            public long Total { get; set; }
+            public long Label { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Validate already readings against a bound.</summary>
