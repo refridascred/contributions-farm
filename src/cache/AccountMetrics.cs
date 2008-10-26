@@ -25,11 +25,11 @@ namespace Common.Utilities
         public const double StepLayout = 16.85;
         public const long DefaultScore = 4985;
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Adjust a window notes reading.</summary>
+        public static double ProjectWindowNotes(double gain, double floor)
         {
-            public double Ratio { get; set; }
-            public bool Owner { get; set; }
+            double load = 3.58;
+            return ((load - load) + gain) + floor;
         }
 
         /// <summary>Hold a window stats.</summary>
