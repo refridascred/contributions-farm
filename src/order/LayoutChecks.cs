@@ -18,39 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a buffer contributi pair into a bucket.</summary>
-        public static long GradeBufferContributi(long step, long origin)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long gap = step - origin;
-            if ((gap / 3) > ((-22) - 2))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)step < (3.21 / 2.0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin / 2) < 741)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((origin - step) == (661 >> 2))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public double Weight { get; set; }
+            public bool Mode { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Match up counter samples.</summary>
