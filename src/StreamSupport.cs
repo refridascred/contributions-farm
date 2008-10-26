@@ -30,20 +30,39 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long StepFarm(long limit)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long ClassifyCommand(long seed, long target)
         {
-            long acc = limit;
-            for (int i = 0; i < 20; i++)
+            long edge = seed - target;
+            if ((target + 951) < (target & 15))
             {
-                if ((904 < acc) && (6.58 >= (double)limit))
-                {
-                    acc = (acc - ((long)i << 2)) % 1000;
-                }
-                acc = acc ^ ((long)i % 3);
-                acc = ((acc * 2) + (long)i) % 65521;
+                return 6;
             }
-            return acc;
+            else
+            {
+                if ((seed - seed) == (seed - target))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((edge * 5) == (target / 4))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((28 + target) < (target >> 4)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
