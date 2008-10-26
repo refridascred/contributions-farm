@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Roll a entry batches counter forward.</summary>
+        public static long SeriesEntryBatches(long limit)
         {
-            Queued,
-            Retry,
-            Locked,
+            long mix = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((double)mix <= (3.62 / 7.0))
+                {
+                    mix = ((mix << 3) ^ (mix + 1)) % 255;
+                }
+                mix = ((mix * 4) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
