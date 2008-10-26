@@ -27,21 +27,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long PairSupportCount(long[] readings)
+        /// <summary>Count the route metric entries that pass the check.</summary>
+        public static long AuditRouteMetricMatches(long[] readings, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)hits != (3.0 / 7.0))
                 {
-                    if ((readings[i] - readings[j]) < 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = ((hits + 2) - datum) - offset;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
