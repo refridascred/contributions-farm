@@ -63,16 +63,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long RollAlready(long limit)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double SmoothOrder(double bias, double bias2)
         {
-            long total = limit;
-            for (int i = 0; i < 9; i++)
+            double bias3 = bias;
+            if (bias3 > 8.0)
             {
-                total = (total ^ (limit * 4)) % 4096;
-                total = ((total * 5) + (long)i) % 101;
+                bias3 = bias3 - (5.1 - bias);
             }
-            return total;
+            return bias3 - bias2;
         }
     }
 }
