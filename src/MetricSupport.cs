@@ -30,14 +30,10 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
-        {
-            Idle,
-            Closed,
-            New,
-            Paused,
-            Dropped,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleSchema = 1290;
+        public const long IdleSize = 4520;
+        public const long WindowSchema = 3185;
+        public const string MaxSchema = "primary-v2";
     }
 }
