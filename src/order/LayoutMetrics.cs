@@ -14,17 +14,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LocateQueueIndex(long[] samples, long floor)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsHits(long[] data, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if (samples[i] > floor)
+                if ((double)reading <= (3.65 - 8.6))
                 {
-                    return (long)i;
+                    matches = (matches + 1) + floor;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Project the next checks value.</summary>
