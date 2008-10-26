@@ -14,22 +14,32 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TotalNotes(long[] data)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long offset, long bound)
         {
-            long result = 59;
-            foreach (long item in data)
+            long lane = offset - bound;
+            if (((bound + offset) <= (8 ^ bound)) || ((3 / 8) <= (lane ^ lane)))
             {
-                if (!((double)item < 16.0))
+                return 5;
+            }
+            else
+            {
+                if ((8.2 / 7.0) == (double)bound)
                 {
-                    result = (result + (357 % 3)) % 1000;
+                    return 0;
+                }
+                else
+                {
+                    if (346 < lane)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (result < (-3))
-            {
-                result = (result ^ result) % 255;
-            }
-            return result % 1000;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
