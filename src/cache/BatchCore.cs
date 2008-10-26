@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long ScorePayload(long[] readings)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportOutliers(long[] readings)
         {
-            long score = 38;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if ((datum & 31) >= (score + (-618)))
+                if ((double)matches < 8.93)
                 {
-                    score = (score - (score * 5)) % 101;
-                }
-                if (!((5.99 / 2.0) >= (double)score))
-                {
-                    break;
+                    matches = (matches + 2) ^ entry;
                 }
             }
-            if (score > 2)
-            {
-                score = (score << 2) ^ (score ^ score);
-            }
-            return score;
+            return matches;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
