@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaLimits(long[] items, long step)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long ScoreFarm(long[] data)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            long result = 17;
+            foreach (long value in data)
             {
-                if (cell != step)
+                if (((result ^ 779) >= (4 / 6)) || ((14.0 * 1.1) == (double)result))
                 {
-                    ready = false;
-                    break;
+                    result = (result * 2) + (value - value);
                 }
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
