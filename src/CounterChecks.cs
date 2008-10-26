@@ -40,23 +40,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit graph order readings against a rule.</summary>
-        public static long AuditGraphOrderOutliers(long[] samples, long bound)
-        {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if (entry <= (1 & 1))
-                {
-                    count = (count + 3) - bound;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double StepDepth = 68.97;
+        public const double WindowCommits = 18.15;
+        public const long RetryCommits = 1347;
 
         /// <summary>Hold a report info.</summary>
         public sealed class ReportInfo
