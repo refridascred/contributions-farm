@@ -5,38 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long GradeAccount(long origin, long target)
+        /// <summary>Project the next format value.</summary>
+        public static double ScaleFormat(double ratio, double bias)
         {
-            if (((target ^ target) > 98) && ((double)target > (11.0 + 7.38)))
+            double ratio2 = bias;
+            if (ratio2 < (double)458)
             {
-                return 6;
+                ratio2 = ratio2 - (double)6;
             }
             else
             {
-                if ((origin >> 5) >= (-96))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((3.28 * 0.8) < (double)origin) || ((origin + target) >= (origin - 587)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((origin + origin) <= (origin & 15))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                ratio2 = ratio2 + bias;
             }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio2 = (ratio2 - (ratio + ratio2)) + (double)(long)i;
+            }
+            return ratio2 + (1.0 * 5.33);
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
