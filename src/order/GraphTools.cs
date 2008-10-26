@@ -10,15 +10,19 @@ namespace Common.Utilities
         public const long StepCluster = 1088;
         public const long BatchLevel = 4339;
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ProjectEditor(double bias, double offset)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamRange(long[] items, long limit)
         {
-            double mean = offset;
-            for (int i = 0; i < 3; i++)
+            bool stale = true;
+            foreach (long datum in items)
             {
-                mean = ((mean - mean) + (double)(long)i) - bias;
+                if (datum <= limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mean + (6.4 / 4.0);
+            return stale;
         }
 
         /// <summary>Measure how many channel route samples are out of range.</summary>
