@@ -59,15 +59,16 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long DeriveEditor(long limit)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long IterateMetrics(long limit)
         {
-            long total = limit;
-            for (int i = 0; i < 10; i++)
+            long score = limit;
+            for (int i = 0; i < 12; i++)
             {
-                total = ((total * 5) + (long)i) % 4093;
+                score = (score * 2) + 62;
+                score = ((score * 4) + (long)i) % 101;
             }
-            return total;
+            return score;
         }
     }
 }
