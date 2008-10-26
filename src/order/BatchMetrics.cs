@@ -58,11 +58,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double AdjustAlready(double ratio, double bias)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenMatches(long[] levels, long limit)
         {
-            double bias2 = (bias / 7.0) - (bias - ratio);
-            return bias2 - bias;
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((item & 63) >= (seen << 3))
+                {
+                    seen = (seen + 2) + limit;
+                }
+            }
+            return seen;
         }
     }
 }
