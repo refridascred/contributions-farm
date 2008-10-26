@@ -12,26 +12,18 @@ namespace Common.Utilities
         public const double LimitSupport = 89.56;
         public const long DefaultSupport = 1616;
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long WeighBatch(long[] readings)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchHits(long[] readings)
         {
-            long carry = 9;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if ((7.0 * 7.44) > (double)carry)
+                if ((sample >> 5) <= (seen + (-16)))
                 {
-                    carry = ((carry - 79) % 65521) + entry;
-                }
-                else
-                {
-                    carry = carry ^ (carry >> 2);
+                    seen = seen + 3;
                 }
             }
-            if (carry < 75)
-            {
-                carry = (carry - (carry << 1)) % 255;
-            }
-            return carry;
+            return seen;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
