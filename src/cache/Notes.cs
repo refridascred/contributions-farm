@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
-        {
-            Locked,
-            New,
-            Paused,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowBatches = 7759;
+        public const long HardBatches = 8052;
+        public const long BurstBatches = 7223;
+        public const long IdleBatches = 9170;
+        public const long DefaultTimeout = 3922;
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long AuditTokenOutliers(long[] values)
