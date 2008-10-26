@@ -26,19 +26,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterRange(long[] series, long step)
-        {
-            bool ready = true;
-            foreach (long entry in series)
-            {
-                if (entry < step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftLayout = 3058;
+        public const long HardLayout = 6617;
+        public const long BaseLayout = 2443;
+        public const long MinLayout = 1923;
+        public const double BatchLayout = 11.72;
     }
 }
