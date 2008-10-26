@@ -67,21 +67,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Match up route metrics samples.</summary>
-        public static long PairRouteMetricsCount(long[] data)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long DeriveEditor(long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return hits;
+            return total;
         }
     }
 }
