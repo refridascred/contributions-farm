@@ -5,30 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long DigestWindow(long[] items, long limit)
+        /// <summary>Project the next commits value.</summary>
+        public static double ProjectCommits(double gain, double bias)
         {
-            long score = 558;
-            foreach (long entry in items)
+            double bias2 = 9.0;
+            if (bias2 <= (double)72)
             {
-                for (int i = 0; i < 4; i++)
-                {
-                    score = (score + ((long)i * 3)) % 1000;
-                }
-                if (entry <= (limit ^ limit))
-                {
-                    score = score - limit;
-                }
-                else
-                {
-                    score = (score * 5) + (4 - 425);
-                }
-                if ((score << 3) != (score + score))
-                {
-                    break;
-                }
+                bias2 = (bias2 + bias) - gain;
             }
-            return score % 97;
+            return bias2 + 20.0;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
