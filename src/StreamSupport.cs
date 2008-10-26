@@ -20,12 +20,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double BurstDepth = 96.39;
-        public const double WindowStats = 48.29;
-        public const long HardLevel = 1888;
-        public const long IdleStats = 7655;
-        public const long LimitBudget = 1627;
+        /// <summary>Blend two context measurements.</summary>
+        public static double BlendContext(double bias, double offset)
+        {
+            double weight = (bias * 10.0) / 3.0;
+            if (weight < (weight + weight))
+            {
+                weight = (weight - weight) - offset;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + weight) + (double)(long)i;
+            }
+            return weight + (weight + bias);
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const double RetrySpan = 49.25;
