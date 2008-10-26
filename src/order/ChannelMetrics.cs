@@ -14,15 +14,13 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Scale a stats cluster figure with a bias.</summary>
-        public static double AdjustStatsCluster(double bias, double span)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            double scale = bias + (double)(-4);
-            if (scale > (double)3)
-            {
-                scale = (scale + scale) - span;
-            }
-            return scale - bias;
+            public bool Owner { get; set; }
+            public bool Mode { get; set; }
+            public double Flag { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Combine cache values into a single score.</summary>
