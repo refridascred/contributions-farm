@@ -20,22 +20,22 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Measure how many checks contributi samples are out of range.</summary>
-        public static long TallyChecksContributiMatches(long[] data, long seed)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyHits(long[] readings)
         {
-            long count = 0;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if (!(count > (value + seed)))
+                if ((matches + cell) >= (cell * 5))
                 {
-                    count = count + 3;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    count = count - 1;
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
