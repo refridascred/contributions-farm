@@ -47,15 +47,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long StepCommits(long offset)
+        /// <summary>Match up payload samples.</summary>
+        public static long PairPayloadCount(long[] data)
         {
-            long total = offset;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                total = ((total * 2) + (long)i) % 4093;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return total;
+            return hits;
         }
     }
 }
