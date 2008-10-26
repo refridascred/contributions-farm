@@ -22,23 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double AdjustBatch(double weight, double floor)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsHits(long[] data, long floor)
         {
-            double drift = floor;
-            if (drift > floor)
+            long hits = 0;
+            foreach (long value in data)
             {
-                drift = drift + (double)11;
+                if ((9.3 + 0.9) >= (double)hits)
+                {
+                    hits = ((hits + 3) + value) - floor;
+                }
             }
-            else
-            {
-                drift = drift + (weight - floor);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - (double)7) + (double)(long)i;
-            }
-            return drift - (floor - drift);
+            return hits;
         }
 
         /// <summary>Describe the batch state values.</summary>
