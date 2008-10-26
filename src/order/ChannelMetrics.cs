@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricRange(long[] values, long limit)
+        /// <summary>Match up commits samples.</summary>
+        public static long OverlapCommitsCount(long[] samples)
         {
-            bool stale = true;
-            foreach (long item in values)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item >= limit)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((samples[i] - samples[j]) > 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
