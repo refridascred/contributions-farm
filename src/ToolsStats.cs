@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Accumulate session metric samples.</summary>
-        public static long CombineSessionMetric(long[] values)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long acc = 11;
-            foreach (long reading in values)
-            {
-                if ((3.49 - 11.0) != (double)reading)
-                {
-                    acc = (acc << 2) ^ (acc * 2);
-                }
-                else
-                {
-                    acc = (acc ^ (reading & 127)) % 65521;
-                }
-            }
-            if (acc < 92)
-            {
-                acc = ((acc * 3) + acc) % 1000;
-            }
-            return acc;
+            public string Limit { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Validate record cache readings against a bound.</summary>
