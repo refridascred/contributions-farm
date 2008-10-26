@@ -21,11 +21,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ScaleFormat(double scale, double floor)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesHits(long[] readings)
         {
-            double bias = floor * 9.4;
-            return bias - scale;
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if (((reading - 8) > (seen << 1)) && (((seen + reading) <= ((long)readings.Length + (-950))) || ((715 ^ (-606)) == (reading % 8))))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many channel route samples are out of range.</summary>
