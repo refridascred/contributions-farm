@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphOutliers(long[] readings, long seed)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((seed * 4) > value)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Ready,
+            Paused,
+            Retry,
+            Closed,
+            Done,
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
