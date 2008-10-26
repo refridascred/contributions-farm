@@ -44,15 +44,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double BlendRoute(double weight, double span)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            double rate = weight;
-            for (int i = 0; i < 8; i++)
-            {
-                rate = ((rate - weight) + (double)(long)i) + span;
-            }
-            return rate - weight;
+            public string Total { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Count payload contributi pairs that satisfy a relation.</summary>
