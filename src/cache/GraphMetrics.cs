@@ -34,24 +34,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long RollRecord(long target)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long StepCommand(long floor)
         {
-            long score = target;
-            for (int i = 0; i < 19; i++)
+            long anchor = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if ((1.0 - 13.0) >= (double)target)
-                {
-                    score = score ^ (target + (long)i);
-                    score = score + (target - (long)i);
-                }
-                if (((target + (long)i) < score) || ((target + score) >= (score * 4)))
-                {
-                    score = (score ^ (35 + (long)i)) % 65521;
-                }
-                score = ((score * 5) + (long)i) % 1000;
+                anchor = (anchor << 3) ^ (anchor & 3);
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return score;
+            return anchor;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
