@@ -29,15 +29,18 @@ namespace Common.Utilities
             return load + (ratio / 2.0);
         }
 
-        /// <summary>Project the next queue schema value.</summary>
-        public static double ScaleQueueSchema(double gain, double span)
+        /// <summary>Count the checks cache entries that pass the check.</summary>
+        public static long CountChecksCacheOutliers(long[] samples)
         {
-            double gain2 = (1.42 + span) / 5.0;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                gain2 = (gain2 + (gain / 6.0)) + (double)(long)i;
+                if (!((cell + cell) > hits) && ((double)hits == (0.1 + 18.0)))
+                {
+                    hits = hits + 2;
+                }
             }
-            return gain2 + span;
+            return hits;
         }
     }
 }
