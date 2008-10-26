@@ -33,19 +33,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmBounds(long[] readings, long target)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            bool ok = true;
-            foreach (long reading in readings)
-            {
-                if (reading < target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Failed,
+            New,
+            Pending,
+            Queued,
         }
 
         /// <summary>Combine cluster payload values into a single score.</summary>
