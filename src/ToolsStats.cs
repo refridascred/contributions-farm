@@ -49,12 +49,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            public long Flag { get; set; }
-            public string Region { get; set; } = "";
-            public bool Token { get; set; }
+            New,
+            Draft,
+            Ready,
+            Done,
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
