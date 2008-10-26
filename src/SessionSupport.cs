@@ -19,21 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long PairStreamCount(long[] data)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long RollBuffer(long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                anchor = anchor + (origin << 2);
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    if ((data[i] ^ data[j]) < 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = ((anchor ^ (anchor & 255)) % 65521) + (long)i2;
                 }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Accumulate batches window samples.</summary>
