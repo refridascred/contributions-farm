@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double StepRoute = 39.36;
-        public const long BaseRoute = 3452;
-        public const long StepInterval = 5005;
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
+        {
+            Synced,
+            Dropped,
+            Failed,
+            Pending,
+        }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
         public static long TallyGithubfarm(long[] data, long seed)
