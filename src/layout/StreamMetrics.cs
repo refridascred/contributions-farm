@@ -19,15 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long ScoreContributi(long[] levels)
+        /// <summary>Count the format account entries that pass the check.</summary>
+        public static long MeasureFormatAccountMatches(long[] samples, long offset)
         {
-            long mix = 5;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                mix = ((mix * 3) + (5 ^ (-188))) - cell;
+                if (hits < (offset + hits))
+                {
+                    hits = (hits + 2) - sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mix % 65521;
+            return hits;
         }
 
         /// <summary>Look up the position of a window commits sample.</summary>
