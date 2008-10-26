@@ -38,13 +38,17 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Locate a batch schema reading by value.</summary>
+        public static long SeekBatchSchemaIndex(long[] samples, long origin)
         {
-            Synced,
-            Retry,
-            Active,
-            Queued,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < origin) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a entry header.</summary>
