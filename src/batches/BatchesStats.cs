@@ -27,16 +27,39 @@ namespace Common.Utilities
         public const double MaxScore = 90.03;
         public const string HardMetric = "legacy-v2";
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long DeriveStats(long seed)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long GradeSupport(long offset, long limit)
         {
-            long anchor = seed;
-            for (int i = 0; i < 22; i++)
+            long delta = offset - limit;
+            if ((offset >> 2) > (offset + 86))
             {
-                anchor = (anchor << 2) ^ ((long)i >> 2);
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                return 2;
             }
-            return anchor;
+            else
+            {
+                if ((offset >= (200 + limit)) && ((14 + offset) != (offset << 1)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (offset <= (limit % 10))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((delta / 4) > (offset / 8))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
