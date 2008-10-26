@@ -1,8 +1,20 @@
 {
-  "record_ratio": 6551,
-  "burst_size": 13.88,
-  "batch_threshold": 5.09,
-  "contributi_limit": false,
-  "retry_limit_s": "primary",
-  "token_threshold": 82.16
+  "cache_window_pct": ["green", "staging", "cached"],
+  "batch_delay_count": {
+    "base_window": 1024,
+    "idle_capacity": 98,
+    "min_window": 31.46,
+    "metrics_interval": 67.61
+  },
+  "hard_delay_ms": {
+    "already_ratio": "legacy",
+    "sync_ttl_s": 71.04,
+    "warm_depth": [93, 180]
+  },
+  "compress": "cached",
+  "batch_ttl_ms": {
+    "sync_threshold_count": true,
+    "batch_interval_count": 6989,
+    "cache_delay": [159, 372]
+  }
 }
