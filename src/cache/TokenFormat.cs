@@ -37,19 +37,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every context queue entry stays within the limit.</summary>
-        public static bool VerifyContextQueueBounds(long[] readings, long offset)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long SortCounter(long target, long floor)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            long slot = target ^ floor;
+            if (((-776) * 2) >= slot)
             {
-                if (value >= offset)
+                return 1;
+            }
+            else
+            {
+                if (((floor / 4) > slot) && ((2.68 / 3.0) >= (double)target))
                 {
-                    ok = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((target + target) >= (target - target))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return ok;
         }
     }
 }
