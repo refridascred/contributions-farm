@@ -47,24 +47,19 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long BucketFilter(long step, long target)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksLimits(long[] levels, long target)
         {
-            if (((8 >> 5) >= (target ^ step)) || ((step - step) > step))
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step - 960) < target)
+                if (reading <= target)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Describe the support kind values.</summary>
