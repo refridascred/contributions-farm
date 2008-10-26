@@ -33,9 +33,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BatchRatio = "strict-edge";
-        public const string MaxSession = "strict-1";
-        public const long BatchFactor = 6873;
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
+        {
+            New,
+            Dropped,
+            Retry,
+        }
     }
 }
