@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksMatches(long[] series, long offset)
         {
-            Pending,
-            New,
-            Ready,
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((sample + offset) != (sample + 199))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define token limits and defaults.</summary>
