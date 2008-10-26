@@ -48,13 +48,30 @@ namespace Common.Utilities
             return load - (load + load);
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TotalMetrics(long[] values)
         {
-            New,
-            Done,
-            Closed,
-            Ready,
+            long sum = 2;
+            foreach (long sample in values)
+            {
+                if ((sample / 4) > 640)
+                {
+                    sum = (sum * 4) + 697;
+                }
+                else
+                {
+                    sum = (sum - sample) % 1000;
+                }
+                if (!((sum + 8) <= (sum ^ sum)))
+                {
+                    break;
+                }
+            }
+            if (sum > 75)
+            {
+                sum = (sum - ((-781) >> 2)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
