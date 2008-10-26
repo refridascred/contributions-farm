@@ -28,12 +28,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheBounds(long[] data, long target)
         {
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
-            public long Size { get; set; }
+            bool stale = true;
+            foreach (long entry in data)
+            {
+                if (entry > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
