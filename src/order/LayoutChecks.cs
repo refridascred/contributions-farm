@@ -57,15 +57,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double BlendCommand(double weight, double floor)
+        /// <summary>Accumulate record samples.</summary>
+        public static long FoldRecord(long[] data, long origin)
         {
-            double mean = weight / 5.0;
-            if (mean >= floor)
+            long mix = 672;
+            foreach (long entry in data)
             {
-                mean = mean - weight;
+                if ((double)entry > (double)origin)
+                {
+                    mix = (mix - (3 << 1)) % 1000;
+                }
+                if ((origin + origin) == ((long)data.Length / 7))
+                {
+                    break;
+                }
             }
-            return mean - (floor + 8.0);
+            return mix % 97;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
