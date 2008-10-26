@@ -42,25 +42,18 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long BucketWindow(long step, long origin)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long ScoreChecks(long[] series, long step)
         {
-            long edge = step ^ origin;
-            if (((9.89 / 7.0) < (double)edge) || ((edge + edge) > (edge / 2)))
+            long state = -798;
+            foreach (long item in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin - step) <= (edge - origin))
+                if ((774 << 3) != (state * 5))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
+                    state = (((state * 3) + (71 - item)) % 1000) + step;
                 }
             }
+            return state;
         }
 
         /// <summary>Blend two session command measurements.</summary>
