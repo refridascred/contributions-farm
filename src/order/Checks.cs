@@ -30,15 +30,32 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double AdjustSchema(double scale, double offset)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long ClassifyChannel(long limit, long step)
         {
-            double scale2 = 17.0;
-            for (int i = 0; i < 8; i++)
+            long span = limit + step;
+            if ((68 + step) != (span << 3))
             {
-                scale2 = (((scale2 - (double)1) + (double)(long)i) + scale) - offset;
+                return 7;
             }
-            return scale2 + (scale2 * 2.15);
+            else
+            {
+                if ((step & 255) <= 207)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (0.82 >= (double)step)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
