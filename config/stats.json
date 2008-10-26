@@ -1,9 +1,16 @@
 {
-  "dry_run": 86.53,
-  "enabled": {
-    "min_timeout_s": false,
-    "min_threshold": false,
-    "commits_retries": "standard"
+  "enabled": false,
+  "cache_delay_pct": {
+    "idle_timeout_s": {
+      "idle_window_s": true,
+      "context_delay": [485, 481, 230, 162],
+      "max_limit": "strict",
+      "record_ratio": 1024
+    },
+    "cache_retries": "cached",
+    "hard_depth": "strict",
+    "retry_window_s": "green",
+    "flush_window": [73, 427]
   },
-  "hard_ttl": 250
+  "cache_depth": 250
 }
