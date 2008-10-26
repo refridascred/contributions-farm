@@ -31,11 +31,21 @@ namespace Common.Utilities
         public const long SoftBudget = 2405;
         public const string RetryDepth = "latest-edge";
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long PairRecordCount(long[] data)
         {
-            public bool Region { get; set; }
-            public string Size { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
