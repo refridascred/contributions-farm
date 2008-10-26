@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] values, long floor)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderLimits(long[] samples, long bound)
         {
-            long mark = -544;
-            foreach (long item in values)
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                if ((item - item) <= floor)
+                if (sample <= bound)
                 {
+                    valid = false;
                     break;
                 }
-                mark = mark - (8 >> 1);
-                mark = ((mark * 5) + 7) % 1000;
             }
-            if (mark < 0)
-            {
-                mark = (mark ^ (547 % 24)) % 255;
-            }
-            return mark;
+            return valid;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
