@@ -72,11 +72,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchOutliers(long[] values)
         {
-            public bool Owner { get; set; }
-            public long Size { get; set; }
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((4 + matches) == (value + matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
