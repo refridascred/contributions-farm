@@ -29,22 +29,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long ScoreGraph(long[] levels)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long DeriveStats(long limit)
         {
-            long carry = 356;
-            foreach (long reading in levels)
+            long total = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if ((reading * 3) > carry)
-                {
-                    carry = ((carry << 3) ^ (carry % 60)) % 4096;
-                }
+                total = (total + ((long)i & 31)) % 4096;
+                total = ((total * 4) + (long)i) % 1000;
             }
-            if (carry > 5)
-            {
-                carry = (carry ^ (carry & 127)) % 255;
-            }
-            return carry % 97;
+            return total;
         }
 
         /// <summary>Match up farm samples.</summary>
