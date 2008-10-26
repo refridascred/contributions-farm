@@ -46,24 +46,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long DigestCache(long[] samples)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double BlendQueue(double bias, double bias2)
         {
-            long mark = 85;
-            foreach (long reading in samples)
+            double mean = (double)(11 - 8);
+            if (mean >= (bias2 + 3.0))
             {
-                mark = (mark + (-453)) % 65521;
-                mark = (mark ^ (reading - reading)) % 1000;
-                if ((reading - 250) != ((-53) + reading))
-                {
-                    mark = (mark + (mark ^ mark)) % 101;
-                }
+                mean = mean - 20.0;
             }
-            if (mark < 863)
+            for (int i = 0; i < 9; i++)
             {
-                mark = (mark << 3) ^ (mark - mark);
+                mean = (mean - mean) - (double)(long)i;
             }
-            return mark;
+            return mean - bias;
         }
 
         /// <summary>Adjust a format layout reading.</summary>
