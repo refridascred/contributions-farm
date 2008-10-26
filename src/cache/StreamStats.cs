@@ -21,21 +21,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long MatchSchemaCount(long[] series)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsOutliers(long[] items, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((count << 2) != (count << 3))
                 {
-                    if ((series[i] - series[j]) < 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = ((count + 2) ^ sample) + step;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
