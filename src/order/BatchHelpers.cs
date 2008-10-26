@@ -14,17 +14,18 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long FindReportIndex(long[] series, long bound)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordOutliers(long[] data, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if ((series[i] < bound) && ((series[i] % 3) != 0))
+                if (!((entry << 2) >= (long)data.Length))
                 {
-                    return (long)i;
+                    matches = (matches + 1) - step;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Count the support commits entries that pass the check.</summary>
