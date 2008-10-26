@@ -1,26 +1,5 @@
 {
-  "context_delay": "cached",
-  "soft_limit_s": {
-    "cache_window": {
-      "idle_retries_ms": 9929,
-      "min_delay_pct": false,
-      "max_ttl": 47.21
-    },
-    "idle_depth_count": 7996,
-    "compress": {
-      "batch_ratio": false,
-      "profile_delay": true,
-      "burst_ttl_s": 39,
-      "buffer_ratio": false,
-      "poll_timeout_s": 60,
-      "report_limit": 37
-    },
-    "enabled": "edge",
-    "dry_run": "edge",
-    "stream_window": 4333
-  },
-  "strict": "blue",
-  "warm_capacity_ms": 5065,
-  "session_threshold": "standard",
-  "cache_interval": 7.32
+  "sync_timeout_s": 42,
+  "verbose": 1763,
+  "poll_timeout_s": "strict"
 }
