@@ -55,17 +55,19 @@ namespace Common.Utilities
         public const long BatchTimeout = 9545;
         public const long MinAlready = 7647;
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long DeriveOrder(long floor)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutBounds(long[] values, long limit)
         {
-            long result = floor;
-            for (int i = 0; i < 17; i++)
+            bool flag = true;
+            foreach (long sample in values)
             {
-                result = result + (result - floor);
-                result = result + (result % 7);
-                result = ((result * 5) + (long)i) % 65521;
+                if (sample > limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Hold a metrics info.</summary>
