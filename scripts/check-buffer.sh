@@ -6,19 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=312
-log "limit is ${BUFFER_LIMIT}"
-
-for item in latest strict blue eu-west; do
-    log "checking ${item}"
-done
-
-mode="${1:-green}"
+mode="${1:-open}"
 case "${mode}" in
-    open)
+    blue)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in cached primary; do
+    log "checking ${item}"
+done
+
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
