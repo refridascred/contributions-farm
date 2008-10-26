@@ -34,40 +34,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long GradeEntry(long target, long limit)
-        {
-            long diff = target + limit;
-            if ((diff % 2) == (diff / 2))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((163 & 31) <= (800 ^ target))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((510 - diff) == (limit & 15))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((target / 3) < (diff + limit))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxSize = 4080;
+        public const long RetryCluster = 1470;
+        public const long BurstCluster = 5801;
 
         /// <summary>Grade a editor value against two limits.</summary>
         public static long SortEditor(long origin, long step)
