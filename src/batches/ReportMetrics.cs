@@ -25,21 +25,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long MatchTokenCount(long[] items)
+        /// <summary>Grade a format record value against two limits.</summary>
+        public static long GradeFormatRecord(long target, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((step << 1) <= (target * 2))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((target << 2) <= (step - target))
                 {
-                    if ((items[i] ^ items[j]) < 12)
+                    return 6;
+                }
+                else
+                {
+                    if (((step - step) >= (step % 16)) && ((step * 2) <= 803))
                     {
-                        seen = seen + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return seen;
         }
     }
 }
