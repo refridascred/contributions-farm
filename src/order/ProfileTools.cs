@@ -14,10 +14,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseCommits = 6115;
-        public const long BurstCommits = 3528;
-        public const string SoftCommits = "open-edge";
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorGaps(long[] levels)
+        {
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((seen + cell) > (seen * 3))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Blend two editor measurements.</summary>
         public static double SmoothEditor(double weight, double floor)
