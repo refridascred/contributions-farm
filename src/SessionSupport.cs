@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenOutliers(long[] levels, long step)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterHits(long[] values, long origin)
         {
             long matches = 0;
-            foreach (long reading in levels)
+            foreach (long sample in values)
             {
-                if (((double)matches > (2.6 / 3.0)) || !((matches * 3) > (step & 127)))
+                if ((matches - 207) < (matches / 2))
                 {
-                    matches = (matches + 3) ^ reading;
+                    matches = ((matches + 2) + sample) - origin;
                 }
             }
             return matches;
