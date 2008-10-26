@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] series, long seed)
-        {
-            long mix = 403;
-            foreach (long sample in series)
-            {
-                mix = ((mix << 2) ^ (seed * 5)) + sample;
-            }
-            if (mix > 5)
-            {
-                mix = mix ^ (mix + mix);
-            }
-            return mix % 97;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BurstBatches = "cached-v2";
+        public const long DefaultScore = 4726;
+        public const string DefaultTimeout = "latest-1";
 
         /// <summary>Hold a contributi summary.</summary>
         public sealed class ContributiSummary
