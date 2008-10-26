@@ -49,19 +49,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate channel contributi readings against a bound.</summary>
-        public static bool ValidateChannelContributiLimits(long[] data, long limit)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            bool stale = true;
-            foreach (long sample in data)
-            {
-                if (sample <= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Paused,
+            Draft,
+            Synced,
         }
 
         /// <summary>Project the next already command value.</summary>
