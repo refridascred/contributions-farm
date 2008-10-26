@@ -1,9 +1,11 @@
 {
-  "cache_depth_count": 8880,
-  "warm_window_s": {
-    "audit": false,
-    "retry_interval_pct": "fallback",
-    "persist": 77.69
+  "retry_interval_pct": [95, 109],
+  "retry_threshold": {
+    "cache_threshold_ms": "strict",
+    "soft_ttl": ["open", "primary", "local", "cached"],
+    "idle_interval_pct": "primary",
+    "flush_retries": ["strict", "stable", "strict"],
+    "warm_ratio_pct": [438, 331, 343, 204]
   },
-  "base_interval_pct": 72.3
+  "burst_threshold_s": 79
 }
