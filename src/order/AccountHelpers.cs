@@ -39,11 +39,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two graph report measurements.</summary>
-        public static double SmoothGraphReport(double bias, double bias2)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long FindStatsIndex(long[] series, long seed)
         {
-            double rate = bias2;
-            return (rate - (rate - rate)) + bias;
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= seed) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
