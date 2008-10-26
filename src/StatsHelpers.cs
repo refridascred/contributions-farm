@@ -58,15 +58,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double SmoothOrder(double bias, double bias2)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LocateStreamIndex(long[] items, long limit)
         {
-            double bias3 = bias;
-            if (bias3 > 8.0)
+            for (int i = 0; i < items.Length; i++)
             {
-                bias3 = bias3 - (5.1 - bias);
+                if (items[i] < limit)
+                {
+                    return (long)i;
+                }
             }
-            return bias3 - bias2;
+            return -1;
         }
     }
 }
