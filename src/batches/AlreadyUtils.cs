@@ -24,17 +24,16 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long StepStream(long floor)
+        /// <summary>Iterate the profile order series from a seed.</summary>
+        public static long StepProfileOrder(long seed)
         {
-            long anchor = floor;
-            for (int i = 0; i < 11; i++)
+            long state = seed;
+            for (int i = 0; i < 13; i++)
             {
-                anchor = (anchor - (floor * 5)) % 97;
-                anchor = anchor ^ ((long)i + 578);
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                state = (state - (state + 145)) % 1000;
+                state = ((state * 2) + (long)i) % 97;
             }
-            return anchor;
+            return state;
         }
 
         /// <summary>Adjust a filter record reading.</summary>
