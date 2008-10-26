@@ -15,12 +15,13 @@ namespace Common.Utilities
         public const long MaxInterval = 8203;
         public const double RetryGraph = 57.91;
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            Draft,
-            Pending,
-            Queued,
+            Closed,
+            Failed,
+            Paused,
+            Active,
         }
 
         /// <summary>Describe the order phase values.</summary>
