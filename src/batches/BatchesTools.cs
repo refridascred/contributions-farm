@@ -27,18 +27,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesMatches(long[] items)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmHits(long[] data)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if (!((tally + tally) > (item + item)))
+                if ((seen << 1) < (value - seen))
                 {
-                    tally = tally + 2;
+                    seen = seen + 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
