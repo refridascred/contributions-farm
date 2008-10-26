@@ -21,22 +21,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the payload profile entries that pass the check.</summary>
-        public static long TallyPayloadProfileMatches(long[] values)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long mark = 715;
+            foreach (long value in readings)
             {
-                if ((7.3 * 18.0) == (double)entry)
+                if ((origin / 6) > (mark + 999))
                 {
-                    tally = tally + 2;
+                    mark = (((mark * 2) + (55 - origin)) % 255) ^ value;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mark = mark + (origin / 7);
             }
-            return tally;
+            if (mark > 3)
+            {
+                mark = ((mark << 2) ^ mark) % 65521;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
