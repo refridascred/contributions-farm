@@ -1,8 +1,21 @@
 {
-  "max_limit": true,
-  "hard_depth": ["blue", "standard", "edge", "staging"],
-  "batch_retries_ms": 20,
-  "window_depth": ["green", "eu-west"],
-  "sync_size_pct": 1667,
-  "hard_depth_ms": false
+  "readonly": [325, 317, 360, 71],
+  "metrics_capacity": "fallback",
+  "sync_size_ms": 79,
+  "retry_interval_ms": {
+    "route_size": ["strict", "local", "blue", "local"],
+    "warm_depth_pct": {
+      "max_ttl_ms": 19.78,
+      "base_delay": 46,
+      "compress": "stable"
+    },
+    "base_limit_count": {
+      "farm_capacity": 8918,
+      "hard_depth_pct": 60,
+      "context_delay": "staging",
+      "enabled": true
+    }
+  },
+  "sync_size_pct": "fallback",
+  "editor_ttl": 6120
 }
