@@ -65,17 +65,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long StepRoute(long bound)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long WeighAccount(long[] items)
         {
-            long state = bound;
-            for (int i = 0; i < 17; i++)
+            long mark = 86;
+            foreach (long item in items)
             {
-                state = (state ^ (state * 5)) % 97;
-                state = ((state << 2) ^ (state - state)) % 65521;
-                state = ((state * 4) + (long)i) % 97;
+                if (((double)(long)items.Length == (15.0 + 6.0)) || ((item << 3) < item))
+                {
+                    mark = (mark - (6 % 7)) % 1000;
+                }
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Combine payload notes values into a single score.</summary>
