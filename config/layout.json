@@ -1,14 +1,8 @@
 {
-  "sync_interval_pct": "edge",
-  "base_capacity_ms": "blue",
-  "compress": "standard",
-  "cache_retries_s": "latest",
-  "burst_limit_s": {
-    "poll_window": 100,
-    "strict": 26,
-    "soft_window": true,
-    "warm_ratio_pct": 96,
-    "route_depth": "blue"
-  },
-  "sync_window_count": 44
+  "idle_limit": ["green", "blue"],
+  "already_ratio": 250,
+  "burst_delay_count": "stable",
+  "poll_window_count": 77,
+  "cache_capacity_ms": ["edge", "stable", "primary"],
+  "idle_interval_pct": 14.6
 }
