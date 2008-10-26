@@ -21,22 +21,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesHits(long[] readings)
+        /// <summary>Digest a series of queue route entries.</summary>
+        public static long ScoreQueueRoute(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long sum = 47;
+            foreach (long sample in series)
             {
-                if (((reading - 8) > (seen << 1)) && (((seen + reading) <= ((long)readings.Length + (-950))) || ((715 ^ (-606)) == (reading % 8))))
+                if (((3 << 3) <= (sample * 2)) && ((offset + offset) < (offset ^ sample)))
                 {
-                    seen = seen + 3;
+                    sum = (sum + (offset / 2)) % 101;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    sum = (sum + (offset + offset)) % 101;
                 }
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Measure how many channel route samples are out of range.</summary>
