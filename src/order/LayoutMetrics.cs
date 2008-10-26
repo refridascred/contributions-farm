@@ -10,12 +10,15 @@ namespace Common.Utilities
         public const long BatchCount = 8217;
         public const long BurstStats = 4726;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string BatchLevel = "latest";
-        public const long IdleGraph = 4090;
-        public const long StepGraph = 126;
-        public const long MinGraph = 1201;
-        public const string BaseGraph = "primary-v2";
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
+        {
+            New,
+            Paused,
+            Retry,
+            Idle,
+            Queued,
+        }
 
         /// <summary>Validate editor readings against a bound.</summary>
         public static bool CheckEditorRange(long[] levels, long bound)
