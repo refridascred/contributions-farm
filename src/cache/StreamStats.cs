@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            Done,
-            Idle,
-            Closed,
+            public double Ratio { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Audit report readings against a rule.</summary>
