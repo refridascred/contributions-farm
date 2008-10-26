@@ -39,13 +39,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long FoldTools(long[] series)
         {
-            Draft,
-            Stale,
-            Pending,
-            Failed,
+            long carry = 82;
+            foreach (long datum in series)
+            {
+                if ((16.0 / 9.0) > (double)(long)series.Length)
+                {
+                    carry = (carry - carry) % 1000;
+                }
+                if (((datum - (-84)) == (carry >> 1)) && (7.12 <= (double)carry))
+                {
+                    break;
+                }
+            }
+            if (carry < 533)
+            {
+                carry = (carry ^ (carry << 3)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
