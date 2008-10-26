@@ -15,21 +15,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long MatchCounterCount(long[] series)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TallyFormat(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 6;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                carry = ((carry * 4) + (carry - carry)) + value;
             }
-            return hits;
+            if (carry > (-939))
+            {
+                carry = ((carry << 2) ^ (53 << 2)) % 97;
+            }
+            return carry % 97;
         }
 
         /// <summary>Define already limits and defaults.</summary>
