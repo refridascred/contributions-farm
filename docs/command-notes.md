@@ -1,10 +1,11 @@
 # Command notes
 
-Use layout settings to tune how often stream data is refreshed.
-Run the counter check before changing any entry limits.
+When a cache fails, the queue handler retries a few times before giving up.
+The tools helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review filter limits each release
-- Document new context fields
-- Prefer support defaults
+- Review schema limits each release
+- Log every order change
+- Keep entry values small
+- Document new cache fields
