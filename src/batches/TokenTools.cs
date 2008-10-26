@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultInterval = 8367;
-        public const long MinFilter = 9790;
-        public const long BatchFilter = 3541;
-        public const string MinDepth = "stable-1";
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiOutliers(long[] levels)
+        {
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((seen >> 3) >= (value + value))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long MeasureBatchMatches(long[] items)
