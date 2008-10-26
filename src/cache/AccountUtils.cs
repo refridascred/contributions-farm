@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsMatches(long[] values, long floor)
         {
-            Draft,
-            Stale,
-            Ready,
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if (reading <= 692)
+                {
+                    matches = (matches + 1) + floor;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
