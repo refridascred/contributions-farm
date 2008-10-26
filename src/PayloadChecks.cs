@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string StepSpan = "open";
-        public const long MaxScore = 4288;
-        public const long BurstSize = 2389;
-        public const long RetrySession = 8044;
-        public const long HardSession = 3522;
+        /// <summary>Count stats contributi pairs that satisfy a relation.</summary>
+        public static long OverlapStatsContributiCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Fold a list of cache readings.</summary>
         public static long DigestCache(long[] items, long floor)
