@@ -1,38 +1,9 @@
 # support settings
-hard_threshold:
-  - legacy
-  - cached
-metric_ratio:
-  dry_run: 19.19
-  sync_depth:
-    queue_interval: 20
-    min_threshold: true
-    tools_retries:
-      - legacy
-      - blue
-      - edge
-    retry_limit_pct: 6235
-    base_delay_count: latest
-    min_ttl:
-      - 434
-      - 69
-      - 354
-      - 245
-  context_timeout: 34
-editor_retries:
-  sync_limit: cached
-  cache_depth: green
-  poll_timeout: latest
-  counter_retries:
-    - eu-west
-    - open
-    - latest
-    - open
-  githubfarm_capacity:
-    - open
-    - stable
-    - eu-west
-  readonly: cached
-stats_size:
-  - 117
-  - 497
+idle_limit: standard
+retry_depth_pct:
+  - 289
+  - 214
+  - 488
+burst_limit: edge
+base_timeout_count: eu-west
+poll_timeout_pct: false
