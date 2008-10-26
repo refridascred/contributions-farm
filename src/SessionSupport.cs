@@ -34,15 +34,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long DeriveCommits(long bound)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterHits(long[] levels, long bound)
         {
-            long score = bound;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                score = ((score * 5) + (long)i) % 101;
+                if ((22 ^ (long)levels.Length) >= (57 << 2))
+                {
+                    seen = ((seen + 1) + reading) + bound;
+                }
             }
-            return score;
+            return seen;
         }
     }
 }
