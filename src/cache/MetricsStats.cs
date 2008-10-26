@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelMatches(long[] values, long limit)
+        /// <summary>Match up contributi samples.</summary>
+        public static long CompareContributiCount(long[] items)
         {
             long matches = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((4.36 - 14.0) >= (double)limit)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = (matches + 1) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((items[i] + items[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
