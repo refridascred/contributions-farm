@@ -32,13 +32,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Match up entry samples.</summary>
+        public static long MatchEntryCount(long[] items)
         {
-            Queued,
-            Closed,
-            New,
-            Failed,
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
