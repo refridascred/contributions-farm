@@ -42,19 +42,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiBounds(long[] items, long offset)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long StepCommits(long offset)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            long total = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if (reading > offset)
-                {
-                    ready = false;
-                    break;
-                }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return ready;
+            return total;
         }
     }
 }
