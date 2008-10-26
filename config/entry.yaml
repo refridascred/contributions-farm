@@ -1,4 +1,4 @@
 # entry settings
-verbose: true
-sync_window_count: fallback
-cache_window_count: 1024
+poll_size_count: true
+buffer_capacity: legacy
+retry_delay: 17
