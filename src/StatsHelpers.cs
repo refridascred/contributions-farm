@@ -36,21 +36,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long CompareMetricCount(long[] data)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamGaps(long[] values, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((seen << 3) >= (floor + (long)values.Length))
                 {
-                    if ((data[i] - data[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 2) ^ entry;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
