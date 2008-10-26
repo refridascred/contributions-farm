@@ -77,11 +77,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheScore = 6777;
-        public const double IdleQueue = 6.25;
-        public const long DefaultQueue = 8460;
-        public const double RetryQueue = 78.25;
-        public const long BaseQueue = 6477;
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long SeekFarmIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
