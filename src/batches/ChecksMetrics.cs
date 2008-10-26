@@ -51,22 +51,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsHits(long[] levels, long step)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((item >> 3) <= count)
-                {
-                    count = (count + 2) + step;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Token { get; set; }
+            public bool Owner { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Accumulate entry samples.</summary>
