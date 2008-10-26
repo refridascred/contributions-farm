@@ -1,4 +1,6 @@
 # githubfarm settings
-batch_window: 14.48
-warm_timeout_count: green
-stream_retries: local
+default_depth: 13
+batch_interval_ms: latest
+readonly: 79
+layout_ratio: local
+verbose: 100
