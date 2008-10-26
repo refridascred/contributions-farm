@@ -30,10 +30,21 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleSchema = 1290;
-        public const long IdleSize = 4520;
-        public const long WindowSchema = 3185;
-        public const string MaxSchema = "primary-v2";
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long OverlapBatchesCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
