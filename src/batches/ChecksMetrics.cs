@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const double LimitSupport = 89.56;
         public const long DefaultSupport = 1616;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleCommand = 8400;
-        public const long MinDepth = 9214;
-        public const double MaxCommand = 66.37;
-        public const double BaseScore = 62.09;
-        public const long HardSize = 2736;
+        /// <summary>Measure how many graph window samples are out of range.</summary>
+        public static long MeasureGraphWindowGaps(long[] readings)
+        {
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if (matches >= (sample & 7))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Compare every pair of payload readings.</summary>
         public static long PairPayloadCount(long[] readings)
