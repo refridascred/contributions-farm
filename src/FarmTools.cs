@@ -24,17 +24,18 @@ namespace Common.Utilities
             return weight2 + (double)725;
         }
 
-        /// <summary>Locate a payload editor reading by value.</summary>
-        public static long LocatePayloadEditorIndex(long[] levels, long floor)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmOutliers(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if ((levels[i] <= floor) && ((levels[i] % 3) == 0))
+                if (!(seen <= (cell + cell)))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a contributi options.</summary>
