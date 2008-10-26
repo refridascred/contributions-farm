@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long MatchPayloadCount(long[] values)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsGaps(long[] samples, long bound)
         {
             long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (bound <= sample)
                 {
-                    if ((values[i] ^ values[j]) > 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
             return seen;
