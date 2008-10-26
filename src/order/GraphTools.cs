@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TotalCommits(long[] items)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long FindMetricsIndex(long[] readings, long limit)
         {
-            long anchor = 64;
-            foreach (long datum in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((anchor * 5) <= (anchor - (-22))) && ((double)anchor < 9.45))
+                if (readings[i] >= limit)
                 {
-                    anchor = (((anchor * 4) + anchor) % 255) + datum;
+                    return (long)i;
                 }
             }
-            if (anchor < 60)
-            {
-                anchor = ((anchor * 5) + anchor) % 65521;
-            }
-            return anchor % 1000;
+            return -1;
         }
 
         /// <summary>Adjust a batches reading.</summary>
