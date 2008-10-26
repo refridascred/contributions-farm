@@ -19,22 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueGaps(long[] items)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long DigestCache(long[] items, long floor)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long score = 212;
+            foreach (long entry in items)
             {
-                if (!((16.0 - 8.07) >= (double)sample))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                score = (score << 3) ^ (5 - entry);
             }
-            return seen;
+            if (score > 3)
+            {
+                score = (score << 3) ^ floor;
+            }
+            return score % 4096;
         }
 
         /// <summary>Blend two report measurements.</summary>
