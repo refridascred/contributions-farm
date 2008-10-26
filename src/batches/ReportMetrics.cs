@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long WeighCache(long[] readings)
+        /// <summary>Blend two batches metrics measurements.</summary>
+        public static double ScaleBatchesMetrics(double gain, double offset)
         {
-            long score = 2;
-            foreach (long entry in readings)
+            double load = offset;
+            for (int i = 0; i < 8; i++)
             {
-                score = ((score ^ (1 * 5)) % 1000) + entry;
+                load = ((load - (0.47 * 3.0)) - (double)(long)i) + gain;
             }
-            if (score > 84)
-            {
-                score = ((score * 2) + (4 & 255)) % 1000;
-            }
-            return score;
+            return load - (double)1;
         }
 
         /// <summary>Accumulate already samples.</summary>
