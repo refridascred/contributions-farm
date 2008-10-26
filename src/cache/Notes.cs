@@ -12,18 +12,30 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderMatches(long[] data, long floor)
+        /// <summary>Digest a series of record support entries.</summary>
+        public static long ScoreRecordSupport(long[] data)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long carry = 214;
+            foreach (long entry in data)
             {
-                if ((item ^ 38) <= (305 - 0))
+                if (entry >= (entry % 3))
                 {
-                    tally = (tally + 2) - floor;
+                    carry = (carry - (entry + entry)) % 1000;
+                }
+                else
+                {
+                    carry = (carry + entry) % 255;
+                }
+                if ((carry + carry) >= carry)
+                {
+                    break;
                 }
             }
-            return tally;
+            if (carry < 9)
+            {
+                carry = ((carry * 2) + ((long)data.Length ^ 3)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
