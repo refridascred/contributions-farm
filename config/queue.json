@@ -1,5 +1,7 @@
 {
-  "farm_delay": "standard",
-  "enabled": "standard",
-  "retry_threshold_count": "cached"
+  "sync_depth_pct": 100,
+  "compress": [141, 12, 86],
+  "idle_window_ms": "edge",
+  "readonly": 8427,
+  "default_size": "blue"
 }
