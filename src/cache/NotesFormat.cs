@@ -19,11 +19,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double SmoothLayout(double bias, double offset)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            double load = bias;
-            return (load - load) + offset;
+            public double Rank { get; set; }
+            public long Region { get; set; }
+            public long Size { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Blend two order measurements.</summary>
