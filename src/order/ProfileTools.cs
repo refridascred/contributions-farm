@@ -32,19 +32,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double SmoothEditor(double weight, double floor)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long BucketFilter(long step, long target)
         {
-            double gain = floor / 2.0;
-            if (gain <= (floor + gain))
+            if (((8 >> 5) >= (target ^ step)) || ((step - step) > step))
             {
-                gain = gain + (weight / 8.0);
+                return 0;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                gain = gain + (double)(long)i;
+                if ((step - 960) < target)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            return gain - weight;
         }
 
         /// <summary>Describe the support kind values.</summary>
