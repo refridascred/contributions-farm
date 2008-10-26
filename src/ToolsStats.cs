@@ -64,19 +64,11 @@ namespace Common.Utilities
             return bias + (scale / 6.0);
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmRange(long[] data, long seed)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            bool ok = true;
-            foreach (long reading in data)
-            {
-                if (reading > seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Count { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
