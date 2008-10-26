@@ -1,8 +1,8 @@
-id,label,state,active,region
-1,38.63,810,811,74.72
-2,51,148,latest,eu-west
-3,759,493,75,35.3
-4,492,26.64,78.29,stable
-5,54.56,653,201,edge
-6,276,latest,stable,open
-7,legacy,75.33,green,32.71
+id,level,token
+1,55.75,451
+2,72.67,strict
+3,91.74,163
+4,open,local
+5,stable,853
+6,85.58,752
+7,128,72.91
