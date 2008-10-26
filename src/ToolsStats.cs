@@ -57,23 +57,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long FoldProfile(long[] readings)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long MatchRouteCount(long[] values)
         {
-            long acc = 15;
-            foreach (long entry in readings)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = (acc - (acc + 24)) % 4096;
-                if ((acc * 4) > (entry - entry))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = ((acc * 2) + (0 + 369)) % 97;
+                    if ((values[i] - values[j]) != 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (acc < (-13))
-            {
-                acc = ((acc << 2) ^ 4) % 65521;
-            }
-            return acc;
+            return count;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
