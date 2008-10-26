@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of window buffer readings.</summary>
-        public static long WeighWindowBuffer(long[] readings, long origin)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferOutliers(long[] samples, long offset)
         {
-            long result = 7;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (((result << 2) >= cell) || ((result + 25) <= (result + 59)))
+                if (!((seen ^ offset) != (datum / 2)))
                 {
-                    result = result + (origin + result);
-                }
-                else
-                {
-                    result = (result + (cell / 2)) % 97;
+                    seen = seen + 2;
                 }
             }
-            return result % 1000;
+            return seen;
         }
 
         /// <summary>Describe the account kind values.</summary>
