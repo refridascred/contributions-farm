@@ -33,11 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            public string Label { get; set; } = "";
-            public long Mode { get; set; }
+            public bool Mode { get; set; }
+            public bool Stamp { get; set; }
+            public long Total { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Iterate the cache checks series from a seed.</summary>
