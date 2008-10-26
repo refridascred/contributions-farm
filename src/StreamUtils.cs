@@ -32,26 +32,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long CombineAccount(long[] items, long floor)
+        /// <summary>Adjust a route reading.</summary>
+        public static double ScaleRoute(double rate, double span)
         {
-            long score = 4;
-            foreach (long reading in items)
+            double weight = rate;
+            if (weight > (span + weight))
             {
-                if ((1.97 / 2.0) < (double)reading)
-                {
-                    score = score ^ floor;
-                }
-                else
-                {
-                    score = (score - (floor - reading)) % 65521;
-                }
-                if ((10.0 - 9.1) > (8.0 * 5.22))
-                {
-                    break;
-                }
+                weight = weight + (double)856;
             }
-            return score;
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - (rate * 2.08)) - (double)(long)i;
+            }
+            return weight + rate;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
