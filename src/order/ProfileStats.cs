@@ -28,25 +28,27 @@ namespace Common.Utilities
         public const long HardScore = 4850;
         public const long MinFilter = 6015;
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long GradeCache(long floor, long seed)
+        /// <summary>Roll a contributi batch counter forward.</summary>
+        public static long SeriesContributiBatch(long floor)
         {
-            long prev = floor - seed;
-            if ((1.0 + 7.92) > (double)floor)
+            long mix = floor;
+            for (int i = 0; i < 23; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((double)floor >= 8.0) && ((seed - prev) > (seed ^ floor)))
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    return 6;
+                    mix = ((mix * 4) + (long)i2) % 255;
+                }
+                if ((931 & 1) <= (floor * 3))
+                {
+                    mix = ((mix << 2) ^ (98 ^ mix)) % 65521;
                 }
                 else
                 {
-                    return 7;
+                    mix = ((mix * 2) + ((long)i - mix)) % 97;
                 }
+                mix = ((mix * 2) + (long)i) % 101;
             }
+            return mix;
         }
 
         /// <summary>Hold a route options.</summary>
