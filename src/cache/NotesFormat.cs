@@ -13,13 +13,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long OverlapAlreadyCount(long[] values)
         {
-            public long Mode { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Token { get; set; }
-            public string Count { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the batch state values.</summary>
