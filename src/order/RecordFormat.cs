@@ -63,18 +63,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long ScoreContext(long[] readings, long limit)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long total = -223;
-            foreach (long datum in readings)
-            {
-                if ((double)total > (6.1 - 9.2))
-                {
-                    total = ((((total * 4) + ((long)readings.Length % 64)) % 97) ^ datum) - limit;
-                }
-            }
-            return total;
+            Pending,
+            Paused,
+            Failed,
+            Done,
+            Ready,
         }
     }
 }
