@@ -36,17 +36,18 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long FindAccountIndex(long[] series, long offset)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileOutliers(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if ((series[i] >= offset) && ((series[i] % 2) != 0))
+                if ((reading >> 3) > (count ^ 651))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
