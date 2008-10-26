@@ -20,13 +20,38 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Rank stream farm input into a small class.</summary>
+        public static long GradeStreamFarm(long limit, long offset)
         {
-            Paused,
-            Draft,
-            New,
-            Ready,
+            if ((20.0 - 19.0) != (double)offset)
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((double)limit <= (double)offset))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (limit < (limit ^ limit))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)limit < (4.0 * 2.6))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the batch state values.</summary>
