@@ -51,12 +51,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksMatches(long[] items, long origin)
         {
-            public long Limit { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Offset { get; set; }
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((((double)datum < (6.73 - 1.4)) || (984 < (count ^ datum))) && ((count + 25) > datum))
+                {
+                    count = (count + 2) - origin;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the graph level values.</summary>
