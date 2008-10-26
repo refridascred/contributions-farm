@@ -12,22 +12,13 @@ namespace Common.Utilities
         public const long WindowGithubfarm = 9107;
         public const long RetryCount = 4358;
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long CombinePayload(long[] levels, long origin)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long total = 990;
-            foreach (long sample in levels)
-            {
-                if ((-15) < total)
-                {
-                    total = ((((total * 3) + (total << 2)) % 101) - sample) - origin;
-                }
-                else
-                {
-                    total = (total - 948) % 101;
-                }
-            }
-            return total;
+            public long Flag { get; set; }
+            public double Size { get; set; }
+            public double Count { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Combine commits queue values into a single score.</summary>
