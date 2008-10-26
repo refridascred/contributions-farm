@@ -1,5 +1,23 @@
 {
-  "cache_window": 30,
-  "warm_retries_ms": ["fallback", "fallback"],
-  "stats_interval": 96
+  "batch_limit_count": 21.02,
+  "soft_ttl_ms": true,
+  "persist": 734,
+  "graph_retries": {
+    "default_limit_s": {
+      "warm_window_count": "open",
+      "hard_ratio_pct": ["edge", "cached"],
+      "idle_window_ms": ["open", "primary"],
+      "max_delay_pct": 19.21
+    },
+    "readonly": 65.78,
+    "hard_limit_s": [264, 370, 170],
+    "default_window_count": {
+      "dry_run": 250,
+      "entry_window": true,
+      "profile_limit": false,
+      "cache_depth_s": "standard",
+      "payload_interval": "local"
+    }
+  },
+  "retry_window": 500
 }
