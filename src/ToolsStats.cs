@@ -36,23 +36,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the notes profile entries that pass the check.</summary>
-        public static long CountNotesProfileGaps(long[] samples)
-        {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((hits + reading) == (hits * 3))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string CacheInterval = "primary-v2";
+        public const double BatchScore = 85.41;
+        public const long WindowLayout = 262;
+        public const long LimitInterval = 6440;
 
         /// <summary>Describe the filter level values.</summary>
         public enum FilterLevel
