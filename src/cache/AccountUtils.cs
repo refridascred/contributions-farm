@@ -37,18 +37,12 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricGaps(long[] readings)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if (94 <= (reading + 552))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Pending,
+            New,
+            Failed,
         }
     }
 }
