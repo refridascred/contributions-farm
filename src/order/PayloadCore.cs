@@ -27,20 +27,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheBounds(long[] data, long target)
-        {
-            bool stale = true;
-            foreach (long entry in data)
-            {
-                if (entry > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstContributi = 1979;
+        public const long CacheInterval = 9305;
+        public const long MinContributi = 4729;
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long StepCommits(long offset)
