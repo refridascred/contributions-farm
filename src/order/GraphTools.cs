@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
-        {
-            public long Label { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseCluster = 5304;
+        public const long StepCluster = 1088;
+        public const long BatchLevel = 4339;
 
         /// <summary>Scale a editor figure with a bias.</summary>
         public static double ProjectEditor(double bias, double offset)
