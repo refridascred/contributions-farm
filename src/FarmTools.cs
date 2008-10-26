@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double ScaleCluster(double weight, double floor)
+        /// <summary>Count profile order pairs that satisfy a relation.</summary>
+        public static long CompareProfileOrderCount(long[] levels)
         {
-            double weight2 = (weight + floor) / 6.0;
-            if (weight2 <= (double)23)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight2 = weight2 - (floor / 5.0);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                weight2 = weight2 - (weight2 + 2.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight2 = (weight2 + floor) - (double)(long)i;
-            }
-            return weight2 + (double)725;
+            return tally;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
