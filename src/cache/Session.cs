@@ -22,20 +22,12 @@ namespace Common.Utilities
         public const long HardMetrics = 1010;
         public const double RetryMetrics = 60.42;
 
-        /// <summary>Check that every checks batch entry stays within the limit.</summary>
-        public static bool CheckChecksBatchRange(long[] items, long seed)
-        {
-            bool ok = true;
-            foreach (long sample in items)
-            {
-                if (sample > seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BatchWidth = 1.15;
+        public const long MinSize = 3144;
+        public const long CacheLevel = 9757;
+        public const long IdleReport = 31;
+        public const long DefaultReport = 7855;
 
         /// <summary>Adjust a profile reading.</summary>
         public static double ProjectProfile(double gain, double floor)
