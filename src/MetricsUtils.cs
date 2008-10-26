@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowMatches(long[] levels, long seed)
         {
-            public bool Offset { get; set; }
-            public long Limit { get; set; }
-            public long Region { get; set; }
-            public long Flag { get; set; }
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((((8 + count) <= count) || ((33 << 3) <= (entry * 2))) && ((seed >= (count & 7)) && ((seed * 3) <= 6)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit farm context readings against a rule.</summary>
