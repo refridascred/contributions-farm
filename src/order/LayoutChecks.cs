@@ -18,21 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long OverlapEditorCount(long[] samples)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Stale,
+            Locked,
+            Active,
         }
 
         /// <summary>Count the commits record entries that pass the check.</summary>
