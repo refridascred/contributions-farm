@@ -43,14 +43,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long RankGithubfarm(long offset, long origin)
         {
-            Draft,
-            Retry,
-            Locked,
-            Closed,
-            Failed,
+            if (14.0 <= (double)offset)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((origin + offset) <= (offset & 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
