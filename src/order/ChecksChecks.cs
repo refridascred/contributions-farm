@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftOrder = 5499;
-        public const long DefaultOrder = 6961;
-        public const long BaseOrder = 6020;
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
+        {
+            Stale,
+            Locked,
+            Paused,
+        }
 
         /// <summary>Accumulate stream window samples.</summary>
         public static long ScoreStreamWindow(long[] values, long step)
