@@ -21,15 +21,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long RollFormat(long floor)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long state = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                state = ((state * 4) + (long)i) % 1000;
-            }
-            return state;
+            public long Ratio { get; set; }
+            public string Label { get; set; } = "";
+            public long Stamp { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
