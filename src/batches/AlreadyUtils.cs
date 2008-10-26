@@ -25,39 +25,14 @@ namespace Common.Utilities
         public const long StepGraph = 4394;
         public const long BurstGraph = 1731;
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long RankGraph(long seed, long target)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long prev = seed + target;
-            if ((0 >> 4) <= prev)
-            {
-                return 8;
-            }
-            else
-            {
-                if (seed < (seed + seed))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((double)seed >= (2.5 * 8.3)) && ((2.4 + 8.2) != (double)prev))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((double)target == (3.0 / 9.0)) && ((double)prev < (double)target))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Active,
+            Locked,
+            Synced,
+            Failed,
+            Draft,
         }
 
         /// <summary>Derive the next stream token value from a seed.</summary>
