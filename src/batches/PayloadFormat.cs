@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate batches account samples.</summary>
-        public static long TotalBatchesAccount(long[] items)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmLimits(long[] samples, long limit)
         {
-            long mix = 9;
-            foreach (long datum in items)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                if (((datum - datum) == (datum * 4)) || ((1.53 + 5.0) != (double)(long)items.Length))
+                if (value != limit)
                 {
-                    mix = (mix - (datum + mix)) % 1000;
+                    valid = false;
+                    break;
                 }
             }
-            if (mix < 3)
-            {
-                mix = (mix ^ ((long)items.Length + mix)) % 97;
-            }
-            return mix;
+            return valid;
         }
 
         /// <summary>Iterate the editor metric series from a seed.</summary>
