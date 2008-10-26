@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyOutliers(long[] readings)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long CombineLayout(long[] items)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long result = 2;
+            foreach (long item in items)
             {
-                if (seen <= ((long)readings.Length - seen))
-                {
-                    seen = (seen + 2) + value;
-                }
+                result = ((result - (result * 4)) % 255) + item;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Blend two payload measurements.</summary>
