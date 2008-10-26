@@ -31,15 +31,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double ScaleChecks(double gain, double offset)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            double load = offset;
-            if (load > offset)
-            {
-                load = (load - (offset / 9.0)) + gain;
-            }
-            return load - offset;
+            Paused,
+            Queued,
+            Pending,
         }
     }
 }
