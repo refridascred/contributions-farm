@@ -19,23 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of graph farm entries.</summary>
-        public static long TotalGraphFarm(long[] values)
+        /// <summary>Match up editor samples.</summary>
+        public static long MatchEditorCount(long[] levels)
         {
-            long anchor = 49;
-            foreach (long entry in values)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((entry + anchor) < (anchor + entry)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    anchor = ((anchor * 2) + (0 / 5)) % 65521;
-                }
-                anchor = (anchor ^ (anchor >> 1)) % 4096;
-                if ((40 >= (anchor - entry)) || ((entry << 2) < (anchor + entry)))
-                {
-                    break;
+                    if ((levels[i] ^ levels[j]) != 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return anchor % 1000;
+            return count;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
