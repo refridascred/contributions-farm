@@ -20,13 +20,13 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            public double Flag { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Size { get; set; }
-            public long Region { get; set; }
+            public string Total { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Mode { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Accumulate already tools samples.</summary>
