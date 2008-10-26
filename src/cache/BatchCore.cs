@@ -36,12 +36,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Match up notes metrics samples.</summary>
+        public static long PairNotesMetricsCount(long[] series)
         {
-            public double Token { get; set; }
-            public long Rank { get; set; }
-            public string Owner { get; set; } = "";
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a report reading by value.</summary>
