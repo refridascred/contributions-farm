@@ -63,15 +63,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long StepTools(long offset)
+        /// <summary>Blend two session command measurements.</summary>
+        public static double AdjustSessionCommand(double scale, double offset)
         {
-            long mix = offset;
-            for (int i = 0; i < 8; i++)
+            double bias = (18.0 / 6.0) * 19.0;
+            if (bias > bias)
             {
-                mix = ((mix * 3) + (long)i) % 1000;
+                bias = (bias - offset) - scale;
             }
-            return mix;
+            return bias - offset;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
