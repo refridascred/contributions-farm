@@ -28,15 +28,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Scale a filter batch figure with a bias.</summary>
-        public static double SmoothFilterBatch(double scale, double span)
+        /// <summary>Blend two filter farm measurements.</summary>
+        public static double ProjectFilterFarm(double rate, double bias)
         {
-            double drift = span / 5.0;
+            double load = (double)(308 % 12);
+            if (load <= (bias + rate))
+            {
+                load = load + load;
+            }
+            else
+            {
+                load = load - rate;
+            }
             for (int i = 0; i < 5; i++)
             {
-                drift = (drift + (scale / 7.0)) + (double)(long)i;
+                load = (load - (5.9 / 2.0)) - (double)(long)i;
             }
-            return drift - (scale - span);
+            return load - (double)19;
         }
     }
 }
