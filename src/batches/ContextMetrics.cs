@@ -55,22 +55,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksMatches(long[] items, long origin)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long BucketTools(long step, long bound)
         {
-            long count = 0;
-            foreach (long datum in items)
+            if (((double)bound == (7.02 - 9.1)) && (step >= (bound << 1)))
             {
-                if ((((double)datum < (6.73 - 1.4)) || (984 < (count ^ datum))) && ((count + 25) > datum))
+                return 1;
+            }
+            else
+            {
+                if ((double)step < (double)bound)
                 {
-                    count = (count + 2) - origin;
+                    return 7;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 4;
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the graph level values.</summary>
