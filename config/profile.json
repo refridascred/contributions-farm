@@ -1,19 +1,8 @@
 {
-  "hard_delay": 250,
-  "batch_window_ms": {
-    "readonly": 30,
-    "default_ttl_s": 90.56,
-    "verbose": true
-  },
-  "contributi_capacity": 500,
-  "hard_timeout_count": "fallback",
-  "sync_threshold_s": [360, 231, 300],
-  "audit": {
-    "warm_limit_count": true,
-    "base_ttl_s": 6,
-    "cache_interval_count": 30,
-    "base_window_pct": 6927,
-    "batch_interval": 19,
-    "cluster_limit": 20.98
-  }
+  "metric_window": [12, 242, 163],
+  "hard_ratio_pct": 30,
+  "warm_capacity_ms": 1024,
+  "metrics_limit": "fallback",
+  "warm_size_pct": 85.14,
+  "soft_limit_pct": false
 }
