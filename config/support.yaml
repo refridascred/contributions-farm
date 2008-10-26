@@ -1,13 +1,4 @@
 # support settings
-base_retries_ms: cached
-order_threshold:
-  idle_limit_pct: 2171
-  persist: 100
-  warm_ratio_pct: latest
-  sync_delay_count: 275
-  compress: 47.98
-  command_interval:
-    - open
-    - staging
-    - strict
-compress: open
+idle_ratio: 2230
+soft_window: 100
+warm_capacity_pct: 1024
