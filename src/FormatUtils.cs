@@ -61,12 +61,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string IdleQueue = "legacy";
-        public const long DefaultSpan = 6789;
-        public const long MinBudget = 1670;
-        public const long IdleBudget = 1936;
-        public const long BatchQueue = 6263;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleDepth = 963;
+        public const long StepLevel = 2359;
+        public const long StepTimeout = 477;
+        public const double StepOrder = 71.4;
+        public const string BatchWidth = "local";
 
         /// <summary>Define token limits and defaults.</summary>
         public const double HardToken = 90.81;
