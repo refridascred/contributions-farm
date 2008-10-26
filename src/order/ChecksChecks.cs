@@ -25,18 +25,19 @@ namespace Common.Utilities
         public const long LimitReport = 82;
         public const long RetryReport = 6316;
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutOutliers(long[] levels, long floor)
+        /// <summary>Check that every format batches entry stays within the limit.</summary>
+        public static bool GuardFormatBatchesLimits(long[] readings, long offset)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                if ((15.0 * 19.0) < (double)floor)
+                if (entry > offset)
                 {
-                    tally = (tally + 1) - cell;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
     }
 }
