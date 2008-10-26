@@ -1,12 +1,12 @@
 {
-  "counter_depth": 93,
-  "audit": "green",
-  "dry_run": {
-    "idle_size_pct": 100,
-    "payload_depth": 39.54,
-    "token_threshold": ["local", "staging"],
-    "batch_depth_pct": ["fallback", "blue", "legacy", "legacy"]
+  "stream_capacity": false,
+  "flush_limit": 71,
+  "retry_delay": {
+    "retry_interval_count": "local",
+    "poll_timeout_count": 579,
+    "counter_interval": "fallback",
+    "min_window": "cached",
+    "already_size": true
   },
-  "stream_depth": false,
-  "idle_retries_s": 96.73
+  "schema_ratio": 9136
 }
