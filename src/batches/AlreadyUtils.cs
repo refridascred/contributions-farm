@@ -37,15 +37,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricHits(long[] series, long step)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelOutliers(long[] data)
         {
             long matches = 0;
-            foreach (long sample in series)
+            foreach (long item in data)
             {
-                if ((matches % 24) <= (matches - step))
+                if ((matches / 7) >= (matches & 3))
                 {
-                    matches = (matches + 1) - sample;
+                    matches = (matches + 1) + item;
                 }
             }
             return matches;
