@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double IdleCount = 27.92;
-        public const long SoftInterval = 4875;
-        public const long IdleRoute = 819;
-        public const long MinRoute = 7724;
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
+        {
+            public double Ratio { get; set; }
+            public double Owner { get; set; }
+            public double Total { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Blend two profile measurements.</summary>
         public static double BlendProfile(double ratio, double floor)
