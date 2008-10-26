@@ -20,17 +20,25 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LocateBatchesIndex(long[] items, long step)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long SortFilter(long step, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long lane = step ^ limit;
+            if ((lane - step) > (step & 127))
             {
-                if (items[i] == step)
+                return 4;
+            }
+            else
+            {
+                if (lane < (step / 8))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Locate a session reading by value.</summary>
