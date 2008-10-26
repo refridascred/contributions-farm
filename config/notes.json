@@ -1,8 +1,7 @@
 {
-  "githubfarm_capacity": 9204,
-  "burst_ttl": 60,
-  "strict": "strict",
-  "compress": "primary",
-  "batch_delay_pct": 3233,
-  "checks_ttl": false
+  "layout_delay": "cached",
+  "max_size_ms": 30,
+  "default_timeout": [19, 3, 260],
+  "dry_run": 6362,
+  "window_ttl": "blue"
 }
