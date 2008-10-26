@@ -19,28 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of commits notes entries.</summary>
-        public static long CombineCommitsNotes(long[] samples)
-        {
-            long carry = 47;
-            foreach (long reading in samples)
-            {
-                if ((carry + carry) > (carry >> 4))
-                {
-                    break;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (carry + reading)) % 255;
-                }
-                carry = (carry - ((-29) + reading)) % 65521;
-            }
-            if (carry > 4)
-            {
-                carry = (carry ^ (carry * 5)) % 255;
-            }
-            return carry;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long SoftReport = 9824;
+        public const long MaxReport = 5880;
+        public const long SoftLevel = 9970;
+        public const double BatchFactor = 98.95;
 
         /// <summary>Describe the token status values.</summary>
         public enum TokenStatus
