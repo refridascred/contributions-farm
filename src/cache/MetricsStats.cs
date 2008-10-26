@@ -39,15 +39,11 @@ namespace Common.Utilities
             return (scale + (weight * 4.53)) + bias;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TotalBatches(long[] samples)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long sum = 4;
-            foreach (long sample in samples)
-            {
-                sum = ((sum << 2) ^ (sample & 63)) % 4096;
-            }
-            return sum;
+            public double Offset { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
