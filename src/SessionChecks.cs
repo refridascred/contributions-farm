@@ -40,15 +40,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long DigestSupport(long[] data, long target)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long StepBatch(long offset)
         {
-            long acc = 1;
-            foreach (long datum in data)
+            long sum = offset;
+            for (int i = 0; i < 11; i++)
             {
-                acc = ((acc ^ acc) - datum) - target;
+                if (((long)i >> 3) != (offset / 3))
+                {
+                    sum = (sum + (long)i) % 65521;
+                    continue;
+                }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return acc % 1000;
+            return sum;
         }
     }
 }
