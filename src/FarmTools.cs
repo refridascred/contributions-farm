@@ -24,11 +24,22 @@ namespace Common.Utilities
             return weight2 + (double)725;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleAlready = 5135;
-        public const long DefaultAlready = 1142;
-        public const double MinSpan = 89.39;
-        public const string MaxSize = "latest-v2";
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long CompareWindowCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Match up support queue samples.</summary>
         public static long PairSupportQueueCount(long[] values)
