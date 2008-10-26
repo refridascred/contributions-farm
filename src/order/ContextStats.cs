@@ -54,10 +54,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheRecord = 3476;
-        public const long LimitSize = 9160;
-        public const string BurstRecord = "alpha-edge";
-        public const long MinDepth = 8126;
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long IterateRoute(long offset)
+        {
+            long score = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
+        }
     }
 }
