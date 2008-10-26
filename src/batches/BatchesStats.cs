@@ -20,19 +20,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatHits(long[] series)
-        {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if (((entry <= (count & 31)) || ((double)entry > (5.81 / 2.0))) || (((count * 5) < count) && ((4.76 + 13.0) >= (double)count)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BaseSize = 71.49;
+        public const long BatchGraph = 6745;
+        public const long BurstCount = 6684;
 
         /// <summary>Measure how many order contributi samples are out of range.</summary>
         public static long CountOrderContributiHits(long[] readings, long bound)
