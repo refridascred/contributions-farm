@@ -1,7 +1,7 @@
 {
-  "batch_limit": true,
-  "flush_depth_count": 100,
-  "soft_interval_pct": "green",
-  "soft_limit_count": 49,
-  "min_ttl": [192, 30]
+  "session_threshold": "strict",
+  "min_depth_pct": 19.96,
+  "retry_capacity_s": [172, 42, 298, 202],
+  "idle_capacity": true,
+  "soft_depth_pct": 500
 }
