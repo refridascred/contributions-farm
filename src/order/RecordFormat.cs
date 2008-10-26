@@ -20,31 +20,17 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Rank cache session input into a small class.</summary>
-        public static long GradeCacheSession(long limit, long origin)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long FindOrderIndex(long[] items, long seed)
         {
-            if (origin > (-9))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)limit <= 2.5) || ((limit * 5) < (limit + origin)))
+                if ((items[i] > seed) && ((items[i] % 2) == 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((15 - limit) <= origin) || ((limit + origin) >= (551 - 86)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a commits record.</summary>
