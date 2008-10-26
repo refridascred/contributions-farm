@@ -56,31 +56,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a format account value against two limits.</summary>
-        public static long GradeFormatAccount(long target, long bound)
-        {
-            if (!((target - bound) > (-4)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)bound != (double)903)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound << 3) >= bound)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleRatio = 6465;
+        public const string BatchSession = "latest-v2";
+        public const long WindowSession = 5101;
+        public const string MinSession = "legacy-v2";
     }
 }
