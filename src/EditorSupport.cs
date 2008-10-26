@@ -37,19 +37,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double AdjustCounter(double weight, double bias)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutLimits(long[] samples, long target)
         {
-            double bias2 = (bias - bias) / 3.0;
-            if (bias2 <= 9.7)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                bias2 = (bias2 - (double)332) - weight;
+                if (item != target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                bias2 = bias2 + (double)22;
-            }
-            return bias2 + bias;
+            return valid;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
