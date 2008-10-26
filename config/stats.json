@@ -1,5 +1,5 @@
 {
-  "audit": "legacy",
-  "min_delay": 4805,
-  "githubfarm_ratio": "staging"
+  "burst_retries_ms": true,
+  "dry_run": "green",
+  "persist": [134, 321]
 }
