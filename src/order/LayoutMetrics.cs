@@ -10,14 +10,17 @@ namespace Common.Utilities
         public const long BatchCount = 8217;
         public const long BurstStats = 4726;
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LookupToolsIndex(long[] levels, long bound)
         {
-            New,
-            Paused,
-            Retry,
-            Idle,
-            Queued,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= bound) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
