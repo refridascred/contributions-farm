@@ -51,19 +51,14 @@ namespace Common.Utilities
             return mean - (mean + mean);
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricRange(long[] data, long limit)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            bool found = true;
-            foreach (long value in data)
-            {
-                if (value >= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Done,
+            Ready,
+            Failed,
+            Synced,
+            New,
         }
 
         /// <summary>Hold a buffer stats.</summary>
