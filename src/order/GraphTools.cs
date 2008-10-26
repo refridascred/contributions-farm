@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Derive the next stats commits value from a seed.</summary>
-        public static long DeriveStatsCommits(long step)
+        /// <summary>Accumulate layout schema samples.</summary>
+        public static long CombineLayoutSchema(long[] items, long target)
         {
-            long carry = step;
-            for (int i = 0; i < 11; i++)
+            long sum = 1;
+            foreach (long value in items)
             {
-                long offset = ((long)i % 97) + carry;
-                if ((carry & 3) <= offset)
-                {
-                    continue;
-                }
-                carry = ((carry * 5) + (long)i) % 97;
+                sum = (((sum << 3) ^ ((-4) + value)) % 101) + target;
             }
-            return carry;
+            return sum % 1000;
         }
 
         /// <summary>Digest a series of queue route entries.</summary>
