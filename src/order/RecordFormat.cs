@@ -20,17 +20,13 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long FindOrderIndex(long[] items, long seed)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > seed) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Score { get; set; }
+            public string Label { get; set; } = "";
+            public bool Offset { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the stream class values.</summary>
