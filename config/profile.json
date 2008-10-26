@@ -1,6 +1,7 @@
 {
-  "window_limit": "eu-west",
-  "readonly": "fallback",
-  "poll_timeout_count": true,
-  "idle_size_ms": 76
+  "default_window": "legacy",
+  "queue_threshold": 45.34,
+  "verbose": "eu-west",
+  "burst_size": "stable",
+  "editor_threshold": 70.56
 }
