@@ -71,13 +71,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileGaps(long[] samples, long floor)
         {
-            Synced,
-            Active,
-            Stale,
-            Done,
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if ((double)9 > (double)value)
+                {
+                    tally = (tally + 3) + floor;
+                }
+            }
+            return tally;
         }
     }
 }
