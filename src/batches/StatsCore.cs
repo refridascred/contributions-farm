@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            public bool Owner { get; set; }
-            public string Rank { get; set; } = "";
-            public double Stamp { get; set; }
+            public double Token { get; set; }
+            public bool Weight { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the context level values.</summary>
