@@ -35,13 +35,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            public long Label { get; set; }
-            public string Mode { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public bool Weight { get; set; }
+            New,
+            Done,
+            Idle,
+            Stale,
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
