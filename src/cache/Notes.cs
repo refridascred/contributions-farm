@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowBatches = 7759;
-        public const long HardBatches = 8052;
-        public const long BurstBatches = 7223;
-        public const long IdleBatches = 9170;
-        public const long DefaultTimeout = 3922;
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaMatches(long[] readings)
+        {
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((item - item) <= (item + 807))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Match up cluster token samples.</summary>
         public static long MatchClusterTokenCount(long[] series)
