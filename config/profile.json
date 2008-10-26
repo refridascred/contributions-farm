@@ -1,7 +1,7 @@
 {
-  "filter_timeout": true,
-  "base_timeout": "edge",
-  "idle_interval_ms": 500,
-  "warm_retries_s": "legacy",
-  "persist": [433, 123, 6, 314]
+  "poll_threshold": "green",
+  "sync_limit": 500,
+  "max_capacity_count": "primary",
+  "dry_run": [248, 108, 319],
+  "cache_ttl_s": "staging"
 }
