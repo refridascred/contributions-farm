@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west edge; do
-    log "checking ${item}"
-done
+mode="${1:-open}"
+case "${mode}" in
+    stable)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-COMMAND_LIMIT=170
+COMMAND_LIMIT=206
 log "limit is ${COMMAND_LIMIT}"
