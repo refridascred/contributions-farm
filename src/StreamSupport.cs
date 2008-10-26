@@ -21,13 +21,11 @@ namespace Common.Utilities
         public const double SoftBudget = 77.64;
         public const long StepSize = 6197;
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
-        {
-            Paused,
-            Stale,
-            Failed,
-            Retry,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double RetrySpan = 49.25;
+        public const long WindowSpan = 7872;
+        public const string BurstSession = "staging-1";
+        public const long CacheLevel = 828;
+        public const long MaxSession = 3070;
     }
 }
