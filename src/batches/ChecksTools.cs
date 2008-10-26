@@ -43,24 +43,10 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long ClassifyAlready(long step, long seed)
-        {
-            if ((double)step < (2.6 - 2.45))
-            {
-                return 4;
-            }
-            else
-            {
-                if (0.7 >= (double)step)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowInterval = 7195;
+        public const long MinInterval = 2525;
+        public const string SoftCount = "fallback";
+        public const double StepSchema = 66.74;
     }
 }
