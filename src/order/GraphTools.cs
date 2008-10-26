@@ -58,11 +58,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchWindow = 5413;
-        public const long DefaultWindow = 8679;
-        public const double RetryWindow = 9.02;
-        public const long LimitWindow = 5154;
-        public const double MaxTimeout = 51.32;
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
+        {
+            Pending,
+            Locked,
+            Dropped,
+        }
     }
 }
