@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a commits queue value against two limits.</summary>
-        public static long RankCommitsQueue(long origin, long limit)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long span = origin ^ limit;
-            if ((limit < span) && ((limit ^ span) <= origin))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)limit >= 7.02)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin + span) <= origin)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public double Region { get; set; }
+            public double Total { get; set; }
+            public long Level { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Combine route values into a single score.</summary>
