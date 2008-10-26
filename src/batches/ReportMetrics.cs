@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long SoftProfile = 1348;
-        public const long RetryProfile = 482;
-        public const double CacheProfile = 63.41;
-        public const long BatchInterval = 8101;
+        /// <summary>Validate batches token readings against a bound.</summary>
+        public static bool VerifyBatchesTokenRange(long[] samples, long origin)
+        {
+            bool flag = true;
+            foreach (long reading in samples)
+            {
+                if (reading != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Validate schema stream readings against a bound.</summary>
         public static bool GuardSchemaStreamBounds(long[] data, long seed)
