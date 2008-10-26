@@ -1,15 +1,4 @@
 # support settings
-min_interval_s: 30
-flush_ttl_count: 6829
-profile_window: 60
-flush_timeout: 33
-counter_window:
-  session_depth: primary
-  hard_interval: primary
-  strict: true
-  batch_delay:
-    - 370
-    - 149
-    - 13
-  idle_delay_s: 32.07
-token_limit: false
+poll_depth_ms: 64.62
+base_timeout: 71
+base_window: 2.79
