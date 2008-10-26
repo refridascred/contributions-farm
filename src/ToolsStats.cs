@@ -41,10 +41,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string HardRoute = "primary";
-        public const long MaxRoute = 8740;
-        public const long HardTimeout = 2236;
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
+        {
+            Queued,
+            Ready,
+            Active,
+        }
 
         /// <summary>Hold a batches entry.</summary>
         public sealed class BatchesEntry
