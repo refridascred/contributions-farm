@@ -28,22 +28,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long DigestMetric(long[] items)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long DigestCache(long[] data, long target)
         {
-            long carry = 0;
-            foreach (long entry in items)
+            long score = 69;
+            foreach (long cell in data)
             {
-                if ((double)carry != (8.4 - 9.8))
+                for (int i = 0; i < 7; i++)
                 {
-                    carry = ((carry ^ carry) % 255) ^ entry;
+                    score = (score + (63 + score)) + (long)i;
                 }
-                if (carry < (233 % 7))
+                score = score - (target + 7);
+                if ((double)cell >= (double)179)
                 {
-                    carry = (carry * 2) + (-911);
+                    score = (score - (score + target)) % 4096;
                 }
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Hold a tools options.</summary>
