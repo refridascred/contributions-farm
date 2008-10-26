@@ -28,13 +28,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutGaps(long[] items, long floor)
         {
-            Dropped,
-            Active,
-            Ready,
-            Idle,
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((97 <= value) && ((619 > (value / 9)) || (tally >= (954 - tally))))
+                {
+                    tally = (tally + 2) - floor;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
