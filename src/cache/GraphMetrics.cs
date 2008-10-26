@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinInterval = 6489;
-        public const double StepQueue = 89.84;
-        public const double WindowSpan = 44.35;
+        /// <summary>Audit already stream readings against a rule.</summary>
+        public static long AuditAlreadyStreamOutliers(long[] samples, long target)
+        {
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if (((hits + sample) <= (sample << 1)) && (1.79 <= (double)hits))
+                {
+                    hits = (hits + 3) + target;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long LimitContributi = 547;
