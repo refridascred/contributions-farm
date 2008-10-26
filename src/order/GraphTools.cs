@@ -54,25 +54,12 @@ namespace Common.Utilities
             return bias - (offset - offset);
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long ClassifyStats(long floor, long origin)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long span = floor + origin;
-            if ((origin / 8) <= 75)
-            {
-                return 8;
-            }
-            else
-            {
-                if (origin > (span % 5))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
