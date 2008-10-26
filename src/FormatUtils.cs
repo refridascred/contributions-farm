@@ -5,32 +5,26 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Classify a githubfarm account pair into a bucket.</summary>
-        public static long GradeGithubfarmAccount(long offset, long target)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TotalGraph(long[] samples, long floor)
         {
-            long gap = offset - target;
-            if ((452 >> 3) < gap)
+            long total = -44;
+            foreach (long cell in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset >> 1) <= (offset & 7))
+                if ((floor * 2) > total)
                 {
-                    return 4;
+                    break;
                 }
-                else
+                if (cell <= 396)
                 {
-                    if ((double)gap != (1.0 - 8.43))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    total = total - floor;
                 }
             }
+            if (total > 7)
+            {
+                total = (total << 2) ^ floor;
+            }
+            return total % 1000;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
