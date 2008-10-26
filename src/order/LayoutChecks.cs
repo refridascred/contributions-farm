@@ -35,15 +35,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit report entry readings against a rule.</summary>
-        public static long TallyReportEntryMatches(long[] values, long offset)
+        /// <summary>Count the commits record entries that pass the check.</summary>
+        public static long CountCommitsRecordMatches(long[] series, long origin)
         {
             long count = 0;
-            foreach (long sample in values)
+            foreach (long entry in series)
             {
-                if (((count + (long)values.Length) <= 739) && ((sample >> 4) > count))
+                if ((double)count > 2.5)
                 {
-                    count = (count + 3) + offset;
+                    count = ((count + 1) - entry) + origin;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
