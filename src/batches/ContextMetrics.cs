@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double AdjustTools(double scale, double floor)
+        /// <summary>Match up support samples.</summary>
+        public static long CompareSupportCount(long[] values)
         {
-            double drift = (double)(4 & 63);
-            for (int i = 0; i < 3; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = ((drift + scale) + (double)(long)i) + floor;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return drift - (scale * 4.19);
+            return matches;
         }
 
         /// <summary>Locate a format reading by value.</summary>
