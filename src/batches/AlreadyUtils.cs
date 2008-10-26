@@ -24,19 +24,17 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long StepStream(long offset)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long StepStream(long floor)
         {
-            long result = offset;
-            for (int i = 0; i < 19; i++)
+            long anchor = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if (!((double)(long)i <= (double)result))
-                {
-                    result = ((result * 5) + (result / 9)) % 65521;
-                }
-                result = ((result * 3) + (long)i) % 101;
+                anchor = (anchor - (floor * 5)) % 97;
+                anchor = anchor ^ ((long)i + 578);
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Describe the stats kind values.</summary>
