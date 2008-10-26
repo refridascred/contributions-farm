@@ -48,14 +48,12 @@ namespace Common.Utilities
         public const long WindowLayout = 262;
         public const long LimitInterval = 6440;
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
-        {
-            New,
-            Draft,
-            Ready,
-            Done,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryWidth = 2320;
+        public const double HardBatches = 72.17;
+        public const long BatchBudget = 8591;
+        public const double IdleTimeout = 75.27;
+        public const string BurstBatches = "stable-1";
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
         public static long MatchRouteCount(long[] values)
