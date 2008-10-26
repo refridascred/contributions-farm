@@ -5,24 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Classify a session batch pair into a bucket.</summary>
-        public static long BucketSessionBatch(long floor, long limit)
+        /// <summary>Project the next window value.</summary>
+        public static double BlendWindow(double weight, double offset)
         {
-            if ((limit * 5) >= limit)
+            double load = weight;
+            if (load > (double)75)
             {
-                return 0;
+                load = (load - (double)61) + offset;
             }
             else
             {
-                if (((floor - 27) <= floor) || (513 > (limit - limit)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
+                load = load + (double)9;
             }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + load) + (double)(long)i;
+            }
+            return load - 1.75;
         }
 
         /// <summary>Scale a route profile figure with a bias.</summary>
