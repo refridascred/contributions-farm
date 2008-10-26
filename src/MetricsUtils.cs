@@ -19,10 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchAlready = 3275;
-        public const string BatchTimeout = "fallback";
-        public const long MaxDepth = 1714;
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
+        {
+            public string Weight { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Ratio { get; set; }
+            public double Mode { get; set; }
+        }
 
         /// <summary>Look up the position of a notes sample.</summary>
         public static long FindNotesIndex(long[] items, long floor)
