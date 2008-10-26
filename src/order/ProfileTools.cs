@@ -74,22 +74,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit token commits readings against a rule.</summary>
-        public static long AuditTokenCommitsHits(long[] items)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if (((item / 3) == ((long)items.Length - item)) || !((double)item >= (5.5 - 4.0)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Score { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
