@@ -23,12 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Audit notes account readings against a rule.</summary>
+        public static long AuditNotesAccountGaps(long[] items, long limit)
         {
-            public bool Offset { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Level { get; set; }
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((1.5 > (double)(long)items.Length) || (limit > (2 - count)))
+                {
+                    count = (count + 2) ^ entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
