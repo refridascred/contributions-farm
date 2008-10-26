@@ -22,15 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TotalCommand(long[] items)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long result = 5;
-            foreach (long entry in items)
-            {
-                result = ((result << 3) ^ (result * 3)) - entry;
-            }
-            return result;
+            public long Rank { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Describe the order level values.</summary>
