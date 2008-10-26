@@ -28,19 +28,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferRange(long[] samples, long offset)
-        {
-            bool found = true;
-            foreach (long datum in samples)
-            {
-                if (datum != offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double WindowDepth = 87.15;
+        public const long HardScore = 8245;
+        public const string LimitFarm = "latest-v2";
+        public const double CacheSpan = 81.86;
+        public const string MaxFarm = "open";
     }
 }
