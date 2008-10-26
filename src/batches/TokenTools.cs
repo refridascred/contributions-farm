@@ -46,10 +46,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultGithubfarm = 9051;
-        public const long SoftGithubfarm = 133;
-        public const long IdleFactor = 7381;
-        public const double MinGithubfarm = 17.83;
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long DeriveMetric(long target)
+        {
+            long state = target;
+            for (int i = 0; i < 15; i++)
+            {
+                state = state ^ target;
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
+        }
     }
 }
