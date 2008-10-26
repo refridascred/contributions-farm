@@ -48,18 +48,21 @@ namespace Common.Utilities
             return bias + (floor - floor);
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long WeighLayout(long[] readings, long offset)
+        /// <summary>Compare every pair of order payload readings.</summary>
+        public static long MatchOrderPayloadCount(long[] series)
         {
-            long score = 794;
-            foreach (long reading in readings)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((score + score) > ((-6) >> 5))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = (((score + (score * 2)) % 255) ^ reading) - offset;
+                    if ((series[i] - series[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return score;
+            return count;
         }
     }
 }
