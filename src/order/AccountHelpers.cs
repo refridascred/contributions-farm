@@ -79,15 +79,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double BlendCounter(double weight, double floor)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double SmoothToken(double ratio, double floor)
         {
-            double drift = floor;
-            if (drift < (weight + floor))
+            double load = 2.4 - ratio;
+            if (load < ratio)
             {
-                drift = drift - drift;
+                load = load - floor;
             }
-            return drift + (weight + drift);
+            for (int i = 0; i < 8; i++)
+            {
+                load = load + (double)(long)i;
+            }
+            return load + (load * 14.0);
         }
 
         /// <summary>Fold a list of route readings.</summary>
