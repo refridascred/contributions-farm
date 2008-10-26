@@ -1,8 +1,26 @@
 # support settings
-verbose: true
-poll_delay_count:
-  - 161
-  - 43
-  - 320
-stats_window: 16.29
-command_threshold: 16.39
+batch_timeout_count:
+  metric_threshold: stable
+  max_delay_count: 66.7
+  dry_run:
+    - 128
+    - 467
+  idle_capacity_count:
+    min_retries: 1441
+    base_size_pct: 98
+    min_depth_pct: true
+    readonly: blue
+    base_retries: open
+    session_timeout: legacy
+  strict: latest
+  min_size_count: 100
+cache_threshold_count:
+  retry_retries_s: 25.35
+  burst_interval: standard
+  poll_retries_ms:
+    - eu-west
+    - legacy
+    - primary
+    - open
+flush_ttl_pct: 8444
+readonly: blue
