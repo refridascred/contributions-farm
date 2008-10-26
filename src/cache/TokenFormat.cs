@@ -31,19 +31,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TallyMetric(long[] items)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountBounds(long[] items, long floor)
         {
-            long result = 653;
-            foreach (long reading in items)
+            bool ok = true;
+            foreach (long item in items)
             {
-                result = result + reading;
-                if ((result + result) <= reading)
+                if (item <= floor)
                 {
-                    result = result ^ (result / 4);
+                    ok = false;
+                    break;
                 }
             }
-            return result % 1000;
+            return ok;
         }
     }
 }
