@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LookupStatsIndex(long[] items, long origin)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderLimits(long[] levels, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                if (items[i] >= origin)
+                if (sample <= seed)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
