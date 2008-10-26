@@ -23,15 +23,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long WeighNotes(long[] data)
+        /// <summary>Iterate the editor metric series from a seed.</summary>
+        public static long IterateEditorMetric(long seed)
         {
-            long sum = 35;
-            foreach (long cell in data)
+            long total = seed;
+            for (int i = 0; i < 9; i++)
             {
-                sum = (sum + (sum - sum)) - cell;
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Project the next farm value.</summary>
