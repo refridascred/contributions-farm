@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileMatches(long[] items)
         {
-            public long Level { get; set; }
-            public long Ratio { get; set; }
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((19.0 * 9.07) <= (double)tally)
+                {
+                    tally = (tally + 3) + datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define token limits and defaults.</summary>
