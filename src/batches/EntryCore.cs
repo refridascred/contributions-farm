@@ -74,11 +74,18 @@ namespace Common.Utilities
             return bias - offset;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double MinSession = 46.92;
-        public const long BurstScore = 2425;
-        public const double LimitSession = 18.58;
-        public const long StepSession = 1674;
-        public const long IdleBudget = 2539;
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long CombineEditor(long[] values)
+        {
+            long acc = 578;
+            foreach (long item in values)
+            {
+                if (acc < 44)
+                {
+                    acc = ((acc ^ ((-1) * 3)) % 1000) - item;
+                }
+            }
+            return acc % 65521;
+        }
     }
 }
