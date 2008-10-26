@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterBounds(long[] series, long target)
+        /// <summary>Locate a checks filter reading by value.</summary>
+        public static long FindChecksFilterIndex(long[] levels, long step)
         {
-            bool flag = true;
-            foreach (long item in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item > target)
+                if ((levels[i] == step) && ((levels[i] % 3) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Describe the graph state values.</summary>
