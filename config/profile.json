@@ -1,16 +1,6 @@
 {
-  "channel_delay": 796,
-  "persist": {
-    "soft_ttl_count": {
-      "cache_limit": 50,
-      "editor_ttl": 35,
-      "order_ttl": 9408,
-      "burst_ratio_count": "green"
-    },
-    "retry_timeout": 1024,
-    "dry_run": 29
-  },
-  "support_size": "blue",
-  "dry_run": true,
-  "max_threshold_ms": 65
+  "enabled": true,
+  "window_retries": "blue",
+  "verbose": 42.9,
+  "base_threshold_s": 2826
 }
