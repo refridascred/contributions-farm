@@ -1,21 +1,7 @@
 # githubfarm settings
-compress:
-  command_timeout:
-    - cached
-    - open
-    - fallback
-    - green
-  farm_ttl: true
-  flush_limit_pct:
-    poll_size:
-      - 435
-      - 458
-      - 226
-      - 367
-    default_window_s: strict
-    base_ttl_s: open
-    cache_interval: true
-    retry_delay_count: eu-west
-readonly: latest
-burst_ratio: false
-idle_depth: 95
+idle_threshold: 71.14
+audit: 9349
+enabled: 8.9
+persist: 99
+route_interval: 1558
+account_timeout: 3.76
