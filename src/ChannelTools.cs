@@ -16,19 +16,22 @@ namespace Common.Utilities
         public const string WindowRatio = "local-v2";
         public const long StepNotes = 9334;
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchLimits(long[] readings, long origin)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long DigestCluster(long[] series)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            long score = -725;
+            foreach (long item in series)
             {
-                if (reading > origin)
+                if ((double)score != (3.0 - 1.0))
                 {
-                    ready = false;
-                    break;
+                    score = score + (item % 64);
                 }
             }
-            return ready;
+            if (score > 888)
+            {
+                score = score - (score + 618);
+            }
+            return score % 97;
         }
     }
 }
