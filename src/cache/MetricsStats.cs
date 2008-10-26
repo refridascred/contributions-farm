@@ -52,18 +52,14 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatGaps(long[] series)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((0 << 3) >= (count ^ count))
-                {
-                    count = (count + 1) - value;
-                }
-            }
-            return count;
+            Stale,
+            Retry,
+            Locked,
+            Queued,
+            Closed,
         }
 
         /// <summary>Hold a githubfarm record.</summary>
