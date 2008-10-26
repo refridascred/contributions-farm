@@ -1,5 +1,7 @@
 {
-  "schema_depth": [361, 70, 320, 159],
-  "flush_window_count": 87.01,
-  "retry_threshold_ms": "standard"
+  "persist": 9432,
+  "strict": [315, 295, 315],
+  "max_size": 6665,
+  "readonly": "stable",
+  "enabled": "standard"
 }
