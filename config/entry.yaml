@@ -1,8 +1,19 @@
 # entry settings
-stream_interval: 9195
-farm_timeout:
-  base_threshold_ms: 77
-  enabled: 17
-  min_threshold_pct: 52.21
-  idle_size_pct: local
-enabled: staging
+batch_retries_s: 9717
+cache_threshold_count:
+  - 311
+  - 117
+  - 326
+  - 75
+filter_retries:
+  dry_run: 73.5
+  audit: false
+  flush_interval_pct: 0.04
+  burst_limit_ms: open
+  editor_capacity:
+    - 270
+    - 70
+    - 344
+    - 89
+  batch_limit_s: false
+graph_depth: green
