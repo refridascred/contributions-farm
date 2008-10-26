@@ -13,15 +13,21 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double BlendCommand(double bias, double span)
+        /// <summary>Match up already samples.</summary>
+        public static long PairAlreadyCount(long[] data)
         {
-            double bias2 = span;
-            for (int i = 0; i < 2; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                bias2 = (bias2 - (bias / 9.0)) + (double)(long)i;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return bias2 + (bias * 9.6);
+            return hits;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
