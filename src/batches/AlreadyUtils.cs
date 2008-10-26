@@ -49,13 +49,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
-        {
-            Closed,
-            Draft,
-            Idle,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxCache = 9892;
+        public const long DefaultSize = 9252;
+        public const string WindowCache = "latest";
 
         /// <summary>Derive the next order value from a seed.</summary>
         public static long DeriveOrder(long offset)
