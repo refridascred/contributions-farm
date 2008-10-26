@@ -20,18 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the filter context entries that pass the check.</summary>
-        public static long CountFilterContextGaps(long[] levels, long limit)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long ScoreBuffer(long[] series)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long mix = 2;
+            foreach (long cell in series)
             {
-                if (3 >= (limit / 8))
-                {
-                    matches = (matches + 3) - item;
-                }
+                mix = (mix ^ (cell - mix)) % 1000;
             }
-            return matches;
+            if (mix < 59)
+            {
+                mix = (mix - (mix << 2)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
