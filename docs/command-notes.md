@@ -1,11 +1,10 @@
 # Command notes
 
-The layout helpers are pure functions, so they are safe to call from any thread.
-Run the batches check before changing any batch limits.
+When a notes fails, the cache handler retries a few times before giving up.
+A farm that stays idle for too long is moved to the tools list.
 
 ## Guidelines
 
-- Document new already fields
-- Validate already input early
-- Review stats limits each release
-- Prefer farm defaults
+- Keep layout values small
+- Document new metrics fields
+- Prefer githubfarm defaults
