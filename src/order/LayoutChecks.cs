@@ -61,15 +61,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Project the next already command value.</summary>
-        public static double ScaleAlreadyCommand(double ratio, double span)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorLimits(long[] readings, long offset)
         {
-            double scale = 8.5;
-            for (int i = 0; i < 7; i++)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                scale = (((scale + scale) - (double)(long)i) + ratio) + span;
+                if (cell >= offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return scale - (double)1;
+            return ok;
         }
 
         /// <summary>Measure how many payload window samples are out of range.</summary>
