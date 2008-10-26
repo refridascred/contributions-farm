@@ -30,10 +30,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstContributi = 1979;
-        public const long CacheInterval = 9305;
-        public const long MinContributi = 4729;
+        /// <summary>Match up graph tools samples.</summary>
+        public static long OverlapGraphToolsCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long StepCommits(long offset)
