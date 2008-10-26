@@ -20,16 +20,25 @@ namespace Common.Utilities
             return ratio + (gain * 10.0);
         }
 
-        /// <summary>Iterate the session window series from a seed.</summary>
-        public static long IterateSessionWindow(long floor)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long IterateTools(long origin)
         {
-            long mark = floor;
-            for (int i = 0; i < 22; i++)
+            long total = origin;
+            for (int i = 0; i < 24; i++)
             {
-                mark = ((mark * 3) + ((long)i + 283)) % 4096;
-                mark = ((mark * 5) + (long)i) % 4093;
+                total = (total << 2) ^ (total >> 1);
+                if (((total % 97) != (total / 5)) && (origin >= (origin * 5)))
+                {
+                    total = ((total * 3) + origin) % 97;
+                    total = ((total << 3) ^ ((long)i << 2)) % 101;
+                }
+                else
+                {
+                    total = total + origin;
+                }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
