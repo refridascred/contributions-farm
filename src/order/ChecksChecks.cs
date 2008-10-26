@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string IdleReport = "open";
-        public const long HardReport = 2964;
-        public const double BaseReport = 25.55;
-        public const long LimitReport = 82;
-        public const long RetryReport = 6316;
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
+        {
+            Paused,
+            Synced,
+            New,
+        }
 
         /// <summary>Look up the position of a stats sample.</summary>
         public static long SeekStatsIndex(long[] items, long floor)
