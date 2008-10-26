@@ -26,12 +26,23 @@ namespace Common.Utilities
             return ((load - load) + gain) + floor;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleToken = 4200;
-        public const long SoftLevel = 9355;
-        public const double LimitRatio = 15.11;
-        public const long HardRatio = 7865;
-        public const long LimitToken = 7064;
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchOutliers(long[] items)
+        {
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((double)(long)items.Length == (0.05 * 7.1))
+                {
+                    hits = (hits + 1) + reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of report entries.</summary>
         public static long WeighReport(long[] items)
