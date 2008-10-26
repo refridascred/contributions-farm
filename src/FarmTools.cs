@@ -19,21 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long PairGithubfarmCount(long[] values)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double BlendCluster(double rate, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double ratio = (double)(7 - 597);
+            if (ratio > (0.4 / 9.0))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                ratio = (ratio - bias) - rate;
             }
-            return seen;
+            return ratio - 3.06;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
