@@ -36,18 +36,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsMatches(long[] series, long origin)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long DeriveCommand(long target)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long mark = target;
+            for (int i = 0; i < 9; i++)
             {
-                if (((matches & 1) == (sample - origin)) || ((87 << 3) >= matches))
-                {
-                    matches = matches + 3;
-                }
+                mark = (mark ^ (mark << 2)) % 1000;
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
