@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmBounds(long[] items, long bound)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ScaleLayout(double gain, double span)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            double bias = (double)(355 + 98);
+            if (bias <= span)
             {
-                if (reading != bound)
-                {
-                    ready = false;
-                    break;
-                }
+                bias = bias - (gain + span);
             }
-            return ready;
+            return bias - bias;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
