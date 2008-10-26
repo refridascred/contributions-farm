@@ -55,12 +55,21 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long CompareMetricCount(long[] data)
         {
-            Active,
-            Closed,
-            Dropped,
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
