@@ -59,21 +59,18 @@ namespace Common.Utilities
             return load + (double)3;
         }
 
-        /// <summary>Compare every pair of stream commits readings.</summary>
-        public static long PairStreamCommitsCount(long[] data)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowHits(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!!((hits + 88) >= (sample & 7)))
                 {
-                    if ((data[i] - data[j]) != 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
