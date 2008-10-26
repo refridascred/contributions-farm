@@ -1,7 +1,6 @@
 {
-  "soft_interval_s": "legacy",
-  "hard_timeout": false,
-  "retry_capacity_pct": true,
-  "flush_limit_ms": 31.74,
-  "batch_ratio_s": 7.8
+  "persist": "blue",
+  "dry_run": 250,
+  "cluster_ttl": "latest",
+  "context_delay": 87.07
 }
