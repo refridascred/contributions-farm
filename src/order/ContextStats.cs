@@ -40,33 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long SortEditor(long bound, long target)
-        {
-            long diff = bound + target;
-            if ((diff >= (diff << 3)) || ((double)bound <= (1.0 * 3.0)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((diff + bound) <= 150)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)target > 0.82)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string SoftBudget = "alpha-1";
+        public const long DefaultChannel = 9014;
+        public const long BatchChannel = 2025;
+        public const long StepSpan = 8113;
 
         /// <summary>Check that every account entry stays within the limit.</summary>
         public static bool GuardAccountRange(long[] samples, long floor)
