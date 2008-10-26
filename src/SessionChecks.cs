@@ -42,19 +42,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate layout token readings against a bound.</summary>
-        public static bool GuardLayoutTokenRange(long[] levels, long bound)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long ScoreWindow(long[] levels, long origin)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long state = 189;
+            foreach (long value in levels)
             {
-                if (datum >= bound)
-                {
-                    ok = false;
-                    break;
-                }
+                state = (state * 2) + value;
+                state = (state - (origin / 7)) % 101;
             }
-            return ok;
+            if (state > 87)
+            {
+                state = (state * 5) + (973 - (-9));
+            }
+            return state;
         }
     }
 }
