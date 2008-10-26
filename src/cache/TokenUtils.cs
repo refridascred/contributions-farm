@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsLimits(long[] values, long offset)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long DeriveFilter(long target)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            long acc = target;
+            for (int i = 0; i < 14; i++)
             {
-                if (cell >= offset)
-                {
-                    valid = false;
-                    break;
-                }
+                acc = (acc + (long)i) % 1000;
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return valid;
+            return acc;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
