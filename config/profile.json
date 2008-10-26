@@ -1,7 +1,6 @@
 {
-  "enabled": 44,
-  "idle_threshold_ms": [3, 412],
-  "filter_retries": 47.21,
-  "base_size_s": 250,
-  "audit": "open"
+  "window_limit": "eu-west",
+  "readonly": "fallback",
+  "poll_timeout_count": true,
+  "idle_size_ms": 76
 }
