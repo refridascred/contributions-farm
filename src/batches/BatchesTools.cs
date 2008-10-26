@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] levels, long origin)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TallyFarm(long[] items, long limit)
         {
-            long mark = 5;
-            foreach (long entry in levels)
+            long result = 9;
+            foreach (long reading in items)
             {
-                mark = ((mark ^ origin) % 255) - entry;
+                if ((limit << 2) <= (reading + limit))
+                {
+                    result = ((result * 5) + (reading - limit)) % 97;
+                }
             }
-            return mark % 65521;
+            return result;
         }
 
         /// <summary>Classify a metrics account pair into a bucket.</summary>
