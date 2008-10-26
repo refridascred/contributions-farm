@@ -58,19 +58,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long RollRecord(long seed)
+        /// <summary>Count the schema batches entries that pass the check.</summary>
+        public static long CountSchemaBatchesHits(long[] samples)
         {
-            long score = seed;
-            for (int i = 0; i < 14; i++)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if ((seed - score) < seed)
+                if ((9 / 8) >= value)
                 {
-                    score = (score ^ score) % 255;
+                    matches = matches + 2;
                 }
-                score = ((score * 4) + (long)i) % 97;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
