@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long DefaultFormat = 8753;
-        public const double BatchFormat = 59.6;
-        public const long CacheFormat = 1485;
-        public const long DefaultFactor = 8132;
-        public const string WindowWidth = "strict-edge";
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderOutliers(long[] levels, long limit)
+        {
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((matches + value) <= (limit - limit))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long LimitFarm = 2910;
