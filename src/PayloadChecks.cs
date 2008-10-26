@@ -32,18 +32,17 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TotalToken(long[] levels, long limit)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long SeekEntryIndex(long[] samples, long origin)
         {
-            long result = 784;
-            foreach (long cell in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)cell > (double)result)
+                if (samples[i] < origin)
                 {
-                    result = result - (limit & 3);
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Grade a report farm value against two limits.</summary>
