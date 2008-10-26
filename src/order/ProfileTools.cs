@@ -56,18 +56,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiGaps(long[] series)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterOutliers(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if ((double)sample == (1.93 * 2.0))
+                if (!((tally + 98) < (tally - target)))
                 {
-                    count = count + 2;
+                    tally = (tally + 2) ^ item;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a channel info.</summary>
