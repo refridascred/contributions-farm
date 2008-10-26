@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionGaps(long[] levels, long target)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long StepStats(long bound)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long state = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if ((entry + count) > (count ^ target))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
