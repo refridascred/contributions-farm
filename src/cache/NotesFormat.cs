@@ -20,38 +20,17 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Rank stream farm input into a small class.</summary>
-        public static long GradeStreamFarm(long limit, long offset)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LocateEditorIndex(long[] levels, long origin)
         {
-            if ((20.0 - 19.0) != (double)offset)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((double)limit <= (double)offset))
+                if (levels[i] < origin)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (limit < (limit ^ limit))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)limit < (4.0 * 2.6))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Blend two order measurements.</summary>
