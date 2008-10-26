@@ -1,7 +1,5 @@
 {
-  "verbose": [200, 169, 408, 151],
-  "flush_depth_count": false,
-  "cache_ttl_ms": "strict",
-  "token_delay": 53.05,
-  "buffer_size": 70.87
+  "command_capacity": true,
+  "cache_capacity": "fallback",
+  "batch_retries_ms": 500
 }
