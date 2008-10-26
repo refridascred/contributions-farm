@@ -80,13 +80,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            public long Level { get; set; }
-            public long Label { get; set; }
-            public string Flag { get; set; } = "";
-            public string Token { get; set; } = "";
+            Synced,
+            Draft,
+            Queued,
+            Done,
         }
     }
 }
