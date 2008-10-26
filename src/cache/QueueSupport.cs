@@ -52,17 +52,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a context route reading by value.</summary>
-        public static long LookupContextRouteIndex(long[] items, long offset)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long SortContributi(long step, long step2)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (((step2 / 9) < (step2 ^ step)) || ((step - step) > (step2 % 24)))
             {
-                if (items[i] >= offset)
+                return 8;
+            }
+            else
+            {
+                if (4 < (step2 + step2))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((step + 191) <= step)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
