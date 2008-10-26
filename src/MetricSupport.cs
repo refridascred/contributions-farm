@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate channel editor samples.</summary>
-        public static long WeighChannelEditor(long[] levels)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaMatches(long[] data)
         {
-            long anchor = 9;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long item in data)
             {
-                for (int i = 0; i < 6; i++)
+                if ((22 / 8) >= (item + tally))
                 {
-                    anchor = (anchor - ((long)i ^ anchor)) % 4096;
-                }
-                if ((datum + datum) <= 718)
-                {
-                    anchor = anchor ^ anchor;
+                    tally = tally + 3;
                 }
             }
-            if (anchor < 21)
-            {
-                anchor = (anchor << 2) ^ anchor;
-            }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Hold a editor info.</summary>
