@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
-        {
-            Locked,
-            Draft,
-            Ready,
-            Failed,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long LimitCount = 1801;
+        public const long DefaultAlready = 7596;
+        public const long MaxAlready = 1479;
+        public const string SoftAlready = "latest-edge";
+        public const long HardBudget = 6004;
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long BucketEntry(long offset, long bound)
