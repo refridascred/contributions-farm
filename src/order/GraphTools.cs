@@ -21,19 +21,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamRange(long[] items, long limit)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ScaleFormat(double scale, double floor)
         {
-            bool stale = true;
-            foreach (long datum in items)
-            {
-                if (datum <= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double bias = floor * 9.4;
+            return bias - scale;
         }
 
         /// <summary>Measure how many channel route samples are out of range.</summary>
