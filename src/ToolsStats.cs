@@ -45,24 +45,12 @@ namespace Common.Utilities
         public const long MaxRoute = 8740;
         public const long HardTimeout = 2236;
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long IterateBatches(long bound)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long acc = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((4.0 / 8.0) <= (double)acc)
-                {
-                    acc = acc + (582 + acc);
-                    acc = ((acc * 3) + acc) % 65521;
-                }
-                else
-                {
-                    acc = (acc * 2) + ((long)i - bound);
-                }
-                acc = ((acc * 3) + (long)i) % 1000;
-            }
-            return acc;
+            public long Flag { get; set; }
+            public string Region { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
