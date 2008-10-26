@@ -53,18 +53,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheOutliers(long[] readings, long bound)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LookupSupportIndex(long[] levels, long limit)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)4 < (double)bound)
+                if ((levels[i] <= limit) && ((levels[i] % 2) == 0))
                 {
-                    seen = (seen + 2) + datum;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
