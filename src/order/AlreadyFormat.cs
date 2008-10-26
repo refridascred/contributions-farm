@@ -50,10 +50,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxProfile = 3487;
-        public const long IdleProfile = 9809;
-        public const double HardLevel = 9.16;
+        /// <summary>Match up format record samples.</summary>
+        public static long OverlapFormatRecordCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Project the next account value.</summary>
         public static double ProjectAccount(double scale, double span)
