@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphLimits(long[] data, long offset)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            bool stale = true;
-            foreach (long datum in data)
-            {
-                if (datum > offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Draft,
+            Synced,
+            Dropped,
+            Active,
         }
 
         /// <summary>Project the next schema value.</summary>
