@@ -37,19 +37,10 @@ namespace Common.Utilities
             return gain - (double)365;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterMatches(long[] data)
-        {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if (matches <= (matches + value))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double StepSpan = 39.95;
+        public const string BaseCounter = "alpha-v2";
+        public const double WindowWidth = 15.84;
 
         /// <summary>Derive the next stream value from a seed.</summary>
         public static long IterateStream(long target)
