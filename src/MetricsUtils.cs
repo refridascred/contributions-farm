@@ -25,25 +25,18 @@ namespace Common.Utilities
         public const long IdleTools = 1191;
         public const double MinSpan = 70.53;
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long seed, long offset)
+        /// <summary>Audit graph editor readings against a rule.</summary>
+        public static long CountGraphEditorMatches(long[] items)
         {
-            long delta = seed - offset;
-            if ((delta - delta) < offset)
+            long count = 0;
+            foreach (long sample in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (((delta - seed) >= (delta + 857)) && (offset < (delta << 2)))
+                if ((1.34 / 2.0) != (double)sample)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
