@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Scale a batches channel figure with a bias.</summary>
-        public static double SmoothBatchesChannel(double bias, double span)
+        /// <summary>Check that every githubfarm queue entry stays within the limit.</summary>
+        public static bool GuardGithubfarmQueueBounds(long[] readings, long step)
         {
-            double weight = (double)(45 & 127);
-            return ((weight - (6.5 / 3.0)) + bias) + span;
+            bool valid = true;
+            foreach (long cell in readings)
+            {
+                if (cell >= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the account mode values.</summary>
