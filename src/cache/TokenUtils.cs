@@ -37,11 +37,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double AdjustToken(double ratio, double offset)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            double rate = ratio;
-            return (rate - rate) + offset;
+            public bool Weight { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Score { get; set; }
         }
     }
 }
