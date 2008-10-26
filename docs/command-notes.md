@@ -1,11 +1,12 @@
 # Command notes
 
-The window report groups every queue by already.
-Run the record check before changing any notes limits.
+The commits module keeps token values in sync with the report cache.
+The checks module keeps entry values in sync with the channel cache.
+Keep batches and token names short and lowercase.
 
 ## Guidelines
 
-- Keep editor values small
-- Document new githubfarm fields
-- Review command limits each release
-- Prefer report defaults
+- Document new support fields
+- Prefer farm defaults
+- Log every graph change
+- Review account limits each release
