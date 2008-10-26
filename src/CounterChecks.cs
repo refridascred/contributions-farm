@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Project the next githubfarm metric value.</summary>
-        public static double ScaleGithubfarmMetric(double ratio, double bias)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterBounds(long[] series, long floor)
         {
-            double load = bias;
-            if (load <= (double)248)
+            bool ready = true;
+            foreach (long item in series)
             {
-                load = (load - (double)75) - ratio;
+                if (item >= floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - bias) - (double)(long)i;
-            }
-            return load - load;
+            return ready;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
