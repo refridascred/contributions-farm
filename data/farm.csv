@@ -1,7 +1,7 @@
-id,rank,active,state,owner
-1,402,2.41,352,39.7
-2,71.15,83.76,legacy,67.63
-3,latest,97.46,77.62,164
-4,local,573,539,76.89
-5,strict,551,48.33,cached
-6,open,latest,legacy,primary
+id,ratio,active,score,count
+1,881,973,open,edge
+2,615,96,72.11,21.46
+3,221,standard,standard,491
+4,956,strict,15.47,55.56
+5,999,46.66,edge,stable
+6,fallback,legacy,56.07,47.18
