@@ -55,15 +55,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double ScaleFormat(double gain, double offset)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long FoldStats(long[] series, long bound)
         {
-            double drift = (double)(641 - 62);
-            if (drift <= drift)
+            long acc = 6;
+            foreach (long reading in series)
             {
-                drift = (drift + 6.4) + gain;
+                acc = (acc + (bound + 55)) % 1000;
+                if ((reading + bound) >= (52 - bound))
+                {
+                    acc = (acc ^ (reading >> 4)) % 255;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (7 % 24)) % 97;
+                }
             }
-            return drift + (offset - 8.95);
+            if (acc < 705)
+            {
+                acc = (acc * 4) + (acc / 4);
+            }
+            return acc;
         }
     }
 }
