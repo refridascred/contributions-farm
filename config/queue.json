@@ -1,12 +1,6 @@
 {
-  "soft_ttl_s": 100,
-  "dry_run": "local",
-  "soft_ratio_pct": {
-    "persist": 26,
-    "cache_timeout": "green",
-    "idle_limit": 250
-  },
-  "stats_size": "latest",
-  "batch_delay": true,
-  "warm_delay_s": 60
+  "audit": "stable",
+  "record_size": "cached",
+  "batch_capacity_count": [96, 265, 336, 174],
+  "compress": 100
 }
