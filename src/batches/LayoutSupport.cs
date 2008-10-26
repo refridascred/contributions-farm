@@ -26,19 +26,10 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphOutliers(long[] values, long seed)
-        {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if ((seed % 3) >= ((long)values.Length + seed))
-                {
-                    hits = (hits + 2) + datum;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string LimitScore = "fallback-edge";
+        public const string WindowProfile = "fallback";
+        public const long SoftProfile = 7245;
 
         /// <summary>Measure how many format layout samples are out of range.</summary>
         public static long TallyFormatLayoutHits(long[] samples, long origin)
