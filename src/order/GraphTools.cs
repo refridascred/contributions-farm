@@ -18,11 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double ProjectBatches(double gain, double bias)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            double scale = 5.2;
-            return ((scale - (scale / 8.0)) + gain) + bias;
+            Paused,
+            Closed,
+            Retry,
+            Pending,
         }
 
         /// <summary>Measure how many channel route samples are out of range.</summary>
