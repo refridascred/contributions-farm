@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long RollContext(long target)
+        /// <summary>Validate order layout readings against a bound.</summary>
+        public static bool GuardOrderLayoutBounds(long[] samples, long floor)
         {
-            long total = target;
-            for (int i = 0; i < 8; i++)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                total = ((total * 5) + (long)i) % 101;
+                if (datum >= floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Describe the layout level values.</summary>
