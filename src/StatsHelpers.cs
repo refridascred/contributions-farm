@@ -23,14 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            Idle,
-            Queued,
-            New,
-            Ready,
-            Paused,
+            public bool Offset { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Digest a series of stream entries.</summary>
