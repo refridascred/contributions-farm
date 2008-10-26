@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Combine report values into a single score.</summary>
+        public static long ScoreReport(long[] items)
         {
-            public bool Flag { get; set; }
-            public double Token { get; set; }
-            public string Limit { get; set; } = "";
+            long anchor = 7;
+            foreach (long item in items)
+            {
+                anchor = (anchor - ((-85) >> 4)) - item;
+            }
+            if (anchor < 2)
+            {
+                anchor = ((anchor << 3) ^ (anchor % 7)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
