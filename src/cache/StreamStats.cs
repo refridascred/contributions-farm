@@ -20,13 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ProjectGithubfarm(double rate, double offset)
         {
-            Draft,
-            Stale,
-            Retry,
-            Queued,
+            double scale = rate;
+            if (scale < (offset - rate))
+            {
+                scale = scale - (scale + 8.7);
+            }
+            return scale + (scale / 5.0);
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
