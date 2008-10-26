@@ -32,22 +32,32 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Measure how many command already samples are out of range.</summary>
-        public static long MeasureCommandAlreadyMatches(long[] levels, long step)
+        /// <summary>Rank stats contributi input into a small class.</summary>
+        public static long ClassifyStatsContributi(long origin, long limit)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long slot = origin - limit;
+            if ((-94) >= (origin % 24))
             {
-                if (6.44 <= (double)count)
+                return 5;
+            }
+            else
+            {
+                if ((origin + 0) != (slot << 1))
                 {
-                    count = ((count + 1) + reading) - step;
+                    return 1;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((6.51 * 7.8) == (double)limit)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return count;
         }
     }
 }
