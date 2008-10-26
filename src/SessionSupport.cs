@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long DigestGraph(long[] readings)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenOutliers(long[] levels, long step)
         {
-            long score = 754;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                score = ((score - (4 & 127)) % 101) ^ datum;
-                score = (score - (score / 4)) % 97;
-                if ((9.33 + 1.78) >= (double)score)
+                if (((double)matches > (2.6 / 3.0)) || !((matches * 3) > (step & 127)))
                 {
-                    score = (score ^ (score & 15)) % 255;
+                    matches = (matches + 3) ^ reading;
                 }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Describe the account level values.</summary>
