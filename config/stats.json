@@ -1,7 +1,8 @@
 {
-  "buffer_capacity": "fallback",
-  "batches_window": "standard",
-  "hard_retries": [251, 111, 319],
-  "max_threshold": 9474,
-  "poll_retries_s": "edge"
+  "payload_ttl": true,
+  "window_size": ["stable", "green", "green"],
+  "hard_capacity_pct": false,
+  "record_interval": "open",
+  "record_limit": "green",
+  "enabled": 37.79
 }
