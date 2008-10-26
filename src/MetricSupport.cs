@@ -30,14 +30,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            New,
-            Active,
-            Failed,
-            Stale,
-            Idle,
+            Paused,
+            Dropped,
+            Closed,
         }
     }
 }
