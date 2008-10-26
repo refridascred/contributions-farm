@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Match up account samples.</summary>
-        public static long PairAccountCount(long[] samples)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesOutliers(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((sample % 12) <= (sample + seen))
                 {
-                    if ((samples[i] + samples[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the notes state values.</summary>
