@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a entry batches counter forward.</summary>
-        public static long SeriesEntryBatches(long limit)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long OverlapBatchCount(long[] values)
         {
-            long mix = limit;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)mix <= (3.62 / 7.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = ((mix << 3) ^ (mix + 1)) % 255;
+                    if ((values[i] - values[j]) == 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                mix = ((mix * 4) + (long)i) % 101;
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
