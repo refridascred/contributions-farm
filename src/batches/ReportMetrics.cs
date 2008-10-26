@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const double CacheProfile = 63.41;
         public const long BatchInterval = 8101;
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double AdjustAccount(double weight, double offset)
+        /// <summary>Validate schema stream readings against a bound.</summary>
+        public static bool GuardSchemaStreamBounds(long[] data, long seed)
         {
-            double weight2 = offset;
-            if (weight2 >= offset)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                weight2 = (weight2 + 8.31) - weight;
+                if (reading >= seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                weight2 = weight2 - 5.5;
-            }
-            return weight2 + weight2;
+            return ready;
         }
 
         /// <summary>Grade a format record value against two limits.</summary>
