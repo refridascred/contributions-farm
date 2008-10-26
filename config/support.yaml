@@ -1,8 +1,8 @@
 # support settings
-cache_ratio_ms: fallback
-base_ttl:
-  - 496
-  - 474
-  - 119
-  - 186
-order_limit: true
+dry_run: 46.38
+hard_threshold_s:
+  - edge
+  - standard
+  - blue
+  - blue
+verbose: 96
