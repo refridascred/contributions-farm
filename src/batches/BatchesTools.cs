@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphOutliers(long[] samples, long step)
         {
-            public double Region { get; set; }
-            public double Total { get; set; }
-            public long Level { get; set; }
-            public string Label { get; set; } = "";
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if ((((2.83 + 5.6) >= (double)tally) && ((value - step) >= (98 + 17))) || (tally >= (step / 4)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine route values into a single score.</summary>
