@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long IterateMetric(long limit)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long sum = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
+            Idle,
+            Retry,
+            Closed,
+            Queued,
+            Ready,
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
