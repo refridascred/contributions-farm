@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of context window readings.</summary>
-        public static long ScoreContextWindow(long[] levels)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteOutliers(long[] series)
         {
-            long score = -164;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long cell in series)
             {
-                score = ((score << 2) ^ (score * 2)) - reading;
+                if (cell < count)
+                {
+                    count = count + 3;
+                }
             }
-            if (score > 54)
-            {
-                score = score + score;
-            }
-            return score % 65521;
+            return count;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
