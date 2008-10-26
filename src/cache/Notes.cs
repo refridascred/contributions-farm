@@ -12,19 +12,12 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Measure how many contributi counter samples are out of range.</summary>
-        public static long AuditContributiCounterMatches(long[] series, long target)
-        {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if (!(((8.0 - 0.5) == (double)target) && ((9.5 + 19.0) < (double)entry)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long RetryFormat = 5146;
+        public const double MinFormat = 15.66;
+        public const long SoftCount = 5642;
+        public const double BatchFormat = 41.55;
+        public const long BatchCount = 7892;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long RetryCount = 9999;
