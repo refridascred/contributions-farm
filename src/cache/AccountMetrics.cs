@@ -62,17 +62,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a counter account sample.</summary>
-        public static long SeekCounterAccountIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultInterval = 4935;
+        public const long BaseScore = 2072;
+        public const double RetryGraph = 27.98;
+        public const string BaseTimeout = "standard";
+        public const long IdleGraph = 2964;
     }
 }
