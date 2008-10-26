@@ -26,18 +26,17 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long ScoreProfile(long[] levels)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long SeekOrderIndex(long[] readings, long origin)
         {
-            long mix = 601;
-            foreach (long value in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value >= (value & 31))
+                if (readings[i] == origin)
                 {
-                    mix = ((mix << 3) ^ mix) % 97;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
     }
 }
