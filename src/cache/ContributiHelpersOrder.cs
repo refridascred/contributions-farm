@@ -25,19 +25,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileBounds(long[] levels, long offset)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long CompareWindowCount(long[] series)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value <= offset)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((series[i] + series[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
