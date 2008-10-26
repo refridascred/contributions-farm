@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long WeighBuffer(long[] items)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long acc = 13;
-            foreach (long item in items)
-            {
-                acc = acc - (acc - item);
-                acc = acc + acc;
-                if (acc < (item ^ 959))
-                {
-                    acc = (acc << 2) ^ acc;
-                }
-                else
-                {
-                    acc = (acc * 5) + (acc ^ item);
-                }
-            }
-            return acc;
+            public string Limit { get; set; } = "";
+            public long Total { get; set; }
+            public long Flag { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
