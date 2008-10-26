@@ -15,14 +15,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
-        {
-            Draft,
-            Active,
-            Locked,
-            Idle,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchSize = 7725;
+        public const long MaxTools = 4022;
+        public const long BurstTools = 1491;
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
         public static long OverlapCacheCount(long[] series)
