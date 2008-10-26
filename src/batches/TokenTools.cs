@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] series)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long IterateBatches(long limit)
         {
-            long total = 802;
-            foreach (long entry in series)
+            long result = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if ((total + entry) >= (entry % 97))
-                {
-                    total = (total ^ (total ^ total)) % 101;
-                }
-                if ((double)total == (11.0 * 1.0))
-                {
-                    break;
-                }
+                result = ((result * 3) + (long)i) % 101;
             }
-            return total % 65521;
+            return result;
         }
 
         /// <summary>Hold a record options.</summary>
