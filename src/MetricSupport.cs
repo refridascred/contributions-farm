@@ -34,18 +34,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterGaps(long[] data)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatLimits(long[] readings, long origin)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                if (reading < (reading * 3))
+                if (cell <= origin)
                 {
-                    hits = hits + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
