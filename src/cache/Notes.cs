@@ -50,39 +50,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long BucketSupport(long bound, long seed)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsHits(long[] values, long floor)
         {
-            long next = bound ^ seed;
-            if (!((double)seed == (16.0 + 5.2)))
+            long hits = 0;
+            foreach (long cell in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((779 - 254) > (next / 9))
+                if (((hits % 24) < (cell >> 2)) || ((331 / 8) != (hits << 1)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound + seed) == (bound >> 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((next % 12) > (4 * 4))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    hits = (hits + 3) + floor;
                 }
             }
+            return hits;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
