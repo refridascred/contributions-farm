@@ -1,5 +1,12 @@
 {
-  "default_threshold": "legacy",
-  "graph_retries": "eu-west",
-  "min_ttl_count": "staging"
+  "idle_threshold_s": 77,
+  "cache_window_count": 1348,
+  "burst_retries_ms": "legacy",
+  "soft_limit_pct": "edge",
+  "githubfarm_depth": {
+    "retry_interval": false,
+    "soft_delay_s": false,
+    "warm_interval": false
+  },
+  "idle_ratio_s": 6112
 }
