@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiBounds(long[] items, long step)
-        {
-            bool stale = true;
-            foreach (long cell in items)
-            {
-                if (cell != step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string RetryFilter = "alpha-edge";
+        public const long BurstFilter = 8515;
+        public const string CacheSpan = "staging-1";
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long SoftGraph = 7442;
