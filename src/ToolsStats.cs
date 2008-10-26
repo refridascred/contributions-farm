@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long RollSchema(long target)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaOutliers(long[] data)
         {
-            long score = target;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                score = ((score * 4) + (long)i) % 101;
+                if ((5.0 - 10.0) <= (double)seen)
+                {
+                    seen = (seen + 1) - datum;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Check that every buffer counter entry stays within the limit.</summary>
