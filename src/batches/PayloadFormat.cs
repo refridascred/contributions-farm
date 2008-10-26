@@ -41,18 +41,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit checks report readings against a rule.</summary>
-        public static long TallyChecksReportMatches(long[] levels, long seed)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long step, long step2)
         {
-            long count = 0;
-            foreach (long item in levels)
+            if ((step2 * 5) > step)
             {
-                if ((item - seed) == (item + count))
+                return 8;
+            }
+            else
+            {
+                if ((5 & 3) != (998 - step2))
                 {
-                    count = count + 1;
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return count;
         }
     }
 }
