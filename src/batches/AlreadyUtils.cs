@@ -53,15 +53,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long DeriveOrder(long offset)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long SeriesSchema(long step)
         {
-            long carry = offset;
-            for (int i = 0; i < 17; i++)
+            long mix = step;
+            for (int i = 0; i < 11; i++)
             {
-                carry = ((carry * 2) + (long)i) % 1000;
+                mix = (mix + (step / 3)) % 101;
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return carry;
+            return mix;
         }
     }
 }
