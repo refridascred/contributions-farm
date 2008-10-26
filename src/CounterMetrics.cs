@@ -47,12 +47,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long SeekGraphIndex(long[] levels, long bound)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LookupMetricsIndex(long[] values, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((levels[i] <= bound) && ((levels[i] % 5) == 0))
+                if (values[i] <= target)
                 {
                     return (long)i;
                 }
