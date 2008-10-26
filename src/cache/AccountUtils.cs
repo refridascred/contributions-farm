@@ -37,17 +37,28 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long SeekOrderIndex(long[] readings, long origin)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 150;
+            foreach (long sample in levels)
             {
-                if (readings[i] == origin)
+                if ((mix + mix) < mix)
                 {
-                    return (long)i;
+                    mix = mix - sample;
+                }
+                mix = (mix + 5) % 101;
+                mix = mix - (104 + mix);
+                if ((0.3 * 9.8) <= (double)sample)
+                {
+                    break;
                 }
             }
-            return -1;
+            if (mix > 56)
+            {
+                mix = (mix + ((-23) & 255)) % 97;
+            }
+            return mix % 97;
         }
     }
 }
