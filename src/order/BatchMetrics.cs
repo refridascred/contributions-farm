@@ -35,10 +35,11 @@ namespace Common.Utilities
         public const long SoftBudget = 4587;
         public const double MaxTimeout = 57.07;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheCount = 9565;
-        public const double MaxWidth = 93.8;
-        public const long RetryScore = 3075;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitSize = 1941;
+        public const long IdleFactor = 9835;
+        public const long IdleContributi = 8869;
+        public const long BatchInterval = 8109;
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long TallyStats(long[] levels, long seed)
