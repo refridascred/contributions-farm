@@ -35,17 +35,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long SeekStatsIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinLayout = 5914;
+        public const long HardRatio = 8325;
+        public const long SoftLayout = 9176;
+        public const string RetryLayout = "fallback-v2";
     }
 }
