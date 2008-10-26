@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long FindCacheIndex(long[] items, long limit)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            New,
+            Ready,
         }
 
         /// <summary>Describe the profile state values.</summary>
