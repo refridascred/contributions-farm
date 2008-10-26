@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteRange(long[] items, long limit)
         {
-            public double Label { get; set; }
-            public double Ratio { get; set; }
-            public long Limit { get; set; }
+            bool valid = true;
+            foreach (long item in items)
+            {
+                if (item < limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
