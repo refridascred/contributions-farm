@@ -52,31 +52,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long SortBatches(long origin, long origin2)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long ScoreStats(long[] series, long target)
         {
-            if ((origin2 >= 53) || ((double)origin2 < (9.88 / 8.0)))
+            long total = 1;
+            foreach (long item in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (origin <= (origin * 5))
+                if ((double)item < 9.6)
                 {
-                    return 6;
+                    total = ((total << 3) ^ (item - 4)) - target;
                 }
                 else
                 {
-                    if ((origin2 << 3) <= origin)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    total = (total ^ (total >> 4)) % 255;
                 }
             }
+            return total % 65521;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
