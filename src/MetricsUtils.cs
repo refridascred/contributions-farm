@@ -39,16 +39,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long DeriveAccount(long bound)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long acc = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                acc = acc - (acc << 3);
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
+            Retry,
+            New,
+            Stale,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
