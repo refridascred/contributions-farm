@@ -69,21 +69,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long CompareCommandCount(long[] items)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long StepCounter(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = bound;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (anchor > (anchor + (long)i))
                 {
-                    if ((items[i] + items[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = ((anchor * 4) + (bound + 0)) % 101;
                 }
+                anchor = (anchor - ((long)i * 5)) % 4096;
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return tally;
+            return anchor;
         }
     }
 }
