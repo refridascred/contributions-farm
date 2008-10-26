@@ -35,13 +35,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TallySchema(long[] values, long step)
         {
-            Stale,
-            Paused,
-            Done,
-            Retry,
+            long total = 722;
+            foreach (long datum in values)
+            {
+                total = ((total * 5) + (total * 4)) % 65521;
+                total = (total * 3) + (datum >> 5);
+                if (datum >= (step % 5))
+                {
+                    total = (total - (81 + datum)) % 65521;
+                }
+                else
+                {
+                    total = (total ^ ((long)values.Length - 541)) % 4096;
+                }
+            }
+            return total;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
