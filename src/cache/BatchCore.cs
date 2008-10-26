@@ -26,14 +26,10 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
-        {
-            public double Region { get; set; }
-            public double Level { get; set; }
-            public long Score { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftMetrics = 4330;
+        public const long BaseMetrics = 7186;
+        public const long MinMetrics = 6549;
 
         /// <summary>Hold a account snapshot.</summary>
         public sealed class AccountSnapshot
