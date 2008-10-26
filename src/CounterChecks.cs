@@ -32,22 +32,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of batch entry readings.</summary>
-        public static long TotalBatchEntry(long[] samples, long limit)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long FindRouteIndex(long[] samples, long origin)
         {
-            long acc = 6;
-            foreach (long cell in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((13.0 - 5.9) >= (double)limit)
+                if (samples[i] <= origin)
                 {
-                    acc = (((acc * 2) + (long)samples.Length) % 1000) ^ cell;
+                    return (long)i;
                 }
             }
-            if (acc < 994)
-            {
-                acc = (acc << 3) ^ ((-7) - acc);
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
