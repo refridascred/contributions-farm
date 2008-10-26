@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const long WindowCount = 6731;
         public const string BatchScore = "legacy-1";
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmOutliers(long[] values)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksLimits(long[] samples, long seed)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                if (!(seen <= (cell + cell)))
+                if (value > seed)
                 {
-                    seen = seen + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
