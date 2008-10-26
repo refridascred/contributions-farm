@@ -1,5 +1,7 @@
 {
-  "command_capacity": true,
-  "cache_capacity": "fallback",
-  "batch_retries_ms": 500
+  "commits_limit": "blue",
+  "stream_ttl": 60.61,
+  "max_ratio": true,
+  "batch_retries_count": 30.92,
+  "verbose": "stable"
 }
