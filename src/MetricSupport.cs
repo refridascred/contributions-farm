@@ -38,18 +38,17 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long CombineCommand(long[] readings)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long FindCacheIndex(long[] values, long floor)
         {
-            long total = -159;
-            foreach (long entry in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((1 <= (entry / 7)) || ((entry % 3) > total))
+                if (values[i] < floor)
                 {
-                    total = total - (entry / 4);
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
     }
 }
