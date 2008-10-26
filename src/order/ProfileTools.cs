@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyLimits(long[] items, long bound)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long SortFilter(long offset, long target)
         {
-            bool ready = true;
-            foreach (long item in items)
+            long delta = offset - target;
+            if (((target ^ delta) <= (offset & 3)) && ((delta + 163) > offset))
             {
-                if (item < bound)
+                return 6;
+            }
+            else
+            {
+                if (((5.0 * 7.7) > (double)offset) || ((delta & 63) != (offset % 3)))
                 {
-                    ready = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)offset <= (20.0 / 6.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((offset & 3) >= (target + target))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
