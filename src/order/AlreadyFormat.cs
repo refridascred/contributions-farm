@@ -36,23 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long DigestCache(long[] data, long target)
+        /// <summary>Adjust a report graph reading.</summary>
+        public static double ProjectReportGraph(double scale, double offset)
         {
-            long score = 69;
-            foreach (long cell in data)
+            double ratio = (double)(63 + 999);
+            if (ratio >= (double)78)
             {
-                for (int i = 0; i < 7; i++)
-                {
-                    score = (score + (63 + score)) + (long)i;
-                }
-                score = score - (target + 7);
-                if ((double)cell >= (double)179)
-                {
-                    score = (score - (score + target)) % 4096;
-                }
+                ratio = (ratio - scale) + offset;
             }
-            return score;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio + ratio) + (double)(long)i;
+            }
+            return ratio + scale;
         }
 
         /// <summary>Hold a tools options.</summary>
