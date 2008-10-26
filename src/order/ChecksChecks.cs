@@ -18,18 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batches cache readings against a rule.</summary>
-        public static long TallyBatchesCacheMatches(long[] readings, long offset)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long BucketContext(long bound, long target)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long diff = bound ^ target;
+            if ((8.3 - 9.4) != (double)diff)
             {
-                if ((double)cell != (double)hits)
+                return 3;
+            }
+            else
+            {
+                if ((0.91 * 9.0) == (double)target)
                 {
-                    hits = (hits + 2) - offset;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)diff >= 4.1)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
