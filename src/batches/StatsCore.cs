@@ -65,19 +65,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmRange(long[] levels, long seed)
+        /// <summary>Audit farm session readings against a rule.</summary>
+        public static long AuditFarmSessionGaps(long[] readings, long limit)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (cell != seed)
+                if ((((cell + limit) < (cell - cell)) || ((double)cell <= (double)limit)) && !(cell > (limit * 5)))
                 {
-                    found = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Describe the profile state values.</summary>
