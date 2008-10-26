@@ -27,25 +27,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long ClassifyOrder(long bound, long target)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long span = bound + target;
-            if ((span * 3) >= target)
-            {
-                return 3;
-            }
-            else
-            {
-                if (bound <= (target + span))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public bool Region { get; set; }
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
