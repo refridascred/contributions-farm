@@ -28,17 +28,13 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long SeekEditorIndex(long[] data, long limit)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Locked,
+            Retry,
+            Pending,
         }
 
         /// <summary>Project the next token value.</summary>
