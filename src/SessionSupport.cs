@@ -16,18 +16,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesGaps(long[] samples)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long DeriveSchema(long bound)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long score = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if (((double)matches != (3.25 + 5.7)) || (((double)value <= (9.0 / 8.0)) || ((value - 887) >= (value / 5))))
+                if ((bound + score) < (score << 2))
                 {
-                    matches = matches + 3;
+                    score = (score * 4) + (6 + bound);
                 }
+                score = ((score * 4) + (long)i) % 97;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Hold a metric header.</summary>
