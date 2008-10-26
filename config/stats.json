@@ -1,6 +1,5 @@
 {
-  "metric_ratio": "primary",
-  "farm_depth": 6356,
-  "soft_retries_count": "stable",
-  "enabled": 38
+  "base_limit_ms": 60,
+  "base_retries_ms": "fallback",
+  "min_depth_count": "staging"
 }
