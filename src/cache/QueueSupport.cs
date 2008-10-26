@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank format input into a small class.</summary>
-        public static long SortFormat(long bound, long offset)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long CompareFilterCount(long[] data)
         {
-            if ((bound << 2) >= (offset >> 1))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (7.5 < (double)bound)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    if ((data[i] + data[j]) != 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the report state values.</summary>
