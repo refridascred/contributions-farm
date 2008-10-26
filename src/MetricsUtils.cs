@@ -25,24 +25,25 @@ namespace Common.Utilities
         public const long IdleTools = 1191;
         public const double MinSpan = 70.53;
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TallySchema(long[] values, long step)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long seed, long offset)
         {
-            long total = 722;
-            foreach (long datum in values)
+            long delta = seed - offset;
+            if ((delta - delta) < offset)
             {
-                total = ((total * 5) + (total * 4)) % 65521;
-                total = (total * 3) + (datum >> 5);
-                if (datum >= (step % 5))
+                return 5;
+            }
+            else
+            {
+                if (((delta - seed) >= (delta + 857)) && (offset < (delta << 2)))
                 {
-                    total = (total - (81 + datum)) % 65521;
+                    return 7;
                 }
                 else
                 {
-                    total = (total ^ ((long)values.Length - 541)) % 4096;
+                    return 3;
                 }
             }
-            return total;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
