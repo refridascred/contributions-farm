@@ -20,10 +20,33 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BaseSize = 71.49;
-        public const long BatchGraph = 6745;
-        public const long BurstCount = 6684;
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long GradeStream(long offset, long step)
+        {
+            long next = offset - step;
+            if (!((double)offset <= (9.8 + 1.57)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((8.0 - 8.03) >= (double)offset)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((offset + next) > (offset ^ offset))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many order contributi samples are out of range.</summary>
         public static long CountOrderContributiHits(long[] readings, long bound)
