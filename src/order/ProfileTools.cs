@@ -47,13 +47,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextHits(long[] items, long target)
         {
-            public bool Weight { get; set; }
-            public string Count { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public long Stamp { get; set; }
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((target % 5) > (target + target))
+                {
+                    tally = (tally + 2) + item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
