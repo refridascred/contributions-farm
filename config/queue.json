@@ -1,7 +1,7 @@
 {
-  "notes_timeout": true,
-  "max_ratio_ms": "eu-west",
-  "min_window": 7577,
-  "account_timeout": 30,
-  "dry_run": [153, 298, 243]
+  "soft_interval_s": "legacy",
+  "hard_timeout": false,
+  "retry_capacity_pct": true,
+  "flush_limit_ms": 31.74,
+  "batch_ratio_s": 7.8
 }
