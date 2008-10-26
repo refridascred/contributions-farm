@@ -26,20 +26,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long RollQueue(long limit)
+        /// <summary>Measure how many checks contributi samples are out of range.</summary>
+        public static long TallyChecksContributiMatches(long[] data, long seed)
         {
-            long mark = limit;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                if (!(count > (value + seed)))
                 {
-                    mark = ((mark ^ (long)i) % 65521) - (long)i2;
+                    count = count + 3;
                 }
-                mark = (mark + (limit >> 3)) % 65521;
-                mark = ((mark * 3) + (long)i) % 4093;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
