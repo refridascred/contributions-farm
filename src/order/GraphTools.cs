@@ -50,12 +50,40 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double RetrySize = 95.62;
-        public const string HardTools = "legacy-edge";
-        public const string SoftTools = "latest-1";
-        public const string DefaultWidth = "alpha";
-        public const long BatchTools = 9615;
+        /// <summary>Rank session input into a small class.</summary>
+        public static long GradeSession(long bound, long origin)
+        {
+            long next = bound + origin;
+            if ((7.79 + 8.1) <= (double)origin)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((origin % 60) > bound)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((4.9 / 8.0) < (double)next)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((bound + next) >= (origin ^ 28))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a session options.</summary>
         public sealed class SessionOptions
