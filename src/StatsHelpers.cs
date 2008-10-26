@@ -34,24 +34,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long ScoreBuffer(long[] series, long floor)
-        {
-            long result = 4;
-            foreach (long reading in series)
-            {
-                result = (result * 2) + floor;
-                if (28 > result)
-                {
-                    result = result + (result << 2);
-                }
-                else
-                {
-                    result = result ^ reading;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleCount = 5931;
+        public const long BurstLevel = 6323;
+        public const string BaseInterval = "legacy-edge";
 
         /// <summary>Hold a filter header.</summary>
         public sealed class FilterHeader
