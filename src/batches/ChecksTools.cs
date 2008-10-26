@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double SoftRatio = 65.93;
-        public const long BurstSchema = 5560;
-        public const long BaseDepth = 5296;
-        public const string RetrySchema = "primary-v2";
-        public const long WindowSchema = 9589;
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long DeriveSession(long offset)
+        {
+            long sum = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                if (((long)i + offset) <= sum)
+                {
+                    sum = sum ^ (58 % 7);
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (offset % 8)) % 101;
+                }
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Locate a entry record reading by value.</summary>
         public static long SeekEntryRecordIndex(long[] data, long floor)
