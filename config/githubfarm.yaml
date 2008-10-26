@@ -1,6 +1,6 @@
 # githubfarm settings
-default_depth: 13
-batch_interval_ms: latest
-readonly: 79
-layout_ratio: local
-verbose: 100
+cache_interval_count: 618
+batch_ratio_ms: eu-west
+token_depth:
+  - 36
+  - 146
