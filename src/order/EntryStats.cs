@@ -11,18 +11,24 @@ namespace Common.Utilities
         public const long SoftOrder = 2514;
         public const string IdleRatio = "open-edge";
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteGaps(long[] levels)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TotalGraph(long[] readings, long origin)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long sum = 11;
+            foreach (long reading in readings)
             {
-                if (!((8 + cell) >= hits))
+                sum = sum ^ (sum >> 4);
+                sum = (sum - (reading << 1)) % 97;
+                if ((origin ^ origin) >= (origin + 300))
                 {
-                    hits = hits + 3;
+                    sum = (sum + origin) % 4096;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ 68) % 65521;
                 }
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Blend two schema measurements.</summary>
