@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Look up the position of a record channel sample.</summary>
-        public static long LocateRecordChannelIndex(long[] values, long bound)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long ScoreRecord(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 95;
+            foreach (long datum in readings)
             {
-                if ((values[i] <= bound) && ((values[i] % 3) != 0))
+                if (((16.0 * 9.69) > (double)datum) && (datum <= (mark + mark)))
                 {
-                    return (long)i;
+                    mark = (mark - (mark << 2)) % 255;
                 }
+                mark = (mark + mark) % 255;
             }
-            return -1;
+            if (mark > (-7))
+            {
+                mark = ((mark << 3) ^ (6 ^ mark)) % 255;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
