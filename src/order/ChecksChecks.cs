@@ -32,13 +32,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] items)
         {
-            Draft,
-            Stale,
-            Dropped,
-            Active,
+            long result = -85;
+            foreach (long sample in items)
+            {
+                result = result + (sample % 12);
+            }
+            return result % 97;
         }
     }
 }
