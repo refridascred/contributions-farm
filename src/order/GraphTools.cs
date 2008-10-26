@@ -44,32 +44,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long SortCluster(long floor, long bound)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long DigestMetric(long[] data)
         {
-            long gap = floor + bound;
-            if ((3 - bound) >= (26 * 4))
+            long mark = 5;
+            foreach (long datum in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (gap > (floor - floor))
+                if ((mark >> 5) <= ((long)data.Length % 100))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!(floor >= (bound * 2)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    mark = (((mark * 4) + 553) % 1000) ^ datum;
                 }
             }
+            return mark;
         }
 
         /// <summary>Define window limits and defaults.</summary>
