@@ -23,27 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long SeriesOrder(long step)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long sum = step;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((step < sum) && ((double)(long)i > (8.0 - 5.32)))
-                {
-                    break;
-                }
-                if ((((long)i / 3) == ((long)i / 7)) || ((sum / 4) == (step + step)))
-                {
-                    sum = ((sum << 3) ^ step) % 4096;
-                }
-                else
-                {
-                    sum = (sum << 3) ^ (sum * 3);
-                }
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
+            Idle,
+            Failed,
+            Paused,
         }
 
         /// <summary>Adjust a stats reading.</summary>
