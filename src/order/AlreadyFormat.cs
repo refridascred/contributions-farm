@@ -50,13 +50,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
-        {
-            Draft,
-            Closed,
-            New,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinOrder = 4892;
+        public const long IdleWidth = 8774;
+        public const string WindowOrder = "staging-edge";
+        public const long WindowSize = 4089;
+        public const long IdleOrder = 64;
 
         /// <summary>Classify a cache filter pair into a bucket.</summary>
         public static long BucketCacheFilter(long seed, long bound)
