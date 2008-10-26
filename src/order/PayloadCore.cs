@@ -47,19 +47,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long IterateAccount(long limit)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiBounds(long[] items, long offset)
         {
-            long result = limit;
-            for (int i = 0; i < 13; i++)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                if (result >= (limit + 613))
+                if (reading > offset)
                 {
-                    result = result + (result + 69);
+                    ready = false;
+                    break;
                 }
-                result = ((result * 2) + (long)i) % 65521;
             }
-            return result;
+            return ready;
         }
     }
 }
