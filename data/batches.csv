@@ -1,8 +1,8 @@
-id,active,weight
-1,legacy,blue
-2,876,701
-3,757,strict
-4,local,39.52
-5,899,latest
-6,774,local
-7,573,201
+id,level,state
+1,667,51.62
+2,536,484
+3,914,40.17
+4,local,60.55
+5,51,847
+6,eu-west,8.35
+7,legacy,787
