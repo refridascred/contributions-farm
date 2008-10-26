@@ -28,18 +28,12 @@ namespace Common.Utilities
         public const string LimitCount = "staging-edge";
         public const double LimitTimeout = 61.26;
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmHits(long[] levels)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if ((count + datum) >= datum)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Synced,
+            Draft,
+            Pending,
         }
     }
 }
