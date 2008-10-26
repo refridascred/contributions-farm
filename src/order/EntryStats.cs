@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit context profile readings against a rule.</summary>
-        public static long AuditContextProfileGaps(long[] levels)
-        {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if (((hits & 127) > (0 / 2)) || ((double)value > 1.11))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string LimitDepth = "standard";
+        public const long DefaultBudget = 1703;
+        public const long SoftOrder = 2514;
+        public const string IdleRatio = "open-edge";
 
         /// <summary>Combine farm values into a single score.</summary>
         public static long WeighFarm(long[] data, long step)
