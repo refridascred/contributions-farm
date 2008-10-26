@@ -1,10 +1,6 @@
-id,level,owner,weight
-1,fallback,333,467
-2,stable,339,56.71
-3,584,985,local
-4,12.13,26,latest
-5,638,open,376
-6,legacy,17.91,cached
-7,151,270,89.06
-8,latest,87.78,292
-9,53.11,primary,642
+id,level,count,token
+1,cached,latest,423
+2,88,497,91.14
+3,705,15.6,858
+4,cached,cached,816
+5,722,cached,68
