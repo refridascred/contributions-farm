@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiMatches(long[] data, long offset)
+        /// <summary>Derive the next payload metric value from a seed.</summary>
+        public static long RollPayloadMetric(long limit)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long score = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)entry == (3.42 / 6.0))
-                {
-                    seen = (seen + 1) - offset;
-                }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Measure how many route tools samples are out of range.</summary>
