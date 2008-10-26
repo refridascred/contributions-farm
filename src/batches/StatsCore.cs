@@ -38,10 +38,14 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string WindowCluster = "stable-1";
-        public const long BaseCluster = 6244;
-        public const long WindowScore = 4516;
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
+        {
+            Synced,
+            Retry,
+            Active,
+            Queued,
+        }
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long AuditGraphMatches(long[] items, long offset)
