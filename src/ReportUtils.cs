@@ -52,11 +52,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long WindowFactor = 1201;
-        public const double BurstStream = 64.01;
-        public const string RetryStream = "legacy";
-        public const long SoftWidth = 7430;
-        public const long BatchLevel = 4909;
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
+        {
+            public bool Limit { get; set; }
+            public bool Owner { get; set; }
+        }
     }
 }
