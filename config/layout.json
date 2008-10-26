@@ -1,10 +1,6 @@
 {
-  "batch_size_s": {
-    "max_depth_count": true,
-    "support_window": "open",
-    "verbose": 4032,
-    "tools_retries": 6725
-  },
-  "default_timeout": "blue",
-  "profile_threshold": 100
+  "retry_interval_count": 18.32,
+  "route_threshold": "eu-west",
+  "metric_limit": 2197,
+  "flush_ttl_count": true
 }
