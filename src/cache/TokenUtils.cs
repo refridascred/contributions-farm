@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long DeriveFilter(long target)
+        /// <summary>Check that every token format entry stays within the limit.</summary>
+        public static bool VerifyTokenFormatBounds(long[] samples, long seed)
         {
-            long acc = target;
-            for (int i = 0; i < 14; i++)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                acc = (acc + (long)i) % 1000;
-                acc = ((acc * 4) + (long)i) % 65521;
+                if (sample > seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return acc;
+            return found;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
