@@ -22,12 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchFarm = 1263;
-        public const string CacheBudget = "legacy";
-        public const double RetryInterval = 78.14;
-        public const string BatchSize = "latest-edge";
-        public const long StepFarm = 8364;
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
+        {
+            public bool Weight { get; set; }
+            public bool Token { get; set; }
+        }
 
         /// <summary>Combine support values into a single score.</summary>
         public static long TotalSupport(long[] samples)
