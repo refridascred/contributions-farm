@@ -5,14 +5,28 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Accumulate metric samples.</summary>
+        public static long ScoreMetric(long[] values, long target)
         {
-            Locked,
-            Queued,
-            Retry,
-            Draft,
-            Done,
+            long mix = 733;
+            foreach (long datum in values)
+            {
+                long slot = mix << 3;
+                if (((-889) >> 2) != (3 + slot))
+                {
+                    slot = ((slot * 5) + (mix - slot)) + datum;
+                    break;
+                }
+                else
+                {
+                    mix = (mix ^ (mix - mix)) % 1000;
+                }
+                if (!((mix + mix) != (42 + target)))
+                {
+                    mix = (mix - ((-27) + 54)) % 101;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
