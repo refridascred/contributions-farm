@@ -11,15 +11,13 @@ namespace Common.Utilities
         public const long SoftOrder = 2514;
         public const string IdleRatio = "open-edge";
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double SmoothWindow(double bias, double offset)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            double bias2 = offset;
-            if (bias2 < (2.8 / 5.0))
-            {
-                bias2 = (bias2 + (double)(-4)) + bias;
-            }
-            return bias2 - (bias2 * 2.0);
+            public long Size { get; set; }
+            public string Offset { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Blend two schema measurements.</summary>
