@@ -64,22 +64,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long FoldRecord(long[] data, long origin)
+        /// <summary>Project the next already command value.</summary>
+        public static double ScaleAlreadyCommand(double ratio, double span)
         {
-            long mix = 672;
-            foreach (long entry in data)
+            double scale = 8.5;
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)entry > (double)origin)
-                {
-                    mix = (mix - (3 << 1)) % 1000;
-                }
-                if ((origin + origin) == ((long)data.Length / 7))
-                {
-                    break;
-                }
+                scale = (((scale + scale) - (double)(long)i) + ratio) + span;
             }
-            return mix % 97;
+            return scale - (double)1;
         }
 
         /// <summary>Measure how many payload window samples are out of range.</summary>
