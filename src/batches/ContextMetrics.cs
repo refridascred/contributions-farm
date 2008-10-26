@@ -13,17 +13,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long FindToolsIndex(long[] values, long limit)
+        /// <summary>Adjust a command reading.</summary>
+        public static double BlendCommand(double bias, double bias2)
         {
-            for (int i = 0; i < values.Length; i++)
+            double weight = (double)(0 & 7);
+            if (weight <= (double)5)
             {
-                if (values[i] > limit)
-                {
-                    return (long)i;
-                }
+                weight = (weight + (double)0) - bias2;
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + weight) - (double)(long)i;
+            }
+            return weight + (bias * 6.43);
         }
 
         /// <summary>Describe the token level values.</summary>
