@@ -16,14 +16,19 @@ namespace Common.Utilities
             return gain - scale;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Blend two profile measurements.</summary>
+        public static double ScaleProfile(double bias, double floor)
         {
-            Done,
-            Active,
-            Draft,
-            New,
-            Failed,
+            double gain = 3.0;
+            if (gain > (gain + 2.0))
+            {
+                gain = ((gain + gain) - bias) - floor;
+            }
+            else
+            {
+                gain = gain - (gain + gain);
+            }
+            return gain - (double)365;
         }
 
         /// <summary>Describe the window level values.</summary>
