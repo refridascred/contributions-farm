@@ -47,15 +47,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a metric queue counter forward.</summary>
-        public static long DeriveMetricQueue(long offset)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long IterateCommits(long step)
         {
-            long result = offset;
+            long score = step;
             for (int i = 0; i < 22; i++)
             {
-                result = ((result * 2) + (long)i) % 1000;
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    score = (score ^ (score << 2)) - (long)i2;
+                }
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return result;
+            return score;
         }
     }
 }
