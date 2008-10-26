@@ -19,11 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long SoftReport = 9824;
-        public const long MaxReport = 5880;
-        public const long SoftLevel = 9970;
-        public const double BatchFactor = 98.95;
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorRange(long[] data, long floor)
+        {
+            bool stale = true;
+            foreach (long cell in data)
+            {
+                if (cell > floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Locate a session reading by value.</summary>
         public static long FindSessionIndex(long[] readings, long offset)
