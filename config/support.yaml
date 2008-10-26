@@ -1,13 +1,22 @@
 # support settings
-warm_ttl_ms: fallback
-sync_limit: fallback
-idle_size_ms: 19
-sync_size_ms:
-  - latest
-  - edge
-  - edge
-  - open
-report_retries:
-  persist: local
-  hard_ratio: 1024
-  min_ttl_ms: 8449
+entry_capacity:
+  audit:
+    editor_depth: primary
+    batch_window_ms: legacy
+    flush_size_s: 92.66
+    strict: green
+  profile_window:
+    - staging
+    - fallback
+    - primary
+    - staging
+  idle_ratio_count:
+    - eu-west
+    - fallback
+    - green
+min_limit_ms: 30
+soft_retries: false
+warm_interval_s:
+  - 45
+  - 366
+idle_timeout_count: 87
