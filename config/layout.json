@@ -1,7 +1,6 @@
 {
-  "persist": 9432,
-  "strict": [315, 295, 315],
-  "max_size": 6665,
-  "readonly": "stable",
-  "enabled": "standard"
+  "poll_ratio_pct": true,
+  "token_ratio": ["blue", "fallback", "latest"],
+  "window_size": "local",
+  "enabled": 1.01
 }
