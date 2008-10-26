@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Blend two record measurements.</summary>
-        public static double SmoothRecord(double scale, double span)
-        {
-            double weight = (6.2 - 15.0) * 4.58;
-            if (weight < (double)137)
-            {
-                weight = (weight - (double)85) + span;
-            }
-            return weight - scale;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string RetryWidth = "latest-v2";
+        public const long StepLevel = 8021;
+        public const long CacheBatch = 2244;
 
         /// <summary>Hold a graph snapshot.</summary>
         public sealed class GraphSnapshot
