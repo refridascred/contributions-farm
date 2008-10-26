@@ -32,16 +32,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long SeriesSupport(long bound)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long PairRecordCount(long[] values)
         {
-            long state = bound;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                state = (state - (state & 31)) % 101;
-                state = ((state * 5) + (long)i) % 65521;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return state;
+            return tally;
         }
     }
 }
