@@ -56,13 +56,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long IterateMetrics(long offset)
         {
-            Active,
-            Idle,
-            Dropped,
-            Retry,
+            long carry = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                if (!!(((long)i ^ carry) > offset))
+                {
+                    carry = (carry << 3) ^ ((-81) + carry);
+                }
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
         }
     }
 }
