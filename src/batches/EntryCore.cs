@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long BucketChannel(long offset, long offset2)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyMatches(long[] items, long limit)
         {
-            if ((offset * 4) >= offset2)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (((offset / 4) == ((-5) + offset2)) && (offset < (162 + offset2)))
+                if (tally < (limit - 4))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
+                    tally = (tally + 2) + sample;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a graph info.</summary>
