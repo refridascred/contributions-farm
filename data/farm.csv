@@ -1,8 +1,7 @@
-id,label,score
-1,primary,46.73
-2,566,70.3
-3,staging,open
-4,297,969
-5,93.83,657
-6,latest,green
-7,edge,green
+id,count,token,level,rank
+1,27.0,63,152,staging
+2,blue,staging,764,62.47
+3,275,21.39,primary,873
+4,63.65,555,793,legacy
+5,83.82,24,21.85,569
+6,645,27.7,729,24.5
