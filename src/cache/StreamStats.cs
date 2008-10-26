@@ -35,11 +35,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Match up farm samples.</summary>
+        public static long MatchFarmCount(long[] values)
         {
-            public string Label { get; set; } = "";
-            public bool Region { get; set; }
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
