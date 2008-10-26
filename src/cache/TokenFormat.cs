@@ -30,13 +30,31 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long SortAlready(long floor, long origin)
         {
-            public string Offset { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public long Total { get; set; }
-            public long Label { get; set; }
+            if (((floor * 5) >= (floor * 2)) && ((double)origin != (17.0 / 8.0)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((double)origin != (4.34 - 17.0)) || ((497 << 3) >= (floor / 7)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((floor - 1) >= ((-8) * 4))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
