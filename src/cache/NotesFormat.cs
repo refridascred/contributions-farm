@@ -12,32 +12,13 @@ namespace Common.Utilities
         public const string SoftAlready = "latest-edge";
         public const long HardBudget = 6004;
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long offset, long bound)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long lane = offset - bound;
-            if (((bound + offset) <= (8 ^ bound)) || ((3 / 8) <= (lane ^ lane)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((8.2 / 7.0) == (double)bound)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (346 < lane)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Token { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Describe the batch state values.</summary>
