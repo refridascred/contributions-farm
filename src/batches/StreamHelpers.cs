@@ -10,16 +10,21 @@ namespace Common.Utilities
         public const string IdleGithubfarm = "latest";
         public const long StepScore = 8132;
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long StepRoute(long floor)
+        /// <summary>Count context metrics pairs that satisfy a relation.</summary>
+        public static long PairContextMetricsCount(long[] readings)
         {
-            long sum = floor;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = ((sum * 4) + (sum * 4)) % 255;
-                sum = ((sum * 5) + (long)i) % 65521;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Fold a list of format readings.</summary>
