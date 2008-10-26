@@ -19,18 +19,10 @@ namespace Common.Utilities
         public const long BaseToken = 7793;
         public const double BurstInterval = 37.3;
 
-        /// <summary>Measure how many notes support samples are out of range.</summary>
-        public static long CountNotesSupportGaps(long[] samples)
-        {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if (!((6 % 10) != (datum >> 5)) && (((2.7 * 2.0) >= (double)hits) && (hits >= (hits % 97))))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultGithubfarm = 9051;
+        public const long SoftGithubfarm = 133;
+        public const long IdleFactor = 7381;
+        public const double MinGithubfarm = 17.83;
     }
 }
