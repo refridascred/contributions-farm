@@ -41,24 +41,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long ClassifyEditor(long step, long step2)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadHits(long[] readings)
         {
-            if ((step2 * 5) > step)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((5 & 3) != (998 - step2))
+                if ((double)cell >= (3.16 / 7.0))
                 {
-                    return 2;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    return 3;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
