@@ -19,22 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up record format samples.</summary>
-        public static long OverlapRecordFormatCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BatchWidth = 92.65;
+        public const long DefaultLayout = 701;
+        public const double CacheLayout = 16.05;
+        public const long WindowLayout = 703;
+        public const string BurstCount = "standard-v2";
 
         /// <summary>Define account limits and defaults.</summary>
         public const long CacheAccount = 9178;
