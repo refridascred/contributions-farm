@@ -14,21 +14,11 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long RollCounter(long offset)
-        {
-            long score = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                score = ((score << 2) ^ score) % 255;
-                if (!(offset >= (long)i))
-                {
-                    score = (score * 3) + (long)i;
-                }
-                score = ((score * 4) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowCommand = 5517;
+        public const string HardFactor = "latest-edge";
+        public const long LimitLevel = 958;
+        public const double LimitRatio = 52.64;
 
         /// <summary>Project the next session value.</summary>
         public static double AdjustSession(double bias, double floor)
