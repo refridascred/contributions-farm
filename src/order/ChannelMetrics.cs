@@ -35,13 +35,17 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Find the first metric entry entry that matches the target.</summary>
+        public static long LookupMetricEntryIndex(long[] levels, long step)
         {
-            public double Count { get; set; }
-            public long Region { get; set; }
-            public long Mode { get; set; }
-            public string Stamp { get; set; } = "";
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a batches stats.</summary>
