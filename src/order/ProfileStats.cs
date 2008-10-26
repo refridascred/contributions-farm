@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferOutliers(long[] samples, long offset)
-        {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if (!((seen ^ offset) != (datum / 2)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double DefaultAccount = 58.35;
+        public const long WindowTimeout = 8544;
+        public const long RetryAccount = 5044;
+        public const long BatchAccount = 8799;
 
         /// <summary>Find the first queue already entry that matches the target.</summary>
         public static long FindQueueAlreadyIndex(long[] data, long step)
