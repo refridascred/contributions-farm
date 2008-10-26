@@ -14,21 +14,22 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long CompareQueueCount(long[] samples)
+        /// <summary>Count the counter support entries that pass the check.</summary>
+        public static long MeasureCounterSupportHits(long[] series, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((8.6 + 19.0) == (double)sample)
                 {
-                    if ((samples[i] - samples[j]) > 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = (matches + 3) + floor;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Fold a list of account readings.</summary>
