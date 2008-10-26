@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long DeriveFarm(long floor)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long state = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
+            public string Rank { get; set; } = "";
+            public long Token { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
