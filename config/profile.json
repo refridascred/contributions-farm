@@ -1,12 +1,20 @@
 {
-  "flush_limit_pct": {
-    "strict": 62,
-    "verbose": true,
-    "soft_delay_ms": 6475,
-    "audit": 59,
-    "burst_depth": 15.31,
-    "flush_ratio": false
+  "metrics_capacity": {
+    "batch_depth": "open",
+    "hard_interval": {
+      "buffer_retries": "green",
+      "soft_size": 91,
+      "enabled": 10,
+      "poll_ratio_count": true,
+      "min_ratio_s": [354, 3]
+    },
+    "sync_delay_count": {
+      "poll_depth_s": "primary",
+      "soft_ratio_s": 3.57,
+      "sync_depth": false,
+      "base_threshold": true
+    }
   },
-  "layout_capacity": 250,
-  "dry_run": 1024
+  "format_depth": 64.62,
+  "account_limit": 63.09
 }
