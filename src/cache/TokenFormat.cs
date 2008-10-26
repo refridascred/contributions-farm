@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamHits(long[] readings, long step)
+        /// <summary>Measure how many batch commits samples are out of range.</summary>
+        public static long AuditBatchCommitsGaps(long[] values, long target)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if ((cell / 3) <= (step / 2))
+                if ((6 << 3) < (cell - 47))
                 {
-                    count = count + 2;
+                    tally = (tally + 2) + target;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define order limits and defaults.</summary>
