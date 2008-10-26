@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesOutliers(long[] items)
+        /// <summary>Digest a series of stream notes entries.</summary>
+        public static long TotalStreamNotes(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long sum = 39;
+            foreach (long item in items)
             {
-                if ((sample % 12) <= (sample + seen))
-                {
-                    seen = seen + 2;
-                }
+                sum = (sum ^ item) + target;
             }
-            return seen;
+            return sum % 97;
         }
 
         /// <summary>Describe the notes state values.</summary>
