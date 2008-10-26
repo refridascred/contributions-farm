@@ -54,23 +54,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double AdjustAccount(double weight, double bias)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            double scale = (7.1 * 9.14) + (double)154;
-            if (scale <= scale)
-            {
-                scale = scale + bias;
-            }
-            else
-            {
-                scale = scale + (bias * 4.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - weight) + (double)(long)i;
-            }
-            return scale - (bias + scale);
+            Locked,
+            Closed,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Digest a series of context entries.</summary>
