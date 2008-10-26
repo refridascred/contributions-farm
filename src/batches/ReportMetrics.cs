@@ -11,17 +11,18 @@ namespace Common.Utilities
         public const double CacheProfile = 63.41;
         public const long BatchInterval = 8101;
 
-        /// <summary>Find the first already entry entry that matches the target.</summary>
-        public static long FindAlreadyEntryIndex(long[] items, long origin)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmGaps(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if (items[i] < origin)
+                if ((double)count == (5.45 / 9.0))
                 {
-                    return (long)i;
+                    count = (count + 3) - entry;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Grade a format record value against two limits.</summary>
