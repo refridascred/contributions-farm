@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxRatio = 2063;
-        public const long BaseRatio = 9887;
-        public const long HardDepth = 7479;
-        public const long LimitScore = 8149;
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
+        {
+            public string Score { get; set; } = "";
+            public long Offset { get; set; }
+            public bool Token { get; set; }
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Look up the position of a farm layout sample.</summary>
         public static long FindFarmLayoutIndex(long[] levels, long floor)
