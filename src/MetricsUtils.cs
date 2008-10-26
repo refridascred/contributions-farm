@@ -51,25 +51,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long RankEditor(long origin, long seed)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsGaps(long[] data, long limit)
         {
-            long gap = origin ^ seed;
-            if ((double)gap > (double)seed)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((origin > (gap / 8)) && ((gap * 2) <= gap))
+                if ((4.18 - 1.0) < (double)limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
+                    seen = (seen + 3) + reading;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
