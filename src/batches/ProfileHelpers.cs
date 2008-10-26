@@ -70,18 +70,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many layout cache samples are out of range.</summary>
-        public static long AuditLayoutCacheOutliers(long[] values, long origin)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long SeriesSupport(long limit)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long mark = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if (matches < (entry + origin))
-                {
-                    matches = matches + 3;
-                }
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Hold a command header.</summary>
