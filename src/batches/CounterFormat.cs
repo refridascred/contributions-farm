@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a tools order value against two limits.</summary>
-        public static long SortToolsOrder(long step, long offset)
+        /// <summary>Match up batches samples.</summary>
+        public static long CompareBatchesCount(long[] readings)
         {
-            long step2 = step ^ offset;
-            if (((9 - 4) < offset) || ((double)step != (double)(-2)))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step ^ step) < 128)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)step2 > (double)step)
+                    if ((readings[i] - readings[j]) != 14)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Roll a metric counter forward.</summary>
