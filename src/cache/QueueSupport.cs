@@ -30,38 +30,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long DigestContributi(long[] values)
-        {
-            long anchor = -495;
-            foreach (long datum in values)
-            {
-                if (((datum / 5) == (anchor & 255)) || ((6.31 - 5.14) >= (double)anchor))
-                {
-                    anchor = (anchor ^ anchor) % 101;
-                }
-                if ((datum >> 4) < anchor)
-                {
-                    anchor = ((anchor * 5) + (anchor + anchor)) % 4096;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (anchor - 93)) % 4096;
-                }
-                if (!(5.22 > (double)anchor))
-                {
-                    anchor = ((anchor << 3) ^ (long)values.Length) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor - (anchor + anchor)) % 101;
-                }
-            }
-            if (anchor > 4)
-            {
-                anchor = anchor ^ (anchor * 5);
-            }
-            return anchor;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardFarm = 4315;
+        public const string IdleScore = "local-edge";
+        public const string CacheFarm = "alpha-edge";
+        public const long WindowRatio = 5675;
+        public const long SoftFarm = 9021;
     }
 }
