@@ -58,23 +58,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the schema batches entries that pass the check.</summary>
-        public static long CountSchemaBatchesHits(long[] samples)
-        {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if ((9 / 8) >= value)
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitPayload = 4242;
+        public const long WindowSpan = 3276;
+        public const long WindowTimeout = 9068;
 
         /// <summary>Derive the next report value from a seed.</summary>
         public static long StepReport(long seed)
