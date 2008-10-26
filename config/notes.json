@@ -1,8 +1,7 @@
 {
-  "warm_timeout": "eu-west",
-  "idle_capacity": 2464,
-  "base_timeout_count": true,
-  "audit": [183, 70, 498, 2],
-  "warm_capacity_s": ["latest", "primary"],
-  "dry_run": 35
+  "account_size": 81.17,
+  "sync_capacity_count": false,
+  "warm_depth_count": 71.61,
+  "hard_ratio": 31.61,
+  "sync_delay_ms": 52.04
 }
