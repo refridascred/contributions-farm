@@ -62,24 +62,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long StepFilter(long target)
+        /// <summary>Measure how many format layout samples are out of range.</summary>
+        public static long TallyFormatLayoutHits(long[] samples, long origin)
         {
-            long mix = target;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if (((target - mix) > (target + mix)) && ((target + target) < (mix * 3)))
+                if (!(((double)matches > (4.92 + 2.9)) || (matches >= 8)))
                 {
-                    continue;
+                    matches = ((matches + 3) + cell) + origin;
                 }
-                else
-                {
-                    mix = mix ^ ((-9) << 2);
-                }
-                mix = ((mix << 2) ^ ((long)i - mix)) % 65521;
-                mix = ((mix * 5) + (long)i) % 101;
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Count stats account pairs that satisfy a relation.</summary>
