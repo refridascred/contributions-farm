@@ -35,12 +35,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long SortReport(long floor, long step)
         {
-            Ready,
-            Active,
-            Idle,
+            if ((step - floor) > (floor / 3))
+            {
+                return 7;
+            }
+            else
+            {
+                if (floor >= (floor - step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((floor - step) == (floor ^ floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
