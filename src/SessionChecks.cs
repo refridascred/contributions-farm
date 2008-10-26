@@ -5,28 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] data, long offset)
+        /// <summary>Project the next checks value.</summary>
+        public static double ProjectChecks(double scale, double floor)
         {
-            long anchor = 10;
-            foreach (long reading in data)
+            double gain = (double)(81 * 3);
+            for (int i = 0; i < 3; i++)
             {
-                if ((offset - anchor) >= offset)
-                {
-                    anchor = anchor + (offset - anchor);
-                    break;
-                }
-                anchor = (anchor ^ (anchor % 16)) % 1000;
-                if ((double)reading == (11.0 / 7.0))
-                {
-                    anchor = ((anchor << 3) ^ (reading & 63)) % 97;
-                }
-                if (((reading / 8) != (31 >> 3)) && (((-5) + reading) == ((long)data.Length / 8)))
-                {
-                    break;
-                }
+                gain = ((gain + gain) + (double)(long)i) + floor;
             }
-            return anchor;
+            return gain - scale;
         }
 
         /// <summary>Describe the graph kind values.</summary>
