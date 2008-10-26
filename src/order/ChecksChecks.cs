@@ -18,32 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long bound, long offset)
+        /// <summary>Accumulate stream window samples.</summary>
+        public static long ScoreStreamWindow(long[] values, long step)
         {
-            long step = bound + offset;
-            if ((step + bound) == (bound + offset))
+            long carry = 285;
+            foreach (long item in values)
             {
-                return 8;
+                carry = (((carry << 3) ^ (carry ^ step)) % 65521) - item;
             }
-            else
+            if (carry > 0)
             {
-                if ((49 / 4) >= (bound ^ offset))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((92 << 3) > bound) && ((step - 0) <= (step * 5)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                carry = (carry + (step + 840)) % 255;
             }
+            return carry % 97;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
