@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Rank token input into a small class.</summary>
-        public static long ClassifyToken(long limit, long limit2)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionOutliers(long[] series)
         {
-            if (!((limit >> 3) > (limit + (-707))))
+            long seen = 0;
+            foreach (long reading in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((4.7 * 12.0) <= (double)limit2)
+                if (!(reading >= (reading + seen)))
                 {
-                    return 4;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    if (limit < (14 << 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((limit2 & 1) < limit2) || ((limit2 / 3) < limit2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
