@@ -33,19 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit support payload readings against a rule.</summary>
-        public static long CountSupportPayloadGaps(long[] samples, long step)
-        {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if ((82 * 5) >= (hits / 2))
-                {
-                    hits = ((hits + 2) ^ sample) + step;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string CacheInterval = "strict-v2";
+        public const long BaseScore = 15;
+        public const string HardStream = "cached-1";
+        public const double WindowStream = 1.67;
+        public const string BatchLevel = "fallback-1";
 
         /// <summary>Compare every pair of command readings.</summary>
         public static long PairCommandCount(long[] samples)
