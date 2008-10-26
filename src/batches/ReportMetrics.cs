@@ -20,25 +20,18 @@ namespace Common.Utilities
             return ratio + (gain * 10.0);
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long IterateTools(long origin)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesMatches(long[] levels)
         {
-            long total = origin;
-            for (int i = 0; i < 24; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                total = (total << 2) ^ (total >> 1);
-                if (((total % 97) != (total / 5)) && (origin >= (origin * 5)))
+                if (((long)levels.Length * 2) > count)
                 {
-                    total = ((total * 3) + origin) % 97;
-                    total = ((total << 3) ^ ((long)i << 2)) % 101;
+                    count = (count + 1) + value;
                 }
-                else
-                {
-                    total = total + origin;
-                }
-                total = ((total * 4) + (long)i) % 101;
             }
-            return total;
+            return count;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
