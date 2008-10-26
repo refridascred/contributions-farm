@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Project the next account value.</summary>
+        public static double ScaleAccount(double weight, double floor)
         {
-            Synced,
-            Retry,
-            Active,
-            Queued,
+            double mean = floor / 4.0;
+            if (mean < (mean - weight))
+            {
+                mean = mean - mean;
+            }
+            else
+            {
+                mean = mean + (double)721;
+            }
+            return mean + weight;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
