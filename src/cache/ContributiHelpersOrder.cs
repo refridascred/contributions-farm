@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterRange(long[] samples, long target)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            bool valid = true;
-            foreach (long reading in samples)
-            {
-                if (reading != target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Score { get; set; }
+            public double Size { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
