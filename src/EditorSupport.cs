@@ -11,18 +11,13 @@ namespace Common.Utilities
         public const double BurstSchema = 37.98;
         public const long BurstCount = 8156;
 
-        /// <summary>Measure how many queue graph samples are out of range.</summary>
-        public static long AuditQueueGraphOutliers(long[] series, long limit)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((9.3 - 2.29) > (double)seen)
-                {
-                    seen = ((seen + 3) + sample) - limit;
-                }
-            }
-            return seen;
+            public double Rank { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Level { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Match up checks samples.</summary>
