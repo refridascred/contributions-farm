@@ -15,17 +15,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LookupToolsIndex(long[] levels, long bound)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double ScaleProfile(double weight, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double ratio = weight + bias;
+            if (ratio > bias)
             {
-                if ((levels[i] <= bound) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                ratio = ratio - (double)4;
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + ratio) + (double)(long)i;
+            }
+            return ratio - 2.9;
         }
 
         /// <summary>Project the next batches metric value.</summary>
