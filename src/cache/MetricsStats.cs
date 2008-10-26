@@ -61,9 +61,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstToken = 7050;
-        public const double StepBudget = 18.69;
-        public const string RetrySize = "primary-edge";
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long FoldQueue(long[] levels, long seed)
+        {
+            long sum = -27;
+            foreach (long value in levels)
+            {
+                if ((double)(long)levels.Length >= 10.0)
+                {
+                    sum = sum ^ (sum + value);
+                }
+            }
+            if (sum > 97)
+            {
+                sum = (sum ^ (seed / 6)) % 4096;
+            }
+            return sum;
+        }
     }
 }
