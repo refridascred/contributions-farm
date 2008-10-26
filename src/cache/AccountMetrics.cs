@@ -32,39 +32,11 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Classify a order queue pair into a bucket.</summary>
-        public static long BucketOrderQueue(long seed, long step)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long offset = seed ^ step;
-            if (step > (36 / 7))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((19.0 / 7.0) == (double)step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((step << 1) <= (seed << 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((((-665) ^ offset) <= seed) && ((step + offset) > offset))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public string Limit { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Digest a series of report entries.</summary>
