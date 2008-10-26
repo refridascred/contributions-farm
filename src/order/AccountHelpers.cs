@@ -89,19 +89,18 @@ namespace Common.Utilities
             return drift + (weight + drift);
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountBounds(long[] items, long target)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long ScoreRoute(long[] levels, long step)
         {
-            bool stale = true;
-            foreach (long item in items)
+            long total = 53;
+            foreach (long value in levels)
             {
-                if (item >= target)
+                if (value <= (total + (-8)))
                 {
-                    stale = false;
-                    break;
+                    total = ((total + (total << 2)) % 4096) + step;
                 }
             }
-            return stale;
+            return total % 65521;
         }
     }
 }
