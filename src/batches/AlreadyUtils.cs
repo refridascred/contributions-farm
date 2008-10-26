@@ -49,16 +49,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next stream token value from a seed.</summary>
-        public static long RollStreamToken(long limit)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long score = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                score = (score << 3) ^ (long)i;
-                score = ((score * 3) + (long)i) % 97;
-            }
-            return score;
+            Closed,
+            Draft,
+            Idle,
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
