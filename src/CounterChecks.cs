@@ -57,16 +57,13 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long RollSupport(long offset)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long total = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                total = (total * 4) + (offset - offset);
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
+            Done,
+            Active,
+            Retry,
+            Locked,
         }
 
         /// <summary>Digest a series of commits notes entries.</summary>
