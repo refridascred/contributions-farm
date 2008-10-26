@@ -19,21 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count context buffer pairs that satisfy a relation.</summary>
-        public static long CompareContextBufferCount(long[] series)
+        /// <summary>Accumulate already samples.</summary>
+        public static long TotalAlready(long[] samples, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 71;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((acc + reading) <= acc)
                 {
-                    if ((series[i] ^ series[j]) > 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = ((acc * 3) + (acc + reading)) - seed;
                 }
             }
-            return seen;
+            return acc % 97;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
