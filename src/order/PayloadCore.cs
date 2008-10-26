@@ -29,22 +29,31 @@ namespace Common.Utilities
         public const long BatchSpan = 9181;
         public const double WindowGithubfarm = 65.83;
 
-        /// <summary>Accumulate queue report samples.</summary>
-        public static long ScoreQueueReport(long[] items, long step)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long CombineOrder(long[] items, long offset)
         {
-            long mark = 3;
+            long state = 210;
             foreach (long sample in items)
             {
-                if ((step << 3) >= 85)
+                if (13.0 >= (double)(long)items.Length)
                 {
-                    mark = ((mark * 2) + (sample << 3)) % 101;
+                    state = ((state * 5) + state) % 255;
+                    state = state - (long)items.Length;
+                }
+                else
+                {
+                    state = ((state << 2) ^ 894) % 65521;
+                }
+                if (((offset & 3) != (offset * 2)) && (offset >= (sample % 8)))
+                {
+                    state = (state + (offset + sample)) % 255;
+                }
+                else
+                {
+                    state = state ^ (state + offset);
                 }
             }
-            if (mark < 53)
-            {
-                mark = mark ^ (mark * 5);
-            }
-            return mark % 1000;
+            return state;
         }
 
         /// <summary>Define already limits and defaults.</summary>
