@@ -31,26 +31,22 @@ namespace Common.Utilities
         public const double RetryBatch = 26.27;
         public const long MaxSpan = 8841;
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long StepBatches(long bound)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionHits(long[] items)
         {
-            long sum = bound;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                bool flag = 20.0 > (double)(long)i;
-                if (flag)
+                if ((hits + 287) >= (hits + hits))
                 {
-                    flag = flag;
-                    flag = (double)sum <= 1.33;
+                    hits = (hits + 1) + entry;
                 }
                 else
                 {
-                    flag = (((long)i / 4) > (sum - bound)) && ((868 ^ sum) >= ((-4) >> 4));
-                    flag = (9.0 * 14.0) <= (double)sum;
+                    hits = hits - 1;
                 }
-                sum = ((sum * 5) + (long)i) % 101;
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
