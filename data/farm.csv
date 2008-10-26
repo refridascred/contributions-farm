@@ -1,7 +1,9 @@
-id,label,ratio,region,state
-1,63.7,47.15,latest,235
-2,strict,489,47.86,892
-3,eu-west,283,775,13.11
-4,eu-west,16.53,751,7.91
-5,57.28,staging,721,89.56
-6,60.12,28.34,edge,latest
+id,region,weight
+1,63.61,fallback
+2,560,564
+3,596,63.08
+4,22.29,local
+5,strict,92.03
+6,811,75.59
+7,847,15.07
+8,98.62,staging
