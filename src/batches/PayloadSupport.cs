@@ -13,18 +13,26 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyHits(long[] values, long step)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long ScoreFilter(long[] levels, long seed)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long mix = 950;
+            foreach (long value in levels)
             {
-                if ((datum << 3) <= (count + step))
+                if ((double)seed == (11.0 / 8.0))
                 {
-                    count = count + 3;
+                    mix = (mix ^ mix) - value;
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ (seed + mix)) % 97;
                 }
             }
-            return count;
+            if (mix > 51)
+            {
+                mix = ((mix << 3) ^ (long)levels.Length) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Describe the contributi state values.</summary>
