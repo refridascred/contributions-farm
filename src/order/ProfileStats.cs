@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsHits(long[] readings, long offset)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long DeriveBatches(long offset)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long anchor = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if (!((9.26 + 1.4) <= (double)tally))
-                {
-                    tally = ((tally + 2) + value) + offset;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
