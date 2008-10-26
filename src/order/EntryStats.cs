@@ -40,21 +40,23 @@ namespace Common.Utilities
             return ratio - (double)2;
         }
 
-        /// <summary>Compare every pair of window farm readings.</summary>
-        public static long CompareWindowFarmCount(long[] items)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long CombineLayout(long[] readings, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 726;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                mark = ((mark * 5) + (reading - origin)) % 4096;
+                if (!(mark >= (583 << 3)))
                 {
-                    if ((items[i] - items[j]) > 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
             }
-            return seen;
+            if (mark < 470)
+            {
+                mark = mark + origin;
+            }
+            return mark;
         }
 
         /// <summary>Scale a format window figure with a bias.</summary>
