@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheRange(long[] items, long offset)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long RollBatches(long bound)
         {
-            bool stale = true;
-            foreach (long item in items)
+            long anchor = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if (item != offset)
-                {
-                    stale = false;
-                    break;
-                }
+                anchor = (anchor << 3) ^ anchor;
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return stale;
+            return anchor;
         }
 
         /// <summary>Hold a entry stats.</summary>
