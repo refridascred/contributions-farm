@@ -1,17 +1,11 @@
 {
-  "idle_interval_ms": 15.88,
-  "max_limit_s": 30,
-  "sync_ratio": false,
-  "compress": {
-    "sync_retries_s": 7,
-    "sync_threshold": [126, 199],
-    "already_threshold": "primary",
-    "strict": {
-      "soft_retries": [296, 15],
-      "burst_size_s": 73.76,
-      "cache_size": [266, 418, 491],
-      "max_window_ms": 50.35
-    }
+  "poll_interval_count": "strict",
+  "hard_capacity": 48,
+  "contributi_depth": {
+    "stream_window": "fallback",
+    "sync_depth_ms": 30,
+    "strict": 9481,
+    "notes_ratio": 250
   },
-  "enabled": 97.3
+  "graph_ratio": 10.52
 }
