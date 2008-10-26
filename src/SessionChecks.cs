@@ -16,14 +16,14 @@ namespace Common.Utilities
             return gain - scale;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            Queued,
-            Closed,
-            Pending,
-            Locked,
-            Synced,
+            Done,
+            Active,
+            Draft,
+            New,
+            Failed,
         }
 
         /// <summary>Describe the window level values.</summary>
