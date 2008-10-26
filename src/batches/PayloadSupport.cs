@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadHits(long[] readings)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheOutliers(long[] data)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if (!((reading >> 5) != (reading * 4)))
+                if ((entry + 959) <= entry)
                 {
-                    tally = tally + 1;
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
