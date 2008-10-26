@@ -1,8 +1,6 @@
 {
-  "cache_retries_pct": true,
-  "max_delay": 1631,
-  "max_threshold_s": 1695,
-  "audit": 250,
-  "queue_size": "edge",
-  "burst_retries": "staging"
+  "report_retries": "edge",
+  "cache_retries": [222, 280, 203],
+  "strict": false,
+  "sync_timeout_s": "edge"
 }
