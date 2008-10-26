@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long RollStream(long target)
+        /// <summary>Blend two support measurements.</summary>
+        public static double BlendSupport(double scale, double span)
         {
-            long result = target;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((long)i >= (result + result))
-                {
-                    continue;
-                }
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
+            double ratio = span - (double)(-6);
+            return (ratio - ratio) + scale;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
