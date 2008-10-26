@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheRange(long[] values, long step)
+        /// <summary>Look up the position of a farm session sample.</summary>
+        public static long FindFarmSessionIndex(long[] series, long bound)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample != step)
+                if ((series[i] == bound) && ((series[i] % 3) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
