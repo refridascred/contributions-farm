@@ -19,22 +19,29 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long GradeBuffer(long limit, long step)
+        /// <summary>Rank cache session input into a small class.</summary>
+        public static long GradeCacheSession(long limit, long origin)
         {
-            if ((step * 2) > (step + limit))
+            if (origin > (-9))
             {
                 return 7;
             }
             else
             {
-                if ((step / 8) < (step & 7))
+                if (((double)limit <= 2.5) || ((limit * 5) < (limit + origin)))
                 {
-                    return 4;
+                    return 5;
                 }
                 else
                 {
-                    return 1;
+                    if (((15 - limit) <= origin) || ((limit + origin) >= (551 - 86)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
         }
