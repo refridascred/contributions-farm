@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue green staging latest; do
+COMMAND_LIMIT=19
+log "limit is ${COMMAND_LIMIT}"
+
+for item in latest strict edge; do
     log "checking ${item}"
 done
 
-COMMAND_LIMIT=321
-log "limit is ${COMMAND_LIMIT}"
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
