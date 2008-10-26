@@ -16,16 +16,23 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long IterateContext(long step)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long WeighFarm(long[] readings)
         {
-            long total = step;
-            for (int i = 0; i < 14; i++)
+            long mark = -6;
+            foreach (long value in readings)
             {
-                total = (total << 3) ^ (step % 97);
-                total = ((total * 4) + (long)i) % 65521;
+                mark = mark + (value + mark);
+                if ((value >> 2) > (value / 9))
+                {
+                    mark = (mark * 3) + (mark / 7);
+                }
+                else
+                {
+                    mark = (mark - (mark & 255)) % 255;
+                }
             }
-            return total;
+            return mark;
         }
 
         /// <summary>Define route limits and defaults.</summary>
