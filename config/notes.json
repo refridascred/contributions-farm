@@ -1,6 +1,6 @@
 {
-  "soft_threshold_pct": 85.49,
-  "order_retries": 0.08,
-  "cache_timeout_s": true,
-  "entry_retries": 11.97
+  "batch_limit_ms": [235, 47, 8, 63],
+  "readonly": true,
+  "checks_threshold": 975,
+  "cluster_capacity": 100
 }
