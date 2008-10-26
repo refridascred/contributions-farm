@@ -53,21 +53,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long OverlapStreamCount(long[] series)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Done,
+            Synced,
+            Draft,
+            Ready,
+            Idle,
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
