@@ -21,21 +21,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long MatchEditorCount(long[] series)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long RollFormat(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return seen;
+            return state;
         }
     }
 }
