@@ -1,16 +1,17 @@
 {
-  "warm_retries_count": 30,
-  "commits_timeout": {
-    "contributi_ttl": {
-      "record_timeout": ["eu-west", "green", "edge"],
-      "profile_limit": "standard",
-      "cache_threshold": 88.17
+  "soft_ratio_pct": {
+    "batches_threshold": 528,
+    "persist": 250,
+    "audit": 11.78,
+    "stats_size": {
+      "graph_depth": true,
+      "hard_limit_ms": 65.84,
+      "compress": false
     },
-    "persist": 40,
-    "compress": true,
-    "max_window": ["fallback", "eu-west"]
+    "warm_limit_ms": "blue",
+    "tools_retries": 88.84
   },
-  "burst_limit": 60,
-  "default_window_pct": 68,
-  "min_depth_count": ["local", "edge", "fallback"]
+  "flush_size_s": 52.75,
+  "audit": 42,
+  "soft_interval_ms": 56.55
 }
