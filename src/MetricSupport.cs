@@ -30,19 +30,14 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmLimits(long[] levels, long step)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            bool stale = true;
-            foreach (long item in levels)
-            {
-                if (item < step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Idle,
+            Closed,
+            New,
+            Paused,
+            Dropped,
         }
     }
 }
