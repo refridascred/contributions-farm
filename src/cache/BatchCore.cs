@@ -43,15 +43,13 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double SmoothBatches(double ratio, double floor)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            double bias = 9.58 + (ratio + ratio);
-            if (bias <= (14.0 - bias))
-            {
-                bias = bias + bias;
-            }
-            return bias - (floor + floor);
+            public string Stamp { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Region { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
