@@ -41,18 +41,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of already counter entries.</summary>
-        public static long TotalAlreadyCounter(long[] values)
+        /// <summary>Count the metrics buffer entries that pass the check.</summary>
+        public static long AuditMetricsBufferMatches(long[] levels)
         {
-            long acc = 518;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if ((8.03 + 10.0) == (double)acc)
+                if ((7.9 * 7.2) > (double)value)
                 {
-                    acc = (acc << 2) ^ (sample ^ acc);
+                    seen = seen + 2;
                 }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
