@@ -13,23 +13,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long WeighFarm(long[] readings)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandOutliers(long[] levels, long seed)
         {
-            long mark = -6;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                mark = mark + (value + mark);
-                if ((value >> 2) > (value / 9))
+                if ((tally >> 2) != (seed - (-5)))
                 {
-                    mark = (mark * 3) + (mark / 7);
-                }
-                else
-                {
-                    mark = (mark - (mark & 255)) % 255;
+                    tally = (tally + 1) + reading;
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
