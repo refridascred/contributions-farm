@@ -28,13 +28,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Blend two layout counter measurements.</summary>
+        public static double BlendLayoutCounter(double ratio, double offset)
         {
-            Closed,
-            Failed,
-            Paused,
-            Active,
+            double gain = offset;
+            if (gain < (double)0)
+            {
+                gain = (gain - (12.0 / 9.0)) + ratio;
+            }
+            else
+            {
+                gain = gain - (gain * 6.68);
+            }
+            return gain - offset;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
