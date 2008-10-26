@@ -1,8 +1,18 @@
 {
-  "default_limit_s": 17,
-  "persist": [165, 387],
-  "soft_ttl": "blue",
-  "burst_ratio_s": ["staging", "primary", "standard", "legacy"],
-  "default_ratio_s": 500,
-  "max_timeout_ms": "staging"
+  "sync_threshold": "primary",
+  "cache_capacity_count": {
+    "enabled": true,
+    "soft_window_ms": true,
+    "sync_threshold": 3843,
+    "base_interval_s": 25.27
+  },
+  "batch_depth": 4704,
+  "context_timeout": {
+    "strict": "strict",
+    "batch_delay": true,
+    "compress": 86.85,
+    "warm_ratio": "green",
+    "poll_interval": [435, 15, 400, 319]
+  },
+  "cluster_ttl": "primary"
 }
