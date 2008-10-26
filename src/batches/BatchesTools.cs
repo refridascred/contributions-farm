@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TallyFarm(long[] items, long limit)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long SeriesOrder(long offset)
         {
-            long result = 9;
-            foreach (long reading in items)
+            long total = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if ((limit << 2) <= (reading + limit))
-                {
-                    result = ((result * 5) + (reading - limit)) % 97;
-                }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return result;
+            return total;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
