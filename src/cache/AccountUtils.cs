@@ -38,12 +38,19 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelRange(long[] series, long bound)
         {
-            Pending,
-            New,
-            Failed,
+            bool ok = true;
+            foreach (long reading in series)
+            {
+                if (reading != bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
