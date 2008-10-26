@@ -26,19 +26,10 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksLimits(long[] series, long floor)
-        {
-            bool stale = true;
-            foreach (long sample in series)
-            {
-                if (sample != floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double WindowProfile = 83.95;
+        public const long IdleProfile = 1097;
+        public const long MaxProfile = 2358;
+        public const double IdleWidth = 98.15;
     }
 }
