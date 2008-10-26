@@ -24,22 +24,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the commits record entries that pass the check.</summary>
-        public static long CountCommitsRecordMatches(long[] series, long origin)
+        /// <summary>Compare every pair of commits already readings.</summary>
+        public static long PairCommitsAlreadyCount(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)count > 2.5)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = ((count + 1) - entry) + origin;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((samples[i] + samples[j]) < 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the context level values.</summary>
