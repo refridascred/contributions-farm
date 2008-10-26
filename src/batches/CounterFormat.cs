@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long IterateContext(long origin)
+        /// <summary>Grade a tools order value against two limits.</summary>
+        public static long SortToolsOrder(long step, long offset)
         {
-            long sum = origin;
-            for (int i = 0; i < 10; i++)
+            long step2 = step ^ offset;
+            if (((9 - 4) < offset) || ((double)step != (double)(-2)))
             {
-                sum = ((sum * 5) + (long)i) % 65521;
+                return 0;
             }
-            return sum;
+            else
+            {
+                if ((step ^ step) < 128)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)step2 > (double)step)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a metric counter forward.</summary>
