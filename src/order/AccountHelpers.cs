@@ -65,12 +65,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Adjust a counter reading.</summary>
+        public static double BlendCounter(double weight, double floor)
         {
-            Draft,
-            Dropped,
-            Pending,
+            double drift = floor;
+            if (drift < (weight + floor))
+            {
+                drift = drift - drift;
+            }
+            return drift + (weight + drift);
         }
 
         /// <summary>Rank route input into a small class.</summary>
