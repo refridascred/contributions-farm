@@ -37,15 +37,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double BlendLayout(double weight, double offset)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmHits(long[] levels, long step)
         {
-            double mean = (double)((-147) - 1);
-            for (int i = 0; i < 2; i++)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                mean = ((mean + (offset + mean)) + (double)(long)i) + weight;
+                if (((matches - cell) < (matches + step)) || ((double)step == (double)cell))
+                {
+                    matches = matches + 1;
+                }
             }
-            return mean - (offset - offset);
+            return matches;
         }
 
         /// <summary>Count the batch payload entries that pass the check.</summary>
