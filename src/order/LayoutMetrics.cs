@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinStats = 8355;
-        public const long BatchCount = 8217;
-        public const long BurstStats = 4726;
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
+        {
+            Retry,
+            Ready,
+            Pending,
+            Idle,
+            Dropped,
+        }
 
         /// <summary>Locate a tools reading by value.</summary>
         public static long LookupToolsIndex(long[] levels, long bound)
