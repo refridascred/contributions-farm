@@ -29,19 +29,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every counter stream entry stays within the limit.</summary>
-        public static bool GuardCounterStreamBounds(long[] series, long seed)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsLimits(long[] readings, long target)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                if (reading <= seed)
+                if (reading > target)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
 
         /// <summary>Adjust a graph reading.</summary>
