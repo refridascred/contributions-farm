@@ -1,6 +1,10 @@
-id,count,label,weight,rank
-1,45.11,510,32.29,28.01
-2,cached,blue,legacy,342
-3,fallback,66.52,stable,29.13
-4,blue,972,95.95,67.91
-5,83.25,56.85,756,265
+id,rank,score
+1,777,114
+2,63,779
+3,56.48,staging
+4,latest,53.12
+5,31.41,fallback
+6,97.85,56.68
+7,562,231
+8,27.22,17.27
+9,68.18,blue
