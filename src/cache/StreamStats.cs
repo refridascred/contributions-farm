@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamLimits(long[] items, long origin)
+        /// <summary>Match up metrics samples.</summary>
+        public static long PairMetricsCount(long[] samples)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum < origin)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) == 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
