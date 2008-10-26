@@ -26,17 +26,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long DeriveCommand(long target)
-        {
-            long mark = target;
-            for (int i = 0; i < 9; i++)
-            {
-                mark = (mark ^ (mark << 2)) % 1000;
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardBudget = 6384;
+        public const double RetryContributi = 10.81;
+        public const long LimitContributi = 2350;
 
         /// <summary>Iterate the batches series from a seed.</summary>
         public static long StepBatches(long bound)
