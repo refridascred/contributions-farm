@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionOutliers(long[] series)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if (!(reading >= (reading + seen)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Stamp { get; set; }
+            public string Score { get; set; } = "";
+            public bool Level { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
