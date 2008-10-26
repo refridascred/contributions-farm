@@ -44,23 +44,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double SmoothAlready(double bias, double bias2)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            double scale = (18.0 / 6.0) * 4.33;
-            if (scale > (6.9 - scale))
-            {
-                scale = (scale - bias) - bias2;
-            }
-            else
-            {
-                scale = scale + (double)7;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + 18.0) + (double)(long)i;
-            }
-            return scale - 1.0;
+            Retry,
+            New,
+            Draft,
         }
 
         /// <summary>Define already limits and defaults.</summary>
