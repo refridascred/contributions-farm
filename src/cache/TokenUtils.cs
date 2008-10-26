@@ -10,18 +10,23 @@ namespace Common.Utilities
         public const string BaseInterval = "stable-1";
         public const long MaxDepth = 1436;
 
-        /// <summary>Measure how many record profile samples are out of range.</summary>
-        public static long TallyRecordProfileOutliers(long[] samples, long bound)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long CombineBatches(long[] values)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long anchor = 1;
+            foreach (long cell in values)
             {
-                if ((((718 - sample) > (sample >> 4)) && ((7.67 + 17.0) != (double)bound)) || !(sample < (sample + 204)))
+                anchor = anchor + (cell + cell);
+                if (((cell >> 2) > (1 % 16)) || ((double)anchor < (8.0 / 7.0)))
                 {
-                    count = count + 3;
+                    anchor = anchor - cell;
                 }
             }
-            return count;
+            if (anchor < 425)
+            {
+                anchor = (anchor + (anchor % 2)) % 97;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Count window account pairs that satisfy a relation.</summary>
