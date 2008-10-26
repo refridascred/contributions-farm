@@ -62,21 +62,22 @@ namespace Common.Utilities
         public const long BurstLevel = 486;
         public const long MaxCluster = 7745;
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long MatchEntryCount(long[] series)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TotalQueue(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = 4;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!(mix > (value >> 3)))
                 {
-                    if ((series[i] ^ series[j]) < 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = (mix + (value >> 2)) % 4096;
+                }
+                if (!((value - value) < (value + value)))
+                {
+                    break;
                 }
             }
-            return seen;
+            return mix % 97;
         }
     }
 }
