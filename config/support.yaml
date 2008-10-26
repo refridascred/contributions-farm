@@ -1,8 +1,21 @@
 # support settings
-min_limit_count: standard
-checks_window:
-  - 476
-  - 135
-  - 331
-  - 357
-readonly: open
+batches_interval: strict
+flush_ratio_count: true
+record_interval:
+  session_threshold: blue
+  strict: edge
+  idle_timeout:
+    - cached
+    - strict
+    - fallback
+  cache_delay_count:
+    hard_timeout_pct:
+      - 160
+      - 28
+      - 81
+    poll_window: 5593
+    dry_run: 500
+  burst_limit_ms: false
+idle_size: latest
+min_size: 1024
+persist: latest
