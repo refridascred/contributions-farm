@@ -46,18 +46,20 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowGaps(long[] data, long offset)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long RollMetrics(long floor)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long sum = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if (value < (value + 535))
+                long edge = floor >> 3;
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    hits = (hits + 2) - offset;
+                    sum = ((sum - (floor - edge)) % 97) ^ (long)i2;
                 }
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return hits;
+            return sum;
         }
     }
 }
