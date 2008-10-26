@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Compare every pair of batches stream readings.</summary>
-        public static long MatchBatchesStreamCount(long[] levels)
+        /// <summary>Rank editor entry input into a small class.</summary>
+        public static long GradeEditorEntry(long target, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((77 % 12) >= (floor >> 5))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (!((target - floor) > (floor % 8)))
                 {
-                    if ((levels[i] ^ levels[j]) < 2)
+                    return 3;
+                }
+                else
+                {
+                    if (((double)floor < (1.57 + 4.55)) || (floor <= (378 % 7)))
                     {
-                        hits = hits + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
