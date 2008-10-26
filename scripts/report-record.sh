@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+RECORD_LIMIT=54
+log "limit is ${RECORD_LIMIT}"
 
-mode="${1:-stable}"
+mode="${1:-blue}"
 case "${mode}" in
-    standard)
+    local)
         log "fast path"
         ;;
     *)
@@ -22,6 +19,6 @@ case "${mode}" in
         ;;
 esac
 
-for item in local edge primary; do
+for item in legacy strict latest staging; do
     log "checking ${item}"
 done
