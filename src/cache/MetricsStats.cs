@@ -52,14 +52,15 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TotalBatches(long[] samples)
         {
-            Stale,
-            Retry,
-            Locked,
-            Queued,
-            Closed,
+            long sum = 4;
+            foreach (long sample in samples)
+            {
+                sum = ((sum << 2) ^ (sample & 63)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
