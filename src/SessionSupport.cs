@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate order layout readings against a bound.</summary>
-        public static bool GuardOrderLayoutBounds(long[] samples, long floor)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            bool stale = true;
-            foreach (long datum in samples)
-            {
-                if (datum >= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Idle,
+            Synced,
+            Active,
         }
 
         /// <summary>Describe the layout level values.</summary>
