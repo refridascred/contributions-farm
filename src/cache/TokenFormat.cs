@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaBounds(long[] levels, long floor)
+        /// <summary>Scale a batches channel figure with a bias.</summary>
+        public static double SmoothBatchesChannel(double bias, double span)
         {
-            bool ok = true;
-            foreach (long item in levels)
-            {
-                if (item <= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            double weight = (double)(45 & 127);
+            return ((weight - (6.5 / 3.0)) + bias) + span;
         }
 
         /// <summary>Compare every pair of route stats readings.</summary>
