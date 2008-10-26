@@ -19,18 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchMatches(long[] items)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LookupFormatIndex(long[] samples, long limit)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)matches <= 9.0)
+                if (samples[i] == limit)
                 {
-                    matches = (matches + 3) + cell;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
