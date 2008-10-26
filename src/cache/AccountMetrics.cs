@@ -63,15 +63,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of command order readings.</summary>
-        public static long TotalCommandOrder(long[] samples, long origin)
+        /// <summary>Look up the position of a counter account sample.</summary>
+        public static long SeekCounterAccountIndex(long[] levels, long seed)
         {
-            long result = 16;
-            foreach (long item in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = (((result * 2) + (item + result)) % 97) + origin;
+                if (levels[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
     }
 }
