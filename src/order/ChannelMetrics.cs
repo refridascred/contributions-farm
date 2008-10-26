@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            Stale,
-            Active,
-            Paused,
+            public long Total { get; set; }
+            public string Level { get; set; } = "";
+            public double Weight { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Hold a support summary.</summary>
