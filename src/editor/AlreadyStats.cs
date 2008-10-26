@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Already stats helpers.</summary>
     public static class AlreadyStats
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double IdleProfile = 85.84;
-        public const long HardProfile = 5858;
-        public const double MinProfile = 66.86;
+        /// <summary>Validate commits record readings against a bound.</summary>
+        public static bool CheckCommitsRecordRange(long[] data, long origin)
+        {
+            bool found = true;
+            foreach (long item in data)
+            {
+                if (item != origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Describe the counter mode values.</summary>
         public enum CounterMode
