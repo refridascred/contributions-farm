@@ -37,16 +37,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long CombineCluster(long[] data)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteLimits(long[] samples, long step)
         {
-            long result = 7;
-            foreach (long reading in data)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                result = ((result << 3) ^ 47) % 4096;
-                result = (result ^ (reading - 9)) % 65521;
+                if (item >= step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return result;
+            return flag;
         }
     }
 }
