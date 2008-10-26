@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportOutliers(long[] readings)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long StepEditor(long seed)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long mark = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if ((double)matches < 8.93)
+                if (mark > (mark * 5))
                 {
-                    matches = (matches + 2) ^ entry;
+                    mark = (mark + (long)i) % 4096;
                 }
+                long lane = seed;
+                if ((mark >> 4) <= (seed >> 1))
+                {
+                    long span = lane;
+                    mark = ((mark << 2) ^ (span + (long)i)) % 255;
+                }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
