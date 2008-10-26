@@ -51,18 +51,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long ScoreFormat(long[] items)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long anchor = 8;
-            foreach (long sample in items)
-            {
-                if ((sample * 3) == (7 << 3))
-                {
-                    anchor = (anchor << 3) ^ sample;
-                }
-            }
-            return anchor % 97;
+            Pending,
+            Failed,
+            New,
+            Idle,
+            Draft,
         }
     }
 }
