@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Rank schema editor input into a small class.</summary>
-        public static long BucketSchemaEditor(long target, long floor)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long slot = target + floor;
-            if ((double)target <= (double)slot)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((slot << 2) >= (slot + 756))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((4.36 * 3.25) >= (double)floor)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Synced,
+            Retry,
+            Active,
+            Queued,
         }
 
         /// <summary>Hold a stream options.</summary>
