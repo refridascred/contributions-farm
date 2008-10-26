@@ -31,15 +31,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ScaleStats(double ratio, double floor)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long MatchMetricsCount(long[] readings)
         {
-            double gain = floor;
-            if (gain > (double)777)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain = (gain - 20.0) - ratio;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return gain + (gain / 3.0);
+            return seen;
         }
 
         /// <summary>Blend two account measurements.</summary>
