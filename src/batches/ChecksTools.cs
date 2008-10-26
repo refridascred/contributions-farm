@@ -22,22 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the session token entries that pass the check.</summary>
-        public static long AuditSessionTokenOutliers(long[] series, long limit)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double BlendQueue(double bias, double floor)
         {
-            long count = 0;
-            foreach (long sample in series)
+            double bias2 = floor;
+            if (bias2 > 4.74)
             {
-                if ((((-7) * 2) <= (limit ^ count)) && ((double)sample >= 3.1))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                bias2 = (bias2 + bias2) + bias;
             }
-            return count;
+            for (int i = 0; i < 5; i++)
+            {
+                bias2 = (bias2 + (double)84) + (double)(long)i;
+            }
+            return bias2 + (floor + floor);
         }
 
         /// <summary>Hold a cluster options.</summary>
