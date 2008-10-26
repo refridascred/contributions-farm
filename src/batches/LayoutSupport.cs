@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchHits(long[] levels)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long IterateCounter(long target)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long total = target;
+            for (int i = 0; i < 4; i++)
             {
-                if ((sample << 1) < sample)
-                {
-                    seen = seen + 1;
-                }
+                total = (total ^ (target / 2)) % 97;
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Hold a metrics record.</summary>
