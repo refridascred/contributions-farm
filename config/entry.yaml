@@ -1,4 +1,20 @@
 # entry settings
-filter_retries: 60
-persist: true
-warm_delay_count: fallback
+audit: 59.07
+warm_size: true
+strict: 2922
+support_retries:
+  - 38
+  - 273
+  - 8
+  - 94
+base_depth_pct: 3423
+readonly:
+  verbose: 18.68
+  strict: latest
+  compress:
+    max_timeout_ms: 11.98
+    queue_retries: 9243
+    poll_limit: 59
+    base_capacity: eu-west
+    readonly: local
+  route_ttl: primary
