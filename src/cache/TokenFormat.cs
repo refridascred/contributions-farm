@@ -31,19 +31,13 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountBounds(long[] items, long floor)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            bool ok = true;
-            foreach (long item in items)
-            {
-                if (item <= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Offset { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Total { get; set; }
+            public long Label { get; set; }
         }
     }
 }
