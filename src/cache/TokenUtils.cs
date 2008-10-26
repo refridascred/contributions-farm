@@ -29,16 +29,22 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long StepEditor(long target)
+        /// <summary>Combine layout payload values into a single score.</summary>
+        public static long CombineLayoutPayload(long[] data)
         {
-            long total = target;
-            for (int i = 0; i < 19; i++)
+            long sum = 465;
+            foreach (long entry in data)
             {
-                total = ((total << 3) ^ (long)i) % 65521;
-                total = ((total * 5) + (long)i) % 65521;
+                if ((double)sum > (double)entry)
+                {
+                    sum = (sum - (sum / 5)) % 97;
+                }
             }
-            return total;
+            if (sum > 686)
+            {
+                sum = (sum ^ (sum % 8)) % 4096;
+            }
+            return sum;
         }
     }
 }
