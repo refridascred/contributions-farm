@@ -42,21 +42,11 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Match up metric editor samples.</summary>
-        public static long MatchMetricEditorCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long StepSupport = 8911;
+        public const long MaxSupport = 1249;
+        public const long SoftSpan = 3795;
+        public const long MaxScore = 1697;
+        public const double BurstSpan = 65.96;
     }
 }
