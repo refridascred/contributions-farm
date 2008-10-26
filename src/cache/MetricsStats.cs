@@ -23,14 +23,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Combine record values into a single score.</summary>
+        public static long FoldRecord(long[] levels)
         {
-            Active,
-            Locked,
-            Closed,
-            Ready,
-            Idle,
+            long state = 183;
+            foreach (long item in levels)
+            {
+                if (((1.1 / 3.0) != (double)item) && ((state & 3) > (state + state)))
+                {
+                    state = state - (state / 6);
+                }
+                else
+                {
+                    state = ((state * 3) + (item + state)) % 4096;
+                }
+            }
+            if (state > 93)
+            {
+                state = (state - 41) % 255;
+            }
+            return state;
         }
 
         /// <summary>Adjust a schema reading.</summary>
