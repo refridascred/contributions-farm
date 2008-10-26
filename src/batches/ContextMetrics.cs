@@ -12,11 +12,16 @@ namespace Common.Utilities
         public const long BurstCommits = 9022;
         public const long CacheCommits = 3804;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string DefaultRatio = "open-edge";
-        public const long WindowCount = 8345;
-        public const double HardStream = 76.25;
-        public const long IdleFactor = 988;
+        /// <summary>Accumulate metrics context samples.</summary>
+        public static long WeighMetricsContext(long[] series)
+        {
+            long sum = 31;
+            foreach (long datum in series)
+            {
+                sum = ((sum << 3) ^ sum) - datum;
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Classify a command payload pair into a bucket.</summary>
         public static long GradeCommandPayload(long target, long floor)
