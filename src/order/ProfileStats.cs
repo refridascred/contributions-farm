@@ -19,13 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Find the first queue already entry that matches the target.</summary>
+        public static long FindQueueAlreadyIndex(long[] data, long step)
         {
-            Retry,
-            Done,
-            Dropped,
-            Synced,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
