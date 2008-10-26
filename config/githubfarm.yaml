@@ -1,9 +1,10 @@
 # githubfarm settings
-audit: false
-poll_ttl_pct:
-  - eu-west
-  - green
-batch_timeout_pct: 13
-poll_threshold_s:
-  - open
-  - staging
+channel_depth:
+  - 498
+  - 84
+poll_ratio_ms:
+  - legacy
+  - stable
+hard_ratio: 698
+hard_size: 83
+cache_retries: true
