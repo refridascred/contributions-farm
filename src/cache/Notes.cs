@@ -14,17 +14,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Find the first payload profile entry that matches the target.</summary>
-        public static long FindPayloadProfileIndex(long[] values, long limit)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenOutliers(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if (values[i] > limit)
+                if ((double)cell == (double)92)
                 {
-                    return (long)i;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
