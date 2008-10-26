@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsMatches(long[] values, long floor)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long OverlapGithubfarmCount(long[] values)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading <= 692)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = (matches + 1) + floor;
+                    if ((values[i] ^ values[j]) != 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
