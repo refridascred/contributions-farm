@@ -10,22 +10,19 @@ namespace Common.Utilities
         public const string IdleGithubfarm = "latest";
         public const long StepScore = 8132;
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileGaps(long[] readings, long bound)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportRange(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                if (((datum << 3) < bound) || ((bound <= (bound * 2)) && ((bound >> 4) == (66 / 6))))
+                if (cell <= origin)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
