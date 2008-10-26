@@ -55,25 +55,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long BucketTools(long step, long bound)
-        {
-            if (((double)bound == (7.02 - 9.1)) && (step >= (bound << 1)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)step < (double)bound)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseCount = 2178;
+        public const long CacheSize = 6259;
+        public const long WindowTimeout = 334;
+        public const long IdleCounter = 5482;
 
         /// <summary>Describe the graph level values.</summary>
         public enum GraphLevel
