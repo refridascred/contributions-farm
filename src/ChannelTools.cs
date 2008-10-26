@@ -11,12 +11,18 @@ namespace Common.Utilities
         public const string BaseAlready = "primary-1";
         public const long BurstFactor = 2707;
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowHits(long[] samples)
         {
-            Done,
-            Active,
-            Synced,
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)entry > 0.4)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
