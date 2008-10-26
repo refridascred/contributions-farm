@@ -51,22 +51,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] levels, long seed)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long sum = 612;
-            foreach (long entry in levels)
-            {
-                if (((entry - seed) < (entry << 3)) && ((seed % 10) > (sum & 3)))
-                {
-                    sum = ((sum << 3) ^ (entry + 414)) % 101;
-                }
-                else
-                {
-                    sum = (sum - (entry ^ seed)) % 1000;
-                }
-            }
-            return sum;
+            public long Total { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
