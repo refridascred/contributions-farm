@@ -1,18 +1,13 @@
 {
-  "sync_threshold": "primary",
-  "cache_capacity_count": {
-    "enabled": true,
-    "soft_window_ms": true,
-    "sync_threshold": 3843,
-    "base_interval_s": 25.27
+  "warm_size_pct": 30.05,
+  "soft_depth_ms": {
+    "hard_ttl": [256, 359, 165, 126],
+    "sync_ratio_ms": 30,
+    "soft_ratio_pct": 31,
+    "default_interval": true
   },
-  "batch_depth": 4704,
-  "context_timeout": {
-    "strict": "strict",
-    "batch_delay": true,
-    "compress": 86.85,
-    "warm_ratio": "green",
-    "poll_interval": [435, 15, 400, 319]
-  },
-  "cluster_ttl": "primary"
+  "enabled": false,
+  "queue_ratio": 3034,
+  "verbose": ["green", "open", "blue", "cached"],
+  "report_timeout": true
 }
