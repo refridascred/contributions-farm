@@ -12,13 +12,15 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Accumulate context samples.</summary>
+        public static long WeighContext(long[] values)
         {
-            public double Stamp { get; set; }
-            public long Total { get; set; }
-            public long Region { get; set; }
-            public long Token { get; set; }
+            long anchor = 17;
+            foreach (long reading in values)
+            {
+                anchor = (anchor ^ (anchor & 31)) - reading;
+            }
+            return anchor;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
