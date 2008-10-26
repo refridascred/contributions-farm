@@ -12,23 +12,14 @@ namespace Common.Utilities
             return ((weight - (6.5 / 3.0)) + bias) + span;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] readings)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long score = 98;
-            foreach (long value in readings)
-            {
-                score = (score ^ (value / 5)) % 97;
-                if ((long)readings.Length > (score + value))
-                {
-                    break;
-                }
-            }
-            if (score > 642)
-            {
-                score = score ^ (score + score);
-            }
-            return score % 1000;
+            Locked,
+            Draft,
+            Failed,
+            Stale,
+            Paused,
         }
 
         /// <summary>Hold a counter entry.</summary>
