@@ -34,21 +34,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long PairPayloadCount(long[] readings)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long GradeEntry(long target, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long diff = target + limit;
+            if ((diff % 2) == (diff / 2))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((163 & 31) <= (800 ^ target))
                 {
-                    if ((readings[i] ^ readings[j]) > 2)
+                    return 1;
+                }
+                else
+                {
+                    if ((510 - diff) == (limit & 15))
                     {
-                        count = count + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((target / 3) < (diff + limit))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a already entry.</summary>
