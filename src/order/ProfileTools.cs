@@ -14,25 +14,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long BucketStream(long seed, long target)
-        {
-            if ((target + seed) == (target & 127))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((target + target) < (seed << 2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseCommits = 6115;
+        public const long BurstCommits = 3528;
+        public const string SoftCommits = "open-edge";
 
         /// <summary>Blend two editor measurements.</summary>
         public static double SmoothEditor(double weight, double floor)
