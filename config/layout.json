@@ -1,6 +1,21 @@
 {
-  "batch_limit": 9602,
-  "default_interval_s": ["strict", "staging", "edge", "latest"],
-  "idle_ratio": 82.55,
-  "batch_limit_ms": "primary"
+  "format_timeout": false,
+  "flush_retries_pct": {
+    "dry_run": {
+      "window_ratio": "legacy",
+      "default_interval_ms": "standard",
+      "checks_limit": [46, 340, 111]
+    },
+    "soft_ratio_count": true,
+    "hard_limit": "legacy",
+    "cache_size_count": true
+  },
+  "poll_ttl_count": "latest",
+  "hard_threshold_pct": ["open", "stable"],
+  "audit": 500,
+  "retry_retries_s": {
+    "sync_interval_count": 79,
+    "commits_window": "open",
+    "buffer_ratio": "staging"
+  }
 }
