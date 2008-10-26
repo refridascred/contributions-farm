@@ -1,7 +1,6 @@
-id,score,active
-1,latest,fallback
-2,607,883
-3,835,974
-4,15.23,18.96
-5,22.26,blue
-6,70.18,378
+id,score,rank,state,level
+1,894,324,67,open
+2,2.72,latest,23.55,876
+3,blue,111,784,370
+4,297,90.01,45.55,591
+5,574,primary,green,82
