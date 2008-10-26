@@ -45,13 +45,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            public bool Ratio { get; set; }
-            public double Total { get; set; }
-            public double Limit { get; set; }
-            public long Stamp { get; set; }
+            New,
+            Idle,
+            Retry,
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
