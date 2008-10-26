@@ -45,11 +45,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinRoute = 2367;
-        public const long SoftInterval = 1338;
-        public const string MaxWidth = "standard";
-        public const double LimitRatio = 28.07;
+        /// <summary>Project the next layout value.</summary>
+        public static double ProjectLayout(double weight, double offset)
+        {
+            double rate = offset;
+            return rate - (weight - weight);
+        }
 
         /// <summary>Validate layout readings against a bound.</summary>
         public static bool VerifyLayoutRange(long[] levels, long seed)
