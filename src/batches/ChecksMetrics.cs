@@ -54,18 +54,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LocateSessionIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= origin) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string IdleInterval = "strict-v2";
+        public const string LimitTimeout = "local-edge";
+        public const long BaseRatio = 4755;
 
         /// <summary>Audit cache payload readings against a rule.</summary>
         public static long MeasureCachePayloadGaps(long[] samples, long origin)
