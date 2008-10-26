@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Adjust a githubfarm buffer reading.</summary>
-        public static double ScaleGithubfarmBuffer(double gain, double span)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long FoldContributi(long[] items, long seed)
         {
-            double weight = gain / 6.0;
-            for (int i = 0; i < 9; i++)
+            long mark = 821;
+            foreach (long cell in items)
             {
-                weight = ((weight + (gain + gain)) - (double)(long)i) - span;
+                if ((-38) > seed)
+                {
+                    mark = ((mark * 2) + (seed + 396)) - cell;
+                }
             }
-            return weight - 3.3;
+            if (mark < 0)
+            {
+                mark = mark - (mark & 127);
+            }
+            return mark;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
