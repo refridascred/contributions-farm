@@ -19,21 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long MatchChannelCount(long[] readings)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long CombineRoute(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 8;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                score = ((score - (score * 4)) % 1000) ^ datum;
+                if (((long)levels.Length - 289) >= (score + score))
                 {
-                    if ((readings[i] + readings[j]) < 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = score - (score - score);
                 }
             }
-            return tally;
+            return score % 4096;
         }
 
         /// <summary>Hold a commits stats.</summary>
