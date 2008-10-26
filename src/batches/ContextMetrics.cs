@@ -28,12 +28,12 @@ namespace Common.Utilities
             return weight + (bias * 6.43);
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            Dropped,
-            Closed,
-            New,
+            Paused,
+            Retry,
+            Failed,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
