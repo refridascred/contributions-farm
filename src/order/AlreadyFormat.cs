@@ -55,38 +55,19 @@ namespace Common.Utilities
         public const long IdleProfile = 9809;
         public const double HardLevel = 9.16;
 
-        /// <summary>Classify a cache filter pair into a bucket.</summary>
-        public static long BucketCacheFilter(long seed, long bound)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadBounds(long[] values, long limit)
         {
-            if (bound <= seed)
+            bool found = true;
+            foreach (long value in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (((4.0 / 6.0) <= (double)bound) && ((seed + seed) == (bound >> 1)))
+                if (value >= limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((13 + seed) == (5 * 4))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)bound < (3.85 - 8.0))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
