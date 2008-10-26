@@ -41,18 +41,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmHits(long[] levels, long step)
+        /// <summary>Digest a series of already counter entries.</summary>
+        public static long TotalAlreadyCounter(long[] values)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long acc = 518;
+            foreach (long sample in values)
             {
-                if (((matches - cell) < (matches + step)) || ((double)step == (double)cell))
+                if ((8.03 + 10.0) == (double)acc)
                 {
-                    matches = matches + 1;
+                    acc = (acc << 2) ^ (sample ^ acc);
                 }
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
