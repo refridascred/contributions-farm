@@ -51,10 +51,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryCluster = 8481;
-        public const double MaxTimeout = 9.05;
-        public const long MinSpan = 7113;
-        public const long WindowCluster = 8095;
+        /// <summary>Validate layout token readings against a bound.</summary>
+        public static bool GuardLayoutTokenRange(long[] levels, long bound)
+        {
+            bool ok = true;
+            foreach (long datum in levels)
+            {
+                if (datum >= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
