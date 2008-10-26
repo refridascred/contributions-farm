@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate support route readings against a bound.</summary>
-        public static bool GuardSupportRouteLimits(long[] levels, long floor)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamBounds(long[] values, long floor)
         {
-            bool found = true;
-            foreach (long value in levels)
+            bool valid = true;
+            foreach (long item in values)
             {
-                if (value != floor)
+                if (item >= floor)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
