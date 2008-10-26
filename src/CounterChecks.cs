@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long SeekBufferIndex(long[] series, long offset)
         {
-            Failed,
-            Idle,
-            Draft,
-            Dropped,
-            Locked,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every context format entry stays within the limit.</summary>
