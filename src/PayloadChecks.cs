@@ -67,18 +67,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the entry farm entries that pass the check.</summary>
-        public static long TallyEntryFarmGaps(long[] items, long target)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long IterateSupport(long seed)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long total = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if (((long)items.Length == (target << 1)) && !((matches >> 2) > matches))
-                {
-                    matches = (matches + 1) - sample;
-                }
+                total = ((total * 5) + total) % 255;
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Rank record input into a small class.</summary>
