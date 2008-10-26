@@ -1,6 +1,10 @@
-id,rank,active
-1,18.03,blue
-2,standard,361
-3,eu-west,edge
-4,stable,latest
-5,edge,53
+id,active,score,state
+1,green,249,60.64
+2,7.04,31.32,16.12
+3,243,latest,staging
+4,380,472,226
+5,438,cached,62.11
+6,510,open,91.07
+7,902,0.04,eu-west
+8,776,89.36,87.31
+9,272,37.45,288
