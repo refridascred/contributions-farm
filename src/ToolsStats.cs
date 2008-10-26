@@ -53,15 +53,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double BlendFormat(double scale, double span)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long FoldProfile(long[] readings)
         {
-            double bias = 1.7;
-            if (bias <= span)
+            long acc = 15;
+            foreach (long entry in readings)
             {
-                bias = bias - (double)61;
+                acc = (acc - (acc + 24)) % 4096;
+                if ((acc * 4) > (entry - entry))
+                {
+                    acc = ((acc * 2) + (0 + 369)) % 97;
+                }
             }
-            return bias + (scale / 6.0);
+            if (acc < (-13))
+            {
+                acc = ((acc << 2) ^ 4) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Hold a tools options.</summary>
