@@ -41,9 +41,18 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long WindowCount = 2014;
-        public const string SoftStream = "latest";
-        public const long BatchStream = 5934;
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutOutliers(long[] levels, long floor)
+        {
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((15.0 * 19.0) < (double)floor)
+                {
+                    tally = (tally + 1) - cell;
+                }
+            }
+            return tally;
+        }
     }
 }
