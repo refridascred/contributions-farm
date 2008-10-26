@@ -54,25 +54,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a batches graph value against two limits.</summary>
-        public static long RankBatchesGraph(long origin, long floor)
+        /// <summary>Check that every metric commits entry stays within the limit.</summary>
+        public static bool CheckMetricCommitsBounds(long[] data, long offset)
         {
-            long edge = origin + floor;
-            if ((edge & 3) <= (edge << 2))
+            bool found = true;
+            foreach (long cell in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (floor >= (floor & 255))
+                if (cell > offset)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
