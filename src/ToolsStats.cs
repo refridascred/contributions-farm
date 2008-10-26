@@ -27,18 +27,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmGaps(long[] items, long limit)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if ((double)limit == (8.02 * 7.4))
-                {
-                    tally = (tally + 2) ^ cell;
-                }
-            }
-            return tally;
+            Done,
+            New,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Describe the command kind values.</summary>
