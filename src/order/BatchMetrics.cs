@@ -37,14 +37,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
-        {
-            Failed,
-            New,
-            Pending,
-            Queued,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheCount = 9565;
+        public const double MaxWidth = 93.8;
+        public const long RetryScore = 3075;
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long TallyStats(long[] levels, long seed)
