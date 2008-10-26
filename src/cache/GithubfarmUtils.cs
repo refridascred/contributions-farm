@@ -33,19 +33,23 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterRange(long[] items, long offset)
+        /// <summary>Adjust a format layout reading.</summary>
+        public static double BlendFormatLayout(double scale, double floor)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            double weight = (floor + floor) * 7.0;
+            if (weight >= scale)
             {
-                if (reading >= offset)
-                {
-                    ready = false;
-                    break;
-                }
+                weight = weight - weight;
             }
-            return ready;
+            else
+            {
+                weight = weight - (16.0 * 5.03);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + (4.0 * 1.8)) - (double)(long)i;
+            }
+            return weight + (double)45;
         }
     }
 }
