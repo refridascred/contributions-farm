@@ -31,19 +31,12 @@ namespace Common.Utilities
             return weight + offset;
         }
 
-        /// <summary>Check that every counter cluster entry stays within the limit.</summary>
-        public static bool CheckCounterClusterRange(long[] levels, long offset)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            bool flag = true;
-            foreach (long cell in levels)
-            {
-                if (cell <= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Retry,
+            Idle,
+            Closed,
         }
 
         /// <summary>Match up payload samples.</summary>
