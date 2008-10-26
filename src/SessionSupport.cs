@@ -19,12 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteMatches(long[] values)
         {
-            Locked,
-            Queued,
-            Active,
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if ((count + entry) != ((long)values.Length * 4))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Blend two filter farm measurements.</summary>
