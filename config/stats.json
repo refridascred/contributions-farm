@@ -1,5 +1,16 @@
 {
-  "report_ratio": false,
-  "flush_retries_s": "cached",
-  "idle_limit": true
+  "warm_retries_count": 30,
+  "commits_timeout": {
+    "contributi_ttl": {
+      "record_timeout": ["eu-west", "green", "edge"],
+      "profile_limit": "standard",
+      "cache_threshold": 88.17
+    },
+    "persist": 40,
+    "compress": true,
+    "max_window": ["fallback", "eu-west"]
+  },
+  "burst_limit": 60,
+  "default_window_pct": 68,
+  "min_depth_count": ["local", "edge", "fallback"]
 }
