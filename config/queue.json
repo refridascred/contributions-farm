@@ -1,7 +1,17 @@
 {
-  "cache_limit": 30,
-  "tools_interval": 41,
-  "compress": false,
-  "retry_capacity": 4565,
-  "base_threshold": "fallback"
+  "flush_capacity_count": {
+    "batch_size_ms": "open",
+    "idle_capacity_count": 26.91,
+    "profile_delay": {
+      "max_retries_s": ["stable", "cached", "local", "eu-west"],
+      "format_timeout": false,
+      "cluster_retries": 3179,
+      "soft_ttl_ms": 19.27
+    },
+    "retry_window": 8776,
+    "commits_size": 43.2,
+    "poll_interval": "latest"
+  },
+  "persist": [92, 322, 351, 319],
+  "compress": "primary"
 }
