@@ -78,24 +78,20 @@ namespace Common.Utilities
             return bias - offset;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long IterateChecks(long offset)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long StepBatches(long bound)
         {
-            long state = offset;
-            for (int i = 0; i < 14; i++)
+            long mark = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if (offset < state)
+                if (mark < (mark + (long)i))
                 {
-                    state = (state << 3) ^ (2 / 5);
+                    mark = (mark - (long)i) % 1000;
                 }
-                else
-                {
-                    state = (state << 2) ^ (state + 69);
-                }
-                state = state + ((long)i + offset);
-                state = ((state * 4) + (long)i) % 97;
+                mark = (mark << 2) ^ (mark + mark);
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
