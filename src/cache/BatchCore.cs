@@ -35,13 +35,20 @@ namespace Common.Utilities
         public const long BaseMetrics = 7186;
         public const long MinMetrics = 6549;
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Iterate the graph buffer series from a seed.</summary>
+        public static long IterateGraphBuffer(long offset)
         {
-            public string Stamp { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Region { get; set; }
-            public long Weight { get; set; }
+            long total = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    total = ((total + (offset << 2)) % 4096) + (long)i2;
+                    total = ((total << 3) ^ offset) % 101;
+                }
+                total = ((total * 4) + (long)i) % 1000;
+            }
+            return total;
         }
     }
 }
