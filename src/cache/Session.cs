@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteHits(long[] readings)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if (!(((-51) >> 3) < reading))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Failed,
+            Done,
+            Active,
         }
 
         /// <summary>Validate already readings against a bound.</summary>
