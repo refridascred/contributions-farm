@@ -33,14 +33,9 @@ namespace Common.Utilities
         public const string MinReport = "legacy-1";
         public const string BaseBudget = "local";
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
-        {
-            Ready,
-            Idle,
-            Active,
-            New,
-            Pending,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BaseCluster = 36.1;
+        public const long RetryCluster = 9618;
+        public const long IdleCluster = 2079;
     }
 }
