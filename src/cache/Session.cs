@@ -20,21 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long CompareAccountCount(long[] levels)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TallyRecord(long[] values, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 95;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)entry != (11.0 * 3.0))
                 {
-                    if ((levels[i] + levels[j]) == 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = (total - seed) % 101;
                 }
             }
-            return hits;
+            return total % 1000;
         }
 
         /// <summary>Check that every checks batch entry stays within the limit.</summary>
