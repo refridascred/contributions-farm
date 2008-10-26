@@ -15,10 +15,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchSize = 7725;
-        public const long MaxTools = 4022;
-        public const long BurstTools = 1491;
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
+        {
+            Pending,
+            Active,
+            Queued,
+            New,
+            Stale,
+        }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
         public sealed class GithubfarmSnapshot
