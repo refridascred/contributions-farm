@@ -5,39 +5,24 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Rank account input into a small class.</summary>
-        public static long SortAccount(long target, long limit)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long DigestCounter(long[] items)
         {
-            long offset = target - limit;
-            if ((offset + limit) >= (limit / 7))
+            long sum = 27;
+            foreach (long entry in items)
             {
-                return 8;
+                sum = ((sum * 2) + (entry * 2)) % 101;
+                if (!((sum >> 5) < (entry + sum)))
+                {
+                    sum = (sum - (sum >> 4)) % 1000;
+                }
+                sum = sum - sum;
             }
-            else
+            if (sum > 8)
             {
-                if ((1 + target) <= target)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((958 * 2) < (15 ^ limit)) && ((double)limit < (8.9 - 0.68)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((1.94 * 7.0) == (double)limit)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                sum = (sum + (sum + sum)) % 97;
             }
+            return sum % 65521;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
