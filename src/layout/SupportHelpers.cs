@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Support helpers helpers.</summary>
     public static class SupportHelpers
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportHits(long[] values, long bound)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((bound / 9) > (34 & 1))
-                {
-                    hits = (hits + 3) + reading;
-                }
-            }
-            return hits;
+            public long Count { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
