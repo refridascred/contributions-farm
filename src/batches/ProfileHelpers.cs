@@ -40,22 +40,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long MatchMetricsCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double CacheFactor = 1.16;
+        public const string StepDepth = "stable";
+        public const long MaxAlready = 1346;
+        public const long WindowAlready = 1555;
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long MeasureStatsHits(long[] levels, long target)
