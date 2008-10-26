@@ -21,11 +21,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Count the session token entries that pass the check.</summary>
+        public static long AuditSessionTokenOutliers(long[] series, long limit)
         {
-            public bool Weight { get; set; }
-            public bool Token { get; set; }
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((((-7) * 2) <= (limit ^ count)) && ((double)sample >= 3.1))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine support values into a single score.</summary>
