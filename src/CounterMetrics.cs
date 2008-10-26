@@ -42,20 +42,20 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long RollMetrics(long floor)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long RollTools(long floor)
         {
-            long sum = floor;
-            for (int i = 0; i < 14; i++)
+            long acc = floor;
+            for (int i = 0; i < 16; i++)
             {
-                long edge = floor >> 3;
-                for (int i2 = 0; i2 < 6; i2++)
+                acc = (acc - ((long)i & 63)) % 65521;
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    sum = ((sum - (floor - edge)) % 97) ^ (long)i2;
+                    acc = ((acc - (floor * 2)) % 101) ^ (long)i2;
                 }
-                sum = ((sum * 3) + (long)i) % 97;
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return sum;
+            return acc;
         }
     }
 }
