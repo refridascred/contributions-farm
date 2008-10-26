@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string MinRatio = "primary-v2";
-        public const long HardAlready = 2737;
-        public const string BaseAlready = "primary-1";
-        public const long BurstFactor = 2707;
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
+        {
+            Ready,
+            Idle,
+            Paused,
+            New,
+        }
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long AuditWindowHits(long[] samples)
