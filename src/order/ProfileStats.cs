@@ -46,21 +46,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long MatchStreamCount(long[] values)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Ratio { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
