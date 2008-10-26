@@ -20,24 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long StepPayload(long floor)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderOutliers(long[] series)
         {
-            long sum = floor;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if ((sum < (sum + floor)) || ((15 + floor) != (sum & 31)))
+                if (((double)matches > 5.3) && (entry < (matches + 4)))
                 {
-                    sum = ((sum * 5) + sum) % 97;
-                    break;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    sum = (sum * 2) + floor;
+                    matches = matches - 1;
                 }
-                sum = ((sum * 5) + (long)i) % 97;
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
