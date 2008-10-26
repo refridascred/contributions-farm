@@ -1,18 +1,9 @@
 # entry settings
-cache_capacity_s: 21.25
-sync_timeout_ms:
-  enabled: 75
-  poll_limit_ms: 1024
-  cluster_window: false
-idle_threshold:
-  min_ttl_s: edge
-  enabled:
-    - edge
-    - staging
-    - strict
-  schema_retries: false
-max_depth_count: stable
-hard_capacity_pct: 407
-persist:
-  - 308
-  - 51
+retry_threshold_count: legacy
+audit: stable
+min_size: local
+cache_retries_count:
+  - fallback
+  - blue
+max_size_ms: 94.09
+batch_capacity: open
