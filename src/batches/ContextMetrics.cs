@@ -14,13 +14,38 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Grade a metrics counter value against two limits.</summary>
+        public static long GradeMetricsCounter(long offset, long floor)
         {
-            public string Level { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
+            if (((6.7 + 7.21) >= (double)floor) || ((floor / 3) > (offset + floor)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((offset & 255) > (offset + offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (24 >= (floor % 7))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((double)floor == (double)offset) || ((3 ^ 789) <= (offset + floor)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the metric mode values.</summary>
