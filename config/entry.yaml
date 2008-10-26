@@ -1,20 +1,4 @@
 # entry settings
-retry_ttl_ms: legacy
-min_delay_pct: green
-dry_run: green
-stats_ratio:
-  poll_window:
-    cluster_ratio: true
-    order_interval: false
-    contributi_limit: 1830
-    idle_threshold_count: blue
-    cache_delay: legacy
-    idle_ttl: staging
-  burst_timeout:
-    - standard
-    - legacy
-  persist: false
-  farm_interval: true
-  stream_retries: 46
-compress: 25.18
-default_ttl_count: 82
+filter_retries: 60
+persist: true
+warm_delay_count: fallback
