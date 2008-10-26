@@ -7,18 +7,18 @@ log() {
 }
 
 total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 4))
+for i in $(seq 1 8); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
 
-for item in strict staging primary stable; do
+for item in local legacy; do
     log "checking ${item}"
 done
 
-mode="${1:-open}"
+mode="${1:-standard}"
 case "${mode}" in
-    cached)
+    legacy)
         log "fast path"
         ;;
     *)
