@@ -37,15 +37,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long DeriveStream(long target)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long mark = target;
-            for (int i = 0; i < 13; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 101;
-            }
-            return mark;
+            public double Token { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
