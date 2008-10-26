@@ -23,15 +23,14 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ProjectFilter(double bias, double bias2)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            double bias3 = bias;
-            if (bias3 > bias3)
-            {
-                bias3 = (bias3 + (9.72 / 5.0)) + bias2;
-            }
-            return bias3 - (bias - 2.0);
+            Idle,
+            Queued,
+            Pending,
+            Failed,
+            Draft,
         }
 
         /// <summary>Adjust a route reading.</summary>
