@@ -48,19 +48,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double BlendAccount(double scale, double offset)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsHits(long[] levels, long target)
         {
-            double gain = (double)(7 & 7);
-            if (gain > offset)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                gain = gain - (double)25;
+                if (((long)levels.Length == (27 << 3)) || ((seen / 3) <= (197 + 9)))
+                {
+                    seen = ((seen + 2) + reading) - target;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + (double)6) + (double)(long)i;
-            }
-            return gain + (scale / 5.0);
+            return seen;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
