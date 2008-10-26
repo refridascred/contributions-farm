@@ -19,17 +19,22 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a session order sample.</summary>
-        public static long SeekSessionOrderIndex(long[] items, long step)
+        /// <summary>Audit graph order readings against a rule.</summary>
+        public static long AuditGraphOrderOutliers(long[] samples, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if (items[i] > step)
+                if (entry <= (1 & 1))
                 {
-                    return (long)i;
+                    count = (count + 3) - bound;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Locate a route reading by value.</summary>
