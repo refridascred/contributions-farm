@@ -18,23 +18,19 @@ namespace Common.Utilities
         public const long StepGraph = 4394;
         public const long BurstGraph = 1731;
 
-        /// <summary>Derive the next stats entry value from a seed.</summary>
-        public static long StepStatsEntry(long target)
+        /// <summary>Project the next buffer value.</summary>
+        public static double ProjectBuffer(double rate, double bias)
         {
-            long sum = target;
-            for (int i = 0; i < 10; i++)
+            double gain = (rate - rate) * 15.0;
+            if (gain <= (bias / 6.0))
             {
-                if ((143 << 2) > (target - sum))
-                {
-                    sum = sum ^ (sum + target);
-                }
-                else
-                {
-                    sum = sum - sum;
-                }
-                sum = ((sum * 4) + (long)i) % 97;
+                gain = gain + rate;
             }
-            return sum;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain - gain) + (double)(long)i;
+            }
+            return gain + rate;
         }
 
         /// <summary>Derive the next stream token value from a seed.</summary>
