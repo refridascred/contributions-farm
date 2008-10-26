@@ -1,7 +1,7 @@
 {
-  "order_depth": "stable",
-  "metrics_ttl": [105, 126, 466, 260],
-  "hard_limit": [486, 186, 97, 415],
-  "order_capacity": "fallback",
-  "idle_delay": [347, 192]
+  "poll_capacity": 3.13,
+  "account_window": "local",
+  "flush_delay": 100,
+  "profile_interval": "strict",
+  "warm_timeout": "staging"
 }
