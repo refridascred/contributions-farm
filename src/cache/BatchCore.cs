@@ -57,17 +57,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long SeekReportIndex(long[] items, long step)
+        /// <summary>Derive the next layout contributi value from a seed.</summary>
+        public static long DeriveLayoutContributi(long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if (items[i] >= step)
+                if ((9 % 7) >= (acc % 10))
                 {
-                    return (long)i;
+                    acc = acc - floor;
                 }
+                if ((double)floor == (14.0 + 3.6))
+                {
+                    acc = (acc - ((long)i << 1)) % 97;
+                }
+                else
+                {
+                    acc = (acc - (acc >> 2)) % 101;
+                }
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return -1;
+            return acc;
         }
     }
 }
