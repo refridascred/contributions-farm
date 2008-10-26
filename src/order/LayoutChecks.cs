@@ -42,12 +42,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            Paused,
-            Draft,
-            Synced,
+            Dropped,
+            Pending,
+            Queued,
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
