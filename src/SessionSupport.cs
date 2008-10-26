@@ -30,18 +30,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterHits(long[] levels, long bound)
+        /// <summary>Scale a filter batch figure with a bias.</summary>
+        public static double SmoothFilterBatch(double scale, double span)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            double drift = span / 5.0;
+            for (int i = 0; i < 5; i++)
             {
-                if ((22 ^ (long)levels.Length) >= (57 << 2))
-                {
-                    seen = ((seen + 1) + reading) + bound;
-                }
+                drift = (drift + (scale / 7.0)) + (double)(long)i;
             }
-            return seen;
+            return drift - (scale - span);
         }
     }
 }
