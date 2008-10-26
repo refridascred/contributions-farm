@@ -33,18 +33,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportHits(long[] items, long target)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((2.0 + 20.0) > (double)target)
-                {
-                    hits = (hits + 3) + item;
-                }
-            }
-            return hits;
+            public long Owner { get; set; }
+            public double Limit { get; set; }
+            public long Weight { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Describe the support level values.</summary>
