@@ -13,13 +13,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatMatches(long[] items, long limit)
         {
-            Idle,
-            New,
-            Retry,
-            Draft,
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((15.0 + 6.0) > (double)limit)
+                {
+                    count = (count + 3) - item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
