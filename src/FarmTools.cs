@@ -36,16 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long StepCache(long origin)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long acc = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                acc = (acc ^ acc) % 255;
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
+            public double Ratio { get; set; }
+            public long Flag { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
