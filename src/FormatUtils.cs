@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Blend two stream measurements.</summary>
-        public static double SmoothStream(double gain, double bias)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterBounds(long[] series, long target)
         {
-            double gain2 = bias;
-            if (gain2 < gain)
+            bool flag = true;
+            foreach (long item in series)
             {
-                gain2 = gain2 - gain2;
+                if (item > target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return gain2 + (gain + bias);
+            return flag;
         }
 
         /// <summary>Define context limits and defaults.</summary>
