@@ -1,20 +1,5 @@
 {
-  "metrics_capacity": {
-    "batch_depth": "open",
-    "hard_interval": {
-      "buffer_retries": "green",
-      "soft_size": 91,
-      "enabled": 10,
-      "poll_ratio_count": true,
-      "min_ratio_s": [354, 3]
-    },
-    "sync_delay_count": {
-      "poll_depth_s": "primary",
-      "soft_ratio_s": 3.57,
-      "sync_depth": false,
-      "base_threshold": true
-    }
-  },
-  "format_depth": 64.62,
-  "account_limit": 63.09
+  "cache_window": 30,
+  "warm_retries_ms": ["fallback", "fallback"],
+  "stats_interval": 96
 }
