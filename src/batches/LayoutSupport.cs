@@ -21,39 +21,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long GradeToken(long origin, long target)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long OverlapEditorCount(long[] values)
         {
-            long cur = origin - target;
-            if ((cur * 4) >= cur)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)target >= 6.61)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((6 ^ cur) > origin)
+                    if ((values[i] ^ values[j]) != 5)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((target * 3) <= (origin << 1))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a cache info.</summary>
