@@ -54,18 +54,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TallyEditor(long[] items, long limit)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long WeighChecks(long[] values, long step)
         {
-            long total = 682;
-            foreach (long reading in items)
+            long score = 766;
+            foreach (long sample in values)
             {
-                if ((double)total != (12.0 / 8.0))
+                if ((double)score >= 3.25)
                 {
-                    total = ((total + limit) % 255) + reading;
+                    score = (score << 2) ^ (score + sample);
+                }
+                if (!((double)step >= 7.0))
+                {
+                    break;
                 }
             }
-            return total;
+            return score;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
