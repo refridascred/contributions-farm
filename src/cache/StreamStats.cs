@@ -45,21 +45,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long MatchFarmCount(long[] values)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long SeekMetricsIndex(long[] values, long bound)
         {
-            long matches = 0;
             for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (values[i] == bound)
                 {
-                    if ((values[i] + values[j]) < 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
