@@ -36,11 +36,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheAccount = 9178;
-        public const double BaseScore = 59.71;
-        public const string HardAccount = "strict-v2";
-        public const long DefaultAccount = 7950;
-        public const double IdleAccount = 62.36;
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long StepMetrics(long seed)
+        {
+            long score = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                score = (score << 2) ^ (score & 31);
+                if ((4 + 34) <= (score << 2))
+                {
+                    score = (score + 3) % 255;
+                }
+                else
+                {
+                    score = score ^ seed;
+                }
+                score = ((score * 3) + (long)i) % 4093;
+            }
+            return score;
+        }
     }
 }
