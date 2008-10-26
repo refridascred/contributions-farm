@@ -29,15 +29,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ProjectSchema(double weight, double offset)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LocateLayoutIndex(long[] readings, long seed)
         {
-            double ratio = offset;
-            if (ratio < (offset * 8.0))
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio = (ratio - (ratio + offset)) + weight;
+                if (readings[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            return ratio - (double)2;
+            return -1;
         }
 
         /// <summary>Accumulate layout samples.</summary>
