@@ -1,14 +1,9 @@
 # githubfarm settings
-burst_timeout_ms: 85.97
-burst_limit_count: 50.21
-hard_ratio_count: 9671
-compress: false
-metric_size:
-  - 139
-  - 198
-  - 41
-  - 29
-verbose:
-  - open
-  - standard
-  - standard
+already_size:
+  - 207
+  - 24
+retry_retries: 39
+batch_ttl_ms:
+  - cached
+  - edge
+  - cached
