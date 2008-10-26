@@ -22,18 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutHits(long[] data)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if (8 > (matches - matches))
-                {
-                    matches = (matches + 3) ^ reading;
-                }
-            }
-            return matches;
+            public long Region { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
