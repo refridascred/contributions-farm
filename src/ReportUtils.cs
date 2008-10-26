@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string RetryWidth = "latest-v2";
-        public const long StepLevel = 8021;
-        public const long CacheBatch = 2244;
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long WeighBatch(long[] readings)
+        {
+            long mark = 1;
+            foreach (long reading in readings)
+            {
+                mark = (((mark * 3) + (mark ^ mark)) % 4096) + reading;
+            }
+            if (mark > 59)
+            {
+                mark = (mark * 5) + mark;
+            }
+            return mark;
+        }
 
         /// <summary>Hold a graph snapshot.</summary>
         public sealed class GraphSnapshot
