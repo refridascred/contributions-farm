@@ -1,5 +1,13 @@
 # support settings
-audit: 95
-poll_ratio: 76.82
-enabled: 84.43
-flush_delay_pct: 87
+warm_depth: 66.66
+base_depth:
+  - 254
+  - 426
+poll_interval_s:
+  - strict
+  - stable
+warm_ttl:
+  - 163
+  - 21
+  - 452
+idle_depth_pct: 68.31
