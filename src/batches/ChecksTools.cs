@@ -32,23 +32,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowHits(long[] levels, long bound)
-        {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((double)seen != (5.65 / 8.0))
-                {
-                    seen = ((seen + 1) ^ item) - bound;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitPayload = 9428;
+        public const double RetryScore = 16.22;
+        public const long WindowScore = 2572;
+        public const string SoftPayload = "legacy-v2";
 
         /// <summary>Hold a schema entry.</summary>
         public sealed class SchemaEntry
