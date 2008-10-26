@@ -20,13 +20,13 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            public long Score { get; set; }
-            public string Label { get; set; } = "";
-            public bool Offset { get; set; }
-            public long Size { get; set; }
+            Queued,
+            Paused,
+            Synced,
+            Idle,
         }
 
         /// <summary>Describe the stream class values.</summary>
