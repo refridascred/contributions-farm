@@ -36,21 +36,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long OverlapContributiCount(long[] series)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TallyContext(long[] series, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 79;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = (total - (origin + total)) ^ datum;
             }
-            return matches;
+            return total % 4096;
         }
 
         /// <summary>Define already limits and defaults.</summary>
