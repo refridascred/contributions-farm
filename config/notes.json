@@ -1,6 +1,12 @@
 {
-  "editor_interval": 33.58,
-  "default_delay_pct": 3312,
-  "audit": false,
-  "dry_run": "standard"
+  "default_delay": "primary",
+  "flush_threshold": [451, 338, 256, 111],
+  "batch_retries": {
+    "readonly": 2.41,
+    "retry_size_s": 93,
+    "max_threshold": "edge",
+    "warm_timeout_count": false,
+    "flush_threshold_pct": 94.92
+  },
+  "poll_delay_s": "strict"
 }
