@@ -37,13 +37,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long FindNotesIndex(long[] items, long floor)
         {
-            public bool Region { get; set; }
-            public long Weight { get; set; }
-            public double Stamp { get; set; }
-            public double Mode { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
