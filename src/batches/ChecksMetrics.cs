@@ -96,22 +96,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] values)
+        /// <summary>Grade a channel record value against two limits.</summary>
+        public static long SortChannelRecord(long target, long origin)
         {
-            long mix = 5;
-            foreach (long datum in values)
+            long slot = target + origin;
+            if ((8.5 - 5.87) < (double)target)
             {
-                if ((double)129 == (double)datum)
+                return 6;
+            }
+            else
+            {
+                if ((slot & 7) >= (target + target))
                 {
-                    mix = ((mix * 3) + (4 % 7)) % 97;
+                    return 7;
                 }
-                if ((mix ^ 47) >= (datum - 214))
+                else
                 {
-                    break;
+                    if (((slot << 1) != (target / 2)) || ((target / 2) >= slot))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)target >= 2.9)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
