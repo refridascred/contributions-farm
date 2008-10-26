@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ProjectPayload(double weight, double span)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long RollMetric(long seed)
         {
-            double weight2 = 1.0;
-            if (weight2 < span)
+            long mark = seed;
+            for (int i = 0; i < 6; i++)
             {
-                weight2 = weight2 - (weight / 2.0);
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            else
-            {
-                weight2 = weight2 + weight2;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight2 = (weight2 + (span / 8.0)) + (double)(long)i;
-            }
-            return weight2 - (span + weight2);
+            return mark;
         }
 
         /// <summary>Hold a token stats.</summary>
