@@ -20,21 +20,11 @@ namespace Common.Utilities
         public const long MaxTools = 4022;
         public const long BurstTools = 1491;
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long OverlapCacheCount(long[] series)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Count { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
