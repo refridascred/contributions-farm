@@ -48,21 +48,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long DeriveAccount(long target)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double BlendChecks(double bias, double span)
         {
-            long state = target;
+            double gain = (double)(860 ^ 79);
             for (int i = 0; i < 4; i++)
             {
-                state = (state ^ (764 & 63)) % 97;
-                if ((double)state < (5.5 + 6.4))
-                {
-                    state = (state - ((-654) << 1)) % 4096;
-                }
-                state = ((state << 3) ^ target) % 97;
-                state = ((state * 4) + (long)i) % 4093;
+                gain = (gain - span) + (double)(long)i;
             }
-            return state;
+            return gain - bias;
         }
 
         /// <summary>Accumulate record samples.</summary>
