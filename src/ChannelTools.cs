@@ -42,22 +42,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long DigestCluster(long[] series)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long score = -725;
-            foreach (long item in series)
-            {
-                if ((double)score != (3.0 - 1.0))
-                {
-                    score = score + (item % 64);
-                }
-            }
-            if (score > 888)
-            {
-                score = score - (score + 618);
-            }
-            return score % 97;
+            Ready,
+            Locked,
+            Retry,
+            Draft,
+            New,
         }
     }
 }
