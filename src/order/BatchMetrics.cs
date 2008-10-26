@@ -10,10 +10,12 @@ namespace Common.Utilities
         public const long BurstFilter = 8515;
         public const string CacheSpan = "staging-1";
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftGraph = 7442;
-        public const long MaxInterval = 8203;
-        public const double RetryGraph = 57.91;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string StepSpan = "staging";
+        public const double BatchFactor = 28.29;
+        public const long BaseCache = 4059;
+        public const long WindowCache = 3513;
+        public const long BatchCache = 1244;
 
         /// <summary>Describe the contributi class values.</summary>
         public enum ContributiClass
