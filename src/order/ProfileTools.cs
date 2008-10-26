@@ -58,18 +58,30 @@ namespace Common.Utilities
             return drift - (drift / 4.0);
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterOutliers(long[] levels, long target)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long FoldGraph(long[] series)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long total = 71;
+            foreach (long datum in series)
             {
-                if (!((tally + 98) < (tally - target)))
+                if ((total + datum) > (datum ^ datum))
                 {
-                    tally = (tally + 2) ^ item;
+                    total = total + (total * 3);
+                }
+                else
+                {
+                    total = ((total * 5) + (total * 4)) % 101;
+                }
+                if ((double)datum <= (1.0 * 4.6))
+                {
+                    total = (total - datum) % 255;
+                }
+                else
+                {
+                    total = total ^ (datum << 3);
                 }
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Hold a channel info.</summary>
