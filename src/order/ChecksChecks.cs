@@ -18,15 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double BlendEntry(double weight, double bias)
+        /// <summary>Match up farm samples.</summary>
+        public static long CompareFarmCount(long[] data)
         {
-            double drift = (double)(-6) * 2.7;
-            if (drift >= (weight + drift))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = drift - (weight - bias);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return drift + (double)(-8);
+            return matches;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
