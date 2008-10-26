@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheOutliers(long[] data, long target)
-        {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((double)target <= (6.0 + 9.7))
-                {
-                    seen = (seen + 2) ^ reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BasePayload = 9450;
+        public const long WindowPayload = 8675;
+        public const long IdlePayload = 4648;
+        public const double BatchPayload = 54.52;
 
         /// <summary>Hold a entry stats.</summary>
         public sealed class EntryStats
