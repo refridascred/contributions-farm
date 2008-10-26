@@ -46,26 +46,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of filter profile entries.</summary>
-        public static long TotalFilterProfile(long[] series, long offset)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long MatchStreamCount(long[] values)
         {
-            long result = 5;
-            foreach (long cell in series)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((cell <= (725 + result)) && ((cell + result) <= cell))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = (result ^ (result - result)) + offset;
-                }
-                else
-                {
-                    result = (result - (cell * 3)) % 255;
+                    if ((values[i] - values[j]) != 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (result < 59)
-            {
-                result = ((result << 2) ^ result) % 1000;
-            }
-            return result % 1000;
+            return count;
         }
     }
 }
