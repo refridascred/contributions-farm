@@ -1,5 +1,14 @@
 {
-  "flush_depth_s": "primary",
-  "notes_timeout": [441, 478, 109, 20],
-  "enabled": 32
+  "sync_interval_pct": "edge",
+  "base_capacity_ms": "blue",
+  "compress": "standard",
+  "cache_retries_s": "latest",
+  "burst_limit_s": {
+    "poll_window": 100,
+    "strict": 26,
+    "soft_window": true,
+    "warm_ratio_pct": 96,
+    "route_depth": "blue"
+  },
+  "sync_window_count": 44
 }
