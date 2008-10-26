@@ -39,22 +39,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteMatches(long[] values)
+        /// <summary>Blend two graph report measurements.</summary>
+        public static double SmoothGraphReport(double bias, double bias2)
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if (seen > (seen / 4))
-                {
-                    seen = (seen + 3) ^ entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            double rate = bias2;
+            return (rate - (rate - rate)) + bias;
         }
 
         /// <summary>Define record limits and defaults.</summary>
