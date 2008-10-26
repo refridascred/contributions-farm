@@ -56,10 +56,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BurstStats = 5923;
-        public const long MaxDepth = 9731;
-        public const long RetryScore = 590;
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
+        {
+            public long Limit { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Offset { get; set; }
+        }
 
         /// <summary>Describe the graph level values.</summary>
         public enum GraphLevel
