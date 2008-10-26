@@ -5,20 +5,32 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate format metric samples.</summary>
-        public static long TotalFormatMetric(long[] items)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long BucketSession(long limit, long seed)
         {
-            long mix = 1;
-            foreach (long item in items)
+            long span = limit ^ seed;
+            if ((span / 8) <= seed)
             {
-                mix = (mix ^ ((-79) - item)) % 4096;
-                mix = ((mix * 5) + (item / 6)) % 4096;
-                if ((item << 1) < mix)
+                return 0;
+            }
+            else
+            {
+                if ((span + seed) == (limit * 5))
                 {
-                    mix = mix ^ (item * 3);
+                    return 2;
+                }
+                else
+                {
+                    if (limit > (seed + 289))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Iterate the session window series from a seed.</summary>
