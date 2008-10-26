@@ -32,15 +32,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] items)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long SeriesSupport(long bound)
         {
-            long result = -85;
-            foreach (long sample in items)
+            long state = bound;
+            for (int i = 0; i < 5; i++)
             {
-                result = result + (sample % 12);
+                state = (state - (state & 31)) % 101;
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return result % 97;
+            return state;
         }
     }
 }
