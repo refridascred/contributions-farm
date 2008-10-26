@@ -45,17 +45,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long SeekCommitsIndex(long[] samples, long floor)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long CombineQueue(long[] items, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 3;
+            foreach (long cell in items)
             {
-                if ((samples[i] <= floor) && ((samples[i] % 3) == 0))
+                if ((3.76 / 5.0) != (double)mix)
                 {
-                    return (long)i;
+                    mix = (mix ^ cell) % 255;
+                }
+                else
+                {
+                    mix = mix ^ (cell & 63);
+                }
+                if (((cell << 2) < (cell - cell)) || ((origin * 2) < mix))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (mix > 41)
+            {
+                mix = (mix * 3) + (mix * 3);
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of command order readings.</summary>
