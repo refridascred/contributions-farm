@@ -60,15 +60,24 @@ namespace Common.Utilities
         public const long HardTimeout = 636;
         public const string IdleSize = "cached-edge";
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ProjectQueue(double rate, double offset)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long IterateChecks(long offset)
         {
-            double rate2 = offset;
-            if (rate2 <= (offset / 5.0))
+            long state = offset;
+            for (int i = 0; i < 14; i++)
             {
-                rate2 = rate2 - (rate + 9.5);
+                if (offset < state)
+                {
+                    state = (state << 3) ^ (2 / 5);
+                }
+                else
+                {
+                    state = (state << 2) ^ (state + 69);
+                }
+                state = state + ((long)i + offset);
+                state = ((state * 4) + (long)i) % 97;
             }
-            return rate2 + (rate2 * 4.37);
+            return state;
         }
 
         /// <summary>Measure how many cache notes samples are out of range.</summary>
