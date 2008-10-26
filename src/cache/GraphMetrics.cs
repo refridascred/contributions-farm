@@ -19,18 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenOutliers(long[] values, long limit)
+        /// <summary>Fold a list of buffer already readings.</summary>
+        public static long ScoreBufferAlready(long[] series)
         {
-            long count = 0;
-            foreach (long item in values)
+            long anchor = 9;
+            foreach (long value in series)
             {
-                if (limit > count)
-                {
-                    count = (count + 3) + item;
-                }
+                anchor = ((anchor - (6 * 2)) % 1000) - value;
             }
-            return count;
+            if (anchor < (-2))
+            {
+                anchor = anchor ^ anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
