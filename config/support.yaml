@@ -1,16 +1,10 @@
 # support settings
-warm_ratio_pct:
-  audit: 4741
-  dry_run:
-    - 334
-    - 73
-    - 297
-    - 432
-  enabled:
-    - strict
-    - cached
-    - staging
-    - edge
-  readonly: 94.54
-checks_retries: 33.46
-hard_interval: eu-west
+default_interval: false
+strict: 74.08
+idle_limit_pct: 82
+readonly:
+  sync_size_s: 850
+  enabled: 60
+  hard_interval_ms: 9652
+burst_threshold_s: 4.42
+entry_window: true
