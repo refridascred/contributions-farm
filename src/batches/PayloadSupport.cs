@@ -13,11 +13,18 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyHits(long[] values, long step)
         {
-            public string Rank { get; set; } = "";
-            public long Flag { get; set; }
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((datum << 3) <= (count + step))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the contributi state values.</summary>
