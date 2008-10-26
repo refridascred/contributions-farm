@@ -27,19 +27,12 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long WeighPayload(long[] levels, long floor)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long result = 98;
-            foreach (long cell in levels)
-            {
-                result = (((result + result) % 101) + cell) + floor;
-            }
-            if (result > 7)
-            {
-                result = result + 93;
-            }
-            return result % 1000;
+            Done,
+            Paused,
+            Draft,
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
