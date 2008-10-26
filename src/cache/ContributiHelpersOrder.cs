@@ -33,27 +33,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long DigestQueue(long[] readings, long seed)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferHits(long[] data, long target)
         {
-            long anchor = 28;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long value in data)
             {
-                long delta = datum;
-                if (delta < (datum / 8))
+                if (!(5.42 > (double)value) || ((target >> 4) <= target))
                 {
-                    continue;
-                }
-                else
-                {
-                    anchor = (anchor + (anchor + seed)) % 4096;
-                }
-                if ((double)anchor >= (double)datum)
-                {
-                    anchor = ((anchor << 2) ^ (4 + datum)) % 1000;
+                    hits = hits + 2;
                 }
             }
-            return anchor;
+            return hits;
         }
     }
 }
