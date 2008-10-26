@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Blend two notes token measurements.</summary>
-        public static double ProjectNotesToken(double weight, double span)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long RollQueue(long target)
         {
-            double rate = weight;
-            if (rate >= (weight * 7.7))
+            long state = target;
+            for (int i = 0; i < 11; i++)
             {
-                rate = (rate - 9.33) + span;
+                bool found = (long)i >= (85 + target);
+                if (found)
+                {
+                    found = (target - state) < ((long)i >> 2);
+                    continue;
+                }
+                state = ((state * 4) + (long)i) % 101;
             }
-            return rate - 9.7;
+            return state;
         }
 
         /// <summary>Grade a buffer tools value against two limits.</summary>
