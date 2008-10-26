@@ -37,17 +37,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long FindRouteIndex(long[] samples, long origin)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long DeriveStream(long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 13; i++)
             {
-                if (samples[i] <= origin)
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
