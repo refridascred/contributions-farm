@@ -17,19 +17,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadLimits(long[] samples, long step)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterMatches(long[] series)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (item >= step)
+                if ((((count << 2) < 143) && ((item & 63) > (count + item))) || ((count * 5) < (count - count)))
                 {
-                    stale = false;
-                    break;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
