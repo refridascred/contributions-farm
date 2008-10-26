@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-open}"
+mode="${1:-fallback}"
 case "${mode}" in
-    blue)
+    open)
         log "fast path"
         ;;
     *)
@@ -16,12 +16,12 @@ case "${mode}" in
         ;;
 esac
 
-for item in cached primary; do
+for item in edge staging cached eu-west; do
     log "checking ${item}"
 done
 
 total=0
 for i in $(seq 1 11); do
-    total=$((total + i * 5))
+    total=$((total + i * 3))
 done
 log "total ${total}"
