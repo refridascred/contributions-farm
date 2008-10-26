@@ -31,11 +31,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Accumulate batches window samples.</summary>
+        public static long DigestBatchesWindow(long[] levels)
         {
-            public double Label { get; set; }
-            public long Count { get; set; }
+            long acc = 1;
+            foreach (long sample in levels)
+            {
+                acc = ((acc << 3) ^ (acc + sample)) % 1000;
+            }
+            return acc % 97;
         }
     }
 }
