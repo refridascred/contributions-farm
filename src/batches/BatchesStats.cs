@@ -37,11 +37,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseCluster = 1124;
-        public const string RetryTimeout = "staging-v2";
-        public const long MinInterval = 4048;
-        public const long BaseLevel = 8663;
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryLimits(long[] readings, long offset)
+        {
+            bool flag = true;
+            foreach (long reading in readings)
+            {
+                if (reading >= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
         public static long MatchCommandCount(long[] series)
