@@ -22,21 +22,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long OverlapAlreadyCount(long[] values)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double AdjustBatch(double weight, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            double drift = floor;
+            if (drift > floor)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
-                }
+                drift = drift + (double)11;
             }
-            return count;
+            else
+            {
+                drift = drift + (weight - floor);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - (double)7) + (double)(long)i;
+            }
+            return drift - (floor - drift);
         }
 
         /// <summary>Describe the batch state values.</summary>
