@@ -55,11 +55,18 @@ namespace Common.Utilities
         public const long IdleWidth = 5437;
         public const double WindowBuffer = 21.8;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BurstChannel = "strict";
-        public const string MaxChannel = "cached";
-        public const long HardWidth = 7449;
-        public const long BatchChannel = 4143;
+        /// <summary>Locate a editor window reading by value.</summary>
+        public static long SeekEditorWindowIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < origin) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a farm snapshot.</summary>
         public sealed class FarmSnapshot
