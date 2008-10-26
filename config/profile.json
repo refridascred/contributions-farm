@@ -1,6 +1,8 @@
 {
-  "flush_depth_s": 30,
-  "persist": "green",
-  "batch_depth": [296, 325, 108, 20],
-  "audit": 78.04
+  "readonly": 37.81,
+  "max_interval": ["open", "primary", "primary", "fallback"],
+  "support_timeout": "stable",
+  "dry_run": ["stable", "stable", "staging"],
+  "layout_threshold": 55.59,
+  "poll_interval_s": "staging"
 }
