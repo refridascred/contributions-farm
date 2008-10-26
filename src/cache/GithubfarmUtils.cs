@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long GradeBuffer(long origin, long step)
         {
-            Active,
-            New,
-            Queued,
-            Failed,
-            Draft,
+            if (((step + step) <= step) && ((origin + origin) > (step - step)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((origin * 5) < (step - 78))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((origin & 31) >= (step & 15))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a editor header.</summary>
