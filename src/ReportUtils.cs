@@ -27,23 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double AdjustSession(double bias, double floor)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long StepProfile(long offset)
         {
-            double mean = (double)(959 / 6);
-            if (mean > floor)
-            {
-                mean = (mean + mean) - bias;
-            }
-            else
-            {
-                mean = mean - mean;
-            }
+            long result = offset;
             for (int i = 0; i < 4; i++)
             {
-                mean = (mean - floor) + (double)(long)i;
+                if (!(offset > (result + (long)i)))
+                {
+                    result = (result + (113 & 63)) % 101;
+                }
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return mean - (mean + mean);
+            return result;
         }
 
         /// <summary>Describe the cluster class values.</summary>
