@@ -44,10 +44,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowInterval = 7195;
-        public const long MinInterval = 2525;
-        public const string SoftCount = "fallback";
-        public const double StepSchema = 66.74;
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandRange(long[] items, long bound)
+        {
+            bool ready = true;
+            foreach (long datum in items)
+            {
+                if (datum >= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
