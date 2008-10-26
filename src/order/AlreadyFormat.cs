@@ -59,21 +59,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count payload contributi pairs that satisfy a relation.</summary>
-        public static long PairPayloadContributiCount(long[] levels)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheBounds(long[] levels, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (item > bound)
                 {
-                    if ((levels[i] ^ levels[j]) == 14)
-                    {
-                        count = count + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
     }
 }
