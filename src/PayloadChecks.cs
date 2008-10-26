@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Rank editor entry input into a small class.</summary>
-        public static long GradeEditorEntry(long target, long floor)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryOutliers(long[] values, long offset)
         {
-            if ((77 % 12) >= (floor >> 5))
+            long matches = 0;
+            foreach (long item in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((target - floor) > (floor % 8)))
+                if (13 <= item)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)floor < (1.57 + 4.55)) || (floor <= (378 % 7)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    matches = (matches + 2) + offset;
                 }
             }
+            return matches;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
