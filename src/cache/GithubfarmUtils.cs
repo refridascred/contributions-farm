@@ -32,11 +32,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Classify a contributi githubfarm pair into a bucket.</summary>
+        public static long SortContributiGithubfarm(long limit, long bound)
         {
-            public bool Size { get; set; }
-            public long Limit { get; set; }
+            long prev = limit ^ bound;
+            if (limit <= (bound & 3))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((2.7 - 3.5) <= (double)prev)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Fold a list of cache readings.</summary>
