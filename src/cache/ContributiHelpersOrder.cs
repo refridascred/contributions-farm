@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Blend two support measurements.</summary>
-        public static double BlendSupport(double scale, double span)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            double ratio = span - (double)(-6);
-            return (ratio - ratio) + scale;
+            Queued,
+            Synced,
+            Locked,
         }
 
         /// <summary>Hold a filter stats.</summary>
