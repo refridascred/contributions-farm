@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderRange(long[] readings, long target)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenGaps(long[] items)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if (cell > target)
+                if ((item / 6) > (long)items.Length)
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Measure how many queue graph samples are out of range.</summary>
