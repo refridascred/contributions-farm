@@ -23,12 +23,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Classify a counter graph pair into a bucket.</summary>
+        public static long ClassifyCounterGraph(long offset, long floor)
         {
-            New,
-            Dropped,
-            Retry,
+            if ((double)floor < (double)offset)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((37 - offset) == (floor & 15))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((offset & 31) < floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((1 & 3) <= (offset & 1))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
