@@ -15,13 +15,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            Stale,
-            Queued,
-            Ready,
-            New,
+            public long Score { get; set; }
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Compare every pair of command readings.</summary>
