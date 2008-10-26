@@ -36,39 +36,17 @@ namespace Common.Utilities
         public const string WindowScore = "primary";
         public const double CacheSize = 70.99;
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long SortChecks(long origin, long origin2)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long SeekContextIndex(long[] items, long target)
         {
-            long diff = origin ^ origin2;
-            if (((origin2 >> 1) < origin2) && ((origin % 3) > origin))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((origin2 < (diff + 43)) || ((origin2 ^ diff) == (diff + origin)))
+                if (items[i] <= target)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)diff <= 0.9)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((diff + diff) >= (origin2 + origin)) || ((origin2 % 24) != (diff % 2)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
