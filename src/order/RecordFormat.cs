@@ -19,13 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Adjust a order reading.</summary>
+        public static double ScaleOrder(double gain, double floor)
         {
-            public long Flag { get; set; }
-            public double Level { get; set; }
-            public long Offset { get; set; }
-            public long Owner { get; set; }
+            double mean = gain + (9.2 * 9.5);
+            return (mean + (mean * 15.0)) + floor;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
