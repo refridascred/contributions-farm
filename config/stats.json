@@ -1,5 +1,12 @@
 {
-  "warm_window_pct": false,
-  "batches_timeout": 68.79,
-  "burst_limit": 55.86
+  "sync_delay": 500,
+  "contributi_window": 3392,
+  "soft_delay_s": 341,
+  "command_threshold": "edge",
+  "batch_ttl_pct": 88,
+  "persist": {
+    "readonly": 9763,
+    "farm_ratio": ["staging", "blue", "strict"],
+    "warm_ratio": 60
+  }
 }
