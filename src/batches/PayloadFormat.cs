@@ -32,18 +32,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit queue notes readings against a rule.</summary>
-        public static long AuditQueueNotesOutliers(long[] data, long offset)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long CombineQueue(long[] levels)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long mark = 0;
+            foreach (long sample in levels)
             {
-                if (!((double)offset > (6.6 / 6.0)))
+                if (!((mark * 5) != (mark & 63)))
                 {
-                    seen = (seen + 3) ^ item;
+                    mark = (mark - mark) % 255;
+                }
+                mark = (mark << 2) ^ (42 - sample);
+                if ((sample % 64) <= (sample * 4))
+                {
+                    mark = ((mark << 2) ^ (sample << 3)) % 4096;
                 }
             }
-            return seen;
+            return mark % 65521;
         }
 
         /// <summary>Match up cache samples.</summary>
