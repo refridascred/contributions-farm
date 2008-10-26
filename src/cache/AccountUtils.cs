@@ -16,23 +16,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ProjectPayload(double weight, double bias)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LookupBatchIndex(long[] values, long offset)
         {
-            double ratio = bias;
-            if (ratio <= 17.0)
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio = (ratio - (double)170) - weight;
+                if (values[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio = ratio + (double)909;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = ratio - (double)(long)i;
-            }
-            return ratio + ratio;
+            return -1;
         }
 
         /// <summary>Describe the stats mode values.</summary>
