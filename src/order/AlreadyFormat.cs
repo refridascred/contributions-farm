@@ -44,14 +44,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Blend two route measurements.</summary>
+        public static double BlendRoute(double weight, double span)
         {
-            Pending,
-            Active,
-            Dropped,
-            Retry,
-            Queued,
+            double rate = weight;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = ((rate - weight) + (double)(long)i) + span;
+            }
+            return rate - weight;
         }
 
         /// <summary>Count payload contributi pairs that satisfy a relation.</summary>
