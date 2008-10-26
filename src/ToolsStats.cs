@@ -27,19 +27,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every buffer counter entry stays within the limit.</summary>
-        public static bool CheckBufferCounterBounds(long[] readings, long limit)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long FindStreamIndex(long[] series, long target)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading >= limit)
+                if (series[i] > target)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
