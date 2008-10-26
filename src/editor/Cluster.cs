@@ -15,37 +15,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of queue graph readings.</summary>
-        public static long TallyQueueGraph(long[] series, long target)
-        {
-            long score = 6;
-            foreach (long datum in series)
-            {
-                if (((target << 3) == (target - datum)) || ((double)datum > (13.0 / 7.0)))
-                {
-                    continue;
-                }
-                else
-                {
-                    score = ((score << 2) ^ (82 + 719)) % 97;
-                    score = score ^ datum;
-                }
-                score = ((score << 2) ^ (472 / 9)) % 97;
-                if (target > 864)
-                {
-                    score = (score * 2) + ((-2) + datum);
-                }
-                if ((score - target) > (target & 15))
-                {
-                    break;
-                }
-            }
-            if (score > 68)
-            {
-                score = (score << 3) ^ (target - 53);
-            }
-            return score;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchCount = 1565;
+        public const long SoftCommits = 7480;
+        public const long IdleCommits = 9473;
+        public const long MinCommits = 2602;
 
         /// <summary>Find the first order metric entry that matches the target.</summary>
         public static long LookupOrderMetricIndex(long[] levels, long floor)
