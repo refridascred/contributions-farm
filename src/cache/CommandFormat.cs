@@ -27,19 +27,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long DigestContributi(long[] values, long target)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long total = 1;
-            foreach (long cell in values)
-            {
-                total = (total ^ (target + target)) % 97;
-                if (!((double)cell != (double)total))
-                {
-                    break;
-                }
-            }
-            return total % 65521;
+            public bool Ratio { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
