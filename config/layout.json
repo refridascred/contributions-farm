@@ -1,5 +1,12 @@
 {
-  "batch_capacity_count": ["green", "strict"],
-  "cache_retries_pct": 81,
-  "base_interval": true
+  "counter_depth": 93,
+  "audit": "green",
+  "dry_run": {
+    "idle_size_pct": 100,
+    "payload_depth": 39.54,
+    "token_threshold": ["local", "staging"],
+    "batch_depth_pct": ["fallback", "blue", "legacy", "legacy"]
+  },
+  "stream_depth": false,
+  "idle_retries_s": 96.73
 }
