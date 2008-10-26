@@ -46,13 +46,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Roll a record counter forward.</summary>
+        public static long DeriveRecord(long floor)
         {
-            public long Size { get; set; }
-            public string Region { get; set; } = "";
-            public bool Mode { get; set; }
-            public long Ratio { get; set; }
+            long result = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                if (!((floor >> 5) <= ((long)i >> 4)))
+                {
+                    result = (result ^ (floor >> 2)) % 4096;
+                    result = (result << 3) ^ (floor + 163);
+                }
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
         }
     }
 }
