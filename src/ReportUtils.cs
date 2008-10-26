@@ -56,19 +56,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long IterateMetrics(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                if (!!(((long)i ^ carry) > offset))
-                {
-                    carry = (carry << 3) ^ ((-81) + carry);
-                }
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long WindowFactor = 1201;
+        public const double BurstStream = 64.01;
+        public const string RetryStream = "legacy";
+        public const long SoftWidth = 7430;
+        public const long BatchLevel = 4909;
     }
 }
