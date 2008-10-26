@@ -12,21 +12,23 @@ namespace Common.Utilities
             return ((weight - (6.5 / 3.0)) + bias) + span;
         }
 
-        /// <summary>Compare every pair of route stats readings.</summary>
-        public static long MatchRouteStatsCount(long[] readings)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 98;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                score = (score ^ (value / 5)) % 97;
+                if ((long)readings.Length > (score + value))
                 {
-                    if ((readings[i] ^ readings[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
             }
-            return seen;
+            if (score > 642)
+            {
+                score = score ^ (score + score);
+            }
+            return score % 1000;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
