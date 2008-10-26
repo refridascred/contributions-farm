@@ -51,18 +51,24 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderGaps(long[] samples)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long ClassifyAlready(long step, long seed)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            if ((double)step < (2.6 - 2.45))
             {
-                if ((matches * 3) > sample)
+                return 4;
+            }
+            else
+            {
+                if (0.7 >= (double)step)
                 {
-                    matches = matches + 2;
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return matches;
         }
     }
 }
