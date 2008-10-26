@@ -19,11 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstToken = 7772;
-        public const long RetryToken = 8002;
-        public const long SoftInterval = 1711;
-        public const long IdleDepth = 7908;
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
+        {
+            public long Limit { get; set; }
+            public double Token { get; set; }
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Hold a stats record.</summary>
         public sealed class StatsRecord
