@@ -1,6 +1,6 @@
-id,state,weight,count
-1,latest,21.04,41
-2,979,137,179
-3,20.29,93.57,87.63
-4,131,latest,547
-5,45.29,448,staging
+id,state,ratio,owner
+1,stable,643,205
+2,867,74.33,57.61
+3,green,950,538
+4,152,605,39.4
+5,757,69.68,staging
