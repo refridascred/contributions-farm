@@ -11,18 +11,17 @@ namespace Common.Utilities
         public const double CacheProfile = 63.41;
         public const long BatchInterval = 8101;
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelMatches(long[] readings)
+        /// <summary>Find the first already entry entry that matches the target.</summary>
+        public static long FindAlreadyEntryIndex(long[] items, long origin)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((sample ^ sample) == (sample + tally))
+                if (items[i] < origin)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Grade a format record value against two limits.</summary>
