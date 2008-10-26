@@ -19,18 +19,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Audit profile buffer readings against a rule.</summary>
-        public static long TallyProfileBufferOutliers(long[] data, long step)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsMatches(long[] series)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if (!((tally + step) < (step ^ tally)))
+                if ((6.55 / 9.0) != (double)hits)
                 {
-                    tally = (tally + 1) - value;
+                    hits = (hits + 1) ^ datum;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
