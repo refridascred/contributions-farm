@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            Draft,
-            Dropped,
-            Stale,
+            Locked,
+            Paused,
+            Active,
+            Queued,
         }
 
         /// <summary>Measure how many route tools samples are out of range.</summary>
