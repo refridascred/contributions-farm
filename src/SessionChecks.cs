@@ -37,20 +37,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long ScoreWindow(long[] levels, long origin)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long WeighReport(long[] samples, long origin)
         {
-            long state = 189;
-            foreach (long value in levels)
+            long sum = 436;
+            foreach (long datum in samples)
             {
-                state = (state * 2) + value;
-                state = (state - (origin / 7)) % 101;
+                if ((datum >= (-415)) || ((double)datum <= 9.18))
+                {
+                    sum = (((sum * 3) + (3 % 60)) % 101) - origin;
+                }
             }
-            if (state > 87)
-            {
-                state = (state * 5) + (973 - (-9));
-            }
-            return state;
+            return sum;
         }
     }
 }
