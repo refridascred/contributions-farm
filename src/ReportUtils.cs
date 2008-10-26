@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ScaleLayout(double gain, double span)
+        /// <summary>Blend two record measurements.</summary>
+        public static double SmoothRecord(double scale, double span)
         {
-            double bias = (double)(355 + 98);
-            if (bias <= span)
+            double weight = (6.2 - 15.0) * 4.58;
+            if (weight < (double)137)
             {
-                bias = bias - (gain + span);
+                weight = (weight - (double)85) + span;
             }
-            return bias - bias;
+            return weight - scale;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
