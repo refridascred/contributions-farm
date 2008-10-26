@@ -1,7 +1,7 @@
-id,label,ratio
-1,425,edge
-2,965,454
-3,primary,fallback
-4,legacy,778
-5,95.98,50
-6,strict,601
+id,count,score
+1,335,894
+2,177,blue
+3,92.17,77.22
+4,573,16.69
+5,63.43,41.25
+6,34.03,597
