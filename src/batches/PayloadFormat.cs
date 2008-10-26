@@ -23,14 +23,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Accumulate notes samples.</summary>
+        public static long WeighNotes(long[] data)
         {
-            Active,
-            Stale,
-            Idle,
-            Dropped,
-            Done,
+            long sum = 35;
+            foreach (long cell in data)
+            {
+                sum = (sum + (sum - sum)) - cell;
+            }
+            return sum;
         }
 
         /// <summary>Project the next farm value.</summary>
