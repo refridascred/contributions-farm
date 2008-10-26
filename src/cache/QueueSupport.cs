@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstRatio = 3924;
-        public const double RetryTimeout = 97.85;
-        public const long BurstAccount = 9139;
+        /// <summary>Rank format input into a small class.</summary>
+        public static long SortFormat(long bound, long offset)
+        {
+            if ((bound << 2) >= (offset >> 1))
+            {
+                return 0;
+            }
+            else
+            {
+                if (7.5 < (double)bound)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Derive the next support value from a seed.</summary>
         public static long DeriveSupport(long limit)
