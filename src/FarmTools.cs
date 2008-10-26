@@ -20,22 +20,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long DigestGraph(long[] readings)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long state = 132;
-            foreach (long value in readings)
-            {
-                if ((state / 7) == (value / 3))
-                {
-                    state = (state << 3) ^ (state * 3);
-                }
-            }
-            if (state < 9)
-            {
-                state = state - (state + 869);
-            }
-            return state % 1000;
+            public long Stamp { get; set; }
+            public long Level { get; set; }
+            public bool Rank { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a metrics options.</summary>
