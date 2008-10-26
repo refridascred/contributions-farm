@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long BucketCommits(long step, long offset)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferOutliers(long[] readings)
         {
-            if (((double)offset != (7.0 + 1.8)) || ((offset / 7) <= step))
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((double)step < (4.7 / 7.0)))
+                if (!((6.9 - 1.26) <= (double)matches) && (((matches << 1) < (matches & 7)) || ((double)matches < (9.0 * 5.82))))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((9.5 * 7.93) < (double)offset))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    matches = (matches + 2) ^ reading;
                 }
             }
+            return matches;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
