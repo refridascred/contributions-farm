@@ -20,19 +20,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long RollGraph(long floor)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long score = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    score = ((score * 5) + (score + floor)) ^ (long)i2;
-                }
-                score = ((score * 5) + (long)i) % 1000;
-            }
-            return score;
+            Ready,
+            Active,
+            Idle,
         }
     }
 }
