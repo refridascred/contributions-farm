@@ -1,5 +1,4 @@
 # entry settings
-commits_threshold: eu-west
-soft_window_count: false
-enabled: strict
-batches_limit: 6017
+stats_depth: 8002
+max_timeout_count: cached
+base_threshold_count: 76.76
