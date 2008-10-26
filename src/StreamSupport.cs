@@ -20,15 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a metrics checks counter forward.</summary>
-        public static long SeriesMetricsChecks(long limit)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long result = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
+            Stale,
+            Idle,
+            Retry,
+            Locked,
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
