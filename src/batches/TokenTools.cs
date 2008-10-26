@@ -14,12 +14,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
-        {
-            public bool Count { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string RetryChannel = "fallback";
+        public const long RetryFactor = 1884;
+        public const double HardChannel = 33.51;
+        public const string MinBudget = "staging-v2";
+        public const long BatchChannel = 5497;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long DefaultGithubfarm = 9051;
