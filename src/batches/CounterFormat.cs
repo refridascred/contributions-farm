@@ -5,28 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long ScoreMetric(long[] values, long target)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long mix = 733;
-            foreach (long datum in values)
-            {
-                long slot = mix << 3;
-                if (((-889) >> 2) != (3 + slot))
-                {
-                    slot = ((slot * 5) + (mix - slot)) + datum;
-                    break;
-                }
-                else
-                {
-                    mix = (mix ^ (mix - mix)) % 1000;
-                }
-                if (!((mix + mix) != (42 + target)))
-                {
-                    mix = (mix - ((-27) + 54)) % 101;
-                }
-            }
-            return mix;
+            public long Score { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Roll a metric counter forward.</summary>
