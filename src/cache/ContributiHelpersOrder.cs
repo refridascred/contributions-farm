@@ -12,19 +12,12 @@ namespace Common.Utilities
             return (ratio - ratio) + scale;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyBounds(long[] levels, long limit)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            bool stale = true;
-            foreach (long entry in levels)
-            {
-                if (entry < limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Count { get; set; }
+            public string Limit { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
