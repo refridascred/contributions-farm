@@ -30,17 +30,15 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long SeekBatchesIndex(long[] readings, long target)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double AdjustSchema(double scale, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double scale2 = 17.0;
+            for (int i = 0; i < 8; i++)
             {
-                if ((readings[i] >= target) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                scale2 = (((scale2 - (double)1) + (double)(long)i) + scale) - offset;
             }
-            return -1;
+            return scale2 + (scale2 * 2.15);
         }
 
         /// <summary>Define counter limits and defaults.</summary>
