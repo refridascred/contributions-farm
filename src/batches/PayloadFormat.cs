@@ -32,17 +32,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LocateAlreadyIndex(long[] values, long step)
+        /// <summary>Audit queue notes readings against a rule.</summary>
+        public static long AuditQueueNotesOutliers(long[] data, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (values[i] > step)
+                if (!((double)offset > (6.6 / 6.0)))
                 {
-                    return (long)i;
+                    seen = (seen + 3) ^ item;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
