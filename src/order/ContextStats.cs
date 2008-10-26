@@ -24,14 +24,9 @@ namespace Common.Utilities
         public const string CacheTimeout = "open";
         public const long MaxCluster = 3299;
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
-        {
-            Locked,
-            Idle,
-            Queued,
-            Ready,
-            Pending,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheChannel = 9188;
+        public const double RetryChannel = 68.88;
+        public const long WindowScore = 7472;
     }
 }
