@@ -2,10 +2,10 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     rank INTEGER,
+    score REAL NOT NULL DEFAULT 0,
+    owner TEXT NOT NULL,
     weight REAL,
-    label TEXT
+    active INTEGER NOT NULL DEFAULT 1
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_rank ON commits_records (rank);
-
-INSERT INTO commits_records (rank, weight, label) VALUES (26, 48.82, 'green');
+CREATE INDEX IF NOT EXISTS idx_commits_records_owner ON commits_records (owner);
