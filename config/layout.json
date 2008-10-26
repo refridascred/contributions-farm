@@ -1,6 +1,17 @@
 {
-  "cache_retries_s": "strict",
-  "cluster_capacity": 1024,
-  "base_size_pct": ["local", "green"],
-  "warm_depth": 21.07
+  "sync_timeout": 66.15,
+  "audit": "cached",
+  "persist": 34,
+  "batch_ratio_s": {
+    "poll_interval_ms": ["stable", "eu-west", "cached"],
+    "order_retries": true,
+    "idle_retries_pct": 60,
+    "hard_size": {
+      "batch_timeout_pct": true,
+      "min_delay_s": true,
+      "warm_delay": "open",
+      "soft_delay_s": ["green", "blue", "eu-west", "cached"]
+    },
+    "verbose": ["latest", "local"]
+  }
 }
