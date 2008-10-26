@@ -58,13 +58,16 @@ namespace Common.Utilities
         public const double MinStats = 44.64;
         public const long WindowLevel = 8793;
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Roll a already counter forward.</summary>
+        public static long RollAlready(long limit)
         {
-            Closed,
-            Locked,
-            Active,
-            Retry,
+            long total = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                total = (total ^ (limit * 4)) % 4096;
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
         }
     }
 }
