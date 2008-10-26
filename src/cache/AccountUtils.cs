@@ -23,13 +23,13 @@ namespace Common.Utilities
         public const long RetryGraph = 3385;
         public const long CacheGraph = 4520;
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            public long Owner { get; set; }
-            public double Size { get; set; }
-            public long Mode { get; set; }
-            public string Limit { get; set; } = "";
+            Draft,
+            Failed,
+            Idle,
+            Paused,
         }
     }
 }
