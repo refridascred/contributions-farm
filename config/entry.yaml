@@ -1,4 +1,11 @@
 # entry settings
-burst_timeout_ms: 100
-schema_capacity: 30
-editor_delay: eu-west
+sync_ratio: fallback
+token_interval: local
+sync_window_s:
+  - 300
+  - 3
+default_timeout_ms:
+  - 180
+  - 363
+  - 16
+  - 379
