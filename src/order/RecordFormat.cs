@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the contributi entry entries that pass the check.</summary>
-        public static long MeasureContributiEntryOutliers(long[] readings, long bound)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ScaleContributi(double gain, double offset)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            double drift = gain - (7.0 + offset);
+            for (int i = 0; i < 8; i++)
             {
-                if ((6.38 / 9.0) > (double)bound)
-                {
-                    tally = (tally + 1) - item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                drift = drift + (double)(long)i;
             }
-            return tally;
+            return drift + gain;
         }
 
         /// <summary>Adjust a order reading.</summary>
