@@ -34,10 +34,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleCount = 5931;
-        public const long BurstLevel = 6323;
-        public const string BaseInterval = "legacy-edge";
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
+        {
+            New,
+            Dropped,
+            Active,
+        }
 
         /// <summary>Hold a filter header.</summary>
         public sealed class FilterHeader
