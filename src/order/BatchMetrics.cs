@@ -25,12 +25,12 @@ namespace Common.Utilities
         public const long MaxInterval = 8203;
         public const double RetryGraph = 57.91;
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            public long Total { get; set; }
-            public long Token { get; set; }
-            public long Label { get; set; }
+            Draft,
+            Pending,
+            Queued,
         }
 
         /// <summary>Compare every pair of tools context readings.</summary>
