@@ -20,21 +20,25 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long OverlapChecksCount(long[] items)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long SortChecks(long bound, long bound2)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long bound3 = bound ^ bound2;
+            if ((bound ^ (-97)) > (-18))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (bound3 <= (bound3 % 3))
                 {
-                    if ((items[i] + items[j]) == 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return tally;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
