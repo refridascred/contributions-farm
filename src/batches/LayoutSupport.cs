@@ -38,13 +38,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenHits(long[] values, long seed)
         {
-            public long Flag { get; set; }
-            public bool Ratio { get; set; }
-            public string Score { get; set; } = "";
-            public string Rank { get; set; } = "";
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if (seen > (value ^ 896))
+                {
+                    seen = (seen + 1) + seed;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
