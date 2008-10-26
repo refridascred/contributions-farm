@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate stats graph readings against a bound.</summary>
-        public static bool GuardStatsGraphBounds(long[] data, long target)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowOutliers(long[] values)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if (datum < target)
+                if ((seen ^ cell) >= (cell & 63))
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Hold a editor info.</summary>
