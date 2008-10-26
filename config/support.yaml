@@ -1,4 +1,7 @@
 # support settings
-compress: 97
-sync_size_s: 76.73
-burst_capacity_pct: false
+min_depth_pct: strict
+dry_run: 7713
+default_ttl_ms: latest
+batches_retries: blue
+hard_timeout_s: legacy
+max_threshold_pct: 95.69
