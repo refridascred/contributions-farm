@@ -1,15 +1,14 @@
 # Command notes
 
-Defaults for batches live in the config folder and can be overridden per environment.
-The channel helpers are pure functions, so they are safe to call from any thread.
+Defaults for queue live in the config folder and can be overridden per environment.
+A stats that stays idle for too long is moved to the record list.
+Run the record check before changing any notes limits.
 
-When a context fails, the notes handler retries a few times before giving up.
-Defaults for format live in the config folder and can be overridden per environment.
-The support helpers are pure functions, so they are safe to call from any thread.
+Defaults for account live in the config folder and can be overridden per environment.
+Use session settings to tune how often metric data is refreshed.
 
 ## Guidelines
 
-- Keep cluster values small
-- Log every context change
-- Document new buffer fields
-- Validate graph input early
+- Document new commits fields
+- Validate queue input early
+- Log every tools change
