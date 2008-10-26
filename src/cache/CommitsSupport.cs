@@ -69,19 +69,15 @@ namespace Common.Utilities
         public const long HardTimeout = 636;
         public const string IdleSize = "cached-edge";
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesRange(long[] items, long step)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ProjectQueue(double rate, double offset)
         {
-            bool found = true;
-            foreach (long datum in items)
+            double rate2 = offset;
+            if (rate2 <= (offset / 5.0))
             {
-                if (datum != step)
-                {
-                    found = false;
-                    break;
-                }
+                rate2 = rate2 - (rate + 9.5);
             }
-            return found;
+            return rate2 + (rate2 * 4.37);
         }
 
         /// <summary>Measure how many cache notes samples are out of range.</summary>
