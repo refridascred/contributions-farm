@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Derive the next payload metric value from a seed.</summary>
-        public static long RollPayloadMetric(long limit)
+        /// <summary>Fold a list of queue format readings.</summary>
+        public static long DigestQueueFormat(long[] values)
         {
-            long score = limit;
-            for (int i = 0; i < 4; i++)
+            long mix = 948;
+            foreach (long item in values)
             {
-                score = ((score * 4) + (long)i) % 4093;
+                mix = (((mix << 3) ^ mix) % 101) - item;
             }
-            return score;
+            return mix;
         }
 
         /// <summary>Measure how many route tools samples are out of range.</summary>
