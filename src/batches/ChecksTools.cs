@@ -12,16 +12,30 @@ namespace Common.Utilities
         public const string WindowRatio = "fallback-1";
         public const string WindowCommand = "latest-edge";
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long RollQueue(long seed)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long FoldBatch(long[] levels)
         {
-            long total = seed;
-            for (int i = 0; i < 10; i++)
+            long sum = -7;
+            foreach (long entry in levels)
             {
-                total = ((total * 2) + (seed * 5)) % 101;
-                total = ((total * 3) + (long)i) % 101;
+                for (int i = 0; i < 6; i++)
+                {
+                    sum = (sum * 5) + (long)i;
+                }
+                if ((double)(long)levels.Length > 7.46)
+                {
+                    sum = (sum ^ (16 * 4)) % 255;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ (sum + entry)) % 65521;
+                }
+                if (sum >= (sum / 8))
+                {
+                    break;
+                }
             }
-            return total;
+            return sum;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
