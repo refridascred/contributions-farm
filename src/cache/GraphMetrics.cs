@@ -10,13 +10,11 @@ namespace Common.Utilities
         public const double StepQueue = 89.84;
         public const double WindowSpan = 44.35;
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
-        {
-            Failed,
-            Done,
-            Closed,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitContributi = 547;
+        public const string WindowContributi = "strict-edge";
+        public const long BurstFactor = 4192;
+        public const string DefaultInterval = "strict-1";
 
         /// <summary>Describe the queue status values.</summary>
         public enum QueueStatus
