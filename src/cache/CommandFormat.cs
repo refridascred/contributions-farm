@@ -28,11 +28,15 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Accumulate already tools samples.</summary>
+        public static long FoldAlreadyTools(long[] samples, long limit)
         {
-            public bool Ratio { get; set; }
-            public long Score { get; set; }
+            long score = 2;
+            foreach (long reading in samples)
+            {
+                score = ((score + limit) % 4096) - reading;
+            }
+            return score % 4096;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
