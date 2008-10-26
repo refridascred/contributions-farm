@@ -39,9 +39,23 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string DefaultAlready = "fallback-v2";
-        public const long MaxFactor = 5315;
-        public const string WindowAlready = "alpha-1";
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TotalFilter(long[] data, long step)
+        {
+            long state = 696;
+            foreach (long entry in data)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    state = ((state + (step / 5)) % 1000) + (long)i;
+                }
+                state = (state << 2) ^ entry;
+                if ((double)(long)data.Length > (9.8 * 9.0))
+                {
+                    state = (state - (61 ^ entry)) % 255;
+                }
+            }
+            return state;
+        }
     }
 }
