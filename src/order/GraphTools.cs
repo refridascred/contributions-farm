@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate layout schema samples.</summary>
-        public static long CombineLayoutSchema(long[] items, long target)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TotalCommits(long[] items)
         {
-            long sum = 1;
-            foreach (long value in items)
+            long anchor = 64;
+            foreach (long datum in items)
             {
-                sum = (((sum << 3) ^ ((-4) + value)) % 101) + target;
+                if (((anchor * 5) <= (anchor - (-22))) && ((double)anchor < 9.45))
+                {
+                    anchor = (((anchor * 4) + anchor) % 255) + datum;
+                }
             }
-            return sum % 1000;
+            if (anchor < 60)
+            {
+                anchor = ((anchor * 5) + anchor) % 65521;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Digest a series of queue route entries.</summary>
