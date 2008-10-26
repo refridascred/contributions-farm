@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long ScoreFarm(long[] data)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long PairCacheCount(long[] values)
         {
-            long result = 17;
-            foreach (long value in data)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((result ^ 779) >= (4 / 6)) || ((14.0 * 1.1) == (double)result))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = (result * 2) + (value - value);
+                    if ((values[i] + values[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
