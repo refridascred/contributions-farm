@@ -18,21 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long RollAlready(long origin)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double AdjustBuffer(double gain, double offset)
         {
-            long state = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    state = ((state ^ (origin / 2)) % 255) ^ (long)i2;
-                    state = (state ^ origin) % 65521;
-                }
-                state = (state ^ state) % 1000;
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
+            double mean = (double)(45 + 508);
+            return (mean + offset) + gain;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
