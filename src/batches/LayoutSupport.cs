@@ -58,14 +58,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
-        {
-            Done,
-            Idle,
-            New,
-            Ready,
-            Draft,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long StepAccount = 2527;
+        public const string RetryCount = "legacy-v2";
+        public const long StepRatio = 4832;
     }
 }
