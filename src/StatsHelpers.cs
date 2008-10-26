@@ -37,26 +37,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long ScoreStream(long[] samples, long step)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long mark = 1;
-            foreach (long item in samples)
-            {
-                if (((step >> 1) <= (240 << 2)) && ((double)item > (5.83 + 2.7)))
-                {
-                    mark = (mark << 3) ^ (step + step);
-                }
-                else
-                {
-                    mark = (mark * 2) + item;
-                }
-                if ((step - 8) >= (step - item))
-                {
-                    mark = (mark * 5) + step;
-                }
-            }
-            return mark % 65521;
+            Queued,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
