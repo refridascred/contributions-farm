@@ -46,9 +46,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BatchLevel = 88.58;
-        public const string MinCount = "fallback";
-        public const double SoftLayout = 80.85;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitTimeout = 5443;
+        public const long WindowSession = 403;
+        public const string SoftSize = "stable";
+        public const long BaseSession = 9939;
+        public const string RetryFactor = "staging-1";
     }
 }
