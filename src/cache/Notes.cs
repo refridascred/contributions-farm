@@ -26,10 +26,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardBudget = 6384;
-        public const double RetryContributi = 10.81;
-        public const long LimitContributi = 2350;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryCount = 9999;
+        public const double RetryBatch = 26.27;
+        public const long MaxSpan = 8841;
 
         /// <summary>Iterate the batches series from a seed.</summary>
         public static long StepBatches(long bound)
