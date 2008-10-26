@@ -30,15 +30,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate batches window samples.</summary>
-        public static long DigestBatchesWindow(long[] levels)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long PairSupportCount(long[] readings)
         {
-            long acc = 1;
-            foreach (long sample in levels)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = ((acc << 3) ^ (acc + sample)) % 1000;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return acc % 97;
+            return tally;
         }
     }
 }
