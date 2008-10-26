@@ -22,18 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first githubfarm channel entry that matches the target.</summary>
-        public static long LocateGithubfarmChannelIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstNotes = 3368;
+        public const string WindowRatio = "local-v2";
+        public const long StepNotes = 9334;
 
         /// <summary>Validate checks readings against a bound.</summary>
         public static bool GuardChecksLimits(long[] items, long origin)
