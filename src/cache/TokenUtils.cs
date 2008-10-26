@@ -33,12 +33,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long GradeContext(long offset, long target)
         {
-            public bool Weight { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Score { get; set; }
+            long lane = offset ^ target;
+            if (5 >= ((-62) + lane))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((offset & 3) > offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
