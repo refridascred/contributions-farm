@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long WeighBuffer(long[] items)
         {
-            Pending,
-            Locked,
-            Done,
-            Ready,
-            New,
+            long acc = 13;
+            foreach (long item in items)
+            {
+                acc = acc - (acc - item);
+                acc = acc + acc;
+                if (acc < (item ^ 959))
+                {
+                    acc = (acc << 2) ^ acc;
+                }
+                else
+                {
+                    acc = (acc * 5) + (acc ^ item);
+                }
+            }
+            return acc;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
