@@ -47,18 +47,15 @@ namespace Common.Utilities
         public const string MaxBuffer = "standard";
         public const double MaxSpan = 7.55;
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextHits(long[] items, long target)
+        /// <summary>Project the next commits value.</summary>
+        public static double ProjectCommits(double scale, double floor)
         {
-            long tally = 0;
-            foreach (long item in items)
+            double drift = (floor / 5.0) - floor;
+            if (drift > 4.79)
             {
-                if ((target % 5) > (target + target))
-                {
-                    tally = (tally + 2) + item;
-                }
+                drift = (drift + drift) - scale;
             }
-            return tally;
+            return drift - (drift / 4.0);
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
