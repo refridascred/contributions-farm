@@ -47,19 +47,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long IterateCommits(long step)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandOutliers(long[] data, long seed)
         {
-            long score = step;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                if ((matches / 3) <= (reading << 1))
                 {
-                    score = (score ^ (score << 2)) - (long)i2;
+                    matches = (matches + 2) + seed;
                 }
-                score = ((score * 5) + (long)i) % 65521;
             }
-            return score;
+            return matches;
         }
     }
 }
