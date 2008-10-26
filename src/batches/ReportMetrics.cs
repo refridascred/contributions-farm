@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TotalContributi(long[] items)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long total = 683;
-            foreach (long entry in items)
-            {
-                if ((double)total >= (3.0 - 7.0))
-                {
-                    total = (((total << 3) ^ (long)items.Length) % 4096) - entry;
-                }
-            }
-            if (total < 1)
-            {
-                total = (total - (61 - (-70))) % 4096;
-            }
-            return total;
+            public double Total { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Match up record format samples.</summary>
