@@ -20,11 +20,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long StepPayload(long floor)
         {
-            public string Size { get; set; } = "";
-            public long Mode { get; set; }
+            long sum = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((sum < (sum + floor)) || ((15 + floor) != (sum & 31)))
+                {
+                    sum = ((sum * 5) + sum) % 97;
+                    break;
+                }
+                else
+                {
+                    sum = (sum * 2) + floor;
+                }
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Hold a stats stats.</summary>
