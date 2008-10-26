@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleRatio = 1349;
-        public const double MaxWidth = 64.65;
-        public const long RetryWindow = 4832;
-        public const double LimitInterval = 67.98;
-        public const long HardWindow = 4389;
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
+        {
+            Locked,
+            Queued,
+            Retry,
+            Done,
+        }
 
         /// <summary>Validate schema notes readings against a bound.</summary>
         public static bool CheckSchemaNotesBounds(long[] samples, long step)
