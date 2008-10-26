@@ -23,17 +23,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a format schema reading by value.</summary>
-        public static long SeekFormatSchemaIndex(long[] data, long target)
+        /// <summary>Match up metric samples.</summary>
+        public static long MatchMetricCount(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((data[i] > target) && ((data[i] % 3) == 0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] - readings[j]) == 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
