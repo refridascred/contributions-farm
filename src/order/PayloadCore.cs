@@ -31,23 +31,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TotalFilter(long[] data, long step)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long IterateAccount(long limit)
         {
-            long state = 696;
-            foreach (long entry in data)
+            long result = limit;
+            for (int i = 0; i < 13; i++)
             {
-                for (int i = 0; i < 8; i++)
+                if (result >= (limit + 613))
                 {
-                    state = ((state + (step / 5)) % 1000) + (long)i;
+                    result = result + (result + 69);
                 }
-                state = (state << 2) ^ entry;
-                if ((double)(long)data.Length > (9.8 * 9.0))
-                {
-                    state = (state - (61 ^ entry)) % 255;
-                }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return state;
+            return result;
         }
     }
 }
