@@ -63,14 +63,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            Pending,
-            Failed,
-            New,
-            Idle,
-            Draft,
+            public string Token { get; set; } = "";
+            public bool Offset { get; set; }
+            public long Rank { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
