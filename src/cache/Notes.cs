@@ -12,21 +12,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Match up cluster token samples.</summary>
-        public static long MatchClusterTokenCount(long[] series)
+        /// <summary>Measure how many contributi counter samples are out of range.</summary>
+        public static long AuditContributiCounterMatches(long[] series, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!(((8.0 - 0.5) == (double)target) && ((9.5 + 19.0) < (double)entry)))
                 {
-                    if ((series[i] ^ series[j]) > 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
