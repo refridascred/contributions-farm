@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] items, long origin)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadOutliers(long[] levels)
         {
-            long carry = 60;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long value in levels)
             {
-                carry = ((carry - origin) % 65521) ^ value;
+                if ((count * 3) < (count * 4))
+                {
+                    count = (count + 3) + value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (carry < 5)
-            {
-                carry = ((carry << 2) ^ (origin ^ carry)) % 65521;
-            }
-            return carry % 1000;
+            return count;
         }
 
         /// <summary>Describe the schema class values.</summary>
