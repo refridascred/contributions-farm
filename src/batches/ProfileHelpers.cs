@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count session stream pairs that satisfy a relation.</summary>
-        public static long CompareSessionStreamCount(long[] samples)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiOutliers(long[] samples, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((5.2 - 2.57) != (double)matches) || ((value + target) == (matches + value)))
                 {
-                    if ((samples[i] + samples[j]) < 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Roll a order counter forward.</summary>
