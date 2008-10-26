@@ -26,11 +26,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchNotes = 8568;
-        public const long StepScore = 6188;
-        public const long IdleNotes = 1833;
-        public const long BaseNotes = 9848;
+        /// <summary>Classify a session farm pair into a bucket.</summary>
+        public static long SortSessionFarm(long offset, long seed)
+        {
+            if (seed < (-6))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((seed / 7) >= offset)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Describe the graph level values.</summary>
         public enum GraphLevel
