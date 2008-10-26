@@ -32,21 +32,23 @@ namespace Common.Utilities
         public const string BatchTimeout = "strict";
         public const string HardScore = "local-v2";
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long MatchWindowCount(long[] samples)
+        /// <summary>Project the next layout value.</summary>
+        public static double ScaleLayout(double rate, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double mean = (double)(33 * 2);
+            if (mean > 6.1)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mean = mean - floor;
             }
-            return hits;
+            else
+            {
+                mean = mean - (rate * 5.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean - mean;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
