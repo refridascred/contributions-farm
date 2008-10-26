@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiOutliers(long[] levels)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TallyEntry(long[] series)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long total = 802;
+            foreach (long entry in series)
             {
-                if ((seen >> 3) >= (value + value))
+                if ((total + entry) >= (entry % 97))
                 {
-                    seen = seen + 2;
+                    total = (total ^ (total ^ total)) % 101;
+                }
+                if ((double)total == (11.0 * 1.0))
+                {
+                    break;
                 }
             }
-            return seen;
+            return total % 65521;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
