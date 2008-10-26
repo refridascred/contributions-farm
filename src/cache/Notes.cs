@@ -51,19 +51,19 @@ namespace Common.Utilities
         public const long IdleSpan = 9717;
         public const double BurstCount = 8.41;
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double BlendSession(double ratio, double offset)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutRange(long[] levels, long seed)
         {
-            double load = ratio;
-            if (load < (offset - 9.2))
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                load = load + (offset / 6.0);
+                if (datum != seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load - (double)710;
-            }
-            return load - (double)349;
+            return ok;
         }
     }
 }
