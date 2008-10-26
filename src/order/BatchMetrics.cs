@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string RetryFilter = "alpha-edge";
-        public const long BurstFilter = 8515;
-        public const string CacheSpan = "staging-1";
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxReport = 6856;
+        public const long RetryReport = 5307;
+        public const string LimitSpan = "latest-1";
+        public const double DefaultReport = 10.18;
+        public const string LimitReport = "fallback-edge";
 
         /// <summary>Compare every pair of counter readings.</summary>
         public static long MatchCounterCount(long[] series)
