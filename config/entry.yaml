@@ -1,4 +1,8 @@
 # entry settings
-poll_size_count: true
-buffer_capacity: legacy
-retry_delay: 17
+batch_window_ms:
+  - edge
+  - staging
+  - stable
+  - standard
+flush_threshold: 35.02
+cache_ttl: 1024
