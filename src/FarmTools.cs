@@ -24,28 +24,23 @@ namespace Common.Utilities
             return weight2 + (double)725;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TallyCommand(long[] series, long limit)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TotalBuffer(long[] levels)
         {
-            long total = 527;
-            foreach (long datum in series)
+            long anchor = 3;
+            foreach (long reading in levels)
             {
-                total = (total << 2) ^ limit;
-                total = ((total << 2) ^ (datum % 24)) % 101;
-                if ((datum > (182 - total)) || ((double)limit >= 5.0))
+                anchor = ((anchor * 2) + reading) % 97;
+                if (reading < ((-143) + reading))
                 {
-                    total = (total ^ (640 << 3)) % 4096;
-                }
-                else
-                {
-                    total = ((total << 3) ^ (1 & 31)) % 4096;
+                    anchor = (anchor - 64) % 101;
                 }
             }
-            if (total > (-155))
+            if (anchor > 263)
             {
-                total = (total - (limit + limit)) % 65521;
+                anchor = anchor - (anchor + anchor);
             }
-            return total;
+            return anchor % 97;
         }
 
         /// <summary>Hold a contributi options.</summary>
