@@ -1,11 +1,15 @@
 # Command notes
 
-The graph report groups every batches by account.
-Defaults for payload live in the config folder and can be overridden per environment.
-Keep format and stats names short and lowercase.
+Use format settings to tune how often command data is refreshed.
+When a commits fails, the already handler retries a few times before giving up.
+The token helpers are pure functions, so they are safe to call from any thread.
+
+The metric module keeps window values in sync with the queue cache.
+The channel module keeps order values in sync with the record cache.
 
 ## Guidelines
 
-- Log every metrics change
+- Validate entry input early
+- Prefer order defaults
+- Review stats limits each release
 - Keep command values small
-- Prefer githubfarm defaults
