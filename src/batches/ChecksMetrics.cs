@@ -66,18 +66,19 @@ namespace Common.Utilities
         public const string LimitTimeout = "local-edge";
         public const long BaseRatio = 4755;
 
-        /// <summary>Audit cache payload readings against a rule.</summary>
-        public static long MeasureCachePayloadGaps(long[] samples, long origin)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesBounds(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                if (hits >= (hits << 2))
+                if (reading < target)
                 {
-                    hits = ((hits + 3) ^ entry) - origin;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
     }
 }
