@@ -42,12 +42,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long ScoreBuffer(long[] levels, long bound)
         {
-            public long Limit { get; set; }
-            public double Size { get; set; }
-            public long Rank { get; set; }
+            long mix = 69;
+            foreach (long entry in levels)
+            {
+                if ((entry & 3) >= bound)
+                {
+                    mix = (mix << 2) ^ (4 % 7);
+                }
+                else
+                {
+                    mix = ((mix * 5) + (mix - entry)) % 65521;
+                }
+            }
+            return mix % 4096;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
