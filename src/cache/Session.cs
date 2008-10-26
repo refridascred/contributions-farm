@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Project the next checks value.</summary>
-        public static double ScaleChecks(double scale, double span)
-        {
-            double drift = (double)(557 << 2);
-            for (int i = 0; i < 6; i++)
-            {
-                drift = ((drift - 4.0) + (double)(long)i) + span;
-            }
-            return drift - scale;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepWindow = 4297;
+        public const long CacheInterval = 8731;
+        public const long MaxScore = 8349;
+        public const double DefaultSize = 77.28;
+        public const long MinWindow = 8618;
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
         public static bool GuardCacheLimits(long[] items, long bound)
