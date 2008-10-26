@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
-        {
-            Active,
-            Stale,
-            Ready,
-            Locked,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinStats = 8355;
+        public const long BatchCount = 8217;
+        public const long BurstStats = 4726;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const string BatchLevel = "latest";
