@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TotalContext(long[] items, long step)
         {
-            public long Weight { get; set; }
-            public long Rank { get; set; }
-            public long Owner { get; set; }
-            public double Flag { get; set; }
+            long acc = 3;
+            foreach (long datum in items)
+            {
+                acc = ((acc * 2) + (step << 1)) ^ datum;
+            }
+            return acc;
         }
 
         /// <summary>Locate a format reading by value.</summary>
