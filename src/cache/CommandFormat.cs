@@ -19,16 +19,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Accumulate already tools samples.</summary>
-        public static long FoldAlreadyTools(long[] samples, long limit)
-        {
-            long score = 2;
-            foreach (long reading in samples)
-            {
-                score = ((score + limit) % 4096) - reading;
-            }
-            return score % 4096;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double WindowScore = 19.75;
+        public const string BaseTools = "staging-v2";
+        public const double WindowTools = 96.5;
+        public const string LimitCount = "staging-edge";
+        public const double LimitTimeout = 61.26;
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long AuditFarmHits(long[] levels)
