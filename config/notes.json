@@ -1,5 +1,8 @@
 {
-  "flush_timeout": "eu-west",
-  "strict": "staging",
-  "default_size": ["standard", "strict", "legacy"]
+  "warm_timeout": "eu-west",
+  "idle_capacity": 2464,
+  "base_timeout_count": true,
+  "audit": [183, 70, 498, 2],
+  "warm_capacity_s": ["latest", "primary"],
+  "dry_run": 35
 }
