@@ -56,18 +56,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportOutliers(long[] samples, long limit)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if (((limit - tally) <= (31 + limit)) || (limit > datum))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Done,
+            Paused,
+            Closed,
+            Pending,
         }
 
         /// <summary>Define record limits and defaults.</summary>
