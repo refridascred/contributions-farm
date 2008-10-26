@@ -28,12 +28,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            Queued,
             Dropped,
-            Stale,
+            Active,
+            Ready,
+            Idle,
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
