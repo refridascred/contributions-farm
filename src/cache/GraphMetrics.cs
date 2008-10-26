@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit already stream readings against a rule.</summary>
-        public static long AuditAlreadyStreamOutliers(long[] samples, long target)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if (((hits + sample) <= (sample << 1)) && (1.79 <= (double)hits))
-                {
-                    hits = (hits + 3) + target;
-                }
-            }
-            return hits;
+            Synced,
+            Active,
+            Pending,
+            Ready,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
