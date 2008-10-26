@@ -1,7 +1,7 @@
-id,active,count
-1,29.43,57.95
-2,54,staging
-3,27.42,primary
-4,cached,863
-5,32.89,2.69
-6,55.72,850
+id,label,ratio,level
+1,72.95,open,55.28
+2,856,primary,edge
+3,77.37,edge,primary
+4,750,green,open
+5,83.69,17.53,687
+6,544,local,852
