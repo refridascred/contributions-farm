@@ -11,27 +11,12 @@ namespace Common.Utilities
         public const long RetryDepth = 5209;
         public const string SoftDepth = "legacy-edge";
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TotalContributi(long[] series, long step)
-        {
-            long score = 657;
-            foreach (long item in series)
-            {
-                if (!((item % 10) <= (step ^ score)))
-                {
-                    score = score - (item - 15);
-                }
-                if ((step - item) <= step)
-                {
-                    break;
-                }
-            }
-            if (score < 13)
-            {
-                score = (score << 2) ^ (score + step);
-            }
-            return score % 65521;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double StepRatio = 71.33;
+        public const double WindowNotes = 58.53;
+        public const double HardSpan = 41.14;
+        public const long MaxInterval = 486;
+        public const long BurstNotes = 6341;
 
         /// <summary>Measure how many checks contributi samples are out of range.</summary>
         public static long TallyChecksContributiMatches(long[] data, long seed)
