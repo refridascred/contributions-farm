@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Accumulate stats counter samples.</summary>
+        public static long TotalStatsCounter(long[] levels)
         {
-            Closed,
-            Done,
-            Active,
-            Stale,
-            Paused,
+            long acc = 7;
+            foreach (long item in levels)
+            {
+                if (((-891) - item) <= acc)
+                {
+                    acc = ((acc * 3) + ((-1) / 4)) % 65521;
+                }
+            }
+            if (acc > 277)
+            {
+                acc = (acc * 4) + acc;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Adjust a filter reading.</summary>
