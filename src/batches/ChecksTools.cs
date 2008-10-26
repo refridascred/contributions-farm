@@ -20,13 +20,19 @@ namespace Common.Utilities
             return drift - (offset - bias);
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Validate metric profile readings against a bound.</summary>
+        public static bool CheckMetricProfileRange(long[] data, long offset)
         {
-            Active,
-            Queued,
-            Dropped,
-            Ready,
+            bool ready = true;
+            foreach (long sample in data)
+            {
+                if (sample >= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a cluster options.</summary>
