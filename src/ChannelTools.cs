@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long ClassifyChecks(long step, long floor)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenMatches(long[] series)
         {
-            long step2 = step ^ floor;
-            if ((step << 3) > (step2 * 5))
+            long count = 0;
+            foreach (long reading in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (((564 * 3) <= step2) && (74 < (floor ^ 6)))
+                if ((6.2 - 3.0) >= (double)reading)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (step2 > floor)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
