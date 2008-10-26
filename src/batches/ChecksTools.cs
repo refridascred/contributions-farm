@@ -35,13 +35,27 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long DeriveStream(long step)
         {
-            public long Limit { get; set; }
-            public bool Score { get; set; }
-            public long Ratio { get; set; }
-            public long Level { get; set; }
+            long acc = step;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((12 & 127) < (acc << 1))
+                {
+                    continue;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ (acc + step)) % 97;
+                }
+                if (((step - (long)i) < 93) || ((acc << 3) > acc))
+                {
+                    acc = acc + 597;
+                }
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
