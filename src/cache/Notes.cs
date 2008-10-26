@@ -32,17 +32,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LocateMetricsIndex(long[] data, long bound)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsMatches(long[] series, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if ((data[i] == bound) && ((data[i] % 3) != 0))
+                if (((matches & 1) == (sample - origin)) || ((87 << 3) >= matches))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
