@@ -36,13 +36,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphGaps(long[] values)
         {
-            public double Region { get; set; }
-            public bool Owner { get; set; }
-            public bool Rank { get; set; }
-            public string Mode { get; set; } = "";
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((seen / 2) < cell)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
