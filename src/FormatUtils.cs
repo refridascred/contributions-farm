@@ -41,24 +41,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long GradeFilter(long seed, long offset)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowLimits(long[] levels, long limit)
         {
-            if ((double)offset > (1.92 - 18.0))
+            bool found = true;
+            foreach (long datum in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (((seed + offset) >= offset) && ((seed >> 1) <= offset))
+                if (datum != limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Describe the stats state values.</summary>
