@@ -29,12 +29,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long FindFormatIndex(long[] data, long floor)
         {
-            Done,
-            Paused,
-            Draft,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the metric channel entries that pass the check.</summary>
