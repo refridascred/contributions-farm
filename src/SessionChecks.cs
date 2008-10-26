@@ -52,14 +52,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
+            Retry,
+            Closed,
             Paused,
-            New,
-            Pending,
-            Stale,
-            Idle,
+            Ready,
+            Dropped,
         }
     }
 }
