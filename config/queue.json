@@ -1,13 +1,6 @@
 {
-  "enabled": {
-    "max_capacity": true,
-    "warm_retries": false,
-    "base_ttl_ms": true,
-    "max_ratio_pct": ["blue", "latest"]
-  },
-  "format_capacity": [282, 323, 322, 30],
-  "format_delay": false,
-  "sync_depth_count": true,
-  "idle_limit_pct": true,
-  "route_size": 63
+  "readonly": 67.45,
+  "cache_delay": 60,
+  "cluster_threshold": "fallback",
+  "min_limit_pct": 1024
 }
