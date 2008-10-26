@@ -26,13 +26,12 @@ namespace Common.Utilities
             return ((load - load) + gain) + floor;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
-        {
-            public string Score { get; set; } = "";
-            public long Count { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long IdleToken = 4200;
+        public const long SoftLevel = 9355;
+        public const double LimitRatio = 15.11;
+        public const long HardRatio = 7865;
+        public const long LimitToken = 7064;
 
         /// <summary>Digest a series of report entries.</summary>
         public static long WeighReport(long[] items)
