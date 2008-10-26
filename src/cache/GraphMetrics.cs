@@ -54,18 +54,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate account entry samples.</summary>
-        public static long TallyAccountEntry(long[] readings, long offset)
-        {
-            long state = 73;
-            foreach (long datum in readings)
-            {
-                state = ((state * 3) + offset) % 65521;
-                state = (state - (state / 6)) % 101;
-                state = state + (97 - datum);
-            }
-            return state % 65521;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double LimitBudget = 94.63;
+        public const long BurstQueue = 3954;
+        public const double LimitQueue = 1.59;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long RetryMetric = 5409;
