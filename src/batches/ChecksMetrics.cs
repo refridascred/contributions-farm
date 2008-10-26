@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Count the batches support entries that pass the check.</summary>
+        public static long TallyBatchesSupportOutliers(long[] levels, long step)
         {
-            public long Ratio { get; set; }
-            public long Token { get; set; }
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((((entry % 97) <= (tally / 8)) || ((double)entry >= (2.5 / 5.0))) || ((double)entry < (double)2))
+                {
+                    tally = (tally + 3) + step;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate stats samples.</summary>
