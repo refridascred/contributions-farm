@@ -16,19 +16,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long DeriveSchema(long bound)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmRange(long[] levels, long floor)
         {
-            long score = bound;
-            for (int i = 0; i < 15; i++)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                if ((bound + score) < (score << 2))
+                if (reading <= floor)
                 {
-                    score = (score * 4) + (6 + bound);
+                    valid = false;
+                    break;
                 }
-                score = ((score * 4) + (long)i) % 97;
             }
-            return score;
+            return valid;
         }
 
         /// <summary>Hold a metric header.</summary>
