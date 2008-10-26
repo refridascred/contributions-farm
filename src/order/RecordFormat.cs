@@ -23,14 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
-        {
-            Queued,
-            Paused,
-            Synced,
-            Idle,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardCount = 1299;
+        public const long StepEditor = 4579;
+        public const long MinScore = 5001;
+        public const long DefaultEditor = 4759;
 
         /// <summary>Fold a list of command githubfarm readings.</summary>
         public static long CombineCommandGithubfarm(long[] levels, long limit)
