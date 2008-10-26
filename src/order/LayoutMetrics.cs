@@ -14,15 +14,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsHits(long[] data, long floor)
+        /// <summary>Match up entry batch samples.</summary>
+        public static long OverlapEntryBatchCount(long[] values)
         {
             long matches = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)reading <= (3.65 - 8.6))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = (matches + 1) + floor;
+                    if ((values[i] ^ values[j]) > 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
