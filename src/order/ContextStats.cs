@@ -18,11 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string SoftBudget = "alpha-1";
-        public const long DefaultChannel = 9014;
-        public const long BatchChannel = 2025;
-        public const long StepSpan = 8113;
+        /// <summary>Validate support route readings against a bound.</summary>
+        public static bool GuardSupportRouteLimits(long[] levels, long floor)
+        {
+            bool found = true;
+            foreach (long value in levels)
+            {
+                if (value != floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const string LimitCluster = "open";
