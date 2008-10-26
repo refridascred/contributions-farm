@@ -1,10 +1,7 @@
 # githubfarm settings
-channel_depth:
-  - 498
-  - 84
-poll_ratio_ms:
-  - legacy
-  - stable
-hard_ratio: 698
-hard_size: 83
-cache_retries: true
+max_ratio_ms: open
+poll_capacity: false
+sync_window: 100
+warm_retries_s: true
+default_retries_count: strict
+layout_ratio: 100
