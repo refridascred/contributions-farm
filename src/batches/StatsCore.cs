@@ -65,15 +65,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandHits(long[] levels)
+        /// <summary>Match up layout samples.</summary>
+        public static long MatchLayoutCount(long[] levels)
         {
             long count = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)count != (7.7 / 4.0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = (count + 1) + entry;
+                    if ((levels[i] - levels[j]) != 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
