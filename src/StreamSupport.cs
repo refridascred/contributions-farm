@@ -40,13 +40,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long StepFarm(long limit)
         {
-            public bool Region { get; set; }
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
-            public bool Offset { get; set; }
+            long acc = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((904 < acc) && (6.58 >= (double)limit))
+                {
+                    acc = (acc - ((long)i << 2)) % 1000;
+                }
+                acc = acc ^ ((long)i % 3);
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
         }
     }
 }
