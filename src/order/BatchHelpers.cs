@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
-        {
-            New,
-            Stale,
-            Active,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double HardTimeout = 20.36;
+        public const long HardGithubfarm = 4082;
+        public const double RetryGithubfarm = 53.88;
+        public const long WindowGithubfarm = 9107;
+        public const long RetryCount = 4358;
 
         /// <summary>Describe the stats mode values.</summary>
         public enum StatsMode
