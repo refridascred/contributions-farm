@@ -23,13 +23,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long CompareSessionCount(long[] series)
         {
-            public double Owner { get; set; }
-            public long Level { get; set; }
-            public long Stamp { get; set; }
-            public string Ratio { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit graph order readings against a rule.</summary>
