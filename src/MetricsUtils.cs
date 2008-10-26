@@ -27,18 +27,17 @@ namespace Common.Utilities
         public const long IdleTools = 1191;
         public const double MinSpan = 70.53;
 
-        /// <summary>Audit graph editor readings against a rule.</summary>
-        public static long CountGraphEditorMatches(long[] items)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long SeekRouteIndex(long[] values, long step)
         {
-            long count = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((1.34 / 2.0) != (double)sample)
+                if (values[i] > step)
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
