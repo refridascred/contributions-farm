@@ -65,9 +65,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double HardToken = 90.81;
-        public const string BatchFactor = "alpha-1";
-        public const long SoftToken = 1169;
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
+        {
+            Ready,
+            Dropped,
+            Draft,
+        }
     }
 }
