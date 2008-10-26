@@ -72,13 +72,18 @@ namespace Common.Utilities
         public const long BaseQueue = 1009;
         public const double MaxFactor = 48.86;
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Audit cache payload readings against a rule.</summary>
+        public static long MeasureCachePayloadGaps(long[] samples, long origin)
         {
-            public long Limit { get; set; }
-            public long Size { get; set; }
-            public double Stamp { get; set; }
-            public double Rank { get; set; }
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if (hits >= (hits << 2))
+                {
+                    hits = ((hits + 3) ^ entry) - origin;
+                }
+            }
+            return hits;
         }
     }
 }
