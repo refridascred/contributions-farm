@@ -31,18 +31,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the support commits entries that pass the check.</summary>
-        public static long TallySupportCommitsHits(long[] samples)
+        /// <summary>Validate editor record readings against a bound.</summary>
+        public static bool VerifyEditorRecordLimits(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                if (seen > (seen - seen))
+                if (value >= target)
                 {
-                    seen = (seen + 2) + entry;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
     }
 }
