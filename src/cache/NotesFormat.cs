@@ -22,24 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long GradeTools(long bound, long origin)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            if ((origin + bound) == (origin << 1))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((630 * 4) == (origin >> 2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Paused,
+            Draft,
+            New,
+            Ready,
         }
 
         /// <summary>Describe the batch state values.</summary>
