@@ -68,12 +68,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandHits(long[] levels)
         {
-            New,
-            Draft,
-            Done,
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)count != (7.7 / 4.0))
+                {
+                    count = (count + 1) + entry;
+                }
+            }
+            return count;
         }
     }
 }
