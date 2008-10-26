@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the schema token entries that pass the check.</summary>
-        public static long AuditSchemaTokenGaps(long[] values)
+        /// <summary>Count the contributi entry entries that pass the check.</summary>
+        public static long MeasureContributiEntryOutliers(long[] readings, long bound)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if (((long)values.Length >> 2) <= hits)
+                if ((6.38 / 9.0) > (double)bound)
                 {
-                    hits = (hits + 2) - value;
+                    tally = (tally + 1) - item;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Adjust a order reading.</summary>
