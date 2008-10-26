@@ -19,10 +19,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseCache = 4908;
-        public const long HardCache = 759;
-        public const double WindowCache = 23.83;
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiGaps(long[] readings)
+        {
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if (!((tally < (tally * 2)) || ((2.0 * 4.44) == (double)reading)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count format batch pairs that satisfy a relation.</summary>
         public static long CompareFormatBatchCount(long[] samples)
