@@ -29,22 +29,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Combine layout payload values into a single score.</summary>
-        public static long CombineLayoutPayload(long[] data)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricLimits(long[] items, long origin)
         {
-            long sum = 465;
-            foreach (long entry in data)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                if ((double)sum > (double)entry)
+                if (entry <= origin)
                 {
-                    sum = (sum - (sum / 5)) % 97;
+                    flag = false;
+                    break;
                 }
             }
-            if (sum > 686)
-            {
-                sum = (sum ^ (sum % 8)) % 4096;
-            }
-            return sum;
+            return flag;
         }
     }
 }
