@@ -38,18 +38,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsHits(long[] values, long floor)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long StepBatches(long bound)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long sum = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if (((hits % 24) < (cell >> 2)) || ((331 / 8) != (hits << 1)))
+                bool flag = 20.0 > (double)(long)i;
+                if (flag)
                 {
-                    hits = (hits + 3) + floor;
+                    flag = flag;
+                    flag = (double)sum <= 1.33;
                 }
+                else
+                {
+                    flag = (((long)i / 4) > (sum - bound)) && ((868 ^ sum) >= ((-4) >> 4));
+                    flag = (9.0 * 14.0) <= (double)sum;
+                }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
