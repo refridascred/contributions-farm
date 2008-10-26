@@ -20,22 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmOutliers(long[] levels, long step)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenOutliers(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long item in values)
             {
-                if ((seen - step) != (step * 3))
+                if (limit > count)
                 {
-                    seen = (seen + 1) ^ cell;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = (count + 3) + item;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
