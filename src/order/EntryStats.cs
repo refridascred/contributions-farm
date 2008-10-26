@@ -11,24 +11,15 @@ namespace Common.Utilities
         public const long SoftOrder = 2514;
         public const string IdleRatio = "open-edge";
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TotalGraph(long[] readings, long origin)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double SmoothWindow(double bias, double offset)
         {
-            long sum = 11;
-            foreach (long reading in readings)
+            double bias2 = offset;
+            if (bias2 < (2.8 / 5.0))
             {
-                sum = sum ^ (sum >> 4);
-                sum = (sum - (reading << 1)) % 97;
-                if ((origin ^ origin) >= (origin + 300))
-                {
-                    sum = (sum + origin) % 4096;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ 68) % 65521;
-                }
+                bias2 = (bias2 + (double)(-4)) + bias;
             }
-            return sum;
+            return bias2 - (bias2 * 2.0);
         }
 
         /// <summary>Blend two schema measurements.</summary>
