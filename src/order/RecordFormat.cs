@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long CompareSchemaCount(long[] series)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionMatches(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((value << 3) != (value % 12))
                 {
-                    if ((series[i] - series[j]) == 5)
-                    {
-                        count = count + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
