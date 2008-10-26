@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long SortLayout(long offset, long bound)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyLimits(long[] items, long bound)
         {
-            long edge = offset - bound;
-            if (!(bound < (879 ^ (-300))))
+            bool ready = true;
+            foreach (long item in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((edge - 0) != (offset << 3))
+                if (item < bound)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
