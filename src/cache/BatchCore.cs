@@ -36,20 +36,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long DigestMetrics(long[] values)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long result = 8;
-            foreach (long datum in values)
-            {
-                if ((3 << 2) < (datum + (-44)))
-                {
-                    result = (result << 3) ^ result;
-                    continue;
-                }
-                result = (result + (datum / 9)) % 255;
-            }
-            return result;
+            public double Token { get; set; }
+            public long Rank { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Locate a report reading by value.</summary>
