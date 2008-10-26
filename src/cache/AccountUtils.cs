@@ -35,19 +35,13 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelRange(long[] series, long bound)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            bool ok = true;
-            foreach (long reading in series)
-            {
-                if (reading != bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Dropped,
+            New,
+            Ready,
+            Closed,
         }
     }
 }
