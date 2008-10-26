@@ -28,13 +28,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
-        {
-            public string Total { get; set; } = "";
-            public long Label { get; set; }
-            public long Size { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstQueue = 36;
+        public const double SoftCount = 69.18;
+        public const long DefaultQueue = 5734;
+        public const long SoftInterval = 8700;
     }
 }
