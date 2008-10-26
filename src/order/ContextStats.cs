@@ -34,12 +34,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string LimitCluster = "open";
-        public const long MinBudget = 6103;
-        public const long DefaultCluster = 6236;
-        public const string CacheTimeout = "open";
-        public const long MaxCluster = 3299;
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
+        {
+            public bool Ratio { get; set; }
+            public double Total { get; set; }
+            public double Limit { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long CacheRecord = 3476;
