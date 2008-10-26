@@ -14,23 +14,20 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double BlendProfile(double ratio, double floor)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long RollCounter(long offset)
         {
-            double ratio2 = (double)(7 >> 4);
-            if (ratio2 < (ratio2 - floor))
+            long score = offset;
+            for (int i = 0; i < 10; i++)
             {
-                ratio2 = (ratio2 - (ratio2 - floor)) - ratio;
+                score = ((score << 2) ^ score) % 255;
+                if (!(offset >= (long)i))
+                {
+                    score = (score * 3) + (long)i;
+                }
+                score = ((score * 4) + (long)i) % 101;
             }
-            else
-            {
-                ratio2 = ratio2 + (floor / 9.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio2 = (ratio2 - ratio2) + (double)(long)i;
-            }
-            return ratio2 - ratio2;
+            return score;
         }
 
         /// <summary>Project the next session value.</summary>
