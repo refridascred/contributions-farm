@@ -1,7 +1,19 @@
 {
-  "idle_ttl_s": 100,
-  "max_retries_s": false,
-  "buffer_delay": "stable",
-  "flush_size_pct": true,
-  "enabled": 61
+  "stream_depth": "legacy",
+  "batch_retries_s": {
+    "base_limit": 30,
+    "dry_run": false,
+    "support_limit": {
+      "compress": 100,
+      "readonly": "green",
+      "audit": [39, 187, 38, 16],
+      "route_timeout": "cached",
+      "burst_limit_s": false,
+      "batch_interval": 70.41
+    }
+  },
+  "cache_retries_pct": ["fallback", "local", "legacy"],
+  "base_ratio_ms": 30,
+  "soft_delay_count": 32,
+  "editor_interval": true
 }
