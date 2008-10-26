@@ -6,15 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=442
-log "limit is ${BUFFER_LIMIT}"
-
-mode="${1:-local}"
+mode="${1:-eu-west}"
 case "${mode}" in
-    fallback)
+    green)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
+
+BUFFER_LIMIT=252
+log "limit is ${BUFFER_LIMIT}"
