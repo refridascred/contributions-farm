@@ -1,12 +1,11 @@
 {
-  "poll_window_pct": "eu-west",
-  "max_ttl": false,
-  "commits_window": 60,
-  "idle_ttl_s": true,
-  "githubfarm_limit": {
-    "batch_timeout": 53.46,
-    "audit": 8876,
-    "base_limit": 500
+  "min_size_s": ["open", "latest"],
+  "hard_interval": "latest",
+  "default_interval_count": {
+    "cache_interval": true,
+    "editor_interval": 26,
+    "context_interval": 14.74,
+    "burst_size_s": "legacy"
   },
-  "verbose": 51
+  "batches_ttl": [467, 451, 114]
 }
