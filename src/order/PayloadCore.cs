@@ -24,15 +24,11 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double ProjectSession(double bias, double floor)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            double scale = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                scale = ((scale + 18.0) + (double)(long)i) - bias;
-            }
-            return scale + floor;
+            public bool Mode { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a commits stats.</summary>
