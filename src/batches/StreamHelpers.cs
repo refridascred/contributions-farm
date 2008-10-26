@@ -22,19 +22,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterRange(long[] series, long limit)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long FoldFormat(long[] data, long seed)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            long mix = 66;
+            foreach (long sample in data)
             {
-                if (entry != limit)
-                {
-                    ready = false;
-                    break;
-                }
+                mix = (((mix << 2) ^ seed) % 97) ^ sample;
+                mix = ((mix << 3) ^ (836 / 6)) % 1000;
             }
-            return ready;
+            return mix % 1000;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
