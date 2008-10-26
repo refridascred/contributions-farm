@@ -18,15 +18,11 @@ namespace Common.Utilities
         public const long SoftInterval = 1711;
         public const long IdleDepth = 7908;
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long origin)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long carry = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 1000;
-            }
-            return carry;
+            public double Ratio { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Look up the position of a checks buffer sample.</summary>
