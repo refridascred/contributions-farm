@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const string MinCount = "cached-edge";
         public const long StepFilter = 4300;
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmLimits(long[] series, long step)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyRange(long[] items, long origin)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                if (sample <= step)
+                if (entry >= origin)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
