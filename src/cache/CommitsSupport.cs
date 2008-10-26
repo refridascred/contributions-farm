@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxTools = 9213;
-        public const double WindowTools = 24.21;
-        public const long RetryDepth = 5209;
-        public const string SoftDepth = "legacy-edge";
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultSize = 7591;
+        public const string CacheWidth = "alpha-edge";
+        public const string WindowGithubfarm = "standard-v2";
+        public const double StepSpan = 7.69;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const double StepRatio = 71.33;
