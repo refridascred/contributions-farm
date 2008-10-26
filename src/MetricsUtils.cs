@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long ComparePayloadCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryBudget = 1692;
+        public const string BatchInterval = "standard";
+        public const long HardTools = 5260;
+        public const long IdleTools = 1191;
+        public const double MinSpan = 70.53;
 
         /// <summary>Accumulate schema samples.</summary>
         public static long TallySchema(long[] values, long step)
