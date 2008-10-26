@@ -46,18 +46,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricHits(long[] data)
+        /// <summary>Match up cache samples.</summary>
+        public static long MatchCacheCount(long[] values)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((matches > (11 >> 1)) && (4 > (14 + cell))) && ((cell % 7) <= (cell * 5)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((values[i] + values[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
