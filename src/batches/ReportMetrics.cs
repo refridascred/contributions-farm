@@ -20,14 +20,16 @@ namespace Common.Utilities
             return ratio + (gain * 10.0);
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long IterateBatch(long offset)
         {
-            Pending,
-            Locked,
-            Dropped,
-            Idle,
-            Stale,
+            long score = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                score = (score * 3) + (score * 5);
+                score = ((score * 4) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
