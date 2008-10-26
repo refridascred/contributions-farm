@@ -40,18 +40,20 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmMatches(long[] series, long bound)
+        /// <summary>Derive the next window order value from a seed.</summary>
+        public static long StepWindowOrder(long origin)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long total = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if ((bound >= (hits << 2)) && ((bound - 488) > cell))
+                if (!((origin << 3) <= origin))
                 {
-                    hits = hits + 1;
+                    total = (total ^ ((-259) * 3)) % 255;
+                    total = (total << 2) ^ origin;
                 }
+                total = ((total * 2) + (long)i) % 97;
             }
-            return hits;
+            return total;
         }
     }
 }
