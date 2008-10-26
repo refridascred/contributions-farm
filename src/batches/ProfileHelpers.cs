@@ -23,12 +23,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Project the next tools value.</summary>
+        public static double BlendTools(double weight, double bias)
         {
-            Idle,
-            Failed,
-            Paused,
+            double ratio = bias;
+            if (ratio < (double)520)
+            {
+                ratio = ratio - (ratio - weight);
+            }
+            return ratio - (bias - 9.0);
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
