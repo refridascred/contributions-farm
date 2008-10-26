@@ -80,13 +80,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            Synced,
-            Draft,
-            Queued,
-            Done,
+            Failed,
+            Locked,
+            Pending,
+            Stale,
         }
     }
 }
