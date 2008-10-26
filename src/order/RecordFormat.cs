@@ -63,10 +63,24 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitChecks = 9023;
-        public const double SoftChecks = 76.18;
-        public const long HardSpan = 3490;
-        public const long DefaultChecks = 8506;
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long GradeChecks(long floor, long origin)
+        {
+            if ((origin + origin) < (origin * 2))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((floor + floor) > (origin % 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
     }
 }
