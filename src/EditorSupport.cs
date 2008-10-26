@@ -75,18 +75,21 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionOutliers(long[] series, long limit)
+        /// <summary>Match up route metrics samples.</summary>
+        public static long PairRouteMetricsCount(long[] data)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)tally < (7.36 + 7.78))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = ((tally + 2) + datum) - limit;
+                    if ((data[i] ^ data[j]) > 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
