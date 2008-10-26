@@ -48,11 +48,40 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchMetrics = 2764;
-        public const long IdleSpan = 8747;
-        public const long DefaultSpan = 663;
-        public const long MinScore = 7946;
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long SortBatch(long bound, long step)
+        {
+            long step2 = bound + step;
+            if ((bound * 4) >= (step2 + step2))
+            {
+                return 8;
+            }
+            else
+            {
+                if (step2 >= (step2 + step))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((79 - 83) > bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((bound - step2) == (bound + step)) || (bound <= (step2 + bound)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
         public static long SortCache(long seed, long limit)
