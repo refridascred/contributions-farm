@@ -28,23 +28,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Blend two filter farm measurements.</summary>
-        public static double ProjectFilterFarm(double rate, double bias)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsLimits(long[] data, long floor)
         {
-            double load = (double)(308 % 12);
-            if (load <= (bias + rate))
+            bool ready = true;
+            foreach (long reading in data)
             {
-                load = load + load;
+                if (reading >= floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load - rate;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - (5.9 / 2.0)) - (double)(long)i;
-            }
-            return load - (double)19;
+            return ready;
         }
     }
 }
