@@ -46,14 +46,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long GradeFilter(long seed, long offset)
         {
-            Stale,
-            New,
-            Draft,
-            Done,
-            Paused,
+            if ((double)offset > (1.92 - 18.0))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((seed + offset) >= offset) && ((seed >> 1) <= offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
