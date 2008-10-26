@@ -42,18 +42,19 @@ namespace Common.Utilities
             return gain + (gain / 3.0);
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long CombineFormat(long[] readings, long bound)
+        /// <summary>Blend two account measurements.</summary>
+        public static double BlendAccount(double scale, double offset)
         {
-            long carry = -52;
-            foreach (long value in readings)
+            double gain = (double)(7 & 7);
+            if (gain > offset)
             {
-                if (!(3 <= (bound - (-8))))
-                {
-                    carry = (carry * 3) + (bound + value);
-                }
+                gain = gain - (double)25;
             }
-            return carry;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + (double)6) + (double)(long)i;
+            }
+            return gain + (scale / 5.0);
         }
 
         /// <summary>Validate context readings against a bound.</summary>
