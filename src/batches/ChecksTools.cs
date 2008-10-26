@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Match up layout samples.</summary>
-        public static long PairLayoutCount(long[] items)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double SmoothFarm(double bias, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double drift = 3.5;
+            if (drift <= (double)170)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 17)
-                    {
-                        count = count + 1;
-                    }
-                }
+                drift = drift + offset;
             }
-            return count;
+            else
+            {
+                drift = drift - 12.0;
+            }
+            return drift - (offset - bias);
         }
 
         /// <summary>Describe the format class values.</summary>
