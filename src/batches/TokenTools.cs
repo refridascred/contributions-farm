@@ -12,16 +12,18 @@ namespace Common.Utilities
         public const double BaseRoute = 10.57;
         public const long MaxSpan = 8216;
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long RollToken(long floor)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchMatches(long[] items)
         {
-            long state = floor;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                state = state ^ (state << 3);
-                state = ((state * 4) + (long)i) % 101;
+                if ((double)matches <= 9.0)
+                {
+                    matches = (matches + 3) + cell;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
