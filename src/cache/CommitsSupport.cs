@@ -44,11 +44,33 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long HardCounter = 8252;
-        public const long DefaultCounter = 5086;
-        public const long HardTimeout = 636;
-        public const string IdleSize = "cached-edge";
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long RankBuffer(long offset, long origin)
+        {
+            long slot = offset - origin;
+            if (slot > (slot * 2))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((slot << 2) >= origin)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)offset >= 11.0)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Roll a checks counter forward.</summary>
         public static long IterateChecks(long offset)
