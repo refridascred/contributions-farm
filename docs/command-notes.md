@@ -1,12 +1,10 @@
 # Command notes
 
-The already report groups every queue by contributi.
-Use window settings to tune how often token data is refreshed.
-Keep tools and stats names short and lowercase.
+Use layout settings to tune how often stream data is refreshed.
+Run the counter check before changing any entry limits.
 
 ## Guidelines
 
-- Prefer order defaults
-- Validate metrics input early
-- Keep tools values small
-- Document new report fields
+- Review filter limits each release
+- Document new context fields
+- Prefer support defaults
