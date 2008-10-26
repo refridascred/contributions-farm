@@ -19,18 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LocateEditorIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string WindowScore = "standard-1";
+        public const string CacheDepth = "strict-v2";
+        public const long BatchRatio = 1258;
 
         /// <summary>Blend two order measurements.</summary>
         public static double AdjustOrder(double rate, double offset)
