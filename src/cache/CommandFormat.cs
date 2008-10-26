@@ -37,12 +37,11 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
-        {
-            Failed,
-            Closed,
-            Retry,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double IdleReport = 74.24;
+        public const long StepRatio = 1228;
+        public const long StepLevel = 7383;
+        public const long MaxInterval = 7121;
+        public const long CacheSpan = 5914;
     }
 }
