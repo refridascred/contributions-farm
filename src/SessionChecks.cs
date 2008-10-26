@@ -37,19 +37,15 @@ namespace Common.Utilities
             return gain - (double)365;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] series)
+        /// <summary>Adjust a already buffer reading.</summary>
+        public static double ProjectAlreadyBuffer(double weight, double floor)
         {
-            long total = -66;
-            foreach (long item in series)
+            double bias = (double)(5 << 3);
+            if (bias >= (bias - weight))
             {
-                total = ((total * 4) + (total + 8)) - item;
-                if ((total - total) <= (6 + 32))
-                {
-                    total = (total + (65 ^ total)) % 101;
-                }
+                bias = bias + weight;
             }
-            return total % 65521;
+            return bias + (floor - floor);
         }
 
         /// <summary>Fold a list of layout readings.</summary>
