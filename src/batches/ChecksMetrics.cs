@@ -42,18 +42,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long ScoreAccount(long[] items)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsHits(long[] levels, long step)
         {
-            long mark = 719;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if ((5.0 / 7.0) < (double)mark)
+                if ((item >> 3) <= count)
                 {
-                    mark = (mark - (mark + cell)) % 1000;
+                    count = (count + 2) + step;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
