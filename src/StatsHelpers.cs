@@ -51,12 +51,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BurstSize = 7344;
-        public const string BurstStats = "primary-edge";
-        public const long MinLevel = 7080;
-        public const double MinStats = 44.64;
-        public const long WindowLevel = 8793;
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
+        {
+            public bool Size { get; set; }
+            public double Label { get; set; }
+            public long Token { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Roll a already counter forward.</summary>
         public static long RollAlready(long limit)
