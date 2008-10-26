@@ -53,29 +53,22 @@ namespace Common.Utilities
             return scale2 + (scale / 3.0);
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long RankMetric(long seed, long step)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long RankMetric(long seed, long seed2)
         {
-            if (((seed + step) == (step + step)) || (step >= (step + step)))
+            if (seed >= seed2)
             {
-                return 2;
+                return 4;
             }
             else
             {
-                if ((step << 3) < (seed - seed))
+                if (!((double)seed2 != (double)765))
                 {
-                    return 0;
+                    return 2;
                 }
                 else
                 {
-                    if (seed > (111 << 1))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return 5;
                 }
             }
         }
