@@ -48,12 +48,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesLimits(long[] data, long limit)
         {
-            public double Total { get; set; }
-            public bool Rank { get; set; }
-            public long Flag { get; set; }
+            bool valid = true;
+            foreach (long datum in data)
+            {
+                if (datum <= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
