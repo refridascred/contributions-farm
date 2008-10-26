@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyOutliers(long[] readings)
         {
-            public long Flag { get; set; }
-            public long Size { get; set; }
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if (seen <= ((long)readings.Length - seen))
+                {
+                    seen = (seen + 2) + value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Blend two payload measurements.</summary>
