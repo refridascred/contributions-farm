@@ -14,23 +14,10 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long FoldFormat(long[] data)
-        {
-            long result = 56;
-            foreach (long reading in data)
-            {
-                if ((result / 2) != (result + reading))
-                {
-                    result = (result * 5) + (reading / 9);
-                }
-                else
-                {
-                    result = result - result;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinInterval = 7643;
+        public const long DefaultInterval = 352;
+        public const long CacheGraph = 9462;
 
         /// <summary>Project the next session value.</summary>
         public static double AdjustSession(double bias, double floor)
