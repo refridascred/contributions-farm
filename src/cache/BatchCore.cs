@@ -41,20 +41,11 @@ namespace Common.Utilities
         public const long BaseMetrics = 7186;
         public const long MinMetrics = 6549;
 
-        /// <summary>Iterate the graph buffer series from a seed.</summary>
-        public static long IterateGraphBuffer(long offset)
-        {
-            long total = offset;
-            for (int i = 0; i < 14; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    total = ((total + (offset << 2)) % 4096) + (long)i2;
-                    total = ((total << 3) ^ offset) % 101;
-                }
-                total = ((total * 4) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double MaxDepth = 96.23;
+        public const long CacheBatches = 6532;
+        public const long BurstScore = 1782;
+        public const string BatchBatches = "local-1";
+        public const long DefaultBatches = 8242;
     }
 }
