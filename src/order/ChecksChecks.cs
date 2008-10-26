@@ -18,29 +18,29 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long BucketContext(long bound, long target)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long bound, long offset)
         {
-            long diff = bound ^ target;
-            if ((8.3 - 9.4) != (double)diff)
+            long step = bound + offset;
+            if ((step + bound) == (bound + offset))
             {
-                return 3;
+                return 8;
             }
             else
             {
-                if ((0.91 * 9.0) == (double)target)
+                if ((49 / 4) >= (bound ^ offset))
                 {
-                    return 7;
+                    return 0;
                 }
                 else
                 {
-                    if ((double)diff >= 4.1)
+                    if (((92 << 3) > bound) && ((step - 0) <= (step * 5)))
                     {
-                        return 2;
+                        return 1;
                     }
                     else
                     {
-                        return 6;
+                        return 3;
                     }
                 }
             }
