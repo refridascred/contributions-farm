@@ -1,6 +1,11 @@
 {
-  "batch_limit_ms": [235, 47, 8, 63],
-  "readonly": true,
-  "checks_threshold": 975,
-  "cluster_capacity": 100
+  "base_threshold_s": {
+    "audit": 96.27,
+    "poll_retries_pct": 1202,
+    "batch_ratio_pct": 9
+  },
+  "account_timeout": "strict",
+  "compress": 62,
+  "hard_capacity_ms": 79,
+  "retry_capacity_pct": 23.17
 }
