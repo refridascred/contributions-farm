@@ -37,18 +37,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatHits(long[] items)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((double)hits >= (3.83 + 5.36))
-                {
-                    hits = (hits + 2) ^ item;
-                }
-            }
-            return hits;
+            public bool Region { get; set; }
+            public long Weight { get; set; }
+            public double Stamp { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
