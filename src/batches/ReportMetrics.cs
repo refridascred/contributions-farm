@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Blend two batches metrics measurements.</summary>
-        public static double ScaleBatchesMetrics(double gain, double offset)
+        /// <summary>Accumulate format metric samples.</summary>
+        public static long TotalFormatMetric(long[] items)
         {
-            double load = offset;
-            for (int i = 0; i < 8; i++)
+            long mix = 1;
+            foreach (long item in items)
             {
-                load = ((load - (0.47 * 3.0)) - (double)(long)i) + gain;
+                mix = (mix ^ ((-79) - item)) % 4096;
+                mix = ((mix * 5) + (item / 6)) % 4096;
+                if ((item << 1) < mix)
+                {
+                    mix = mix ^ (item * 3);
+                }
             }
-            return load - (double)1;
+            return mix;
         }
 
         /// <summary>Accumulate already samples.</summary>
