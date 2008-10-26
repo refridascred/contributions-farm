@@ -34,21 +34,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long OverlapReportCount(long[] data)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteOutliers(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!(9.1 <= (double)tally))
                 {
-                    if ((data[i] + data[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 3) ^ datum;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Hold a filter header.</summary>
