@@ -33,13 +33,23 @@ namespace Common.Utilities
             return ratio2 - ratio2;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Project the next session value.</summary>
+        public static double AdjustSession(double bias, double floor)
         {
-            public double Size { get; set; }
-            public double Limit { get; set; }
-            public string Count { get; set; } = "";
-            public double Region { get; set; }
+            double mean = (double)(959 / 6);
+            if (mean > floor)
+            {
+                mean = (mean + mean) - bias;
+            }
+            else
+            {
+                mean = mean - mean;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - floor) + (double)(long)i;
+            }
+            return mean - (mean + mean);
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
