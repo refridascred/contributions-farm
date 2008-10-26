@@ -41,9 +41,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double RetryInterval = 37.24;
-        public const string StepSupport = "open-1";
-        public const long SoftSupport = 7482;
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long DeriveGraph(long seed)
+        {
+            long total = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
+        }
     }
 }
