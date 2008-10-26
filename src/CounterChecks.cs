@@ -84,18 +84,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportHits(long[] readings)
+        /// <summary>Digest a series of commits notes entries.</summary>
+        public static long TotalCommitsNotes(long[] levels)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long carry = 3;
+            foreach (long cell in levels)
             {
-                if (((-282) << 2) > (cell + matches))
+                carry = carry + (190 + carry);
+                if (!((carry << 3) <= (cell + (long)levels.Length)))
                 {
-                    matches = matches + 3;
+                    carry = carry - (877 * 3);
                 }
             }
-            return matches;
+            return carry;
         }
     }
 }
