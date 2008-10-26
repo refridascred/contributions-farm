@@ -1,7 +1,10 @@
 {
-  "account_size": 81.17,
-  "sync_capacity_count": false,
-  "warm_depth_count": 71.61,
-  "hard_ratio": 31.61,
-  "sync_delay_ms": 52.04
+  "editor_capacity": "open",
+  "filter_window": {
+    "readonly": ["stable", "green"],
+    "min_threshold_ms": 100,
+    "min_size_count": false,
+    "poll_ratio": true
+  },
+  "soft_capacity_count": true
 }
