@@ -19,11 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            public long Region { get; set; }
-            public long Count { get; set; }
+            Paused,
+            Ready,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
