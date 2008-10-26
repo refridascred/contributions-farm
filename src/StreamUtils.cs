@@ -48,23 +48,12 @@ namespace Common.Utilities
             return weight + rate;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportHits(long[] samples, long step)
-        {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((step & 127) < (step / 7))
-                {
-                    hits = (hits + 2) + entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BatchBuffer = "standard";
+        public const double DefaultBuffer = 36.9;
+        public const string CacheLevel = "stable-edge";
+        public const long IdleWidth = 5437;
+        public const double WindowBuffer = 21.8;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string BurstChannel = "strict";
