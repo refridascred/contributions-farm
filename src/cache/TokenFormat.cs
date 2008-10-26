@@ -20,18 +20,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelOutliers(long[] readings, long target)
+        /// <summary>Compare every pair of route stats readings.</summary>
+        public static long MatchRouteStatsCount(long[] readings)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((8.0 / 2.0) != (double)target)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = (count + 2) + cell;
+                    if ((readings[i] ^ readings[j]) == 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Check that every context queue entry stays within the limit.</summary>
