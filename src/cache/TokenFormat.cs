@@ -20,17 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a entry tools sample.</summary>
-        public static long LookupEntryToolsIndex(long[] values, long bound)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelOutliers(long[] readings, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if ((values[i] == bound) && ((values[i] % 3) == 0))
+                if ((8.0 / 2.0) != (double)target)
                 {
-                    return (long)i;
+                    count = (count + 2) + cell;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Check that every context queue entry stays within the limit.</summary>
