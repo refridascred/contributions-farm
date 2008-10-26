@@ -43,10 +43,12 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double MaxSpan = 82.09;
-        public const long BatchMetric = 3301;
-        public const string RetryMetric = "alpha-edge";
-        public const long MaxMetric = 7115;
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
+        {
+            Failed,
+            Closed,
+            Retry,
+        }
     }
 }
