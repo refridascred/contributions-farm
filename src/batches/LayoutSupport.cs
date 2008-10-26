@@ -56,10 +56,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchReport = 6306;
-        public const long IdleReport = 4952;
-        public const double RetryWidth = 2.01;
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
+        {
+            public long Flag { get; set; }
+            public bool Ratio { get; set; }
+            public string Score { get; set; } = "";
+            public string Rank { get; set; } = "";
+        }
 
         /// <summary>Validate farm readings against a bound.</summary>
         public static bool ValidateFarmBounds(long[] values, long bound)
