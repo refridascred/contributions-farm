@@ -1,5 +1,7 @@
 {
-  "default_ratio": "latest",
-  "verbose": "primary",
-  "sync_delay_count": "legacy"
+  "batch_limit": true,
+  "flush_depth_count": 100,
+  "soft_interval_pct": "green",
+  "soft_limit_count": 49,
+  "min_ttl": [192, 30]
 }
