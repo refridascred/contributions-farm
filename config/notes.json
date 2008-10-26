@@ -1,8 +1,6 @@
 {
-  "compress": [45, 229, 390],
-  "max_ttl": true,
-  "burst_retries": "local",
-  "filter_limit": [37, 424, 140],
-  "max_retries_s": 30,
-  "batches_limit": "staging"
+  "soft_threshold_pct": 85.49,
+  "order_retries": 0.08,
+  "cache_timeout_s": true,
+  "entry_retries": 11.97
 }
