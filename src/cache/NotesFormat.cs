@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Fold a list of context window readings.</summary>
+        public static long ScoreContextWindow(long[] levels)
         {
-            Ready,
-            Retry,
-            Done,
-            Active,
+            long score = -164;
+            foreach (long reading in levels)
+            {
+                score = ((score << 2) ^ (score * 2)) - reading;
+            }
+            if (score > 54)
+            {
+                score = score + score;
+            }
+            return score % 65521;
         }
 
         /// <summary>Rank stream farm input into a small class.</summary>
