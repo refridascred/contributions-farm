@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long FoldContext(long[] samples, long step)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LocateNotesIndex(long[] values, long step)
         {
-            long acc = 1;
-            foreach (long datum in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((acc % 100) >= 67)
+                if (values[i] <= step)
                 {
-                    acc = ((acc << 2) ^ (datum - acc)) + step;
-                }
-                if (3 < (datum % 64))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Match up metric samples.</summary>
