@@ -1,20 +1,4 @@
 # entry settings
-enabled:
-  default_threshold_s: 5541
-  warm_interval_pct: 15
-  retry_retries_count:
-    warm_ratio_ms: fallback
-    base_limit: legacy
-    hard_size_count: edge
-    flush_depth_s: false
-    persist: edge
-    githubfarm_interval: standard
-  max_retries_ms: 1024
-  flush_delay_s: true
-compress:
-  retry_window: false
-  cache_ratio_count: fallback
-  metric_window: 44
-  enabled: true
-max_ttl_s: blue
-buffer_size: 34
+verbose: true
+sync_window_count: fallback
+cache_window_count: 1024
