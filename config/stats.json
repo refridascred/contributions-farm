@@ -1,5 +1,6 @@
 {
-  "session_limit": "open",
-  "filter_size": ["latest", "legacy"],
-  "enabled": 100
+  "retry_ratio_s": 76,
+  "idle_timeout": ["eu-west", "strict", "eu-west", "blue"],
+  "stream_delay": "fallback",
+  "contributi_interval": [490, 16]
 }
