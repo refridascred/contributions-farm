@@ -1,9 +1,6 @@
-id,label,ratio,active
-1,67.92,49.24,fallback
-2,920,942,96.95
-3,512,97.78,86.27
-4,staging,local,321
-5,eu-west,888,local
-6,741,27.34,cached
-7,strict,16.33,19.95
-8,local,933,strict
+id,rank,active
+1,18.03,blue
+2,standard,361
+3,eu-west,edge
+4,stable,latest
+5,edge,53
