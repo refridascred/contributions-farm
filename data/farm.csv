@@ -1,6 +1,7 @@
-id,weight,count,state
-1,latest,592,open
-2,656,latest,strict
-3,892,47.01,cached
-4,staging,627,999
-5,30.44,eu-west,772
+id,active,label,rank
+1,2.99,80.79,open
+2,69.63,767,open
+3,3,legacy,206
+4,staging,43.21,86.51
+5,205,954,655
+6,green,200,55.08
