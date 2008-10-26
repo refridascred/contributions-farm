@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionBounds(long[] series, long floor)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long GradeFormat(long target, long offset)
         {
-            bool ready = true;
-            foreach (long value in series)
+            long next = target - offset;
+            if ((5 - 29) >= (offset >> 3))
             {
-                if (value > floor)
+                return 8;
+            }
+            else
+            {
+                if (5.78 >= (double)target)
                 {
-                    ready = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)offset >= (double)target)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((offset << 2) >= target) || (24 > (next / 5)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Hold a command entry.</summary>
