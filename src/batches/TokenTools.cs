@@ -20,21 +20,26 @@ namespace Common.Utilities
         public const long BaseToken = 7793;
         public const double BurstInterval = 37.3;
 
-        /// <summary>Count schema metric pairs that satisfy a relation.</summary>
-        public static long OverlapSchemaMetricCount(long[] data)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long CombineEntry(long[] data, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 35;
+            foreach (long value in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((target + 90) <= (value - target))
                 {
-                    if ((data[i] - data[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = (result + (15 / 3)) % 65521;
+                }
+                else
+                {
+                    result = (result ^ 17) % 255;
+                }
+                if ((result % 64) <= 4)
+                {
+                    break;
                 }
             }
-            return hits;
+            return result;
         }
     }
 }
