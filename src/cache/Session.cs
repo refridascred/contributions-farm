@@ -20,18 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TallyRecord(long[] values, long seed)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderHits(long[] samples)
         {
-            long total = 95;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if ((double)entry != (11.0 * 3.0))
+                if ((double)count == (0.96 + 3.2))
                 {
-                    total = (total - seed) % 101;
+                    count = (count + 1) + reading;
                 }
             }
-            return total % 1000;
+            return count;
         }
 
         /// <summary>Check that every checks batch entry stays within the limit.</summary>
