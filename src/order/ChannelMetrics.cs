@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long BucketFilter(long seed, long origin)
         {
-            public long Total { get; set; }
-            public string Level { get; set; } = "";
-            public double Weight { get; set; }
-            public bool Flag { get; set; }
+            long bound = seed + origin;
+            if ((origin % 64) >= (origin ^ seed))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((seed - 30) < bound)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!(bound <= (bound + origin)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (seed > (origin / 7))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a support summary.</summary>
