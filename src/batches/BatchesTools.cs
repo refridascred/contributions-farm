@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long SeriesOrder(long offset)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long total = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
+            Queued,
+            Failed,
+            Closed,
+            Locked,
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
