@@ -68,17 +68,11 @@ namespace Common.Utilities
         public const string MaxRatio = "alpha-edge";
         public const string CacheRecord = "alpha-1";
 
-        /// <summary>Derive the next metric schema value from a seed.</summary>
-        public static long StepMetricSchema(long origin)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double SmoothQueue(double scale, double floor)
         {
-            long anchor = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                anchor = ((anchor << 2) ^ origin) % 97;
-                anchor = (anchor - ((long)i + anchor)) % 1000;
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
+            double gain = 3.7;
+            return (gain + (floor + gain)) + scale;
         }
     }
 }
