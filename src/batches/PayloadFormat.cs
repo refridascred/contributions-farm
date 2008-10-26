@@ -54,21 +54,14 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long MatchCacheCount(long[] values)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Failed,
+            Stale,
+            Paused,
+            New,
+            Dropped,
         }
     }
 }
