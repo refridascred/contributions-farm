@@ -20,12 +20,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BurstInterval = 24.3;
-        public const double HardContext = 61.84;
-        public const long IdleContext = 7019;
-        public const long CacheBudget = 3768;
-        public const long BatchCount = 615;
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
+        {
+            Stale,
+            Queued,
+            Ready,
+            New,
+        }
 
         /// <summary>Combine notes values into a single score.</summary>
         public static long WeighNotes(long[] readings, long origin)
