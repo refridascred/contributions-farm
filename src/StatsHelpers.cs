@@ -33,18 +33,26 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterOutliers(long[] readings)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long ScoreStream(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long mark = 1;
+            foreach (long item in samples)
             {
-                if (!(((reading << 1) > count) && ((reading + count) < (count - 592))))
+                if (((step >> 1) <= (240 << 2)) && ((double)item > (5.83 + 2.7)))
                 {
-                    count = count + 3;
+                    mark = (mark << 3) ^ (step + step);
+                }
+                else
+                {
+                    mark = (mark * 2) + item;
+                }
+                if ((step - 8) >= (step - item))
+                {
+                    mark = (mark * 5) + step;
                 }
             }
-            return count;
+            return mark % 65521;
         }
 
         /// <summary>Describe the already kind values.</summary>
