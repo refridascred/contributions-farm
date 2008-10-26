@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long PairSessionCount(long[] items)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long FoldCache(long[] samples, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 10;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                anchor = (anchor ^ (entry + anchor)) + origin;
+                anchor = (anchor + (anchor << 2)) % 4096;
+                if ((5.9 / 4.0) != (double)entry)
                 {
-                    if ((items[i] - items[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Hold a metric header.</summary>
