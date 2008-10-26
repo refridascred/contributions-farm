@@ -45,14 +45,12 @@ namespace Common.Utilities
         public const long RetryToken = 2283;
         public const long HardToken = 1642;
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
-        {
-            public double Total { get; set; }
-            public long Region { get; set; }
-            public long Size { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double SoftRatio = 66.67;
+        public const long LimitDepth = 602;
+        public const long StepTimeout = 5109;
+        public const long CacheSize = 5542;
+        public const string StepFilter = "stable-1";
 
         /// <summary>Fold a list of tools route readings.</summary>
         public static long TallyToolsRoute(long[] values)
