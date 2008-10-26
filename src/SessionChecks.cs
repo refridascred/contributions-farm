@@ -22,12 +22,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            public long Label { get; set; }
-            public bool Owner { get; set; }
-            public double Ratio { get; set; }
+            public long Total { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Accumulate support samples.</summary>
