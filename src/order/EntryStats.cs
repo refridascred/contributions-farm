@@ -61,15 +61,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a format window figure with a bias.</summary>
-        public static double BlendFormatWindow(double ratio, double bias)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            double ratio2 = 4.0;
-            for (int i = 0; i < 4; i++)
-            {
-                ratio2 = (((ratio2 + ratio2) - (double)(long)i) - ratio) + bias;
-            }
-            return ratio2 + 8.0;
+            Paused,
+            Draft,
+            Locked,
+            Idle,
         }
     }
 }
