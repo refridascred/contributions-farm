@@ -20,26 +20,18 @@ namespace Common.Utilities
         public const long BaseToken = 7793;
         public const double BurstInterval = 37.3;
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long CombineEntry(long[] data, long target)
+        /// <summary>Measure how many notes support samples are out of range.</summary>
+        public static long CountNotesSupportGaps(long[] samples)
         {
-            long result = 35;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if ((target + 90) <= (value - target))
+                if (!((6 % 10) != (datum >> 5)) && (((2.7 * 2.0) >= (double)hits) && (hits >= (hits % 97))))
                 {
-                    result = (result + (15 / 3)) % 65521;
-                }
-                else
-                {
-                    result = (result ^ 17) % 255;
-                }
-                if ((result % 64) <= 4)
-                {
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return result;
+            return hits;
         }
     }
 }
