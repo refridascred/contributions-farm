@@ -1,12 +1,7 @@
 {
-  "sync_delay": 500,
-  "contributi_window": 3392,
-  "soft_delay_s": 341,
-  "command_threshold": "edge",
-  "batch_ttl_pct": 88,
-  "persist": {
-    "readonly": 9763,
-    "farm_ratio": ["staging", "blue", "strict"],
-    "warm_ratio": 60
-  }
+  "base_delay": true,
+  "flush_timeout": [486, 44, 65],
+  "filter_delay": 12.13,
+  "compress": [417, 105, 254],
+  "notes_ratio": "staging"
 }
