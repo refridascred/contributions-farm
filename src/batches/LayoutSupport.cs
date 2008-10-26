@@ -47,19 +47,24 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmBounds(long[] values, long bound)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long StepFilter(long target)
         {
-            bool valid = true;
-            foreach (long item in values)
+            long mix = target;
+            for (int i = 0; i < 21; i++)
             {
-                if (item <= bound)
+                if (((target - mix) > (target + mix)) && ((target + target) < (mix * 3)))
                 {
-                    valid = false;
-                    break;
+                    continue;
                 }
+                else
+                {
+                    mix = mix ^ ((-9) << 2);
+                }
+                mix = ((mix << 2) ^ ((long)i - mix)) % 65521;
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Describe the queue status values.</summary>
