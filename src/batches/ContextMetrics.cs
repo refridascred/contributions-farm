@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamHits(long[] data, long seed)
         {
-            public string Offset { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Region { get; set; }
-            public bool Ratio { get; set; }
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((double)reading == (3.0 / 5.0))
+                {
+                    tally = (tally + 1) - seed;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate metrics context samples.</summary>
