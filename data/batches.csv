@@ -1,7 +1,7 @@
-id,score,label
-1,42.9,29.22
-2,local,930
-3,strict,229
-4,55.53,standard
-5,37.04,57.78
-6,edge,176
+id,token,ratio,count
+1,53.47,95.91,42.52
+2,legacy,strict,eu-west
+3,475,stable,green
+4,primary,98.12,322
+5,open,945,56.79
+6,239,705,9.69
