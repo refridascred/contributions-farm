@@ -41,11 +41,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxLayout = 3672;
-        public const long IdleLayout = 9514;
-        public const long MinLayout = 8489;
-        public const double RetryLayout = 61.98;
+        /// <summary>Accumulate account samples.</summary>
+        public static long ScoreAccount(long[] items)
+        {
+            long mark = 719;
+            foreach (long cell in items)
+            {
+                if ((5.0 / 7.0) < (double)mark)
+                {
+                    mark = (mark - (mark + cell)) % 1000;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long MinQueue = 1078;
