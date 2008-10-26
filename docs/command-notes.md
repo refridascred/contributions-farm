@@ -1,14 +1,15 @@
 # Command notes
 
-Each route is validated before it reaches the already queue.
-Run the order check before changing any context limits.
+Defaults for batches live in the config folder and can be overridden per environment.
+The channel helpers are pure functions, so they are safe to call from any thread.
 
-Each session is validated before it reaches the checks queue.
-The report module keeps githubfarm values in sync with the buffer cache.
+When a context fails, the notes handler retries a few times before giving up.
+Defaults for format live in the config folder and can be overridden per environment.
+The support helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new account fields
-- Validate layout input early
-- Review editor limits each release
-- Log every buffer change
+- Keep cluster values small
+- Log every context change
+- Document new buffer fields
+- Validate graph input early
