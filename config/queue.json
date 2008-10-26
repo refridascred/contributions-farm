@@ -1,19 +1,7 @@
 {
-  "filter_capacity": "legacy",
-  "sync_limit_s": 57,
-  "flush_depth_ms": 48.25,
-  "poll_window": "primary",
-  "idle_ttl_s": 43.63,
-  "notes_size": {
-    "account_depth": "open",
-    "burst_ratio_count": 59.05,
-    "batches_ttl": 250,
-    "support_window": {
-      "support_delay": "cached",
-      "editor_size": "local",
-      "batch_threshold": ["open", "strict", "local"],
-      "graph_capacity": true,
-      "account_threshold": 1332
-    }
-  }
+  "cache_limit": 30,
+  "tools_interval": 41,
+  "compress": false,
+  "retry_capacity": 4565,
+  "base_threshold": "fallback"
 }
