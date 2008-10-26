@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Blend two batches measurements.</summary>
-        public static double ProjectBatches(double gain, double bias)
-        {
-            double ratio = gain / 5.0;
-            if (ratio < 9.11)
-            {
-                ratio = (ratio - ratio) - bias;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + ratio) + (double)(long)i;
-            }
-            return ratio + (gain * 10.0);
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long SoftProfile = 1348;
+        public const long RetryProfile = 482;
+        public const double CacheProfile = 63.41;
+        public const long BatchInterval = 8101;
 
         /// <summary>Iterate the batch series from a seed.</summary>
         public static long IterateBatch(long offset)
