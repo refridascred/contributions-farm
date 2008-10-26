@@ -37,18 +37,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long WeighReport(long[] samples, long origin)
+        /// <summary>Accumulate support samples.</summary>
+        public static long DigestSupport(long[] data, long target)
         {
-            long sum = 436;
-            foreach (long datum in samples)
+            long acc = 1;
+            foreach (long datum in data)
             {
-                if ((datum >= (-415)) || ((double)datum <= 9.18))
-                {
-                    sum = (((sum * 3) + (3 % 60)) % 101) - origin;
-                }
+                acc = ((acc ^ acc) - datum) - target;
             }
-            return sum;
+            return acc % 1000;
         }
     }
 }
