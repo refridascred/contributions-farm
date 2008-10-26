@@ -6,11 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=450
-log "limit is ${COMMAND_LIMIT}"
-
 total=0
 for i in $(seq 1 11); do
-    total=$((total + i * 4))
+    total=$((total + i * 1))
 done
 log "total ${total}"
+
+for item in staging standard stable; do
+    log "checking ${item}"
+done
+
+COMMAND_LIMIT=74
+log "limit is ${COMMAND_LIMIT}"
