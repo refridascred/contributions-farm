@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            public bool Rank { get; set; }
-            public bool Stamp { get; set; }
-            public long Limit { get; set; }
+            public bool Weight { get; set; }
+            public long Flag { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Describe the farm state values.</summary>
