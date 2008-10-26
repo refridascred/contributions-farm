@@ -46,18 +46,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountGaps(long[] readings, long floor)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricHits(long[] data)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (8.87 >= (double)(long)readings.Length)
+                if (((matches > (11 >> 1)) && (4 > (14 + cell))) && ((cell % 7) <= (cell * 5)))
                 {
-                    count = ((count + 3) + entry) + floor;
+                    matches = matches + 2;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
