@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionMatches(long[] levels)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long carry = 60;
+            foreach (long value in items)
             {
-                if ((value << 3) != (value % 12))
-                {
-                    matches = matches + 3;
-                }
+                carry = ((carry - origin) % 65521) ^ value;
             }
-            return matches;
+            if (carry < 5)
+            {
+                carry = ((carry << 2) ^ (origin ^ carry)) % 65521;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Rank cache session input into a small class.</summary>
