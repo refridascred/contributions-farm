@@ -27,18 +27,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountHits(long[] series, long limit)
+        /// <summary>Adjust a format already reading.</summary>
+        public static double AdjustFormatAlready(double rate, double span)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            double gain = rate * 2.78;
+            if (gain < gain)
             {
-                if (986 >= ((long)series.Length * 4))
-                {
-                    seen = ((seen + 3) + sample) + limit;
-                }
+                gain = gain + (4.0 - span);
             }
-            return seen;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + rate) + (double)(long)i;
+            }
+            return gain + (gain / 2.0);
         }
 
         /// <summary>Define farm limits and defaults.</summary>
