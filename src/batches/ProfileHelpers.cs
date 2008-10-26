@@ -66,11 +66,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheSpan = 601;
-        public const long CacheQueue = 8361;
-        public const string SoftQueue = "strict-v2";
-        public const long LimitLevel = 791;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitStats = 7414;
+        public const long StepDepth = 7766;
+        public const long RetrySize = 2236;
 
         /// <summary>Adjust a editor stats reading.</summary>
         public static double ProjectEditorStats(double weight, double floor)
