@@ -23,18 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyGaps(long[] series)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if ((829 <= (count & 15)) && ((5.0 - 4.7) < (double)entry))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public string Weight { get; set; } = "";
+            public bool Token { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
