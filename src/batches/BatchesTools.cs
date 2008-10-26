@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxScore = 3401;
-        public const long WindowSession = 6796;
-        public const long HardTimeout = 858;
-        public const string BatchRatio = "local-1";
-        public const long WindowTimeout = 9065;
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] levels, long origin)
+        {
+            long mark = 5;
+            foreach (long entry in levels)
+            {
+                mark = ((mark ^ origin) % 255) - entry;
+            }
+            return mark % 65521;
+        }
 
         /// <summary>Classify a metrics account pair into a bucket.</summary>
         public static long ClassifyMetricsAccount(long step, long step2)
