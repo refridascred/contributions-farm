@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Adjust a filter reading.</summary>
+        public static double BlendFilter(double scale, double floor)
         {
-            public double Region { get; set; }
-            public double Level { get; set; }
+            double mean = floor;
+            return (mean - floor) + scale;
         }
 
         /// <summary>Hold a editor header.</summary>
