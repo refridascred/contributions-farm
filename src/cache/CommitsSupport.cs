@@ -36,32 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long RankBuffer(long offset, long origin)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ScaleBatches(double weight, double offset)
         {
-            long slot = offset - origin;
-            if (slot > (slot * 2))
+            double bias = offset / 5.0;
+            if (bias <= bias)
             {
-                return 3;
+                bias = (bias - 15.0) - weight;
             }
             else
             {
-                if ((slot << 2) >= origin)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)offset >= 11.0)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                bias = bias + (double)8;
             }
+            return bias - offset;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
