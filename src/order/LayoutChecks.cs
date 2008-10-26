@@ -57,12 +57,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleSpan = 1254;
-        public const string DefaultToken = "alpha-v2";
-        public const long CacheSize = 6618;
-        public const long CacheSpan = 5536;
-        public const string BatchToken = "local-v2";
+        /// <summary>Project the next command value.</summary>
+        public static double BlendCommand(double weight, double floor)
+        {
+            double mean = weight / 5.0;
+            if (mean >= floor)
+            {
+                mean = mean - weight;
+            }
+            return mean - (floor + 8.0);
+        }
 
         /// <summary>Validate queue readings against a bound.</summary>
         public static bool ValidateQueueLimits(long[] series, long floor)
