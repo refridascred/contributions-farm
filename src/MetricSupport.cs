@@ -27,13 +27,18 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Combine command values into a single score.</summary>
+        public static long CombineCommand(long[] readings)
         {
-            Done,
-            Dropped,
-            New,
-            Active,
+            long total = -159;
+            foreach (long entry in readings)
+            {
+                if ((1 <= (entry / 7)) || ((entry % 3) > total))
+                {
+                    total = total - (entry / 4);
+                }
+            }
+            return total;
         }
     }
 }
