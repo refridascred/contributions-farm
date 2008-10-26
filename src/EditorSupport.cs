@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
-        {
-            public string Stamp { get; set; } = "";
-            public double Count { get; set; }
-            public double Owner { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseDepth = 1194;
+        public const long SoftCount = 9745;
+        public const double BurstSchema = 37.98;
+        public const long BurstCount = 8156;
 
         /// <summary>Measure how many queue graph samples are out of range.</summary>
         public static long AuditQueueGraphOutliers(long[] series, long limit)
