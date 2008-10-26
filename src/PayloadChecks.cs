@@ -98,12 +98,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Rank record input into a small class.</summary>
+        public static long ClassifyRecord(long limit, long offset)
         {
-            Locked,
-            Dropped,
-            Idle,
+            if ((7.0 / 4.0) > (double)offset)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)limit > (4.18 - 7.08))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)8 != (double)offset)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((offset * 3) >= (limit % 7)) && (582 < limit))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
