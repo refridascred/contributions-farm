@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenMatches(long[] series)
+        /// <summary>Check that every commits route entry stays within the limit.</summary>
+        public static bool ValidateCommitsRouteRange(long[] data, long step)
         {
-            long count = 0;
-            foreach (long reading in series)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                if ((6.2 - 3.0) >= (double)reading)
+                if (cell <= step)
                 {
-                    count = count + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
