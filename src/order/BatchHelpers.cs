@@ -16,14 +16,16 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Roll a context counter forward.</summary>
+        public static long IterateContext(long step)
         {
-            Closed,
-            Retry,
-            Stale,
-            Synced,
-            Dropped,
+            long total = step;
+            for (int i = 0; i < 14; i++)
+            {
+                total = (total << 3) ^ (step % 97);
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Define route limits and defaults.</summary>
