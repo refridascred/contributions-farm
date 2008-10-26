@@ -48,11 +48,25 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftCommand = 6715;
-        public const long HardCommand = 2046;
-        public const string BurstCommand = "primary-v2";
-        public const string DefaultCommand = "primary-1";
+        /// <summary>Derive the next metric filter value from a seed.</summary>
+        public static long DeriveMetricFilter(long floor)
+        {
+            long sum = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((sum * 2) > (sum >> 1))
+                {
+                    long bound = ((long)i + (long)i) / 9;
+                    sum = ((sum << 3) ^ (bound ^ sum)) % 1000;
+                }
+                if (!((double)(long)i != (5.32 * 0.5)))
+                {
+                    sum = (sum ^ (floor >> 3)) % 255;
+                }
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the metric state values.</summary>
         public enum MetricState
