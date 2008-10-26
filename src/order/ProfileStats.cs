@@ -28,22 +28,25 @@ namespace Common.Utilities
         public const long HardScore = 4850;
         public const long MinFilter = 6015;
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterOutliers(long[] levels, long offset)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long GradeCache(long floor, long seed)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long prev = floor - seed;
+            if ((1.0 + 7.92) > (double)floor)
             {
-                if (!(((tally / 4) == (item - offset)) || ((offset ^ item) == (item + 1))))
+                return 4;
+            }
+            else
+            {
+                if (((double)floor >= 8.0) && ((seed - prev) > (seed ^ floor)))
                 {
-                    tally = tally + 1;
+                    return 6;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 7;
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a route options.</summary>
