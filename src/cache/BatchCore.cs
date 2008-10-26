@@ -29,25 +29,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long BucketMetrics(long seed, long floor)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaMatches(long[] levels, long seed)
         {
-            long cur = seed - floor;
-            if (cur <= seed)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed >> 5) > (169 & 7))
+                if ((seed / 3) >= tally)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
+                    tally = (tally + 2) ^ sample;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
