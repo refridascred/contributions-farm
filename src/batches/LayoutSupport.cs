@@ -76,23 +76,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine queue session values into a single score.</summary>
-        public static long ScoreQueueSession(long[] levels)
-        {
-            long sum = 569;
-            foreach (long datum in levels)
-            {
-                sum = (sum - (sum & 7)) % 1000;
-                if ((sum % 12) > (datum + sum))
-                {
-                    sum = (sum << 2) ^ (892 - datum);
-                }
-                else
-                {
-                    sum = (sum + (sum - sum)) % 97;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string StepMetrics = "staging-edge";
+        public const double BatchScore = 47.91;
+        public const double IdleScore = 70.03;
+        public const double DefaultScore = 65.61;
     }
 }
