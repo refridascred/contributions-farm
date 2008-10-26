@@ -1,8 +1,7 @@
 {
-  "default_ratio_ms": ["stable", "fallback", "latest", "green"],
-  "warm_window": 30,
-  "tools_window": "local",
-  "flush_depth_pct": 60,
-  "batch_size_ms": 2181,
-  "flush_size_count": 43.56
+  "verbose": [200, 169, 408, 151],
+  "flush_depth_count": false,
+  "cache_ttl_ms": "strict",
+  "token_delay": 53.05,
+  "buffer_size": 70.87
 }
