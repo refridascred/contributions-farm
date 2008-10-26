@@ -17,23 +17,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long CombineBatches(long[] values)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long PairTokenCount(long[] values)
         {
-            long anchor = 1;
-            foreach (long cell in values)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = anchor + (cell + cell);
-                if (((cell >> 2) > (1 % 16)) || ((double)anchor < (8.0 / 7.0)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    anchor = anchor - cell;
+                    if ((values[i] - values[j]) < 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (anchor < 425)
-            {
-                anchor = (anchor + (anchor % 2)) % 97;
-            }
-            return anchor % 1000;
+            return matches;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
