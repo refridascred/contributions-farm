@@ -61,17 +61,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long FindCommandIndex(long[] values, long limit)
+        /// <summary>Validate stats profile readings against a bound.</summary>
+        public static bool CheckStatsProfileBounds(long[] data, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                if (values[i] <= limit)
+                if (cell != limit)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Define record limits and defaults.</summary>
