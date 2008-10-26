@@ -28,10 +28,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstQueue = 36;
-        public const double SoftCount = 69.18;
-        public const long DefaultQueue = 5734;
-        public const long SoftInterval = 8700;
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
+        {
+            Paused,
+            Idle,
+            Dropped,
+        }
     }
 }
