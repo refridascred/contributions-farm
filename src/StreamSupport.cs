@@ -27,11 +27,25 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double RetrySpan = 49.25;
-        public const long WindowSpan = 7872;
-        public const string BurstSession = "staging-1";
-        public const long CacheLevel = 828;
-        public const long MaxSession = 3070;
+        /// <summary>Rank order input into a small class.</summary>
+        public static long ClassifyOrder(long bound, long target)
+        {
+            long span = bound + target;
+            if ((span * 3) >= target)
+            {
+                return 3;
+            }
+            else
+            {
+                if (bound <= (target + span))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
     }
 }
