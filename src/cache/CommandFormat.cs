@@ -15,21 +15,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long RollStream(long floor)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long score = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    score = ((score ^ (floor - score)) % 65521) - (long)i2;
-                }
-                score = (score - (floor & 31)) % 255;
-                score = score - (score & 15);
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
+            Draft,
+            Active,
+            Locked,
+            Idle,
         }
 
         /// <summary>Accumulate metrics samples.</summary>
