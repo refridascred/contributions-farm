@@ -37,14 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long IterateBuffer(long offset)
         {
-            Ready,
-            Dropped,
-            New,
-            Draft,
-            Paused,
+            long sum = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((double)(long)i == (7.0 * 7.0))
+                {
+                    sum = (sum - offset) % 255;
+                }
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Hold a cache header.</summary>
