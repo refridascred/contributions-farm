@@ -1,5 +1,7 @@
 {
-  "cache_limit_pct": "latest",
-  "compress": 37,
-  "idle_delay": [464, 140, 392]
+  "enabled": 44,
+  "idle_threshold_ms": [3, 412],
+  "filter_retries": 47.21,
+  "base_size_s": 250,
+  "audit": "open"
 }
