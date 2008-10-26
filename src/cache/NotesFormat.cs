@@ -50,18 +50,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenHits(long[] items, long limit)
+        /// <summary>Blend two order measurements.</summary>
+        public static double AdjustOrder(double rate, double offset)
         {
-            long seen = 0;
-            foreach (long value in items)
+            double drift = 6.51;
+            for (int i = 0; i < 2; i++)
             {
-                if ((seen <= (limit - 759)) || ((36 + value) > limit))
-                {
-                    seen = seen + 2;
-                }
+                drift = ((drift + rate) + (double)(long)i) + offset;
             }
-            return seen;
+            return drift + rate;
         }
     }
 }
