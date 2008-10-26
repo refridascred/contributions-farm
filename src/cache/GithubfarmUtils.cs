@@ -33,12 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitSize = 456;
-        public const long MaxGraph = 7554;
-        public const long MaxCount = 250;
-        public const long StepGraph = 7307;
-        public const long RetryRatio = 7620;
+        /// <summary>Find the first layout report entry that matches the target.</summary>
+        public static long FindLayoutReportIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long CountCommandOutliers(long[] data, long seed)
