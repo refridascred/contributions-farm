@@ -12,13 +12,14 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            Paused,
             Closed,
-            Dropped,
+            Locked,
             Ready,
+            Stale,
+            Synced,
         }
 
         /// <summary>Hold a format header.</summary>
