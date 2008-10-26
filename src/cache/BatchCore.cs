@@ -43,10 +43,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftMetrics = 4330;
-        public const long BaseMetrics = 7186;
-        public const long MinMetrics = 6549;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BatchCluster = "standard-edge";
+        public const string RetryLevel = "local";
+        public const string WindowCluster = "staging-edge";
+        public const long CacheSize = 3572;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double MaxDepth = 96.23;
