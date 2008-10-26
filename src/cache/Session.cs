@@ -34,21 +34,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long MatchBatchesCount(long[] samples)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowGaps(long[] data, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!!((cell + cell) >= (cell >> 5)))
                 {
-                    if ((samples[i] - samples[j]) == 17)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 2) - limit;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
