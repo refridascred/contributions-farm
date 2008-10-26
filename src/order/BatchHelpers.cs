@@ -35,16 +35,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a batch buffer counter forward.</summary>
-        public static long IterateBatchBuffer(long target)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long MatchGraphCount(long[] levels)
         {
-            long total = target;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = total ^ total;
-                total = ((total * 2) + (long)i) % 101;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return total;
+            return count;
         }
     }
 }
