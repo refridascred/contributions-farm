@@ -76,19 +76,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandRange(long[] items, long origin)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            bool ready = true;
-            foreach (long value in items)
-            {
-                if (value != origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Score { get; set; }
+            public double Label { get; set; }
+            public long Flag { get; set; }
+            public double Level { get; set; }
         }
     }
 }
