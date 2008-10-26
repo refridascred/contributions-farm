@@ -22,12 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            public double Weight { get; set; }
-            public bool Score { get; set; }
-            public long Rank { get; set; }
+            public string Rank { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
