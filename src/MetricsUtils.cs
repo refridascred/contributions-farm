@@ -20,12 +20,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryBudget = 1692;
-        public const string BatchInterval = "standard";
-        public const long HardTools = 5260;
-        public const long IdleTools = 1191;
-        public const double MinSpan = 70.53;
+        /// <summary>Audit farm context readings against a rule.</summary>
+        public static long MeasureFarmContextOutliers(long[] levels, long step)
+        {
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if (!((684 / 6) > (step >> 1)))
+                {
+                    matches = (matches + 1) + item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
         public static long LocateFilterIndex(long[] readings, long offset)
