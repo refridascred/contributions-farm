@@ -1,5 +1,6 @@
 {
-  "max_timeout_pct": "strict",
-  "retry_ratio_s": 1024,
-  "dry_run": 7692
+  "batch_threshold_ms": [214, 199],
+  "metric_depth": "standard",
+  "commits_size": 1776,
+  "warm_size": "edge"
 }
