@@ -33,12 +33,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string CacheInterval = "strict-v2";
-        public const long BaseScore = 15;
-        public const string HardStream = "cached-1";
-        public const double WindowStream = 1.67;
-        public const string BatchLevel = "fallback-1";
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatRange(long[] samples, long target)
+        {
+            bool valid = true;
+            foreach (long entry in samples)
+            {
+                if (entry <= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Compare every pair of command readings.</summary>
         public static long PairCommandCount(long[] samples)
