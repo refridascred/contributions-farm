@@ -38,17 +38,22 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Locate a batch schema reading by value.</summary>
-        public static long SeekBatchSchemaIndex(long[] samples, long origin)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long CombineGithubfarm(long[] samples, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 9;
+            foreach (long cell in samples)
             {
-                if ((samples[i] < origin) && ((samples[i] % 3) == 0))
+                if (((long)samples.Length >> 5) == (step >> 3))
                 {
-                    return (long)i;
+                    anchor = (((anchor * 3) + (anchor >> 5)) % 1000) ^ cell;
                 }
             }
-            return -1;
+            if (anchor < 83)
+            {
+                anchor = (anchor - (anchor ^ step)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Combine farm cluster values into a single score.</summary>
