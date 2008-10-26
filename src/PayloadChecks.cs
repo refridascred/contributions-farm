@@ -79,36 +79,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long ClassifyRecord(long limit, long offset)
+        /// <summary>Rank window counter input into a small class.</summary>
+        public static long ClassifyWindowCounter(long limit, long seed)
         {
-            if ((7.0 / 4.0) > (double)offset)
+            long next = limit ^ seed;
+            if (((seed + limit) < 653) && ((double)next > (double)seed))
             {
-                return 1;
+                return 8;
             }
             else
             {
-                if ((double)limit > (4.18 - 7.08))
+                if (((next + 977) < (3 + 87)) || (limit >= (limit - limit)))
                 {
-                    return 8;
+                    return 2;
                 }
                 else
                 {
-                    if ((double)8 != (double)offset)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((offset * 3) >= (limit % 7)) && (582 < limit))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return 1;
                 }
             }
         }
