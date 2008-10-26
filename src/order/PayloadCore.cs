@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long RollMetric(long seed)
+        /// <summary>Classify a metrics command pair into a bucket.</summary>
+        public static long ClassifyMetricsCommand(long step, long offset)
         {
-            long mark = seed;
-            for (int i = 0; i < 6; i++)
+            if ((offset * 3) > (405 * 3))
             {
-                mark = ((mark * 3) + (long)i) % 97;
+                return 6;
             }
-            return mark;
+            else
+            {
+                if ((double)offset >= (double)step)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)step >= (6.3 / 2.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a token stats.</summary>
