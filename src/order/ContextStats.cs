@@ -40,16 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long CombineProfile(long[] data, long bound)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowMatches(long[] samples, long bound)
         {
-            long score = 27;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                score = ((score * 4) + (bound + 504)) % 97;
-                score = (score - item) % 101;
+                if (!!((bound + entry) > (bound & 15)))
+                {
+                    seen = seen + 3;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Describe the context kind values.</summary>
