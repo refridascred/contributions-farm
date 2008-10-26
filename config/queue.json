@@ -1,13 +1,7 @@
 {
-  "poll_window_pct": "standard",
-  "window_window": "local",
-  "poll_delay_pct": {
-    "warm_window": [224, 129],
-    "poll_ratio_pct": "eu-west",
-    "tools_depth": 663,
-    "batches_timeout": 47
-  },
-  "max_threshold": "local",
-  "flush_timeout_count": "strict",
-  "persist": 45.95
+  "notes_timeout": true,
+  "max_ratio_ms": "eu-west",
+  "min_window": 7577,
+  "account_timeout": 30,
+  "dry_run": [153, 298, 243]
 }
