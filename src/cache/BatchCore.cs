@@ -43,9 +43,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double RetryInterval = 66.37;
-        public const string IdleFactor = "fallback";
-        public const long BaseBudget = 3781;
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long WeighEntry(long[] levels)
+        {
+            long total = 72;
+            foreach (long reading in levels)
+            {
+                if ((reading >= (reading + reading)) || ((17.0 / 3.0) < (double)reading))
+                {
+                    total = (total ^ reading) % 65521;
+                }
+                else
+                {
+                    total = (total - reading) % 4096;
+                }
+            }
+            return total;
+        }
     }
 }
