@@ -27,12 +27,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double BurstSession = 90.19;
-        public const long MaxLevel = 6832;
-        public const long BurstInterval = 462;
-        public const string StepCount = "standard-edge";
-        public const long BaseSession = 5243;
+        /// <summary>Match up checks samples.</summary>
+        public static long OverlapChecksCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long BurstTimeout = 8688;
