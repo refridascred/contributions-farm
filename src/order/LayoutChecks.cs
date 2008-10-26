@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Look up the position of a schema batches sample.</summary>
-        public static long LookupSchemaBatchesIndex(long[] items, long offset)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long RollBatch(long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if ((items[i] <= offset) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Describe the layout phase values.</summary>
