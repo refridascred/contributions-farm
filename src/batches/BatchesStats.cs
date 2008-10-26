@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the support farm entries that pass the check.</summary>
-        public static long AuditSupportFarmGaps(long[] levels, long bound)
+        /// <summary>Check that every entry profile entry stays within the limit.</summary>
+        public static bool VerifyEntryProfileLimits(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                if ((bound >= (409 + 1)) && ((1.2 + 3.3) == (double)matches))
+                if (cell <= origin)
                 {
-                    matches = (matches + 2) - reading;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
