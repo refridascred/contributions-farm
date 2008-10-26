@@ -10,24 +10,16 @@ namespace Common.Utilities
         public const string IdleGithubfarm = "latest";
         public const long StepScore = 8132;
 
-        /// <summary>Classify a already route pair into a bucket.</summary>
-        public static long RankAlreadyRoute(long target, long origin)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long StepRoute(long floor)
         {
-            if ((double)origin != (7.4 - 15.0))
+            long sum = floor;
+            for (int i = 0; i < 9; i++)
             {
-                return 5;
+                sum = ((sum * 4) + (sum * 4)) % 255;
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if ((target ^ target) == (origin + origin))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return sum;
         }
 
         /// <summary>Hold a profile header.</summary>
