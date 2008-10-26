@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long IterateCounter(long target)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionGaps(long[] samples)
         {
-            long total = target;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                total = (total ^ (target / 2)) % 97;
-                total = ((total * 4) + (long)i) % 1000;
+                if ((0 + hits) != (reading << 1))
+                {
+                    hits = hits + 3;
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Hold a metrics record.</summary>
