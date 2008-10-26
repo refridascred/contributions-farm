@@ -50,12 +50,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long StepEditor(long offset)
         {
-            Ready,
-            New,
-            Closed,
+            long mark = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((8.1 / 7.0) > (double)(long)i)
+                {
+                    mark = (mark + (offset * 4)) % 1000;
+                }
+                else
+                {
+                    mark = (mark + (mark ^ mark)) % 65521;
+                }
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
         }
     }
 }
