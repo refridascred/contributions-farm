@@ -45,10 +45,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleRatio = 6465;
-        public const string BatchSession = "latest-v2";
-        public const long WindowSession = 5101;
-        public const string MinSession = "legacy-v2";
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double CacheDepth = 94.1;
+        public const long SoftSchema = 5598;
+        public const long MaxBudget = 7101;
+        public const long WindowSchema = 3974;
     }
 }
