@@ -42,12 +42,19 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryBounds(long[] values, long floor)
         {
-            Synced,
-            Retry,
-            Done,
+            bool valid = true;
+            foreach (long entry in values)
+            {
+                if (entry > floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
