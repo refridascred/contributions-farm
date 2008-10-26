@@ -26,12 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterRange(long[] readings, long origin)
         {
-            Retry,
-            Done,
-            Failed,
+            bool ready = true;
+            foreach (long cell in readings)
+            {
+                if (cell <= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
