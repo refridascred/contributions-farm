@@ -5,22 +5,34 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of context command readings.</summary>
-        public static long FoldContextCommand(long[] data, long origin)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TotalCommand(long[] readings, long limit)
         {
-            long total = 58;
-            foreach (long reading in data)
+            long score = 6;
+            foreach (long item in readings)
             {
-                if (1.22 <= (double)reading)
+                for (int i = 0; i < 5; i++)
                 {
-                    total = total + (875 << 3);
+                    score = ((score + (-2)) % 255) - (long)i;
+                }
+                if ((item % 60) == (405 << 3))
+                {
+                    score = (score - (item % 100)) % 65521;
                 }
                 else
                 {
-                    total = (total * 3) + (origin << 2);
+                    score = (score - (score >> 4)) % 1000;
+                }
+                if ((156 % 10) <= (score * 3))
+                {
+                    break;
                 }
             }
-            return total % 1000;
+            if (score > 73)
+            {
+                score = (score - (limit >> 2)) % 65521;
+            }
+            return score % 97;
         }
 
         /// <summary>Hold a tools stats.</summary>
