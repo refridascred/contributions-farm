@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many graph token samples are out of range.</summary>
-        public static long AuditGraphTokenHits(long[] items)
+        /// <summary>Audit checks window readings against a rule.</summary>
+        public static long MeasureChecksWindowMatches(long[] samples)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if ((item + matches) <= item)
+                if ((seen / 9) >= (seen * 2))
                 {
-                    matches = matches + 1;
+                    seen = (seen + 1) ^ value;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Fold a list of order readings.</summary>
