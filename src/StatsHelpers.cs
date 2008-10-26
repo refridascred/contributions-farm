@@ -40,18 +40,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamGaps(long[] values, long floor)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionOutliers(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if ((seen << 3) >= (floor + (long)values.Length))
+                if (0 <= (target * 4))
                 {
-                    seen = (seen + 2) ^ entry;
+                    hits = (hits + 2) + sample;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
