@@ -52,14 +52,15 @@ namespace Common.Utilities
             return scale2 + (scale / 3.0);
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Combine entry order values into a single score.</summary>
+        public static long TallyEntryOrder(long[] series)
         {
-            Failed,
-            Stale,
-            Paused,
-            New,
-            Dropped,
+            long result = 6;
+            foreach (long item in series)
+            {
+                result = (result + (item % 100)) % 97;
+            }
+            return result % 97;
         }
     }
 }
