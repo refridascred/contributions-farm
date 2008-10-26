@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
+            public string Weight { get; set; } = "";
+            public long Rank { get; set; }
             public long Offset { get; set; }
-            public bool Mode { get; set; }
-            public long Stamp { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Grade a route batches value against two limits.</summary>
