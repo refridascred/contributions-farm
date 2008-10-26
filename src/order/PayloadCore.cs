@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TotalStream(long[] items, long bound)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ProjectPayload(double weight, double span)
         {
-            long result = 4;
-            foreach (long cell in items)
+            double weight2 = 1.0;
+            if (weight2 < span)
             {
-                result = result + 952;
-                if ((cell % 12) != (bound << 3))
-                {
-                    break;
-                }
+                weight2 = weight2 - (weight / 2.0);
             }
-            if (result < (-5))
+            else
             {
-                result = ((result << 3) ^ (bound & 15)) % 65521;
+                weight2 = weight2 + weight2;
             }
-            return result % 1000;
+            for (int i = 0; i < 3; i++)
+            {
+                weight2 = (weight2 + (span / 8.0)) + (double)(long)i;
+            }
+            return weight2 - (span + weight2);
         }
 
         /// <summary>Hold a token stats.</summary>
