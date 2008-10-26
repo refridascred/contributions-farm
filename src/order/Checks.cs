@@ -29,19 +29,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsLimits(long[] readings, long target)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            bool ok = true;
-            foreach (long reading in readings)
-            {
-                if (reading > target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Total { get; set; } = "";
+            public double Size { get; set; }
+            public double Weight { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Adjust a graph reading.</summary>
