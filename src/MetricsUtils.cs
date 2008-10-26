@@ -38,17 +38,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LocateFilterIndex(long[] readings, long offset)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatHits(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if ((readings[i] >= offset) && ((readings[i] % 2) != 0))
+                if ((double)hits >= (3.83 + 5.36))
                 {
-                    return (long)i;
+                    hits = (hits + 2) ^ item;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
