@@ -19,39 +19,15 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long GradeMetrics(long seed, long origin)
+        /// <summary>Iterate the command contributi series from a seed.</summary>
+        public static long RollCommandContributi(long target)
         {
-            long prev = seed + origin;
-            if ((seed + seed) >= origin)
+            long sum = target;
+            for (int i = 0; i < 17; i++)
             {
-                return 5;
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            else
-            {
-                if ((8 - prev) == (seed + 79))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed - origin) < seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)seed != (4.05 + 9.75))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
