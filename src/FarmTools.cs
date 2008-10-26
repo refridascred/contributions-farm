@@ -29,12 +29,9 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
-        {
-            public long Limit { get; set; }
-            public double Offset { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string WindowInterval = "latest";
+        public const double BurstCount = 88.41;
+        public const long LimitRatio = 8967;
     }
 }
