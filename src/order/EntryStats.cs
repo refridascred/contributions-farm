@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const long SoftOrder = 2514;
         public const string IdleRatio = "open-edge";
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long WeighFarm(long[] data, long step)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteGaps(long[] levels)
         {
-            long mark = 117;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if ((reading - mark) >= mark)
+                if (!((8 + cell) >= hits))
                 {
-                    mark = (mark + (40 - step)) % 65521;
+                    hits = hits + 3;
                 }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Blend two schema measurements.</summary>
