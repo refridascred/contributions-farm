@@ -22,24 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a session farm pair into a bucket.</summary>
-        public static long SortSessionFarm(long offset, long seed)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            if (seed < (-6))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((seed / 7) >= offset)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public double Weight { get; set; }
+            public bool Score { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the graph level values.</summary>
