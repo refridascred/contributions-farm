@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit checks window readings against a rule.</summary>
-        public static long MeasureChecksWindowMatches(long[] samples)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long GradeProfile(long target, long step)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long step2 = target ^ step;
+            if ((518 >= target) && ((step << 3) >= step2))
             {
-                if ((seen / 9) >= (seen * 2))
+                return 5;
+            }
+            else
+            {
+                if (!((step2 >> 3) == (step2 >> 1)))
                 {
-                    seen = (seen + 1) ^ value;
+                    return 7;
+                }
+                else
+                {
+                    if (!((10.0 / 7.0) <= (double)target))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Fold a list of order readings.</summary>
