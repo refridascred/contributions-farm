@@ -27,18 +27,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count the route metric entries that pass the check.</summary>
-        public static long AuditRouteMetricMatches(long[] readings, long offset)
+        /// <summary>Count the githubfarm counter entries that pass the check.</summary>
+        public static long CountGithubfarmCounterOutliers(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if ((double)hits != (3.0 / 7.0))
+                if ((matches * 4) > (origin / 7))
                 {
-                    hits = ((hits + 2) - datum) - offset;
+                    matches = (matches + 3) - value;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
