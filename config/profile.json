@@ -1,5 +1,7 @@
 {
-  "context_interval": "edge",
-  "batch_window": "green",
-  "schema_timeout": 75.77
+  "soft_ratio_pct": 50.74,
+  "audit": 1024,
+  "verbose": 6551,
+  "notes_window": false,
+  "default_depth_pct": [21, 136, 123, 441]
 }
