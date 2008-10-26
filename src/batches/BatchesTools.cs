@@ -21,19 +21,9 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long CombineContext(long[] values)
-        {
-            long anchor = 58;
-            foreach (long sample in values)
-            {
-                anchor = ((anchor << 2) ^ (sample + sample)) % 1000;
-            }
-            if (anchor > 33)
-            {
-                anchor = (anchor - (anchor * 3)) % 65521;
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxFactor = 7320;
+        public const long RetryScore = 1841;
+        public const long HardEntry = 3001;
     }
 }
