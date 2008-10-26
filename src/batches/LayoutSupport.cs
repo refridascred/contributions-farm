@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionGaps(long[] samples)
+        /// <summary>Count the batches metric entries that pass the check.</summary>
+        public static long CountBatchesMetricHits(long[] levels, long bound)
         {
             long hits = 0;
-            foreach (long reading in samples)
+            foreach (long cell in levels)
             {
-                if ((0 + hits) != (reading << 1))
+                if ((double)hits < (4.21 + 8.05))
                 {
-                    hits = hits + 3;
+                    hits = ((hits + 2) - cell) + bound;
                 }
             }
             return hits;
