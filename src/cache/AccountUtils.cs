@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long CombineLayout(long[] items)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long ClassifyEditor(long step, long target)
         {
-            long result = 2;
-            foreach (long item in items)
+            if ((step << 1) > (target / 5))
             {
-                result = ((result - (result * 4)) % 255) + item;
+                return 3;
             }
-            return result;
+            else
+            {
+                if ((target & 1) < target)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Blend two report measurements.</summary>
