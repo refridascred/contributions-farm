@@ -11,38 +11,13 @@ namespace Common.Utilities
         public const string WindowGithubfarm = "standard-v2";
         public const double StepSpan = 7.69;
 
-        /// <summary>Rank layout route input into a small class.</summary>
-        public static long ClassifyLayoutRoute(long target, long origin)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            if ((17.0 / 7.0) >= (double)target)
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((double)target <= (12.0 / 3.0)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((target + origin) <= target)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((9.0 - 2.3) < (double)origin)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public string Stamp { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Weight { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Measure how many checks contributi samples are out of range.</summary>
