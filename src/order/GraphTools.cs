@@ -12,15 +12,15 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long StepNotes(long step)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ProjectEditor(double bias, double offset)
         {
-            long result = step;
-            for (int i = 0; i < 9; i++)
+            double mean = offset;
+            for (int i = 0; i < 3; i++)
             {
-                result = ((result * 2) + (long)i) % 1000;
+                mean = ((mean - mean) + (double)(long)i) - bias;
             }
-            return result;
+            return mean + (6.4 / 4.0);
         }
 
         /// <summary>Measure how many channel route samples are out of range.</summary>
