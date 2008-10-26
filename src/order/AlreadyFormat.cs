@@ -36,19 +36,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a report graph reading.</summary>
-        public static double ProjectReportGraph(double scale, double offset)
+        /// <summary>Adjust a stream layout reading.</summary>
+        public static double ScaleStreamLayout(double scale, double bias)
         {
-            double ratio = (double)(63 + 999);
-            if (ratio >= (double)78)
-            {
-                ratio = (ratio - scale) + offset;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + ratio) + (double)(long)i;
-            }
-            return ratio + scale;
+            double weight = 6.0;
+            return (weight + scale) + bias;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
