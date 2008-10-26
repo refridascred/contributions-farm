@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Project the next account value.</summary>
-        public static double ScaleAccount(double weight, double floor)
-        {
-            double mean = floor / 4.0;
-            if (mean < (mean - weight))
-            {
-                mean = mean - mean;
-            }
-            else
-            {
-                mean = mean + (double)721;
-            }
-            return mean + weight;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstScore = 4210;
+        public const double MaxCommits = 23.12;
+        public const string SoftInterval = "legacy-v2";
+        public const long BurstCommits = 9022;
+        public const long CacheCommits = 3804;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const string DefaultRatio = "open-edge";
