@@ -1,4 +1,5 @@
 # support settings
-idle_ratio: 2230
-soft_window: 100
-warm_capacity_pct: 1024
+audit: 95
+poll_ratio: 76.82
+enabled: 84.43
+flush_delay_pct: 87
