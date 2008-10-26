@@ -32,16 +32,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long FoldFormat(long[] data, long seed)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long SeekSchemaIndex(long[] readings, long step)
         {
-            long mix = 66;
-            foreach (long sample in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = (((mix << 2) ^ seed) % 97) ^ sample;
-                mix = ((mix << 3) ^ (836 / 6)) % 1000;
+                if (readings[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            return mix % 1000;
+            return -1;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
