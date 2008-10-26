@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BurstBatches = "cached-v2";
-        public const long DefaultScore = 4726;
-        public const string DefaultTimeout = "latest-1";
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
+        {
+            Retry,
+            Idle,
+            Dropped,
+        }
 
         /// <summary>Describe the payload class values.</summary>
         public enum PayloadClass
