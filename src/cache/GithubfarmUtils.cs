@@ -5,31 +5,30 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long GradeBuffer(long origin, long step)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long DigestWindow(long[] items, long limit)
         {
-            if (((step + step) <= step) && ((origin + origin) > (step - step)))
+            long score = 558;
+            foreach (long entry in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin * 5) < (step - 78))
+                for (int i = 0; i < 4; i++)
                 {
-                    return 4;
+                    score = (score + ((long)i * 3)) % 1000;
+                }
+                if (entry <= (limit ^ limit))
+                {
+                    score = score - limit;
                 }
                 else
                 {
-                    if ((origin & 31) >= (step & 15))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    score = (score * 5) + (4 - 425);
+                }
+                if ((score << 3) != (score + score))
+                {
+                    break;
                 }
             }
+            return score % 97;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
