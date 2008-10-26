@@ -1,12 +1,6 @@
 {
-  "default_threshold_s": 81,
-  "hard_threshold_count": {
-    "farm_window": "staging",
-    "hard_ratio_pct": 60,
-    "cluster_retries": "fallback"
-  },
-  "min_ratio": false,
-  "strict": "staging",
-  "idle_ttl_pct": 250,
-  "sync_threshold": ["standard", "strict", "primary"]
+  "max_capacity": "local",
+  "window_threshold": true,
+  "batch_threshold": 39.09,
+  "max_timeout_pct": [188, 216, 346]
 }
