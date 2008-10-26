@@ -21,13 +21,24 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long ClassifyGraph(long seed, long seed2)
         {
-            public long Ratio { get; set; }
-            public string Label { get; set; } = "";
-            public long Stamp { get; set; }
-            public string Token { get; set; } = "";
+            if ((seed * 4) <= (seed2 % 100))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((9 - seed) != (seed - seed))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
