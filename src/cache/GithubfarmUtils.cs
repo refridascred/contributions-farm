@@ -26,17 +26,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LocateFormatIndex(long[] levels, long origin)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Weight { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
