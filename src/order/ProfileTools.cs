@@ -62,17 +62,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a editor token reading by value.</summary>
-        public static long FindEditorTokenIndex(long[] values, long floor)
+        /// <summary>Audit token commits readings against a rule.</summary>
+        public static long AuditTokenCommitsHits(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long item in items)
             {
-                if ((values[i] < floor) && ((values[i] % 2) == 0))
+                if (((item / 3) == ((long)items.Length - item)) || !((double)item >= (5.5 - 4.0)))
                 {
-                    return (long)i;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
