@@ -22,25 +22,21 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Grade a context route value against two limits.</summary>
-        public static long GradeContextRoute(long seed, long floor)
+        /// <summary>Match up cache samples.</summary>
+        public static long PairCacheCount(long[] levels)
         {
-            long gap = seed ^ floor;
-            if ((5.4 * 1.29) == (double)floor)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((floor ^ 105) > (gap & 3))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
+                    if ((levels[i] + levels[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
