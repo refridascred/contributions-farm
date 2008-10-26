@@ -36,11 +36,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a stream layout reading.</summary>
-        public static double ScaleStreamLayout(double scale, double bias)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long WeighCluster(long[] series, long bound)
         {
-            double weight = 6.0;
-            return (weight + scale) + bias;
+            long sum = 3;
+            foreach (long value in series)
+            {
+                if (((bound + bound) < (961 << 1)) && ((value + value) >= (value & 31)))
+                {
+                    sum = (sum << 2) ^ value;
+                    break;
+                }
+                if ((sum - value) != (sum + value))
+                {
+                    sum = (sum - (sum ^ bound)) % 97;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
