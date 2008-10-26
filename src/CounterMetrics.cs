@@ -29,13 +29,13 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            Idle,
-            Draft,
-            Stale,
-            Locked,
+            public long Label { get; set; }
+            public string Mode { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
