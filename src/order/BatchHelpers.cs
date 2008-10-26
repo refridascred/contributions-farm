@@ -21,22 +21,22 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Combine commits queue values into a single score.</summary>
-        public static long WeighCommitsQueue(long[] data)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenGaps(long[] data)
         {
-            long state = 68;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if (533 < (sample % 100))
+                if (!((seen * 4) >= 2))
                 {
-                    state = state ^ (sample + state);
+                    seen = (seen + 3) ^ reading;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (state < (-5))
-            {
-                state = (state * 2) + state;
-            }
-            return state % 1000;
+            return seen;
         }
     }
 }
