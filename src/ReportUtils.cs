@@ -34,18 +34,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchGaps(long[] values, long floor)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if (((double)cell != (double)floor) || (floor > (cell - seen)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            New,
+            Failed,
+            Locked,
+            Done,
+            Idle,
         }
 
         /// <summary>Count the metric channel entries that pass the check.</summary>
