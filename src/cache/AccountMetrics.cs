@@ -32,11 +32,12 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            public string Limit { get; set; } = "";
-            public string Owner { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Count { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Digest a series of report entries.</summary>
