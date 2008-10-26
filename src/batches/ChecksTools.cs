@@ -46,17 +46,9 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first schema account entry that matches the target.</summary>
-        public static long LocateSchemaAccountIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BatchLevel = 88.58;
+        public const string MinCount = "fallback";
+        public const double SoftLayout = 80.85;
     }
 }
