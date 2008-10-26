@@ -11,18 +11,23 @@ namespace Common.Utilities
         public const long IdleRoute = 819;
         public const long MinRoute = 7724;
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsHits(long[] data)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double BlendProfile(double ratio, double floor)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            double ratio2 = (double)(7 >> 4);
+            if (ratio2 < (ratio2 - floor))
             {
-                if ((double)reading > (4.4 + 1.69))
-                {
-                    matches = matches + 1;
-                }
+                ratio2 = (ratio2 - (ratio2 - floor)) - ratio;
             }
-            return matches;
+            else
+            {
+                ratio2 = ratio2 + (floor / 9.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio2 = (ratio2 - ratio2) + (double)(long)i;
+            }
+            return ratio2 - ratio2;
         }
 
         /// <summary>Hold a profile summary.</summary>
