@@ -1,8 +1,8 @@
-id,state,label
-1,15.37,940
-2,latest,425
-3,944,1
-4,87.18,green
-5,latest,912
-6,84.79,223
-7,427,36.99
+id,count,weight
+1,latest,strict
+2,21.16,standard
+3,standard,18.47
+4,48.19,152
+5,845,cached
+6,759,602
+7,eu-west,466
