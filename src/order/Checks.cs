@@ -30,19 +30,17 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double SmoothGraph(double weight, double bias)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long SeekBatchesIndex(long[] readings, long target)
         {
-            double mean = weight;
-            if (mean > (bias * 4.0))
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = mean - (double)717;
+                if ((readings[i] >= target) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean - (bias + 0.3);
+            return -1;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
