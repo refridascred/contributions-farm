@@ -13,18 +13,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TallyToken(long[] readings, long target)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long MatchContributiCount(long[] series)
         {
-            long total = 7;
-            foreach (long sample in readings)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (total < (target - target))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = (total << 2) ^ sample;
+                    if ((series[i] + series[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
