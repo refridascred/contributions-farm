@@ -77,25 +77,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank window counter input into a small class.</summary>
-        public static long ClassifyWindowCounter(long limit, long seed)
+        /// <summary>Fold a list of window githubfarm readings.</summary>
+        public static long CombineWindowGithubfarm(long[] values, long floor)
         {
-            long next = limit ^ seed;
-            if (((seed + limit) < 653) && ((double)next > (double)seed))
+            long result = 24;
+            foreach (long reading in values)
             {
-                return 8;
+                result = (result << 3) ^ (reading & 7);
+                result = (result ^ 928) % 1000;
+                result = ((result * 5) + floor) % 4096;
             }
-            else
+            if (result < 5)
             {
-                if (((next + 977) < (3 + 87)) || (limit >= (limit - limit)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
+                result = (result - (floor + floor)) % 255;
             }
+            return result % 97;
         }
     }
 }
