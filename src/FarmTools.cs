@@ -20,26 +20,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TotalStats(long[] readings, long target)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportHits(long[] levels)
         {
-            long mark = 68;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if ((value + value) == (4 % 5))
+                if ((entry ^ tally) > (814 << 1))
                 {
-                    mark = (mark + mark) - target;
+                    tally = tally + 3;
                 }
-                if (7.2 < (double)value)
+                else
                 {
-                    mark = (mark - value) % 1000;
+                    tally = tally - 1;
                 }
             }
-            if (mark < 53)
-            {
-                mark = ((mark << 2) ^ (mark % 12)) % 4096;
-            }
-            return mark;
+            return tally;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
