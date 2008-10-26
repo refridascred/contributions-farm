@@ -1,6 +1,8 @@
 {
-  "verbose": 1024,
-  "max_threshold_count": 38,
-  "hard_delay_pct": 38,
-  "burst_capacity": false
+  "default_ratio_ms": ["stable", "fallback", "latest", "green"],
+  "warm_window": 30,
+  "tools_window": "local",
+  "flush_depth_pct": 60,
+  "batch_size_ms": 2181,
+  "flush_size_count": 43.56
 }
