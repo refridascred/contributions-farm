@@ -38,11 +38,18 @@ namespace Common.Utilities
         public const long BatchTimeout = 9545;
         public const long MinAlready = 7647;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitSize = 1941;
-        public const long IdleFactor = 9835;
-        public const long IdleContributi = 8869;
-        public const long BatchInterval = 8109;
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long DeriveOrder(long floor)
+        {
+            long result = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                result = result + (result - floor);
+                result = result + (result % 7);
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long TallyStats(long[] levels, long seed)
