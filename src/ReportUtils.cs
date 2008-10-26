@@ -29,17 +29,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long FindFormatIndex(long[] data, long floor)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long BucketBatches(long limit, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (!((floor / 7) <= (limit + limit)))
             {
-                if (data[i] <= floor)
+                return 0;
+            }
+            else
+            {
+                if ((double)floor <= (7.49 * 11.0))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((limit * 5) <= floor)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((limit % 97) > (floor - floor))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the metric channel entries that pass the check.</summary>
