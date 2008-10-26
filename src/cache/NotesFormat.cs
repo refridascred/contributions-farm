@@ -22,18 +22,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsHits(long[] data, long floor)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long GradeTools(long bound, long origin)
         {
-            long hits = 0;
-            foreach (long value in data)
+            if ((origin + bound) == (origin << 1))
             {
-                if ((9.3 + 0.9) >= (double)hits)
+                return 2;
+            }
+            else
+            {
+                if ((630 * 4) == (origin >> 2))
                 {
-                    hits = ((hits + 3) + value) - floor;
+                    return 5;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the batch state values.</summary>
