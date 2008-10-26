@@ -72,9 +72,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultRatio = 6437;
-        public const string MaxScore = "cached";
-        public const double BurstTools = 64.71;
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long RankPayload(long bound, long floor)
+        {
+            if (!((439 + bound) == (0 - bound)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((99 / 8) >= floor))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((floor + 5) > (floor - 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
     }
 }
