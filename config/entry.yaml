@@ -1,5 +1,14 @@
 # entry settings
-enabled: fallback
-idle_capacity_ms: 53.0
-readonly: stable
-checks_window: 1610
+dry_run: 100
+order_window: 250
+verbose:
+  max_depth_count: strict
+  warm_window_count: latest
+  batch_size_pct:
+    - 472
+    - 145
+    - 436
+    - 263
+  min_depth_ms: 1024
+idle_interval_ms: 66.23
+batch_timeout: 49.79
