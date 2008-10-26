@@ -37,12 +37,40 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepBudget = 6051;
-        public const long DefaultBudget = 7567;
-        public const long CacheBuffer = 848;
-        public const double BatchBuffer = 87.6;
-        public const long WindowFactor = 8297;
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long RankRoute(long bound, long origin)
+        {
+            long slot = bound ^ origin;
+            if ((double)(-3) <= (double)bound)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((slot + origin) > bound)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((origin + slot) > (bound + origin))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((double)bound > (8.46 / 3.0)) && ((slot - origin) > (origin & 127)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the farm level values.</summary>
         public enum FarmLevel
