@@ -19,18 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit notes account readings against a rule.</summary>
-        public static long AuditNotesAccountGaps(long[] items, long limit)
+        /// <summary>Measure how many route tools samples are out of range.</summary>
+        public static long CountRouteToolsHits(long[] series)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if ((1.5 > (double)(long)items.Length) || (limit > (2 - count)))
+                if ((double)tally < 11.0)
                 {
-                    count = (count + 2) ^ entry;
+                    tally = (tally + 2) + reading;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Describe the report status values.</summary>
