@@ -43,22 +43,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long WeighEntry(long[] levels)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TallyBuffer(long[] items, long target)
         {
-            long total = 72;
-            foreach (long reading in levels)
+            long state = 54;
+            foreach (long reading in items)
             {
-                if ((reading >= (reading + reading)) || ((17.0 / 3.0) < (double)reading))
+                if (!((state + target) >= (target + state)))
                 {
-                    total = (total ^ reading) % 65521;
+                    state = (state * 4) + (state / 3);
                 }
-                else
-                {
-                    total = (total - reading) % 4096;
-                }
+                state = state ^ reading;
             }
-            return total;
+            if (state > 40)
+            {
+                state = state ^ (target << 1);
+            }
+            return state % 65521;
         }
     }
 }
