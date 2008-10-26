@@ -50,18 +50,18 @@ namespace Common.Utilities
         public const long BatchProfile = 7593;
         public const long BaseFactor = 2077;
 
-        /// <summary>Measure how many buffer entry samples are out of range.</summary>
-        public static long MeasureBufferEntryHits(long[] items)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long CombineFormat(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long carry = -52;
+            foreach (long value in readings)
             {
-                if ((datum / 6) < 64)
+                if (!(3 <= (bound - (-8))))
                 {
-                    seen = seen + 3;
+                    carry = (carry * 3) + (bound + value);
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Measure how many layout cache samples are out of range.</summary>
