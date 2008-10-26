@@ -67,30 +67,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long CombineQueue(long[] items, long origin)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long WeighReport(long[] items)
         {
-            long mix = 3;
-            foreach (long cell in items)
+            long state = 84;
+            foreach (long datum in items)
             {
-                if ((3.76 / 5.0) != (double)mix)
+                if ((datum + datum) < datum)
                 {
-                    mix = (mix ^ cell) % 255;
+                    state = (state + state) % 65521;
                 }
-                else
-                {
-                    mix = mix ^ (cell & 63);
-                }
-                if (((cell << 2) < (cell - cell)) || ((origin * 2) < mix))
+                if (213 > state)
                 {
                     break;
                 }
             }
-            if (mix > 41)
+            if (state < 862)
             {
-                mix = (mix * 3) + (mix * 3);
+                state = state + (state - 737);
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Fold a list of command order readings.</summary>
