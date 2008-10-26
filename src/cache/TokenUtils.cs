@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Project the next queue value.</summary>
-        public static double SmoothQueue(double gain, double bias)
-        {
-            double load = bias;
-            if (load >= bias)
-            {
-                load = load + (bias - gain);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + bias) + (double)(long)i;
-            }
-            return load - gain;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string RetryProfile = "alpha-v2";
+        public const long IdleInterval = 7998;
+        public const long MaxProfile = 5424;
 
         /// <summary>Scale a route figure with a bias.</summary>
         public static double SmoothRoute(double bias, double span)
