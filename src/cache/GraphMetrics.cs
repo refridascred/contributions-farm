@@ -51,13 +51,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueOutliers(long[] data)
         {
-            New,
-            Ready,
-            Draft,
-            Done,
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if (382 >= (tally - entry))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
