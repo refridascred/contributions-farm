@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            Locked,
-            Ready,
-            New,
-            Queued,
-            Done,
+            Closed,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
