@@ -14,18 +14,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TallyCache(long[] readings, long seed)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long WeighFarm(long[] data, long step)
         {
-            long anchor = 7;
-            foreach (long item in readings)
+            long mark = 117;
+            foreach (long reading in data)
             {
-                if ((anchor - item) > (seed / 2))
+                if ((reading - mark) >= mark)
                 {
-                    anchor = ((anchor * 4) + (34 - anchor)) % 4096;
+                    mark = (mark + (40 - step)) % 65521;
                 }
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Blend two schema measurements.</summary>
