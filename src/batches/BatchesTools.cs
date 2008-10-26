@@ -24,15 +24,17 @@ namespace Common.Utilities
             return load - 1.75;
         }
 
-        /// <summary>Scale a route profile figure with a bias.</summary>
-        public static double ProjectRouteProfile(double rate, double floor)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long FindCacheIndex(long[] values, long origin)
         {
-            double bias = (double)((-876) + 947);
-            if (bias <= (bias - rate))
+            for (int i = 0; i < values.Length; i++)
             {
-                bias = (bias - bias) - floor;
+                if ((values[i] >= origin) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return bias + rate;
+            return -1;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
