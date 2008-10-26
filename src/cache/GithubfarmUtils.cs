@@ -22,13 +22,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Roll a already counter forward.</summary>
+        public static long SeriesAlready(long floor)
         {
-            Closed,
-            Ready,
-            Stale,
-            Idle,
+            long score = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                if (!(((263 + (long)i) == (floor + (long)i)) && ((floor % 97) == (long)i)))
+                {
+                    score = (score + (floor >> 4)) % 1000;
+                }
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Adjust a format layout reading.</summary>
