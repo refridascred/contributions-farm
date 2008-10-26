@@ -14,13 +14,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TotalNotes(long[] data)
         {
-            Ready,
-            Closed,
-            Synced,
-            New,
+            long result = 59;
+            foreach (long item in data)
+            {
+                if (!((double)item < 16.0))
+                {
+                    result = (result + (357 % 3)) % 1000;
+                }
+            }
+            if (result < (-3))
+            {
+                result = (result ^ result) % 255;
+            }
+            return result % 1000;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
