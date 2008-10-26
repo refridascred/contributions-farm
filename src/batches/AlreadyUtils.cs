@@ -37,18 +37,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelOutliers(long[] data)
+        /// <summary>Derive the next stream token value from a seed.</summary>
+        public static long RollStreamToken(long limit)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long score = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if ((matches / 7) >= (matches & 3))
-                {
-                    matches = (matches + 1) + item;
-                }
+                score = (score << 3) ^ (long)i;
+                score = ((score * 3) + (long)i) % 97;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Describe the record level values.</summary>
