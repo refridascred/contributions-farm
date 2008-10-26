@@ -1,9 +1,7 @@
-id,score,weight
-1,37.76,886
-2,edge,574
-3,legacy,705
-4,edge,542
-5,local,560
-6,40,latest
-7,251,437
-8,eu-west,156
+id,score,active
+1,latest,fallback
+2,607,883
+3,835,974
+4,15.23,18.96
+5,22.26,blue
+6,70.18,378
