@@ -42,20 +42,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long RollTools(long floor)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferOutliers(long[] levels)
         {
-            long acc = floor;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                acc = (acc - ((long)i & 63)) % 65521;
-                for (int i2 = 0; i2 < 9; i2++)
+                if ((sample & 63) == (matches + matches))
                 {
-                    acc = ((acc - (floor * 2)) % 101) ^ (long)i2;
+                    matches = matches + 1;
                 }
-                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return acc;
+            return matches;
         }
     }
 }
