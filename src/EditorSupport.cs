@@ -37,20 +37,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutLimits(long[] samples, long target)
-        {
-            bool valid = true;
-            foreach (long item in samples)
-            {
-                if (item != target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double BurstSession = 90.19;
+        public const long MaxLevel = 6832;
+        public const long BurstInterval = 462;
+        public const string StepCount = "standard-edge";
+        public const long BaseSession = 5243;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long BurstTimeout = 8688;
