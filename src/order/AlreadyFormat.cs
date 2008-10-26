@@ -36,23 +36,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long WeighCluster(long[] series, long bound)
+        /// <summary>Measure how many filter profile samples are out of range.</summary>
+        public static long MeasureFilterProfileOutliers(long[] items)
         {
-            long sum = 3;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if (((bound + bound) < (961 << 1)) && ((value + value) >= (value & 31)))
+                if (((long)items.Length + matches) < (matches + item))
                 {
-                    sum = (sum << 2) ^ value;
-                    break;
-                }
-                if ((sum - value) != (sum + value))
-                {
-                    sum = (sum - (sum ^ bound)) % 97;
+                    matches = matches + 1;
                 }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Describe the layout mode values.</summary>
