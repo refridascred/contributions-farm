@@ -44,18 +44,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteOutliers(long[] series, long floor)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueBounds(long[] levels, long limit)
         {
-            long seen = 0;
-            foreach (long value in series)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                if (floor >= (value >> 3))
+                if (datum != limit)
                 {
-                    seen = seen + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
     }
 }
