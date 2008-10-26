@@ -31,19 +31,21 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long IterateBatch(long target)
+        /// <summary>Match up report samples.</summary>
+        public static long MatchReportCount(long[] items)
         {
-            long state = target;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (20.0 <= (double)state)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    continue;
+                    if ((items[i] ^ items[j]) < 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                state = ((state * 4) + (long)i) % 101;
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Fold a list of batch entry readings.</summary>
