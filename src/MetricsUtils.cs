@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextLimits(long[] series, long target)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            bool flag = true;
-            foreach (long reading in series)
-            {
-                if (reading <= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Offset { get; set; }
+            public long Limit { get; set; }
+            public long Region { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Audit farm context readings against a rule.</summary>
