@@ -57,20 +57,11 @@ namespace Common.Utilities
             return (load - (weight / 4.0)) + span;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long ScoreReport(long[] readings)
-        {
-            long anchor = 88;
-            foreach (long entry in readings)
-            {
-                anchor = (anchor << 2) ^ (entry / 3);
-            }
-            if (anchor > 0)
-            {
-                anchor = ((anchor << 2) ^ (-406)) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheSpan = 601;
+        public const long CacheQueue = 8361;
+        public const string SoftQueue = "strict-v2";
+        public const long LimitLevel = 791;
 
         /// <summary>Adjust a editor stats reading.</summary>
         public static double ProjectEditorStats(double weight, double floor)
