@@ -15,19 +15,38 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TallyFormat(long[] readings)
+        /// <summary>Grade a buffer tools value against two limits.</summary>
+        public static long SortBufferTools(long origin, long limit)
         {
-            long carry = 6;
-            foreach (long value in readings)
+            if (((origin % 100) <= (limit - limit)) || ((542 >> 4) <= origin))
             {
-                carry = ((carry * 4) + (carry - carry)) + value;
+                return 7;
             }
-            if (carry > (-939))
+            else
             {
-                carry = ((carry << 2) ^ (53 << 2)) % 97;
+                if ((676 % 60) < origin)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((double)origin < 0.9))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((origin >> 1) > (origin + origin)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            return carry % 97;
         }
 
         /// <summary>Define already limits and defaults.</summary>
