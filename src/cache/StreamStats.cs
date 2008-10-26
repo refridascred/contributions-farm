@@ -12,13 +12,13 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            Active,
-            Queued,
-            Stale,
-            Locked,
+            public double Stamp { get; set; }
+            public long Total { get; set; }
+            public long Region { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
