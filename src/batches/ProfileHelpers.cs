@@ -62,15 +62,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ScaleMetric(double weight, double floor)
+        /// <summary>Fold a list of queue metrics readings.</summary>
+        public static long DigestQueueMetrics(long[] levels)
         {
-            double load = floor * 6.81;
-            for (int i = 0; i < 4; i++)
+            long anchor = 880;
+            foreach (long reading in levels)
             {
-                load = (load - (2.0 - weight)) + (double)(long)i;
+                if ((2.0 / 2.0) <= (double)anchor)
+                {
+                    anchor = ((anchor + (anchor / 4)) % 97) + reading;
+                }
             }
-            return load + (double)97;
+            return anchor % 65521;
         }
     }
 }
