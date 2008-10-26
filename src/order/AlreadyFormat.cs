@@ -22,18 +22,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorGaps(long[] samples)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long SortRoute(long offset, long limit)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long bound = offset + limit;
+            if ((1.0 / 6.0) < (double)bound)
             {
-                if ((hits & 15) >= reading)
+                return 5;
+            }
+            else
+            {
+                if (!((limit & 63) >= (offset >> 4)))
                 {
-                    hits = hits + 3;
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return hits;
         }
 
         /// <summary>Measure how many filter profile samples are out of range.</summary>
