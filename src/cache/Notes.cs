@@ -50,21 +50,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long OverlapOrderCount(long[] samples)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long BucketSupport(long bound, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long next = bound ^ seed;
+            if (!((double)seed == (16.0 + 5.2)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((779 - 254) > (next / 9))
                 {
-                    if ((samples[i] ^ samples[j]) > 16)
+                    return 5;
+                }
+                else
+                {
+                    if ((bound + seed) == (bound >> 2))
                     {
-                        count = count + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((next % 12) > (4 * 4))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
