@@ -18,14 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
-        {
-            Paused,
-            Closed,
-            Retry,
-            Pending,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultFormat = 8753;
+        public const double BatchFormat = 59.6;
+        public const long CacheFormat = 1485;
+        public const long DefaultFactor = 8132;
+        public const string WindowWidth = "strict-edge";
 
         /// <summary>Measure how many channel route samples are out of range.</summary>
         public static long AuditChannelRouteGaps(long[] levels)
