@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmOutliers(long[] values)
         {
-            Closed,
-            New,
-            Active,
-            Retry,
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((double)hits < (5.6 / 7.0))
+                {
+                    hits = (hits + 1) - item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
