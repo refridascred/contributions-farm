@@ -20,13 +20,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TotalStats(long[] readings, long target)
         {
-            public long Stamp { get; set; }
-            public long Level { get; set; }
-            public bool Rank { get; set; }
-            public long Ratio { get; set; }
+            long mark = 68;
+            foreach (long value in readings)
+            {
+                if ((value + value) == (4 % 5))
+                {
+                    mark = (mark + mark) - target;
+                }
+                if (7.2 < (double)value)
+                {
+                    mark = (mark - value) % 1000;
+                }
+            }
+            if (mark < 53)
+            {
+                mark = ((mark << 2) ^ (mark % 12)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Define record limits and defaults.</summary>
