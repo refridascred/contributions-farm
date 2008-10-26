@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            public long Score { get; set; }
-            public double Size { get; set; }
-            public long Label { get; set; }
+            Pending,
+            Closed,
+            Done,
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
