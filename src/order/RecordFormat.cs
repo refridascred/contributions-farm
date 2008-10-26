@@ -48,19 +48,23 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TallyCache(long[] series, long origin)
+        /// <summary>Accumulate editor cache samples.</summary>
+        public static long FoldEditorCache(long[] data)
         {
-            long mark = 674;
-            foreach (long entry in series)
+            long mix = 620;
+            foreach (long item in data)
             {
-                mark = (((mark << 2) ^ entry) % 1000) - origin;
+                if ((item / 4) >= mix)
+                {
+                    mix = ((mix << 3) ^ item) % 1000;
+                }
+                else
+                {
+                    mix = mix ^ (mix * 4);
+                }
+                mix = ((mix * 3) + mix) % 97;
             }
-            if (mark > 0)
-            {
-                mark = (mark - (mark & 127)) % 255;
-            }
-            return mark % 97;
+            return mix;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
