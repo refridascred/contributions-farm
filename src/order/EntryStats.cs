@@ -11,13 +11,19 @@ namespace Common.Utilities
         public const long SoftOrder = 2514;
         public const string IdleRatio = "open-edge";
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Check that every stream filter entry stays within the limit.</summary>
+        public static bool VerifyStreamFilterRange(long[] samples, long seed)
         {
-            public long Size { get; set; }
-            public string Offset { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public string Owner { get; set; } = "";
+            bool valid = true;
+            foreach (long cell in samples)
+            {
+                if (cell >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Blend two schema measurements.</summary>
