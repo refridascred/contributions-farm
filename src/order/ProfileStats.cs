@@ -23,11 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string DefaultLevel = "fallback-edge";
-        public const double LimitDepth = 33.68;
-        public const long HardScore = 4850;
-        public const long MinFilter = 6015;
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyGaps(long[] series)
+        {
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((829 <= (count & 15)) && ((5.0 - 4.7) < (double)entry))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Roll a contributi batch counter forward.</summary>
         public static long SeriesContributiBatch(long floor)
