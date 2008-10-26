@@ -32,18 +32,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine cluster payload values into a single score.</summary>
-        public static long WeighClusterPayload(long[] readings, long floor)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] levels, long seed)
         {
-            long mix = 946;
-            foreach (long cell in readings)
+            long sum = 612;
+            foreach (long entry in levels)
             {
-                if ((double)6 < (double)mix)
+                if (((entry - seed) < (entry << 3)) && ((seed % 10) > (sum & 3)))
                 {
-                    mix = (((mix + (8 << 3)) % 1000) ^ cell) - floor;
+                    sum = ((sum << 3) ^ (entry + 414)) % 101;
+                }
+                else
+                {
+                    sum = (sum - (entry ^ seed)) % 1000;
                 }
             }
-            return mix;
+            return sum;
         }
 
         /// <summary>Project the next already value.</summary>
