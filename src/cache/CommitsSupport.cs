@@ -47,22 +47,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterOutliers(long[] data, long step)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long RollQueue(long limit)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long mark = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if ((double)entry != (4.0 - 1.8))
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    count = (count + 2) - step;
+                    mark = ((mark ^ (long)i) % 65521) - (long)i2;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                mark = (mark + (limit >> 3)) % 65521;
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Hold a already snapshot.</summary>
