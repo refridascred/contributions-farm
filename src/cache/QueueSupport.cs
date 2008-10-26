@@ -34,19 +34,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsRange(long[] values, long step)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            bool valid = true;
-            foreach (long reading in values)
-            {
-                if (reading != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Retry,
+            Active,
+            Closed,
+            Paused,
         }
     }
 }
