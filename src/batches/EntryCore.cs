@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyMatches(long[] items, long limit)
-        {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if (tally < (limit - 4))
-                {
-                    tally = (tally + 2) + sample;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string LimitSession = "standard";
+        public const double WindowSession = 70.2;
+        public const long DefaultTimeout = 2116;
 
         /// <summary>Hold a graph info.</summary>
         public sealed class GraphInfo
