@@ -39,12 +39,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteMatches(long[] values)
         {
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
-            public double Level { get; set; }
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if (seen > (seen / 4))
+                {
+                    seen = (seen + 3) ^ entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define record limits and defaults.</summary>
