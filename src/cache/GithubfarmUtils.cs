@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Adjust a filter reading.</summary>
-        public static double BlendFilter(double scale, double floor)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            double mean = floor;
-            return (mean - floor) + scale;
+            Active,
+            New,
+            Queued,
+            Failed,
+            Draft,
         }
 
         /// <summary>Hold a editor header.</summary>
