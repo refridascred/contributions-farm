@@ -21,18 +21,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TotalAlready(long[] samples, long seed)
+        /// <summary>Iterate the session window series from a seed.</summary>
+        public static long IterateSessionWindow(long floor)
         {
-            long acc = 71;
-            foreach (long reading in samples)
+            long mark = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if ((acc + reading) <= acc)
-                {
-                    acc = ((acc * 3) + (acc + reading)) - seed;
-                }
+                mark = ((mark * 3) + ((long)i + 283)) % 4096;
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return acc % 97;
+            return mark;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
