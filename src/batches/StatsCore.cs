@@ -65,19 +65,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine farm cluster values into a single score.</summary>
-        public static long WeighFarmCluster(long[] series)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmRange(long[] levels, long seed)
         {
-            long score = 79;
-            foreach (long datum in series)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                score = (score + ((-66) ^ datum)) % 101;
+                if (cell != seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (score > 553)
-            {
-                score = score ^ (586 >> 5);
-            }
-            return score;
+            return found;
         }
 
         /// <summary>Describe the cache level values.</summary>
