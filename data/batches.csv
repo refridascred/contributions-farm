@@ -1,10 +1,6 @@
-id,state,level
-1,local,2.04
-2,latest,21.54
-3,31.89,62.73
-4,641,599
-5,75.79,staging
-6,fallback,31.32
-7,strict,81
-8,legacy,12.55
-9,801,949
+id,label,state
+1,eu-west,972
+2,primary,104
+3,edge,1.84
+4,424,edge
+5,1.16,edge
