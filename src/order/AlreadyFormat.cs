@@ -55,26 +55,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long DigestCluster(long[] values, long step)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long mix = 59;
-            foreach (long datum in values)
-            {
-                if (((mix << 3) >= (mix & 255)) && ((4 & 3) != (step * 4)))
-                {
-                    mix = mix - datum;
-                }
-                if ((datum + 925) > (step % 16))
-                {
-                    mix = (mix - (mix / 2)) % 4096;
-                }
-                else
-                {
-                    mix = (mix << 3) ^ datum;
-                }
-            }
-            return mix;
+            Draft,
+            Closed,
+            New,
         }
 
         /// <summary>Classify a cache filter pair into a bucket.</summary>
