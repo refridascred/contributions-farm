@@ -10,26 +10,22 @@ namespace Common.Utilities
         public const string IdleGithubfarm = "latest";
         public const long StepScore = 8132;
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long DigestBuffer(long[] values)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileGaps(long[] readings, long bound)
         {
-            long anchor = -409;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                for (int i = 0; i < 10; i++)
+                if (((datum << 3) < bound) || ((bound <= (bound * 2)) && ((bound >> 4) == (66 / 6))))
                 {
-                    anchor = (((anchor * 5) + (cell & 255)) % 97) + (long)i;
-                }
-                if ((16.0 + 8.41) > (8.0 / 7.0))
-                {
-                    anchor = anchor ^ (47 * 2);
+                    hits = hits + 1;
                 }
                 else
                 {
-                    anchor = (anchor << 3) ^ anchor;
+                    hits = hits - 1;
                 }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
