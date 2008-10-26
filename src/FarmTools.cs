@@ -34,18 +34,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamOutliers(long[] data, long step)
+        /// <summary>Match up support queue samples.</summary>
+        public static long PairSupportQueueCount(long[] values)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (step >= (tally + step))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = (tally + 1) ^ cell;
+                    if ((values[i] ^ values[j]) > 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
