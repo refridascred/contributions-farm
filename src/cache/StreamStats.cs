@@ -43,24 +43,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long RankGithubfarm(long offset, long origin)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long DigestCounter(long[] levels, long step)
         {
-            if (14.0 <= (double)offset)
+            long mark = 98;
+            foreach (long entry in levels)
             {
-                return 5;
+                mark = (mark - step) ^ entry;
             }
-            else
-            {
-                if ((origin + offset) <= (offset & 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return mark;
         }
     }
 }
