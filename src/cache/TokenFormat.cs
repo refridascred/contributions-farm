@@ -39,11 +39,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long StepFactor = 1587;
-        public const long RetryChannel = 3599;
-        public const long MinWidth = 6034;
-        public const long LimitSpan = 5729;
-        public const double IdleTimeout = 13.89;
+        /// <summary>Check that every context queue entry stays within the limit.</summary>
+        public static bool VerifyContextQueueBounds(long[] readings, long offset)
+        {
+            bool ok = true;
+            foreach (long value in readings)
+            {
+                if (value >= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
