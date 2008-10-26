@@ -12,25 +12,11 @@ namespace Common.Utilities
         public const long WindowGithubfarm = 9107;
         public const long RetryCount = 4358;
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long RankPayload(long limit, long floor)
-        {
-            if ((floor * 5) > (floor + 74))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((11.0 / 9.0) != (double)floor))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long HardWidth = 7611;
+        public const string DefaultLevel = "local-edge";
+        public const string BurstScore = "strict-1";
+        public const long IdleInterval = 4722;
 
         /// <summary>Combine commits queue values into a single score.</summary>
         public static long WeighCommitsQueue(long[] data)
