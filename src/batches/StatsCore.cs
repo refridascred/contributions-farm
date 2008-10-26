@@ -61,13 +61,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long FindCommandIndex(long[] values, long limit)
         {
-            Done,
-            Paused,
-            Closed,
-            Pending,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
