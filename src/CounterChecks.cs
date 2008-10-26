@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryWindow = 4253;
-        public const string MinTimeout = "strict-1";
-        public const double StepTimeout = 44.43;
+        /// <summary>Count the stats payload entries that pass the check.</summary>
+        public static long AuditStatsPayloadGaps(long[] values)
+        {
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if ((sample - sample) >= (sample << 3))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a batches info.</summary>
         public sealed class BatchesInfo
