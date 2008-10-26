@@ -27,25 +27,13 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long SeriesContributi(long step)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long anchor = step;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((((long)i << 2) <= (758 + 906)) && ((double)anchor == (8.5 - 0.6)))
-                {
-                    anchor = ((anchor * 5) + ((long)i + (long)i)) % 4096;
-                    anchor = (anchor + (anchor ^ anchor)) % 101;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ ((long)i - step)) % 1000;
-                    anchor = ((anchor << 3) ^ (anchor + (long)i)) % 97;
-                }
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
+            Done,
+            Dropped,
+            New,
+            Active,
         }
     }
 }
