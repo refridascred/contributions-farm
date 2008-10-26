@@ -20,19 +20,25 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyRange(long[] data, long floor)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long BucketWindow(long step, long step2)
         {
-            bool found = true;
-            foreach (long item in data)
+            long edge = step ^ step2;
+            if (edge >= (edge ^ 801))
             {
-                if (item > floor)
+                return 8;
+            }
+            else
+            {
+                if ((-980) < (step + step2))
                 {
-                    found = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return found;
         }
 
         /// <summary>Describe the filter mode values.</summary>
