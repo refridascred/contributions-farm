@@ -47,19 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double BlendContributi(double scale, double floor)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            double bias = scale + (scale * 4.5);
-            if (bias <= (double)3)
-            {
-                bias = bias - (scale + floor);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias + bias) + (double)(long)i;
-            }
-            return bias - floor;
+            public long Count { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the record kind values.</summary>
