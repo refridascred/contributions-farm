@@ -33,12 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmMatches(long[] items)
         {
-            public long Mode { get; set; }
-            public long Token { get; set; }
-            public string Region { get; set; } = "";
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if (((double)entry == (7.0 * 3.0)) || ((478 % 12) < (entry + matches)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
