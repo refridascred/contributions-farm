@@ -20,15 +20,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Project the next batches metric value.</summary>
-        public static double AdjustBatchesMetric(double gain, double offset)
-        {
-            double load = (gain - offset) * 6.5;
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + (load + load)) + (double)(long)i;
-            }
-            return load - gain;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BaseLevel = 27.22;
+        public const long StepEditor = 1057;
+        public const long LimitEditor = 171;
+        public const double StepWidth = 7.18;
+        public const long BurstEditor = 783;
     }
 }
