@@ -64,11 +64,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double SmoothBuffer(double weight, double span)
         {
-            public string Ratio { get; set; } = "";
-            public long Stamp { get; set; }
+            double bias = (weight - 4.97) * 17.0;
+            if (bias < (double)881)
+            {
+                bias = (bias + bias) - span;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias - (weight + bias)) + (double)(long)i;
+            }
+            return bias - bias;
         }
     }
 }
