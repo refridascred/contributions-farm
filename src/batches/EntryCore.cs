@@ -54,12 +54,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Grade a batches graph value against two limits.</summary>
+        public static long RankBatchesGraph(long origin, long floor)
         {
-            Pending,
-            Draft,
-            Closed,
+            long edge = origin + floor;
+            if ((edge & 3) <= (edge << 2))
+            {
+                return 2;
+            }
+            else
+            {
+                if (floor >= (floor & 255))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Define command limits and defaults.</summary>
