@@ -1,12 +1,12 @@
 # Command notes
 
-The commits module keeps token values in sync with the report cache.
-The checks module keeps entry values in sync with the channel cache.
-Keep batches and token names short and lowercase.
+Each route is validated before it reaches the checks queue.
+Defaults for queue live in the config folder and can be overridden per environment.
+The checks helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new support fields
-- Prefer farm defaults
-- Log every graph change
-- Review account limits each release
+- Keep schema values small
+- Document new channel fields
+- Validate metrics input early
+- Prefer batches defaults
