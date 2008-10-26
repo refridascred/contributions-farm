@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Blend two context filter measurements.</summary>
+        public static double BlendContextFilter(double rate, double bias)
         {
-            Queued,
-            Synced,
-            Locked,
+            double ratio = (double)(643 / 4);
+            if (ratio > (rate + ratio))
+            {
+                ratio = ratio + (rate / 6.0);
+            }
+            return ratio + (bias / 8.0);
         }
 
         /// <summary>Match up order samples.</summary>
