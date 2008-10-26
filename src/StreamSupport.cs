@@ -20,19 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double BlendContext(double bias, double offset)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            double weight = (bias * 10.0) / 3.0;
-            if (weight < (weight + weight))
-            {
-                weight = (weight - weight) - offset;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + weight) + (double)(long)i;
-            }
-            return weight + (weight + bias);
+            public string Size { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
