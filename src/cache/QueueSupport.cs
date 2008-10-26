@@ -38,21 +38,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long PairProfileCount(long[] levels)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long FoldRoute(long[] levels, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 830;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                carry = ((carry + (9 & 127)) % 4096) ^ reading;
+                carry = (carry ^ 78) % 65521;
             }
-            return seen;
+            if (carry < 84)
+            {
+                carry = (carry - step) % 255;
+            }
+            return carry;
         }
     }
 }
