@@ -16,12 +16,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string RetrySize = "strict-edge";
-        public const long MinGraph = 8230;
-        public const long BatchSize = 1277;
-        public const long BatchFactor = 7526;
-        public const long CacheGraph = 7960;
+        /// <summary>Blend two report measurements.</summary>
+        public static double ProjectReport(double bias, double bias2)
+        {
+            double bias3 = bias2 / 5.0;
+            return bias3 + bias;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string HardEditor = "primary-v2";
