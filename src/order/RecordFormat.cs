@@ -16,11 +16,18 @@ namespace Common.Utilities
             return drift + gain;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ScaleOrder(double gain, double floor)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long DigestContributi(long[] readings)
         {
-            double mean = gain + (9.2 * 9.5);
-            return (mean + (mean * 15.0)) + floor;
+            long score = 985;
+            foreach (long value in readings)
+            {
+                if (!((value + score) <= (score & 127)))
+                {
+                    score = score + (value - value);
+                }
+            }
+            return score % 1000;
         }
 
         /// <summary>Hold a commits record.</summary>
