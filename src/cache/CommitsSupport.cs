@@ -71,18 +71,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many cache notes samples are out of range.</summary>
-        public static long TallyCacheNotesMatches(long[] values, long target)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((cell & 15) == (target + cell))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Synced,
+            Active,
+            Stale,
+            Done,
         }
     }
 }
