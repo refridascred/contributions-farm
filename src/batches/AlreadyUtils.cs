@@ -18,19 +18,39 @@ namespace Common.Utilities
         public const long StepGraph = 4394;
         public const long BurstGraph = 1731;
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ProjectBuffer(double rate, double bias)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long RankGraph(long seed, long target)
         {
-            double gain = (rate - rate) * 15.0;
-            if (gain <= (bias / 6.0))
+            long prev = seed + target;
+            if ((0 >> 4) <= prev)
             {
-                gain = gain + rate;
+                return 8;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                gain = (gain - gain) + (double)(long)i;
+                if (seed < (seed + seed))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((double)seed >= (2.5 * 8.3)) && ((2.4 + 8.2) != (double)prev))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((double)target == (3.0 / 9.0)) && ((double)prev < (double)target))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
             }
-            return gain + rate;
         }
 
         /// <summary>Derive the next stream token value from a seed.</summary>
