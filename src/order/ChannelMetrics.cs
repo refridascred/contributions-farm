@@ -23,22 +23,13 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long DigestCounter(long[] samples)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long mark = 1;
-            foreach (long datum in samples)
-            {
-                if ((2.1 >= 14.0) || ((datum - 41) >= (datum * 3)))
-                {
-                    mark = (mark + (datum - 523)) % 65521;
-                }
-            }
-            if (mark < 12)
-            {
-                mark = (mark << 3) ^ mark;
-            }
-            return mark % 4096;
+            public double Count { get; set; }
+            public long Region { get; set; }
+            public long Mode { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Digest a series of account entries.</summary>
