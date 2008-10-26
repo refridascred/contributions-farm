@@ -19,11 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchMatches(long[] series)
         {
-            public string Ratio { get; set; } = "";
-            public string Owner { get; set; } = "";
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((7.68 * 0.82) != (double)reading)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
