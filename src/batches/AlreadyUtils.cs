@@ -45,13 +45,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            Queued,
-            Active,
-            Pending,
-            Idle,
+            Failed,
+            Closed,
+            New,
         }
     }
 }
