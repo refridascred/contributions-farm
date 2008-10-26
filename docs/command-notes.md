@@ -1,14 +1,15 @@
 # Command notes
 
-The layout module keeps graph values in sync with the tools cache.
-Run the record check before changing any metric limits.
-Run the order check before changing any batch limits.
+The notes module keeps layout values in sync with the record cache.
+Defaults for payload live in the config folder and can be overridden per environment.
+Each filter is validated before it reaches the payload queue.
 
-Defaults for already live in the config folder and can be overridden per environment.
-Each layout is validated before it reaches the order queue.
+When a farm fails, the entry handler retries a few times before giving up.
+The contributi module keeps format values in sync with the cluster cache.
+Each layout is validated before it reaches the token queue.
 
 ## Guidelines
 
-- Document new route fields
-- Log every filter change
-- Prefer githubfarm defaults
+- Review queue limits each release
+- Keep record values small
+- Log every route change
