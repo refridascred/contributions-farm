@@ -5,10 +5,21 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string MaxCount = "staging-edge";
-        public const double StepDepth = 69.19;
-        public const long LimitInterval = 9840;
+        /// <summary>Accumulate record stream samples.</summary>
+        public static long WeighRecordStream(long[] readings, long target)
+        {
+            long anchor = 591;
+            foreach (long value in readings)
+            {
+                anchor = (anchor - (target / 3)) - value;
+                anchor = ((anchor * 5) + (anchor - (long)readings.Length)) % 255;
+            }
+            if (anchor < (-2))
+            {
+                anchor = ((anchor * 5) + target) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Locate a report reading by value.</summary>
         public static long SeekReportIndex(long[] series, long seed)
