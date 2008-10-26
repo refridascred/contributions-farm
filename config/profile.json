@@ -1,18 +1,12 @@
 {
-  "warm_ttl": ["stable", "standard", "standard"],
-  "dry_run": [190, 61],
-  "min_interval_count": {
-    "base_interval_pct": true,
-    "token_size": 19,
-    "commits_ratio": [144, 156, 247],
-    "enabled": false,
-    "sync_interval": {
-      "min_limit": "strict",
-      "record_delay": 4747,
-      "hard_retries": "local",
-      "warm_delay_s": "standard",
-      "already_capacity": "staging",
-      "hard_ttl": 30
-    }
-  }
+  "flush_limit_pct": {
+    "strict": 62,
+    "verbose": true,
+    "soft_delay_ms": 6475,
+    "audit": 59,
+    "burst_depth": 15.31,
+    "flush_ratio": false
+  },
+  "layout_capacity": 250,
+  "dry_run": 1024
 }
