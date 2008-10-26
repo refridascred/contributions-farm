@@ -1,6 +1,5 @@
 {
-  "min_capacity_count": "legacy",
-  "flush_size_pct": "primary",
-  "verbose": 12,
-  "base_window": "legacy"
+  "commits_delay": 20.01,
+  "default_limit_count": 30,
+  "default_ttl_ms": 1938
 }
