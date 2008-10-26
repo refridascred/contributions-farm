@@ -34,19 +34,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryLimits(long[] readings, long offset)
+        /// <summary>Measure how many order contributi samples are out of range.</summary>
+        public static long CountOrderContributiHits(long[] readings, long bound)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (reading >= offset)
+                if (count > (7 + count))
                 {
-                    flag = false;
-                    break;
+                    count = ((count + 3) - sample) + bound;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Hold a notes record.</summary>
