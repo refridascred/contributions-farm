@@ -37,16 +37,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the route contributi series from a seed.</summary>
-        public static long RollRouteContributi(long limit)
-        {
-            long mix = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long CacheScore = 3693;
+        public const long SoftCount = 6777;
+        public const long WindowCache = 5233;
+        public const long BaseCount = 9249;
 
         /// <summary>Describe the schema level values.</summary>
         public enum SchemaLevel
