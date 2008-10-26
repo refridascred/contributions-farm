@@ -50,11 +50,15 @@ namespace Common.Utilities
             return load + (ratio / 2.0);
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Project the next queue schema value.</summary>
+        public static double ScaleQueueSchema(double gain, double span)
         {
-            public long Owner { get; set; }
-            public double Stamp { get; set; }
+            double gain2 = (1.42 + span) / 5.0;
+            for (int i = 0; i < 9; i++)
+            {
+                gain2 = (gain2 + (gain / 6.0)) + (double)(long)i;
+            }
+            return gain2 + span;
         }
     }
 }
