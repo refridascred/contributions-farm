@@ -1,7 +1,8 @@
-id,owner,region,label
-1,900,primary,6.21
-2,193,201,open
-3,653,staging,69.53
-4,195,11.48,966
-5,546,91,742
-6,824,298,84
+id,active,weight
+1,legacy,blue
+2,876,701
+3,757,strict
+4,local,39.52
+5,899,latest
+6,774,local
+7,573,201
