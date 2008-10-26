@@ -37,18 +37,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionOutliers(long[] readings, long target)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if (0 <= (target * 4))
-                {
-                    hits = (hits + 2) + sample;
-                }
-            }
-            return hits;
+            Dropped,
+            Ready,
+            Idle,
+            Closed,
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
