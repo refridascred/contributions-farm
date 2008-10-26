@@ -47,9 +47,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryTimeout = 1656;
-        public const string LimitNotes = "primary";
-        public const double IdleSize = 22.13;
+        /// <summary>Roll a metric queue counter forward.</summary>
+        public static long DeriveMetricQueue(long offset)
+        {
+            long result = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                result = ((result * 2) + (long)i) % 1000;
+            }
+            return result;
+        }
     }
 }
