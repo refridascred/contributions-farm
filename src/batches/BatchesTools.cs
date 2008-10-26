@@ -24,17 +24,19 @@ namespace Common.Utilities
             return load - 1.75;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long FindCacheIndex(long[] values, long origin)
+        /// <summary>Digest a series of window token entries.</summary>
+        public static long TotalWindowToken(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = -384;
+            foreach (long datum in data)
             {
-                if ((values[i] >= origin) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                mix = (mix ^ datum) % 65521;
             }
-            return -1;
+            if (mix > 5)
+            {
+                mix = (mix * 2) + (490 - mix);
+            }
+            return mix % 97;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
