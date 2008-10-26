@@ -66,20 +66,15 @@ namespace Common.Utilities
         public const long CacheSize = 5542;
         public const string StepFilter = "stable-1";
 
-        /// <summary>Fold a list of tools route readings.</summary>
-        public static long TallyToolsRoute(long[] values)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long RollTools(long floor)
         {
-            long anchor = 0;
-            foreach (long value in values)
+            long anchor = floor;
+            for (int i = 0; i < 8; i++)
             {
-                anchor = ((anchor * 3) + anchor) ^ value;
-                anchor = anchor ^ 23;
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            if (anchor < 411)
-            {
-                anchor = (anchor ^ (anchor ^ 76)) % 65521;
-            }
-            return anchor % 4096;
+            return anchor;
         }
     }
 }
