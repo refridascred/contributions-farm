@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsBounds(long[] data, long seed)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsOutliers(long[] values, long offset)
         {
-            bool ready = true;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (item > seed)
+                if ((cell - 164) <= offset)
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Describe the report state values.</summary>
