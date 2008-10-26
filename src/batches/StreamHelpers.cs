@@ -10,22 +10,24 @@ namespace Common.Utilities
         public const string IdleGithubfarm = "latest";
         public const long StepScore = 8132;
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutHits(long[] levels)
+        /// <summary>Classify a already route pair into a bucket.</summary>
+        public static long RankAlreadyRoute(long target, long origin)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            if ((double)origin != (7.4 - 15.0))
             {
-                if ((double)35 < (double)(long)levels.Length)
+                return 5;
+            }
+            else
+            {
+                if ((target ^ target) == (origin + origin))
                 {
-                    seen = (seen + 2) ^ value;
+                    return 0;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 6;
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a profile header.</summary>
