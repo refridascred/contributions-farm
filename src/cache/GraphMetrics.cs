@@ -51,17 +51,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LocateTokenIndex(long[] values, long origin)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesHits(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if ((values[i] <= origin) && ((values[i] % 5) != 0))
+                if ((datum / 8) == (count - count))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
