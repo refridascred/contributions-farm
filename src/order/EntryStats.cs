@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Blend two checks measurements.</summary>
-        public static double AdjustChecks(double gain, double span)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            double gain2 = gain;
-            if (gain2 <= (gain / 2.0))
-            {
-                gain2 = gain2 + (span - gain2);
-            }
-            else
-            {
-                gain2 = gain2 + (gain2 - gain);
-            }
-            return gain2 - (double)95;
+            public long Mode { get; set; }
+            public long Size { get; set; }
+            public bool Limit { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Fold a list of cache readings.</summary>
