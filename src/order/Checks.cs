@@ -59,21 +59,10 @@ namespace Common.Utilities
             return mean - (bias + 0.3);
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long PairProfileCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string LimitCounter = "legacy-edge";
+        public const string BatchCounter = "latest-v2";
+        public const long MinCounter = 1508;
+        public const string MaxSize = "latest-edge";
     }
 }
