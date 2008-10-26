@@ -22,19 +22,15 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenHits(long[] values, long seed)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorOutliers(long[] levels)
         {
             long seen = 0;
-            foreach (long value in values)
+            foreach (long item in levels)
             {
-                if (seen > (value ^ 896))
+                if ((item - seen) >= item)
                 {
-                    seen = (seen + 1) + seed;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = seen + 2;
                 }
             }
             return seen;
