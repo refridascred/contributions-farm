@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesHits(long[] values, long offset)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long RollStream(long target)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long result = target;
+            for (int i = 0; i < 4; i++)
             {
-                if (!((offset + 587) >= (cell + hits)) && ((offset % 2) > hits))
+                if ((long)i >= (result + result))
                 {
-                    hits = hits + 2;
+                    continue;
                 }
+                result = ((result * 5) + (long)i) % 97;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
