@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
-        {
-            public long Score { get; set; }
-            public long Mode { get; set; }
-            public double Count { get; set; }
-            public double Weight { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryWindow = 4253;
+        public const string MinTimeout = "strict-1";
+        public const double StepTimeout = 44.43;
 
         /// <summary>Hold a batches info.</summary>
         public sealed class BatchesInfo
