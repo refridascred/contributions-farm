@@ -63,19 +63,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadBounds(long[] values, long seed)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmRange(long[] data, long seed)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                if (reading != seed)
+                if (reading > seed)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
     }
 }
