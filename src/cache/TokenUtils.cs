@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheBudget = 6732;
-        public const string SoftFilter = "standard-v2";
-        public const string MinCount = "cached-edge";
-        public const long StepFilter = 4300;
+        /// <summary>Match up batches samples.</summary>
+        public static long MatchBatchesCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
         public static bool CheckAlreadyRange(long[] items, long origin)
