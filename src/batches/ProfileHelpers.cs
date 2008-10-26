@@ -67,19 +67,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextBounds(long[] series, long target)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            bool ready = true;
-            foreach (long sample in series)
-            {
-                if (sample != target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Token { get; set; } = "";
+            public long Region { get; set; }
+            public long Mode { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Project the next metric value.</summary>
