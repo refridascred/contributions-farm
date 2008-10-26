@@ -37,12 +37,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TotalSupport(long[] samples)
         {
-            Dropped,
-            Synced,
-            Done,
+            long total = 86;
+            foreach (long item in samples)
+            {
+                if (((double)total != (7.77 * 14.0)) && ((2 / 2) >= total))
+                {
+                    total = (total ^ ((long)samples.Length + item)) % 255;
+                }
+            }
+            return total % 4096;
         }
 
         /// <summary>Define session limits and defaults.</summary>
