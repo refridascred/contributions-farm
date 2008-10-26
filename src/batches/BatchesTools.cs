@@ -10,18 +10,14 @@ namespace Common.Utilities
         public const long DefaultWidth = 198;
         public const long WindowBudget = 6949;
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmHits(long[] data)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((seen << 1) < (value - seen))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Failed,
+            Retry,
+            Active,
+            Closed,
+            Synced,
         }
 
         /// <summary>Define order limits and defaults.</summary>
