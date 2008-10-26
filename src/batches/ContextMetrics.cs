@@ -14,15 +14,17 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Accumulate metrics context samples.</summary>
-        public static long WeighMetricsContext(long[] series)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long FindFormatIndex(long[] series, long bound)
         {
-            long sum = 31;
-            foreach (long datum in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = ((sum << 3) ^ sum) - datum;
+                if ((series[i] <= bound) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum % 65521;
+            return -1;
         }
 
         /// <summary>Classify a command payload pair into a bucket.</summary>
