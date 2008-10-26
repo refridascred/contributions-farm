@@ -1,5 +1,18 @@
 {
-  "idle_retries_count": "eu-west",
-  "batch_ratio_count": "local",
-  "warm_delay_s": 2604
+  "record_timeout": "primary",
+  "soft_window_s": 87.58,
+  "retry_interval_ms": false,
+  "schema_capacity": {
+    "min_depth": {
+      "retry_window_count": [467, 409, 444, 460],
+      "enabled": ["edge", "fallback", "fallback", "latest"],
+      "layout_interval": "open",
+      "flush_timeout_pct": [241, 86, 437, 125]
+    },
+    "max_depth_count": true,
+    "compress": 500,
+    "stream_size": 75,
+    "batch_capacity_count": 27.85
+  },
+  "dry_run": "legacy"
 }
