@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmRange(long[] samples, long seed)
         {
-            public string Weight { get; set; } = "";
-            public long Rank { get; set; }
-            public long Offset { get; set; }
-            public bool Total { get; set; }
+            bool flag = true;
+            foreach (long cell in samples)
+            {
+                if (cell != seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a metrics record.</summary>
