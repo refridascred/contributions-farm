@@ -72,12 +72,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
-        {
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultRatio = 6437;
+        public const string MaxScore = "cached";
+        public const double BurstTools = 64.71;
     }
 }
