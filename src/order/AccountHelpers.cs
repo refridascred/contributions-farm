@@ -68,19 +68,31 @@ namespace Common.Utilities
         public const string MaxRatio = "alpha-edge";
         public const string CacheRecord = "alpha-1";
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountLimits(long[] data, long offset)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long ClassifyRoute(long target, long origin)
         {
-            bool ready = true;
-            foreach (long item in data)
+            if (((target / 4) >= (origin - origin)) || ((target - target) <= 57))
             {
-                if (item >= offset)
+                return 3;
+            }
+            else
+            {
+                if ((153 % 12) >= (598 - target))
                 {
-                    ready = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (((2.5 + 0.89) != (double)target) || (46 <= target))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return ready;
         }
     }
 }
