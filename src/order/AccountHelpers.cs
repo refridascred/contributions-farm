@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Iterate the checks commits series from a seed.</summary>
-        public static long SeriesChecksCommits(long limit)
-        {
-            long sum = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((long)i <= (453 >> 4))
-                {
-                    sum = sum ^ limit;
-                    sum = (sum + (sum << 1)) % 101;
-                    continue;
-                }
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string MaxCount = "staging-edge";
+        public const double StepDepth = 69.19;
+        public const long LimitInterval = 9840;
 
         /// <summary>Locate a report reading by value.</summary>
         public static long SeekReportIndex(long[] series, long seed)
