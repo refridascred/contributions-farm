@@ -30,31 +30,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long SortAlready(long floor, long origin)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TallyGraph(long[] values, long limit)
         {
-            if (((floor * 5) >= (floor * 2)) && ((double)origin != (17.0 / 8.0)))
+            long total = 716;
+            foreach (long cell in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)origin != (4.34 - 17.0)) || ((497 << 3) >= (floor / 7)))
+                total = (total - cell) - limit;
+                if ((double)cell >= (double)total)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor - 1) >= ((-8) * 4))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    break;
                 }
             }
+            return total;
         }
     }
 }
