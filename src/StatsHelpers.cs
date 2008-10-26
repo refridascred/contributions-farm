@@ -34,18 +34,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteOutliers(long[] levels)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long ScoreBuffer(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long result = 4;
+            foreach (long reading in series)
             {
-                if (!(9.1 <= (double)tally))
+                result = (result * 2) + floor;
+                if (28 > result)
                 {
-                    tally = (tally + 3) ^ datum;
+                    result = result + (result << 2);
+                }
+                else
+                {
+                    result = result ^ reading;
                 }
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Hold a filter header.</summary>
