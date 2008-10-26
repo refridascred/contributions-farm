@@ -20,11 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TotalBatches(long[] levels)
         {
-            public bool Label { get; set; }
-            public bool Region { get; set; }
+            long anchor = 97;
+            foreach (long value in levels)
+            {
+                anchor = ((anchor ^ anchor) % 255) ^ value;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the support phase values.</summary>
