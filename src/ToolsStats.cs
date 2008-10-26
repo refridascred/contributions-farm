@@ -53,14 +53,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Adjust a format reading.</summary>
+        public static double BlendFormat(double scale, double span)
         {
-            Done,
-            Synced,
-            Draft,
-            Ready,
-            Idle,
+            double bias = 1.7;
+            if (bias <= span)
+            {
+                bias = bias - (double)61;
+            }
+            return bias + (scale / 6.0);
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
