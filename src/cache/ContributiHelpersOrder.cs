@@ -13,19 +13,17 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long ScoreBuffer(long[] series)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LookupFarmIndex(long[] levels, long target)
         {
-            long mix = 2;
-            foreach (long cell in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = (mix ^ (cell - mix)) % 1000;
+                if ((levels[i] == target) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (mix < 59)
-            {
-                mix = (mix - (mix << 2)) % 4096;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
