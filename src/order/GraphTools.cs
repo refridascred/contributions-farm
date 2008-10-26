@@ -50,39 +50,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long GradeSession(long bound, long origin)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long next = bound + origin;
-            if ((7.79 + 8.1) <= (double)origin)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((origin % 60) > bound)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((4.9 / 8.0) < (double)next)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((bound + next) >= (origin ^ 28))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Closed,
+            Locked,
+            Draft,
         }
 
         /// <summary>Hold a session options.</summary>
