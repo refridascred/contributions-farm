@@ -33,19 +33,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportGaps(long[] values, long step)
-        {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if (seen < 0)
-                {
-                    seen = ((seen + 3) - reading) - step;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitSize = 456;
+        public const long MaxGraph = 7554;
+        public const long MaxCount = 250;
+        public const long StepGraph = 7307;
+        public const long RetryRatio = 7620;
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long CountCommandOutliers(long[] data, long seed)
