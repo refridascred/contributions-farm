@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double SmoothBuffer(double rate, double bias)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            double gain = (bias - bias) / 2.0;
-            return (gain + 0.9) + rate;
+            Locked,
+            Queued,
+            Retry,
+            Draft,
+            Done,
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
