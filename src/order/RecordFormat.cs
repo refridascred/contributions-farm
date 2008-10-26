@@ -33,13 +33,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            public bool Mode { get; set; }
-            public bool Stamp { get; set; }
-            public long Total { get; set; }
-            public double Size { get; set; }
+            Idle,
+            Done,
+            Draft,
+            Retry,
+            Paused,
         }
 
         /// <summary>Iterate the cache checks series from a seed.</summary>
