@@ -22,11 +22,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterRange(long[] series, long limit)
         {
-            public long Limit { get; set; }
-            public bool Token { get; set; }
+            bool ready = true;
+            foreach (long entry in series)
+            {
+                if (entry != limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Blend two layout measurements.</summary>
