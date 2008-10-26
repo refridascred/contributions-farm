@@ -13,14 +13,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
+            Pending,
+            Dropped,
             Stale,
+            Ready,
             Queued,
-            Active,
-            New,
-            Retry,
         }
 
         /// <summary>Hold a queue entry.</summary>
