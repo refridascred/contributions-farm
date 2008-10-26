@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiOutliers(long[] samples, long target)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long FoldContext(long[] samples, long step)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long acc = 1;
+            foreach (long datum in samples)
             {
-                if (((5.2 - 2.57) != (double)matches) || ((value + target) == (matches + value)))
+                if ((acc % 100) >= 67)
                 {
-                    matches = matches + 3;
+                    acc = ((acc << 2) ^ (datum - acc)) + step;
                 }
-                else
+                if (3 < (datum % 64))
                 {
-                    matches = matches - 1;
+                    break;
                 }
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Describe the checks level values.</summary>
