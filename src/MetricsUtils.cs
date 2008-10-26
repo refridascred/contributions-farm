@@ -40,21 +40,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long CompareWindowCount(long[] series)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long WeighPayload(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = -504;
+            foreach (long item in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((54 << 3) < sum) && ((double)sum <= (10.0 + 20.0)))
                 {
-                    if ((series[i] ^ series[j]) > 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = ((sum + sum) % 101) - item;
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
