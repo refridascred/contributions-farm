@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Roll a session cluster counter forward.</summary>
-        public static long DeriveSessionCluster(long bound)
+        /// <summary>Audit githubfarm graph readings against a rule.</summary>
+        public static long CountGithubfarmGraphMatches(long[] samples, long origin)
         {
-            long state = bound;
-            for (int i = 0; i < 22; i++)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if (!(state < ((long)i - bound)))
+                if (((reading + hits) >= hits) && ((double)origin <= 2.39))
                 {
-                    state = state + bound;
+                    hits = hits + 2;
                 }
-                if (!(((double)(long)i != (17.0 / 9.0)) && ((8.7 - 6.0) > (double)state)))
-                {
-                    state = state ^ state;
-                }
-                state = ((state * 2) + (long)i) % 97;
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
