@@ -58,22 +58,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueGaps(long[] samples)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long StepTools(long offset)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long mix = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)sample > (2.0 * 9.0))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
