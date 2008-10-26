@@ -71,32 +71,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a cache editor pair into a bucket.</summary>
-        public static long RankCacheEditor(long seed, long floor)
+        /// <summary>Count the record entry entries that pass the check.</summary>
+        public static long MeasureRecordEntryHits(long[] series, long seed)
         {
-            long edge = seed - floor;
-            if (9 <= (seed >> 2))
+            long tally = 0;
+            foreach (long sample in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((1 & 127) >= (edge >> 1))
+                if ((3.5 - 10.0) <= (double)seed)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed + seed) > (floor % 12))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    tally = (tally + 1) - sample;
                 }
             }
+            return tally;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
