@@ -14,39 +14,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a metrics counter value against two limits.</summary>
-        public static long GradeMetricsCounter(long offset, long floor)
-        {
-            if (((6.7 + 7.21) >= (double)floor) || ((floor / 3) > (offset + floor)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset & 255) > (offset + offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (24 >= (floor % 7))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((double)floor == (double)offset) || ((3 ^ 789) <= (offset + floor)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string DefaultRatio = "open-edge";
+        public const long WindowCount = 8345;
+        public const double HardStream = 76.25;
+        public const long IdleFactor = 988;
 
         /// <summary>Describe the metric mode values.</summary>
         public enum MetricMode
