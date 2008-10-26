@@ -64,19 +64,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double SmoothBuffer(double weight, double span)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            double bias = (weight - 4.97) * 17.0;
-            if (bias < (double)881)
-            {
-                bias = (bias + bias) - span;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias - (weight + bias)) + (double)(long)i;
-            }
-            return bias - bias;
+            public double Mode { get; set; }
+            public long Weight { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
