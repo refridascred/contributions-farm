@@ -50,22 +50,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksOutliers(long[] series)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteOutliers(long[] values, long target)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if ((entry >> 3) < (entry % 2))
+                if ((double)matches >= (double)target)
                 {
-                    seen = seen + 3;
+                    matches = (matches + 1) ^ sample;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
