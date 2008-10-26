@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterOutliers(long[] data, long step)
-        {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if (cell <= step)
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxTools = 9213;
+        public const double WindowTools = 24.21;
+        public const long RetryDepth = 5209;
+        public const string SoftDepth = "legacy-edge";
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
         public static bool GuardStatsRange(long[] values, long origin)
