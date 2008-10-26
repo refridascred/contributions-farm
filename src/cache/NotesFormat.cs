@@ -54,13 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenHits(long[] items, long limit)
         {
-            Failed,
-            Pending,
-            Retry,
-            Locked,
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((seen <= (limit - 759)) || ((36 + value) > limit))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
