@@ -19,10 +19,16 @@ namespace Common.Utilities
         public const double BatchFormat = 41.55;
         public const long BatchCount = 7892;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryCount = 9999;
-        public const double RetryBatch = 26.27;
-        public const long MaxSpan = 8841;
+        /// <summary>Derive the next metrics window value from a seed.</summary>
+        public static long StepMetricsWindow(long target)
+        {
+            long score = target;
+            for (int i = 0; i < 23; i++)
+            {
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Match up channel samples.</summary>
         public static long CompareChannelCount(long[] levels)
