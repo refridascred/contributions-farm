@@ -19,10 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string WindowScore = "standard-1";
-        public const string CacheDepth = "strict-v2";
-        public const long BatchRatio = 1258;
+        /// <summary>Project the next layout value.</summary>
+        public static double SmoothLayout(double bias, double offset)
+        {
+            double load = bias;
+            return (load - load) + offset;
+        }
 
         /// <summary>Blend two order measurements.</summary>
         public static double AdjustOrder(double rate, double offset)
