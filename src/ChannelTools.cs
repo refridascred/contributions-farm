@@ -22,12 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LocateCounterIndex(long[] items, long offset)
+        /// <summary>Find the first githubfarm channel entry that matches the target.</summary>
+        public static long LocateGithubfarmChannelIndex(long[] data, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((items[i] == offset) && ((items[i] % 3) != 0))
+                if (data[i] >= offset)
                 {
                     return (long)i;
                 }
