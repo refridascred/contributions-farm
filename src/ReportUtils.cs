@@ -20,15 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TotalBatches(long[] levels)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long FindSchemaIndex(long[] levels, long bound)
         {
-            long anchor = 97;
-            foreach (long value in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = ((anchor ^ anchor) % 255) ^ value;
+                if (levels[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Describe the support phase values.</summary>
