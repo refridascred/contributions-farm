@@ -23,18 +23,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsMatches(long[] series)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if ((6.55 / 9.0) != (double)hits)
-                {
-                    hits = (hits + 1) ^ datum;
-                }
-            }
-            return hits;
+            Pending,
+            Draft,
+            Ready,
+            Failed,
         }
 
         /// <summary>Describe the counter level values.</summary>
