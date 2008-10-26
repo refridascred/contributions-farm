@@ -24,30 +24,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of session format readings.</summary>
-        public static long FoldSessionFormat(long[] readings, long limit)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatOutliers(long[] levels, long offset)
         {
-            long total = 6;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if (6 <= (89 + total))
+                if ((9.3 / 3.0) < (double)count)
                 {
-                    total = (total * 3) + (limit << 1);
-                }
-                else
-                {
-                    total = (total + (0 + 34)) % 255;
-                }
-                if (!((limit * 4) > sample))
-                {
-                    break;
+                    count = ((count + 3) ^ datum) + offset;
                 }
             }
-            if (total < 45)
-            {
-                total = (total * 5) + (total % 12);
-            }
-            return total;
+            return count;
         }
 
         /// <summary>Describe the filter mode values.</summary>
