@@ -26,11 +26,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftLayout = 3058;
-        public const long HardLayout = 6617;
-        public const long BaseLayout = 2443;
-        public const long MinLayout = 1923;
-        public const double BatchLayout = 11.72;
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long ScoreProfile(long[] levels)
+        {
+            long mix = 601;
+            foreach (long value in levels)
+            {
+                if (value >= (value & 31))
+                {
+                    mix = ((mix << 3) ^ mix) % 97;
+                }
+            }
+            return mix;
+        }
     }
 }
