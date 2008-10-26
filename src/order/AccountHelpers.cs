@@ -68,11 +68,19 @@ namespace Common.Utilities
         public const string MaxRatio = "alpha-edge";
         public const string CacheRecord = "alpha-1";
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double SmoothQueue(double scale, double floor)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountLimits(long[] data, long offset)
         {
-            double gain = 3.7;
-            return (gain + (floor + gain)) + scale;
+            bool ready = true;
+            foreach (long item in data)
+            {
+                if (item >= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
