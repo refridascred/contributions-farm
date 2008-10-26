@@ -62,23 +62,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double BlendSchema(double scale, double bias)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long StepReport(long seed)
         {
-            double scale2 = bias + (bias + scale);
-            if (scale2 > bias)
+            long mark = seed;
+            for (int i = 0; i < 14; i++)
             {
-                scale2 = scale2 - scale;
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            else
-            {
-                scale2 = scale2 + (double)109;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale2 = (scale2 - (scale2 * 1.24)) + (double)(long)i;
-            }
-            return scale2 + (scale2 / 7.0);
+            return mark;
         }
     }
 }
