@@ -76,21 +76,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count stats account pairs that satisfy a relation.</summary>
-        public static long CompareStatsAccountCount(long[] values)
+        /// <summary>Combine queue session values into a single score.</summary>
+        public static long ScoreQueueSession(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 569;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                sum = (sum - (sum & 7)) % 1000;
+                if ((sum % 12) > (datum + sum))
                 {
-                    if ((values[i] ^ values[j]) > 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = (sum << 2) ^ (892 - datum);
+                }
+                else
+                {
+                    sum = (sum + (sum - sum)) % 97;
                 }
             }
-            return hits;
+            return sum;
         }
     }
 }
