@@ -1,15 +1,11 @@
 {
-  "flush_depth_count": 6052,
-  "hard_ttl_pct": "edge",
-  "retry_threshold": "standard",
-  "poll_threshold_s": false,
-  "route_size": {
-    "soft_ratio_count": {
-      "buffer_size": 1.19,
-      "cache_window": "edge",
-      "default_capacity": 500
-    },
-    "window_size": 2208,
-    "idle_ttl_s": 23.16
+  "filter_retries": 383,
+  "notes_timeout": true,
+  "min_retries_count": {
+    "base_ttl_ms": "strict",
+    "counter_size": 52.75,
+    "verbose": ["strict", "open"],
+    "dry_run": "open",
+    "flush_interval_pct": true
   }
 }
