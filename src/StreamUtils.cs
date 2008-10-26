@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsMatches(long[] levels)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if (tally > (tally - 48))
-                {
-                    tally = (tally + 2) + entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Closed,
+            Done,
+            Active,
+            Stale,
+            Paused,
         }
 
         /// <summary>Adjust a filter reading.</summary>
