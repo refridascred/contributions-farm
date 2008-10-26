@@ -1,8 +1,7 @@
 {
-  "metric_window": [12, 242, 163],
-  "hard_ratio_pct": 30,
-  "warm_capacity_ms": 1024,
-  "metrics_limit": "fallback",
-  "warm_size_pct": 85.14,
-  "soft_limit_pct": false
+  "batch_ratio_count": 16.33,
+  "default_ratio_s": false,
+  "hard_retries_s": 100,
+  "poll_delay_pct": 11,
+  "burst_ratio_s": [222, 274, 438]
 }
