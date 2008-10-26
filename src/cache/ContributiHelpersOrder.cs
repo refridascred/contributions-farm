@@ -33,31 +33,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long ScoreGraph(long[] samples)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long PairQueueCount(long[] samples)
         {
-            long sum = 681;
-            foreach (long datum in samples)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (12.0 > (double)sum)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = ((sum << 3) ^ (sum - 297)) % 97;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ sum) % 97;
-                }
-                if (!(7.17 > (double)datum))
-                {
-                    sum = sum + (sum & 1);
-                    sum = (sum * 3) + (datum + datum);
-                }
-                if (7.32 <= (double)datum)
-                {
-                    sum = (sum ^ (sum >> 4)) % 97;
+                    if ((samples[i] - samples[j]) == 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return sum % 97;
+            return hits;
         }
     }
 }
