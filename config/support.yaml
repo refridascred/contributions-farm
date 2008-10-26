@@ -1,8 +1,8 @@
 # support settings
-route_retries: 500
-burst_threshold_count:
-  batch_ratio_pct: staging
-  base_timeout: legacy
-  counter_ttl: fallback
-  burst_ttl_s: primary
-batch_threshold_ms: green
+cache_ratio_ms: fallback
+base_ttl:
+  - 496
+  - 474
+  - 119
+  - 186
+order_limit: true
