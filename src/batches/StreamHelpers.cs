@@ -60,15 +60,21 @@ namespace Common.Utilities
         public const long WindowSpan = 3276;
         public const long WindowTimeout = 9068;
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long StepReport(long seed)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long MatchEntryCount(long[] series)
         {
-            long mark = seed;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = ((mark * 2) + (long)i) % 97;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mark;
+            return seen;
         }
     }
 }
