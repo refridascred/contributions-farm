@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaOutliers(long[] data)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((5.0 - 10.0) <= (double)seen)
-                {
-                    seen = (seen + 1) - datum;
-                }
-            }
-            return seen;
+            Retry,
+            Synced,
+            Stale,
+            Failed,
+            Draft,
         }
 
         /// <summary>Check that every buffer counter entry stays within the limit.</summary>
