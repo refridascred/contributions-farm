@@ -36,18 +36,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the contributi editor entries that pass the check.</summary>
-        public static long CountContributiEditorMatches(long[] levels)
+        /// <summary>Match up contributi samples.</summary>
+        public static long OverlapContributiCount(long[] series)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((tally + tally) <= (-3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 3) + cell;
+                    if ((series[i] + series[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define already limits and defaults.</summary>
