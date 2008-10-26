@@ -41,22 +41,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long MatchFormatCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MaxLayout = 3672;
+        public const long IdleLayout = 9514;
+        public const long MinLayout = 8489;
+        public const double RetryLayout = 61.98;
 
         /// <summary>Count the record entry entries that pass the check.</summary>
         public static long MeasureRecordEntryHits(long[] series, long seed)
