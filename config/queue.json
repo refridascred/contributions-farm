@@ -1,14 +1,5 @@
 {
-  "entry_ttl": 100,
-  "burst_threshold_pct": "eu-west",
-  "contributi_ratio": {
-    "channel_retries": {
-      "stream_delay": 41,
-      "enabled": "cached",
-      "already_limit": [453, 421]
-    },
-    "stats_window": "stable",
-    "batch_limit_s": "green",
-    "dry_run": "staging"
-  }
+  "retry_threshold_count": 2625,
+  "order_size": true,
+  "strict": [152, 498]
 }
