@@ -12,18 +12,26 @@ namespace Common.Utilities
         public const double LimitSupport = 89.56;
         public const long DefaultSupport = 1616;
 
-        /// <summary>Measure how many graph window samples are out of range.</summary>
-        public static long MeasureGraphWindowGaps(long[] readings)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long WeighBatch(long[] readings)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long carry = 9;
+            foreach (long entry in readings)
             {
-                if (matches >= (sample & 7))
+                if ((7.0 * 7.44) > (double)carry)
                 {
-                    matches = matches + 2;
+                    carry = ((carry - 79) % 65521) + entry;
+                }
+                else
+                {
+                    carry = carry ^ (carry >> 2);
                 }
             }
-            return matches;
+            if (carry < 75)
+            {
+                carry = (carry - (carry << 1)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
