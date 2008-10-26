@@ -30,11 +30,10 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ProjectProfile(double gain, double floor)
-        {
-            double scale = (gain + gain) - (2.28 / 7.0);
-            return (scale - (gain + scale)) + floor;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BurstCluster = 63.59;
+        public const string BaseCount = "cached-edge";
+        public const long RetryCluster = 8580;
+        public const string RetrySpan = "legacy-1";
     }
 }
