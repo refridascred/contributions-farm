@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Iterate the support metrics series from a seed.</summary>
-        public static long DeriveSupportMetrics(long bound)
+        /// <summary>Fold a list of window buffer readings.</summary>
+        public static long WeighWindowBuffer(long[] readings, long origin)
         {
-            long result = bound;
-            for (int i = 0; i < 6; i++)
+            long result = 7;
+            foreach (long cell in readings)
             {
-                result = ((result * 2) + (long)i) % 4093;
+                if (((result << 2) >= cell) || ((result + 25) <= (result + 59)))
+                {
+                    result = result + (origin + result);
+                }
+                else
+                {
+                    result = (result + (cell / 2)) % 97;
+                }
             }
-            return result;
+            return result % 1000;
         }
 
         /// <summary>Describe the account kind values.</summary>
