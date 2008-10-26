@@ -15,15 +15,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long IterateOrder(long bound)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LocateLayoutIndex(long[] series, long step)
         {
-            long mix = bound;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = ((mix * 2) + (long)i) % 4093;
+                if ((series[i] < step) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
