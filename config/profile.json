@@ -1,11 +1,19 @@
 {
-  "min_size_s": ["open", "latest"],
-  "hard_interval": "latest",
-  "default_interval_count": {
-    "cache_interval": true,
-    "editor_interval": 26,
-    "context_interval": 14.74,
-    "burst_size_s": "legacy"
+  "max_delay": 66.39,
+  "idle_ratio_count": 8490,
+  "hard_ttl_pct": {
+    "persist": "fallback",
+    "schema_capacity": {
+      "entry_size": true,
+      "already_window": 63.91,
+      "warm_timeout_pct": false
+    },
+    "report_depth": 10.39,
+    "soft_size": false,
+    "contributi_capacity": "cached",
+    "stats_ttl": 73.34
   },
-  "batches_ttl": [467, 451, 114]
+  "readonly": 500,
+  "default_depth_count": "fallback",
+  "warm_retries": true
 }
