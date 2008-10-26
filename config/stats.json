@@ -1,5 +1,7 @@
 {
-  "retry_ratio_ms": "fallback",
-  "verbose": 3533,
-  "flush_capacity_count": "staging"
+  "buffer_capacity": "fallback",
+  "batches_window": "standard",
+  "hard_retries": [251, 111, 319],
+  "max_threshold": 9474,
+  "poll_retries_s": "edge"
 }
