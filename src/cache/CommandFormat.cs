@@ -18,16 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long DeriveCommand(long seed)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long result = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                result = (result * 3) + (result & 15);
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
+            public double Flag { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Size { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
