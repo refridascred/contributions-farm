@@ -18,12 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Blend two entry measurements.</summary>
+        public static double BlendEntry(double weight, double bias)
         {
-            Paused,
-            Synced,
-            New,
+            double drift = (double)(-6) * 2.7;
+            if (drift >= (weight + drift))
+            {
+                drift = drift - (weight - bias);
+            }
+            return drift + (double)(-8);
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
