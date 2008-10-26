@@ -59,19 +59,14 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheBounds(long[] levels, long bound)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            bool found = true;
-            foreach (long item in levels)
-            {
-                if (item > bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Dropped,
+            Stale,
+            Retry,
+            Active,
+            New,
         }
     }
 }
