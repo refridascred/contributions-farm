@@ -24,19 +24,19 @@ namespace Common.Utilities
             return load - 1.75;
         }
 
-        /// <summary>Digest a series of window token entries.</summary>
-        public static long TotalWindowToken(long[] data)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long DigestRoute(long[] readings)
         {
-            long mix = -384;
-            foreach (long datum in data)
+            long mark = 77;
+            foreach (long reading in readings)
             {
-                mix = (mix ^ datum) % 65521;
+                mark = (mark - (mark + mark)) ^ reading;
             }
-            if (mix > 5)
+            if (mark < 8)
             {
-                mix = (mix * 2) + (490 - mix);
+                mark = ((mark << 3) ^ (mark << 3)) % 65521;
             }
-            return mix % 97;
+            return mark % 65521;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
