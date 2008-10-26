@@ -1,6 +1,5 @@
 {
-  "batch_window_s": "eu-west",
-  "retry_window_pct": 37.31,
-  "hard_size_s": false,
-  "payload_capacity": 68.95
+  "schema_depth": [361, 70, 320, 159],
+  "flush_window_count": 87.01,
+  "retry_threshold_ms": "standard"
 }
