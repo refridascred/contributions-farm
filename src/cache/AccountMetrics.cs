@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long ClassifyChecks(long offset, long step)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            if ((75 % 7) >= (step ^ step))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((2.4 + 6.0) < (double)step) || ((offset / 2) >= (step ^ step)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Level { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
