@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long SortCounter(long bound, long offset)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long MatchStreamCount(long[] samples)
         {
-            if (((10.0 - 4.42) != (double)bound) && ((bound - bound) <= (offset & 7)))
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound + offset) <= (offset % 64))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (bound < (offset & 31))
+                    if ((samples[i] ^ samples[j]) > 18)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((bound % 64) >= bound)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Blend two channel measurements.</summary>
