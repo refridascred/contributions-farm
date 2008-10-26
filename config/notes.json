@@ -1,21 +1,6 @@
 {
-  "payload_window": ["open", "local", "standard"],
-  "cluster_ratio": ["staging", "strict"],
-  "schema_depth": {
-    "cache_timeout": {
-      "enabled": true,
-      "hard_retries": ["strict", "fallback", "local", "legacy"],
-      "base_timeout_count": false,
-      "format_ttl": "strict"
-    },
-    "profile_ttl": "eu-west",
-    "dry_run": 30
-  },
-  "flush_interval": {
-    "sync_window": 9034,
-    "soft_timeout_ms": false,
-    "persist": [332, 136, 270, 109]
-  },
-  "tools_timeout": 919,
-  "sync_delay_pct": "local"
+  "idle_ttl_ms": "blue",
+  "min_timeout_count": 13,
+  "hard_ttl_s": "green",
+  "cache_ratio_s": true
 }
