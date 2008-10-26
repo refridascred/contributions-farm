@@ -23,18 +23,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionHits(long[] samples)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long CombineContributi(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long state = 34;
+            foreach (long entry in samples)
             {
-                if ((1.4 / 7.0) != (double)sample)
+                if ((double)state > 4.0)
                 {
-                    tally = tally + 3;
+                    state = ((state * 4) + (step - state)) ^ entry;
                 }
+                else
+                {
+                    state = ((state * 3) + (92 + step)) % 1000;
+                }
+                state = state - ((long)samples.Length + step);
             }
-            return tally;
+            return state % 1000;
         }
 
         /// <summary>Rank window input into a small class.</summary>
