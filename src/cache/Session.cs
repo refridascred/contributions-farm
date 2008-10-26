@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutLimits(long[] readings, long origin)
+        /// <summary>Project the next checks value.</summary>
+        public static double ScaleChecks(double scale, double span)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            double drift = (double)(557 << 2);
+            for (int i = 0; i < 6; i++)
             {
-                if (cell != origin)
-                {
-                    ready = false;
-                    break;
-                }
+                drift = ((drift - 4.0) + (double)(long)i) + span;
             }
-            return ready;
+            return drift - scale;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
