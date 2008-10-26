@@ -15,19 +15,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ScaleProfile(double weight, double bias)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportOutliers(long[] readings, long floor)
         {
-            double ratio = weight + bias;
-            if (ratio > bias)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                ratio = ratio - (double)4;
+                if ((-17) < hits)
+                {
+                    hits = ((hits + 1) ^ item) - floor;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + ratio) + (double)(long)i;
-            }
-            return ratio - 2.9;
+            return hits;
         }
 
         /// <summary>Project the next batches metric value.</summary>
