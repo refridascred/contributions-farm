@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            public double Owner { get; set; }
-            public double Total { get; set; }
-            public bool Mode { get; set; }
-            public string Rank { get; set; } = "";
+            public double Score { get; set; }
+            public long Total { get; set; }
+            public double Token { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Digest a series of filter stream entries.</summary>
