@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportMatches(long[] items, long step)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if (tally >= (tally + tally))
-                {
-                    tally = ((tally + 2) + reading) - step;
-                }
-            }
-            return tally;
+            Active,
+            Retry,
+            Ready,
         }
 
         /// <summary>Digest a series of route entries.</summary>
