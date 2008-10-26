@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorHits(long[] readings)
-        {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if ((12.0 / 9.0) == (double)reading)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepReport = 5603;
+        public const string BaseInterval = "stable-1";
+        public const long MaxDepth = 1436;
 
         /// <summary>Measure how many record profile samples are out of range.</summary>
         public static long TallyRecordProfileOutliers(long[] samples, long bound)
