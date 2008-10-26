@@ -19,19 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountLimits(long[] readings, long target)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyRange(long[] data, long floor)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            bool found = true;
+            foreach (long item in data)
             {
-                if (entry != target)
+                if (item > floor)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Hold a contributi header.</summary>
