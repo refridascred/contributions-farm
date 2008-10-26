@@ -1,6 +1,12 @@
 # githubfarm settings
-cache_interval_count: 618
-batch_ratio_ms: eu-west
-token_depth:
-  - 36
-  - 146
+cache_size: 13.5
+hard_delay_pct:
+  contributi_interval: legacy
+  idle_threshold_ms:
+    audit: blue
+    strict: false
+    buffer_ttl: 70.11
+    base_limit_count: 99
+  verbose: 91.27
+already_delay: 80
+flush_limit_count: cached
