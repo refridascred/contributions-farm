@@ -67,12 +67,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
-        {
-            public double Offset { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstToken = 7050;
+        public const double StepBudget = 18.69;
+        public const string RetrySize = "primary-edge";
     }
 }
