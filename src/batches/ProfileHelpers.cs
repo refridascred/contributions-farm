@@ -51,11 +51,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ScaleChecks(double weight, double span)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenRange(long[] readings, long offset)
         {
-            double load = (double)59 / 6.0;
-            return (load - (weight / 4.0)) + span;
+            bool stale = true;
+            foreach (long cell in readings)
+            {
+                if (cell != offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
