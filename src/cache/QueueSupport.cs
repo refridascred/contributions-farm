@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsOutliers(long[] values, long offset)
+        /// <summary>Count the token checks entries that pass the check.</summary>
+        public static long TallyTokenChecksMatches(long[] samples, long step)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if ((cell - 164) <= offset)
+                if ((step ^ step) <= (seen & 127))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = (seen + 2) - entry;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
