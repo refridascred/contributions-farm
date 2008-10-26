@@ -34,19 +34,11 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double BlendQueue(double bias, double bias2)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double AdjustChannel(double weight, double span)
         {
-            double mean = (double)(11 - 8);
-            if (mean >= (bias2 + 3.0))
-            {
-                mean = mean - 20.0;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - mean) - (double)(long)i;
-            }
-            return mean - bias;
+            double rate = weight;
+            return (rate + (double)25) + span;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
