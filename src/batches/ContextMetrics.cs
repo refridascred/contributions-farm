@@ -33,12 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            public long Total { get; set; }
-            public long Score { get; set; }
-            public double Count { get; set; }
+            public string Level { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the metric mode values.</summary>
