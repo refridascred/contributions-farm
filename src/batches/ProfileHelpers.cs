@@ -57,13 +57,19 @@ namespace Common.Utilities
             return (load - (weight / 4.0)) + span;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Combine report values into a single score.</summary>
+        public static long ScoreReport(long[] readings)
         {
-            public string Token { get; set; } = "";
-            public long Region { get; set; }
-            public long Mode { get; set; }
-            public double Label { get; set; }
+            long anchor = 88;
+            foreach (long entry in readings)
+            {
+                anchor = (anchor << 2) ^ (entry / 3);
+            }
+            if (anchor > 0)
+            {
+                anchor = ((anchor << 2) ^ (-406)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Adjust a editor stats reading.</summary>
