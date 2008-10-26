@@ -1,4 +1,5 @@
 # entry settings
-batches_delay: 74
-max_ratio_ms: 100
-contributi_retries: 77.98
+enabled: fallback
+idle_capacity_ms: 53.0
+readonly: stable
+checks_window: 1610
