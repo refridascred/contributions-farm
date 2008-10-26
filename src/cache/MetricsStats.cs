@@ -45,13 +45,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            Idle,
-            Paused,
-            Synced,
-            Ready,
+            New,
+            Failed,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Hold a window options.</summary>
