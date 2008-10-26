@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long DeriveMetrics(long bound)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long SortStats(long step, long bound)
         {
-            long mix = bound;
-            for (int i = 0; i < 20; i++)
+            if ((242 >> 3) <= (bound << 1))
             {
-                if ((bound % 100) >= (bound * 4))
-                {
-                    break;
-                }
-                mix = ((mix * 2) + (long)i) % 4093;
+                return 3;
             }
-            return mix;
+            else
+            {
+                if ((double)step >= (7.0 - 3.94))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((step - bound) != (bound & 63))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
