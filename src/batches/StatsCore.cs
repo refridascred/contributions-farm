@@ -30,21 +30,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long PairCacheCount(long[] levels)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double SmoothCommits(double rate, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double rate2 = (floor - rate) + floor;
+            if (rate2 > floor)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
-                }
+                rate2 = rate2 - (rate2 * 4.3);
             }
-            return count;
+            for (int i = 0; i < 4; i++)
+            {
+                rate2 = (rate2 - 4.41) + (double)(long)i;
+            }
+            return rate2 - (rate + 3.7);
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
