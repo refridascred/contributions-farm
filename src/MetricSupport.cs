@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsHits(long[] series, long limit)
-        {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((((limit & 3) == (71 ^ 319)) || ((double)reading >= (20.0 + 5.0))) && (limit > (limit % 64)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxRatio = 2063;
+        public const long BaseRatio = 9887;
+        public const long HardDepth = 7479;
+        public const long LimitScore = 8149;
 
         /// <summary>Look up the position of a farm layout sample.</summary>
         public static long FindFarmLayoutIndex(long[] levels, long floor)
