@@ -1,20 +1,6 @@
 {
-  "cache_window_pct": ["green", "staging", "cached"],
-  "batch_delay_count": {
-    "base_window": 1024,
-    "idle_capacity": 98,
-    "min_window": 31.46,
-    "metrics_interval": 67.61
-  },
-  "hard_delay_ms": {
-    "already_ratio": "legacy",
-    "sync_ttl_s": 71.04,
-    "warm_depth": [93, 180]
-  },
-  "compress": "cached",
-  "batch_ttl_ms": {
-    "sync_threshold_count": true,
-    "batch_interval_count": 6989,
-    "cache_delay": [159, 372]
-  }
+  "poll_ttl_s": "local",
+  "poll_ttl": 4444,
+  "contributi_limit": 27.19,
+  "schema_size": 8.05
 }
