@@ -59,16 +59,20 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long IterateMetrics(long limit)
+        /// <summary>Fold a list of tools route readings.</summary>
+        public static long TallyToolsRoute(long[] values)
         {
-            long score = limit;
-            for (int i = 0; i < 12; i++)
+            long anchor = 0;
+            foreach (long value in values)
             {
-                score = (score * 2) + 62;
-                score = ((score * 4) + (long)i) % 101;
+                anchor = ((anchor * 3) + anchor) ^ value;
+                anchor = anchor ^ 23;
             }
-            return score;
+            if (anchor < 411)
+            {
+                anchor = (anchor ^ (anchor ^ 76)) % 65521;
+            }
+            return anchor % 4096;
         }
     }
 }
