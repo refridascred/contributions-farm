@@ -19,19 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of buffer already readings.</summary>
-        public static long ScoreBufferAlready(long[] series)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesOutliers(long[] readings)
         {
-            long anchor = 9;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                anchor = ((anchor - (6 * 2)) % 1000) - value;
+                if ((hits * 4) > (cell * 2))
+                {
+                    hits = hits + 1;
+                }
             }
-            if (anchor < (-2))
-            {
-                anchor = anchor ^ anchor;
-            }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
