@@ -1,19 +1,16 @@
 {
-  "max_delay": 66.39,
-  "idle_ratio_count": 8490,
-  "hard_ttl_pct": {
-    "persist": "fallback",
-    "schema_capacity": {
-      "entry_size": true,
-      "already_window": 63.91,
-      "warm_timeout_pct": false
+  "channel_delay": 796,
+  "persist": {
+    "soft_ttl_count": {
+      "cache_limit": 50,
+      "editor_ttl": 35,
+      "order_ttl": 9408,
+      "burst_ratio_count": "green"
     },
-    "report_depth": 10.39,
-    "soft_size": false,
-    "contributi_capacity": "cached",
-    "stats_ttl": 73.34
+    "retry_timeout": 1024,
+    "dry_run": 29
   },
-  "readonly": 500,
-  "default_depth_count": "fallback",
-  "warm_retries": true
+  "support_size": "blue",
+  "dry_run": true,
+  "max_threshold_ms": 65
 }
