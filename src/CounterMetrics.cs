@@ -24,25 +24,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long BucketWindow(long step, long step2)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long edge = step ^ step2;
-            if (edge >= (edge ^ 801))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((-980) < (step + step2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Count { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Describe the filter mode values.</summary>
