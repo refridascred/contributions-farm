@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
-        {
-            public long Size { get; set; }
-            public long Mode { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BaseContext = 7918;
+        public const long StepContext = 1918;
+        public const long HardSpan = 845;
+        public const double BatchContext = 64.86;
+        public const long CacheCount = 5923;
 
         /// <summary>Look up the position of a order sample.</summary>
         public static long SeekOrderIndex(long[] readings, long origin)
