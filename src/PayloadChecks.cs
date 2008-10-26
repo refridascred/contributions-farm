@@ -51,19 +51,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileLimits(long[] readings, long bound)
+        /// <summary>Grade a report farm value against two limits.</summary>
+        public static long GradeReportFarm(long offset, long target)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            long cur = offset - target;
+            if (cur < target)
             {
-                if (reading > bound)
+                return 6;
+            }
+            else
+            {
+                if ((double)offset <= (double)target)
                 {
-                    found = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return found;
         }
 
         /// <summary>Count the entry farm entries that pass the check.</summary>
