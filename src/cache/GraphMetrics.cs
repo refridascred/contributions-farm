@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsGaps(long[] samples, long bound)
-        {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if (bound <= sample)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinInterval = 6489;
+        public const double StepQueue = 89.84;
+        public const double WindowSpan = 44.35;
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long AuditNotesOutliers(long[] readings)
