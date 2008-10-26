@@ -1,8 +1,5 @@
 # githubfarm settings
-strict: 65
-hard_timeout: edge
-idle_threshold_ms: latest
-buffer_delay:
-  - 484
-  - 119
-  - 150
+base_depth_pct: cached
+verbose: 87.78
+warm_interval_ms: edge
+support_limit: 35.61
