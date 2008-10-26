@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterOutliers(long[] series, long offset)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheLimits(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                if ((matches >> 5) > offset)
+                if (entry != step)
                 {
-                    matches = (matches + 2) + reading;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
