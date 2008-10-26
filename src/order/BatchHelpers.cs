@@ -35,11 +35,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string RetryBudget = "standard-v2";
-        public const string IdleRoute = "fallback-1";
-        public const long LimitCount = 6058;
-        public const long HardRoute = 866;
-        public const long BaseLevel = 9608;
+        /// <summary>Roll a batch buffer counter forward.</summary>
+        public static long IterateBatchBuffer(long target)
+        {
+            long total = target;
+            for (int i = 0; i < 10; i++)
+            {
+                total = total ^ total;
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
+        }
     }
 }
