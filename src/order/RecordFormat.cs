@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ScaleContributi(double gain, double offset)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long CompareSchemaCount(long[] series)
         {
-            double drift = gain - (7.0 + offset);
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = drift + (double)(long)i;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 5)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return drift + gain;
+            return count;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
