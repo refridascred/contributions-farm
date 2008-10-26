@@ -5,23 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Scale a notes format figure with a bias.</summary>
-        public static double ScaleNotesFormat(double ratio, double floor)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long SortCounter(long bound, long offset)
         {
-            double ratio2 = 14.0 + (double)8;
-            if (ratio2 <= ratio2)
+            if (((10.0 - 4.42) != (double)bound) && ((bound - bound) <= (offset & 7)))
             {
-                ratio2 = ((ratio2 - ratio2) + ratio) - floor;
+                return 0;
             }
             else
             {
-                ratio2 = ratio2 + ratio2;
+                if ((bound + offset) <= (offset % 64))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (bound < (offset & 31))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound % 64) >= bound)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio2 = (ratio2 + 16.0) + (double)(long)i;
-            }
-            return ratio2 + (ratio2 * 0.74);
         }
 
         /// <summary>Blend two channel measurements.</summary>
