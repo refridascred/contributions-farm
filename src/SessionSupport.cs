@@ -30,24 +30,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long ClassifyGraph(long seed, long seed2)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            if ((seed * 4) <= (seed2 % 100))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((9 - seed) != (seed - seed))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public double Label { get; set; }
+            public long Count { get; set; }
         }
     }
 }
