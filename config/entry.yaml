@@ -1,7 +1,10 @@
 # entry settings
-cache_retries: green
-max_delay_ms: standard
-sync_ratio: fallback
-enabled:
-  - 227
-  - 346
+soft_interval_count: 75.6
+verbose: 250
+flush_limit:
+  - 454
+  - 214
+max_size_s:
+  - legacy
+  - standard
+  - staging
