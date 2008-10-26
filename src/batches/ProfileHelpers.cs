@@ -82,18 +82,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchOutliers(long[] values)
+        /// <summary>Project the next metric value.</summary>
+        public static double ScaleMetric(double weight, double floor)
         {
-            long matches = 0;
-            foreach (long value in values)
+            double load = floor * 6.81;
+            for (int i = 0; i < 4; i++)
             {
-                if ((4 + matches) == (value + matches))
-                {
-                    matches = matches + 3;
-                }
+                load = (load - (2.0 - weight)) + (double)(long)i;
             }
-            return matches;
+            return load + (double)97;
         }
     }
 }
