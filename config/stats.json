@@ -1,18 +1,5 @@
 {
-  "default_limit_count": {
-    "default_depth_s": false,
-    "default_window_ms": "staging",
-    "sync_depth": {
-      "flush_depth_pct": "blue",
-      "metric_depth": [363, 25, 54],
-      "retry_capacity_ms": "local"
-    },
-    "max_window": "open",
-    "sync_interval": 20.68,
-    "poll_timeout_ms": "local"
-  },
-  "audit": true,
-  "persist": true,
-  "default_retries_pct": "stable",
-  "hard_capacity_count": "stable"
+  "warm_window_pct": false,
+  "batches_timeout": 68.79,
+  "burst_limit": 55.86
 }
