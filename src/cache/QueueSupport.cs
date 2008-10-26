@@ -25,20 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long DeriveSupport(long limit)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long total = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                if (!((limit ^ total) < (total ^ 344)))
-                {
-                    total = ((total << 3) ^ (total + limit)) % 4096;
-                    total = (total - ((long)i % 60)) % 1000;
-                }
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
+            Draft,
+            Synced,
+            Active,
+            Closed,
+            Locked,
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
