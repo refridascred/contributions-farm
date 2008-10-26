@@ -47,12 +47,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            public long Mode { get; set; }
-            public string Region { get; set; } = "";
-            public long Count { get; set; }
+            public long Total { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Match up layout samples.</summary>
