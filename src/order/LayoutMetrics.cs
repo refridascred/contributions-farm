@@ -13,18 +13,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportOutliers(long[] readings, long floor)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((-17) < hits)
-                {
-                    hits = ((hits + 1) ^ item) - floor;
-                }
-            }
-            return hits;
+            Failed,
+            Stale,
+            New,
+            Draft,
         }
 
         /// <summary>Project the next batches metric value.</summary>
