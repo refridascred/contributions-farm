@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            Retry,
-            Ready,
-            Pending,
-            Idle,
-            Dropped,
+            public bool Rank { get; set; }
+            public bool Stamp { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
