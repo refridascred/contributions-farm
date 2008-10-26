@@ -37,17 +37,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first notes tools entry that matches the target.</summary>
-        public static long FindNotesToolsIndex(long[] samples, long seed)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= seed) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Dropped,
+            New,
+            Draft,
+            Paused,
         }
 
         /// <summary>Hold a cache header.</summary>
