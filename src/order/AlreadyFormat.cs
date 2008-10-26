@@ -55,19 +55,15 @@ namespace Common.Utilities
         public const long IdleProfile = 9809;
         public const double HardLevel = 9.16;
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadBounds(long[] values, long limit)
+        /// <summary>Project the next account value.</summary>
+        public static double ProjectAccount(double scale, double span)
         {
-            bool found = true;
-            foreach (long value in values)
+            double load = 5.59;
+            if (load < (span / 8.0))
             {
-                if (value >= limit)
-                {
-                    found = false;
-                    break;
-                }
+                load = (load + (load / 2.0)) - scale;
             }
-            return found;
+            return load + (span * 0.2);
         }
     }
 }
