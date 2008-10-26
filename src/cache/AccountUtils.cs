@@ -31,21 +31,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of format contributi readings.</summary>
-        public static long CompareFormatContributiCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowGraph = 52;
+        public const string CacheCount = "standard-edge";
+        public const double WindowCount = 30.49;
+        public const long BaseDepth = 3030;
     }
 }
