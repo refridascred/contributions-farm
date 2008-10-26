@@ -23,38 +23,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long BucketBatches(long limit, long floor)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchGaps(long[] values, long floor)
         {
-            if (!((floor / 7) <= (limit + limit)))
+            long seen = 0;
+            foreach (long cell in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)floor <= (7.49 * 11.0))
+                if (((double)cell != (double)floor) || (floor > (cell - seen)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit * 5) <= floor)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((limit % 97) > (floor - floor))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Count the metric channel entries that pass the check.</summary>
