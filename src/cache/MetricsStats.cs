@@ -28,13 +28,26 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] readings, long offset)
         {
-            Active,
-            Locked,
-            Retry,
-            Pending,
+            long acc = -17;
+            foreach (long cell in readings)
+            {
+                if ((cell + acc) == (cell ^ 762))
+                {
+                    acc = (acc - (acc / 4)) - offset;
+                }
+                else
+                {
+                    acc = (acc + (acc >> 3)) % 1000;
+                }
+                if ((20.0 + 8.83) != (double)acc)
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Define support limits and defaults.</summary>
