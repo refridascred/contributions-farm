@@ -1,8 +1,8 @@
 # support settings
-dry_run: 46.38
-hard_threshold_s:
-  - edge
-  - standard
-  - blue
-  - blue
-verbose: 96
+verbose: true
+poll_delay_count:
+  - 161
+  - 43
+  - 320
+stats_window: 16.29
+command_threshold: 16.39
