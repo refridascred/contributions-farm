@@ -20,21 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long OverlapBufferCount(long[] readings)
+        /// <summary>Roll a metrics checks counter forward.</summary>
+        public static long SeriesMetricsChecks(long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = limit;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                result = ((result * 3) + (long)i) % 101;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
