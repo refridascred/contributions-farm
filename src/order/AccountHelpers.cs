@@ -62,11 +62,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double MinBudget = 98.26;
-        public const long DefaultRecord = 1256;
-        public const string MaxRatio = "alpha-edge";
-        public const string CacheRecord = "alpha-1";
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
+        {
+            Draft,
+            Dropped,
+            Pending,
+        }
 
         /// <summary>Rank route input into a small class.</summary>
         public static long ClassifyRoute(long target, long origin)
