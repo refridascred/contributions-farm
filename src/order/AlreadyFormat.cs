@@ -22,17 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LocateLayoutIndex(long[] series, long step)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorGaps(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if ((series[i] < step) && ((series[i] % 3) == 0))
+                if ((hits & 15) >= reading)
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
