@@ -5,10 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseCluster = 5304;
-        public const long StepCluster = 1088;
-        public const long BatchLevel = 4339;
+        /// <summary>Derive the next stats commits value from a seed.</summary>
+        public static long DeriveStatsCommits(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 11; i++)
+            {
+                long offset = ((long)i % 97) + carry;
+                if ((carry & 3) <= offset)
+                {
+                    continue;
+                }
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
         public static bool ValidateStreamRange(long[] items, long limit)
