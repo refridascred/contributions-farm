@@ -27,39 +27,18 @@ namespace Common.Utilities
         public const double MaxScore = 90.03;
         public const string HardMetric = "legacy-v2";
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long GradeSupport(long offset, long limit)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandHits(long[] series)
         {
-            long delta = offset - limit;
-            if ((offset >> 2) > (offset + 86))
+            long seen = 0;
+            foreach (long sample in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset >= (200 + limit)) && ((14 + offset) != (offset << 1)))
+                if ((sample / 4) > (seen ^ sample))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (offset <= (limit % 10))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((delta / 4) > (offset / 8))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
