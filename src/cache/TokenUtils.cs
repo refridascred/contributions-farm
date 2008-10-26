@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string RetryProfile = "alpha-v2";
-        public const long IdleInterval = 7998;
-        public const long MaxProfile = 5424;
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorHits(long[] readings)
+        {
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((12.0 / 9.0) == (double)reading)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many record profile samples are out of range.</summary>
         public static long TallyRecordProfileOutliers(long[] samples, long bound)
