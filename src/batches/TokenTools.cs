@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long RankBuffer(long step, long bound)
         {
-            New,
-            Done,
-            Ready,
-            Paused,
+            if ((2 * 4) >= (step << 2))
+            {
+                return 8;
+            }
+            else
+            {
+                if (18 >= step)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((9.05 + 2.83) <= (double)step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
