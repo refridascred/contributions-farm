@@ -1,19 +1,14 @@
 # githubfarm settings
-batch_threshold_pct: legacy
-warm_depth: true
-warm_depth_pct:
-  idle_retries_count: 49.96
-  hard_depth_ms:
-    - 59
-    - 39
-    - 119
-    - 443
-  support_retries:
+persist:
+  min_timeout: blue
+  warm_limit: primary
+  retry_window_count:
     - green
-    - legacy
-    - cached
+    - primary
     - edge
-  hard_ttl_pct: 73.6
-  flush_interval_ms: false
-soft_capacity_pct: legacy
-cache_interval_count: 48
+    - strict
+  sync_threshold: 1709
+  readonly: local
+base_depth_ms: open
+cache_delay: 6772
+idle_size_pct: eu-west
