@@ -1,16 +1,5 @@
 {
-  "notes_ratio": [273, 139],
-  "sync_ttl": "strict",
-  "retry_retries_count": [500, 175, 245],
-  "dry_run": {
-    "hard_delay_pct": [43, 242, 322],
-    "cache_size_pct": 1252,
-    "payload_interval": true,
-    "burst_interval": 60,
-    "min_delay": {
-      "enabled": [15, 181],
-      "report_ratio": true,
-      "persist": 8126
-    }
-  }
+  "cache_limit_pct": "latest",
+  "compress": 37,
+  "idle_delay": [464, 140, 392]
 }
