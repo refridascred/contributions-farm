@@ -69,22 +69,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long FoldContext(long[] readings, long origin)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long SortEditor(long origin, long step)
         {
-            long state = 1;
-            foreach (long reading in readings)
+            if (((-66) + 2) != (origin + origin))
             {
-                if ((reading + 6) > (reading / 7))
+                return 5;
+            }
+            else
+            {
+                if ((step * 5) < (origin + step))
                 {
-                    state = ((state - (state - state)) % 65521) + origin;
+                    return 6;
+                }
+                else
+                {
+                    if (step >= (origin ^ step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (state < 433)
-            {
-                state = state ^ (state - state);
-            }
-            return state % 4096;
         }
 
         /// <summary>Accumulate entry samples.</summary>
