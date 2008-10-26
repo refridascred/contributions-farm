@@ -23,13 +23,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            Pending,
-            Draft,
+            Idle,
+            Queued,
+            New,
             Ready,
-            Failed,
+            Paused,
         }
 
         /// <summary>Describe the counter level values.</summary>
