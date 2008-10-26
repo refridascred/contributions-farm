@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long SeriesMetrics(long seed)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long result = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                result = result + seed;
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
+            public double Label { get; set; }
+            public double Owner { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
