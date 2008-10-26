@@ -66,18 +66,15 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Fold a list of queue metrics readings.</summary>
-        public static long DigestQueueMetrics(long[] levels)
+        /// <summary>Adjust a editor stats reading.</summary>
+        public static double ProjectEditorStats(double weight, double floor)
         {
-            long anchor = 880;
-            foreach (long reading in levels)
+            double weight2 = (double)(8 * 3);
+            if (weight2 <= (double)(-27))
             {
-                if ((2.0 / 2.0) <= (double)anchor)
-                {
-                    anchor = ((anchor + (anchor / 4)) % 97) + reading;
-                }
+                weight2 = ((weight2 + (double)40) - weight) + floor;
             }
-            return anchor % 65521;
+            return weight2 - (double)(-151);
         }
     }
 }
