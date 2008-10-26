@@ -29,16 +29,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long WeighNotes(long[] readings, long origin)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long PairCommandCount(long[] samples)
         {
-            long score = 949;
-            foreach (long item in readings)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = (score + origin) % 4096;
-                score = score - item;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Describe the farm status values.</summary>
