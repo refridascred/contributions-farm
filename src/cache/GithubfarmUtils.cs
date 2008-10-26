@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Project the next commits value.</summary>
-        public static double ProjectCommits(double gain, double bias)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            double bias2 = 9.0;
-            if (bias2 <= (double)72)
-            {
-                bias2 = (bias2 + bias) - gain;
-            }
-            return bias2 + 20.0;
+            Dropped,
+            New,
+            Retry,
+            Pending,
+            Paused,
         }
 
         /// <summary>Accumulate cluster samples.</summary>
