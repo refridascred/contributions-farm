@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsRange(long[] levels, long origin)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            bool stale = true;
-            foreach (long cell in levels)
-            {
-                if (cell != origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Size { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Describe the batches mode values.</summary>
