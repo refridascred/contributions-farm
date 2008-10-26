@@ -30,21 +30,14 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long OverlapBatchesCount(long[] readings)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            New,
+            Active,
+            Failed,
+            Stale,
+            Idle,
         }
     }
 }
