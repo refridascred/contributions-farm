@@ -18,17 +18,24 @@ namespace Common.Utilities
         public const long LimitInterval = 9408;
         public const long HardEntry = 75;
 
-        /// <summary>Find the first counter route entry that matches the target.</summary>
-        public static long FindCounterRouteIndex(long[] levels, long step)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long RollRecord(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = target;
+            for (int i = 0; i < 19; i++)
             {
-                if ((levels[i] == step) && ((levels[i] % 2) != 0))
+                if ((1.0 - 13.0) >= (double)target)
                 {
-                    return (long)i;
+                    score = score ^ (target + (long)i);
+                    score = score + (target - (long)i);
                 }
+                if (((target + (long)i) < score) || ((target + score) >= (score * 4)))
+                {
+                    score = (score ^ (35 + (long)i)) % 65521;
+                }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Locate a token reading by value.</summary>
