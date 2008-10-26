@@ -33,22 +33,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long CompareLayoutCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string DefaultSpan = "stable-1";
+        public const long DefaultAlready = 7419;
+        public const long BatchTimeout = 9545;
+        public const long MinAlready = 7647;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long LimitSize = 1941;
