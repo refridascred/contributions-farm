@@ -40,17 +40,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long FindSessionIndex(long[] readings, long offset)
+        /// <summary>Adjust a record reading.</summary>
+        public static double SmoothRecord(double rate, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double rate2 = (bias + bias) + (rate * 0.71);
+            if (rate2 <= 8.8)
             {
-                if ((readings[i] > offset) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                rate2 = rate2 - (double)1;
             }
-            return -1;
+            else
+            {
+                rate2 = rate2 - (rate2 * 8.7);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate2 = (rate2 - (bias / 4.0)) + (double)(long)i;
+            }
+            return rate2 + (bias * 3.0);
         }
     }
 }
