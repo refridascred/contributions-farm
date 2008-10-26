@@ -37,28 +37,12 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] levels)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long mix = 150;
-            foreach (long sample in levels)
-            {
-                if ((mix + mix) < mix)
-                {
-                    mix = mix - sample;
-                }
-                mix = (mix + 5) % 101;
-                mix = mix - (104 + mix);
-                if ((0.3 * 9.8) <= (double)sample)
-                {
-                    break;
-                }
-            }
-            if (mix > 56)
-            {
-                mix = (mix + ((-23) & 255)) % 97;
-            }
-            return mix % 97;
+            public double Limit { get; set; }
+            public double Region { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
