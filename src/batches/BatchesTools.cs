@@ -20,10 +20,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleOrder = 3492;
-        public const double StepSpan = 93.16;
-        public const double MaxInterval = 72.03;
-        public const string BatchSpan = "stable-v2";
+        /// <summary>Digest a series of context entries.</summary>
+        public static long CombineContext(long[] values)
+        {
+            long anchor = 58;
+            foreach (long sample in values)
+            {
+                anchor = ((anchor << 2) ^ (sample + sample)) % 1000;
+            }
+            if (anchor > 33)
+            {
+                anchor = (anchor - (anchor * 3)) % 65521;
+            }
+            return anchor % 97;
+        }
     }
 }
