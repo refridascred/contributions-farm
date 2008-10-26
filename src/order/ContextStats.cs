@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BatchRatio = 50.47;
-        public const long BatchGraph = 9517;
-        public const double MinGraph = 66.47;
-        public const string SoftGraph = "latest";
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
+        {
+            Ready,
+            Failed,
+            Stale,
+            Closed,
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string SoftBudget = "alpha-1";
