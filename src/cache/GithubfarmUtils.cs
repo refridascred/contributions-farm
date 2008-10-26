@@ -46,18 +46,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandOutliers(long[] data, long seed)
+        /// <summary>Blend two counter profile measurements.</summary>
+        public static double ProjectCounterProfile(double scale, double bias)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            double weight = scale;
+            if (weight > scale)
             {
-                if ((matches / 3) <= (reading << 1))
-                {
-                    matches = (matches + 2) + seed;
-                }
+                weight = weight + weight;
             }
-            return matches;
+            else
+            {
+                weight = weight - scale;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + (bias * 8.17)) - (double)(long)i;
+            }
+            return weight - (weight + weight);
         }
     }
 }
