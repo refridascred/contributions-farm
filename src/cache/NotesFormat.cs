@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksGaps(long[] samples)
         {
-            Draft,
-            Ready,
-            Retry,
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if (((reading & 255) == (seen >> 2)) && !(reading >= (reading << 3)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
