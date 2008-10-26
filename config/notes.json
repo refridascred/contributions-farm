@@ -1,12 +1,8 @@
 {
-  "default_delay": "primary",
-  "flush_threshold": [451, 338, 256, 111],
-  "batch_retries": {
-    "readonly": 2.41,
-    "retry_size_s": 93,
-    "max_threshold": "edge",
-    "warm_timeout_count": false,
-    "flush_threshold_pct": 94.92
-  },
-  "poll_delay_s": "strict"
+  "compress": [45, 229, 390],
+  "max_ttl": true,
+  "burst_retries": "local",
+  "filter_limit": [37, 424, 140],
+  "max_retries_s": 30,
+  "batches_limit": "staging"
 }
