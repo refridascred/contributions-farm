@@ -1,6 +1,8 @@
-id,label,state
-1,eu-west,972
-2,primary,104
-3,edge,1.84
-4,424,edge
-5,1.16,edge
+id,rank,token,weight
+1,92.06,29.75,830
+2,86.55,26.76,fallback
+3,268,cached,73.38
+4,85.65,primary,618
+5,58.07,green,74
+6,90.75,411,959
+7,71.39,685,eu-west
