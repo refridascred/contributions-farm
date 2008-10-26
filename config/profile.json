@@ -1,7 +1,7 @@
 {
-  "buffer_capacity": "blue",
-  "audit": 10.5,
-  "sync_window_ms": "strict",
-  "strict": true,
-  "batch_interval_s": [463, 19, 271, 362]
+  "batch_limit_s": "green",
+  "flush_limit": false,
+  "session_capacity": "green",
+  "flush_window_count": "local",
+  "retry_limit_pct": "primary"
 }
