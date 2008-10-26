@@ -1,20 +1,8 @@
 {
-  "flush_delay": true,
-  "verbose": false,
-  "retry_ttl_count": 73,
-  "format_interval": 64.31,
-  "poll_threshold_pct": {
-    "compress": 30,
-    "record_delay": 4736,
-    "base_limit": {
-      "warm_timeout_count": "eu-west",
-      "max_ttl_ms": "cached",
-      "channel_ratio": "fallback",
-      "sync_size_s": 8994,
-      "default_interval_ms": "latest",
-      "burst_threshold_count": 83.04
-    },
-    "schema_retries": ["cached", "latest", "fallback", "local"]
-  },
-  "flush_delay_s": true
+  "cache_retries_pct": true,
+  "max_delay": 1631,
+  "max_threshold_s": 1695,
+  "audit": 250,
+  "queue_size": "edge",
+  "burst_retries": "staging"
 }
