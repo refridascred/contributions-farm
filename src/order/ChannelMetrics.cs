@@ -44,22 +44,11 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long CombineAccount(long[] data)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long mark = 597;
-            foreach (long item in data)
-            {
-                if ((mark << 1) < item)
-                {
-                    mark = mark ^ (757 + mark);
-                }
-            }
-            if (mark < 400)
-            {
-                mark = (mark - (mark - mark)) % 97;
-            }
-            return mark;
+            public long Rank { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
