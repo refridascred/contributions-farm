@@ -36,10 +36,16 @@ namespace Common.Utilities
             return bias + rate;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double RetryGithubfarm = 11.68;
-        public const long BatchScore = 4546;
-        public const long SoftSize = 8207;
-        public const long MaxGithubfarm = 7915;
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long CombineCluster(long[] data)
+        {
+            long result = 7;
+            foreach (long reading in data)
+            {
+                result = ((result << 3) ^ 47) % 4096;
+                result = (result ^ (reading - 9)) % 65521;
+            }
+            return result;
+        }
     }
 }
