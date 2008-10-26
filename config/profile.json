@@ -1,7 +1,18 @@
 {
-  "batch_ratio_count": 16.33,
-  "default_ratio_s": false,
-  "hard_retries_s": 100,
-  "poll_delay_pct": 11,
-  "burst_ratio_s": [222, 274, 438]
+  "max_capacity": 42,
+  "idle_size_pct": {
+    "channel_interval": 58.7,
+    "poll_depth_s": 41.0,
+    "cache_depth_ms": {
+      "default_limit_count": true,
+      "poll_timeout_count": false,
+      "contributi_retries": "open",
+      "max_threshold_count": 100
+    },
+    "window_ratio": true,
+    "cluster_window": "primary",
+    "burst_threshold": 84.15
+  },
+  "soft_threshold_ms": 31.81,
+  "notes_interval": "stable"
 }
