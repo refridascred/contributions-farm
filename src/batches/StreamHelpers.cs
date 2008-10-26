@@ -10,21 +10,26 @@ namespace Common.Utilities
         public const string IdleGithubfarm = "latest";
         public const long StepScore = 8132;
 
-        /// <summary>Count context metrics pairs that satisfy a relation.</summary>
-        public static long PairContextMetricsCount(long[] readings)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long DigestBuffer(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = -409;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i = 0; i < 10; i++)
                 {
-                    if ((readings[i] + readings[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = (((anchor * 5) + (cell & 255)) % 97) + (long)i;
+                }
+                if ((16.0 + 8.41) > (8.0 / 7.0))
+                {
+                    anchor = anchor ^ (47 * 2);
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ anchor;
                 }
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Fold a list of format readings.</summary>
