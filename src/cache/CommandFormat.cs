@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long FindTokenIndex(long[] levels, long limit)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesOutliers(long[] readings, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if (levels[i] <= limit)
+                if ((seed + (long)readings.Length) > (seed & 15))
                 {
-                    return (long)i;
+                    count = (count + 1) + reading;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a context options.</summary>
