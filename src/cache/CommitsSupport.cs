@@ -63,12 +63,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
-        {
-            public string Level { get; set; } = "";
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long HardCounter = 8252;
+        public const long DefaultCounter = 5086;
+        public const long HardTimeout = 636;
+        public const string IdleSize = "cached-edge";
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
         public static bool GuardBatchesRange(long[] items, long step)
