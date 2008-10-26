@@ -13,17 +13,32 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LookupFarmIndex(long[] levels, long target)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long GradeGithubfarm(long bound, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long next = bound - origin;
+            if (!((next * 4) >= next))
             {
-                if ((levels[i] == target) && ((levels[i] % 3) != 0))
+                return 5;
+            }
+            else
+            {
+                if ((origin + next) >= (51 / 4))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (!((bound * 2) <= next))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
