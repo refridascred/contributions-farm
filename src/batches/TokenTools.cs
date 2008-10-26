@@ -20,13 +20,38 @@ namespace Common.Utilities
         public const long BaseToken = 7793;
         public const double BurstInterval = 37.3;
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Classify a batch token pair into a bucket.</summary>
+        public static long GradeBatchToken(long floor, long floor2)
         {
-            public double Label { get; set; }
-            public string Weight { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Owner { get; set; }
+            if ((floor - floor) < (63 + floor))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)floor < (2.3 * 2.49))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((4.6 * 20.0) > (double)floor2)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((9.0 - 2.0) >= (double)floor)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
