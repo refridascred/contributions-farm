@@ -41,18 +41,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the metrics buffer entries that pass the check.</summary>
-        public static long AuditMetricsBufferMatches(long[] levels)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long DerivePayload(long seed)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long total = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if ((7.9 * 7.2) > (double)value)
-                {
-                    seen = seen + 2;
-                }
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
