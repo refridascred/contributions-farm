@@ -39,18 +39,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsGaps(long[] data, long limit)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long DeriveAccount(long bound)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long acc = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if ((4.18 - 1.0) < (double)limit)
-                {
-                    seen = (seen + 3) + reading;
-                }
+                acc = acc - (acc << 3);
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
