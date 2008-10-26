@@ -57,11 +57,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseCount = 2178;
-        public const long CacheSize = 6259;
-        public const long WindowTimeout = 334;
-        public const long IdleCounter = 5482;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftScore = 8312;
+        public const long BatchCount = 5596;
+        public const string IdleEditor = "fallback-1";
+        public const long RetryEditor = 7211;
 
         /// <summary>Describe the graph level values.</summary>
         public enum GraphLevel
