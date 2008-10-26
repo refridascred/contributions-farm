@@ -46,20 +46,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long DeriveRecord(long floor)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteOutliers(long[] series, long floor)
         {
-            long result = floor;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if (!((floor >> 5) <= ((long)i >> 4)))
+                if (floor >= (value >> 3))
                 {
-                    result = (result ^ (floor >> 2)) % 4096;
-                    result = (result << 3) ^ (floor + 163);
+                    seen = seen + 3;
                 }
-                result = ((result * 4) + (long)i) % 4093;
             }
-            return result;
+            return seen;
         }
     }
 }
