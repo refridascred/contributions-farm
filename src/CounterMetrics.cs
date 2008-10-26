@@ -22,11 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountLimits(long[] readings, long target)
         {
-            public long Rank { get; set; }
-            public double Size { get; set; }
+            bool ready = true;
+            foreach (long entry in readings)
+            {
+                if (entry != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a contributi header.</summary>
