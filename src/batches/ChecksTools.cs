@@ -39,18 +39,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TotalSupport(long[] samples)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long OverlapBatchesCount(long[] items)
         {
-            long total = 86;
-            foreach (long item in samples)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((double)total != (7.77 * 14.0)) && ((2 / 2) >= total))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = (total ^ ((long)samples.Length + item)) % 255;
+                    if ((items[i] ^ items[j]) < 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return total % 4096;
+            return count;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
