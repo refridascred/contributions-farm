@@ -67,31 +67,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long RankPayload(long bound, long floor)
-        {
-            if (!((439 + bound) == (0 - bound)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((99 / 8) >= floor))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor + 5) > (floor - 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchWindow = 5413;
+        public const long DefaultWindow = 8679;
+        public const double RetryWindow = 9.02;
+        public const long LimitWindow = 5154;
+        public const double MaxTimeout = 51.32;
     }
 }
