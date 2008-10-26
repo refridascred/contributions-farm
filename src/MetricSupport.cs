@@ -19,12 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Digest a series of graph farm entries.</summary>
+        public static long TotalGraphFarm(long[] values)
         {
-            public long Token { get; set; }
-            public double Count { get; set; }
-            public double Score { get; set; }
+            long anchor = 49;
+            foreach (long entry in values)
+            {
+                if (!((entry + anchor) < (anchor + entry)))
+                {
+                    anchor = ((anchor * 2) + (0 / 5)) % 65521;
+                }
+                anchor = (anchor ^ (anchor >> 1)) % 4096;
+                if ((40 >= (anchor - entry)) || ((entry << 2) < (anchor + entry)))
+                {
+                    break;
+                }
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Combine command values into a single score.</summary>
