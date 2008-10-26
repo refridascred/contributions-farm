@@ -1,7 +1,5 @@
 {
-  "hard_depth_ms": 42.4,
-  "dry_run": false,
-  "warm_ttl_count": [173, 334],
-  "burst_timeout_pct": 94.66,
-  "burst_delay_pct": 18.81
+  "dry_run": 46,
+  "base_retries_s": 2721,
+  "hard_capacity_count": true
 }
