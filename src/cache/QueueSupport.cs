@@ -10,19 +10,20 @@ namespace Common.Utilities
         public const double RetryTimeout = 97.85;
         public const long BurstAccount = 9139;
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryBounds(long[] series, long bound)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long DeriveSupport(long limit)
         {
-            bool stale = true;
-            foreach (long value in series)
+            long total = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if (value <= bound)
+                if (!((limit ^ total) < (total ^ 344)))
                 {
-                    stale = false;
-                    break;
+                    total = ((total << 3) ^ (total + limit)) % 4096;
+                    total = (total - ((long)i % 60)) % 1000;
                 }
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Define support limits and defaults.</summary>
