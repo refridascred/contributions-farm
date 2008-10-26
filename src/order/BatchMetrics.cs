@@ -27,12 +27,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinRoute = 9060;
-        public const double StepTimeout = 22.63;
-        public const long DefaultFactor = 1744;
-        public const long SoftBudget = 4587;
-        public const double MaxTimeout = 57.07;
+        /// <summary>Match up layout samples.</summary>
+        public static long CompareLayoutCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long LimitSize = 1941;
