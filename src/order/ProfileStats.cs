@@ -23,12 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long DeriveEntry(long target)
         {
-            public string Weight { get; set; } = "";
-            public bool Token { get; set; }
-            public long Owner { get; set; }
+            long mark = target;
+            for (int i = 0; i < 4; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
