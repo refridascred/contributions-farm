@@ -1,12 +1,11 @@
 # githubfarm settings
-cache_size: 13.5
-hard_delay_pct:
-  contributi_interval: legacy
-  idle_threshold_ms:
-    audit: blue
-    strict: false
-    buffer_ttl: 70.11
-    base_limit_count: 99
-  verbose: 91.27
-already_delay: 80
-flush_limit_count: cached
+strict: false
+batch_delay: staging
+profile_threshold:
+  - 238
+  - 418
+min_depth:
+  - 151
+  - 242
+burst_size: 41
+sync_ttl_ms: 92.68
