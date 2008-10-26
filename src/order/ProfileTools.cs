@@ -34,15 +34,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long IterateCounter(long seed)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double SmoothEditor(double weight, double floor)
         {
-            long carry = seed;
-            for (int i = 0; i < 4; i++)
+            double gain = floor / 2.0;
+            if (gain <= (floor + gain))
             {
-                carry = ((carry * 5) + (long)i) % 101;
+                gain = gain + (weight / 8.0);
             }
-            return carry;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = gain + (double)(long)i;
+            }
+            return gain - weight;
         }
 
         /// <summary>Describe the support kind values.</summary>
