@@ -29,15 +29,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long CombineFormat(long[] samples, long limit)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long total = 44;
-            foreach (long item in samples)
-            {
-                total = ((total + (total * 2)) ^ item) - limit;
-            }
-            return total;
+            public string Level { get; set; } = "";
+            public bool Weight { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
