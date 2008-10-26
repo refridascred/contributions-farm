@@ -24,15 +24,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] samples, long bound)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double ScaleCluster(double gain, double offset)
         {
-            long total = 99;
-            foreach (long datum in samples)
+            double drift = gain;
+            if (drift > (drift / 5.0))
             {
-                total = ((total << 2) ^ (bound + bound)) - datum;
+                drift = (drift + (drift + drift)) - offset;
             }
-            return total % 1000;
+            return drift - drift;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
