@@ -37,23 +37,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long ScoreGraph(long[] values)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long PairRouteCount(long[] items)
         {
-            long total = 31;
-            foreach (long item in values)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((item - (long)values.Length) < (item % 5)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = (total + (item + item)) % 1000;
+                    if ((items[i] - items[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                total = (total + (item >> 2)) % 101;
             }
-            if (total > 2)
-            {
-                total = (total + (3 + total)) % 1000;
-            }
-            return total;
+            return matches;
         }
 
         /// <summary>Fold a list of batch entry readings.</summary>
