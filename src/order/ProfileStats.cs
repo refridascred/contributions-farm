@@ -28,13 +28,22 @@ namespace Common.Utilities
         public const long HardScore = 4850;
         public const long MinFilter = 6015;
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterOutliers(long[] levels, long offset)
         {
-            public double Weight { get; set; }
-            public double Flag { get; set; }
-            public double Score { get; set; }
-            public long Stamp { get; set; }
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if (!(((tally / 4) == (item - offset)) || ((offset ^ item) == (item + 1))))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of filter profile entries.</summary>
