@@ -22,11 +22,19 @@ namespace Common.Utilities
             return load + (ratio / 2.0);
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BaseLevel = 27.22;
-        public const long StepEditor = 1057;
-        public const long LimitEditor = 171;
-        public const double StepWidth = 7.18;
-        public const long BurstEditor = 783;
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ScaleAlready(double gain, double bias)
+        {
+            double mean = (double)(15 / 9);
+            if (mean < (bias - gain))
+            {
+                mean = mean - (bias * 8.4);
+            }
+            else
+            {
+                mean = mean - 8.33;
+            }
+            return mean + (double)6;
+        }
     }
 }
