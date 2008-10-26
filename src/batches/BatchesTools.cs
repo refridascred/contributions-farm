@@ -53,9 +53,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxFactor = 7320;
-        public const long RetryScore = 1841;
-        public const long HardEntry = 3001;
+        /// <summary>Count format batch pairs that satisfy a relation.</summary>
+        public static long CompareFormatBatchCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
