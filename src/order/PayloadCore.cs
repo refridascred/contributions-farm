@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleFilter = 3065;
-        public const long BatchCount = 7436;
-        public const long RetryFilter = 2725;
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TotalStream(long[] items, long bound)
+        {
+            long result = 4;
+            foreach (long cell in items)
+            {
+                result = result + 952;
+                if ((cell % 12) != (bound << 3))
+                {
+                    break;
+                }
+            }
+            if (result < (-5))
+            {
+                result = ((result << 3) ^ (bound & 15)) % 65521;
+            }
+            return result % 1000;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long StepFactor = 8617;
