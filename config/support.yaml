@@ -1,7 +1,23 @@
 # support settings
-retry_depth_count: 88
-burst_interval_s: 77.79
-tools_timeout:
-  - 486
-  - 424
-  - 279
+retry_interval: 54.33
+warm_delay_count:
+  command_limit:
+    - 204
+    - 474
+  dry_run: 83.34
+  min_limit:
+    - 386
+    - 72
+    - 351
+    - 152
+  batch_delay:
+    - cached
+    - legacy
+    - blue
+    - green
+  notes_window: staging
+  compress: stable
+poll_capacity_ms:
+  warm_retries_ms: 72
+  default_depth: local
+  warm_interval: edge
