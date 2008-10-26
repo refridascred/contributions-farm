@@ -13,10 +13,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BurstEntry = "strict-1";
-        public const long LimitInterval = 9408;
-        public const long HardEntry = 75;
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmOutliers(long[] levels, long step)
+        {
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((seen - step) != (step * 3))
+                {
+                    seen = (seen + 1) ^ cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Iterate the record series from a seed.</summary>
         public static long RollRecord(long target)
