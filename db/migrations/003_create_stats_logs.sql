@@ -2,12 +2,11 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     active INTEGER NOT NULL DEFAULT 1,
-    rank INTEGER,
-    region TEXT
+    token TEXT,
+    score REAL NOT NULL DEFAULT 0,
+    count INTEGER NOT NULL DEFAULT 0
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_region ON stats_logs (region);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_count ON stats_logs (count);
 
-INSERT INTO stats_logs (active, rank, region) VALUES (54, 56, 'primary');
-INSERT INTO stats_logs (active, rank, region) VALUES (49, 29, 'legacy');
-INSERT INTO stats_logs (active, rank, region) VALUES (82, 94, 'edge');
+INSERT INTO stats_logs (active, token, score, count) VALUES (41, 'legacy', 61.07, 4);
