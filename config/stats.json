@@ -1,6 +1,6 @@
 {
-  "retry_ratio_s": 76,
-  "idle_timeout": ["eu-west", "strict", "eu-west", "blue"],
-  "stream_delay": "fallback",
-  "contributi_interval": [490, 16]
+  "min_capacity_count": "legacy",
+  "flush_size_pct": "primary",
+  "verbose": 12,
+  "base_window": "legacy"
 }
