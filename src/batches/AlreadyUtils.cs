@@ -37,39 +37,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long RankRoute(long bound, long origin)
+        /// <summary>Adjust a filter record reading.</summary>
+        public static double ScaleFilterRecord(double ratio, double span)
         {
-            long slot = bound ^ origin;
-            if ((double)(-3) <= (double)bound)
+            double load = span;
+            for (int i = 0; i < 2; i++)
             {
-                return 8;
+                load = ((load + load) - (double)(long)i) - ratio;
             }
-            else
-            {
-                if ((slot + origin) > bound)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin + slot) > (bound + origin))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((double)bound > (8.46 / 3.0)) && ((slot - origin) > (origin & 127)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return load - (load + load);
         }
 
         /// <summary>Describe the farm level values.</summary>
