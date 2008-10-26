@@ -1,17 +1,7 @@
 {
-  "max_timeout_s": true,
-  "graph_threshold": true,
-  "verbose": {
-    "poll_threshold_s": ["latest", "latest"],
-    "sync_size": 8160,
-    "min_size_ms": {
-      "max_capacity": 50,
-      "dry_run": 83,
-      "batch_limit_s": 3,
-      "batch_depth_s": 58.27,
-      "persist": "cached",
-      "enabled": "cached"
-    },
-    "batch_threshold_pct": ["legacy", "edge", "eu-west", "blue"]
-  }
+  "order_depth": "stable",
+  "metrics_ttl": [105, 126, 466, 260],
+  "hard_limit": [486, 186, 97, 415],
+  "order_capacity": "fallback",
+  "idle_delay": [347, 192]
 }
