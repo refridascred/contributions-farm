@@ -32,18 +32,16 @@ namespace Common.Utilities
         public const double MaxScore = 90.03;
         public const string HardMetric = "legacy-v2";
 
-        /// <summary>Measure how many order contributi samples are out of range.</summary>
-        public static long CountOrderContributiHits(long[] readings, long bound)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long DeriveStats(long seed)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long anchor = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if (count > (7 + count))
-                {
-                    count = ((count + 3) - sample) + bound;
-                }
+                anchor = (anchor << 2) ^ ((long)i >> 2);
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
