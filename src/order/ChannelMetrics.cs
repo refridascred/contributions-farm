@@ -27,11 +27,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double HardLevel = 72.36;
-        public const long CacheRatio = 809;
-        public const long WindowLevel = 1175;
-        public const long RetryContributi = 5901;
-        public const long MaxSpan = 6966;
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
+        {
+            public string Total { get; set; } = "";
+            public long Label { get; set; }
+            public long Size { get; set; }
+            public string Count { get; set; } = "";
+        }
     }
 }
