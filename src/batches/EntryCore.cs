@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const double WindowSession = 70.2;
         public const long DefaultTimeout = 2116;
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterBounds(long[] items, long seed)
         {
-            public long Rank { get; set; }
-            public double Size { get; set; }
-            public double Owner { get; set; }
+            bool valid = true;
+            foreach (long datum in items)
+            {
+                if (datum > seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Match up schema samples.</summary>
