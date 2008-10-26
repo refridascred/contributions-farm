@@ -1,5 +1,8 @@
 {
-  "dry_run": true,
-  "hard_delay_pct": true,
-  "profile_size": 250
+  "max_limit": true,
+  "hard_depth": ["blue", "standard", "edge", "staging"],
+  "batch_retries_ms": 20,
+  "window_depth": ["green", "eu-west"],
+  "sync_size_pct": 1667,
+  "hard_depth_ms": false
 }
