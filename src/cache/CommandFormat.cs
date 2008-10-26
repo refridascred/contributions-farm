@@ -24,15 +24,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double ScaleCluster(double gain, double offset)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long OverlapCacheCount(long[] series)
         {
-            double drift = gain;
-            if (drift > (drift / 5.0))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = (drift + (drift + drift)) - offset;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return drift - drift;
+            return seen;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
