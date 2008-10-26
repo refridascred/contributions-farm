@@ -1,5 +1,7 @@
 {
-  "base_limit_ms": 60,
-  "base_retries_ms": "fallback",
-  "min_depth_count": "staging"
+  "idle_timeout_count": 70.9,
+  "persist": [249, 248, 64, 382],
+  "githubfarm_limit": 1024,
+  "filter_delay": "standard",
+  "soft_ttl": "standard"
 }
