@@ -22,12 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            public double Score { get; set; }
-            public long Weight { get; set; }
-            public long Size { get; set; }
+            Closed,
+            Retry,
+            Stale,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Define route limits and defaults.</summary>
