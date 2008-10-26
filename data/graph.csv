@@ -1,6 +1,11 @@
-id,weight,ratio,rank
-1,579,eu-west,941
-2,358,737,836
-3,728,90.46,14.45
-4,local,primary,76.02
-5,93.7,44.16,5
+id,region,token,weight
+1,strict,983,primary
+2,11.48,1.43,234
+3,local,30.06,blue
+4,legacy,57.25,primary
+5,82.37,234,75.22
+6,786,standard,40.34
+7,63,485,strict
+8,60.95,16.22,58.1
+9,63.87,58.85,692
+10,latest,88.13,270
