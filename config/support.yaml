@@ -1,8 +1,16 @@
 # support settings
-verbose: 500
-idle_interval:
-  audit: green
-  readonly: open
-  min_threshold: 16
-  poll_interval_ms: 250
-dry_run: 6369
+idle_delay: 87
+burst_size: true
+batch_ttl:
+  - stable
+  - legacy
+base_ratio_s:
+  hard_size: false
+  persist: blue
+  support_ttl: true
+  burst_capacity:
+    burst_ratio_ms: open
+    default_timeout: false
+    channel_capacity: 1024
+  readonly: true
+  warm_depth_ms: 84
