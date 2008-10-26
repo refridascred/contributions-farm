@@ -1,7 +1,5 @@
 {
-  "base_delay": true,
-  "flush_timeout": [486, 44, 65],
-  "filter_delay": 12.13,
-  "compress": [417, 105, 254],
-  "notes_ratio": "staging"
+  "payload_depth": "edge",
+  "dry_run": 9394,
+  "cache_ttl": 32.2
 }
