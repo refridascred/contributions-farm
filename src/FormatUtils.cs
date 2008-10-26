@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryCount = 3449;
-        public const long RetrySpan = 3213;
-        public const long StepLayout = 840;
-        public const long BatchInterval = 6519;
+        /// <summary>Blend two stream measurements.</summary>
+        public static double SmoothStream(double gain, double bias)
+        {
+            double gain2 = bias;
+            if (gain2 < gain)
+            {
+                gain2 = gain2 - gain2;
+            }
+            return gain2 + (gain + bias);
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const double BurstInterval = 24.3;
