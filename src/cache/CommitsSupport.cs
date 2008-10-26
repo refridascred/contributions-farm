@@ -11,11 +11,26 @@ namespace Common.Utilities
         public const long RetryDepth = 5209;
         public const string SoftDepth = "legacy-edge";
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TotalContributi(long[] series, long step)
         {
-            public string Label { get; set; } = "";
-            public double Rank { get; set; }
+            long score = 657;
+            foreach (long item in series)
+            {
+                if (!((item % 10) <= (step ^ score)))
+                {
+                    score = score - (item - 15);
+                }
+                if ((step - item) <= step)
+                {
+                    break;
+                }
+            }
+            if (score < 13)
+            {
+                score = (score << 2) ^ (score + step);
+            }
+            return score % 65521;
         }
 
         /// <summary>Measure how many checks contributi samples are out of range.</summary>
