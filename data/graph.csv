@@ -1,10 +1,6 @@
-id,ratio,weight,score
-1,fallback,76.68,120
-2,staging,staging,76.29
-3,primary,open,14.95
-4,25.7,strict,primary
-5,74.93,88.67,14.46
-6,strict,689,822
-7,92.68,90.52,open
-8,799,444,eu-west
-9,404,standard,25.76
+id,weight,ratio,rank
+1,579,eu-west,941
+2,358,737,836
+3,728,90.46,14.45
+4,local,primary,76.02
+5,93.7,44.16,5
