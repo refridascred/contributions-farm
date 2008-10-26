@@ -70,9 +70,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string StepWidth = "local-1";
-        public const double BatchStream = 74.14;
-        public const long WindowLevel = 3652;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxRecord = 9725;
+        public const long BurstFactor = 6268;
+        public const string LimitRecord = "primary-1";
+        public const long BaseRecord = 7366;
     }
 }
