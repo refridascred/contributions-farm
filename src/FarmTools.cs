@@ -36,12 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            public long Stamp { get; set; }
-            public long Count { get; set; }
-            public long Weight { get; set; }
+            Idle,
+            Ready,
+            Queued,
         }
     }
 }
