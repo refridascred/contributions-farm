@@ -1,4 +1,18 @@
 # entry settings
-stats_depth: 8002
-max_timeout_count: cached
-base_threshold_count: 76.76
+cache_capacity_s: 21.25
+sync_timeout_ms:
+  enabled: 75
+  poll_limit_ms: 1024
+  cluster_window: false
+idle_threshold:
+  min_ttl_s: edge
+  enabled:
+    - edge
+    - staging
+    - strict
+  schema_retries: false
+max_depth_count: stable
+hard_capacity_pct: 407
+persist:
+  - 308
+  - 51
