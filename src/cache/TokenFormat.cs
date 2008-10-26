@@ -23,10 +23,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string RetryOrder = "alpha-edge";
-        public const long BurstDepth = 4142;
-        public const string HardWidth = "legacy";
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long DeriveBuffer(long origin)
+        {
+            long acc = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    acc = (acc - (origin - acc)) ^ (long)i2;
+                    acc = (acc - (origin & 127)) % 65521;
+                }
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long StepFactor = 1587;
