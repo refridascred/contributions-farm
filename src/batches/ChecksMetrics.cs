@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long IterateBatch(long floor)
-        {
-            long total = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                total = (total ^ (floor << 1)) % 4096;
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BatchLevel = 79.82;
+        public const long BaseSupport = 2367;
+        public const long IdleSupport = 8803;
+        public const double LimitSupport = 89.56;
+        public const long DefaultSupport = 1616;
 
         /// <summary>Accumulate stats samples.</summary>
         public static long ScoreStats(long[] levels, long target)
