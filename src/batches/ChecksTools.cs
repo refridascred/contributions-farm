@@ -44,19 +44,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandRange(long[] items, long bound)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long StepEditor(long origin)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            long sum = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if (datum >= bound)
+                if (origin > (origin & 31))
                 {
-                    ready = false;
                     break;
                 }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return ready;
+            return sum;
         }
     }
 }
