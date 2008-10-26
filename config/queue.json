@@ -1,5 +1,7 @@
 {
-  "warm_capacity_ms": "cached",
-  "batch_delay": ["legacy", "stable", "fallback"],
-  "context_retries": 8326
+  "max_delay": [241, 216],
+  "soft_capacity_pct": 61,
+  "buffer_capacity": false,
+  "soft_capacity_count": 38.59,
+  "contributi_depth": false
 }
