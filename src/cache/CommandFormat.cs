@@ -30,11 +30,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long DigestContributi(long[] values, long target)
         {
-            public string Count { get; set; } = "";
-            public bool Label { get; set; }
+            long total = 1;
+            foreach (long cell in values)
+            {
+                total = (total ^ (target + target)) % 97;
+                if (!((double)cell != (double)total))
+                {
+                    break;
+                }
+            }
+            return total % 65521;
         }
 
         /// <summary>Define report limits and defaults.</summary>
