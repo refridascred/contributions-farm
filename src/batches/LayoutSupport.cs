@@ -14,39 +14,11 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Grade a route batches value against two limits.</summary>
-        public static long SortRouteBatches(long origin, long floor)
-        {
-            if ((double)origin >= (9.3 * 0.76))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((double)origin != (8.0 * 3.87)) || ((origin ^ origin) == (origin ^ floor)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)floor <= (5.4 - 7.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((floor - floor) > floor)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string RetryMetric = "staging-1";
+        public const long BaseMetric = 4374;
+        public const long MinMetric = 978;
+        public const string IdleMetric = "strict-v2";
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long MeasureChecksMatches(long[] series, long bound)
