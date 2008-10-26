@@ -43,18 +43,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Count the metric channel entries that pass the check.</summary>
-        public static long TallyMetricChannelOutliers(long[] data, long step)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricRange(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            bool found = true;
+            foreach (long value in data)
             {
-                if (((step <= (step >> 3)) || (205 < step)) || (577 > (tally + step)))
+                if (value >= limit)
                 {
-                    tally = (tally + 1) - cell;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Hold a buffer stats.</summary>
