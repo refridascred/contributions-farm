@@ -62,20 +62,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long RollQueue(long bound)
-        {
-            long result = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                if (((-58) + bound) > result)
-                {
-                    result = result ^ (long)i;
-                    result = result + (32 + bound);
-                }
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BatchCommand = 87.62;
+        public const string WindowCommand = "legacy-v2";
+        public const double MinCommand = 20.16;
+        public const long RetryScore = 3088;
+        public const long SoftSize = 9565;
     }
 }
