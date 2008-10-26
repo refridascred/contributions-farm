@@ -32,17 +32,39 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Look up the position of a checks buffer sample.</summary>
-        public static long FindChecksBufferIndex(long[] samples, long origin)
+        /// <summary>Classify a order queue pair into a bucket.</summary>
+        public static long BucketOrderQueue(long seed, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long offset = seed ^ step;
+            if (step > (36 / 7))
             {
-                if ((samples[i] > origin) && ((samples[i] % 2) != 0))
+                return 6;
+            }
+            else
+            {
+                if (!((19.0 / 7.0) == (double)step))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((step << 1) <= (seed << 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((((-665) ^ offset) <= seed) && ((step + offset) > offset))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
