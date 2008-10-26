@@ -1,23 +1,20 @@
 # entry settings
-graph_ratio:
-  idle_ratio_count: 95.53
-  session_threshold: 60
-  sync_depth_count: 3985
-  retry_retries: edge
-max_delay_pct:
-  - legacy
-  - latest
-command_window:
-  - blue
-  - stable
-  - staging
-  - edge
-warm_depth_ms: 84
-cache_limit: false
-farm_retries:
-  base_interval_s: 1024
-  record_size: open
-  compress:
-    - 477
-    - 380
-    - 337
+enabled:
+  default_threshold_s: 5541
+  warm_interval_pct: 15
+  retry_retries_count:
+    warm_ratio_ms: fallback
+    base_limit: legacy
+    hard_size_count: edge
+    flush_depth_s: false
+    persist: edge
+    githubfarm_interval: standard
+  max_retries_ms: 1024
+  flush_delay_s: true
+compress:
+  retry_window: false
+  cache_ratio_count: fallback
+  metric_window: 44
+  enabled: true
+max_ttl_s: blue
+buffer_size: 34
