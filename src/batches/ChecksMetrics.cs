@@ -65,12 +65,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinQueue = 1078;
-        public const double LimitQueue = 62.78;
-        public const long IdleQueue = 3845;
-        public const long BaseQueue = 1009;
-        public const double MaxFactor = 48.86;
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LocateSessionIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= origin) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit cache payload readings against a rule.</summary>
         public static long MeasureCachePayloadGaps(long[] samples, long origin)
