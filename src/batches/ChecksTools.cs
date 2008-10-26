@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftCommand = 106;
-        public const long MinCommand = 869;
-        public const long LimitCommand = 1378;
-        public const string WindowRatio = "fallback-1";
-        public const string WindowCommand = "latest-edge";
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double SoftRatio = 65.93;
+        public const long BurstSchema = 5560;
+        public const long BaseDepth = 5296;
+        public const string RetrySchema = "primary-v2";
+        public const long WindowSchema = 9589;
 
         /// <summary>Fold a list of batch readings.</summary>
         public static long FoldBatch(long[] levels)
