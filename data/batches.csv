@@ -1,7 +1,7 @@
-id,weight,rank,level
-1,eu-west,standard,577
-2,959,62.11,25.4
-3,strict,40,open
-4,legacy,70.25,cached
-5,fallback,949,cached
-6,527,blue,768
+id,weight,rank,ratio,count
+1,113,staging,41.52,cached
+2,green,88.46,730,815
+3,45.72,867,green,90.35
+4,open,staging,854,edge
+5,25.9,eu-west,latest,48.03
+6,73.12,574,986,459
