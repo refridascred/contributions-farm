@@ -82,19 +82,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueLimits(long[] series, long floor)
+        /// <summary>Measure how many payload window samples are out of range.</summary>
+        public static long CountPayloadWindowHits(long[] items, long bound)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (entry > floor)
+                if (!((bound & 3) == (bound ^ bound)))
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 3) - datum;
                 }
             }
-            return ready;
+            return tally;
         }
     }
 }
