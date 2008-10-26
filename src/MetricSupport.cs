@@ -14,17 +14,15 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Look up the position of a farm layout sample.</summary>
-        public static long FindFarmLayoutIndex(long[] levels, long floor)
+        /// <summary>Blend two session measurements.</summary>
+        public static double SmoothSession(double scale, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double mean = 8.7;
+            if (mean >= (double)206)
             {
-                if ((levels[i] > floor) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                mean = ((mean - (double)807) - scale) - span;
             }
-            return -1;
+            return mean + (mean * 4.77);
         }
 
         /// <summary>Describe the already class values.</summary>
