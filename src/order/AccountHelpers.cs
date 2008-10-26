@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
-        {
-            Locked,
-            Closed,
-            Retry,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseTimeout = 5645;
+        public const long BaseSupport = 8686;
+        public const long StepSupport = 3348;
 
         /// <summary>Combine order values into a single score.</summary>
         public static long DigestOrder(long[] data, long offset)
