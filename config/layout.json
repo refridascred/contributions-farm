@@ -1,6 +1,6 @@
 {
-  "retry_interval_count": 18.32,
-  "route_threshold": "eu-west",
-  "metric_limit": 2197,
-  "flush_ttl_count": true
+  "batch_window_s": "eu-west",
+  "retry_window_pct": 37.31,
+  "hard_size_s": false,
+  "payload_capacity": 68.95
 }
