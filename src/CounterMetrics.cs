@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheLimits(long[] series, long step)
+        /// <summary>Roll a session cluster counter forward.</summary>
+        public static long DeriveSessionCluster(long bound)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long state = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if (entry != step)
+                if (!(state < ((long)i - bound)))
                 {
-                    valid = false;
-                    break;
+                    state = state + bound;
                 }
+                if (!(((double)(long)i != (17.0 / 9.0)) && ((8.7 - 6.0) > (double)state)))
+                {
+                    state = state ^ state;
+                }
+                state = ((state * 2) + (long)i) % 97;
             }
-            return valid;
+            return state;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
