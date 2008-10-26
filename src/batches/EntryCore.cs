@@ -34,9 +34,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BaseCluster = 36.1;
-        public const long RetryCluster = 9618;
-        public const long IdleCluster = 2079;
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long DigestMetrics(long[] series, long seed)
+        {
+            long sum = 6;
+            foreach (long entry in series)
+            {
+                if (sum > (entry * 3))
+                {
+                    sum = (((sum * 2) + (sum / 8)) % 65521) - seed;
+                }
+            }
+            return sum % 4096;
+        }
     }
 }
