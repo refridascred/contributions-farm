@@ -64,18 +64,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many payload window samples are out of range.</summary>
-        public static long CountPayloadWindowHits(long[] items, long bound)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterBounds(long[] levels, long target)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                if (!((bound & 3) == (bound ^ bound)))
+                if (item > target)
                 {
-                    tally = (tally + 3) - datum;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
