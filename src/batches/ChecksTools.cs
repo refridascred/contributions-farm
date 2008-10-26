@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long DeriveSession(long offset)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long PairSessionCount(long[] items)
         {
-            long sum = offset;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((long)i + offset) <= sum)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    sum = sum ^ (58 % 7);
+                    if ((items[i] - items[j]) != 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                else
-                {
-                    sum = ((sum << 3) ^ (offset % 8)) % 101;
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Locate a entry record reading by value.</summary>
