@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Accumulate window samples.</summary>
+        public static long TotalWindow(long[] items, long bound)
         {
-            New,
-            Locked,
-            Failed,
+            long state = 4;
+            foreach (long datum in items)
+            {
+                if ((double)datum <= (double)323)
+                {
+                    state = (state - (bound % 8)) % 97;
+                }
+            }
+            if (state < (-80))
+            {
+                state = state ^ (411 + (-7));
+            }
+            return state % 97;
         }
 
         /// <summary>Locate a account notes reading by value.</summary>
