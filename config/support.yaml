@@ -1,20 +1,9 @@
 # support settings
-queue_ratio: true
-warm_limit:
-  stats_retries: standard
-  warm_delay:
-    - 81
-    - 322
-    - 31
-  audit: latest
-flush_limit_ms: false
-audit:
-  editor_capacity: blue
-  verbose: 7063
-  poll_depth_s: cached
-  soft_delay_s:
-    - 304
-    - 406
-    - 117
-  sync_ratio: open
-  warm_timeout_pct: blue
+flush_timeout: strict
+profile_window: 3741
+max_capacity: 60
+burst_delay_ms:
+  - stable
+  - latest
+  - edge
+  - legacy
