@@ -51,14 +51,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long IterateStream(long target)
         {
-            Retry,
-            Closed,
-            Paused,
-            Ready,
-            Dropped,
+            long total = target;
+            for (int i = 0; i < 15; i++)
+            {
+                total = (total + (target >> 1)) % 255;
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
         }
     }
 }
