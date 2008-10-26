@@ -1,7 +1,5 @@
 {
-  "batch_limit_s": "green",
-  "flush_limit": false,
-  "session_capacity": "green",
-  "flush_window_count": "local",
-  "retry_limit_pct": "primary"
+  "idle_retries_count": "eu-west",
+  "batch_ratio_count": "local",
+  "warm_delay_s": 2604
 }
