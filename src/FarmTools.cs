@@ -5,31 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long SortStats(long step, long bound)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double ScaleCluster(double weight, double floor)
         {
-            if ((242 >> 3) <= (bound << 1))
+            double weight2 = (weight + floor) / 6.0;
+            if (weight2 <= (double)23)
             {
-                return 3;
+                weight2 = weight2 - (floor / 5.0);
             }
             else
             {
-                if ((double)step >= (7.0 - 3.94))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((step - bound) != (bound & 63))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                weight2 = weight2 - (weight2 + 2.0);
             }
+            for (int i = 0; i < 7; i++)
+            {
+                weight2 = (weight2 + floor) - (double)(long)i;
+            }
+            return weight2 + (double)725;
         }
 
         /// <summary>Define already limits and defaults.</summary>
