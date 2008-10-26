@@ -34,18 +34,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaMatches(long[] levels, long seed)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandHits(long[] values)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if ((seed / 3) >= tally)
+                if (((517 < (cell ^ (-913))) && ((hits >> 3) < (cell - (long)values.Length))) && (((hits % 64) <= (5 * 5)) && (171 < hits)))
                 {
-                    tally = (tally + 2) ^ sample;
+                    hits = hits + 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Blend two batches measurements.</summary>
