@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the token checks entries that pass the check.</summary>
-        public static long TallyTokenChecksMatches(long[] samples, long step)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((step ^ step) <= (seen & 127))
-                {
-                    seen = (seen + 2) - entry;
-                }
-            }
-            return seen;
+            Locked,
+            New,
+            Retry,
+            Failed,
+            Ready,
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
