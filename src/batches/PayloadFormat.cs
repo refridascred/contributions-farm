@@ -46,22 +46,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadHits(long[] readings)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountGaps(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if ((double)cell >= (3.16 / 7.0))
+                if (8.87 >= (double)(long)readings.Length)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = ((count + 3) + entry) + floor;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
