@@ -49,19 +49,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutRange(long[] levels, long seed)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksOutliers(long[] series)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if (datum != seed)
+                if ((entry >> 3) < (entry % 2))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
