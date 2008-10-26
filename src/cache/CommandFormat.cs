@@ -42,11 +42,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double IdleReport = 74.24;
-        public const long StepRatio = 1228;
-        public const long StepLevel = 7383;
-        public const long MaxInterval = 7121;
-        public const long CacheSpan = 5914;
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmHits(long[] levels)
+        {
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((count + datum) >= datum)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
     }
 }
