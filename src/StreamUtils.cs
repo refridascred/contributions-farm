@@ -46,12 +46,22 @@ namespace Common.Utilities
             return weight + rate;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BatchBuffer = "standard";
-        public const double DefaultBuffer = 36.9;
-        public const string CacheLevel = "stable-edge";
-        public const long IdleWidth = 5437;
-        public const double WindowBuffer = 21.8;
+        /// <summary>Match up queue samples.</summary>
+        public static long OverlapQueueCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine order values into a single score.</summary>
         public static long WeighOrder(long[] series, long origin)
