@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the layout window entries that pass the check.</summary>
-        public static long TallyLayoutWindowMatches(long[] series, long limit)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double BlendProfile(double gain, double bias)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            double gain2 = (gain * 3.35) - (double)75;
+            if (gain2 > bias)
             {
-                if (!(tally < (sample + limit)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                gain2 = gain2 - bias;
             }
-            return tally;
+            for (int i = 0; i < 4; i++)
+            {
+                gain2 = (gain2 - gain2) + (double)(long)i;
+            }
+            return gain2 + (double)78;
         }
 
         /// <summary>Combine record values into a single score.</summary>
