@@ -45,12 +45,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            public string Level { get; set; } = "";
-            public double Mode { get; set; }
-            public string Weight { get; set; } = "";
+            Idle,
+            Paused,
+            Synced,
+            Ready,
         }
 
         /// <summary>Hold a window options.</summary>
