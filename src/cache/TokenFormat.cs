@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many batch commits samples are out of range.</summary>
-        public static long AuditBatchCommitsGaps(long[] values, long target)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaBounds(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                if ((6 << 3) < (cell - 47))
+                if (item <= floor)
                 {
-                    tally = (tally + 2) + target;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Look up the position of a entry tools sample.</summary>
