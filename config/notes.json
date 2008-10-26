@@ -1,6 +1,7 @@
 {
-  "report_retries": "edge",
-  "cache_retries": [222, 280, 203],
-  "strict": false,
-  "sync_timeout_s": "edge"
+  "min_timeout_count": true,
+  "entry_timeout": 13,
+  "default_depth_ms": 38.13,
+  "warm_window": ["green", "edge", "stable"],
+  "cache_interval": [393, 78]
 }
