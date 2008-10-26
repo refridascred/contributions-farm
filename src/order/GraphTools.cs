@@ -39,20 +39,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ScaleCounter(double rate, double offset)
-        {
-            double bias = (double)(9 * 5);
-            if (bias <= rate)
-            {
-                bias = bias - (double)992;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias + bias) - (double)(long)i;
-            }
-            return bias - (offset - offset);
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double RetrySize = 95.62;
+        public const string HardTools = "legacy-edge";
+        public const string SoftTools = "latest-1";
+        public const string DefaultWidth = "alpha";
+        public const long BatchTools = 9615;
 
         /// <summary>Hold a session options.</summary>
         public sealed class SessionOptions
