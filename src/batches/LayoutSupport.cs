@@ -35,18 +35,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many format layout samples are out of range.</summary>
-        public static long TallyFormatLayoutHits(long[] samples, long origin)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if (!(((double)matches > (4.92 + 2.9)) || (matches >= 8)))
-                {
-                    matches = ((matches + 3) + cell) + origin;
-                }
-            }
-            return matches;
+            Synced,
+            Idle,
+            Draft,
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
