@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteOutliers(long[] series)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long DigestChannel(long[] values, long step)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long mark = 607;
+            foreach (long cell in values)
             {
-                if (cell < count)
+                if ((double)step <= (13.0 - 9.3))
                 {
-                    count = count + 3;
+                    mark = (mark ^ (mark & 3)) ^ cell;
                 }
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Project the next layout value.</summary>
