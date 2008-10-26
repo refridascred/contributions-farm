@@ -20,15 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionMatches(long[] levels, long step)
+        /// <summary>Count the filter context entries that pass the check.</summary>
+        public static long CountFilterContextGaps(long[] levels, long limit)
         {
             long matches = 0;
-            foreach (long datum in levels)
+            foreach (long item in levels)
             {
-                if ((double)step < 5.8)
+                if (3 >= (limit / 8))
                 {
-                    matches = (matches + 2) + datum;
+                    matches = (matches + 3) - item;
                 }
             }
             return matches;
