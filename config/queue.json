@@ -1,6 +1,6 @@
 {
-  "batch_threshold_ms": [214, 199],
-  "metric_depth": "standard",
-  "commits_size": 1776,
-  "warm_size": "edge"
+  "verbose": 1024,
+  "max_threshold_count": 38,
+  "hard_delay_pct": 38,
+  "burst_capacity": false
 }
