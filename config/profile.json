@@ -1,7 +1,7 @@
 {
-  "poll_threshold": "green",
-  "sync_limit": 500,
-  "max_capacity_count": "primary",
-  "dry_run": [248, 108, 319],
-  "cache_ttl_s": "staging"
+  "buffer_capacity": "blue",
+  "audit": 10.5,
+  "sync_window_ms": "strict",
+  "strict": true,
+  "batch_interval_s": [463, 19, 271, 362]
 }
