@@ -20,14 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryHits(long[] items, long origin)
         {
-            Locked,
-            Draft,
-            Failed,
-            Stale,
-            Paused,
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((26 - hits) <= reading)
+                {
+                    hits = (hits + 1) + origin;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate graph samples.</summary>
