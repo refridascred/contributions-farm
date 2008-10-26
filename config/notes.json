@@ -1,7 +1,12 @@
 {
-  "profile_delay": 63,
-  "layout_interval": ["legacy", "strict", "standard", "standard"],
-  "metrics_size": "primary",
-  "poll_capacity_ms": true,
-  "audit": 1.45
+  "default_threshold_s": 81,
+  "hard_threshold_count": {
+    "farm_window": "staging",
+    "hard_ratio_pct": 60,
+    "cluster_retries": "fallback"
+  },
+  "min_ratio": false,
+  "strict": "staging",
+  "idle_ttl_pct": 250,
+  "sync_threshold": ["standard", "strict", "primary"]
 }
