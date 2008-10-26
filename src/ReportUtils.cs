@@ -14,11 +14,23 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowCommand = 5517;
-        public const string HardFactor = "latest-edge";
-        public const long LimitLevel = 958;
-        public const double LimitRatio = 52.64;
+        /// <summary>Accumulate format samples.</summary>
+        public static long FoldFormat(long[] data)
+        {
+            long result = 56;
+            foreach (long reading in data)
+            {
+                if ((result / 2) != (result + reading))
+                {
+                    result = (result * 5) + (reading / 9);
+                }
+                else
+                {
+                    result = result - result;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Project the next session value.</summary>
         public static double AdjustSession(double bias, double floor)
