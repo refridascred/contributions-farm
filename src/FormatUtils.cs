@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferRange(long[] series, long bound)
         {
-            public double Score { get; set; }
-            public long Total { get; set; }
-            public double Token { get; set; }
-            public bool Label { get; set; }
+            bool ok = true;
+            foreach (long reading in series)
+            {
+                if (reading >= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define context limits and defaults.</summary>
