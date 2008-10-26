@@ -55,17 +55,15 @@ namespace Common.Utilities
         public const long IdleWidth = 5437;
         public const double WindowBuffer = 21.8;
 
-        /// <summary>Locate a editor window reading by value.</summary>
-        public static long SeekEditorWindowIndex(long[] data, long origin)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long WeighOrder(long[] series, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 30;
+            foreach (long entry in series)
             {
-                if ((data[i] < origin) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                sum = (((sum << 2) ^ (origin / 7)) % 4096) ^ entry;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
