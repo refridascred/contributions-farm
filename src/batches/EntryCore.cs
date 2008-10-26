@@ -75,11 +75,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BatchCommand = 87.62;
-        public const string WindowCommand = "legacy-v2";
-        public const double MinCommand = 20.16;
-        public const long RetryScore = 3088;
-        public const long SoftSize = 9565;
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandRange(long[] items, long origin)
+        {
+            bool ready = true;
+            foreach (long value in items)
+            {
+                if (value != origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
