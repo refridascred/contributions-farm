@@ -12,15 +12,11 @@ namespace Common.Utilities
             return (mean - floor) + scale;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double BlendSupport(double ratio, double offset)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            double rate = ratio;
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - (double)43) - (double)(long)i;
-            }
-            return rate - offset;
+            public bool Size { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a context record.</summary>
