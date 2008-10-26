@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count the record token entries that pass the check.</summary>
-        public static long TallyRecordTokenOutliers(long[] series)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterOutliers(long[] data, long step)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if ((8 & 63) > (reading * 3))
+                if (cell <= step)
                 {
-                    hits = hits + 2;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
