@@ -27,13 +27,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            public string Total { get; set; } = "";
-            public double Size { get; set; }
-            public double Weight { get; set; }
-            public string Label { get; set; } = "";
+            public double Mode { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Rank channel input into a small class.</summary>
