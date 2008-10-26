@@ -27,12 +27,12 @@ namespace Common.Utilities
         public const long IdleTools = 1191;
         public const double MinSpan = 70.53;
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long SeekRouteIndex(long[] values, long step)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LocateFilterIndex(long[] readings, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (values[i] > step)
+                if ((readings[i] >= offset) && ((readings[i] % 2) != 0))
                 {
                     return (long)i;
                 }
