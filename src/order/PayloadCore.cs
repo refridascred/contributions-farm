@@ -13,21 +13,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long MatchContributiCount(long[] series)
+        /// <summary>Grade a account stream value against two limits.</summary>
+        public static long SortAccountStream(long floor, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((floor % 60) > limit)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((9.51 / 2.0) == (double)floor)
                 {
-                    if ((series[i] + series[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return tally;
         }
 
         /// <summary>Match up graph tools samples.</summary>
