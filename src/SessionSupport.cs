@@ -16,18 +16,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricOutliers(long[] readings)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if (!(3 <= (cell - cell)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Stale,
+            Queued,
+            Active,
+            New,
+            Retry,
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
