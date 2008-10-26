@@ -23,22 +23,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterMatches(long[] series)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if ((((count << 2) < 143) && ((item & 63) > (count + item))) || ((count * 5) < (count - count)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Active,
+            Stale,
+            Idle,
+            Dropped,
+            Done,
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
