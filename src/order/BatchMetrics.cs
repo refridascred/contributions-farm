@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Locate a token reading by value.</summary>
-        public static long SeekTokenIndex(long[] series, long bound)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Size { get; set; } = "";
+            public double Offset { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
