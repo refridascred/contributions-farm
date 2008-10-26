@@ -40,21 +40,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long CompareChannelCount(long[] levels)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long SortBatches(long origin, long origin2)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((origin2 >= 53) || ((double)origin2 < (9.88 / 8.0)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (origin <= (origin * 5))
                 {
-                    if ((levels[i] - levels[j]) != 4)
+                    return 6;
+                }
+                else
+                {
+                    if ((origin2 << 3) <= origin)
                     {
-                        seen = seen + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
