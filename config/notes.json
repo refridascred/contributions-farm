@@ -1,19 +1,7 @@
 {
-  "flush_threshold": 97.89,
-  "strict": "staging",
-  "queue_ratio": {
-    "max_size": ["blue", "blue", "staging", "edge"],
-    "min_delay_ms": {
-      "report_timeout": "local",
-      "retry_delay": false,
-      "min_window_count": 500,
-      "channel_size": 49,
-      "base_window_ms": "latest",
-      "cache_limit_count": "fallback"
-    },
-    "cluster_ratio": "edge",
-    "poll_timeout_s": 72.97
-  },
-  "min_interval_ms": 3115,
-  "audit": 52.33
+  "profile_delay": 63,
+  "layout_interval": ["legacy", "strict", "standard", "standard"],
+  "metrics_size": "primary",
+  "poll_capacity_ms": true,
+  "audit": 1.45
 }
