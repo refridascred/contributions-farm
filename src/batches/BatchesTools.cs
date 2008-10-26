@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseFactor = 3456;
-        public const long DefaultWidth = 198;
-        public const long WindowBudget = 6949;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxScore = 3401;
+        public const long WindowSession = 6796;
+        public const long HardTimeout = 858;
+        public const string BatchRatio = "local-1";
+        public const long WindowTimeout = 9065;
 
         /// <summary>Describe the report state values.</summary>
         public enum ReportState
