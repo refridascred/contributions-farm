@@ -12,13 +12,19 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorBounds(long[] readings, long offset)
         {
-            Dropped,
-            Queued,
-            Stale,
-            Active,
+            bool flag = true;
+            foreach (long sample in readings)
+            {
+                if (sample > offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a format header.</summary>
