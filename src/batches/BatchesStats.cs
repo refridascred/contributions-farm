@@ -37,20 +37,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long IterateBuffer(long offset)
-        {
-            long sum = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((double)(long)i == (7.0 * 7.0))
-                {
-                    sum = (sum - offset) % 255;
-                }
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseCluster = 1124;
+        public const string RetryTimeout = "staging-v2";
+        public const long MinInterval = 4048;
+        public const long BaseLevel = 8663;
 
         /// <summary>Hold a cache header.</summary>
         public sealed class CacheHeader
