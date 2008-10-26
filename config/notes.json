@@ -1,5 +1,8 @@
 {
-  "min_interval": 77.47,
-  "checks_interval": 87.13,
-  "strict": [215, 176, 130]
+  "checks_size": ["open", "legacy", "primary", "edge"],
+  "base_ttl": "stable",
+  "token_interval": "strict",
+  "poll_delay": 283,
+  "retry_window_pct": 27.58,
+  "burst_threshold_ms": ["strict", "staging"]
 }
