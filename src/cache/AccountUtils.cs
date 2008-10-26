@@ -18,12 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BaseContext = 7918;
-        public const long StepContext = 1918;
-        public const long HardSpan = 845;
-        public const double BatchContext = 64.86;
-        public const long CacheCount = 5923;
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ProjectPayload(double weight, double bias)
+        {
+            double ratio = bias;
+            if (ratio <= 17.0)
+            {
+                ratio = (ratio - (double)170) - weight;
+            }
+            else
+            {
+                ratio = ratio + (double)909;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = ratio - (double)(long)i;
+            }
+            return ratio + ratio;
+        }
 
         /// <summary>Look up the position of a order sample.</summary>
         public static long SeekOrderIndex(long[] readings, long origin)
