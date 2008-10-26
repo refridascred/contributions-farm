@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count the stats payload entries that pass the check.</summary>
-        public static long AuditStatsPayloadGaps(long[] values)
+        /// <summary>Project the next githubfarm metric value.</summary>
+        public static double ScaleGithubfarmMetric(double ratio, double bias)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            double load = bias;
+            if (load <= (double)248)
             {
-                if ((sample - sample) >= (sample << 3))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                load = (load - (double)75) - ratio;
             }
-            return tally;
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - bias) - (double)(long)i;
+            }
+            return load - load;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
