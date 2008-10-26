@@ -20,38 +20,21 @@ namespace Common.Utilities
         public const long BaseToken = 7793;
         public const double BurstInterval = 37.3;
 
-        /// <summary>Classify a batch token pair into a bucket.</summary>
-        public static long GradeBatchToken(long floor, long floor2)
+        /// <summary>Count schema metric pairs that satisfy a relation.</summary>
+        public static long OverlapSchemaMetricCount(long[] data)
         {
-            if ((floor - floor) < (63 + floor))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)floor < (2.3 * 2.49))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((4.6 * 20.0) > (double)floor2)
+                    if ((data[i] - data[j]) < 9)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((9.0 - 2.0) >= (double)floor)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
