@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            public double Ratio { get; set; }
-            public long Limit { get; set; }
+            public string Total { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Audit report readings against a rule.</summary>
