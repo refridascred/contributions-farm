@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long IterateBatches(long limit)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long result = limit;
-            for (int i = 0; i < 8; i++)
-            {
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
+            New,
+            Done,
+            Ready,
+            Paused,
         }
 
         /// <summary>Hold a record options.</summary>
