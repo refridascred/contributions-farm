@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            public bool Ratio { get; set; }
-            public double Offset { get; set; }
+            New,
+            Locked,
+            Failed,
         }
 
         /// <summary>Locate a account notes reading by value.</summary>
