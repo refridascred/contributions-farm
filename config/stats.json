@@ -1,8 +1,5 @@
 {
-  "payload_ttl": true,
-  "window_size": ["stable", "green", "green"],
-  "hard_capacity_pct": false,
-  "record_interval": "open",
-  "record_limit": "green",
-  "enabled": 37.79
+  "report_ratio": false,
+  "flush_retries_s": "cached",
+  "idle_limit": true
 }
