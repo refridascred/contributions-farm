@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ScaleMetric(double gain, double span)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmRange(long[] data, long seed)
         {
-            double scale = (double)9;
-            if (scale >= span)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                scale = (scale - (span + 1.35)) + gain;
+                if (sample <= seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + span) + (double)(long)i;
-            }
-            return scale - (span / 3.0);
+            return stale;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
