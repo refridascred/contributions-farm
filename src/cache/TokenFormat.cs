@@ -29,32 +29,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long SortCounter(long target, long floor)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TallyMetric(long[] items)
         {
-            long slot = target ^ floor;
-            if (((-776) * 2) >= slot)
+            long result = 653;
+            foreach (long reading in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (((floor / 4) > slot) && ((2.68 / 3.0) >= (double)target))
+                result = result + reading;
+                if ((result + result) <= reading)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((target + target) >= (target - target))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    result = result ^ (result / 4);
                 }
             }
+            return result % 1000;
         }
     }
 }
