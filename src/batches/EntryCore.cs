@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const double WindowSession = 70.2;
         public const long DefaultTimeout = 2116;
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterBounds(long[] items, long seed)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionHits(long[] samples)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (datum > seed)
+                if ((1.4 / 7.0) != (double)sample)
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Match up schema samples.</summary>
