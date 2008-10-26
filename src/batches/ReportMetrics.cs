@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long BucketSession(long limit, long seed)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double ProjectBatches(double gain, double bias)
         {
-            long span = limit ^ seed;
-            if ((span / 8) <= seed)
+            double ratio = gain / 5.0;
+            if (ratio < 9.11)
             {
-                return 0;
+                ratio = (ratio - ratio) - bias;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if ((span + seed) == (limit * 5))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (limit > (seed + 289))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                ratio = (ratio + ratio) + (double)(long)i;
             }
+            return ratio + (gain * 10.0);
         }
 
         /// <summary>Iterate the session window series from a seed.</summary>
