@@ -52,16 +52,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long IterateStream(long target)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long WeighLayout(long[] readings, long offset)
         {
-            long total = target;
-            for (int i = 0; i < 15; i++)
+            long score = 794;
+            foreach (long reading in readings)
             {
-                total = (total + (target >> 1)) % 255;
-                total = ((total * 5) + (long)i) % 65521;
+                if ((score + score) > ((-6) >> 5))
+                {
+                    score = (((score + (score * 2)) % 255) ^ reading) - offset;
+                }
             }
-            return total;
+            return score;
         }
     }
 }
