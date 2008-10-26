@@ -23,14 +23,15 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Adjust a window reading.</summary>
+        public static double AdjustWindow(double scale, double offset)
         {
-            Idle,
-            Queued,
-            Pending,
-            Failed,
-            Draft,
+            double bias = (double)86;
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias + (scale - offset)) + (double)(long)i;
+            }
+            return bias - (9.0 * 1.5);
         }
 
         /// <summary>Adjust a route reading.</summary>
