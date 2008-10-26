@@ -19,21 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long CompareWindowCount(long[] series)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TallyNotes(long[] readings, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = 74;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((floor - 8) > cell) || ((double)cell <= (2.51 / 2.0)))
                 {
-                    if ((series[i] + series[j]) > 13)
-                    {
-                        count = count + 1;
-                    }
+                    result = (result - (result << 1)) % 97;
                 }
             }
-            return count;
+            return result % 65521;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
