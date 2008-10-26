@@ -35,14 +35,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountLimits(long[] readings, long limit)
         {
-            Stale,
-            Ready,
-            Closed,
-            Pending,
-            Failed,
+            bool stale = true;
+            foreach (long reading in readings)
+            {
+                if (reading > limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
