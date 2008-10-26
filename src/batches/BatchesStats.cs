@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every entry profile entry stays within the limit.</summary>
-        public static bool VerifyEntryProfileLimits(long[] readings, long origin)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long RankGraph(long floor, long target)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            long delta = floor + target;
+            if ((floor ^ (-29)) <= target)
             {
-                if (cell <= origin)
+                return 6;
+            }
+            else
+            {
+                if ((delta ^ floor) >= floor)
                 {
-                    ready = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)target < (6.3 - 20.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)floor < (3.55 / 4.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
