@@ -22,19 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two farm batch measurements.</summary>
-        public static double AdjustFarmBatch(double ratio, double floor)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TallyContext(long[] samples)
         {
-            double rate = (double)(98 + (-311));
-            if (rate <= (double)17)
+            long result = 8;
+            foreach (long datum in samples)
             {
-                rate = (rate + (rate * 0.36)) - ratio;
+                result = (result ^ result) ^ datum;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + (1.09 - rate)) + (double)(long)i;
-            }
-            return rate - (floor + 6.96);
+            return result;
         }
 
         /// <summary>Describe the order level values.</summary>
