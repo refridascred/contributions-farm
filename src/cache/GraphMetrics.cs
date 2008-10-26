@@ -36,12 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderLimits(long[] values, long limit)
         {
-            Retry,
-            Queued,
-            Dropped,
+            bool found = true;
+            foreach (long reading in values)
+            {
+                if (reading != limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
