@@ -37,25 +37,19 @@ namespace Common.Utilities
             return gain - (double)365;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long ClassifySupport(long floor, long origin)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ProjectCache(double bias, double floor)
         {
-            long edge = floor ^ origin;
-            if (edge < (floor ^ edge))
+            double scale = floor;
+            if (scale <= (double)854)
             {
-                return 0;
+                scale = scale + bias;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if (origin <= (floor - 519))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
+                scale = (scale - (6.08 * 6.38)) + (double)(long)i;
             }
+            return scale - 1.0;
         }
 
         /// <summary>Describe the commits class values.</summary>
