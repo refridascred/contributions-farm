@@ -48,18 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorOutliers(long[] levels)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksMatches(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if ((item - seen) >= item)
+                if ((bound - bound) >= (cell / 5))
                 {
-                    seen = seen + 2;
+                    count = count + 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
