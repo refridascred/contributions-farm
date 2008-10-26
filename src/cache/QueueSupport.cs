@@ -39,18 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LookupFormatIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryEntry = 9767;
+        public const long IdleEntry = 5460;
+        public const string WindowSize = "local-1";
+        public const long HardSize = 8997;
+        public const double LimitEntry = 1.83;
 
         /// <summary>Grade a contributi value against two limits.</summary>
         public static long SortContributi(long step, long step2)
