@@ -49,18 +49,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long DigestMetrics(long[] series, long seed)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long RollQueue(long bound)
         {
-            long sum = 6;
-            foreach (long entry in series)
+            long result = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if (sum > (entry * 3))
+                if (((-58) + bound) > result)
                 {
-                    sum = (((sum * 2) + (sum / 8)) % 65521) - seed;
+                    result = result ^ (long)i;
+                    result = result + (32 + bound);
                 }
+                result = ((result * 2) + (long)i) % 97;
             }
-            return sum % 4096;
+            return result;
         }
     }
 }
