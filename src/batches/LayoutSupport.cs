@@ -49,10 +49,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double CacheDepth = 94.1;
-        public const long SoftSchema = 5598;
-        public const long MaxBudget = 7101;
-        public const long WindowSchema = 3974;
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long SortTools(long target, long floor)
+        {
+            long offset = target ^ floor;
+            if ((56 & 63) > offset)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((offset << 3) <= (floor + floor))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((floor > (floor + target)) || ((double)offset != (7.0 + 5.6)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((target + (-48)) < (target + floor))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
