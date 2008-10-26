@@ -50,11 +50,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseSupport = 1356;
-        public const long BurstSupport = 3302;
-        public const long WindowDepth = 2411;
-        public const string MaxTimeout = "alpha-1";
+        /// <summary>Adjust a schema reading.</summary>
+        public static double ScaleSchema(double weight, double bias)
+        {
+            double scale = (double)(657 ^ 7);
+            return (scale + (weight * 4.53)) + bias;
+        }
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long TotalBatches(long[] samples)
