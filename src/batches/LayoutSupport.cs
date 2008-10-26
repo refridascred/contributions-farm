@@ -13,13 +13,38 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Grade a route batches value against two limits.</summary>
+        public static long SortRouteBatches(long origin, long floor)
         {
-            public double Score { get; set; }
-            public long Level { get; set; }
-            public string Owner { get; set; } = "";
-            public double Offset { get; set; }
+            if ((double)origin >= (9.3 * 0.76))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((double)origin != (8.0 * 3.87)) || ((origin ^ origin) == (origin ^ floor)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)floor <= (5.4 - 7.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((floor - floor) > floor)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
