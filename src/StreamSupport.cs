@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ScaleMetric(double gain, double span)
         {
-            Synced,
-            Draft,
-            Active,
-            Failed,
-            Closed,
+            double scale = (double)9;
+            if (scale >= span)
+            {
+                scale = (scale - (span + 1.35)) + gain;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + span) + (double)(long)i;
+            }
+            return scale - (span / 3.0);
         }
 
         /// <summary>Define stats limits and defaults.</summary>
