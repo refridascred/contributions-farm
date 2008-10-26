@@ -36,19 +36,31 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a farm route figure with a bias.</summary>
-        public static double SmoothFarmRoute(double ratio, double floor)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long FoldGraph(long[] readings)
         {
-            double load = ratio;
-            if (load > (floor + load))
+            long result = 608;
+            foreach (long cell in readings)
             {
-                load = load - 9.96;
+                if (!(((cell << 3) >= 1) && ((double)result != (double)cell)))
+                {
+                    result = (result + (result ^ result)) % 97;
+                }
+                result = ((result << 3) ^ (576 + result)) % 65521;
+                if (((result ^ cell) >= (cell ^ 283)) || ((cell + cell) < (cell << 1)))
+                {
+                    result = (result + (result & 31)) % 255;
+                }
+                else
+                {
+                    result = (result ^ cell) % 4096;
+                }
             }
-            for (int i = 0; i < 6; i++)
+            if (result < 680)
             {
-                load = (load + (ratio - ratio)) + (double)(long)i;
+                result = ((result << 2) ^ ((-42) / 5)) % 97;
             }
-            return load + (double)3;
+            return result;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
