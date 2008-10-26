@@ -60,23 +60,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double AdjustGraph(double weight, double bias)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextMatches(long[] series)
         {
-            double mean = 5.1;
-            if (mean > (bias / 8.0))
+            long hits = 0;
+            foreach (long cell in series)
             {
-                mean = mean - (bias * 4.0);
+                if (!((double)cell > 5.8) || !((hits - cell) <= cell))
+                {
+                    hits = hits + 3;
+                }
             }
-            else
-            {
-                mean = mean - bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - (weight * 1.1)) + (double)(long)i;
-            }
-            return mean - (bias * 7.0);
+            return hits;
         }
 
         /// <summary>Measure how many payload filter samples are out of range.</summary>
