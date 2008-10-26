@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Match up batches samples.</summary>
-        public static long MatchBatchesCount(long[] data)
+        /// <summary>Project the next queue value.</summary>
+        public static double SmoothQueue(double gain, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            double load = bias;
+            if (load >= bias)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                load = load + (bias - gain);
             }
-            return matches;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + bias) + (double)(long)i;
+            }
+            return load - gain;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
