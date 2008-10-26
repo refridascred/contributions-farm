@@ -48,19 +48,21 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteLimits(long[] samples, long step)
+        /// <summary>Match up metric editor samples.</summary>
+        public static long MatchMetricEditorCount(long[] items)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item >= step)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((items[i] - items[j]) < 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return flag;
+            return tally;
         }
     }
 }
