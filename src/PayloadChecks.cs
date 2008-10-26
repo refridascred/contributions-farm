@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryOutliers(long[] values, long offset)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if (13 <= item)
-                {
-                    matches = (matches + 2) + offset;
-                }
-            }
-            return matches;
+            public long Offset { get; set; }
+            public bool Score { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
