@@ -30,13 +30,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountLimits(long[] readings, long limit)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmLimits(long[] levels, long step)
         {
             bool stale = true;
-            foreach (long reading in readings)
+            foreach (long item in levels)
             {
-                if (reading > limit)
+                if (item < step)
                 {
                     stale = false;
                     break;
