@@ -22,19 +22,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate metric graph samples.</summary>
-        public static long WeighMetricGraph(long[] values)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long score = 59;
-            foreach (long cell in values)
-            {
-                score = (score - (score % 12)) ^ cell;
-            }
-            if (score < 514)
-            {
-                score = (score + (score * 5)) % 1000;
-            }
-            return score;
+            public long Label { get; set; }
+            public bool Owner { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Accumulate support samples.</summary>
