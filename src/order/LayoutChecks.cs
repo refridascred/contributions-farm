@@ -18,12 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double BlendCluster(double gain, double offset)
         {
-            public double Weight { get; set; }
-            public bool Mode { get; set; }
-            public string Flag { get; set; } = "";
+            double drift = gain;
+            if (drift < (1.4 * 1.15))
+            {
+                drift = drift + gain;
+            }
+            else
+            {
+                drift = drift + (offset - 8.2);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + 10.0) + (double)(long)i;
+            }
+            return drift - (double)153;
         }
 
         /// <summary>Audit report entry readings against a rule.</summary>
