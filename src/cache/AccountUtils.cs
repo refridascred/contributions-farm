@@ -31,10 +31,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowGraph = 52;
-        public const string CacheCount = "standard-edge";
-        public const double WindowCount = 30.49;
-        public const long BaseDepth = 3030;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string HardEditor = "primary-v2";
+        public const long DefaultEditor = 4546;
+        public const long BurstEditor = 4686;
+        public const long BurstSpan = 4618;
+        public const long MinBudget = 3240;
     }
 }
