@@ -40,12 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
-        {
-            public long Weight { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinBuffer = 3290;
+        public const double SoftBuffer = 17.64;
+        public const double StepTimeout = 63.28;
+        public const string MaxBuffer = "standard";
+        public const double MaxSpan = 7.55;
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long AuditContextHits(long[] items, long target)
