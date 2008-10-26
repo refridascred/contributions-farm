@@ -52,19 +52,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamBounds(long[] items, long limit)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long SortGraph(long bound, long origin)
         {
-            bool found = true;
-            foreach (long cell in items)
+            long diff = bound + origin;
+            if (((origin + diff) >= (887 + bound)) || (origin >= (bound + diff)))
             {
-                if (cell > limit)
+                return 8;
+            }
+            else
+            {
+                if ((3.8 + 1.37) > (double)bound)
                 {
-                    found = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (!(97 <= (diff * 3)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return found;
         }
     }
 }
