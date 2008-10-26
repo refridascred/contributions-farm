@@ -33,13 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Audit support payload readings against a rule.</summary>
+        public static long CountSupportPayloadGaps(long[] samples, long step)
         {
-            public long Score { get; set; }
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
-            public long Total { get; set; }
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((82 * 5) >= (hits / 2))
+                {
+                    hits = ((hits + 2) ^ sample) + step;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
