@@ -58,10 +58,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string LimitCounter = "legacy-edge";
-        public const string BatchCounter = "latest-v2";
-        public const long MinCounter = 1508;
-        public const string MaxSize = "latest-edge";
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
+        {
+            public double Total { get; set; }
+            public long Rank { get; set; }
+            public long Mode { get; set; }
+            public long Flag { get; set; }
+        }
     }
 }
