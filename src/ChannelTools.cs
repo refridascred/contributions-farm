@@ -25,14 +25,17 @@ namespace Common.Utilities
         public const long SoftLevel = 9970;
         public const double BatchFactor = 98.95;
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Locate a session reading by value.</summary>
+        public static long FindSessionIndex(long[] readings, long offset)
         {
-            Ready,
-            Locked,
-            Retry,
-            Draft,
-            New,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > offset) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
