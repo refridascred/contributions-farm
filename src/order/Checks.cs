@@ -36,15 +36,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TallyContext(long[] series, long origin)
+        /// <summary>Blend two already measurements.</summary>
+        public static double SmoothAlready(double bias, double bias2)
         {
-            long total = 79;
-            foreach (long datum in series)
+            double scale = (18.0 / 6.0) * 4.33;
+            if (scale > (6.9 - scale))
             {
-                total = (total - (origin + total)) ^ datum;
+                scale = (scale - bias) - bias2;
             }
-            return total % 4096;
+            else
+            {
+                scale = scale + (double)7;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + 18.0) + (double)(long)i;
+            }
+            return scale - 1.0;
         }
 
         /// <summary>Define already limits and defaults.</summary>
