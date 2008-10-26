@@ -1,21 +1,8 @@
 # entry settings
-warm_window_s: staging
-base_interval_s: 60
-queue_timeout:
-  dry_run:
-    - fallback
-    - standard
-    - standard
-    - eu-west
-  farm_ttl: 8364
-  metric_depth: 2140
-  enabled:
-    base_window_s:
-      - 93
-      - 464
-    retry_limit_ms: 250
-    burst_ttl_pct: open
-    max_threshold_pct: 250
-    enabled: 91.59
-  flush_threshold: green
-  audit: false
+verbose:
+  - latest
+  - stable
+  - blue
+  - eu-west
+compress: strict
+flush_interval_s: true
