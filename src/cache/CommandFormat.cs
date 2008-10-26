@@ -15,14 +15,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long DeriveCommand(long seed)
         {
-            Pending,
-            Active,
-            Queued,
-            New,
-            Stale,
+            long result = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                result = (result * 3) + (result & 15);
+                result = ((result * 3) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
