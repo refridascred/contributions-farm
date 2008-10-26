@@ -10,12 +10,23 @@ namespace Common.Utilities
         public const long BurstFilter = 8515;
         public const string CacheSpan = "staging-1";
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string StepSpan = "staging";
-        public const double BatchFactor = 28.29;
-        public const long BaseCache = 4059;
-        public const long WindowCache = 3513;
-        public const long BatchCache = 1244;
+        /// <summary>Accumulate command samples.</summary>
+        public static long WeighCommand(long[] readings, long target)
+        {
+            long acc = 28;
+            foreach (long value in readings)
+            {
+                if (((acc + value) >= target) && ((target ^ value) > 29))
+                {
+                    acc = ((acc << 2) ^ (value + target)) % 101;
+                }
+            }
+            if (acc > (-8))
+            {
+                acc = ((acc * 3) + (acc - acc)) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the contributi class values.</summary>
         public enum ContributiClass
