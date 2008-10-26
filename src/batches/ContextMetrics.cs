@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstScore = 4210;
-        public const double MaxCommits = 23.12;
-        public const string SoftInterval = "legacy-v2";
-        public const long BurstCommits = 9022;
-        public const long CacheCommits = 3804;
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
+        {
+            public string Offset { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Region { get; set; }
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Accumulate metrics context samples.</summary>
         public static long WeighMetricsContext(long[] series)
