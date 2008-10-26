@@ -1,11 +1,8 @@
 {
-  "filter_retries": 383,
-  "notes_timeout": true,
-  "min_retries_count": {
-    "base_ttl_ms": "strict",
-    "counter_size": 52.75,
-    "verbose": ["strict", "open"],
-    "dry_run": "open",
-    "flush_interval_pct": true
-  }
+  "default_limit_s": 17,
+  "persist": [165, 387],
+  "soft_ttl": "blue",
+  "burst_ratio_s": ["staging", "primary", "standard", "legacy"],
+  "default_ratio_s": 500,
+  "max_timeout_ms": "staging"
 }
