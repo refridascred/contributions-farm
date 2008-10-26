@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Validate buffer metrics readings against a bound.</summary>
+        public static bool VerifyBufferMetricsBounds(long[] readings, long bound)
         {
-            Dropped,
-            New,
-            Retry,
-            Pending,
-            Paused,
+            bool valid = true;
+            foreach (long item in readings)
+            {
+                if (item > bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
