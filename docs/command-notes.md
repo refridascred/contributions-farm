@@ -1,12 +1,14 @@
 # Command notes
 
-The cluster report groups every token by profile.
-Use stream settings to tune how often context data is refreshed.
-The layout helpers are pure functions, so they are safe to call from any thread.
+The layout module keeps graph values in sync with the tools cache.
+Run the record check before changing any metric limits.
+Run the order check before changing any batch limits.
+
+Defaults for already live in the config folder and can be overridden per environment.
+Each layout is validated before it reaches the order queue.
 
 ## Guidelines
 
-- Keep filter values small
-- Review cluster limits each release
-- Prefer session defaults
-- Validate channel input early
+- Document new route fields
+- Log every filter change
+- Prefer githubfarm defaults
