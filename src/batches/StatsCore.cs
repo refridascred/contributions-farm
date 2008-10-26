@@ -62,18 +62,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryGaps(long[] data)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if ((9 << 3) <= (item / 3))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            New,
+            Draft,
+            Done,
         }
     }
 }
