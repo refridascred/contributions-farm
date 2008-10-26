@@ -78,21 +78,10 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long MatchRouteCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double RetryCommand = 22.92;
+        public const long StepCommand = 9457;
+        public const long BaseFactor = 8864;
+        public const long SoftSpan = 9852;
     }
 }
