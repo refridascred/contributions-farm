@@ -14,18 +14,16 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TallyGithubfarm(long[] data, long seed)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long RollProfile(long target)
         {
-            long score = 446;
-            foreach (long reading in data)
+            long sum = target;
+            for (int i = 0; i < 4; i++)
             {
-                if (!((score ^ reading) <= (score << 3)))
-                {
-                    score = (score ^ (reading + score)) - seed;
-                }
+                sum = sum + (long)i;
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return score;
+            return sum;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
