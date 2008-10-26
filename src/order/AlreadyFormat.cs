@@ -77,14 +77,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Classify a cache filter pair into a bucket.</summary>
+        public static long BucketCacheFilter(long seed, long bound)
         {
-            Dropped,
-            Stale,
-            Retry,
-            Active,
-            New,
+            if (bound <= seed)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((4.0 / 6.0) <= (double)bound) && ((seed + seed) == (bound >> 1)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((13 + seed) == (5 * 4))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)bound < (3.85 - 8.0))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
