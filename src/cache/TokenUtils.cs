@@ -29,21 +29,12 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Count window account pairs that satisfy a relation.</summary>
-        public static long OverlapWindowAccountCount(long[] samples)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Token { get; set; }
+            public long Total { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
