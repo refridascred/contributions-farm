@@ -24,10 +24,16 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepFactor = 8617;
-        public const long BatchSpan = 9181;
-        public const double WindowGithubfarm = 65.83;
+        /// <summary>Project the next session value.</summary>
+        public static double ProjectSession(double bias, double floor)
+        {
+            double scale = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = ((scale + 18.0) + (double)(long)i) - bias;
+            }
+            return scale + floor;
+        }
 
         /// <summary>Fold a list of order readings.</summary>
         public static long CombineOrder(long[] items, long offset)
