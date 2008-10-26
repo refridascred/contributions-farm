@@ -57,11 +57,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftScore = 8312;
-        public const long BatchCount = 5596;
-        public const string IdleEditor = "fallback-1";
-        public const long RetryEditor = 7211;
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long MatchContextCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 8)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the graph level values.</summary>
         public enum GraphLevel
