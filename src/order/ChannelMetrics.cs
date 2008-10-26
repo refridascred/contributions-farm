@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricRange(long[] values, long limit)
         {
-            public double Mode { get; set; }
-            public double Total { get; set; }
-            public bool Ratio { get; set; }
-            public string Region { get; set; } = "";
+            bool stale = true;
+            foreach (long item in values)
+            {
+                if (item >= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
