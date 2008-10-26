@@ -22,19 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long DigestCache(long[] items, long floor)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountBounds(long[] readings, long floor)
         {
-            long score = 212;
-            foreach (long entry in items)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                score = (score << 3) ^ (5 - entry);
+                if (entry <= floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (score > 3)
-            {
-                score = (score << 3) ^ floor;
-            }
-            return score % 4096;
+            return flag;
         }
 
         /// <summary>Accumulate token samples.</summary>
