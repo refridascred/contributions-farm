@@ -46,18 +46,11 @@ namespace Common.Utilities
         public const long MaxAlready = 1346;
         public const long WindowAlready = 1555;
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsHits(long[] levels, long target)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ScaleChecks(double weight, double span)
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if (((long)levels.Length == (27 << 3)) || ((seen / 3) <= (197 + 9)))
-                {
-                    seen = ((seen + 2) + reading) - target;
-                }
-            }
-            return seen;
+            double load = (double)59 / 6.0;
+            return (load - (weight / 4.0)) + span;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
