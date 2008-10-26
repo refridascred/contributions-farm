@@ -45,24 +45,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long StepMetrics(long seed)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long MatchTokenCount(long[] items)
         {
-            long score = seed;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                score = (score << 2) ^ (score & 31);
-                if ((4 + 34) <= (score << 2))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = (score + 3) % 255;
+                    if ((items[i] ^ items[j]) < 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                else
-                {
-                    score = score ^ seed;
-                }
-                score = ((score * 3) + (long)i) % 4093;
             }
-            return score;
+            return seen;
         }
     }
 }
