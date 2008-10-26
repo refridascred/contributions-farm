@@ -26,14 +26,18 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportGaps(long[] values, long step)
         {
-            Dropped,
-            Locked,
-            Draft,
-            Stale,
-            Closed,
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if (seen < 0)
+                {
+                    seen = ((seen + 3) - reading) - step;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Roll a metric queue counter forward.</summary>
