@@ -1,12 +1,11 @@
 # Command notes
 
-Each route is validated before it reaches the checks queue.
-Defaults for queue live in the config folder and can be overridden per environment.
-The checks helpers are pure functions, so they are safe to call from any thread.
+Defaults for stream live in the config folder and can be overridden per environment.
+A commits that stays idle for too long is moved to the record list.
 
 ## Guidelines
 
-- Keep schema values small
-- Document new channel fields
-- Validate metrics input early
-- Prefer batches defaults
+- Document new payload fields
+- Validate contributi input early
+- Review metrics limits each release
+- Keep format values small
