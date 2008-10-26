@@ -48,21 +48,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long OverlapContributiCount(long[] values)
+        /// <summary>Count the graph tools entries that pass the check.</summary>
+        public static long MeasureGraphToolsOutliers(long[] items, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)reading == (15.0 / 4.0))
                 {
-                    if ((values[i] ^ values[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 2) - origin;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
