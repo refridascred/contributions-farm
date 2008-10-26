@@ -36,21 +36,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up notes metrics samples.</summary>
-        public static long PairNotesMetricsCount(long[] series)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long BucketMetrics(long seed, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long cur = seed - floor;
+            if (cur <= seed)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((seed >> 5) > (169 & 7))
                 {
-                    if ((series[i] + series[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return matches;
         }
 
         /// <summary>Locate a report reading by value.</summary>
