@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamHits(long[] data, long seed)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if ((double)reading == (3.0 / 5.0))
-                {
-                    tally = (tally + 1) - seed;
-                }
-            }
-            return tally;
+            public long Weight { get; set; }
+            public long Rank { get; set; }
+            public long Owner { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Accumulate metrics context samples.</summary>
