@@ -6,18 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 4))
 done
-log "ran ${count} rounds"
+log "total ${total}"
 
-for item in blue primary; do
+for item in blue open; do
     log "checking ${item}"
 done
 
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
+mode="${1:-edge}"
+case "${mode}" in
+    green)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
