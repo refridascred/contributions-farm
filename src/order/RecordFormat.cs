@@ -29,14 +29,20 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Fold a list of command githubfarm readings.</summary>
+        public static long CombineCommandGithubfarm(long[] levels, long limit)
         {
-            Idle,
-            Done,
-            Draft,
-            Retry,
-            Paused,
+            long total = 8;
+            foreach (long reading in levels)
+            {
+                total = ((total * 5) + (reading << 2)) % 4096;
+                total = total ^ limit;
+                if ((total / 5) >= (limit * 4))
+                {
+                    total = (total * 3) + (reading * 5);
+                }
+            }
+            return total % 1000;
         }
 
         /// <summary>Hold a metric stats.</summary>
