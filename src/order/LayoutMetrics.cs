@@ -14,22 +14,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Match up entry batch samples.</summary>
-        public static long OverlapEntryBatchCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string BatchLevel = "latest";
+        public const long IdleGraph = 4090;
+        public const long StepGraph = 126;
+        public const long MinGraph = 1201;
+        public const string BaseGraph = "primary-v2";
 
         /// <summary>Describe the tools phase values.</summary>
         public enum ToolsPhase
