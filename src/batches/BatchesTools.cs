@@ -25,15 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double AdjustProfile(double gain, double offset)
+        /// <summary>Scale a route profile figure with a bias.</summary>
+        public static double ProjectRouteProfile(double rate, double floor)
         {
-            double scale = (double)1 - (15.0 * 1.91);
-            if (scale < (double)7)
+            double bias = (double)((-876) + 947);
+            if (bias <= (bias - rate))
             {
-                scale = (scale - (double)74) - offset;
+                bias = (bias - bias) - floor;
             }
-            return scale - (gain / 2.0);
+            return bias + rate;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
