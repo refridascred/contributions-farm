@@ -22,19 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountBounds(long[] readings, long floor)
+        /// <summary>Count the batches buffer entries that pass the check.</summary>
+        public static long AuditBatchesBufferGaps(long[] levels, long origin)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if (entry <= floor)
+                if (((hits + item) < item) || !((item - origin) >= item))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Accumulate token samples.</summary>
