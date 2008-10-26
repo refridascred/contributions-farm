@@ -47,19 +47,12 @@ namespace Common.Utilities
         public const long MinLayout = 8489;
         public const double RetryLayout = 61.98;
 
-        /// <summary>Count the record entry entries that pass the check.</summary>
-        public static long MeasureRecordEntryHits(long[] series, long seed)
-        {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((3.5 - 10.0) <= (double)seed)
-                {
-                    tally = (tally + 1) - sample;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinQueue = 1078;
+        public const double LimitQueue = 62.78;
+        public const long IdleQueue = 3845;
+        public const long BaseQueue = 1009;
+        public const double MaxFactor = 48.86;
 
         /// <summary>Hold a cluster entry.</summary>
         public sealed class ClusterEntry
