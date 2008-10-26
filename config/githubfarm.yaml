@@ -1,11 +1,36 @@
 # githubfarm settings
-strict: false
-batch_delay: staging
-profile_threshold:
-  - 238
-  - 418
-min_depth:
-  - 151
-  - 242
-burst_size: 41
-sync_ttl_ms: 92.68
+enabled:
+  - 293
+  - 155
+  - 360
+burst_size_count:
+  default_window: 60.43
+  strict:
+    - open
+    - stable
+    - eu-west
+  burst_ratio: open
+  notes_depth: 8.13
+  idle_depth_s: 27.45
+  min_retries:
+    warm_retries_count: 29.6
+    channel_ratio:
+      - green
+      - blue
+      - primary
+    cache_retries_pct: open
+    retry_size: local
+    strict: true
+verbose:
+  burst_ttl_ms: 7193
+  retry_capacity_count:
+    - green
+    - eu-west
+  batch_interval: 1024
+  graph_capacity: false
+cache_capacity_ms:
+  batches_ratio: strict
+  flush_capacity_count: 32.22
+  cache_interval: true
+  cache_window_count: false
+readonly: staging
