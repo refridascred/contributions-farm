@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Scale a profile counter figure with a bias.</summary>
-        public static double AdjustProfileCounter(double scale, double bias)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            double weight = (double)(66 & 1);
-            if (weight >= weight)
-            {
-                weight = ((weight + (double)1) - scale) + bias;
-            }
-            return weight + (double)8;
+            public bool Limit { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Match up cluster token samples.</summary>
