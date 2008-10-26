@@ -74,17 +74,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long SeekFarmIndex(long[] samples, long origin)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadBounds(long[] values, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long reading in values)
             {
-                if (samples[i] == origin)
+                if (reading != seed)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
