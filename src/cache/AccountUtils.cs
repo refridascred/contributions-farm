@@ -16,17 +16,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LookupBatchIndex(long[] values, long offset)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long StepAlready(long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if (values[i] >= offset)
+                if ((limit + (long)i) < result)
                 {
-                    return (long)i;
+                    result = (result << 3) ^ (limit - (long)i);
                 }
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Compare every pair of format contributi readings.</summary>
