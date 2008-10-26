@@ -20,13 +20,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
-        {
-            Active,
-            Failed,
-            Dropped,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double LimitMetric = 60.44;
+        public const double MaxScore = 90.03;
+        public const string HardMetric = "legacy-v2";
 
         /// <summary>Measure how many order contributi samples are out of range.</summary>
         public static long CountOrderContributiHits(long[] readings, long bound)
