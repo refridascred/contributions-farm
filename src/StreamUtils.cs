@@ -65,15 +65,12 @@ namespace Common.Utilities
         public const long HardWidth = 7449;
         public const long BatchChannel = 4143;
 
-        /// <summary>Combine payload notes values into a single score.</summary>
-        public static long DigestPayloadNotes(long[] samples, long target)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long mark = 52;
-            foreach (long sample in samples)
-            {
-                mark = (((mark << 3) ^ (sample + mark)) % 4096) - target;
-            }
-            return mark % 97;
+            public long Size { get; set; }
+            public long Score { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
