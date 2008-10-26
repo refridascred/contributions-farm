@@ -59,9 +59,21 @@ namespace Common.Utilities
             return mean - (bias + 0.3);
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultAlready = 2080;
-        public const long HardAlready = 4461;
-        public const long BaseRatio = 1525;
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long PairProfileCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
