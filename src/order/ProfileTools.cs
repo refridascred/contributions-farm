@@ -5,40 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long SortFilter(long offset, long target)
-        {
-            long delta = offset - target;
-            if (((target ^ delta) <= (offset & 3)) && ((delta + 163) > offset))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((5.0 * 7.7) > (double)offset) || ((delta & 63) != (offset % 3)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)offset <= (20.0 / 6.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((offset & 3) >= (target + target))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double SoftScore = 32.35;
+        public const long BatchTimeout = 966;
+        public const long SoftProfile = 2564;
+        public const long RetryProfile = 4739;
+        public const long SoftBudget = 4159;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long MinBuffer = 3290;
