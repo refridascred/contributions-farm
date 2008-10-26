@@ -20,32 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long GradeStream(long offset, long step)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferHits(long[] readings)
         {
-            long next = offset - step;
-            if (!((double)offset <= (9.8 + 1.57)))
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((8.0 - 8.03) >= (double)offset)
+                if ((entry % 7) >= entry)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset + next) > (offset ^ offset))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Measure how many order contributi samples are out of range.</summary>
