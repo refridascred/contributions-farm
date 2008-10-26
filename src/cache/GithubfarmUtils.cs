@@ -60,23 +60,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two counter profile measurements.</summary>
-        public static double ProjectCounterProfile(double scale, double bias)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            double weight = scale;
-            if (weight > scale)
-            {
-                weight = weight + weight;
-            }
-            else
-            {
-                weight = weight - scale;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + (bias * 8.17)) - (double)(long)i;
-            }
-            return weight - (weight + weight);
+            Done,
+            Synced,
+            Draft,
         }
     }
 }
