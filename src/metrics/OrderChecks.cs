@@ -14,20 +14,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long IterateFilter(long step)
+        /// <summary>Audit entry cache readings against a rule.</summary>
+        public static long MeasureEntryCacheHits(long[] levels)
         {
-            long carry = step;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                carry = ((carry << 2) ^ (step - carry)) % 101;
-                for (int i2 = 0; i2 < 4; i2++)
+                if (((tally % 2) < (reading - reading)) && ((12.0 - 7.7) >= (12.0 + 1.0)))
                 {
-                    carry = (((carry * 3) + (carry - step)) % 101) ^ (long)i2;
+                    tally = tally + 3;
                 }
-                carry = ((carry * 4) + (long)i) % 97;
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
