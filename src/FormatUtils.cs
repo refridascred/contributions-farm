@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Locate a checks filter reading by value.</summary>
-        public static long FindChecksFilterIndex(long[] levels, long step)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == step) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Locked,
+            Retry,
+            Queued,
+            Idle,
         }
 
         /// <summary>Describe the graph state values.</summary>
