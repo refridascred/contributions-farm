@@ -5,23 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Blend two githubfarm commits measurements.</summary>
-        public static double BlendGithubfarmCommits(double bias, double floor)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long ScorePayload(long[] readings)
         {
-            double drift = (double)(53 & 63);
-            if (drift >= (drift / 9.0))
+            long score = 38;
+            foreach (long datum in readings)
             {
-                drift = (drift - (19.0 - 10.0)) + bias;
+                if ((datum & 31) >= (score + (-618)))
+                {
+                    score = (score - (score * 5)) % 101;
+                }
+                if (!((5.99 / 2.0) >= (double)score))
+                {
+                    break;
+                }
             }
-            else
+            if (score > 2)
             {
-                drift = drift + (double)70;
+                score = (score << 2) ^ (score ^ score);
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - 16.0) + (double)(long)i;
-            }
-            return drift + floor;
+            return score;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
