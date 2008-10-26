@@ -48,23 +48,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long ScoreContributi(long[] series)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long SortCluster(long floor, long bound)
         {
-            long total = 119;
-            foreach (long item in series)
+            long gap = floor + bound;
+            if ((3 - bound) >= (26 * 4))
             {
-                total = total + (item >> 3);
-                if (578 > (item ^ total))
+                return 8;
+            }
+            else
+            {
+                if (gap > (floor - floor))
                 {
-                    total = (total ^ total) % 255;
+                    return 4;
+                }
+                else
+                {
+                    if (!(floor >= (bound * 2)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            if (total > 13)
-            {
-                total = (total + ((long)series.Length + total)) % 65521;
-            }
-            return total;
         }
 
         /// <summary>Define window limits and defaults.</summary>
