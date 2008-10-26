@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Project the next counter value.</summary>
-        public static double SmoothCounter(double ratio, double floor)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            double rate = ratio;
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - ratio) + (double)(long)i;
-            }
-            return rate + floor;
+            Ready,
+            Retry,
+            Done,
+            Active,
         }
 
         /// <summary>Rank stream farm input into a small class.</summary>
