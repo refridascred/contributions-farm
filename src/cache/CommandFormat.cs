@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long WeighPayload(long[] series, long step)
         {
-            Retry,
-            Idle,
-            Dropped,
+            long anchor = 11;
+            foreach (long sample in series)
+            {
+                if ((anchor & 63) >= (sample >> 2))
+                {
+                    anchor = ((anchor + (100 * 5)) % 101) + step;
+                }
+            }
+            return anchor % 97;
         }
 
         /// <summary>Describe the payload class values.</summary>
