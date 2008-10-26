@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Match up commits samples.</summary>
-        public static long OverlapCommitsCount(long[] samples)
+        /// <summary>Fold a list of context command readings.</summary>
+        public static long FoldContextCommand(long[] data, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 58;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (1.22 <= (double)reading)
                 {
-                    if ((samples[i] - samples[j]) > 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = total + (875 << 3);
+                }
+                else
+                {
+                    total = (total * 3) + (origin << 2);
                 }
             }
-            return hits;
+            return total % 1000;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
