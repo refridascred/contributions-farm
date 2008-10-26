@@ -31,22 +31,15 @@ namespace Common.Utilities
         public const long SoftInterval = 1711;
         public const long IdleDepth = 7908;
 
-        /// <summary>Accumulate format counter samples.</summary>
-        public static long WeighFormatCounter(long[] series)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long origin)
         {
-            long mark = 489;
-            foreach (long item in series)
+            long carry = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if ((mark / 4) >= (mark + item))
-                {
-                    mark = mark + (mark & 255);
-                }
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            if (mark < 81)
-            {
-                mark = ((mark * 3) + 28) % 97;
-            }
-            return mark;
+            return carry;
         }
 
         /// <summary>Look up the position of a checks buffer sample.</summary>
