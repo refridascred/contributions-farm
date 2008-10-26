@@ -1,9 +1,6 @@
-id,region,weight
-1,63.61,fallback
-2,560,564
-3,596,63.08
-4,22.29,local
-5,strict,92.03
-6,811,75.59
-7,847,15.07
-8,98.62,staging
+id,weight,count,state
+1,latest,592,open
+2,656,latest,strict
+3,892,47.01,cached
+4,staging,627,999
+5,30.44,eu-west,772
