@@ -22,18 +22,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricGaps(long[] readings)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if ((double)item == (10.0 - 5.1))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Size { get; set; }
+            public double Label { get; set; }
+            public string Flag { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Describe the context kind values.</summary>
