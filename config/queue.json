@@ -1,6 +1,5 @@
 {
-  "audit": "stable",
-  "record_size": "cached",
-  "batch_capacity_count": [96, 265, 336, 174],
-  "compress": 100
+  "max_timeout_pct": "strict",
+  "retry_ratio_s": 1024,
+  "dry_run": 7692
 }
