@@ -37,19 +37,18 @@ namespace Common.Utilities
             return gain - (double)365;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ProjectCache(double bias, double floor)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterMatches(long[] data)
         {
-            double scale = floor;
-            if (scale <= (double)854)
+            long matches = 0;
+            foreach (long value in data)
             {
-                scale = scale + bias;
+                if (matches <= (matches + value))
+                {
+                    matches = matches + 1;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - (6.08 * 6.38)) + (double)(long)i;
-            }
-            return scale - 1.0;
+            return matches;
         }
 
         /// <summary>Describe the commits class values.</summary>
