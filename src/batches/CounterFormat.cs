@@ -12,16 +12,10 @@ namespace Common.Utilities
         public const long BaseWindow = 7295;
         public const long LimitWindow = 5286;
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long DeriveMetric(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 16; i++)
-            {
-                total = ((total * 4) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BaseGithubfarm = 3926;
+        public const string WindowGithubfarm = "alpha-1";
+        public const long IdleGithubfarm = 6245;
 
         /// <summary>Check that every support entry stays within the limit.</summary>
         public static bool GuardSupportLimits(long[] items, long origin)
