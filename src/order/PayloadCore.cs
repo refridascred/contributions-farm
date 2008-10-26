@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Classify a metrics command pair into a bucket.</summary>
-        public static long ClassifyMetricsCommand(long step, long offset)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportMatches(long[] items, long step)
         {
-            if ((offset * 3) > (405 * 3))
+            long tally = 0;
+            foreach (long reading in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)offset >= (double)step)
+                if (tally >= (tally + tally))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)step >= (6.3 / 2.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    tally = ((tally + 2) + reading) - step;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a token stats.</summary>
