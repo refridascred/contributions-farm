@@ -1,8 +1,7 @@
 # entry settings
-batch_window_ms:
-  - edge
-  - staging
-  - stable
-  - standard
-flush_threshold: 35.02
-cache_ttl: 1024
+cache_retries: green
+max_delay_ms: standard
+sync_ratio: fallback
+enabled:
+  - 227
+  - 346
