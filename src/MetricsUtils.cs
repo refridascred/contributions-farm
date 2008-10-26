@@ -28,17 +28,15 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long FindNotesIndex(long[] items, long floor)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long IterateEntry(long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if (items[i] < floor)
-                {
-                    return (long)i;
-                }
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
