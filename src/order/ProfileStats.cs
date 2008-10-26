@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double DefaultAccount = 58.35;
-        public const long WindowTimeout = 8544;
-        public const long RetryAccount = 5044;
-        public const long BatchAccount = 8799;
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long RankCommits(long seed, long origin)
+        {
+            if ((67 % 8) <= seed)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((10.0 * 2.71) == (double)seed)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((origin + origin) >= (seed - 8))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const string DefaultLevel = "fallback-edge";
