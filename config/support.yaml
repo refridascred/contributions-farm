@@ -1,13 +1,20 @@
 # support settings
-persist:
-  - 153
-  - 197
-  - 5
-  - 163
-dry_run:
-  - cached
-  - primary
-  - eu-west
-  - blue
-soft_capacity: true
-min_depth_pct: eu-west
+queue_ratio: true
+warm_limit:
+  stats_retries: standard
+  warm_delay:
+    - 81
+    - 322
+    - 31
+  audit: latest
+flush_limit_ms: false
+audit:
+  editor_capacity: blue
+  verbose: 7063
+  poll_depth_s: cached
+  soft_delay_s:
+    - 304
+    - 406
+    - 117
+  sync_ratio: open
+  warm_timeout_pct: blue
