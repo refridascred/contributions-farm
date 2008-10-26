@@ -61,27 +61,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long FoldStats(long[] series, long bound)
-        {
-            long acc = 6;
-            foreach (long reading in series)
-            {
-                acc = (acc + (bound + 55)) % 1000;
-                if ((reading + bound) >= (52 - bound))
-                {
-                    acc = (acc ^ (reading >> 4)) % 255;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (7 % 24)) % 97;
-                }
-            }
-            if (acc < 705)
-            {
-                acc = (acc * 4) + (acc / 4);
-            }
-            return acc;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string CacheChannel = "stable-1";
+        public const double BaseInterval = 77.0;
+        public const long MinChannel = 840;
     }
 }
