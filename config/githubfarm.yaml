@@ -1,14 +1,21 @@
 # githubfarm settings
-persist:
-  min_timeout: blue
-  warm_limit: primary
-  retry_window_count:
+compress:
+  command_timeout:
+    - cached
+    - open
+    - fallback
     - green
-    - primary
-    - edge
-    - strict
-  sync_threshold: 1709
-  readonly: local
-base_depth_ms: open
-cache_delay: 6772
-idle_size_pct: eu-west
+  farm_ttl: true
+  flush_limit_pct:
+    poll_size:
+      - 435
+      - 458
+      - 226
+      - 367
+    default_window_s: strict
+    base_ttl_s: open
+    cache_interval: true
+    retry_delay_count: eu-west
+readonly: latest
+burst_ratio: false
+idle_depth: 95
