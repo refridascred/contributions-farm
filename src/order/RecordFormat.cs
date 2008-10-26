@@ -26,11 +26,12 @@ namespace Common.Utilities
             return (mean + (mean * 15.0)) + floor;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitRatio = 5869;
-        public const long DefaultEntry = 1930;
-        public const long BurstEntry = 8987;
-        public const long CacheEntry = 7761;
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
+        {
+            public string Label { get; set; } = "";
+            public long Mode { get; set; }
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long DefaultLevel = 8218;
