@@ -12,19 +12,16 @@ namespace Common.Utilities
         public const double BaseRoute = 10.57;
         public const long MaxSpan = 8216;
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportBounds(long[] samples, long bound)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long RollToken(long floor)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            long state = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if (entry >= bound)
-                {
-                    valid = false;
-                    break;
-                }
+                state = state ^ (state << 3);
+                state = ((state * 4) + (long)i) % 101;
             }
-            return valid;
+            return state;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
