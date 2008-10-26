@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiBounds(long[] items, long step)
         {
-            public string Size { get; set; } = "";
-            public double Offset { get; set; }
-            public long Count { get; set; }
+            bool stale = true;
+            foreach (long cell in items)
+            {
+                if (cell != step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
