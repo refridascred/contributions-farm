@@ -19,13 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
-        {
-            public long Limit { get; set; }
-            public double Token { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double MinInterval = 65.76;
+        public const long DefaultBudget = 1168;
+        public const double StepLayout = 16.85;
+        public const long DefaultScore = 4985;
 
         /// <summary>Hold a stats record.</summary>
         public sealed class StatsRecord
