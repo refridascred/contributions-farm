@@ -26,13 +26,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesLimits(long[] items, long offset)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterRange(long[] series, long step)
         {
             bool ready = true;
-            foreach (long value in items)
+            foreach (long entry in series)
             {
-                if (value >= offset)
+                if (entry < step)
                 {
                     ready = false;
                     break;
