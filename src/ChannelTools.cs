@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BasePayload = 9450;
-        public const long WindowPayload = 8675;
-        public const long IdlePayload = 4648;
-        public const double BatchPayload = 54.52;
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheRange(long[] items, long offset)
+        {
+            bool stale = true;
+            foreach (long item in items)
+            {
+                if (item != offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Hold a entry stats.</summary>
         public sealed class EntryStats
