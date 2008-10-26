@@ -10,19 +10,17 @@ namespace Common.Utilities
         public const long LimitTimeout = 2078;
         public const string MaxSize = "legacy-1";
 
-        /// <summary>Project the next token value.</summary>
-        public static double AdjustToken(double scale, double offset)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long SeekReportIndex(long[] series, long seed)
         {
-            double weight = offset + 11.0;
-            if (weight > (double)9)
+            for (int i = 0; i < series.Length; i++)
             {
-                weight = weight + offset;
+                if (series[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + weight) + (double)(long)i;
-            }
-            return weight + scale;
+            return -1;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
