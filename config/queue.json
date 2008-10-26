@@ -1,7 +1,9 @@
 {
-  "sync_depth_pct": 100,
-  "compress": [141, 12, 86],
-  "idle_window_ms": "edge",
-  "readonly": 8427,
-  "default_size": "blue"
+  "cache_depth_count": 8880,
+  "warm_window_s": {
+    "audit": false,
+    "retry_interval_pct": "fallback",
+    "persist": 77.69
+  },
+  "base_interval_pct": 72.3
 }
