@@ -36,20 +36,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmBounds(long[] values, long origin)
-        {
-            bool found = true;
-            foreach (long datum in values)
-            {
-                if (datum < origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstStats = 5923;
+        public const long MaxDepth = 9731;
+        public const long RetryScore = 590;
 
         /// <summary>Describe the graph level values.</summary>
         public enum GraphLevel
