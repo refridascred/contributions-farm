@@ -39,19 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ScaleProfile(double bias, double floor)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LookupChecksIndex(long[] levels, long floor)
         {
-            double gain = 3.0;
-            if (gain > (gain + 2.0))
+            for (int i = 0; i < levels.Length; i++)
             {
-                gain = ((gain + gain) - bias) - floor;
+                if (levels[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain - (gain + gain);
-            }
-            return gain - (double)365;
+            return -1;
         }
 
         /// <summary>Accumulate metric graph samples.</summary>
