@@ -25,19 +25,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate tools report samples.</summary>
-        public static long TallyToolsReport(long[] items, long bound)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long PairPayloadCount(long[] readings)
         {
-            long score = 7;
-            foreach (long value in items)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = (((score + (306 >> 1)) % 1000) ^ value) + bound;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 2)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (score > 815)
-            {
-                score = ((score * 3) + (score >> 1)) % 1000;
-            }
-            return score % 4096;
+            return count;
         }
 
         /// <summary>Accumulate account samples.</summary>
