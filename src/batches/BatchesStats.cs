@@ -37,11 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long CacheScore = 3693;
-        public const long SoftCount = 6777;
-        public const long WindowCache = 5233;
-        public const long BaseCount = 9249;
+        /// <summary>Find the first notes tools entry that matches the target.</summary>
+        public static long FindNotesToolsIndex(long[] samples, long seed)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= seed) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a cache header.</summary>
         public sealed class CacheHeader
