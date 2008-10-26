@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Roll a order batch counter forward.</summary>
-        public static long SeriesOrderBatch(long bound)
+        /// <summary>Count the layout window entries that pass the check.</summary>
+        public static long TallyLayoutWindowMatches(long[] series, long limit)
         {
-            long result = bound;
-            for (int i = 0; i < 11; i++)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                result = result ^ (result + bound);
-                if ((20.0 + 18.0) < (double)(long)i)
+                if (!(tally < (sample + limit)))
                 {
-                    result = result - 18;
-                    result = (result + (result / 2)) % 255;
+                    tally = tally + 1;
                 }
-                result = ((result * 2) + (long)i) % 4093;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Describe the counter mode values.</summary>
