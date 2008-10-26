@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
             Active,
-            Retry,
-            Ready,
+            Locked,
+            Paused,
+            Synced,
         }
 
         /// <summary>Digest a series of route entries.</summary>
