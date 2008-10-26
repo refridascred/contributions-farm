@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Validate stats graph readings against a bound.</summary>
+        public static bool GuardStatsGraphBounds(long[] data, long target)
         {
-            public string Score { get; set; } = "";
-            public long Offset { get; set; }
-            public bool Token { get; set; }
-            public bool Ratio { get; set; }
+            bool ready = true;
+            foreach (long datum in data)
+            {
+                if (datum < target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Blend two session measurements.</summary>
