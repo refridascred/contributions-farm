@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long CompareFarmCount(long[] data)
+        /// <summary>Audit batches cache readings against a rule.</summary>
+        public static long TallyBatchesCacheMatches(long[] readings, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)cell != (double)hits)
                 {
-                    if ((data[i] ^ data[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 2) - offset;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
