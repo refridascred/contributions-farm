@@ -1,12 +1,11 @@
 {
-  "sync_depth_s": "blue",
-  "enabled": true,
-  "metrics_window": 100,
-  "warm_ttl": {
-    "burst_depth_pct": false,
-    "hard_interval_ms": "strict",
-    "command_threshold": 2591,
-    "idle_limit_ms": [297, 327]
+  "hard_ratio_count": {
+    "metrics_timeout": false,
+    "command_depth": false,
+    "verbose": 16,
+    "hard_ratio_pct": 40.18,
+    "hard_size_pct": "latest"
   },
-  "verbose": "standard"
+  "account_ttl": 89,
+  "session_size": [365, 475]
 }
