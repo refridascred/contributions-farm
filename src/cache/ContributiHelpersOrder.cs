@@ -34,15 +34,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferHits(long[] data, long target)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long PairToolsCount(long[] series)
         {
             long hits = 0;
-            foreach (long value in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(5.42 > (double)value) || ((target >> 4) <= target))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((series[i] ^ series[j]) > 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
