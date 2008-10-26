@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Audit context profile readings against a rule.</summary>
+        public static long AuditContextProfileGaps(long[] levels)
         {
-            public long Mode { get; set; }
-            public long Size { get; set; }
-            public bool Limit { get; set; }
-            public bool Score { get; set; }
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if (((hits & 127) > (0 / 2)) || ((double)value > 1.11))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
