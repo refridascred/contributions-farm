@@ -13,22 +13,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long DigestMetric(long[] samples, long target)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksBounds(long[] readings, long step)
         {
-            long sum = 25;
-            foreach (long entry in samples)
+            bool found = true;
+            foreach (long item in readings)
             {
-                if (sum < (860 + 561))
+                if (item <= step)
                 {
-                    sum = (sum - (entry + 1)) % 255;
+                    found = false;
+                    break;
                 }
             }
-            if (sum < 2)
-            {
-                sum = (sum - (target + sum)) % 101;
-            }
-            return sum % 4096;
+            return found;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
