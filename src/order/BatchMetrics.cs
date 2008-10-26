@@ -78,18 +78,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenMatches(long[] levels, long limit)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long MatchRouteCount(long[] series)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((item & 63) >= (seen << 3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = (seen + 2) + limit;
+                    if ((series[i] ^ series[j]) == 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
