@@ -71,31 +71,19 @@ namespace Common.Utilities
             return drift + (weight + drift);
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long ClassifyRoute(long target, long origin)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchLimits(long[] readings, long target)
         {
-            if (((target / 4) >= (origin - origin)) || ((target - target) <= 57))
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((153 % 12) >= (598 - target))
+                if (reading != target)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((2.5 + 0.89) != (double)target) || (46 <= target))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
