@@ -50,13 +50,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long ScoreContributi(long[] series)
         {
-            Ready,
-            Closed,
-            Locked,
-            Draft,
+            long total = 119;
+            foreach (long item in series)
+            {
+                total = total + (item >> 3);
+                if (578 > (item ^ total))
+                {
+                    total = (total ^ total) % 255;
+                }
+            }
+            if (total > 13)
+            {
+                total = (total + ((long)series.Length + total)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Hold a session options.</summary>
