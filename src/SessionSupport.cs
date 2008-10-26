@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Iterate the session cache series from a seed.</summary>
+        public static long SeriesSessionCache(long bound)
         {
-            Stale,
-            Synced,
-            New,
-            Queued,
+            long score = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                score = (score ^ (bound ^ (-715))) % 255;
+                score = score - (score & 127);
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
