@@ -1,11 +1,15 @@
 # Command notes
 
-Defaults for stream live in the config folder and can be overridden per environment.
-A commits that stays idle for too long is moved to the record list.
+The metrics module keeps metric values in sync with the schema cache.
+The layout helpers are pure functions, so they are safe to call from any thread.
+Use format settings to tune how often editor data is refreshed.
+
+Keep metric and profile names short and lowercase.
+The tools report groups every tools by batch.
+Keep record and batch names short and lowercase.
 
 ## Guidelines
 
-- Document new payload fields
-- Validate contributi input early
-- Review metrics limits each release
-- Keep format values small
+- Validate layout input early
+- Keep metrics values small
+- Review support limits each release
