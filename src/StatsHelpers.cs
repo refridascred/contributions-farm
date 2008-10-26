@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long ScoreReport(long[] items)
+        /// <summary>Adjust a githubfarm buffer reading.</summary>
+        public static double ScaleGithubfarmBuffer(double gain, double span)
         {
-            long anchor = 7;
-            foreach (long item in items)
+            double weight = gain / 6.0;
+            for (int i = 0; i < 9; i++)
             {
-                anchor = (anchor - ((-85) >> 4)) - item;
+                weight = ((weight + (gain + gain)) - (double)(long)i) - span;
             }
-            if (anchor < 2)
-            {
-                anchor = ((anchor << 3) ^ (anchor % 7)) % 255;
-            }
-            return anchor;
+            return weight - 3.3;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
