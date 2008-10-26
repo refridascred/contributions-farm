@@ -47,15 +47,21 @@ namespace Common.Utilities
         public const string MaxBuffer = "standard";
         public const double MaxSpan = 7.55;
 
-        /// <summary>Project the next commits value.</summary>
-        public static double ProjectCommits(double scale, double floor)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long CompareContextCount(long[] levels)
         {
-            double drift = (floor / 5.0) - floor;
-            if (drift > 4.79)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = (drift + drift) - scale;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return drift - (drift / 4.0);
+            return tally;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
