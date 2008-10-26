@@ -1,6 +1,7 @@
 {
-  "poll_ttl_s": "local",
-  "poll_ttl": 4444,
-  "contributi_limit": 27.19,
-  "schema_size": 8.05
+  "idle_ttl_s": 100,
+  "max_retries_s": false,
+  "buffer_delay": "stable",
+  "flush_size_pct": true,
+  "enabled": 61
 }
