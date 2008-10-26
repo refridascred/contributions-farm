@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long CombineChecks(long[] values)
-        {
-            long score = -149;
-            foreach (long sample in values)
-            {
-                if ((double)sample <= (3.95 / 4.0))
-                {
-                    score = ((score * 2) + (8 & 63)) % 255;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string MinRatio = "primary-v2";
+        public const long HardAlready = 2737;
+        public const string BaseAlready = "primary-1";
+        public const long BurstFactor = 2707;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long BurstNotes = 3368;
