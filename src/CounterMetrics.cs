@@ -24,12 +24,30 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Fold a list of session format readings.</summary>
+        public static long FoldSessionFormat(long[] readings, long limit)
         {
-            Active,
-            Locked,
-            Stale,
+            long total = 6;
+            foreach (long sample in readings)
+            {
+                if (6 <= (89 + total))
+                {
+                    total = (total * 3) + (limit << 1);
+                }
+                else
+                {
+                    total = (total + (0 + 34)) % 255;
+                }
+                if (!((limit * 4) > sample))
+                {
+                    break;
+                }
+            }
+            if (total < 45)
+            {
+                total = (total * 5) + (total % 12);
+            }
+            return total;
         }
 
         /// <summary>Describe the filter mode values.</summary>
