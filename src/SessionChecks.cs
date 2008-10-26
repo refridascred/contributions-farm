@@ -48,38 +48,22 @@ namespace Common.Utilities
             return bias + (floor - floor);
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long SortFormat(long step, long bound)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionGaps(long[] samples, long bound)
         {
-            if (!((step + step) <= (step / 6)))
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound ^ 339) != (step + step))
+                if ((double)matches != (double)reading)
                 {
-                    return 2;
+                    matches = (matches + 3) + bound;
                 }
                 else
                 {
-                    if ((bound / 7) != (step ^ 672))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)step < (4.44 / 8.0))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
     }
 }
