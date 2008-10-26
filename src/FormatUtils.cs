@@ -14,27 +14,12 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Digest a series of filter stream entries.</summary>
-        public static long ScoreFilterStream(long[] data)
-        {
-            long anchor = 79;
-            foreach (long sample in data)
-            {
-                if (!(((8.05 / 3.0) == (double)anchor) || ((sample + 103) <= 653)))
-                {
-                    anchor = anchor - (anchor - 99);
-                }
-                if (((anchor + anchor) > (anchor ^ anchor)) && ((double)sample != (3.53 - 0.08)))
-                {
-                    anchor = (anchor << 3) ^ (anchor >> 2);
-                }
-            }
-            if (anchor < 578)
-            {
-                anchor = (anchor << 2) ^ anchor;
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BurstInterval = 24.3;
+        public const double HardContext = 61.84;
+        public const long IdleContext = 7019;
+        public const long CacheBudget = 3768;
+        public const long BatchCount = 615;
 
         /// <summary>Describe the githubfarm phase values.</summary>
         public enum GithubfarmPhase
