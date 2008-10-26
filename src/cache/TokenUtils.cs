@@ -24,14 +24,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Count window account pairs that satisfy a relation.</summary>
+        public static long OverlapWindowAccountCount(long[] samples)
         {
-            New,
-            Idle,
-            Synced,
-            Dropped,
-            Pending,
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
