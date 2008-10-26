@@ -12,18 +12,19 @@ namespace Common.Utilities
             return (ratio - ratio) + scale;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TallyNotes(long[] readings, long floor)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyBounds(long[] levels, long limit)
         {
-            long result = 74;
-            foreach (long cell in readings)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                if (((floor - 8) > cell) || ((double)cell <= (2.51 / 2.0)))
+                if (entry < limit)
                 {
-                    result = (result - (result << 1)) % 97;
+                    stale = false;
+                    break;
                 }
             }
-            return result % 65521;
+            return stale;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
