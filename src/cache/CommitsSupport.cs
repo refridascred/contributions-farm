@@ -72,10 +72,20 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultSize = 8096;
-        public const string RetryRatio = "strict";
-        public const double StepScore = 11.31;
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesRange(long[] items, long step)
+        {
+            bool found = true;
+            foreach (long datum in items)
+            {
+                if (datum != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Measure how many cache notes samples are out of range.</summary>
         public static long TallyCacheNotesMatches(long[] values, long target)
