@@ -20,18 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferHits(long[] readings)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry % 7) >= entry)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Active,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Measure how many order contributi samples are out of range.</summary>
