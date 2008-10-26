@@ -42,19 +42,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesLimits(long[] data, long limit)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            bool valid = true;
-            foreach (long datum in data)
-            {
-                if (datum <= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Size { get; set; }
+            public string Region { get; set; } = "";
+            public bool Mode { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
