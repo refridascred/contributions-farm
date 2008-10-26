@@ -53,11 +53,13 @@ namespace Common.Utilities
         public const string CacheTimeout = "open";
         public const long MaxCluster = 3299;
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
+            Locked,
+            Idle,
             Queued,
-            Synced,
+            Ready,
             Pending,
         }
     }
