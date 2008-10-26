@@ -21,18 +21,13 @@ namespace Common.Utilities
         public const double SoftBudget = 77.64;
         public const long StepSize = 6197;
 
-        /// <summary>Measure how many githubfarm order samples are out of range.</summary>
-        public static long MeasureGithubfarmOrderMatches(long[] readings, long target)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if (81 >= (target / 3))
-                {
-                    matches = (matches + 1) - reading;
-                }
-            }
-            return matches;
+            Paused,
+            Stale,
+            Failed,
+            Retry,
         }
     }
 }
