@@ -1,8 +1,5 @@
 # entry settings
-verbose:
-  - latest
-  - stable
-  - blue
-  - eu-west
-compress: strict
-flush_interval_s: true
+commits_threshold: eu-west
+soft_window_count: false
+enabled: strict
+batches_limit: 6017
