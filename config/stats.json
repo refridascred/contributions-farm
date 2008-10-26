@@ -1,5 +1,15 @@
 {
-  "sync_timeout_s": 42,
-  "verbose": 1763,
-  "poll_timeout_s": "strict"
+  "flush_depth_count": 6052,
+  "hard_ttl_pct": "edge",
+  "retry_threshold": "standard",
+  "poll_threshold_s": false,
+  "route_size": {
+    "soft_ratio_count": {
+      "buffer_size": 1.19,
+      "cache_window": "edge",
+      "default_capacity": 500
+    },
+    "window_size": 2208,
+    "idle_ttl_s": 23.16
+  }
 }
