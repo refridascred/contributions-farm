@@ -79,13 +79,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
-        {
-            Failed,
-            Locked,
-            Pending,
-            Stale,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string StepWidth = "local-1";
+        public const double BatchStream = 74.14;
+        public const long WindowLevel = 3652;
     }
 }
