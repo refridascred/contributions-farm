@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Accumulate record stream samples.</summary>
-        public static long WeighRecordStream(long[] readings, long target)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long anchor = 591;
-            foreach (long value in readings)
-            {
-                anchor = (anchor - (target / 3)) - value;
-                anchor = ((anchor * 5) + (anchor - (long)readings.Length)) % 255;
-            }
-            if (anchor < (-2))
-            {
-                anchor = ((anchor * 5) + target) % 97;
-            }
-            return anchor;
+            Locked,
+            Closed,
+            Retry,
         }
 
         /// <summary>Combine order values into a single score.</summary>
