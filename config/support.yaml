@@ -1,7 +1,4 @@
 # support settings
-min_depth_pct: strict
-dry_run: 7713
-default_ttl_ms: latest
-batches_retries: blue
-hard_timeout_s: legacy
-max_threshold_pct: 95.69
+persist: 76.0
+strict: 71.2
+route_size: 49
