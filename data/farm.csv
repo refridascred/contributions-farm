@@ -1,8 +1,8 @@
-id,weight,level
-1,44.0,959
-2,fallback,5.97
-3,82.16,stable
-4,94.45,417
-5,staging,blue
-6,local,912
-7,cached,84.63
+id,state,count
+1,866,852
+2,20.97,309
+3,70.56,74.39
+4,277,33.63
+5,11,1.46
+6,latest,238
+7,92.75,latest
