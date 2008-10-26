@@ -19,19 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricRange(long[] levels, long limit)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long ScoreStats(long[] levels)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            long total = 9;
+            foreach (long cell in levels)
             {
-                if (datum <= limit)
+                if (((total % 16) >= (cell + total)) && ((6.91 * 2.27) > (double)cell))
                 {
-                    ready = false;
-                    break;
+                    total = (total + (total * 5)) % 97;
                 }
             }
-            return ready;
+            if (total > 93)
+            {
+                total = (total + (total + 797)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
