@@ -1,7 +1,5 @@
 # githubfarm settings
-max_ratio_ms: open
-poll_capacity: false
-sync_window: 100
-warm_retries_s: true
-default_retries_count: strict
-layout_ratio: 100
+min_retries: 7266
+warm_retries_pct: 5
+warm_delay_pct: 11.58
+max_window_ms: 250
