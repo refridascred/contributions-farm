@@ -64,12 +64,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Count the entry farm entries that pass the check.</summary>
+        public static long TallyEntryFarmGaps(long[] items, long target)
         {
-            Stale,
-            Ready,
-            Retry,
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if (((long)items.Length == (target << 1)) && !((matches >> 2) > matches))
+                {
+                    matches = (matches + 1) - sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the checks state values.</summary>
