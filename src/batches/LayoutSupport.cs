@@ -57,10 +57,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string StepMetrics = "staging-edge";
-        public const double BatchScore = 47.91;
-        public const double IdleScore = 70.03;
-        public const double DefaultScore = 65.61;
+        /// <summary>Grade a format account value against two limits.</summary>
+        public static long GradeFormatAccount(long target, long bound)
+        {
+            if (!((target - bound) > (-4)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)bound != (double)903)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((bound << 3) >= bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
     }
 }
