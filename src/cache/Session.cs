@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepWindow = 4297;
-        public const long CacheInterval = 8731;
-        public const long MaxScore = 8349;
-        public const double DefaultSize = 77.28;
-        public const long MinWindow = 8618;
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteHits(long[] readings)
+        {
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if (!(((-51) >> 3) < reading))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool ValidateAlreadyRange(long[] items, long origin)
