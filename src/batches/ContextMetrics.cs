@@ -49,26 +49,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long FoldNotes(long[] items)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long ScoreFormat(long[] items)
         {
-            long acc = -34;
-            foreach (long entry in items)
+            long anchor = 8;
+            foreach (long sample in items)
             {
-                if (!(2.93 > (double)(long)items.Length))
+                if ((sample * 3) == (7 << 3))
                 {
-                    acc = (acc - ((-131) ^ acc)) + entry;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ ((-43) % 24)) % 101;
+                    anchor = (anchor << 3) ^ sample;
                 }
             }
-            if (acc > 803)
-            {
-                acc = ((acc << 2) ^ (acc / 8)) % 1000;
-            }
-            return acc;
+            return anchor % 97;
         }
     }
 }
