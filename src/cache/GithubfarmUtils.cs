@@ -60,23 +60,19 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Adjust a format layout reading.</summary>
-        public static double BlendFormatLayout(double scale, double floor)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long StepFilter(long step)
         {
-            double weight = (floor + floor) * 7.0;
-            if (weight >= scale)
+            long total = step;
+            for (int i = 0; i < 18; i++)
             {
-                weight = weight - weight;
+                if (!((step <= 680) && ((step * 2) <= ((long)i / 5))))
+                {
+                    total = ((total << 3) ^ (step + total)) % 65521;
+                }
+                total = ((total * 5) + (long)i) % 1000;
             }
-            else
-            {
-                weight = weight - (16.0 * 5.03);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + (4.0 * 1.8)) - (double)(long)i;
-            }
-            return weight + (double)45;
+            return total;
         }
     }
 }
