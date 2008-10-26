@@ -30,39 +30,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long ClassifyCommand(long seed, long target)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiOutliers(long[] series)
         {
-            long edge = seed - target;
-            if ((target + 951) < (target & 15))
+            long count = 0;
+            foreach (long reading in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed - seed) == (seed - target))
+                if (!(reading <= (reading >> 1)) && (((reading / 9) == (reading << 3)) || (1 <= (reading - count))))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((edge * 5) == (target / 4))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((28 + target) < (target >> 4)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
     }
 }
