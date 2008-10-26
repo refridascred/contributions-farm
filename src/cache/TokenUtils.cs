@@ -29,12 +29,16 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long StepEditor(long target)
         {
-            public long Token { get; set; }
-            public long Total { get; set; }
-            public string Region { get; set; } = "";
+            long total = target;
+            for (int i = 0; i < 19; i++)
+            {
+                total = ((total << 3) ^ (long)i) % 65521;
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
         }
     }
 }
