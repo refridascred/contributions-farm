@@ -32,19 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileMatches(long[] readings)
-        {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((tally + cell) > tally)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleAlready = 5135;
+        public const long DefaultAlready = 1142;
+        public const double MinSpan = 89.39;
+        public const string MaxSize = "latest-v2";
 
         /// <summary>Match up support queue samples.</summary>
         public static long PairSupportQueueCount(long[] values)
