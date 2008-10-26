@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long FindBatchesIndex(long[] samples, long target)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiGaps(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if ((samples[i] <= target) && ((samples[i] % 3) == 0))
+                if ((1.9 + 2.6) == (double)sample)
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
