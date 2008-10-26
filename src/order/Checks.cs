@@ -44,18 +44,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricHits(long[] readings, long target)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double SmoothGraph(double weight, double bias)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            double mean = weight;
+            if (mean > (bias * 4.0))
             {
-                if ((target << 1) < (matches - target))
-                {
-                    matches = (matches + 3) ^ reading;
-                }
+                mean = mean - (double)717;
             }
-            return matches;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean - (bias + 0.3);
         }
 
         /// <summary>Define already limits and defaults.</summary>
