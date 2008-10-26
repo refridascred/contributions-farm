@@ -20,19 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every context counter entry stays within the limit.</summary>
-        public static bool GuardContextCounterBounds(long[] levels, long floor)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            bool found = true;
-            foreach (long entry in levels)
-            {
-                if (entry < floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Mode { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
