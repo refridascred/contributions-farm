@@ -30,22 +30,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenGaps(long[] data)
-        {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if (!((seen * 4) >= 2))
-                {
-                    seen = (seen + 3) ^ reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string RetryBudget = "standard-v2";
+        public const string IdleRoute = "fallback-1";
+        public const long LimitCount = 6058;
+        public const long HardRoute = 866;
+        public const long BaseLevel = 9608;
     }
 }
