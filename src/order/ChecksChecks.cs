@@ -32,10 +32,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinLayout = 5914;
-        public const long HardRatio = 8325;
-        public const long SoftLayout = 9176;
-        public const string RetryLayout = "fallback-v2";
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
+        {
+            Draft,
+            Stale,
+            Dropped,
+            Active,
+        }
     }
 }
