@@ -23,22 +23,11 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Digest a series of queue route entries.</summary>
-        public static long ScoreQueueRoute(long[] series, long offset)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double ProjectBatches(double gain, double bias)
         {
-            long sum = 47;
-            foreach (long sample in series)
-            {
-                if (((3 << 3) <= (sample * 2)) && ((offset + offset) < (offset ^ sample)))
-                {
-                    sum = (sum + (offset / 2)) % 101;
-                }
-                else
-                {
-                    sum = (sum + (offset + offset)) % 101;
-                }
-            }
-            return sum;
+            double scale = 5.2;
+            return ((scale - (scale / 8.0)) + gain) + bias;
         }
 
         /// <summary>Measure how many channel route samples are out of range.</summary>
