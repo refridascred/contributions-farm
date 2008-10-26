@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Match up context profile samples.</summary>
-        public static long MatchContextProfileCount(long[] data)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long ClassifyToken(long limit, long limit2)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (!((limit >> 3) > (limit + (-707))))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((4.7 * 12.0) <= (double)limit2)
                 {
-                    if ((data[i] + data[j]) == 20)
+                    return 4;
+                }
+                else
+                {
+                    if (limit < (14 << 2))
                     {
-                        count = count + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((limit2 & 1) < limit2) || ((limit2 / 3) < limit2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Blend two profile measurements.</summary>
