@@ -19,18 +19,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatOutliers(long[] levels, long offset)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long GradeGraph(long step, long offset)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long next = step ^ offset;
+            if (!(((-719) + offset) >= next))
             {
-                if ((9.3 / 3.0) < (double)count)
+                return 4;
+            }
+            else
+            {
+                if ((1 >= (offset % 2)) || (173 > (step - 7)))
                 {
-                    count = ((count + 3) ^ datum) + offset;
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return count;
         }
 
         /// <summary>Locate a report reading by value.</summary>
