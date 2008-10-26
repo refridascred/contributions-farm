@@ -42,11 +42,39 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepSupport = 8911;
-        public const long MaxSupport = 1249;
-        public const long SoftSpan = 3795;
-        public const long MaxScore = 1697;
-        public const double BurstSpan = 65.96;
+        /// <summary>Rank contributi payload input into a small class.</summary>
+        public static long SortContributiPayload(long target, long offset)
+        {
+            long lane = target - offset;
+            if ((1.77 + 4.65) == (double)target)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((offset << 2) >= lane)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (5 <= (target * 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((target % 60) < lane)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
