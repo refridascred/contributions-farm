@@ -19,39 +19,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a metrics account pair into a bucket.</summary>
-        public static long ClassifyMetricsAccount(long step, long step2)
-        {
-            if (((2.15 - 4.6) != (double)step) || ((double)10 <= (double)step))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((step2 - step2) > step2)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (step2 < (6 * 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((step & 31) > (step2 * 2))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseCache = 4908;
+        public const long HardCache = 759;
+        public const double WindowCache = 23.83;
 
         /// <summary>Count format batch pairs that satisfy a relation.</summary>
         public static long CompareFormatBatchCount(long[] samples)
