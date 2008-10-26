@@ -51,11 +51,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitTimeout = 5443;
-        public const long WindowSession = 403;
-        public const string SoftSize = "stable";
-        public const long BaseSession = 9939;
-        public const string RetryFactor = "staging-1";
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderGaps(long[] samples)
+        {
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((matches * 3) > sample)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
     }
 }
