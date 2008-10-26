@@ -10,23 +10,18 @@ namespace Common.Utilities
         public const long IdleInterval = 7998;
         public const long MaxProfile = 5424;
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double SmoothRoute(double bias, double span)
+        /// <summary>Measure how many record profile samples are out of range.</summary>
+        public static long TallyRecordProfileOutliers(long[] samples, long bound)
         {
-            double drift = bias;
-            if (drift <= drift)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                drift = drift - bias;
+                if ((((718 - sample) > (sample >> 4)) && ((7.67 + 17.0) != (double)bound)) || !(sample < (sample + 204)))
+                {
+                    count = count + 3;
+                }
             }
-            else
-            {
-                drift = drift + bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + (span / 8.0)) + (double)(long)i;
-            }
-            return drift + (drift + bias);
+            return count;
         }
 
         /// <summary>Hold a filter snapshot.</summary>
