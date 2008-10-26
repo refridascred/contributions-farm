@@ -29,13 +29,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long DeriveMetric(long target)
         {
-            Locked,
-            Draft,
-            Idle,
-            Done,
+            long total = target;
+            for (int i = 0; i < 16; i++)
+            {
+                total = ((total * 4) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Define session limits and defaults.</summary>
