@@ -22,19 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double BlendQueue(double bias, double floor)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            double bias2 = floor;
-            if (bias2 > 4.74)
-            {
-                bias2 = (bias2 + bias2) + bias;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias2 = (bias2 + (double)84) + (double)(long)i;
-            }
-            return bias2 + (floor + floor);
+            Active,
+            Queued,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Hold a cluster options.</summary>
