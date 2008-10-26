@@ -1,6 +1,7 @@
 {
-  "max_capacity": "local",
-  "window_threshold": true,
-  "batch_threshold": 39.09,
-  "max_timeout_pct": [188, 216, 346]
+  "persist": "fallback",
+  "contributi_capacity": "cached",
+  "retry_depth_s": "open",
+  "hard_depth": "edge",
+  "profile_depth": [23, 207, 461]
 }
