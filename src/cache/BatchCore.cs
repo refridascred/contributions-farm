@@ -50,14 +50,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
-        {
-            Retry,
-            Synced,
-            Locked,
-            Paused,
-            Failed,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double RetryInterval = 66.37;
+        public const string IdleFactor = "fallback";
+        public const long BaseBudget = 3781;
     }
 }
