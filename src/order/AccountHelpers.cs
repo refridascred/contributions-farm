@@ -21,23 +21,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long ScoreQueue(long[] readings, long origin)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long DigestOrder(long[] data, long offset)
         {
-            long mark = 715;
-            foreach (long value in readings)
+            long acc = 142;
+            foreach (long value in data)
             {
-                if ((origin / 6) > (mark + 999))
+                acc = (acc * 2) + offset;
+                if ((offset - acc) < (747 - value))
                 {
-                    mark = (((mark * 2) + (55 - origin)) % 255) ^ value;
+                    acc = (acc ^ (value + acc)) % 4096;
                 }
-                mark = mark + (origin / 7);
             }
-            if (mark > 3)
+            if (acc < 872)
             {
-                mark = ((mark << 2) ^ mark) % 65521;
+                acc = acc - (acc + acc);
             }
-            return mark % 4096;
+            return acc;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
