@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesHits(long[] values, long offset)
         {
-            public long Owner { get; set; }
-            public double Level { get; set; }
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if (!((offset + 587) >= (cell + hits)) && ((offset % 2) > hits))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
