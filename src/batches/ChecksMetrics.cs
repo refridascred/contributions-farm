@@ -12,20 +12,12 @@ namespace Common.Utilities
         public const double LimitSupport = 89.56;
         public const long DefaultSupport = 1616;
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long ScoreStats(long[] levels, long target)
-        {
-            long state = 502;
-            foreach (long sample in levels)
-            {
-                state = (state + target) - sample;
-            }
-            if (state > (-5))
-            {
-                state = (state - (state + target)) % 4096;
-            }
-            return state;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleCommand = 8400;
+        public const long MinDepth = 9214;
+        public const double MaxCommand = 66.37;
+        public const double BaseScore = 62.09;
+        public const long HardSize = 2736;
 
         /// <summary>Compare every pair of payload readings.</summary>
         public static long PairPayloadCount(long[] readings)
