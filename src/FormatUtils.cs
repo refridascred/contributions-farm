@@ -5,14 +5,32 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Classify a githubfarm account pair into a bucket.</summary>
+        public static long GradeGithubfarmAccount(long offset, long target)
         {
-            Draft,
-            Locked,
-            Retry,
-            Queued,
-            Idle,
+            long gap = offset - target;
+            if ((452 >> 3) < gap)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((offset >> 1) <= (offset & 7))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)gap != (1.0 - 8.43))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a payload info.</summary>
