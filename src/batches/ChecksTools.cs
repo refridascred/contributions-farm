@@ -24,11 +24,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitPayload = 9428;
-        public const double RetryScore = 16.22;
-        public const long WindowScore = 2572;
-        public const string SoftPayload = "legacy-v2";
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleSize = 8845;
+        public const long IdleWidth = 296;
+        public const long LimitSpan = 6467;
+        public const long SoftBudget = 2405;
+        public const string RetryDepth = "latest-edge";
 
         /// <summary>Hold a schema entry.</summary>
         public sealed class SchemaEntry
