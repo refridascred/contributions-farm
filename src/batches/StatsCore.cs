@@ -54,21 +54,13 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long MatchLayoutCount(long[] levels)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Level { get; set; }
+            public long Label { get; set; }
+            public string Flag { get; set; } = "";
+            public string Token { get; set; } = "";
         }
     }
 }
