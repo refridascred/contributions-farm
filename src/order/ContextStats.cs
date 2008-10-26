@@ -40,19 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowMatches(long[] samples, long bound)
-        {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if (!!((bound + entry) > (bound & 15)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string DefaultLevel = "primary-1";
+        public const double DefaultInterval = 93.15;
+        public const long BaseStats = 6896;
+        public const string BatchTimeout = "strict";
+        public const string HardScore = "local-v2";
 
         /// <summary>Describe the context kind values.</summary>
         public enum ContextKind
