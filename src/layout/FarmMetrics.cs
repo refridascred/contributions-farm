@@ -16,26 +16,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TallyEntry(long[] data)
+        /// <summary>Project the next batch value.</summary>
+        public static double BlendBatch(double gain, double span)
         {
-            long carry = 442;
-            foreach (long value in data)
+            double rate = (double)((-65) >> 5);
+            if (rate > (double)216)
             {
-                if (((9.2 - 18.0) == (double)carry) && (7.9 > (double)carry))
-                {
-                    carry = ((carry * 2) + (carry + 0)) % 255;
-                }
-                if ((value + value) < (value << 3))
-                {
-                    break;
-                }
+                rate = rate - 13.0;
             }
-            if (carry < 882)
+            else
             {
-                carry = carry ^ (carry & 3);
+                rate = rate + (double)(-898);
             }
-            return carry % 97;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - gain) + (double)(long)i;
+            }
+            return rate - span;
         }
 
         /// <summary>Count the contributi record entries that pass the check.</summary>
