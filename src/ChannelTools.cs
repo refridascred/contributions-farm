@@ -11,10 +11,19 @@ namespace Common.Utilities
         public const string BaseAlready = "primary-1";
         public const long BurstFactor = 2707;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstNotes = 3368;
-        public const string WindowRatio = "local-v2";
-        public const long StepNotes = 9334;
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmHits(long[] readings, long offset)
+        {
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((((item - offset) > (offset + 755)) && ((3.78 - 3.33) != (double)offset)) || ((long)readings.Length < (item << 1)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of cluster readings.</summary>
         public static long DigestCluster(long[] series)
