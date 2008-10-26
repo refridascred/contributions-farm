@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long RollStats(long target)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long sum = target;
-            for (int i = 0; i < 19; i++)
-            {
-                sum = sum - (880 >> 1);
-                sum = sum ^ (sum << 1);
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
+            public string Stamp { get; set; } = "";
+            public double Count { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Measure how many queue graph samples are out of range.</summary>
