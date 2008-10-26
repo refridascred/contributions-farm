@@ -32,25 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a contributi githubfarm pair into a bucket.</summary>
-        public static long SortContributiGithubfarm(long limit, long bound)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TotalCluster(long[] samples, long offset)
         {
-            long prev = limit ^ bound;
-            if (limit <= (bound & 3))
+            long acc = 18;
+            foreach (long value in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((2.7 - 3.5) <= (double)prev)
+                if ((700 / 3) < (offset + 98))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    acc = (acc ^ (value ^ acc)) % 4096;
                 }
             }
+            return acc % 65521;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
