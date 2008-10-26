@@ -37,20 +37,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double ProjectToken(double gain, double bias)
-        {
-            double ratio = gain;
-            if (ratio > (double)931)
-            {
-                ratio = (ratio + gain) - bias;
-            }
-            else
-            {
-                ratio = ratio + 4.8;
-            }
-            return ratio + ratio;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseSupport = 1356;
+        public const long BurstSupport = 3302;
+        public const long WindowDepth = 2411;
+        public const string MaxTimeout = "alpha-1";
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long TotalBatches(long[] samples)
