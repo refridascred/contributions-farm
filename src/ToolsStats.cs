@@ -36,12 +36,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Count the notes profile entries that pass the check.</summary>
+        public static long CountNotesProfileGaps(long[] samples)
         {
-            Queued,
-            Ready,
-            Active,
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((hits + reading) == (hits * 3))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the filter level values.</summary>
