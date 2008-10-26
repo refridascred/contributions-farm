@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Project the next checks value.</summary>
-        public static double ProjectChecks(double scale, double floor)
+        /// <summary>Match up context profile samples.</summary>
+        public static long MatchContextProfileCount(long[] data)
         {
-            double gain = (double)(81 * 3);
-            for (int i = 0; i < 3; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                gain = ((gain + gain) + (double)(long)i) + floor;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 20)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return gain - scale;
+            return count;
         }
 
         /// <summary>Blend two profile measurements.</summary>
