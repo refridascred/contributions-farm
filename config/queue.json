@@ -1,11 +1,12 @@
 {
-  "poll_interval_count": "strict",
-  "hard_capacity": 48,
-  "contributi_depth": {
-    "stream_window": "fallback",
-    "sync_depth_ms": 30,
-    "strict": 9481,
-    "notes_ratio": 250
+  "soft_ttl_s": 100,
+  "dry_run": "local",
+  "soft_ratio_pct": {
+    "persist": 26,
+    "cache_timeout": "green",
+    "idle_limit": 250
   },
-  "graph_ratio": 10.52
+  "stats_size": "latest",
+  "batch_delay": true,
+  "warm_delay_s": 60
 }
