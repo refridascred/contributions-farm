@@ -23,20 +23,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long DeriveBuffer(long origin)
+        /// <summary>Look up the position of a entry tools sample.</summary>
+        public static long LookupEntryToolsIndex(long[] values, long bound)
         {
-            long acc = origin;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if ((values[i] == bound) && ((values[i] % 3) == 0))
                 {
-                    acc = (acc - (origin - acc)) ^ (long)i2;
-                    acc = (acc - (origin & 127)) % 65521;
+                    return (long)i;
                 }
-                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Check that every context queue entry stays within the limit.</summary>
