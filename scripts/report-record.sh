@@ -6,19 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-strict}"
+for item in primary fallback; do
+    log "checking ${item}"
+done
+
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
+
+mode="${1:-legacy}"
 case "${mode}" in
-    legacy)
+    fallback)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-RECORD_LIMIT=385
-log "limit is ${RECORD_LIMIT}"
-
-for item in strict open; do
-    log "checking ${item}"
-done
