@@ -1,23 +1,13 @@
 # support settings
-retry_interval: 54.33
-warm_delay_count:
-  command_limit:
-    - 204
-    - 474
-  dry_run: 83.34
-  min_limit:
-    - 386
-    - 72
-    - 351
-    - 152
-  batch_delay:
-    - cached
-    - legacy
-    - blue
-    - green
-  notes_window: staging
-  compress: stable
-poll_capacity_ms:
-  warm_retries_ms: 72
-  default_depth: local
-  warm_interval: edge
+base_retries_ms: cached
+order_threshold:
+  idle_limit_pct: 2171
+  persist: 100
+  warm_ratio_pct: latest
+  sync_delay_count: 275
+  compress: 47.98
+  command_interval:
+    - open
+    - staging
+    - strict
+compress: open
