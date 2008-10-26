@@ -54,13 +54,20 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Iterate the cache checks series from a seed.</summary>
+        public static long SeriesCacheChecks(long floor)
         {
-            Locked,
-            Closed,
-            Dropped,
-            Draft,
+            long anchor = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                if (!((double)anchor == (8.0 * 9.52)))
+                {
+                    anchor = ((anchor << 2) ^ (anchor << 2)) % 101;
+                }
+                anchor = (anchor + anchor) % 65521;
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the editor kind values.</summary>
