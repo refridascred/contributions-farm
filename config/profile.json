@@ -1,7 +1,6 @@
 {
-  "soft_ratio_pct": 50.74,
-  "audit": 1024,
-  "verbose": 6551,
-  "notes_window": false,
-  "default_depth_pct": [21, 136, 123, 441]
+  "metrics_limit": "primary",
+  "idle_limit_s": [291, 363, 441],
+  "idle_retries": "blue",
+  "min_delay_pct": "cached"
 }
