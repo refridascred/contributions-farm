@@ -33,19 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double BlendCommand(double bias, double bias2)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            double weight = (double)(0 & 7);
-            if (weight <= (double)5)
-            {
-                weight = (weight + (double)0) - bias2;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + weight) - (double)(long)i;
-            }
-            return weight + (bias * 6.43);
+            Ready,
+            New,
+            Draft,
+            Pending,
         }
 
         /// <summary>Describe the metric mode values.</summary>
