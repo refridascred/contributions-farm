@@ -41,39 +41,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank contributi payload input into a small class.</summary>
-        public static long SortContributiPayload(long target, long offset)
-        {
-            long lane = target - offset;
-            if ((1.77 + 4.65) == (double)target)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((offset << 2) >= lane)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (5 <= (target * 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((target % 60) < lane)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepMetric = 94;
+        public const double MaxSize = 29.83;
+        public const long HardMetric = 6360;
     }
 }
