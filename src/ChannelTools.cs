@@ -33,18 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowHits(long[] samples)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricRange(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                if ((double)entry > 0.4)
+                if (datum <= limit)
                 {
-                    count = count + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
