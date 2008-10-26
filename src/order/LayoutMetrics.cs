@@ -28,12 +28,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferRange(long[] samples, long offset)
         {
-            Ready,
-            Failed,
-            Synced,
+            bool found = true;
+            foreach (long datum in samples)
+            {
+                if (datum != offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
