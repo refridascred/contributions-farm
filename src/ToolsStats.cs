@@ -77,12 +77,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
-        {
-            Failed,
-            Draft,
-            Locked,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheScore = 6777;
+        public const double IdleQueue = 6.25;
+        public const long DefaultQueue = 8460;
+        public const double RetryQueue = 78.25;
+        public const long BaseQueue = 6477;
     }
 }
