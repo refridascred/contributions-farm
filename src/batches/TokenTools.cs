@@ -32,12 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string RetryChannel = "fallback";
-        public const long RetryFactor = 1884;
-        public const double HardChannel = 33.51;
-        public const string MinBudget = "staging-v2";
-        public const long BatchChannel = 5497;
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatOutliers(long[] readings)
+        {
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if (((matches << 2) <= (entry & 63)) || ((matches + matches) >= matches))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long DefaultGithubfarm = 9051;
