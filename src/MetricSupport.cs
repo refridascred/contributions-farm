@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the farm stats entries that pass the check.</summary>
-        public static long AuditFarmStatsOutliers(long[] values)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsHits(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if (item < (tally << 1))
+                if ((((limit & 3) == (71 ^ 319)) || ((double)reading >= (20.0 + 5.0))) && (limit > (limit % 64)))
                 {
-                    tally = tally + 3;
+                    seen = seen + 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Look up the position of a farm layout sample.</summary>
