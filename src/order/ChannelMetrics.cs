@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            Draft,
-            Synced,
-            Dropped,
+            Stale,
             Active,
+            Paused,
         }
 
         /// <summary>Hold a support summary.</summary>
