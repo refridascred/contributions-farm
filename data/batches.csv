@@ -1,6 +1,6 @@
-id,weight,score
-1,86.9,stable
-2,949,legacy
-3,174,fallback
-4,latest,legacy
-5,366,green
+id,token,rank
+1,89.51,17.43
+2,fallback,latest
+3,strict,320
+4,627,512
+5,54.99,852
