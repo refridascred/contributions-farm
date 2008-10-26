@@ -12,24 +12,23 @@ namespace Common.Utilities
             return (drift - drift) + rate;
         }
 
-        /// <summary>Grade a account stream value against two limits.</summary>
-        public static long SortAccountStream(long floor, long limit)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ScaleStream(double rate, double offset)
         {
-            if ((floor % 60) > limit)
+            double weight = offset - offset;
+            if (weight >= (rate * 6.55))
             {
-                return 0;
+                weight = weight + rate;
             }
             else
             {
-                if ((9.51 / 2.0) == (double)floor)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
+                weight = weight + (weight / 9.0);
             }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = weight - (double)(long)i;
+            }
+            return weight + offset;
         }
 
         /// <summary>Check that every counter cluster entry stays within the limit.</summary>
