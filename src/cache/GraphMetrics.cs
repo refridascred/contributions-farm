@@ -44,18 +44,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchOutliers(long[] items, long origin)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long StepBatches(long limit)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long carry = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if ((3 / 9) <= origin)
-                {
-                    count = (count + 3) + cell;
-                }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Describe the metric state values.</summary>
