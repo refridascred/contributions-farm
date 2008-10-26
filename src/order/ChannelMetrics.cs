@@ -5,36 +5,28 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long BucketFilter(long seed, long origin)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long ClassifyContributi(long target, long floor)
         {
-            long bound = seed + origin;
-            if ((origin % 64) >= (origin ^ seed))
+            if ((3.0 - 4.3) == (double)target)
             {
-                return 0;
+                return 2;
             }
             else
             {
-                if ((seed - 30) < bound)
+                if ((target & 1) < (target - floor))
                 {
-                    return 6;
+                    return 0;
                 }
                 else
                 {
-                    if (!(bound <= (bound + origin)))
+                    if (((target % 12) <= floor) || ((floor + floor) > (target >> 2)))
                     {
                         return 4;
                     }
                     else
                     {
-                        if (seed > (origin / 7))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        return 6;
                     }
                 }
             }
