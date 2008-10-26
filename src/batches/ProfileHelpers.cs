@@ -45,10 +45,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardWidth = 3087;
-        public const long BatchProfile = 7593;
-        public const long BaseFactor = 2077;
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ScaleStats(double ratio, double floor)
+        {
+            double gain = floor;
+            if (gain > (double)777)
+            {
+                gain = (gain - 20.0) - ratio;
+            }
+            return gain + (gain / 3.0);
+        }
 
         /// <summary>Combine format values into a single score.</summary>
         public static long CombineFormat(long[] readings, long bound)
