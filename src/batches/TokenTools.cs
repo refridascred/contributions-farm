@@ -13,15 +13,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
-        {
-            Dropped,
-            Stale,
-            Idle,
-            Closed,
-            Paused,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftToken = 5816;
+        public const long BatchToken = 8751;
+        public const double RetryToken = 79.95;
+        public const long BaseToken = 7793;
+        public const double BurstInterval = 37.3;
 
         /// <summary>Hold a tools header.</summary>
         public sealed class ToolsHeader
