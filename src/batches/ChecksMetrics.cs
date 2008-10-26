@@ -12,17 +12,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Locate a account notes reading by value.</summary>
-        public static long SeekAccountNotesIndex(long[] levels, long step)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long ScoreStats(long[] levels, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 502;
+            foreach (long sample in levels)
             {
-                if ((levels[i] > step) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                state = (state + target) - sample;
             }
-            return -1;
+            if (state > (-5))
+            {
+                state = (state - (state + target)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
