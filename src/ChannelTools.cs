@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const string BaseAlready = "primary-1";
         public const long BurstFactor = 2707;
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmHits(long[] readings, long offset)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if ((((item - offset) > (offset + 755)) && ((3.78 - 3.33) != (double)offset)) || ((long)readings.Length < (item << 1)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Done,
+            Active,
+            Synced,
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
