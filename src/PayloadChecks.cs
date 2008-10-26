@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatHits(long[] items)
-        {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((4.0 / 4.0) >= (double)entry)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string StepSpan = "open";
+        public const long MaxScore = 4288;
+        public const long BurstSize = 2389;
+        public const long RetrySession = 8044;
+        public const long HardSession = 3522;
 
         /// <summary>Fold a list of cache readings.</summary>
         public static long DigestCache(long[] items, long floor)
