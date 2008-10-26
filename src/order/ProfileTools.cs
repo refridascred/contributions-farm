@@ -47,21 +47,18 @@ namespace Common.Utilities
         public const string MaxBuffer = "standard";
         public const double MaxSpan = 7.55;
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long CompareContextCount(long[] levels)
+        /// <summary>Audit commits payload readings against a rule.</summary>
+        public static long CountCommitsPayloadHits(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((hits * 2) < (hits - hits))
                 {
-                    if ((levels[i] + levels[j]) != 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 3) ^ datum;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
