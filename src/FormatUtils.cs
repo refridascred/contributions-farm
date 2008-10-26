@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferRange(long[] series, long bound)
-        {
-            bool ok = true;
-            foreach (long reading in series)
-            {
-                if (reading >= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryCount = 3449;
+        public const long RetrySpan = 3213;
+        public const long StepLayout = 840;
+        public const long BatchInterval = 6519;
 
         /// <summary>Define context limits and defaults.</summary>
         public const double BurstInterval = 24.3;
