@@ -37,21 +37,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long MatchSchemaCount(long[] data)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long BucketWindow(long step, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long edge = step ^ origin;
+            if (((9.89 / 7.0) < (double)edge) || ((edge + edge) > (edge / 2)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((origin - step) <= (edge - origin))
                 {
-                    if ((data[i] + data[j]) != 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return matches;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
