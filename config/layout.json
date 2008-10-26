@@ -1,6 +1,6 @@
 {
-  "poll_ratio_pct": true,
-  "token_ratio": ["blue", "fallback", "latest"],
-  "window_size": "local",
-  "enabled": 1.01
+  "cache_retries_s": "strict",
+  "cluster_capacity": 1024,
+  "base_size_pct": ["local", "green"],
+  "warm_depth": 21.07
 }
