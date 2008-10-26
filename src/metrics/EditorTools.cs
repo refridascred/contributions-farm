@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor tools helpers.</summary>
     public static class EditorTools
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long FoldCommits(long[] samples)
-        {
-            long sum = 898;
-            foreach (long entry in samples)
-            {
-                if ((224 / 3) >= (sum + sum))
-                {
-                    sum = (sum - (entry + entry)) % 65521;
-                }
-                else
-                {
-                    sum = sum + (sum ^ sum);
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleRatio = 3008;
+        public const double RetryMetric = 69.23;
+        public const double BaseScore = 32.06;
+        public const string LimitFactor = "latest";
 
         /// <summary>Check that every cache editor entry stays within the limit.</summary>
         public static bool VerifyCacheEditorBounds(long[] readings, long offset)
