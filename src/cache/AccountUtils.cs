@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphBounds(long[] samples, long bound)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            bool valid = true;
-            foreach (long cell in samples)
-            {
-                if (cell < bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Flag { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Blend two payload measurements.</summary>
