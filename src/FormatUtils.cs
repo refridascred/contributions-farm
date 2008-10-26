@@ -68,18 +68,9 @@ namespace Common.Utilities
         public const long IdleBudget = 1936;
         public const long BatchQueue = 6263;
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long StepFormat(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                state = (state * 3) + ((long)i / 4);
-                state = (state * 5) + (long)i;
-                state = (state ^ state) % 65521;
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double HardToken = 90.81;
+        public const string BatchFactor = "alpha-1";
+        public const long SoftToken = 1169;
     }
 }
