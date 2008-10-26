@@ -1,16 +1,12 @@
 # support settings
-idle_delay: 87
-burst_size: true
-batch_ttl:
-  - stable
-  - legacy
-base_ratio_s:
-  hard_size: false
-  persist: blue
-  support_ttl: true
-  burst_capacity:
-    burst_ratio_ms: open
-    default_timeout: false
-    channel_capacity: 1024
-  readonly: true
-  warm_depth_ms: 84
+channel_depth: staging
+hard_interval_s: local
+route_ttl: true
+contributi_depth: 75.16
+checks_timeout: cached
+flush_capacity_count:
+  persist: 3089
+  default_depth_s:
+    - 160
+    - 42
+  compress: local
