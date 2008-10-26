@@ -26,19 +26,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesRange(long[] readings, long seed)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long StepCache(long origin)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            long acc = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (value > seed)
-                {
-                    ready = false;
-                    break;
-                }
+                acc = (acc ^ acc) % 255;
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return ready;
+            return acc;
         }
     }
 }
