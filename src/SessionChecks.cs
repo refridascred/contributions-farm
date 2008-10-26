@@ -65,22 +65,10 @@ namespace Common.Utilities
             return bias + (floor - floor);
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionGaps(long[] samples, long bound)
-        {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)matches != (double)reading)
-                {
-                    matches = (matches + 3) + bound;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryCluster = 8481;
+        public const double MaxTimeout = 9.05;
+        public const long MinSpan = 7113;
+        public const long WindowCluster = 8095;
     }
 }
