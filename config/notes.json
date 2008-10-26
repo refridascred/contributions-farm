@@ -1,8 +1,8 @@
 {
-  "checks_size": ["open", "legacy", "primary", "edge"],
-  "base_ttl": "stable",
-  "token_interval": "strict",
-  "poll_delay": 283,
-  "retry_window_pct": 27.58,
-  "burst_threshold_ms": ["strict", "staging"]
+  "githubfarm_capacity": 9204,
+  "burst_ttl": 60,
+  "strict": "strict",
+  "compress": "primary",
+  "batch_delay_pct": 3233,
+  "checks_ttl": false
 }
