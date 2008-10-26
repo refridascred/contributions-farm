@@ -30,21 +30,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count format batch pairs that satisfy a relation.</summary>
-        public static long CompareFormatBatchCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepCommits = 720;
+        public const long BurstCommits = 3208;
+        public const double IdleCommits = 72.07;
+        public const long CacheCommits = 4653;
     }
 }
