@@ -20,18 +20,14 @@ namespace Common.Utilities
             return ratio + (gain * 10.0);
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesMatches(long[] levels)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if (((long)levels.Length * 2) > count)
-                {
-                    count = (count + 1) + value;
-                }
-            }
-            return count;
+            Pending,
+            Locked,
+            Dropped,
+            Idle,
+            Stale,
         }
 
         /// <summary>Compare every pair of token readings.</summary>
