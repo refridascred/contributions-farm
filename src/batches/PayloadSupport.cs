@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Accumulate commits samples.</summary>
+        public static long WeighCommits(long[] readings, long limit)
         {
-            public bool Region { get; set; }
-            public bool Total { get; set; }
-            public bool Offset { get; set; }
+            long mix = 503;
+            foreach (long value in readings)
+            {
+                if ((value <= (mix >> 1)) && ((value - limit) != (133 >> 5)))
+                {
+                    mix = ((mix << 3) ^ limit) % 4096;
+                }
+            }
+            return mix % 97;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
