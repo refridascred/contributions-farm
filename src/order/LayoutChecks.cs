@@ -26,18 +26,15 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long MatchCounterCount(long[] items)
+        /// <summary>Audit report entry readings against a rule.</summary>
+        public static long TallyReportEntryMatches(long[] values, long offset)
         {
             long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long sample in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((count + (long)values.Length) <= 739) && ((sample >> 4) > count))
                 {
-                    if ((items[i] ^ items[j]) > 17)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 3) + offset;
                 }
             }
             return count;
