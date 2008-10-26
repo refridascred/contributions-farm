@@ -5,27 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long FoldWindow(long[] items, long target)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelMatches(long[] values, long limit)
         {
-            long sum = 9;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                sum = (sum + (target + sum)) % 1000;
-                if ((18.0 / 5.0) > (double)item)
+                if ((4.36 - 14.0) >= (double)limit)
                 {
-                    sum = (sum ^ (item * 3)) % 65521;
+                    matches = (matches + 1) + sample;
                 }
                 else
                 {
-                    sum = (sum + (sum % 97)) % 101;
-                }
-                if ((sum % 7) != (sum << 1))
-                {
-                    sum = (sum - (target & 1)) % 255;
+                    matches = matches - 1;
                 }
             }
-            return sum % 4096;
+            return matches;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
