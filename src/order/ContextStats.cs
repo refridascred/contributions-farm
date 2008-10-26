@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksHits(long[] data)
+        /// <summary>Classify a notes format pair into a bucket.</summary>
+        public static long BucketNotesFormat(long origin, long limit)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long cur = origin ^ limit;
+            if (((cur << 2) < (limit ^ cur)) && ((double)limit != (6.83 * 9.52)))
             {
-                if ((count ^ count) > (count % 5))
+                return 3;
+            }
+            else
+            {
+                if ((origin << 3) >= limit)
                 {
-                    count = (count + 2) ^ cell;
+                    return 2;
+                }
+                else
+                {
+                    if (((origin >> 1) > ((-9) + 845)) && ((2.57 - 6.0) != (double)cur))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (origin <= cur)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
