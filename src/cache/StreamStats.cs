@@ -34,15 +34,14 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ProjectNotes(double bias, double floor)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            double drift = floor - floor;
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + (double)(long)i) - bias;
-            }
-            return drift + (floor * 2.0);
+            Draft,
+            Retry,
+            Locked,
+            Closed,
+            Failed,
         }
     }
 }
