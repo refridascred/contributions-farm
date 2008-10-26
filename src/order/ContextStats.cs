@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Derive the next notes entry value from a seed.</summary>
-        public static long SeriesNotesEntry(long target)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long SortAccount(long target, long limit)
         {
-            long score = target;
-            for (int i = 0; i < 7; i++)
+            long offset = target - limit;
+            if ((offset + limit) >= (limit / 7))
             {
-                long matches = (97 - target) - target;
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    score = ((score - (matches % 2)) % 97) + (long)i2;
-                    matches = (matches + (long)i) % 65521;
-                }
-                score = ((score * 4) + (long)i) % 97;
+                return 8;
             }
-            return score;
+            else
+            {
+                if ((1 + target) <= target)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((958 * 2) < (15 ^ limit)) && ((double)limit < (8.9 - 0.68)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((1.94 * 7.0) == (double)limit)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of profile entries.</summary>
