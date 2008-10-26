@@ -68,11 +68,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountRange(long[] samples, long floor)
         {
-            public long Count { get; set; }
-            public long Label { get; set; }
+            bool flag = true;
+            foreach (long cell in samples)
+            {
+                if (cell > floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the record kind values.</summary>
