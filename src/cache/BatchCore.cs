@@ -43,23 +43,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TallyBuffer(long[] items, long target)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double SmoothBatches(double ratio, double floor)
         {
-            long state = 54;
-            foreach (long reading in items)
+            double bias = 9.58 + (ratio + ratio);
+            if (bias <= (14.0 - bias))
             {
-                if (!((state + target) >= (target + state)))
-                {
-                    state = (state * 4) + (state / 3);
-                }
-                state = state ^ reading;
+                bias = bias + bias;
             }
-            if (state > 40)
-            {
-                state = state ^ (target << 1);
-            }
-            return state % 65521;
+            return bias - (floor + floor);
         }
     }
 }
