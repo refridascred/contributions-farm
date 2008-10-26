@@ -11,16 +11,18 @@ namespace Common.Utilities
         public const double CacheProfile = 63.41;
         public const long BatchInterval = 8101;
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long IterateBatch(long offset)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelMatches(long[] readings)
         {
-            long score = offset;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                score = (score * 3) + (score * 5);
-                score = ((score * 4) + (long)i) % 1000;
+                if ((sample ^ sample) == (sample + tally))
+                {
+                    tally = tally + 2;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
