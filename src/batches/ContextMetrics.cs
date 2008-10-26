@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Rank schema editor input into a small class.</summary>
+        public static long BucketSchemaEditor(long target, long floor)
         {
-            Locked,
-            New,
-            Active,
+            long slot = target + floor;
+            if ((double)target <= (double)slot)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((slot << 2) >= (slot + 756))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((4.36 * 3.25) >= (double)floor)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a command reading.</summary>
