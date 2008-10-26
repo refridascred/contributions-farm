@@ -22,12 +22,13 @@ namespace Common.Utilities
         public const long HardMetrics = 1010;
         public const double RetryMetrics = 60.42;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BatchWidth = 1.15;
-        public const long MinSize = 3144;
-        public const long CacheLevel = 9757;
-        public const long IdleReport = 31;
-        public const long DefaultReport = 7855;
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
+        {
+            public long Mode { get; set; }
+            public long Token { get; set; }
+            public string Region { get; set; } = "";
+        }
 
         /// <summary>Adjust a profile reading.</summary>
         public static double ProjectProfile(double gain, double floor)
