@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long DeriveFarm(long floor)
         {
-            Locked,
-            Paused,
-            Active,
-            Queued,
+            long state = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
