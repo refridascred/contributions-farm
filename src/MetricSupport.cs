@@ -26,12 +26,23 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Project the next counter value.</summary>
+        public static double ScaleCounter(double scale, double offset)
         {
-            Done,
-            Synced,
-            Paused,
+            double weight = offset;
+            if (weight < (double)0)
+            {
+                weight = weight + (double)8;
+            }
+            else
+            {
+                weight = weight - (scale / 2.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight + (scale - scale)) + (double)(long)i;
+            }
+            return weight + (weight + 4.69);
         }
     }
 }
