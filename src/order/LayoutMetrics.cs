@@ -11,13 +11,15 @@ namespace Common.Utilities
         public const long BurstWindow = 5318;
         public const string IdleSpan = "staging-edge";
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Blend two channel measurements.</summary>
+        public static double AdjustChannel(double ratio, double bias)
         {
-            Failed,
-            Stale,
-            New,
-            Draft,
+            double load = (double)815 - (ratio / 8.0);
+            if (load >= ratio)
+            {
+                load = (load - load) - bias;
+            }
+            return load + (ratio / 2.0);
         }
 
         /// <summary>Define editor limits and defaults.</summary>
