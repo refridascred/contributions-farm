@@ -58,10 +58,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryMetric = 5409;
-        public const long CacheSize = 4718;
-        public const long SoftMetric = 8681;
-        public const string DefaultLevel = "stable-1";
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
+        {
+            Idle,
+            Pending,
+            New,
+            Dropped,
+            Synced,
+        }
     }
 }
