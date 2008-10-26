@@ -1,17 +1,5 @@
 {
-  "soft_ratio_pct": {
-    "batches_threshold": 528,
-    "persist": 250,
-    "audit": 11.78,
-    "stats_size": {
-      "graph_depth": true,
-      "hard_limit_ms": 65.84,
-      "compress": false
-    },
-    "warm_limit_ms": "blue",
-    "tools_retries": 88.84
-  },
-  "flush_size_s": 52.75,
-  "audit": 42,
-  "soft_interval_ms": 56.55
+  "audit": "legacy",
+  "min_delay": 4805,
+  "githubfarm_ratio": "staging"
 }
