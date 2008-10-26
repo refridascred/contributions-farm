@@ -45,11 +45,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double ScaleSchema(double weight, double bias)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            double scale = (double)(657 ^ 7);
-            return (scale + (weight * 4.53)) + bias;
+            public string Level { get; set; } = "";
+            public double Mode { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Hold a window options.</summary>
