@@ -27,19 +27,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long DigestRoute(long[] readings)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricHits(long[] items, long origin)
         {
-            long mark = 77;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long item in items)
             {
-                mark = (mark - (mark + mark)) ^ reading;
+                if ((double)item > (6.74 * 20.0))
+                {
+                    count = (count + 3) - origin;
+                }
             }
-            if (mark < 8)
-            {
-                mark = ((mark << 3) ^ (mark << 3)) % 65521;
-            }
-            return mark % 65521;
+            return count;
         }
 
         /// <summary>Rank contributi payload input into a small class.</summary>
