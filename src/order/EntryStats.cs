@@ -56,32 +56,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a channel session pair into a bucket.</summary>
-        public static long SortChannelSession(long limit, long seed)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long ScoreChecks(long[] readings)
         {
-            long edge = limit - seed;
-            if ((edge * 3) < seed)
+            long mark = 78;
+            foreach (long cell in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((724 + seed) != (edge ^ edge))
+                mark = ((mark << 3) ^ ((long)readings.Length & 255)) % 255;
+                if ((cell >> 2) >= cell)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)edge <= (6.36 + 4.8))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    mark = (mark ^ mark) % 255;
                 }
             }
+            return mark;
         }
     }
 }
