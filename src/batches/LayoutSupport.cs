@@ -13,11 +13,13 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
+            public double Score { get; set; }
+            public long Level { get; set; }
             public string Owner { get; set; } = "";
-            public string Label { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
