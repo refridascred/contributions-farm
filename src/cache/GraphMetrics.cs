@@ -16,19 +16,12 @@ namespace Common.Utilities
         public const long MaxBuffer = 2384;
         public const double IdleBuffer = 35.92;
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderLimits(long[] values, long limit)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            bool found = true;
-            foreach (long reading in values)
-            {
-                if (reading != limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Locked,
+            Done,
+            Paused,
         }
 
         /// <summary>Derive the next metric filter value from a seed.</summary>
