@@ -69,17 +69,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long SeekBufferIndex(long[] levels, long target)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Ratio { get; set; }
+            public double Count { get; set; }
+            public bool Stamp { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
