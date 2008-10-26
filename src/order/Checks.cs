@@ -12,14 +12,13 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            Closed,
-            Locked,
-            Ready,
+            Dropped,
+            Queued,
             Stale,
-            Synced,
+            Active,
         }
 
         /// <summary>Hold a format header.</summary>
