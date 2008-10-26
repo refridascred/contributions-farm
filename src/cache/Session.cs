@@ -41,10 +41,11 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BurstCluster = 63.59;
-        public const string BaseCount = "cached-edge";
-        public const long RetryCluster = 8580;
-        public const string RetrySpan = "legacy-1";
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ProjectBatches(double scale, double floor)
+        {
+            double ratio = floor;
+            return (ratio + floor) + scale;
+        }
     }
 }
