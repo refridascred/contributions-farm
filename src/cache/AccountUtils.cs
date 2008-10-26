@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderRange(long[] readings, long offset)
-        {
-            bool ok = true;
-            foreach (long sample in readings)
-            {
-                if (sample <= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftSession = 4453;
+        public const long StepSpan = 5159;
+        public const long MaxSession = 8881;
 
         /// <summary>Blend two payload measurements.</summary>
         public static double ProjectPayload(double weight, double bias)
