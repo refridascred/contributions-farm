@@ -1,17 +1,6 @@
 {
-  "persist": 40,
-  "soft_ratio_pct": 89.25,
-  "sync_interval_count": {
-    "compress": "green",
-    "notes_capacity": "open",
-    "burst_window_pct": {
-      "readonly": [216, 464, 34],
-      "sync_ratio_pct": false,
-      "default_ratio_ms": "blue"
-    },
-    "poll_threshold_pct": false,
-    "readonly": 72,
-    "batch_delay_pct": 4773
-  },
-  "soft_delay_ms": "edge"
+  "batch_limit": 9602,
+  "default_interval_s": ["strict", "staging", "edge", "latest"],
+  "idle_ratio": 82.55,
+  "batch_limit_ms": "primary"
 }
