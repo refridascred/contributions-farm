@@ -1,6 +1,8 @@
-id,active,label,token
-1,411,open,open
-2,latest,staging,283
-3,staging,edge,0.77
-4,669,980,60.09
-5,open,staging,fallback
+id,count,owner,ratio,active
+1,latest,224,173,open
+2,primary,295,blue,34.54
+3,open,staging,49.43,staging
+4,932,stable,234,166
+5,green,eu-west,stable,edge
+6,79.37,77.7,edge,local
+7,open,cached,staging,536
