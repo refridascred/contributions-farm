@@ -1,9 +1,9 @@
 # githubfarm settings
-already_size:
-  - 207
-  - 24
-retry_retries: 39
-batch_ttl_ms:
-  - cached
-  - edge
-  - cached
+audit: false
+poll_ttl_pct:
+  - eu-west
+  - green
+batch_timeout_pct: 13
+poll_threshold_s:
+  - open
+  - staging
