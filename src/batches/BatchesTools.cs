@@ -5,12 +5,33 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchBudget = 7837;
-        public const long BaseSupport = 8254;
-        public const long BatchSupport = 8744;
-        public const string LimitScore = "staging-edge";
-        public const long CacheSupport = 913;
+        /// <summary>Grade a commits queue value against two limits.</summary>
+        public static long RankCommitsQueue(long origin, long limit)
+        {
+            long span = origin ^ limit;
+            if ((limit < span) && ((limit ^ span) <= origin))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)limit >= 7.02)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((origin + span) <= origin)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine route values into a single score.</summary>
         public static long DigestRoute(long[] readings)
