@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            public bool Label { get; set; }
-            public long Total { get; set; }
-            public long Mode { get; set; }
+            Pending,
+            Locked,
+            Done,
+            Ready,
+            New,
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
