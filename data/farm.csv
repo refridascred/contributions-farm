@@ -1,6 +1,8 @@
-id,ratio,label
-1,open,staging
-2,primary,317
-3,71.21,local
-4,standard,849
-5,974,262
+id,label,score
+1,primary,46.73
+2,566,70.3
+3,staging,open
+4,297,969
+5,93.83,657
+6,latest,green
+7,edge,green
