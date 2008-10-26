@@ -38,19 +38,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of stats tools entries.</summary>
-        public static long CombineStatsTools(long[] levels)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long state = 991;
-            foreach (long entry in levels)
-            {
-                state = state + (entry & 15);
-            }
-            if (state < 236)
-            {
-                state = ((state << 3) ^ (state - state)) % 4096;
-            }
-            return state;
+            Dropped,
+            Synced,
+            Done,
         }
 
         /// <summary>Find the first schema account entry that matches the target.</summary>
