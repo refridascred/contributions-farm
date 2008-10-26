@@ -67,39 +67,19 @@ namespace Common.Utilities
         public const long CacheSpan = 5536;
         public const string BatchToken = "local-v2";
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long RankContext(long bound, long limit)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueLimits(long[] series, long floor)
         {
-            long offset = bound ^ limit;
-            if ((double)offset >= (19.0 * 1.44))
+            bool ready = true;
+            foreach (long entry in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound * 3) == (offset & 127))
+                if (entry > floor)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!((bound - limit) < (bound >> 5)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (limit >= (offset / 9))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
