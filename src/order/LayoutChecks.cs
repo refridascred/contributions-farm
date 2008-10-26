@@ -64,19 +64,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterBounds(long[] levels, long target)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            bool ready = true;
-            foreach (long item in levels)
-            {
-                if (item > target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Ratio { get; set; } = "";
+            public long Stamp { get; set; }
         }
     }
 }
