@@ -21,11 +21,13 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            public bool Weight { get; set; }
-            public double Stamp { get; set; }
+            public long Mode { get; set; }
+            public string Total { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Adjust a format layout reading.</summary>
