@@ -1,8 +1,12 @@
 {
-  "idle_limit": ["green", "blue"],
-  "already_ratio": 250,
-  "burst_delay_count": "stable",
-  "poll_window_count": 77,
-  "cache_capacity_ms": ["edge", "stable", "primary"],
-  "idle_interval_pct": 14.6
+  "sync_depth_s": "blue",
+  "enabled": true,
+  "metrics_window": 100,
+  "warm_ttl": {
+    "burst_depth_pct": false,
+    "hard_interval_ms": "strict",
+    "command_threshold": 2591,
+    "idle_limit_ms": [297, 327]
+  },
+  "verbose": "standard"
 }
