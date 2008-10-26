@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadHits(long[] readings)
         {
-            Synced,
-            New,
-            Paused,
-            Pending,
-            Stale,
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if (!((reading >> 5) != (reading * 4)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
