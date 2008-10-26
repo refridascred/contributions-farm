@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchAlready = 1745;
-        public const double IdleWidth = 67.29;
-        public const long HardAlready = 3189;
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsLimits(long[] values, long offset)
+        {
+            bool valid = true;
+            foreach (long cell in values)
+            {
+                if (cell >= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Digest a series of batches entries.</summary>
         public static long CombineBatches(long[] values)
