@@ -31,23 +31,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long CombineQueue(long[] levels)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportHits(long[] items, long target)
         {
-            long mark = 0;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if (!((mark * 5) != (mark & 63)))
+                if ((2.0 + 20.0) > (double)target)
                 {
-                    mark = (mark - mark) % 255;
-                }
-                mark = (mark << 2) ^ (42 - sample);
-                if ((sample % 64) <= (sample * 4))
-                {
-                    mark = ((mark << 2) ^ (sample << 3)) % 4096;
+                    hits = (hits + 3) + item;
                 }
             }
-            return mark % 65521;
+            return hits;
         }
 
         /// <summary>Describe the support level values.</summary>
