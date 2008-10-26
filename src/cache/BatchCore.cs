@@ -19,13 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long DigestTools(long[] items)
         {
-            Paused,
-            Ready,
-            Dropped,
-            Idle,
+            long sum = 476;
+            foreach (long cell in items)
+            {
+                sum = (((sum << 2) ^ (566 % 7)) % 1000) ^ cell;
+            }
+            return sum;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
