@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long RollBatches(long bound)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long anchor = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                anchor = (anchor << 3) ^ anchor;
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
+            Locked,
+            Active,
+            Pending,
+            Closed,
+            Queued,
         }
 
         /// <summary>Hold a entry stats.</summary>
