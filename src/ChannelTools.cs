@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every commits route entry stays within the limit.</summary>
-        public static bool ValidateCommitsRouteRange(long[] data, long step)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutHits(long[] data, long seed)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if (cell <= step)
+                if (825 > (tally - seed))
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 1) - datum;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
