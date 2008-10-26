@@ -24,21 +24,28 @@ namespace Common.Utilities
             return weight2 + (double)725;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long CompareWindowCount(long[] levels)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TallyCommand(long[] series, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 527;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                total = (total << 2) ^ limit;
+                total = ((total << 2) ^ (datum % 24)) % 101;
+                if ((datum > (182 - total)) || ((double)limit >= 5.0))
                 {
-                    if ((levels[i] + levels[j]) < 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = (total ^ (640 << 3)) % 4096;
+                }
+                else
+                {
+                    total = ((total << 3) ^ (1 & 31)) % 4096;
                 }
             }
-            return tally;
+            if (total > (-155))
+            {
+                total = (total - (limit + limit)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Match up support queue samples.</summary>
