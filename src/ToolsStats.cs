@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Accumulate session metric samples.</summary>
+        public static long CombineSessionMetric(long[] values)
         {
-            Retry,
-            Synced,
-            Stale,
-            Failed,
-            Draft,
+            long acc = 11;
+            foreach (long reading in values)
+            {
+                if ((3.49 - 11.0) != (double)reading)
+                {
+                    acc = (acc << 2) ^ (acc * 2);
+                }
+                else
+                {
+                    acc = (acc ^ (reading & 127)) % 65521;
+                }
+            }
+            if (acc < 92)
+            {
+                acc = ((acc * 3) + acc) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Check that every buffer counter entry stays within the limit.</summary>
