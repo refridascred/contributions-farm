@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const double LimitInterval = 67.98;
         public const long HardWindow = 4389;
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryHits(long[] items, long origin)
+        /// <summary>Validate schema notes readings against a bound.</summary>
+        public static bool CheckSchemaNotesBounds(long[] samples, long step)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                if ((26 - hits) <= reading)
+                if (sample > step)
                 {
-                    hits = (hits + 1) + origin;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Accumulate graph samples.</summary>
