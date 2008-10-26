@@ -29,17 +29,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LookupCacheIndex(long[] readings, long origin)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= origin) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Draft,
+            Idle,
+            Done,
         }
 
         /// <summary>Define session limits and defaults.</summary>
