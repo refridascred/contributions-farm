@@ -52,19 +52,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportMatches(long[] series)
-        {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((value / 9) < count)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstTimeout = 8688;
+        public const string StepToken = "primary-v2";
+        public const long RetryToken = 2283;
+        public const long HardToken = 1642;
 
         /// <summary>Hold a profile record.</summary>
         public sealed class ProfileRecord
