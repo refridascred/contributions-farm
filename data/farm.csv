@@ -1,6 +1,8 @@
-id,region
-1,535
-2,596
-3,91.54
-4,edge
-5,stable
+id,ratio,label,rank,state
+1,legacy,local,210,263
+2,201,598,strict,236
+3,610,778,standard,29.89
+4,7.47,fallback,blue,99
+5,fallback,blue,open,417
+6,75.45,primary,397,51.26
+7,575,51.31,eu-west,primary
