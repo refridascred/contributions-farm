@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const double DefaultSize = 77.28;
         public const long MinWindow = 8618;
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheLimits(long[] items, long bound)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricOutliers(long[] samples)
         {
-            bool found = true;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (entry >= bound)
+                if ((0.6 * 0.7) > (double)item)
                 {
-                    found = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Match up batches samples.</summary>
