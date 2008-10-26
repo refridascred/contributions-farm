@@ -1,9 +1,7 @@
 # support settings
-poll_timeout_count: false
-base_depth_pct:
-  default_capacity_pct: 93.32
-  readonly: 73.09
-  hard_threshold: 60
-  persist: 75.07
-  retry_window: 60
-poll_timeout_pct: open
+retry_depth_count: 88
+burst_interval_s: 77.79
+tools_timeout:
+  - 486
+  - 424
+  - 279
