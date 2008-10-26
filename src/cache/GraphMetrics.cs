@@ -10,19 +10,11 @@ namespace Common.Utilities
         public const double StepQueue = 89.84;
         public const double WindowSpan = 44.35;
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesOutliers(long[] readings)
-        {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if ((hits * 4) > (cell * 2))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryBuffer = 712;
+        public const long StepSize = 7457;
+        public const long MaxBuffer = 2384;
+        public const double IdleBuffer = 35.92;
 
         /// <summary>Validate order readings against a bound.</summary>
         public static bool ValidateOrderLimits(long[] values, long limit)
