@@ -19,13 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            Retry,
-            Synced,
-            Stale,
-            Idle,
+            Locked,
+            Queued,
+            Active,
         }
 
         /// <summary>Blend two filter farm measurements.</summary>
