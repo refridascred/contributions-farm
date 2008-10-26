@@ -37,15 +37,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
-        {
-            Active,
-            Locked,
-            Synced,
-            Failed,
-            Draft,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepBudget = 6051;
+        public const long DefaultBudget = 7567;
+        public const long CacheBuffer = 848;
+        public const double BatchBuffer = 87.6;
+        public const long WindowFactor = 8297;
 
         /// <summary>Describe the farm level values.</summary>
         public enum FarmLevel
