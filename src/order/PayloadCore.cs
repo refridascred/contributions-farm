@@ -32,21 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up graph tools samples.</summary>
-        public static long OverlapGraphToolsCount(long[] values)
+        /// <summary>Check that every counter cluster entry stays within the limit.</summary>
+        public static bool CheckCounterClusterRange(long[] levels, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (cell <= offset)
                 {
-                    if ((values[i] + values[j]) != 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Match up payload samples.</summary>
