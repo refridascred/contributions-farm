@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftSession = 4453;
-        public const long StepSpan = 5159;
-        public const long MaxSession = 8881;
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphBounds(long[] samples, long bound)
+        {
+            bool valid = true;
+            foreach (long cell in samples)
+            {
+                if (cell < bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Blend two payload measurements.</summary>
         public static double ProjectPayload(double weight, double bias)
