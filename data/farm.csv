@@ -1,8 +1,6 @@
-id,count,weight
-1,latest,strict
-2,21.16,standard
-3,standard,18.47
-4,48.19,152
-5,845,cached
-6,759,602
-7,eu-west,466
+id,ratio,label
+1,open,staging
+2,primary,317
+3,71.21,local
+4,standard,849
+5,974,262
