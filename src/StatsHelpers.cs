@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long FoldContributi(long[] items, long seed)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterHits(long[] items)
         {
-            long mark = 821;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long item in items)
             {
-                if ((-38) > seed)
+                if (((item + item) <= (item + (long)items.Length)) || (count <= item))
                 {
-                    mark = ((mark * 2) + (seed + 396)) - cell;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (mark < 0)
-            {
-                mark = mark - (mark & 127);
-            }
-            return mark;
+            return count;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
