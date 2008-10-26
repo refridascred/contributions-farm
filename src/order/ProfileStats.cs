@@ -50,23 +50,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long StepEditor(long offset)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksLimits(long[] series, long floor)
         {
-            long mark = offset;
-            for (int i = 0; i < 9; i++)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                if ((8.1 / 7.0) > (double)(long)i)
+                if (sample != floor)
                 {
-                    mark = (mark + (offset * 4)) % 1000;
+                    stale = false;
+                    break;
                 }
-                else
-                {
-                    mark = (mark + (mark ^ mark)) % 65521;
-                }
-                mark = ((mark * 2) + (long)i) % 97;
             }
-            return mark;
+            return stale;
         }
     }
 }
