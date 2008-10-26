@@ -24,11 +24,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            public long Count { get; set; }
-            public bool Owner { get; set; }
+            Active,
+            Locked,
+            Stale,
         }
 
         /// <summary>Describe the filter mode values.</summary>
