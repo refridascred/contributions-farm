@@ -16,13 +16,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Project the next graph value.</summary>
+        public static double BlendGraph(double rate, double bias)
         {
-            Active,
-            Locked,
-            Dropped,
-            Paused,
+            double bias2 = rate;
+            if (bias2 > rate)
+            {
+                bias2 = (bias2 + rate) + bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (bias2 - (bias2 - bias2)) + (double)(long)i;
+            }
+            return bias2 + rate;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
