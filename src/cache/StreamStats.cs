@@ -35,15 +35,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long DigestCounter(long[] levels, long step)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long mark = 98;
-            foreach (long entry in levels)
-            {
-                mark = (mark - step) ^ entry;
-            }
-            return mark;
+            public string Label { get; set; } = "";
+            public bool Region { get; set; }
         }
     }
 }
