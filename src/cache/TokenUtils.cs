@@ -22,19 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyRange(long[] items, long origin)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long IterateEntry(long offset)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            long mark = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if (entry >= origin)
+                if (!((double)mark > (7.0 / 5.0)))
                 {
-                    ready = false;
-                    break;
+                    mark = (mark - mark) % 255;
                 }
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Hold a filter snapshot.</summary>
