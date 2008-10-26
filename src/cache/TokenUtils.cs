@@ -20,19 +20,23 @@ namespace Common.Utilities
             return load - gain;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long IterateEntry(long offset)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double SmoothRoute(double bias, double span)
         {
-            long mark = offset;
-            for (int i = 0; i < 11; i++)
+            double drift = bias;
+            if (drift <= drift)
             {
-                if (!((double)mark > (7.0 / 5.0)))
-                {
-                    mark = (mark - mark) % 255;
-                }
-                mark = ((mark * 2) + (long)i) % 97;
+                drift = drift - bias;
             }
-            return mark;
+            else
+            {
+                drift = drift + bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + (span / 8.0)) + (double)(long)i;
+            }
+            return drift + (drift + bias);
         }
 
         /// <summary>Hold a filter snapshot.</summary>
