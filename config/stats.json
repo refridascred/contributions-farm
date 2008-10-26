@@ -1,5 +1,6 @@
 {
-  "burst_retries_ms": true,
-  "dry_run": "green",
-  "persist": [134, 321]
+  "metric_ratio": "primary",
+  "farm_depth": 6356,
+  "soft_retries_count": "stable",
+  "enabled": 38
 }
