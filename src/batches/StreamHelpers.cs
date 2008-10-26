@@ -55,10 +55,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitPayload = 4242;
-        public const long WindowSpan = 3276;
-        public const long WindowTimeout = 9068;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowCluster = 7249;
+        public const long WindowWidth = 3134;
+        public const double BurstCluster = 62.39;
+        public const long BurstLevel = 486;
+        public const long MaxCluster = 7745;
 
         /// <summary>Compare every pair of entry readings.</summary>
         public static long MatchEntryCount(long[] series)
