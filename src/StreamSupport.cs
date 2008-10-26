@@ -20,22 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderOutliers(long[] series)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long OverlapBufferCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((double)matches > 5.3) && (entry < (matches + 4)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((readings[i] - readings[j]) > 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
