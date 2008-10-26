@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string MaxDepth = "open-edge";
-        public const long SoftOrder = 8720;
-        public const long StepOrder = 82;
-        public const string BatchOrder = "standard";
-        public const long LimitRatio = 6321;
+        /// <summary>Define route limits and defaults.</summary>
+        public const double StepRoute = 39.36;
+        public const long BaseRoute = 3452;
+        public const long StepInterval = 5005;
 
         /// <summary>Combine githubfarm values into a single score.</summary>
         public static long TallyGithubfarm(long[] data, long seed)
