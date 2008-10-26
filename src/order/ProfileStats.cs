@@ -37,27 +37,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a contributi batch counter forward.</summary>
-        public static long SeriesContributiBatch(long floor)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchGaps(long[] values)
         {
-            long mix = floor;
-            for (int i = 0; i < 23; i++)
+            long seen = 0;
+            foreach (long item in values)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if ((8 << 1) <= (seen + item))
                 {
-                    mix = ((mix * 4) + (long)i2) % 255;
+                    seen = seen + 3;
                 }
-                if ((931 & 1) <= (floor * 3))
-                {
-                    mix = ((mix << 2) ^ (98 ^ mix)) % 65521;
-                }
-                else
-                {
-                    mix = ((mix * 2) + ((long)i - mix)) % 97;
-                }
-                mix = ((mix * 2) + (long)i) % 101;
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Hold a route options.</summary>
