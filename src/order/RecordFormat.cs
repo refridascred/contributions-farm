@@ -52,14 +52,10 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
-        {
-            Pending,
-            Paused,
-            Failed,
-            Done,
-            Ready,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitChecks = 9023;
+        public const double SoftChecks = 76.18;
+        public const long HardSpan = 3490;
+        public const long DefaultChecks = 8506;
     }
 }
