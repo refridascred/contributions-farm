@@ -18,20 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] items, long target)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksHits(long[] values)
         {
-            long total = 241;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long sample in values)
             {
-                total = ((total * 5) + (item + total)) % 1000;
-                total = ((total << 3) ^ (total + target)) % 4096;
+                if (!((68 - sample) != (count + count)))
+                {
+                    count = count + 2;
+                }
             }
-            if (total < 790)
-            {
-                total = (total ^ total) % 1000;
-            }
-            return total;
+            return count;
         }
 
         /// <summary>Audit report entry readings against a rule.</summary>
