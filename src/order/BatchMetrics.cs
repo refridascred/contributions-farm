@@ -50,39 +50,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long SortBatch(long bound, long step)
+        /// <summary>Combine cluster payload values into a single score.</summary>
+        public static long WeighClusterPayload(long[] readings, long floor)
         {
-            long step2 = bound + step;
-            if ((bound * 4) >= (step2 + step2))
+            long mix = 946;
+            foreach (long cell in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (step2 >= (step2 + step))
+                if ((double)6 < (double)mix)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((79 - 83) > bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((bound - step2) == (bound + step)) || (bound <= (step2 + bound)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    mix = (((mix + (8 << 3)) % 1000) ^ cell) - floor;
                 }
             }
+            return mix;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
