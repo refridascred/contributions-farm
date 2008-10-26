@@ -57,18 +57,16 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaHits(long[] data)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long RollSupport(long offset)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long total = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if ((tally + tally) >= (sample % 97))
-                {
-                    tally = tally + 1;
-                }
+                total = (total * 4) + (offset - offset);
+                total = ((total * 5) + (long)i) % 101;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Digest a series of commits notes entries.</summary>
