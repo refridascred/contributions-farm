@@ -22,13 +22,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            public long Mode { get; set; }
-            public string Total { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public string Token { get; set; } = "";
+            Closed,
+            Ready,
+            Stale,
+            Idle,
         }
 
         /// <summary>Adjust a format layout reading.</summary>
