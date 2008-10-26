@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Fold a list of cache githubfarm readings.</summary>
+        public static long FoldCacheGithubfarm(long[] levels)
         {
-            Synced,
-            Active,
-            Pending,
-            Ready,
+            long total = 7;
+            foreach (long item in levels)
+            {
+                if ((((long)levels.Length + total) < (40 - item)) && ((double)total == (4.44 - 0.7)))
+                {
+                    total = total ^ 83;
+                }
+                else
+                {
+                    total = ((total * 3) + (item * 3)) % 65521;
+                }
+            }
+            return total % 65521;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
