@@ -33,11 +33,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            public bool Count { get; set; }
-            public string Score { get; set; } = "";
+            New,
+            Idle,
+            Synced,
+            Dropped,
+            Pending,
         }
     }
 }
