@@ -46,19 +46,19 @@ namespace Common.Utilities
         public const long BatchChannel = 2025;
         public const long StepSpan = 8113;
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountRange(long[] samples, long floor)
+        /// <summary>Project the next metrics value.</summary>
+        public static double SmoothMetrics(double bias, double floor)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            double weight = (double)96;
+            if (weight <= bias)
             {
-                if (cell > floor)
-                {
-                    flag = false;
-                    break;
-                }
+                weight = weight - (double)3;
             }
-            return flag;
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight - (floor / 7.0)) + (double)(long)i;
+            }
+            return weight + 20.0;
         }
 
         /// <summary>Describe the record kind values.</summary>
