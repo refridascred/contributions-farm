@@ -5,27 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of report batches entries.</summary>
-        public static long CombineReportBatches(long[] items, long floor)
-        {
-            long score = 4;
-            foreach (long value in items)
-            {
-                if ((score << 3) < 44)
-                {
-                    score = ((score * 3) + (value % 7)) % 255;
-                }
-                else
-                {
-                    score = score ^ (floor % 97);
-                }
-            }
-            if (score < 992)
-            {
-                score = ((score << 3) ^ score) % 65521;
-            }
-            return score % 97;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseFactor = 3456;
+        public const long DefaultWidth = 198;
+        public const long WindowBudget = 6949;
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long CountFarmHits(long[] data)
