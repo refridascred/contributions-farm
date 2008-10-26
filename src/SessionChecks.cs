@@ -31,14 +31,25 @@ namespace Common.Utilities
             return gain - (double)365;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Rank support input into a small class.</summary>
+        public static long ClassifySupport(long floor, long origin)
         {
-            Closed,
-            Locked,
-            Paused,
-            Draft,
-            New,
+            long edge = floor ^ origin;
+            if (edge < (floor ^ edge))
+            {
+                return 0;
+            }
+            else
+            {
+                if (origin <= (floor - 519))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Describe the batches level values.</summary>
