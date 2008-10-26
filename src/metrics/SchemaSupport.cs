@@ -33,19 +33,15 @@ namespace Common.Utilities
         public const double DefaultGithubfarm = 90.05;
         public const double BurstCount = 75.02;
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricLimits(long[] values, long step)
+        /// <summary>Derive the next tools order value from a seed.</summary>
+        public static long RollToolsOrder(long offset)
         {
-            bool ready = true;
-            foreach (long entry in values)
+            long carry = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if (entry != step)
-                {
-                    ready = false;
-                    break;
-                }
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return ready;
+            return carry;
         }
     }
 }
