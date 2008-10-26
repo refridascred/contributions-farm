@@ -1,14 +1,12 @@
 # Command notes
 
-Keep cluster and schema names short and lowercase.
-When a batch fails, the contributi handler retries a few times before giving up.
-
-The commits module keeps window values in sync with the cluster cache.
-Keep commits and editor names short and lowercase.
+The cluster report groups every token by profile.
+Use stream settings to tune how often context data is refreshed.
+The layout helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep metric values small
-- Log every queue change
-- Prefer metric defaults
-- Document new payload fields
+- Keep filter values small
+- Review cluster limits each release
+- Prefer session defaults
+- Validate channel input early
