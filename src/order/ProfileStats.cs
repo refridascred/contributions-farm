@@ -11,18 +11,11 @@ namespace Common.Utilities
         public const long RetryAccount = 5044;
         public const long BatchAccount = 8799;
 
-        /// <summary>Find the first queue already entry that matches the target.</summary>
-        public static long FindQueueAlreadyIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string DefaultLevel = "fallback-edge";
+        public const double LimitDepth = 33.68;
+        public const long HardScore = 4850;
+        public const long MinFilter = 6015;
 
         /// <summary>Hold a counter stats.</summary>
         public sealed class CounterStats
