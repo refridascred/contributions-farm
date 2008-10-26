@@ -20,18 +20,18 @@ namespace Common.Utilities
         public const long MinMetric = 978;
         public const string IdleMetric = "strict-v2";
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksMatches(long[] series, long bound)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphOutliers(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if ((bound - bound) >= (cell / 5))
+                if ((seed % 3) >= ((long)values.Length + seed))
                 {
-                    count = count + 1;
+                    hits = (hits + 2) + datum;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Measure how many format layout samples are out of range.</summary>
