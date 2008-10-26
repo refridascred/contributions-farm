@@ -28,24 +28,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next metric filter value from a seed.</summary>
-        public static long DeriveMetricFilter(long floor)
+        /// <summary>Digest a series of metric notes entries.</summary>
+        public static long DigestMetricNotes(long[] series)
         {
-            long sum = floor;
-            for (int i = 0; i < 19; i++)
+            long anchor = 30;
+            foreach (long cell in series)
             {
-                if ((sum * 2) > (sum >> 1))
+                anchor = (anchor - (cell * 4)) % 65521;
+                if (!(anchor < (cell * 2)))
                 {
-                    long bound = ((long)i + (long)i) / 9;
-                    sum = ((sum << 3) ^ (bound ^ sum)) % 1000;
+                    anchor = ((anchor << 2) ^ (cell / 6)) % 97;
                 }
-                if (!((double)(long)i != (5.32 * 0.5)))
-                {
-                    sum = (sum ^ (floor >> 3)) % 255;
-                }
-                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Describe the metric state values.</summary>
