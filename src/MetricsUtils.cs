@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Rank format input into a small class.</summary>
-        public static long GradeFormat(long target, long offset)
+        /// <summary>Adjust a session reading.</summary>
+        public static double ScaleSession(double scale, double bias)
         {
-            long next = target - offset;
-            if ((5 - 29) >= (offset >> 3))
-            {
-                return 8;
-            }
-            else
-            {
-                if (5.78 >= (double)target)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)offset >= (double)target)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((offset << 2) >= target) || (24 > (next / 5)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            double weight = (scale * 8.58) + 9.36;
+            return (weight + (weight + scale)) + bias;
         }
 
         /// <summary>Hold a command entry.</summary>
