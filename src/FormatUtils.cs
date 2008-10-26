@@ -81,12 +81,9 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
-        {
-            Ready,
-            Dropped,
-            Draft,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetryRatio = 6099;
+        public const double DefaultAccount = 7.14;
+        public const double BurstRatio = 42.23;
     }
 }
