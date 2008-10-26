@@ -10,13 +10,12 @@ namespace Common.Utilities
         public const long DefaultScore = 4726;
         public const string DefaultTimeout = "latest-1";
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            public string Total { get; set; } = "";
-            public long Stamp { get; set; }
-            public bool Mode { get; set; }
-            public long Level { get; set; }
+            Done,
+            Synced,
+            Idle,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
