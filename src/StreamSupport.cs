@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long SeriesRecord(long step)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LookupCounterIndex(long[] series, long limit)
         {
-            long carry = step;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = (carry - (carry / 4)) % 1000;
-                if ((carry - carry) <= ((long)i & 63))
+                if (series[i] == limit)
                 {
-                    continue;
+                    return (long)i;
                 }
-                carry = ((carry * 4) + (long)i) % 101;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Hold a already entry.</summary>
