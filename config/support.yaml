@@ -1,9 +1,13 @@
 # support settings
-idle_limit: standard
-retry_depth_pct:
-  - 289
-  - 214
-  - 488
-burst_limit: edge
-base_timeout_count: eu-west
-poll_timeout_pct: false
+warm_ttl_ms: fallback
+sync_limit: fallback
+idle_size_ms: 19
+sync_size_ms:
+  - latest
+  - edge
+  - edge
+  - open
+report_retries:
+  persist: local
+  hard_ratio: 1024
+  min_ttl_ms: 8449
