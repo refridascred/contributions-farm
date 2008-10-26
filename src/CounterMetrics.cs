@@ -47,22 +47,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutMatches(long[] series)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long SeekGraphIndex(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((entry << 1) == (entry >> 3))
+                if ((levels[i] <= bound) && ((levels[i] % 5) == 0))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
