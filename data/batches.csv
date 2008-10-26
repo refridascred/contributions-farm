@@ -1,6 +1,7 @@
-id,count,score
-1,186,legacy
-2,196,512
-3,985,latest
-4,staging,cached
-5,standard,stable
+id,owner,region,label
+1,900,primary,6.21
+2,193,201,open
+3,653,staging,69.53
+4,195,11.48,966
+5,546,91,742
+6,824,298,84
