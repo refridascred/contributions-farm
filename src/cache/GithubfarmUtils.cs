@@ -19,18 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchMatches(long[] series)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] series, long origin)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long anchor = 64;
+            foreach (long value in series)
             {
-                if ((7.68 * 0.82) != (double)reading)
+                if ((value >> 4) <= anchor)
                 {
-                    hits = hits + 1;
+                    anchor = ((anchor * 2) + (origin - origin)) % 1000;
                 }
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Find the first layout report entry that matches the target.</summary>
