@@ -23,38 +23,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a counter graph pair into a bucket.</summary>
-        public static long ClassifyCounterGraph(long offset, long floor)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportLimits(long[] items, long origin)
         {
-            if ((double)floor < (double)offset)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((37 - offset) == (floor & 15))
+                if (cell > origin)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset & 31) < floor)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((1 & 3) <= (offset & 1))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
