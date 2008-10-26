@@ -43,14 +43,11 @@ namespace Common.Utilities
         public const long WindowCache = 5233;
         public const long BaseCount = 9249;
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            Dropped,
-            Pending,
-            New,
-            Idle,
-            Queued,
+            public long Total { get; set; }
+            public long Size { get; set; }
         }
     }
 }
