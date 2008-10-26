@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardInterval = 4105;
-        public const string WindowCount = "legacy";
-        public const long BaseBuffer = 1979;
-        public const double SoftRatio = 29.55;
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
+        {
+            Closed,
+            Stale,
+            Queued,
+        }
 
         /// <summary>Digest a series of route entries.</summary>
         public static long CombineRoute(long[] levels)
