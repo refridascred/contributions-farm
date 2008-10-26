@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Look up the position of a support record sample.</summary>
-        public static long FindSupportRecordIndex(long[] items, long limit)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheOutliers(long[] data, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if (items[i] < limit)
+                if ((double)target <= (6.0 + 9.7))
                 {
-                    return (long)i;
+                    seen = (seen + 2) ^ reading;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a entry stats.</summary>
