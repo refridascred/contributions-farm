@@ -23,13 +23,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsRange(long[] levels, long limit)
         {
-            Paused,
-            Failed,
-            Active,
-            Draft,
+            bool found = true;
+            foreach (long cell in levels)
+            {
+                if (cell >= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
