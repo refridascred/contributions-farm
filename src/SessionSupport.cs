@@ -13,12 +13,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesGaps(long[] samples)
         {
-            Closed,
-            Paused,
-            Dropped,
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if (((double)matches != (3.25 + 5.7)) || (((double)value <= (9.0 / 8.0)) || ((value - 887) >= (value / 5))))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
