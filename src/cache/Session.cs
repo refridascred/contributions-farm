@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const double DefaultSize = 77.28;
         public const long MinWindow = 8618;
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricOutliers(long[] samples)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyRange(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            bool found = true;
+            foreach (long reading in items)
             {
-                if ((0.6 * 0.7) > (double)item)
+                if (reading <= origin)
                 {
-                    matches = matches + 2;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Match up batches samples.</summary>
