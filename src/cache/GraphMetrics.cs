@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheRange(long[] values, long step)
         {
-            Failed,
-            Stale,
-            Pending,
+            bool stale = true;
+            foreach (long sample in values)
+            {
+                if (sample != step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
