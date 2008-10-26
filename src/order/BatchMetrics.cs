@@ -10,22 +10,21 @@ namespace Common.Utilities
         public const long BurstFilter = 8515;
         public const string CacheSpan = "staging-1";
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long WeighCommand(long[] readings, long target)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long MatchCounterCount(long[] series)
         {
-            long acc = 28;
-            foreach (long value in readings)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((acc + value) >= target) && ((target ^ value) > 29))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = ((acc << 2) ^ (value + target)) % 101;
+                    if ((series[i] - series[j]) == 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (acc > (-8))
-            {
-                acc = ((acc * 3) + (acc - acc)) % 1000;
-            }
-            return acc;
+            return hits;
         }
 
         /// <summary>Define route limits and defaults.</summary>
