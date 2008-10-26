@@ -1,10 +1,4 @@
 # entry settings
-sync_timeout_ms: 30
-enabled: 82.55
-max_interval: 60
-cache_ratio_count: 60
-tools_interval: false
-poll_threshold_pct:
-  - 82
-  - 421
-  - 496
+burst_timeout_ms: 100
+schema_capacity: 30
+editor_delay: eu-west
