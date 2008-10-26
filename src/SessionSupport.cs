@@ -18,20 +18,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long RollBuffer(long origin)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long anchor = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                anchor = anchor + (origin << 2);
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    anchor = ((anchor ^ (anchor & 255)) % 65521) + (long)i2;
-                }
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
+            public double Label { get; set; }
+            public bool Rank { get; set; }
+            public string Size { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
