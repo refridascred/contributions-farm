@@ -47,22 +47,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphMatches(long[] items, long offset)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((6.7 * 7.04) >= (double)offset)
-                {
-                    count = (count + 1) ^ reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Mode { get; set; }
+            public string Region { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Match up layout samples.</summary>
