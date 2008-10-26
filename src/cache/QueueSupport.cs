@@ -35,15 +35,38 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long DeriveGraph(long seed)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long DigestContributi(long[] values)
         {
-            long total = seed;
-            for (int i = 0; i < 11; i++)
+            long anchor = -495;
+            foreach (long datum in values)
             {
-                total = ((total * 2) + (long)i) % 101;
+                if (((datum / 5) == (anchor & 255)) || ((6.31 - 5.14) >= (double)anchor))
+                {
+                    anchor = (anchor ^ anchor) % 101;
+                }
+                if ((datum >> 4) < anchor)
+                {
+                    anchor = ((anchor * 5) + (anchor + anchor)) % 4096;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ (anchor - 93)) % 4096;
+                }
+                if (!(5.22 > (double)anchor))
+                {
+                    anchor = ((anchor << 3) ^ (long)values.Length) % 1000;
+                }
+                else
+                {
+                    anchor = (anchor - (anchor + anchor)) % 101;
+                }
             }
-            return total;
+            if (anchor > 4)
+            {
+                anchor = anchor ^ (anchor * 5);
+            }
+            return anchor;
         }
     }
 }
