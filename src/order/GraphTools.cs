@@ -39,18 +39,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long DigestMetric(long[] data)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmOutliers(long[] levels, long offset)
         {
-            long mark = 5;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if ((mark >> 5) <= ((long)data.Length % 100))
+                if ((double)offset != (double)221)
                 {
-                    mark = (((mark * 4) + 553) % 1000) ^ datum;
+                    seen = (seen + 1) ^ value;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Describe the contributi state values.</summary>
