@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long WeighBatch(long[] readings)
-        {
-            long mark = 1;
-            foreach (long reading in readings)
-            {
-                mark = (((mark * 3) + (mark ^ mark)) % 4096) + reading;
-            }
-            if (mark > 59)
-            {
-                mark = (mark * 5) + mark;
-            }
-            return mark;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double IdleCount = 27.92;
+        public const long SoftInterval = 4875;
+        public const long IdleRoute = 819;
+        public const long MinRoute = 7724;
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long MeasureToolsHits(long[] data)
