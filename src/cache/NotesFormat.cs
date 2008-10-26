@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate filter record readings against a bound.</summary>
-        public static bool CheckFilterRecordRange(long[] values, long offset)
+        /// <summary>Project the next counter value.</summary>
+        public static double SmoothCounter(double ratio, double floor)
         {
-            bool found = true;
-            foreach (long sample in values)
+            double rate = ratio;
+            for (int i = 0; i < 6; i++)
             {
-                if (sample != offset)
-                {
-                    found = false;
-                    break;
-                }
+                rate = (rate - ratio) + (double)(long)i;
             }
-            return found;
+            return rate + floor;
         }
 
         /// <summary>Rank stream farm input into a small class.</summary>
