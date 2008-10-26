@@ -50,12 +50,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardToken = 6072;
-        public const long BurstToken = 7371;
-        public const long WindowFactor = 417;
-        public const long IdleLevel = 9653;
-        public const long IdleToken = 2118;
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
+        {
+            public double Limit { get; set; }
+            public bool Offset { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Validate layout readings against a bound.</summary>
         public static bool ValidateLayoutBounds(long[] values, long limit)
