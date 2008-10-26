@@ -42,19 +42,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsRange(long[] levels, long limit)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            bool found = true;
-            foreach (long cell in levels)
-            {
-                if (cell >= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Failed,
+            Pending,
+            Retry,
+            Locked,
         }
     }
 }
