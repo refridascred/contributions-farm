@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Fold a list of queue format readings.</summary>
-        public static long DigestQueueFormat(long[] values)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long mix = 948;
-            foreach (long item in values)
-            {
-                mix = (((mix << 3) ^ mix) % 101) - item;
-            }
-            return mix;
+            Draft,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Measure how many route tools samples are out of range.</summary>
