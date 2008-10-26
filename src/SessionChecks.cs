@@ -36,18 +36,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphGaps(long[] values)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((seen / 2) < cell)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Paused,
+            New,
+            Pending,
+            Stale,
+            Idle,
         }
     }
 }
