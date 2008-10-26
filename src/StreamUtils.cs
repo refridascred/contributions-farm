@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsMatches(long[] levels)
         {
-            public long Stamp { get; set; }
-            public bool Flag { get; set; }
-            public long Size { get; set; }
-            public string Weight { get; set; } = "";
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if (tally > (tally - 48))
+                {
+                    tally = (tally + 2) + entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the counter support entries that pass the check.</summary>
