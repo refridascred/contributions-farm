@@ -1,14 +1,21 @@
 # entry settings
-flush_ratio_pct:
-  - 157
-  - 293
-  - 394
-burst_ttl: 3.69
-persist:
-  - strict
-  - green
-cache_capacity_pct:
-  - 422
-  - 26
-  - 125
-cache_limit_count: open
+warm_window_s: staging
+base_interval_s: 60
+queue_timeout:
+  dry_run:
+    - fallback
+    - standard
+    - standard
+    - eu-west
+  farm_ttl: 8364
+  metric_depth: 2140
+  enabled:
+    base_window_s:
+      - 93
+      - 464
+    retry_limit_ms: 250
+    burst_ttl_pct: open
+    max_threshold_pct: 250
+    enabled: 91.59
+  flush_threshold: green
+  audit: false
