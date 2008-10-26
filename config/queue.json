@@ -1,6 +1,16 @@
 {
-  "readonly": 67.45,
-  "cache_delay": 60,
-  "cluster_threshold": "fallback",
-  "min_limit_pct": 1024
+  "poll_window": {
+    "max_timeout_count": {
+      "retry_limit_s": true,
+      "default_capacity": 38.4,
+      "record_size": false
+    },
+    "min_limit_ms": "staging",
+    "soft_ratio_s": ["staging", "legacy", "stable"],
+    "audit": "fallback",
+    "soft_delay_pct": "standard",
+    "filter_threshold": true
+  },
+  "persist": "primary",
+  "channel_delay": "green"
 }
