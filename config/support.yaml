@@ -1,9 +1,16 @@
 # support settings
-flush_timeout: strict
-profile_window: 3741
-max_capacity: 60
-burst_delay_ms:
-  - stable
-  - latest
-  - edge
-  - legacy
+warm_ratio_pct:
+  audit: 4741
+  dry_run:
+    - 334
+    - 73
+    - 297
+    - 432
+  enabled:
+    - strict
+    - cached
+    - staging
+    - edge
+  readonly: 94.54
+checks_retries: 33.46
+hard_interval: eu-west
