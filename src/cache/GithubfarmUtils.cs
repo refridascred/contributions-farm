@@ -12,18 +12,13 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] series, long origin)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            long anchor = 64;
-            foreach (long value in series)
-            {
-                if ((value >> 4) <= anchor)
-                {
-                    anchor = ((anchor * 2) + (origin - origin)) % 1000;
-                }
-            }
-            return anchor;
+            public long Size { get; set; }
+            public long Stamp { get; set; }
+            public double Ratio { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Hold a cluster record.</summary>
