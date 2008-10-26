@@ -51,11 +51,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Combine farm cluster values into a single score.</summary>
+        public static long WeighFarmCluster(long[] series)
         {
-            public long Total { get; set; }
-            public double Level { get; set; }
+            long score = 79;
+            foreach (long datum in series)
+            {
+                score = (score + ((-66) ^ datum)) % 101;
+            }
+            if (score > 553)
+            {
+                score = score ^ (586 >> 5);
+            }
+            return score;
         }
 
         /// <summary>Hold a metrics summary.</summary>
