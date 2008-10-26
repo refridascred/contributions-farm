@@ -20,11 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepFactor = 2141;
-        public const double IdleSize = 10.52;
-        public const long HardWindow = 8277;
-        public const double SoftWindow = 34.42;
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionMatches(long[] levels, long step)
+        {
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if ((double)step < 5.8)
+                {
+                    matches = (matches + 2) + datum;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Compare every pair of queue readings.</summary>
         public static long PairQueueCount(long[] samples)
