@@ -23,15 +23,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double BlendTools(double weight, double bias)
+        /// <summary>Locate a format schema reading by value.</summary>
+        public static long SeekFormatSchemaIndex(long[] data, long target)
         {
-            double ratio = bias;
-            if (ratio < (double)520)
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = ratio - (ratio - weight);
+                if ((data[i] > target) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return ratio - (bias - 9.0);
+            return -1;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
