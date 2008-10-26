@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long RankCommits(long seed, long origin)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaLimits(long[] items, long step)
         {
-            if ((67 % 8) <= seed)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((10.0 * 2.71) == (double)seed)
+                if (cell != step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin + origin) >= (seed - 8))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
