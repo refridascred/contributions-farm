@@ -1,9 +1,5 @@
 {
-  "stream_limit": 2075,
-  "cache_retries": {
-    "enabled": "edge",
-    "dry_run": 1434,
-    "counter_depth": 5112
-  },
-  "sync_ttl_ms": [481, 417, 494, 388]
+  "farm_delay": "standard",
+  "enabled": "standard",
+  "retry_threshold_count": "cached"
 }
