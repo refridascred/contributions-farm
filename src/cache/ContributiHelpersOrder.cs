@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Blend two context filter measurements.</summary>
-        public static double BlendContextFilter(double rate, double bias)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LookupOrderIndex(long[] levels, long bound)
         {
-            double ratio = (double)(643 / 4);
-            if (ratio > (rate + ratio))
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio = ratio + (rate / 6.0);
+                if ((levels[i] == bound) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return ratio + (bias / 8.0);
+            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
