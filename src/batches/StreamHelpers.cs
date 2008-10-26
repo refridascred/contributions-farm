@@ -51,18 +51,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the batch payload entries that pass the check.</summary>
-        public static long CountBatchPayloadMatches(long[] values, long limit)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long RollRecord(long seed)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long score = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if ((658 % 16) > (84 - (long)values.Length))
+                if ((seed - score) < seed)
                 {
-                    count = ((count + 2) ^ sample) - limit;
+                    score = (score ^ score) % 255;
                 }
+                score = ((score * 4) + (long)i) % 97;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
