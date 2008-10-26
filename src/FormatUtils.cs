@@ -27,14 +27,16 @@ namespace Common.Utilities
         public const long CacheBudget = 3768;
         public const long BatchCount = 615;
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long WeighNotes(long[] readings, long origin)
         {
-            Locked,
-            Draft,
-            Paused,
-            Queued,
-            New,
+            long score = 949;
+            foreach (long item in readings)
+            {
+                score = (score + origin) % 4096;
+                score = score - item;
+            }
+            return score;
         }
 
         /// <summary>Describe the farm status values.</summary>
