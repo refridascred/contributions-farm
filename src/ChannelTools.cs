@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long SeriesCommits(long floor)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long acc = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                acc = ((acc * 4) + (0 << 3)) % 65521;
-                acc = ((acc * 4) + (long)i) % 65521;
-            }
-            return acc;
+            Queued,
+            Retry,
+            Idle,
+            New,
+            Dropped,
         }
 
         /// <summary>Compare every pair of context schema readings.</summary>
