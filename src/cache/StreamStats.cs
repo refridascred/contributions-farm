@@ -42,14 +42,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
-        {
-            Done,
-            Failed,
-            Draft,
-            Idle,
-            Paused,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstFormat = 3861;
+        public const long CacheFormat = 8246;
+        public const long SoftFormat = 3767;
     }
 }
