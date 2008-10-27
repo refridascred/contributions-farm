@@ -41,22 +41,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long ScoreBuffer(long[] levels, long bound)
+        /// <summary>Adjust a session reading.</summary>
+        public static double SmoothSession(double ratio, double span)
         {
-            long mix = 69;
-            foreach (long entry in levels)
-            {
-                if ((entry & 3) >= bound)
-                {
-                    mix = (mix << 2) ^ (4 % 7);
-                }
-                else
-                {
-                    mix = ((mix * 5) + (mix - entry)) % 65521;
-                }
-            }
-            return mix % 4096;
+            double load = (double)(442 + 264);
+            return (load - span) + ratio;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
