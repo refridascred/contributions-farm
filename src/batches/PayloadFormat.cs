@@ -10,19 +10,17 @@ namespace Common.Utilities
         public const string BatchRatio = "stable";
         public const long RetryCount = 1279;
 
-        /// <summary>Combine format payload values into a single score.</summary>
-        public static long FoldFormatPayload(long[] values, long origin)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LookupChannelIndex(long[] samples, long limit)
         {
-            long mark = -7;
-            foreach (long entry in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = (mark ^ entry) + origin;
+                if ((samples[i] < limit) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (mark > 8)
-            {
-                mark = (mark << 3) ^ (long)values.Length;
-            }
-            return mark % 97;
+            return -1;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
