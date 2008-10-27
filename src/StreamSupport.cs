@@ -13,25 +13,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long SortAccount(long seed, long limit)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long offset = seed - limit;
-            if (((offset - offset) < (offset << 3)) && (seed > (205 + 1)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)limit <= 10.0)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public bool Flag { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
