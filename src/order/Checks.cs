@@ -46,13 +46,17 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long FindToolsIndex(long[] samples, long seed)
         {
-            public double Stamp { get; set; }
-            public bool Total { get; set; }
-            public long Token { get; set; }
-            public double Count { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > seed) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
