@@ -52,15 +52,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ProjectStream(double weight, double offset)
-        {
-            double ratio = (double)(823 % 60);
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (((ratio + (double)1) + (double)(long)i) + weight) - offset;
-            }
-            return ratio - (5.5 + ratio);
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxRoute = 5128;
+        public const long RetryRoute = 1622;
+        public const long HardSize = 7744;
+        public const double StepRoute = 79.52;
+        public const long MaxWidth = 6864;
     }
 }
