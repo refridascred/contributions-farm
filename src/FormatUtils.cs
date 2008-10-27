@@ -18,15 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of support payload entries.</summary>
-        public static long DigestSupportPayload(long[] values)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long state = 9;
-            foreach (long reading in values)
-            {
-                state = (((state * 4) + (state % 3)) % 65521) - reading;
-            }
-            return state;
+            public double Flag { get; set; }
+            public bool Size { get; set; }
+            public long Token { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
