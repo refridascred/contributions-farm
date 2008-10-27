@@ -1,5 +1,4 @@
 # entry settings
-compress: fallback
-flush_capacity_ms: 8418
-soft_limit: cached
-strict: 30
+hard_ratio_count: false
+idle_delay_count: 85
+min_size_count: 6889
