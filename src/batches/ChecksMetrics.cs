@@ -12,12 +12,21 @@ namespace Common.Utilities
         public const double LimitSupport = 89.56;
         public const long DefaultSupport = 1616;
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long PairSchemaCount(long[] values)
         {
-            Stale,
-            Synced,
-            New,
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
