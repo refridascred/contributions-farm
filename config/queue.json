@@ -1,6 +1,8 @@
 {
-  "min_retries_s": "green",
-  "stats_depth": false,
-  "batch_retries_s": "blue",
-  "idle_delay_ms": "strict"
+  "cache_threshold_s": 3413,
+  "cache_window_pct": false,
+  "base_window_s": 21.28,
+  "already_window": ["green", "eu-west", "standard", "blue"],
+  "flush_timeout": ["strict", "eu-west"],
+  "contributi_retries": true
 }
