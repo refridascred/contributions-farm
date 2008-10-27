@@ -21,23 +21,12 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferGaps(long[] readings)
-        {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if (83 >= (seen - sample))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseEditor = 2815;
+        public const double IdleSize = 53.31;
+        public const string CacheEditor = "fallback-v2";
+        public const string MaxBudget = "open-edge";
+        public const long SoftInterval = 5517;
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
         public static long MatchFilterCount(long[] series)
