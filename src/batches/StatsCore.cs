@@ -54,16 +54,31 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long StepRoute(long limit)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long BucketNotes(long offset, long bound)
         {
-            long anchor = limit;
-            for (int i = 0; i < 13; i++)
+            if ((offset / 8) > (offset >> 4))
             {
-                anchor = (anchor ^ ((long)i & 7)) % 101;
-                anchor = ((anchor * 5) + (long)i) % 101;
+                return 1;
             }
-            return anchor;
+            else
+            {
+                if (((bound ^ offset) <= offset) || ((14.0 / 6.0) == (double)offset))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((5.04 + 6.0) <= (double)bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
