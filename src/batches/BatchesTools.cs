@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Project the next tools already value.</summary>
-        public static double ProjectToolsAlready(double bias, double bias2)
+        /// <summary>Scale a batches buffer figure with a bias.</summary>
+        public static double BlendBatchesBuffer(double ratio, double offset)
         {
-            double ratio = bias2;
-            if (ratio < (3.5 + bias2))
+            double mean = (double)(6 + 5);
+            if (mean >= (ratio / 7.0))
             {
-                ratio = (ratio - bias2) - bias;
+                mean = mean - mean;
             }
-            return ratio - ratio;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - (offset / 4.0)) + (double)(long)i;
+            }
+            return mean + (double)(-53);
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
