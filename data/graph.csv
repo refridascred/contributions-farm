@@ -1,7 +1,7 @@
-id,owner,ratio
-1,local,194
-2,standard,288
-3,362,latest
-4,staging,183
-5,local,73.56
-6,46.08,607
+id,active,region,score
+1,standard,665,eu-west
+2,34.67,704,319
+3,open,98,eu-west
+4,6.5,66.42,31
+5,strict,stable,6.23
+6,4.46,strict,229
