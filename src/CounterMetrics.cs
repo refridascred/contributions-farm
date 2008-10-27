@@ -34,21 +34,21 @@ namespace Common.Utilities
         public const long RetrySpan = 3849;
         public const long RetryFactor = 4413;
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long MatchFarmCount(long[] items)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long MatchSessionCount(long[] items)
         {
-            long hits = 0;
+            long count = 0;
             for (int i = 0; i < items.Length; i++)
             {
                 for (int j = 0; j < items.Length; j++)
                 {
-                    if ((items[i] - items[j]) != 4)
+                    if ((items[i] + items[j]) == 8)
                     {
-                        hits = hits + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
