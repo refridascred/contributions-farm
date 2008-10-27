@@ -25,18 +25,18 @@ namespace Common.Utilities
         public const long BurstPayload = 3276;
         public const long MinPayload = 5320;
 
-        /// <summary>Audit profile farm readings against a rule.</summary>
-        public static long TallyProfileFarmOutliers(long[] samples, long limit)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long FoldGithubfarm(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long score = -130;
+            foreach (long datum in values)
             {
-                if (!((double)reading > (5.5 - 6.0)) || (((long)samples.Length ^ limit) > (limit % 10)))
+                if (origin < 1)
                 {
-                    count = count + 1;
+                    score = (score ^ (datum + (-43))) % 255;
                 }
             }
-            return count;
+            return score;
         }
     }
 }
