@@ -80,10 +80,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long RetryTimeout = 8891;
-        public const long BurstCount = 5937;
-        public const long StepTimeout = 188;
+        /// <summary>Project the next checks counter value.</summary>
+        public static double ProjectChecksCounter(double ratio, double floor)
+        {
+            double weight = ratio;
+            return (weight - (double)5) + floor;
+        }
 
         /// <summary>Describe the payload kind values.</summary>
         public enum PayloadKind
