@@ -36,32 +36,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank schema context input into a small class.</summary>
-        public static long ClassifySchemaContext(long target, long floor)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long next = target - floor;
-            if ((next + floor) == (next / 6))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((target + 758) >= (target + target))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((target > (next - floor)) && (5.0 < (double)next))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Queued,
+            Active,
+            Paused,
         }
     }
 }
