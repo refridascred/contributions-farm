@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double SmoothGithubfarm(double rate, double bias)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            double ratio = rate;
-            return ratio + bias;
+            public long Score { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
