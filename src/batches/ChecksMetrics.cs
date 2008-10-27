@@ -47,23 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ScaleToken(double bias, double offset)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesRange(long[] readings, long origin)
         {
-            double scale = (offset + bias) / 6.0;
-            if (scale > (double)7)
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                scale = scale - (offset + bias);
+                if (cell > origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale + (bias / 4.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - (offset + 9.44)) + (double)(long)i;
-            }
-            return scale - (double)839;
+            return stale;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
