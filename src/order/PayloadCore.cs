@@ -54,19 +54,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutRange(long[] data, long origin)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountRange(long[] samples, long offset)
         {
-            bool flag = true;
-            foreach (long item in data)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                if (item < origin)
+                if (cell >= offset)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
     }
 }
