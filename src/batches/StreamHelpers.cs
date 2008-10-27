@@ -51,22 +51,24 @@ namespace Common.Utilities
         public const long BurstLevel = 486;
         public const long MaxCluster = 7745;
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TotalQueue(long[] samples)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long RankGraph(long bound, long seed)
         {
-            long mix = 4;
-            foreach (long value in samples)
+            if (!((seed % 24) >= (508 << 1)))
             {
-                if (!(mix > (value >> 3)))
+                return 4;
+            }
+            else
+            {
+                if (((-656) - bound) > (seed + bound))
                 {
-                    mix = (mix + (value >> 2)) % 4096;
+                    return 2;
                 }
-                if (!((value - value) < (value + value)))
+                else
                 {
-                    break;
+                    return 8;
                 }
             }
-            return mix % 97;
         }
     }
 }
