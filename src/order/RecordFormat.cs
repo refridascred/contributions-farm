@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long FoldPayload(long[] values, long origin)
         {
-            Active,
-            Paused,
-            Stale,
-            Ready,
-            New,
+            long carry = 58;
+            foreach (long value in values)
+            {
+                carry = (carry - origin) % 4096;
+                if ((9.0 / 7.0) <= (double)value)
+                {
+                    carry = (carry ^ (carry >> 1)) % 1000;
+                }
+            }
+            if (carry > 7)
+            {
+                carry = carry + (3 % 97);
+            }
+            return carry;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
