@@ -20,38 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank tools stats input into a small class.</summary>
-        public static long GradeToolsStats(long origin, long offset)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileLimits(long[] series, long step)
         {
-            if ((origin * 4) >= (offset << 1))
+            bool flag = true;
+            foreach (long entry in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (((99 / 9) > origin) && ((origin + offset) <= origin))
+                if (entry != step)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (offset >= (147 ^ offset))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((origin << 3) == (offset & 31))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Blend two channel measurements.</summary>
