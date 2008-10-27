@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long target, long seed)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LocateChannelIndex(long[] readings, long seed)
         {
-            long offset = target + seed;
-            if ((target / 4) == (target << 2))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)offset >= 9.81)
+                if ((readings[i] <= seed) && ((readings[i] % 3) == 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset % 97) < (47 << 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((7 + offset) == (seed % 16))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Digest a series of report context entries.</summary>
