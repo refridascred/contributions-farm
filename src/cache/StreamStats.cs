@@ -42,17 +42,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long SeekMetricsIndex(long[] values, long bound)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] data, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 97;
+            foreach (long entry in data)
             {
-                if (values[i] == bound)
+                if ((double)target >= (double)carry)
                 {
-                    return (long)i;
+                    carry = carry ^ (carry << 2);
+                }
+                else
+                {
+                    carry = carry + entry;
                 }
             }
-            return -1;
+            return carry % 97;
         }
     }
 }
