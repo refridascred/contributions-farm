@@ -51,18 +51,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksGaps(long[] samples, long seed)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TotalSession(long[] items)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long acc = -53;
+            foreach (long item in items)
             {
-                if ((9 - seed) >= 9)
-                {
-                    tally = (tally + 3) ^ sample;
-                }
+                acc = ((acc << 3) ^ (item % 2)) % 4096;
             }
-            return tally;
+            if (acc < 6)
+            {
+                acc = ((acc << 2) ^ 640) % 101;
+            }
+            return acc % 1000;
         }
     }
 }
