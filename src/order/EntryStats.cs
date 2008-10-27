@@ -33,17 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LocateLayoutIndex(long[] readings, long seed)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ScaleOrder(double ratio, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double ratio2 = 16.0;
+            if (ratio2 < (offset * 4.58))
             {
-                if (readings[i] > seed)
-                {
-                    return (long)i;
-                }
+                ratio2 = (ratio2 + 2.0) - ratio;
             }
-            return -1;
+            return ratio2 + (double)(-49);
         }
 
         /// <summary>Accumulate layout samples.</summary>
