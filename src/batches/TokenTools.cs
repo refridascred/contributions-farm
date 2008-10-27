@@ -36,12 +36,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
-        {
-            Failed,
-            Synced,
-            Paused,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryMetrics = 6848;
+        public const double BatchLevel = 1.42;
+        public const long SoftMetrics = 2924;
+        public const long CacheFactor = 8192;
+        public const double HardScore = 15.79;
     }
 }
