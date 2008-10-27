@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyMatches(long[] series)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((double)reading >= (5.21 + 12.0))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Rank { get; set; }
+            public bool Limit { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Hold a already summary.</summary>
