@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long CompareLayoutCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double HardProfile = 92.92;
+        public const long SoftScore = 7396;
+        public const long MaxScore = 2338;
+        public const long LimitDepth = 3223;
+        public const string StepProfile = "alpha-edge";
 
         /// <summary>Define format limits and defaults.</summary>
         public const long LimitFormat = 5473;
