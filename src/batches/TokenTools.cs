@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long RankBuffer(long step, long bound)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            if ((2 * 4) >= (step << 2))
-            {
-                return 8;
-            }
-            else
-            {
-                if (18 >= step)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((9.05 + 2.83) <= (double)step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
+            public bool Flag { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Locate a report reading by value.</summary>
