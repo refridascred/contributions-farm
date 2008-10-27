@@ -1,8 +1,7 @@
 {
-  "layout_size": 1024,
-  "hard_ratio_s": 92.43,
-  "warm_timeout_s": 60,
-  "hard_threshold_ms": ["legacy", "staging", "fallback", "legacy"],
-  "warm_delay_count": 13.27,
-  "window_interval": "staging"
+  "batches_threshold": "eu-west",
+  "enabled": 9622,
+  "support_depth": "strict",
+  "layout_size": "eu-west",
+  "route_interval": "strict"
 }
