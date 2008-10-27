@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Scale a session window figure with a bias.</summary>
-        public static double BlendSessionWindow(double rate, double floor)
+        /// <summary>Compare every pair of entry batch readings.</summary>
+        public static long PairEntryBatchCount(long[] values)
         {
-            double load = (double)(773 * 3);
-            if (load <= (floor + load))
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                load = (load + (double)19) + rate;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - (double)812) + (double)(long)i;
-            }
-            return load - (load + floor);
+            return seen;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
