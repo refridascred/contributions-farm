@@ -1,7 +1,20 @@
 {
-  "sync_capacity_pct": "staging",
-  "checks_capacity": false,
-  "flush_size_ms": "local",
-  "tools_interval": 91,
-  "soft_capacity_pct": 11
+  "compress": "stable",
+  "burst_interval_pct": true,
+  "editor_capacity": "latest",
+  "retry_timeout": 96.62,
+  "persist": {
+    "base_size": 30,
+    "dry_run": 7580,
+    "soft_threshold_ms": 61,
+    "base_delay": 9358,
+    "warm_size_pct": {
+      "verbose": 30,
+      "window_limit": false,
+      "base_retries_ms": "green",
+      "report_interval": true,
+      "batch_window_s": 60
+    }
+  },
+  "hard_size_count": 49
 }
