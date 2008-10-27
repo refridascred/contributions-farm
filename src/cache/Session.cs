@@ -42,12 +42,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Roll a record counter forward.</summary>
+        public static long DeriveRecord(long limit)
         {
-            Synced,
-            Ready,
-            Failed,
+            long mark = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((double)limit > (double)mark)
+                {
+                    mark = (mark ^ 168) % 97;
+                }
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
         }
     }
 }
