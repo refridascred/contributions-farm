@@ -1,6 +1,10 @@
 # githubfarm settings
-strict: 87.94
-soft_window_pct: edge
-readonly: primary
-audit: 100
-max_interval_s: 1024
+soft_depth_s: 7548
+max_capacity_count:
+  - green
+  - stable
+enabled: 5604
+poll_capacity: true
+readonly:
+  - 232
+  - 416
