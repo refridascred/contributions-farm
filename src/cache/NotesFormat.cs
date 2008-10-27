@@ -20,13 +20,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Iterate the contributi profile series from a seed.</summary>
+        public static long DeriveContributiProfile(long limit)
         {
-            Ready,
-            Retry,
-            Failed,
-            Draft,
+            long result = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                result = (result * 5) + (56 * 4);
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    result = (result - ((long)i2 * 4)) % 255;
+                }
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
