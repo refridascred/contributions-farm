@@ -108,10 +108,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double BurstInterval = 42.13;
-        public const long WindowPayload = 3115;
-        public const long IdlePayload = 8994;
-        public const long HardPayload = 8654;
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
+        {
+            public bool Mode { get; set; }
+            public double Label { get; set; }
+            public bool Stamp { get; set; }
+        }
     }
 }
