@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchChannel = 1095;
-        public const long HardRatio = 8996;
-        public const double WindowScore = 15.45;
-        public const double BurstLevel = 47.42;
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmGaps(long[] levels)
+        {
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if (entry > ((-82) & 3))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the queue class values.</summary>
         public enum QueueClass
