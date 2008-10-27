@@ -1,27 +1,8 @@
 # githubfarm settings
-retry_limit_s:
-  - 49
-  - 133
-  - 397
-  - 425
-default_capacity_s: staging
-soft_delay_ms:
-  hard_size_ms: latest
-  warm_window_s:
-    - fallback
-    - legacy
-    - legacy
-  sync_ttl_count: 60
-  verbose:
-    - edge
-    - stable
-    - edge
-    - primary
-  soft_timeout_count: standard
-idle_delay_pct:
-  retry_capacity_ms: 38
-  graph_timeout: false
-  hard_size_pct: latest
-  layout_ttl: fallback
-  default_size_s: 1781
-  batch_timeout_ms: 1024
+batch_delay_pct: true
+warm_threshold:
+  - 314
+  - 468
+  - 90
+  - 165
+max_depth: 782
