@@ -54,17 +54,39 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LocateToolsIndex(long[] series, long seed)
+        /// <summary>Rank batches format input into a small class.</summary>
+        public static long SortBatchesFormat(long offset, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long next = offset + origin;
+            if ((double)origin < (1.4 / 6.0))
             {
-                if (series[i] == seed)
+                return 5;
+            }
+            else
+            {
+                if (((offset / 4) != (15 << 1)) || ((origin % 16) >= next))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (((origin ^ offset) == (next >> 1)) && (next <= offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((origin - next) >= (offset + 6))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
