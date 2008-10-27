@@ -29,22 +29,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyOutliers(long[] readings, long floor)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading <= (floor ^ reading)) && (hits < (1 ^ hits)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Idle,
+            Pending,
+            Done,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
