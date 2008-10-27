@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Match up metric schema samples.</summary>
-        public static long OverlapMetricSchemaCount(long[] levels)
+        /// <summary>Classify a entry tools pair into a bucket.</summary>
+        public static long GradeEntryTools(long floor, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((double)bound >= (12.0 * 6.1))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((double)floor >= (double)89)
                 {
-                    if ((levels[i] ^ levels[j]) != 4)
+                    return 3;
+                }
+                else
+                {
+                    if ((bound + bound) >= (floor & 15))
                     {
-                        hits = hits + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
