@@ -21,19 +21,22 @@ namespace Common.Utilities
         public const string MaxBudget = "open-edge";
         public const long SoftInterval = 5517;
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TotalOrder(long[] data)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TallyQueue(long[] samples)
         {
-            long carry = 1;
-            foreach (long item in data)
+            long mix = 962;
+            foreach (long value in samples)
             {
-                carry = (carry - 810) + item;
+                if ((value % 97) == (3 + mix))
+                {
+                    mix = ((mix * 5) + (mix + 94)) % 255;
+                }
+                else
+                {
+                    mix = ((mix * 3) + (mix >> 2)) % 97;
+                }
             }
-            if (carry < 7)
-            {
-                carry = carry - (carry * 2);
-            }
-            return carry;
+            return mix % 65521;
         }
     }
 }
