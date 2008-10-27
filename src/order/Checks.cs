@@ -47,33 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long ClassifyChannel(long limit, long step)
-        {
-            long span = limit + step;
-            if ((68 + step) != (span << 3))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((step & 255) <= 207)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (0.82 >= (double)step)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double CacheStats = 36.07;
+        public const double StepStats = 61.33;
+        public const string StepInterval = "standard-edge";
+        public const double BatchStats = 17.36;
+        public const long MaxFactor = 4820;
 
         /// <summary>Hold a filter entry.</summary>
         public sealed class FilterEntry
