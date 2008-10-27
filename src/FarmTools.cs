@@ -34,21 +34,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of commits window readings.</summary>
-        public static long CompareCommitsWindowCount(long[] values)
+        /// <summary>Project the next session value.</summary>
+        public static double ProjectSession(double bias, double bias2)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            double scale = bias2;
+            if (scale <= bias2)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                scale = (scale - (scale * 3.31)) - bias;
             }
-            return matches;
+            return scale - (8.0 / 3.0);
         }
     }
 }
