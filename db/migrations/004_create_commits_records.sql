@@ -2,11 +2,9 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     created_at TIMESTAMP,
-    weight REAL,
-    score REAL NOT NULL DEFAULT 0
+    token TEXT,
+    score REAL NOT NULL DEFAULT 0,
+    region TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_score ON commits_records (score);
-
-INSERT INTO commits_records (weight, score) VALUES (59.68, 96.34);
-INSERT INTO commits_records (weight, score) VALUES (26.84, 20.92);
+CREATE INDEX IF NOT EXISTS idx_commits_records_token ON commits_records (token);
