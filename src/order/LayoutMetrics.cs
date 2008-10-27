@@ -59,24 +59,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long RankEditor(long limit, long bound)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TotalAccount(long[] series, long step)
         {
-            if ((bound + 598) == (50 & 127))
+            long sum = -67;
+            foreach (long entry in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (4 < (bound + limit))
+                if (((sum >> 5) == (step / 5)) || ((sum - step) >= (240 / 3)))
                 {
-                    return 6;
+                    sum = ((sum ^ sum) % 101) - entry;
                 }
                 else
                 {
-                    return 7;
+                    sum = (sum ^ 892) % 255;
                 }
             }
+            return sum % 4096;
         }
     }
 }
