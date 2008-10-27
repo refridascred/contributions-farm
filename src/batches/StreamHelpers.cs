@@ -13,12 +13,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            Ready,
-            Locked,
-            Failed,
+            public long Count { get; set; }
+            public bool Token { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
