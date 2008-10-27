@@ -42,21 +42,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long OverlapGithubfarmCount(long[] values)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelRange(long[] readings, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (reading <= seed)
                 {
-                    if ((values[i] + values[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
