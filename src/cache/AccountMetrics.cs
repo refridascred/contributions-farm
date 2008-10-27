@@ -49,11 +49,19 @@ namespace Common.Utilities
             return ((load - load) + gain) + floor;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string HardRoute = "fallback";
-        public const string BaseRoute = "fallback-1";
-        public const long RetryCount = 1536;
-        public const long IdleInterval = 5312;
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TallyEditor(long[] samples)
+        {
+            long state = 7;
+            foreach (long cell in samples)
+            {
+                if ((state >> 5) != (cell / 6))
+                {
+                    state = (state + state) % 1000;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Accumulate githubfarm samples.</summary>
         public static long TotalGithubfarm(long[] items, long step)
