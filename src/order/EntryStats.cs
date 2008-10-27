@@ -5,14 +5,39 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long GradeContext(long target, long offset)
         {
-            Locked,
-            Queued,
-            Done,
-            Paused,
-            Closed,
+            long lane = target + offset;
+            if (!(346 >= (lane / 2)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target << 3) != (offset & 7))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((target < (840 * 2)) && (offset >= (lane - 6)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((target ^ lane) <= 80) && ((offset >> 3) > lane))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a record record.</summary>
