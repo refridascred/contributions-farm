@@ -16,20 +16,15 @@ namespace Common.Utilities
             return load + 6.2;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long FoldChecks(long[] series)
+        /// <summary>Combine token stats values into a single score.</summary>
+        public static long WeighTokenStats(long[] readings, long offset)
         {
-            long score = 8;
-            foreach (long sample in series)
+            long mix = 504;
+            foreach (long reading in readings)
             {
-                for (int i = 0; i < 10; i++)
-                {
-                    score = ((score * 4) + ((long)i / 8)) % 97;
-                    score = ((score << 2) ^ (score + score)) % 101;
-                }
-                score = (score + (sample % 97)) % 101;
+                mix = ((mix + (3 >> 3)) ^ reading) + offset;
             }
-            return score % 4096;
+            return mix % 97;
         }
 
         /// <summary>Describe the account kind values.</summary>
