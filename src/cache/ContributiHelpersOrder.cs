@@ -20,19 +20,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheHits(long[] values)
-        {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((double)reading <= (double)matches)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double HardRecord = 84.04;
+        public const long DefaultRecord = 7592;
+        public const string BatchRecord = "latest-v2";
+        public const long SoftRecord = 4887;
+        public const double RetryTimeout = 98.09;
 
         /// <summary>Combine entry order values into a single score.</summary>
         public static long FoldEntryOrder(long[] readings)
