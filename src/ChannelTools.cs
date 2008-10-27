@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            Queued,
-            Retry,
-            Idle,
-            New,
-            Dropped,
+            public bool Flag { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Compare every pair of context schema readings.</summary>
