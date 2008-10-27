@@ -65,22 +65,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the support order entries that pass the check.</summary>
-        public static long CountSupportOrderOutliers(long[] data, long step)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if (((double)item > (double)step) && (hits <= (hits / 6)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Done,
+            Failed,
+            Draft,
+            Idle,
+            Paused,
         }
     }
 }
