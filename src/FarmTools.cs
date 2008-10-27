@@ -16,24 +16,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long RankStats(long seed, long origin)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            if ((seed < (218 + 0)) || (seed >= origin))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((1.9 / 3.0) < (double)seed)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Stale,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Hold a profile options.</summary>
