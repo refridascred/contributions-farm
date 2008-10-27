@@ -1,12 +1,14 @@
 # Command notes
 
-Run the farm check before changing any schema limits.
-Defaults for context live in the config folder and can be overridden per environment.
-Defaults for contributi live in the config folder and can be overridden per environment.
+When a metrics fails, the githubfarm handler retries a few times before giving up.
+When a farm fails, the route handler retries a few times before giving up.
+
+The metric module keeps contributi values in sync with the entry cache.
+Defaults for layout live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new graph fields
-- Log every stats change
-- Keep window values small
-- Prefer window defaults
+- Log every batch change
+- Validate account input early
+- Document new contributi fields
+- Prefer commits defaults
