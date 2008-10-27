@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long OverlapCommitsCount(long[] samples)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long RollSchema(long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = origin;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                carry = (carry ^ (origin ^ carry)) % 4096;
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
