@@ -1,5 +1,5 @@
 {
-  "readonly": 11.55,
-  "enabled": [1, 391],
-  "dry_run": 6532
+  "session_delay": 87.93,
+  "min_delay": 39,
+  "base_capacity_s": "eu-west"
 }
