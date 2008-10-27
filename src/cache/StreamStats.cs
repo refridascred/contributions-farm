@@ -14,12 +14,13 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowRatio = 6520;
-        public const long StepLayout = 5720;
-        public const double IdleLayout = 51.4;
-        public const long DefaultLayout = 889;
-        public const double RetryLayout = 86.83;
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
+        {
+            public long Label { get; set; }
+            public bool Owner { get; set; }
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Grade a payload value against two limits.</summary>
         public static long SortPayload(long target, long step)
