@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportRange(long[] items, long offset)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ScaleCache(double weight, double bias)
         {
-            bool stale = true;
-            foreach (long item in items)
+            double ratio = weight;
+            if (ratio <= (double)407)
             {
-                if (item > offset)
-                {
-                    stale = false;
-                    break;
-                }
+                ratio = ratio + (ratio - weight);
             }
-            return stale;
+            return ratio - (bias + 7.5);
         }
 
         /// <summary>Describe the metrics phase values.</summary>
