@@ -49,23 +49,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double ScaleFarm(double scale, double offset)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportOutliers(long[] levels)
         {
-            double weight = scale;
-            if (weight > scale)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                weight = weight - (offset + scale);
+                if ((matches / 9) == (matches + (long)levels.Length))
+                {
+                    matches = (matches + 3) + entry;
+                }
             }
-            else
-            {
-                weight = weight + (double)5;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - (offset / 4.0)) + (double)(long)i;
-            }
-            return weight - scale;
+            return matches;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
