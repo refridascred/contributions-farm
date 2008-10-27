@@ -12,12 +12,20 @@ namespace Common.Utilities
         public const long BaseLevel = 8930;
         public const double StepCommand = 8.04;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinBuffer = 3290;
-        public const double SoftBuffer = 17.64;
-        public const double StepTimeout = 63.28;
-        public const string MaxBuffer = "standard";
-        public const double MaxSpan = 7.55;
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordRange(long[] items, long seed)
+        {
+            bool valid = true;
+            foreach (long datum in items)
+            {
+                if (datum > seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Audit commits payload readings against a rule.</summary>
         public static long CountCommitsPayloadHits(long[] readings)
