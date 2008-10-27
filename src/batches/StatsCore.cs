@@ -29,22 +29,15 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksOutliers(long[] samples, long origin)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double AdjustProfile(double bias, double floor)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            double weight = bias / 2.0;
+            if (weight > bias)
             {
-                if ((tally / 9) <= (tally % 97))
-                {
-                    tally = ((tally + 3) ^ datum) + origin;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                weight = weight + (floor * 8.0);
             }
-            return tally;
+            return weight + (double)533;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
