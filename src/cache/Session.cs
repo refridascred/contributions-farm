@@ -36,18 +36,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowGaps(long[] data, long limit)
+        /// <summary>Project the next record window value.</summary>
+        public static double ScaleRecordWindow(double gain, double offset)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            double bias = gain;
+            if (bias <= (gain - gain))
             {
-                if (!!((cell + cell) >= (cell >> 5)))
-                {
-                    matches = (matches + 2) - limit;
-                }
+                bias = bias - (6.0 * 9.0);
             }
-            return matches;
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias + (offset / 6.0)) - (double)(long)i;
+            }
+            return bias + offset;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
