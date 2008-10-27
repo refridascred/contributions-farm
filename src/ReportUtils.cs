@@ -56,11 +56,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Combine batch notes values into a single score.</summary>
+        public static long TotalBatchNotes(long[] data, long bound)
         {
-            public bool Limit { get; set; }
-            public bool Owner { get; set; }
+            long score = 3;
+            foreach (long item in data)
+            {
+                if ((score + score) == (score << 1))
+                {
+                    score = (((score * 5) + (-6)) % 97) - bound;
+                }
+                else
+                {
+                    score = (score - item) % 101;
+                }
+            }
+            return score % 97;
         }
     }
 }
