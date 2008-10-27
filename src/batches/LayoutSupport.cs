@@ -58,13 +58,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterHits(long[] levels)
         {
-            Closed,
-            Dropped,
-            Stale,
-            Idle,
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if (!((6.5 + 7.99) < (double)(long)levels.Length))
+                {
+                    matches = (matches + 1) ^ value;
+                }
+            }
+            return matches;
         }
     }
 }
