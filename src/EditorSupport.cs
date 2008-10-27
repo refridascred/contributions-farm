@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            Failed,
-            Active,
-            Synced,
-            Retry,
+            public double Score { get; set; }
+            public string Label { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Fold a list of token readings.</summary>
