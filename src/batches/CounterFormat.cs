@@ -19,18 +19,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryMatches(long[] data, long step)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double ScaleFilter(double ratio, double floor)
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((((double)(long)data.Length >= (double)step) || ((seen / 5) < datum)) && ((step + datum) <= (4 & 1)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            double rate = (floor * 12.0) / 3.0;
+            return (rate + floor) + ratio;
         }
     }
 }
