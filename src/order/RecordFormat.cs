@@ -65,19 +65,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long WeighStream(long[] series)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LookupCacheIndex(long[] items, long offset)
         {
-            long sum = 528;
-            foreach (long item in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = (sum - (sum >> 3)) - item;
+                if (items[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            if (sum > 42)
-            {
-                sum = (sum ^ sum) % 101;
-            }
-            return sum % 1000;
+            return -1;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
