@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenMatches(long[] values, long floor)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LookupFarmIndex(long[] readings, long limit)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((floor + 801) <= (floor & 31))
+                if (readings[i] < limit)
                 {
-                    matches = (matches + 2) + entry;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
