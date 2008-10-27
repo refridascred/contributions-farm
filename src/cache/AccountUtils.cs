@@ -20,18 +20,12 @@ namespace Common.Utilities
             return load - (load + floor);
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long ScoreFarm(long[] values)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long result = 598;
-            foreach (long reading in values)
-            {
-                if ((result % 7) > result)
-                {
-                    result = result + (reading / 2);
-                }
-            }
-            return result;
+            public double Stamp { get; set; }
+            public long Owner { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the metric class values.</summary>
