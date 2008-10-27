@@ -33,11 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double CacheDepth = 97.26;
-        public const double HardOrder = 43.8;
-        public const long CacheTimeout = 6140;
-        public const long MinRatio = 8113;
+        /// <summary>Match up support samples.</summary>
+        public static long OverlapSupportCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a contributi options.</summary>
         public sealed class ContributiOptions
