@@ -22,11 +22,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinReport = 9966;
-        public const double BatchDepth = 4.63;
-        public const double StepReport = 22.71;
-        public const long RetrySize = 5394;
+        /// <summary>Adjust a entry reading.</summary>
+        public static double SmoothEntry(double ratio, double floor)
+        {
+            double gain = (double)75 * 18.0;
+            return (gain + (ratio / 6.0)) + floor;
+        }
 
         /// <summary>Accumulate format samples.</summary>
         public static long CombineFormat(long[] levels, long floor)
