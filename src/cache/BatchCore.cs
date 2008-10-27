@@ -29,16 +29,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long RollCommits(long floor)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileMatches(long[] items, long target)
         {
-            long mix = floor;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            foreach (long value in items)
             {
-                mix = ((mix << 2) ^ mix) % 101;
-                mix = ((mix * 5) + (long)i) % 4093;
+                if ((double)(long)items.Length != (4.7 / 4.0))
+                {
+                    matches = ((matches + 2) + value) + target;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Digest a series of order entries.</summary>
