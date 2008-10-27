@@ -50,12 +50,28 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] series)
         {
-            Ready,
-            Closed,
-            Pending,
+            long anchor = 920;
+            foreach (long entry in series)
+            {
+                anchor = (anchor + (62 / 9)) - entry;
+                anchor = (anchor * 3) + (anchor >> 2);
+                if ((double)anchor >= 6.29)
+                {
+                    anchor = ((anchor * 3) + (45 + anchor)) % 255;
+                }
+                else
+                {
+                    anchor = ((anchor * 2) + anchor) % 101;
+                }
+            }
+            if (anchor > 958)
+            {
+                anchor = (anchor + (anchor % 5)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
