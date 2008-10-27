@@ -20,19 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadBounds(long[] series, long target)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long ScoreFarm(long[] values)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            long result = 598;
+            foreach (long reading in values)
             {
-                if (sample < target)
+                if ((result % 7) > result)
                 {
-                    ok = false;
-                    break;
+                    result = result + (reading / 2);
                 }
             }
-            return ok;
+            return result;
         }
 
         /// <summary>Describe the metric class values.</summary>
