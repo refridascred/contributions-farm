@@ -40,10 +40,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitRatio = 1719;
-        public const long DefaultFactor = 5400;
-        public const string RetryLevel = "legacy";
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
+        {
+            public long Label { get; set; }
+            public bool Owner { get; set; }
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const long MaxSupport = 3365;
