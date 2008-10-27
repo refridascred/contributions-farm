@@ -37,14 +37,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Rank entry notes input into a small class.</summary>
+        public static long RankEntryNotes(long origin, long floor)
         {
-            New,
-            Locked,
-            Queued,
-            Failed,
-            Active,
+            long gap = origin - floor;
+            if (floor <= (gap + 36))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((gap >> 1) <= floor)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((gap % 10) >= (origin << 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (floor > 9)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a graph record.</summary>
