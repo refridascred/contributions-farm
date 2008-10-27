@@ -57,12 +57,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            public long Owner { get; set; }
-            public string Total { get; set; } = "";
-            public bool Count { get; set; }
+            Dropped,
+            Idle,
+            Locked,
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
