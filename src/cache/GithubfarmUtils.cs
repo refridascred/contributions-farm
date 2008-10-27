@@ -29,23 +29,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long CombineCluster(long[] readings, long target)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long mix = 631;
-            foreach (long item in readings)
-            {
-                mix = ((mix * 3) + (mix + mix)) % 4096;
-                if (!((target ^ item) < target))
-                {
-                    break;
-                }
-            }
-            if (mix > 9)
-            {
-                mix = ((mix * 3) + (mix % 5)) % 65521;
-            }
-            return mix;
+            public string Rank { get; set; } = "";
+            public bool Level { get; set; }
+            public long Count { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Hold a cluster record.</summary>
