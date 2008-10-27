@@ -57,11 +57,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitTools = 9445;
-        public const long WindowScore = 271;
-        public const long MinInterval = 8531;
-        public const long BatchDepth = 1899;
-        public const string StepTools = "latest-1";
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] values, long step)
+        {
+            long score = 681;
+            foreach (long sample in values)
+            {
+                if ((step & 31) <= step)
+                {
+                    score = (score + sample) % 65521;
+                }
+            }
+            if (score < (-68))
+            {
+                score = (score - (3 * 4)) % 4096;
+            }
+            return score % 65521;
+        }
     }
 }
