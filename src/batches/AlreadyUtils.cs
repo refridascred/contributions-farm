@@ -30,13 +30,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Derive the next buffer command value from a seed.</summary>
+        public static long IterateBufferCommand(long limit)
         {
-            public long Label { get; set; }
-            public string Rank { get; set; } = "";
-            public double Total { get; set; }
-            public long Size { get; set; }
+            long mix = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                mix = (mix ^ (limit - limit)) % 97;
+                if ((long)i > limit)
+                {
+                    mix = ((mix * 5) + limit) % 101;
+                }
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Match up layout samples.</summary>
