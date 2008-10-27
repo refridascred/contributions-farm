@@ -13,11 +13,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string CacheWindow = "standard-1";
-        public const long BurstWindow = 8050;
-        public const long SoftBudget = 3897;
-        public const long HardWindow = 8709;
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BaseAlready = "alpha-1";
+        public const long MaxWidth = 9925;
+        public const double LimitAlready = 87.7;
+        public const double StepTimeout = 84.52;
+        public const long MaxDepth = 1125;
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long ScoreChannel(long[] readings, long seed)
