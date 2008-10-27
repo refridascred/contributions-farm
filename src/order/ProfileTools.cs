@@ -67,11 +67,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            public bool Score { get; set; }
-            public double Owner { get; set; }
+            public long Label { get; set; }
+            public long Total { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
