@@ -34,22 +34,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TallyEntry(long[] data)
+        /// <summary>Count layout notes pairs that satisfy a relation.</summary>
+        public static long MatchLayoutNotesCount(long[] series)
         {
-            long anchor = 84;
-            foreach (long cell in data)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((0.12 + 1.86) >= (double)anchor)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = ((anchor << 2) ^ (cell + 2)) % 97;
+                    if ((series[i] + series[j]) > 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (anchor > 941)
-            {
-                anchor = anchor ^ (anchor >> 5);
-            }
-            return anchor;
+            return tally;
         }
     }
 }
