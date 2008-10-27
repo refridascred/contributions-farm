@@ -65,10 +65,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchWindow = 6613;
-        public const long HardWindow = 6215;
-        public const double MinSpan = 47.23;
-        public const double SoftWindow = 12.08;
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
+        {
+            public string Region { get; set; } = "";
+            public string Size { get; set; } = "";
+            public double Ratio { get; set; }
+            public bool Rank { get; set; }
+        }
     }
 }
