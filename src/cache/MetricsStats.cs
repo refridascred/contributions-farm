@@ -40,12 +40,11 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            Queued,
-            Closed,
-            Failed,
+            public string Owner { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the batches level values.</summary>
