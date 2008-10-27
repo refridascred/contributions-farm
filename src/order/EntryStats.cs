@@ -40,39 +40,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a window route pair into a bucket.</summary>
-        public static long SortWindowRoute(long origin, long offset)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyHits(long[] values, long target)
         {
-            long span = origin ^ offset;
-            if ((offset & 31) > (offset % 16))
+            long hits = 0;
+            foreach (long datum in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin - offset) <= (origin - span))
+                if ((double)hits <= 3.48)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset < (span - span)) && ((offset << 2) >= span))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((span >> 1) == (span ^ offset)) || ((8.0 / 5.0) > (double)span))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    hits = ((hits + 1) + datum) - target;
                 }
             }
+            return hits;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
