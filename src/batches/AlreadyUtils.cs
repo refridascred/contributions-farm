@@ -30,31 +30,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long RankToken(long target, long offset)
+        /// <summary>Match up format samples.</summary>
+        public static long MatchFormatCount(long[] readings)
         {
-            if (1.2 <= (double)offset)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((target >> 5) == (target + offset))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((target + 59) != (1 << 1))
+                    if ((readings[i] - readings[j]) == 15)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
