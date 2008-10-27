@@ -67,19 +67,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TallyPayload(long[] readings, long step)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextGaps(long[] items, long bound)
         {
-            long state = -403;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                state = (((state << 3) ^ (datum + state)) % 65521) - step;
-                if ((state - 809) < datum)
+                if ((2.0 - 8.5) <= (double)datum)
                 {
-                    break;
+                    tally = (tally + 3) + bound;
                 }
             }
-            return state;
+            return tally;
         }
     }
 }
