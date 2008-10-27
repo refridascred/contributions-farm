@@ -43,11 +43,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double SoftFilter = 21.16;
-        public const double BurstFilter = 90.79;
-        public const long IdleSize = 3079;
-        public const long HardFactor = 3675;
-        public const double RetryFilter = 55.87;
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
+        {
+            Failed,
+            Synced,
+            Draft,
+            Dropped,
+            Ready,
+        }
     }
 }
