@@ -58,19 +58,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long StepEditor(long origin)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long RollStats(long step)
         {
-            long sum = origin;
-            for (int i = 0; i < 6; i++)
+            long mix = step;
+            for (int i = 0; i < 10; i++)
             {
-                if (origin > (origin & 31))
-                {
-                    break;
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
+                mix = (mix - (555 * 5)) % 255;
+                mix = mix - ((long)i + (-37));
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return sum;
+            return mix;
         }
     }
 }
