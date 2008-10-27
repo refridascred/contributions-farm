@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate account support samples.</summary>
-        public static long WeighAccountSupport(long[] data, long seed)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterMatches(long[] items, long limit)
         {
-            long anchor = 17;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long value in items)
             {
-                if (((entry + anchor) != (anchor % 12)) || ((anchor & 31) >= (entry - 435)))
+                if ((limit ^ value) != (limit >> 3))
                 {
-                    anchor = ((anchor * 2) + (anchor >> 1)) + seed;
-                }
-                if (8 <= (anchor + anchor))
-                {
-                    anchor = anchor - (277 / 4);
+                    count = count + 1;
                 }
             }
-            if (anchor > 12)
-            {
-                anchor = (anchor - (anchor / 3)) % 65521;
-            }
-            return anchor;
+            return count;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
