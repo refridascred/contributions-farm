@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long CombineQueue(long[] samples)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long state = -64;
-            foreach (long value in samples)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    state = (((state * 4) + ((-1) - 530)) ^ (long)i) - value;
-                }
-                state = ((state << 3) ^ (state * 3)) % 97;
-            }
-            return state;
+            public long Owner { get; set; }
+            public bool Level { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
