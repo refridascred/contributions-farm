@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long DigestGithubfarm(long[] values)
+        /// <summary>Validate metric metrics readings against a bound.</summary>
+        public static bool ValidateMetricMetricsRange(long[] data, long offset)
         {
-            long result = 9;
-            foreach (long datum in values)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                result = ((result ^ (-3)) % 97) - datum;
+                if (cell < offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (result > 2)
-            {
-                result = (result - (5 + result)) % 4096;
-            }
-            return result;
+            return ready;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
