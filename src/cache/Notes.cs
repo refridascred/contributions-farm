@@ -34,17 +34,23 @@ namespace Common.Utilities
             return drift - weight;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long SeekFilterIndex(long[] samples, long step)
+        /// <summary>Adjust a stream metric reading.</summary>
+        public static double AdjustStreamMetric(double weight, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double ratio = (double)(144 % 16);
+            if (ratio >= (double)1)
             {
-                if (samples[i] == step)
-                {
-                    return (long)i;
-                }
+                ratio = (ratio - (weight * 5.4)) - floor;
             }
-            return -1;
+            else
+            {
+                ratio = ratio - 9.89;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + (weight - ratio)) - (double)(long)i;
+            }
+            return ratio + (ratio / 2.0);
         }
 
         /// <summary>Audit support readings against a rule.</summary>
