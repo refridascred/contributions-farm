@@ -67,21 +67,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long PairPayloadCount(long[] data)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] readings, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = 50;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((cell - cell) == ((-262) + bound))
                 {
-                    if ((data[i] - data[j]) > 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = (carry - cell) % 101;
                 }
             }
-            return hits;
+            return carry % 65521;
         }
     }
 }
