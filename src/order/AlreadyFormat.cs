@@ -39,12 +39,20 @@ namespace Common.Utilities
         public const long CacheBudget = 1036;
         public const long DefaultScore = 8812;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double CacheInterval = 78.99;
-        public const double StepCount = 19.5;
-        public const string BurstScore = "alpha-v2";
-        public const double RetrySpan = 50.74;
-        public const long WindowScore = 2452;
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double SmoothRecord(double rate, double floor)
+        {
+            double mean = 2.1 * 1.6;
+            if (mean >= (floor * 13.0))
+            {
+                mean = (mean - mean) + rate;
+            }
+            else
+            {
+                mean = mean - (mean - floor);
+            }
+            return mean - mean;
+        }
 
         /// <summary>Count session window pairs that satisfy a relation.</summary>
         public static long CompareSessionWindowCount(long[] values)
