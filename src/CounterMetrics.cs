@@ -44,17 +44,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LookupMetricsIndex(long[] values, long target)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long PairTokenCount(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (values[i] <= target)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] + items[j]) > 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
