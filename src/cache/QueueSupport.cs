@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long ClassifyStats(long seed, long bound)
+        /// <summary>Digest a series of support queue entries.</summary>
+        public static long ScoreSupportQueue(long[] levels, long limit)
         {
-            if (((28 ^ bound) != (24 - seed)) || ((17.0 + 14.0) != (double)bound))
+            long state = 130;
+            foreach (long item in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)seed < (8.0 * 4.53))
+                if (state >= (item - item))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)bound != (5.36 + 15.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((bound * 4) > bound)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    state = ((state + (item % 16)) % 65521) - limit;
                 }
             }
+            if (state > 429)
+            {
+                state = ((state * 2) + (62 >> 2)) % 1000;
+            }
+            return state % 65521;
         }
 
         /// <summary>Accumulate farm samples.</summary>
