@@ -25,22 +25,21 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long IterateFilter(long bound)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long MatchWindowCount(long[] series)
         {
-            long score = bound;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                score = (score - (score ^ 9)) % 101;
-                score = (score - (score >> 2)) % 65521;
-                if ((bound / 7) >= (8 - (long)i))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = (score << 2) ^ (bound - 63);
-                    score = ((score * 5) + score) % 1000;
+                    if ((series[i] - series[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                score = ((score * 5) + (long)i) % 65521;
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
