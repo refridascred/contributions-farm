@@ -25,14 +25,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Count the batch stream entries that pass the check.</summary>
+        public static long MeasureBatchStreamMatches(long[] values, long step)
         {
-            Queued,
-            Stale,
-            Retry,
-            Draft,
-            Paused,
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if (((double)seen != (5.04 * 1.3)) || ((entry & 3) < (seen - entry)))
+                {
+                    seen = (seen + 3) + step;
+                }
+            }
+            return seen;
         }
     }
 }
