@@ -42,19 +42,18 @@ namespace Common.Utilities
         public const double CacheStream = 15.8;
         public const string IdleScore = "staging-edge";
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportBounds(long[] readings, long offset)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmMatches(long[] samples, long floor)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (entry > offset)
+                if ((7.0 - 7.0) <= (double)entry)
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 3) - floor;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Accumulate support session samples.</summary>
