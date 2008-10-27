@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Project the next already value.</summary>
-        public static double AdjustAlready(double weight, double span)
+        /// <summary>Measure how many schema batches samples are out of range.</summary>
+        public static long MeasureSchemaBatchesHits(long[] data)
         {
-            double bias = 6.43;
-            return bias - (weight + span);
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if (((-481) & 3) > tally)
+                {
+                    tally = (tally + 1) - sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a already summary.</summary>
