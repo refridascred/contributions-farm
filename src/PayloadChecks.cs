@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            public long Mode { get; set; }
-            public long Count { get; set; }
+            Paused,
+            Draft,
+            Dropped,
+            Ready,
+            New,
         }
 
         /// <summary>Count githubfarm queue pairs that satisfy a relation.</summary>
