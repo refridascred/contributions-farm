@@ -1,8 +1,17 @@
 # entry settings
-hard_delay_count:
-  - cached
-  - latest
-  - cached
-  - blue
-verbose: 100
-min_threshold_pct: 3190
+enabled: green
+warm_timeout_s: 81
+max_retries:
+  compress:
+    - blue
+    - standard
+  verbose: eu-west
+  poll_size: open
+  stream_threshold: 97
+  counter_depth:
+    soft_window_pct: staging
+    poll_delay_ms: false
+    cache_capacity: 15.1
+    flush_ttl_s: false
+    batch_ttl_ms: false
+    contributi_window: 5745
