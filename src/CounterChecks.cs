@@ -52,24 +52,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long ClassifyCommand(long floor, long seed)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long ScoreLayout(long[] data, long limit)
         {
-            if ((509 + floor) < floor)
+            long mix = 5;
+            foreach (long cell in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed >> 1) < floor)
+                if (cell <= (mix / 3))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
+                    mix = (mix - limit) % 101;
                 }
             }
+            return mix;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
