@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ProjectCommits(double ratio, double floor)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsRange(long[] data, long seed)
         {
-            double bias = floor / 7.0;
-            if (bias >= (floor / 3.0))
+            bool ready = true;
+            foreach (long item in data)
             {
-                bias = bias + ratio;
+                if (item != seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                bias = bias + (15.0 * 17.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + bias) - (double)(long)i;
-            }
-            return bias - (ratio + floor);
+            return ready;
         }
 
         /// <summary>Validate schema stream readings against a bound.</summary>
