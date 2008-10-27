@@ -76,15 +76,12 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long RollTools(long floor)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long anchor = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
+            public double Total { get; set; }
+            public long Flag { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
