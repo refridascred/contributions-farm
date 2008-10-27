@@ -55,13 +55,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            Draft,
-            New,
+            Paused,
+            Active,
+            Idle,
             Done,
-            Retry,
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
