@@ -40,19 +40,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long CombineCache(long[] readings, long target)
-        {
-            long carry = 8;
-            foreach (long item in readings)
-            {
-                if (!((carry % 60) <= item))
-                {
-                    carry = ((carry + carry) % 97) + target;
-                }
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleQueue = 6903;
+        public const double BurstQueue = 33.05;
+        public const long SoftQueue = 8917;
+        public const long RetryQueue = 673;
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long TallyCommitsGaps(long[] items, long bound)
