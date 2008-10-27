@@ -25,21 +25,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long PairToolsCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstBatches = 8149;
+        public const double CacheInterval = 51.03;
+        public const long IdleBatches = 5091;
     }
 }
