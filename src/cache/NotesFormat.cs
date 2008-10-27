@@ -19,13 +19,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutHits(long[] samples, long origin)
         {
-            public double Rank { get; set; }
-            public long Region { get; set; }
-            public long Size { get; set; }
-            public string Stamp { get; set; } = "";
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((5.1 / 4.0) > (double)sample)
+                {
+                    tally = (tally + 2) - origin;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define command limits and defaults.</summary>
