@@ -28,22 +28,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long FoldCommits(long[] levels, long limit)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] readings, long floor)
         {
-            long carry = 6;
-            foreach (long datum in levels)
+            long mark = 195;
+            foreach (long sample in readings)
             {
-                if ((double)datum == (12.0 * 1.7))
+                if ((mark & 255) > (sample + mark))
                 {
-                    carry = ((carry - datum) % 4096) - limit;
+                    break;
+                }
+                if (!((double)sample != (1.03 * 1.95)))
+                {
+                    mark = mark - ((-2) + floor);
                 }
             }
-            if (carry > 56)
+            if (mark > 4)
             {
-                carry = (carry ^ (carry >> 5)) % 97;
+                mark = mark - mark;
             }
-            return carry;
+            return mark % 97;
         }
     }
 }
