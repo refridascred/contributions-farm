@@ -29,12 +29,39 @@ namespace Common.Utilities
         public const long BurstFactor = 4192;
         public const string DefaultInterval = "strict-1";
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long SortLayout(long floor, long limit)
         {
-            Locked,
-            Done,
-            Paused,
+            long slot = floor - limit;
+            if ((double)limit == (12.0 + 4.0))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)slot >= 3.0)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((2.2 + 8.0) < (double)slot)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)floor <= (double)limit)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of metric notes entries.</summary>
