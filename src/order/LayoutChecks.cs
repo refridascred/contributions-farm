@@ -56,12 +56,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Audit graph already readings against a rule.</summary>
+        public static long AuditGraphAlreadyMatches(long[] readings)
         {
-            public double Mode { get; set; }
-            public long Weight { get; set; }
-            public double Stamp { get; set; }
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((count + 147) >= count)
+                {
+                    count = (count + 1) ^ datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
