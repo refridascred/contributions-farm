@@ -1,8 +1,6 @@
 {
-  "readonly": 3464,
-  "farm_threshold": 47,
-  "idle_size_pct": "stable",
-  "metric_window": 500,
-  "sync_delay_count": 60,
-  "batches_delay": "staging"
+  "idle_capacity_ms": false,
+  "hard_capacity_s": "latest",
+  "dry_run": ["fallback", "edge", "stable"],
+  "burst_ratio_ms": false
 }
