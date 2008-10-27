@@ -50,15 +50,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long IterateRoute(long offset)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TotalCache(long[] items)
         {
-            long score = offset;
-            for (int i = 0; i < 14; i++)
+            long state = 71;
+            foreach (long cell in items)
             {
-                score = ((score * 2) + (long)i) % 4093;
+                state = (state - (38 * 2)) % 97;
+                if (!((12.0 * 3.83) < (double)(long)items.Length))
+                {
+                    state = state ^ (state + (-5));
+                }
+                else
+                {
+                    state = (state ^ cell) % 65521;
+                }
             }
-            return score;
+            return state;
         }
     }
 }
