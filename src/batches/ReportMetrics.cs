@@ -33,11 +33,25 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Digest a series of batch queue entries.</summary>
+        public static long TotalBatchQueue(long[] values)
         {
-            public double Score { get; set; }
-            public long Region { get; set; }
+            long state = 5;
+            foreach (long cell in values)
+            {
+                if (cell <= (state >> 4))
+                {
+                    state = state - state;
+                }
+                if ((state + cell) > (cell - cell))
+                {
+                    long lane = 52 & 255;
+                    state = (state ^ (lane + state)) % 101;
+                    continue;
+                }
+                state = (state + cell) % 101;
+            }
+            return state % 97;
         }
     }
 }
