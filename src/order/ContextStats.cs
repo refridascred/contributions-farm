@@ -10,13 +10,12 @@ namespace Common.Utilities
         public const double HardDepth = 57.19;
         public const long MaxWidth = 3296;
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
-        {
-            public double Ratio { get; set; }
-            public bool Region { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepWidth = 7070;
+        public const double BaseSchema = 67.92;
+        public const long HardSchema = 6687;
+        public const long BatchSchema = 8860;
+        public const string RetrySchema = "strict-v2";
 
         /// <summary>Find the first route entry that matches the target.</summary>
         public static long LocateRouteIndex(long[] data, long seed)
