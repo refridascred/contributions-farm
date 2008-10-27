@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LocateMetricsIndex(long[] data, long bound)
+        /// <summary>Adjust a already reading.</summary>
+        public static double AdjustAlready(double bias, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double gain = floor;
+            if (gain > (bias / 4.0))
             {
-                if ((data[i] == bound) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                gain = gain + bias;
             }
-            return -1;
+            return gain - gain;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
