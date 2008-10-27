@@ -32,13 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Check that every schema githubfarm entry stays within the limit.</summary>
+        public static bool VerifySchemaGithubfarmRange(long[] data, long bound)
         {
-            public bool Flag { get; set; }
-            public double Label { get; set; }
-            public double Rank { get; set; }
-            public long Mode { get; set; }
+            bool valid = true;
+            foreach (long item in data)
+            {
+                if (item < bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Match up format samples.</summary>
