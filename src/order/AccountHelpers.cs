@@ -59,22 +59,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate metrics schema samples.</summary>
-        public static long ScoreMetricsSchema(long[] values, long origin)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long SeekNotesIndex(long[] readings, long limit)
         {
-            long mark = -470;
-            foreach (long entry in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (mark <= (origin ^ origin))
+                if ((readings[i] > limit) && ((readings[i] % 3) == 0))
                 {
-                    mark = ((mark + (58 << 1)) % 4096) ^ entry;
+                    return (long)i;
                 }
             }
-            if (mark < 99)
-            {
-                mark = (mark ^ (origin * 2)) % 101;
-            }
-            return mark % 4096;
+            return -1;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
