@@ -1,23 +1,6 @@
 # githubfarm settings
-poll_retries_s:
-  - 401
-  - 323
-  - 23
-  - 279
-max_ttl_count: 6659
-contributi_interval:
-  notes_depth:
-    - 37
-    - 242
-  poll_depth: eu-west
-  readonly: 55.76
-  retry_interval_s:
-    - latest
-    - edge
-    - edge
-  idle_window_ms: false
-max_interval_s: strict
-compress: 250
-default_interval_pct:
-  - fallback
-  - latest
+default_ratio_pct: edge
+verbose:
+  - 397
+  - 14
+flush_depth_s: true
