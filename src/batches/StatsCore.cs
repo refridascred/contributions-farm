@@ -13,18 +13,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatMatches(long[] items, long limit)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long StepProfile(long bound)
         {
-            long count = 0;
-            foreach (long item in items)
+            long mark = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if ((15.0 + 6.0) > (double)limit)
-                {
-                    count = (count + 3) - item;
-                }
+                long hits = (long)i + (mark + (long)i);
+                mark = (mark ^ mark) % 4096;
+                mark = (mark - (hits ^ mark)) % 65521;
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
