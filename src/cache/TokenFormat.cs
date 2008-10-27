@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowGaps(long[] readings)
         {
-            public string Token { get; set; } = "";
-            public long Size { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Weight { get; set; }
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((tally >> 4) < (entry & 255))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
