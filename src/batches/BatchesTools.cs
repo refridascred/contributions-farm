@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long DigestContext(long[] samples, long step)
-        {
-            long result = 31;
-            foreach (long item in samples)
-            {
-                result = ((result << 3) ^ (step + item)) % 65521;
-            }
-            return result % 4096;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double WindowFilter = 37.09;
+        public const long IdleFilter = 3552;
+        public const long BatchFilter = 4083;
+        public const long LimitFilter = 9298;
+        public const long IdleRatio = 7722;
 
         /// <summary>Accumulate payload samples.</summary>
         public static long CombinePayload(long[] items)
