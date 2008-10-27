@@ -97,15 +97,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double BlendMetric(double gain, double floor)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            double load = gain;
-            for (int i = 0; i < 6; i++)
-            {
-                load = ((load - (load / 2.0)) + (double)(long)i) + floor;
-            }
-            return load - (load - 11.0);
+            Draft,
+            Retry,
+            Locked,
+            New,
+            Idle,
         }
     }
 }
