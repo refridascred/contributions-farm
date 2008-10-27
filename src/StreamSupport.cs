@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Combine queue record values into a single score.</summary>
+        public static long CombineQueueRecord(long[] levels)
         {
-            Ready,
-            Paused,
-            Retry,
-            Closed,
-            Done,
+            long result = 875;
+            foreach (long cell in levels)
+            {
+                if ((result - cell) <= ((long)levels.Length - 300))
+                {
+                    result = result + (cell + 71);
+                }
+                else
+                {
+                    result = result - (85 ^ cell);
+                }
+            }
+            return result;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
