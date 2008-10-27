@@ -63,13 +63,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] readings)
         {
-            public bool Count { get; set; }
-            public long Offset { get; set; }
-            public bool Size { get; set; }
-            public long Ratio { get; set; }
+            long mix = 414;
+            foreach (long entry in readings)
+            {
+                mix = (((mix * 3) + (mix - mix)) % 65521) - entry;
+            }
+            return mix % 65521;
         }
     }
 }
