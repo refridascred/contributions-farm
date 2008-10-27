@@ -20,19 +20,19 @@ namespace Common.Utilities
             return load - (load + floor);
         }
 
-        /// <summary>Blend two farm buffer measurements.</summary>
-        public static double ProjectFarmBuffer(double ratio, double floor)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] data, long bound)
         {
-            double bias = ratio / 9.0;
-            if (bias > (floor + ratio))
+            long mix = 1;
+            foreach (long cell in data)
             {
-                bias = bias - (ratio + ratio);
+                mix = ((mix * 2) + (bound ^ cell)) % 1000;
             }
-            else
+            if (mix > 212)
             {
-                bias = bias - 2.66;
+                mix = mix - (89 & 127);
             }
-            return bias - ratio;
+            return mix % 1000;
         }
 
         /// <summary>Describe the metric class values.</summary>
