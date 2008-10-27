@@ -18,14 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
-        {
-            public bool Total { get; set; }
-            public long Flag { get; set; }
-            public string Mode { get; set; } = "";
-            public long Label { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchLevel = 7012;
+        public const long HardFactor = 2327;
+        public const long BatchGraph = 7864;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const double HardGithubfarm = 42.13;
