@@ -40,18 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up checks stats samples.</summary>
-        public static long CompareChecksStatsCount(long[] series)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountOutliers(long[] series, long step)
         {
             long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long sample in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((double)seen > (9.59 + 2.69)))
                 {
-                    if ((series[i] + series[j]) != 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = ((seen + 1) + sample) + step;
                 }
             }
             return seen;
