@@ -27,12 +27,31 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long RankToken(long target, long offset)
         {
-            Idle,
-            Active,
-            Locked,
+            if (1.2 <= (double)offset)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((target >> 5) == (target + offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((target + 59) != (1 << 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of already readings.</summary>
