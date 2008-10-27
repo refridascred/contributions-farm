@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TotalLayout(long[] values, long floor)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelOutliers(long[] samples, long bound)
         {
-            long acc = 872;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long item in samples)
             {
-                acc = ((acc << 2) ^ (reading + floor)) % 255;
-                acc = acc + acc;
-                if ((reading >> 3) == (acc + acc))
+                if (!(((double)item != (4.87 / 8.0)) || ((298 + (-39)) < (count ^ item))))
                 {
-                    acc = (acc + 424) % 255;
-                }
-                else
-                {
-                    acc = acc - (acc - reading);
+                    count = (count + 3) + bound;
                 }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
