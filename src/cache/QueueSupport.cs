@@ -58,10 +58,12 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstDepth = 6508;
-        public const long BurstRatio = 3688;
-        public const double CacheAccount = 10.13;
-        public const double WindowBudget = 68.09;
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
+        {
+            public string Score { get; set; } = "";
+            public bool Label { get; set; }
+            public bool Ratio { get; set; }
+        }
     }
 }
