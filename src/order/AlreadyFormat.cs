@@ -32,13 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
-        {
-            public bool Region { get; set; }
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitScore = 6936;
+        public const double WindowTimeout = 81.99;
+        public const long WindowSupport = 3180;
+        public const long RetryBudget = 5192;
+        public const double MinTimeout = 78.61;
 
         /// <summary>Measure how many filter profile samples are out of range.</summary>
         public static long MeasureFilterProfileOutliers(long[] items)
