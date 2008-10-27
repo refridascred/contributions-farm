@@ -53,12 +53,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TotalToken(long[] samples, long step)
         {
-            Locked,
-            Dropped,
-            Synced,
+            long mix = 14;
+            foreach (long item in samples)
+            {
+                mix = ((mix * 4) + (663 & 255)) + step;
+                if (!((item - 259) > item))
+                {
+                    mix = (mix ^ (mix + mix)) % 255;
+                }
+            }
+            if (mix < 77)
+            {
+                mix = mix + mix;
+            }
+            return mix % 65521;
         }
     }
 }
