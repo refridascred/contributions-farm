@@ -28,18 +28,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowOutliers(long[] readings, long target)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if (((entry + entry) <= 57) && (405 <= entry))
-                {
-                    count = (count + 2) - target;
-                }
-            }
-            return count;
+            Locked,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Adjust a support record reading.</summary>
