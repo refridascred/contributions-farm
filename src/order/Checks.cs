@@ -33,14 +33,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
-        {
-            public long Ratio { get; set; }
-            public long Level { get; set; }
-            public long Size { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double HardChannel = 59.2;
+        public const string IdleRatio = "strict";
+        public const double RetryDepth = 89.43;
+        public const long DefaultChannel = 6220;
 
         /// <summary>Find the first notes entry that matches the target.</summary>
         public static long FindNotesIndex(long[] readings, long origin)
