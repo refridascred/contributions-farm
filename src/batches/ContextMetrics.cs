@@ -46,21 +46,13 @@ namespace Common.Utilities
             return load + span;
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long MatchContextCount(long[] readings)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Weight { get; set; } = "";
+            public long Label { get; set; }
+            public bool Limit { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
