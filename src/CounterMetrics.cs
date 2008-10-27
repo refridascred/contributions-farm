@@ -46,15 +46,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double BlendBuffer(double scale, double offset)
+        /// <summary>Match up contributi samples.</summary>
+        public static long MatchContributiCount(long[] values)
         {
-            double ratio = 10.0;
-            if (ratio > ratio)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio = (ratio + (ratio + 18.0)) + offset;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return ratio + (scale + ratio);
+            return tally;
         }
     }
 }
