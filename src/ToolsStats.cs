@@ -92,32 +92,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long ClassifyBatch(long bound, long bound2)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long delta = bound ^ bound2;
-            if (!(515 >= (delta / 7)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((bound & 255) >= (7 + bound2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)delta >= (double)95)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Stale,
+            Locked,
+            New,
         }
     }
 }
