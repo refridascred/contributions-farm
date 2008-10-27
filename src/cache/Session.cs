@@ -34,12 +34,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamHits(long[] levels, long seed)
         {
-            public long Weight { get; set; }
-            public long Offset { get; set; }
-            public bool Token { get; set; }
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((double)count >= (1.3 + 2.5))
+                {
+                    count = ((count + 1) ^ sample) + seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a payload entry.</summary>
