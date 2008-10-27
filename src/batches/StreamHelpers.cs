@@ -51,11 +51,21 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Match up token samples.</summary>
+        public static long PairTokenCount(long[] data)
         {
-            public bool Size { get; set; }
-            public long Score { get; set; }
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
