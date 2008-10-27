@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryOutliers(long[] samples, long offset)
+        /// <summary>Audit notes channel readings against a rule.</summary>
+        public static long MeasureNotesChannelHits(long[] values)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if ((((886 & 63) <= (seen + sample)) || ((seen / 9) >= (seen * 3))) || ((5.15 >= (double)seen) || ((offset + 2) < (sample >> 2))))
+                if ((double)reading > 8.9)
                 {
-                    seen = seen + 3;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Measure how many notes batches samples are out of range.</summary>
