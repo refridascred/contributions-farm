@@ -14,19 +14,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate schema notes readings against a bound.</summary>
-        public static bool CheckSchemaNotesBounds(long[] samples, long step)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long ScoreCache(long[] items)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            long sum = 988;
+            foreach (long item in items)
             {
-                if (sample > step)
-                {
-                    flag = false;
-                    break;
-                }
+                sum = ((sum - (sum << 1)) % 4096) - item;
             }
-            return flag;
+            return sum;
         }
 
         /// <summary>Accumulate graph samples.</summary>
