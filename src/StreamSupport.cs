@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Project the next schema value.</summary>
-        public static double SmoothSchema(double gain, double floor)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            double ratio = gain;
-            return ratio + (floor - 0.12);
+            Closed,
+            Active,
+            Synced,
         }
 
         /// <summary>Rank account input into a small class.</summary>
