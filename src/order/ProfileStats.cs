@@ -19,13 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
-        {
-            public double Label { get; set; }
-            public long Limit { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double MaxWidth = 39.79;
+        public const long BatchGithubfarm = 2761;
+        public const long DefaultRatio = 4863;
 
         /// <summary>Validate channel readings against a bound.</summary>
         public static bool GuardChannelLimits(long[] values, long limit)
