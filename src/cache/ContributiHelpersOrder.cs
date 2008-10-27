@@ -25,17 +25,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LocateClusterIndex(long[] levels, long origin)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long WeighCommits(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 342;
+            foreach (long datum in data)
             {
-                if (levels[i] <= origin)
+                mix = ((mix << 3) ^ mix) % 4096;
+                if ((datum <= (datum + (-340))) || (mix >= (datum >> 5)))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return mix;
         }
     }
 }
