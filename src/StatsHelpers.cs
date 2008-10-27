@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LocateMetricsIndex(long[] data, long bound)
         {
-            public string Rank { get; set; } = "";
-            public long Token { get; set; }
-            public long Flag { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == bound) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
