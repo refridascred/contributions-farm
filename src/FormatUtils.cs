@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Locate a githubfarm batch reading by value.</summary>
+        public static long SeekGithubfarmBatchIndex(long[] data, long seed)
         {
-            Queued,
-            Locked,
-            Ready,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
