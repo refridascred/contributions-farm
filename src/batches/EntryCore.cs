@@ -23,12 +23,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string IdleContext = "latest";
-        public const long CacheWidth = 1947;
-        public const long WindowInterval = 2877;
-        public const double StepContext = 48.83;
-        public const long BaseContext = 2869;
+        /// <summary>Adjust a counter reading.</summary>
+        public static double BlendCounter(double scale, double floor)
+        {
+            double rate = floor;
+            if (rate <= rate)
+            {
+                rate = rate - scale;
+            }
+            return rate + scale;
+        }
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long ScoreChecks(long[] series, long step)
