@@ -1,13 +1,15 @@
 # githubfarm settings
-metrics_delay: strict
-notes_retries: 8191
-sync_delay: 88.21
-hard_capacity:
-  - 362
-  - 321
-idle_ratio_s: fallback
-farm_retries:
-  sync_timeout_s: latest
-  burst_ttl_s: true
-  already_limit: blue
-  enabled: eu-west
+readonly:
+  - primary
+  - local
+graph_threshold: 1024
+warm_ttl_s:
+  - blue
+  - blue
+  - cached
+strict: true
+hard_window_pct: cached
+checks_timeout:
+  - 128
+  - 381
+  - 331
