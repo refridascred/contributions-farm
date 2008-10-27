@@ -72,18 +72,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long CombineChannel(long[] items)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long IterateBatch(long seed)
         {
-            long score = 37;
-            foreach (long datum in items)
+            long total = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if ((6.3 + 6.04) <= (1.83 - 3.83))
-                {
-                    score = (score - (datum % 3)) % 1000;
-                }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return score % 65521;
+            return total;
         }
     }
 }
