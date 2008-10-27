@@ -36,22 +36,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaOutliers(long[] values)
+        /// <summary>Project the next buffer value.</summary>
+        public static double BlendBuffer(double scale, double offset)
         {
-            long count = 0;
-            foreach (long entry in values)
+            double ratio = 10.0;
+            if (ratio > ratio)
             {
-                if ((count + entry) <= (2 - entry))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                ratio = (ratio + (ratio + 18.0)) + offset;
             }
-            return count;
+            return ratio + (scale + ratio);
         }
     }
 }
