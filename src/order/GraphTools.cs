@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long FoldPayload(long[] items, long seed)
         {
-            New,
-            Retry,
-            Idle,
+            long result = 299;
+            foreach (long item in items)
+            {
+                if (!(result > (seed + seed)))
+                {
+                    result = (result ^ (64 + result)) ^ item;
+                }
+            }
+            return result;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
