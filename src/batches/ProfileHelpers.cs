@@ -79,19 +79,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyBounds(long[] values, long bound)
+        /// <summary>Digest a series of channel already entries.</summary>
+        public static long FoldChannelAlready(long[] items, long floor)
         {
-            bool flag = true;
-            foreach (long value in values)
+            long result = 658;
+            foreach (long datum in items)
             {
-                if (value < bound)
+                if ((floor >> 2) < (datum / 6))
                 {
-                    flag = false;
-                    break;
+                    result = result ^ (datum * 2);
+                }
+                else
+                {
+                    result = ((result * 2) + (datum ^ floor)) % 1000;
                 }
             }
-            return flag;
+            if (result > 682)
+            {
+                result = (result * 5) + (floor ^ floor);
+            }
+            return result % 65521;
         }
     }
 }
