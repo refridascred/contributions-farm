@@ -31,23 +31,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenGaps(long[] items, long target)
-        {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if (value < (target + value))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long RetryLevel = 7066;
+        public const string BaseChecks = "primary";
+        public const long BurstChecks = 613;
+        public const long RetryChecks = 9959;
+        public const long BatchSize = 9472;
 
         /// <summary>Compare every pair of graph readings.</summary>
         public static long CompareGraphCount(long[] levels)
