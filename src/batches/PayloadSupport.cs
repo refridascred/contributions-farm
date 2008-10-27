@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Project the next commits value.</summary>
-        public static double ProjectCommits(double rate, double span)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long CompareBatchesCount(long[] series)
         {
-            double bias = (double)(504 % 12);
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                bias = (((bias - 5.98) + (double)(long)i) - rate) - span;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return bias - 8.64;
+            return hits;
         }
 
         /// <summary>Accumulate format samples.</summary>
