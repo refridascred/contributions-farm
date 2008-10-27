@@ -56,12 +56,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] readings, long offset)
         {
-            Pending,
-            Locked,
-            Dropped,
+            long carry = 554;
+            foreach (long reading in readings)
+            {
+                carry = ((carry + offset) % 255) ^ reading;
+                carry = carry + (434 << 2);
+            }
+            return carry;
         }
     }
 }
