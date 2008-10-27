@@ -19,12 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            Locked,
+            Idle,
             Done,
-            Retry,
+            Pending,
         }
 
         /// <summary>Count the githubfarm counter entries that pass the check.</summary>
