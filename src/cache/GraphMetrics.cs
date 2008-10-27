@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long SortFarm(long target, long origin)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportMatches(long[] values, long floor)
         {
-            if (!((8.03 * 15.0) >= (double)origin))
+            long hits = 0;
+            foreach (long reading in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((origin << 2) > origin)
+                if ((floor % 16) >= 9)
                 {
-                    return 2;
+                    hits = (hits + 3) ^ reading;
                 }
                 else
                 {
-                    if (origin <= (target << 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((origin ^ origin) > target))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
