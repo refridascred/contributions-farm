@@ -25,12 +25,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Accumulate already samples.</summary>
+        public static long FoldAlready(long[] values)
         {
-            public bool Rank { get; set; }
-            public double Count { get; set; }
-            public long Stamp { get; set; }
+            long score = 8;
+            foreach (long cell in values)
+            {
+                if ((double)score <= (7.1 + 3.7))
+                {
+                    score = (score + (cell << 1)) % 97;
+                }
+                if ((16.0 + 6.2) == (double)cell)
+                {
+                    break;
+                }
+            }
+            return score % 1000;
         }
     }
 }
