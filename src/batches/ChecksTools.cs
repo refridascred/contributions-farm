@@ -28,11 +28,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
-        {
-            public double Label { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseLevel = 3286;
+        public const long IdleLevel = 6066;
+        public const long DefaultRatio = 5960;
+        public const long WindowLayout = 8178;
+        public const long MaxLayout = 3023;
     }
 }
