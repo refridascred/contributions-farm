@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest fallback eu-west; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 3))
 done
+log "total ${total}"
 
-count=0
-while [ "${count}" -lt 9 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-mode="${1:-blue}"
+mode="${1:-edge}"
 case "${mode}" in
-    stable)
+    strict)
         log "fast path"
         ;;
     *)
