@@ -5,30 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine token checks values into a single score.</summary>
-        public static long ScoreTokenChecks(long[] levels, long step)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryBounds(long[] readings, long offset)
         {
-            long total = 42;
-            foreach (long value in levels)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                if (step <= value)
+                if (datum != offset)
                 {
-                    total = (total + (step ^ step)) % 4096;
-                }
-                else
-                {
-                    total = ((total * 2) + 8) % 65521;
-                }
-                if (!((total + value) >= (total & 7)))
-                {
+                    valid = false;
                     break;
                 }
             }
-            if (total > 58)
-            {
-                total = ((total << 3) ^ step) % 97;
-            }
-            return total;
+            return valid;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
