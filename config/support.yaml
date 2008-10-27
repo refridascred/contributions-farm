@@ -1,20 +1,4 @@
 # support settings
-persist: 89.33
-strict:
-  profile_delay: 250
-  schema_size: 75
-  strict:
-    - stable
-    - eu-west
-  verbose: true
-  retry_timeout_s:
-    - 119
-    - 452
-    - 106
-  batch_size: 470
-poll_limit_s: standard
-stats_size: 74
-cluster_interval: open
-schema_capacity:
-  - cached
-  - open
+format_window: true
+context_window: true
+verbose: green
