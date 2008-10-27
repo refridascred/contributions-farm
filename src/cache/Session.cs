@@ -19,25 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate commits cache samples.</summary>
-        public static long CombineCommitsCache(long[] levels, long limit)
+        /// <summary>Match up counter samples.</summary>
+        public static long PairCounterCount(long[] values)
         {
-            long mark = -63;
-            foreach (long sample in levels)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!!((double)mark >= (double)13))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = mark ^ 498;
-                    mark = mark ^ (limit + mark);
-                }
-                mark = (mark ^ ((long)levels.Length & 127)) % 101;
-                mark = ((mark * 4) + (sample + mark)) % 1000;
-                if (((mark * 2) != (mark >> 2)) || ((limit + limit) != (sample + mark)))
-                {
-                    break;
+                    if ((values[i] - values[j]) == 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Hold a already header.</summary>
