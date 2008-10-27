@@ -20,19 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every contributi payload entry stays within the limit.</summary>
-        public static bool GuardContributiPayloadBounds(long[] samples, long floor)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterHits(long[] samples)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if (entry >= floor)
+                if (!((1.4 - 17.0) <= (0.2 * 1.5)))
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 3) + datum;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Hold a filter record.</summary>
