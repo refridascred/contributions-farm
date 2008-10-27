@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long OverlapChecksCount(long[] data)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long CombineQueue(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = -64;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int i = 0; i < 4; i++)
                 {
-                    if ((data[i] - data[j]) == 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = (((state * 4) + ((-1) - 530)) ^ (long)i) - value;
                 }
+                state = ((state << 3) ^ (state * 3)) % 97;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
