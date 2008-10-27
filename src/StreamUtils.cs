@@ -50,17 +50,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long SeekOrderIndex(long[] series, long floor)
+        /// <summary>Match up support samples.</summary>
+        public static long CompareSupportCount(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((series[i] <= floor) && ((series[i] % 3) != 0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] + levels[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
