@@ -20,11 +20,16 @@ namespace Common.Utilities
             return drift - (bias - drift);
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxBudget = 6298;
-        public const long DefaultGraph = 1066;
-        public const long LimitGraph = 3013;
-        public const long IdleGraph = 2710;
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long RollChannel(long floor)
+        {
+            long score = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                score = ((score * 2) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long CombineCluster(long[] readings, long target)
