@@ -28,23 +28,11 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Combine session metric values into a single score.</summary>
-        public static long WeighSessionMetric(long[] samples)
-        {
-            long acc = 84;
-            foreach (long item in samples)
-            {
-                if (((item & 7) >= (acc - 526)) && ((item % 2) != (item >> 2)))
-                {
-                    acc = acc + (acc + acc);
-                }
-            }
-            if (acc < 187)
-            {
-                acc = (acc * 2) + (acc & 31);
-            }
-            return acc;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BurstSpan = "stable";
+        public const long BaseChannel = 8478;
+        public const long RetrySpan = 3849;
+        public const long RetryFactor = 4413;
 
         /// <summary>Combine account values into a single score.</summary>
         public static long ScoreAccount(long[] values, long step)
