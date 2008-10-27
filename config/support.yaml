@@ -1,6 +1,9 @@
 # support settings
-sync_threshold_ms: blue
-idle_delay_count: 1877
-verbose: true
-default_ratio_count: 60
-batch_retries: 30
+idle_timeout_pct: standard
+max_limit_pct: 6430
+batch_size_s: true
+dry_run:
+  - primary
+  - open
+  - cached
+  - legacy
