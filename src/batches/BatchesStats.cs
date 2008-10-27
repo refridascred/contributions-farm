@@ -27,18 +27,11 @@ namespace Common.Utilities
         public const double MaxScore = 90.03;
         public const string HardMetric = "legacy-v2";
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandHits(long[] series)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((sample / 4) > (seen ^ sample))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Limit { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
