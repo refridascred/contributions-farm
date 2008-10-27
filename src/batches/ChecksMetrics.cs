@@ -69,23 +69,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long CombineContributi(long[] samples)
+        /// <summary>Locate a session token reading by value.</summary>
+        public static long LookupSessionTokenIndex(long[] readings, long offset)
         {
-            long mix = 34;
-            foreach (long cell in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = ((mix * 2) + (753 - (long)samples.Length)) % 255;
-                if ((698 + mix) > mix)
+                if (readings[i] > offset)
                 {
-                    mix = (mix ^ (cell + mix)) % 1000;
+                    return (long)i;
                 }
             }
-            if (mix < (-1))
-            {
-                mix = ((mix * 2) + (mix % 60)) % 4096;
-            }
-            return mix % 1000;
+            return -1;
         }
 
         /// <summary>Describe the payload kind values.</summary>
