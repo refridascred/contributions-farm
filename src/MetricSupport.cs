@@ -28,21 +28,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long RollBatches(long offset)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] levels, long limit)
         {
-            long score = offset;
-            for (int i = 0; i < 15; i++)
+            long carry = 6;
+            foreach (long datum in levels)
             {
-                if ((double)offset <= 10.0)
+                if ((double)datum == (12.0 * 1.7))
                 {
-                    score = (score << 3) ^ (offset & 127);
+                    carry = ((carry - datum) % 4096) - limit;
                 }
-                score = score - (offset + offset);
-                score = (score << 2) ^ (score * 2);
-                score = ((score * 2) + (long)i) % 101;
             }
-            return score;
+            if (carry > 56)
+            {
+                carry = (carry ^ (carry >> 5)) % 97;
+            }
+            return carry;
         }
     }
 }
