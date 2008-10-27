@@ -22,24 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate counter commits samples.</summary>
-        public static long ScoreCounterCommits(long[] data, long step)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long score = 9;
-            foreach (long cell in data)
-            {
-                score = score + score;
-                score = (score - (403 << 3)) % 4096;
-                if ((score & 3) != (cell + score))
-                {
-                    score = ((score * 5) + (cell + step)) % 65521;
-                }
-                if (!((74 / 4) <= cell))
-                {
-                    break;
-                }
-            }
-            return score % 65521;
+            public bool Owner { get; set; }
+            public bool Stamp { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Hold a session options.</summary>
