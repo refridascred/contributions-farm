@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long BucketAccount(long floor, long origin)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            if (!((double)floor == (8.53 / 3.0)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((origin - floor) < (origin << 1))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin & 1) != (31 % 97))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Offset { get; set; }
+            public double Label { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
