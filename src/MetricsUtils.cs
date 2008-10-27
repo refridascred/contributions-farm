@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long OverlapAccountCount(long[] items)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Rank { get; set; }
+            public string Total { get; set; } = "";
+            public bool Weight { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Hold a command entry.</summary>
