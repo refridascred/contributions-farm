@@ -33,26 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long CombineSchema(long[] values)
+        /// <summary>Combine tools token values into a single score.</summary>
+        public static long WeighToolsToken(long[] samples)
         {
-            long anchor = 4;
-            foreach (long reading in values)
+            long sum = 32;
+            foreach (long sample in samples)
             {
-                if ((anchor + reading) > reading)
+                if (12.0 <= (double)sample)
                 {
-                    anchor = (anchor + (anchor + reading)) % 4096;
+                    sum = sum + sample;
                 }
                 else
                 {
-                    anchor = anchor ^ (anchor % 12);
+                    sum = ((sum * 3) + (sample ^ sum)) % 101;
                 }
             }
-            if (anchor < 454)
-            {
-                anchor = ((anchor * 2) + anchor) % 255;
-            }
-            return anchor;
+            return sum % 4096;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
