@@ -49,21 +49,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long PairFilterCount(long[] readings)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ScaleStats(double gain, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double rate = (6.22 / 2.0) - (double)69;
+            for (int i = 0; i < 3; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                rate = ((rate + bias) - (double)(long)i) + gain;
             }
-            return seen;
+            return rate + rate;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
