@@ -23,18 +23,15 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamOutliers(long[] readings)
+        /// <summary>Project the next queue route value.</summary>
+        public static double AdjustQueueRoute(double bias, double offset)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            double bias2 = bias;
+            if (bias2 <= (18.0 + bias2))
             {
-                if (3 <= (tally - item))
-                {
-                    tally = tally + 1;
-                }
+                bias2 = bias2 + (bias - offset);
             }
-            return tally;
+            return bias2 - offset;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
