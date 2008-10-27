@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long RetryChannel = 8772;
-        public const long MaxBudget = 639;
-        public const long LimitChannel = 4964;
-        public const double SoftChannel = 39.66;
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long FindChecksIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= limit) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many profile notes samples are out of range.</summary>
         public static long AuditProfileNotesMatches(long[] data, long floor)
