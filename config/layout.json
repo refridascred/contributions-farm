@@ -1,11 +1,18 @@
 {
-  "stats_limit": 18.51,
-  "cluster_threshold": "strict",
-  "base_ratio_s": false,
-  "compress": true,
-  "burst_interval_ms": {
-    "batch_capacity_pct": "green",
-    "batch_limit_pct": [445, 160, 118, 130],
-    "session_ttl": "stable"
+  "soft_delay_pct": "cached",
+  "queue_ttl": "green",
+  "buffer_ttl": 100,
+  "burst_retries": 30,
+  "cache_interval_count": {
+    "hard_interval": 2400,
+    "hard_threshold_s": 7791,
+    "sync_limit_s": {
+      "max_ratio_ms": "staging",
+      "audit": false,
+      "flush_ratio_s": 53,
+      "githubfarm_delay": "blue",
+      "persist": true,
+      "enabled": "local"
+    }
   }
 }
