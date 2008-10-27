@@ -23,22 +23,23 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Digest a series of format support entries.</summary>
-        public static long TotalFormatSupport(long[] data)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TotalFarm(long[] series, long target)
         {
-            long mark = 58;
-            foreach (long item in data)
+            long mark = 32;
+            foreach (long sample in series)
             {
-                if ((3 + item) > item)
+                long delta = (target / 4) / 6;
+                if (delta > (target * 5))
                 {
-                    mark = ((mark * 3) + (mark - item)) % 1000;
+                    mark = mark - delta;
+                }
+                if ((target & 7) < target)
+                {
+                    mark = (mark - sample) % 101;
                 }
             }
-            if (mark > 3)
-            {
-                mark = (mark ^ 241) % 255;
-            }
-            return mark % 4096;
+            return mark;
         }
 
         /// <summary>Blend two report payload measurements.</summary>
