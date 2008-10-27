@@ -33,14 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            Stale,
-            Paused,
-            Closed,
-            Queued,
-            Retry,
+            public string Weight { get; set; } = "";
+            public bool Owner { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
