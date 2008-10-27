@@ -20,12 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadMatches(long[] items)
         {
-            public bool Offset { get; set; }
-            public long Region { get; set; }
-            public long Score { get; set; }
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if (!((tally / 2) < tally))
+                {
+                    tally = (tally + 3) + cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
