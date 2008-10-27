@@ -1,7 +1,6 @@
 {
-  "cache_ratio": 21.68,
-  "default_ratio_s": 6120,
-  "batch_timeout": "eu-west",
-  "cache_depth_ms": "standard",
-  "idle_depth": "cached"
+  "verbose": "local",
+  "min_capacity_ms": 66.2,
+  "readonly": false,
+  "enabled": 6.77
 }
