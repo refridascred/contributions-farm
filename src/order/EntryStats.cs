@@ -44,17 +44,39 @@ namespace Common.Utilities
             return ratio2 + (double)(-49);
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long FindCommandIndex(long[] samples, long limit)
+        /// <summary>Classify a window route pair into a bucket.</summary>
+        public static long SortWindowRoute(long origin, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long span = origin ^ offset;
+            if ((offset & 31) > (offset % 16))
             {
-                if (samples[i] == limit)
+                return 3;
+            }
+            else
+            {
+                if ((origin - offset) <= (origin - span))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((offset < (span - span)) && ((offset << 2) >= span))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((span >> 1) == (span ^ offset)) || ((8.0 / 5.0) > (double)span))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
