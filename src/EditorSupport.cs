@@ -57,12 +57,11 @@ namespace Common.Utilities
             return load - 8.2;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            Idle,
-            Done,
-            Paused,
+            public string Region { get; set; } = "";
+            public bool Size { get; set; }
         }
     }
 }
