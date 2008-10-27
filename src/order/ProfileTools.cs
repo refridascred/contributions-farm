@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheCommand = 3228;
-        public const string HardRatio = "strict";
-        public const long WindowCommand = 9357;
-        public const long BaseLevel = 8930;
-        public const double StepCommand = 8.04;
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryOutliers(long[] items, long origin)
+        {
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if (!(((-9) & 1) == (origin ^ origin)))
+                {
+                    matches = (matches + 2) ^ reading;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Validate record readings against a bound.</summary>
         public static bool ValidateRecordRange(long[] items, long seed)
