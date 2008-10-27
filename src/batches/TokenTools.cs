@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
-            public bool Flag { get; set; }
-            public long Label { get; set; }
+            public string Count { get; set; } = "";
+            public long Weight { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Locate a report reading by value.</summary>
