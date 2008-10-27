@@ -68,19 +68,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricLimits(long[] levels, long seed)
-        {
-            bool ok = true;
-            foreach (long datum in levels)
-            {
-                if (datum != seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleRoute = 1485;
+        public const long SoftWidth = 3875;
+        public const long HardRoute = 8031;
+        public const long BurstRoute = 1016;
     }
 }
