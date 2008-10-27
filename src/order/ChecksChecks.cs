@@ -27,13 +27,21 @@ namespace Common.Utilities
         public const string WindowEditor = "local-1";
         public const string SoftSpan = "stable-edge";
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long MatchFilterCount(long[] series)
         {
-            Done,
-            Ready,
-            Queued,
-            Draft,
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
