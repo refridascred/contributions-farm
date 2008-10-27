@@ -33,10 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchProfile = 6225;
-        public const double BaseProfile = 58.24;
-        public const long IdleProfile = 4794;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowRatio = 6520;
+        public const long StepLayout = 5720;
+        public const double IdleLayout = 51.4;
+        public const long DefaultLayout = 889;
+        public const double RetryLayout = 86.83;
 
         /// <summary>Grade a session entry value against two limits.</summary>
         public static long GradeSessionEntry(long step, long offset)
