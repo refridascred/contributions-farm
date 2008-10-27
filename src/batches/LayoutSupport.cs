@@ -47,15 +47,9 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long DeriveTools(long origin)
-        {
-            long total = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                total = ((total * 5) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheLevel = 2531;
+        public const long BurstSpan = 8212;
+        public const string MinScore = "fallback-1";
     }
 }
