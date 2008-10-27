@@ -13,20 +13,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyRange(long[] items, long origin)
-        {
-            bool found = true;
-            foreach (long reading in items)
-            {
-                if (reading <= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchCommand = 1794;
+        public const long BurstCommand = 2038;
+        public const long HardCommand = 9122;
+        public const string MaxCommand = "standard-edge";
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long TallyWindowGaps(long[] data, long limit)
