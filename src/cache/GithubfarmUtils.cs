@@ -20,18 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the checks farm entries that pass the check.</summary>
-        public static long AuditChecksFarmOutliers(long[] samples)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if (!(((value + (-2)) >= (count % 24)) && (count < 59)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Locked,
+            Closed,
+            Idle,
+            Active,
+            Pending,
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
