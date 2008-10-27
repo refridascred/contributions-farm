@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const long LimitFilter = 9298;
         public const long IdleRatio = 7722;
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long CombinePayload(long[] items)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long carry = 74;
-            foreach (long value in items)
-            {
-                carry = (carry ^ value) % 255;
-            }
-            if (carry < 2)
-            {
-                carry = (carry ^ (carry >> 4)) % 65521;
-            }
-            return carry % 97;
+            public double Owner { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Accumulate account samples.</summary>
