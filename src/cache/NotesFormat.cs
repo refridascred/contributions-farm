@@ -23,38 +23,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a batch githubfarm value against two limits.</summary>
-        public static long BucketBatchGithubfarm(long step, long bound)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmHits(long[] values, long target)
         {
-            if ((double)bound <= (double)step)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (bound <= (step + 838))
+                if ((((target & 127) == (tally / 6)) || ((entry << 1) >= (entry / 5))) && (entry > (tally - target)))
                 {
-                    return 2;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    if ((6.3 + 2.5) != (double)bound)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((bound + bound) >= (step - step))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
