@@ -36,11 +36,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double MaxDepth = 96.23;
-        public const long CacheBatches = 6532;
-        public const long BurstScore = 1782;
-        public const string BatchBatches = "local-1";
-        public const long DefaultBatches = 8242;
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long ScoreNotes(long[] readings)
+        {
+            long result = 916;
+            foreach (long reading in readings)
+            {
+                result = ((result * 4) + (24 + result)) + reading;
+            }
+            if (result > 54)
+            {
+                result = ((result << 2) ^ result) % 1000;
+            }
+            return result;
+        }
     }
 }
