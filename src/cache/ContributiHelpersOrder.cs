@@ -5,39 +5,27 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long GradeBatch(long bound, long offset)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long CombineContributi(long[] items, long step)
         {
-            long offset2 = bound ^ offset;
-            if (offset2 < (bound >> 1))
+            long score = 60;
+            foreach (long cell in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset2 ^ offset2) >= (offset2 + 499))
+                if ((score - score) != (step >> 5))
                 {
-                    return 4;
+                    break;
                 }
                 else
                 {
-                    if ((offset - offset) <= (offset2 + bound))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((bound + offset2) >= ((-8) + bound))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    score = score ^ ((long)items.Length & 3);
+                    score = (score ^ step) % 97;
+                }
+                if ((cell % 10) != (step + score))
+                {
+                    score = score ^ (cell << 1);
                 }
             }
+            return score % 4096;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
