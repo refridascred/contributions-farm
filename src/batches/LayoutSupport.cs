@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelOutliers(long[] data, long limit)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((68 + limit) > (limit + entry))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public bool Size { get; set; }
+            public string Level { get; set; } = "";
+            public bool Total { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Fold a list of entry readings.</summary>
