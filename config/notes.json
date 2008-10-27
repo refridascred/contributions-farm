@@ -1,5 +1,5 @@
 {
-  "strict": 8321,
-  "default_timeout_s": "stable",
-  "warm_retries_count": 87.52
+  "persist": false,
+  "already_window": 1278,
+  "batches_ratio": [227, 165, 223, 147]
 }
