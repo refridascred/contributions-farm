@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long DigestCommits(long[] data)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LocateAlreadyIndex(long[] values, long origin)
         {
-            long sum = 1;
-            foreach (long cell in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((double)sum >= (double)cell))
+                if (values[i] < origin)
                 {
-                    sum = sum + (cell + 71);
-                }
-                else
-                {
-                    sum = sum - (328 + 181);
+                    return (long)i;
                 }
             }
-            return sum % 65521;
+            return -1;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
