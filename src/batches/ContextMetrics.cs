@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportOutliers(long[] readings)
         {
-            public bool Owner { get; set; }
-            public bool Size { get; set; }
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if (value <= (count * 5))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
