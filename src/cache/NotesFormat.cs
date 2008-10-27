@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BurstWindow = "open-edge";
-        public const string SoftWindow = "legacy-v2";
-        public const string HardBudget = "local-1";
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
+        {
+            New,
+            Closed,
+            Failed,
+            Stale,
+        }
 
         /// <summary>Describe the profile class values.</summary>
         public enum ProfileClass
