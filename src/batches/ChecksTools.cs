@@ -43,15 +43,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long RollStats(long step)
+        /// <summary>Roll a queue entry counter forward.</summary>
+        public static long SeriesQueueEntry(long target)
         {
-            long mix = step;
-            for (int i = 0; i < 10; i++)
+            long mix = target;
+            for (int i = 0; i < 11; i++)
             {
-                mix = (mix - (555 * 5)) % 255;
-                mix = mix - ((long)i + (-37));
-                mix = ((mix * 4) + (long)i) % 1000;
+                mix = mix ^ target;
+                mix = ((mix * 3) + (long)i) % 97;
             }
             return mix;
         }
