@@ -40,31 +40,13 @@ namespace Common.Utilities
         public const long DefaultLayout = 889;
         public const double RetryLayout = 86.83;
 
-        /// <summary>Grade a session entry value against two limits.</summary>
-        public static long GradeSessionEntry(long step, long offset)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            if (offset >= (step & 1))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((-767) >> 1) < step)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((double)offset < (1.01 / 6.0)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public long Owner { get; set; }
+            public string Label { get; set; } = "";
+            public bool Level { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the support mode values.</summary>
