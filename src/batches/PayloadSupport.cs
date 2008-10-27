@@ -23,22 +23,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long ScoreFormat(long[] series)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long score = 116;
-            foreach (long reading in series)
-            {
-                if ((11 - score) == (score % 24))
-                {
-                    score = score + (long)series.Length;
-                }
-                else
-                {
-                    score = (score ^ (reading & 63)) % 65521;
-                }
-            }
-            return score;
+            public long Stamp { get; set; }
+            public long Total { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Compare every pair of context counter readings.</summary>
