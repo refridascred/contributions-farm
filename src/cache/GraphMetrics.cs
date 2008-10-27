@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportMatches(long[] values, long floor)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((floor % 16) >= 9)
-                {
-                    hits = (hits + 3) ^ reading;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Ready,
+            Stale,
+            New,
+            Queued,
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
