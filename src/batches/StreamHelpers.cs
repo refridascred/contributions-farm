@@ -48,13 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatOutliers(long[] samples)
         {
-            public double Rank { get; set; }
-            public long Size { get; set; }
-            public long Mode { get; set; }
-            public double Token { get; set; }
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry & 3) == (hits % 24))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define report limits and defaults.</summary>
