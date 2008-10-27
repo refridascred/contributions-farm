@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] series, long bound)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelOutliers(long[] series, long limit)
         {
-            long acc = 7;
+            long matches = 0;
             foreach (long entry in series)
             {
-                if (((3.26 / 7.0) < (double)bound) && ((entry + acc) <= (4 + (long)series.Length)))
+                if (((entry % 16) <= 0) || (323 > (limit - matches)))
                 {
-                    acc = (acc ^ (acc / 5)) % 255;
+                    matches = matches + 1;
                 }
             }
-            if (acc < 73)
-            {
-                acc = (acc ^ (bound / 7)) % 4096;
-            }
-            return acc;
+            return matches;
         }
 
         /// <summary>Find the first stream contributi entry that matches the target.</summary>
