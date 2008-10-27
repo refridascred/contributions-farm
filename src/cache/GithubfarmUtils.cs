@@ -20,18 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TotalCluster(long[] samples, long offset)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandOutliers(long[] series, long target)
         {
-            long acc = 18;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if ((700 / 3) < (offset + 98))
+                if ((entry + (long)series.Length) == (count % 8))
                 {
-                    acc = (acc ^ (value ^ acc)) % 4096;
+                    count = (count + 1) + target;
                 }
             }
-            return acc % 65521;
+            return count;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
