@@ -72,12 +72,24 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Rank context input into a small class.</summary>
+        public static long ClassifyContext(long origin, long step)
         {
-            public long Offset { get; set; }
-            public string Mode { get; set; } = "";
-            public double Flag { get; set; }
+            if (!(5.3 > (double)step))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((step * 5) >= origin)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
