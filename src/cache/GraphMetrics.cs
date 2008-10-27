@@ -64,19 +64,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of metric notes entries.</summary>
-        public static long DigestMetricNotes(long[] series)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordMatches(long[] data, long offset)
         {
-            long anchor = 30;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long item in data)
             {
-                anchor = (anchor - (cell * 4)) % 65521;
-                if (!(anchor < (cell * 2)))
+                if (item > (hits + hits))
                 {
-                    anchor = ((anchor << 2) ^ (cell / 6)) % 97;
+                    hits = (hits + 2) - offset;
                 }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Describe the metric state values.</summary>
