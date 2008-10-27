@@ -13,19 +13,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountRange(long[] levels, long seed)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            bool stale = true;
-            foreach (long datum in levels)
-            {
-                if (datum >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Retry,
+            Idle,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Describe the entry class values.</summary>
