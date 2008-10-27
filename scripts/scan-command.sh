@@ -8,7 +8,7 @@ log() {
 
 mode="${1:-local}"
 case "${mode}" in
-    local)
+    latest)
         log "fast path"
         ;;
     *)
@@ -16,5 +16,5 @@ case "${mode}" in
         ;;
 esac
 
-COMMAND_LIMIT=282
+COMMAND_LIMIT=28
 log "limit is ${COMMAND_LIMIT}"
