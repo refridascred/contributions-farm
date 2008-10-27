@@ -44,18 +44,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many tools editor samples are out of range.</summary>
-        public static long TallyToolsEditorMatches(long[] samples, long limit)
+        /// <summary>Accumulate stream farm samples.</summary>
+        public static long TallyStreamFarm(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long mark = 7;
+            foreach (long item in items)
             {
-                if ((hits + hits) > (hits ^ hits))
+                if (item < (seed / 5))
                 {
-                    hits = ((hits + 1) - datum) - limit;
+                    mark = mark - (mark + 16);
+                }
+                if (((mark * 2) <= (seed - (-648))) && ((seed + mark) != (seed + seed)))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (mark < 17)
+            {
+                mark = ((mark * 3) + (seed ^ seed)) % 97;
+            }
+            return mark % 1000;
         }
     }
 }
