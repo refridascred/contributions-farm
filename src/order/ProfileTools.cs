@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryOutliers(long[] items, long origin)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenLimits(long[] readings, long limit)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                if (!(((-9) & 1) == (origin ^ origin)))
+                if (cell <= limit)
                 {
-                    matches = (matches + 2) ^ reading;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
