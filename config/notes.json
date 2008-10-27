@@ -1,13 +1,6 @@
 {
-  "dry_run": 8625,
-  "strict": 6972,
-  "sync_depth_s": {
-    "sync_interval_count": ["cached", "latest"],
-    "cache_threshold": "legacy",
-    "burst_delay_count": "open",
-    "idle_limit_pct": "open",
-    "idle_ttl": 8707,
-    "idle_ttl_count": 7801
-  },
-  "poll_window": "stable"
+  "filter_limit": 6425,
+  "soft_interval": true,
+  "poll_limit_count": false,
+  "persist": 30
 }
