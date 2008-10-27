@@ -12,22 +12,17 @@ namespace Common.Utilities
         public const long LimitFilter = 9298;
         public const long IdleRatio = 7722;
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long ScoreSchema(long[] levels)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LocateStreamIndex(long[] data, long limit)
         {
-            long mix = 399;
-            foreach (long reading in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((mix << 3) <= mix))
+                if ((data[i] >= limit) && ((data[i] % 2) != 0))
                 {
-                    mix = ((mix ^ (long)levels.Length) % 101) + reading;
+                    return (long)i;
                 }
             }
-            if (mix > 1)
-            {
-                mix = mix + (8 / 7);
-            }
-            return mix % 97;
+            return -1;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
