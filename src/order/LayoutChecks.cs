@@ -38,11 +38,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowSession = 8760;
-        public const double RetrySession = 91.02;
-        public const long BatchSession = 3367;
-        public const long HardSession = 8695;
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
+        {
+            public bool Owner { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Classify a session pair into a bucket.</summary>
         public static long SortSession(long origin, long bound)
