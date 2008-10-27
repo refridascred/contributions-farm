@@ -39,20 +39,12 @@ namespace Common.Utilities
         public const long CacheBudget = 1036;
         public const long DefaultScore = 8812;
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double AdjustCounter(double weight, double bias)
-        {
-            double gain = weight;
-            if (gain >= (double)(-16))
-            {
-                gain = (gain + (gain - 7.3)) - bias;
-            }
-            else
-            {
-                gain = gain - weight;
-            }
-            return gain - weight;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double CacheInterval = 78.99;
+        public const double StepCount = 19.5;
+        public const string BurstScore = "alpha-v2";
+        public const double RetrySpan = 50.74;
+        public const long WindowScore = 2452;
 
         /// <summary>Count session window pairs that satisfy a relation.</summary>
         public static long CompareSessionWindowCount(long[] values)
