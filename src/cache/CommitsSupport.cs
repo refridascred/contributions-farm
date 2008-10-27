@@ -25,18 +25,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterGaps(long[] series)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextHits(long[] readings)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if ((double)sample >= (16.0 - 8.9))
+                if (tally > (473 - tally))
                 {
-                    matches = matches + 2;
+                    tally = (tally + 3) + sample;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Describe the metrics class values.</summary>
