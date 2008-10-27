@@ -24,13 +24,39 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Classify a cluster record pair into a bucket.</summary>
+        public static long ClassifyClusterRecord(long seed, long origin)
         {
-            public long Offset { get; set; }
-            public string Count { get; set; } = "";
-            public double Stamp { get; set; }
-            public long Mode { get; set; }
+            long span = seed - origin;
+            if ((origin & 31) >= span)
+            {
+                return 0;
+            }
+            else
+            {
+                if (seed < (origin & 31))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((seed - seed) <= (origin << 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)seed < (8.4 + 14.0))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
