@@ -33,10 +33,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            public bool Offset { get; set; }
+            public double Score { get; set; }
             public long Region { get; set; }
         }
     }
