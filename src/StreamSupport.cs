@@ -19,11 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double AdjustBuffer(double gain, double offset)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            double mean = (double)(45 + 508);
-            return (mean + offset) + gain;
+            Retry,
+            Draft,
+            Dropped,
+            Failed,
+            Paused,
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
