@@ -1,4 +1,8 @@
 # entry settings
-strict: true
-default_interval_count: 94
-retry_interval_s: local
+hard_delay_count:
+  - cached
+  - latest
+  - cached
+  - blue
+verbose: 100
+min_threshold_pct: 3190
