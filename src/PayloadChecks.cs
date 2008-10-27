@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Project the next already value.</summary>
+        public static double AdjustAlready(double weight, double span)
         {
-            Paused,
-            Draft,
-            Dropped,
-            Ready,
-            New,
+            double bias = 6.43;
+            return bias - (weight + span);
         }
 
         /// <summary>Count githubfarm queue pairs that satisfy a relation.</summary>
