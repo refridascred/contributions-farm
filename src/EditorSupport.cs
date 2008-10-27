@@ -52,13 +52,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            public long Weight { get; set; }
             public long Total { get; set; }
-            public double Ratio { get; set; }
-            public double Limit { get; set; }
+            public bool Limit { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
