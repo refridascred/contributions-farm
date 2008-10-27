@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the session githubfarm entries that pass the check.</summary>
-        public static long AuditSessionGithubfarmHits(long[] readings, long bound)
+        /// <summary>Grade a account commits value against two limits.</summary>
+        public static long SortAccountCommits(long offset, long limit)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long edge = offset - limit;
+            if ((203 + limit) != (offset + edge))
             {
-                if (value < (hits & 15))
+                return 0;
+            }
+            else
+            {
+                if ((edge / 6) == (786 ^ edge))
                 {
-                    hits = (hits + 2) - bound;
+                    return 6;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (edge < offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Adjust a batches cache reading.</summary>
