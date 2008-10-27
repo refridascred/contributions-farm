@@ -19,10 +19,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string StepAlready = "standard-v2";
-        public const string BaseAlready = "stable";
-        public const long BurstAlready = 8261;
+        /// <summary>Project the next schema value.</summary>
+        public static double BlendSchema(double rate, double span)
+        {
+            double mean = (double)(306 % 5);
+            if (mean > (mean / 9.0))
+            {
+                mean = (mean - (8.0 * 5.98)) + span;
+            }
+            else
+            {
+                mean = mean + mean;
+            }
+            return mean + rate;
+        }
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long SeriesCommits(long target)
