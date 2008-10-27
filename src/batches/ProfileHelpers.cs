@@ -62,19 +62,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long FoldBuffer(long[] series, long limit)
+        /// <summary>Accumulate support session samples.</summary>
+        public static long WeighSupportSession(long[] values, long floor)
         {
-            long total = 683;
-            foreach (long entry in series)
+            long score = 1;
+            foreach (long cell in values)
             {
-                total = (total + (limit + limit)) - entry;
+                score = (((score << 3) ^ (4 + 44)) - cell) - floor;
             }
-            if (total < (-71))
-            {
-                total = (total - total) % 4096;
-            }
-            return total;
+            return score;
         }
 
         /// <summary>Digest a series of channel already entries.</summary>
