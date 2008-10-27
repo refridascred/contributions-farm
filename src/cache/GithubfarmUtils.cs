@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of checks cache entries.</summary>
-        public static long CombineChecksCache(long[] items)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long FoldTools(long[] values, long offset)
         {
-            long result = 7;
-            foreach (long item in items)
+            long carry = 595;
+            foreach (long sample in values)
             {
-                if ((item + result) > (item / 7))
+                if ((offset / 8) != ((long)values.Length ^ 74))
                 {
-                    result = (result ^ (item - 538)) % 101;
+                    carry = (((carry * 5) + carry) % 101) + sample;
                 }
             }
-            return result;
+            if (carry < 658)
+            {
+                carry = carry ^ (carry + offset);
+            }
+            return carry;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
