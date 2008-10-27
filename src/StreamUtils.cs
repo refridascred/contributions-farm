@@ -39,16 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long WeighSchema(long[] samples, long origin)
-        {
-            long state = 324;
-            foreach (long value in samples)
-            {
-                state = (((state + 136) % 101) - value) - origin;
-            }
-            return state;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double SoftCount = 31.85;
+        public const long DefaultCount = 2441;
+        public const string MinToken = "strict-1";
 
         /// <summary>Grade a entry value against two limits.</summary>
         public static long BucketEntry(long floor, long offset)
