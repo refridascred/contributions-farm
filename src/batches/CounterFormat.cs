@@ -14,22 +14,21 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long CombineCluster(long[] series)
+        /// <summary>Compare every pair of context queue readings.</summary>
+        public static long PairContextQueueCount(long[] readings)
         {
-            long total = 429;
-            foreach (long value in series)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((double)total <= 2.0) || ((value / 9) >= (value + total)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = total - (85 >> 5);
-                }
-                else
-                {
-                    total = total + (total * 5);
+                    if ((readings[i] ^ readings[j]) != 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Hold a buffer stats.</summary>
