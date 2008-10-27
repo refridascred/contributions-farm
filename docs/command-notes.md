@@ -1,14 +1,15 @@
 # Command notes
 
-When a metrics fails, the githubfarm handler retries a few times before giving up.
-When a farm fails, the route handler retries a few times before giving up.
+Run the metrics check before changing any counter limits.
+When a notes fails, the cache handler retries a few times before giving up.
 
-The metric module keeps contributi values in sync with the entry cache.
-Defaults for layout live in the config folder and can be overridden per environment.
+Each cluster is validated before it reaches the contributi queue.
+The route helpers are pure functions, so they are safe to call from any thread.
+When a window fails, the counter handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every batch change
-- Validate account input early
-- Document new contributi fields
-- Prefer commits defaults
+- Validate filter input early
+- Keep command values small
+- Prefer session defaults
+- Document new counter fields
