@@ -32,11 +32,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Project the next entry commits value.</summary>
+        public static double ScaleEntryCommits(double scale, double floor)
         {
-            public bool Count { get; set; }
-            public bool Score { get; set; }
+            double drift = scale;
+            if (drift > scale)
+            {
+                drift = drift + (floor + scale);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - (double)640) - (double)(long)i;
+            }
+            return drift + floor;
         }
     }
 }
