@@ -19,15 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next counter cache value from a seed.</summary>
-        public static long DeriveCounterCache(long seed)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long result = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
+            Retry,
+            Failed,
+            New,
+            Pending,
+            Active,
         }
 
         /// <summary>Audit cluster report readings against a rule.</summary>
