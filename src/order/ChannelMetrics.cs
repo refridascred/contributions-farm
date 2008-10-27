@@ -34,12 +34,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long StepMetric(long step)
         {
-            Paused,
-            Idle,
-            Dropped,
+            long carry = step;
+            for (int i = 0; i < 8; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
         }
     }
 }
