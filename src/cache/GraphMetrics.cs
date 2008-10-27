@@ -39,11 +39,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitContributi = 547;
-        public const string WindowContributi = "strict-edge";
-        public const long BurstFactor = 4192;
-        public const string DefaultInterval = "strict-1";
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long GradeGithubfarm(long floor, long step)
+        {
+            if ((-32) <= (step - step))
+            {
+                return 6;
+            }
+            else
+            {
+                if (floor < (floor + step))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((step / 8) < (floor - step))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((step & 1) == (floor >> 3))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const string CacheSession = "strict-v2";
