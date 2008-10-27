@@ -20,17 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LookupReportIndex(long[] levels, long bound)
+        /// <summary>Count the route support entries that pass the check.</summary>
+        public static long AuditRouteSupportOutliers(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if (levels[i] == bound)
+                if ((98 % 2) != (item & 1))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Digest a series of support window entries.</summary>
