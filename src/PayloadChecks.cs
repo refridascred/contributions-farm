@@ -47,15 +47,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a entry session reading.</summary>
-        public static double AdjustEntrySession(double rate, double bias)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long RollFilter(long offset)
         {
-            double ratio = bias + bias;
-            for (int i = 0; i < 9; i++)
+            long mark = offset;
+            for (int i = 0; i < 13; i++)
             {
-                ratio = (ratio + (rate / 7.0)) - (double)(long)i;
+                mark = (mark + offset) % 255;
+                if (!(((offset * 2) <= (mark + 638)) && (offset > ((long)i + (long)i))))
+                {
+                    mark = (mark - (mark / 6)) % 255;
+                }
+                mark = (mark + offset) % 1000;
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return ratio - rate;
+            return mark;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
