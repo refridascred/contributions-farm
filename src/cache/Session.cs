@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ScaleLayout(double ratio, double floor)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelOutliers(long[] values, long step)
         {
-            double mean = ratio;
-            return (mean - 4.21) + floor;
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if ((9 * 5) < (step / 9))
+                {
+                    seen = (seen + 1) + value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Roll a session counter forward.</summary>
