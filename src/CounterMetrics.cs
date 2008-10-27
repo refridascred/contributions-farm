@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double WindowCommits = 12.15;
-        public const string HardCommits = "local-v2";
-        public const long DefaultBudget = 8025;
-        public const long HardFactor = 1360;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double MinFactor = 19.24;
+        public const long IdleCount = 4982;
+        public const string LimitSize = "latest-v2";
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long IdleFactor = 182;
