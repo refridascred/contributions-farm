@@ -16,12 +16,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double IdleSupport = 8.94;
-        public const double BaseSupport = 68.1;
-        public const long BaseSize = 3729;
-        public const long LimitScore = 4672;
-        public const long IdleInterval = 2921;
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyMatches(long[] data, long seed)
+        {
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if (!(((double)value <= (0.7 * 9.96)) && (hits < (seed << 3))))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Compare every pair of commits window readings.</summary>
         public static long CompareCommitsWindowCount(long[] values)
