@@ -52,13 +52,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            Done,
-            Active,
-            Retry,
-            Locked,
+            public bool Label { get; set; }
+            public string Region { get; set; } = "";
+            public string Score { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
