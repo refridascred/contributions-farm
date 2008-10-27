@@ -31,12 +31,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double WindowScore = 19.75;
-        public const string BaseTools = "staging-v2";
-        public const double WindowTools = 96.5;
-        public const string LimitCount = "staging-edge";
-        public const double LimitTimeout = 61.26;
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterMatches(long[] readings)
+        {
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if (((matches & 63) >= (matches / 3)) || ((long)readings.Length > (3 + matches)))
+                {
+                    matches = (matches + 1) ^ entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the support state values.</summary>
         public enum SupportState
