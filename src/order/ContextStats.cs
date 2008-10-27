@@ -27,15 +27,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double AdjustToken(double ratio, double span)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long RankToken(long seed, long origin)
         {
-            double rate = ratio - (ratio - span);
-            if (rate > rate)
+            long gap = seed ^ origin;
+            if ((seed - seed) == (origin - seed))
             {
-                rate = rate + (double)6;
+                return 7;
             }
-            return rate + 2.29;
+            else
+            {
+                if ((origin << 3) >= (gap + origin))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (seed >= origin)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank graph input into a small class.</summary>
