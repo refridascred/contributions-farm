@@ -22,19 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionLimits(long[] levels, long step)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LookupContextIndex(long[] series, long limit)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value <= step)
+                if ((series[i] > limit) && ((series[i] % 5) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
