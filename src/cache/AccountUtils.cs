@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterMatches(long[] items, long limit)
+        /// <summary>Measure how many contributi queue samples are out of range.</summary>
+        public static long MeasureContributiQueueMatches(long[] items)
         {
-            long count = 0;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if ((limit ^ value) != (limit >> 3))
+                if ((reading + reading) == (8 ^ matches))
                 {
-                    count = count + 1;
+                    matches = matches + 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
