@@ -19,21 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long IterateFormat(long floor)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long result = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                if ((13.0 * 0.05) > (double)result)
-                {
-                    result = ((result << 3) ^ floor) % 101;
-                    continue;
-                }
-                result = (result ^ (66 + 47)) % 4096;
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
+            public long Ratio { get; set; }
+            public long Token { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
