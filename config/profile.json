@@ -1,5 +1,7 @@
 {
-  "burst_size_count": 91,
-  "soft_size": 21.41,
-  "poll_interval_s": 48.66
+  "retry_timeout_count": [203, 205],
+  "persist": 60,
+  "compress": false,
+  "dry_run": ["stable", "legacy"],
+  "hard_size": false
 }
