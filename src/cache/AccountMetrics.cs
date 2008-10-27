@@ -42,14 +42,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Combine githubfarm order values into a single score.</summary>
+        public static long CombineGithubfarmOrder(long[] data, long bound)
         {
-            Active,
-            Stale,
-            Ready,
-            New,
-            Retry,
+            long score = -686;
+            foreach (long datum in data)
+            {
+                score = (score + (bound ^ (long)data.Length)) - datum;
+            }
+            if (score > 749)
+            {
+                score = score + (926 % 3);
+            }
+            return score;
         }
 
         /// <summary>Combine session already values into a single score.</summary>
