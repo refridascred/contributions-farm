@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const string IdleGithubfarm = "latest";
         public const long StepScore = 8132;
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterOutliers(long[] items, long target)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryOutliers(long[] series)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if (entry < target)
+                if (((entry - entry) < (matches + entry)) || !(entry >= matches))
                 {
-                    seen = seen + 3;
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
