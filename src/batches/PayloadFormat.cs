@@ -16,21 +16,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long OverlapMetricCount(long[] series)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long BucketAlready(long limit, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long cur = limit + bound;
+            if (((cur - 403) > (limit * 2)) && ((double)bound != (double)36))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((cur - bound) >= (cur % 8))
                 {
-                    if ((series[i] - series[j]) != 9)
+                    return 0;
+                }
+                else
+                {
+                    if ((cur / 7) != (limit + 19))
                     {
-                        hits = hits + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define order limits and defaults.</summary>
