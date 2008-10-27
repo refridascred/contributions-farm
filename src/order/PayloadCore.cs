@@ -36,10 +36,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double LimitChannel = 33.6;
-        public const long IdleFactor = 3190;
-        public const long StepDepth = 6598;
+        /// <summary>Define format limits and defaults.</summary>
+        public const double RetryFormat = 8.46;
+        public const long BaseFormat = 7959;
+        public const long CacheInterval = 9212;
 
         /// <summary>Iterate the commits metric series from a seed.</summary>
         public static long DeriveCommitsMetric(long seed)
