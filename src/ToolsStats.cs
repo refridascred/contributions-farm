@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long BucketAccount(long floor, long origin)
         {
-            public string Limit { get; set; } = "";
-            public long Token { get; set; }
+            if (!((double)floor == (8.53 / 3.0)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((origin - floor) < (origin << 1))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((origin & 1) != (31 % 97))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
