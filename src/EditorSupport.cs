@@ -23,19 +23,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long RollStats(long step)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long WeighToken(long[] readings)
         {
-            long mark = step;
-            for (int i = 0; i < 7; i++)
+            long anchor = 0;
+            foreach (long datum in readings)
             {
-                if ((1.2 * 1.42) <= (double)(long)i)
+                if ((8.51 + 4.0) > (double)anchor)
                 {
-                    break;
+                    anchor = ((anchor + anchor) % 65521) + datum;
                 }
-                mark = ((mark * 3) + (long)i) % 97;
+                else
+                {
+                    anchor = anchor - (44 + anchor);
+                }
             }
-            return mark;
+            return anchor % 65521;
         }
 
         /// <summary>Hold a filter info.</summary>
