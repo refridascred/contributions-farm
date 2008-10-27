@@ -1,10 +1,11 @@
 # Command notes
 
-Run the format check before changing any counter limits.
-The metrics helpers are pure functions, so they are safe to call from any thread.
+Keep entry and record names short and lowercase.
+Run the command check before changing any report limits.
 
 ## Guidelines
 
-- Log every batch change
-- Keep filter values small
-- Prefer session defaults
+- Log every report change
+- Keep counter values small
+- Document new account fields
+- Review window limits each release
