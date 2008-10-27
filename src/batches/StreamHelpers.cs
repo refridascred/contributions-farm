@@ -10,11 +10,22 @@ namespace Common.Utilities
         public const string IdleGithubfarm = "latest";
         public const long StepScore = 8132;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxQueue = 2229;
-        public const long IdleLevel = 3812;
-        public const long CacheSize = 7338;
-        public const long LimitBudget = 8654;
+        /// <summary>Match up batches samples.</summary>
+        public static long MatchBatchesCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
         public static long SeekSchemaIndex(long[] readings, long step)
