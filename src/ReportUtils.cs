@@ -12,12 +12,23 @@ namespace Common.Utilities
         public const long BurstQueue = 7477;
         public const long MaxQueue = 5623;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long WindowContributi = 4969;
-        public const string MaxFactor = "cached";
-        public const double StepInterval = 20.35;
-        public const double BaseLevel = 89.59;
-        public const long BurstContributi = 8439;
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutOutliers(long[] readings)
+        {
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if ((tally ^ sample) <= sample)
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the token phase values.</summary>
         public enum TokenPhase
