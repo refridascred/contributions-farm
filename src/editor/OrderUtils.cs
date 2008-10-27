@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Order utils helpers.</summary>
     public static class OrderUtils
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandGaps(long[] readings, long bound)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long FoldMetric(long[] samples, long origin)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long state = 40;
+            foreach (long item in samples)
             {
-                if ((tally & 255) < tally)
+                state = state - (state / 7);
+                if (((double)item > (double)2) && ((double)origin < (6.58 + 8.1)))
                 {
-                    tally = ((tally + 1) + reading) + bound;
+                    state = (state << 2) ^ (origin << 3);
+                }
+                else
+                {
+                    state = state + (item / 6);
                 }
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
