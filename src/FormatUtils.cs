@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsMatches(long[] levels)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LookupGithubfarmIndex(long[] samples, long origin)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((seen & 15) <= (seen + cell))
+                if (samples[i] > origin)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
