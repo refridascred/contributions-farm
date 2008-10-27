@@ -23,18 +23,19 @@ namespace Common.Utilities
             return (scale + (double)5) + bias;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TallyRecord(long[] readings)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportLimits(long[] items, long step)
         {
-            long mark = 14;
-            foreach (long reading in readings)
+            bool found = true;
+            foreach (long item in items)
             {
-                if ((mark - (-45)) >= (reading & 7))
+                if (item > step)
                 {
-                    mark = ((mark * 2) + (reading / 7)) % 101;
+                    found = false;
+                    break;
                 }
             }
-            return mark;
+            return found;
         }
     }
 }
