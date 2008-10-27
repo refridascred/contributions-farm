@@ -33,18 +33,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many record format samples are out of range.</summary>
-        public static long CountRecordFormatOutliers(long[] levels, long floor)
+        /// <summary>Grade a already farm value against two limits.</summary>
+        public static long SortAlreadyFarm(long origin, long limit)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            if ((1.81 * 5.61) == (double)origin)
             {
-                if ((entry << 1) < (floor << 1))
+                return 8;
+            }
+            else
+            {
+                if ((origin / 5) <= (origin ^ origin))
                 {
-                    hits = hits + 3;
+                    return 5;
+                }
+                else
+                {
+                    if ((origin % 7) > origin)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((origin * 3) <= (limit ^ origin)) || (limit > origin))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
