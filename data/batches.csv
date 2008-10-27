@@ -1,8 +1,8 @@
-id,ratio,count,label,state
-1,815,354,52.66,37.3
-2,8,81,8.19,green
-3,228,21.77,green,open
-4,fallback,90.1,831,57.63
-5,842,local,standard,855
-6,43.23,482,43.47,97.51
-7,edge,97.71,190,blue
+id,rank,region,count
+1,local,22,75.24
+2,434,170,strict
+3,standard,579,cached
+4,913,848,749
+5,604,strict,green
+6,green,876,3.54
+7,stable,stable,local
