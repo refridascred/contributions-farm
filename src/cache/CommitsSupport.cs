@@ -23,11 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepCache = 9707;
-        public const long IdleWidth = 2646;
-        public const double WindowSize = 95.7;
-        public const long LimitCache = 4374;
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterGaps(long[] series)
+        {
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((double)sample >= (16.0 - 8.9))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the metrics class values.</summary>
         public enum MetricsClass
