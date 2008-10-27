@@ -25,9 +25,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheSupport = 2612;
-        public const long DefaultLevel = 5089;
-        public const double DefaultSupport = 20.81;
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long RollGraph(long seed)
+        {
+            long anchor = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
+        }
     }
 }
