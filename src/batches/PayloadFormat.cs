@@ -16,25 +16,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank buffer editor input into a small class.</summary>
-        public static long ClassifyBufferEditor(long origin, long origin2)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long OverlapMetricCount(long[] series)
         {
-            long step = origin ^ origin2;
-            if ((double)origin >= (14.0 - 1.4))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin - (-5)) > (step >> 4))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    if ((series[i] - series[j]) != 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Define order limits and defaults.</summary>
