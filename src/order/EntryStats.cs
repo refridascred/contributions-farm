@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            Closed,
-            New,
-            Paused,
+            public bool Score { get; set; }
+            public long Token { get; set; }
+            public bool Rank { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
