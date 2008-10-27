@@ -1,14 +1,15 @@
 # support settings
-flush_size: cached
-soft_delay_s: true
-burst_depth_s:
-  idle_size_pct: false
-  burst_window_s: 250
-  buffer_capacity: stable
-  base_window: true
-  hard_size: legacy
-soft_interval_count:
-  - 259
-  - 208
-  - 494
-enabled: true
+stream_capacity:
+  cache_window: legacy
+  token_ttl: latest
+  verbose: true
+  hard_size_ms: 3650
+warm_depth_s: fallback
+counter_timeout:
+  cluster_ratio: true
+  base_threshold: standard
+  profile_depth:
+    - 183
+    - 407
+  base_delay_count: 500
+schema_threshold: eu-west
