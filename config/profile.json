@@ -1,13 +1,10 @@
 {
-  "idle_depth_count": "latest",
-  "default_delay": "latest",
-  "hard_ttl_count": false,
-  "payload_depth": ["standard", "blue"],
-  "hard_window_s": 44,
-  "cluster_retries": {
-    "flush_delay": "blue",
-    "buffer_delay": true,
-    "batch_window": 3866,
-    "strict": ["stable", "legacy"]
+  "compress": "local",
+  "channel_ratio": 4751,
+  "dry_run": true,
+  "hard_limit_s": {
+    "idle_size": "legacy",
+    "warm_retries_count": "legacy",
+    "warm_ttl_count": 12
   }
 }
