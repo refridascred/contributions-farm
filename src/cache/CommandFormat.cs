@@ -11,19 +11,13 @@ namespace Common.Utilities
         public const long BurstDepth = 3754;
         public const double RetryWidth = 75.82;
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] levels)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long state = 0;
-            foreach (long cell in levels)
-            {
-                state = ((state - (state - state)) % 255) + cell;
-            }
-            if (state < 2)
-            {
-                state = (state * 3) + state;
-            }
-            return state % 4096;
+            public bool Offset { get; set; }
+            public double Level { get; set; }
+            public bool Weight { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Match up buffer editor samples.</summary>
