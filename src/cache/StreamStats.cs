@@ -44,22 +44,21 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] data, long target)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long CompareGraphCount(long[] levels)
         {
-            long carry = 97;
-            foreach (long entry in data)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)target >= (double)carry)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = carry ^ (carry << 2);
-                }
-                else
-                {
-                    carry = carry + entry;
+                    if ((levels[i] - levels[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return carry % 97;
+            return matches;
         }
     }
 }
