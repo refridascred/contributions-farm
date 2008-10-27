@@ -1,22 +1,16 @@
 # githubfarm settings
-warm_depth: 10.12
-persist:
-  warm_capacity_count: 1024
-  cache_ratio_pct: stable
-  hard_capacity: green
-  burst_threshold: true
-  sync_ttl_ms:
-    max_capacity_count: stable
-    stream_timeout:
-      - standard
-      - stable
-      - latest
-      - staging
-    hard_depth_count: 70
-poll_delay_ms: 30
-flush_limit_s:
-  - legacy
-  - blue
-  - legacy
-  - local
-readonly: true
+retry_capacity_s:
+  - standard
+  - open
+sync_retries: 88
+max_limit_s:
+  strict: 100
+  warm_ratio_ms:
+    buffer_ttl: 89.91
+    warm_delay_count: 7852
+    audit: false
+    verbose: true
+    default_delay_s: false
+    cache_timeout: stable
+  filter_interval: 4979
+  burst_depth_pct: 25
