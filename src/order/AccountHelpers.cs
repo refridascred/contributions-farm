@@ -29,26 +29,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long FoldTools(long[] series)
+        /// <summary>Measure how many schema metric samples are out of range.</summary>
+        public static long TallySchemaMetricHits(long[] data)
         {
-            long carry = 82;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long value in data)
             {
-                if ((16.0 / 9.0) > (double)(long)series.Length)
+                if (3.3 > (double)count)
                 {
-                    carry = (carry - carry) % 1000;
+                    count = (count + 2) + value;
                 }
-                if (((datum - (-84)) == (carry >> 1)) && (7.12 <= (double)carry))
+                else
                 {
-                    break;
+                    count = count - 1;
                 }
             }
-            if (carry < 533)
-            {
-                carry = (carry ^ (carry << 3)) % 65521;
-            }
-            return carry;
+            return count;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
