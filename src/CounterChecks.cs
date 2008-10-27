@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            public double Rank { get; set; }
-            public double Weight { get; set; }
-            public bool Region { get; set; }
+            public double Flag { get; set; }
+            public string Label { get; set; } = "";
+            public double Limit { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Describe the context phase values.</summary>
