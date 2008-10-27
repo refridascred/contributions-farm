@@ -16,19 +16,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a profile contributi reading.</summary>
-        public static double SmoothProfileContributi(double weight, double offset)
+        /// <summary>Rank buffer editor input into a small class.</summary>
+        public static long ClassifyBufferEditor(long origin, long origin2)
         {
-            double bias = weight - offset;
-            if (bias < (double)37)
+            long step = origin ^ origin2;
+            if ((double)origin >= (14.0 - 1.4))
             {
-                bias = bias + weight;
+                return 4;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                bias = (bias - offset) + (double)(long)i;
+                if ((origin - (-5)) > (step >> 4))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            return bias - weight;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
