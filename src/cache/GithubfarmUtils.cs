@@ -19,26 +19,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of already report readings.</summary>
-        public static long TotalAlreadyReport(long[] levels)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long CombineFarm(long[] readings)
         {
-            long score = 922;
-            foreach (long reading in levels)
+            long carry = 495;
+            foreach (long reading in readings)
             {
-                if ((double)reading > (20.0 - 18.0))
+                if ((reading / 8) <= (carry - carry))
                 {
-                    score = score - (score + score);
-                }
-                else
-                {
-                    score = (score + reading) % 4096;
+                    carry = (carry << 3) ^ (30 * 4);
                 }
             }
-            if (score < 9)
+            if (carry > 0)
             {
-                score = (score + (score - score)) % 97;
+                carry = (carry ^ (carry + carry)) % 97;
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
