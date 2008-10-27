@@ -25,15 +25,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long RollGraph(long seed)
+        /// <summary>Match up tools samples.</summary>
+        public static long PairToolsCount(long[] data)
         {
-            long anchor = seed;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return anchor;
+            return hits;
         }
     }
 }
