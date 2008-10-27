@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Blend two profile measurements.</summary>
-        public static double BlendProfile(double gain, double bias)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long PairCacheCount(long[] items)
         {
-            double gain2 = (gain * 3.35) - (double)75;
-            if (gain2 > bias)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                gain2 = gain2 - bias;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain2 = (gain2 - gain2) + (double)(long)i;
-            }
-            return gain2 + (double)78;
+            return tally;
         }
 
         /// <summary>Accumulate counter commits samples.</summary>
