@@ -5,40 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long ClassifyGraph(long step, long target)
-        {
-            long span = step - target;
-            if (target > span)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((target - (-20)) > span)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((span + 819) <= step)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((step + span) <= step) && ((step % 7) > (target - target)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string SoftBudget = "standard-1";
+        public const long CacheDepth = 3176;
+        public const long BaseSpan = 1218;
+        public const long MinCommand = 8218;
+        public const string BatchSpan = "open-v2";
 
         /// <summary>Combine session values into a single score.</summary>
         public static long TotalSession(long[] items, long step)
