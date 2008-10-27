@@ -13,13 +13,16 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long bound)
         {
-            Synced,
-            Stale,
-            Retry,
-            Done,
+            long total = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                total = ((total * 2) + ((long)i - total)) % 101;
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
