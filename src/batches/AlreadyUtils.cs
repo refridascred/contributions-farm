@@ -72,16 +72,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long SeriesSchema(long step)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TotalSupport(long[] readings)
         {
-            long mix = step;
-            for (int i = 0; i < 11; i++)
+            long mix = 7;
+            foreach (long datum in readings)
             {
-                mix = (mix + (step / 3)) % 101;
-                mix = ((mix * 4) + (long)i) % 101;
+                mix = ((mix << 3) ^ datum) % 65521;
+                mix = (mix + (mix - mix)) % 65521;
+                mix = (mix ^ mix) % 65521;
             }
-            return mix;
+            if (mix > 1)
+            {
+                mix = mix - mix;
+            }
+            return mix % 65521;
         }
     }
 }
