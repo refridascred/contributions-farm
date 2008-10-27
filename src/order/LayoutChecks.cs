@@ -44,11 +44,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Combine record layout values into a single score.</summary>
+        public static long ScoreRecordLayout(long[] samples, long bound)
         {
-            public bool Owner { get; set; }
-            public bool Score { get; set; }
+            long mark = 41;
+            foreach (long datum in samples)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    mark = (mark ^ mark) ^ (long)i;
+                }
+                if (((17.0 + 0.1) <= (double)bound) && (datum <= (datum - mark)))
+                {
+                    mark = ((mark << 3) ^ (datum * 2)) % 255;
+                }
+            }
+            if (mark < 572)
+            {
+                mark = (mark << 3) ^ bound;
+            }
+            return mark;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
