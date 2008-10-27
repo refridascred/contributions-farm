@@ -36,13 +36,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            Active,
-            Done,
-            Queued,
-            Failed,
+            public bool Rank { get; set; }
+            public double Total { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
