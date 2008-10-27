@@ -45,18 +45,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamOutliers(long[] values)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if (((long)values.Length != (400 & 31)) || (count <= (398 % 2)))
-                {
-                    count = (count + 3) ^ cell;
-                }
-            }
-            return count;
+            New,
+            Retry,
+            Done,
         }
     }
 }
