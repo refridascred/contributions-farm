@@ -29,22 +29,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileMatches(long[] items, long target)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long SeekRecordIndex(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long value in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)(long)items.Length != (4.7 / 4.0))
+                if (samples[i] >= floor)
                 {
-                    matches = ((matches + 2) + value) + target;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Digest a series of order entries.</summary>
