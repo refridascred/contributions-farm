@@ -48,12 +48,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Roll a metrics already counter forward.</summary>
+        public static long IterateMetricsAlready(long floor)
         {
-            Pending,
-            Stale,
-            Paused,
+            long anchor = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                long edge = floor;
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    anchor = (((anchor << 3) ^ edge) % 1000) - (long)i2;
+                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
+            }
+            return anchor;
         }
     }
 }
