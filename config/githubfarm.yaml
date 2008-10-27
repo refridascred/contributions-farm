@@ -1,15 +1,13 @@
 # githubfarm settings
-batch_limit: 250
-batch_size: 2
-default_delay_count: edge
-window_ttl: legacy
-poll_retries: 1.66
-compress:
-  readonly: true
-  hard_ttl: 250
-  metric_ratio: 30
-  account_delay:
-    - 156
-    - 393
-    - 151
-    - 339
+compress: fallback
+idle_ttl_ms:
+  - primary
+  - fallback
+  - fallback
+min_threshold_s: 60
+persist: staging
+max_threshold_ms:
+  - 197
+  - 32
+  - 144
+batch_ratio_s: true
