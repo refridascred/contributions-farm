@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate batches token readings against a bound.</summary>
-        public static bool VerifyBatchesTokenRange(long[] samples, long origin)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long IterateLayout(long limit)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            long score = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if (reading != origin)
-                {
-                    flag = false;
-                    break;
-                }
+                score = (score << 2) ^ (score + 99);
+                score = ((score * 3) + (long)i) % 101;
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Validate schema stream readings against a bound.</summary>
