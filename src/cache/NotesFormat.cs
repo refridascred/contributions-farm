@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double BlendWindow(double scale, double span)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmGaps(long[] series)
         {
-            double scale2 = scale;
-            if (scale2 < span)
+            long matches = 0;
+            foreach (long value in series)
             {
-                scale2 = scale2 - (double)358;
+                if (value >= (value ^ matches))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale2 = (scale2 - (1.02 / 7.0)) + (double)(long)i;
-            }
-            return scale2 - (double)65;
+            return matches;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
