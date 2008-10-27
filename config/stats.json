@@ -1,19 +1,8 @@
 {
-  "filter_retries": 30,
-  "strict": 48,
-  "hard_ttl_pct": false,
-  "min_retries_pct": {
-    "route_capacity": {
-      "base_retries_ms": 74,
-      "batch_timeout_ms": 65,
-      "idle_depth": 14,
-      "poll_delay": 8775,
-      "retry_delay": 60
-    },
-    "min_window": "green",
-    "max_retries": [483, 191],
-    "max_delay_pct": "edge",
-    "route_limit": 8647,
-    "payload_interval": 21.68
-  }
+  "base_ttl": "stable",
+  "audit": 12.91,
+  "verbose": 1024,
+  "persist": [211, 233, 146],
+  "batch_threshold": 7315,
+  "readonly": false
 }
