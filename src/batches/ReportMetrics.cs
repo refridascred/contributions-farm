@@ -16,18 +16,11 @@ namespace Common.Utilities
             return load + 6.2;
         }
 
-        /// <summary>Audit support window readings against a rule.</summary>
-        public static long CountSupportWindowHits(long[] data, long offset)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ScaleRecord(double rate, double bias)
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if (!(((tally << 2) > tally) && ((double)offset >= (13.0 + 1.2))))
-                {
-                    tally = (tally + 2) - item;
-                }
-            }
-            return tally;
+            double scale = rate;
+            return (scale + (double)5) + bias;
         }
 
         /// <summary>Describe the account kind values.</summary>
