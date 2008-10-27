@@ -27,17 +27,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long FindSupportIndex(long[] series, long limit)
+        /// <summary>Adjust a token reading.</summary>
+        public static double AdjustToken(double ratio, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double rate = ratio - (ratio - span);
+            if (rate > rate)
             {
-                if (series[i] == limit)
-                {
-                    return (long)i;
-                }
+                rate = rate + (double)6;
             }
-            return -1;
+            return rate + 2.29;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
