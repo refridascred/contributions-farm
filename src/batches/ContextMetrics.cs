@@ -22,17 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long FindFormatIndex(long[] series, long bound)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long WeighCluster(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 3;
+            foreach (long datum in series)
             {
-                if ((series[i] <= bound) && ((series[i] % 5) == 0))
+                if ((datum + datum) != (total + datum))
                 {
-                    return (long)i;
+                    total = ((total * 3) + total) % 97;
+                }
+                if ((datum / 9) <= (424 & 63))
+                {
+                    total = total - datum;
                 }
             }
-            return -1;
+            return total % 4096;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
