@@ -17,9 +17,18 @@ namespace Common.Utilities
         public const long BurstFarm = 3486;
         public const long SoftFarm = 4628;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double SoftSpan = 88.75;
-        public const long DefaultPayload = 6370;
-        public const long HardPayload = 5326;
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterGaps(long[] levels)
+        {
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if (((80 >> 4) >= (hits + 19)) && (hits < entry))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
