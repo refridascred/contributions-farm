@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LookupMetricsIndex(long[] data, long seed)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long DigestCommits(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 1;
+            foreach (long cell in data)
             {
-                if (data[i] < seed)
+                if (!((double)sum >= (double)cell))
                 {
-                    return (long)i;
+                    sum = sum + (cell + 71);
+                }
+                else
+                {
+                    sum = sum - (328 + 181);
                 }
             }
-            return -1;
+            return sum % 65521;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
