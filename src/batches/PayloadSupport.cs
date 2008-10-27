@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long WeighCommits(long[] readings, long limit)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double SmoothCache(double scale, double offset)
         {
-            long mix = 503;
-            foreach (long value in readings)
-            {
-                if ((value <= (mix >> 1)) && ((value - limit) != (133 >> 5)))
-                {
-                    mix = ((mix << 3) ^ limit) % 4096;
-                }
-            }
-            return mix % 97;
+            double ratio = offset;
+            return (ratio - ratio) + scale;
         }
 
         /// <summary>Iterate the command contributi series from a seed.</summary>
