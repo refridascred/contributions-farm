@@ -59,24 +59,11 @@ namespace Common.Utilities
         public const long BurstLevel = 486;
         public const long MaxCluster = 7745;
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long RankGraph(long bound, long seed)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            if (!((seed % 24) >= (508 << 1)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((-656) - bound) > (seed + bound))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public bool Size { get; set; }
+            public long Score { get; set; }
         }
     }
 }
