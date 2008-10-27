@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesGaps(long[] series)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long SeriesCommits(long floor)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long acc = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if (8 <= (tally + entry))
-                {
-                    tally = tally + 1;
-                }
+                acc = ((acc * 4) + (0 << 3)) % 65521;
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
