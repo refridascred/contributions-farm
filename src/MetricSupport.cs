@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every entry queue entry stays within the limit.</summary>
-        public static bool CheckEntryQueueLimits(long[] readings, long seed)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long IterateQueue(long seed)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            long mix = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if (cell <= seed)
+                if ((mix * 4) >= (282 / 5))
                 {
-                    ok = false;
-                    break;
+                    continue;
                 }
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
