@@ -16,13 +16,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Project the next format order value.</summary>
+        public static double BlendFormatOrder(double weight, double offset)
         {
-            Locked,
-            New,
-            Queued,
-            Closed,
+            double weight2 = weight;
+            if (weight2 >= weight2)
+            {
+                weight2 = weight2 - (weight2 - offset);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight2 = (weight2 + weight) + (double)(long)i;
+            }
+            return weight2 - weight;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
