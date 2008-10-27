@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmGaps(long[] series)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] samples)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long mix = 0;
+            foreach (long reading in samples)
             {
-                if (value >= (value ^ matches))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mix = (mix + (mix >> 5)) + reading;
             }
-            return matches;
+            return mix % 97;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
