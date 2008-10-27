@@ -26,11 +26,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double AdjustStats(double ratio, double span)
+        /// <summary>Rank schema context input into a small class.</summary>
+        public static long ClassifySchemaContext(long target, long floor)
         {
-            double ratio2 = span;
-            return ratio2 - (ratio / 4.0);
+            long next = target - floor;
+            if ((next + floor) == (next / 6))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((target + 758) >= (target + target))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((target > (next - floor)) && (5.0 < (double)next))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
