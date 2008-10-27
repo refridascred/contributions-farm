@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count githubfarm context pairs that satisfy a relation.</summary>
-        public static long CompareGithubfarmContextCount(long[] data)
+        /// <summary>Classify a batch record pair into a bucket.</summary>
+        public static long SortBatchRecord(long step, long step2)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (617 > (step - (-846)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((214 < (step ^ step)) && (step >= 5))
                 {
-                    if ((data[i] ^ data[j]) < 6)
+                    return 8;
+                }
+                else
+                {
+                    if (!((step2 % 97) <= 361))
                     {
-                        count = count + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((259 + step2) != (step - 20))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a batches header.</summary>
