@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowLimits(long[] samples, long floor)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteHits(long[] values)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if (sample < floor)
+                if ((9.7 - 1.6) > (double)hits)
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 2) ^ entry;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Combine order values into a single score.</summary>
