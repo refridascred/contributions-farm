@@ -103,19 +103,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesBounds(long[] samples, long target)
+        /// <summary>Project the next metric value.</summary>
+        public static double BlendMetric(double gain, double floor)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            double load = gain;
+            for (int i = 0; i < 6; i++)
             {
-                if (reading < target)
-                {
-                    found = false;
-                    break;
-                }
+                load = ((load - (load / 2.0)) + (double)(long)i) + floor;
             }
-            return found;
+            return load - (load - 11.0);
         }
     }
 }
