@@ -7,11 +7,11 @@ log() {
 }
 
 total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 5))
+for i in $(seq 1 7); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
 
-for item in latest primary legacy standard; do
+for item in fallback staging; do
     log "checking ${item}"
 done
