@@ -48,18 +48,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many session tools samples are out of range.</summary>
-        public static long TallySessionToolsGaps(long[] levels)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if (((value & 15) > (tally << 1)) || (((tally - tally) == (value - value)) && ((826 - value) >= (value % 64))))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public string Region { get; set; } = "";
+            public double Label { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Measure how many batches cache samples are out of range.</summary>
