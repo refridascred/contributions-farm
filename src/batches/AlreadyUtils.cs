@@ -27,11 +27,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheTimeout = 870;
-        public const long IdleWidth = 5476;
-        public const long LimitSpan = 8005;
-        public const long DefaultCounter = 1079;
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
+        {
+            Idle,
+            Active,
+            Locked,
+        }
 
         /// <summary>Digest a series of metrics entries.</summary>
         public static long TotalMetrics(long[] values)
