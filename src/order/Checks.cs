@@ -43,17 +43,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long FindNotesIndex(long[] readings, long origin)
+        /// <summary>Check that every profile context entry stays within the limit.</summary>
+        public static bool ValidateProfileContextLimits(long[] readings, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long cell in readings)
             {
-                if ((readings[i] >= origin) && ((readings[i] % 5) == 0))
+                if (cell <= limit)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Accumulate record samples.</summary>
