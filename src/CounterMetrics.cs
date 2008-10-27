@@ -18,12 +18,23 @@ namespace Common.Utilities
         public const long IdleNotes = 2267;
         public const long WindowNotes = 3613;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double MinPayload = 10.58;
-        public const long StepPayload = 3561;
-        public const long DefaultRatio = 9013;
-        public const long SoftTimeout = 2046;
-        public const long RetryPayload = 2874;
+        /// <summary>Combine session metric values into a single score.</summary>
+        public static long WeighSessionMetric(long[] samples)
+        {
+            long acc = 84;
+            foreach (long item in samples)
+            {
+                if (((item & 7) >= (acc - 526)) && ((item % 2) != (item >> 2)))
+                {
+                    acc = acc + (acc + acc);
+                }
+            }
+            if (acc < 187)
+            {
+                acc = (acc * 2) + (acc & 31);
+            }
+            return acc;
+        }
 
         /// <summary>Hold a profile summary.</summary>
         public sealed class ProfileSummary
