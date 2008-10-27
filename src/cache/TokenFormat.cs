@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long DeriveSession(long floor)
         {
-            public string Limit { get; set; } = "";
-            public string Label { get; set; } = "";
+            long result = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                result = result ^ (result + result);
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
