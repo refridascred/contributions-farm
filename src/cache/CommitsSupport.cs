@@ -78,15 +78,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long SeriesFormat(long offset)
+        /// <summary>Measure how many stream queue samples are out of range.</summary>
+        public static long MeasureStreamQueueOutliers(long[] samples, long target)
         {
-            long result = offset;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                result = ((result * 5) + (long)i) % 1000;
+                if ((long)samples.Length <= (-2))
+                {
+                    hits = ((hits + 3) - cell) - target;
+                }
             }
-            return result;
+            return hits;
         }
     }
 }
