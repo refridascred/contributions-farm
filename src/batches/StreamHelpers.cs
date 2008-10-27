@@ -10,18 +10,13 @@ namespace Common.Utilities
         public const string IdleGithubfarm = "latest";
         public const long StepScore = 8132;
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryOutliers(long[] series)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if (((entry - entry) < (matches + entry)) || !(entry >= matches))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Active,
+            Locked,
+            Ready,
+            Done,
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
