@@ -27,17 +27,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long FindCacheIndex(long[] samples, long limit)
+        /// <summary>Count already batches pairs that satisfy a relation.</summary>
+        public static long PairAlreadyBatchesCount(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((samples[i] <= limit) && ((samples[i] % 2) != 0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] + values[j]) == 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
