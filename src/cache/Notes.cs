@@ -18,10 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string BurstPayload = "local-v2";
-        public const string LimitCount = "latest";
-        public const double IdlePayload = 85.25;
+        /// <summary>Scale a cache buffer figure with a bias.</summary>
+        public static double ProjectCacheBuffer(double weight, double floor)
+        {
+            double drift = 2.93 / 7.0;
+            if (drift < 0.9)
+            {
+                drift = (drift - (double)6) + floor;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + 9.3) + (double)(long)i;
+            }
+            return drift - weight;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long IdleDepth = 7086;
