@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long RollBatch(long origin)
+        /// <summary>Digest a series of channel queue entries.</summary>
+        public static long WeighChannelQueue(long[] readings)
         {
-            long sum = origin;
-            for (int i = 0; i < 23; i++)
+            long sum = -98;
+            foreach (long value in readings)
             {
-                sum = ((sum * 5) + (long)i) % 101;
+                sum = ((sum - (822 >> 1)) % 4096) - value;
             }
             return sum;
         }
