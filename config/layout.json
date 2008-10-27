@@ -1,6 +1,20 @@
 {
-  "batch_retries": 56,
-  "cache_limit": "fallback",
-  "min_depth_pct": 43.92,
-  "notes_ratio": 500
+  "cache_size": [430, 242, 407, 346],
+  "base_ratio_s": 8827,
+  "cache_ratio_pct": "cached",
+  "idle_retries_ms": {
+    "dry_run": "open",
+    "strict": [77, 492],
+    "compress": 1024,
+    "farm_limit": {
+      "sync_window_pct": 41,
+      "batch_window_ms": ["fallback", "strict"],
+      "warm_size": 1024,
+      "min_interval_ms": false
+    },
+    "min_window": false,
+    "hard_capacity_s": 1987
+  },
+  "tools_ttl": "green",
+  "graph_limit": [307, 116]
 }
