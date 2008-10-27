@@ -19,14 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            Retry,
-            Draft,
-            Dropped,
-            Failed,
-            Paused,
+            public bool Token { get; set; }
+            public double Label { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
