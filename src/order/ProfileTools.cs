@@ -39,22 +39,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadHits(long[] series)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long MatchBufferCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (831 >= (hits * 4))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = (hits + 3) + reading;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((samples[i] - samples[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the metric class values.</summary>
