@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LookupBatchesIndex(long[] series, long origin)
+        /// <summary>Locate a token filter reading by value.</summary>
+        public static long FindTokenFilterIndex(long[] items, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (series[i] >= origin)
+                if (items[i] == origin)
                 {
                     return (long)i;
                 }
