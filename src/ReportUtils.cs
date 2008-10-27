@@ -16,22 +16,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutOutliers(long[] readings)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueMatches(long[] items)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if ((tally ^ sample) <= sample)
+                if (5.94 < (double)seen)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = (seen + 2) ^ reading;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Describe the token phase values.</summary>
