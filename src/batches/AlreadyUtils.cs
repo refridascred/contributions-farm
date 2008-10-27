@@ -65,13 +65,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Measure how many batches cache samples are out of range.</summary>
+        public static long AuditBatchesCacheOutliers(long[] values)
         {
-            Failed,
-            Ready,
-            Draft,
-            Stale,
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if ((cell >> 5) <= hits)
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
