@@ -46,12 +46,39 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryFilter = 3996;
-        public const long DefaultCount = 7137;
-        public const double BurstSpan = 9.72;
-        public const string HardFilter = "staging-1";
-        public const long BaseFilter = 9380;
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long ScoreCounter(long[] data)
+        {
+            long sum = 202;
+            foreach (long reading in data)
+            {
+                if (!((double)sum >= (6.0 * 2.3)))
+                {
+                    sum = (sum ^ (sum + reading)) % 255;
+                }
+                else
+                {
+                    sum = sum ^ sum;
+                }
+                if ((sum + sum) != (35 + reading))
+                {
+                    sum = ((sum << 3) ^ sum) % 255;
+                }
+                if (((long)data.Length & 63) == (sum + reading))
+                {
+                    sum = (sum - sum) % 65521;
+                }
+                else
+                {
+                    sum = (sum - sum) % 4096;
+                }
+            }
+            if (sum > 86)
+            {
+                sum = (sum ^ (sum + 92)) % 255;
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long LimitTools = 9445;
