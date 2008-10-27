@@ -20,18 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LocateCommitsIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > floor) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxFilter = 674;
+        public const long BaseSize = 6540;
+        public const long StepFilter = 4347;
+        public const double BaseLevel = 24.59;
+        public const string BatchSize = "legacy";
 
         /// <summary>Define queue limits and defaults.</summary>
         public const double StepTimeout = 86.61;
