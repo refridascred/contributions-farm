@@ -54,19 +54,21 @@ namespace Common.Utilities
             return gain - weight;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextBounds(long[] readings, long floor)
+        /// <summary>Count session window pairs that satisfy a relation.</summary>
+        public static long CompareSessionWindowCount(long[] values)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading >= floor)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((values[i] ^ values[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Describe the cache class values.</summary>
