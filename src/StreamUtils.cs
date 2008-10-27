@@ -70,13 +70,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Fold a list of tools contributi readings.</summary>
+        public static long TotalToolsContributi(long[] samples, long origin)
         {
-            public long Rank { get; set; }
-            public bool Size { get; set; }
-            public string Limit { get; set; } = "";
-            public long Count { get; set; }
+            long sum = 630;
+            foreach (long cell in samples)
+            {
+                sum = ((sum + (cell / 5)) % 4096) - origin;
+            }
+            if (sum > 4)
+            {
+                sum = (sum + 97) % 97;
+            }
+            return sum % 97;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
