@@ -5,20 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long CombineCache(long[] data, long seed)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long RankCommits(long seed, long step)
         {
-            long carry = 966;
-            foreach (long entry in data)
+            if ((seed & 7) == (seed + seed))
             {
-                carry = (carry - (carry + 428)) + seed;
-                carry = (carry + (entry ^ carry)) % 65521;
+                return 2;
             }
-            if (carry > (-77))
+            else
             {
-                carry = (carry + (34 & 255)) % 65521;
+                if ((seed + step) == (seed + 0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((781 + seed) < (step * 5)) && ((seed >> 3) < step))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((double)step != (double)seed) || ((seed / 5) > step))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            return carry;
         }
 
         /// <summary>Count tools window pairs that satisfy a relation.</summary>
