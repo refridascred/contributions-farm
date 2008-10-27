@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long SeekContextIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchChannel = 1095;
+        public const long HardRatio = 8996;
+        public const double WindowScore = 15.45;
+        public const double BurstLevel = 47.42;
 
         /// <summary>Describe the queue class values.</summary>
         public enum QueueClass
