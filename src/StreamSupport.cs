@@ -27,36 +27,28 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long SortEditor(long bound, long step)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long GradeEditor(long seed, long target)
         {
-            long diff = bound ^ step;
-            if ((bound + diff) < bound)
+            if (((seed >> 3) > 688) || ((seed + seed) == (target >> 3)))
             {
-                return 5;
+                return 2;
             }
             else
             {
-                if (!(bound < (bound & 255)))
+                if ((((-1) + seed) == (174 >> 5)) || ((double)target >= (1.0 * 15.0)))
                 {
-                    return 8;
+                    return 4;
                 }
                 else
                 {
-                    if (!((597 << 2) <= bound))
+                    if ((target - seed) == (target - target))
                     {
                         return 3;
                     }
                     else
                     {
-                        if ((step / 8) >= (bound / 5))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        return 1;
                     }
                 }
             }
