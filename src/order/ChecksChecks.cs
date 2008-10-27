@@ -28,39 +28,14 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long SortGraph(long target, long seed)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long delta = target - seed;
-            if (target < (target + target))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((target - seed) < (target % 16))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((delta ^ delta) < (delta * 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (seed < (seed + seed))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Stale,
+            Retry,
+            Draft,
+            Paused,
         }
     }
 }
