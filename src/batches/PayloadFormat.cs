@@ -10,10 +10,20 @@ namespace Common.Utilities
         public const string BatchRatio = "stable";
         public const long RetryCount = 1279;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double DefaultContext = 94.27;
-        public const long SoftDepth = 7498;
-        public const long BurstContext = 4467;
+        /// <summary>Combine format payload values into a single score.</summary>
+        public static long FoldFormatPayload(long[] values, long origin)
+        {
+            long mark = -7;
+            foreach (long entry in values)
+            {
+                mark = (mark ^ entry) + origin;
+            }
+            if (mark > 8)
+            {
+                mark = (mark << 3) ^ (long)values.Length;
+            }
+            return mark % 97;
+        }
 
         /// <summary>Iterate the filter series from a seed.</summary>
         public static long IterateFilter(long bound)
