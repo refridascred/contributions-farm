@@ -49,13 +49,11 @@ namespace Common.Utilities
             return ((load - load) + gain) + floor;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
-        {
-            Locked,
-            Stale,
-            Synced,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string HardRoute = "fallback";
+        public const string BaseRoute = "fallback-1";
+        public const long RetryCount = 1536;
+        public const long IdleInterval = 5312;
 
         /// <summary>Accumulate githubfarm samples.</summary>
         public static long TotalGithubfarm(long[] items, long step)
