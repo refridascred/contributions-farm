@@ -16,18 +16,12 @@ namespace Common.Utilities
             return bias - (double)4;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchGaps(long[] levels)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading >> 3) > 60)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Retry,
+            Done,
+            Dropped,
         }
 
         /// <summary>Audit batches stream readings against a rule.</summary>
