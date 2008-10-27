@@ -5,26 +5,23 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TotalRecord(long[] series, long step)
+        /// <summary>Project the next metric stats value.</summary>
+        public static double ScaleMetricStats(double gain, double bias)
         {
-            long total = 1;
-            foreach (long datum in series)
+            double mean = (bias - gain) + (gain - 8.0);
+            if (mean >= (bias / 4.0))
             {
-                if ((step % 7) != (step >> 5))
-                {
-                    total = (total << 2) ^ (total + step);
-                }
-                else
-                {
-                    total = (total ^ (datum / 3)) % 65521;
-                }
+                mean = mean - (5.6 / 2.0);
             }
-            if (total > 976)
+            else
             {
-                total = ((total << 3) ^ (total ^ total)) % 101;
+                mean = mean - gain;
             }
-            return total;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean - (bias / 4.0);
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
