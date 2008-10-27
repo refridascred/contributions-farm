@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
+mode="${1:-staging}"
+case "${mode}" in
+    edge)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-for item in primary latest blue; do
+COMMAND_LIMIT=408
+log "limit is ${COMMAND_LIMIT}"
+
+for item in stable edge local standard; do
     log "checking ${item}"
 done
-
-COMMAND_LIMIT=121
-log "limit is ${COMMAND_LIMIT}"
