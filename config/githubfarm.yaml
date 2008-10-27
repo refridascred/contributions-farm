@@ -1,17 +1,4 @@
 # githubfarm settings
-already_window:
-  persist: 1024
-  hard_window_pct:
-    tools_limit: eu-west
-    counter_ratio: true
-    support_capacity: 250
-    persist: false
-    idle_size_ms: 26.18
-  tools_capacity: 25
-  strict:
-    - 52
-    - 309
-    - 39
-verbose: local
-session_retries: standard
-enabled: 5776
+default_size_s: 4717
+readonly: eu-west
+warm_retries_pct: false
