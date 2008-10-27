@@ -73,15 +73,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long CombineEntry(long[] samples)
+        /// <summary>Match up counter samples.</summary>
+        public static long PairCounterCount(long[] items)
         {
-            long anchor = 34;
-            foreach (long entry in samples)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = ((anchor + anchor) % 255) ^ entry;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return anchor;
+            return tally;
         }
     }
 }
