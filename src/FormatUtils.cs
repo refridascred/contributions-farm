@@ -51,18 +51,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheHits(long[] items)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((entry - 736) > (2 ^ 17))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Queued,
+            Pending,
+            Closed,
         }
     }
 }
