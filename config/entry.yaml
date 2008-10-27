@@ -1,21 +1,17 @@
 # entry settings
-hard_ratio:
-  poll_ttl_s: false
-  notes_delay: fallback
-  max_threshold_ms:
-    - 434
-    - 409
-  already_size: 78.33
-  burst_delay_ms: 9061
-  persist: blue
-payload_capacity: staging
-strict: primary
-payload_timeout: open
-idle_limit: 4977
-flush_size_s:
-  stream_limit:
-    burst_window: false
-    retry_interval_s: 88.86
-    idle_interval_count: legacy
-  burst_delay: 60.16
-  hard_retries: true
+batch_interval_ms: 19
+soft_size_ms:
+  - 48
+  - 250
+  - 21
+  - 312
+graph_ttl:
+  strict:
+    stream_window: false
+    metric_ttl: 47.06
+    filter_delay: 44.81
+    batches_limit: standard
+  batch_threshold_count: false
+  stream_threshold: 66.52
+default_timeout: 6392
+sync_size: primary
