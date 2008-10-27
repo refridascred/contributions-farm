@@ -46,18 +46,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the checks cache entries that pass the check.</summary>
-        public static long CountChecksCacheOutliers(long[] samples)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadBounds(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            bool found = true;
+            foreach (long value in data)
             {
-                if (!((cell + cell) > hits) && ((double)hits == (0.1 + 18.0)))
+                if (value >= target)
                 {
-                    hits = hits + 2;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
     }
 }
