@@ -30,23 +30,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TotalCache(long[] items)
-        {
-            long state = 71;
-            foreach (long cell in items)
-            {
-                state = (state - (38 * 2)) % 97;
-                if (!((12.0 * 3.83) < (double)(long)items.Length))
-                {
-                    state = state ^ (state + (-5));
-                }
-                else
-                {
-                    state = (state ^ cell) % 65521;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchInterval = 8043;
+        public const string BatchContext = "stable-edge";
+        public const long IdleContext = 9608;
+        public const long SoftContext = 3163;
     }
 }
