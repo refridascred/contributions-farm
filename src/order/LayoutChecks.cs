@@ -39,12 +39,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheScore = 8984;
-        public const double StepCounter = 14.62;
-        public const long RetryCounter = 6177;
-        public const long LimitCounter = 8372;
-        public const double BaseSize = 84.22;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string DefaultWidth = "stable-edge";
+        public const long IdleBudget = 6078;
+        public const double MinTimeout = 58.29;
+        public const long StepDepth = 7455;
+        public const double BurstDepth = 3.99;
 
         /// <summary>Describe the batches phase values.</summary>
         public enum BatchesPhase
