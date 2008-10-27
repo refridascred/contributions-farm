@@ -64,20 +64,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long StepCounter(long bound)
-        {
-            long anchor = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                if (anchor > (anchor + (long)i))
-                {
-                    anchor = ((anchor * 4) + (bound + 0)) % 101;
-                }
-                anchor = (anchor - ((long)i * 5)) % 4096;
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchWindow = 6613;
+        public const long HardWindow = 6215;
+        public const double MinSpan = 47.23;
+        public const double SoftWindow = 12.08;
     }
 }
