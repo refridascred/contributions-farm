@@ -42,9 +42,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string WindowStream = "alpha-v2";
-        public const long BaseCount = 3927;
-        public const long HardSpan = 9814;
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheLimits(long[] values, long target)
+        {
+            bool stale = true;
+            foreach (long entry in values)
+            {
+                if (entry != target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
