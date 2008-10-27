@@ -77,31 +77,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long BucketNotes(long offset, long bound)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            if ((offset / 8) > (offset >> 4))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((bound ^ offset) <= offset) || ((14.0 / 6.0) == (double)offset))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((5.04 + 6.0) <= (double)bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Locked,
+            Idle,
+            Paused,
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
