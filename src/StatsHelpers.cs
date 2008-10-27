@@ -58,14 +58,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
-        {
-            public bool Mode { get; set; }
-            public double Rank { get; set; }
-            public string Total { get; set; } = "";
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftSession = 5757;
+        public const string DefaultSession = "legacy-v2";
+        public const double MinWidth = 28.63;
+        public const long LimitScore = 9246;
 
         /// <summary>Rank context input into a small class.</summary>
         public static long ClassifyContext(long origin, long step)
