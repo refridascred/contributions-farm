@@ -1,14 +1,19 @@
 # support settings
-enabled:
-  - eu-west
-  - standard
-  - blue
-  - strict
-burst_delay:
-  burst_threshold_count: 73.38
-  flush_size_count: 1024
-  flush_retries_ms: false
-  retry_limit_ms: staging
-base_capacity: 65
-audit: true
-cache_interval_pct: 51
+burst_depth: 63.71
+poll_retries_ms:
+  cluster_ttl: 9179
+  metric_delay: 8454
+  queue_delay: legacy
+  strict:
+    - strict
+    - blue
+  enabled: 27
+  compress: true
+batch_depth_s: 78.34
+idle_ratio_s:
+  strict: blue
+  soft_ttl: 65
+  poll_ttl_ms: open
+  enabled: legacy
+  poll_interval_ms: 500
+  batch_size_s: green
