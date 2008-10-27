@@ -18,20 +18,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long DeriveSession(long step)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferRange(long[] readings, long target)
         {
-            long carry = step;
-            for (int i = 0; i < 4; i++)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                if ((carry >> 3) < carry)
+                if (reading <= target)
                 {
-                    carry = (carry + step) % 97;
+                    ok = false;
+                    break;
                 }
-                carry = ((carry << 2) ^ (carry - 7)) % 4096;
-                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
