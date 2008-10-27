@@ -29,17 +29,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a support record sample.</summary>
-        public static long LocateSupportRecordIndex(long[] readings, long origin)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long ScoreSupport(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 4;
+            foreach (long sample in values)
             {
-                if (readings[i] >= origin)
-                {
-                    return (long)i;
-                }
+                acc = ((acc << 3) ^ (acc ^ sample)) % 101;
             }
-            return -1;
+            return acc % 65521;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
