@@ -59,18 +59,11 @@ namespace Common.Utilities
         public const string BatchSchema = "staging-1";
         public const long BaseSchema = 5808;
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TotalGithubfarm(long[] items, long step)
+        /// <summary>Project the next order value.</summary>
+        public static double ProjectOrder(double rate, double span)
         {
-            long score = 620;
-            foreach (long cell in items)
-            {
-                if ((step / 8) > (step << 2))
-                {
-                    score = (score << 2) ^ (score + cell);
-                }
-            }
-            return score;
+            double scale = span;
+            return scale - rate;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
