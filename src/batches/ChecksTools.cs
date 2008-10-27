@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Derive the next context order value from a seed.</summary>
-        public static long DeriveContextOrder(long origin)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long OverlapBatchCount(long[] readings)
         {
-            long acc = origin;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = ((acc * 5) + (acc + acc)) % 4096;
-                if (((long)i >> 4) >= 685)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    acc = (acc ^ 0) % 1000;
+                    if ((readings[i] - readings[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                if (!(((long)i - origin) <= origin))
-                {
-                    long gap = (924 * 4) + 4;
-                    acc = ((acc * 4) + gap) % 97;
-                }
-                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Rank githubfarm metrics input into a small class.</summary>
