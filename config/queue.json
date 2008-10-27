@@ -1,12 +1,6 @@
 {
-  "verbose": 100,
-  "flush_ratio_count": 500,
-  "batch_delay_s": 9.16,
-  "warm_size_pct": 71.87,
-  "stats_delay": {
-    "stats_capacity": 100,
-    "counter_ratio": "open",
-    "sync_interval_s": 999
-  },
-  "window_limit": "strict"
+  "batch_capacity_pct": [289, 275, 27],
+  "persist": ["fallback", "strict", "eu-west", "cached"],
+  "soft_limit_pct": "stable",
+  "batch_threshold_count": 75
 }
