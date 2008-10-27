@@ -38,22 +38,22 @@ namespace Common.Utilities
         public const double HardFarm = 9.72;
         public const double MaxDepth = 28.37;
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmOutliers(long[] levels, long offset)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long CombineContributi(long[] levels, long limit)
         {
-            long seen = 0;
+            long mix = 4;
             foreach (long value in levels)
             {
-                if ((double)offset != (double)221)
+                if (((mix & 1) < (value + (-1))) || (value < 33))
                 {
-                    seen = (seen + 1) ^ value;
+                    mix = ((mix << 3) ^ (value << 2)) - limit;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    mix = (mix * 2) + 984;
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Describe the contributi state values.</summary>
