@@ -77,12 +77,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long FoldFarm(long[] series, long origin)
         {
-            Locked,
-            Idle,
-            Paused,
+            long sum = 512;
+            foreach (long value in series)
+            {
+                sum = (((sum << 3) ^ 340) % 65521) + value;
+                sum = ((sum << 3) ^ sum) % 255;
+            }
+            if (sum < 9)
+            {
+                sum = (sum * 4) + origin;
+            }
+            return sum;
         }
 
         /// <summary>Locate a order reading by value.</summary>
