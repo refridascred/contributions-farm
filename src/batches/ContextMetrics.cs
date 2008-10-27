@@ -28,17 +28,29 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long FindCommandIndex(long[] series, long limit)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long RollLayout(long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if (series[i] == limit)
+                bool flag = (limit - state) <= (state >> 3);
+                if (flag)
                 {
-                    return (long)i;
+                    flag = (state + 234) < ((long)i - (-2));
                 }
+                if (((long)i - limit) != ((long)i + (long)i))
+                {
+                    state = ((state << 2) ^ limit) % 1000;
+                    flag = (limit % 60) > (state * 5);
+                }
+                else
+                {
+                    state = (state << 3) ^ limit;
+                }
+                state = ((state * 2) + (long)i) % 97;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
