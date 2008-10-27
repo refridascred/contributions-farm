@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate schema stream readings against a bound.</summary>
-        public static bool GuardSchemaStreamBounds(long[] data, long seed)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsLimits(long[] data, long seed)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            bool valid = true;
+            foreach (long value in data)
             {
-                if (reading >= seed)
+                if (value <= seed)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
