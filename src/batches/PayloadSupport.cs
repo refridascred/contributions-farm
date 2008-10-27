@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long RankCommits(long seed, long step)
-        {
-            if ((seed & 7) == (seed + seed))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((seed + step) == (seed + 0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((781 + seed) < (step * 5)) && ((seed >> 3) < step))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((double)step != (double)seed) || ((seed / 5) > step))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double SoftScore = 44.1;
+        public const long BaseSession = 7487;
+        public const long StepSession = 2035;
+        public const long HardSession = 1240;
 
         /// <summary>Count tools window pairs that satisfy a relation.</summary>
         public static long CompareToolsWindowCount(long[] values)
