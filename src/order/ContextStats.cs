@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double AdjustContext(double bias, double floor)
+        /// <summary>Measure how many checks metric samples are out of range.</summary>
+        public static long TallyChecksMetricMatches(long[] samples)
         {
-            double weight = bias * 15.0;
-            if (weight <= bias)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                weight = (weight - weight) - floor;
+                if ((entry - entry) == (entry % 24))
+                {
+                    matches = matches + 3;
+                }
             }
-            else
-            {
-                weight = weight + (3.16 / 2.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + (bias - bias)) + (double)(long)i;
-            }
-            return weight + bias;
+            return matches;
         }
 
         /// <summary>Digest a series of route already entries.</summary>
