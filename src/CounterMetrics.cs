@@ -31,17 +31,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long SeekReportIndex(long[] items, long seed)
+        /// <summary>Audit graph cache readings against a rule.</summary>
+        public static long AuditGraphCacheOutliers(long[] levels, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if (items[i] > seed)
+                if (1 >= (tally ^ reading))
                 {
-                    return (long)i;
+                    tally = (tally + 2) - limit;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
