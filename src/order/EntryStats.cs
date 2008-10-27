@@ -42,18 +42,38 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportGaps(long[] readings)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long RankLayout(long bound, long step)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            if ((step << 2) > (bound * 3))
             {
-                if (!((double)sample <= (double)665))
+                return 5;
+            }
+            else
+            {
+                if (step < bound)
                 {
-                    matches = matches + 2;
+                    return 2;
+                }
+                else
+                {
+                    if ((9.72 - 4.6) > (double)step)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (step <= (bound + step))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a commits snapshot.</summary>
