@@ -20,15 +20,18 @@ namespace Common.Utilities
             return drift - (bias - drift);
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long RollChannel(long floor)
+        /// <summary>Count the checks farm entries that pass the check.</summary>
+        public static long AuditChecksFarmOutliers(long[] samples)
         {
-            long score = floor;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                score = ((score * 2) + (long)i) % 1000;
+                if (!(((value + (-2)) >= (count % 24)) && (count < 59)))
+                {
+                    count = count + 1;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
