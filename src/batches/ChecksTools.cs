@@ -12,19 +12,38 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionBounds(long[] readings, long bound)
+        /// <summary>Rank githubfarm metrics input into a small class.</summary>
+        public static long ClassifyGithubfarmMetrics(long bound, long target)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            if ((451 ^ 9) < bound)
             {
-                if (datum > bound)
+                return 5;
+            }
+            else
+            {
+                if ((target - 8) >= (737 ^ target))
                 {
-                    stale = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (197 >= (bound & 31))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((10.0 * 3.2) > (double)bound)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
