@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const double LimitSupport = 89.56;
         public const long DefaultSupport = 1616;
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchHits(long[] readings)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample >> 5) <= (seen + (-16)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Stale,
+            Synced,
+            New,
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
