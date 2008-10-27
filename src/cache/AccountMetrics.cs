@@ -64,14 +64,12 @@ namespace Common.Utilities
         public const string BatchSchema = "staging-1";
         public const long BaseSchema = 5808;
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            Closed,
-            Draft,
             Idle,
-            Done,
-            New,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
