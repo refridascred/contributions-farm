@@ -31,23 +31,21 @@ namespace Common.Utilities
         public const long CacheGithubfarm = 5602;
         public const double HardGithubfarm = 29.69;
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long SeriesFormat(long bound)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long CompareRouteCount(long[] readings)
         {
-            long total = bound;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((bound >> 3) != (total & 31)) && ((27 << 2) >= (bound << 2)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = (total - (bound - bound)) % 65521;
+                    if ((readings[i] - readings[j]) == 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    total = (total ^ ((long)i + total)) + (long)i2;
-                }
-                total = ((total * 4) + (long)i) % 101;
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Blend two buffer layout measurements.</summary>
