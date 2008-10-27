@@ -12,21 +12,12 @@ namespace Common.Utilities
             return bias - (weight + span);
         }
 
-        /// <summary>Count githubfarm queue pairs that satisfy a relation.</summary>
-        public static long CompareGithubfarmQueueCount(long[] levels)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Region { get; set; }
+            public string Score { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
