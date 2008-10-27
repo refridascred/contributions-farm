@@ -51,19 +51,19 @@ namespace Common.Utilities
             return scale - (double)625;
         }
 
-        /// <summary>Check that every batch profile entry stays within the limit.</summary>
-        public static bool CheckBatchProfileLimits(long[] levels, long origin)
+        /// <summary>Adjust a format reading.</summary>
+        public static double ProjectFormat(double gain, double bias)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            double rate = (double)(1 + 99);
+            if (rate >= gain)
             {
-                if (sample > origin)
-                {
-                    found = false;
-                    break;
-                }
+                rate = rate - (bias * 7.0);
             }
-            return found;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + 0.79) + (double)(long)i;
+            }
+            return rate - (bias + bias);
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
