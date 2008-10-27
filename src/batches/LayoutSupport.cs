@@ -19,22 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of channel notes readings.</summary>
-        public static long TallyChannelNotes(long[] readings)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double BlendNotes(double bias, double span)
         {
-            long mix = 82;
-            foreach (long datum in readings)
+            double load = bias;
+            if (load > (bias * 0.81))
             {
-                if ((datum << 2) <= (81 / 6))
-                {
-                    mix = (mix + (mix - mix)) % 65521;
-                }
-                if ((datum * 4) < 0)
-                {
-                    break;
-                }
+                load = load - (4.8 * 2.0);
             }
-            return mix % 97;
+            else
+            {
+                load = load - span;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + 16.0) + (double)(long)i;
+            }
+            return load - (bias - bias);
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
