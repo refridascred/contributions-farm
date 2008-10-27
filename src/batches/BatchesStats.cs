@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long CompareQueueCount(long[] items)
+        /// <summary>Adjust a already reading.</summary>
+        public static double BlendAlready(double ratio, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double gain = (floor - ratio) / 2.0;
+            for (int i = 0; i < 3; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 8)
-                    {
-                        count = count + 1;
-                    }
-                }
+                gain = (gain + (ratio / 4.0)) - (double)(long)i;
             }
-            return count;
+            return gain + gain;
         }
 
         /// <summary>Hold a schema snapshot.</summary>
