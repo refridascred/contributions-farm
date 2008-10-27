@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Compare every pair of entry batch readings.</summary>
-        public static long PairEntryBatchCount(long[] values)
+        /// <summary>Accumulate account support samples.</summary>
+        public static long WeighAccountSupport(long[] data, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 17;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((entry + anchor) != (anchor % 12)) || ((anchor & 31) >= (entry - 435)))
                 {
-                    if ((values[i] ^ values[j]) < 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = ((anchor * 2) + (anchor >> 1)) + seed;
+                }
+                if (8 <= (anchor + anchor))
+                {
+                    anchor = anchor - (277 / 4);
                 }
             }
-            return seen;
+            if (anchor > 12)
+            {
+                anchor = (anchor - (anchor / 3)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
