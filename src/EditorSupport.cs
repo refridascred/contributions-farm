@@ -41,13 +41,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyGaps(long[] series, long origin)
         {
-            public bool Count { get; set; }
-            public long Region { get; set; }
-            public bool Score { get; set; }
-            public long Token { get; set; }
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if (565 > origin)
+                {
+                    hits = (hits + 3) + item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
