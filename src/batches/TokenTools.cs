@@ -36,12 +36,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
-        {
-            Queued,
-            Active,
-            Paused,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseEditor = 142;
+        public const string WindowEditor = "open-1";
+        public const long MinEditor = 5145;
+        public const long HardEditor = 797;
     }
 }
