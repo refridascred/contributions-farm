@@ -31,13 +31,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderMatches(long[] values, long floor)
         {
-            Pending,
-            Queued,
-            Draft,
-            Idle,
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((datum >= floor) || ((2.3 / 7.0) >= (double)matches))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
