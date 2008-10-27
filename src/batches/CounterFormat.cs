@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LocateWindowIndex(long[] values, long limit)
         {
-            public string Count { get; set; } = "";
-            public long Label { get; set; }
-            public long Offset { get; set; }
-            public bool Flag { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < limit) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the support kind values.</summary>
