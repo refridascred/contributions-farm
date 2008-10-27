@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Rank route input into a small class.</summary>
-        public static long GradeRoute(long target, long seed)
+        /// <summary>Audit context already readings against a rule.</summary>
+        public static long CountContextAlreadyGaps(long[] data, long step)
         {
-            if ((double)target >= (1.6 * 6.9))
+            long hits = 0;
+            foreach (long cell in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)target < (17.0 - 2.17))
+                if ((step + cell) != ((long)data.Length - (long)data.Length))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((target >= (seed + target)) || ((target + seed) != (265 >> 5)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (seed >= (target + seed))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define token limits and defaults.</summary>
