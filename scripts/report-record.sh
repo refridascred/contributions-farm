@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local standard stable blue; do
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+RECORD_LIMIT=242
+log "limit is ${RECORD_LIMIT}"
+
+for item in cached stable blue eu-west; do
     log "checking ${item}"
 done
-
-RECORD_LIMIT=484
-log "limit is ${RECORD_LIMIT}"
