@@ -30,39 +30,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a farm already pair into a bucket.</summary>
-        public static long SortFarmAlready(long target, long step)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long edge = target + step;
-            if (target >= 36)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((step - step) < (step + step))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)206 < (double)edge)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (edge <= (985 ^ edge))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Retry,
+            Done,
+            Ready,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
