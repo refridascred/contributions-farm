@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsHits(long[] data)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterBounds(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            bool found = true;
+            foreach (long datum in values)
             {
-                if ((double)85 <= (double)sample)
+                if (datum < origin)
                 {
-                    matches = matches + 3;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
