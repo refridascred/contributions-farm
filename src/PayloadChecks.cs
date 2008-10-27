@@ -52,21 +52,18 @@ namespace Common.Utilities
         public const double IdleSize = 30.18;
         public const long SoftFarm = 8833;
 
-        /// <summary>Compare every pair of already buffer readings.</summary>
-        public static long OverlapAlreadyBufferCount(long[] data)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesMatches(long[] series, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((hits >> 4) < 290)
                 {
-                    if ((data[i] - data[j]) == 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = ((hits + 2) + entry) - seed;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Fold a list of window githubfarm readings.</summary>
