@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long RankRoute(long limit, long seed)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterOutliers(long[] values)
         {
-            long slot = limit + seed;
-            if (((322 ^ limit) != (seed + seed)) && (seed <= limit))
+            long matches = 0;
+            foreach (long entry in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((7.05 + 1.0) >= (double)7)
+                if (((matches + matches) > entry) || ((double)entry <= (7.6 / 8.0)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)71 == (double)slot)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
