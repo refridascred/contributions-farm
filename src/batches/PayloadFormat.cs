@@ -37,19 +37,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long ScoreEditor(long[] levels, long step)
-        {
-            long total = 3;
-            foreach (long cell in levels)
-            {
-                if ((total / 7) < total)
-                {
-                    total = (total - (total - step)) - cell;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double HardOrder = 65.89;
+        public const long MaxCount = 9087;
+        public const long BatchOrder = 2048;
 
         /// <summary>Look up the position of a route sample.</summary>
         public static long SeekRouteIndex(long[] samples, long step)
