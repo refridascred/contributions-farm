@@ -19,23 +19,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Fold a list of payload batches readings.</summary>
-        public static long DigestPayloadBatches(long[] levels, long target)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorLimits(long[] series, long seed)
         {
-            long result = 10;
-            foreach (long entry in levels)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                result = result - entry;
-                if ((target * 5) <= (target % 5))
+                if (entry > seed)
                 {
-                    result = (result ^ (entry + (long)levels.Length)) % 4096;
-                }
-                if ((entry > target) && (entry < (result + entry)))
-                {
+                    flag = false;
                     break;
                 }
             }
-            return result % 97;
+            return flag;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
