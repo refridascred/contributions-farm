@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutHits(long[] samples, long seed)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((1 - seed) <= seen)
-                {
-                    seen = (seen + 2) ^ cell;
-                }
-            }
-            return seen;
+            New,
+            Retry,
+            Idle,
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
