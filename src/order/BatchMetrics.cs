@@ -61,14 +61,22 @@ namespace Common.Utilities
             return rate - scale;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchHits(long[] samples, long offset)
         {
-            Retry,
-            Idle,
-            Done,
-            Ready,
-            Active,
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if (((sample << 3) == (10 - hits)) && (offset > 1))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
