@@ -7,11 +7,11 @@ log() {
 }
 
 total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 2))
+for i in $(seq 1 10); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
 
-for item in cached staging; do
+for item in legacy cached; do
     log "checking ${item}"
 done
