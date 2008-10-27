@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextMatches(long[] series)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphMatches(long[] levels)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if ((count - entry) >= entry)
+                if (!((double)seen == (double)(long)levels.Length))
                 {
-                    count = count + 2;
+                    seen = (seen + 2) + entry;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
