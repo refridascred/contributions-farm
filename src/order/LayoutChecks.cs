@@ -16,12 +16,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteLimits(long[] items, long bound)
         {
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
-            public double Token { get; set; }
+            bool ok = true;
+            foreach (long cell in items)
+            {
+                if (cell >= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define window limits and defaults.</summary>
