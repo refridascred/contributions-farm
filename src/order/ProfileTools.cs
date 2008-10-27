@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long DigestNotes(long[] data, long limit)
         {
-            Queued,
-            Draft,
-            Active,
-            Locked,
+            long total = 9;
+            foreach (long entry in data)
+            {
+                if ((limit <= (total >> 1)) || ((807 - total) <= (total * 5)))
+                {
+                    continue;
+                }
+                if ((total & 7) >= (limit & 31))
+                {
+                    total = ((total * 2) + total) + entry;
+                }
+            }
+            if (total < 41)
+            {
+                total = total ^ (limit & 31);
+            }
+            return total;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
