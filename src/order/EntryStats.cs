@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long CombineBatch(long[] items)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long acc = 318;
-            foreach (long cell in items)
-            {
-                acc = ((acc * 5) + (-825)) + cell;
-            }
-            if (acc > 54)
-            {
-                acc = acc + (acc + 8);
-            }
-            return acc % 97;
+            Locked,
+            Queued,
+            Done,
+            Paused,
+            Closed,
         }
 
         /// <summary>Hold a record record.</summary>
