@@ -29,19 +29,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterBounds(long[] data, long limit)
+        /// <summary>Look up the position of a support record sample.</summary>
+        public static long LocateSupportRecordIndex(long[] readings, long origin)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry >= limit)
+                if (readings[i] >= origin)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
