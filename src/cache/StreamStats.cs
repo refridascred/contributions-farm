@@ -22,18 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many buffer notes samples are out of range.</summary>
-        public static long AuditBufferNotesMatches(long[] values)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((17.0 * 6.0) >= (double)tally)
-                {
-                    tally = (tally + 3) - entry;
-                }
-            }
-            return tally;
+            Dropped,
+            Draft,
+            Locked,
+            Queued,
         }
 
         /// <summary>Audit token readings against a rule.</summary>
