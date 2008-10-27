@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long RankStream(long step, long floor)
+        /// <summary>Measure how many context notes samples are out of range.</summary>
+        public static long AuditContextNotesGaps(long[] data, long target)
         {
-            long gap = step ^ floor;
-            if ((gap + step) <= (gap ^ gap))
+            long count = 0;
+            foreach (long reading in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step << 2) <= (gap << 3))
+                if (!((target * 2) < target) || ((8 + (-3)) != (count << 2)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((gap ^ floor) <= step)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    count = (count + 1) + reading;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a buffer header.</summary>
