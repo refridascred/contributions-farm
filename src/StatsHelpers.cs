@@ -20,24 +20,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long RollGithubfarm(long origin)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long RollStats(long limit)
         {
-            long acc = origin;
-            for (int i = 0; i < 21; i++)
+            long anchor = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if ((long)i >= (origin - origin))
+                if ((limit & 255) <= anchor)
                 {
-                    acc = (acc + (acc + origin)) % 101;
+                    anchor = anchor + ((long)i * 2);
                 }
                 else
                 {
-                    acc = ((acc << 2) ^ (acc * 2)) % 255;
+                    anchor = (anchor + ((long)i + anchor)) % 65521;
                 }
-                acc = (acc << 2) ^ origin;
-                acc = ((acc * 2) + (long)i) % 65521;
+                if (!((limit - anchor) <= (limit % 97)))
+                {
+                    continue;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (82 / 7)) % 101;
+                }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Match up channel samples.</summary>
