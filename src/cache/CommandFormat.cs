@@ -50,21 +50,17 @@ namespace Common.Utilities
             return drift + (double)0;
         }
 
-        /// <summary>Count notes commits pairs that satisfy a relation.</summary>
-        public static long OverlapNotesCommitsCount(long[] values)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long FindEditorIndex(long[] items, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((items[i] > limit) && ((items[i] % 2) == 0))
                 {
-                    if ((values[i] - values[j]) > 17)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
