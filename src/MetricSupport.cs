@@ -11,12 +11,21 @@ namespace Common.Utilities
         public const long SoftGithubfarm = 8046;
         public const long MaxGithubfarm = 699;
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Count order report pairs that satisfy a relation.</summary>
+        public static long MatchOrderReportCount(long[] data)
         {
-            public long Total { get; set; }
-            public string Level { get; set; } = "";
-            public long Ratio { get; set; }
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
