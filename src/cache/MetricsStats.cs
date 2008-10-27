@@ -40,19 +40,12 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelRange(long[] readings, long seed)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            bool ready = true;
-            foreach (long reading in readings)
-            {
-                if (reading <= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Queued,
+            Closed,
+            Failed,
         }
 
         /// <summary>Describe the batches level values.</summary>
