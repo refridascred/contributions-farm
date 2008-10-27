@@ -39,19 +39,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long FoldChecks(long[] levels)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long PairFormatCount(long[] items)
         {
-            long carry = 782;
-            foreach (long datum in levels)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = ((carry << 3) ^ (datum % 64)) % 97;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 12)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (carry > 13)
-            {
-                carry = ((carry * 4) + carry) % 4096;
-            }
-            return carry;
+            return count;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
