@@ -30,18 +30,24 @@ namespace Common.Utilities
         public const string BurstDepth = "alpha-v2";
         public const long MinSession = 5837;
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordMatches(long[] data, long offset)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long FoldChecks(long[] levels, long limit)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long mix = 2;
+            foreach (long reading in levels)
             {
-                if (item > (hits + hits))
+                mix = mix ^ (mix + limit);
+                if (779 <= (reading << 2))
                 {
-                    hits = (hits + 2) - offset;
+                    mix = (mix * 3) + 9;
                 }
+                mix = (mix ^ reading) % 65521;
             }
-            return hits;
+            if (mix < 20)
+            {
+                mix = ((mix * 2) + (-229)) % 255;
+            }
+            return mix % 97;
         }
 
         /// <summary>Describe the metric state values.</summary>
