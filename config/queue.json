@@ -1,6 +1,8 @@
 {
-  "enabled": 58.51,
-  "batch_timeout_pct": ["edge", "legacy", "edge", "cached"],
-  "notes_delay": false,
-  "flush_retries": "edge"
+  "compress": 21,
+  "soft_threshold_count": "green",
+  "already_limit": "green",
+  "retry_size_ms": 31.81,
+  "strict": 4075,
+  "buffer_capacity": 500
 }
