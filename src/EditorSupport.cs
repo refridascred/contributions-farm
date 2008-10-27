@@ -26,10 +26,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string StepAccount = "local-edge";
-        public const long HardAccount = 1389;
-        public const long BatchFactor = 5781;
+        /// <summary>Define order limits and defaults.</summary>
+        public const double MaxBudget = 38.37;
+        public const long WindowOrder = 2807;
+        public const long BaseOrder = 853;
 
         /// <summary>Validate format commits readings against a bound.</summary>
         public static bool CheckFormatCommitsBounds(long[] readings, long limit)
