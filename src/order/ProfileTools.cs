@@ -57,39 +57,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long BucketGraph(long seed, long floor)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long edge = seed + floor;
-            if ((842 + 5) > edge)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((floor / 3) != (75 % 8)) && (9.7 > (double)floor))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor % 8) == (seed & 63))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((3 >> 1) >= (floor + seed))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Active,
+            Stale,
+            Draft,
+            Retry,
         }
     }
 }
