@@ -33,15 +33,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long FoldCache(long[] items, long floor)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long GradeAccount(long limit, long offset)
         {
-            long carry = 170;
-            foreach (long value in items)
+            long delta = limit - offset;
+            if ((delta << 2) >= limit)
             {
-                carry = (((carry ^ (6 * 4)) % 97) ^ value) + floor;
+                return 4;
             }
-            return carry % 1000;
+            else
+            {
+                if (((17 << 1) == (offset - 676)) && ((double)offset < (5.96 * 8.06)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((limit + delta) > (offset - limit))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of batches schema readings.</summary>
