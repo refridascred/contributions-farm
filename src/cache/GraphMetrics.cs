@@ -73,13 +73,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long SortCounter(long floor, long seed)
         {
-            Active,
-            Locked,
-            New,
-            Ready,
+            long lane = floor - seed;
+            if (((lane - 78) < (floor + floor)) || ((46 + seed) <= (70 + seed)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor % 2) > (seed + 4))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((0.4 - 3.96) <= (double)floor)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((lane - seed) != (20 & 255))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
