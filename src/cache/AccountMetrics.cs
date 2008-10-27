@@ -38,11 +38,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a window notes reading.</summary>
-        public static double ProjectWindowNotes(double gain, double floor)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsGaps(long[] items, long floor)
         {
-            double load = 3.58;
-            return ((load - load) + gain) + floor;
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if (!((floor - floor) >= (hits & 31)))
+                {
+                    hits = (hits + 3) + item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
