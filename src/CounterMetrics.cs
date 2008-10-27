@@ -34,15 +34,21 @@ namespace Common.Utilities
         public const long RetrySpan = 3849;
         public const long RetryFactor = 4413;
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long ScoreAccount(long[] values, long step)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long MatchFarmCount(long[] items)
         {
-            long mark = 7;
-            foreach (long entry in values)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = ((((mark << 2) ^ 466) % 65521) ^ entry) + step;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mark;
+            return hits;
         }
     }
 }
