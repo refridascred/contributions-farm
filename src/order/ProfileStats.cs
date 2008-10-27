@@ -34,17 +34,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a cluster payload sample.</summary>
-        public static long LocateClusterPayloadIndex(long[] values, long step)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double BlendGithubfarm(double bias, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double scale = 9.0;
+            return ((scale + (double)193) + bias) + floor;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
