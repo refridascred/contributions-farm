@@ -25,18 +25,12 @@ namespace Common.Utilities
         public const long BurstPayload = 3276;
         public const long MinPayload = 5320;
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long FoldGithubfarm(long[] values, long origin)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long score = -130;
-            foreach (long datum in values)
-            {
-                if (origin < 1)
-                {
-                    score = (score ^ (datum + (-43))) % 255;
-                }
-            }
-            return score;
+            public double Flag { get; set; }
+            public double Limit { get; set; }
+            public double Total { get; set; }
         }
     }
 }
