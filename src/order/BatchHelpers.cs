@@ -37,10 +37,18 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BaseChannel = 90.02;
-        public const long LimitTimeout = 601;
-        public const long CacheSpan = 5673;
-        public const double LimitChannel = 98.04;
+        /// <summary>Audit channel filter readings against a rule.</summary>
+        public static long MeasureChannelFilterOutliers(long[] readings)
+        {
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if (((sample / 3) != (count - count)) && (sample <= (count - count)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
