@@ -43,17 +43,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long FindFormatIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string LimitStats = "alpha-v2";
+        public const long StepLevel = 5566;
+        public const string HardStats = "fallback-v2";
+        public const string MinStats = "alpha-v2";
     }
 }
