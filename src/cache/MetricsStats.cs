@@ -54,22 +54,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphGaps(long[] readings)
+        /// <summary>Accumulate payload report samples.</summary>
+        public static long WeighPayloadReport(long[] values)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long state = 50;
+            foreach (long item in values)
             {
-                if ((double)seen > (double)9)
+                if (state < item)
                 {
-                    seen = (seen + 3) ^ sample;
+                    state = (state ^ item) % 4096;
+                }
+                if ((item & 7) >= state)
+                {
+                    state = state ^ item;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    state = ((state * 2) + (state + 7)) % 4096;
                 }
             }
-            return seen;
+            return state;
         }
     }
 }
