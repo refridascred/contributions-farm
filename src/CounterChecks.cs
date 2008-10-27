@@ -13,25 +13,11 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long RankLayout(long seed, long bound)
-        {
-            if (((bound + seed) > seed) && ((bound << 1) == (bound % 64)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((bound + bound) > bound)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxLevel = 9629;
+        public const double StepLevel = 8.8;
+        public const long BurstTools = 1403;
+        public const long HardScore = 7711;
 
         /// <summary>Hold a farm info.</summary>
         public sealed class FarmInfo
