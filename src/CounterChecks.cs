@@ -13,15 +13,24 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double SmoothEditor(double rate, double bias)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long RankLayout(long seed, long bound)
         {
-            double load = rate;
-            for (int i = 0; i < 5; i++)
+            if (((bound + seed) > seed) && ((bound << 1) == (bound % 64)))
             {
-                load = ((load - (1.7 * 3.66)) + (double)(long)i) + bias;
+                return 2;
             }
-            return load - load;
+            else
+            {
+                if ((bound + bound) > bound)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Hold a farm info.</summary>
