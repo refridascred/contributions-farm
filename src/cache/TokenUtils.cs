@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LocateSessionIndex(long[] items, long limit)
         {
-            public long Score { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Region { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= limit) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
