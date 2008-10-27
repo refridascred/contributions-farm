@@ -27,12 +27,24 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long RollGithubfarm(long origin)
         {
-            public long Weight { get; set; }
-            public bool Score { get; set; }
-            public double Flag { get; set; }
+            long acc = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((long)i >= (origin - origin))
+                {
+                    acc = (acc + (acc + origin)) % 101;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ (acc * 2)) % 255;
+                }
+                acc = (acc << 2) ^ origin;
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
