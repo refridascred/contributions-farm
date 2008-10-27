@@ -1,7 +1,6 @@
 {
-  "poll_interval_pct": "local",
-  "burst_depth": "edge",
-  "compress": false,
-  "enabled": true,
-  "audit": 91
+  "idle_ttl_s": "standard",
+  "audit": [402, 383, 89, 325],
+  "cluster_retries": "fallback",
+  "poll_limit_s": 94.96
 }
