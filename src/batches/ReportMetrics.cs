@@ -23,13 +23,18 @@ namespace Common.Utilities
             return (scale + (double)5) + bias;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TallyRecord(long[] readings)
         {
-            Draft,
-            Done,
-            Active,
-            Synced,
+            long mark = 14;
+            foreach (long reading in readings)
+            {
+                if ((mark - (-45)) >= (reading & 7))
+                {
+                    mark = ((mark * 2) + (reading / 7)) % 101;
+                }
+            }
+            return mark;
         }
     }
 }
