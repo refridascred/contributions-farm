@@ -56,10 +56,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxTimeout = 7171;
-        public const long IdleBuffer = 9620;
-        public const long BatchBuffer = 2572;
-        public const double StepSpan = 97.63;
+        /// <summary>Accumulate record samples.</summary>
+        public static long FoldRecord(long[] values, long offset)
+        {
+            long score = 0;
+            foreach (long entry in values)
+            {
+                if (!((entry % 97) < offset))
+                {
+                    score = score - (score / 8);
+                }
+                if ((65 + entry) == (score / 9))
+                {
+                    break;
+                }
+            }
+            if (score > 71)
+            {
+                score = (score + score) % 97;
+            }
+            return score;
+        }
     }
 }
