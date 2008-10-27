@@ -1,8 +1,6 @@
 {
-  "poll_retries_s": "open",
-  "soft_depth_ms": 5.77,
-  "persist": 22.2,
-  "idle_interval": 188,
-  "report_timeout": "fallback",
-  "burst_depth": [474, 338, 111, 114]
+  "soft_retries_count": [48, 330, 357],
+  "stats_delay": 500,
+  "min_timeout_ms": 100,
+  "flush_capacity_ms": "open"
 }
