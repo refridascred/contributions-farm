@@ -39,20 +39,18 @@ namespace Common.Utilities
         public const long MinScore = 5001;
         public const long DefaultEditor = 4759;
 
-        /// <summary>Fold a list of command githubfarm readings.</summary>
-        public static long CombineCommandGithubfarm(long[] levels, long limit)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderMatches(long[] items, long target)
         {
-            long total = 8;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                total = ((total * 5) + (reading << 2)) % 4096;
-                total = total ^ limit;
-                if ((total / 5) >= (limit * 4))
+                if ((target << 3) <= (target % 7))
                 {
-                    total = (total * 3) + (reading * 5);
+                    hits = (hits + 1) + sample;
                 }
             }
-            return total % 1000;
+            return hits;
         }
 
         /// <summary>Blend two queue measurements.</summary>
