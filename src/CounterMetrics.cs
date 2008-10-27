@@ -36,11 +36,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaOutliers(long[] values)
         {
-            public double Ratio { get; set; }
-            public bool Score { get; set; }
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if ((count + entry) <= (2 - entry))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
