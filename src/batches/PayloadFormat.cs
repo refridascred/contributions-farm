@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the farm stats entries that pass the check.</summary>
-        public static long MeasureFarmStatsGaps(long[] series, long floor)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadRange(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long item in series)
+            bool ok = true;
+            foreach (long item in items)
             {
-                if (hits <= (floor - floor))
+                if (item < seed)
                 {
-                    hits = (hits + 1) - item;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
