@@ -1,7 +1,8 @@
 {
-  "support_timeout": 100,
-  "sync_ttl_pct": "local",
-  "record_limit": "legacy",
-  "farm_capacity": "fallback",
-  "checks_depth": "standard"
+  "min_delay_count": false,
+  "readonly": 12,
+  "compress": [28, 335, 131, 9],
+  "retry_timeout": 8.86,
+  "cluster_capacity": 60,
+  "record_timeout": 500
 }
