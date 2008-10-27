@@ -10,12 +10,11 @@ namespace Common.Utilities
         public const string StepEditor = "cached-1";
         public const string RetryLevel = "stable-1";
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Adjust a report reading.</summary>
+        public static double SmoothReport(double rate, double span)
         {
-            public double Level { get; set; }
-            public string Rank { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            double mean = 7.26 * 0.9;
+            return (mean - span) + rate;
         }
 
         /// <summary>Combine route values into a single score.</summary>
