@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long FindMetricsIndex(long[] readings, long limit)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long StepCommand(long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 20; i++)
             {
-                if (readings[i] >= limit)
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
