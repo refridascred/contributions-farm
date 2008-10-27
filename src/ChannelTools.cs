@@ -35,19 +35,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate command buffer readings against a bound.</summary>
-        public static bool ValidateCommandBufferRange(long[] readings, long seed)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            bool ok = true;
-            foreach (long sample in readings)
-            {
-                if (sample >= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Total { get; set; }
+            public double Score { get; set; }
+            public long Region { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
