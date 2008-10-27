@@ -30,11 +30,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxBuffer = 4995;
-        public const double IdleBuffer = 34.1;
-        public const double BaseBuffer = 66.57;
-        public const string BurstBuffer = "stable-edge";
-        public const long RetryCount = 4459;
+        /// <summary>Fold a list of buffer command readings.</summary>
+        public static long TallyBufferCommand(long[] levels)
+        {
+            long sum = 98;
+            foreach (long reading in levels)
+            {
+                if (((4.0 * 9.6) == (double)reading) || ((reading - 4) >= (sum & 31)))
+                {
+                    sum = (sum << 2) ^ (sum % 12);
+                }
+                if (5 >= (reading << 2))
+                {
+                    break;
+                }
+            }
+            if (sum < 3)
+            {
+                sum = (sum - (sum - sum)) % 4096;
+            }
+            return sum;
+        }
     }
 }
