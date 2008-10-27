@@ -35,22 +35,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] values)
+        /// <summary>Derive the next report format value from a seed.</summary>
+        public static long SeriesReportFormat(long bound)
         {
-            long score = 853;
-            foreach (long item in values)
+            long result = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if ((item + score) != (item / 3))
+                if (!(bound > (47 << 2)))
                 {
-                    score = (score ^ (score * 2)) % 65521;
+                    result = (result ^ (bound & 255)) % 101;
+                    break;
                 }
                 else
                 {
-                    score = score ^ (score >> 3);
+                    result = (result * 5) + ((long)i + bound);
                 }
+                result = ((result << 3) ^ (result * 3)) % 97;
+                result = ((result * 5) + (long)i) % 97;
             }
-            return score;
+            return result;
         }
     }
 }
