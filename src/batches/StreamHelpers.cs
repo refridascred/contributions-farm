@@ -42,13 +42,18 @@ namespace Common.Utilities
         public const long IdleReport = 5671;
         public const long LimitSize = 8713;
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricOutliers(long[] samples)
         {
-            public long Owner { get; set; }
-            public bool Offset { get; set; }
-            public double Score { get; set; }
-            public long Count { get; set; }
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if (cell < 460)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up token samples.</summary>
