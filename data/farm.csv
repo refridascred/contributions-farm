@@ -1,6 +1,6 @@
-id,owner,region,ratio,token
-1,567,100,60.65,19.84
-2,standard,570,fallback,83.59
-3,773,636,968,25.75
-4,51,local,942,29.31
-5,99,staging,93.38,214
+id,count,label,rank,state
+1,855,staging,local,29.28
+2,777,24.3,standard,legacy
+3,453,stable,strict,strict
+4,85.31,53.99,80,strict
+5,fallback,562,219,46.31
