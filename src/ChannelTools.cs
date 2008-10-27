@@ -35,13 +35,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] values)
         {
-            public double Total { get; set; }
-            public double Score { get; set; }
-            public long Region { get; set; }
-            public double Owner { get; set; }
+            long score = 853;
+            foreach (long item in values)
+            {
+                if ((item + score) != (item / 3))
+                {
+                    score = (score ^ (score * 2)) % 65521;
+                }
+                else
+                {
+                    score = score ^ (score >> 3);
+                }
+            }
+            return score;
         }
     }
 }
