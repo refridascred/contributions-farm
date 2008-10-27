@@ -16,22 +16,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyMatches(long[] data, long seed)
+        /// <summary>Grade a githubfarm profile value against two limits.</summary>
+        public static long ClassifyGithubfarmProfile(long limit, long target)
         {
-            long hits = 0;
-            foreach (long value in data)
+            if ((38 < (target ^ 85)) && (target > limit))
             {
-                if (!(((double)value <= (0.7 * 9.96)) && (hits < (seed << 3))))
+                return 6;
+            }
+            else
+            {
+                if ((333 & 31) > target)
                 {
-                    hits = hits + 3;
+                    return 0;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (!((limit - target) < limit))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Project the next session value.</summary>
