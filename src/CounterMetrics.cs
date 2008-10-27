@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long GradeEditor(long floor, long floor2)
+        /// <summary>Project the next entry value.</summary>
+        public static double SmoothEntry(double scale, double offset)
         {
-            long step = floor + floor2;
-            if ((floor2 >> 5) <= floor2)
+            double gain = 14.0;
+            if (gain >= (offset / 9.0))
             {
-                return 7;
+                gain = gain + (gain - offset);
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if (((step ^ floor2) == (step - step)) && ((901 - floor) > step))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)floor2 != (6.98 * 0.2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((floor2 << 1) != (floor2 + floor)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                gain = (gain + scale) + (double)(long)i;
             }
+            return gain - (offset / 9.0);
         }
 
         /// <summary>Hold a notes info.</summary>
