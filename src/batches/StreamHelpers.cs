@@ -13,22 +13,10 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long CompareContributiCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double DefaultTimeout = 3.18;
+        public const long DefaultInterval = 5131;
+        public const long MaxMetric = 1844;
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long CountFormatOutliers(long[] samples)
