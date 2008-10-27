@@ -50,13 +50,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryGaps(long[] readings)
         {
-            public string Weight { get; set; } = "";
-            public long Label { get; set; }
-            public bool Limit { get; set; }
-            public double Owner { get; set; }
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((237 + matches) != (148 + matches))
+                {
+                    matches = (matches + 2) ^ entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
