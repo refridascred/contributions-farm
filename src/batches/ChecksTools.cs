@@ -11,15 +11,22 @@ namespace Common.Utilities
         public const long LimitChannel = 4964;
         public const double SoftChannel = 39.66;
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double SmoothFarm(double rate, double span)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphOutliers(long[] values, long step)
         {
-            double bias = rate;
-            if (bias > (rate - bias))
+            long tally = 0;
+            foreach (long sample in values)
             {
-                bias = (bias + 15.0) + span;
+                if ((tally & 7) != ((long)values.Length / 8))
+                {
+                    tally = ((tally + 1) + sample) - step;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return bias - rate;
+            return tally;
         }
 
         /// <summary>Describe the order kind values.</summary>
