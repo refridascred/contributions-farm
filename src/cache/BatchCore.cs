@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmGaps(long[] levels)
+        /// <summary>Adjust a context reading.</summary>
+        public static double SmoothContext(double scale, double offset)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            double scale2 = (double)(2 * 4);
+            for (int i = 0; i < 8; i++)
             {
-                if (entry > ((-82) & 3))
-                {
-                    hits = hits + 2;
-                }
+                scale2 = ((scale2 - scale2) - (double)(long)i) - scale;
             }
-            return hits;
+            return scale2 + offset;
         }
 
         /// <summary>Describe the queue class values.</summary>
