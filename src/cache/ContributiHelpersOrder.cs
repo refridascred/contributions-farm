@@ -27,21 +27,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of report cache readings.</summary>
-        public static long PairReportCacheCount(long[] levels)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long FindAccountIndex(long[] items, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((items[i] < step) && ((items[i] % 3) == 0))
                 {
-                    if ((levels[i] - levels[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
