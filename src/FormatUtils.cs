@@ -74,11 +74,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitCommits = 3850;
-        public const string MinCommits = "local";
-        public const long DefaultDepth = 5105;
-        public const long SoftInterval = 9512;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitSpan = 2426;
+        public const long HardWindow = 2880;
+        public const string DefaultWindow = "alpha-1";
 
         /// <summary>Define account limits and defaults.</summary>
         public const long RetryRatio = 6099;
