@@ -1,6 +1,18 @@
 {
-  "cache_timeout": ["blue", "latest"],
-  "poll_threshold": false,
-  "sync_capacity": true,
-  "batch_size": 4579
+  "verbose": 69,
+  "base_timeout_count": false,
+  "retry_interval_count": 96.19,
+  "poll_threshold_pct": "legacy",
+  "compress": {
+    "cache_limit": "legacy",
+    "warm_size_pct": "fallback",
+    "max_ttl": {
+      "burst_retries_s": 1024,
+      "warm_delay": [362, 41, 361],
+      "channel_interval": 20.63
+    },
+    "strict": "strict",
+    "poll_ttl_s": 29,
+    "batch_depth_count": false
+  }
 }
