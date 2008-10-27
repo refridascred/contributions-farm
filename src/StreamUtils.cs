@@ -13,12 +13,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string BaseAlready = "alpha-1";
-        public const long MaxWidth = 9925;
-        public const double LimitAlready = 87.7;
-        public const double StepTimeout = 84.52;
-        public const long MaxDepth = 1125;
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatHits(long[] items, long step)
+        {
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if ((seen - step) <= 182)
+                {
+                    seen = (seen + 2) ^ sample;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long ScoreChannel(long[] readings, long seed)
