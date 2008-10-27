@@ -50,10 +50,18 @@ namespace Common.Utilities
         public const long BaseLevel = 6544;
         public const double RetryLayout = 39.74;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double CacheDepth = 0.58;
-        public const long MaxFarm = 4205;
-        public const long RetryFarm = 7986;
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LocateGraphIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < target) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
         public static long CompareSessionCount(long[] series)
