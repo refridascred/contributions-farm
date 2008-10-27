@@ -13,12 +13,21 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long CompareContributiCount(long[] readings)
         {
-            public long Count { get; set; }
-            public bool Token { get; set; }
-            public bool Score { get; set; }
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
