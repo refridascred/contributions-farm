@@ -34,15 +34,13 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] readings, long origin)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long result = 411;
-            foreach (long datum in readings)
-            {
-                result = ((((result * 2) + (result ^ result)) % 4096) + datum) + origin;
-            }
-            return result % 4096;
+            public string Score { get; set; } = "";
+            public long Level { get; set; }
+            public bool Mode { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Blend two batches measurements.</summary>
