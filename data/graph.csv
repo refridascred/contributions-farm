@@ -1,9 +1,7 @@
-id,region
-1,40.1
-2,235
-3,latest
-4,standard
-5,stable
-6,54.59
-7,74.34
-8,fallback
+id,weight,label
+1,eu-west,standard
+2,710,615
+3,65.87,11.78
+4,71.92,627
+5,88.35,200
+6,blue,745
