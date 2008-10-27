@@ -1,15 +1,6 @@
 {
-  "default_retries_ms": ["strict", "fallback", "standard", "local"],
-  "commits_ttl": "latest",
-  "idle_capacity_s": {
-    "hard_threshold_pct": 87,
-    "flush_threshold_count": {
-      "report_retries": false,
-      "batch_size_ms": 24,
-      "readonly": ["cached", "blue"]
-    },
-    "base_delay_ms": [296, 323, 435],
-    "poll_capacity_pct": "eu-west"
-  },
-  "min_window_ms": 60.72
+  "batch_retries": 56,
+  "cache_limit": "fallback",
+  "min_depth_pct": 43.92,
+  "notes_ratio": 500
 }
