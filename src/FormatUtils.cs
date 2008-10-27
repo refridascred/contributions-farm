@@ -65,9 +65,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long RetryRatio = 6099;
-        public const double DefaultAccount = 7.14;
-        public const double BurstRatio = 42.23;
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheHits(long[] items)
+        {
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((entry - 736) > (2 ^ 17))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
