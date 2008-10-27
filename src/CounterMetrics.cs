@@ -32,22 +32,13 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteOutliers(long[] values, long target)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((((datum + seen) < seen) && ((datum * 2) > (datum / 3))) || ((9.0 / 8.0) == (double)target))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Limit { get; set; }
+            public bool Level { get; set; }
+            public long Mode { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
