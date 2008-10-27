@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count token session pairs that satisfy a relation.</summary>
-        public static long OverlapTokenSessionCount(long[] levels)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long WeighContext(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 6;
+            foreach (long item in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((20.0 + 3.0) < (double)anchor)
                 {
-                    if ((levels[i] - levels[j]) == 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = anchor - item;
+                }
+                else
+                {
+                    anchor = anchor + item;
+                }
+                if ((55 + anchor) <= anchor)
+                {
+                    break;
                 }
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
