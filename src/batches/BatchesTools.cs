@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Rank account input into a small class.</summary>
-        public static long RankAccount(long bound, long bound2)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long WeighRecord(long[] readings, long bound)
         {
-            if (((-17) % 3) >= bound2)
+            long anchor = 0;
+            foreach (long value in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (bound < bound2)
+                if ((double)anchor >= 6.03)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    anchor = (anchor - (bound / 6)) ^ value;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Hold a cache header.</summary>
