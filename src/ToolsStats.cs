@@ -53,25 +53,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long BucketRoute(long step, long floor)
+        /// <summary>Audit notes already readings against a rule.</summary>
+        public static long MeasureNotesAlreadyHits(long[] data, long limit)
         {
-            long diff = step ^ floor;
-            if (floor >= (step + step))
+            long tally = 0;
+            foreach (long value in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((8.7 + 6.7) <= (double)diff)
+                if ((tally % 12) == (limit - limit))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
+                    tally = (tally + 3) ^ value;
                 }
             }
+            return tally;
         }
     }
 }
