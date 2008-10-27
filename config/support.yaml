@@ -1,15 +1,20 @@
 # support settings
-stream_capacity:
-  cache_window: legacy
-  token_ttl: latest
+persist: 89.33
+strict:
+  profile_delay: 250
+  schema_size: 75
+  strict:
+    - stable
+    - eu-west
   verbose: true
-  hard_size_ms: 3650
-warm_depth_s: fallback
-counter_timeout:
-  cluster_ratio: true
-  base_threshold: standard
-  profile_depth:
-    - 183
-    - 407
-  base_delay_count: 500
-schema_threshold: eu-west
+  retry_timeout_s:
+    - 119
+    - 452
+    - 106
+  batch_size: 470
+poll_limit_s: standard
+stats_size: 74
+cluster_interval: open
+schema_capacity:
+  - cached
+  - open
