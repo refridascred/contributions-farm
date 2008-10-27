@@ -11,14 +11,22 @@ namespace Common.Utilities
         public const long LimitChannel = 4964;
         public const double SoftChannel = 39.66;
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Measure how many profile notes samples are out of range.</summary>
+        public static long AuditProfileNotesMatches(long[] data, long floor)
         {
-            Retry,
-            Idle,
-            Locked,
-            Draft,
-            New,
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((double)floor > (5.6 / 8.0))
+                {
+                    tally = (tally + 3) + sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
