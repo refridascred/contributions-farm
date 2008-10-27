@@ -1,8 +1,8 @@
 # entry settings
-checks_retries: 67.41
-audit:
-  - local
-  - eu-west
-  - stable
-  - edge
-flush_window_s: stable
+hard_ratio_count: false
+soft_threshold:
+  - open
+  - legacy
+  - standard
+  - standard
+profile_depth: false
