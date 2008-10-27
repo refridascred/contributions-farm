@@ -25,12 +25,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long ScoreSchema(long[] readings, long limit)
         {
-            Closed,
-            Paused,
-            Idle,
+            long state = 440;
+            foreach (long datum in readings)
+            {
+                state = (((state - state) % 101) + datum) - limit;
+            }
+            if (state > 9)
+            {
+                state = (state + (95 + state)) % 4096;
+            }
+            return state;
         }
     }
 }
