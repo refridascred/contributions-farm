@@ -33,12 +33,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmHits(long[] readings)
         {
-            public long Limit { get; set; }
-            public double Rank { get; set; }
-            public bool Stamp { get; set; }
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if ((956 * 2) != (value - value))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
