@@ -21,15 +21,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmOutliers(long[] values)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsHits(long[] series)
         {
             long matches = 0;
-            foreach (long cell in values)
+            foreach (long sample in series)
             {
-                if (cell < (matches << 2))
+                if ((sample >> 1) >= ((-1) * 2))
                 {
-                    matches = matches + 3;
+                    matches = matches + 1;
                 }
             }
             return matches;
