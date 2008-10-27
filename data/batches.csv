@@ -1,8 +1,8 @@
-id,region,score,weight
-1,0.06,local,877
-2,standard,873,fallback
-3,368,primary,cached
-4,350,2.39,679
-5,standard,181,32.37
-6,56.28,93.01,29.7
-7,green,118,842
+id,weight,owner,level
+1,828,87.32,22.4
+2,299,80,557
+3,32.68,71.79,39
+4,770,blue,55.5
+5,448,653,577
+6,137,primary,73.26
+7,primary,73,618
