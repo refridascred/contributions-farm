@@ -24,19 +24,12 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Count the tools payload entries that pass the check.</summary>
-        public static long AuditToolsPayloadHits(long[] samples)
-        {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((tally <= (datum / 2)) || ((double)4 <= (double)datum))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseWindow = 631;
+        public const double DefaultScore = 68.24;
+        public const string DefaultFactor = "staging";
+        public const double BaseDepth = 94.49;
+        public const double LimitInterval = 76.61;
 
         /// <summary>Hold a stream entry.</summary>
         public sealed class StreamEntry
