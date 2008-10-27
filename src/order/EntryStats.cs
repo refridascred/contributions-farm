@@ -43,18 +43,18 @@ namespace Common.Utilities
         public const long SoftQueue = 8917;
         public const long RetryQueue = 673;
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteMatches(long[] levels)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksGaps(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (!(((double)count <= (9.0 + 5.0)) || ((count + value) != (48 & 15))))
+                if ((9 - seed) >= 9)
                 {
-                    count = count + 1;
+                    tally = (tally + 3) ^ sample;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
