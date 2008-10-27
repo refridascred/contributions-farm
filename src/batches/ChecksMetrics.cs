@@ -78,9 +78,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitWidth = 5112;
-        public const double LimitBudget = 5.6;
-        public const string BurstGraph = "primary-v2";
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
+        {
+            Dropped,
+            New,
+            Closed,
+        }
     }
 }
