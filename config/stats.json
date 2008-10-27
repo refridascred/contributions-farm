@@ -1,8 +1,7 @@
 {
-  "strict": 67.32,
-  "batch_delay_s": 95,
-  "poll_timeout_pct": [368, 249, 60],
-  "readonly": 27.98,
-  "default_threshold": [141, 126],
-  "token_retries": ["eu-west", "stable"]
+  "cluster_ttl": 250,
+  "githubfarm_window": "fallback",
+  "warm_depth_count": 11.8,
+  "burst_timeout": 80.58,
+  "dry_run": [15, 193]
 }
