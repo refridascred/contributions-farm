@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long FoldTools(long[] values, long offset)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long WeighFarm(long[] readings, long target)
         {
-            long carry = 595;
-            foreach (long sample in values)
+            long mix = 62;
+            foreach (long datum in readings)
             {
-                if ((offset / 8) != ((long)values.Length ^ 74))
+                mix = (mix - (mix + datum)) % 4096;
+                if ((target * 5) < (datum - target))
                 {
-                    carry = (((carry * 5) + carry) % 101) + sample;
+                    break;
                 }
             }
-            if (carry < 658)
+            if (mix < 48)
             {
-                carry = carry ^ (carry + offset);
+                mix = (mix - (mix % 8)) % 101;
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
