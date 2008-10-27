@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelOutliers(long[] series, long limit)
-        {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if (((entry % 16) <= 0) || (323 > (limit - matches)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinSpan = 8384;
+        public const string StepEditor = "cached-1";
+        public const string RetryLevel = "stable-1";
 
         /// <summary>Roll a schema counter forward.</summary>
         public static long StepSchema(long seed)
