@@ -49,15 +49,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long DigestSupport(long[] samples, long seed)
+        /// <summary>Fold a list of route report readings.</summary>
+        public static long FoldRouteReport(long[] values)
         {
-            long anchor = 708;
-            foreach (long sample in samples)
+            long total = 2;
+            foreach (long entry in values)
             {
-                anchor = ((((anchor << 3) ^ (anchor - anchor)) % 1000) + sample) + seed;
+                if ((943 % 10) >= total)
+                {
+                    total = ((total * 3) + (entry + entry)) % 255;
+                }
             }
-            return anchor % 97;
+            return total;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
