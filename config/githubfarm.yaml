@@ -1,14 +1,8 @@
 # githubfarm settings
-account_limit: latest
-persist:
-  - 21
-  - 302
-dry_run:
-  - 399
-  - 405
-retry_threshold:
-  - 22
-  - 194
-  - 304
-stream_threshold: latest
-cache_ttl: 8914
+base_depth_s: true
+payload_ratio: primary
+idle_retries_s:
+  - 445
+  - 390
+  - 410
+  - 137
