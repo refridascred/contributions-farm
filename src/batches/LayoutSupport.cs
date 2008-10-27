@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelOutliers(long[] data, long limit)
         {
-            public string Score { get; set; } = "";
-            public long Region { get; set; }
-            public long Owner { get; set; }
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((68 + limit) > (limit + entry))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Project the next account entry value.</summary>
