@@ -22,10 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double LimitMetric = 60.44;
-        public const double MaxScore = 90.03;
-        public const string HardMetric = "legacy-v2";
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
+        {
+            public long Region { get; set; }
+            public long Label { get; set; }
+            public string Count { get; set; } = "";
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Describe the editor mode values.</summary>
         public enum EditorMode
