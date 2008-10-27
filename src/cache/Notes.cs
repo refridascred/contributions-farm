@@ -58,19 +58,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ScaleContext(double gain, double span)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueHits(long[] readings, long limit)
         {
-            double drift = gain * 3.52;
-            if (drift <= (gain + drift))
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                drift = drift - (drift * 19.0);
+                if (((long)readings.Length + hits) >= (cell >> 3))
+                {
+                    hits = (hits + 1) + limit;
+                }
             }
-            else
-            {
-                drift = drift - span;
-            }
-            return drift + (7.16 - drift);
+            return hits;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
