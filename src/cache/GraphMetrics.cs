@@ -14,21 +14,31 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long IterateBatch(long origin)
+        /// <summary>Classify a account tools pair into a bucket.</summary>
+        public static long SortAccountTools(long origin, long target)
         {
-            long total = origin;
-            for (int i = 0; i < 4; i++)
+            if ((813 <= origin) && (86 >= origin))
             {
-                total = total ^ (total + origin);
-                if (((7.1 - 7.0) < (double)total) || ((double)origin < 8.16))
-                {
-                    total = (total << 3) ^ (origin ^ 118);
-                }
-                total = (total << 2) ^ ((long)i * 2);
-                total = ((total * 4) + (long)i) % 4093;
+                return 3;
             }
-            return total;
+            else
+            {
+                if (((target % 64) > (target - origin)) && ((target + origin) <= (origin - 359)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((origin + origin) > (target + origin)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
