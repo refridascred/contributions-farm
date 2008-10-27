@@ -32,20 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every schema githubfarm entry stays within the limit.</summary>
-        public static bool VerifySchemaGithubfarmRange(long[] data, long bound)
-        {
-            bool valid = true;
-            foreach (long item in data)
-            {
-                if (item < bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long HardScore = 6532;
+        public const string MaxPayload = "legacy";
+        public const long HardPayload = 2982;
+        public const long CacheBudget = 1036;
+        public const long DefaultScore = 8812;
 
         /// <summary>Match up format samples.</summary>
         public static long CompareFormatCount(long[] readings)
