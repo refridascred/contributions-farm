@@ -74,19 +74,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsLimits(long[] readings, long origin)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long SeriesMetric(long target)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            long carry = target;
+            for (int i = 0; i < 22; i++)
             {
-                if (sample >= origin)
+                if (!((5 - carry) < (-29)))
                 {
-                    ok = false;
-                    break;
+                    carry = ((carry * 2) + (762 - target)) % 65521;
+                    carry = (carry - (carry - target)) % 97;
                 }
+                carry = ((carry * 5) + (target / 3)) % 65521;
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return ok;
+            return carry;
         }
     }
 }
