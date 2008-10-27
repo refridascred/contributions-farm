@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] samples)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelOutliers(long[] samples, long step)
         {
-            long mix = 0;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                mix = (mix + (mix >> 5)) + reading;
+                if (step < ((long)samples.Length - tally))
+                {
+                    tally = (tally + 2) + cell;
+                }
             }
-            return mix % 97;
+            return tally;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
