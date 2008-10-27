@@ -24,21 +24,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long PairMetricsCount(long[] samples)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiBounds(long[] series, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long value in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (value > offset)
                 {
-                    if ((samples[i] ^ samples[j]) == 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
