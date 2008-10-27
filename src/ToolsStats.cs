@@ -74,22 +74,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long CombineCounter(long[] levels)
+        /// <summary>Measure how many buffer githubfarm samples are out of range.</summary>
+        public static long TallyBufferGithubfarmMatches(long[] series, long seed)
         {
-            long state = 291;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if ((reading + reading) > (state - (-39)))
+                if (item >= (73 * 4))
                 {
-                    state = ((state * 5) + (state * 5)) % 101;
-                }
-                if (state >= (state % 12))
-                {
-                    break;
+                    seen = (seen + 1) + seed;
                 }
             }
-            return state % 65521;
+            return seen;
         }
 
         /// <summary>Describe the token status values.</summary>
