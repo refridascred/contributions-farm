@@ -35,15 +35,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of contributi notes readings.</summary>
-        public static long DigestContributiNotes(long[] readings)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long ComparePayloadCount(long[] series)
         {
-            long score = 738;
-            foreach (long reading in readings)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                score = ((score << 3) ^ (score / 7)) - reading;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return score % 4096;
+            return matches;
         }
     }
 }
