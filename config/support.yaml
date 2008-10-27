@@ -1,9 +1,9 @@
 # support settings
-cache_window:
-  - fallback
-  - staging
-  - blue
-dry_run: 66
-min_timeout_count: 8838
-buffer_retries: standard
-metrics_threshold: cached
+hard_retries_ms: staging
+context_threshold: 6989
+hard_capacity: 97
+audit: cached
+readonly:
+  - 126
+  - 117
+sync_capacity_s: true
