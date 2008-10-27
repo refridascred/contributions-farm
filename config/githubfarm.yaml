@@ -1,15 +1,6 @@
 # githubfarm settings
-compress: fallback
-readonly:
-  retry_size_count: eu-west
-  checks_window: stable
-  cache_ttl_s:
-    retry_ttl:
-      - standard
-      - fallback
-    compress: 60
-    enabled: 30
-    metric_interval: 500
-    report_threshold: primary
-warm_ttl_s: latest
-warm_retries: 100
+idle_depth_count: 500
+audit: latest
+readonly: 40.15
+hard_limit_s: 60
+sync_ttl: 15.14
