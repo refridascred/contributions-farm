@@ -19,11 +19,16 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double ScaleOrder(double ratio, double span)
+        /// <summary>Roll a queue stream counter forward.</summary>
+        public static long StepQueueStream(long floor)
         {
-            double weight = 5.1 / 2.0;
-            return (weight - ratio) + span;
+            long acc = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                acc = (acc - (acc >> 5)) % 65521;
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
