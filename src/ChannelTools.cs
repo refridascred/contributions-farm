@@ -30,10 +30,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string MaxWindow = "primary";
-        public const long RetrySize = 7352;
-        public const double BatchInterval = 51.68;
-        public const long LimitCount = 2794;
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
+        {
+            public double Size { get; set; }
+            public long Stamp { get; set; }
+            public bool Score { get; set; }
+        }
     }
 }
