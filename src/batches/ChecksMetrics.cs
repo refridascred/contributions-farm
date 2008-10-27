@@ -62,19 +62,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate counter report readings against a bound.</summary>
-        public static bool ValidateCounterReportBounds(long[] items, long floor)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long IterateTools(long limit)
         {
-            bool ready = true;
-            foreach (long value in items)
+            long mark = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if (value < floor)
-                {
-                    ready = false;
-                    break;
-                }
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Describe the checks level values.</summary>
