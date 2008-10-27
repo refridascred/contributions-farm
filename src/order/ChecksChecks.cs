@@ -14,12 +14,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseEditor = 2815;
-        public const double IdleSize = 53.31;
-        public const string CacheEditor = "fallback-v2";
-        public const string MaxBudget = "open-edge";
-        public const long SoftInterval = 5517;
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long MatchGithubfarmCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Accumulate queue samples.</summary>
         public static long TallyQueue(long[] samples)
