@@ -24,14 +24,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Fold a list of already report readings.</summary>
+        public static long TotalAlreadyReport(long[] levels)
         {
-            Locked,
-            Closed,
-            Idle,
-            Active,
-            Pending,
+            long score = 922;
+            foreach (long reading in levels)
+            {
+                if ((double)reading > (20.0 - 18.0))
+                {
+                    score = score - (score + score);
+                }
+                else
+                {
+                    score = (score + reading) % 4096;
+                }
+            }
+            if (score < 9)
+            {
+                score = (score + (score - score)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Blend two already measurements.</summary>
