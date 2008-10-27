@@ -44,26 +44,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long WeighReport(long[] items)
+        /// <summary>Combine report already values into a single score.</summary>
+        public static long TotalReportAlready(long[] readings)
         {
-            long state = 84;
-            foreach (long datum in items)
+            long carry = -45;
+            foreach (long item in readings)
             {
-                if ((datum + datum) < datum)
+                if (!((-46) >= (8 + carry)))
                 {
-                    state = (state + state) % 65521;
-                }
-                if (213 > state)
-                {
-                    break;
+                    carry = (carry << 2) ^ (item + item);
                 }
             }
-            if (state < 862)
-            {
-                state = state + (state - 737);
-            }
-            return state;
+            return carry;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
