@@ -24,13 +24,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            Ready,
-            Done,
-            Stale,
-            Queued,
+            Locked,
+            Failed,
             New,
         }
 
