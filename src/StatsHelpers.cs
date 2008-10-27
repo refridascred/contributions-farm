@@ -54,18 +54,18 @@ namespace Common.Utilities
             return drift + (floor + floor);
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long ScoreAlready(long[] readings, long limit)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenMatches(long[] values, long floor)
         {
-            long state = 751;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if ((206 * 2) > (state % 100))
+                if ((floor * 2) < (cell - tally))
                 {
-                    state = ((state + (limit * 4)) % 255) - value;
+                    tally = tally + 3;
                 }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
