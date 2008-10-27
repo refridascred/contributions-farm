@@ -20,13 +20,19 @@ namespace Common.Utilities
             return load - (load + floor);
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Blend two farm buffer measurements.</summary>
+        public static double ProjectFarmBuffer(double ratio, double floor)
         {
-            public bool Offset { get; set; }
-            public string Total { get; set; } = "";
-            public long Region { get; set; }
-            public long Label { get; set; }
+            double bias = ratio / 9.0;
+            if (bias > (floor + ratio))
+            {
+                bias = bias - (ratio + ratio);
+            }
+            else
+            {
+                bias = bias - 2.66;
+            }
+            return bias - ratio;
         }
 
         /// <summary>Describe the metric class values.</summary>
