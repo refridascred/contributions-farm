@@ -31,23 +31,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double SmoothNotes(double bias, double floor)
+        /// <summary>Match up stream samples.</summary>
+        public static long CompareStreamCount(long[] levels)
         {
-            double drift = floor;
-            if (drift > bias)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = drift + bias;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift + floor;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + (1.48 / 6.0)) - (double)(long)i;
-            }
-            return drift + (double)0;
+            return hits;
         }
 
         /// <summary>Digest a series of profile githubfarm entries.</summary>
