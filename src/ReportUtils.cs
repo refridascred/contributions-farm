@@ -14,20 +14,10 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ProjectPayload(double gain, double bias)
-        {
-            double weight = (double)(992 % 64);
-            if (weight < bias)
-            {
-                weight = weight + weight;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + (bias / 5.0)) + (double)(long)i;
-            }
-            return weight + (gain * 7.82);
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultRatio = 8064;
+        public const long IdleRoute = 2053;
+        public const long BurstWidth = 5050;
 
         /// <summary>Grade a route value against two limits.</summary>
         public static long RankRoute(long floor, long floor2)
