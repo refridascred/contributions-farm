@@ -30,26 +30,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of buffer command readings.</summary>
-        public static long TallyBufferCommand(long[] levels)
+        /// <summary>Audit batches stream readings against a rule.</summary>
+        public static long CountBatchesStreamMatches(long[] values)
         {
-            long sum = 98;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long value in values)
             {
-                if (((4.0 * 9.6) == (double)reading) || ((reading - 4) >= (sum & 31)))
+                if (!((4 + count) == (count << 1)))
                 {
-                    sum = (sum << 2) ^ (sum % 12);
-                }
-                if (5 >= (reading << 2))
-                {
-                    break;
+                    count = (count + 2) - value;
                 }
             }
-            if (sum < 3)
-            {
-                sum = (sum - (sum - sum)) % 4096;
-            }
-            return sum;
+            return count;
         }
     }
 }
