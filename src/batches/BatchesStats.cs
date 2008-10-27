@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Adjust a already reading.</summary>
-        public static double BlendAlready(double ratio, double floor)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long DigestFarm(long[] series)
         {
-            double gain = (floor - ratio) / 2.0;
-            for (int i = 0; i < 3; i++)
+            long acc = 0;
+            foreach (long sample in series)
             {
-                gain = (gain + (ratio / 4.0)) - (double)(long)i;
+                acc = ((acc << 3) ^ (acc - acc)) - sample;
             }
-            return gain + gain;
+            if (acc < 887)
+            {
+                acc = ((acc << 2) ^ (acc >> 1)) % 97;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
