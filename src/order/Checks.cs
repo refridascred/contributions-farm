@@ -53,12 +53,12 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long FindToolsIndex(long[] samples, long seed)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long FindNotesIndex(long[] readings, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((samples[i] > seed) && ((samples[i] % 5) != 0))
+                if ((readings[i] >= origin) && ((readings[i] % 5) == 0))
                 {
                     return (long)i;
                 }
