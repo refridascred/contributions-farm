@@ -45,19 +45,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Adjust a support record reading.</summary>
-        public static double BlendSupportRecord(double ratio, double offset)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long PairBatchesCount(long[] values)
         {
-            double scale = (double)263 - (ratio / 4.0);
-            if (scale > (double)7)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                scale = (scale + 3.5) + offset;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + (scale / 9.0)) + (double)(long)i;
-            }
-            return scale - ratio;
+            return seen;
         }
 
         /// <summary>Measure how many tools editor samples are out of range.</summary>
