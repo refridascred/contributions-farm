@@ -38,18 +38,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsGaps(long[] items, long floor)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long RankPayload(long step, long bound)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long span = step ^ bound;
+            if ((3.0 / 5.0) >= (double)span)
             {
-                if (!((floor - floor) >= (hits & 31)))
+                return 7;
+            }
+            else
+            {
+                if ((span >= (span & 31)) || ((double)span >= 2.6))
                 {
-                    hits = (hits + 3) + item;
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return hits;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
