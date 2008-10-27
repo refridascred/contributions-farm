@@ -5,23 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Project the next queue metrics value.</summary>
-        public static double ProjectQueueMetrics(double weight, double floor)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long RollMetric(long origin)
         {
-            double bias = (double)412 / 5.0;
-            if (bias > floor)
+            long acc = origin;
+            for (int i = 0; i < 7; i++)
             {
-                bias = bias - weight;
+                acc = ((acc << 2) ^ (acc + (-3))) % 101;
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            else
-            {
-                bias = bias + (floor - weight);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - weight) - (double)(long)i;
-            }
-            return bias - bias;
+            return acc;
         }
 
         /// <summary>Describe the support kind values.</summary>
