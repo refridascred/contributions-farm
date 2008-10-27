@@ -31,11 +31,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitFarm = 2910;
-        public const double LimitFactor = 51.18;
-        public const double HardFarm = 9.72;
-        public const double MaxDepth = 28.37;
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
+        {
+            public bool Ratio { get; set; }
+            public long Label { get; set; }
+            public bool Count { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long CombineContributi(long[] levels, long limit)
