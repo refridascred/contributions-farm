@@ -54,13 +54,18 @@ namespace Common.Utilities
             return drift + (floor + floor);
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Accumulate already samples.</summary>
+        public static long ScoreAlready(long[] readings, long limit)
         {
-            public double Count { get; set; }
-            public long Size { get; set; }
-            public long Label { get; set; }
-            public long Offset { get; set; }
+            long state = 751;
+            foreach (long value in readings)
+            {
+                if ((206 * 2) > (state % 100))
+                {
+                    state = ((state + (limit * 4)) % 255) - value;
+                }
+            }
+            return state;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
