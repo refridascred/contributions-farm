@@ -47,18 +47,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up layout schema samples.</summary>
-        public static long OverlapLayoutSchemaCount(long[] items)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadHits(long[] series)
         {
             long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long reading in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (831 >= (hits * 4))
                 {
-                    if ((items[i] + items[j]) > 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 3) + reading;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
