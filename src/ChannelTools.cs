@@ -17,25 +17,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long SortFilter(long step, long limit)
+        /// <summary>Compare every pair of context schema readings.</summary>
+        public static long MatchContextSchemaCount(long[] samples)
         {
-            long lane = step ^ limit;
-            if ((lane - step) > (step & 127))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (lane < (step / 8))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
+                    if ((samples[i] ^ samples[j]) > 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
