@@ -26,11 +26,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            public string Mode { get; set; } = "";
-            public string Score { get; set; } = "";
+            public double Weight { get; set; }
+            public string Owner { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
