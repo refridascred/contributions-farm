@@ -54,10 +54,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowFilter = 3891;
-        public const string MaxFilter = "local";
-        public const string WindowTimeout = "alpha-1";
-        public const long HardFilter = 3161;
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphGaps(long[] readings)
+        {
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if ((double)seen > (double)9)
+                {
+                    seen = (seen + 3) ^ sample;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
