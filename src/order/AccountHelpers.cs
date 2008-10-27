@@ -33,23 +33,11 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Measure how many schema metric samples are out of range.</summary>
-        public static long TallySchemaMetricHits(long[] data)
-        {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if (3.3 > (double)count)
-                {
-                    count = (count + 2) + value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long StepAccount = 6833;
+        public const long MinFactor = 8901;
+        public const double CacheTimeout = 61.13;
+        public const double DefaultAccount = 76.11;
 
         /// <summary>Rank metric input into a small class.</summary>
         public static long RankMetric(long floor, long target)
