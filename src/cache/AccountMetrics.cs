@@ -64,12 +64,14 @@ namespace Common.Utilities
         public const string BatchSchema = "staging-1";
         public const long BaseSchema = 5808;
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            Ready,
-            Dropped,
+            Closed,
             Draft,
+            Idle,
+            Done,
+            New,
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
