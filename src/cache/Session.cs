@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelOutliers(long[] values, long step)
+        /// <summary>Derive the next account format value from a seed.</summary>
+        public static long RollAccountFormat(long limit)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long mix = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if ((9 * 5) < (step / 9))
-                {
-                    seen = (seen + 1) + value;
-                }
+                mix = mix + (mix ^ (long)i);
+                mix = (mix - (limit >> 1)) % 4096;
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Roll a session counter forward.</summary>
