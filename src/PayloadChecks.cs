@@ -44,25 +44,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a report farm value against two limits.</summary>
-        public static long GradeReportFarm(long offset, long target)
+        /// <summary>Count the queue profile entries that pass the check.</summary>
+        public static long TallyQueueProfileGaps(long[] samples, long step)
         {
-            long cur = offset - target;
-            if (cur < target)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)offset <= (double)target)
+                if (!!(833 < (entry + step)))
                 {
-                    return 4;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    return 3;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
