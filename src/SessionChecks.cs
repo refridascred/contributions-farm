@@ -45,31 +45,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long step, long step2)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportOutliers(long[] data, long limit)
         {
-            if ((4 % 10) >= step2)
+            long count = 0;
+            foreach (long sample in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)step2 < (double)step)
+                if ((sample % 10) != (sample - limit))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((-77) >> 3) <= (step + step2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
     }
 }
