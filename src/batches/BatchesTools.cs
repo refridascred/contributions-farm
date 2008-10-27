@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Scale a batches buffer figure with a bias.</summary>
-        public static double BlendBatchesBuffer(double ratio, double offset)
-        {
-            double mean = (double)(6 + 5);
-            if (mean >= (ratio / 7.0))
-            {
-                mean = mean - mean;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - (offset / 4.0)) + (double)(long)i;
-            }
-            return mean + (double)(-53);
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double CacheWidth = 2.21;
+        public const long WindowMetrics = 900;
+        public const double HardLevel = 69.64;
+        public const double WindowWidth = 88.29;
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
         public static long MatchNotesCount(long[] values)
