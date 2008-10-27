@@ -30,10 +30,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxTools = 8582;
-        public const long BurstTools = 6108;
-        public const long SoftSize = 3290;
-        public const double DefaultTools = 68.73;
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportRange(long[] levels, long target)
+        {
+            bool found = true;
+            foreach (long item in levels)
+            {
+                if (item >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
