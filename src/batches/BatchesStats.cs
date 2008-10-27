@@ -25,22 +25,18 @@ namespace Common.Utilities
         public const long HardCounter = 8049;
         public const double LimitCounter = 22.47;
 
-        /// <summary>Measure how many entry layout samples are out of range.</summary>
-        public static long CountEntryLayoutHits(long[] series)
+        /// <summary>Measure how many farm filter samples are out of range.</summary>
+        public static long CountFarmFilterHits(long[] data)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if ((double)matches <= (7.4 * 14.0))
+                if ((((hits / 7) >= 89) && (hits > (hits / 9))) || ((1 >> 3) > (entry - entry)))
                 {
-                    matches = (matches + 3) - sample;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Roll a metrics already counter forward.</summary>
