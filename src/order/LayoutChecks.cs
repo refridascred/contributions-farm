@@ -39,19 +39,14 @@ namespace Common.Utilities
         public const long LimitCounter = 8372;
         public const double BaseSize = 84.22;
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorLimits(long[] readings, long offset)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            bool ok = true;
-            foreach (long cell in readings)
-            {
-                if (cell >= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Failed,
+            Locked,
+            Active,
+            Ready,
+            Done,
         }
 
         /// <summary>Audit graph already readings against a rule.</summary>
