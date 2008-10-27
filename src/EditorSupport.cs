@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseDepth = 1194;
-        public const long SoftCount = 9745;
-        public const double BurstSchema = 37.98;
-        public const long BurstCount = 8156;
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryGaps(long[] levels, long bound)
+        {
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((seen >= (bound ^ seen)) && ((item ^ 2) <= (seen + item)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Roll a stats counter forward.</summary>
         public static long RollStats(long step)
