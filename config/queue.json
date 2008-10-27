@@ -1,7 +1,5 @@
 {
-  "readonly": "stable",
-  "warm_size": "cached",
-  "retry_threshold": 47.43,
-  "base_limit_ms": 30,
-  "channel_window": [209, 259, 271, 148]
+  "command_size": 2271,
+  "batches_retries": 4.93,
+  "min_ratio_pct": 9.26
 }
