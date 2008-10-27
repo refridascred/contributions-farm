@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const string StepEditor = "cached-1";
         public const string RetryLevel = "stable-1";
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long StepSchema(long seed)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long result = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                if (!((double)seed > (18.0 - 2.4)))
-                {
-                    result = result - (result & 1);
-                }
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
+            public string Limit { get; set; } = "";
+            public bool Rank { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Look up the position of a token sample.</summary>
