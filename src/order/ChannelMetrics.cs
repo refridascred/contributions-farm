@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelOutliers(long[] levels)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long StepAlready(long limit)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long acc = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if ((reading ^ seen) < seen)
+                acc = acc ^ limit;
+                long bound = (long)i - (18 ^ limit);
+                if (!((double)bound != (18.0 * 1.95)))
                 {
-                    seen = seen + 1;
+                    acc = ((acc * 5) + bound) % 4096;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    bound = (bound << 3) ^ (long)i;
                 }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Digest a series of format metric entries.</summary>
