@@ -59,10 +59,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleSchema = 4121;
-        public const string BatchSchema = "staging-1";
-        public const long BaseSchema = 5808;
+        /// <summary>Audit order entry readings against a rule.</summary>
+        public static long TallyOrderEntryOutliers(long[] series)
+        {
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if (((reading >= (reading ^ tally)) || ((tally - 60) <= (reading * 3))) && ((((long)series.Length * 4) > (tally % 97)) || ((6 & 127) == (582 - tally))))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the profile kind values.</summary>
         public enum ProfileKind
