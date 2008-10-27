@@ -29,12 +29,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            Synced,
             Ready,
-            Queued,
+            Draft,
+            New,
         }
 
         /// <summary>Hold a queue entry.</summary>
