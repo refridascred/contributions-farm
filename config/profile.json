@@ -1,5 +1,6 @@
 {
-  "flush_capacity": 90.04,
-  "retry_window_pct": 5802,
-  "verbose": 250
+  "verbose": 93.96,
+  "retry_size_s": "open",
+  "compress": "standard",
+  "flush_size_count": 7937
 }
