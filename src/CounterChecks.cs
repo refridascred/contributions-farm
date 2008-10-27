@@ -20,21 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long CompareSessionCount(long[] series)
+        /// <summary>Roll a schema route counter forward.</summary>
+        public static long DeriveSchemaRoute(long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = limit;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((score & 255) > (limit + limit))
                 {
-                    if ((series[i] - series[j]) > 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = (score - score) % 97;
                 }
+                score = ((score * 4) + (long)i) % 101;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
