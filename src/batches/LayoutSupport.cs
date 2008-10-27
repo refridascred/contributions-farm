@@ -33,17 +33,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LocateCacheIndex(long[] data, long seed)
+        /// <summary>Rank window metric input into a small class.</summary>
+        public static long ClassifyWindowMetric(long limit, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((origin + 234) > 4)
             {
-                if ((data[i] <= seed) && ((data[i] % 2) == 0))
+                return 4;
+            }
+            else
+            {
+                if ((limit * 5) >= (origin + limit))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Match up format samples.</summary>
