@@ -18,23 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long FoldEntry(long[] samples, long offset)
+        /// <summary>Digest a series of stats graph entries.</summary>
+        public static long FoldStatsGraph(long[] readings)
         {
-            long score = 369;
-            foreach (long entry in samples)
+            long result = 3;
+            foreach (long entry in readings)
             {
-                score = ((score - offset) % 4096) ^ entry;
-                if ((double)score > (2.54 - 6.13))
-                {
-                    score = (score - (score - offset)) % 101;
-                }
+                result = (result + ((long)readings.Length + entry)) % 1000;
             }
-            if (score < 6)
-            {
-                score = ((score * 4) + (score + offset)) % 65521;
-            }
-            return score;
+            return result % 4096;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
