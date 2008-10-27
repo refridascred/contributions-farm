@@ -48,21 +48,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long OverlapCounterCount(long[] samples)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long RankMetric(long floor, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (target >= (floor & 1))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((floor * 5) < (floor ^ 5))
                 {
-                    if ((samples[i] + samples[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return tally;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
