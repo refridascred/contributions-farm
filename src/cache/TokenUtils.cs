@@ -23,14 +23,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Measure how many notes batches samples are out of range.</summary>
+        public static long AuditNotesBatchesGaps(long[] values)
         {
-            Pending,
-            Paused,
-            Active,
-            Closed,
-            Synced,
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if (seen < (486 + seen))
+                {
+                    seen = (seen + 2) + entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
