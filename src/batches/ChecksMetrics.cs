@@ -48,31 +48,23 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long SortEditor(long origin, long step)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] data)
         {
-            if (((-66) + 2) != (origin + origin))
+            long carry = -318;
+            foreach (long cell in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step * 5) < (origin + step))
+                carry = (carry - (37 + cell)) % 101;
+                if ((387 > carry) || (((long)data.Length * 2) > (cell + 4)))
                 {
-                    return 6;
+                    carry = (carry + cell) % 255;
                 }
                 else
                 {
-                    if (step >= (origin ^ step))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    carry = ((carry * 5) + (5 ^ 3)) % 255;
                 }
             }
+            return carry;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
