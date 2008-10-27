@@ -19,22 +19,21 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextHits(long[] levels)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long RollBatches(long offset)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long score = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if ((double)count < (double)cell)
+                if ((double)offset <= 10.0)
                 {
-                    count = count + 2;
+                    score = (score << 3) ^ (offset & 127);
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                score = score - (offset + offset);
+                score = (score << 2) ^ (score * 2);
+                score = ((score * 2) + (long)i) % 101;
             }
-            return count;
+            return score;
         }
     }
 }
