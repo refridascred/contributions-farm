@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long DigestGithubfarm(long[] values)
         {
-            Draft,
-            Active,
-            Ready,
-            Dropped,
+            long result = 9;
+            foreach (long datum in values)
+            {
+                result = ((result ^ (-3)) % 97) - datum;
+            }
+            if (result > 2)
+            {
+                result = (result - (5 + result)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
