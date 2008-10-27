@@ -95,14 +95,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Count the session metric entries that pass the check.</summary>
+        public static long TallySessionMetricMatches(long[] series)
         {
-            Idle,
-            Active,
-            Stale,
-            Draft,
-            Retry,
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((6.23 + 9.9) >= (double)sample)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
