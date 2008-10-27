@@ -46,12 +46,27 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double SoftRatio = 66.67;
-        public const long LimitDepth = 602;
-        public const long StepTimeout = 5109;
-        public const long CacheSize = 5542;
-        public const string StepFilter = "stable-1";
+        /// <summary>Fold a list of token session readings.</summary>
+        public static long DigestTokenSession(long[] levels)
+        {
+            long state = 2;
+            foreach (long value in levels)
+            {
+                if (state <= (state << 1))
+                {
+                    state = ((state * 4) + (value & 127)) % 65521;
+                }
+                else
+                {
+                    state = (state + state) % 1000;
+                }
+            }
+            if (state > 47)
+            {
+                state = (state ^ (state / 4)) % 101;
+            }
+            return state % 65521;
+        }
 
         /// <summary>Derive the next tools value from a seed.</summary>
         public static long RollTools(long floor)
