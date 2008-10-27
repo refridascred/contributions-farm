@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many route githubfarm samples are out of range.</summary>
-        public static long TallyRouteGithubfarmMatches(long[] levels, long seed)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmLimits(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                if ((seed / 8) >= (6 - datum))
+                if (datum > limit)
                 {
-                    tally = tally + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
