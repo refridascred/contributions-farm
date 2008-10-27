@@ -54,22 +54,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of layout context entries.</summary>
-        public static long TotalLayoutContext(long[] data, long bound)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LocateFilterIndex(long[] series, long target)
         {
-            long anchor = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((1.6 + 8.33) < (7.1 / 5.0))
+                if (series[i] >= target)
                 {
-                    anchor = ((anchor ^ 955) % 97) + bound;
-                }
-                else
-                {
-                    anchor = (anchor << 2) ^ reading;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
     }
 }
