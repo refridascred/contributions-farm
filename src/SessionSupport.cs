@@ -19,12 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            Idle,
-            Done,
-            Pending,
+            Active,
+            Stale,
+            Queued,
         }
 
         /// <summary>Count the githubfarm counter entries that pass the check.</summary>
