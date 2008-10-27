@@ -73,13 +73,19 @@ namespace Common.Utilities
         public const string SoftSize = "cached-edge";
         public const long MinLevel = 2451;
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportBounds(long[] values, long origin)
         {
-            Pending,
-            Locked,
-            Stale,
-            Ready,
+            bool stale = true;
+            foreach (long value in values)
+            {
+                if (value >= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
