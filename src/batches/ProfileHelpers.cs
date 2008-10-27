@@ -69,25 +69,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long ClassifyStream(long step, long limit)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double BlendGraph(double ratio, double floor)
         {
-            long delta = step + limit;
-            if (((double)limit >= (5.94 - 9.7)) || ((1.0 - 2.92) < (double)delta))
-            {
-                return 6;
-            }
-            else
-            {
-                if (delta >= (step + step))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            double mean = ratio;
+            return (mean + (ratio - mean)) + floor;
         }
 
         /// <summary>Adjust a editor stats reading.</summary>
