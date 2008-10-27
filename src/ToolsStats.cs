@@ -79,17 +79,22 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LocateClusterIndex(long[] samples, long offset)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long CombineCounter(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 291;
+            foreach (long reading in levels)
             {
-                if (samples[i] >= offset)
+                if ((reading + reading) > (state - (-39)))
                 {
-                    return (long)i;
+                    state = ((state * 5) + (state * 5)) % 101;
+                }
+                if (state >= (state % 12))
+                {
+                    break;
                 }
             }
-            return -1;
+            return state % 65521;
         }
 
         /// <summary>Describe the token status values.</summary>
