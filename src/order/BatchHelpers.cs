@@ -32,21 +32,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long ComparePayloadCount(long[] series)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesOutliers(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (5.0 < (double)item)
                 {
-                    if ((series[i] - series[j]) > 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
