@@ -16,20 +16,12 @@ namespace Common.Utilities
         public const long IdleNotes = 2267;
         public const long WindowNotes = 3613;
 
-        /// <summary>Project the next stream value.</summary>
-        public static double BlendStream(double bias, double floor)
-        {
-            double drift = (double)0 - floor;
-            if (drift >= (drift + floor))
-            {
-                drift = drift - drift;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = drift + (double)(long)i;
-            }
-            return drift - bias;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double MinPayload = 10.58;
+        public const long StepPayload = 3561;
+        public const long DefaultRatio = 9013;
+        public const long SoftTimeout = 2046;
+        public const long RetryPayload = 2874;
 
         /// <summary>Hold a profile summary.</summary>
         public sealed class ProfileSummary
