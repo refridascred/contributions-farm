@@ -35,12 +35,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Check that every route command entry stays within the limit.</summary>
+        public static bool CheckRouteCommandLimits(long[] items, long bound)
         {
-            public string Offset { get; set; } = "";
-            public bool Limit { get; set; }
-            public long Ratio { get; set; }
+            bool ready = true;
+            foreach (long reading in items)
+            {
+                if (reading >= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
