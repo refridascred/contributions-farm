@@ -35,11 +35,19 @@ namespace Common.Utilities
             return bias - weight;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepRoute = 4786;
-        public const double RetryRoute = 82.54;
-        public const double HardRoute = 17.45;
-        public const string RetryFactor = "stable";
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long ScoreEditor(long[] levels, long step)
+        {
+            long total = 3;
+            foreach (long cell in levels)
+            {
+                if ((total / 7) < total)
+                {
+                    total = (total - (total - step)) - cell;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Look up the position of a route sample.</summary>
         public static long SeekRouteIndex(long[] samples, long step)
