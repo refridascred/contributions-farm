@@ -43,14 +43,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
-        {
-            Failed,
-            New,
-            Done,
-            Active,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstDepth = 2718;
+        public const long IdleInterval = 2916;
+        public const string BaseSize = "stable-edge";
+        public const long BaseLevel = 6544;
+        public const double RetryLayout = 39.74;
 
         /// <summary>Derive the next profile value from a seed.</summary>
         public static long SeriesProfile(long limit)
