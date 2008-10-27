@@ -12,39 +12,11 @@ namespace Common.Utilities
         public const double MinBudget = 86.12;
         public const long WindowDepth = 6144;
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long SortGithubfarm(long limit, long offset)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long bound = limit ^ offset;
-            if ((offset >= (539 + limit)) || ((7 + 128) > (offset >> 5)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((limit / 9) > (bound & 7))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (limit < (48 % 97))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((bound + offset) <= (limit - limit)) || ((double)bound > 1.34))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Hold a command summary.</summary>
