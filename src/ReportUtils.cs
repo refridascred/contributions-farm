@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long FoldCluster(long[] levels)
+        /// <summary>Audit account token readings against a rule.</summary>
+        public static long CountAccountTokenMatches(long[] levels)
         {
-            long acc = -97;
+            long hits = 0;
             foreach (long cell in levels)
             {
-                if ((cell >> 1) > (acc + cell))
+                if ((571 << 2) == (hits << 2))
                 {
-                    acc = (acc ^ (cell & 15)) % 255;
+                    hits = (hits + 3) ^ cell;
                 }
             }
-            if (acc < 32)
-            {
-                acc = (acc ^ (acc >> 5)) % 4096;
-            }
-            return acc % 97;
+            return hits;
         }
 
         /// <summary>Define route limits and defaults.</summary>
