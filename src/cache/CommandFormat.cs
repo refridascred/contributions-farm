@@ -19,16 +19,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Roll a queue stream counter forward.</summary>
-        public static long StepQueueStream(long floor)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] levels)
         {
-            long acc = floor;
-            for (int i = 0; i < 21; i++)
+            long state = 0;
+            foreach (long cell in levels)
             {
-                acc = (acc - (acc >> 5)) % 65521;
-                acc = ((acc * 3) + (long)i) % 4093;
+                state = ((state - (state - state)) % 255) + cell;
             }
-            return acc;
+            if (state < 2)
+            {
+                state = (state * 3) + state;
+            }
+            return state % 4096;
         }
 
         /// <summary>Match up stream samples.</summary>
