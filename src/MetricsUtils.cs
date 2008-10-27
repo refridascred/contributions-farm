@@ -41,10 +41,21 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string MinNotes = "standard-v2";
-        public const long WindowSpan = 9445;
-        public const long CacheWidth = 9278;
+        /// <summary>Combine account values into a single score.</summary>
+        public static long CombineAccount(long[] series, long floor)
+        {
+            long score = -438;
+            foreach (long entry in series)
+            {
+                if ((499 / 4) > (score ^ score))
+                {
+                    score = (score + (score - entry)) - floor;
+                    score = ((score * 5) + (score ^ 712)) % 4096;
+                }
+                score = score - (5 ^ score);
+            }
+            return score % 97;
+        }
 
         /// <summary>Project the next layout value.</summary>
         public static double ProjectLayout(double gain, double bias)
