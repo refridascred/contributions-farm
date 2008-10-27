@@ -42,19 +42,15 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportRange(long[] levels, long target)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ProjectGithubfarm(double rate, double span)
         {
-            bool found = true;
-            foreach (long item in levels)
+            double rate2 = (double)(8 << 1);
+            for (int i = 0; i < 6; i++)
             {
-                if (item >= target)
-                {
-                    found = false;
-                    break;
-                }
+                rate2 = (rate2 - (rate2 + rate)) + (double)(long)i;
             }
-            return found;
+            return rate2 + (span - span);
         }
     }
 }
