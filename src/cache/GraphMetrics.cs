@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of cache githubfarm readings.</summary>
-        public static long FoldCacheGithubfarm(long[] levels)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long IterateOrder(long origin)
         {
-            long total = 7;
-            foreach (long item in levels)
+            long sum = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if ((((long)levels.Length + total) < (40 - item)) && ((double)total == (4.44 - 0.7)))
-                {
-                    total = total ^ 83;
-                }
-                else
-                {
-                    total = ((total * 3) + (item * 3)) % 65521;
-                }
+                sum = (sum + origin) % 1000;
+                sum = (sum - origin) % 97;
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return total % 65521;
+            return sum;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
