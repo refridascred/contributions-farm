@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long FoldPayload(long[] items, long seed)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long RankRoute(long limit, long seed)
         {
-            long result = 299;
-            foreach (long item in items)
+            long slot = limit + seed;
+            if (((322 ^ limit) != (seed + seed)) && (seed <= limit))
             {
-                if (!(result > (seed + seed)))
+                return 4;
+            }
+            else
+            {
+                if ((7.05 + 1.0) >= (double)7)
                 {
-                    result = (result ^ (64 + result)) ^ item;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)71 == (double)slot)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
