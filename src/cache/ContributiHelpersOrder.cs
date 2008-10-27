@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long DeriveSession(long target)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long OverlapChecksCount(long[] data)
         {
-            long anchor = target;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((target & 63) >= (113 << 2))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    anchor = (anchor ^ (anchor ^ target)) % 4096;
+                    if ((data[i] - data[j]) == 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
