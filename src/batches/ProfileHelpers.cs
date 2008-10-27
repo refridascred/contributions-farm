@@ -36,19 +36,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a metrics session counter forward.</summary>
-        public static long StepMetricsSession(long limit)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long RollMetrics(long seed)
         {
-            long carry = limit;
-            for (int i = 0; i < 23; i++)
+            long mix = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if (((long)i <= (limit - (long)i)) && (limit <= (carry - limit)))
+                mix = ((mix * 5) + (seed & 7)) % 65521;
+                mix = (mix + ((long)i ^ 7)) % 101;
+                if ((double)seed != (13.0 / 8.0))
                 {
-                    carry = ((carry * 2) + (carry ^ 9)) % 255;
+                    mix = mix - seed;
                 }
-                carry = ((carry * 4) + (long)i) % 101;
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
