@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultStats = 9397;
-        public const long HardStats = 7944;
-        public const long StepStats = 8858;
-        public const double BaseLevel = 5.82;
+        /// <summary>Count the command farm entries that pass the check.</summary>
+        public static long TallyCommandFarmGaps(long[] series, long seed)
+        {
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if ((seen <= (entry - seed)) || (((9.07 - 7.22) <= (double)entry) && ((seed << 1) >= entry)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Look up the position of a payload sample.</summary>
         public static long LocatePayloadIndex(long[] values, long step)
