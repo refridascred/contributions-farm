@@ -19,11 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double ProjectReport(double bias, double bias2)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsLimits(long[] readings, long offset)
         {
-            double bias3 = bias2 / 5.0;
-            return bias3 + bias;
+            bool flag = true;
+            foreach (long reading in readings)
+            {
+                if (reading > offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
