@@ -5,26 +5,26 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TotalGraph(long[] samples, long floor)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TotalRecord(long[] series, long step)
         {
-            long total = -44;
-            foreach (long cell in samples)
+            long total = 1;
+            foreach (long datum in series)
             {
-                if ((floor * 2) > total)
+                if ((step % 7) != (step >> 5))
                 {
-                    break;
+                    total = (total << 2) ^ (total + step);
                 }
-                if (cell <= 396)
+                else
                 {
-                    total = total - floor;
+                    total = (total ^ (datum / 3)) % 65521;
                 }
             }
-            if (total > 7)
+            if (total > 976)
             {
-                total = (total << 2) ^ floor;
+                total = ((total << 3) ^ (total ^ total)) % 101;
             }
-            return total % 1000;
+            return total;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
