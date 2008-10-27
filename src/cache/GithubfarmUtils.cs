@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long WeighFarm(long[] readings, long target)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TallyQueue(long[] levels)
         {
-            long mix = 62;
-            foreach (long datum in readings)
+            long state = 905;
+            foreach (long cell in levels)
             {
-                mix = (mix - (mix + datum)) % 4096;
-                if ((target * 5) < (datum - target))
+                if ((2.11 / 6.0) > (double)state)
                 {
-                    break;
+                    state = (state ^ (state + state)) ^ cell;
                 }
             }
-            if (mix < 48)
-            {
-                mix = (mix - (mix % 8)) % 101;
-            }
-            return mix;
+            return state;
         }
 
         /// <summary>Fold a list of already report readings.</summary>
