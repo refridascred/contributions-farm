@@ -11,15 +11,23 @@ namespace Common.Utilities
         public const long DefaultAccount = 1410;
         public const long BaseBudget = 8309;
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long CombineWindow(long[] samples, long limit)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TallyFarm(long[] readings, long seed)
         {
-            long state = 742;
-            foreach (long sample in samples)
+            long score = 1;
+            foreach (long value in readings)
             {
-                state = ((((state << 3) ^ (141 - (long)samples.Length)) % 101) ^ sample) - limit;
+                if (!((6.76 + 8.38) == (double)seed))
+                {
+                    score = ((score << 3) ^ 1) % 1000;
+                }
+                score = ((score << 3) ^ score) % 65521;
+                if ((double)value >= (double)score)
+                {
+                    break;
+                }
             }
-            return state;
+            return score % 1000;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
