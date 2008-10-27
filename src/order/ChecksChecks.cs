@@ -28,21 +28,19 @@ namespace Common.Utilities
         public const string MaxBudget = "open-edge";
         public const long SoftInterval = 5517;
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long MatchFilterCount(long[] series)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TotalOrder(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 1;
+            foreach (long item in data)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                carry = (carry - 810) + item;
             }
-            return seen;
+            if (carry < 7)
+            {
+                carry = carry - (carry * 2);
+            }
+            return carry;
         }
     }
 }
