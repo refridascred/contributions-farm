@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit graph batch readings against a rule.</summary>
-        public static long AuditGraphBatchOutliers(long[] items, long limit)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long SeriesFormat(long offset)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long sum = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if ((limit & 127) < entry)
+                if (!(((long)i == ((long)i << 1)) && ((double)sum <= (6.8 - 8.08))))
                 {
-                    tally = tally + 1;
+                    sum = sum ^ (0 - 24);
                 }
-                else
+                if ((offset - sum) > ((long)i + 4))
                 {
-                    tally = tally - 1;
+                    sum = (sum << 2) ^ (long)i;
                 }
+                sum = (sum << 3) ^ offset;
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Accumulate farm samples.</summary>
