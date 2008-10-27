@@ -25,19 +25,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TallyGraph(long[] values, long limit)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long total = 716;
-            foreach (long cell in values)
-            {
-                total = (total - cell) - limit;
-                if ((double)cell >= (double)total)
-                {
-                    break;
-                }
-            }
-            return total;
+            Closed,
+            Paused,
+            Idle,
         }
     }
 }
