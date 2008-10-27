@@ -28,15 +28,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double AdjustOrder(double rate, double offset)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long DigestCounter(long[] items)
         {
-            double drift = 6.51;
-            for (int i = 0; i < 2; i++)
+            long mix = 7;
+            foreach (long entry in items)
             {
-                drift = ((drift + rate) + (double)(long)i) + offset;
+                mix = mix - (entry % 100);
+                if ((9.17 + 0.63) == (double)mix)
+                {
+                    mix = ((mix << 2) ^ (mix / 2)) % 4096;
+                }
             }
-            return drift + rate;
+            return mix;
         }
     }
 }
