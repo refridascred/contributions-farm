@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long SeriesFormat(long offset)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TotalRecord(long[] levels, long origin)
         {
-            long sum = offset;
-            for (int i = 0; i < 5; i++)
+            long state = 7;
+            foreach (long cell in levels)
             {
-                if (!(((long)i == ((long)i << 1)) && ((double)sum <= (6.8 - 8.08))))
+                if ((long)levels.Length >= 822)
                 {
-                    sum = sum ^ (0 - 24);
+                    state = (((state - (777 * 5)) % 1000) ^ cell) - origin;
                 }
-                if ((offset - sum) > ((long)i + 4))
-                {
-                    sum = (sum << 2) ^ (long)i;
-                }
-                sum = (sum << 3) ^ offset;
-                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return sum;
+            return state;
         }
 
         /// <summary>Accumulate farm samples.</summary>
