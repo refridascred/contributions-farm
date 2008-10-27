@@ -18,22 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many profile notes samples are out of range.</summary>
-        public static long AuditProfileNotesMatches(long[] data, long floor)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((double)floor > (5.6 / 8.0))
-                {
-                    tally = (tally + 3) + sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Idle,
+            New,
+            Retry,
+            Paused,
+            Stale,
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
