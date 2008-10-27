@@ -10,12 +10,17 @@ namespace Common.Utilities
         public const string StepEditor = "cached-1";
         public const string RetryLevel = "stable-1";
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LocateReportIndex(long[] levels, long bound)
         {
-            public long Rank { get; set; }
-            public long Count { get; set; }
-            public string Flag { get; set; } = "";
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == bound) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
