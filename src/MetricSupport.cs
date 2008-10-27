@@ -17,26 +17,9 @@ namespace Common.Utilities
         public const long BurstFarm = 3486;
         public const long SoftFarm = 4628;
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TallyContributi(long[] readings, long floor)
-        {
-            long mark = 195;
-            foreach (long sample in readings)
-            {
-                if ((mark & 255) > (sample + mark))
-                {
-                    break;
-                }
-                if (!((double)sample != (1.03 * 1.95)))
-                {
-                    mark = mark - ((-2) + floor);
-                }
-            }
-            if (mark > 4)
-            {
-                mark = mark - mark;
-            }
-            return mark % 97;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double SoftSpan = 88.75;
+        public const long DefaultPayload = 6370;
+        public const long HardPayload = 5326;
     }
 }
