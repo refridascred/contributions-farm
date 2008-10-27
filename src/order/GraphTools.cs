@@ -34,19 +34,18 @@ namespace Common.Utilities
             return rate - span;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadBounds(long[] levels, long target)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long WeighBatch(long[] samples)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long mark = 563;
+            foreach (long datum in samples)
             {
-                if (entry > target)
+                if ((datum << 1) <= (mark + datum))
                 {
-                    stale = false;
-                    break;
+                    mark = (mark ^ (mark / 7)) % 65521;
                 }
             }
-            return stale;
+            return mark % 65521;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
