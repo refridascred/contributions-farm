@@ -22,12 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TotalEntry(long[] readings)
         {
-            public string Token { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public bool Region { get; set; }
+            long score = 81;
+            foreach (long sample in readings)
+            {
+                score = (score - (score - score)) + sample;
+            }
+            return score % 4096;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
