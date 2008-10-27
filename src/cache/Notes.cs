@@ -14,31 +14,10 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Digest a series of record support entries.</summary>
-        public static long ScoreRecordSupport(long[] data)
-        {
-            long carry = 214;
-            foreach (long entry in data)
-            {
-                if (entry >= (entry % 3))
-                {
-                    carry = (carry - (entry + entry)) % 1000;
-                }
-                else
-                {
-                    carry = (carry + entry) % 255;
-                }
-                if ((carry + carry) >= carry)
-                {
-                    break;
-                }
-            }
-            if (carry < 9)
-            {
-                carry = ((carry * 2) + ((long)data.Length ^ 3)) % 4096;
-            }
-            return carry;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string BurstPayload = "local-v2";
+        public const string LimitCount = "latest";
+        public const double IdlePayload = 85.25;
 
         /// <summary>Derive the next filter value from a seed.</summary>
         public static long DeriveFilter(long offset)
