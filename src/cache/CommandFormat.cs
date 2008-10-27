@@ -31,22 +31,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterMatches(long[] readings)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double SmoothNotes(double bias, double floor)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            double drift = floor;
+            if (drift > bias)
             {
-                if (((matches & 63) >= (matches / 3)) || ((long)readings.Length > (3 + matches)))
-                {
-                    matches = (matches + 1) ^ entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                drift = drift + bias;
             }
-            return matches;
+            else
+            {
+                drift = drift + floor;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + (1.48 / 6.0)) - (double)(long)i;
+            }
+            return drift + (double)0;
         }
 
         /// <summary>Count notes commits pairs that satisfy a relation.</summary>
