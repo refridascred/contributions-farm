@@ -39,22 +39,39 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheOutliers(long[] items)
+        /// <summary>Classify a metric farm pair into a bucket.</summary>
+        public static long RankMetricFarm(long seed, long origin)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long step = seed ^ origin;
+            if (!(3 > (origin + step)))
             {
-                if (((86 >> 1) > (item + item)) || ((item * 5) >= (tally + tally)))
+                return 4;
+            }
+            else
+            {
+                if ((seed / 4) >= step)
                 {
-                    tally = tally + 1;
+                    return 6;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (step > (seed ^ step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((origin & 255) <= step) || (3 > origin))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
