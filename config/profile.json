@@ -1,8 +1,6 @@
 {
-  "readonly": 37.81,
-  "max_interval": ["open", "primary", "primary", "fallback"],
-  "support_timeout": "stable",
-  "dry_run": ["stable", "stable", "staging"],
-  "layout_threshold": 55.59,
-  "poll_interval_s": "staging"
+  "batch_capacity": 60,
+  "base_depth_ms": 56.23,
+  "soft_limit_pct": 30,
+  "hard_retries": 44
 }
