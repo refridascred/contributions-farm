@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiGaps(long[] series)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmGaps(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if ((2.0 * 9.7) >= (double)tally)
+                if ((hits & 31) < (cell << 3))
                 {
-                    tally = (tally + 2) ^ value;
+                    hits = (hits + 2) - step;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Classify a graph order pair into a bucket.</summary>
