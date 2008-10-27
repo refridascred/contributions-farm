@@ -57,32 +57,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long ClassifyMetric(long limit, long target)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double AdjustChecks(double weight, double floor)
         {
-            long offset = limit ^ target;
-            if ((target - limit) <= (limit / 9))
+            double bias = 14.0;
+            if (bias >= weight)
             {
-                return 5;
+                bias = bias - (weight / 7.0);
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                if ((offset * 3) < (offset + limit))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)limit > (double)(-49)) && ((target * 5) > limit))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                bias = bias + (double)(long)i;
             }
+            return bias + (floor + weight);
         }
     }
 }
