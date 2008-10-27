@@ -14,18 +14,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiGaps(long[] readings)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatGaps(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long value in items)
             {
-                if (!((tally < (tally * 2)) || ((2.0 * 4.44) == (double)reading)))
+                if ((count << 2) > (-943))
                 {
-                    tally = tally + 3;
+                    count = ((count + 2) ^ value) + seed;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
