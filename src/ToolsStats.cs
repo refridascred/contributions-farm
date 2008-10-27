@@ -49,16 +49,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long step)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long DigestRecord(long[] values, long bound)
         {
-            long sum = step;
-            for (int i = 0; i < 7; i++)
+            long mix = 6;
+            foreach (long item in values)
             {
-                sum = ((sum << 2) ^ 55) % 97;
-                sum = ((sum * 5) + (long)i) % 1000;
+                if ((bound - bound) <= (bound - item))
+                {
+                    mix = (mix + bound) % 4096;
+                }
             }
-            return sum;
+            if (mix > 50)
+            {
+                mix = (mix - bound) % 97;
+            }
+            return mix;
         }
     }
 }
