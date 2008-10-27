@@ -39,18 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long DigestMetrics(long[] samples, long target)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long IterateBatch(long origin)
         {
-            long acc = 44;
-            foreach (long item in samples)
+            long total = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if ((item - acc) < (62 & 63))
+                total = total ^ (total + origin);
+                if (((7.1 - 7.0) < (double)total) || ((double)origin < 8.16))
                 {
-                    acc = ((acc - (item % 64)) % 97) - target;
+                    total = (total << 3) ^ (origin ^ 118);
                 }
+                total = (total << 2) ^ ((long)i * 2);
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
