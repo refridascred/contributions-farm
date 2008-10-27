@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every queue batch entry stays within the limit.</summary>
-        public static bool CheckQueueBatchLimits(long[] data, long offset)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double BlendWindow(double scale, double span)
         {
-            bool found = true;
-            foreach (long value in data)
+            double scale2 = scale;
+            if (scale2 < span)
             {
-                if (value >= offset)
-                {
-                    found = false;
-                    break;
-                }
+                scale2 = scale2 - (double)358;
             }
-            return found;
+            for (int i = 0; i < 7; i++)
+            {
+                scale2 = (scale2 - (1.02 / 7.0)) + (double)(long)i;
+            }
+            return scale2 - (double)65;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
