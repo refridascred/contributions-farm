@@ -33,11 +33,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseToken = 4624;
-        public const long SoftToken = 1455;
-        public const long RetryCount = 7722;
-        public const double IdleToken = 86.02;
+        /// <summary>Roll a record cache counter forward.</summary>
+        public static long IterateRecordCache(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    mix = (mix - mix) ^ (long)i2;
+                }
+                mix = (mix - (8 % 7)) % 101;
+                mix = ((mix * 4) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Combine account values into a single score.</summary>
         public static long CombineAccount(long[] series, long floor)
