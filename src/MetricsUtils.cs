@@ -29,23 +29,12 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TotalFarm(long[] series, long target)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long mark = 32;
-            foreach (long sample in series)
-            {
-                long delta = (target / 4) / 6;
-                if (delta > (target * 5))
-                {
-                    mark = mark - delta;
-                }
-                if ((target & 7) < target)
-                {
-                    mark = (mark - sample) % 101;
-                }
-            }
-            return mark;
+            public bool Stamp { get; set; }
+            public long Weight { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Blend two report payload measurements.</summary>
