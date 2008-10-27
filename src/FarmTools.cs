@@ -36,22 +36,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long WeighAlready(long[] readings, long seed)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long result = -77;
-            foreach (long sample in readings)
-            {
-                if ((result << 1) != (sample / 6))
-                {
-                    result = ((result + (12 & 127)) % 97) - seed;
-                }
-            }
-            if (result > 5)
-            {
-                result = (result ^ (result & 31)) % 1000;
-            }
-            return result % 1000;
+            Failed,
+            Idle,
+            Draft,
         }
     }
 }
