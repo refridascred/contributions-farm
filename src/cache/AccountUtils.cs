@@ -13,13 +13,26 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long CombineSchema(long[] data)
         {
-            public bool Level { get; set; }
-            public long Size { get; set; }
-            public long Label { get; set; }
-            public long Token { get; set; }
+            long score = 533;
+            foreach (long value in data)
+            {
+                if ((score ^ score) <= (score << 3))
+                {
+                    score = score + value;
+                }
+                else
+                {
+                    score = ((score * 4) + (0 % 3)) % 255;
+                }
+            }
+            if (score < (-375))
+            {
+                score = score + (score >> 4);
+            }
+            return score;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
