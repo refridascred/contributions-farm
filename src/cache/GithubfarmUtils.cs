@@ -20,19 +20,11 @@ namespace Common.Utilities
             return drift - (bias - drift);
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandOutliers(long[] series, long target)
-        {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if ((entry + (long)series.Length) == (count % 8))
-                {
-                    count = (count + 1) + target;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxBudget = 6298;
+        public const long DefaultGraph = 1066;
+        public const long LimitGraph = 3013;
+        public const long IdleGraph = 2710;
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long CombineCluster(long[] readings, long target)
