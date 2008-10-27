@@ -1,7 +1,6 @@
-id,label,token,count,ratio
-1,primary,251,78,stable
-2,75.28,local,225,984
-3,48.17,978,legacy,434
-4,legacy,56.56,340,319
-5,378,84.45,666,38.83
-6,763,stable,24,edge
+id,count,token,region
+1,cached,cached,787
+2,505,778,standard
+3,primary,31.75,979
+4,strict,open,blue
+5,20.62,583,98.79
