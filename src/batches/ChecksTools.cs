@@ -11,14 +11,14 @@ namespace Common.Utilities
         public const long LimitChannel = 4964;
         public const double SoftChannel = 39.66;
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            Active,
             Retry,
-            Paused,
-            Closed,
+            Idle,
             Locked,
+            Draft,
+            New,
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
