@@ -45,19 +45,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandRange(long[] readings, long offset)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueBounds(long[] levels, long bound)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                if (datum >= offset)
+                if (reading >= bound)
                 {
-                    found = false;
+                    stale = false;
                     break;
                 }
             }
-            return found;
+            return stale;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
