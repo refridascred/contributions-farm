@@ -37,23 +37,21 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Accumulate editor cache samples.</summary>
-        public static long FoldEditorCache(long[] data)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long MatchClusterCount(long[] data)
         {
-            long mix = 620;
-            foreach (long item in data)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((item / 4) >= mix)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mix = ((mix << 3) ^ item) % 1000;
+                    if ((data[i] + data[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                else
-                {
-                    mix = mix ^ (mix * 4);
-                }
-                mix = ((mix * 3) + mix) % 97;
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
