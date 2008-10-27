@@ -41,12 +41,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Match up format samples.</summary>
+        public static long PairFormatCount(long[] readings)
         {
-            public double Flag { get; set; }
-            public string Score { get; set; } = "";
-            public long Owner { get; set; }
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 20)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the metrics class values.</summary>
