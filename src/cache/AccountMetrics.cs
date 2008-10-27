@@ -19,11 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double MinInterval = 65.76;
-        public const long DefaultBudget = 1168;
-        public const double StepLayout = 16.85;
-        public const long DefaultScore = 4985;
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
+        {
+            public string Label { get; set; } = "";
+            public long Rank { get; set; }
+        }
 
         /// <summary>Adjust a window notes reading.</summary>
         public static double ProjectWindowNotes(double gain, double floor)
