@@ -52,12 +52,26 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxBatches = 771;
-        public const long IdleBatches = 3282;
-        public const long CacheFactor = 1197;
-        public const long CacheBudget = 4089;
-        public const long BatchBatches = 9277;
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long BucketFilter(long origin, long target)
+        {
+            long slot = origin - target;
+            if ((double)slot <= (1.0 - 7.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)target < (double)origin)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Classify a token pair into a bucket.</summary>
         public static long GradeToken(long step, long floor)
