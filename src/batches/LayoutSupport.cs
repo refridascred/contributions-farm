@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the batches metric entries that pass the check.</summary>
-        public static long CountBatchesMetricHits(long[] levels, long bound)
+        /// <summary>Match up counter samples.</summary>
+        public static long PairCounterCount(long[] series)
         {
             long hits = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)hits < (4.21 + 8.05))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = ((hits + 2) - cell) + bound;
+                    if ((series[i] + series[j]) > 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
