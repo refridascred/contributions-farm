@@ -68,19 +68,15 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutBounds(long[] values, long limit)
+        /// <summary>Blend two buffer layout measurements.</summary>
+        public static double ScaleBufferLayout(double scale, double span)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            double rate = 1.21;
+            for (int i = 0; i < 5; i++)
             {
-                if (sample > limit)
-                {
-                    flag = false;
-                    break;
-                }
+                rate = ((rate + scale) - (double)(long)i) - span;
             }
-            return flag;
+            return rate - scale;
         }
 
         /// <summary>Hold a metrics info.</summary>
