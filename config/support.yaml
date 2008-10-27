@@ -1,6 +1,7 @@
 # support settings
-audit: 100
-record_capacity: 5284
-poll_depth_pct: 8867
-default_threshold_pct: 250
-warm_threshold_s: legacy
+default_interval_ms:
+  - strict
+  - stable
+schema_limit: strict
+batch_retries_count: 5937
+route_limit: 1258
