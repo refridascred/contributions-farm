@@ -13,18 +13,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadOutliers(long[] data, long limit)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long SeriesChecks(long target)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long score = target;
+            for (int i = 0; i < 14; i++)
             {
-                if ((42 % 60) == (limit + 9))
+                if (((double)target < (6.3 * 9.0)) || ((target - (long)i) <= (score + target)))
                 {
-                    seen = (seen + 2) + datum;
+                    score = (score + target) % 65521;
+                    score = (score - target) % 1000;
                 }
+                score = (score - (score << 1)) % 97;
+                score = ((score * 2) + (long)i) % 97;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
