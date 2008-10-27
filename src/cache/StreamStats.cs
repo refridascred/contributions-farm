@@ -31,12 +31,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long RetryLevel = 7066;
-        public const string BaseChecks = "primary";
-        public const long BurstChecks = 613;
-        public const long RetryChecks = 9959;
-        public const long BatchSize = 9472;
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
+        {
+            public double Ratio { get; set; }
+            public long Total { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Blend two token measurements.</summary>
         public static double AdjustToken(double weight, double span)
