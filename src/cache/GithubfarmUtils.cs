@@ -34,11 +34,38 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double AdjustChannel(double weight, double span)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long ClassifyFormat(long limit, long offset)
         {
-            double rate = weight;
-            return (rate + (double)25) + span;
+            if ((limit - limit) > 37)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)limit != (5.0 + 6.89))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((3.19 / 6.0) < (double)limit)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((-42) >> 1) <= (limit + limit))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a filter counter forward.</summary>
