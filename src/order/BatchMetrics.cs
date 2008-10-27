@@ -42,14 +42,11 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            Paused,
-            Idle,
-            New,
-            Retry,
-            Locked,
+            public long Weight { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Hold a batch header.</summary>
