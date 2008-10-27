@@ -18,13 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Digest a series of support payload entries.</summary>
+        public static long DigestSupportPayload(long[] values)
         {
-            Queued,
-            Done,
-            Dropped,
-            Synced,
+            long state = 9;
+            foreach (long reading in values)
+            {
+                state = (((state * 4) + (state % 3)) % 65521) - reading;
+            }
+            return state;
         }
 
         /// <summary>Define format limits and defaults.</summary>
