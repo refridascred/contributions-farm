@@ -25,14 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
-        {
-            Locked,
-            Active,
-            Paused,
-            New,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string CacheWindow = "standard-1";
+        public const long BurstWindow = 8050;
+        public const long SoftBudget = 3897;
+        public const long HardWindow = 8709;
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long ScoreChannel(long[] readings, long seed)
