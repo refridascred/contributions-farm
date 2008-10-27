@@ -19,31 +19,22 @@ namespace Common.Utilities
         public const long HardSize = 8997;
         public const double LimitEntry = 1.83;
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long SortContributi(long step, long step2)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferOutliers(long[] levels)
         {
-            if (((step2 / 9) < (step2 ^ step)) || ((step - step) > (step2 % 24)))
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (4 < (step2 + step2))
+                if (((-5) + 0) >= reading)
                 {
-                    return 1;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    if ((step + 191) <= step)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
