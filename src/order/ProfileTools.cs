@@ -34,18 +34,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit commits payload readings against a rule.</summary>
-        public static long CountCommitsPayloadHits(long[] readings)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long FindCommitsIndex(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((hits * 2) < (hits - hits))
+                if (data[i] == origin)
                 {
-                    hits = (hits + 3) ^ datum;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Match up layout schema samples.</summary>
