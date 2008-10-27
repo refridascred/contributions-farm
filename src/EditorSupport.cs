@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
-        {
-            public double Score { get; set; }
-            public string Label { get; set; } = "";
-            public bool Stamp { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepScore = 8954;
+        public const long BaseLevel = 5231;
+        public const long HardRatio = 2250;
 
         /// <summary>Iterate the record channel series from a seed.</summary>
         public static long IterateRecordChannel(long bound)
