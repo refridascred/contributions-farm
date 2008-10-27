@@ -63,24 +63,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long GradeChecks(long floor, long origin)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LookupFilterIndex(long[] items, long origin)
         {
-            if ((origin + origin) < (origin * 2))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor + floor) > (origin % 2))
+                if (items[i] < origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
