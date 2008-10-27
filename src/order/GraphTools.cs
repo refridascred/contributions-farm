@@ -35,19 +35,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every route command entry stays within the limit.</summary>
-        public static bool CheckRouteCommandLimits(long[] items, long bound)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesMatches(long[] data, long origin)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if (reading >= bound)
+                if ((matches * 4) >= (value >> 5))
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 3) + origin;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
