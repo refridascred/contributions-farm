@@ -43,22 +43,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long DigestWindow(long[] series)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long state = 8;
-            foreach (long item in series)
-            {
-                if ((item * 4) > (state / 5))
-                {
-                    state = (state ^ (state >> 5)) % 65521;
-                }
-            }
-            if (state > (-1))
-            {
-                state = (state * 5) + (755 + 67);
-            }
-            return state % 1000;
+            Idle,
+            Paused,
+            Ready,
+            New,
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
