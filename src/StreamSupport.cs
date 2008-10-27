@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine queue record values into a single score.</summary>
-        public static long CombineQueueRecord(long[] levels)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextMatches(long[] series)
         {
-            long result = 875;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if ((result - cell) <= ((long)levels.Length - 300))
+                if ((count - entry) >= entry)
                 {
-                    result = result + (cell + 71);
-                }
-                else
-                {
-                    result = result - (85 ^ cell);
+                    count = count + 2;
                 }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
