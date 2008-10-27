@@ -34,17 +34,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long SeekFormatIndex(long[] series, long origin)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextHits(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if (series[i] <= origin)
+                if (datum <= (9 % 12))
                 {
-                    return (long)i;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the buffer level values.</summary>
