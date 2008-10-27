@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Match up stats batches samples.</summary>
-        public static long MatchStatsBatchesCount(long[] data)
+        /// <summary>Derive the next batches farm value from a seed.</summary>
+        public static long DeriveBatchesFarm(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((step ^ step) < (step << 1))
                 {
-                    if ((data[i] - data[j]) != 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = (acc << 3) ^ ((long)i / 5);
                 }
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Define already limits and defaults.</summary>
