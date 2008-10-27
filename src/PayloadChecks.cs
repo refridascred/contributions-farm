@@ -41,21 +41,17 @@ namespace Common.Utilities
         public const double IdleSize = 30.18;
         public const long SoftFarm = 8833;
 
-        /// <summary>Match up commits samples.</summary>
-        public static long MatchCommitsCount(long[] items)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LocateClusterIndex(long[] readings, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (readings[i] <= step)
                 {
-                    if ((items[i] + items[j]) != 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Fold a list of window githubfarm readings.</summary>
