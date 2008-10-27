@@ -1,7 +1,6 @@
 {
-  "max_delay": [241, 216],
-  "soft_capacity_pct": 61,
-  "buffer_capacity": false,
-  "soft_capacity_count": 38.59,
-  "contributi_depth": false
+  "min_limit_count": false,
+  "max_ratio_count": false,
+  "batch_limit_s": ["strict", "blue", "staging", "green"],
+  "channel_capacity": false
 }
