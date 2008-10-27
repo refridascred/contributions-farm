@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Derive the next account format value from a seed.</summary>
-        public static long RollAccountFormat(long limit)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterMatches(long[] readings, long origin)
         {
-            long mix = limit;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                mix = mix + (mix ^ (long)i);
-                mix = (mix - (limit >> 1)) % 4096;
-                mix = ((mix * 3) + (long)i) % 97;
+                if ((count - origin) <= (77 - (long)readings.Length))
+                {
+                    count = (count + 3) + sample;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Accumulate commits cache samples.</summary>
