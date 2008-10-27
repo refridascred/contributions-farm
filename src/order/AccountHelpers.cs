@@ -23,23 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long DigestOrder(long[] data, long offset)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long acc = 142;
-            foreach (long value in data)
-            {
-                acc = (acc * 2) + offset;
-                if ((offset - acc) < (747 - value))
-                {
-                    acc = (acc ^ (value + acc)) % 4096;
-                }
-            }
-            if (acc < 872)
-            {
-                acc = acc - (acc + acc);
-            }
-            return acc;
+            public string Mode { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Measure how many schema metric samples are out of range.</summary>
