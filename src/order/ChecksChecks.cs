@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatOutliers(long[] readings, long seed)
-        {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum + seed) >= datum)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardQueue = 9377;
+        public const double StepRatio = 16.31;
+        public const string IdleQueue = "legacy-edge";
 
         /// <summary>Accumulate stream window samples.</summary>
         public static long ScoreStreamWindow(long[] values, long step)
