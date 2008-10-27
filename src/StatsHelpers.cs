@@ -47,12 +47,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinContributi = 8666;
-        public const long DefaultContributi = 9312;
-        public const double CacheTimeout = 6.8;
-        public const long LimitTimeout = 5289;
-        public const long IdleContributi = 1050;
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long DeriveContext(long offset)
+        {
+            long acc = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                acc = acc + (acc - 5);
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const double HardLevel = 89.3;
