@@ -71,18 +71,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit layout order readings against a rule.</summary>
-        public static long TallyLayoutOrderOutliers(long[] items, long step)
-        {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if (!((4.1 - 6.65) > (double)tally))
-                {
-                    tally = ((tally + 2) + reading) + step;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitTools = 9445;
+        public const long WindowScore = 271;
+        public const long MinInterval = 8531;
+        public const long BatchDepth = 1899;
+        public const string StepTools = "latest-1";
     }
 }
