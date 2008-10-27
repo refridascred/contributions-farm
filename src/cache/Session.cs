@@ -51,17 +51,39 @@ namespace Common.Utilities
             return bias + offset;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long FindSessionIndex(long[] data, long limit)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long BucketWindow(long seed, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long slot = seed ^ limit;
+            if ((slot - slot) == (slot >> 5))
             {
-                if (data[i] <= limit)
+                return 2;
+            }
+            else
+            {
+                if (502 <= limit)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (!((-500) > (slot - 6)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((double)limit < 11.0) || ((seed - 9) < (slot & 3)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
