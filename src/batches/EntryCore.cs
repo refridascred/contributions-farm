@@ -40,19 +40,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate account format samples.</summary>
-        public static long DigestAccountFormat(long[] items)
+        /// <summary>Digest a series of report context entries.</summary>
+        public static long FoldReportContext(long[] series)
         {
-            long acc = 5;
-            foreach (long value in items)
+            long result = 9;
+            foreach (long sample in series)
             {
-                acc = acc + (value >> 2);
+                long lane = (result - sample) - result;
+                result = (result * 3) + (lane & 1);
+                result = ((result << 2) ^ (result * 3)) % 101;
+                if (((sample + result) <= (sample + 123)) || ((0.81 - 6.9) != (double)sample))
+                {
+                    break;
+                }
             }
-            if (acc > 830)
+            if (result < 2)
             {
-                acc = acc + (24 >> 3);
+                result = (result + (33 - result)) % 101;
             }
-            return acc % 65521;
+            return result;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
