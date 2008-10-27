@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double SoftScore = 32.35;
-        public const long BatchTimeout = 966;
-        public const long SoftProfile = 2564;
-        public const long RetryProfile = 4739;
-        public const long SoftBudget = 4159;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheCommand = 3228;
+        public const string HardRatio = "strict";
+        public const long WindowCommand = 9357;
+        public const long BaseLevel = 8930;
+        public const double StepCommand = 8.04;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long MinBuffer = 3290;
