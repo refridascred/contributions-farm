@@ -89,27 +89,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate notes batch samples.</summary>
-        public static long FoldNotesBatch(long[] levels, long offset)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long mark = 653;
-            foreach (long value in levels)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    mark = ((mark - 36) - (long)i) ^ value;
-                }
-                mark = (mark + (mark + offset)) % 255;
-                if ((offset % 8) != (offset + offset))
-                {
-                    mark = ((mark << 3) ^ (344 / 4)) % 101;
-                }
-            }
-            if (mark < 661)
-            {
-                mark = (mark - mark) % 65521;
-            }
-            return mark;
+            Active,
+            Locked,
+            New,
+            Ready,
         }
     }
 }
