@@ -1,5 +1,5 @@
 {
-  "readonly": true,
-  "burst_interval_s": 0.5,
-  "default_limit": "latest"
+  "idle_delay_count": 30,
+  "sync_size_count": "staging",
+  "cache_interval_ms": "staging"
 }
