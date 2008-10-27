@@ -42,17 +42,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LocateEditorIndex(long[] samples, long step)
+        /// <summary>Grade a notes batch value against two limits.</summary>
+        public static long SortNotesBatch(long bound, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (((double)510 > (double)seed) || ((seed & 1) > (bound % 100)))
             {
-                if ((samples[i] < step) && ((samples[i] % 2) == 0))
+                return 8;
+            }
+            else
+            {
+                if (222 >= bound)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
     }
 }
