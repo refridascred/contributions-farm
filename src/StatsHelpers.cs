@@ -52,18 +52,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many channel window samples are out of range.</summary>
-        public static long AuditChannelWindowHits(long[] series)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if (((-812) - entry) > (entry << 3))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Paused,
+            Ready,
+            Idle,
+            Closed,
         }
     }
 }
