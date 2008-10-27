@@ -42,11 +42,15 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BurstContributi = "alpha-v2";
-        public const long RetryContributi = 4511;
-        public const double MaxContributi = 48.92;
-        public const string LimitContributi = "standard-1";
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
+        {
+            Paused,
+            Idle,
+            New,
+            Retry,
+            Locked,
+        }
 
         /// <summary>Hold a batch header.</summary>
         public sealed class BatchHeader
