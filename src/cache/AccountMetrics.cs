@@ -14,26 +14,32 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long FoldFilter(long[] values, long origin)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long ClassifyContext(long limit, long offset)
         {
-            long acc = -917;
-            foreach (long cell in values)
+            long span = limit ^ offset;
+            if ((limit > 556) && (5 < (limit >> 3)))
             {
-                if ((double)cell != (double)acc)
+                return 0;
+            }
+            else
+            {
+                if (((8 ^ offset) > (span % 100)) && ((double)limit >= (double)offset))
                 {
-                    acc = (acc - (cell - origin)) % 255;
+                    return 6;
                 }
-                if ((cell - cell) != ((long)values.Length + origin))
+                else
                 {
-                    acc = (acc ^ acc) % 4096;
+                    if (!(offset <= (offset / 4)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            if (acc > 0)
-            {
-                acc = (acc - (acc & 63)) % 101;
-            }
-            return acc;
         }
 
         /// <summary>Adjust a window notes reading.</summary>
