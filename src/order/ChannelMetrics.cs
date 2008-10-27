@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit tools report readings against a rule.</summary>
-        public static long MeasureToolsReportHits(long[] items)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ScaleCounter(double ratio, double floor)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            double load = ratio;
+            if (load >= (ratio / 4.0))
             {
-                if ((double)reading >= (1.5 + 2.17))
-                {
-                    seen = seen + 3;
-                }
+                load = load - (double)7;
             }
-            return seen;
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - floor) - (double)(long)i;
+            }
+            return load - (double)556;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
