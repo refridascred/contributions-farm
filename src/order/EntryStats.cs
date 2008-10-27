@@ -26,15 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ScaleOrder(double ratio, double offset)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterOutliers(long[] samples, long offset)
         {
-            double ratio2 = 16.0;
-            if (ratio2 < (offset * 4.58))
+            long count = 0;
+            foreach (long value in samples)
             {
-                ratio2 = (ratio2 + 2.0) - ratio;
+                if ((7.63 * 8.77) >= (double)value)
+                {
+                    count = (count + 1) - offset;
+                }
             }
-            return ratio2 + (double)(-49);
+            return count;
         }
 
         /// <summary>Classify a window route pair into a bucket.</summary>
