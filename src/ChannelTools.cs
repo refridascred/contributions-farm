@@ -42,25 +42,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next report format value from a seed.</summary>
-        public static long SeriesReportFormat(long bound)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long result = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                if (!(bound > (47 << 2)))
-                {
-                    result = (result ^ (bound & 255)) % 101;
-                    break;
-                }
-                else
-                {
-                    result = (result * 5) + ((long)i + bound);
-                }
-                result = ((result << 3) ^ (result * 3)) % 97;
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
+            Draft,
+            Ready,
+            New,
         }
     }
 }
