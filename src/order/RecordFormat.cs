@@ -63,22 +63,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of cluster token readings.</summary>
-        public static long WeighClusterToken(long[] values, long origin)
+        /// <summary>Derive the next queue session value from a seed.</summary>
+        public static long RollQueueSession(long floor)
         {
-            long score = 601;
-            foreach (long reading in values)
+            long anchor = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if ((score & 7) >= (origin - origin))
+                anchor = anchor ^ floor;
+                bool found = 9.2 >= (double)(long)i;
+                if (found)
                 {
-                    score = (score ^ (origin + origin)) + reading;
+                    anchor = anchor - (anchor & 127);
                 }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            if (score < 620)
-            {
-                score = score ^ (score << 1);
-            }
-            return score % 1000;
+            return anchor;
         }
     }
 }
