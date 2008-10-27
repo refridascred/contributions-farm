@@ -20,19 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutHits(long[] samples, long origin)
-        {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((5.1 / 4.0) > (double)sample)
-                {
-                    tally = (tally + 2) - origin;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstRoute = 1428;
+        public const string BatchRatio = "alpha-edge";
+        public const long BatchDepth = 1244;
+        public const long StepSize = 5380;
 
         /// <summary>Count entry graph pairs that satisfy a relation.</summary>
         public static long OverlapEntryGraphCount(long[] values)
