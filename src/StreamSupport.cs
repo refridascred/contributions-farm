@@ -13,11 +13,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterOutliers(long[] values)
         {
-            public bool Flag { get; set; }
-            public double Offset { get; set; }
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if (!((tally << 2) != (reading - reading)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
