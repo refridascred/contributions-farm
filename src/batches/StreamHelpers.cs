@@ -50,12 +50,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowCluster = 7249;
-        public const long WindowWidth = 3134;
-        public const double BurstCluster = 62.39;
-        public const long BurstLevel = 486;
-        public const long MaxCluster = 7745;
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
+        {
+            public string Region { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Label { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Hold a batches entry.</summary>
         public sealed class BatchesEntry
