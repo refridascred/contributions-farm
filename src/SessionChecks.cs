@@ -18,14 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            Queued,
-            Draft,
-            Done,
-            Retry,
-            Dropped,
+            public bool Total { get; set; }
+            public long Flag { get; set; }
+            public string Mode { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
