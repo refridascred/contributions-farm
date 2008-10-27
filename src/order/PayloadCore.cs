@@ -40,23 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ScaleStream(double rate, double offset)
+        /// <summary>Match up checks stats samples.</summary>
+        public static long CompareChecksStatsCount(long[] series)
         {
-            double weight = offset - offset;
-            if (weight >= (rate * 6.55))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                weight = weight + rate;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                weight = weight + (weight / 9.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = weight - (double)(long)i;
-            }
-            return weight + offset;
+            return seen;
         }
 
         /// <summary>Describe the already mode values.</summary>
