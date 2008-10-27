@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many context notes samples are out of range.</summary>
-        public static long AuditContextNotesGaps(long[] data, long target)
-        {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if (!((target * 2) < target) || ((8 + (-3)) != (count << 2)))
-                {
-                    count = (count + 1) + reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BatchCommand = 48.59;
+        public const double HardDepth = 57.19;
+        public const long MaxWidth = 3296;
 
         /// <summary>Hold a buffer header.</summary>
         public sealed class BufferHeader
