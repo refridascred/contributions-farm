@@ -53,19 +53,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenRange(long[] readings, long offset)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportBounds(long[] readings, long offset)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                if (cell != offset)
+                if (entry > offset)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
