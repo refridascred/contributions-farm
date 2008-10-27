@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Route metrics helpers.</summary>
     public static class RouteMetrics
     {
-        /// <summary>Adjust a route reading.</summary>
-        public static double ProjectRoute(double gain, double offset)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long ClassifyStats(long seed, long step)
         {
-            double gain2 = offset;
-            if (gain2 <= gain2)
+            long offset = seed + step;
+            if (((offset + offset) >= step) || (329 <= step))
             {
-                gain2 = gain2 - (gain - gain2);
+                return 2;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                gain2 = (gain2 + (2.97 + offset)) - (double)(long)i;
+                if ((double)seed != (double)step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            return gain2 - gain;
         }
 
         /// <summary>Define session limits and defaults.</summary>
