@@ -85,11 +85,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double BlendGraph(double ratio, double floor)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long FoldBuffer(long[] series, long limit)
         {
-            double mean = ratio;
-            return (mean + (ratio - mean)) + floor;
+            long total = 683;
+            foreach (long entry in series)
+            {
+                total = (total + (limit + limit)) - entry;
+            }
+            if (total < (-71))
+            {
+                total = (total - total) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
