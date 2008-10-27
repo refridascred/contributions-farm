@@ -1,10 +1,13 @@
 # Command notes
 
-The payload module keeps entry values in sync with the session cache.
-Run the route check before changing any format limits.
+Run the token check before changing any filter limits.
+The token helpers are pure functions, so they are safe to call from any thread.
+
+The tools report groups every token by counter.
+Keep token and githubfarm names short and lowercase.
 
 ## Guidelines
 
-- Validate format input early
-- Keep notes values small
-- Document new batches fields
+- Log every session change
+- Document new format fields
+- Prefer already defaults
