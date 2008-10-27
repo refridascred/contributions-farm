@@ -55,8 +55,9 @@ namespace Common.Utilities
         }
 
         /// <summary>Define route limits and defaults.</summary>
-        public const long StepRoute = 7825;
-        public const long DefaultSize = 2962;
-        public const long BurstLevel = 9042;
+        public const long BurstRoute = 289;
+        public const double StepRoute = 18.05;
+        public const long BatchRoute = 5426;
+        public const string HardRoute = "standard-edge";
     }
 }
