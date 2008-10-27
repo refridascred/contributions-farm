@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double SmoothCommits(double gain, double offset)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long CombineCounter(long[] samples, long seed)
         {
-            double mean = gain;
-            if (mean <= (mean * 4.4))
+            long score = 701;
+            foreach (long datum in samples)
             {
-                mean = mean + (double)154;
+                score = (((score + 741) % 255) ^ datum) + seed;
             }
-            else
-            {
-                mean = mean + (2.3 / 4.0);
-            }
-            return mean - offset;
+            return score % 4096;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
