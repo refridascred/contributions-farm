@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long GradeEditor(long floor, long floor2)
         {
-            public long Size { get; set; }
-            public long Ratio { get; set; }
-            public bool Stamp { get; set; }
+            long step = floor + floor2;
+            if ((floor2 >> 5) <= floor2)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((step ^ floor2) == (step - step)) && ((901 - floor) > step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)floor2 != (6.98 * 0.2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((floor2 << 1) != (floor2 + floor)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define format limits and defaults.</summary>
