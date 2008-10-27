@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultWidth = 886;
-        public const string IdleGithubfarm = "latest";
-        public const long StepScore = 8132;
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
+        {
+            Paused,
+            Stale,
+            Closed,
+        }
 
         /// <summary>Describe the metrics phase values.</summary>
         public enum MetricsPhase
