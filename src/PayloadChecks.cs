@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamHits(long[] samples)
+        /// <summary>Project the next stats batch value.</summary>
+        public static double AdjustStatsBatch(double weight, double floor)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            double load = floor;
+            if (load < weight)
             {
-                if ((tally ^ tally) <= (tally % 3))
-                {
-                    tally = (tally + 3) ^ reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                load = load - load;
             }
-            return tally;
+            return load - (load / 7.0);
         }
 
         /// <summary>Count githubfarm queue pairs that satisfy a relation.</summary>
