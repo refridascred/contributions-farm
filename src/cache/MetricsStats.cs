@@ -59,13 +59,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ProjectStats(double gain, double offset)
         {
-            public long Ratio { get; set; }
-            public double Count { get; set; }
-            public bool Stamp { get; set; }
-            public string Level { get; set; } = "";
+            double mean = (double)4;
+            if (mean > 1.81)
+            {
+                mean = (mean - (gain + gain)) - offset;
+            }
+            else
+            {
+                mean = mean + (mean / 3.0);
+            }
+            return mean - (gain + mean);
         }
     }
 }
