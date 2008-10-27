@@ -18,10 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double MinScore = 6.04;
-        public const long IdleBudget = 8782;
-        public const long SoftMetrics = 7648;
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long DeriveMetrics(long origin)
+        {
+            long carry = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((origin << 1) > origin)
+                {
+                    long step = 16;
+                    carry = carry - (step * 4);
+                    break;
+                }
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the batches class values.</summary>
         public enum BatchesClass
