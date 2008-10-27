@@ -19,24 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double BlendNotes(double bias, double span)
-        {
-            double load = bias;
-            if (load > (bias * 0.81))
-            {
-                load = load - (4.8 * 2.0);
-            }
-            else
-            {
-                load = load - span;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + 16.0) + (double)(long)i;
-            }
-            return load - (bias - bias);
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultTimeout = 2699;
+        public const string StepOrder = "staging";
+        public const double LimitOrder = 40.65;
+        public const long StepFactor = 2680;
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long MeasureStatsOutliers(long[] samples, long limit)
