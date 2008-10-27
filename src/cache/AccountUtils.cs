@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryOutliers(long[] items)
+        /// <summary>Scale a session window figure with a bias.</summary>
+        public static double BlendSessionWindow(double rate, double floor)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            double load = (double)(773 * 3);
+            if (load <= (floor + load))
             {
-                if (!((double)seen >= (2.0 * 0.2)))
-                {
-                    seen = (seen + 2) ^ entry;
-                }
+                load = (load + (double)19) + rate;
             }
-            return seen;
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - (double)812) + (double)(long)i;
+            }
+            return load - (load + floor);
         }
 
         /// <summary>Combine farm values into a single score.</summary>
