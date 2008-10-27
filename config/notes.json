@@ -1,8 +1,5 @@
 {
-  "flush_retries_ms": false,
-  "soft_limit": "open",
-  "idle_depth_pct": "green",
-  "default_limit_pct": false,
-  "max_window": 50.84,
-  "batch_limit_count": "local"
+  "strict": 8321,
+  "default_timeout_s": "stable",
+  "warm_retries_count": 87.52
 }
