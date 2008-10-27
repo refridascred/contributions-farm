@@ -46,17 +46,18 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LookupContextIndex(long[] readings, long offset)
+        /// <summary>Measure how many tools editor samples are out of range.</summary>
+        public static long TallyToolsEditorMatches(long[] samples, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if ((readings[i] > offset) && ((readings[i] % 2) != 0))
+                if ((hits + hits) > (hits ^ hits))
                 {
-                    return (long)i;
+                    hits = ((hits + 1) - datum) - limit;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
