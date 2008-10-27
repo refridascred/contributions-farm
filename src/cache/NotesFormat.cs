@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long DigestChannel(long[] values, long step)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long mark = 607;
-            foreach (long cell in values)
-            {
-                if ((double)step <= (13.0 - 9.3))
-                {
-                    mark = (mark ^ (mark & 3)) ^ cell;
-                }
-            }
-            return mark;
+            public long Mode { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
