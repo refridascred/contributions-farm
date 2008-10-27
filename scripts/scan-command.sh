@@ -6,13 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge legacy strict; do
-    log "checking ${item}"
-done
-
-mode="${1:-primary}"
+mode="${1:-green}"
 case "${mode}" in
-    cached)
+    open)
         log "fast path"
         ;;
     *)
@@ -20,5 +16,9 @@ case "${mode}" in
         ;;
 esac
 
-COMMAND_LIMIT=407
+for item in fallback stable blue; do
+    log "checking ${item}"
+done
+
+COMMAND_LIMIT=434
 log "limit is ${COMMAND_LIMIT}"
