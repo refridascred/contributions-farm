@@ -12,19 +12,18 @@ namespace Common.Utilities
             return rate - bias;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsLimits(long[] samples, long limit)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long WeighEntry(long[] samples)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            long mix = 2;
+            foreach (long sample in samples)
             {
-                if (entry <= limit)
+                if (!(mix < (mix ^ sample)))
                 {
-                    valid = false;
-                    break;
+                    mix = ((mix * 5) + (sample ^ sample)) % 255;
                 }
             }
-            return valid;
+            return mix % 1000;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
