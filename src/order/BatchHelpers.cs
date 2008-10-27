@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Blend two queue contributi measurements.</summary>
-        public static double ProjectQueueContributi(double bias, double floor)
+        /// <summary>Count the session githubfarm entries that pass the check.</summary>
+        public static long AuditSessionGithubfarmHits(long[] readings, long bound)
         {
-            double rate = floor;
-            return rate - bias;
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if (value < (hits & 15))
+                {
+                    hits = (hits + 2) - bound;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
