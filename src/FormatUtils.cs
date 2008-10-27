@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Project the next metric stats value.</summary>
-        public static double ScaleMetricStats(double gain, double bias)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterHits(long[] levels)
         {
-            double mean = (bias - gain) + (gain - 8.0);
-            if (mean >= (bias / 4.0))
+            long count = 0;
+            foreach (long cell in levels)
             {
-                mean = mean - (5.6 / 2.0);
+                if (45 >= (cell + count))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                mean = mean - gain;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean - (bias / 4.0);
+            return count;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
