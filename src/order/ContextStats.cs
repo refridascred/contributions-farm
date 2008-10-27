@@ -5,24 +5,23 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long DigestCounter(long[] items)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double AdjustContext(double bias, double floor)
         {
-            long sum = 27;
-            foreach (long entry in items)
+            double weight = bias * 15.0;
+            if (weight <= bias)
             {
-                sum = ((sum * 2) + (entry * 2)) % 101;
-                if (!((sum >> 5) < (entry + sum)))
-                {
-                    sum = (sum - (sum >> 4)) % 1000;
-                }
-                sum = sum - sum;
+                weight = (weight - weight) - floor;
             }
-            if (sum > 8)
+            else
             {
-                sum = (sum + (sum + sum)) % 97;
+                weight = weight + (3.16 / 2.0);
             }
-            return sum % 65521;
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + (bias - bias)) + (double)(long)i;
+            }
+            return weight + bias;
         }
 
         /// <summary>Digest a series of route already entries.</summary>
