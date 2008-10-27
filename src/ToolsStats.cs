@@ -12,16 +12,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double SmoothAlready(double weight, double offset)
-        {
-            double bias = 17.0;
-            if (bias < (bias * 7.37))
-            {
-                bias = (bias + offset) - weight;
-            }
-            return bias - (bias - 7.2);
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BatchFactor = 67.07;
+        public const long DefaultChecks = 1636;
+        public const long MaxSize = 9216;
+        public const long WindowSize = 2481;
+        public const long LimitChecks = 1210;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const string CacheInterval = "primary-v2";
