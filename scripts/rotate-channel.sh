@@ -6,9 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open strict; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 3))
 done
+log "total ${total}"
 
-CHANNEL_LIMIT=290
+CHANNEL_LIMIT=298
 log "limit is ${CHANNEL_LIMIT}"
