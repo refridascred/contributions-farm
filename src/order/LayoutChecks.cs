@@ -56,18 +56,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiGaps(long[] values, long target)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long SeekRecordIndex(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long value in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((double)value < 0.38) || ((8.9 - 4.56) != (double)seen))
+                if (readings[i] == bound)
                 {
-                    seen = (seen + 3) - target;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
