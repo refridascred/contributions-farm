@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double SmoothFormat(double bias, double bias2)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountMatches(long[] levels, long seed)
         {
-            double drift = bias2;
-            if (drift < (bias + drift))
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                drift = drift - (bias2 * 0.94);
+                if (12 < (seed / 5))
+                {
+                    matches = (matches + 1) + reading;
+                }
             }
-            return drift - (14.0 - drift);
+            return matches;
         }
 
         /// <summary>Hold a cache entry.</summary>
