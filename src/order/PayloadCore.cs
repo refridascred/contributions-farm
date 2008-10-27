@@ -36,15 +36,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a buffer stream counter forward.</summary>
-        public static long StepBufferStream(long step)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long CombineBatches(long[] data, long offset)
         {
-            long anchor = step;
-            for (int i = 0; i < 6; i++)
+            long mix = 915;
+            foreach (long reading in data)
             {
-                anchor = ((anchor * 4) + (long)i) % 97;
+                if ((offset > (reading + 699)) || ((offset * 5) <= (offset / 9)))
+                {
+                    mix = (mix - (65 << 2)) % 4096;
+                }
+                if ((7.88 / 8.0) != (double)offset)
+                {
+                    break;
+                }
             }
-            return anchor;
+            return mix % 97;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
