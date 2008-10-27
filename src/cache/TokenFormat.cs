@@ -5,16 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long DeriveSession(long floor)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long RollSupport(long step)
         {
-            long result = floor;
-            for (int i = 0; i < 22; i++)
+            long anchor = step;
+            for (int i = 0; i < 19; i++)
             {
-                result = result ^ (result + result);
-                result = ((result * 2) + (long)i) % 97;
+                anchor = ((anchor << 2) ^ (step + 62)) % 97;
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
