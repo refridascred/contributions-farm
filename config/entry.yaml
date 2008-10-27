@@ -1,8 +1,13 @@
 # entry settings
-hard_ratio_count: false
-soft_threshold:
-  - open
-  - legacy
-  - standard
-  - standard
-profile_depth: false
+base_capacity_pct:
+  flush_ratio: 42
+  base_delay_ms: 21
+  min_capacity_s: fallback
+  compress: stable
+  hard_retries_s: local
+stats_threshold: 43
+report_size:
+  readonly: 65
+  githubfarm_retries: 60
+  poll_timeout_count: 88
+default_delay_ms: 95.26
