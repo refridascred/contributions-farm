@@ -18,21 +18,22 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long MatchClusterCount(long[] values)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TallyRoute(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 453;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!(total <= (datum * 4)))
                 {
-                    if ((values[i] ^ values[j]) > 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = ((total * 4) + (datum << 2)) % 97;
                 }
             }
-            return hits;
+            if (total > 976)
+            {
+                total = ((total << 3) ^ total) % 101;
+            }
+            return total % 4096;
         }
     }
 }
