@@ -1,8 +1,9 @@
 # entry settings
-base_depth_s:
-  - 402
-  - 121
-warm_delay_pct: false
-context_ratio: 2240
-metrics_limit: open
-editor_window: green
+support_size:
+  - 439
+  - 434
+  - 71
+  - 195
+audit: primary
+channel_retries: 46.31
+batch_limit_count: 53
