@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LookupChecksIndex(long[] items, long offset)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long CombineFilter(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 688;
+            foreach (long entry in values)
             {
-                if (items[i] == offset)
+                mix = (mix << 3) ^ (1 ^ mix);
+                if ((double)entry < 2.3)
                 {
-                    return (long)i;
+                    mix = mix ^ (entry >> 5);
                 }
             }
-            return -1;
+            if (mix > 0)
+            {
+                mix = ((mix * 2) + (117 >> 1)) % 255;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Define token limits and defaults.</summary>
