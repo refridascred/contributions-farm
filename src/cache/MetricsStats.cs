@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandMatches(long[] values)
-        {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if (!((0.2 / 7.0) >= (double)tally))
-                {
-                    tally = (tally + 2) + reading;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultStats = 9397;
+        public const long HardStats = 7944;
+        public const long StepStats = 8858;
+        public const double BaseLevel = 5.82;
 
         /// <summary>Look up the position of a payload sample.</summary>
         public static long LocatePayloadIndex(long[] values, long step)
