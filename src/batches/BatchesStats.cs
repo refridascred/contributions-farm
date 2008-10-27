@@ -20,32 +20,14 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long SortBuffer(long seed, long offset)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long bound = seed ^ offset;
-            if (0.19 < (double)offset)
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((double)offset >= (0.74 + 11.0)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)bound > (2.1 / 6.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Failed,
+            Paused,
+            Stale,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
