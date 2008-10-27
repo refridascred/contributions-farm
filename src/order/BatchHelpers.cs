@@ -19,14 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsLimits(long[] samples, long limit)
         {
-            Pending,
-            Synced,
-            Failed,
-            Draft,
-            Closed,
+            bool valid = true;
+            foreach (long entry in samples)
+            {
+                if (entry <= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
