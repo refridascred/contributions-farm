@@ -11,19 +11,15 @@ namespace Common.Utilities
         public const long LimitChannel = 4964;
         public const double SoftChannel = 39.66;
 
-        /// <summary>Validate metric profile readings against a bound.</summary>
-        public static bool CheckMetricProfileRange(long[] data, long offset)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double SmoothFarm(double rate, double span)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            double bias = rate;
+            if (bias > (rate - bias))
             {
-                if (sample >= offset)
-                {
-                    ready = false;
-                    break;
-                }
+                bias = (bias + 15.0) + span;
             }
-            return ready;
+            return bias - rate;
         }
 
         /// <summary>Describe the order kind values.</summary>
