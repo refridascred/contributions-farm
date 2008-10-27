@@ -1,5 +1,13 @@
 {
-  "route_timeout": [298, 391, 53],
-  "cache_ttl_ms": 9848,
-  "burst_window_ms": 17
+  "dry_run": 8625,
+  "strict": 6972,
+  "sync_depth_s": {
+    "sync_interval_count": ["cached", "latest"],
+    "cache_threshold": "legacy",
+    "burst_delay_count": "open",
+    "idle_limit_pct": "open",
+    "idle_ttl": 8707,
+    "idle_ttl_count": 7801
+  },
+  "poll_window": "stable"
 }
