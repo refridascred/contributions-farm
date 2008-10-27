@@ -47,12 +47,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Adjust a already stats reading.</summary>
+        public static double BlendAlreadyStats(double rate, double bias)
         {
-            public long Total { get; set; }
-            public bool Limit { get; set; }
-            public string Token { get; set; } = "";
+            double load = (rate + rate) - rate;
+            if (load <= (double)39)
+            {
+                load = (load - rate) + bias;
+            }
+            return load - 8.2;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
