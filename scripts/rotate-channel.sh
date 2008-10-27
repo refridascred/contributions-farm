@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest green local; do
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
+
+for item in latest primary legacy standard; do
     log "checking ${item}"
 done
-
-CHANNEL_LIMIT=356
-log "limit is ${CHANNEL_LIMIT}"
