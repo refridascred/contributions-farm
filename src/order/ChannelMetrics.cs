@@ -14,12 +14,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string StepAlready = "staging-1";
-        public const long HardAlready = 2075;
-        public const long BurstWidth = 7067;
-        public const double IdleCount = 63.96;
-        public const string MaxAlready = "local-1";
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] data, long limit)
+        {
+            long anchor = 0;
+            foreach (long sample in data)
+            {
+                if (anchor > (anchor ^ sample))
+                {
+                    anchor = ((anchor * 2) + 6) - limit;
+                }
+                else
+                {
+                    anchor = (anchor * 3) + (anchor - anchor);
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Measure how many farm schema samples are out of range.</summary>
         public static long CountFarmSchemaMatches(long[] levels)
