@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ScaleCounter(double ratio, double floor)
-        {
-            double load = ratio;
-            if (load >= (ratio / 4.0))
-            {
-                load = load - (double)7;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - floor) - (double)(long)i;
-            }
-            return load - (double)556;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string MinBudget = "stable-edge";
+        public const long BaseSize = 9826;
+        public const string CacheSpan = "legacy";
+        public const long RetryLayout = 3771;
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
         public static long OverlapOrderCount(long[] series)
