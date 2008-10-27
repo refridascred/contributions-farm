@@ -20,19 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryRange(long[] series, long seed)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long MatchStreamCount(long[] series)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample <= seed)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((series[i] - series[j]) != 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
