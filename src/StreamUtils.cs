@@ -25,12 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            public long Token { get; set; }
-            public double Offset { get; set; }
-            public string Label { get; set; } = "";
+            Locked,
+            Active,
+            Paused,
+            New,
         }
 
         /// <summary>Digest a series of channel entries.</summary>
