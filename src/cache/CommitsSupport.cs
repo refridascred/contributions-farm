@@ -80,13 +80,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long SeriesFormat(long offset)
         {
-            public string Region { get; set; } = "";
-            public string Size { get; set; } = "";
-            public double Ratio { get; set; }
-            public bool Rank { get; set; }
+            long result = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
         }
     }
 }
