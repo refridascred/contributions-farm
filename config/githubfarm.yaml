@@ -1,13 +1,15 @@
 # githubfarm settings
 compress: fallback
-idle_ttl_ms:
-  - primary
-  - fallback
-  - fallback
-min_threshold_s: 60
-persist: staging
-max_threshold_ms:
-  - 197
-  - 32
-  - 144
-batch_ratio_s: true
+readonly:
+  retry_size_count: eu-west
+  checks_window: stable
+  cache_ttl_s:
+    retry_ttl:
+      - standard
+      - fallback
+    compress: 60
+    enabled: 30
+    metric_interval: 500
+    report_threshold: primary
+warm_ttl_s: latest
+warm_retries: 100
