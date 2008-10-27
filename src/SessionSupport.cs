@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Iterate the session cache series from a seed.</summary>
-        public static long SeriesSessionCache(long bound)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long RollEditor(long origin)
         {
-            long score = bound;
-            for (int i = 0; i < 9; i++)
+            long mix = origin;
+            for (int i = 0; i < 18; i++)
             {
-                score = (score ^ (bound ^ (-715))) % 255;
-                score = score - (score & 127);
-                score = ((score * 4) + (long)i) % 101;
+                mix = ((mix << 3) ^ (origin % 2)) % 101;
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return score;
+            return mix;
         }
 
         /// <summary>Hold a counter stats.</summary>
