@@ -59,26 +59,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate stream farm samples.</summary>
-        public static long TallyStreamFarm(long[] items, long seed)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long mark = 7;
-            foreach (long item in items)
-            {
-                if (item < (seed / 5))
-                {
-                    mark = mark - (mark + 16);
-                }
-                if (((mark * 2) <= (seed - (-648))) && ((seed + mark) != (seed + seed)))
-                {
-                    break;
-                }
-            }
-            if (mark < 17)
-            {
-                mark = ((mark * 3) + (seed ^ seed)) % 97;
-            }
-            return mark % 1000;
+            Synced,
+            Queued,
+            Locked,
+            Failed,
         }
     }
 }
