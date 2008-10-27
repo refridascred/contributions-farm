@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long WeighFormat(long[] data, long target)
+        /// <summary>Match up stream batch samples.</summary>
+        public static long MatchStreamBatchCount(long[] data)
         {
-            long carry = 49;
-            foreach (long value in data)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((target ^ target) >= (722 + value))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = ((carry << 2) ^ (value + carry)) % 101;
+                    if ((data[i] - data[j]) != 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (carry < 519)
-            {
-                carry = (carry + (target + carry)) % 255;
-            }
-            return carry % 1000;
+            return seen;
         }
 
         /// <summary>Describe the already level values.</summary>
