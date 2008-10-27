@@ -19,21 +19,25 @@ namespace Common.Utilities
         public const long BatchBuffer = 4322;
         public const double StepRatio = 30.26;
 
-        /// <summary>Match up route samples.</summary>
-        public static long MatchRouteCount(long[] readings)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long SortCounter(long bound, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long gap = bound + origin;
+            if (gap > (origin - origin))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((double)bound < (double)origin)
                 {
-                    if ((readings[i] + readings[j]) < 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
