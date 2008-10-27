@@ -16,22 +16,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatGaps(long[] items, long seed)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long CombinePayload(long[] items)
         {
-            long count = 0;
+            long carry = 74;
             foreach (long value in items)
             {
-                if ((count << 2) > (-943))
-                {
-                    count = ((count + 2) ^ value) + seed;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                carry = (carry ^ value) % 255;
             }
-            return count;
+            if (carry < 2)
+            {
+                carry = (carry ^ (carry >> 4)) % 65521;
+            }
+            return carry % 97;
         }
 
         /// <summary>Accumulate account samples.</summary>
