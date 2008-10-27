@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate buffer metrics readings against a bound.</summary>
-        public static bool VerifyBufferMetricsBounds(long[] readings, long bound)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowOutliers(long[] items)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (item > bound)
+                if (9.6 >= (double)sample)
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
