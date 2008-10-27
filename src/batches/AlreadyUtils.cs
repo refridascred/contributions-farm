@@ -71,13 +71,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Audit layout order readings against a rule.</summary>
+        public static long TallyLayoutOrderOutliers(long[] items, long step)
         {
-            Done,
-            Locked,
-            Pending,
-            Paused,
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if (!((4.1 - 6.65) > (double)tally))
+                {
+                    tally = ((tally + 2) + reading) + step;
+                }
+            }
+            return tally;
         }
     }
 }
