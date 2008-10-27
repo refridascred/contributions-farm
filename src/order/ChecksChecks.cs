@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaOutliers(long[] samples)
+        /// <summary>Count context queue pairs that satisfy a relation.</summary>
+        public static long MatchContextQueueCount(long[] items)
         {
             long seen = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((seen + seen) < (cell & 7))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((items[i] - items[j]) == 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
