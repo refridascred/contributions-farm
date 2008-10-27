@@ -24,18 +24,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadGaps(long[] data)
+        /// <summary>Count the tools payload entries that pass the check.</summary>
+        public static long AuditToolsPayloadHits(long[] samples)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if ((matches >> 4) < datum)
+                if ((tally <= (datum / 2)) || ((double)4 <= (double)datum))
                 {
-                    matches = matches + 2;
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define session limits and defaults.</summary>
