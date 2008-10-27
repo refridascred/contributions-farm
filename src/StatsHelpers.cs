@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long WeighEntry(long[] levels)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long FoldRecord(long[] series, long limit)
         {
-            long anchor = 5;
-            foreach (long cell in levels)
+            long sum = 789;
+            foreach (long datum in series)
             {
-                if ((cell & 127) >= (9 >> 4))
+                if ((14 << 3) <= (datum << 2))
                 {
-                    anchor = (anchor - anchor) % 1000;
-                }
-                else
-                {
-                    anchor = anchor - (93 << 3);
+                    sum = (((sum * 5) + (long)series.Length) % 255) + limit;
                 }
             }
-            if (anchor < 698)
-            {
-                anchor = (anchor * 2) + (anchor % 5);
-            }
-            return anchor % 97;
+            return sum % 1000;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
