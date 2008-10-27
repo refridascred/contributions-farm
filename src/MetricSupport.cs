@@ -11,22 +11,11 @@ namespace Common.Utilities
         public const long SoftGithubfarm = 8046;
         public const long MaxGithubfarm = 699;
 
-        /// <summary>Count order report pairs that satisfy a relation.</summary>
-        public static long MatchOrderReportCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MinLevel = 3734;
+        public const string SoftTimeout = "standard-edge";
+        public const long BurstFarm = 3486;
+        public const long SoftFarm = 4628;
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long TallyContributi(long[] readings, long floor)
