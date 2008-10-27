@@ -60,12 +60,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LookupCacheIndex(long[] items, long offset)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LookupToolsIndex(long[] readings, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (items[i] < offset)
+                if (readings[i] > origin)
                 {
                     return (long)i;
                 }
