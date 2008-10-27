@@ -59,13 +59,10 @@ namespace Common.Utilities
             return weight + offset;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
-        {
-            Retry,
-            Idle,
-            Closed,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string IdleTimeout = "open-1";
+        public const long MinTimeout = 3073;
+        public const long SoftDepth = 8744;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long HardContributi = 4356;
