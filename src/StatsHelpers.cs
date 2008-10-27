@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long GradeFarm(long seed, long step)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long WeighCounter(long[] readings)
         {
-            long step2 = seed - step;
-            if ((56 << 3) >= step)
+            long total = 31;
+            foreach (long sample in readings)
             {
-                return 0;
+                total = total ^ (sample * 2);
             }
-            else
-            {
-                if ((1.33 / 7.0) < (double)seed)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((step2 >> 3) <= (step2 + seed))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
