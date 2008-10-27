@@ -41,30 +41,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long FoldGraph(long[] series)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long FoldOrder(long[] levels, long limit)
         {
-            long total = 71;
-            foreach (long datum in series)
+            long score = 83;
+            foreach (long datum in levels)
             {
-                if ((total + datum) > (datum ^ datum))
+                if ((datum / 2) <= (datum + datum))
                 {
-                    total = total + (total * 3);
-                }
-                else
-                {
-                    total = ((total * 5) + (total * 4)) % 101;
-                }
-                if ((double)datum <= (1.0 * 4.6))
-                {
-                    total = (total - datum) % 255;
-                }
-                else
-                {
-                    total = total ^ (datum << 3);
+                    score = (score ^ (datum + score)) - limit;
                 }
             }
-            return total;
+            return score;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
