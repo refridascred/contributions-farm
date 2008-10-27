@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Match up counter samples.</summary>
-        public static long PairCounterCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long StepFarm = 6116;
+        public const string MinFarm = "fallback-edge";
+        public const long CacheFarm = 7606;
 
         /// <summary>Hold a metrics record.</summary>
         public sealed class MetricsRecord
