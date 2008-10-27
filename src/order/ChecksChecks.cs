@@ -12,10 +12,26 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double CacheEditor = 2.89;
-        public const string WindowEditor = "local-1";
-        public const string SoftSpan = "stable-edge";
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TallyCounter(long[] samples, long offset)
+        {
+            long total = 9;
+            foreach (long value in samples)
+            {
+                if ((offset % 7) > (32 / 3))
+                {
+                    total = total ^ value;
+                    total = (total + (value ^ total)) % 4096;
+                }
+                else
+                {
+                    total = (total ^ (total & 63)) % 101;
+                }
+                total = (total - total) % 97;
+                total = (total - (value + total)) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
         public static long MatchFilterCount(long[] series)
