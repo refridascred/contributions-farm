@@ -55,13 +55,10 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
-        {
-            public double Total { get; set; }
-            public long Rank { get; set; }
-            public long Mode { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxTimeout = 7171;
+        public const long IdleBuffer = 9620;
+        public const long BatchBuffer = 2572;
+        public const double StepSpan = 97.63;
     }
 }
