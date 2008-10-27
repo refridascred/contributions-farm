@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string MinAlready = "staging-edge";
-        public const long CacheInterval = 3414;
-        public const string SoftAlready = "primary-edge";
-        public const long DefaultSpan = 2633;
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long SeekContextIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const double MinScore = 6.04;
