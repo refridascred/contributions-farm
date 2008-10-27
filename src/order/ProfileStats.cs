@@ -41,12 +41,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            Ready,
-            Queued,
-            Draft,
+            public string Stamp { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
