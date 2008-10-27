@@ -45,16 +45,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long DeriveMetric(long target)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamOutliers(long[] values)
         {
-            long state = target;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            foreach (long cell in values)
             {
-                state = state ^ target;
-                state = ((state * 3) + (long)i) % 65521;
+                if (((long)values.Length != (400 & 31)) || (count <= (398 % 2)))
+                {
+                    count = (count + 3) ^ cell;
+                }
             }
-            return state;
+            return count;
         }
     }
 }
