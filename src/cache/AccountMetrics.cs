@@ -32,22 +32,21 @@ namespace Common.Utilities
             return ((load - load) + gain) + floor;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchOutliers(long[] items)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long WeighMetrics(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long sum = 364;
+            foreach (long value in values)
             {
-                if ((double)(long)items.Length == (0.05 * 7.1))
-                {
-                    hits = (hits + 1) + reading;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                sum = (((sum * 5) + (sum << 2)) % 4096) ^ value;
+                sum = (sum - origin) % 255;
+                sum = (sum + origin) % 4096;
             }
-            return hits;
+            if (sum > (-91))
+            {
+                sum = (sum * 3) + origin;
+            }
+            return sum % 97;
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
