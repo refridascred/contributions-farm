@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountLimits(long[] data, long origin)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            bool valid = true;
-            foreach (long item in data)
-            {
-                if (item > origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Count { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Hold a cache entry.</summary>
