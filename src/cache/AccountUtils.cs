@@ -19,11 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftTimeout = 7229;
-        public const long RetryPayload = 4801;
-        public const long BurstPayload = 3276;
-        public const long MinPayload = 5320;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleLevel = 6221;
+        public const long MinFactor = 6603;
+        public const string SoftAccount = "stable-v2";
+        public const double LimitAccount = 96.71;
+        public const string HardScore = "stable-v2";
 
         /// <summary>Combine order values into a single score.</summary>
         public static long TallyOrder(long[] samples)
