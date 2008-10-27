@@ -90,12 +90,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            public double Count { get; set; }
-            public bool Score { get; set; }
-            public double Owner { get; set; }
+            New,
+            Locked,
+            Queued,
+            Idle,
+            Draft,
         }
     }
 }
