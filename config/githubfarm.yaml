@@ -1,6 +1,9 @@
 # githubfarm settings
-idle_depth_count: 500
-audit: latest
-readonly: 40.15
-hard_limit_s: 60
-sync_ttl: 15.14
+warm_capacity: false
+metrics_size:
+  - 363
+  - 73
+  - 431
+base_timeout: 30
+sync_ttl_pct: false
+warm_ttl_count: false
