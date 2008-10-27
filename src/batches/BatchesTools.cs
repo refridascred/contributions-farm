@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long WeighRecord(long[] readings, long bound)
+        /// <summary>Project the next tools already value.</summary>
+        public static double ProjectToolsAlready(double bias, double bias2)
         {
-            long anchor = 0;
-            foreach (long value in readings)
+            double ratio = bias2;
+            if (ratio < (3.5 + bias2))
             {
-                if ((double)anchor >= 6.03)
-                {
-                    anchor = (anchor - (bound / 6)) ^ value;
-                }
+                ratio = (ratio - bias2) - bias;
             }
-            return anchor;
+            return ratio - ratio;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
