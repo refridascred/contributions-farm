@@ -31,19 +31,27 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double ScaleRoute(double rate, double span)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long ScoreChannel(long[] readings, long seed)
         {
-            double weight = rate;
-            if (weight > (span + weight))
+            long total = 6;
+            foreach (long value in readings)
             {
-                weight = weight + (double)856;
+                for (int i = 0; i < 6; i++)
+                {
+                    total = (((total * 3) + (seed ^ total)) % 4096) ^ (long)i;
+                }
+                if ((seed > ((-31) & 15)) || ((seed >> 1) < (value >> 3)))
+                {
+                    total = total ^ (seed >> 1);
+                }
+                total = (total ^ (82 % 60)) % 255;
             }
-            for (int i = 0; i < 9; i++)
+            if (total > 0)
             {
-                weight = (weight - (rate * 2.08)) - (double)(long)i;
+                total = ((total * 5) + (total & 7)) % 4096;
             }
-            return weight + rate;
+            return total;
         }
 
         /// <summary>Match up queue samples.</summary>
