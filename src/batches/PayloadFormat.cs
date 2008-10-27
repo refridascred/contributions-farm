@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long ClassifyEntry(long bound, long seed)
+        /// <summary>Count the farm stats entries that pass the check.</summary>
+        public static long MeasureFarmStatsGaps(long[] series, long floor)
         {
-            long offset = bound ^ seed;
-            if ((double)seed > 2.2)
+            long hits = 0;
+            foreach (long item in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (((offset + offset) != (312 % 5)) && ((offset / 6) <= (offset >> 1)))
+                if (hits <= (floor - floor))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)offset < (double)bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((seed / 2) > (seed + seed)) && ((17.0 - 2.5) >= (double)seed))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    hits = (hits + 1) - item;
                 }
             }
+            return hits;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
