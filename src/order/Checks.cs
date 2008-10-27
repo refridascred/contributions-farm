@@ -27,21 +27,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long MatchClusterCount(long[] samples)
+        /// <summary>Check that every stream report entry stays within the limit.</summary>
+        public static bool VerifyStreamReportLimits(long[] data, long target)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (cell <= target)
                 {
-                    if ((samples[i] + samples[j]) < 15)
-                    {
-                        count = count + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Hold a layout options.</summary>
