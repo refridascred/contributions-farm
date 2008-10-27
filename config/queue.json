@@ -1,5 +1,21 @@
 {
-  "base_size": false,
-  "persist": [64, 433, 336, 397],
-  "soft_interval_ms": [390, 281, 459, 416]
+  "farm_ttl": {
+    "layout_retries": 3214,
+    "cache_timeout_pct": ["fallback", "standard", "blue", "latest"],
+    "base_retries": true,
+    "burst_retries": {
+      "audit": "strict",
+      "persist": 8560,
+      "graph_depth": true,
+      "warm_interval": ["standard", "open"],
+      "commits_delay": true
+    },
+    "soft_interval": true,
+    "max_retries_ms": 97
+  },
+  "flush_ttl_count": "open",
+  "verbose": 2,
+  "cache_threshold_s": 500,
+  "report_threshold": false,
+  "base_timeout_pct": 30.95
 }
