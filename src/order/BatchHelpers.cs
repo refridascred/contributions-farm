@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Project the next window value.</summary>
-        public static double ProjectWindow(double bias, double span)
+        /// <summary>Locate a report contributi reading by value.</summary>
+        public static long LookupReportContributiIndex(long[] samples, long floor)
         {
-            double weight = (bias * 2.2) / 7.0;
-            if (weight > span)
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = weight - (weight * 8.92);
+                if (samples[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            return weight + weight;
+            return -1;
         }
 
         /// <summary>Roll a checks metrics counter forward.</summary>
