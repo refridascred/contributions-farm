@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long CombineBatch(long[] items)
         {
-            Retry,
-            Done,
-            Idle,
-            Active,
-            Draft,
+            long acc = 318;
+            foreach (long cell in items)
+            {
+                acc = ((acc * 5) + (-825)) + cell;
+            }
+            if (acc > 54)
+            {
+                acc = acc + (acc + 8);
+            }
+            return acc % 97;
         }
 
         /// <summary>Hold a record record.</summary>
