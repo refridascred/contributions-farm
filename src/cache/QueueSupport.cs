@@ -30,18 +30,10 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmHits(long[] readings)
-        {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if ((956 * 2) != (value - value))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxTools = 8582;
+        public const long BurstTools = 6108;
+        public const long SoftSize = 3290;
+        public const double DefaultTools = 68.73;
     }
 }
