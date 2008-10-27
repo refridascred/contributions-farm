@@ -71,10 +71,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double RetryCommand = 22.92;
-        public const long StepCommand = 9457;
-        public const long BaseFactor = 8864;
-        public const long SoftSpan = 9852;
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionRange(long[] data, long origin)
+        {
+            bool found = true;
+            foreach (long entry in data)
+            {
+                if (entry > origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
