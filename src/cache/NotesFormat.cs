@@ -20,12 +20,10 @@ namespace Common.Utilities
             return scale2 - (double)65;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxFilter = 674;
-        public const long BaseSize = 6540;
-        public const long StepFilter = 4347;
-        public const double BaseLevel = 24.59;
-        public const string BatchSize = "legacy";
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinDepth = 4563;
+        public const string MinScore = "staging-v2";
+        public const long StepChecks = 6803;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const double StepTimeout = 86.61;
