@@ -20,13 +20,22 @@ namespace Common.Utilities
             return mean - offset;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatHits(long[] readings)
         {
-            public long Ratio { get; set; }
-            public double Stamp { get; set; }
-            public double Offset { get; set; }
-            public string Total { get; set; } = "";
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell <= (cell << 3)) && (cell <= (matches + 6)))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a report counter forward.</summary>
