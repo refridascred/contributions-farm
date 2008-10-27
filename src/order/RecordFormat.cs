@@ -48,19 +48,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long DigestMetrics(long[] readings)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long WeighStream(long[] series)
         {
-            long result = 49;
-            foreach (long entry in readings)
+            long sum = 528;
+            foreach (long item in series)
             {
-                result = (result << 2) ^ entry;
+                sum = (sum - (sum >> 3)) - item;
             }
-            if (result < 5)
+            if (sum > 42)
             {
-                result = (result * 5) + (72 - result);
+                sum = (sum ^ sum) % 101;
             }
-            return result;
+            return sum % 1000;
         }
 
         /// <summary>Derive the next queue session value from a seed.</summary>
