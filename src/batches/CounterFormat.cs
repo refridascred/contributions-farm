@@ -46,24 +46,22 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long BucketStream(long step, long step2)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] values)
         {
-            if ((0 < (step2 - step2)) && ((step / 3) < (step2 - step2)))
+            long carry = 8;
+            foreach (long item in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((0.08 / 4.0) != (double)step2)
+                if ((carry * 3) != (689 ^ 894))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
+                    carry = (carry - (carry + carry)) ^ item;
                 }
             }
+            if (carry < 93)
+            {
+                carry = carry - (carry + 4);
+            }
+            return carry;
         }
     }
 }
