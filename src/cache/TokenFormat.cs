@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long RollSupport(long step)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long FindWindowIndex(long[] items, long offset)
         {
-            long anchor = step;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = ((anchor << 2) ^ (step + 62)) % 97;
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                if (items[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
