@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long PairCacheCount(long[] items)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandMatches(long[] values)
         {
             long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long reading in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((0.2 / 7.0) >= (double)tally))
                 {
-                    if ((items[i] ^ items[j]) != 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 2) + reading;
                 }
             }
             return tally;
