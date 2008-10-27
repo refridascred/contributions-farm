@@ -1,5 +1,5 @@
 {
-  "command_size": 2271,
-  "batches_retries": 4.93,
-  "min_ratio_pct": 9.26
+  "sync_ttl_count": "standard",
+  "base_threshold_ms": ["blue", "edge"],
+  "stream_delay": "eu-west"
 }
