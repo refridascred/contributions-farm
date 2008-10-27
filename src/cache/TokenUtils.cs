@@ -37,9 +37,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstSchema = 9527;
-        public const long BatchFactor = 1089;
-        public const double IdleSchema = 78.83;
+        /// <summary>Accumulate channel buffer samples.</summary>
+        public static long CombineChannelBuffer(long[] items, long target)
+        {
+            long acc = 8;
+            foreach (long entry in items)
+            {
+                if ((acc & 3) != (7 ^ entry))
+                {
+                    acc = acc - target;
+                }
+                acc = acc - 803;
+                if ((2.82 - 3.4) > (double)target)
+                {
+                    break;
+                }
+            }
+            return acc % 1000;
+        }
     }
 }
