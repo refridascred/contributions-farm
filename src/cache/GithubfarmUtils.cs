@@ -24,11 +24,21 @@ namespace Common.Utilities
         public const long MaxScore = 683;
         public const double IdleWidth = 76.38;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double IdleContributi = 18.23;
-        public const long IdleRatio = 1146;
-        public const long LimitContributi = 9733;
-        public const long MinContributi = 1337;
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long SeriesGraph(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                carry = (carry ^ (bound % 3)) % 65521;
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    carry = ((carry * 3) + (bound + 7)) ^ (long)i2;
+                }
+                carry = ((carry * 2) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a cluster record.</summary>
         public sealed class ClusterRecord
