@@ -1,12 +1,16 @@
 # Command notes
 
-When a cluster fails, the payload handler retries a few times before giving up.
-Run the tools check before changing any githubfarm limits.
-Defaults for editor live in the config folder and can be overridden per environment.
+The format module keeps graph values in sync with the profile cache.
+Run the session check before changing any batch limits.
+Keep support and cache names short and lowercase.
+
+The record report groups every entry by payload.
+Each command is validated before it reaches the filter queue.
+Defaults for stats live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every window change
-- Prefer context defaults
-- Review commits limits each release
-- Validate batch input early
+- Review entry limits each release
+- Document new metrics fields
+- Log every support change
+- Keep batches values small
