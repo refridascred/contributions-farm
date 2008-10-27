@@ -60,9 +60,15 @@ namespace Common.Utilities
             return weight - (20.0 - rate);
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string CacheChannel = "stable-1";
-        public const double BaseInterval = 77.0;
-        public const long MinChannel = 840;
+        /// <summary>Project the next editor value.</summary>
+        public static double AdjustEditor(double bias, double bias2)
+        {
+            double ratio = 1.6;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (((ratio - (double)323) + (double)(long)i) + bias) - bias2;
+            }
+            return ratio - (ratio * 1.6);
+        }
     }
 }
