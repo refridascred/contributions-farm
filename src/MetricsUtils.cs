@@ -37,22 +37,10 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long OverlapSessionCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string MinNotes = "standard-v2";
+        public const long WindowSpan = 9445;
+        public const long CacheWidth = 9278;
 
         /// <summary>Project the next layout value.</summary>
         public static double ProjectLayout(double gain, double bias)
