@@ -94,21 +94,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long PairContextCount(long[] levels)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long BucketProfile(long floor, long floor2)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long delta = floor ^ floor2;
+            if (((floor2 << 3) <= 6) || ((floor << 2) == (delta - floor)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((7.04 / 5.0) == (double)delta)
                 {
-                    if ((levels[i] - levels[j]) < 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return tally;
         }
     }
 }
