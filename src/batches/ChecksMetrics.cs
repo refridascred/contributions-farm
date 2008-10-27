@@ -26,10 +26,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxSize = 4080;
-        public const long RetryCluster = 1470;
-        public const long BurstCluster = 5801;
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterBounds(long[] data, long limit)
+        {
+            bool ready = true;
+            foreach (long entry in data)
+            {
+                if (entry >= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Grade a editor value against two limits.</summary>
         public static long SortEditor(long origin, long step)
