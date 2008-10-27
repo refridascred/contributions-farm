@@ -19,19 +19,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportLimits(long[] items, long origin)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricLimits(long[] data, long step)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            bool found = true;
+            foreach (long datum in data)
             {
-                if (cell > origin)
+                if (datum != step)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
     }
 }
