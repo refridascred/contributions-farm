@@ -33,12 +33,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleSpan = 6761;
-        public const long HardBudget = 3001;
-        public const string BaseGraph = "primary-edge";
-        public const long WindowLevel = 6896;
-        public const string IdleRatio = "standard-v2";
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long IterateSession(long origin)
+        {
+            long sum = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                if (sum < 55)
+                {
+                    sum = (sum ^ sum) % 97;
+                }
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
         public static long CompareStreamCount(long[] levels)
