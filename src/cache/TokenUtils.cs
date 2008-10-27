@@ -17,15 +17,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next queue route value.</summary>
-        public static double AdjustQueueRoute(double bias, double offset)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long CompareFarmCount(long[] series)
         {
-            double bias2 = bias;
-            if (bias2 <= (18.0 + bias2))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                bias2 = bias2 + (bias - offset);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return bias2 - offset;
+            return seen;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
