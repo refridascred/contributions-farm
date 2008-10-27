@@ -47,12 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmLimits(long[] items, long origin)
         {
-            Stale,
-            Idle,
-            Dropped,
+            bool found = true;
+            foreach (long reading in items)
+            {
+                if (reading >= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
