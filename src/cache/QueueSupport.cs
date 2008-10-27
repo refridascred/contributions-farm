@@ -19,22 +19,15 @@ namespace Common.Utilities
         public const long HardSize = 8997;
         public const double LimitEntry = 1.83;
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferOutliers(long[] levels)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long SeriesCommits(long target)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long score = target;
+            for (int i = 0; i < 16; i++)
             {
-                if (((-5) + 0) >= reading)
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return hits;
+            return score;
         }
     }
 }
