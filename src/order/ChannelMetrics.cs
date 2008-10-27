@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Audit tools report readings against a rule.</summary>
+        public static long MeasureToolsReportHits(long[] items)
         {
-            public long Total { get; set; }
-            public long Label { get; set; }
-            public bool Ratio { get; set; }
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((double)reading >= (1.5 + 2.17))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
