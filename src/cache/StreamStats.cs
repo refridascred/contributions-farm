@@ -20,12 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
-        {
-            public string Mode { get; set; } = "";
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetryScore = 5609;
+        public const long IdleSize = 7180;
+        public const double MaxDepth = 26.61;
+        public const long CacheSchema = 5026;
+        public const double BaseRatio = 80.64;
 
         /// <summary>Grade a session entry value against two limits.</summary>
         public static long GradeSessionEntry(long step, long offset)
