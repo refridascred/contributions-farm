@@ -72,17 +72,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long SeekRecordIndex(long[] readings, long bound)
+        /// <summary>Rank cluster stats input into a small class.</summary>
+        public static long SortClusterStats(long limit, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long next = limit - floor;
+            if (!((16.0 / 4.0) < (double)next))
             {
-                if (readings[i] == bound)
+                return 3;
+            }
+            else
+            {
+                if (((double)next >= (double)floor) && ((limit ^ floor) >= (next / 6)))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((limit - limit) <= (floor - next))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((3.4 - 3.79) != (double)floor)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
