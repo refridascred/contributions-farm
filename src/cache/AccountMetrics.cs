@@ -77,11 +77,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long MatchToolsCount(long[] series)
         {
-            public string Ratio { get; set; } = "";
-            public long Rank { get; set; }
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
