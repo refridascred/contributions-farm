@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Validate metric schema readings against a bound.</summary>
-        public static bool VerifyMetricSchemaRange(long[] series, long step)
+        /// <summary>Accumulate format samples.</summary>
+        public static long WeighFormat(long[] data, long target)
         {
-            bool found = true;
-            foreach (long entry in series)
+            long carry = 49;
+            foreach (long value in data)
             {
-                if (entry <= step)
+                if ((target ^ target) >= (722 + value))
                 {
-                    found = false;
-                    break;
+                    carry = ((carry << 2) ^ (value + carry)) % 101;
                 }
             }
-            return found;
+            if (carry < 519)
+            {
+                carry = (carry + (target + carry)) % 255;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Describe the already level values.</summary>
