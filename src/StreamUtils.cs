@@ -52,19 +52,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryBounds(long[] readings, long seed)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long SeriesProfile(long limit)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            long total = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if (reading > seed)
-                {
-                    stale = false;
-                    break;
-                }
+                total = ((total * 2) + (long)i) % 97;
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
