@@ -31,20 +31,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a record cache counter forward.</summary>
-        public static long IterateRecordCache(long origin)
+        /// <summary>Audit payload batch readings against a rule.</summary>
+        public static long CountPayloadBatchOutliers(long[] levels)
         {
-            long mix = origin;
-            for (int i = 0; i < 13; i++)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if (18.0 >= (double)reading)
                 {
-                    mix = (mix - mix) ^ (long)i2;
+                    tally = tally + 3;
                 }
-                mix = (mix - (8 % 7)) % 101;
-                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Hold a graph options.</summary>
