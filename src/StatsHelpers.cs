@@ -58,12 +58,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            Dropped,
-            Idle,
-            Locked,
+            public bool Mode { get; set; }
+            public double Rank { get; set; }
+            public string Total { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Rank context input into a small class.</summary>
