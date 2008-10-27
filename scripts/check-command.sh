@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local standard open; do
+COMMAND_LIMIT=96
+log "limit is ${COMMAND_LIMIT}"
+
+for item in primary blue eu-west; do
     log "checking ${item}"
 done
 
-COMMAND_LIMIT=381
-log "limit is ${COMMAND_LIMIT}"
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
