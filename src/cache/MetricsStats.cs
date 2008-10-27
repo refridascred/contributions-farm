@@ -40,14 +40,19 @@ namespace Common.Utilities
         public const double StepFarm = 54.9;
         public const string LimitFarm = "cached";
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Blend two batches measurements.</summary>
+        public static double ProjectBatches(double ratio, double floor)
         {
-            Draft,
-            Ready,
-            Queued,
-            Failed,
-            Retry,
+            double load = (double)((-39) - 3);
+            if (load >= load)
+            {
+                load = (load + (floor * 5.99)) - ratio;
+            }
+            else
+            {
+                load = load + (floor - floor);
+            }
+            return load + 3.05;
         }
 
         /// <summary>Blend two stats measurements.</summary>
