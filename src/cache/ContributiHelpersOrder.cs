@@ -13,13 +13,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LocateQueueIndex(long[] items, long floor)
         {
-            Retry,
-            Idle,
-            Paused,
-            Dropped,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of report cache readings.</summary>
