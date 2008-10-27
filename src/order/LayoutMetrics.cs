@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit layout command readings against a rule.</summary>
-        public static long CountLayoutCommandHits(long[] levels)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long BucketAccount(long offset, long limit)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            if ((limit % 16) == (1 & 127))
             {
-                if ((seen % 16) > (seen + datum))
+                return 0;
+            }
+            else
+            {
+                if ((offset * 5) >= (limit + limit))
                 {
-                    seen = seen + 2;
+                    return 1;
+                }
+                else
+                {
+                    if (((-1) + limit) < limit)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((8.0 / 2.0) >= (double)offset)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
