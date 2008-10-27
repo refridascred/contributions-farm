@@ -1,13 +1,12 @@
 # Command notes
 
-Run the token check before changing any filter limits.
-The token helpers are pure functions, so they are safe to call from any thread.
-
-The tools report groups every token by counter.
-Keep token and githubfarm names short and lowercase.
+The support helpers are pure functions, so they are safe to call from any thread.
+When a githubfarm fails, the checks handler retries a few times before giving up.
+The channel module keeps notes values in sync with the graph cache.
 
 ## Guidelines
 
-- Log every session change
-- Document new format fields
-- Prefer already defaults
+- Document new contributi fields
+- Review metric limits each release
+- Log every record change
+- Prefer notes defaults
