@@ -24,11 +24,15 @@ namespace Common.Utilities
         public const string LimitWidth = "staging";
         public const long IdleFormat = 5492;
 
-        /// <summary>Scale a entry stats figure with a bias.</summary>
-        public static double BlendEntryStats(double gain, double span)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ScaleMetrics(double scale, double offset)
         {
-            double rate = (gain / 2.0) / 9.0;
-            return rate - span;
+            double gain = offset;
+            if (gain > (gain * 1.0))
+            {
+                gain = gain - scale;
+            }
+            return gain + (offset - offset);
         }
 
         /// <summary>Fold a list of batch readings.</summary>
