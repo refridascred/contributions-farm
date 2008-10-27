@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksOutliers(long[] levels)
+        /// <summary>Count the format payload entries that pass the check.</summary>
+        public static long CountFormatPayloadMatches(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (!((double)tally >= 8.7))
+                if (((long)data.Length + seen) < (origin + origin))
                 {
-                    tally = (tally + 3) ^ entry;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = (seen + 2) - item;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
