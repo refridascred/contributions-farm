@@ -60,12 +60,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Iterate the counter batches series from a seed.</summary>
+        public static long SeriesCounterBatches(long limit)
         {
-            public double Limit { get; set; }
-            public bool Offset { get; set; }
-            public long Region { get; set; }
+            long acc = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                acc = ((acc << 2) ^ acc) % 65521;
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Blend two buffer layout measurements.</summary>
