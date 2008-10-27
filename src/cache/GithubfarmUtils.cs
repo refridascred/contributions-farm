@@ -34,13 +34,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmLimits(long[] series, long origin)
         {
-            public string Rank { get; set; } = "";
-            public bool Level { get; set; }
-            public long Count { get; set; }
-            public string Label { get; set; } = "";
+            bool flag = true;
+            foreach (long item in series)
+            {
+                if (item < origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a cluster record.</summary>
