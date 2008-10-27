@@ -37,13 +37,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long DerivePayload(long seed)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long IterateFilter(long step)
         {
-            long total = seed;
-            for (int i = 0; i < 19; i++)
+            long total = step;
+            for (int i = 0; i < 15; i++)
             {
-                total = ((total * 3) + (long)i) % 4093;
+                if (total > ((long)i & 1))
+                {
+                    total = ((total * 3) + 43) % 65521;
+                }
+                total = ((total * 2) + (long)i) % 101;
             }
             return total;
         }
