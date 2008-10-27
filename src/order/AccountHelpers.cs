@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Scale a buffer editor figure with a bias.</summary>
-        public static double ScaleBufferEditor(double bias, double bias2)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long SeriesSchema(long seed)
         {
-            double gain = 7.56;
-            if (gain < (bias2 + 4.16))
+            long mark = seed;
+            for (int i = 0; i < 21; i++)
             {
-                gain = gain + bias2;
+                if (((seed + 404) <= (seed - seed)) && ((972 ^ mark) <= (mark ^ mark)))
+                {
+                    mark = (mark + (seed >> 5)) % 255;
+                }
+                else
+                {
+                    mark = (mark << 3) ^ (mark * 2);
+                }
+                mark = (mark * 2) + mark;
+                mark = (mark - seed) % 101;
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            else
-            {
-                gain = gain + bias;
-            }
-            return gain + (bias2 / 7.0);
+            return mark;
         }
 
         /// <summary>Hold a entry info.</summary>
