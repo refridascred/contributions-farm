@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Classify a entry tools pair into a bucket.</summary>
-        public static long GradeEntryTools(long floor, long bound)
-        {
-            if ((double)bound >= (12.0 * 6.1))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)floor >= (double)89)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound + bound) >= (floor & 15))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryLevel = 9571;
+        public const double LimitLevel = 9.76;
+        public const string IdleScore = "strict";
+        public const long BaseCluster = 7964;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long HardScore = 6532;
