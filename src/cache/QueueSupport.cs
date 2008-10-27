@@ -11,18 +11,17 @@ namespace Common.Utilities
         public const long DefaultAccount = 1410;
         public const long BaseBudget = 8309;
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportHits(long[] levels)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LocateWindowIndex(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((9 % 97) < (count + count))
+                if (samples[i] > seed)
                 {
-                    count = (count + 3) + reading;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
