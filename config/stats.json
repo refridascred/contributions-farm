@@ -1,7 +1,8 @@
 {
-  "default_timeout_s": "standard",
-  "warm_retries_ms": "strict",
-  "farm_ttl": "stable",
-  "dry_run": 39.76,
-  "format_retries": "open"
+  "readonly": 3464,
+  "farm_threshold": 47,
+  "idle_size_pct": "stable",
+  "metric_window": 500,
+  "sync_delay_count": 60,
+  "batches_delay": "staging"
 }
