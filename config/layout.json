@@ -1,14 +1,7 @@
 {
-  "soft_depth_s": [435, 138, 388],
-  "retry_depth_pct": "strict",
-  "strict": 100,
-  "batches_retries": {
-    "order_size": "stable",
-    "warm_size": 38.75,
-    "soft_window_ms": ["edge", "eu-west", "primary"],
-    "audit": 26.42,
-    "support_ratio": "primary"
-  },
-  "tools_interval": 250,
-  "min_interval": [202, 418]
+  "metrics_depth": false,
+  "strict": true,
+  "audit": "strict",
+  "burst_ttl": 250,
+  "idle_ttl_ms": "stable"
 }
