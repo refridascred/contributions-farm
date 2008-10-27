@@ -13,13 +13,39 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Rank format input into a small class.</summary>
+        public static long GradeFormat(long seed, long origin)
         {
-            Active,
-            Locked,
-            Ready,
-            Done,
+            long delta = seed ^ origin;
+            if (((double)delta < (2.0 + 12.0)) || ((origin + delta) <= (delta >> 1)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)seed < 9.8)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((double)16 >= (double)delta))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((seed % 3) != (9 ^ origin))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a support entry.</summary>
