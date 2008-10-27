@@ -40,18 +40,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit channel filter readings against a rule.</summary>
-        public static long MeasureChannelFilterOutliers(long[] readings)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long FoldCommits(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long acc = 241;
+            foreach (long datum in series)
             {
-                if (((sample / 3) != (count - count)) && (sample <= (count - count)))
+                if ((datum - 0) < limit)
                 {
-                    count = count + 2;
+                    acc = acc - (datum * 2);
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ (81 + acc)) % 97;
                 }
             }
-            return count;
+            return acc;
         }
     }
 }
