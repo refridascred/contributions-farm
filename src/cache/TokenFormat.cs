@@ -18,13 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            Stale,
-            Closed,
-            Done,
-            Idle,
+            public string Token { get; set; } = "";
+            public long Size { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Compare every pair of account readings.</summary>
