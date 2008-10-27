@@ -43,20 +43,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long IterateContributi(long seed)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteOutliers(long[] values, long target)
         {
-            long total = seed;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if (!(total >= (seed * 4)))
+                if ((((datum + seen) < seen) && ((datum * 2) > (datum / 3))) || ((9.0 / 8.0) == (double)target))
                 {
-                    total = (total << 3) ^ ((long)i - total);
-                    total = (total ^ (seed << 1)) % 4096;
+                    seen = seen + 3;
                 }
-                total = ((total * 3) + (long)i) % 97;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return total;
+            return seen;
         }
     }
 }
