@@ -20,18 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueMatches(long[] levels, long floor)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((0.9 + 12.0) != (double)item)
-                {
-                    matches = (matches + 1) + floor;
-                }
-            }
-            return matches;
+            Pending,
+            Synced,
+            Failed,
+            Draft,
+            Closed,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
