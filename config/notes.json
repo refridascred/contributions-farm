@@ -1,7 +1,6 @@
 {
-  "max_ttl_count": "open",
-  "default_retries_ms": [150, 288, 48],
-  "idle_retries_pct": ["blue", "cached", "fallback", "eu-west"],
-  "verbose": "legacy",
-  "batch_ttl": 63
+  "cache_depth": [262, 267, 195],
+  "retry_ttl_s": 8000,
+  "sync_limit": 42.77,
+  "dry_run": 93.16
 }
