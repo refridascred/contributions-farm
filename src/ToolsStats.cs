@@ -12,12 +12,32 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheSchema = 6211;
-        public const long SoftFactor = 2824;
-        public const long BurstInterval = 5030;
-        public const long BaseSchema = 939;
-        public const double MinSchema = 63.29;
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long RankCluster(long bound, long seed)
+        {
+            if (((double)seed >= 3.5) || ((bound >> 5) >= seed))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((seed < (seed >> 3)) || ((seed >> 4) == (bound + seed)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!(836 < (bound + bound)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long CountBufferHits(long[] levels, long floor)
