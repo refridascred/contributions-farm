@@ -19,17 +19,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Locate a stream counter reading by value.</summary>
-        public static long SeekStreamCounterIndex(long[] series, long floor)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteRange(long[] data, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                if (series[i] >= floor)
+                if (reading < origin)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Describe the format state values.</summary>
