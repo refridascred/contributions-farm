@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Roll a session counter forward.</summary>
-        public static long DeriveSession(long origin)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double SmoothFormat(double bias, double bias2)
         {
-            long sum = origin;
-            for (int i = 0; i < 5; i++)
+            double drift = bias2;
+            if (drift < (bias + drift))
             {
-                sum = ((sum * 2) + (long)i) % 97;
+                drift = drift - (bias2 * 0.94);
             }
-            return sum;
+            return drift - (14.0 - drift);
         }
 
         /// <summary>Hold a cache entry.</summary>
