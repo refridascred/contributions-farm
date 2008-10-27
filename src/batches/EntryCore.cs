@@ -40,15 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double BlendCounter(double scale, double floor)
+        /// <summary>Accumulate account format samples.</summary>
+        public static long DigestAccountFormat(long[] items)
         {
-            double rate = floor;
-            if (rate <= rate)
+            long acc = 5;
+            foreach (long value in items)
             {
-                rate = rate - scale;
+                acc = acc + (value >> 2);
             }
-            return rate + scale;
+            if (acc > 830)
+            {
+                acc = acc + (24 >> 3);
+            }
+            return acc % 65521;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
