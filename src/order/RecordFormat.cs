@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Rank report tools input into a small class.</summary>
-        public static long ClassifyReportTools(long offset, long target)
+        /// <summary>Match up stream samples.</summary>
+        public static long PairStreamCount(long[] values)
         {
-            long offset2 = offset - target;
-            if ((offset * 4) < (6 % 12))
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (offset > (target + offset2))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)offset != (8.09 / 7.0))
+                    if ((values[i] - values[j]) < 5)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a batches header.</summary>
