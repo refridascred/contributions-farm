@@ -35,11 +35,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseLevel = 3286;
-        public const long IdleLevel = 6066;
-        public const long DefaultRatio = 5960;
-        public const long WindowLayout = 8178;
-        public const long MaxLayout = 3023;
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long SeriesQueue(long target)
+        {
+            long carry = target;
+            for (int i = 0; i < 13; i++)
+            {
+                carry = ((carry << 3) ^ (carry * 3)) % 255;
+                carry = (carry + (target - carry)) % 255;
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
+        }
     }
 }
