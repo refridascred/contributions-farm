@@ -33,13 +33,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
-        {
-            public bool Stamp { get; set; }
-            public long Weight { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseToken = 4624;
+        public const long SoftToken = 1455;
+        public const long RetryCount = 7722;
+        public const double IdleToken = 86.02;
 
         /// <summary>Combine account values into a single score.</summary>
         public static long CombineAccount(long[] series, long floor)
