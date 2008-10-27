@@ -10,13 +10,18 @@ namespace Common.Utilities
         public const string MinFarm = "fallback-edge";
         public const long CacheFarm = 7606;
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadMatches(long[] levels, long target)
         {
-            public double Mode { get; set; }
-            public long Level { get; set; }
-            public bool Weight { get; set; }
-            public long Count { get; set; }
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((value & 63) > (matches + target))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
