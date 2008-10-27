@@ -54,11 +54,18 @@ namespace Common.Utilities
             return drift + (floor + floor);
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double HardLevel = 89.3;
-        public const long BurstInterval = 5427;
-        public const long BurstFactor = 7598;
-        public const long BatchStream = 3737;
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long FindEditorIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= target) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next already value from a seed.</summary>
         public static long RollAlready(long step)
