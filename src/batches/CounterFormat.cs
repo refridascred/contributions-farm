@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long FindContributiIndex(long[] values, long target)
+        /// <summary>Project the next queue metrics value.</summary>
+        public static double ProjectQueueMetrics(double weight, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double bias = (double)412 / 5.0;
+            if (bias > floor)
             {
-                if (values[i] > target)
-                {
-                    return (long)i;
-                }
+                bias = bias - weight;
             }
-            return -1;
+            else
+            {
+                bias = bias + (floor - weight);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - weight) - (double)(long)i;
+            }
+            return bias - bias;
         }
 
         /// <summary>Describe the support kind values.</summary>
