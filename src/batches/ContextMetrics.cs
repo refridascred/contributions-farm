@@ -62,14 +62,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Blend two batch measurements.</summary>
+        public static double BlendBatch(double bias, double bias2)
         {
-            New,
-            Idle,
-            Synced,
-            Retry,
-            Pending,
+            double rate = bias;
+            if (rate > (bias2 * 16.0))
+            {
+                rate = rate - (3.0 + rate);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + (bias + 20.0)) + (double)(long)i;
+            }
+            return rate - bias;
         }
     }
 }
