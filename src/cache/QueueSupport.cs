@@ -15,14 +15,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Check that every batches graph entry stays within the limit.</summary>
+        public static bool ValidateBatchesGraphLimits(long[] data, long origin)
         {
-            Done,
-            Draft,
-            Pending,
-            Paused,
-            Retry,
+            bool stale = true;
+            foreach (long value in data)
+            {
+                if (value >= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Derive the next command channel value from a seed.</summary>
