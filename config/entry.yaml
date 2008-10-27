@@ -1,7 +1,29 @@
 # entry settings
-payload_limit:
-  githubfarm_ttl: true
-  channel_threshold: fallback
-  strict: 60
-format_depth: local
-batch_limit: 5049
+soft_ttl: 76.39
+session_ratio:
+  idle_timeout_ms:
+    base_interval_ms: 100
+    notes_interval:
+      - fallback
+      - blue
+      - eu-west
+      - primary
+    verbose: true
+    flush_retries_count:
+      - 220
+      - 164
+      - 54
+      - 262
+    context_size: false
+    min_ttl: true
+  max_retries_pct: standard
+  dry_run: 29.78
+  default_size_count: 2349
+  poll_limit: 8035
+  max_limit_ms:
+    - local
+    - staging
+    - local
+max_delay: latest
+session_delay: 3217
+channel_timeout: green
