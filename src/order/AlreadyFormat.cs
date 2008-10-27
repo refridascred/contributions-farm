@@ -32,12 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitScore = 6936;
-        public const double WindowTimeout = 81.99;
-        public const long WindowSupport = 3180;
-        public const long RetryBudget = 5192;
-        public const double MinTimeout = 78.61;
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
+        {
+            public bool Flag { get; set; }
+            public double Label { get; set; }
+            public double Rank { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Measure how many filter profile samples are out of range.</summary>
         public static long MeasureFilterProfileOutliers(long[] items)
