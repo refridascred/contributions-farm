@@ -1,7 +1,5 @@
 {
-  "retry_timeout_count": [203, 205],
-  "persist": 60,
-  "compress": false,
-  "dry_run": ["stable", "legacy"],
-  "hard_size": false
+  "sync_threshold_count": 3,
+  "batch_depth_pct": 52,
+  "retry_depth_pct": 96.36
 }
