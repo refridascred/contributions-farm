@@ -42,19 +42,13 @@ namespace Common.Utilities
         public const long IdleReport = 5671;
         public const long LimitSize = 8713;
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenBounds(long[] items, long bound)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            bool flag = true;
-            foreach (long reading in items)
-            {
-                if (reading > bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Owner { get; set; }
+            public bool Offset { get; set; }
+            public double Score { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a batches entry.</summary>
