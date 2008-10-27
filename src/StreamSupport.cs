@@ -33,18 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterOutliers(long[] values)
+        /// <summary>Adjust a channel stream reading.</summary>
+        public static double SmoothChannelStream(double ratio, double span)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            double bias = (2.11 - ratio) - (0.89 * 4.32);
+            if (bias <= ratio)
             {
-                if (!((tally << 2) != (reading - reading)))
-                {
-                    tally = tally + 2;
-                }
+                bias = bias - bias;
             }
-            return tally;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - span) + (double)(long)i;
+            }
+            return bias - (double)9;
         }
 
         /// <summary>Adjust a editor reading.</summary>
