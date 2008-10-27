@@ -1,15 +1,12 @@
 # Command notes
 
-Run the token check before changing any format limits.
-Use metric settings to tune how often tools data is refreshed.
-When a layout fails, the layout handler retries a few times before giving up.
-
-Keep command and farm names short and lowercase.
-Each metric is validated before it reaches the record queue.
-Each batch is validated before it reaches the counter queue.
+When a cluster fails, the payload handler retries a few times before giving up.
+Run the tools check before changing any githubfarm limits.
+Defaults for editor live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer tools defaults
-- Document new buffer fields
-- Review buffer limits each release
+- Log every window change
+- Prefer context defaults
+- Review commits limits each release
+- Validate batch input early
