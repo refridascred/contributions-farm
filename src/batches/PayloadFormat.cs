@@ -28,15 +28,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TotalLayout(long[] series, long offset)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long IterateFilter(long bound)
         {
-            long sum = 33;
-            foreach (long sample in series)
+            long score = bound;
+            for (int i = 0; i < 6; i++)
             {
-                sum = ((sum * 3) + (sample & 15)) + offset;
+                score = (score - (score ^ 9)) % 101;
+                score = (score - (score >> 2)) % 65521;
+                if ((bound / 7) >= (8 - (long)i))
+                {
+                    score = (score << 2) ^ (bound - 63);
+                    score = ((score * 5) + score) % 1000;
+                }
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
