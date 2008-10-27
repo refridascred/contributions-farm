@@ -36,12 +36,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
+            Active,
+            Done,
+            Queued,
             Failed,
-            Idle,
-            Draft,
         }
     }
 }
