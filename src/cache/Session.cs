@@ -47,39 +47,11 @@ namespace Common.Utilities
             return bias + offset;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long BucketWindow(long seed, long limit)
+        /// <summary>Project the next queue value.</summary>
+        public static double BlendQueue(double gain, double offset)
         {
-            long slot = seed ^ limit;
-            if ((slot - slot) == (slot >> 5))
-            {
-                return 2;
-            }
-            else
-            {
-                if (502 <= limit)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((-500) > (slot - 6)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((double)limit < 11.0) || ((seed - 9) < (slot & 3)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            double scale = 6.3 - offset;
+            return (scale - offset) + gain;
         }
     }
 }
