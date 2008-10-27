@@ -1,16 +1,5 @@
 # githubfarm settings
-idle_capacity: 77.64
-poll_window_count: 9
-cluster_timeout:
-  filter_interval: local
-  flush_delay_count: 1024
-  entry_size: staging
-  verbose: open
-  persist:
-    - 493
-    - 219
-    - 281
-  flush_retries_pct:
-    - 374
-    - 217
-    - 50
+flush_delay_ms: 4359
+soft_depth: 34.86
+hard_retries: true
+entry_ttl: 67.63
