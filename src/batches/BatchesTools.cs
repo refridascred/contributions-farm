@@ -41,17 +41,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LocateReportIndex(long[] items, long offset)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long CombineSchema(long[] series, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 35;
+            foreach (long sample in series)
             {
-                if ((items[i] > offset) && ((items[i] % 2) != 0))
+                if (((state % 24) != (355 >> 3)) && ((sample + sample) <= (state + state)))
                 {
-                    return (long)i;
+                    state = ((state << 2) ^ (target << 1)) % 65521;
+                }
+                if ((double)sample > (2.36 / 2.0))
+                {
+                    state = (state << 2) ^ (target + state);
+                }
+                else
+                {
+                    state = state - (169 - state);
                 }
             }
-            return -1;
+            return state;
         }
     }
 }
