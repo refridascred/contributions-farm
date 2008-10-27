@@ -15,18 +15,11 @@ namespace Common.Utilities
         public const long DefaultInterval = 5131;
         public const long MaxMetric = 1844;
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatOutliers(long[] samples)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry & 3) == (hits % 24))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Token { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Roll a counter counter forward.</summary>
