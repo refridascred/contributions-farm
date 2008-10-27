@@ -26,18 +26,19 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TallyOrder(long[] items, long bound)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiLimits(long[] series, long floor)
         {
-            long acc = 3;
-            foreach (long item in items)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                if ((item >> 4) > (item * 4))
+                if (datum > floor)
                 {
-                    acc = (acc + 96) - bound;
+                    valid = false;
+                    break;
                 }
             }
-            return acc % 97;
+            return valid;
         }
     }
 }
