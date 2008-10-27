@@ -40,11 +40,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double LimitTimeout = 37.06;
-        public const double CacheCount = 80.38;
-        public const double SoftTimeout = 63.83;
-        public const long WindowRatio = 8874;
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
+        {
+            public long Weight { get; set; }
+            public long Offset { get; set; }
+            public bool Token { get; set; }
+        }
 
         /// <summary>Hold a payload entry.</summary>
         public sealed class PayloadEntry
