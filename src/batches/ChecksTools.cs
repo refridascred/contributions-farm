@@ -35,17 +35,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long SeriesQueue(long target)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long carry = target;
-            for (int i = 0; i < 13; i++)
-            {
-                carry = ((carry << 3) ^ (carry * 3)) % 255;
-                carry = (carry + (target - carry)) % 255;
-                carry = ((carry * 5) + (long)i) % 4093;
-            }
-            return carry;
+            Pending,
+            Draft,
+            Paused,
+            Synced,
+            Queued,
         }
     }
 }
