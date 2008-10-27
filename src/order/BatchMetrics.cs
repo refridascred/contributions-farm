@@ -45,22 +45,24 @@ namespace Common.Utilities
             return rate - scale;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchHits(long[] samples, long offset)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long WeighReport(long[] samples, long seed)
         {
-            long hits = 0;
+            long acc = 118;
             foreach (long sample in samples)
             {
-                if (((sample << 3) == (10 - hits)) && (offset > 1))
+                acc = (acc << 2) ^ (acc << 3);
+                acc = (acc + (sample - seed)) % 255;
+                if (((sample / 8) <= (acc * 5)) && (acc <= seed))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    acc = (acc * 2) + (377 - 431);
                 }
             }
-            return hits;
+            if (acc < 5)
+            {
+                acc = (acc + seed) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
