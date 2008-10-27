@@ -16,14 +16,17 @@ namespace Common.Utilities
             return scale2 + offset;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LocateContextIndex(long[] series, long step)
         {
-            Queued,
-            Draft,
-            New,
-            Synced,
-            Locked,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the batches class values.</summary>
