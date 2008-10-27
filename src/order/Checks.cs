@@ -27,11 +27,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportGaps(long[] samples)
         {
-            public double Mode { get; set; }
-            public long Score { get; set; }
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((value - value) <= (value + value))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
