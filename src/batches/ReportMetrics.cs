@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long RollSchema(long origin)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long carry = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                carry = (carry ^ (origin ^ carry)) % 4096;
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
+            public long Score { get; set; }
+            public bool Label { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
