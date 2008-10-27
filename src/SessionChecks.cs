@@ -5,20 +5,39 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long IterateBatch(long step)
+        /// <summary>Rank contributi already input into a small class.</summary>
+        public static long SortContributiAlready(long offset, long step)
         {
-            long sum = step;
-            for (int i = 0; i < 13; i++)
+            long cur = offset - step;
+            if ((step + step) > (offset & 255))
             {
-                if (!((double)sum >= (7.49 / 4.0)))
-                {
-                    sum = sum ^ ((long)i + sum);
-                }
-                sum = (sum - sum) % 101;
-                sum = ((sum * 4) + (long)i) % 4093;
+                return 5;
             }
-            return sum;
+            else
+            {
+                if (!((cur - 25) > offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((step * 4) > offset)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((cur * 3) <= cur) && ((double)step < (3.75 - 6.0)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
