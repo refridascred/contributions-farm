@@ -38,19 +38,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double ScaleBatches(double weight, double offset)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long OverlapRecordCount(long[] data)
         {
-            double bias = offset / 5.0;
-            if (bias <= bias)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                bias = (bias - 15.0) - weight;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                bias = bias + (double)8;
-            }
-            return bias - offset;
+            return tally;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
