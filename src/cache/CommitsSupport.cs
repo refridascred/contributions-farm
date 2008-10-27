@@ -21,22 +21,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long OverlapCommitsCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepCache = 9707;
+        public const long IdleWidth = 2646;
+        public const double WindowSize = 95.7;
+        public const long LimitCache = 4374;
 
         /// <summary>Describe the metrics class values.</summary>
         public enum MetricsClass
