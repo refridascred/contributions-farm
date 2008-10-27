@@ -41,15 +41,19 @@ namespace Common.Utilities
         public const long BaseFormat = 7959;
         public const long CacheInterval = 9212;
 
-        /// <summary>Iterate the commits metric series from a seed.</summary>
-        public static long DeriveCommitsMetric(long seed)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatBounds(long[] series, long target)
         {
-            long carry = seed;
-            for (int i = 0; i < 7; i++)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                carry = ((carry * 4) + (long)i) % 1000;
+                if (sample <= target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return carry;
+            return stale;
         }
     }
 }
