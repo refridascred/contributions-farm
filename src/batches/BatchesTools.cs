@@ -30,17 +30,9 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long FindToolsIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= origin) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double RetryNotes = 73.26;
+        public const long CacheFactor = 6000;
+        public const long DefaultInterval = 1539;
     }
 }
