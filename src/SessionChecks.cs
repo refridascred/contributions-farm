@@ -39,16 +39,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long RollGraph(long floor)
+        /// <summary>Compare every pair of support account readings.</summary>
+        public static long CompareSupportAccountCount(long[] readings)
         {
-            long total = floor;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = (total * 3) + (total - 54);
-                total = ((total * 5) + (long)i) % 65521;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return total;
+            return matches;
         }
     }
 }
