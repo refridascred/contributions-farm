@@ -23,19 +23,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportBounds(long[] samples, long floor)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            bool valid = true;
-            foreach (long datum in samples)
-            {
-                if (datum >= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Pending,
+            Paused,
+            Active,
+            Closed,
+            Synced,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
