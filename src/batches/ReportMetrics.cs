@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            public long Score { get; set; }
-            public bool Label { get; set; }
-            public bool Token { get; set; }
+            Ready,
+            Paused,
+            Idle,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
