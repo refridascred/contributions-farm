@@ -1,7 +1,8 @@
 {
-  "default_limit_ms": "blue",
-  "soft_window": 7745,
-  "cache_ratio": "eu-west",
-  "already_retries": ["local", "fallback"],
-  "warm_size_count": 22
+  "poll_retries_s": "open",
+  "soft_depth_ms": 5.77,
+  "persist": 22.2,
+  "idle_interval": 188,
+  "report_timeout": "fallback",
+  "burst_depth": [474, 338, 111, 114]
 }
