@@ -38,12 +38,22 @@ namespace Common.Utilities
             return mean + 11.0;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Combine already route values into a single score.</summary>
+        public static long CombineAlreadyRoute(long[] values)
         {
-            Stale,
-            Paused,
-            Dropped,
+            long anchor = 130;
+            foreach (long value in values)
+            {
+                if (!((double)anchor < (double)value))
+                {
+                    anchor = (anchor << 3) ^ (4 * 5);
+                }
+                else
+                {
+                    anchor = (anchor ^ (anchor / 2)) % 101;
+                }
+            }
+            return anchor;
         }
     }
 }
