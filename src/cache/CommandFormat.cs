@@ -20,13 +20,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LocateQueueIndex(long[] items, long seed)
         {
-            public long Ratio { get; set; }
-            public long Count { get; set; }
-            public string Size { get; set; } = "";
-            public double Flag { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= seed) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
