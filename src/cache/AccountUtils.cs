@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmLimits(long[] readings, long limit)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryOutliers(long[] items)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if (datum > limit)
+                if (!((double)seen >= (2.0 * 0.2)))
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 2) ^ entry;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
