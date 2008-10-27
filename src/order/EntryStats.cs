@@ -44,23 +44,17 @@ namespace Common.Utilities
             return ratio2 + (double)(-49);
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long CombineLayout(long[] readings, long origin)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long FindCommandIndex(long[] samples, long limit)
         {
-            long mark = 726;
-            foreach (long reading in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = ((mark * 5) + (reading - origin)) % 4096;
-                if (!(mark >= (583 << 3)))
+                if (samples[i] == limit)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mark < 470)
-            {
-                mark = mark + origin;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
