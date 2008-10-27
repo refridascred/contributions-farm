@@ -45,18 +45,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportOutliers(long[] data, long limit)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryLimits(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long sample in data)
+            bool ready = true;
+            foreach (long cell in series)
             {
-                if ((sample % 10) != (sample - limit))
+                if (cell != bound)
                 {
-                    count = count + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
