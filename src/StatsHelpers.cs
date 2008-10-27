@@ -54,19 +54,11 @@ namespace Common.Utilities
         public const long LimitTimeout = 5289;
         public const long IdleContributi = 1050;
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsMatches(long[] data, long bound)
-        {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if ((double)bound < 18.0)
-                {
-                    matches = (matches + 3) + item;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double HardLevel = 89.3;
+        public const long BurstInterval = 5427;
+        public const long BurstFactor = 7598;
+        public const long BatchStream = 3737;
 
         /// <summary>Describe the queue status values.</summary>
         public enum QueueStatus
