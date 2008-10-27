@@ -47,19 +47,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every queue report entry stays within the limit.</summary>
-        public static bool ValidateQueueReportBounds(long[] readings, long bound)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            bool ready = true;
-            foreach (long cell in readings)
-            {
-                if (cell < bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Queued,
+            Locked,
+            Paused,
+            Stale,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
