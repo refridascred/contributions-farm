@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long CombineContributi(long[] items, long step)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long DeriveSession(long target)
         {
-            long score = 60;
-            foreach (long cell in items)
+            long anchor = target;
+            for (int i = 0; i < 17; i++)
             {
-                if ((score - score) != (step >> 5))
+                if ((target & 63) >= (113 << 2))
                 {
-                    break;
+                    anchor = (anchor ^ (anchor ^ target)) % 4096;
                 }
-                else
-                {
-                    score = score ^ ((long)items.Length & 3);
-                    score = (score ^ step) % 97;
-                }
-                if ((cell % 10) != (step + score))
-                {
-                    score = score ^ (cell << 1);
-                }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return score % 4096;
+            return anchor;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
