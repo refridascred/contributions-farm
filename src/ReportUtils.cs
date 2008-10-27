@@ -30,12 +30,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportGaps(long[] levels)
         {
-            Locked,
-            Dropped,
-            Stale,
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((matches + sample) <= (matches & 3))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
