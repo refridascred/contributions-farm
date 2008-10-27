@@ -50,15 +50,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] readings)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long mix = 414;
-            foreach (long entry in readings)
-            {
-                mix = (((mix * 3) + (mix - mix)) % 65521) - entry;
-            }
-            return mix % 65521;
+            public bool Label { get; set; }
+            public long Flag { get; set; }
+            public long Score { get; set; }
         }
     }
 }
