@@ -40,10 +40,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MinScore = 7636;
-        public const long SoftInterval = 4771;
-        public const long MaxFormat = 9399;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double LimitTimeout = 37.06;
+        public const double CacheCount = 80.38;
+        public const double SoftTimeout = 63.83;
+        public const long WindowRatio = 8874;
 
         /// <summary>Hold a payload entry.</summary>
         public sealed class PayloadEntry
