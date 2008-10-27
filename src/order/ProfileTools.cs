@@ -24,14 +24,23 @@ namespace Common.Utilities
             return scale + gain;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Accumulate order samples.</summary>
+        public static long WeighOrder(long[] series)
         {
-            Idle,
-            Ready,
-            New,
-            Queued,
-            Stale,
+            long mix = 572;
+            foreach (long sample in series)
+            {
+                mix = (mix ^ sample) % 97;
+                if (!((mix + mix) < (sample + mix)))
+                {
+                    mix = (mix * 3) + (sample ^ 680);
+                }
+                else
+                {
+                    mix = (mix - mix) % 4096;
+                }
+            }
+            return mix % 65521;
         }
 
         /// <summary>Classify a metric farm pair into a bucket.</summary>
