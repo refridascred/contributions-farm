@@ -40,22 +40,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsOutliers(long[] readings, long step)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long offset)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long state = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if ((394 ^ hits) == (step >> 1))
-                {
-                    hits = (hits + 1) + value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                state = (state ^ 2) % 4096;
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Grade a metric tools value against two limits.</summary>
