@@ -16,13 +16,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
-        {
-            Stale,
-            Dropped,
-            Synced,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinCount = 1481;
+        public const double BatchCount = 36.74;
+        public const double BaseAccount = 22.48;
+        public const long SoftAccount = 283;
+        public const long CacheAccount = 3994;
 
         /// <summary>Compare every pair of commits window readings.</summary>
         public static long CompareCommitsWindowCount(long[] values)
