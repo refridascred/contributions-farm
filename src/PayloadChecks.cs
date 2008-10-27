@@ -12,12 +12,13 @@ namespace Common.Utilities
             return bias - (weight + span);
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            public long Region { get; set; }
-            public string Score { get; set; } = "";
-            public string Size { get; set; } = "";
+            public long Owner { get; set; }
+            public double Limit { get; set; }
+            public string Label { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
