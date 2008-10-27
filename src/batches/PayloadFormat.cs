@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double CacheCount = 5.51;
-        public const double SoftLevel = 29.25;
-        public const string BatchTimeout = "staging";
-        public const long BaseContext = 5361;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstTimeout = 7848;
+        public const string BatchRatio = "stable";
+        public const long RetryCount = 1279;
 
         /// <summary>Define context limits and defaults.</summary>
         public const double DefaultContext = 94.27;
