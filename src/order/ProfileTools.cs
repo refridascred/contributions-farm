@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double SmoothStats(double gain, double offset)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            double scale = gain;
-            if (scale > (offset * 2.3))
-            {
-                scale = scale + (offset * 1.5);
-            }
-            else
-            {
-                scale = scale - scale;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - (scale * 7.71)) + (double)(long)i;
-            }
-            return scale + gain;
+            public long Owner { get; set; }
+            public double Token { get; set; }
+            public string Level { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Accumulate order samples.</summary>
