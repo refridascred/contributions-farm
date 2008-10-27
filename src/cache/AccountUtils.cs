@@ -19,20 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long ScoreQueue(long[] data, long bound)
-        {
-            long mix = 1;
-            foreach (long cell in data)
-            {
-                mix = ((mix * 2) + (bound ^ cell)) % 1000;
-            }
-            if (mix > 212)
-            {
-                mix = mix - (89 & 127);
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftTimeout = 7229;
+        public const long RetryPayload = 4801;
+        public const long BurstPayload = 3276;
+        public const long MinPayload = 5320;
 
         /// <summary>Audit profile farm readings against a rule.</summary>
         public static long TallyProfileFarmOutliers(long[] samples, long limit)
