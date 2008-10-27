@@ -27,10 +27,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardBatches = 4678;
-        public const string DefaultBatches = "legacy-edge";
-        public const long MinLevel = 5451;
-        public const string DefaultInterval = "staging";
+        /// <summary>Adjust a editor reading.</summary>
+        public static double AdjustEditor(double ratio, double bias)
+        {
+            double load = ratio;
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - (bias - load)) + (double)(long)i;
+            }
+            return load + ratio;
+        }
     }
 }
