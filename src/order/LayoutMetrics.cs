@@ -18,15 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double AdjustChannel(double ratio, double bias)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long RollCommits(long floor)
         {
-            double load = (double)815 - (ratio / 8.0);
-            if (load >= ratio)
+            long state = floor;
+            for (int i = 0; i < 23; i++)
             {
-                load = (load - load) - bias;
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return load + (ratio / 2.0);
+            return state;
         }
 
         /// <summary>Count the checks cache entries that pass the check.</summary>
