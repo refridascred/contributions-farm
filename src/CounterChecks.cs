@@ -20,26 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate support checks samples.</summary>
-        public static long TallySupportChecks(long[] values)
+        /// <summary>Project the next editor value.</summary>
+        public static double SmoothEditor(double rate, double bias)
         {
-            long mix = 880;
-            foreach (long datum in values)
+            double load = rate;
+            for (int i = 0; i < 5; i++)
             {
-                if (((6 / 3) < (datum ^ 87)) || ((datum + datum) > ((long)values.Length + mix)))
-                {
-                    mix = (mix << 3) ^ (mix % 12);
-                }
-                if (datum >= (mix - datum))
-                {
-                    mix = ((mix * 3) + (datum + 28)) % 65521;
-                }
-                if (datum >= (datum % 2))
-                {
-                    break;
-                }
+                load = ((load - (1.7 * 3.66)) + (double)(long)i) + bias;
             }
-            return mix % 1000;
+            return load - load;
         }
 
         /// <summary>Hold a farm info.</summary>
