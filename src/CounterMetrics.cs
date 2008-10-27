@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit githubfarm graph readings against a rule.</summary>
-        public static long CountGithubfarmGraphMatches(long[] samples, long origin)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenGaps(long[] values)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if (((reading + hits) >= hits) && ((double)origin <= 2.39))
+                if (21 <= (entry >> 2))
                 {
-                    hits = hits + 2;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
