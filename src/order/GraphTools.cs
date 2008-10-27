@@ -29,13 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Scale a entry stats figure with a bias.</summary>
+        public static double BlendEntryStats(double gain, double span)
         {
-            public bool Ratio { get; set; }
-            public long Label { get; set; }
-            public bool Count { get; set; }
-            public long Flag { get; set; }
+            double rate = (gain / 2.0) / 9.0;
+            return rate - span;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
