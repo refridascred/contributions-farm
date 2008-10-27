@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long FoldCluster(long[] levels)
         {
-            public double Ratio { get; set; }
-            public double Owner { get; set; }
-            public double Total { get; set; }
-            public double Size { get; set; }
+            long acc = -97;
+            foreach (long cell in levels)
+            {
+                if ((cell >> 1) > (acc + cell))
+                {
+                    acc = (acc ^ (cell & 15)) % 255;
+                }
+            }
+            if (acc < 32)
+            {
+                acc = (acc ^ (acc >> 5)) % 4096;
+            }
+            return acc % 97;
         }
 
         /// <summary>Define route limits and defaults.</summary>
