@@ -36,15 +36,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long WeighStats(long[] data, long limit)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmHits(long[] levels)
         {
-            long anchor = -182;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                anchor = ((((anchor * 3) + anchor) % 255) - value) - limit;
+                if (((-7) & 7) <= (sample / 6))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
