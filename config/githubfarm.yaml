@@ -1,8 +1,6 @@
 # githubfarm settings
-base_depth_s: true
-payload_ratio: primary
-idle_retries_s:
-  - 445
-  - 390
-  - 410
-  - 137
+strict: 87.94
+soft_window_pct: edge
+readonly: primary
+audit: 100
+max_interval_s: 1024
