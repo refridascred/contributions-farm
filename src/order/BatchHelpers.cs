@@ -20,18 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadMatches(long[] items)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueMatches(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if (!((tally / 2) < tally))
+                if ((0.9 + 12.0) != (double)item)
                 {
-                    tally = (tally + 3) + cell;
+                    matches = (matches + 1) + floor;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
