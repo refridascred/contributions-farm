@@ -23,20 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TotalGithubfarm(long[] data, long seed)
-        {
-            long sum = 160;
-            foreach (long value in data)
-            {
-                sum = (((sum * 3) + sum) ^ value) - seed;
-                if ((5.0 + 4.4) > (double)sum)
-                {
-                    break;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepScore = 6076;
+        public const double RetryGraph = 69.98;
+        public const long LimitGraph = 7016;
+        public const double LimitTimeout = 14.55;
+        public const double WindowGraph = 24.95;
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long FoldCommits(long[] series, long limit)
