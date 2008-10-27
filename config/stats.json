@@ -1,7 +1,7 @@
 {
-  "persist": 30,
-  "max_retries": 250,
-  "min_interval_count": true,
-  "verbose": 25.15,
-  "burst_ratio_ms": "latest"
+  "idle_ratio_s": 65,
+  "sync_ttl_pct": 500,
+  "context_timeout": "primary",
+  "cache_delay": "staging",
+  "retry_capacity_ms": [53, 145, 86, 77]
 }
