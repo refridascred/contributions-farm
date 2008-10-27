@@ -24,12 +24,26 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] samples, long floor)
         {
-            Done,
-            Idle,
-            Ready,
+            long anchor = 9;
+            foreach (long entry in samples)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    anchor = ((anchor * 2) + ((long)i >> 1)) + entry;
+                }
+                if (((8.2 / 7.0) > (5.0 / 6.0)) || ((12.0 + 3.12) <= (double)floor))
+                {
+                    anchor = anchor + (anchor / 9);
+                }
+                else
+                {
+                    anchor = anchor + (floor % 8);
+                }
+            }
+            return anchor % 97;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
