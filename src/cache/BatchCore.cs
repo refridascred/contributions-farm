@@ -33,15 +33,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TallyToken(long[] series)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long CombineSchema(long[] values)
         {
-            long carry = 57;
-            foreach (long datum in series)
+            long anchor = 4;
+            foreach (long reading in values)
             {
-                carry = (carry - (828 - datum)) % 97;
+                if ((anchor + reading) > reading)
+                {
+                    anchor = (anchor + (anchor + reading)) % 4096;
+                }
+                else
+                {
+                    anchor = anchor ^ (anchor % 12);
+                }
             }
-            return carry % 97;
+            if (anchor < 454)
+            {
+                anchor = ((anchor * 2) + anchor) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
