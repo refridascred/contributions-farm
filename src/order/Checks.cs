@@ -53,12 +53,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double CacheStats = 36.07;
-        public const double StepStats = 61.33;
-        public const string StepInterval = "standard-edge";
-        public const double BatchStats = 17.36;
-        public const long MaxFactor = 4820;
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
+        {
+            public double Stamp { get; set; }
+            public bool Total { get; set; }
+            public long Token { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Hold a filter entry.</summary>
         public sealed class FilterEntry
