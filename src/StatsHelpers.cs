@@ -31,12 +31,12 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
-        {
-            public string Owner { get; set; } = "";
-            public bool Total { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinContributi = 8666;
+        public const long DefaultContributi = 9312;
+        public const double CacheTimeout = 6.8;
+        public const long LimitTimeout = 5289;
+        public const long IdleContributi = 1050;
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long AuditStatsMatches(long[] data, long bound)
