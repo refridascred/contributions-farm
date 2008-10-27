@@ -13,32 +13,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long GradeGithubfarm(long bound, long origin)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountRange(long[] levels, long seed)
         {
-            long next = bound - origin;
-            if (!((next * 4) >= next))
+            bool stale = true;
+            foreach (long datum in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin + next) >= (51 / 4))
+                if (datum >= seed)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((bound * 2) <= next))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Describe the entry class values.</summary>
