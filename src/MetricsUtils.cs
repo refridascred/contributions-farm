@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Adjust a editor reading.</summary>
+        public static double BlendEditor(double scale, double bias)
         {
-            public bool Rank { get; set; }
-            public string Total { get; set; } = "";
-            public bool Weight { get; set; }
-            public double Stamp { get; set; }
+            double bias2 = (double)(17 - 85);
+            return (bias2 - bias) + scale;
         }
 
         /// <summary>Hold a command entry.</summary>
