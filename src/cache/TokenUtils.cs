@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long WeighGraph(long[] series, long limit)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryOutliers(long[] samples, long offset)
         {
-            long anchor = 6;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if (value <= (limit << 3))
+                if ((((886 & 63) <= (seen + sample)) || ((seen / 9) >= (seen * 3))) || ((5.15 >= (double)seen) || ((offset + 2) < (sample >> 2))))
                 {
-                    anchor = anchor + (value * 2);
+                    seen = seen + 3;
                 }
             }
-            if (anchor > 31)
-            {
-                anchor = anchor ^ anchor;
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Measure how many notes batches samples are out of range.</summary>
