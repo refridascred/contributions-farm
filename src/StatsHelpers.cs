@@ -47,21 +47,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long IterateStats(long limit)
+        /// <summary>Check that every queue report entry stays within the limit.</summary>
+        public static bool ValidateQueueReportBounds(long[] readings, long bound)
         {
-            long anchor = limit;
-            for (int i = 0; i < 15; i++)
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                if ((anchor & 1) == (anchor + (long)i))
+                if (cell < bound)
                 {
-                    anchor = (anchor ^ anchor) % 65521;
+                    ready = false;
                     break;
                 }
-                anchor = (anchor ^ (3 + limit)) % 65521;
-                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
