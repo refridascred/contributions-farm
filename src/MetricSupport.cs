@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaMatches(long[] data)
-        {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((22 / 8) >= (item + tally))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string HardGithubfarm = "stable-edge";
+        public const long LimitGithubfarm = 4249;
+        public const long SoftGithubfarm = 8046;
+        public const long MaxGithubfarm = 699;
 
         /// <summary>Match up context githubfarm samples.</summary>
         public static long OverlapContextGithubfarmCount(long[] samples)
