@@ -22,22 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long CompareAccountCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double CacheEditor = 2.89;
+        public const string WindowEditor = "local-1";
+        public const string SoftSpan = "stable-edge";
 
         /// <summary>Describe the batch state values.</summary>
         public enum BatchState
