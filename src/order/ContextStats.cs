@@ -57,24 +57,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long ClassifyGraph(long target, long bound)
+        /// <summary>Match up order samples.</summary>
+        public static long CompareOrderCount(long[] series)
         {
-            if ((31 ^ bound) < (9 + target))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (130 < (bound + bound))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
+                    if ((series[i] - series[j]) == 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
     }
 }
