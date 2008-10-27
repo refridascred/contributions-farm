@@ -63,21 +63,21 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Derive the next queue session value from a seed.</summary>
-        public static long RollQueueSession(long floor)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long PairStatsCount(long[] series)
         {
-            long anchor = floor;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = anchor ^ floor;
-                bool found = 9.2 >= (double)(long)i;
-                if (found)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = anchor - (anchor & 127);
+                    if ((series[i] ^ series[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
                 }
-                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return count;
         }
     }
 }
