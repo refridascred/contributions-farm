@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextMatches(long[] samples)
-        {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if (((double)count <= (9.8 - 9.9)) && ((count % 100) <= entry))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchSupport = 1145;
+        public const long HardFactor = 1437;
+        public const long BurstDepth = 3754;
+        public const double RetryWidth = 75.82;
 
         /// <summary>Digest a series of schema entries.</summary>
         public static long TotalSchema(long[] levels)
