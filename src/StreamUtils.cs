@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            Ready,
+            Pending,
             New,
-            Closed,
+            Retry,
+            Synced,
         }
 
         /// <summary>Define token limits and defaults.</summary>
