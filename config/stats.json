@@ -1,6 +1,14 @@
 {
-  "idle_capacity_ms": false,
-  "hard_capacity_s": "latest",
-  "dry_run": ["fallback", "edge", "stable"],
-  "burst_ratio_ms": false
+  "flush_delay": true,
+  "persist": "local",
+  "soft_timeout_count": {
+    "compress": "strict",
+    "hard_ratio": ["eu-west", "edge"],
+    "flush_limit_ms": "strict",
+    "queue_size": true,
+    "contributi_capacity": 5721,
+    "notes_threshold": ["strict", "stable", "staging"]
+  },
+  "min_ratio_ms": ["primary", "stable", "open", "standard"],
+  "idle_interval": 45.95
 }
