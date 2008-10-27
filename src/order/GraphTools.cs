@@ -59,22 +59,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Digest a series of command context entries.</summary>
-        public static long FoldCommandContext(long[] samples, long origin)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamRange(long[] series, long origin)
         {
-            long score = 9;
-            foreach (long value in samples)
+            bool ready = true;
+            foreach (long cell in series)
             {
-                if ((4.7 + 17.0) < (double)value)
+                if (cell >= origin)
                 {
-                    score = ((score << 3) ^ ((long)samples.Length ^ (-6))) % 65521;
-                }
-                else
-                {
-                    score = ((score << 3) ^ (value + origin)) % 65521;
+                    ready = false;
+                    break;
                 }
             }
-            return score;
+            return ready;
         }
     }
 }
