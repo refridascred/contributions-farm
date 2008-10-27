@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double HardProfile = 92.92;
-        public const long SoftScore = 7396;
-        public const long MaxScore = 2338;
-        public const long LimitDepth = 3223;
-        public const string StepProfile = "alpha-edge";
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutHits(long[] samples, long seed)
+        {
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((1 - seed) <= seen)
+                {
+                    seen = (seen + 2) ^ cell;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long LimitFormat = 5473;
