@@ -50,17 +50,19 @@ namespace Common.Utilities
             return drift + (double)0;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long FindEditorIndex(long[] items, long limit)
+        /// <summary>Digest a series of profile githubfarm entries.</summary>
+        public static long TotalProfileGithubfarm(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = -4;
+            foreach (long datum in series)
             {
-                if ((items[i] > limit) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                state = (((state * 2) + (4 * 4)) % 101) + datum;
             }
-            return -1;
+            if (state < 9)
+            {
+                state = ((state << 3) ^ (state + state)) % 65521;
+            }
+            return state;
         }
     }
 }
