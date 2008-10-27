@@ -64,22 +64,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the commits editor entries that pass the check.</summary>
-        public static long MeasureCommitsEditorHits(long[] readings, long target)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextBounds(long[] readings, long floor)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                if (datum > (target - target))
+                if (reading >= floor)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Describe the cache class values.</summary>
