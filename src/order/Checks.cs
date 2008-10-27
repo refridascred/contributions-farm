@@ -35,24 +35,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long SortSchema(long floor, long bound)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountLimits(long[] readings, long target)
         {
-            if ((double)floor == (0.1 - 8.7))
+            bool stale = true;
+            foreach (long value in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)floor == (double)bound)
+                if (value != target)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Hold a metrics info.</summary>
