@@ -25,12 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            Failed,
-            Stale,
-            Synced,
+            public long Token { get; set; }
+            public double Offset { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Digest a series of channel entries.</summary>
