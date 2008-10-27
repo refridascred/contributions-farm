@@ -19,23 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long GradeGraph(long step, long offset)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long target, long bound)
         {
-            long next = step ^ offset;
-            if (!(((-719) + offset) >= next))
+            if (((-662) << 1) < target)
             {
-                return 4;
+                return 7;
             }
             else
             {
-                if ((1 >= (offset % 2)) || (173 > (step - 7)))
+                if ((bound >= (target ^ target)) || ((double)bound == (6.6 / 5.0)))
                 {
-                    return 1;
+                    return 3;
                 }
                 else
                 {
-                    return 8;
+                    return 0;
                 }
             }
         }
