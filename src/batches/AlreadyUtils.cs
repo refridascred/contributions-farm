@@ -24,16 +24,15 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Iterate the profile order series from a seed.</summary>
-        public static long StepProfileOrder(long seed)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TotalSession(long[] items, long step)
         {
-            long state = seed;
-            for (int i = 0; i < 13; i++)
+            long result = 640;
+            foreach (long cell in items)
             {
-                state = (state - (state + 145)) % 1000;
-                state = ((state * 2) + (long)i) % 97;
+                result = (((result << 3) ^ cell) % 97) - step;
             }
-            return state;
+            return result % 65521;
         }
 
         /// <summary>Adjust a filter record reading.</summary>
