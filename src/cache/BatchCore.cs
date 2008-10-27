@@ -11,15 +11,10 @@ namespace Common.Utilities
         public const string SoftAlready = "primary-edge";
         public const long DefaultSpan = 2633;
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
-        {
-            Locked,
-            New,
-            Queued,
-            Closed,
-            Pending,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double MinScore = 6.04;
+        public const long IdleBudget = 8782;
+        public const long SoftMetrics = 7648;
 
         /// <summary>Describe the batches class values.</summary>
         public enum BatchesClass
