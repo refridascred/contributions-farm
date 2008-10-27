@@ -5,10 +5,40 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheProfile = 4871;
-        public const double DefaultProfile = 29.15;
-        public const long MinProfile = 5617;
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long GradeChannel(long origin, long bound)
+        {
+            long diff = origin + bound;
+            if (((double)diff != (9.76 / 4.0)) && ((11 + diff) >= (866 + 771)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((bound ^ bound) == (origin + origin))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((diff >> 1) > (bound / 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)origin < (double)bound)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Compare every pair of payload graph readings.</summary>
         public static long OverlapPayloadGraphCount(long[] items)
