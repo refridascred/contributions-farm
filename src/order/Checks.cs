@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LocateGithubfarmIndex(long[] values, long bound)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long SortContributi(long bound, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((bound + bound) >= bound)
             {
-                if ((values[i] < bound) && ((values[i] % 3) != 0))
+                return 1;
+            }
+            else
+            {
+                if ((double)bound >= 20.0)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((floor << 1) == (floor + floor))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a layout options.</summary>
