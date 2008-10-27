@@ -1,10 +1,6 @@
-id,state,region,rank
-1,443,919,616
-2,69.3,green,678
-3,691,16.52,28.27
-4,33.34,70.87,69.83
-5,primary,66.45,807
-6,eu-west,green,955
-7,latest,758,137
-8,blue,68.31,69.73
-9,750,staging,latest
+id,state,ratio
+1,96.94,328
+2,standard,263
+3,65.99,11.28
+4,69.72,380
+5,latest,404
