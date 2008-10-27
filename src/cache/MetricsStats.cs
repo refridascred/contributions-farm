@@ -67,26 +67,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate payload report samples.</summary>
-        public static long WeighPayloadReport(long[] values)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long state = 50;
-            foreach (long item in values)
-            {
-                if (state < item)
-                {
-                    state = (state ^ item) % 4096;
-                }
-                if ((item & 7) >= state)
-                {
-                    state = state ^ item;
-                }
-                else
-                {
-                    state = ((state * 2) + (state + 7)) % 4096;
-                }
-            }
-            return state;
+            Ready,
+            Retry,
+            Closed,
         }
     }
 }
