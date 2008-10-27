@@ -5,29 +5,29 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long ClassifyQueue(long origin, long seed)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long RankStream(long step, long floor)
         {
-            long slot = origin - seed;
-            if (((slot << 2) >= origin) || ((slot * 5) >= slot))
+            long gap = step ^ floor;
+            if ((gap + step) <= (gap ^ gap))
             {
-                return 7;
+                return 8;
             }
             else
             {
-                if ((seed >= (537 >> 2)) || ((double)origin > 0.4))
+                if ((step << 2) <= (gap << 3))
                 {
                     return 2;
                 }
                 else
                 {
-                    if ((slot % 10) <= slot)
+                    if ((gap ^ floor) <= step)
                     {
-                        return 3;
+                        return 5;
                     }
                     else
                     {
-                        return 0;
+                        return 4;
                     }
                 }
             }
