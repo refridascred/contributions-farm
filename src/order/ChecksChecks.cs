@@ -5,39 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long GradeLayout(long bound, long offset)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long DigestOrder(long[] readings)
         {
-            long lane = bound - offset;
-            if (!((offset - offset) != (offset / 5)))
+            long mix = 6;
+            foreach (long sample in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound / 9) == (9 - bound))
+                mix = ((mix * 2) + mix) % 1000;
+                mix = (mix + sample) % 1000;
+                if (((sample + mix) != ((long)readings.Length * 4)) || ((mix + sample) <= (mix >> 2)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((18 ^ bound) <= (1 + offset))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((lane - 22) > (lane / 4))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    break;
                 }
             }
+            return mix % 1000;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
