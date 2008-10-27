@@ -1,19 +1,20 @@
 {
-  "default_ttl": {
-    "dry_run": 500,
-    "cache_ratio_ms": [418, 59, 220],
-    "warm_interval": "open",
-    "batch_depth_pct": 9399,
-    "notes_threshold": {
-      "flush_threshold": false,
-      "soft_window_count": "local",
-      "cache_timeout_pct": "fallback",
-      "retry_size": "primary",
-      "enabled": "stable"
-    },
-    "sync_capacity": "eu-west"
+  "warm_ttl_count": [394, 173, 455],
+  "stream_threshold": {
+    "burst_interval": "latest",
+    "flush_size": 96,
+    "burst_ratio_pct": false,
+    "commits_interval": "primary",
+    "buffer_timeout": "standard",
+    "sync_size": "edge"
   },
-  "retry_capacity": false,
-  "min_threshold": "legacy",
-  "readonly": false
+  "readonly": {
+    "base_retries_ms": "strict",
+    "cluster_ttl": [299, 110],
+    "min_retries_count": 4662,
+    "audit": "legacy",
+    "max_timeout": 500
+  },
+  "batches_size": 8706,
+  "notes_capacity": "cached"
 }
