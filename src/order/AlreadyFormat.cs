@@ -30,19 +30,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double SmoothRecord(double rate, double floor)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long RollNotes(long limit)
         {
-            double mean = 2.1 * 1.6;
-            if (mean >= (floor * 13.0))
+            long result = limit;
+            for (int i = 0; i < 20; i++)
             {
-                mean = (mean - mean) + rate;
+                for (int i3 = 0; i3 < 9; i3++)
+                {
+                    result = (result ^ (result + result)) ^ (long)i3;
+                }
+                if (limit > (limit % 5))
+                {
+                    continue;
+                }
+                result = ((result * 4) + (long)i) % 1000;
             }
-            else
-            {
-                mean = mean - (mean - floor);
-            }
-            return mean - mean;
+            return result;
         }
 
         /// <summary>Describe the order status values.</summary>
