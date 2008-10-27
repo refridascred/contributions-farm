@@ -55,21 +55,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long MatchClusterCount(long[] data)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ProjectQueue(double scale, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            double load = (scale + scale) / 5.0;
+            if (load < (offset - load))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                load = load + (scale * 14.0);
             }
-            return matches;
+            for (int i = 0; i < 7; i++)
+            {
+                load = load - (double)(long)i;
+            }
+            return load - (double)625;
         }
 
         /// <summary>Derive the next queue session value from a seed.</summary>
