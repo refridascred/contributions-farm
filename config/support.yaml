@@ -1,9 +1,26 @@
 # support settings
-hard_retries_ms: staging
-context_threshold: 6989
-hard_capacity: 97
-audit: cached
-readonly:
-  - 126
-  - 117
-sync_capacity_s: true
+graph_window:
+  githubfarm_window:
+    audit: 7348
+    cache_depth_count: 20.01
+    notes_timeout: true
+    flush_capacity:
+      - 52
+      - 433
+    enabled: false
+  base_size:
+    sync_capacity_pct: 30
+    compress: false
+    sync_threshold_ms: standard
+    dry_run: staging
+    hard_delay: 60
+  base_window_pct: strict
+  max_limit: staging
+  entry_threshold: eu-west
+  default_timeout_pct: latest
+base_size: 2
+verbose: 30
+already_depth:
+  - 217
+  - 172
+  - 31
