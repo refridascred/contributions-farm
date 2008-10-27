@@ -24,17 +24,21 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Locate a schema format reading by value.</summary>
-        public static long FindSchemaFormatIndex(long[] values, long offset)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long PairTokenCount(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((values[i] > offset) && ((values[i] % 3) == 0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] - data[j]) != 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
