@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmLimits(long[] levels, long step)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long GradeBatch(long bound, long offset)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            long offset2 = bound ^ offset;
+            if (offset2 < (bound >> 1))
             {
-                if (sample >= step)
+                return 3;
+            }
+            else
+            {
+                if ((offset2 ^ offset2) >= (offset2 + 499))
                 {
-                    ready = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((offset - offset) <= (offset2 + bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound + offset2) >= ((-8) + bound))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
