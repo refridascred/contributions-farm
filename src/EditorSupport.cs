@@ -45,13 +45,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Validate format commits readings against a bound.</summary>
+        public static bool CheckFormatCommitsBounds(long[] readings, long limit)
         {
-            public double Count { get; set; }
-            public string Offset { get; set; } = "";
-            public long Mode { get; set; }
-            public double Token { get; set; }
+            bool valid = true;
+            foreach (long cell in readings)
+            {
+                if (cell >= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
