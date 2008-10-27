@@ -46,38 +46,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long ScoreCounter(long[] data)
+        /// <summary>Match up cluster record samples.</summary>
+        public static long CompareClusterRecordCount(long[] values)
         {
-            long sum = 202;
-            foreach (long reading in data)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((double)sum >= (6.0 * 2.3)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = (sum ^ (sum + reading)) % 255;
-                }
-                else
-                {
-                    sum = sum ^ sum;
-                }
-                if ((sum + sum) != (35 + reading))
-                {
-                    sum = ((sum << 3) ^ sum) % 255;
-                }
-                if (((long)data.Length & 63) == (sum + reading))
-                {
-                    sum = (sum - sum) % 65521;
-                }
-                else
-                {
-                    sum = (sum - sum) % 4096;
+                    if ((values[i] + values[j]) == 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (sum > 86)
-            {
-                sum = (sum ^ (sum + 92)) % 255;
-            }
-            return sum % 1000;
+            return count;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
