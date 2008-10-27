@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TallyFormat(long[] samples)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long result = 33;
-            foreach (long reading in samples)
-            {
-                if ((double)reading <= (double)22)
-                {
-                    result = (result ^ (reading * 4)) % 101;
-                }
-            }
-            if (result > 0)
-            {
-                result = ((result << 3) ^ result) % 255;
-            }
-            return result;
+            public long Size { get; set; }
+            public long Ratio { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
