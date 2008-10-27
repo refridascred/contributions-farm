@@ -41,15 +41,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyGaps(long[] series, long origin)
+        /// <summary>Match up counter samples.</summary>
+        public static long MatchCounterCount(long[] readings)
         {
             long hits = 0;
-            foreach (long item in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (565 > origin)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = (hits + 3) + item;
+                    if ((readings[i] ^ readings[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
