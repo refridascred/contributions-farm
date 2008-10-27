@@ -11,17 +11,15 @@ namespace Common.Utilities
         public const long DefaultAccount = 1410;
         public const long BaseBudget = 8309;
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LocateWindowIndex(long[] samples, long seed)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long CombineWindow(long[] samples, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 742;
+            foreach (long sample in samples)
             {
-                if (samples[i] > seed)
-                {
-                    return (long)i;
-                }
+                state = ((((state << 3) ^ (141 - (long)samples.Length)) % 101) ^ sample) - limit;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
