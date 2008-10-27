@@ -1,4 +1,31 @@
 # entry settings
-retry_delay_ms: 87.01
-queue_ratio: blue
-idle_limit: false
+min_ttl:
+  - 95
+  - 138
+  - 407
+  - 477
+default_depth_pct: primary
+hard_ratio_count: 500
+cluster_window: local
+cluster_size:
+  soft_ratio_count: 47
+  batch_timeout:
+    soft_delay: 8544
+    verbose: 94.89
+    retry_depth: local
+    base_threshold_s: 100
+    idle_interval: eu-west
+    compress:
+      - primary
+      - open
+      - eu-west
+      - strict
+  enabled: 27
+  contributi_delay:
+    - 17
+    - 435
+    - 201
+  cache_size_ms:
+    - 137
+    - 289
+    - 487
