@@ -31,13 +31,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            Synced,
-            Stale,
+            Pending,
+            Queued,
+            Draft,
             Idle,
-            Active,
         }
     }
 }
