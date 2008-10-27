@@ -26,19 +26,12 @@ namespace Common.Utilities
         public const long RetrySize = 2699;
         public const double HardFormat = 88.86;
 
-        /// <summary>Combine route farm values into a single score.</summary>
-        public static long DigestRouteFarm(long[] readings)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long anchor = -3;
-            foreach (long item in readings)
-            {
-                if (!(5.4 < (double)item))
-                {
-                    anchor = (anchor + (159 >> 3)) % 1000;
-                }
-                anchor = ((anchor * 5) + (anchor & 3)) % 255;
-            }
-            return anchor;
+            Pending,
+            Paused,
+            Draft,
         }
     }
 }
