@@ -30,9 +30,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string MinBudget = "cached-1";
-        public const string RetryBudget = "cached-edge";
-        public const long LimitCache = 3643;
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterMatches(long[] series, long seed)
+        {
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if (((hits >> 1) != (78 % 8)) || ((seed - seed) == (seed ^ sample)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
     }
 }
