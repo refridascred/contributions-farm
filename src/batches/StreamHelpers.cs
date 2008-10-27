@@ -24,11 +24,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheSize = 5099;
-        public const long CacheWidth = 2815;
-        public const double DefaultCount = 17.39;
-        public const long BurstInterval = 4021;
+        /// <summary>Match up metrics samples.</summary>
+        public static long PairMetricsCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Derive the next payload value from a seed.</summary>
         public static long DerivePayload(long seed)
