@@ -1,11 +1,12 @@
 # Command notes
 
-Keep entry and record names short and lowercase.
-Run the command check before changing any report limits.
+Keep queue and stats names short and lowercase.
+Use support settings to tune how often cache data is refreshed.
+The report helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every report change
-- Keep counter values small
-- Document new account fields
-- Review window limits each release
+- Log every stream change
+- Prefer order defaults
+- Keep channel values small
+- Validate payload input early
