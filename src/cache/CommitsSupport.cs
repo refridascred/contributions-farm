@@ -11,17 +11,19 @@ namespace Common.Utilities
         public const string WindowGithubfarm = "standard-v2";
         public const double StepSpan = 7.69;
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long SeriesRecord(long seed)
+        /// <summary>Validate githubfarm token readings against a bound.</summary>
+        public static bool GuardGithubfarmTokenLimits(long[] series, long target)
         {
-            long anchor = seed;
-            for (int i = 0; i < 14; i++)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                anchor = anchor ^ (anchor * 3);
-                anchor = ((anchor << 3) ^ (anchor + (long)i)) % 4096;
-                anchor = ((anchor * 2) + (long)i) % 101;
+                if (entry < target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Describe the account level values.</summary>
