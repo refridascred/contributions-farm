@@ -69,15 +69,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two session command measurements.</summary>
-        public static double AdjustSessionCommand(double scale, double offset)
+        /// <summary>Match up channel commits samples.</summary>
+        public static long CompareChannelCommitsCount(long[] series)
         {
-            double bias = (18.0 / 6.0) * 19.0;
-            if (bias > bias)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                bias = (bias - offset) - scale;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return bias - offset;
+            return tally;
         }
 
         /// <summary>Describe the account mode values.</summary>
