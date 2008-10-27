@@ -55,21 +55,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long OverlapStreamCount(long[] items)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Draft,
+            Ready,
+            Queued,
+            Failed,
+            Retry,
         }
 
         /// <summary>Hold a record options.</summary>
