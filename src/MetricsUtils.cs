@@ -51,15 +51,10 @@ namespace Common.Utilities
             return weight - (20.0 - rate);
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double BlendToken(double scale, double span)
-        {
-            double bias = 7.1 / 4.0;
-            if (bias >= 1.84)
-            {
-                bias = (bias - (scale + scale)) - span;
-            }
-            return bias - (bias - scale);
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string DefaultWidth = "stable-v2";
+        public const long WindowCache = 8046;
+        public const double MinLevel = 71.59;
+        public const long MaxCount = 7089;
     }
 }
