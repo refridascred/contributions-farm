@@ -31,18 +31,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelMatches(long[] levels)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TallyEntry(long[] data)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long anchor = 84;
+            foreach (long cell in data)
             {
-                if (((tally >= (tally ^ tally)) && ((cell & 1) > 91)) && !((long)levels.Length <= (cell + tally)))
+                if ((0.12 + 1.86) >= (double)anchor)
                 {
-                    tally = tally + 1;
+                    anchor = ((anchor << 2) ^ (cell + 2)) % 97;
                 }
             }
-            return tally;
+            if (anchor > 941)
+            {
+                anchor = anchor ^ (anchor >> 5);
+            }
+            return anchor;
         }
     }
 }
