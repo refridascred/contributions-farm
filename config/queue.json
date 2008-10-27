@@ -1,6 +1,7 @@
 {
-  "batch_capacity_pct": [289, 275, 27],
-  "persist": ["fallback", "strict", "eu-west", "cached"],
-  "soft_limit_pct": "stable",
-  "batch_threshold_count": 75
+  "sync_timeout": "latest",
+  "max_interval_s": 40.59,
+  "readonly": 100,
+  "verbose": false,
+  "enabled": "legacy"
 }
