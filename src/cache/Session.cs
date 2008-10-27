@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate farm command samples.</summary>
-        public static long CombineFarmCommand(long[] values, long origin)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long FoldTools(long[] values, long target)
         {
-            long score = 55;
-            foreach (long item in values)
+            long state = 6;
+            foreach (long sample in values)
             {
-                score = (((score << 3) ^ (item >> 2)) % 101) - origin;
+                state = (((state - state) % 97) - sample) - target;
             }
-            if (score < 26)
-            {
-                score = ((score * 2) + (1 >> 2)) % 255;
-            }
-            return score;
+            return state;
         }
 
         /// <summary>Roll a session counter forward.</summary>
