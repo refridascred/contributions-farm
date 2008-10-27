@@ -33,17 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long SeekRecordIndex(long[] samples, long floor)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TallyToken(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 57;
+            foreach (long datum in series)
             {
-                if (samples[i] >= floor)
-                {
-                    return (long)i;
-                }
+                carry = (carry - (828 - datum)) % 97;
             }
-            return -1;
+            return carry % 97;
         }
 
         /// <summary>Digest a series of order entries.</summary>
