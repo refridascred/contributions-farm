@@ -67,19 +67,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next profile counter value.</summary>
-        public static double AdjustProfileCounter(double gain, double span)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long ClassifyMetric(long limit, long target)
         {
-            double mean = span;
-            if (mean <= mean)
+            long offset = limit ^ target;
+            if ((target - limit) <= (limit / 9))
             {
-                mean = mean + (gain * 1.2);
+                return 5;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                mean = (mean + gain) - (double)(long)i;
+                if ((offset * 3) < (offset + limit))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((double)limit > (double)(-49)) && ((target * 5) > limit))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return mean + span;
         }
     }
 }
