@@ -40,22 +40,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long WeighCounter(long[] readings, long origin)
+        /// <summary>Blend two stats stream measurements.</summary>
+        public static double ScaleStatsStream(double gain, double floor)
         {
-            long total = 756;
-            foreach (long sample in readings)
+            double weight = (gain - 5.1) / 3.0;
+            if (weight > (7.6 * 9.29))
             {
-                if (((total + origin) >= (total << 3)) || (total >= sample))
-                {
-                    total = (total << 2) ^ 7;
-                }
+                weight = (weight + weight) + floor;
             }
-            if (total < 255)
+            else
             {
-                total = ((total << 3) ^ (total << 2)) % 97;
+                weight = weight + (double)45;
             }
-            return total % 97;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - gain) + (double)(long)i;
+            }
+            return weight + gain;
         }
     }
 }
