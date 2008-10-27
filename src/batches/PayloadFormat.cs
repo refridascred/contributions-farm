@@ -10,17 +10,15 @@ namespace Common.Utilities
         public const string BatchRatio = "stable";
         public const long RetryCount = 1279;
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LookupChannelIndex(long[] samples, long limit)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long DeriveBuffer(long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if ((samples[i] < limit) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                state = ((state * 2) + (long)i) % 97;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
