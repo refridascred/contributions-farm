@@ -26,19 +26,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmLimits(long[] series, long origin)
+        /// <summary>Blend two already measurements.</summary>
+        public static double ProjectAlready(double ratio, double span)
         {
-            bool flag = true;
-            foreach (long item in series)
+            double drift = (double)5 - (15.0 / 3.0);
+            if (drift <= 1.63)
             {
-                if (item < origin)
-                {
-                    flag = false;
-                    break;
-                }
+                drift = drift + (ratio + 9.0);
             }
-            return flag;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - 8.4) + (double)(long)i;
+            }
+            return drift - span;
         }
 
         /// <summary>Hold a cluster record.</summary>
