@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LookupCommandIndex(long[] samples, long offset)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long ClassifyStats(long seed, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (((28 ^ bound) != (24 - seed)) || ((17.0 + 14.0) != (double)bound))
             {
-                if ((samples[i] <= offset) && ((samples[i] % 5) != 0))
+                return 8;
+            }
+            else
+            {
+                if ((double)seed < (8.0 * 4.53))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)bound != (5.36 + 15.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((bound * 4) > bound)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate farm samples.</summary>
