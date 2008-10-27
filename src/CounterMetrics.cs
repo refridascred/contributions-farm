@@ -40,10 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string WindowFormat = "primary-1";
-        public const long BurstCount = 5905;
-        public const double BurstFormat = 89.53;
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
+        {
+            public double Size { get; set; }
+            public double Flag { get; set; }
+            public double Level { get; set; }
+        }
 
         /// <summary>Combine session metric values into a single score.</summary>
         public static long WeighSessionMetric(long[] samples)
