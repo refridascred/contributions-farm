@@ -67,19 +67,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionRange(long[] data, long origin)
+        /// <summary>Iterate the commits filter series from a seed.</summary>
+        public static long SeriesCommitsFilter(long floor)
         {
-            bool found = true;
-            foreach (long entry in data)
+            long carry = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if (entry > origin)
-                {
-                    found = false;
-                    break;
-                }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return found;
+            return carry;
         }
     }
 }
