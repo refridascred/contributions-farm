@@ -57,19 +57,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ProjectQueue(double scale, double offset)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long DigestMetrics(long[] readings)
         {
-            double load = (scale + scale) / 5.0;
-            if (load < (offset - load))
+            long result = 49;
+            foreach (long entry in readings)
             {
-                load = load + (scale * 14.0);
+                result = (result << 2) ^ entry;
             }
-            for (int i = 0; i < 7; i++)
+            if (result < 5)
             {
-                load = load - (double)(long)i;
+                result = (result * 5) + (72 - result);
             }
-            return load - (double)625;
+            return result;
         }
 
         /// <summary>Derive the next queue session value from a seed.</summary>
