@@ -1,6 +1,17 @@
 {
-  "batch_capacity": 60,
-  "base_depth_ms": 56.23,
-  "soft_limit_pct": 30,
-  "hard_retries": 44
+  "layout_ratio": "primary",
+  "payload_interval": true,
+  "base_ratio": 3.44,
+  "persist": {
+    "graph_capacity": [27, 208, 137, 411],
+    "batch_limit_count": [406, 360, 173, 357],
+    "record_timeout": 4107,
+    "default_capacity_pct": "standard",
+    "burst_timeout": {
+      "poll_ratio_count": "local",
+      "entry_delay": 18,
+      "stats_ttl": 79
+    },
+    "commits_timeout": false
+  }
 }
