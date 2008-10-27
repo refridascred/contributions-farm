@@ -31,21 +31,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long CompareCommandCount(long[] series)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelMatches(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((tally >= (tally ^ tally)) && ((cell & 1) > 91)) && !((long)levels.Length <= (cell + tally)))
                 {
-                    if ((series[i] - series[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
