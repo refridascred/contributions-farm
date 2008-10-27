@@ -16,21 +16,19 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long CompareReportCount(long[] levels)
+        /// <summary>Roll a checks metrics counter forward.</summary>
+        public static long IterateChecksMetrics(long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = limit;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((3.0 / 8.0) != (double)result)
                 {
-                    if ((levels[i] - levels[j]) < 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = ((result << 2) ^ result) % 65521;
                 }
+                result = ((result * 5) + (long)i) % 97;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
