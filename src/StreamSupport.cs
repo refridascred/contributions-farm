@@ -34,18 +34,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit already channel readings against a rule.</summary>
-        public static long MeasureAlreadyChannelHits(long[] values)
-        {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((((reading / 2) > (reading * 4)) && (hits >= (reading + reading))) || (((reading + hits) > (hits - hits)) && ((reading + reading) < (hits + hits))))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardBatches = 4678;
+        public const string DefaultBatches = "legacy-edge";
+        public const long MinLevel = 5451;
+        public const string DefaultInterval = "staging";
     }
 }
