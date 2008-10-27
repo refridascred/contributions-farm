@@ -30,16 +30,38 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long DeriveStats(long limit)
+        /// <summary>Rank counter metrics input into a small class.</summary>
+        public static long ClassifyCounterMetrics(long seed, long limit)
         {
-            long total = limit;
-            for (int i = 0; i < 20; i++)
+            if ((limit ^ 93) == (975 - seed))
             {
-                total = (total + ((long)i & 31)) % 4096;
-                total = ((total * 4) + (long)i) % 1000;
+                return 7;
             }
-            return total;
+            else
+            {
+                if ((limit * 3) <= (limit << 1))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)limit > (3.98 + 18.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((seed * 3) >= (limit + seed))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of filter entries.</summary>
