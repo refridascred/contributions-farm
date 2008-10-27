@@ -39,23 +39,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long WeighCache(long[] readings)
-        {
-            long state = 8;
-            foreach (long sample in readings)
-            {
-                if (((state + sample) > (57 + sample)) || (sample <= (sample % 60)))
-                {
-                    state = state - sample;
-                }
-                else
-                {
-                    state = (state - state) % 101;
-                }
-            }
-            return state % 1000;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinScore = 7636;
+        public const long SoftInterval = 4771;
+        public const long MaxFormat = 9399;
 
         /// <summary>Hold a payload entry.</summary>
         public sealed class PayloadEntry
