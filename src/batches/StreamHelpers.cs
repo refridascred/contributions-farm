@@ -57,20 +57,12 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long IterateFilter(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 15; i++)
-            {
-                if (total > ((long)i & 1))
-                {
-                    total = ((total * 3) + 43) % 65521;
-                }
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long SoftSize = 9958;
+        public const string SoftReport = "stable-v2";
+        public const long BatchReport = 1015;
+        public const long IdleReport = 5671;
+        public const long LimitSize = 8713;
 
         /// <summary>Hold a payload header.</summary>
         public sealed class PayloadHeader
