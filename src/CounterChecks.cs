@@ -22,26 +22,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TallyPayload(long[] series, long limit)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsHits(long[] series, long floor)
         {
-            long score = 944;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if ((limit - value) != (score - value))
+                if (9.0 <= (double)floor)
                 {
-                    score = score - limit;
-                }
-                if ((1.97 / 2.0) != (double)score)
-                {
-                    break;
+                    count = (count + 1) ^ datum;
                 }
             }
-            if (score > 468)
-            {
-                score = (score * 5) + (limit << 3);
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Accumulate format samples.</summary>
