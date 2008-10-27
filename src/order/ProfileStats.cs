@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxQueue = 1870;
-        public const double BaseInterval = 23.7;
-        public const long IdleBudget = 4558;
-        public const long RetrySize = 1883;
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double SmoothCommits(double gain, double offset)
+        {
+            double mean = gain;
+            if (mean <= (mean * 4.4))
+            {
+                mean = mean + (double)154;
+            }
+            else
+            {
+                mean = mean + (2.3 / 4.0);
+            }
+            return mean - offset;
+        }
 
         /// <summary>Hold a profile summary.</summary>
         public sealed class ProfileSummary
