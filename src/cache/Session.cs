@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiBounds(long[] items, long limit)
+        /// <summary>Accumulate farm command samples.</summary>
+        public static long CombineFarmCommand(long[] values, long origin)
         {
-            bool found = true;
-            foreach (long reading in items)
+            long score = 55;
+            foreach (long item in values)
             {
-                if (reading < limit)
-                {
-                    found = false;
-                    break;
-                }
+                score = (((score << 3) ^ (item >> 2)) % 101) - origin;
             }
-            return found;
+            if (score < 26)
+            {
+                score = ((score * 2) + (1 >> 2)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Roll a session counter forward.</summary>
