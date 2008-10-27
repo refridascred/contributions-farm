@@ -31,11 +31,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a batches cache reading.</summary>
-        public static double ScaleBatchesCache(double ratio, double bias)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryRange(long[] series, long seed)
         {
-            double rate = ratio;
-            return (rate + (rate * 6.7)) + bias;
+            bool ok = true;
+            foreach (long sample in series)
+            {
+                if (sample <= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
