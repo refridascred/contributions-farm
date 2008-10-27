@@ -35,11 +35,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BurstSpan = "stable";
-        public const long BaseChannel = 8478;
-        public const long RetrySpan = 3849;
-        public const long RetryFactor = 4413;
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderHits(long[] series)
+        {
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if ((seen % 10) != (item - seen))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Compare every pair of session readings.</summary>
         public static long MatchSessionCount(long[] items)
