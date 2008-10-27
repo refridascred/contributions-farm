@@ -50,19 +50,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a profile buffer figure with a bias.</summary>
-        public static double AdjustProfileBuffer(double scale, double offset)
+        /// <summary>Match up entry samples.</summary>
+        public static long PairEntryCount(long[] readings)
         {
-            double bias = (double)(8 + (-45));
-            if (bias <= scale)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias = bias + (14.0 + offset);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias - bias) + (double)(long)i;
-            }
-            return bias - (scale + bias);
+            return seen;
         }
     }
 }
