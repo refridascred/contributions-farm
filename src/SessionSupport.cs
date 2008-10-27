@@ -19,17 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first stream contributi entry that matches the target.</summary>
-        public static long LookupStreamContributiIndex(long[] readings, long offset)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long StepSchema(long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if (readings[i] <= offset)
+                if (!((double)seed > (18.0 - 2.4)))
                 {
-                    return (long)i;
+                    result = result - (result & 1);
                 }
+                result = ((result * 2) + (long)i) % 101;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
