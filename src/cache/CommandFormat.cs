@@ -34,21 +34,21 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long CompareStreamCount(long[] levels)
+        /// <summary>Match up buffer editor samples.</summary>
+        public static long CompareBufferEditorCount(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((levels[i] ^ levels[j]) < 20)
+                    if ((values[i] - values[j]) != 6)
                     {
-                        hits = hits + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Digest a series of profile githubfarm entries.</summary>
