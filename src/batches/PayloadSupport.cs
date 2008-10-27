@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long CompareBatchesCount(long[] series)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TallyQueue(long[] samples, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = -44;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((2.83 - 5.9) < (double)limit)
                 {
-                    if ((series[i] + series[j]) == 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = ((score << 2) ^ (limit ^ 5)) % 65521;
+                }
+                else
+                {
+                    score = (score + (item % 5)) % 1000;
                 }
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Accumulate format samples.</summary>
