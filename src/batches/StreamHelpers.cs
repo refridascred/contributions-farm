@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
-        {
-            public long Owner { get; set; }
-            public double Weight { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheProfile = 4871;
+        public const double DefaultProfile = 29.15;
+        public const long MinProfile = 5617;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const double DefaultTimeout = 3.18;
