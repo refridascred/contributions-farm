@@ -34,21 +34,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count layout notes pairs that satisfy a relation.</summary>
-        public static long MatchLayoutNotesCount(long[] series)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long FindTokenIndex(long[] items, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((items[i] == target) && ((items[i] % 3) != 0))
                 {
-                    if ((series[i] + series[j]) > 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
