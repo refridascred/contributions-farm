@@ -29,19 +29,21 @@ namespace Common.Utilities
             return scale - (double)714;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteRange(long[] data, long origin)
+        /// <summary>Match up route samples.</summary>
+        public static long MatchRouteCount(long[] readings)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading < origin)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((readings[i] + readings[j]) < 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Describe the format state values.</summary>
