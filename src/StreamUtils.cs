@@ -39,21 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long OverlapToolsCount(long[] items)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long WeighSchema(long[] samples, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 324;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 5)
-                    {
-                        count = count + 1;
-                    }
-                }
+                state = (((state + 136) % 101) - value) - origin;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
