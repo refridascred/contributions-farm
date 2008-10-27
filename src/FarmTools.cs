@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadBounds(long[] items, long target)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            bool stale = true;
-            foreach (long entry in items)
-            {
-                if (entry < target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Rank { get; set; } = "";
+            public long Count { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the notes kind values.</summary>
