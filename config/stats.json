@@ -1,17 +1,8 @@
 {
-  "min_threshold_count": {
-    "cache_ttl_ms": 500,
-    "max_limit": false,
-    "base_depth_count": "blue",
-    "metrics_ttl": 1965,
-    "batch_limit": 70.57
-  },
-  "checks_timeout": true,
-  "notes_window": 15.91,
-  "cache_delay_ms": 30,
-  "batches_size": {
-    "hard_capacity": 76,
-    "burst_depth_pct": "cached",
-    "batch_ratio_pct": "local"
-  }
+  "buffer_timeout": "eu-west",
+  "idle_ttl": 18.13,
+  "strict": [483, 461],
+  "min_ratio": 100,
+  "compress": 59.35,
+  "flush_size_ms": [392, 266]
 }
