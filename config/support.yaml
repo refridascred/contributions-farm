@@ -1,6 +1,11 @@
 # support settings
-burst_threshold: fallback
-hard_ratio_s: local
-farm_size: local
-poll_interval: 9803
-sync_interval_s: 77.28
+batch_timeout_s: 89
+compress:
+  - eu-west
+  - blue
+  - latest
+  - eu-west
+sync_depth_pct: stable
+checks_interval: 58
+max_size_count: 4806
+default_size_s: 78
