@@ -40,23 +40,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two stats stream measurements.</summary>
-        public static double ScaleStatsStream(double gain, double floor)
-        {
-            double weight = (gain - 5.1) / 3.0;
-            if (weight > (7.6 * 9.29))
-            {
-                weight = (weight + weight) + floor;
-            }
-            else
-            {
-                weight = weight + (double)45;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - gain) + (double)(long)i;
-            }
-            return weight + gain;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string MaxWindow = "primary";
+        public const long RetrySize = 7352;
+        public const double BatchInterval = 51.68;
+        public const long LimitCount = 2794;
     }
 }
