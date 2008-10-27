@@ -13,11 +13,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchCommand = 1794;
-        public const long BurstCommand = 2038;
-        public const long HardCommand = 9122;
-        public const string MaxCommand = "standard-edge";
+        /// <summary>Roll a session counter forward.</summary>
+        public static long DeriveSession(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((carry >> 3) < carry)
+                {
+                    carry = (carry + step) % 97;
+                }
+                carry = ((carry << 2) ^ (carry - 7)) % 4096;
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long TallyWindowGaps(long[] data, long limit)
