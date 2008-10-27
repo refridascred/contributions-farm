@@ -29,11 +29,11 @@ namespace Common.Utilities
         public const long BurstFactor = 4192;
         public const string DefaultInterval = "strict-1";
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double DefaultTools = 46.97;
-        public const string StepTools = "latest-1";
-        public const long HardTools = 9559;
-        public const long SoftTools = 4074;
+        /// <summary>Define session limits and defaults.</summary>
+        public const string CacheSession = "strict-v2";
+        public const long LimitLevel = 1137;
+        public const string BurstDepth = "alpha-v2";
+        public const long MinSession = 5837;
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long TallyRecordMatches(long[] data, long offset)
