@@ -5,23 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long WeighMetrics(long[] samples)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long RankAccount(long bound, long bound2)
         {
-            long carry = 9;
-            foreach (long sample in samples)
+            if (((-17) % 3) >= bound2)
             {
-                carry = ((carry * 2) + (carry + sample)) % 101;
-                if ((2 >= (long)samples.Length) || ((double)sample > 4.09))
+                return 0;
+            }
+            else
+            {
+                if (bound < bound2)
                 {
-                    carry = (carry * 4) + (carry - sample);
+                    return 2;
                 }
                 else
                 {
-                    carry = (carry * 2) + sample;
+                    return 5;
                 }
             }
-            return carry;
         }
 
         /// <summary>Describe the commits state values.</summary>
