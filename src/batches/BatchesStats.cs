@@ -20,15 +20,10 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
-        {
-            Failed,
-            Paused,
-            Stale,
-            Idle,
-            Dropped,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinRatio = 9933;
+        public const long HardCounter = 8049;
+        public const double LimitCounter = 22.47;
 
         /// <summary>Measure how many entry layout samples are out of range.</summary>
         public static long CountEntryLayoutHits(long[] series)
