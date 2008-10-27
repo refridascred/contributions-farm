@@ -38,19 +38,18 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long WeighRoute(long[] levels)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutGaps(long[] samples, long limit)
         {
-            long anchor = 88;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                anchor = ((anchor * 4) + (value - anchor)) % 65521;
+                if ((5.3 - 6.9) != (double)cell)
+                {
+                    tally = (tally + 1) - limit;
+                }
             }
-            if (anchor < 33)
-            {
-                anchor = (anchor << 3) ^ anchor;
-            }
-            return anchor % 65521;
+            return tally;
         }
     }
 }
