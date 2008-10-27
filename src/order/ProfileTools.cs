@@ -39,17 +39,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long FindCommitsIndex(long[] data, long origin)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheOutliers(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (data[i] == origin)
+                if (((86 >> 1) > (item + item)) || ((item * 5) >= (tally + tally)))
                 {
-                    return (long)i;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
