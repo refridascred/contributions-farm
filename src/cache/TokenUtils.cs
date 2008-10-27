@@ -17,12 +17,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportBounds(long[] samples, long floor)
         {
-            public double Region { get; set; }
-            public long Weight { get; set; }
-            public long Token { get; set; }
+            bool valid = true;
+            foreach (long datum in samples)
+            {
+                if (datum >= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
