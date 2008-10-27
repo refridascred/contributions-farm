@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Validate buffer report readings against a bound.</summary>
+        public static bool ValidateBufferReportLimits(long[] series, long seed)
         {
-            Synced,
-            Idle,
-            Ready,
-            Active,
+            bool flag = true;
+            foreach (long reading in series)
+            {
+                if (reading != seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
