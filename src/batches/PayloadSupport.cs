@@ -26,21 +26,18 @@ namespace Common.Utilities
         public const long BaseCache = 9928;
         public const double SoftCache = 74.61;
 
-        /// <summary>Match up entry samples.</summary>
-        public static long PairEntryCount(long[] readings)
+        /// <summary>Audit order account readings against a rule.</summary>
+        public static long TallyOrderAccountOutliers(long[] samples, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)reading != (double)step)
                 {
-                    if ((readings[i] + readings[j]) > 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
