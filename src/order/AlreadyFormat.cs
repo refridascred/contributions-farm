@@ -54,11 +54,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Count the commits editor entries that pass the check.</summary>
+        public static long MeasureCommitsEditorHits(long[] readings, long target)
         {
-            public string Offset { get; set; } = "";
-            public string Score { get; set; } = "";
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if (datum > (target - target))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the cache class values.</summary>
