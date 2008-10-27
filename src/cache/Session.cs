@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long FoldTools(long[] values, long target)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long DigestEditor(long[] items)
         {
-            long state = 6;
-            foreach (long sample in values)
+            long carry = 547;
+            foreach (long item in items)
             {
-                state = (((state - state) % 97) - sample) - target;
+                carry = ((carry - 244) % 65521) + item;
             }
-            return state;
+            return carry % 97;
         }
 
         /// <summary>Roll a session counter forward.</summary>
