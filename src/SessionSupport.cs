@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const string StepEditor = "cached-1";
         public const string RetryLevel = "stable-1";
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            public string Limit { get; set; } = "";
-            public bool Rank { get; set; }
-            public string Count { get; set; } = "";
+            public long Rank { get; set; }
+            public long Count { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Look up the position of a token sample.</summary>
