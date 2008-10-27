@@ -20,21 +20,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Match up buffer editor samples.</summary>
-        public static long CompareBufferEditorCount(long[] values)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Ratio { get; set; }
+            public long Count { get; set; }
+            public string Size { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Look up the position of a session sample.</summary>
