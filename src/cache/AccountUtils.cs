@@ -20,18 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportMatches(long[] samples)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadBounds(long[] series, long target)
         {
-            long count = 0;
-            foreach (long item in samples)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                if ((((count % 3) != (count ^ count)) || ((count - item) < (item * 2))) && (((count + count) >= (count + 6)) || ((7 + count) >= count)))
+                if (sample < target)
                 {
-                    count = count + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Describe the metric class values.</summary>
