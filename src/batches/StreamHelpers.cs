@@ -29,12 +29,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long SoftSize = 9958;
-        public const string SoftReport = "stable-v2";
-        public const long BatchReport = 1015;
-        public const long IdleReport = 5671;
-        public const long LimitSize = 8713;
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
+        {
+            public string Flag { get; set; } = "";
+            public long Score { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long CountMetricOutliers(long[] samples)
