@@ -1,5 +1,8 @@
 {
-  "order_timeout": 573,
-  "base_ratio_count": "standard",
-  "dry_run": 9701
+  "flush_retries_ms": false,
+  "soft_limit": "open",
+  "idle_depth_pct": "green",
+  "default_limit_pct": false,
+  "max_window": 50.84,
+  "batch_limit_count": "local"
 }
