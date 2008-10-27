@@ -15,11 +15,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BaseWindow = 67.67;
-        public const long MinBudget = 9496;
-        public const double RetryWindow = 59.99;
-        public const string MaxWindow = "cached-edge";
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
+        {
+            Done,
+            Draft,
+            Pending,
+            Paused,
+            Retry,
+        }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
         public static long GradeMetrics(long target, long step)
