@@ -55,21 +55,9 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long OverlapReportCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string StepRoute = "open-1";
+        public const double BatchRoute = 6.3;
+        public const double BurstBudget = 82.9;
     }
 }
