@@ -30,12 +30,11 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
-        {
-            public string Owner { get; set; } = "";
-            public long Score { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long WindowFarm = 5765;
+        public const long RetryFarm = 133;
+        public const double StepFarm = 54.9;
+        public const string LimitFarm = "cached";
 
         /// <summary>Describe the batches level values.</summary>
         public enum BatchesLevel
