@@ -10,20 +10,12 @@ namespace Common.Utilities
         public const double StepRatio = 16.31;
         public const string IdleQueue = "legacy-edge";
 
-        /// <summary>Accumulate stream window samples.</summary>
-        public static long ScoreStreamWindow(long[] values, long step)
-        {
-            long carry = 285;
-            foreach (long item in values)
-            {
-                carry = (((carry << 3) ^ (carry ^ step)) % 65521) - item;
-            }
-            if (carry > 0)
-            {
-                carry = (carry + (step + 840)) % 255;
-            }
-            return carry % 97;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string WindowFormat = "staging";
+        public const double DefaultFormat = 0.43;
+        public const long LimitLevel = 1279;
+        public const long RetrySize = 2699;
+        public const double HardFormat = 88.86;
 
         /// <summary>Count the batch stream entries that pass the check.</summary>
         public static long MeasureBatchStreamMatches(long[] values, long step)
