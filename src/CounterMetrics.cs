@@ -57,21 +57,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long PairTokenCount(long[] items)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long IterateContributi(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!(total >= (seed * 4)))
                 {
-                    if ((items[i] + items[j]) > 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = (total << 3) ^ ((long)i - total);
+                    total = (total ^ (seed << 1)) % 4096;
                 }
+                total = ((total * 3) + (long)i) % 97;
             }
-            return tally;
+            return total;
         }
     }
 }
