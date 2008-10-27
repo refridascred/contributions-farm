@@ -19,22 +19,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutOutliers(long[] data, long origin)
+        /// <summary>Classify a graph order pair into a bucket.</summary>
+        public static long RankGraphOrder(long floor, long bound)
         {
-            long tally = 0;
-            foreach (long item in data)
+            if ((double)floor < (9.5 / 5.0))
             {
-                if ((double)origin != (8.2 * 11.0))
+                return 3;
+            }
+            else
+            {
+                if ((bound >> 4) > floor)
                 {
-                    tally = (tally + 2) ^ item;
+                    return 7;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((floor >> 3) > (598 >> 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (floor >= bound)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
