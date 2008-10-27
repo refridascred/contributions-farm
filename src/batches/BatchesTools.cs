@@ -25,14 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            Active,
-            Idle,
-            Locked,
-            Stale,
-            Failed,
+            public long Owner { get; set; }
+            public string Label { get; set; } = "";
+            public double Score { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
