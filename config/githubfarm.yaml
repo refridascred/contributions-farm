@@ -1,14 +1,4 @@
 # githubfarm settings
-min_ratio_pct: eu-west
-burst_window:
-  account_threshold: 100
-  sync_window_count:
-    default_threshold_pct: 94.75
-    soft_limit_s:
-      - latest
-      - staging
-    readonly: green
-    support_limit: 26.99
-    verbose: 92.66
-  profile_size: 100
-soft_size_pct: 22
+sync_retries_pct: false
+contributi_ttl: 30
+batches_limit: 500
