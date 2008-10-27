@@ -26,13 +26,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenMatches(long[] samples, long origin)
         {
-            public double Weight { get; set; }
-            public string Owner { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public long Stamp { get; set; }
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if (((9.8 + 1.6) >= (double)seen) && (origin <= (origin << 2)))
+                {
+                    seen = (seen + 3) ^ sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define account limits and defaults.</summary>
