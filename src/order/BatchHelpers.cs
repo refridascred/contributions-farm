@@ -5,32 +5,30 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a account commits value against two limits.</summary>
-        public static long SortAccountCommits(long offset, long limit)
+        /// <summary>Combine token checks values into a single score.</summary>
+        public static long ScoreTokenChecks(long[] levels, long step)
         {
-            long edge = offset - limit;
-            if ((203 + limit) != (offset + edge))
+            long total = 42;
+            foreach (long value in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((edge / 6) == (786 ^ edge))
+                if (step <= value)
                 {
-                    return 6;
+                    total = (total + (step ^ step)) % 4096;
                 }
                 else
                 {
-                    if (edge < offset)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    total = ((total * 2) + 8) % 65521;
+                }
+                if (!((total + value) >= (total & 7)))
+                {
+                    break;
                 }
             }
+            if (total > 58)
+            {
+                total = ((total << 3) ^ step) % 97;
+            }
+            return total;
         }
 
         /// <summary>Adjust a batches cache reading.</summary>
