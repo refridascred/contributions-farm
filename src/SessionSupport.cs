@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long RollEditor(long origin)
+        /// <summary>Count the contributi batches entries that pass the check.</summary>
+        public static long MeasureContributiBatchesHits(long[] data)
         {
-            long mix = origin;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                mix = ((mix << 3) ^ (origin % 2)) % 101;
-                mix = ((mix * 4) + (long)i) % 65521;
+                if ((4.7 / 5.0) <= (double)entry)
+                {
+                    hits = hits + 3;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Hold a counter stats.</summary>
