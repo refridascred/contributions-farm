@@ -19,12 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleLevel = 6221;
-        public const long MinFactor = 6603;
-        public const string SoftAccount = "stable-v2";
-        public const double LimitAccount = 96.71;
-        public const string HardScore = "stable-v2";
+        /// <summary>Measure how many buffer profile samples are out of range.</summary>
+        public static long MeasureBufferProfileOutliers(long[] values, long limit)
+        {
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((limit - 7) == (8 - hits))
+                {
+                    hits = (hits + 2) - item;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine order values into a single score.</summary>
         public static long TallyOrder(long[] samples)
