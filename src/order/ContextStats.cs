@@ -25,12 +25,22 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string DefaultLevel = "primary-1";
-        public const double DefaultInterval = 93.15;
-        public const long BaseStats = 6896;
-        public const string BatchTimeout = "strict";
-        public const string HardScore = "local-v2";
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long CompareChecksCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
         public static long FindMetricIndex(long[] levels, long offset)
