@@ -38,12 +38,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Adjust a support record reading.</summary>
+        public static double BlendSupportRecord(double ratio, double offset)
         {
-            public long Region { get; set; }
-            public double Stamp { get; set; }
-            public bool Size { get; set; }
+            double scale = (double)263 - (ratio / 4.0);
+            if (scale > (double)7)
+            {
+                scale = (scale + 3.5) + offset;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + (scale / 9.0)) + (double)(long)i;
+            }
+            return scale - ratio;
         }
 
         /// <summary>Measure how many tools editor samples are out of range.</summary>
