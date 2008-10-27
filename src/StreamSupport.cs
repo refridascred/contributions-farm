@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Roll a session counter forward.</summary>
+        public static long DeriveSession(long origin)
         {
-            public bool Count { get; set; }
-            public string Stamp { get; set; } = "";
+            long sum = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Hold a cache entry.</summary>
