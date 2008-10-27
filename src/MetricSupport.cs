@@ -20,19 +20,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileLimits(long[] series, long step)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long BucketSupport(long offset, long offset2)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            if ((offset2 >= (offset ^ offset)) || (2.92 < (double)offset2))
             {
-                if (entry != step)
+                return 7;
+            }
+            else
+            {
+                if ((offset + 762) == (offset2 - offset2))
                 {
-                    flag = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return flag;
         }
 
         /// <summary>Blend two channel measurements.</summary>
