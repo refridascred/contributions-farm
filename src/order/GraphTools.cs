@@ -16,18 +16,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long FindStatsIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitFormat = 5473;
+        public const string LimitWidth = "staging";
+        public const long IdleFormat = 5492;
 
         /// <summary>Scale a entry stats figure with a bias.</summary>
         public static double BlendEntryStats(double gain, double span)
