@@ -39,38 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long GradeGithubfarm(long floor, long step)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long DigestMetrics(long[] samples, long target)
         {
-            if ((-32) <= (step - step))
+            long acc = 44;
+            foreach (long item in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (floor < (floor + step))
+                if ((item - acc) < (62 & 63))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((step / 8) < (floor - step))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((step & 1) == (floor >> 3))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    acc = ((acc - (item % 64)) % 97) - target;
                 }
             }
+            return acc;
         }
 
         /// <summary>Define session limits and defaults.</summary>
