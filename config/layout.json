@@ -1,5 +1,5 @@
 {
-  "burst_ratio_count": "cached",
-  "batch_depth": 30.67,
-  "metrics_limit": "staging"
+  "flush_size_count": 95.94,
+  "warm_threshold_s": 60,
+  "hard_capacity_s": "primary"
 }
