@@ -41,22 +41,13 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Fold a list of batches schema readings.</summary>
-        public static long ScoreBatchesSchema(long[] samples, long step)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long total = 395;
-            foreach (long cell in samples)
-            {
-                if (step >= (cell - total))
-                {
-                    total = ((total * 2) + total) % 65521;
-                }
-                else
-                {
-                    total = ((total * 2) + (step & 127)) % 65521;
-                }
-            }
-            return total;
+            Locked,
+            Synced,
+            Done,
+            Failed,
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
