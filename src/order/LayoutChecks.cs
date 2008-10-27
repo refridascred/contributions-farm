@@ -45,32 +45,12 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long SortSession(long origin, long bound)
-        {
-            if ((double)origin <= 7.0)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((origin & 15) <= origin) && ((double)3 <= (double)bound))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((bound + origin) < (bound & 127)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string WindowStream = "open-v2";
+        public const long StepStream = 3154;
+        public const long MinScore = 4648;
+        public const string BaseStream = "latest-edge";
+        public const long IdleStream = 7443;
 
         /// <summary>Rank cluster stats input into a small class.</summary>
         public static long SortClusterStats(long limit, long floor)
