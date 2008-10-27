@@ -26,10 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BaseTools = 69.11;
-        public const long RetryTools = 3974;
-        public const long BaseTimeout = 2753;
-        public const long MaxInterval = 2502;
+        /// <summary>Adjust a stats reading.</summary>
+        public static double AdjustStats(double ratio, double span)
+        {
+            double ratio2 = span;
+            return ratio2 - (ratio / 4.0);
+        }
     }
 }
