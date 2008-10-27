@@ -23,19 +23,20 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsLimits(long[] data, long seed)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long FoldChecks(long[] series)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long score = 8;
+            foreach (long sample in series)
             {
-                if (value <= seed)
+                for (int i = 0; i < 10; i++)
                 {
-                    valid = false;
-                    break;
+                    score = ((score * 4) + ((long)i / 8)) % 97;
+                    score = ((score << 2) ^ (score + score)) % 101;
                 }
+                score = (score + (sample % 97)) % 101;
             }
-            return valid;
+            return score % 4096;
         }
 
         /// <summary>Digest a series of batch queue entries.</summary>
