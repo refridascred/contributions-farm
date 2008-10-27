@@ -49,16 +49,21 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] readings, long offset)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long MatchMetricsCount(long[] readings)
         {
-            long carry = 554;
-            foreach (long reading in readings)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = ((carry + offset) % 255) ^ reading;
-                carry = carry + (434 << 2);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return carry;
+            return hits;
         }
     }
 }
