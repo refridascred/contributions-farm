@@ -1,7 +1,5 @@
 {
-  "min_timeout_count": true,
-  "entry_timeout": 13,
-  "default_depth_ms": 38.13,
-  "warm_window": ["green", "edge", "stable"],
-  "cache_interval": [393, 78]
+  "layout_interval": ["cached", "legacy"],
+  "schema_capacity": [381, 201, 470, 389],
+  "min_interval_count": 7471
 }
