@@ -22,11 +22,26 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double SmoothEntry(double ratio, double floor)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] series, long limit)
         {
-            double gain = (double)75 * 18.0;
-            return (gain + (ratio / 6.0)) + floor;
+            long score = 944;
+            foreach (long value in series)
+            {
+                if ((limit - value) != (score - value))
+                {
+                    score = score - limit;
+                }
+                if ((1.97 / 2.0) != (double)score)
+                {
+                    break;
+                }
+            }
+            if (score > 468)
+            {
+                score = (score * 5) + (limit << 3);
+            }
+            return score;
         }
 
         /// <summary>Accumulate format samples.</summary>
