@@ -33,18 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TallyOrder(long[] samples)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorMatches(long[] items)
         {
-            long mix = 727;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if (!((double)mix < (double)reading))
+                if ((8 << 1) >= sample)
                 {
-                    mix = (mix ^ ((long)samples.Length - mix)) % 255;
+                    hits = hits + 2;
                 }
             }
-            return mix % 65521;
+            return hits;
         }
     }
 }
