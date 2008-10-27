@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            public bool Limit { get; set; }
-            public double Mode { get; set; }
+            public long Ratio { get; set; }
+            public double Owner { get; set; }
+            public string Weight { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Digest a series of record support entries.</summary>
