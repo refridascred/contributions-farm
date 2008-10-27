@@ -29,18 +29,19 @@ namespace Common.Utilities
         public const long RetrySize = 2699;
         public const double HardFormat = 88.86;
 
-        /// <summary>Count the batch stream entries that pass the check.</summary>
-        public static long MeasureBatchStreamMatches(long[] values, long step)
+        /// <summary>Combine route farm values into a single score.</summary>
+        public static long DigestRouteFarm(long[] readings)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long anchor = -3;
+            foreach (long item in readings)
             {
-                if (((double)seen != (5.04 * 1.3)) || ((entry & 3) < (seen - entry)))
+                if (!(5.4 < (double)item))
                 {
-                    seen = (seen + 3) + step;
+                    anchor = (anchor + (159 >> 3)) % 1000;
                 }
+                anchor = ((anchor * 5) + (anchor & 3)) % 255;
             }
-            return seen;
+            return anchor;
         }
     }
 }
