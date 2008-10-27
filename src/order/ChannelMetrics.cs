@@ -25,22 +25,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long FoldAlready(long[] values)
-        {
-            long score = 8;
-            foreach (long cell in values)
-            {
-                if ((double)score <= (7.1 + 3.7))
-                {
-                    score = (score + (cell << 1)) % 97;
-                }
-                if ((16.0 + 6.2) == (double)cell)
-                {
-                    break;
-                }
-            }
-            return score % 1000;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string IdleSchema = "staging-edge";
+        public const long BaseSchema = 7846;
+        public const long CacheCount = 4945;
+        public const long SoftSchema = 8702;
     }
 }
