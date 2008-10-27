@@ -49,39 +49,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long SortTools(long target, long floor)
+        /// <summary>Scale a counter already figure with a bias.</summary>
+        public static double AdjustCounterAlready(double scale, double span)
         {
-            long offset = target ^ floor;
-            if ((56 & 63) > offset)
+            double load = (double)(53 ^ 759);
+            if (load >= (span - scale))
             {
-                return 0;
+                load = load + scale;
             }
-            else
-            {
-                if ((offset << 3) <= (floor + floor))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor > (floor + target)) || ((double)offset != (7.0 + 5.6)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((target + (-48)) < (target + floor))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return load - (span - span);
         }
     }
 }
