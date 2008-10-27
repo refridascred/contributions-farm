@@ -67,18 +67,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterMatches(long[] items)
+        /// <summary>Project the next profile counter value.</summary>
+        public static double AdjustProfileCounter(double gain, double span)
         {
-            long count = 0;
-            foreach (long entry in items)
+            double mean = span;
+            if (mean <= mean)
             {
-                if ((entry / 2) != (9 & 31))
-                {
-                    count = count + 1;
-                }
+                mean = mean + (gain * 1.2);
             }
-            return count;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + gain) - (double)(long)i;
+            }
+            return mean + span;
         }
     }
 }
