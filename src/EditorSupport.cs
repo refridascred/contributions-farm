@@ -67,12 +67,24 @@ namespace Common.Utilities
         public const long CacheBudget = 4089;
         public const long BatchBatches = 9277;
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long GradeToken(long step, long floor)
         {
-            public double Total { get; set; }
-            public long Flag { get; set; }
-            public long Owner { get; set; }
+            if (((872 ^ floor) < (step % 60)) && ((318 % 7) <= (floor >> 5)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (floor > (step - 6))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
