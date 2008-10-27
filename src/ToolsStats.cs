@@ -13,29 +13,22 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long RankCluster(long bound, long seed)
+        /// <summary>Grade a token layout value against two limits.</summary>
+        public static long SortTokenLayout(long offset, long bound)
         {
-            if (((double)seed >= 3.5) || ((bound >> 5) >= seed))
+            if ((offset < bound) && ((double)bound > (double)(-194)))
             {
-                return 5;
+                return 6;
             }
             else
             {
-                if ((seed < (seed >> 3)) || ((seed >> 4) == (bound + seed)))
+                if (((double)bound <= 0.45) && ((bound + offset) < (bound * 3)))
                 {
-                    return 1;
+                    return 7;
                 }
                 else
                 {
-                    if (!(836 < (bound + bound)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return 4;
                 }
             }
         }
