@@ -12,13 +12,17 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long RollCommits(long floor)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long StepFormat(long target)
         {
-            long state = floor;
-            for (int i = 0; i < 23; i++)
+            long state = target;
+            for (int i = 0; i < 4; i++)
             {
-                state = ((state * 5) + (long)i) % 4093;
+                if (((long)i / 7) == (target ^ 56))
+                {
+                    state = state ^ ((long)i + target);
+                }
+                state = ((state * 3) + (long)i) % 65521;
             }
             return state;
         }
