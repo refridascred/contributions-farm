@@ -31,22 +31,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TallyQueue(long[] samples)
-        {
-            long mix = 962;
-            foreach (long value in samples)
-            {
-                if ((value % 97) == (3 + mix))
-                {
-                    mix = ((mix * 5) + (mix + 94)) % 255;
-                }
-                else
-                {
-                    mix = ((mix * 3) + (mix >> 2)) % 97;
-                }
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowBuffer = 2990;
+        public const double CacheFactor = 98.28;
+        public const double BaseBuffer = 27.88;
+        public const double RetryWidth = 61.67;
     }
 }
