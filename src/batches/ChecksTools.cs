@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long FindChecksIndex(long[] readings, long limit)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= limit) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Owner { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Adjust a notes reading.</summary>
