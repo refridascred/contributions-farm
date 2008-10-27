@@ -14,17 +14,19 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long SeekRouteIndex(long[] values, long target)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ProjectPayload(double gain, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double weight = (double)(992 % 64);
+            if (weight < bias)
             {
-                if (values[i] >= target)
-                {
-                    return (long)i;
-                }
+                weight = weight + weight;
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + (bias / 5.0)) + (double)(long)i;
+            }
+            return weight + (gain * 7.82);
         }
 
         /// <summary>Grade a route value against two limits.</summary>
