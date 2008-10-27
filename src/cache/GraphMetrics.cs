@@ -51,26 +51,17 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TotalStats(long[] samples)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LookupCounterIndex(long[] samples, long target)
         {
-            long total = -1;
-            foreach (long entry in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((total / 4) > total)
+                if ((samples[i] < target) && ((samples[i] % 3) != 0))
                 {
-                    total = (total + entry) % 97;
-                }
-                else
-                {
-                    total = (total << 2) ^ (entry * 3);
-                }
-                if (entry < (32 ^ entry))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return total % 4096;
+            return -1;
         }
     }
 }
