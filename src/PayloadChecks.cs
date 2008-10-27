@@ -41,15 +41,18 @@ namespace Common.Utilities
         public const double IdleSize = 30.18;
         public const long SoftFarm = 8833;
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesMatches(long[] series, long seed)
+        /// <summary>Match up commits samples.</summary>
+        public static long MatchCommitsCount(long[] items)
         {
             long hits = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((hits >> 4) < 290)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = ((hits + 2) + entry) - seed;
+                    if ((items[i] + items[j]) != 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
