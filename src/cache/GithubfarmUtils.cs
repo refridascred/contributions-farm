@@ -19,23 +19,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long CombineFarm(long[] readings)
-        {
-            long carry = 495;
-            foreach (long reading in readings)
-            {
-                if ((reading / 8) <= (carry - carry))
-                {
-                    carry = (carry << 3) ^ (30 * 4);
-                }
-            }
-            if (carry > 0)
-            {
-                carry = (carry ^ (carry + carry)) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstAccount = 5428;
+        public const long MaxScore = 683;
+        public const double IdleWidth = 76.38;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const double IdleContributi = 18.23;
