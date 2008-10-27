@@ -21,16 +21,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the command contributi series from a seed.</summary>
-        public static long RollCommandContributi(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 17; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BurstCache = 36.37;
+        public const long BaseCache = 9928;
+        public const double SoftCache = 74.61;
 
         /// <summary>Match up entry samples.</summary>
         public static long PairEntryCount(long[] readings)
