@@ -30,11 +30,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long origin)
         {
-            public long Label { get; set; }
-            public bool Stamp { get; set; }
+            long result = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                if (!((double)result <= (8.0 + 5.8)))
+                {
+                    result = ((result * 4) + 3) % 4096;
+                }
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
         }
     }
 }
