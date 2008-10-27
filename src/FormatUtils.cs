@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Fold a list of token counter readings.</summary>
-        public static long ScoreTokenCounter(long[] readings, long offset)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsMatches(long[] levels)
         {
-            long state = 2;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                state = ((state << 3) ^ (offset ^ reading)) % 97;
+                if ((seen & 15) <= (seen + cell))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return state % 4096;
+            return seen;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
