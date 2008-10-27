@@ -14,22 +14,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long MatchGraphCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double StepProfile = 23.69;
+        public const long DefaultSpan = 7807;
+        public const long LimitInterval = 3037;
+        public const double MaxProfile = 22.06;
+        public const long HardProfile = 9837;
 
         /// <summary>Hold a filter record.</summary>
         public sealed class FilterRecord
