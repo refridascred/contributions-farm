@@ -24,12 +24,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Compare every pair of commits window readings.</summary>
+        public static long CompareCommitsWindowCount(long[] values)
         {
-            public bool Rank { get; set; }
-            public double Total { get; set; }
-            public long Stamp { get; set; }
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
