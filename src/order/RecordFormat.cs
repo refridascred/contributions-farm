@@ -39,14 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Audit queue support readings against a rule.</summary>
+        public static long AuditQueueSupportHits(long[] levels, long target)
         {
-            Synced,
-            Closed,
-            Idle,
-            Draft,
-            Ready,
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if (!((reading & 7) > 3) || (target >= (matches << 2)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a record record.</summary>
