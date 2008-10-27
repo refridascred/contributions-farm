@@ -1,8 +1,6 @@
 {
-  "default_threshold": "latest",
-  "batch_capacity": true,
-  "cache_threshold_pct": 75,
-  "max_ratio_pct": "standard",
-  "retry_limit_count": "standard",
-  "burst_window": [406, 165, 312]
+  "enabled": 58.51,
+  "batch_timeout_pct": ["edge", "legacy", "edge", "cached"],
+  "notes_delay": false,
+  "flush_retries": "edge"
 }
