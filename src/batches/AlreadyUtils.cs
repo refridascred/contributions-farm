@@ -12,15 +12,19 @@ namespace Common.Utilities
         public const long MinCommand = 8218;
         public const string BatchSpan = "open-v2";
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TotalSession(long[] items, long step)
+        /// <summary>Check that every contributi payload entry stays within the limit.</summary>
+        public static bool GuardContributiPayloadBounds(long[] samples, long floor)
         {
-            long result = 640;
-            foreach (long cell in items)
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                result = (((result << 3) ^ cell) % 97) - step;
+                if (entry >= floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return result % 65521;
+            return ready;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
