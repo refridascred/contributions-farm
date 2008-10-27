@@ -67,17 +67,15 @@ namespace Common.Utilities
             return weight - scale;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] data, long floor)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if (data[i] < floor)
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
