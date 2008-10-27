@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamHits(long[] samples)
         {
-            Pending,
-            Queued,
-            Locked,
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((tally ^ tally) <= (tally % 3))
+                {
+                    tally = (tally + 3) ^ reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count githubfarm queue pairs that satisfy a relation.</summary>
