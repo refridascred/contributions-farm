@@ -12,22 +12,12 @@ namespace Common.Utilities
             return scale - (rate - scale);
         }
 
-        /// <summary>Count tools window pairs that satisfy a relation.</summary>
-        public static long CompareToolsWindowCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinWidth = 6957;
+        public const long BatchBudget = 916;
+        public const long BaseEntry = 1468;
+        public const long DefaultFactor = 1897;
+        public const double BatchWidth = 72.21;
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long CountCommandGaps(long[] data, long origin)
