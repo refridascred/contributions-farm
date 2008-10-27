@@ -34,17 +34,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long FindAccountIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < step) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultChannel = 5342;
+        public const string LimitChannel = "strict-v2";
+        public const long IdleChannel = 9817;
+        public const double MaxWidth = 54.43;
+        public const long BaseChannel = 24;
     }
 }
