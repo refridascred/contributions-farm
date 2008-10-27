@@ -26,11 +26,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ScaleFilter(double ratio, double floor)
+        /// <summary>Audit githubfarm editor readings against a rule.</summary>
+        public static long TallyGithubfarmEditorGaps(long[] items)
         {
-            double rate = (floor * 12.0) / 3.0;
-            return (rate + floor) + ratio;
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if ((seen >> 3) >= (seen - sample))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
