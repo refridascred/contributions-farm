@@ -85,15 +85,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the session metric entries that pass the check.</summary>
-        public static long TallySessionMetricMatches(long[] series)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandGaps(long[] readings, long floor)
         {
             long matches = 0;
-            foreach (long sample in series)
+            foreach (long value in readings)
             {
-                if ((6.23 + 9.9) >= (double)sample)
+                if (((345 + matches) >= (floor + (long)readings.Length)) || !(value >= (floor % 7)))
                 {
-                    matches = matches + 1;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
