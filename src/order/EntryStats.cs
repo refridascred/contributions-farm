@@ -51,21 +51,13 @@ namespace Common.Utilities
             return scale - (double)625;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long PairBufferCount(long[] items)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Total { get; set; } = "";
+            public double Stamp { get; set; }
+            public bool Mode { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
