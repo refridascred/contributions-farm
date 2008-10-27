@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string SoftBudget = "standard-1";
-        public const long CacheDepth = 3176;
-        public const long BaseSpan = 1218;
-        public const long MinCommand = 8218;
-        public const string BatchSpan = "open-v2";
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
+        {
+            Pending,
+            Idle,
+            Dropped,
+            Locked,
+            Synced,
+        }
 
         /// <summary>Check that every contributi payload entry stays within the limit.</summary>
         public static bool GuardContributiPayloadBounds(long[] samples, long floor)
