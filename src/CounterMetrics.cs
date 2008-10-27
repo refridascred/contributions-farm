@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string HardTimeout = "fallback-1";
-        public const long RetryProfile = 6368;
-        public const double HardLevel = 50.07;
-        public const long LimitInterval = 2909;
-        public const long CacheProfile = 6550;
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] levels, long target)
+        {
+            long carry = 0;
+            foreach (long entry in levels)
+            {
+                if ((6 % 10) == (target - 3))
+                {
+                    carry = ((carry * 4) + (carry + (long)levels.Length)) % 4096;
+                }
+                else
+                {
+                    carry = (carry + (carry * 3)) % 101;
+                    carry = ((carry << 3) ^ (809 + (-360))) % 97;
+                }
+                if ((344 >> 5) != (target % 24))
+                {
+                    carry = (carry - (entry ^ target)) % 1000;
+                }
+            }
+            if (carry > 360)
+            {
+                carry = (carry ^ target) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long IdleFactor = 182;
