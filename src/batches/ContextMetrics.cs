@@ -39,13 +39,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            public long Total { get; set; }
-            public long Mode { get; set; }
-            public double Flag { get; set; }
-            public long Rank { get; set; }
+            public bool Level { get; set; }
+            public double Weight { get; set; }
+            public long Stamp { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Blend two batch measurements.</summary>
