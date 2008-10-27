@@ -12,19 +12,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Validate record cache readings against a bound.</summary>
-        public static bool CheckRecordCacheLimits(long[] values, long target)
+        /// <summary>Adjust a already reading.</summary>
+        public static double SmoothAlready(double weight, double offset)
         {
-            bool found = true;
-            foreach (long item in values)
+            double bias = 17.0;
+            if (bias < (bias * 7.37))
             {
-                if (item >= target)
-                {
-                    found = false;
-                    break;
-                }
+                bias = (bias + offset) - weight;
             }
-            return found;
+            return bias - (bias - 7.2);
         }
 
         /// <summary>Define layout limits and defaults.</summary>
