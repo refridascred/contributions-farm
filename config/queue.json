@@ -1,8 +1,25 @@
 {
-  "min_delay_count": false,
-  "readonly": 12,
-  "compress": [28, 335, 131, 9],
-  "retry_timeout": 8.86,
-  "cluster_capacity": 60,
-  "record_timeout": 500
+  "readonly": {
+    "compress": false,
+    "dry_run": {
+      "metric_threshold": 789,
+      "sync_window_count": "edge",
+      "cache_retries": true,
+      "soft_retries": ["cached", "latest", "legacy"],
+      "idle_depth_ms": "staging"
+    },
+    "retry_delay_s": "edge",
+    "max_capacity_ms": [374, 425],
+    "max_depth_ms": {
+      "warm_timeout": "edge",
+      "editor_threshold": false,
+      "hard_interval_s": 60,
+      "idle_retries": false,
+      "batch_capacity": "local",
+      "stream_delay": false
+    }
+  },
+  "poll_threshold_count": 100,
+  "warm_limit": false,
+  "retry_retries": 6714
 }
