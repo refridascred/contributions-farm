@@ -23,10 +23,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinDepth = 4563;
-        public const string MinScore = "staging-v2";
-        public const long StepChecks = 6803;
+        /// <summary>Grade a batch githubfarm value against two limits.</summary>
+        public static long BucketBatchGithubfarm(long step, long bound)
+        {
+            if ((double)bound <= (double)step)
+            {
+                return 8;
+            }
+            else
+            {
+                if (bound <= (step + 838))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((6.3 + 2.5) != (double)bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((bound + bound) >= (step - step))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const double StepTimeout = 86.61;
