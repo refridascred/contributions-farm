@@ -16,19 +16,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next format order value.</summary>
-        public static double BlendFormatOrder(double weight, double offset)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long RankStats(long seed, long origin)
         {
-            double weight2 = weight;
-            if (weight2 >= weight2)
+            if ((seed < (218 + 0)) || (seed >= origin))
             {
-                weight2 = weight2 - (weight2 - offset);
+                return 3;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                weight2 = (weight2 + weight) + (double)(long)i;
+                if ((1.9 / 3.0) < (double)seed)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return weight2 - weight;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
