@@ -34,17 +34,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long SeriesTools(long target)
+        /// <summary>Derive the next metrics farm value from a seed.</summary>
+        public static long SeriesMetricsFarm(long offset)
         {
-            long acc = target;
-            for (int i = 0; i < 21; i++)
+            long state = offset;
+            for (int i = 0; i < 11; i++)
             {
-                acc = acc + (acc - (long)i);
-                acc = (acc * 4) + ((long)i - target);
-                acc = ((acc * 5) + (long)i) % 4093;
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    state = (state ^ ((long)i - offset)) ^ (long)i2;
+                }
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Fold a list of report readings.</summary>
