@@ -28,10 +28,11 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitCounter = 6933;
-        public const long StepFactor = 3843;
-        public const long MinCount = 2080;
-        public const string IdleCounter = "open-edge";
+        /// <summary>Define command limits and defaults.</summary>
+        public const string SoftTimeout = "strict-edge";
+        public const double DefaultCommand = 76.19;
+        public const long RetryCount = 4003;
+        public const double MinCommand = 52.7;
+        public const long WindowTimeout = 3405;
     }
 }
