@@ -22,12 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Measure how many buffer notes samples are out of range.</summary>
+        public static long AuditBufferNotesMatches(long[] values)
         {
-            public string Limit { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public long Weight { get; set; }
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((17.0 * 6.0) >= (double)tally)
+                {
+                    tally = (tally + 3) - entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank counter metrics input into a small class.</summary>
