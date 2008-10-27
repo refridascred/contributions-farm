@@ -1,6 +1,8 @@
-id,label,active,level,owner
-1,597,457,936,open
-2,25,22.03,896,544
-3,908,75.86,eu-west,blue
-4,125,75.21,blue,blue
-5,502,96.3,eu-west,43.74
+id,count,active,owner
+1,341,primary,420
+2,521,cached,legacy
+3,910,381,372
+4,13.08,317,83.71
+5,8.93,846,60
+6,212,945,61.88
+7,edge,696,eu-west
