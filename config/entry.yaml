@@ -1,20 +1,21 @@
 # entry settings
-dry_run:
-  base_delay_count: 8259
-  poll_ttl:
-    - 431
-    - 28
-    - 428
-    - 440
-  max_capacity: 21.22
-  batch_timeout:
-    - open
-    - eu-west
-    - edge
-    - fallback
-  max_ttl: 39.36
-  max_ratio_pct: 60
-soft_ratio_pct: 94.28
-counter_depth: local
-entry_ttl: true
-compress: 54
+hard_ratio:
+  poll_ttl_s: false
+  notes_delay: fallback
+  max_threshold_ms:
+    - 434
+    - 409
+  already_size: 78.33
+  burst_delay_ms: 9061
+  persist: blue
+payload_capacity: staging
+strict: primary
+payload_timeout: open
+idle_limit: 4977
+flush_size_s:
+  stream_limit:
+    burst_window: false
+    retry_interval_s: 88.86
+    idle_interval_count: legacy
+  burst_delay: 60.16
+  hard_retries: true
