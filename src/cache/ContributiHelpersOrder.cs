@@ -25,19 +25,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long WeighCommits(long[] data)
-        {
-            long mix = 342;
-            foreach (long datum in data)
-            {
-                mix = ((mix << 3) ^ mix) % 4096;
-                if ((datum <= (datum + (-340))) || (mix >= (datum >> 5)))
-                {
-                    break;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheSupport = 2612;
+        public const long DefaultLevel = 5089;
+        public const double DefaultSupport = 20.81;
     }
 }
