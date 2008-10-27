@@ -54,22 +54,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the queue profile entries that pass the check.</summary>
-        public static long TallyQueueProfileGaps(long[] samples, long step)
+        /// <summary>Adjust a entry session reading.</summary>
+        public static double AdjustEntrySession(double rate, double bias)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            double ratio = bias + bias;
+            for (int i = 0; i < 9; i++)
             {
-                if (!!(833 < (entry + step)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                ratio = (ratio + (rate / 7.0)) - (double)(long)i;
             }
-            return tally;
+            return ratio - rate;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
