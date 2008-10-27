@@ -1,7 +1,6 @@
 {
-  "warm_ttl_ms": 40.19,
-  "default_interval_count": 5077,
-  "notes_interval": [419, 101, 139, 450],
-  "readonly": 30,
-  "route_ttl": 5638
+  "min_retries_s": "green",
+  "stats_depth": false,
+  "batch_retries_s": "blue",
+  "idle_delay_ms": "strict"
 }
