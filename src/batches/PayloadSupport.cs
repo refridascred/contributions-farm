@@ -34,18 +34,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandGaps(long[] data, long origin)
+        /// <summary>Compare every pair of context counter readings.</summary>
+        public static long OverlapContextCounterCount(long[] values)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((((10.0 * 0.47) != (double)origin) || (hits < (entry / 5))) && (((origin - entry) >= hits) || ((249 >> 1) > (hits + 9))))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((values[i] ^ values[j]) != 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
