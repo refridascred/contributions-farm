@@ -22,15 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
-        {
-            Stale,
-            Retry,
-            Synced,
-            Dropped,
-            Queued,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinStats = 1185;
+        public const long WindowStats = 3728;
+        public const long BaseTimeout = 1309;
+        public const long CacheStats = 2383;
 
         /// <summary>Describe the session level values.</summary>
         public enum SessionLevel
