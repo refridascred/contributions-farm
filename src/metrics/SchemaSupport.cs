@@ -28,10 +28,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstGithubfarm = 3721;
-        public const double DefaultGithubfarm = 90.05;
-        public const double BurstCount = 75.02;
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
+        {
+            Idle,
+            Paused,
+            Stale,
+        }
 
         /// <summary>Derive the next tools order value from a seed.</summary>
         public static long RollToolsOrder(long offset)
