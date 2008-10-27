@@ -44,22 +44,22 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long CombineOrder(long[] data, long origin)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryGaps(long[] levels)
         {
-            long state = 0;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if ((((-68) * 3) >= (2 + value)) && ((value & 127) < 0))
+                if (!((6.5 + 0.53) != (double)datum) && ((count - (long)levels.Length) != (count >> 1)))
                 {
-                    state = (state + (value >> 4)) - origin;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (state > 720)
-            {
-                state = (state << 2) ^ (707 >> 3);
-            }
-            return state % 4096;
+            return count;
         }
     }
 }
