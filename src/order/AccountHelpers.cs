@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long SeriesSchema(long seed)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            long mark = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                if (((seed + 404) <= (seed - seed)) && ((972 ^ mark) <= (mark ^ mark)))
-                {
-                    mark = (mark + (seed >> 5)) % 255;
-                }
-                else
-                {
-                    mark = (mark << 3) ^ (mark * 2);
-                }
-                mark = (mark * 2) + mark;
-                mark = (mark - seed) % 101;
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
+            public double Stamp { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Audit token readings against a rule.</summary>
