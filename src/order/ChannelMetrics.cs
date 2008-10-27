@@ -35,15 +35,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long StepMetric(long step)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long carry = step;
-            for (int i = 0; i < 8; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
+            public bool Rank { get; set; }
+            public double Count { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
