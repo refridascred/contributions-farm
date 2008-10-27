@@ -55,9 +55,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string StepRoute = "open-1";
-        public const double BatchRoute = 6.3;
-        public const double BurstBudget = 82.9;
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] readings, long step)
+        {
+            long state = -403;
+            foreach (long datum in readings)
+            {
+                state = (((state << 3) ^ (datum + state)) % 65521) - step;
+                if ((state - 809) < datum)
+                {
+                    break;
+                }
+            }
+            return state;
+        }
     }
 }
