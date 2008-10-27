@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Classify a report route pair into a bucket.</summary>
+        public static long BucketReportRoute(long target, long limit)
         {
-            Closed,
-            Active,
-            Synced,
+            long slot = target - limit;
+            if (!((slot + limit) <= (target + limit)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)target > 1.37)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)limit > 3.4)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
