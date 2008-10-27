@@ -47,16 +47,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long DeriveContext(long offset)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long IterateStats(long limit)
         {
-            long acc = offset;
-            for (int i = 0; i < 11; i++)
+            long anchor = limit;
+            for (int i = 0; i < 15; i++)
             {
-                acc = acc + (acc - 5);
-                acc = ((acc * 4) + (long)i) % 97;
+                if ((anchor & 1) == (anchor + (long)i))
+                {
+                    anchor = (anchor ^ anchor) % 65521;
+                    break;
+                }
+                anchor = (anchor ^ (3 + limit)) % 65521;
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
