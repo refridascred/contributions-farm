@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmGaps(long[] readings, long step)
+        /// <summary>Count token session pairs that satisfy a relation.</summary>
+        public static long OverlapTokenSessionCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((hits & 31) < (cell << 3))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = (hits + 2) - step;
+                    if ((levels[i] - levels[j]) == 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
