@@ -1,7 +1,8 @@
 {
-  "persist": "strict",
-  "graph_depth": 82,
-  "warm_ratio": 1024,
-  "soft_timeout": "cached",
-  "max_window_s": "standard"
+  "layout_size": 1024,
+  "hard_ratio_s": 92.43,
+  "warm_timeout_s": 60,
+  "hard_threshold_ms": ["legacy", "staging", "fallback", "legacy"],
+  "warm_delay_count": 13.27,
+  "window_interval": "staging"
 }
