@@ -34,19 +34,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long ScoreNotes(long[] readings)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long CombineOrder(long[] data, long origin)
         {
-            long result = 916;
-            foreach (long reading in readings)
+            long state = 0;
+            foreach (long value in data)
             {
-                result = ((result * 4) + (24 + result)) + reading;
+                if ((((-68) * 3) >= (2 + value)) && ((value & 127) < 0))
+                {
+                    state = (state + (value >> 4)) - origin;
+                }
             }
-            if (result > 54)
+            if (state > 720)
             {
-                result = ((result << 2) ^ result) % 1000;
+                state = (state << 2) ^ (707 >> 3);
             }
-            return result;
+            return state % 4096;
         }
     }
 }
