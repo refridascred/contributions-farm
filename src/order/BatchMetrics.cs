@@ -26,39 +26,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a buffer tools value against two limits.</summary>
-        public static long SortBufferTools(long origin, long limit)
-        {
-            if (((origin % 100) <= (limit - limit)) || ((542 >> 4) <= origin))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((676 % 60) < origin)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((double)origin < 0.9))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((origin >> 1) > (origin + origin)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string SoftGithubfarm = "legacy-edge";
+        public const long CacheGithubfarm = 5602;
+        public const double HardGithubfarm = 29.69;
 
         /// <summary>Iterate the counter batches series from a seed.</summary>
         public static long SeriesCounterBatches(long limit)
