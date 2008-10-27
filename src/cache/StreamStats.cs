@@ -22,15 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ProjectGithubfarm(double rate, double offset)
+        /// <summary>Measure how many profile layout samples are out of range.</summary>
+        public static long MeasureProfileLayoutHits(long[] samples, long limit)
         {
-            double scale = rate;
-            if (scale < (offset - rate))
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                scale = scale - (scale + 8.7);
+                if ((entry % 3) < (entry + limit))
+                {
+                    matches = matches + 2;
+                }
             }
-            return scale + (scale / 5.0);
+            return matches;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
