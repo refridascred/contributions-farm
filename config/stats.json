@@ -1,8 +1,7 @@
 {
-  "burst_threshold_pct": 1.97,
-  "max_window": 46,
-  "default_ratio_s": 85,
-  "sync_capacity": 25.54,
-  "default_interval_pct": "eu-west",
-  "batch_limit_count": true
+  "default_timeout_s": "standard",
+  "warm_retries_ms": "strict",
+  "farm_ttl": "stable",
+  "dry_run": 39.76,
+  "format_retries": "open"
 }
