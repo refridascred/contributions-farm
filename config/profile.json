@@ -1,8 +1,13 @@
 {
-  "retry_window_ms": [251, 407, 34, 392],
-  "cluster_ttl": true,
-  "max_timeout_count": "local",
-  "profile_interval": [159, 44, 270],
-  "enabled": 84.59,
-  "poll_size_s": "eu-west"
+  "idle_depth_count": "latest",
+  "default_delay": "latest",
+  "hard_ttl_count": false,
+  "payload_depth": ["standard", "blue"],
+  "hard_window_s": 44,
+  "cluster_retries": {
+    "flush_delay": "blue",
+    "buffer_delay": true,
+    "batch_window": 3866,
+    "strict": ["stable", "legacy"]
+  }
 }
