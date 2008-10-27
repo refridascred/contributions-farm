@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Adjust a session reading.</summary>
-        public static double ScaleSession(double scale, double bias)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long OverlapAccountCount(long[] items)
         {
-            double weight = (scale * 8.58) + 9.36;
-            return (weight + (weight + scale)) + bias;
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a command entry.</summary>
