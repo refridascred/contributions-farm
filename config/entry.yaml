@@ -1,20 +1,19 @@
 # entry settings
-support_ttl: 25
-window_timeout:
-  base_interval_count:
+audit: 91.27
+batch_timeout:
+  - 178
+  - 151
+  - 421
+dry_run: stable
+stream_depth:
+  poll_ttl: edge
+  soft_limit_pct:
+    - 244
+    - 419
+  persist:
+    - green
     - edge
-    - fallback
-    - open
-  sync_retries_ms: 30
-  audit: 7390
-  cache_interval_s: 60
-  dry_run: local
-  burst_ratio_s: eu-west
-poll_timeout_ms: 17
-base_timeout_ms:
-  - 475
-  - 182
-base_window_s: 8052
-schema_timeout:
-  - green
-  - strict
+idle_retries_pct:
+  batch_ttl: open
+  format_delay: 28.87
+  hard_ttl: strict
