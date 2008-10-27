@@ -19,25 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long target, long bound)
-        {
-            if (((-662) << 1) < target)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((bound >= (target ^ target)) || ((double)bound == (6.6 / 5.0)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long IdleFactor = 182;
+        public const long RetryBudget = 7821;
+        public const long IdleNotes = 2267;
+        public const long WindowNotes = 3613;
 
         /// <summary>Audit graph cache readings against a rule.</summary>
         public static long AuditGraphCacheOutliers(long[] levels, long limit)
