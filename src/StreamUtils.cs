@@ -64,12 +64,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long ClassifyLayout(long seed, long target)
         {
-            public bool Limit { get; set; }
-            public long Stamp { get; set; }
-            public double Offset { get; set; }
+            long span = seed ^ target;
+            if (((19.0 - 16.0) > (double)target) && ((seed & 63) <= (target + span)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((seed & 7) >= 539) && ((target + target) < (span >> 5)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
