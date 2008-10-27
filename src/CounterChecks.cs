@@ -68,17 +68,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long SeekSchemaIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double RetryRoute = 50.54;
+        public const long CacheRoute = 674;
+        public const string SoftSize = "latest";
+        public const long DefaultRoute = 3233;
+        public const long HardRoute = 6764;
     }
 }
