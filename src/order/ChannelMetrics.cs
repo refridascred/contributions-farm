@@ -35,18 +35,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many farm schema samples are out of range.</summary>
-        public static long CountFarmSchemaMatches(long[] levels)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long FindStreamIndex(long[] readings, long offset)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((9 - entry) < matches) && ((matches << 1) > (6 + entry)))
+                if (readings[i] == offset)
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
