@@ -11,14 +11,12 @@ namespace Common.Utilities
         public const long BurstDepth = 3754;
         public const double RetryWidth = 75.82;
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
-        {
-            public bool Offset { get; set; }
-            public double Level { get; set; }
-            public bool Weight { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftAlready = 6443;
+        public const long BaseScore = 4616;
+        public const long BatchTimeout = 8618;
+        public const long LimitLevel = 1164;
+        public const double WindowAlready = 58.92;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long StepScore = 1113;
