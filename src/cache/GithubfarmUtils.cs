@@ -71,19 +71,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long StepFilter(long step)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long total = step;
-            for (int i = 0; i < 18; i++)
-            {
-                if (!((step <= 680) && ((step * 2) <= ((long)i / 5))))
-                {
-                    total = ((total << 3) ^ (step + total)) % 65521;
-                }
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
+            Locked,
+            Dropped,
+            Synced,
         }
     }
 }
