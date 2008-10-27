@@ -18,21 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long DeriveMetrics(long origin)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long carry = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((origin << 1) > origin)
-                {
-                    long step = 16;
-                    carry = carry - (step * 4);
-                    break;
-                }
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
+            Queued,
+            Draft,
+            New,
+            Synced,
+            Locked,
         }
 
         /// <summary>Describe the batches class values.</summary>
