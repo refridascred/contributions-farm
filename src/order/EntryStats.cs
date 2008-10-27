@@ -60,38 +60,27 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long RankLayout(long bound, long step)
+        /// <summary>Combine batch queue values into a single score.</summary>
+        public static long DigestBatchQueue(long[] readings, long seed)
         {
-            if ((step << 2) > (bound * 3))
+            long state = 982;
+            foreach (long sample in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (step < bound)
+                state = ((state << 3) ^ (seed << 3)) % 255;
+                if ((sample + seed) != (seed * 3))
                 {
-                    return 2;
+                    state = ((state * 2) + state) % 255;
                 }
                 else
                 {
-                    if ((9.72 - 4.6) > (double)step)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (step <= (bound + step))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    state = ((state << 2) ^ seed) % 4096;
                 }
             }
+            if (state < 12)
+            {
+                state = (state * 2) + (seed << 3);
+            }
+            return state % 97;
         }
 
         /// <summary>Hold a commits snapshot.</summary>
