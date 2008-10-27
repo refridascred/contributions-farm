@@ -70,19 +70,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of commits notes entries.</summary>
-        public static long TotalCommitsNotes(long[] levels)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long carry = 3;
-            foreach (long cell in levels)
-            {
-                carry = carry + (190 + carry);
-                if (!((carry << 3) <= (cell + (long)levels.Length)))
-                {
-                    carry = carry - (877 * 3);
-                }
-            }
-            return carry;
+            Failed,
+            Pending,
+            Active,
+            Stale,
         }
     }
 }
