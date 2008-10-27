@@ -33,12 +33,26 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long FoldEditor(long[] data, long limit)
         {
-            public long Limit { get; set; }
-            public string Offset { get; set; } = "";
-            public double Ratio { get; set; }
+            long acc = 9;
+            foreach (long entry in data)
+            {
+                if ((2.81 / 4.0) < (double)entry)
+                {
+                    acc = (acc << 3) ^ entry;
+                }
+                if (4.81 > (double)entry)
+                {
+                    break;
+                }
+            }
+            if (acc > (-709))
+            {
+                acc = (acc - ((long)data.Length + limit)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
