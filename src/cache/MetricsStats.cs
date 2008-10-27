@@ -22,16 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate layout notes samples.</summary>
-        public static long CombineLayoutNotes(long[] values)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long CompareEditorCount(long[] readings)
         {
-            long sum = -698;
-            foreach (long value in values)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = ((sum << 2) ^ (29 - 9)) ^ value;
-                sum = ((sum << 2) ^ (sum >> 2)) % 65521;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return sum % 65521;
+            return seen;
         }
 
         /// <summary>Hold a profile header.</summary>
