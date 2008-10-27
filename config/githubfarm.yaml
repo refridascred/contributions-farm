@@ -1,9 +1,9 @@
 # githubfarm settings
-warm_capacity: false
-metrics_size:
-  - 363
-  - 73
-  - 431
-base_timeout: 30
-sync_ttl_pct: false
-warm_ttl_count: false
+batch_delay_count: 21.7
+max_ttl_pct: strict
+burst_size: 25
+batch_timeout_pct: 7133
+dry_run:
+  - strict
+  - edge
+  - open
