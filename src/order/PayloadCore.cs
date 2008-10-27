@@ -59,11 +59,22 @@ namespace Common.Utilities
         public const long IdleFactor = 3190;
         public const long StepDepth = 6598;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardContributi = 4356;
-        public const double IdleLevel = 36.01;
-        public const long StepContributi = 912;
-        public const string MinLevel = "fallback-1";
-        public const string SoftContributi = "primary-edge";
+        /// <summary>Audit entry buffer readings against a rule.</summary>
+        public static long MeasureEntryBufferGaps(long[] readings, long limit)
+        {
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if (!(((double)matches < (double)entry) && (2.0 > (double)matches)))
+                {
+                    matches = (matches + 1) + limit;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
