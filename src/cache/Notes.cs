@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LookupBatchesIndex(long[] readings, long seed)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long OverlapFormatCount(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((readings[i] < seed) && ((readings[i] % 5) != 0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] ^ items[j]) == 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Scale a cache buffer figure with a bias.</summary>
