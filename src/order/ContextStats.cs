@@ -33,32 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long GradeAccount(long limit, long offset)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsRange(long[] data, long seed)
         {
-            long delta = limit - offset;
-            if ((delta << 2) >= limit)
+            bool ok = true;
+            foreach (long value in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (((17 << 1) == (offset - 676)) && ((double)offset < (5.96 * 8.06)))
+                if (value > seed)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit + delta) > (offset - limit))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Fold a list of batches schema readings.</summary>
