@@ -19,10 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long LimitFormat = 5473;
-        public const string LimitWidth = "staging";
-        public const long IdleFormat = 5492;
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheGaps(long[] items)
+        {
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if (((datum + tally) == (datum - datum)) || ((tally < (datum / 9)) || ((double)datum >= (3.0 - 5.21))))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a window info.</summary>
         public sealed class WindowInfo
