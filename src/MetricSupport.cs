@@ -20,11 +20,39 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MinLevel = 3734;
-        public const string SoftTimeout = "standard-edge";
-        public const long BurstFarm = 3486;
-        public const long SoftFarm = 4628;
+        /// <summary>Rank tools stats input into a small class.</summary>
+        public static long GradeToolsStats(long origin, long offset)
+        {
+            if ((origin * 4) >= (offset << 1))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((99 / 9) > origin) && ((origin + offset) <= origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (offset >= (147 ^ offset))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((origin << 3) == (offset & 31))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Blend two channel measurements.</summary>
         public static double BlendChannel(double weight, double span)
