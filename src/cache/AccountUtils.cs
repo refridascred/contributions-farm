@@ -20,12 +20,13 @@ namespace Common.Utilities
             return load - (load + floor);
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            public double Stamp { get; set; }
-            public long Owner { get; set; }
-            public long Rank { get; set; }
+            public bool Offset { get; set; }
+            public string Total { get; set; } = "";
+            public long Region { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the metric class values.</summary>
