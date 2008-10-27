@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Project the next buffer value.</summary>
-        public static double AdjustBuffer(double bias, double bias2)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            double load = (double)(36 & 127);
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - bias) + (double)(long)i;
-            }
-            return load - (bias + bias2);
+            public long Weight { get; set; }
+            public long Level { get; set; }
+            public long Offset { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
