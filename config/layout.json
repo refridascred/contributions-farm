@@ -1,6 +1,20 @@
 {
-  "min_depth": 20.69,
-  "cluster_delay": "open",
-  "stream_ttl": true,
-  "max_window_pct": [274, 130, 344]
+  "burst_limit": [257, 220, 439],
+  "warm_threshold_ms": 17,
+  "enabled": 61.14,
+  "warm_size_s": {
+    "queue_size": [15, 121, 217, 56],
+    "max_interval_s": {
+      "warm_ttl_count": 5975,
+      "soft_window": 94.02,
+      "default_ttl_count": "open",
+      "account_timeout": 56
+    },
+    "base_window_pct": "eu-west",
+    "audit": "blue",
+    "max_retries_s": "standard",
+    "route_limit": "stable"
+  },
+  "warm_capacity_pct": 30,
+  "cache_retries_count": false
 }
