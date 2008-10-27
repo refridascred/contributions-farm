@@ -12,12 +12,25 @@ namespace Common.Utilities
             return ratio + (floor - 0.12);
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Rank account input into a small class.</summary>
+        public static long SortAccount(long seed, long limit)
         {
-            public bool Token { get; set; }
-            public double Label { get; set; }
-            public double Mode { get; set; }
+            long offset = seed - limit;
+            if (((offset - offset) < (offset << 3)) && (seed > (205 + 1)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)limit <= 10.0)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Audit already channel readings against a rule.</summary>
