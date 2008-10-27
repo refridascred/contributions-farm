@@ -1,6 +1,8 @@
-id,count,label,rank,state
-1,855,staging,local,29.28
-2,777,24.3,standard,legacy
-3,453,stable,strict,strict
-4,85.31,53.99,80,strict
-5,fallback,562,219,46.31
+id,region,state,label
+1,546,85.99,616
+2,448,51.45,26.62
+3,16.93,753,green
+4,745,eu-west,80.76
+5,edge,329,cached
+6,primary,14.71,1.81
+7,latest,56.75,193
