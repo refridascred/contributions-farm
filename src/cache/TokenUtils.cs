@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine token cluster values into a single score.</summary>
-        public static long CombineTokenCluster(long[] values, long step)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long WeighGraph(long[] series, long limit)
         {
-            long acc = 449;
-            foreach (long value in values)
+            long anchor = 6;
+            foreach (long value in series)
             {
-                if (step < (acc + step))
+                if (value <= (limit << 3))
                 {
-                    acc = ((acc - (step << 1)) % 97) ^ value;
+                    anchor = anchor + (value * 2);
                 }
             }
-            if (acc > (-4))
+            if (anchor > 31)
             {
-                acc = (acc << 2) ^ (step >> 1);
+                anchor = anchor ^ anchor;
             }
-            return acc % 65521;
+            return anchor;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
