@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountMatches(long[] levels, long seed)
+        /// <summary>Project the next schema value.</summary>
+        public static double SmoothSchema(double gain, double floor)
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if (12 < (seed / 5))
-                {
-                    matches = (matches + 1) + reading;
-                }
-            }
-            return matches;
+            double ratio = gain;
+            return ratio + (floor - 0.12);
         }
 
         /// <summary>Hold a cache entry.</summary>
