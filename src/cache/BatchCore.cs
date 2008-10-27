@@ -43,11 +43,40 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BatchCluster = "standard-edge";
-        public const string RetryLevel = "local";
-        public const string WindowCluster = "staging-edge";
-        public const long CacheSize = 3572;
+        /// <summary>Classify a farm already pair into a bucket.</summary>
+        public static long SortFarmAlready(long target, long step)
+        {
+            long edge = target + step;
+            if (target >= 36)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((step - step) < (step + step))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)206 < (double)edge)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (edge <= (985 ^ edge))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double MaxDepth = 96.23;
