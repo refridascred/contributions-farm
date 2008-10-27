@@ -44,12 +44,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string MaxWidth = "fallback-edge";
-        public const long MaxGraph = 6205;
-        public const double BatchGraph = 21.41;
-        public const long BurstGraph = 3768;
-        public const double HardGraph = 12.69;
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long SeriesStats(long bound)
+        {
+            long result = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((result + bound) < (long)i)
+                {
+                    result = ((result << 2) ^ ((long)i << 2)) % 4096;
+                }
+                else
+                {
+                    result = (result * 3) + bound;
+                }
+                result = result + 61;
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
         public static bool GuardSupportBounds(long[] values, long origin)
