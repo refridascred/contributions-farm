@@ -52,19 +52,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next layout contributi value from a seed.</summary>
-        public static long StepLayoutContributi(long step)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long score = step;
-            for (int i = 0; i < 4; i++)
-            {
-                if (!((step % 16) >= ((long)i * 2)))
-                {
-                    score = score + step;
-                }
-                score = ((score * 3) + (long)i) % 97;
-            }
-            return score;
+            Synced,
+            Closed,
+            Stale,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Describe the already phase values.</summary>
