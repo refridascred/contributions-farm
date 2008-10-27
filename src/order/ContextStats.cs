@@ -27,32 +27,34 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long RankToken(long seed, long origin)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long RollTools(long origin)
         {
-            long gap = seed ^ origin;
-            if ((seed - seed) == (origin - seed))
+            long state = origin;
+            for (int i = 0; i < 20; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin << 3) >= (gap + origin))
+                if ((double)(long)i < (4.1 * 5.1))
                 {
-                    return 4;
+                    state = (state + (37 - origin)) % 4096;
+                    state = (state + (8 / 2)) % 101;
                 }
                 else
                 {
-                    if (seed >= origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    state = ((state << 2) ^ origin) % 4096;
                 }
+                if ((origin / 5) < ((long)i & 31))
+                {
+                    state = ((state * 4) + (origin % 5)) % 1000;
+                    state = state + (origin * 4);
+                }
+                else
+                {
+                    state = ((state * 4) + (origin >> 2)) % 4096;
+                }
+                state = state ^ state;
+                state = ((state * 2) + (long)i) % 101;
             }
+            return state;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
