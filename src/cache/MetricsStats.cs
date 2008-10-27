@@ -19,12 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double SoftAlready = 11.97;
-        public const string CacheAlready = "legacy-edge";
-        public const double WindowAlready = 71.32;
-        public const long HardAlready = 9626;
-        public const double StepLevel = 5.38;
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LocatePayloadIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a profile header.</summary>
         public sealed class ProfileHeader
