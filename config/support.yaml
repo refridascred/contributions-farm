@@ -1,8 +1,20 @@
 # support settings
-idle_retries_s: 500
-base_threshold_ms: 100
-min_ratio:
-  - open
-  - stable
-  - latest
-  - staging
+burst_window:
+  poll_depth_s:
+    max_depth: 62.92
+    enabled: local
+    hard_depth: false
+  batch_depth: 4729
+  layout_limit:
+    burst_ratio_pct:
+      - 498
+      - 427
+      - 348
+    idle_ttl_s: 1024
+    base_delay_pct: 30
+    hard_timeout: true
+  record_delay: 918
+audit: legacy
+compress: 39
+base_threshold_s: green
+token_retries: fallback
