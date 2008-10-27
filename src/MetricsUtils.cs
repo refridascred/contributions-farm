@@ -31,17 +31,22 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long FindChecksIndex(long[] series, long bound)
+        /// <summary>Digest a series of format support entries.</summary>
+        public static long TotalFormatSupport(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 58;
+            foreach (long item in data)
             {
-                if (series[i] >= bound)
+                if ((3 + item) > item)
                 {
-                    return (long)i;
+                    mark = ((mark * 3) + (mark - item)) % 1000;
                 }
             }
-            return -1;
+            if (mark > 3)
+            {
+                mark = (mark ^ 241) % 255;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Accumulate payload samples.</summary>
