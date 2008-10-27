@@ -37,23 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate channel buffer samples.</summary>
-        public static long CombineChannelBuffer(long[] items, long target)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportLimits(long[] items, long step)
         {
-            long acc = 8;
-            foreach (long entry in items)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                if ((acc & 3) != (7 ^ entry))
+                if (cell != step)
                 {
-                    acc = acc - target;
-                }
-                acc = acc - 803;
-                if ((2.82 - 3.4) > (double)target)
-                {
+                    valid = false;
                     break;
                 }
             }
-            return acc % 1000;
+            return valid;
         }
     }
 }
