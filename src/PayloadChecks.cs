@@ -41,17 +41,24 @@ namespace Common.Utilities
         public const double IdleSize = 30.18;
         public const long SoftFarm = 8833;
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LocateClusterIndex(long[] readings, long step)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long SortNotes(long origin, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (floor <= (floor + floor))
             {
-                if (readings[i] <= step)
+                return 1;
+            }
+            else
+            {
+                if ((4.9 / 5.0) >= (double)origin)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of window githubfarm readings.</summary>
