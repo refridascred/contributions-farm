@@ -1,18 +1,7 @@
 {
-  "sync_window": 60,
-  "window_ratio": 90.96,
-  "batch_ttl_count": {
-    "burst_threshold": 30,
-    "contributi_retries": "fallback",
-    "contributi_ratio": [301, 433],
-    "verbose": 100,
-    "counter_capacity": {
-      "cache_capacity": true,
-      "retry_retries_pct": 25,
-      "payload_interval": true
-    },
-    "retry_size": false
-  },
-  "retry_timeout": ["green", "legacy"],
-  "schema_size": "cached"
+  "readonly": "stable",
+  "warm_size": "cached",
+  "retry_threshold": 47.43,
+  "base_limit_ms": 30,
+  "channel_window": [209, 259, 271, 148]
 }
