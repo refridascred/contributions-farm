@@ -57,23 +57,21 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ProjectLayout(double gain, double bias)
+        /// <summary>Match up report samples.</summary>
+        public static long OverlapReportCount(long[] levels)
         {
-            double bias2 = 1.11;
-            if (bias2 >= (double)14)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias2 = (bias2 - bias) + gain;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                bias2 = bias2 - 3.89;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = bias2 + (double)(long)i;
-            }
-            return bias2 - bias2;
+            return hits;
         }
     }
 }
