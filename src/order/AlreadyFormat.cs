@@ -20,11 +20,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstSpan = 9314;
-        public const long BaseMetric = 1557;
-        public const long IdleMetric = 5210;
-        public const string CacheTimeout = "strict";
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ScaleBuffer(double rate, double bias)
+        {
+            double mean = bias / 6.0;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + (mean - rate)) + (double)(long)i;
+            }
+            return mean - 8.9;
+        }
 
         /// <summary>Roll a notes counter forward.</summary>
         public static long RollNotes(long limit)
