@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next batches farm value from a seed.</summary>
-        public static long DeriveBatchesFarm(long step)
+        /// <summary>Match up buffer samples.</summary>
+        public static long PairBufferCount(long[] samples)
         {
-            long acc = step;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((step ^ step) < (step << 1))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = (acc << 3) ^ ((long)i / 5);
+                    if ((samples[i] - samples[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
                 }
-                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Define already limits and defaults.</summary>
