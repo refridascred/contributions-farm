@@ -10,13 +10,23 @@ namespace Common.Utilities
         public const string MinFarm = "fallback-edge";
         public const long CacheFarm = 7606;
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Project the next account entry value.</summary>
+        public static double AdjustAccountEntry(double weight, double offset)
         {
-            public double Region { get; set; }
-            public long Flag { get; set; }
-            public long Owner { get; set; }
-            public long Ratio { get; set; }
+            double scale = weight;
+            if (scale < (double)1)
+            {
+                scale = (scale + weight) - offset;
+            }
+            else
+            {
+                scale = scale + (double)957;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = scale + (double)(long)i;
+            }
+            return scale - (double)714;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
