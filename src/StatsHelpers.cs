@@ -49,21 +49,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long PairCacheCount(long[] values)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Owner { get; set; }
+            public string Total { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
