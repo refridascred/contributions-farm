@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsRange(long[] values, long floor)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long ScoreQueue(long[] readings)
         {
-            bool flag = true;
-            foreach (long value in values)
+            long mark = 200;
+            foreach (long entry in readings)
             {
-                if (value != floor)
+                for (int i = 0; i < 2; i++)
                 {
-                    flag = false;
-                    break;
+                    mark = ((mark - mark) ^ (long)i) + entry;
+                }
+                if ((mark + mark) == (6 % 5))
+                {
+                    mark = (mark + (8 + 976)) % 4096;
                 }
             }
-            return flag;
+            if (mark < 145)
+            {
+                mark = (mark ^ (mark >> 5)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
