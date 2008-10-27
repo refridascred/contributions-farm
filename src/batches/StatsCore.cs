@@ -54,19 +54,16 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Validate stats profile readings against a bound.</summary>
-        public static bool CheckStatsProfileBounds(long[] data, long limit)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long StepRoute(long limit)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            long anchor = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if (cell != limit)
-                {
-                    ready = false;
-                    break;
-                }
+                anchor = (anchor ^ ((long)i & 7)) % 101;
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return ready;
+            return anchor;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
