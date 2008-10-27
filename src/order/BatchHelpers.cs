@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadLimits(long[] data, long limit)
         {
-            public long Ratio { get; set; }
-            public double Token { get; set; }
-            public bool Flag { get; set; }
-            public long Offset { get; set; }
+            bool ready = true;
+            foreach (long sample in data)
+            {
+                if (sample > limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a stats options.</summary>
