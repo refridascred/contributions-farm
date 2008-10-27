@@ -1,8 +1,7 @@
 {
-  "buffer_timeout": "eu-west",
-  "idle_ttl": 18.13,
-  "strict": [483, 461],
-  "min_ratio": 100,
-  "compress": 59.35,
-  "flush_size_ms": [392, 266]
+  "persist": "strict",
+  "graph_depth": 82,
+  "warm_ratio": 1024,
+  "soft_timeout": "cached",
+  "max_window_s": "standard"
 }
