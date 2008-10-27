@@ -12,11 +12,22 @@ namespace Common.Utilities
         public const long LimitFilter = 9298;
         public const long IdleRatio = 7722;
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long ScoreSchema(long[] levels)
         {
-            public double Owner { get; set; }
-            public long Ratio { get; set; }
+            long mix = 399;
+            foreach (long reading in levels)
+            {
+                if (!((mix << 3) <= mix))
+                {
+                    mix = ((mix ^ (long)levels.Length) % 101) + reading;
+                }
+            }
+            if (mix > 1)
+            {
+                mix = mix + (8 / 7);
+            }
+            return mix % 97;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
