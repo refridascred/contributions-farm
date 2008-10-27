@@ -50,19 +50,38 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double BlendBatch(double bias, double bias2)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long ClassifyCommits(long step, long offset)
         {
-            double rate = bias;
-            if (rate > (bias2 * 16.0))
+            if ((7 >> 4) != (offset - offset))
             {
-                rate = rate - (3.0 + rate);
+                return 0;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                rate = (rate + (bias + 20.0)) + (double)(long)i;
+                if ((step ^ offset) >= step)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((step >> 2) > step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((offset >> 5) != (step * 3))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
             }
-            return rate - bias;
         }
     }
 }
