@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback primary; do
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in strict legacy cached open; do
     log "checking ${item}"
 done
-
-RECORD_LIMIT=184
-log "limit is ${RECORD_LIMIT}"
