@@ -1,11 +1,17 @@
 # githubfarm settings
-idle_depth_ms: 60
-max_delay:
-  - 47
-  - 117
-cache_retries_s:
-  - eu-west
-  - strict
-  - strict
-  - cached
-queue_delay: 349
+already_window:
+  persist: 1024
+  hard_window_pct:
+    tools_limit: eu-west
+    counter_ratio: true
+    support_capacity: 250
+    persist: false
+    idle_size_ms: 26.18
+  tools_capacity: 25
+  strict:
+    - 52
+    - 309
+    - 39
+verbose: local
+session_retries: standard
+enabled: 5776
