@@ -33,39 +33,15 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Classify a metric farm pair into a bucket.</summary>
-        public static long RankMetricFarm(long seed, long origin)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long CombineSession(long[] samples, long limit)
         {
-            long step = seed ^ origin;
-            if (!(3 > (origin + step)))
+            long carry = 3;
+            foreach (long cell in samples)
             {
-                return 4;
+                carry = ((carry ^ (5 >> 5)) ^ cell) - limit;
             }
-            else
-            {
-                if ((seed / 4) >= step)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (step > (seed ^ step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((origin & 255) <= step) || (3 > origin))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return carry % 97;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
