@@ -14,12 +14,23 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinWidth = 6957;
-        public const long BatchBudget = 916;
-        public const long BaseEntry = 1468;
-        public const long DefaultFactor = 1897;
-        public const double BatchWidth = 72.21;
+        /// <summary>Accumulate format samples.</summary>
+        public static long ScoreFormat(long[] series)
+        {
+            long score = 116;
+            foreach (long reading in series)
+            {
+                if ((11 - score) == (score % 24))
+                {
+                    score = score + (long)series.Length;
+                }
+                else
+                {
+                    score = (score ^ (reading & 63)) % 65521;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long CountCommandGaps(long[] data, long origin)
