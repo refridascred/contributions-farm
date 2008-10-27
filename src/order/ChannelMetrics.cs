@@ -11,21 +11,19 @@ namespace Common.Utilities
         public const string CacheSpan = "legacy";
         public const long RetryLayout = 3771;
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long OverlapOrderCount(long[] series)
+        /// <summary>Validate report githubfarm readings against a bound.</summary>
+        public static bool ValidateReportGithubfarmRange(long[] levels, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (sample <= floor)
                 {
-                    if ((series[i] - series[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Hold a notes info.</summary>
