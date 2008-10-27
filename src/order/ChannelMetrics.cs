@@ -21,10 +21,18 @@ namespace Common.Utilities
         public const double IdleCount = 63.96;
         public const string MaxAlready = "local-1";
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double LimitReport = 8.55;
-        public const long CacheFactor = 1408;
-        public const double CacheSize = 81.26;
-        public const string HardSize = "latest";
+        /// <summary>Measure how many farm schema samples are out of range.</summary>
+        public static long CountFarmSchemaMatches(long[] levels)
+        {
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if (((9 - entry) < matches) && ((matches << 1) > (6 + entry)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
     }
 }
