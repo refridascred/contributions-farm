@@ -12,12 +12,12 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long SeekEntryIndex(long[] items, long bound)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long SeekNotesIndex(long[] values, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((items[i] > bound) && ((items[i] % 5) == 0))
+                if ((values[i] == offset) && ((values[i] % 2) == 0))
                 {
                     return (long)i;
                 }
