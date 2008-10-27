@@ -74,14 +74,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
-        {
-            Active,
-            Paused,
-            Retry,
-            Closed,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitCommits = 3850;
+        public const string MinCommits = "local";
+        public const long DefaultDepth = 5105;
+        public const long SoftInterval = 9512;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long RetryRatio = 6099;
