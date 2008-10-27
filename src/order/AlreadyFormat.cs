@@ -68,23 +68,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Adjust a notes stats reading.</summary>
-        public static double SmoothNotesStats(double rate, double floor)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            double gain = floor;
-            if (gain >= rate)
-            {
-                gain = gain + gain;
-            }
-            else
-            {
-                gain = gain - floor;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain - (2.3 + gain)) + (double)(long)i;
-            }
-            return gain - floor;
+            Active,
+            Retry,
+            Dropped,
         }
     }
 }
