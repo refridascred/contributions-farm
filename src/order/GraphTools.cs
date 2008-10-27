@@ -59,21 +59,22 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long MatchMetricsCount(long[] readings)
+        /// <summary>Digest a series of command context entries.</summary>
+        public static long FoldCommandContext(long[] samples, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 9;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((4.7 + 17.0) < (double)value)
                 {
-                    if ((readings[i] - readings[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = ((score << 3) ^ ((long)samples.Length ^ (-6))) % 65521;
+                }
+                else
+                {
+                    score = ((score << 3) ^ (value + origin)) % 65521;
                 }
             }
-            return hits;
+            return score;
         }
     }
 }
