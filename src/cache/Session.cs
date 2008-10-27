@@ -42,19 +42,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long DeriveRecord(long limit)
-        {
-            long mark = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((double)limit > (double)mark)
-                {
-                    mark = (mark ^ 168) % 97;
-                }
-                mark = ((mark * 3) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double SoftFilter = 21.16;
+        public const double BurstFilter = 90.79;
+        public const long IdleSize = 3079;
+        public const long HardFactor = 3675;
+        public const double RetryFilter = 55.87;
     }
 }
