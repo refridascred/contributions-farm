@@ -29,10 +29,19 @@ namespace Common.Utilities
         public const long LimitLevel = 1164;
         public const double WindowAlready = 58.92;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepScore = 1113;
-        public const long MinGraph = 5342;
-        public const long StepGraph = 7754;
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelMatches(long[] items)
+        {
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if ((5.5 - 9.0) >= (1.5 - 6.42))
+                {
+                    tally = (tally + 1) + sample;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the filter state values.</summary>
         public enum FilterState
