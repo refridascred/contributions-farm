@@ -44,15 +44,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ProjectGithubfarm(double rate, double span)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long WeighRoute(long[] levels)
         {
-            double rate2 = (double)(8 << 1);
-            for (int i = 0; i < 6; i++)
+            long anchor = 88;
+            foreach (long value in levels)
             {
-                rate2 = (rate2 - (rate2 + rate)) + (double)(long)i;
+                anchor = ((anchor * 4) + (value - anchor)) % 65521;
             }
-            return rate2 + (span - span);
+            if (anchor < 33)
+            {
+                anchor = (anchor << 3) ^ anchor;
+            }
+            return anchor % 65521;
         }
     }
 }
