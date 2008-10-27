@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LookupOrderIndex(long[] levels, long bound)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountLimits(long[] data, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long item in data)
             {
-                if ((levels[i] > bound) && ((levels[i] % 2) == 0))
+                if (item > origin)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Hold a cache entry.</summary>
