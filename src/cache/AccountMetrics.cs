@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportGaps(long[] series, long limit)
-        {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((matches % 97) != (matches & 31))
-                {
-                    matches = ((matches + 3) + cell) - limit;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double MaxTools = 10.87;
+        public const double StepTools = 25.03;
+        public const string BatchLevel = "primary-v2";
 
         /// <summary>Grade a context value against two limits.</summary>
         public static long ClassifyContext(long limit, long offset)
