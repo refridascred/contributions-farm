@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            public bool Score { get; set; }
-            public long Token { get; set; }
-            public bool Rank { get; set; }
-            public long Stamp { get; set; }
+            Retry,
+            Done,
+            Idle,
+            Active,
+            Draft,
         }
 
         /// <summary>Describe the record status values.</summary>
