@@ -31,9 +31,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string CacheCommits = "primary-edge";
-        public const long HardFactor = 3359;
-        public const string MaxCommits = "alpha-v2";
+        /// <summary>Look up the position of a channel order sample.</summary>
+        public static long LocateChannelOrderIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
