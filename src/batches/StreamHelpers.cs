@@ -64,13 +64,21 @@ namespace Common.Utilities
         public const long IdleReport = 5671;
         public const long LimitSize = 8713;
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long MatchRecordCount(long[] items)
         {
-            public string Region { get; set; } = "";
-            public long Stamp { get; set; }
-            public double Label { get; set; }
-            public long Weight { get; set; }
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a batches entry.</summary>
