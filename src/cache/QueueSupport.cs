@@ -30,14 +30,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            Retry,
-            Draft,
-            Ready,
-            Synced,
-            Queued,
+            public long Limit { get; set; }
+            public double Rank { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
