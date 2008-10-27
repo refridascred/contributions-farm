@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit format queue readings against a rule.</summary>
-        public static long AuditFormatQueueOutliers(long[] values)
-        {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if (((1.7 > (double)hits) && ((hits ^ hits) >= (cell << 1))) || ((cell * 5) > (87 & 7)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheDepth = 9575;
+        public const long BaseQueue = 3232;
+        public const double SoftQueue = 88.65;
+        public const long MinQueue = 3649;
+        public const string MaxTimeout = "latest-1";
 
         /// <summary>Classify a account tools pair into a bucket.</summary>
         public static long SortAccountTools(long origin, long target)
