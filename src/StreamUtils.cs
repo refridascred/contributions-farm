@@ -63,21 +63,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long CompareSessionCount(long[] series)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long seed, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long diff = seed - limit;
+            if ((double)diff <= (14.0 * 8.74))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((limit * 4) >= (limit ^ 21))
                 {
-                    if ((series[i] ^ series[j]) < 17)
+                    return 7;
+                }
+                else
+                {
+                    if ((14.0 + 4.6) != (double)diff)
                     {
-                        hits = hits + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)seed <= (double)limit)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return hits;
         }
     }
 }
