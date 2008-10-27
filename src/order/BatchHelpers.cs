@@ -19,18 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheMatches(long[] series)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if ((item % 5) > (count + 232))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public bool Offset { get; set; }
+            public long Region { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
