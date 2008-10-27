@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultSize = 7591;
-        public const string CacheWidth = "alpha-edge";
-        public const string WindowGithubfarm = "standard-v2";
-        public const double StepSpan = 7.69;
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long DeriveNotes(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                acc = acc ^ (acc - seed);
+                if (!((acc >> 2) != (seed ^ (long)i)))
+                {
+                    acc = (acc ^ acc) % 65521;
+                }
+                acc = ((acc * 5) + (long)i) % 4093;
+            }
+            return acc;
+        }
 
         /// <summary>Count the filter entries that pass the check.</summary>
         public static long CountFilterHits(long[] readings)
