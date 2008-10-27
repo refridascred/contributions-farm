@@ -12,12 +12,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BatchFactor = 67.07;
-        public const long DefaultChecks = 1636;
-        public const long MaxSize = 9216;
-        public const long WindowSize = 2481;
-        public const long LimitChecks = 1210;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheSchema = 6211;
+        public const long SoftFactor = 2824;
+        public const long BurstInterval = 5030;
+        public const long BaseSchema = 939;
+        public const double MinSchema = 63.29;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const string CacheInterval = "primary-v2";
