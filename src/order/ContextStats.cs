@@ -33,19 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsRange(long[] data, long seed)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            bool ok = true;
-            foreach (long value in data)
-            {
-                if (value > seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Ratio { get; set; }
+            public bool Region { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Fold a list of batches schema readings.</summary>
