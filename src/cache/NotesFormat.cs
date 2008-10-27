@@ -32,19 +32,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next entry commits value.</summary>
-        public static double ScaleEntryCommits(double scale, double floor)
-        {
-            double drift = scale;
-            if (drift > scale)
-            {
-                drift = drift + (floor + scale);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - (double)640) - (double)(long)i;
-            }
-            return drift + floor;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double StepTimeout = 86.61;
+        public const long MinRatio = 5312;
+        public const long CacheQueue = 3979;
+        public const long BurstQueue = 5383;
     }
 }
