@@ -48,23 +48,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] data)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandOutliers(long[] levels)
         {
-            long carry = -318;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                carry = (carry - (37 + cell)) % 101;
-                if ((387 > carry) || (((long)data.Length * 2) > (cell + 4)))
+                if ((cell % 12) == (cell / 4))
                 {
-                    carry = (carry + cell) % 255;
-                }
-                else
-                {
-                    carry = ((carry * 5) + (5 ^ 3)) % 255;
+                    count = count + 2;
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
