@@ -1,5 +1,14 @@
 # support settings
-cache_limit: cached
-enabled: 30
-cache_retries_count: 30
-min_size_s: 53.99
+enabled:
+  - eu-west
+  - standard
+  - blue
+  - strict
+burst_delay:
+  burst_threshold_count: 73.38
+  flush_size_count: 1024
+  flush_retries_ms: false
+  retry_limit_ms: staging
+base_capacity: 65
+audit: true
+cache_interval_pct: 51
