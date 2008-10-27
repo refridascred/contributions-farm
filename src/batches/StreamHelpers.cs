@@ -22,19 +22,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiBounds(long[] series, long offset)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            bool stale = true;
-            foreach (long value in series)
-            {
-                if (value > offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Rank { get; set; }
+            public long Size { get; set; }
+            public long Mode { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Roll a filter counter forward.</summary>
