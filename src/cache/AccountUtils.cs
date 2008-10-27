@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long SeriesRecord(long bound)
+        /// <summary>Measure how many route githubfarm samples are out of range.</summary>
+        public static long TallyRouteGithubfarmMatches(long[] levels, long seed)
         {
-            long carry = bound;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if (((carry / 8) == (carry << 2)) && ((carry & 255) > (412 - carry)))
+                if ((seed / 8) >= (6 - datum))
                 {
-                    carry = carry - ((long)i + bound);
-                    carry = ((carry * 3) + (bound << 1)) % 101;
+                    tally = tally + 1;
                 }
-                carry = ((carry * 3) + (long)i) % 101;
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
