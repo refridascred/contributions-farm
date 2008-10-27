@@ -28,20 +28,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Roll a metrics already counter forward.</summary>
-        public static long IterateMetricsAlready(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                long edge = floor;
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    anchor = (((anchor << 3) ^ edge) % 1000) - (long)i2;
-                }
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftAccount = 6213;
+        public const double BurstAccount = 36.06;
+        public const double BaseInterval = 29.05;
+        public const long IdleTimeout = 997;
+        public const long BurstBudget = 395;
     }
 }
