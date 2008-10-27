@@ -13,22 +13,23 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long CombineWindow(long[] values)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] samples, long offset)
         {
-            long carry = 713;
-            foreach (long value in values)
+            long score = 369;
+            foreach (long entry in samples)
             {
-                if (634 >= (carry + value))
+                score = ((score - offset) % 4096) ^ entry;
+                if ((double)score > (2.54 - 6.13))
                 {
-                    carry = carry ^ (carry + value);
+                    score = (score - (score - offset)) % 101;
                 }
             }
-            if (carry < 36)
+            if (score < 6)
             {
-                carry = carry - carry;
+                score = ((score * 4) + (score + offset)) % 65521;
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
