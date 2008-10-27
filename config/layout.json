@@ -1,11 +1,13 @@
 {
-  "audit": 8,
-  "readonly": {
-    "graph_limit": 500,
-    "cache_delay_pct": "latest",
-    "counter_size": "fallback"
+  "hard_interval_s": {
+    "audit": "stable",
+    "default_timeout_count": "standard",
+    "default_delay_ms": 86,
+    "commits_interval": "latest",
+    "hard_ratio_pct": false,
+    "min_delay": ["legacy", "cached"]
   },
-  "soft_depth": [52, 56, 153],
-  "max_capacity": true,
-  "dry_run": "edge"
+  "max_limit_count": 45.5,
+  "default_interval": 32,
+  "route_delay": "legacy"
 }
