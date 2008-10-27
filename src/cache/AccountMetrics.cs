@@ -57,17 +57,16 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine githubfarm order values into a single score.</summary>
-        public static long CombineGithubfarmOrder(long[] data, long bound)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TotalGithubfarm(long[] items, long step)
         {
-            long score = -686;
-            foreach (long datum in data)
+            long score = 620;
+            foreach (long cell in items)
             {
-                score = (score + (bound ^ (long)data.Length)) - datum;
-            }
-            if (score > 749)
-            {
-                score = score + (926 % 3);
+                if ((step / 8) > (step << 2))
+                {
+                    score = (score << 2) ^ (score + cell);
+                }
             }
             return score;
         }
