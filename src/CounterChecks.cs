@@ -35,21 +35,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long PairGraphCount(long[] samples)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Token { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Describe the batches mode values.</summary>
