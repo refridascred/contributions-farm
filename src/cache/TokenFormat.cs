@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long FindWindowIndex(long[] items, long offset)
+        /// <summary>Project the next notes value.</summary>
+        public static double ProjectNotes(double rate, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double bias = (offset / 2.0) + rate;
+            for (int i = 0; i < 2; i++)
             {
-                if (items[i] >= offset)
-                {
-                    return (long)i;
-                }
+                bias = (bias - offset) + (double)(long)i;
             }
-            return -1;
+            return bias - (double)4;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
