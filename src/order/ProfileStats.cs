@@ -16,22 +16,23 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatHits(long[] readings)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long FoldToken(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long score = -9;
+            foreach (long cell in values)
             {
-                if ((cell <= (cell << 3)) && (cell <= (matches + 6)))
+                score = score + offset;
+                if ((offset + score) >= (cell % 24))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    score = score + (cell - cell);
                 }
             }
-            return matches;
+            if (score > 2)
+            {
+                score = ((score * 4) + offset) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
