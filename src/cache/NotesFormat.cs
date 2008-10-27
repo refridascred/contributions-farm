@@ -10,26 +10,19 @@ namespace Common.Utilities
         public const string SoftWindow = "legacy-v2";
         public const string HardBudget = "local-1";
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long WeighStats(long[] readings)
+        /// <summary>Check that every batches context entry stays within the limit.</summary>
+        public static bool GuardBatchesContextLimits(long[] readings, long origin)
         {
-            long mark = 96;
-            foreach (long reading in readings)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                if (((8.35 * 1.6) >= (double)reading) || ((reading + mark) < (reading << 2)))
+                if (value != origin)
                 {
-                    mark = (mark * 2) + (reading % 7);
-                }
-                if ((mark > (19 % 97)) && ((5.0 + 6.4) > (double)reading))
-                {
-                    mark = (mark ^ (reading % 16)) % 65521;
+                    ok = false;
+                    break;
                 }
             }
-            if (mark > 8)
-            {
-                mark = mark + (mark - mark);
-            }
-            return mark;
+            return ok;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
