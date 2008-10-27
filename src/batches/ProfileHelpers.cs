@@ -18,15 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorOutliers(long[] samples)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutOutliers(long[] data, long origin)
         {
             long tally = 0;
-            foreach (long cell in samples)
+            foreach (long item in data)
             {
-                if ((cell + cell) != (tally >> 4))
+                if ((double)origin != (8.2 * 11.0))
                 {
-                    tally = tally + 2;
+                    tally = (tally + 2) ^ item;
                 }
                 else
                 {
