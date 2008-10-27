@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long CombineWindow(long[] levels, long target)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TallyFormat(long[] samples)
         {
-            long carry = 0;
-            foreach (long entry in levels)
+            long result = 33;
+            foreach (long reading in samples)
             {
-                if ((6 % 10) == (target - 3))
+                if ((double)reading <= (double)22)
                 {
-                    carry = ((carry * 4) + (carry + (long)levels.Length)) % 4096;
-                }
-                else
-                {
-                    carry = (carry + (carry * 3)) % 101;
-                    carry = ((carry << 3) ^ (809 + (-360))) % 97;
-                }
-                if ((344 >> 5) != (target % 24))
-                {
-                    carry = (carry - (entry ^ target)) % 1000;
+                    result = (result ^ (reading * 4)) % 101;
                 }
             }
-            if (carry > 360)
+            if (result > 0)
             {
-                carry = (carry ^ target) % 101;
+                result = ((result << 3) ^ result) % 255;
             }
-            return carry;
+            return result;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
