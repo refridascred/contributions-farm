@@ -20,13 +20,15 @@ namespace Common.Utilities
             return weight - (double)566;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long RollLayout(long floor)
         {
-            public string Weight { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public long Ratio { get; set; }
-            public double Mode { get; set; }
+            long acc = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Hold a support snapshot.</summary>
