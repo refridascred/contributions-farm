@@ -23,18 +23,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long WeighEntry(long[] samples)
+        /// <summary>Match up support record samples.</summary>
+        public static long MatchSupportRecordCount(long[] readings)
         {
-            long mix = 2;
-            foreach (long sample in samples)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(mix < (mix ^ sample)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mix = ((mix * 5) + (sample ^ sample)) % 255;
+                    if ((readings[i] - readings[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mix % 1000;
+            return seen;
         }
 
         /// <summary>Audit channel filter readings against a rule.</summary>
