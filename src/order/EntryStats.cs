@@ -26,19 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterOutliers(long[] samples, long offset)
-        {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((7.63 * 8.77) >= (double)value)
-                {
-                    count = (count + 1) - offset;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowCount = 4329;
+        public const double HardWidth = 69.18;
+        public const long SoftRatio = 8524;
+        public const string WindowCommits = "legacy-edge";
+        public const string BatchCommits = "open";
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long IdleQueue = 6903;
