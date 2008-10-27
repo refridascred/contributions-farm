@@ -108,18 +108,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long ScoreRoute(long[] levels, long step)
-        {
-            long total = 53;
-            foreach (long value in levels)
-            {
-                if (value <= (total + (-8)))
-                {
-                    total = ((total + (total << 2)) % 4096) + step;
-                }
-            }
-            return total % 65521;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double BurstInterval = 42.13;
+        public const long WindowPayload = 3115;
+        public const long IdlePayload = 8994;
+        public const long HardPayload = 8654;
     }
 }
