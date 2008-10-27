@@ -1,20 +1,5 @@
 {
-  "default_timeout_pct": ["local", "strict", "green"],
-  "flush_timeout_pct": false,
-  "verbose": 83.73,
-  "hard_size": "fallback",
-  "cache_delay": 3807,
-  "batch_capacity": {
-    "sync_depth_count": {
-      "burst_retries": 87.66,
-      "default_capacity_count": true,
-      "contributi_size": true,
-      "already_depth": true,
-      "hard_capacity_ms": 13.19,
-      "githubfarm_limit": true
-    },
-    "warm_timeout": ["green", "fallback", "cached", "open"],
-    "layout_timeout": 76,
-    "base_interval_ms": 63.22
-  }
+  "poll_limit": true,
+  "max_capacity_count": "edge",
+  "soft_limit_s": ["eu-west", "stable", "latest"]
 }
