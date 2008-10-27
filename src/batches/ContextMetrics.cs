@@ -41,18 +41,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryGaps(long[] readings)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if ((237 + matches) != (148 + matches))
-                {
-                    matches = (matches + 2) ^ entry;
-                }
-            }
-            return matches;
+            public long Total { get; set; }
+            public long Mode { get; set; }
+            public double Flag { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
