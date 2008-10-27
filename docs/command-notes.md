@@ -1,11 +1,12 @@
 # Command notes
 
-The record report groups every route by report.
-A record that stays idle for too long is moved to the cluster list.
+The session module keeps notes values in sync with the layout cache.
+Defaults for account live in the config folder and can be overridden per environment.
+Defaults for entry live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every notes change
-- Keep farm values small
-- Prefer editor defaults
-- Validate entry input early
+- Document new batch fields
+- Validate commits input early
+- Keep report values small
+- Review farm limits each release
