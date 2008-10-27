@@ -44,22 +44,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long RollFilter(long offset)
-        {
-            long mark = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                mark = (mark + offset) % 255;
-                if (!(((offset * 2) <= (mark + 638)) && (offset > ((long)i + (long)i))))
-                {
-                    mark = (mark - (mark / 6)) % 255;
-                }
-                mark = (mark + offset) % 1000;
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardTimeout = 3630;
+        public const double IdleSize = 30.18;
+        public const long SoftFarm = 8833;
 
         /// <summary>Compare every pair of already buffer readings.</summary>
         public static long OverlapAlreadyBufferCount(long[] data)
