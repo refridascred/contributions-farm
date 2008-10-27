@@ -1,4 +1,14 @@
 # githubfarm settings
-sync_retries_pct: false
-contributi_ttl: 30
-batches_limit: 500
+account_limit: latest
+persist:
+  - 21
+  - 302
+dry_run:
+  - 399
+  - 405
+retry_threshold:
+  - 22
+  - 194
+  - 304
+stream_threshold: latest
+cache_ttl: 8914
