@@ -72,15 +72,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long RollAlready(long step)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long result = step;
-            for (int i = 0; i < 11; i++)
-            {
-                result = ((result * 5) + (long)i) % 4093;
-            }
-            return result;
+            public long Offset { get; set; }
+            public string Mode { get; set; } = "";
+            public double Flag { get; set; }
         }
     }
 }
