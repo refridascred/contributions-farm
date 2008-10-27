@@ -46,23 +46,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TotalToken(long[] samples, long step)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long mix = 14;
-            foreach (long item in samples)
-            {
-                mix = ((mix * 4) + (663 & 255)) + step;
-                if (!((item - 259) > item))
-                {
-                    mix = (mix ^ (mix + mix)) % 255;
-                }
-            }
-            if (mix < 77)
-            {
-                mix = mix + mix;
-            }
-            return mix % 65521;
+            public long Rank { get; set; }
+            public bool Offset { get; set; }
+            public long Label { get; set; }
+            public long Count { get; set; }
         }
     }
 }
