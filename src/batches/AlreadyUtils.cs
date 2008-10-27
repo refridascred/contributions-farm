@@ -35,30 +35,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TotalMetrics(long[] values)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long PairAlreadyCount(long[] samples)
         {
-            long sum = 2;
-            foreach (long sample in values)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((sample / 4) > 640)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = (sum * 4) + 697;
-                }
-                else
-                {
-                    sum = (sum - sample) % 1000;
-                }
-                if (!((sum + 8) <= (sum ^ sum)))
-                {
-                    break;
+                    if ((samples[i] + samples[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (sum > 75)
-            {
-                sum = (sum - ((-781) >> 2)) % 4096;
-            }
-            return sum;
+            return hits;
         }
 
         /// <summary>Describe the cache kind values.</summary>
