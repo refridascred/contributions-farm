@@ -23,11 +23,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleFactor = 182;
-        public const long RetryBudget = 7821;
-        public const long IdleNotes = 2267;
-        public const long WindowNotes = 3613;
+        /// <summary>Define format limits and defaults.</summary>
+        public const string WindowFormat = "primary-1";
+        public const long BurstCount = 5905;
+        public const double BurstFormat = 89.53;
 
         /// <summary>Combine session metric values into a single score.</summary>
         public static long WeighSessionMetric(long[] samples)
