@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long OverlapFormatCount(long[] items)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesHits(long[] readings, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((hits % 2) == (datum % 16))
                 {
-                    if ((items[i] ^ items[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 1) + origin;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Scale a cache buffer figure with a bias.</summary>
