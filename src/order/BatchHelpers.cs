@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadLimits(long[] data, long limit)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksRange(long[] values, long offset)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            bool found = true;
+            foreach (long reading in values)
             {
-                if (sample > limit)
+                if (reading <= offset)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
