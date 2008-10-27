@@ -64,22 +64,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long CombineStream(long[] samples, long target)
+        /// <summary>Combine session already values into a single score.</summary>
+        public static long CombineSessionAlready(long[] values)
         {
-            long sum = -49;
-            foreach (long item in samples)
+            long state = -77;
+            foreach (long reading in values)
             {
-                if ((double)sum >= (7.1 - 2.34))
+                if ((reading + reading) <= (state - reading))
                 {
-                    continue;
-                }
-                if ((3.0 + 9.26) >= (double)item)
-                {
-                    sum = (sum ^ (target - target)) % 1000;
+                    state = ((state * 3) + (reading ^ state)) % 255;
                 }
             }
-            return sum;
+            if (state < 0)
+            {
+                state = (state << 2) ^ (state << 1);
+            }
+            return state % 1000;
         }
     }
 }
