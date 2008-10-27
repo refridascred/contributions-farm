@@ -1,8 +1,5 @@
 {
-  "batch_capacity": 780,
-  "base_threshold": false,
-  "enabled": 81,
-  "default_ttl": "stable",
-  "max_depth_s": true,
-  "persist": "fallback"
+  "order_timeout": 573,
+  "base_ratio_count": "standard",
+  "dry_run": 9701
 }
