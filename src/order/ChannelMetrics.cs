@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string MinBudget = "stable-edge";
-        public const long BaseSize = 9826;
-        public const string CacheSpan = "legacy";
-        public const long RetryLayout = 3771;
+        /// <summary>Match up stats batches samples.</summary>
+        public static long MatchStatsBatchesCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const string StepAlready = "staging-1";
