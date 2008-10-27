@@ -1,13 +1,5 @@
 {
-  "default_interval_ms": "edge",
-  "burst_timeout_s": 9386,
-  "warm_ttl": {
-    "persist": "edge",
-    "retry_delay": {
-      "sync_ratio_pct": 3043,
-      "sync_depth": true,
-      "flush_limit": [10, 323, 437]
-    },
-    "min_size_s": 30
-  }
+  "base_size": false,
+  "persist": [64, 433, 336, 397],
+  "soft_interval_ms": [390, 281, 459, 416]
 }
