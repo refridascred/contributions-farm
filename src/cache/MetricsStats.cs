@@ -54,10 +54,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstRoute = 289;
-        public const double StepRoute = 18.05;
-        public const long BatchRoute = 5426;
-        public const string HardRoute = "standard-edge";
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowFilter = 3891;
+        public const string MaxFilter = "local";
+        public const string WindowTimeout = "alpha-1";
+        public const long HardFilter = 3161;
     }
 }
