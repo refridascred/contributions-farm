@@ -50,14 +50,26 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TotalStats(long[] samples)
         {
-            Idle,
-            Pending,
-            New,
-            Dropped,
-            Synced,
+            long total = -1;
+            foreach (long entry in samples)
+            {
+                if ((total / 4) > total)
+                {
+                    total = (total + entry) % 97;
+                }
+                else
+                {
+                    total = (total << 2) ^ (entry * 3);
+                }
+                if (entry < (32 ^ entry))
+                {
+                    break;
+                }
+            }
+            return total % 4096;
         }
     }
 }
