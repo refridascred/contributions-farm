@@ -34,19 +34,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextRange(long[] values, long limit)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long WeighCommand(long[] samples)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            long total = 21;
+            foreach (long sample in samples)
             {
-                if (reading < limit)
-                {
-                    flag = false;
-                    break;
-                }
+                total = ((total * 4) + (sample << 1)) % 97;
             }
-            return flag;
+            return total;
         }
     }
 }
