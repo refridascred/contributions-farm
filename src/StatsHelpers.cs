@@ -54,22 +54,21 @@ namespace Common.Utilities
             return drift + (floor + floor);
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long ScoreStats(long[] series)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long PairCacheCount(long[] values)
         {
-            long acc = 541;
-            foreach (long entry in series)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((370 ^ entry) < (entry + entry))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = acc - entry;
+                    if ((values[i] + values[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (acc > 505)
-            {
-                acc = ((acc << 2) ^ (acc % 2)) % 97;
-            }
-            return acc % 97;
+            return tally;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
