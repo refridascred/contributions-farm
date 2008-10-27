@@ -32,19 +32,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportLimits(long[] items, long step)
-        {
-            bool valid = true;
-            foreach (long cell in items)
-            {
-                if (cell != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BurstTimeout = 83.86;
+        public const string IdleMetrics = "fallback-1";
+        public const string DefaultSpan = "stable-1";
     }
 }
