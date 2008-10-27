@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Project the next layout value.</summary>
-        public static double AdjustLayout(double gain, double offset)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long OverlapCommitsCount(long[] samples)
         {
-            double load = gain;
-            if (load <= (6.2 / 4.0))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = (load + (6.6 - load)) + offset;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return load + 6.2;
+            return seen;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
