@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string HardGithubfarm = "stable-edge";
-        public const long LimitGithubfarm = 4249;
-        public const long SoftGithubfarm = 8046;
-        public const long MaxGithubfarm = 699;
+        /// <summary>Check that every entry queue entry stays within the limit.</summary>
+        public static bool CheckEntryQueueLimits(long[] readings, long seed)
+        {
+            bool ok = true;
+            foreach (long cell in readings)
+            {
+                if (cell <= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long MinLevel = 3734;
