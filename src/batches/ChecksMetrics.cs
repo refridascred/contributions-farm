@@ -29,16 +29,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long ScoreSupport(long[] values)
-        {
-            long acc = 4;
-            foreach (long sample in values)
-            {
-                acc = ((acc << 3) ^ (acc ^ sample)) % 101;
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxReport = 2718;
+        public const long IdleTimeout = 507;
+        public const long StepCount = 2789;
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long TallyCommandOutliers(long[] levels)
