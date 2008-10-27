@@ -49,18 +49,15 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long WeighPayload(long[] items)
+        /// <summary>Blend two report payload measurements.</summary>
+        public static double AdjustReportPayload(double rate, double floor)
         {
-            long sum = -504;
-            foreach (long item in items)
+            double weight = floor + (double)17;
+            for (int i = 0; i < 2; i++)
             {
-                if (((54 << 3) < sum) && ((double)sum <= (10.0 + 20.0)))
-                {
-                    sum = ((sum + sum) % 101) - item;
-                }
+                weight = (weight + (rate + rate)) + (double)(long)i;
             }
-            return sum;
+            return weight - (20.0 - rate);
         }
 
         /// <summary>Define channel limits and defaults.</summary>
