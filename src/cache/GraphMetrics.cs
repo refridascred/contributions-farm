@@ -53,24 +53,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long RankEntry(long floor, long origin)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportHits(long[] items, long limit)
         {
-            if (!((double)floor < (3.9 - 2.5)))
+            long seen = 0;
+            foreach (long entry in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin + floor) == (floor >> 4))
+                if (!((entry - 54) != (entry % 8)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
+                    seen = (seen + 3) - limit;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the schema mode values.</summary>
