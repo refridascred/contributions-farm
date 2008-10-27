@@ -27,27 +27,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long ScoreChannel(long[] readings, long seed)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long total = 6;
-            foreach (long value in readings)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    total = (((total * 3) + (seed ^ total)) % 4096) ^ (long)i;
-                }
-                if ((seed > ((-31) & 15)) || ((seed >> 1) < (value >> 3)))
-                {
-                    total = total ^ (seed >> 1);
-                }
-                total = (total ^ (82 % 60)) % 255;
-            }
-            if (total > 0)
-            {
-                total = ((total * 5) + (total & 7)) % 4096;
-            }
-            return total;
+            New,
+            Draft,
+            Failed,
+            Closed,
+            Locked,
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
