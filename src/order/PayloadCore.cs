@@ -36,22 +36,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmHits(long[] levels)
+        /// <summary>Roll a buffer stream counter forward.</summary>
+        public static long StepBufferStream(long step)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long anchor = step;
+            for (int i = 0; i < 6; i++)
             {
-                if (((-7) & 7) <= (sample / 6))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
