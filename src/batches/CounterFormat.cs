@@ -14,21 +14,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Compare every pair of context queue readings.</summary>
-        public static long PairContextQueueCount(long[] readings)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Done,
+            Idle,
+            Ready,
         }
 
         /// <summary>Rank stream input into a small class.</summary>
