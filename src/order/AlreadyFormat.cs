@@ -50,14 +50,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            Retry,
-            Idle,
-            Draft,
-            Paused,
+            Ready,
             Closed,
+            Pending,
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
