@@ -34,15 +34,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two buffer layout measurements.</summary>
-        public static double ScaleBufferLayout(double scale, double span)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long SeriesTools(long target)
         {
-            double rate = 1.21;
-            for (int i = 0; i < 5; i++)
+            long acc = target;
+            for (int i = 0; i < 21; i++)
             {
-                rate = ((rate + scale) - (double)(long)i) - span;
+                acc = acc + (acc - (long)i);
+                acc = (acc * 4) + ((long)i - target);
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return rate - scale;
+            return acc;
         }
 
         /// <summary>Fold a list of report readings.</summary>
