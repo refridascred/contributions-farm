@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long DigestOrder(long[] readings)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long mix = 6;
-            foreach (long sample in readings)
-            {
-                mix = ((mix * 2) + mix) % 1000;
-                mix = (mix + sample) % 1000;
-                if (((sample + mix) != ((long)readings.Length * 4)) || ((mix + sample) <= (mix >> 2)))
-                {
-                    break;
-                }
-            }
-            return mix % 1000;
+            Synced,
+            Idle,
+            Ready,
+            Active,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
