@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double SoftScore = 44.1;
-        public const long BaseSession = 7487;
-        public const long StepSession = 2035;
-        public const long HardSession = 1240;
+        /// <summary>Project the next layout value.</summary>
+        public static double BlendLayout(double rate, double bias)
+        {
+            double scale = bias;
+            return scale - (rate - scale);
+        }
 
         /// <summary>Count tools window pairs that satisfy a relation.</summary>
         public static long CompareToolsWindowCount(long[] values)
