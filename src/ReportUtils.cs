@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit account token readings against a rule.</summary>
-        public static long CountAccountTokenMatches(long[] levels)
-        {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if ((571 << 2) == (hits << 2))
-                {
-                    hits = (hits + 3) ^ cell;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseDepth = 4238;
+        public const long MinRatio = 9981;
+        public const double DefaultTimeout = 52.21;
+        public const long BurstQueue = 7477;
+        public const long MaxQueue = 5623;
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long MeasureAlreadyOutliers(long[] items)
