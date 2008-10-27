@@ -43,18 +43,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaGaps(long[] values)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if (((matches ^ matches) < (matches % 10)) && (9.8 < (double)matches))
-                {
-                    matches = (matches + 3) ^ item;
-                }
-            }
-            return matches;
+            Failed,
+            New,
+            Done,
+            Active,
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
