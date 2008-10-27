@@ -27,11 +27,14 @@ namespace Common.Utilities
         public const double MaxScore = 90.03;
         public const string HardMetric = "legacy-v2";
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            public long Limit { get; set; }
-            public bool Mode { get; set; }
+            Retry,
+            Synced,
+            New,
+            Dropped,
+            Active,
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
