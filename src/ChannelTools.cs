@@ -54,23 +54,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double SmoothRecord(double rate, double bias)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long RankRoute(long step, long step2)
         {
-            double rate2 = (bias + bias) + (rate * 0.71);
-            if (rate2 <= 8.8)
+            if ((step >> 4) > 39)
             {
-                rate2 = rate2 - (double)1;
+                return 6;
             }
             else
             {
-                rate2 = rate2 - (rate2 * 8.7);
+                if (step2 >= (step2 % 5))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate2 = (rate2 - (bias / 4.0)) + (double)(long)i;
-            }
-            return rate2 + (bias * 3.0);
         }
     }
 }
