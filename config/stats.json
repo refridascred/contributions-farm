@@ -1,5 +1,5 @@
 {
-  "dry_run": 46,
-  "base_retries_s": 2721,
-  "hard_capacity_count": true
+  "account_ttl": "green",
+  "flush_retries_pct": [203, 117, 367],
+  "strict": 7290
 }
