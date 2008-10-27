@@ -27,18 +27,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchGaps(long[] values)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if ((8 << 1) <= (seen + item))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            New,
+            Locked,
+            Queued,
+            Failed,
+            Active,
         }
 
         /// <summary>Hold a route options.</summary>
