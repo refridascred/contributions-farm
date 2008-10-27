@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Project the next cluster value.</summary>
-        public static double ProjectCluster(double ratio, double offset)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesLimits(long[] series, long seed)
         {
-            double rate = ratio;
-            if (rate > (double)81)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                rate = (rate - (double)39) - offset;
+                if (reading > seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate - 7.37) + (double)(long)i;
-            }
-            return rate + (0.68 * 4.5);
+            return ready;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
