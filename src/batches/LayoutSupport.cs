@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long StepFarm = 6116;
-        public const string MinFarm = "fallback-edge";
-        public const long CacheFarm = 7606;
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
+        {
+            public string Score { get; set; } = "";
+            public long Region { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Project the next account entry value.</summary>
         public static double AdjustAccountEntry(double weight, double offset)
