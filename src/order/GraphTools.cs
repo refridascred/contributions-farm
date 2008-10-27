@@ -38,22 +38,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long CombineContributi(long[] levels, long limit)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadBounds(long[] levels, long target)
         {
-            long mix = 4;
-            foreach (long value in levels)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                if (((mix & 1) < (value + (-1))) || (value < 33))
+                if (entry > target)
                 {
-                    mix = ((mix << 3) ^ (value << 2)) - limit;
-                }
-                else
-                {
-                    mix = (mix * 2) + 984;
+                    stale = false;
+                    break;
                 }
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
