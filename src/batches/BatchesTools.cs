@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long DigestGraph(long[] items)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long mix = 3;
-            foreach (long item in items)
-            {
-                if (((8 + mix) != (item - 52)) || ((mix + 602) < 736))
-                {
-                    mix = (mix - (mix & 15)) % 255;
-                }
-                if (((6.2 - 20.0) < (double)item) && ((mix % 10) == (item % 7)))
-                {
-                    break;
-                }
-            }
-            return mix % 65521;
+            public long Label { get; set; }
+            public long Total { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
