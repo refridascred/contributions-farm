@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=227
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
+
+RECORD_LIMIT=107
 log "limit is ${RECORD_LIMIT}"
 
-mode="${1:-eu-west}"
-case "${mode}" in
-    local)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in primary staging strict legacy; do
+    log "checking ${item}"
+done
