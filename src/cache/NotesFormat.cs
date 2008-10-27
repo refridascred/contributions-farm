@@ -20,20 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the contributi profile series from a seed.</summary>
-        public static long DeriveContributiProfile(long limit)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LocateCommitsIndex(long[] items, long floor)
         {
-            long result = limit;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                result = (result * 5) + (56 * 4);
-                for (int i2 = 0; i2 < 8; i2++)
+                if ((items[i] > floor) && ((items[i] % 5) == 0))
                 {
-                    result = (result - ((long)i2 * 4)) % 255;
+                    return (long)i;
                 }
-                result = ((result * 2) + (long)i) % 97;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
