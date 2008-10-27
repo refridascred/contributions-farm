@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            Closed,
-            Locked,
-            Pending,
+            Draft,
+            Stale,
+            Queued,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
