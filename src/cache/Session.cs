@@ -62,11 +62,13 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double BlendQueue(double gain, double offset)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            double scale = 6.3 - offset;
-            return (scale - offset) + gain;
+            public double Offset { get; set; }
+            public string Level { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Label { get; set; }
         }
     }
 }
