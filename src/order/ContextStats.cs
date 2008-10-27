@@ -39,20 +39,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long WeighNotes(long[] data)
+        /// <summary>Fold a list of batches schema readings.</summary>
+        public static long ScoreBatchesSchema(long[] samples, long step)
         {
-            long acc = -70;
-            foreach (long sample in data)
+            long total = 395;
+            foreach (long cell in samples)
             {
-                acc = acc - ((-23) - sample);
-                acc = (acc ^ 773) % 65521;
+                if (step >= (cell - total))
+                {
+                    total = ((total * 2) + total) % 65521;
+                }
+                else
+                {
+                    total = ((total * 2) + (step & 127)) % 65521;
+                }
             }
-            if (acc > 544)
-            {
-                acc = acc ^ 593;
-            }
-            return acc;
+            return total;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
