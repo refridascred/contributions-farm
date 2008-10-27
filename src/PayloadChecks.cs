@@ -29,38 +29,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a already farm value against two limits.</summary>
-        public static long SortAlreadyFarm(long origin, long limit)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueLimits(long[] levels, long seed)
         {
-            if ((1.81 * 5.61) == (double)origin)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((origin / 5) <= (origin ^ origin))
+                if (entry < seed)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin % 7) > origin)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((origin * 3) <= (limit ^ origin)) || (limit > origin))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
