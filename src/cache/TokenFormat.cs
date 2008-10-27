@@ -30,18 +30,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterMatches(long[] series, long seed)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if (((hits >> 1) != (78 % 8)) || ((seed - seed) == (seed ^ sample)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public bool Region { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
