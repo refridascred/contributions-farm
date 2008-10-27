@@ -38,13 +38,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] levels, long step)
         {
-            public bool Level { get; set; }
-            public double Weight { get; set; }
-            public long Stamp { get; set; }
-            public string Flag { get; set; } = "";
+            long acc = 76;
+            foreach (long item in levels)
+            {
+                acc = (((acc << 3) ^ (acc & 127)) + item) + step;
+            }
+            if (acc < 992)
+            {
+                acc = acc - ((long)levels.Length % 97);
+            }
+            return acc;
         }
 
         /// <summary>Derive the next schema context value from a seed.</summary>
