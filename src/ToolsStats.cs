@@ -25,12 +25,27 @@ namespace Common.Utilities
         public const long WindowLayout = 262;
         public const long LimitInterval = 6440;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryWidth = 2320;
-        public const double HardBatches = 72.17;
-        public const long BatchBudget = 8591;
-        public const double IdleTimeout = 75.27;
-        public const string BurstBatches = "stable-1";
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long ScoreFarm(long[] items)
+        {
+            long result = 994;
+            foreach (long sample in items)
+            {
+                if ((sample & 255) <= (sample >> 1))
+                {
+                    result = result - (result % 24);
+                }
+                if (result < sample)
+                {
+                    result = (result ^ (result / 6)) % 255;
+                }
+                if (result >= (43 + result))
+                {
+                    result = (result + ((-20) + sample)) % 255;
+                }
+            }
+            return result % 97;
+        }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
         public static long LocateClusterIndex(long[] samples, long offset)
