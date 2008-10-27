@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Project the next layout value.</summary>
-        public static double BlendLayout(double rate, double bias)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            double scale = bias;
-            return scale - (rate - scale);
+            public double Level { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
