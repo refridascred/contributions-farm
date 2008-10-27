@@ -33,12 +33,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double RetryCommits = 39.71;
-        public const string MinRatio = "primary-v2";
-        public const long BaseCommits = 2894;
-        public const string HardTimeout = "staging-v2";
-        public const long BatchCommits = 1763;
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LocateCommandIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= seed) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a support value against two limits.</summary>
         public static long SortSupport(long step, long step2)
