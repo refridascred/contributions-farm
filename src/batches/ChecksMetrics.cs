@@ -12,11 +12,39 @@ namespace Common.Utilities
         public const double MinBudget = 86.12;
         public const long WindowDepth = 6144;
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double SmoothCluster(double scale, double span)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long SortGithubfarm(long limit, long offset)
         {
-            double rate = span;
-            return (rate + (span - span)) + scale;
+            long bound = limit ^ offset;
+            if ((offset >= (539 + limit)) || ((7 + 128) > (offset >> 5)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((limit / 9) > (bound & 7))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (limit < (48 % 97))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((bound + offset) <= (limit - limit)) || ((double)bound > 1.34))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
