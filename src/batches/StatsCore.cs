@@ -62,11 +62,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenRange(long[] readings, long origin)
         {
-            public double Rank { get; set; }
-            public bool Mode { get; set; }
+            bool flag = true;
+            foreach (long sample in readings)
+            {
+                if (sample > origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
