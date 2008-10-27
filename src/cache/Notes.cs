@@ -54,23 +54,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long ScoreStats(long[] series, long target)
-        {
-            long total = 1;
-            foreach (long item in series)
-            {
-                if ((double)item < 9.6)
-                {
-                    total = ((total << 3) ^ (item - 4)) - target;
-                }
-                else
-                {
-                    total = (total ^ (total >> 4)) % 255;
-                }
-            }
-            return total % 65521;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double BurstFarm = 24.5;
+        public const string SoftInterval = "latest-edge";
+        public const long MaxFarm = 2414;
+        public const long RetryFarm = 2150;
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long CountRouteOutliers(long[] values, long target)
