@@ -63,17 +63,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LookupFilterIndex(long[] items, long origin)
+        /// <summary>Fold a list of cluster token readings.</summary>
+        public static long WeighClusterToken(long[] values, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 601;
+            foreach (long reading in values)
             {
-                if (items[i] < origin)
+                if ((score & 7) >= (origin - origin))
                 {
-                    return (long)i;
+                    score = (score ^ (origin + origin)) + reading;
                 }
             }
-            return -1;
+            if (score < 620)
+            {
+                score = score ^ (score << 1);
+            }
+            return score % 1000;
         }
     }
 }
