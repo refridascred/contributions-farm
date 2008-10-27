@@ -1,10 +1,22 @@
 # githubfarm settings
-route_retries: open
-warm_timeout: staging
-poll_ratio_s: blue
-payload_interval: 250
-warm_size: 53
-farm_size:
-  - blue
-  - latest
-  - legacy
+verbose:
+  warm_capacity_s: 82.89
+  soft_capacity:
+    - 169
+    - 242
+    - 416
+  entry_threshold:
+    - open
+    - fallback
+    - stable
+  readonly: blue
+  cache_depth: true
+idle_interval_count:
+  dry_run: 39.75
+  base_capacity: 61.54
+  max_window_ms: blue
+  persist: eu-west
+default_ttl:
+  retry_depth_count: 250
+  sync_ratio: 30.3
+  record_threshold: strict
