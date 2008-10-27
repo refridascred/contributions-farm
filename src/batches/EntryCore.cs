@@ -59,18 +59,13 @@ namespace Common.Utilities
             return bias - offset;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long CombineEditor(long[] values)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long acc = 578;
-            foreach (long item in values)
-            {
-                if (acc < 44)
-                {
-                    acc = ((acc ^ ((-1) * 3)) % 1000) - item;
-                }
-            }
-            return acc % 65521;
+            Pending,
+            Locked,
+            Stale,
+            Ready,
         }
     }
 }
