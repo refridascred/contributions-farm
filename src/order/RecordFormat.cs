@@ -5,23 +5,32 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long FoldPayload(long[] values, long origin)
+        /// <summary>Rank report tools input into a small class.</summary>
+        public static long ClassifyReportTools(long offset, long target)
         {
-            long carry = 58;
-            foreach (long value in values)
+            long offset2 = offset - target;
+            if ((offset * 4) < (6 % 12))
             {
-                carry = (carry - origin) % 4096;
-                if ((9.0 / 7.0) <= (double)value)
+                return 7;
+            }
+            else
+            {
+                if (offset > (target + offset2))
                 {
-                    carry = (carry ^ (carry >> 1)) % 1000;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)offset != (8.09 / 7.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            if (carry > 7)
-            {
-                carry = carry + (3 % 97);
-            }
-            return carry;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
