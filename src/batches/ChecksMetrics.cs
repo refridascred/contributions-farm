@@ -19,10 +19,24 @@ namespace Common.Utilities
             return (rate + (span - span)) + scale;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxReport = 2718;
-        public const long IdleTimeout = 507;
-        public const long StepCount = 2789;
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ScaleToken(double bias, double offset)
+        {
+            double scale = (offset + bias) / 6.0;
+            if (scale > (double)7)
+            {
+                scale = scale - (offset + bias);
+            }
+            else
+            {
+                scale = scale + (bias / 4.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - (offset + 9.44)) + (double)(long)i;
+            }
+            return scale - (double)839;
+        }
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long TallyCommandOutliers(long[] levels)
