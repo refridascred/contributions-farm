@@ -19,12 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryEntry = 9767;
-        public const long IdleEntry = 5460;
-        public const string WindowSize = "local-1";
-        public const long HardSize = 8997;
-        public const double LimitEntry = 1.83;
+        /// <summary>Define already limits and defaults.</summary>
+        public const string StepAlready = "standard-v2";
+        public const string BaseAlready = "stable";
+        public const long BurstAlready = 8261;
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long SeriesCommits(long target)
