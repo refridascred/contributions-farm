@@ -1,9 +1,17 @@
 # entry settings
-base_limit:
-  - open
-  - local
-  - local
-cluster_limit: 7563
-min_ratio:
-  - 73
-  - 461
+max_threshold: 24.74
+max_ratio_ms:
+  strict:
+    hard_threshold_pct: latest
+    poll_timeout_count: 67
+    idle_retries_count: 30
+    idle_timeout_ms: 403
+    githubfarm_delay: 5478
+  compress: true
+  contributi_ttl: eu-west
+  batch_timeout: false
+  batches_window: latest
+  channel_ratio: standard
+dry_run: open
+cache_capacity_s: standard
+record_ttl: 8
