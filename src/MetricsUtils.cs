@@ -49,22 +49,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TallyCache(long[] series)
+        /// <summary>Match up filter samples.</summary>
+        public static long PairFilterCount(long[] readings)
         {
-            long acc = 9;
-            foreach (long value in series)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((value + value) <= (929 + value)) && (value > acc))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    acc = (acc - (acc ^ acc)) % 101;
-                }
-                if ((0.58 * 5.67) >= (double)value)
-                {
-                    break;
+                    if ((readings[i] - readings[j]) == 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return acc % 1000;
+            return seen;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
