@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            Ready,
-            Paused,
-            Idle,
-            Failed,
-            Dropped,
+            public string Offset { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
