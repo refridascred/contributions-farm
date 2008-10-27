@@ -28,19 +28,11 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiLimits(long[] series, long floor)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            bool valid = true;
-            foreach (long datum in series)
-            {
-                if (datum > floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
