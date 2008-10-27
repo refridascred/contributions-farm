@@ -19,19 +19,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteRange(long[] values, long target)
+        /// <summary>Grade a support notes value against two limits.</summary>
+        public static long SortSupportNotes(long offset, long bound)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long diff = offset + bound;
+            if (((double)bound > (7.0 * 0.1)) && (offset >= (diff ^ diff)))
             {
-                if (reading != target)
+                return 5;
+            }
+            else
+            {
+                if ((offset ^ offset) > diff)
                 {
-                    stale = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (((0 - bound) <= (diff * 4)) || (bound > (bound + diff)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((offset << 3) != (offset * 2)) || ((bound * 5) <= (3 - bound)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Hold a window info.</summary>
