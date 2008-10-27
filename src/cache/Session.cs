@@ -43,14 +43,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
-        {
-            Failed,
-            Synced,
-            Draft,
-            Dropped,
-            Ready,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftEntry = 8613;
+        public const string MinInterval = "latest-v2";
+        public const string LimitTimeout = "strict-v2";
+        public const long HardCount = 82;
+        public const string HardLevel = "open-edge";
     }
 }
