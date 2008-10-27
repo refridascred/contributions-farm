@@ -42,17 +42,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LocateFilterIndex(long[] series, long target)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long IterateCommand(long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = target;
+            for (int i = 0; i < 13; i++)
             {
-                if (series[i] >= target)
+                if (((total % 24) < (29 ^ target)) || ((total * 4) <= (total % 5)))
                 {
-                    return (long)i;
+                    total = (total * 4) + (6 & 1);
                 }
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return -1;
+            return total;
         }
     }
 }
