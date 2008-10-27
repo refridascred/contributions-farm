@@ -33,18 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LocateCommandIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < floor) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchProfile = 6225;
+        public const double BaseProfile = 58.24;
+        public const long IdleProfile = 4794;
 
         /// <summary>Grade a session entry value against two limits.</summary>
         public static long GradeSessionEntry(long step, long offset)
