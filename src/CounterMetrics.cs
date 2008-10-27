@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string WindowContext = "cached-1";
-        public const string CacheLevel = "legacy";
-        public const long BatchContext = 4836;
-        public const long SoftContext = 9464;
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueMatches(long[] items)
+        {
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if ((double)sample <= 17.0)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Grade a counter value against two limits.</summary>
         public static long SortCounter(long target, long bound)
