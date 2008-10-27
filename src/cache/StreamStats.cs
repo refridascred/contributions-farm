@@ -36,12 +36,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenGaps(long[] items, long target)
         {
-            public double Level { get; set; }
-            public long Region { get; set; }
-            public long Limit { get; set; }
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if (value < (target + value))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
