@@ -31,26 +31,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long CombineSchema(long[] series, long target)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TotalAccount(long[] values, long bound)
         {
-            long state = 35;
-            foreach (long sample in series)
+            long mix = 1;
+            foreach (long cell in values)
             {
-                if (((state % 24) != (355 >> 3)) && ((sample + sample) <= (state + state)))
-                {
-                    state = ((state << 2) ^ (target << 1)) % 65521;
-                }
-                if ((double)sample > (2.36 / 2.0))
-                {
-                    state = (state << 2) ^ (target + state);
-                }
-                else
-                {
-                    state = state - (169 - state);
-                }
+                mix = (((mix << 3) ^ (mix + bound)) % 1000) - cell;
             }
-            return state;
+            return mix;
         }
     }
 }
