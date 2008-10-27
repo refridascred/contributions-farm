@@ -39,18 +39,22 @@ namespace Common.Utilities
         public const long MinScore = 5001;
         public const long DefaultEditor = 4759;
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderMatches(long[] items, long target)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordHits(long[] values)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if ((target << 3) <= (target % 7))
+                if ((value / 2) <= (value + value))
                 {
-                    hits = (hits + 1) + sample;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Blend two queue measurements.</summary>
