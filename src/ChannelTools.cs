@@ -30,12 +30,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Validate command buffer readings against a bound.</summary>
+        public static bool ValidateCommandBufferRange(long[] readings, long seed)
         {
-            public double Size { get; set; }
-            public long Stamp { get; set; }
-            public bool Score { get; set; }
+            bool ok = true;
+            foreach (long sample in readings)
+            {
+                if (sample >= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
