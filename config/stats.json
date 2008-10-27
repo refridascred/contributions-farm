@@ -1,7 +1,8 @@
 {
-  "batches_threshold": "eu-west",
-  "enabled": 9622,
-  "support_depth": "strict",
-  "layout_size": "eu-west",
-  "route_interval": "strict"
+  "burst_depth": "strict",
+  "metric_limit": false,
+  "soft_interval_ms": 60,
+  "soft_limit_ms": 689,
+  "strict": [367, 293, 31],
+  "cluster_ratio": 80
 }
