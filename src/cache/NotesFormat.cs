@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const string SoftWindow = "legacy-v2";
         public const string HardBudget = "local-1";
 
-        /// <summary>Check that every batches context entry stays within the limit.</summary>
-        public static bool GuardBatchesContextLimits(long[] readings, long origin)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferOutliers(long[] series)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if (value != origin)
+                if (((hits & 31) > (item + item)) || ((2.7 / 4.0) < (double)hits))
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
