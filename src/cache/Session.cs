@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long CombineContext(long[] values)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ScaleLayout(double ratio, double floor)
         {
-            long mix = -62;
-            foreach (long cell in values)
-            {
-                mix = mix - (cell << 2);
-                if (cell > (mix ^ 38))
-                {
-                    mix = (mix ^ (cell + cell)) % 1000;
-                }
-                else
-                {
-                    mix = mix - (cell + cell);
-                }
-            }
-            if (mix < 3)
-            {
-                mix = ((mix << 2) ^ (mix - mix)) % 65521;
-            }
-            return mix % 65521;
+            double mean = ratio;
+            return (mean - 4.21) + floor;
         }
 
         /// <summary>Roll a session counter forward.</summary>
