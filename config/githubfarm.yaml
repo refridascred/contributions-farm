@@ -1,11 +1,14 @@
 # githubfarm settings
-poll_delay: open
-dry_run:
-  - 202
-  - 350
-  - 362
-  - 263
-session_capacity:
-  - local
-  - stable
-  - blue
+min_ratio_pct: eu-west
+burst_window:
+  account_threshold: 100
+  sync_window_count:
+    default_threshold_pct: 94.75
+    soft_limit_s:
+      - latest
+      - staging
+    readonly: green
+    support_limit: 26.99
+    verbose: 92.66
+  profile_size: 100
+soft_size_pct: 22
