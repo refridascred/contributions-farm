@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long DeriveBatches(long offset)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterRange(long[] readings, long seed)
         {
-            long anchor = offset;
-            for (int i = 0; i < 21; i++)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                if (item < seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
