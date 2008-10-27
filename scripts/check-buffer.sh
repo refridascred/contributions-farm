@@ -6,15 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
+mode="${1:-green}"
+case "${mode}" in
+    blue)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
 count=0
-while [ "${count}" -lt 4 ]; do
+while [ "${count}" -lt 3 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-BUFFER_LIMIT=123
-log "limit is ${BUFFER_LIMIT}"
-
-for item in strict stable cached latest; do
+for item in strict open stable local; do
     log "checking ${item}"
 done
