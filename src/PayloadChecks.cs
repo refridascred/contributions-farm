@@ -84,16 +84,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long IterateSupport(long seed)
+        /// <summary>Compare every pair of already buffer readings.</summary>
+        public static long OverlapAlreadyBufferCount(long[] data)
         {
-            long total = seed;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                total = ((total * 5) + total) % 255;
-                total = ((total * 5) + (long)i) % 4093;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Fold a list of window githubfarm readings.</summary>
