@@ -41,19 +41,19 @@ namespace Common.Utilities
         public const long BaseFormat = 7959;
         public const long CacheInterval = 9212;
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatBounds(long[] series, long target)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutRange(long[] data, long origin)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            bool flag = true;
+            foreach (long item in data)
             {
-                if (sample <= target)
+                if (item < origin)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
     }
 }
