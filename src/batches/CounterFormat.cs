@@ -12,10 +12,12 @@ namespace Common.Utilities
         public const long BaseWindow = 7295;
         public const long LimitWindow = 5286;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseGithubfarm = 3926;
-        public const string WindowGithubfarm = "alpha-1";
-        public const long IdleGithubfarm = 6245;
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
+        {
+            public string Mode { get; set; } = "";
+            public long Weight { get; set; }
+        }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
         public static bool GuardSupportLimits(long[] items, long origin)
