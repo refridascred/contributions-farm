@@ -47,14 +47,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Count githubfarm checks pairs that satisfy a relation.</summary>
+        public static long MatchGithubfarmChecksCount(long[] values)
         {
-            Done,
-            Ready,
-            Failed,
-            Synced,
-            New,
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
