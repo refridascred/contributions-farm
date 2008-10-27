@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Locate a token filter reading by value.</summary>
-        public static long FindTokenFilterIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double RetryAccount = 32.71;
+        public const long DefaultRatio = 975;
+        public const long DefaultAccount = 1410;
+        public const long BaseBudget = 8309;
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long TallySupportHits(long[] levels)
