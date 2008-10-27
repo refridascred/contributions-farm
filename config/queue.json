@@ -1,5 +1,23 @@
 {
-  "poll_limit": true,
-  "max_capacity_count": "edge",
-  "soft_limit_s": ["eu-west", "stable", "latest"]
+  "retry_retries_s": "latest",
+  "readonly": "strict",
+  "soft_retries": true,
+  "farm_interval": true,
+  "enabled": 56.62,
+  "idle_limit_s": {
+    "batch_delay_s": {
+      "persist": 60,
+      "soft_threshold_pct": false,
+      "dry_run": false,
+      "entry_timeout": "legacy",
+      "metric_retries": 21,
+      "order_window": 58
+    },
+    "sync_size": 250,
+    "burst_delay_pct": {
+      "enabled": true,
+      "max_delay_pct": "edge",
+      "readonly": 592
+    }
+  }
 }
