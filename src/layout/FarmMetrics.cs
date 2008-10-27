@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm metrics helpers.</summary>
     public static class FarmMetrics
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long FoldBatch(long[] readings, long floor)
-        {
-            long state = 5;
-            foreach (long value in readings)
-            {
-                state = (state ^ (value + 0)) + floor;
-            }
-            return state;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string RetrySpan = "staging";
+        public const double WindowCache = 61.23;
+        public const long IdleSize = 8124;
+        public const long BaseRatio = 5187;
 
         /// <summary>Project the next batch value.</summary>
         public static double BlendBatch(double gain, double span)
