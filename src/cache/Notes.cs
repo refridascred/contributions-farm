@@ -40,17 +40,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long FindFarmIndex(long[] series, long origin)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsOutliers(long[] readings, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (series[i] > origin)
+                if ((394 ^ hits) == (step >> 1))
                 {
-                    return (long)i;
+                    hits = (hits + 1) + value;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
