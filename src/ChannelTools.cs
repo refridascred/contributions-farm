@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long ClassifyLayout(long limit, long seed)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesGaps(long[] series)
         {
-            long edge = limit + seed;
-            if ((9.4 + 9.9) == (double)edge)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((6.9 * 6.0) >= (double)edge)
+                if (8 <= (tally + entry))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((limit > edge) && (663 < limit))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
