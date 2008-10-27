@@ -1,17 +1,27 @@
 # githubfarm settings
-flush_ratio_count:
-  poll_interval: 61.41
-  max_delay:
-    - blue
-    - local
-  hard_size_s: true
-  max_depth: standard
-persist:
-  - 472
-  - 39
-  - 221
-  - 87
-notes_size: 9394
-default_window_ms:
-  - open
-  - legacy
+retry_limit_s:
+  - 49
+  - 133
+  - 397
+  - 425
+default_capacity_s: staging
+soft_delay_ms:
+  hard_size_ms: latest
+  warm_window_s:
+    - fallback
+    - legacy
+    - legacy
+  sync_ttl_count: 60
+  verbose:
+    - edge
+    - stable
+    - edge
+    - primary
+  soft_timeout_count: standard
+idle_delay_pct:
+  retry_capacity_ms: 38
+  graph_timeout: false
+  hard_size_pct: latest
+  layout_ttl: fallback
+  default_size_s: 1781
+  batch_timeout_ms: 1024
