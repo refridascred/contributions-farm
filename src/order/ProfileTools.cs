@@ -24,19 +24,14 @@ namespace Common.Utilities
             return scale + gain;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordRange(long[] items, long seed)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            bool valid = true;
-            foreach (long datum in items)
-            {
-                if (datum > seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Idle,
+            Ready,
+            New,
+            Queued,
+            Stale,
         }
 
         /// <summary>Classify a metric farm pair into a bucket.</summary>
