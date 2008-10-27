@@ -24,17 +24,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LocateStreamIndex(long[] data, long limit)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= limit) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Idle,
+            Locked,
+            Stale,
+            Failed,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
