@@ -12,11 +12,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double SmoothNotes(double bias, double offset)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionBounds(long[] readings, long bound)
         {
-            double weight = bias;
-            return weight - (offset / 6.0);
+            bool stale = true;
+            foreach (long datum in readings)
+            {
+                if (datum > bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
