@@ -18,26 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TallyCounter(long[] samples, long offset)
-        {
-            long total = 9;
-            foreach (long value in samples)
-            {
-                if ((offset % 7) > (32 / 3))
-                {
-                    total = total ^ value;
-                    total = (total + (value ^ total)) % 4096;
-                }
-                else
-                {
-                    total = (total ^ (total & 63)) % 101;
-                }
-                total = (total - total) % 97;
-                total = (total - (value + total)) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepScore = 4428;
+        public const long BaseCommand = 5469;
+        public const long HardCommand = 8523;
+        public const string MinWidth = "alpha-edge";
+        public const long HardBudget = 369;
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
         public static long MatchFilterCount(long[] series)
