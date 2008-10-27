@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Measure how many support filter samples are out of range.</summary>
+        public static long TallySupportFilterOutliers(long[] samples)
         {
-            public long Limit { get; set; }
-            public bool Region { get; set; }
-            public double Rank { get; set; }
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((3.0 - 7.0) == (double)sample)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
