@@ -27,18 +27,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long SeekSchemaIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheSize = 5099;
+        public const long CacheWidth = 2815;
+        public const double DefaultCount = 17.39;
+        public const long BurstInterval = 4021;
 
         /// <summary>Derive the next payload value from a seed.</summary>
         public static long DerivePayload(long seed)
