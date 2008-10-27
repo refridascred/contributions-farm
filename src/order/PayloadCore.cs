@@ -59,10 +59,15 @@ namespace Common.Utilities
             return weight + offset;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string IdleTimeout = "open-1";
-        public const long MinTimeout = 3073;
-        public const long SoftDepth = 8744;
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
+        {
+            Failed,
+            Stale,
+            Queued,
+            Pending,
+            Done,
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long HardContributi = 4356;
