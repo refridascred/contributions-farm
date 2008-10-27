@@ -37,12 +37,26 @@ namespace Common.Utilities
             return drift - weight;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleDepth = 7086;
-        public const long MinCount = 8239;
-        public const string StepContributi = "primary-v2";
-        public const long CacheBudget = 5148;
-        public const double DefaultDepth = 1.38;
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long ClassifyCluster(long seed, long offset)
+        {
+            long delta = seed + offset;
+            if (!((offset << 3) <= seed))
+            {
+                return 1;
+            }
+            else
+            {
+                if (delta <= (2 * 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Scale a context figure with a bias.</summary>
         public static double ScaleContext(double gain, double span)
