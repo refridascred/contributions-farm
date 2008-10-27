@@ -35,19 +35,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate route already samples.</summary>
-        public static long WeighRouteAlready(long[] data, long bound)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long mark = 3;
-            foreach (long entry in data)
-            {
-                mark = (mark ^ (bound + entry)) % 255;
-            }
-            if (mark < 29)
-            {
-                mark = (mark << 2) ^ (bound + mark);
-            }
-            return mark;
+            Stale,
+            Paused,
+            Dropped,
         }
     }
 }
