@@ -39,24 +39,13 @@ namespace Common.Utilities
         public const double CacheTimeout = 61.13;
         public const double DefaultAccount = 76.11;
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long RankMetric(long floor, long target)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            if (target >= (floor & 1))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((floor * 5) < (floor ^ 5))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Retry,
+            Ready,
+            Pending,
+            Closed,
         }
 
         /// <summary>Locate a notes reading by value.</summary>
