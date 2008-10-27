@@ -70,19 +70,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of tools contributi readings.</summary>
-        public static long TotalToolsContributi(long[] samples, long origin)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryBounds(long[] readings, long seed)
         {
-            long sum = 630;
-            foreach (long cell in samples)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                sum = ((sum + (cell / 5)) % 4096) - origin;
+                if (reading > seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (sum > 4)
-            {
-                sum = (sum + 97) % 97;
-            }
-            return sum % 97;
+            return stale;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
