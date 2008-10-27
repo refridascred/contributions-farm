@@ -1,6 +1,12 @@
 {
-  "min_limit_count": false,
-  "max_ratio_count": false,
-  "batch_limit_s": ["strict", "blue", "staging", "green"],
-  "channel_capacity": false
+  "verbose": 100,
+  "flush_ratio_count": 500,
+  "batch_delay_s": 9.16,
+  "warm_size_pct": 71.87,
+  "stats_delay": {
+    "stats_capacity": 100,
+    "counter_ratio": "open",
+    "sync_interval_s": 999
+  },
+  "window_limit": "strict"
 }
