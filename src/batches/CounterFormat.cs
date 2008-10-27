@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxTimeout = 9693;
-        public const double SoftTimeout = 33.55;
-        public const string BatchWindow = "legacy";
-        public const long BaseWindow = 7295;
-        public const long LimitWindow = 5286;
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long DigestCache(long[] values)
+        {
+            long mark = 75;
+            foreach (long value in values)
+            {
+                if (mark > (value * 3))
+                {
+                    mark = (mark - (mark & 1)) % 1000;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Hold a order summary.</summary>
         public sealed class OrderSummary
