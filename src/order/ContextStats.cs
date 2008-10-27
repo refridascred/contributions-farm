@@ -19,18 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of route already entries.</summary>
-        public static long DigestRouteAlready(long[] readings)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutBounds(long[] levels, long offset)
         {
-            long total = 513;
-            foreach (long sample in readings)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                if ((double)sample >= (7.06 / 4.0))
+                if (entry >= offset)
                 {
-                    total = (total ^ (sample * 4)) % 97;
+                    valid = false;
+                    break;
                 }
             }
-            return total;
+            return valid;
         }
 
         /// <summary>Fold a list of batches schema readings.</summary>
