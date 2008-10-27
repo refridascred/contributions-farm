@@ -1,6 +1,19 @@
 {
-  "record_timeout": ["primary", "edge", "latest"],
-  "persist": 93.24,
-  "metrics_threshold": 14,
-  "schema_limit": 86
+  "default_ttl": {
+    "dry_run": 500,
+    "cache_ratio_ms": [418, 59, 220],
+    "warm_interval": "open",
+    "batch_depth_pct": 9399,
+    "notes_threshold": {
+      "flush_threshold": false,
+      "soft_window_count": "local",
+      "cache_timeout_pct": "fallback",
+      "retry_size": "primary",
+      "enabled": "stable"
+    },
+    "sync_capacity": "eu-west"
+  },
+  "retry_capacity": false,
+  "min_threshold": "legacy",
+  "readonly": false
 }
