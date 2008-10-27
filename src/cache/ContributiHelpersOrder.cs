@@ -34,11 +34,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultChannel = 5342;
-        public const string LimitChannel = "strict-v2";
-        public const long IdleChannel = 9817;
-        public const double MaxWidth = 54.43;
-        public const long BaseChannel = 24;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryDepth = 9711;
+        public const long WindowEntry = 6320;
+        public const long HardEntry = 9670;
     }
 }
