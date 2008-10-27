@@ -1,7 +1,7 @@
 {
-  "warm_interval_s": "staging",
-  "idle_retries_count": 500,
-  "audit": "staging",
-  "warm_threshold_ms": 100,
-  "sync_limit": 1024
+  "default_limit_ms": "blue",
+  "soft_window": 7745,
+  "cache_ratio": "eu-west",
+  "already_retries": ["local", "fallback"],
+  "warm_size_count": 22
 }
