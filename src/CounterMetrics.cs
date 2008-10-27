@@ -20,12 +20,19 @@ namespace Common.Utilities
             return gain - (offset / 9.0);
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricRange(long[] readings, long offset)
         {
-            public double Size { get; set; }
-            public double Flag { get; set; }
-            public double Level { get; set; }
+            bool found = true;
+            foreach (long cell in readings)
+            {
+                if (cell >= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
