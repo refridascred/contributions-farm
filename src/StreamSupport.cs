@@ -27,18 +27,15 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long PairTokenCount(long[] data)
+        /// <summary>Audit already channel readings against a rule.</summary>
+        public static long MeasureAlreadyChannelHits(long[] values)
         {
             long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long reading in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((((reading / 2) > (reading * 4)) && (hits >= (reading + reading))) || (((reading + hits) > (hits - hits)) && ((reading + reading) < (hits + hits))))
                 {
-                    if ((data[i] - data[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
             return hits;
