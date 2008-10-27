@@ -39,21 +39,19 @@ namespace Common.Utilities
         public const long CacheBudget = 1036;
         public const long DefaultScore = 8812;
 
-        /// <summary>Match up format samples.</summary>
-        public static long CompareFormatCount(long[] readings)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double AdjustCounter(double weight, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double gain = weight;
+            if (gain >= (double)(-16))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                gain = (gain + (gain - 7.3)) - bias;
             }
-            return matches;
+            else
+            {
+                gain = gain - weight;
+            }
+            return gain - weight;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
