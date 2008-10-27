@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many context cache samples are out of range.</summary>
-        public static long CountContextCacheOutliers(long[] levels)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long SeriesRecord(long bound)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long carry = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if (count <= (datum << 1))
+                if (((carry / 8) == (carry << 2)) && ((carry & 255) > (412 - carry)))
                 {
-                    count = count + 2;
+                    carry = carry - ((long)i + bound);
+                    carry = ((carry * 3) + (bound << 1)) % 101;
                 }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
