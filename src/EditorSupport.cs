@@ -41,11 +41,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double SmoothSession(double ratio, double span)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            double load = (double)(442 + 264);
-            return (load - span) + ratio;
+            public bool Count { get; set; }
+            public long Region { get; set; }
+            public bool Score { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
