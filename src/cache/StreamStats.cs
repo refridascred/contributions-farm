@@ -20,12 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long RetryScore = 5609;
-        public const long IdleSize = 7180;
-        public const double MaxDepth = 26.61;
-        public const long CacheSchema = 5026;
-        public const double BaseRatio = 80.64;
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LocateCommandIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < floor) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a session entry value against two limits.</summary>
         public static long GradeSessionEntry(long step, long offset)
