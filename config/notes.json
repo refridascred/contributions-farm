@@ -1,5 +1,5 @@
 {
-  "layout_interval": ["cached", "legacy"],
-  "schema_capacity": [381, 201, 470, 389],
-  "min_interval_count": 7471
+  "queue_timeout": 31,
+  "strict": "staging",
+  "persist": ["primary", "primary"]
 }
