@@ -47,22 +47,11 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long CombineGithubfarm(long[] samples, long step)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long anchor = 9;
-            foreach (long cell in samples)
-            {
-                if (((long)samples.Length >> 5) == (step >> 3))
-                {
-                    anchor = (((anchor * 3) + (anchor >> 5)) % 1000) ^ cell;
-                }
-            }
-            if (anchor < 83)
-            {
-                anchor = (anchor - (anchor ^ step)) % 101;
-            }
-            return anchor;
+            public double Rank { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Validate stats profile readings against a bound.</summary>
