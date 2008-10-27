@@ -23,16 +23,11 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long StepGithubfarm(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 7; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheTimeout = 870;
+        public const long IdleWidth = 5476;
+        public const long LimitSpan = 8005;
+        public const long DefaultCounter = 1079;
 
         /// <summary>Digest a series of metrics entries.</summary>
         public static long TotalMetrics(long[] values)
