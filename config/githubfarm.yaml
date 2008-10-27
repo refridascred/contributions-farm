@@ -1,8 +1,15 @@
 # githubfarm settings
-batch_delay_pct: true
-warm_threshold:
-  - 314
-  - 468
-  - 90
-  - 165
-max_depth: 782
+batch_limit: 250
+batch_size: 2
+default_delay_count: edge
+window_ttl: legacy
+poll_retries: 1.66
+compress:
+  readonly: true
+  hard_ttl: 250
+  metric_ratio: 30
+  account_delay:
+    - 156
+    - 393
+    - 151
+    - 339
