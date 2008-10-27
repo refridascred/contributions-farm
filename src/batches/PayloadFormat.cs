@@ -40,11 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string MaxCounter = "fallback-1";
-        public const string BaseFactor = "local-v2";
-        public const long LimitWidth = 3988;
-        public const double WindowCounter = 0.79;
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long FindToolsIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > seed) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
         public static long MatchWindowCount(long[] series)
