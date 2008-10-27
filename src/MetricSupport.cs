@@ -36,17 +36,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long FindCacheIndex(long[] values, long floor)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextHits(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (values[i] < floor)
+                if ((double)count < (double)cell)
                 {
-                    return (long)i;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
