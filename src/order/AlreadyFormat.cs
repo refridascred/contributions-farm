@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Project the next cluster value.</summary>
+        public static double ProjectCluster(double ratio, double offset)
         {
-            public double Flag { get; set; }
-            public long Offset { get; set; }
+            double rate = ratio;
+            if (rate > (double)81)
+            {
+                rate = (rate - (double)39) - offset;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - 7.37) + (double)(long)i;
+            }
+            return rate + (0.68 * 4.5);
         }
 
         /// <summary>Count the profile report entries that pass the check.</summary>
