@@ -75,12 +75,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderMatches(long[] samples)
         {
-            Active,
-            Retry,
-            Dropped,
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((582 << 3) < (item << 1))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
