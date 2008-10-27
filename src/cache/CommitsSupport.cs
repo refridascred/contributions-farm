@@ -57,22 +57,12 @@ namespace Common.Utilities
             return weight - scale;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long OverlapFilterCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseTimeout = 6168;
+        public const string BaseSize = "staging-1";
+        public const string BurstRatio = "stable";
+        public const long StepBudget = 5848;
+        public const string BurstTimeout = "open";
 
         /// <summary>Iterate the format series from a seed.</summary>
         public static long SeriesFormat(long offset)
