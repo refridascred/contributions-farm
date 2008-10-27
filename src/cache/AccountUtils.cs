@@ -13,26 +13,12 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long CombineSchema(long[] data)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long score = 533;
-            foreach (long value in data)
-            {
-                if ((score ^ score) <= (score << 3))
-                {
-                    score = score + value;
-                }
-                else
-                {
-                    score = ((score * 4) + (0 % 3)) % 255;
-                }
-            }
-            if (score < (-375))
-            {
-                score = score + (score >> 4);
-            }
-            return score;
+            Ready,
+            Stale,
+            Retry,
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
