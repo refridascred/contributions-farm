@@ -94,25 +94,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long BucketProfile(long floor, long floor2)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long RollStream(long seed)
         {
-            long delta = floor ^ floor2;
-            if (((floor2 << 3) <= 6) || ((floor << 2) == (delta - floor)))
+            long mark = seed;
+            for (int i = 0; i < 4; i++)
             {
-                return 4;
+                mark = mark - (mark + (-92));
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            else
-            {
-                if ((7.04 / 5.0) == (double)delta)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return mark;
         }
     }
 }
