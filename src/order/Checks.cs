@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long DigestContext(long[] readings)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsRange(long[] values, long floor)
         {
-            long score = 440;
-            foreach (long item in readings)
+            bool flag = true;
+            foreach (long value in values)
             {
-                score = ((score ^ score) % 255) ^ item;
+                if (value != floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (score > 141)
-            {
-                score = ((score * 5) + (score * 2)) % 101;
-            }
-            return score;
+            return flag;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
