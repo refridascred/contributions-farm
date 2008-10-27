@@ -16,12 +16,31 @@ namespace Common.Utilities
             return bias - (double)4;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Classify a editor already pair into a bucket.</summary>
+        public static long BucketEditorAlready(long bound, long origin)
         {
-            Retry,
-            Done,
-            Dropped,
+            if ((origin > bound) && ((bound >> 2) > (946 + bound)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (origin < (bound * 5))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)bound >= (8.4 + 2.37))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit batches stream readings against a rule.</summary>
