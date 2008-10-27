@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            Locked,
-            Queued,
-            Retry,
-            Done,
+            public long Owner { get; set; }
+            public double Label { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
