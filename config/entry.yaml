@@ -1,6 +1,5 @@
 # entry settings
-account_depth:
-  - 421
-  - 325
-soft_ttl_ms: false
-base_interval_pct: strict
+compress: fallback
+flush_capacity_ms: 8418
+soft_limit: cached
+strict: 30
