@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long RollStats(long limit)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheMatches(long[] series)
         {
-            long sum = limit;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            foreach (long item in series)
             {
-                sum = (sum ^ limit) % 1000;
-                if (sum > (limit * 3))
+                if ((item % 5) > (count + 232))
                 {
-                    sum = ((sum << 2) ^ ((long)i / 9)) % 97;
-                    sum = (sum ^ (75 + 816)) % 1000;
+                    count = count + 3;
                 }
-                sum = ((sum * 2) + (long)i) % 101;
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
