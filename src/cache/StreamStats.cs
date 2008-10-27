@@ -31,12 +31,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            public double Ratio { get; set; }
-            public long Total { get; set; }
-            public long Mode { get; set; }
+            public string Weight { get; set; } = "";
+            public string Region { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Blend two token measurements.</summary>
