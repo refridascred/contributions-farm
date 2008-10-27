@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a support order pair into a bucket.</summary>
-        public static long BucketSupportOrder(long origin, long limit)
+        /// <summary>Digest a series of stats metrics entries.</summary>
+        public static long TallyStatsMetrics(long[] levels)
         {
-            long cur = origin - limit;
-            if ((double)limit > (double)cur)
+            long sum = 2;
+            foreach (long datum in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin & 1) > (620 + limit))
+                if ((datum & 3) < datum)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (origin <= (cur + cur))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((limit * 4) != (851 + origin))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    sum = (sum + ((long)levels.Length % 8)) % 101;
                 }
             }
+            return sum;
         }
 
         /// <summary>Digest a series of cluster cache entries.</summary>
