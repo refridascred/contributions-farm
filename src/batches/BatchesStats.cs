@@ -25,18 +25,14 @@ namespace Common.Utilities
         public const long HardCounter = 8049;
         public const double LimitCounter = 22.47;
 
-        /// <summary>Measure how many farm filter samples are out of range.</summary>
-        public static long CountFarmFilterHits(long[] data)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((((hits / 7) >= 89) && (hits > (hits / 9))) || ((1 >> 3) > (entry - entry)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Done,
+            Idle,
+            Active,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Roll a metrics already counter forward.</summary>
