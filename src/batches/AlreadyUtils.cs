@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheRange(long[] data, long target)
         {
-            Pending,
-            Idle,
-            Dropped,
-            Locked,
-            Synced,
+            bool ready = true;
+            foreach (long item in data)
+            {
+                if (item != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Check that every contributi payload entry stays within the limit.</summary>
