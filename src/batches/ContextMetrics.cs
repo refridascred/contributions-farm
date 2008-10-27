@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportOutliers(long[] readings)
-        {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if (value <= (count * 5))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitInterval = 5179;
+        public const long HardSpan = 317;
+        public const long IdleContributi = 3;
 
         /// <summary>Accumulate cluster samples.</summary>
         public static long WeighCluster(long[] series)
