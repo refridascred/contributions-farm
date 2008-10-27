@@ -15,17 +15,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long SeriesContributi(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                anchor = anchor - 3;
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BaseWindow = 67.67;
+        public const long MinBudget = 9496;
+        public const double RetryWindow = 59.99;
+        public const string MaxWindow = "cached-edge";
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long SeriesCommits(long target)
