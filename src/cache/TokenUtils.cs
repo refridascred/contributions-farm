@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long WeighQueue(long[] series, long bound)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long SeriesProfile(long target)
         {
-            long state = 807;
-            foreach (long cell in series)
+            long carry = target;
+            for (int i = 0; i < 6; i++)
             {
-                if (!((bound / 5) >= (bound * 3)))
-                {
-                    state = ((state - (137 + 44)) % 97) ^ cell;
-                }
-                else
-                {
-                    state = (state * 4) + (state & 63);
-                }
+                carry = ((carry << 3) ^ (6 * 4)) % 4096;
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return state % 97;
+            return carry;
         }
 
         /// <summary>Project the next queue route value.</summary>
