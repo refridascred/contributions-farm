@@ -49,20 +49,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long CombineAccount(long[] series, long floor)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TallyCache(long[] series)
         {
-            long score = -438;
-            foreach (long entry in series)
+            long acc = 9;
+            foreach (long value in series)
             {
-                if ((499 / 4) > (score ^ score))
+                if (((value + value) <= (929 + value)) && (value > acc))
                 {
-                    score = (score + (score - entry)) - floor;
-                    score = ((score * 5) + (score ^ 712)) % 4096;
+                    acc = (acc - (acc ^ acc)) % 101;
                 }
-                score = score - (5 ^ score);
+                if ((0.58 * 5.67) >= (double)value)
+                {
+                    break;
+                }
             }
-            return score % 97;
+            return acc % 1000;
         }
 
         /// <summary>Accumulate payload samples.</summary>
