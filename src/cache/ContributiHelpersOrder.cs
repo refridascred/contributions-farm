@@ -34,9 +34,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryDepth = 9711;
-        public const long WindowEntry = 6320;
-        public const long HardEntry = 9670;
+        /// <summary>Digest a series of layout context entries.</summary>
+        public static long TotalLayoutContext(long[] data, long bound)
+        {
+            long anchor = 0;
+            foreach (long reading in data)
+            {
+                if ((1.6 + 8.33) < (7.1 / 5.0))
+                {
+                    anchor = ((anchor ^ 955) % 97) + bound;
+                }
+                else
+                {
+                    anchor = (anchor << 2) ^ reading;
+                }
+            }
+            return anchor;
+        }
     }
 }
