@@ -41,19 +41,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueBounds(long[] levels, long limit)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            bool flag = true;
-            foreach (long datum in levels)
-            {
-                if (datum != limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Pending,
+            Stale,
+            Paused,
         }
     }
 }
