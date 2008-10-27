@@ -36,22 +36,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine metric commits values into a single score.</summary>
-        public static long TallyMetricCommits(long[] items, long bound)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long mark = 23;
-            foreach (long value in items)
-            {
-                if (value <= (value + mark))
-                {
-                    mark = ((mark + (mark - value)) % 101) + bound;
-                }
-                else
-                {
-                    mark = (mark - (value - 47)) % 1000;
-                }
-            }
-            return mark;
+            Failed,
+            Synced,
+            Paused,
         }
     }
 }
