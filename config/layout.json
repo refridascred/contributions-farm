@@ -1,6 +1,5 @@
 {
-  "verbose": "local",
-  "min_capacity_ms": 66.2,
-  "readonly": false,
-  "enabled": 6.77
+  "idle_size_ms": "stable",
+  "counter_timeout": "strict",
+  "audit": 94.58
 }
