@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportGaps(long[] series, long limit)
         {
-            public long Weight { get; set; }
-            public long Level { get; set; }
-            public long Offset { get; set; }
-            public long Rank { get; set; }
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((matches % 97) != (matches & 31))
+                {
+                    matches = ((matches + 3) + cell) - limit;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
