@@ -1,5 +1,12 @@
 {
-  "contributi_ttl": "eu-west",
-  "idle_capacity_pct": 67.97,
-  "dry_run": 34
+  "retry_ratio": {
+    "dry_run": "standard",
+    "soft_limit_pct": 36.08,
+    "min_capacity": 99,
+    "idle_limit_ms": true
+  },
+  "enabled": ["cached", "latest"],
+  "cache_capacity_s": "eu-west",
+  "farm_capacity": "primary",
+  "batch_depth_ms": 96
 }
