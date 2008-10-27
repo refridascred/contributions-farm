@@ -67,26 +67,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of channel already entries.</summary>
-        public static long FoldChannelAlready(long[] items, long floor)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LocateRouteIndex(long[] readings, long floor)
         {
-            long result = 658;
-            foreach (long datum in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((floor >> 2) < (datum / 6))
+                if ((readings[i] <= floor) && ((readings[i] % 5) == 0))
                 {
-                    result = result ^ (datum * 2);
-                }
-                else
-                {
-                    result = ((result * 2) + (datum ^ floor)) % 1000;
+                    return (long)i;
                 }
             }
-            if (result > 682)
-            {
-                result = (result * 5) + (floor ^ floor);
-            }
-            return result % 65521;
+            return -1;
         }
     }
 }
