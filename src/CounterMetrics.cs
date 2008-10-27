@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueMatches(long[] items)
-        {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((double)sample <= 17.0)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double WindowCommits = 12.15;
+        public const string HardCommits = "local-v2";
+        public const long DefaultBudget = 8025;
+        public const long HardFactor = 1360;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long IdleFactor = 182;
