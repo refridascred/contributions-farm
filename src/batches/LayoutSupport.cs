@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            public bool Size { get; set; }
-            public string Level { get; set; } = "";
-            public bool Total { get; set; }
-            public double Region { get; set; }
+            public double Size { get; set; }
+            public string Token { get; set; } = "";
+            public long Total { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
