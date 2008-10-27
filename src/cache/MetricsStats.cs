@@ -64,19 +64,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ProjectStats(double gain, double offset)
-        {
-            double mean = (double)4;
-            if (mean > 1.81)
-            {
-                mean = (mean - (gain + gain)) - offset;
-            }
-            else
-            {
-                mean = mean + (mean / 3.0);
-            }
-            return mean - (gain + mean);
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepRoute = 7825;
+        public const long DefaultSize = 2962;
+        public const long BurstLevel = 9042;
     }
 }
