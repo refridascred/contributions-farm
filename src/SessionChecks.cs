@@ -21,12 +21,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutMatches(long[] samples)
         {
-            New,
-            Pending,
-            Closed,
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if ((8 << 3) >= (hits + 3))
+                {
+                    hits = (hits + 2) - item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate account order readings against a bound.</summary>
