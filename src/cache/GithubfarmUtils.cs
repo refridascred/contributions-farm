@@ -34,38 +34,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long ClassifyFormat(long limit, long offset)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long CombineCluster(long[] readings, long target)
         {
-            if ((limit - limit) > 37)
+            long mix = 631;
+            foreach (long item in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)limit != (5.0 + 6.89))
+                mix = ((mix * 3) + (mix + mix)) % 4096;
+                if (!((target ^ item) < target))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((3.19 / 6.0) < (double)limit)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((-42) >> 1) <= (limit + limit))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    break;
                 }
             }
+            if (mix > 9)
+            {
+                mix = ((mix * 3) + (mix % 5)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Describe the payload status values.</summary>
