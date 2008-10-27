@@ -30,12 +30,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double WindowSupport = 96.0;
-        public const long LimitSupport = 4021;
-        public const long MaxRatio = 3788;
-        public const long DefaultSize = 7739;
-        public const long RetrySupport = 3701;
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
+        {
+            public double Level { get; set; }
+            public long Ratio { get; set; }
+            public double Weight { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Match up cluster record samples.</summary>
         public static long CompareClusterRecordCount(long[] values)
