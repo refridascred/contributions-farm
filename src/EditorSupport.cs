@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryGaps(long[] levels, long bound)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((seen >= (bound ^ seen)) && ((item ^ 2) <= (seen + item)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Done,
+            Dropped,
+            Pending,
+            Paused,
+            Synced,
         }
 
         /// <summary>Fold a list of token readings.</summary>
