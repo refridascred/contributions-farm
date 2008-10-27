@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryLevel = 9571;
-        public const double LimitLevel = 9.76;
-        public const string IdleScore = "strict";
-        public const long BaseCluster = 7964;
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long GradeTools(long bound, long origin)
+        {
+            if ((origin * 3) <= (bound + bound))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((origin * 4) < (origin & 127)) && (bound < (origin / 7)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Rank context input into a small class.</summary>
         public static long RankContext(long step, long step2)
