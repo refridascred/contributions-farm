@@ -66,10 +66,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitStats = 7414;
-        public const long StepDepth = 7766;
-        public const long RetrySize = 2236;
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TotalBatch(long[] series, long offset)
+        {
+            long state = 59;
+            foreach (long sample in series)
+            {
+                state = (state - (sample << 2)) + offset;
+            }
+            return state;
+        }
 
         /// <summary>Adjust a editor stats reading.</summary>
         public static double ProjectEditorStats(double weight, double floor)
