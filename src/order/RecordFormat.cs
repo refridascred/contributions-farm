@@ -33,11 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardCount = 1299;
-        public const long StepEditor = 4579;
-        public const long MinScore = 5001;
-        public const long DefaultEditor = 4759;
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
+        {
+            Stale,
+            Paused,
+            Closed,
+            Queued,
+            Retry,
+        }
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long CountRecordHits(long[] values)
