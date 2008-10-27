@@ -68,21 +68,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of window githubfarm readings.</summary>
-        public static long CombineWindowGithubfarm(long[] values, long floor)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long CombineChannel(long[] items)
         {
-            long result = 24;
-            foreach (long reading in values)
+            long score = 37;
+            foreach (long datum in items)
             {
-                result = (result << 3) ^ (reading & 7);
-                result = (result ^ 928) % 1000;
-                result = ((result * 5) + floor) % 4096;
+                if ((6.3 + 6.04) <= (1.83 - 3.83))
+                {
+                    score = (score - (datum % 3)) % 1000;
+                }
             }
-            if (result < 5)
-            {
-                result = (result - (floor + floor)) % 255;
-            }
-            return result % 97;
+            return score % 65521;
         }
     }
 }
