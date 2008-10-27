@@ -30,38 +30,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long GradeChecks(long floor, long target)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            if (((floor >> 4) == (1 >> 2)) || ((double)floor < (1.5 - 2.2)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((floor - floor) == (7 + target)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((target + target) < (target ^ floor)) && ((target >> 2) > 240))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((target - target) == (floor >> 2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Retry,
+            Draft,
+            Ready,
+            Synced,
+            Queued,
         }
     }
 }
