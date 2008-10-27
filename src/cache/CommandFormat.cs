@@ -43,13 +43,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            Paused,
-            Pending,
-            Queued,
-            Done,
+            public string Score { get; set; } = "";
+            public double Weight { get; set; }
+            public string Total { get; set; } = "";
+            public long Rank { get; set; }
         }
     }
 }
