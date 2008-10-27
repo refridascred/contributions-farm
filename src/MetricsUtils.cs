@@ -47,15 +47,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ScaleStats(double gain, double bias)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            double rate = (6.22 / 2.0) - (double)69;
-            for (int i = 0; i < 3; i++)
-            {
-                rate = ((rate + bias) - (double)(long)i) + gain;
-            }
-            return rate + rate;
+            public double Region { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
