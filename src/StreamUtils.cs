@@ -54,21 +54,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long OverlapQueueCount(long[] items)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaGaps(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long item in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((matches ^ matches) < (matches % 10)) && (9.8 < (double)matches))
                 {
-                    if ((items[i] - items[j]) == 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 3) ^ item;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Combine order values into a single score.</summary>
