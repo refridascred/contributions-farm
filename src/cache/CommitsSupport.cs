@@ -35,21 +35,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long OverlapRecordCount(long[] data)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Label { get; set; }
+            public string Flag { get; set; } = "";
+            public long Rank { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
