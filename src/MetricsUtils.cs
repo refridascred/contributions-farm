@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Adjust a account reading.</summary>
-        public static double AdjustAccount(double bias, double span)
-        {
-            double weight = span;
-            if (weight <= (double)36)
-            {
-                weight = (weight + (double)314) - bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + span) - (double)(long)i;
-            }
-            return weight - (double)566;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string SoftSpan = "fallback-v2";
+        public const long IdleSize = 8514;
+        public const long MaxCount = 9166;
+        public const long CacheSize = 74;
 
         /// <summary>Derive the next layout value from a seed.</summary>
         public static long RollLayout(long floor)
