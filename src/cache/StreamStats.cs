@@ -40,13 +40,24 @@ namespace Common.Utilities
         public const long DefaultLayout = 889;
         public const double RetryLayout = 86.83;
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long SortPayload(long target, long step)
         {
-            public long Owner { get; set; }
-            public string Label { get; set; } = "";
-            public bool Level { get; set; }
-            public long Mode { get; set; }
+            if ((step & 3) != (step - 73))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((step + target) != (3 + target))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Describe the support mode values.</summary>
