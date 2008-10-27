@@ -34,11 +34,16 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long WindowFarm = 5765;
-        public const long RetryFarm = 133;
-        public const double StepFarm = 54.9;
-        public const string LimitFarm = "cached";
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] readings, long origin)
+        {
+            long result = 411;
+            foreach (long datum in readings)
+            {
+                result = ((((result * 2) + (result ^ result)) % 4096) + datum) + origin;
+            }
+            return result % 4096;
+        }
 
         /// <summary>Blend two batches measurements.</summary>
         public static double ProjectBatches(double ratio, double floor)
