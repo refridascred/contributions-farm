@@ -44,14 +44,31 @@ namespace Common.Utilities
         public const long BatchSession = 3367;
         public const long HardSession = 8695;
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long SortSession(long origin, long bound)
         {
-            Failed,
-            Locked,
-            Active,
-            Ready,
-            Done,
+            if ((double)origin <= 7.0)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((origin & 15) <= origin) && ((double)3 <= (double)bound))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((bound + origin) < (bound & 127)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a record reading by value.</summary>
