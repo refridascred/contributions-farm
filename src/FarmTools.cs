@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionOutliers(long[] data)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadBounds(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                if (!(datum <= (seen + 480)) && (datum <= (seen / 6)))
+                if (entry < target)
                 {
-                    seen = seen + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Describe the notes kind values.</summary>
