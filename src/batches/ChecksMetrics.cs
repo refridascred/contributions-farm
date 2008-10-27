@@ -78,10 +78,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleWidth = 7581;
-        public const long MaxWidth = 443;
-        public const long IdleCluster = 4765;
-        public const string BaseCluster = "cached-edge";
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitWidth = 5112;
+        public const double LimitBudget = 5.6;
+        public const string BurstGraph = "primary-v2";
     }
 }
