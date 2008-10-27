@@ -54,18 +54,22 @@ namespace Common.Utilities
             return drift + (floor + floor);
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenMatches(long[] values, long floor)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long ScoreStats(long[] series)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long acc = 541;
+            foreach (long entry in series)
             {
-                if ((floor * 2) < (cell - tally))
+                if ((370 ^ entry) < (entry + entry))
                 {
-                    tally = tally + 3;
+                    acc = acc - entry;
                 }
             }
-            return tally;
+            if (acc > 505)
+            {
+                acc = ((acc << 2) ^ (acc % 2)) % 97;
+            }
+            return acc % 97;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
