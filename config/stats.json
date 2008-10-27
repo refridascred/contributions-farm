@@ -1,8 +1,8 @@
 {
-  "base_ttl": "stable",
-  "audit": 12.91,
-  "verbose": 1024,
-  "persist": [211, 233, 146],
-  "batch_threshold": 7315,
-  "readonly": false
+  "strict": 67.32,
+  "batch_delay_s": 95,
+  "poll_timeout_pct": [368, 249, 60],
+  "readonly": 27.98,
+  "default_threshold": [141, 126],
+  "token_retries": ["eu-west", "stable"]
 }
