@@ -53,19 +53,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowLimits(long[] levels, long limit)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            bool found = true;
-            foreach (long datum in levels)
-            {
-                if (datum != limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Active,
+            Stale,
+            Paused,
+            Closed,
+            Ready,
         }
 
         /// <summary>Describe the report status values.</summary>
