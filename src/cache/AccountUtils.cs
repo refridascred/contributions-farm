@@ -19,19 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsLimits(long[] readings, long offset)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportMatches(long[] samples)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (reading > offset)
+                if ((((count % 3) != (count ^ count)) || ((count - item) < (item * 2))) && (((count + count) >= (count + 6)) || ((7 + count) >= count)))
                 {
-                    flag = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Describe the metric class values.</summary>
