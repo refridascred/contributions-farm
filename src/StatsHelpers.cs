@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Adjust a already reading.</summary>
-        public static double AdjustAlready(double bias, double floor)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterOutliers(long[] levels)
         {
-            double gain = floor;
-            if (gain > (bias / 4.0))
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                gain = gain + bias;
+                if (((hits + entry) < (1 + entry)) || !((hits + 0) != (entry & 63)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return gain - gain;
+            return hits;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
