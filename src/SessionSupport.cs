@@ -19,13 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            public double Label { get; set; }
-            public bool Rank { get; set; }
-            public string Size { get; set; } = "";
-            public long Token { get; set; }
+            Locked,
+            Done,
+            Retry,
         }
 
         /// <summary>Count the githubfarm counter entries that pass the check.</summary>
