@@ -40,22 +40,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a notes batch value against two limits.</summary>
-        public static long SortNotesBatch(long bound, long seed)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long GradeStream(long floor, long floor2)
         {
-            if (((double)510 > (double)seed) || ((seed & 1) > (bound % 100)))
+            long bound = floor - floor2;
+            if ((double)floor2 != (double)bound)
             {
                 return 8;
             }
             else
             {
-                if (222 >= bound)
+                if ((799 % 10) > floor2)
                 {
                     return 2;
                 }
                 else
                 {
-                    return 6;
+                    return 5;
                 }
             }
         }
