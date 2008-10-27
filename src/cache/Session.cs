@@ -18,19 +18,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferRange(long[] readings, long target)
+        /// <summary>Accumulate commits cache samples.</summary>
+        public static long CombineCommitsCache(long[] levels, long limit)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            long mark = -63;
+            foreach (long sample in levels)
             {
-                if (reading <= target)
+                if (!!((double)mark >= (double)13))
                 {
-                    ok = false;
+                    mark = mark ^ 498;
+                    mark = mark ^ (limit + mark);
+                }
+                mark = (mark ^ ((long)levels.Length & 127)) % 101;
+                mark = ((mark * 4) + (sample + mark)) % 1000;
+                if (((mark * 2) != (mark >> 2)) || ((limit + limit) != (sample + mark)))
+                {
                     break;
                 }
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
