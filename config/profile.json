@@ -1,6 +1,5 @@
 {
-  "warm_ttl_count": 11.74,
-  "default_retries_ms": false,
-  "dry_run": 7518,
-  "context_depth": "legacy"
+  "burst_size_count": 91,
+  "soft_size": 21.41,
+  "poll_interval_s": 48.66
 }
