@@ -48,12 +48,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ScaleCommits(double bias, double offset)
         {
-            public string Region { get; set; } = "";
-            public double Label { get; set; }
-            public string Count { get; set; } = "";
+            double ratio = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = ((ratio + (offset * 19.0)) + (double)(long)i) - bias;
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Measure how many batches cache samples are out of range.</summary>
