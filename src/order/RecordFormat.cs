@@ -5,35 +5,29 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Classify a batch record pair into a bucket.</summary>
-        public static long SortBatchRecord(long step, long step2)
+        /// <summary>Classify a editor graph pair into a bucket.</summary>
+        public static long SortEditorGraph(long floor, long limit)
         {
-            if (617 > (step - (-846)))
+            long diff = floor - limit;
+            if (((diff - floor) != (limit + diff)) && ((limit >> 2) > (limit * 2)))
             {
-                return 6;
+                return 4;
             }
             else
             {
-                if ((214 < (step ^ step)) && (step >= 5))
+                if (limit <= (diff + 1))
                 {
                     return 8;
                 }
                 else
                 {
-                    if (!((step2 % 97) <= 361))
+                    if ((diff + limit) >= (floor ^ limit))
                     {
-                        return 7;
+                        return 5;
                     }
                     else
                     {
-                        if ((259 + step2) != (step - 20))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        return 1;
                     }
                 }
             }
