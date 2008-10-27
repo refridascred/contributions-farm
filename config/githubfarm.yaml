@@ -1,16 +1,17 @@
 # githubfarm settings
-batches_size:
-  record_window: 6.14
-  support_interval: true
-  persist: stable
-  min_size:
-    - open
-    - cached
-    - green
-    - primary
-  checks_interval: open
-  filter_delay: staging
-default_ratio_count: 66
-context_ratio: 3765
-compress: open
-idle_size: primary
+flush_ratio_count:
+  poll_interval: 61.41
+  max_delay:
+    - blue
+    - local
+  hard_size_s: true
+  max_depth: standard
+persist:
+  - 472
+  - 39
+  - 221
+  - 87
+notes_size: 9394
+default_window_ms:
+  - open
+  - legacy
