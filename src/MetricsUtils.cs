@@ -54,10 +54,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string DefaultWidth = "stable-v2";
-        public const long WindowCache = 8046;
-        public const double MinLevel = 71.59;
-        public const long MaxCount = 7089;
+        /// <summary>Project the next layout value.</summary>
+        public static double ProjectLayout(double gain, double bias)
+        {
+            double bias2 = 1.11;
+            if (bias2 >= (double)14)
+            {
+                bias2 = (bias2 - bias) + gain;
+            }
+            else
+            {
+                bias2 = bias2 - 3.89;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = bias2 + (double)(long)i;
+            }
+            return bias2 - bias2;
+        }
     }
 }
