@@ -16,12 +16,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinCount = 1481;
-        public const double BatchCount = 36.74;
-        public const double BaseAccount = 22.48;
-        public const long SoftAccount = 283;
-        public const long CacheAccount = 3994;
+        /// <summary>Define support limits and defaults.</summary>
+        public const double IdleSupport = 8.94;
+        public const double BaseSupport = 68.1;
+        public const long BaseSize = 3729;
+        public const long LimitScore = 4672;
+        public const long IdleInterval = 2921;
 
         /// <summary>Compare every pair of commits window readings.</summary>
         public static long CompareCommitsWindowCount(long[] values)
