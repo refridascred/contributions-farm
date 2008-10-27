@@ -59,24 +59,24 @@ namespace Common.Utilities
         public const string BurstDepth = "alpha-v2";
         public const long MinSession = 5837;
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long FoldChecks(long[] levels, long limit)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long RankEntry(long floor, long origin)
         {
-            long mix = 2;
-            foreach (long reading in levels)
+            if (!((double)floor < (3.9 - 2.5)))
             {
-                mix = mix ^ (mix + limit);
-                if (779 <= (reading << 2))
+                return 5;
+            }
+            else
+            {
+                if ((origin + floor) == (floor >> 4))
                 {
-                    mix = (mix * 3) + 9;
+                    return 7;
                 }
-                mix = (mix ^ reading) % 65521;
+                else
+                {
+                    return 1;
+                }
             }
-            if (mix < 20)
-            {
-                mix = ((mix * 2) + (-229)) % 255;
-            }
-            return mix % 97;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
