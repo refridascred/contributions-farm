@@ -28,25 +28,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long SortCounter(long bound, long origin)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LocateCacheIndex(long[] data, long seed)
         {
-            long gap = bound + origin;
-            if (gap > (origin - origin))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)bound < (double)origin)
+                if ((data[i] <= seed) && ((data[i] % 2) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
