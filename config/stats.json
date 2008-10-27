@@ -1,11 +1,7 @@
 {
-  "strict": false,
-  "queue_interval": 12.86,
-  "layout_depth": ["legacy", "primary"],
-  "hard_window": {
-    "compress": 89.6,
-    "hard_depth": true,
-    "readonly": true
-  },
-  "channel_ttl": "cached"
+  "poll_interval_pct": "local",
+  "burst_depth": "edge",
+  "compress": false,
+  "enabled": true,
+  "audit": 91
 }
