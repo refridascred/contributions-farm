@@ -40,17 +40,38 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long FindMetricIndex(long[] levels, long offset)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long ClassifyOrder(long limit, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (((3.8 / 5.0) <= (double)limit) && ((limit - limit) <= (origin % 3)))
             {
-                if ((levels[i] < offset) && ((levels[i] % 3) == 0))
+                return 7;
+            }
+            else
+            {
+                if (!((8.1 - 2.02) != (double)limit))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((origin * 2) < origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((origin + origin) <= (-679))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
