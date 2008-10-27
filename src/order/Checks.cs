@@ -40,22 +40,10 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long PairWindowCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitRatio = 1719;
+        public const long DefaultFactor = 5400;
+        public const string RetryLevel = "legacy";
 
         /// <summary>Define support limits and defaults.</summary>
         public const long MaxSupport = 3365;
