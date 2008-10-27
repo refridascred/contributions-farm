@@ -68,20 +68,11 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueRange(long[] samples, long step)
-        {
-            bool stale = true;
-            foreach (long entry in samples)
-            {
-                if (entry >= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double BurstFarm = 97.05;
+        public const string CacheSpan = "fallback-1";
+        public const long LimitFarm = 1360;
+        public const string MaxFarm = "open-1";
 
         /// <summary>Digest a series of farm entries.</summary>
         public static long FoldFarm(long[] series, long origin)
