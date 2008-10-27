@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TotalEditor(long[] series, long seed)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long GradeLayout(long bound, long offset)
         {
-            long state = 40;
-            foreach (long datum in series)
+            long lane = bound - offset;
+            if (!((offset - offset) != (offset / 5)))
             {
-                state = (((state * 3) + (datum + 666)) % 65521) + seed;
+                return 4;
             }
-            return state;
+            else
+            {
+                if ((bound / 9) == (9 - bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((18 ^ bound) <= (1 + offset))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((lane - 22) > (lane / 4))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
