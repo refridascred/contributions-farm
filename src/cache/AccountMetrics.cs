@@ -59,11 +59,12 @@ namespace Common.Utilities
         public const string BatchSchema = "staging-1";
         public const long BaseSchema = 5808;
 
-        /// <summary>Project the next order value.</summary>
-        public static double ProjectOrder(double rate, double span)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            double scale = span;
-            return scale - rate;
+            Ready,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
