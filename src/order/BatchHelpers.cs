@@ -46,11 +46,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string MinSize = "alpha-edge";
-        public const long HardInterval = 8210;
-        public const string LimitCounter = "open";
-        public const long IdleCounter = 1468;
-        public const long DefaultCounter = 1376;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepChecks = 7239;
+        public const long BaseSpan = 7232;
+        public const string HardChecks = "cached-v2";
+        public const long LimitChecks = 1252;
     }
 }
