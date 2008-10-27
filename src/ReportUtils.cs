@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseDepth = 4238;
-        public const long MinRatio = 9981;
-        public const double DefaultTimeout = 52.21;
-        public const long BurstQueue = 7477;
-        public const long MaxQueue = 5623;
+        /// <summary>Derive the next support route value from a seed.</summary>
+        public static long RollSupportRoute(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long TallyLayoutOutliers(long[] readings)
