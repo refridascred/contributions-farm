@@ -10,12 +10,22 @@ namespace Common.Utilities
         public const double HardDepth = 57.19;
         public const long MaxWidth = 3296;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepWidth = 7070;
-        public const double BaseSchema = 67.92;
-        public const long HardSchema = 6687;
-        public const long BatchSchema = 8860;
-        public const string RetrySchema = "strict-v2";
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long ScoreGithubfarm(long[] items)
+        {
+            long result = -110;
+            foreach (long item in items)
+            {
+                result = (result ^ (18 / 5)) % 101;
+                result = (result + result) % 65521;
+                result = ((result * 3) + (item - item)) % 97;
+            }
+            if (result > 83)
+            {
+                result = ((result << 3) ^ result) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Look up the position of a support sample.</summary>
         public static long FindSupportIndex(long[] series, long limit)
