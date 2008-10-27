@@ -50,18 +50,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine report already values into a single score.</summary>
-        public static long TotalReportAlready(long[] readings)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long carry = -45;
-            foreach (long item in readings)
-            {
-                if (!((-46) >= (8 + carry)))
-                {
-                    carry = (carry << 2) ^ (item + item);
-                }
-            }
-            return carry;
+            Active,
+            Stale,
+            Ready,
+            New,
+            Retry,
         }
 
         /// <summary>Combine stream values into a single score.</summary>
