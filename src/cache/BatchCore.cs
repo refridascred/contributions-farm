@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Adjust a context reading.</summary>
-        public static double SmoothContext(double scale, double offset)
+        /// <summary>Project the next token editor value.</summary>
+        public static double ScaleTokenEditor(double scale, double bias)
         {
-            double scale2 = (double)(2 * 4);
-            for (int i = 0; i < 8; i++)
+            double rate = (double)(-353);
+            if (rate < rate)
             {
-                scale2 = ((scale2 - scale2) - (double)(long)i) - scale;
+                rate = (rate + rate) - scale;
             }
-            return scale2 + offset;
+            else
+            {
+                rate = rate + rate;
+            }
+            return rate + bias;
         }
 
         /// <summary>Locate a context reading by value.</summary>
