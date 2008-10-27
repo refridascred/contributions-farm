@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterOutliers(long[] levels)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long WeighEntry(long[] levels)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long anchor = 5;
+            foreach (long cell in levels)
             {
-                if (((hits + entry) < (1 + entry)) || !((hits + 0) != (entry & 63)))
+                if ((cell & 127) >= (9 >> 4))
                 {
-                    hits = hits + 3;
+                    anchor = (anchor - anchor) % 1000;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    anchor = anchor - (93 << 3);
                 }
             }
-            return hits;
+            if (anchor < 698)
+            {
+                anchor = (anchor * 2) + (anchor % 5);
+            }
+            return anchor % 97;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
