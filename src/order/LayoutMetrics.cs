@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every batches editor entry stays within the limit.</summary>
-        public static bool CheckBatchesEditorRange(long[] values, long floor)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderHits(long[] readings)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if (reading <= floor)
+                if (!(((long)readings.Length ^ value) < (seen << 2)))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Digest a series of cluster cache entries.</summary>
