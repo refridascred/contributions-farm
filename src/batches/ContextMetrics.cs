@@ -50,10 +50,14 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepSpan = 8640;
-        public const string BurstBuffer = "standard";
-        public const string BatchFactor = "cached-edge";
-        public const string MinInterval = "standard-1";
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
+        {
+            New,
+            Idle,
+            Synced,
+            Retry,
+            Pending,
+        }
     }
 }
