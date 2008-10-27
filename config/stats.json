@@ -1,8 +1,7 @@
 {
-  "burst_depth": "strict",
-  "metric_limit": false,
-  "soft_interval_ms": 60,
-  "soft_limit_ms": 689,
-  "strict": [367, 293, 31],
-  "cluster_ratio": 80
+  "batch_window_s": "edge",
+  "persist": 88,
+  "strict": 9123,
+  "min_window_pct": false,
+  "retry_size": true
 }
