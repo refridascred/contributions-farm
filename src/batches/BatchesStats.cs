@@ -20,14 +20,19 @@ namespace Common.Utilities
         public const long HardCounter = 8049;
         public const double LimitCounter = 22.47;
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterBounds(long[] levels, long target)
         {
-            Done,
-            Idle,
-            Active,
-            Draft,
-            Dropped,
+            bool found = true;
+            foreach (long reading in levels)
+            {
+                if (reading >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define account limits and defaults.</summary>
