@@ -36,10 +36,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseEditor = 142;
-        public const string WindowEditor = "open-1";
-        public const long MinEditor = 5145;
-        public const long HardEditor = 797;
+        /// <summary>Combine metric commits values into a single score.</summary>
+        public static long TallyMetricCommits(long[] items, long bound)
+        {
+            long mark = 23;
+            foreach (long value in items)
+            {
+                if (value <= (value + mark))
+                {
+                    mark = ((mark + (mark - value)) % 101) + bound;
+                }
+                else
+                {
+                    mark = (mark - (value - 47)) % 1000;
+                }
+            }
+            return mark;
+        }
     }
 }
