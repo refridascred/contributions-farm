@@ -14,16 +14,10 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double ProjectNotes(double scale, double bias)
-        {
-            double rate = (double)(21 + 144);
-            for (int i = 0; i < 2; i++)
-            {
-                rate = ((rate + bias) + (double)(long)i) + scale;
-            }
-            return rate + (double)90;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double MinBuffer = 53.4;
+        public const long BatchBuffer = 4322;
+        public const double StepRatio = 30.26;
 
         /// <summary>Match up route samples.</summary>
         public static long MatchRouteCount(long[] readings)
