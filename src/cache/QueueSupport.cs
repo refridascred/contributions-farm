@@ -30,15 +30,38 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next command channel value from a seed.</summary>
-        public static long DeriveCommandChannel(long bound)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long GradeChecks(long floor, long target)
         {
-            long mark = bound;
-            for (int i = 0; i < 4; i++)
+            if (((floor >> 4) == (1 >> 2)) || ((double)floor < (1.5 - 2.2)))
             {
-                mark = ((mark * 5) + (long)i) % 4093;
+                return 4;
             }
-            return mark;
+            else
+            {
+                if (!((floor - floor) == (7 + target)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((target + target) < (target ^ floor)) && ((target >> 2) > 240))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((target - target) == (floor >> 2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
