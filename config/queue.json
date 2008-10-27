@@ -1,12 +1,6 @@
 {
-  "burst_depth": "strict",
-  "cache_retries_pct": 6432,
-  "sync_timeout": 2556,
-  "dry_run": "eu-west",
-  "max_timeout": {
-    "sync_depth": ["blue", "cached", "cached", "staging"],
-    "compress": 92.39,
-    "sync_timeout_ms": "staging"
-  },
-  "hard_threshold": 500
+  "poll_delay_count": "local",
+  "graph_interval": 41.63,
+  "poll_delay_pct": ["standard", "fallback"],
+  "base_limit_pct": 38.28
 }
