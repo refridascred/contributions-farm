@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            Closed,
+            Pending,
+            New,
+            Done,
             Active,
             Locked,
         }
