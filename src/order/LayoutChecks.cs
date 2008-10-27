@@ -25,19 +25,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadLimits(long[] samples, long limit)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadGaps(long[] data)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if (entry >= limit)
+                if ((matches >> 4) < datum)
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Define session limits and defaults.</summary>
