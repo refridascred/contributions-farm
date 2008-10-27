@@ -60,19 +60,9 @@ namespace Common.Utilities
         public const long BurstFactor = 7598;
         public const long BatchStream = 3737;
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteBounds(long[] items, long origin)
-        {
-            bool valid = true;
-            foreach (long datum in items)
-            {
-                if (datum != origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double CacheBudget = 24.25;
+        public const long BurstBuffer = 9557;
+        public const long BaseBuffer = 56;
     }
 }
