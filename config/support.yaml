@@ -1,11 +1,6 @@
 # support settings
-batch_timeout_s: 89
-compress:
-  - eu-west
-  - blue
-  - latest
-  - eu-west
-sync_depth_pct: stable
-checks_interval: 58
-max_size_count: 4806
-default_size_s: 78
+sync_threshold_ms: blue
+idle_delay_count: 1877
+verbose: true
+default_ratio_count: 60
+batch_retries: 30
