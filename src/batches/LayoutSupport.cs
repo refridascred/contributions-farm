@@ -19,18 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchOutliers(long[] series, long origin)
+        /// <summary>Fold a list of channel notes readings.</summary>
+        public static long TallyChannelNotes(long[] readings)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long mix = 82;
+            foreach (long datum in readings)
             {
-                if ((double)hits < (5.7 * 9.6))
+                if ((datum << 2) <= (81 / 6))
                 {
-                    hits = ((hits + 2) + entry) - origin;
+                    mix = (mix + (mix - mix)) % 65521;
+                }
+                if ((datum * 4) < 0)
+                {
+                    break;
                 }
             }
-            return hits;
+            return mix % 97;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
