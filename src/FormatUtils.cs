@@ -46,14 +46,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiHits(long[] levels)
         {
-            Active,
-            Stale,
-            Paused,
-            Closed,
-            Ready,
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if (((9.0 / 9.0) != (double)reading) || (reading >= (seen - seen)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the report status values.</summary>
