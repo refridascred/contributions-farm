@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksRange(long[] values, long offset)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmMatches(long[] readings, long bound)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if (reading <= offset)
+                if (seen >= bound)
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 3) - item;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Describe the graph state values.</summary>
