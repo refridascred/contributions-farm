@@ -59,22 +59,15 @@ namespace Common.Utilities
         public const long IdleFactor = 3190;
         public const long StepDepth = 6598;
 
-        /// <summary>Audit entry buffer readings against a rule.</summary>
-        public static long MeasureEntryBufferGaps(long[] readings, long limit)
+        /// <summary>Iterate the commits metric series from a seed.</summary>
+        public static long DeriveCommitsMetric(long seed)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long carry = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if (!(((double)matches < (double)entry) && (2.0 > (double)matches)))
-                {
-                    matches = (matches + 1) + limit;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return matches;
+            return carry;
         }
     }
 }
