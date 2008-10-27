@@ -62,19 +62,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenRange(long[] readings, long origin)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueRange(long[] samples, long step)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                if (sample > origin)
+                if (entry >= step)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
 
         /// <summary>Describe the support level values.</summary>
