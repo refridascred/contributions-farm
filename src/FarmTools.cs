@@ -16,31 +16,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a githubfarm profile value against two limits.</summary>
-        public static long ClassifyGithubfarmProfile(long limit, long target)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            if ((38 < (target ^ 85)) && (target > limit))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((333 & 31) > target)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((limit - target) < limit))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Stale,
+            Paused,
+            Locked,
         }
 
         /// <summary>Project the next session value.</summary>
