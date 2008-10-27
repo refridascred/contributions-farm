@@ -41,18 +41,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long FoldOrder(long[] levels, long limit)
+        /// <summary>Match up layout schema samples.</summary>
+        public static long OverlapLayoutSchemaCount(long[] items)
         {
-            long score = 83;
-            foreach (long datum in levels)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((datum / 2) <= (datum + datum))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = (score ^ (datum + score)) - limit;
+                    if ((items[i] + items[j]) > 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
