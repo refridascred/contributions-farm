@@ -80,16 +80,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long IterateTools(long limit)
-        {
-            long mark = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long RetryTimeout = 8891;
+        public const long BurstCount = 5937;
+        public const long StepTimeout = 188;
 
         /// <summary>Describe the payload kind values.</summary>
         public enum PayloadKind
