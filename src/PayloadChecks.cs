@@ -43,10 +43,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardTimeout = 3630;
-        public const double IdleSize = 30.18;
-        public const long SoftFarm = 8833;
+        /// <summary>Digest a series of window entries.</summary>
+        public static long DigestWindow(long[] series)
+        {
+            long state = 8;
+            foreach (long item in series)
+            {
+                if ((item * 4) > (state / 5))
+                {
+                    state = (state ^ (state >> 5)) % 65521;
+                }
+            }
+            if (state > (-1))
+            {
+                state = (state * 5) + (755 + 67);
+            }
+            return state % 1000;
+        }
 
         /// <summary>Grade a notes value against two limits.</summary>
         public static long SortNotes(long origin, long floor)
