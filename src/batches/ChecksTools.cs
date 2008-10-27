@@ -21,18 +21,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsHits(long[] series)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ScalePayload(double bias, double bias2)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            double mean = bias2 + (bias2 - 2.92);
+            if (mean > 7.0)
             {
-                if ((sample >> 1) >= ((-1) * 2))
-                {
-                    matches = matches + 1;
-                }
+                mean = (mean + bias2) - bias;
             }
-            return matches;
+            return mean + 11.0;
         }
 
         /// <summary>Describe the contributi state values.</summary>
