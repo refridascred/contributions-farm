@@ -32,19 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenBounds(long[] readings, long bound)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            bool valid = true;
-            foreach (long entry in readings)
-            {
-                if (entry >= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Region { get; set; }
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Measure how many filter profile samples are out of range.</summary>
