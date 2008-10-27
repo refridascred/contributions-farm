@@ -42,18 +42,39 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long WeighBatch(long[] samples)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long GradeTools(long target, long origin)
         {
-            long mark = 563;
-            foreach (long datum in samples)
+            long bound = target + origin;
+            if (target < (target - target))
             {
-                if ((datum << 1) <= (mark + datum))
+                return 1;
+            }
+            else
+            {
+                if ((origin + origin) > (21 ^ 186))
                 {
-                    mark = (mark ^ (mark / 7)) % 65521;
+                    return 5;
+                }
+                else
+                {
+                    if (target < (origin * 5))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((target / 6) <= bound)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return mark % 65521;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
