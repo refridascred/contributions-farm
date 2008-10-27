@@ -1,18 +1,10 @@
 # support settings
-contributi_ratio:
-  - 472
-  - 231
-  - 423
-  - 491
-readonly:
-  - 463
-  - 350
-  - 181
-  - 241
-tools_timeout: 87.11
-enabled:
-  - 167
-  - 74
-  - 107
-  - 85
-batch_window_count: green
+max_size_ms: staging
+entry_ratio: edge
+verbose:
+  - stable
+  - cached
+  - cached
+  - green
+max_window: 25.97
+sync_timeout: staging
