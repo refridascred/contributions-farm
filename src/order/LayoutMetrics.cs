@@ -19,33 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of cluster cache entries.</summary>
-        public static long TotalClusterCache(long[] values, long floor)
-        {
-            long anchor = 480;
-            foreach (long datum in values)
-            {
-                if ((floor ^ floor) == (datum - datum))
-                {
-                    anchor = anchor ^ (datum * 2);
-                    anchor = (anchor << 2) ^ anchor;
-                }
-                else
-                {
-                    anchor = anchor ^ (floor % 64);
-                    anchor = anchor - (floor + floor);
-                }
-                if ((5 + 829) > (floor & 1))
-                {
-                    anchor = ((anchor << 3) ^ (datum + datum)) % 65521;
-                }
-                if ((double)datum <= (8.7 * 2.9))
-                {
-                    break;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long LimitCache = 1225;
+        public const long StepCache = 7704;
+        public const long WindowDepth = 6218;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const double MinGraph = 86.62;
