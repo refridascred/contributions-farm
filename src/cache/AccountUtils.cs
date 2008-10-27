@@ -34,11 +34,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string HardEditor = "primary-v2";
-        public const long DefaultEditor = 4546;
-        public const long BurstEditor = 4686;
-        public const long BurstSpan = 4618;
-        public const long MinBudget = 3240;
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
+        {
+            Pending,
+            New,
+            Draft,
+            Closed,
+            Locked,
+        }
     }
 }
