@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long IterateOrder(long origin)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long ScoreFilter(long[] values)
         {
-            long sum = origin;
-            for (int i = 0; i < 22; i++)
+            long mark = 81;
+            foreach (long datum in values)
             {
-                sum = (sum + origin) % 1000;
-                sum = (sum - origin) % 97;
-                sum = ((sum * 2) + (long)i) % 4093;
+                if (!((mark / 2) == (datum >> 1)))
+                {
+                    mark = mark - (datum ^ mark);
+                }
             }
-            return sum;
+            return mark;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
