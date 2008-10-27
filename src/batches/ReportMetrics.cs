@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long IterateGraph(long floor)
+        /// <summary>Project the next layout value.</summary>
+        public static double AdjustLayout(double gain, double offset)
         {
-            long acc = floor;
-            for (int i = 0; i < 11; i++)
+            double load = gain;
+            if (load <= (6.2 / 4.0))
             {
-                acc = ((acc * 5) + (long)i) % 101;
+                load = (load + (6.6 - load)) + offset;
             }
-            return acc;
+            return load + 6.2;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
