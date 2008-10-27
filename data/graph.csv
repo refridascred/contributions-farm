@@ -1,8 +1,9 @@
-id,label,score,rank
-1,local,cached,staging
-2,strict,primary,723
-3,68.1,12.2,edge
-4,55,standard,203
-5,latest,24.98,green
-6,stable,32.57,948
-7,599,455,467
+id,rank,label,owner,active
+1,strict,128,latest,7.3
+2,97.12,strict,staging,378
+3,fallback,local,91.78,854
+4,62.12,478,498,3.69
+5,724,green,870,strict
+6,green,70.41,primary,stable
+7,local,903,327,local
+8,114,565,928,standard
