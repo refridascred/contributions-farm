@@ -34,15 +34,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of window schema entries.</summary>
-        public static long CombineWindowSchema(long[] readings)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long state = 7;
-            foreach (long sample in readings)
-            {
-                state = ((state - state) % 97) - sample;
-            }
-            return state;
+            New,
+            Draft,
+            Locked,
         }
     }
 }
