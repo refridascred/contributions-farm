@@ -68,21 +68,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long PairStatsCount(long[] series)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricLimits(long[] levels, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (datum != seed)
                 {
-                    if ((series[i] ^ series[j]) > 19)
-                    {
-                        count = count + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
