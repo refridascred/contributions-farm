@@ -1,9 +1,17 @@
 # support settings
-retry_timeout_ms: false
-warm_size_ms:
-  - green
-  - staging
-  - open
-  - primary
-sync_capacity_count: standard
-burst_ttl_s: true
+notes_window:
+  min_depth_pct: 89.06
+  poll_limit_count:
+    warm_ttl_count: primary
+    batch_ratio_count: 500
+    githubfarm_limit: 100
+    base_ratio_count: 92
+  sync_interval_pct: legacy
+max_depth:
+  burst_delay_s: false
+  poll_capacity_ms: legacy
+  strict: 46.04
+strict: 5981
+batches_interval: 100
+account_delay: false
+max_capacity_count: standard
