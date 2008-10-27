@@ -30,14 +30,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long BucketEntry(long floor, long offset)
         {
-            New,
-            Draft,
-            Failed,
-            Closed,
-            Locked,
+            if ((0 - offset) == (floor + 780))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!(offset >= (offset + floor)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
