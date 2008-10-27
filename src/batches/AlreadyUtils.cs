@@ -35,15 +35,15 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Adjust a filter record reading.</summary>
-        public static double ScaleFilterRecord(double ratio, double span)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long StepGithubfarm(long target)
         {
-            double load = span;
-            for (int i = 0; i < 2; i++)
+            long carry = target;
+            for (int i = 0; i < 7; i++)
             {
-                load = ((load + load) - (double)(long)i) - ratio;
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return load - (load + load);
+            return carry;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
