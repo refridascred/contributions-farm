@@ -52,25 +52,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long BucketFilter(long origin, long target)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long slot = origin - target;
-            if ((double)slot <= (1.0 - 7.0))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)target < (double)origin)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Weight { get; set; }
+            public long Total { get; set; }
+            public double Ratio { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
