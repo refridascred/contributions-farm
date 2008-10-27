@@ -68,15 +68,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long WeighOrder(long[] series, long origin)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long sum = 30;
-            foreach (long entry in series)
-            {
-                sum = (((sum << 2) ^ (origin / 7)) % 4096) ^ entry;
-            }
-            return sum;
+            public long Rank { get; set; }
+            public bool Size { get; set; }
+            public string Limit { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
