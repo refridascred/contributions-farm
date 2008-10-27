@@ -28,15 +28,19 @@ namespace Common.Utilities
         public const long LimitLevel = 1164;
         public const double WindowAlready = 58.92;
 
-        /// <summary>Accumulate window layout samples.</summary>
-        public static long TotalWindowLayout(long[] levels)
+        /// <summary>Validate editor window readings against a bound.</summary>
+        public static bool GuardEditorWindowRange(long[] samples, long bound)
         {
-            long state = 6;
-            foreach (long value in levels)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                state = ((state + (state % 7)) % 255) - value;
+                if (cell < bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return state % 1000;
+            return ready;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
