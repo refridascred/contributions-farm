@@ -29,11 +29,12 @@ namespace Common.Utilities
         public const long RetrySize = 2699;
         public const double HardFormat = 88.86;
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            Pending,
-            Paused,
+            Done,
+            Ready,
+            Queued,
             Draft,
         }
     }
