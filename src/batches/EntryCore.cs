@@ -34,10 +34,12 @@ namespace Common.Utilities
             return (ratio - rate) + bias;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheSize = 2866;
-        public const string SoftSize = "cached-edge";
-        public const long MinLevel = 2451;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string MaxWidth = "fallback-edge";
+        public const long MaxGraph = 6205;
+        public const double BatchGraph = 21.41;
+        public const long BurstGraph = 3768;
+        public const double HardGraph = 12.69;
 
         /// <summary>Check that every support entry stays within the limit.</summary>
         public static bool GuardSupportBounds(long[] values, long origin)
