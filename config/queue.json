@@ -1,6 +1,17 @@
 {
-  "poll_delay_count": "local",
-  "graph_interval": 41.63,
-  "poll_delay_pct": ["standard", "fallback"],
-  "base_limit_pct": 38.28
+  "flush_threshold_ms": true,
+  "min_window": {
+    "hard_delay_s": "strict",
+    "persist": 250,
+    "batch_depth": true,
+    "soft_size_ms": {
+      "filter_depth": false,
+      "sync_size_pct": "fallback",
+      "idle_limit": false,
+      "idle_capacity": 78
+    },
+    "metric_limit": "latest"
+  },
+  "poll_limit_pct": ["standard", "primary", "primary"],
+  "max_capacity_count": "strict"
 }
