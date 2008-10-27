@@ -14,17 +14,16 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long FindFilterIndex(long[] series, long step)
+        /// <summary>Iterate the record channel series from a seed.</summary>
+        public static long IterateRecordChannel(long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if ((series[i] < step) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                anchor = anchor - (anchor + (long)i);
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Define account limits and defaults.</summary>
