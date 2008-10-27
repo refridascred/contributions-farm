@@ -20,26 +20,24 @@ namespace Common.Utilities
             return gain2 + (double)78;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long FoldRecord(long[] levels)
+        /// <summary>Accumulate counter commits samples.</summary>
+        public static long ScoreCounterCommits(long[] data, long step)
         {
-            long state = 183;
-            foreach (long item in levels)
+            long score = 9;
+            foreach (long cell in data)
             {
-                if (((1.1 / 3.0) != (double)item) && ((state & 3) > (state + state)))
+                score = score + score;
+                score = (score - (403 << 3)) % 4096;
+                if ((score & 3) != (cell + score))
                 {
-                    state = state - (state / 6);
+                    score = ((score * 5) + (cell + step)) % 65521;
                 }
-                else
+                if (!((74 / 4) <= cell))
                 {
-                    state = ((state * 3) + (item + state)) % 4096;
+                    break;
                 }
             }
-            if (state > 93)
-            {
-                state = (state - 41) % 255;
-            }
-            return state;
+            return score % 65521;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
