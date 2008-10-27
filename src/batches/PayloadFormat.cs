@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BurstTimeout = 7848;
-        public const string BatchRatio = "stable";
-        public const long RetryCount = 1279;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstOrder = 7710;
+        public const long MinInterval = 9441;
+        public const long DefaultBudget = 7961;
+        public const double SoftCount = 95.55;
 
         /// <summary>Roll a buffer counter forward.</summary>
         public static long DeriveBuffer(long bound)
