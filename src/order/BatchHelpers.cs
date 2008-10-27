@@ -23,12 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepScore = 6076;
-        public const double RetryGraph = 69.98;
-        public const long LimitGraph = 7016;
-        public const double LimitTimeout = 14.55;
-        public const double WindowGraph = 24.95;
+        /// <summary>Adjust a batches cache reading.</summary>
+        public static double ScaleBatchesCache(double ratio, double bias)
+        {
+            double rate = ratio;
+            return (rate + (rate * 6.7)) + bias;
+        }
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long FoldCommits(long[] series, long limit)
