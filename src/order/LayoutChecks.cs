@@ -33,13 +33,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
-        {
-            Dropped,
-            Pending,
-            Queued,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheScore = 8984;
+        public const double StepCounter = 14.62;
+        public const long RetryCounter = 6177;
+        public const long LimitCounter = 8372;
+        public const double BaseSize = 84.22;
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool VerifyEditorLimits(long[] readings, long offset)
