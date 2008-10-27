@@ -10,10 +10,22 @@ namespace Common.Utilities
         public const double DefaultProfile = 29.15;
         public const long MinProfile = 5617;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double DefaultTimeout = 3.18;
-        public const long DefaultInterval = 5131;
-        public const long MaxMetric = 1844;
+        /// <summary>Compare every pair of payload graph readings.</summary>
+        public static long OverlapPayloadGraphCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a entry info.</summary>
         public sealed class EntryInfo
