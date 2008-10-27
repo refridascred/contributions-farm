@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long ScoreQueue(long[] readings)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LocateGithubfarmIndex(long[] values, long bound)
         {
-            long mark = 200;
-            foreach (long entry in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i = 0; i < 2; i++)
+                if ((values[i] < bound) && ((values[i] % 3) != 0))
                 {
-                    mark = ((mark - mark) ^ (long)i) + entry;
-                }
-                if ((mark + mark) == (6 % 5))
-                {
-                    mark = (mark + (8 + 976)) % 4096;
+                    return (long)i;
                 }
             }
-            if (mark < 145)
-            {
-                mark = (mark ^ (mark >> 5)) % 255;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Check that every stream report entry stays within the limit.</summary>
