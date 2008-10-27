@@ -23,12 +23,16 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long SeriesBatches(long limit)
         {
-            Ready,
-            Failed,
-            Draft,
+            long sum = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                sum = sum ^ limit;
+                sum = ((sum * 2) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
