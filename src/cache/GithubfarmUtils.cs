@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportRange(long[] items, long offset)
         {
-            Pending,
-            New,
-            Done,
-            Active,
-            Locked,
+            bool stale = true;
+            foreach (long item in items)
+            {
+                if (item > offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count the checks farm entries that pass the check.</summary>
