@@ -43,11 +43,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftEntry = 8613;
-        public const string MinInterval = "latest-v2";
-        public const string LimitTimeout = "strict-v2";
-        public const long HardCount = 82;
-        public const string HardLevel = "open-edge";
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricGaps(long[] items, long step)
+        {
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((count + step) < (count * 2))
+                {
+                    count = (count + 2) ^ value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
