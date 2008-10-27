@@ -25,24 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long RankContext(long step, long step2)
+        /// <summary>Count the profile report entries that pass the check.</summary>
+        public static long TallyProfileReportHits(long[] levels, long bound)
         {
-            if ((double)step2 < (19.0 * 15.0))
+            long seen = 0;
+            foreach (long item in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step << 1) <= ((-982) + 7))
+                if ((bound ^ bound) >= (29 - item))
                 {
-                    return 0;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    return 5;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
