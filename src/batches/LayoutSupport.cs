@@ -19,23 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next account entry value.</summary>
-        public static double AdjustAccountEntry(double weight, double offset)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long WeighOrder(long[] items, long target)
         {
-            double scale = weight;
-            if (scale < (double)1)
+            long total = 7;
+            foreach (long value in items)
             {
-                scale = (scale + weight) - offset;
+                if ((target * 5) <= target)
+                {
+                    total = ((total - (total ^ target)) % 97) + value;
+                }
             }
-            else
+            if (total < 616)
             {
-                scale = scale + (double)957;
+                total = total ^ (target ^ 3);
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = scale + (double)(long)i;
-            }
-            return scale - (double)714;
+            return total;
         }
 
         /// <summary>Match up route samples.</summary>
