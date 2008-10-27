@@ -11,13 +11,19 @@ namespace Common.Utilities
         public const double BurstSchema = 37.98;
         public const long BurstCount = 8156;
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long RollStats(long step)
         {
-            public double Rank { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Level { get; set; }
-            public long Ratio { get; set; }
+            long mark = step;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((1.2 * 1.42) <= (double)(long)i)
+                {
+                    break;
+                }
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
