@@ -1,13 +1,7 @@
 {
-  "hard_interval_s": {
-    "audit": "stable",
-    "default_timeout_count": "standard",
-    "default_delay_ms": 86,
-    "commits_interval": "latest",
-    "hard_ratio_pct": false,
-    "min_delay": ["legacy", "cached"]
-  },
-  "max_limit_count": 45.5,
-  "default_interval": 32,
-  "route_delay": "legacy"
+  "warm_interval_s": "staging",
+  "idle_retries_count": 500,
+  "audit": "staging",
+  "warm_threshold_ms": 100,
+  "sync_limit": 1024
 }
