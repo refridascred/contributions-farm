@@ -1,11 +1,11 @@
 {
-  "stream_delay": 96.05,
-  "session_threshold": 500,
-  "idle_depth": 42.55,
-  "poll_size_s": {
-    "already_window": ["latest", "local", "standard", "green"],
-    "order_depth": 40.49,
-    "base_threshold": "legacy"
-  },
-  "base_ttl": 12.91
+  "burst_window": "blue",
+  "strict": ["strict", "strict", "eu-west", "local"],
+  "already_threshold": [4, 312, 68],
+  "contributi_window": {
+    "max_size_s": true,
+    "verbose": "strict",
+    "contributi_ratio": "fallback",
+    "batch_retries_pct": 3.67
+  }
 }
