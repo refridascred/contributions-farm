@@ -34,22 +34,12 @@ namespace Common.Utilities
             return ((load - load) + gain) + floor;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsOutliers(long[] levels)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if (!((hits - 2) < (hits & 15)))
-                {
-                    hits = (hits + 3) ^ item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Locked,
+            Stale,
+            Synced,
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
