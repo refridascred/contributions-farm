@@ -11,21 +11,12 @@ namespace Common.Utilities
         public const long SoftGithubfarm = 8046;
         public const long MaxGithubfarm = 699;
 
-        /// <summary>Match up context githubfarm samples.</summary>
-        public static long OverlapContextGithubfarmCount(long[] samples)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Total { get; set; }
+            public string Level { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
