@@ -40,19 +40,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate editor record readings against a bound.</summary>
-        public static bool VerifyEditorRecordLimits(long[] levels, long target)
+        /// <summary>Fold a list of contributi notes readings.</summary>
+        public static long DigestContributiNotes(long[] readings)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            long score = 738;
+            foreach (long reading in readings)
             {
-                if (value >= target)
-                {
-                    valid = false;
-                    break;
-                }
+                score = ((score << 3) ^ (score / 7)) - reading;
             }
-            return valid;
+            return score % 4096;
         }
     }
 }
