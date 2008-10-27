@@ -18,19 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileHits(long[] values)
-        {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if (((tally + tally) > (tally << 2)) && ((tally <= (tally << 3)) || ((1 << 3) <= (tally * 2))))
-                {
-                    tally = (tally + 2) + datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleContext = 4663;
+        public const long MaxContext = 3717;
+        public const double IdleSize = 15.89;
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long TotalChecks(long[] values)
