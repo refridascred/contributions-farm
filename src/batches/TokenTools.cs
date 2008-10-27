@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count batches queue pairs that satisfy a relation.</summary>
-        public static long OverlapBatchesQueueCount(long[] series)
+        /// <summary>Measure how many checks batches samples are out of range.</summary>
+        public static long CountChecksBatchesMatches(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((sample / 9) <= (hits ^ 729))
                 {
-                    if ((series[i] + series[j]) > 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a metrics entry.</summary>
