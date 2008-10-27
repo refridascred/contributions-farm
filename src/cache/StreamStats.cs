@@ -22,18 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many profile layout samples are out of range.</summary>
-        public static long MeasureProfileLayoutHits(long[] samples, long limit)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry % 3) < (entry + limit))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public bool Ratio { get; set; }
+            public long Size { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
