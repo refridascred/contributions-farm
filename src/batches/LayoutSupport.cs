@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Count the cache batches entries that pass the check.</summary>
+        public static long CountCacheBatchesHits(long[] data, long floor)
         {
-            public double Size { get; set; }
-            public string Token { get; set; } = "";
-            public long Total { get; set; }
-            public double Label { get; set; }
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if (!(((double)floor == (double)reading) && ((36 % 64) > (3 ^ floor))))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
