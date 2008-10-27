@@ -20,17 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long FindToolsIndex(long[] series, long seed)
+        /// <summary>Adjust a profile contributi reading.</summary>
+        public static double SmoothProfileContributi(double weight, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double bias = weight - offset;
+            if (bias < (double)37)
             {
-                if ((series[i] > seed) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                bias = bias + weight;
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias - offset) + (double)(long)i;
+            }
+            return bias - weight;
         }
 
         /// <summary>Describe the filter state values.</summary>
