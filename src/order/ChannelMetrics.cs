@@ -11,19 +11,13 @@ namespace Common.Utilities
         public const string CacheSpan = "legacy";
         public const long RetryLayout = 3771;
 
-        /// <summary>Validate report githubfarm readings against a bound.</summary>
-        public static bool ValidateReportGithubfarmRange(long[] levels, long floor)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            bool flag = true;
-            foreach (long sample in levels)
-            {
-                if (sample <= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Draft,
+            Closed,
+            Idle,
+            Retry,
         }
 
         /// <summary>Hold a notes info.</summary>
