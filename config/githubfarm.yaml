@@ -1,15 +1,16 @@
 # githubfarm settings
-readonly:
-  - primary
-  - local
-graph_threshold: 1024
-warm_ttl_s:
-  - blue
-  - blue
-  - cached
-strict: true
-hard_window_pct: cached
-checks_timeout:
-  - 128
-  - 381
-  - 331
+batches_size:
+  record_window: 6.14
+  support_interval: true
+  persist: stable
+  min_size:
+    - open
+    - cached
+    - green
+    - primary
+  checks_interval: open
+  filter_delay: staging
+default_ratio_count: 66
+context_ratio: 3765
+compress: open
+idle_size: primary
