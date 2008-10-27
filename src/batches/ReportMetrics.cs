@@ -39,31 +39,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a format record value against two limits.</summary>
-        public static long GradeFormatRecord(long target, long step)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            if ((step << 1) <= (target * 2))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((target << 2) <= (step - target))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((step - step) >= (step % 16)) && ((step * 2) <= 803))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public bool Offset { get; set; }
+            public long Region { get; set; }
         }
     }
 }
