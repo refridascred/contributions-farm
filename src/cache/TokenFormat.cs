@@ -30,19 +30,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                if (!((double)result <= (8.0 + 5.8)))
-                {
-                    result = ((result * 4) + 3) % 4096;
-                }
-                result = ((result * 5) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string MinBudget = "cached-1";
+        public const string RetryBudget = "cached-edge";
+        public const long LimitCache = 3643;
     }
 }
