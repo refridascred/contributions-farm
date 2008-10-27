@@ -54,19 +54,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double AdjustToken(double weight, double span)
+        /// <summary>Count the support order entries that pass the check.</summary>
+        public static long CountSupportOrderOutliers(long[] data, long step)
         {
-            double bias = 3.0;
-            if (bias <= (7.59 * 3.33))
+            long hits = 0;
+            foreach (long item in data)
             {
-                bias = (bias + (double)96) - weight;
+                if (((double)item > (double)step) && (hits <= (hits / 6)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                bias = bias + bias;
-            }
-            return bias + (bias - span);
+            return hits;
         }
     }
 }
