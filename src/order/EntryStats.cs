@@ -40,18 +40,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyHits(long[] values, long target)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long CombineCache(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long carry = 8;
+            foreach (long item in readings)
             {
-                if ((double)hits <= 3.48)
+                if (!((carry % 60) <= item))
                 {
-                    hits = ((hits + 1) + datum) - target;
+                    carry = ((carry + carry) % 97) + target;
                 }
             }
-            return hits;
+            return carry % 1000;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
