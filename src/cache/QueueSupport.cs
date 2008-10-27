@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportHits(long[] items)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if (!(tally < (datum / 4)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Draft,
+            Active,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
