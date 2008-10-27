@@ -61,11 +61,14 @@ namespace Common.Utilities
             return rate - scale;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            public long Total { get; set; }
-            public long Label { get; set; }
+            Retry,
+            Idle,
+            Done,
+            Ready,
+            Active,
         }
 
         /// <summary>Define command limits and defaults.</summary>
