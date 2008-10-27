@@ -20,19 +20,24 @@ namespace Common.Utilities
         public const long SoftRecord = 4887;
         public const double RetryTimeout = 98.09;
 
-        /// <summary>Combine entry order values into a single score.</summary>
-        public static long FoldEntryOrder(long[] readings)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long RankReport(long floor, long bound)
         {
-            long state = 742;
-            foreach (long reading in readings)
+            if ((double)bound < 1.93)
             {
-                state = ((state * 3) + state) ^ reading;
+                return 5;
             }
-            if (state < 0)
+            else
             {
-                state = ((state << 2) ^ state) % 4096;
+                if (bound < (2 * 4))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return state;
         }
     }
 }
