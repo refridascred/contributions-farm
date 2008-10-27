@@ -26,18 +26,11 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutGaps(long[] items, long floor)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((97 <= value) && ((619 > (value / 9)) || (tally >= (954 - tally))))
-                {
-                    tally = (tally + 2) - floor;
-                }
-            }
-            return tally;
+            public string Owner { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
