@@ -46,22 +46,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long MatchLayoutCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryFilter = 3996;
+        public const long DefaultCount = 7137;
+        public const double BurstSpan = 9.72;
+        public const string HardFilter = "staging-1";
+        public const long BaseFilter = 9380;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long LimitTools = 9445;
