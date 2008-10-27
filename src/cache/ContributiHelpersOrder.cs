@@ -13,12 +13,14 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double HardRecord = 84.04;
-        public const long DefaultRecord = 7592;
-        public const string BatchRecord = "latest-v2";
-        public const long SoftRecord = 4887;
-        public const double RetryTimeout = 98.09;
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
+        {
+            Synced,
+            Stale,
+            Retry,
+            Done,
+        }
 
         /// <summary>Rank report input into a small class.</summary>
         public static long RankReport(long floor, long bound)
