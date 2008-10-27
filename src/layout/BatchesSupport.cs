@@ -34,14 +34,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesOutliers(long[] readings)
         {
-            Ready,
-            Locked,
-            Draft,
-            Queued,
-            Pending,
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((double)seen != (16.0 + 6.04))
+                {
+                    seen = (seen + 3) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
