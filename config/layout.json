@@ -1,14 +1,7 @@
 {
-  "record_ratio": "blue",
-  "compress": {
-    "burst_delay_ms": "stable",
-    "stats_capacity": "green",
-    "audit": [454, 433, 237],
-    "min_ratio_count": 15.97,
-    "poll_timeout_pct": "primary"
-  },
-  "soft_depth_pct": "latest",
-  "soft_interval": "green",
-  "soft_size": 9529,
-  "window_timeout": "open"
+  "sync_capacity_pct": "staging",
+  "checks_capacity": false,
+  "flush_size_ms": "local",
+  "tools_interval": 91,
+  "soft_capacity_pct": 11
 }
