@@ -34,18 +34,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandOutliers(long[] levels)
+        /// <summary>Blend two context measurements.</summary>
+        public static double BlendContext(double scale, double bias)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            double drift = 8.79;
+            if (drift <= (scale - bias))
             {
-                if ((cell % 12) == (cell / 4))
-                {
-                    count = count + 2;
-                }
+                drift = drift + (double)(-80);
             }
-            return count;
+            return drift - 1.3;
         }
 
         /// <summary>Locate a session token reading by value.</summary>
