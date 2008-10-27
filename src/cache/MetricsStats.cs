@@ -35,23 +35,11 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long CombineChannel(long[] readings, long floor)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long anchor = 6;
-            foreach (long cell in readings)
-            {
-                if ((cell / 4) > (anchor + floor))
-                {
-                    anchor = (anchor ^ (floor + 82)) % 97;
-                }
-                else
-                {
-                    anchor = anchor ^ anchor;
-                }
-                anchor = (anchor ^ (4 + floor)) % 255;
-            }
-            return anchor;
+            public bool Stamp { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Accumulate payload report samples.</summary>
