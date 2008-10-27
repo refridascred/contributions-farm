@@ -25,12 +25,17 @@ namespace Common.Utilities
         public const long BurstPayload = 3276;
         public const long MinPayload = 5320;
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long SeekContextIndex(long[] levels, long floor)
         {
-            public double Flag { get; set; }
-            public double Limit { get; set; }
-            public double Total { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
