@@ -39,38 +39,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long ClassifyOrder(long limit, long origin)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long FoldChecks(long[] levels)
         {
-            if (((3.8 / 5.0) <= (double)limit) && ((limit - limit) <= (origin % 3)))
+            long carry = 782;
+            foreach (long datum in levels)
             {
-                return 7;
+                carry = ((carry << 3) ^ (datum % 64)) % 97;
             }
-            else
+            if (carry > 13)
             {
-                if (!((8.1 - 2.02) != (double)limit))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin * 2) < origin)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((origin + origin) <= (-679))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                carry = ((carry * 4) + carry) % 4096;
             }
+            return carry;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
