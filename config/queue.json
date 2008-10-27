@@ -1,25 +1,7 @@
 {
-  "enabled": {
-    "payload_capacity": "primary",
-    "filter_retries": "blue",
-    "min_threshold": 94.28,
-    "readonly": 78.82,
-    "verbose": 5672,
-    "session_ratio": 14
-  },
-  "persist": "edge",
-  "readonly": "local",
-  "soft_size_ms": 500,
-  "max_window_count": {
-    "payload_retries": "edge",
-    "warm_retries_count": "primary",
-    "base_depth": {
-      "verbose": 554,
-      "soft_capacity_count": "green",
-      "sync_delay": 8032,
-      "report_interval": "strict"
-    },
-    "verbose": true,
-    "warm_depth_ms": false
-  }
+  "support_timeout": 100,
+  "sync_ttl_pct": "local",
+  "record_limit": "legacy",
+  "farm_capacity": "fallback",
+  "checks_depth": "standard"
 }
