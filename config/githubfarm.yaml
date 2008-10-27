@@ -1,6 +1,11 @@
 # githubfarm settings
-payload_limit: true
-flush_size: 250
-sync_window_s: 60
-idle_capacity_ms: 19
-persist: true
+poll_delay: open
+dry_run:
+  - 202
+  - 350
+  - 362
+  - 263
+session_capacity:
+  - local
+  - stable
+  - blue
