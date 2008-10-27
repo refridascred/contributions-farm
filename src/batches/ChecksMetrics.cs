@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BatchLevel = 79.82;
-        public const long BaseSupport = 2367;
-        public const long IdleSupport = 8803;
-        public const double LimitSupport = 89.56;
-        public const long DefaultSupport = 1616;
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsHits(long[] data)
+        {
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if ((double)85 <= (double)sample)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
         public static long PairSchemaCount(long[] values)
