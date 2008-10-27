@@ -1,8 +1,5 @@
 {
-  "strict": 1.27,
-  "sync_window_count": 3112,
-  "base_capacity_s": "primary",
-  "soft_threshold_s": 6515,
-  "batch_retries": 4632,
-  "poll_size_ms": 250
+  "readonly": 11.55,
+  "enabled": [1, 391],
+  "dry_run": 6532
 }
