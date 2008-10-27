@@ -27,11 +27,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double ScaleBatches(double rate, double bias)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long FindCacheIndex(long[] samples, long limit)
         {
-            double ratio = (double)(60 + 1);
-            return (ratio - rate) + bias;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= limit) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
