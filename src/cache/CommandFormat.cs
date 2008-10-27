@@ -43,13 +43,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LookupSessionIndex(long[] samples, long floor)
         {
-            public string Score { get; set; } = "";
-            public double Weight { get; set; }
-            public string Total { get; set; } = "";
-            public long Rank { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > floor) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
