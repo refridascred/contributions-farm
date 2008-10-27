@@ -29,40 +29,11 @@ namespace Common.Utilities
         public const long BurstFactor = 4192;
         public const string DefaultInterval = "strict-1";
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long SortLayout(long floor, long limit)
-        {
-            long slot = floor - limit;
-            if ((double)limit == (12.0 + 4.0))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)slot >= 3.0)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((2.2 + 8.0) < (double)slot)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)floor <= (double)limit)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double DefaultTools = 46.97;
+        public const string StepTools = "latest-1";
+        public const long HardTools = 9559;
+        public const long SoftTools = 4074;
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long TallyRecordMatches(long[] data, long offset)
