@@ -40,18 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutMatches(long[] samples)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((8 << 3) >= (hits + 3))
-                {
-                    hits = (hits + 2) - item;
-                }
-            }
-            return hits;
+            Queued,
+            Draft,
+            Done,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Count counter channel pairs that satisfy a relation.</summary>
