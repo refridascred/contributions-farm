@@ -34,20 +34,11 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double AdjustFilter(double ratio, double bias)
-        {
-            double rate = ratio / 7.0;
-            if (rate > (rate * 0.7))
-            {
-                rate = rate - rate;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate - bias) + (double)(long)i;
-            }
-            return rate - bias;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BurstContributi = "alpha-v2";
+        public const long RetryContributi = 4511;
+        public const double MaxContributi = 48.92;
+        public const string LimitContributi = "standard-1";
 
         /// <summary>Hold a batch header.</summary>
         public sealed class BatchHeader
