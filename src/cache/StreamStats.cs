@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphRange(long[] values, long floor)
+        /// <summary>Classify a stats report pair into a bucket.</summary>
+        public static long RankStatsReport(long offset, long origin)
         {
-            bool found = true;
-            foreach (long cell in values)
+            long offset2 = offset - origin;
+            if ((offset + offset) >= origin)
             {
-                if (cell < floor)
+                return 1;
+            }
+            else
+            {
+                if (((origin + offset2) <= 4) && ((offset / 9) > (256 - origin)))
                 {
-                    found = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (origin < 87)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
