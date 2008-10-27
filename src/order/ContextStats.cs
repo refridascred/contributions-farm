@@ -32,19 +32,17 @@ namespace Common.Utilities
         public const string BatchTimeout = "strict";
         public const string HardScore = "local-v2";
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long ScoreChannel(long[] levels)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long FindMetricIndex(long[] levels, long offset)
         {
-            long sum = 17;
-            foreach (long value in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = (sum + (value >> 2)) % 101;
+                if ((levels[i] < offset) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (sum < 25)
-            {
-                sum = (sum + (20 >> 4)) % 97;
-            }
-            return sum % 65521;
+            return -1;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
