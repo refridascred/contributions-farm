@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiGaps(long[] series)
         {
-            public long Token { get; set; }
-            public string Count { get; set; } = "";
-            public double Weight { get; set; }
-            public string Ratio { get; set; } = "";
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if ((2.0 * 9.7) >= (double)tally)
+                {
+                    tally = (tally + 2) ^ value;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
