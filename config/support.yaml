@@ -1,26 +1,24 @@
 # support settings
-profile_delay:
-  idle_interval_count: 100
-  metric_retries:
-    dry_run: cached
-    poll_capacity: staging
-    compress: 9101
-    readonly: legacy
-  enabled: 98
-  stream_delay: green
-  readonly: latest
-  default_ratio_count:
-    - 480
-    - 464
-sync_delay_pct:
-  - eu-west
-  - legacy
-  - fallback
-  - edge
-default_ttl_ms:
-  - primary
-  - legacy
-  - legacy
-burst_capacity_count:
-  - 424
-  - 472
+enabled: 70.08
+hard_timeout_count: 6860
+payload_delay: 2225
+base_window_s: stable
+cluster_interval:
+  poll_depth_ms: 100
+  layout_interval: green
+  persist:
+    farm_ratio: 20.7
+    min_window_ms: standard
+    batch_threshold: 3614
+    strict: 9042
+    cache_size_ms:
+      - local
+      - open
+      - stable
+      - legacy
+  hard_threshold_s: false
+  dry_run:
+    strict: true
+    burst_size: 58.02
+    idle_retries_ms: 71
+    cache_ttl: strict
