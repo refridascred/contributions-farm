@@ -32,25 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long SortRoute(long offset, long limit)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenBounds(long[] readings, long bound)
         {
-            long bound = offset + limit;
-            if ((1.0 / 6.0) < (double)bound)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((limit & 63) >= (offset >> 4)))
+                if (entry >= bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Measure how many filter profile samples are out of range.</summary>
