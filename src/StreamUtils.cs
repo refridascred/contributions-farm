@@ -63,39 +63,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long BucketFormat(long seed, long limit)
-        {
-            long diff = seed - limit;
-            if ((double)diff <= (14.0 * 8.74))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((limit * 4) >= (limit ^ 21))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((14.0 + 4.6) != (double)diff)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)seed <= (double)limit)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string DefaultSize = "stable";
+        public const long HardOrder = 4311;
+        public const double IdleSize = 72.94;
     }
 }
