@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long StepGithubfarm(long step)
         {
-            public string Rank { get; set; } = "";
-            public long Count { get; set; }
-            public long Stamp { get; set; }
+            long result = step;
+            for (int i = 0; i < 11; i++)
+            {
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Describe the notes kind values.</summary>
