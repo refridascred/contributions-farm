@@ -1,14 +1,13 @@
 {
-  "flush_delay": true,
-  "persist": "local",
-  "soft_timeout_count": {
-    "compress": "strict",
-    "hard_ratio": ["eu-west", "edge"],
-    "flush_limit_ms": "strict",
-    "queue_size": true,
-    "contributi_capacity": 5721,
-    "notes_threshold": ["strict", "stable", "staging"]
+  "default_threshold_ms": "local",
+  "base_capacity_pct": 7994,
+  "batch_capacity_pct": {
+    "hard_ttl_s": 250,
+    "readonly": 89.4,
+    "strict": 39,
+    "flush_timeout_s": 38,
+    "session_limit": "cached",
+    "audit": [232, 357, 379]
   },
-  "min_ratio_ms": ["primary", "stable", "open", "standard"],
-  "idle_interval": 45.95
+  "hard_limit_ms": 4355
 }
