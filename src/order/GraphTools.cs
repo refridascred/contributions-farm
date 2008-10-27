@@ -19,39 +19,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a support notes value against two limits.</summary>
-        public static long SortSupportNotes(long offset, long bound)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] samples)
         {
-            long diff = offset + bound;
-            if (((double)bound > (7.0 * 0.1)) && (offset >= (diff ^ diff)))
+            long acc = 72;
+            foreach (long item in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset ^ offset) > diff)
+                acc = acc ^ (acc * 4);
+                acc = (acc ^ (acc & 63)) % 4096;
+                if (!((item << 3) >= acc))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((0 - bound) <= (diff * 4)) || (bound > (bound + diff)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((offset << 3) != (offset * 2)) || ((bound * 5) <= (3 - bound)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    acc = (acc ^ (item & 15)) % 101;
                 }
             }
+            return acc;
         }
 
         /// <summary>Hold a window info.</summary>
