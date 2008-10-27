@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryInterval = 6690;
-        public const long SoftBudget = 1676;
-        public const long MaxStream = 4048;
-        public const long StepSpan = 3280;
-        public const long SoftStream = 5694;
+        /// <summary>Validate metric schema readings against a bound.</summary>
+        public static bool VerifyMetricSchemaRange(long[] series, long step)
+        {
+            bool found = true;
+            foreach (long entry in series)
+            {
+                if (entry <= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Accumulate cluster samples.</summary>
         public static long WeighCluster(long[] series)
