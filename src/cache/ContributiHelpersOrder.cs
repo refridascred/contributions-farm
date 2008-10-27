@@ -22,24 +22,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long RankReport(long floor, long bound)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LocateClusterIndex(long[] levels, long origin)
         {
-            if ((double)bound < 1.93)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (bound < (2 * 4))
+                if (levels[i] <= origin)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
