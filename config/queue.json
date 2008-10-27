@@ -1,5 +1,18 @@
 {
-  "verbose": true,
-  "default_threshold_count": 74.09,
-  "flush_capacity": "stable"
+  "support_ratio": "legacy",
+  "poll_threshold_s": 2821,
+  "sync_depth_s": "standard",
+  "order_size": 91.44,
+  "strict": {
+    "burst_size": "primary",
+    "warm_interval": 60.99,
+    "verbose": 76.59,
+    "poll_ratio": {
+      "poll_window": 51.97,
+      "verbose": [382, 143],
+      "batch_retries": 9568,
+      "burst_size_ms": 22.22,
+      "schema_ttl": ["strict", "eu-west", "edge", "strict"]
+    }
+  }
 }
