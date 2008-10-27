@@ -46,19 +46,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadBounds(long[] data, long target)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long RankEditor(long limit, long bound)
         {
-            bool found = true;
-            foreach (long value in data)
+            if ((bound + 598) == (50 & 127))
             {
-                if (value >= target)
+                return 2;
+            }
+            else
+            {
+                if (4 < (bound + limit))
                 {
-                    found = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return found;
         }
     }
 }
