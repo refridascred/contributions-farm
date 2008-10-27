@@ -1,17 +1,6 @@
 {
-  "flush_timeout_count": ["cached", "edge"],
-  "warm_retries_s": false,
-  "persist": 12.3,
-  "audit": ["stable", "cached"],
-  "default_limit": 7951,
-  "route_depth": {
-    "poll_timeout_ms": [295, 489, 416, 22],
-    "default_window": "staging",
-    "base_retries": {
-      "cache_ttl": ["primary", "staging", "stable"],
-      "warm_interval": 3585,
-      "min_capacity": false
-    },
-    "persist": 4.93
-  }
+  "flush_ttl_s": 30.53,
+  "base_depth": "edge",
+  "warm_delay": true,
+  "dry_run": 1024
 }
