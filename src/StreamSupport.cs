@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphMatches(long[] levels)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LookupOrderIndex(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((double)seen == (double)(long)levels.Length))
+                if ((levels[i] > bound) && ((levels[i] % 2) == 0))
                 {
-                    seen = (seen + 2) + entry;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a cache entry.</summary>
