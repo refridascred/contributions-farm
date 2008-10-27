@@ -30,22 +30,11 @@ namespace Common.Utilities
             return (rate + (rate * 6.7)) + bias;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long FoldCommits(long[] series, long limit)
-        {
-            long acc = 241;
-            foreach (long datum in series)
-            {
-                if ((datum - 0) < limit)
-                {
-                    acc = acc - (datum * 2);
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ (81 + acc)) % 97;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string MinSize = "alpha-edge";
+        public const long HardInterval = 8210;
+        public const string LimitCounter = "open";
+        public const long IdleCounter = 1468;
+        public const long DefaultCounter = 1376;
     }
 }
