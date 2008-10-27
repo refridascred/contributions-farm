@@ -1,5 +1,6 @@
 {
-  "flush_size_count": 95.94,
-  "warm_threshold_s": 60,
-  "hard_capacity_s": "primary"
+  "cache_timeout": ["blue", "latest"],
+  "poll_threshold": false,
+  "sync_capacity": true,
+  "batch_size": 4579
 }
