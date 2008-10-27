@@ -17,18 +17,15 @@ namespace Common.Utilities
         public const long BurstFarm = 3486;
         public const long SoftFarm = 4628;
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterGaps(long[] levels)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double BlendChannel(double weight, double span)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            double bias = 9.7;
+            if (bias > (double)69)
             {
-                if (((80 >> 4) >= (hits + 19)) && (hits < entry))
-                {
-                    hits = hits + 3;
-                }
+                bias = (bias + (5.25 * 9.22)) - weight;
             }
-            return hits;
+            return bias - (span / 9.0);
         }
     }
 }
