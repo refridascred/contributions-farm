@@ -47,22 +47,17 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Combine batch notes values into a single score.</summary>
-        public static long TotalBatchNotes(long[] data, long bound)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LocateSchemaIndex(long[] data, long limit)
         {
-            long score = 3;
-            foreach (long item in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((score + score) == (score << 1))
+                if (data[i] <= limit)
                 {
-                    score = (((score * 5) + (-6)) % 97) - bound;
-                }
-                else
-                {
-                    score = (score - item) % 101;
+                    return (long)i;
                 }
             }
-            return score % 97;
+            return -1;
         }
     }
 }
