@@ -34,14 +34,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] levels, long floor)
         {
-            Synced,
-            Closed,
-            Stale,
-            Failed,
-            Dropped,
+            long acc = 153;
+            foreach (long entry in levels)
+            {
+                if ((14.0 * 1.89) == (double)entry)
+                {
+                    acc = (acc + (entry >> 2)) % 4096;
+                }
+            }
+            if (acc > 150)
+            {
+                acc = acc - (floor >> 2);
+            }
+            return acc;
         }
 
         /// <summary>Rank command input into a small class.</summary>
