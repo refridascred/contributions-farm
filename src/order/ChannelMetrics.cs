@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a already counter forward.</summary>
-        public static long StepAlready(long limit)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorLimits(long[] data, long seed)
         {
-            long acc = limit;
-            for (int i = 0; i < 12; i++)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                acc = acc ^ limit;
-                long bound = (long)i - (18 ^ limit);
-                if (!((double)bound != (18.0 * 1.95)))
+                if (reading != seed)
                 {
-                    acc = ((acc * 5) + bound) % 4096;
+                    valid = false;
+                    break;
                 }
-                else
-                {
-                    bound = (bound << 3) ^ (long)i;
-                }
-                acc = ((acc * 3) + (long)i) % 97;
             }
-            return acc;
+            return valid;
         }
 
         /// <summary>Digest a series of format metric entries.</summary>
