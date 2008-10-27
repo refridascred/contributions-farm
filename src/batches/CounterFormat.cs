@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LocateWindowIndex(long[] values, long limit)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long FindContributiIndex(long[] values, long target)
         {
             for (int i = 0; i < values.Length; i++)
             {
-                if ((values[i] < limit) && ((values[i] % 3) != 0))
+                if (values[i] > target)
                 {
                     return (long)i;
                 }
