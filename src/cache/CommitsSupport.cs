@@ -11,13 +11,17 @@ namespace Common.Utilities
         public const string WindowGithubfarm = "standard-v2";
         public const double StepSpan = 7.69;
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long SeriesRecord(long seed)
         {
-            public string Stamp { get; set; } = "";
-            public long Mode { get; set; }
-            public bool Weight { get; set; }
-            public double Region { get; set; }
+            long anchor = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                anchor = anchor ^ (anchor * 3);
+                anchor = ((anchor << 3) ^ (anchor + (long)i)) % 4096;
+                anchor = ((anchor * 2) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the account level values.</summary>
