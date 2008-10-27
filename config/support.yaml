@@ -1,14 +1,26 @@
 # support settings
-counter_threshold: false
-hard_threshold_s:
-  min_interval_ms:
-    min_threshold: 53.57
-    max_window_count: 100
-    flush_retries:
-      - 207
-      - 300
-      - 391
-    githubfarm_limit: 94.3
-  min_interval: strict
-  default_retries_count: local
-batch_limit: true
+profile_delay:
+  idle_interval_count: 100
+  metric_retries:
+    dry_run: cached
+    poll_capacity: staging
+    compress: 9101
+    readonly: legacy
+  enabled: 98
+  stream_delay: green
+  readonly: latest
+  default_ratio_count:
+    - 480
+    - 464
+sync_delay_pct:
+  - eu-west
+  - legacy
+  - fallback
+  - edge
+default_ttl_ms:
+  - primary
+  - legacy
+  - legacy
+burst_capacity_count:
+  - 424
+  - 472
