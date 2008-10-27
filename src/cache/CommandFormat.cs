@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchSupport = 1145;
-        public const long HardFactor = 1437;
-        public const long BurstDepth = 3754;
-        public const double RetryWidth = 75.82;
+        /// <summary>Match up command samples.</summary>
+        public static long MatchCommandCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 9)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long SoftAlready = 6443;
