@@ -39,21 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count githubfarm checks pairs that satisfy a relation.</summary>
-        public static long MatchGithubfarmChecksCount(long[] values)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Region { get; set; }
+            public double Stamp { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Combine batch notes values into a single score.</summary>
