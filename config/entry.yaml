@@ -1,12 +1,8 @@
 # entry settings
-metrics_depth:
-  - legacy
-  - strict
-poll_window_s: 250
-persist:
-  hard_size_pct: true
-  audit:
-    - 169
-    - 345
-  readonly: 63
-flush_ratio_pct: 32.96
+checks_retries: 67.41
+audit:
+  - local
+  - eu-west
+  - stable
+  - edge
+flush_window_s: stable
