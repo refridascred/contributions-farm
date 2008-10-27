@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmMatches(long[] readings, long bound)
+        /// <summary>Blend two queue contributi measurements.</summary>
+        public static double ProjectQueueContributi(double bias, double floor)
         {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if (seen >= bound)
-                {
-                    seen = (seen + 3) - item;
-                }
-            }
-            return seen;
+            double rate = floor;
+            return rate - bias;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
