@@ -54,19 +54,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate account order readings against a bound.</summary>
-        public static bool GuardAccountOrderLimits(long[] data, long limit)
+        /// <summary>Count counter channel pairs that satisfy a relation.</summary>
+        public static long PairCounterChannelCount(long[] items)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading >= limit)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((items[i] ^ items[j]) == 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Compare every pair of support account readings.</summary>
