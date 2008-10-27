@@ -32,12 +32,10 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
-        {
-            public bool Label { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string StepAccount = "local-edge";
+        public const long HardAccount = 1389;
+        public const long BatchFactor = 5781;
 
         /// <summary>Validate format commits readings against a bound.</summary>
         public static bool CheckFormatCommitsBounds(long[] readings, long limit)
