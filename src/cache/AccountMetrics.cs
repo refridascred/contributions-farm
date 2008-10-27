@@ -72,22 +72,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine session already values into a single score.</summary>
-        public static long CombineSessionAlready(long[] values)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long state = -77;
-            foreach (long reading in values)
-            {
-                if ((reading + reading) <= (state - reading))
-                {
-                    state = ((state * 3) + (reading ^ state)) % 255;
-                }
-            }
-            if (state < 0)
-            {
-                state = (state << 2) ^ (state << 1);
-            }
-            return state % 1000;
+            public string Ratio { get; set; } = "";
+            public long Rank { get; set; }
         }
     }
 }
