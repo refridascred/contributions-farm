@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of stats metrics entries.</summary>
-        public static long TallyStatsMetrics(long[] levels)
+        /// <summary>Check that every batches editor entry stays within the limit.</summary>
+        public static bool CheckBatchesEditorRange(long[] values, long floor)
         {
-            long sum = 2;
-            foreach (long datum in levels)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                if ((datum & 3) < datum)
+                if (reading <= floor)
                 {
-                    sum = (sum + ((long)levels.Length % 8)) % 101;
+                    flag = false;
+                    break;
                 }
             }
-            return sum;
+            return flag;
         }
 
         /// <summary>Digest a series of cluster cache entries.</summary>
