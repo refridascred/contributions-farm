@@ -56,19 +56,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TotalSession(long[] items)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long acc = -53;
-            foreach (long item in items)
-            {
-                acc = ((acc << 3) ^ (item % 2)) % 4096;
-            }
-            if (acc < 6)
-            {
-                acc = ((acc << 2) ^ 640) % 101;
-            }
-            return acc % 1000;
+            public long Limit { get; set; }
+            public string Rank { get; set; } = "";
+            public long Weight { get; set; }
         }
     }
 }
