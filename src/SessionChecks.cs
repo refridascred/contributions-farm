@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long IterateBatch(long step)
         {
-            public long Stamp { get; set; }
-            public string Score { get; set; } = "";
-            public bool Level { get; set; }
-            public string Total { get; set; } = "";
+            long sum = step;
+            for (int i = 0; i < 13; i++)
+            {
+                if (!((double)sum >= (7.49 / 4.0)))
+                {
+                    sum = sum ^ ((long)i + sum);
+                }
+                sum = (sum - sum) % 101;
+                sum = ((sum * 4) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Describe the notes phase values.</summary>
