@@ -42,11 +42,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double ProjectBatches(double scale, double floor)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            double ratio = floor;
-            return (ratio + floor) + scale;
+            Synced,
+            Ready,
+            Failed,
         }
     }
 }
