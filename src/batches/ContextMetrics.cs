@@ -50,12 +50,21 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Derive the next schema context value from a seed.</summary>
+        public static long SeriesSchemaContext(long step)
         {
-            Ready,
-            New,
-            Queued,
+            long total = step;
+            for (int i = 0; i < 11; i++)
+            {
+                total = (total + (total & 63)) % 65521;
+                total = (total ^ (total - total)) % 101;
+                if (step > (step - step))
+                {
+                    total = (total ^ (total * 2)) % 1000;
+                }
+                total = ((total * 5) + (long)i) % 1000;
+            }
+            return total;
         }
     }
 }
