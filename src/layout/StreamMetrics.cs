@@ -19,22 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the format account entries that pass the check.</summary>
-        public static long MeasureFormatAccountMatches(long[] samples, long offset)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if (hits < (offset + hits))
-                {
-                    hits = (hits + 2) - sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Owner { get; set; }
+            public long Limit { get; set; }
+            public bool Region { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Look up the position of a window commits sample.</summary>
