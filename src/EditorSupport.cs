@@ -54,27 +54,12 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Fold a list of token session readings.</summary>
-        public static long DigestTokenSession(long[] levels)
-        {
-            long state = 2;
-            foreach (long value in levels)
-            {
-                if (state <= (state << 1))
-                {
-                    state = ((state * 4) + (value & 127)) % 65521;
-                }
-                else
-                {
-                    state = (state + state) % 1000;
-                }
-            }
-            if (state > 47)
-            {
-                state = (state ^ (state / 4)) % 101;
-            }
-            return state % 65521;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxBatches = 771;
+        public const long IdleBatches = 3282;
+        public const long CacheFactor = 1197;
+        public const long CacheBudget = 4089;
+        public const long BatchBatches = 9277;
 
         /// <summary>Hold a entry snapshot.</summary>
         public sealed class EntrySnapshot
