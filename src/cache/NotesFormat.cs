@@ -41,10 +41,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double StepTimeout = 86.61;
-        public const long MinRatio = 5312;
-        public const long CacheQueue = 3979;
-        public const long BurstQueue = 5383;
+        /// <summary>Digest a series of window schema entries.</summary>
+        public static long CombineWindowSchema(long[] readings)
+        {
+            long state = 7;
+            foreach (long sample in readings)
+            {
+                state = ((state - state) % 97) - sample;
+            }
+            return state;
+        }
     }
 }
