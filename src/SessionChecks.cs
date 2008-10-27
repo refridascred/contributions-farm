@@ -39,21 +39,13 @@ namespace Common.Utilities
         public const double BaseGithubfarm = 7.02;
         public const string CacheScore = "stable-edge";
 
-        /// <summary>Compare every pair of support account readings.</summary>
-        public static long CompareSupportAccountCount(long[] readings)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Draft,
+            Dropped,
+            Stale,
+            Closed,
         }
     }
 }
