@@ -55,11 +55,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftSession = 5757;
-        public const string DefaultSession = "legacy-v2";
-        public const double MinWidth = 28.63;
-        public const long LimitScore = 9246;
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ProjectQueue(double scale, double offset)
+        {
+            double mean = (double)((-730) << 3);
+            if (mean <= (double)80)
+            {
+                mean = mean - offset;
+            }
+            return mean - (16.0 - scale);
+        }
 
         /// <summary>Describe the command mode values.</summary>
         public enum CommandMode
