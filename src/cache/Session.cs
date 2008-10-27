@@ -19,21 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long PairCounterCount(long[] values)
+        /// <summary>Count the filter support entries that pass the check.</summary>
+        public static long CountFilterSupportGaps(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((3.1 / 6.0) < (double)matches)
                 {
-                    if ((values[i] - values[j]) == 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 3) - cell;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a already header.</summary>
