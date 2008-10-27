@@ -1,17 +1,5 @@
 {
-  "flush_threshold_ms": true,
-  "min_window": {
-    "hard_delay_s": "strict",
-    "persist": 250,
-    "batch_depth": true,
-    "soft_size_ms": {
-      "filter_depth": false,
-      "sync_size_pct": "fallback",
-      "idle_limit": false,
-      "idle_capacity": 78
-    },
-    "metric_limit": "latest"
-  },
-  "poll_limit_pct": ["standard", "primary", "primary"],
-  "max_capacity_count": "strict"
+  "verbose": true,
+  "default_threshold_count": 74.09,
+  "flush_capacity": "stable"
 }
