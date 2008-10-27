@@ -47,19 +47,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TallyNotes(long[] levels)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long score = 472;
-            foreach (long reading in levels)
-            {
-                score = ((score ^ (score % 24)) % 1000) + reading;
-            }
-            if (score > 74)
-            {
-                score = ((score * 3) + score) % 255;
-            }
-            return score;
+            public double Ratio { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
