@@ -12,23 +12,12 @@ namespace Common.Utilities
         public const long BurstQueue = 7477;
         public const long MaxQueue = 5623;
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyOutliers(long[] items)
-        {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((18.0 / 3.0) == (double)item)
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowContributi = 4969;
+        public const string MaxFactor = "cached";
+        public const double StepInterval = 20.35;
+        public const double BaseLevel = 89.59;
+        public const long BurstContributi = 8439;
 
         /// <summary>Describe the token phase values.</summary>
         public enum TokenPhase
