@@ -47,22 +47,15 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordHits(long[] values)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long DigestSupport(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long anchor = 708;
+            foreach (long sample in samples)
             {
-                if ((value / 2) <= (value + value))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                anchor = ((((anchor << 3) ^ (anchor - anchor)) % 1000) + sample) + seed;
             }
-            return matches;
+            return anchor % 97;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
