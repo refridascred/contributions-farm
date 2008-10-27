@@ -1,6 +1,5 @@
 {
-  "soft_retries_count": [48, 330, 357],
-  "stats_delay": 500,
-  "min_timeout_ms": 100,
-  "flush_capacity_ms": "open"
+  "default_interval": ["staging", "primary", "stable", "staging"],
+  "base_interval_pct": 6999,
+  "sync_interval_ms": 28.03
 }
