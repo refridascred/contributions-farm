@@ -65,12 +65,18 @@ namespace Common.Utilities
             return weight - scale;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseTimeout = 6168;
-        public const string BaseSize = "staging-1";
-        public const string BurstRatio = "stable";
-        public const long StepBudget = 5848;
-        public const string BurstTimeout = "open";
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long FindLayoutIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Iterate the format series from a seed.</summary>
         public static long SeriesFormat(long offset)
