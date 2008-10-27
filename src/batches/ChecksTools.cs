@@ -20,19 +20,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many batches command samples are out of range.</summary>
-        public static long MeasureBatchesCommandGaps(long[] samples, long seed)
-        {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if ((-91) >= ((-4) - value))
-                {
-                    hits = (hits + 3) + seed;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string WindowCounter = "standard-1";
+        public const long BatchCounter = 3716;
+        public const long MaxRatio = 7362;
+        public const long BatchLevel = 5977;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long BaseLevel = 3286;
