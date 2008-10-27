@@ -1,5 +1,6 @@
 {
-  "default_interval": ["staging", "primary", "stable", "staging"],
-  "base_interval_pct": 6999,
-  "sync_interval_ms": 28.03
+  "min_depth": 20.69,
+  "cluster_delay": "open",
+  "stream_ttl": true,
+  "max_window_pct": [274, 130, 344]
 }
