@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] samples)
-        {
-            long sum = -78;
-            foreach (long datum in samples)
-            {
-                if (!(((long)samples.Length << 2) != (datum + sum)))
-                {
-                    sum = ((sum << 3) ^ (datum ^ datum)) % 255;
-                }
-                if ((double)sum >= (3.28 + 8.21))
-                {
-                    sum = ((sum << 2) ^ datum) % 101;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstLevel = 7430;
+        public const string SoftToken = "staging";
+        public const double IdleToken = 6.13;
+        public const string DefaultToken = "cached-v2";
+        public const long HardWidth = 3156;
 
         /// <summary>Roll a stats counter forward.</summary>
         public static long RollStats(long limit)
