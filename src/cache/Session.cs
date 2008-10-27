@@ -32,19 +32,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next record window value.</summary>
-        public static double ScaleRecordWindow(double gain, double offset)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long WeighCache(long[] readings)
         {
-            double bias = gain;
-            if (bias <= (gain - gain))
+            long state = 8;
+            foreach (long sample in readings)
             {
-                bias = bias - (6.0 * 9.0);
+                if (((state + sample) > (57 + sample)) || (sample <= (sample % 60)))
+                {
+                    state = state - sample;
+                }
+                else
+                {
+                    state = (state - state) % 101;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias + (offset / 6.0)) - (double)(long)i;
-            }
-            return bias + offset;
+            return state % 1000;
         }
 
         /// <summary>Project the next queue value.</summary>
