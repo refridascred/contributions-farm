@@ -37,25 +37,17 @@ namespace Common.Utilities
             return drift - weight;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long ClassifyCluster(long seed, long offset)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long SeekFilterIndex(long[] samples, long step)
         {
-            long delta = seed + offset;
-            if (!((offset << 3) <= seed))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (delta <= (2 * 3))
+                if (samples[i] == step)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
