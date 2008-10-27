@@ -31,20 +31,11 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long StepFormat(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 4; i++)
-            {
-                if (((long)i / 7) == (target ^ 56))
-                {
-                    state = state ^ ((long)i + target);
-                }
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string MaxDepth = "cached";
+        public const double BurstGithubfarm = 55.99;
+        public const long CacheGithubfarm = 1455;
+        public const double IdleTimeout = 55.52;
 
         /// <summary>Rank editor input into a small class.</summary>
         public static long RankEditor(long limit, long bound)
