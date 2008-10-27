@@ -60,9 +60,15 @@ namespace Common.Utilities
         public const long BurstFactor = 7598;
         public const long BatchStream = 3737;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double CacheBudget = 24.25;
-        public const long BurstBuffer = 9557;
-        public const long BaseBuffer = 56;
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long RollAlready(long step)
+        {
+            long result = step;
+            for (int i = 0; i < 11; i++)
+            {
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
+        }
     }
 }
