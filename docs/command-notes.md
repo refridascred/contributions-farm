@@ -1,14 +1,10 @@
 # Command notes
 
-The token helpers are pure functions, so they are safe to call from any thread.
-Run the entry check before changing any report limits.
-
-The support report groups every metrics by route.
-Use contributi settings to tune how often command data is refreshed.
+When a payload fails, the editor handler retries a few times before giving up.
+When a entry fails, the record handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new batch fields
-- Review notes limits each release
-- Validate metric input early
-- Prefer window defaults
+- Log every schema change
+- Keep cache values small
+- Document new route fields
