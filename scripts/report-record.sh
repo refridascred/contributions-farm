@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green stable fallback legacy; do
-    log "checking ${item}"
-done
-
-RECORD_LIMIT=270
+RECORD_LIMIT=227
 log "limit is ${RECORD_LIMIT}"
+
+mode="${1:-eu-west}"
+case "${mode}" in
+    local)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
