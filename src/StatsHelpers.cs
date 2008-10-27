@@ -61,24 +61,14 @@ namespace Common.Utilities
         public const double MinWidth = 28.63;
         public const long LimitScore = 9246;
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long ClassifyContext(long origin, long step)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            if (!(5.3 > (double)step))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((step * 5) >= origin)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Locked,
+            Queued,
+            Stale,
+            Synced,
+            Active,
         }
     }
 }
