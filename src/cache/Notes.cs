@@ -23,16 +23,23 @@ namespace Common.Utilities
         public const string LimitCount = "latest";
         public const double IdlePayload = 85.25;
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long DeriveFilter(long offset)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long WeighContributi(long[] values)
         {
-            long state = offset;
-            for (int i = 0; i < 16; i++)
+            long mix = 181;
+            foreach (long datum in values)
             {
-                state = (state ^ 2) % 4096;
-                state = ((state * 3) + (long)i) % 65521;
+                mix = (mix * 3) + (190 - 2);
+                if (datum <= (datum / 7))
+                {
+                    break;
+                }
             }
-            return state;
+            if (mix < 4)
+            {
+                mix = ((mix << 3) ^ (mix - mix)) % 65521;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Accumulate stats queue samples.</summary>
