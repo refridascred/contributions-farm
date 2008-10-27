@@ -56,18 +56,9 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the layout cluster entries that pass the check.</summary>
-        public static long CountLayoutClusterHits(long[] data, long origin)
-        {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if (reading > (origin & 15))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchInterval = 7439;
+        public const string IdleCluster = "latest-edge";
+        public const long BurstScore = 2598;
     }
 }
