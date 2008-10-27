@@ -20,18 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterHits(long[] samples)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LookupReportIndex(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((1.4 - 17.0) <= (0.2 * 1.5)))
+                if (levels[i] == bound)
                 {
-                    tally = (tally + 3) + datum;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a filter record.</summary>
