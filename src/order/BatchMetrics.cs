@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] readings)
         {
-            public string Owner { get; set; } = "";
-            public bool Level { get; set; }
+            long anchor = -547;
+            foreach (long item in readings)
+            {
+                anchor = anchor - (anchor + item);
+            }
+            if (anchor > 2)
+            {
+                anchor = ((anchor << 3) ^ (anchor ^ anchor)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
