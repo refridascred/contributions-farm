@@ -10,18 +10,13 @@ namespace Common.Utilities
         public const string SoftWindow = "legacy-v2";
         public const string HardBudget = "local-1";
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferOutliers(long[] series)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if (((hits & 31) > (item + item)) || ((2.7 / 4.0) < (double)hits))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Ready,
+            Retry,
+            Failed,
+            Draft,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
