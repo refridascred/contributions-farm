@@ -28,14 +28,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
-        {
-            Stale,
-            Active,
-            Retry,
-            Draft,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double HardGithubfarm = 42.13;
+        public const long SoftGithubfarm = 7169;
+        public const double BaseGithubfarm = 7.02;
+        public const string CacheScore = "stable-edge";
 
         /// <summary>Compare every pair of support account readings.</summary>
         public static long CompareSupportAccountCount(long[] readings)
