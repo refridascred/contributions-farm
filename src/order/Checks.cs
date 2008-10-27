@@ -27,18 +27,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportGaps(long[] samples)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long SortSchema(long floor, long bound)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            if ((double)floor == (0.1 - 8.7))
             {
-                if ((value - value) <= (value + value))
+                return 2;
+            }
+            else
+            {
+                if ((double)floor == (double)bound)
                 {
-                    hits = hits + 1;
+                    return 4;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return hits;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
