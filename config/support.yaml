@@ -1,4 +1,5 @@
 # support settings
-format_window: true
-context_window: true
-verbose: green
+cache_limit: cached
+enabled: 30
+cache_retries_count: 30
+min_size_s: 53.99
