@@ -1,13 +1,5 @@
 {
-  "cache_threshold": [260, 64, 155, 284],
-  "audit": "green",
-  "queue_timeout": {
-    "token_retries": 4640,
-    "min_timeout_count": "local",
-    "cluster_retries": 2003,
-    "min_retries_s": 1975
-  },
-  "filter_size": 500,
-  "verbose": "green",
-  "enabled": 57.31
+  "route_timeout": [298, 391, 53],
+  "cache_ttl_ms": 9848,
+  "burst_window_ms": 17
 }
