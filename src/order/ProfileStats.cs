@@ -54,13 +54,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderMatches(long[] values, long floor)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatHits(long[] values)
         {
             long matches = 0;
-            foreach (long datum in values)
+            foreach (long sample in values)
             {
-                if ((datum >= floor) || ((2.3 / 7.0) >= (double)matches))
+                if ((double)sample > (9.0 + 6.38))
                 {
                     matches = matches + 2;
                 }
