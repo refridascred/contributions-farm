@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long SeriesProfile(long target)
+        /// <summary>Combine token cluster values into a single score.</summary>
+        public static long CombineTokenCluster(long[] values, long step)
         {
-            long carry = target;
-            for (int i = 0; i < 6; i++)
+            long acc = 449;
+            foreach (long value in values)
             {
-                carry = ((carry << 3) ^ (6 * 4)) % 4096;
-                carry = ((carry * 5) + (long)i) % 4093;
+                if (step < (acc + step))
+                {
+                    acc = ((acc - (step << 1)) % 97) ^ value;
+                }
             }
-            return carry;
+            if (acc > (-4))
+            {
+                acc = (acc << 2) ^ (step >> 1);
+            }
+            return acc % 65521;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
