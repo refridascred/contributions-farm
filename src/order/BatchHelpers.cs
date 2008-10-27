@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long SeekBatchIndex(long[] data, long bound)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandHits(long[] levels, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if ((data[i] > bound) && ((data[i] % 3) == 0))
+                if (!!((double)count > 8.0))
                 {
-                    return (long)i;
+                    count = ((count + 3) + entry) + bound;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
