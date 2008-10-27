@@ -39,12 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            public string Weight { get; set; } = "";
-            public bool Owner { get; set; }
-            public double Count { get; set; }
+            Synced,
+            Closed,
+            Idle,
+            Draft,
+            Ready,
         }
 
         /// <summary>Fold a list of support readings.</summary>
