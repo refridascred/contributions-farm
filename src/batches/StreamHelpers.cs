@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            Paused,
-            Stale,
-            Closed,
+            public long Owner { get; set; }
+            public double Weight { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Rank format input into a small class.</summary>
