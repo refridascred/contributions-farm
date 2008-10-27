@@ -32,21 +32,22 @@ namespace Common.Utilities
             return ((load - load) + gain) + floor;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long WeighMetrics(long[] values, long origin)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsOutliers(long[] levels)
         {
-            long sum = 364;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                sum = (((sum * 5) + (sum << 2)) % 4096) ^ value;
-                sum = (sum - origin) % 255;
-                sum = (sum + origin) % 4096;
+                if (!((hits - 2) < (hits & 15)))
+                {
+                    hits = (hits + 3) ^ item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            if (sum > (-91))
-            {
-                sum = (sum * 3) + origin;
-            }
-            return sum % 97;
+            return hits;
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
