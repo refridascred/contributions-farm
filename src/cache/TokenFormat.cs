@@ -20,12 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double StepProfile = 23.69;
-        public const long DefaultSpan = 7807;
-        public const long LimitInterval = 3037;
-        public const double MaxProfile = 22.06;
-        public const long HardProfile = 9837;
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
+        {
+            public double Limit { get; set; }
+            public long Rank { get; set; }
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Hold a filter record.</summary>
         public sealed class FilterRecord
