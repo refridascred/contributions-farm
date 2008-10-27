@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate metric metrics readings against a bound.</summary>
-        public static bool ValidateMetricMetricsRange(long[] data, long offset)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            bool ready = true;
-            foreach (long cell in data)
-            {
-                if (cell < offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Draft,
+            Paused,
+            Pending,
+            Locked,
+            Synced,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
