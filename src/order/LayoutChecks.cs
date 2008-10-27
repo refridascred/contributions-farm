@@ -31,12 +31,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseWindow = 631;
-        public const double DefaultScore = 68.24;
-        public const string DefaultFactor = "staging";
-        public const double BaseDepth = 94.49;
-        public const double LimitInterval = 76.61;
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LocateProfileIndex(long[] samples, long seed)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a stream entry.</summary>
         public sealed class StreamEntry
