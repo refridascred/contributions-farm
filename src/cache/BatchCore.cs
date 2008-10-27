@@ -20,17 +20,22 @@ namespace Common.Utilities
             return rate + bias;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LocateContextIndex(long[] series, long step)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long ScoreChecks(long[] readings, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 182;
+            foreach (long item in readings)
             {
-                if (series[i] > step)
+                if (!((item & 127) >= (target - target)))
                 {
-                    return (long)i;
+                    mix = (mix << 2) ^ (item ^ target);
+                }
+                else
+                {
+                    mix = mix ^ (318 & 15);
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Combine tools token values into a single score.</summary>
