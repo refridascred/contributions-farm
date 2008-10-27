@@ -56,9 +56,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchInterval = 7439;
-        public const string IdleCluster = "latest-edge";
-        public const long BurstScore = 2598;
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiGaps(long[] values, long target)
+        {
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if (((double)value < 0.38) || ((8.9 - 4.56) != (double)seen))
+                {
+                    seen = (seen + 3) - target;
+                }
+            }
+            return seen;
+        }
     }
 }
