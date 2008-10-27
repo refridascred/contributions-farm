@@ -83,13 +83,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
+            Stale,
+            Retry,
             Paused,
-            Active,
-            Idle,
-            Done,
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
