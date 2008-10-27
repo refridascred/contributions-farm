@@ -46,17 +46,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LookupBatchesIndex(long[] items, long seed)
+        /// <summary>Accumulate route samples.</summary>
+        public static long DigestRoute(long[] values, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 178;
+            foreach (long sample in values)
             {
-                if (items[i] > seed)
+                state = ((state ^ state) % 97) - bound;
+                state = (state ^ (sample + 683)) % 97;
+                if ((state - 548) <= state)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (state > 2)
+            {
+                state = ((state << 2) ^ (state / 7)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
