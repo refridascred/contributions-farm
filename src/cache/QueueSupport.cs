@@ -37,12 +37,10 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
-        {
-            public bool Count { get; set; }
-            public long Mode { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstDepth = 6508;
+        public const long BurstRatio = 3688;
+        public const double CacheAccount = 10.13;
+        public const double WindowBudget = 68.09;
     }
 }
