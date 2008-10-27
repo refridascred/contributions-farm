@@ -35,11 +35,15 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long SeriesWindow(long seed)
         {
-            public bool Stamp { get; set; }
-            public double Limit { get; set; }
+            long acc = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Accumulate payload report samples.</summary>
