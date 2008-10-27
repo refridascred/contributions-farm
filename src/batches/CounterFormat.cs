@@ -31,11 +31,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long BucketStream(long step, long step2)
         {
-            public bool Level { get; set; }
-            public long Stamp { get; set; }
+            if ((0 < (step2 - step2)) && ((step / 3) < (step2 - step2)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((0.08 / 4.0) != (double)step2)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
