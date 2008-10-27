@@ -12,21 +12,11 @@ namespace Common.Utilities
         public const double MinBudget = 86.12;
         public const long WindowDepth = 6144;
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long PairSchemaCount(long[] values)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double SmoothCluster(double scale, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double rate = span;
+            return (rate + (span - span)) + scale;
         }
 
         /// <summary>Define report limits and defaults.</summary>
