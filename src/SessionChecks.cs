@@ -18,10 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchLevel = 7012;
-        public const long HardFactor = 2327;
-        public const long BatchGraph = 7864;
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long SeriesChecks(long floor)
+        {
+            long state = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((state - 735) < state)
+                {
+                    state = ((state << 3) ^ (long)i) % 1000;
+                }
+                state = ((state * 5) + (long)i) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const double HardGithubfarm = 42.13;
