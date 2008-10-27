@@ -14,10 +14,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double MinBuffer = 53.4;
-        public const long BatchBuffer = 4322;
-        public const double StepRatio = 30.26;
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchOutliers(long[] series, long origin)
+        {
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if ((double)hits < (5.7 * 9.6))
+                {
+                    hits = ((hits + 2) + entry) - origin;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
         public static long SortCounter(long bound, long origin)
