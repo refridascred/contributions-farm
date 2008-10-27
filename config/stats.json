@@ -1,13 +1,11 @@
 {
-  "default_threshold_ms": "local",
-  "base_capacity_pct": 7994,
-  "batch_capacity_pct": {
-    "hard_ttl_s": 250,
-    "readonly": 89.4,
-    "strict": 39,
-    "flush_timeout_s": 38,
-    "session_limit": "cached",
-    "audit": [232, 357, 379]
+  "stream_delay": 96.05,
+  "session_threshold": 500,
+  "idle_depth": 42.55,
+  "poll_size_s": {
+    "already_window": ["latest", "local", "standard", "green"],
+    "order_depth": 40.49,
+    "base_threshold": "legacy"
   },
-  "hard_limit_ms": 4355
+  "base_ttl": 12.91
 }
