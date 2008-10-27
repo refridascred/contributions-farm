@@ -30,11 +30,14 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string DefaultTimeout = "legacy";
-        public const long SoftSpan = 2099;
-        public const double MinAlready = 98.38;
-        public const double BurstWidth = 32.64;
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
+        {
+            Pending,
+            Dropped,
+            Draft,
+            Closed,
+        }
 
         /// <summary>Hold a stream snapshot.</summary>
         public sealed class StreamSnapshot
