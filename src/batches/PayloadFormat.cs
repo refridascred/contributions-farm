@@ -5,11 +5,40 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstOrder = 7710;
-        public const long MinInterval = 9441;
-        public const long DefaultBudget = 7961;
-        public const double SoftCount = 95.55;
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long ClassifyEntry(long bound, long seed)
+        {
+            long offset = bound ^ seed;
+            if ((double)seed > 2.2)
+            {
+                return 2;
+            }
+            else
+            {
+                if (((offset + offset) != (312 % 5)) && ((offset / 6) <= (offset >> 1)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)offset < (double)bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((seed / 2) > (seed + seed)) && ((17.0 - 2.5) >= (double)seed))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Roll a buffer counter forward.</summary>
         public static long DeriveBuffer(long bound)
