@@ -40,22 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of payload graph readings.</summary>
-        public static long OverlapPayloadGraphCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long SoftFarm = 3859;
+        public const double WindowRatio = 12.56;
+        public const long LimitTimeout = 9904;
+        public const long BatchScore = 2955;
 
         /// <summary>Hold a entry info.</summary>
         public sealed class EntryInfo
