@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Project the next stats batch value.</summary>
-        public static double AdjustStatsBatch(double weight, double floor)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            double load = floor;
-            if (load < weight)
-            {
-                load = load - load;
-            }
-            return load - (load / 7.0);
+            public long Mode { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Count githubfarm queue pairs that satisfy a relation.</summary>
