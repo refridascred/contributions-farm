@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandHits(long[] levels, long bound)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if (!!((double)count > 8.0))
-                {
-                    count = ((count + 3) + entry) + bound;
-                }
-            }
-            return count;
+            public long Ratio { get; set; }
+            public double Token { get; set; }
+            public bool Flag { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a stats options.</summary>
