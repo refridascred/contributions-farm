@@ -16,13 +16,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            Done,
-            Failed,
-            Closed,
-            Draft,
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
