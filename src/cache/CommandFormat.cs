@@ -51,19 +51,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of profile githubfarm entries.</summary>
-        public static long TotalProfileGithubfarm(long[] series)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long state = -4;
-            foreach (long datum in series)
-            {
-                state = (((state * 2) + (4 * 4)) % 101) + datum;
-            }
-            if (state < 9)
-            {
-                state = ((state << 3) ^ (state + state)) % 65521;
-            }
-            return state;
+            Paused,
+            Pending,
+            Queued,
+            Done,
         }
     }
 }
