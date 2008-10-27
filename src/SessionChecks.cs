@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Rank contributi already input into a small class.</summary>
-        public static long SortContributiAlready(long offset, long step)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long SeekAccountIndex(long[] samples, long floor)
         {
-            long cur = offset - step;
-            if ((step + step) > (offset & 255))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((cur - 25) > offset))
+                if (samples[i] >= floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((step * 4) > offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((cur * 3) <= cur) && ((double)step < (3.75 - 6.0)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the notes state values.</summary>
