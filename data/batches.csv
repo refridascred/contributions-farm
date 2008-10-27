@@ -1,8 +1,7 @@
-id,region,state,owner,count
-1,655,stable,200,51.24
-2,fallback,staging,738,831
-3,1.31,eu-west,fallback,91.59
-4,678,91.25,77,118
-5,50.13,57.44,239,211
-6,standard,41.29,308,386
-7,89.07,512,330,62.82
+id,count,level,score
+1,eu-west,419,91.82
+2,latest,eu-west,400
+3,155,263,692
+4,stable,100,42.43
+5,70.39,blue,440
+6,846,865,legacy
