@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LocateSessionIndex(long[] items, long limit)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long WeighQueue(long[] series, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 807;
+            foreach (long cell in series)
             {
-                if ((items[i] >= limit) && ((items[i] % 2) != 0))
+                if (!((bound / 5) >= (bound * 3)))
                 {
-                    return (long)i;
+                    state = ((state - (137 + 44)) % 97) ^ cell;
+                }
+                else
+                {
+                    state = (state * 4) + (state & 63);
                 }
             }
-            return -1;
+            return state % 97;
         }
 
         /// <summary>Describe the report phase values.</summary>
