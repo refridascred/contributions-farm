@@ -38,20 +38,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long RollReport(long step)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long sum = step;
-            for (int i = 0; i < 21; i++)
-            {
-                long next = (long)i;
-                if ((next % 3) == ((long)i / 9))
-                {
-                    next = (next ^ (sum + step)) % 1000;
-                }
-                sum = ((sum * 4) + (long)i) % 4093;
-            }
-            return sum;
+            Closed,
+            Retry,
+            Paused,
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
