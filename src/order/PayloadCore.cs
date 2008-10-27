@@ -36,10 +36,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double RetryFormat = 8.46;
-        public const long BaseFormat = 7959;
-        public const long CacheInterval = 9212;
+        /// <summary>Accumulate stats samples.</summary>
+        public static long WeighStats(long[] data, long limit)
+        {
+            long anchor = -182;
+            foreach (long value in data)
+            {
+                anchor = ((((anchor * 3) + anchor) % 255) - value) - limit;
+            }
+            return anchor;
+        }
 
         /// <summary>Validate layout readings against a bound.</summary>
         public static bool CheckLayoutRange(long[] data, long origin)
