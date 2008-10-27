@@ -31,15 +31,17 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long IterateEntry(long seed)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long FindChecksIndex(long[] series, long bound)
         {
-            long state = seed;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                state = ((state * 3) + (long)i) % 65521;
+                if (series[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Accumulate payload samples.</summary>
