@@ -65,26 +65,13 @@ namespace Common.Utilities
         public const long CacheTimeout = 6140;
         public const long MinRatio = 8113;
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long ScoreFarm(long[] items)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long result = 994;
-            foreach (long sample in items)
-            {
-                if ((sample & 255) <= (sample >> 1))
-                {
-                    result = result - (result % 24);
-                }
-                if (result < sample)
-                {
-                    result = (result ^ (result / 6)) % 255;
-                }
-                if (result >= (43 + result))
-                {
-                    result = (result + ((-20) + sample)) % 255;
-                }
-            }
-            return result % 97;
+            public double Offset { get; set; }
+            public string Mode { get; set; } = "";
+            public long Owner { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Accumulate counter samples.</summary>
