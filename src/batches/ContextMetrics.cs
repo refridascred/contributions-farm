@@ -28,30 +28,11 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long RollLayout(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                bool flag = (limit - state) <= (state >> 3);
-                if (flag)
-                {
-                    flag = (state + 234) < ((long)i - (-2));
-                }
-                if (((long)i - limit) != ((long)i + (long)i))
-                {
-                    state = ((state << 2) ^ limit) % 1000;
-                    flag = (limit % 60) > (state * 5);
-                }
-                else
-                {
-                    state = (state << 3) ^ limit;
-                }
-                state = ((state * 2) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string DefaultTimeout = "legacy";
+        public const long SoftSpan = 2099;
+        public const double MinAlready = 98.38;
+        public const double BurstWidth = 32.64;
 
         /// <summary>Hold a stream snapshot.</summary>
         public sealed class StreamSnapshot
