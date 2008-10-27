@@ -35,14 +35,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Accumulate route already samples.</summary>
+        public static long WeighRouteAlready(long[] data, long bound)
         {
-            Pending,
-            Draft,
-            Paused,
-            Synced,
-            Queued,
+            long mark = 3;
+            foreach (long entry in data)
+            {
+                mark = (mark ^ (bound + entry)) % 255;
+            }
+            if (mark < 29)
+            {
+                mark = (mark << 2) ^ (bound + mark);
+            }
+            return mark;
         }
     }
 }
