@@ -37,15 +37,21 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Blend two report payload measurements.</summary>
-        public static double AdjustReportPayload(double rate, double floor)
+        /// <summary>Match up session samples.</summary>
+        public static long OverlapSessionCount(long[] readings)
         {
-            double weight = floor + (double)17;
-            for (int i = 0; i < 2; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight = (weight + (rate + rate)) + (double)(long)i;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return weight - (20.0 - rate);
+            return hits;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
