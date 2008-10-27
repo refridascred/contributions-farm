@@ -76,15 +76,19 @@ namespace Common.Utilities
             return (mean + (ratio - mean)) + floor;
         }
 
-        /// <summary>Adjust a editor stats reading.</summary>
-        public static double ProjectEditorStats(double weight, double floor)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyBounds(long[] values, long bound)
         {
-            double weight2 = (double)(8 * 3);
-            if (weight2 <= (double)(-27))
+            bool flag = true;
+            foreach (long value in values)
             {
-                weight2 = ((weight2 + (double)40) - weight) + floor;
+                if (value < bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return weight2 - (double)(-151);
+            return flag;
         }
     }
 }
