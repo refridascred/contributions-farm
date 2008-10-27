@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmBounds(long[] data, long seed)
-        {
-            bool stale = true;
-            foreach (long entry in data)
-            {
-                if (entry > seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BurstWindow = "open-edge";
+        public const string SoftWindow = "legacy-v2";
+        public const string HardBudget = "local-1";
 
         /// <summary>Define route limits and defaults.</summary>
         public const long BurstRoute = 1428;
