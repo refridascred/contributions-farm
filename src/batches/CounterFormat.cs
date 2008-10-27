@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long DigestCache(long[] values)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long mark = 75;
-            foreach (long value in values)
-            {
-                if (mark > (value * 3))
-                {
-                    mark = (mark - (mark & 1)) % 1000;
-                }
-            }
-            return mark;
+            Stale,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Hold a order summary.</summary>
