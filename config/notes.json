@@ -1,8 +1,8 @@
 {
-  "soft_delay_pct": "fallback",
-  "base_ratio_pct": "open",
-  "warm_limit_pct": 1191,
-  "notes_limit": 12.51,
-  "context_timeout": [354, 452, 177, 299],
-  "burst_ratio": "strict"
+  "batch_capacity": 780,
+  "base_threshold": false,
+  "enabled": 81,
+  "default_ttl": "stable",
+  "max_depth_s": true,
+  "persist": "fallback"
 }
