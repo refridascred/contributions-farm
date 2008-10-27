@@ -1,7 +1,16 @@
 {
-  "retry_interval": "eu-west",
-  "max_retries_ms": true,
-  "base_ratio_count": [158, 84, 89, 24],
-  "poll_interval": [116, 68, 290],
-  "default_depth_ms": "fallback"
+  "stream_threshold": "edge",
+  "hard_depth_pct": {
+    "flush_size_s": "staging",
+    "flush_timeout_s": {
+      "route_interval": [171, 200],
+      "warm_size_pct": false,
+      "account_delay": false,
+      "dry_run": "blue",
+      "account_interval": false,
+      "tools_retries": true
+    },
+    "base_limit_pct": 3741
+  },
+  "burst_ratio": "strict"
 }
