@@ -21,13 +21,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            public double Mode { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Offset { get; set; }
-            public long Label { get; set; }
+            public bool Score { get; set; }
+            public long Token { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
