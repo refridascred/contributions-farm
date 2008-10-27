@@ -68,19 +68,31 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long CombineQueue(long[] data)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long RankContributi(long origin, long bound)
         {
-            long carry = 636;
-            foreach (long value in data)
+            if ((double)bound < (double)origin)
             {
-                carry = (carry - (value << 3)) % 1000;
+                return 1;
             }
-            if (carry > 1)
+            else
             {
-                carry = ((carry << 3) ^ ((-882) ^ carry)) % 65521;
+                if ((double)bound >= 11.0)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((bound ^ origin) <= (origin % 64))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return carry % 65521;
         }
     }
 }
