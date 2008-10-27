@@ -22,12 +22,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Accumulate layout notes samples.</summary>
+        public static long CombineLayoutNotes(long[] values)
         {
-            public bool Owner { get; set; }
-            public bool Stamp { get; set; }
-            public double Level { get; set; }
+            long sum = -698;
+            foreach (long value in values)
+            {
+                sum = ((sum << 2) ^ (29 - 9)) ^ value;
+                sum = ((sum << 2) ^ (sum >> 2)) % 65521;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
