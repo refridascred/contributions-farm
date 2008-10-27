@@ -72,21 +72,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TotalSupport(long[] readings)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long mix = 7;
-            foreach (long datum in readings)
-            {
-                mix = ((mix << 3) ^ datum) % 65521;
-                mix = (mix + (mix - mix)) % 65521;
-                mix = (mix ^ mix) % 65521;
-            }
-            if (mix > 1)
-            {
-                mix = mix - mix;
-            }
-            return mix % 65521;
+            Done,
+            Locked,
+            Pending,
+            Paused,
         }
     }
 }
