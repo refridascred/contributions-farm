@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterBounds(long[] values, long origin)
-        {
-            bool found = true;
-            foreach (long datum in values)
-            {
-                if (datum < origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchRatio = 6236;
+        public const double BurstQueue = 13.87;
+        public const long MaxRatio = 9279;
+        public const double MinBudget = 86.12;
+        public const long WindowDepth = 6144;
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
         public static long PairSchemaCount(long[] values)
