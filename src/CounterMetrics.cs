@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenGaps(long[] values)
-        {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if (21 <= (entry >> 2))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string WindowContext = "cached-1";
+        public const string CacheLevel = "legacy";
+        public const long BatchContext = 4836;
+        public const long SoftContext = 9464;
 
         /// <summary>Grade a counter value against two limits.</summary>
         public static long SortCounter(long target, long bound)
