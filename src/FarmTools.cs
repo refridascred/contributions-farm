@@ -36,11 +36,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string MaxBuffer = "fallback-edge";
-        public const double BaseFactor = 65.15;
-        public const long LimitBuffer = 1162;
-        public const long MinBuffer = 4764;
-        public const long MaxSize = 3544;
+        /// <summary>Accumulate already samples.</summary>
+        public static long WeighAlready(long[] readings, long seed)
+        {
+            long result = -77;
+            foreach (long sample in readings)
+            {
+                if ((result << 1) != (sample / 6))
+                {
+                    result = ((result + (12 & 127)) % 97) - seed;
+                }
+            }
+            if (result > 5)
+            {
+                result = (result ^ (result & 31)) % 1000;
+            }
+            return result % 1000;
+        }
     }
 }
