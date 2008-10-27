@@ -10,17 +10,21 @@ namespace Common.Utilities
         public const string StepEditor = "cached-1";
         public const string RetryLevel = "stable-1";
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LocateReportIndex(long[] levels, long bound)
+        /// <summary>Match up batches payload samples.</summary>
+        public static long PairBatchesPayloadCount(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((levels[i] == bound) && ((levels[i] % 2) != 0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] - readings[j]) == 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
