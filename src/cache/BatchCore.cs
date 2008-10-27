@@ -20,22 +20,18 @@ namespace Common.Utilities
             return rate + bias;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long ScoreChecks(long[] readings, long target)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TotalToken(long[] series)
         {
-            long mix = 182;
-            foreach (long item in readings)
+            long carry = 58;
+            foreach (long cell in series)
             {
-                if (!((item & 127) >= (target - target)))
+                if ((double)(long)series.Length >= 12.0)
                 {
-                    mix = (mix << 2) ^ (item ^ target);
-                }
-                else
-                {
-                    mix = mix ^ (318 & 15);
+                    carry = (carry + (cell >> 3)) % 1000;
                 }
             }
-            return mix;
+            return carry % 4096;
         }
 
         /// <summary>Combine tools token values into a single score.</summary>
