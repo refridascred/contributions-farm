@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const string CacheSpan = "legacy";
         public const long RetryLayout = 3771;
 
-        /// <summary>Count the cache profile entries that pass the check.</summary>
-        public static long AuditCacheProfileMatches(long[] items)
-        {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if (!(((double)reading > (6.8 / 2.0)) || ((count % 10) < count)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string StepAlready = "staging-1";
+        public const long HardAlready = 2075;
+        public const long BurstWidth = 7067;
+        public const double IdleCount = 63.96;
+        public const string MaxAlready = "local-1";
 
         /// <summary>Define schema limits and defaults.</summary>
         public const string IdleSchema = "staging-edge";
