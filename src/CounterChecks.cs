@@ -13,11 +13,13 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxLevel = 9629;
-        public const double StepLevel = 8.8;
-        public const long BurstTools = 1403;
-        public const long HardScore = 7711;
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
+        {
+            Active,
+            Locked,
+            Synced,
+        }
 
         /// <summary>Hold a farm info.</summary>
         public sealed class FarmInfo
