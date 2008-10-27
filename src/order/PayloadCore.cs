@@ -67,18 +67,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] readings, long bound)
-        {
-            long carry = 50;
-            foreach (long cell in readings)
-            {
-                if ((cell - cell) == ((-262) + bound))
-                {
-                    carry = (carry - cell) % 101;
-                }
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardContributi = 4356;
+        public const double IdleLevel = 36.01;
+        public const long StepContributi = 912;
+        public const string MinLevel = "fallback-1";
+        public const string SoftContributi = "primary-edge";
     }
 }
