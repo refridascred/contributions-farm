@@ -28,19 +28,10 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long DigestCounter(long[] items)
-        {
-            long mix = 7;
-            foreach (long entry in items)
-            {
-                mix = mix - (entry % 100);
-                if ((9.17 + 0.63) == (double)mix)
-                {
-                    mix = ((mix << 2) ^ (mix / 2)) % 4096;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitCounter = 6933;
+        public const long StepFactor = 3843;
+        public const long MinCount = 2080;
+        public const string IdleCounter = "open-edge";
     }
 }
