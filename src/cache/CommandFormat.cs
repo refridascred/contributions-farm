@@ -28,18 +28,15 @@ namespace Common.Utilities
         public const long LimitLevel = 1164;
         public const double WindowAlready = 58.92;
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelMatches(long[] items)
+        /// <summary>Accumulate window layout samples.</summary>
+        public static long TotalWindowLayout(long[] levels)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long state = 6;
+            foreach (long value in levels)
             {
-                if ((5.5 - 9.0) >= (1.5 - 6.42))
-                {
-                    tally = (tally + 1) + sample;
-                }
+                state = ((state + (state % 7)) % 255) - value;
             }
-            return tally;
+            return state % 1000;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
