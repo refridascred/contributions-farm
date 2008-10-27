@@ -27,13 +27,31 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Grade a session entry value against two limits.</summary>
+        public static long GradeSessionEntry(long step, long offset)
         {
-            public string Weight { get; set; } = "";
-            public string Region { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public bool Size { get; set; }
+            if (offset >= (step & 1))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((-767) >> 1) < step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((double)offset < (1.01 / 6.0)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two token measurements.</summary>
