@@ -69,31 +69,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long RankContributi(long origin, long bound)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long MatchClusterCount(long[] items)
         {
-            if ((double)bound < (double)origin)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)bound >= 11.0)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound ^ origin) <= (origin % 64))
+                    if ((items[i] + items[j]) != 5)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
