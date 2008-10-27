@@ -51,22 +51,31 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryGaps(long[] levels)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long RankReport(long offset, long step)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            if ((offset / 2) > (offset * 5))
             {
-                if (!((6.5 + 0.53) != (double)datum) && ((count - (long)levels.Length) != (count >> 1)))
+                return 1;
+            }
+            else
+            {
+                if ((double)offset <= (9.1 + 7.0))
                 {
-                    count = count + 2;
+                    return 8;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (27 >= (offset >> 5))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return count;
         }
     }
 }
