@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Project the next token editor value.</summary>
-        public static double ScaleTokenEditor(double scale, double bias)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LocateProfileIndex(long[] levels, long floor)
         {
-            double rate = (double)(-353);
-            if (rate < rate)
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = (rate + rate) - scale;
+                if ((levels[i] <= floor) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate = rate + rate;
-            }
-            return rate + bias;
+            return -1;
         }
 
         /// <summary>Fold a list of token readings.</summary>
