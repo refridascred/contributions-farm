@@ -18,14 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportHits(long[] levels)
         {
-            Synced,
-            Active,
-            Stale,
-            Queued,
-            Paused,
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((9 % 97) < (count + count))
+                {
+                    count = (count + 3) + reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
