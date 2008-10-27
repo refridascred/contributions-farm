@@ -51,19 +51,21 @@ namespace Common.Utilities
             return scale - (double)625;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ProjectFormat(double gain, double bias)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long PairBufferCount(long[] items)
         {
-            double rate = (double)(1 + 99);
-            if (rate >= gain)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                rate = rate - (bias * 7.0);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + 0.79) + (double)(long)i;
-            }
-            return rate - (bias + bias);
+            return matches;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
