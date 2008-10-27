@@ -25,17 +25,18 @@ namespace Common.Utilities
         public const long BurstPayload = 3276;
         public const long MinPayload = 5320;
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long SeekContextIndex(long[] levels, long floor)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TallyOrder(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 727;
+            foreach (long reading in samples)
             {
-                if (levels[i] > floor)
+                if (!((double)mix < (double)reading))
                 {
-                    return (long)i;
+                    mix = (mix ^ ((long)samples.Length - mix)) % 255;
                 }
             }
-            return -1;
+            return mix % 65521;
         }
     }
 }
