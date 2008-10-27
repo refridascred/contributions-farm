@@ -52,11 +52,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Derive the next layout contributi value from a seed.</summary>
+        public static long StepLayoutContributi(long step)
         {
-            public double Token { get; set; }
-            public bool Level { get; set; }
+            long score = step;
+            for (int i = 0; i < 4; i++)
+            {
+                if (!((step % 16) >= ((long)i * 2)))
+                {
+                    score = score + step;
+                }
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Describe the already phase values.</summary>
