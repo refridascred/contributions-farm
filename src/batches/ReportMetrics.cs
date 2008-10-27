@@ -16,15 +16,18 @@ namespace Common.Utilities
             return load + 6.2;
         }
 
-        /// <summary>Combine token stats values into a single score.</summary>
-        public static long WeighTokenStats(long[] readings, long offset)
+        /// <summary>Audit support window readings against a rule.</summary>
+        public static long CountSupportWindowHits(long[] data, long offset)
         {
-            long mix = 504;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long item in data)
             {
-                mix = ((mix + (3 >> 3)) ^ reading) + offset;
+                if (!(((tally << 2) > tally) && ((double)offset >= (13.0 + 1.2))))
+                {
+                    tally = (tally + 2) - item;
+                }
             }
-            return mix % 97;
+            return tally;
         }
 
         /// <summary>Describe the account kind values.</summary>
