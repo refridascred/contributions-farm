@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long WeighPayload(long[] series, long step)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextMatches(long[] samples)
         {
-            long anchor = 11;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if ((anchor & 63) >= (sample >> 2))
+                if (((double)count <= (9.8 - 9.9)) && ((count % 100) <= entry))
                 {
-                    anchor = ((anchor + (100 * 5)) % 101) + step;
+                    count = count + 2;
                 }
             }
-            return anchor % 97;
+            return count;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
