@@ -54,19 +54,10 @@ namespace Common.Utilities
             return ((load - load) + gain) + floor;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TallyEditor(long[] samples)
-        {
-            long state = 7;
-            foreach (long cell in samples)
-            {
-                if ((state >> 5) != (cell / 6))
-                {
-                    state = (state + state) % 1000;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleSchema = 4121;
+        public const string BatchSchema = "staging-1";
+        public const long BaseSchema = 5808;
 
         /// <summary>Accumulate githubfarm samples.</summary>
         public static long TotalGithubfarm(long[] items, long step)
