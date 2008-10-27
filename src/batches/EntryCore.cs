@@ -23,24 +23,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long CombineContributi(long[] samples, long step)
-        {
-            long state = 34;
-            foreach (long entry in samples)
-            {
-                if ((double)state > 4.0)
-                {
-                    state = ((state * 4) + (step - state)) ^ entry;
-                }
-                else
-                {
-                    state = ((state * 3) + (92 + step)) % 1000;
-                }
-                state = state - ((long)samples.Length + step);
-            }
-            return state % 1000;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string IdleContext = "latest";
+        public const long CacheWidth = 1947;
+        public const long WindowInterval = 2877;
+        public const double StepContext = 48.83;
+        public const long BaseContext = 2869;
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long ScoreChecks(long[] series, long step)
