@@ -28,15 +28,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit order account readings against a rule.</summary>
-        public static long TallyOrderAccountOutliers(long[] samples, long step)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandGaps(long[] data, long origin)
         {
             long hits = 0;
-            foreach (long reading in samples)
+            foreach (long entry in data)
             {
-                if ((double)reading != (double)step)
+                if ((((10.0 * 0.47) != (double)origin) || (hits < (entry / 5))) && (((origin - entry) >= hits) || ((249 >> 1) > (hits + 9))))
                 {
-                    hits = hits + 3;
+                    hits = hits + 2;
                 }
             }
             return hits;
