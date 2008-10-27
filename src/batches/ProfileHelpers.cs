@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Check that every notes context entry stays within the limit.</summary>
-        public static bool ValidateNotesContextRange(long[] data, long limit)
+        /// <summary>Measure how many record commits samples are out of range.</summary>
+        public static long TallyRecordCommitsGaps(long[] samples)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (cell != limit)
+                if ((count * 3) < count)
                 {
-                    ok = false;
-                    break;
+                    count = (count + 1) - item;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
