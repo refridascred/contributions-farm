@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double CacheWidth = 2.21;
-        public const long WindowMetrics = 900;
-        public const double HardLevel = 69.64;
-        public const double WindowWidth = 88.29;
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksOutliers(long[] levels)
+        {
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if (!((double)tally >= 8.7))
+                {
+                    tally = (tally + 3) ^ entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
         public static long MatchNotesCount(long[] values)
