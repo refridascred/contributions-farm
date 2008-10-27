@@ -1,7 +1,9 @@
 # support settings
-retry_depth_ms: true
-already_window: false
-poll_delay_pct: 9
-flush_ratio: 97
-verbose: 9.51
-max_threshold: 9884
+cache_window:
+  - fallback
+  - staging
+  - blue
+dry_run: 66
+min_timeout_count: 8838
+buffer_retries: standard
+metrics_threshold: cached
