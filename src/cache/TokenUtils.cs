@@ -37,9 +37,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BurstTimeout = 83.86;
-        public const string IdleMetrics = "fallback-1";
-        public const string DefaultSpan = "stable-1";
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowLimits(long[] items, long limit)
+        {
+            bool ready = true;
+            foreach (long item in items)
+            {
+                if (item != limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
