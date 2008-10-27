@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitInterval = 5179;
-        public const long HardSpan = 317;
-        public const long IdleContributi = 3;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryInterval = 6690;
+        public const long SoftBudget = 1676;
+        public const long MaxStream = 4048;
+        public const long StepSpan = 3280;
+        public const long SoftStream = 5694;
 
         /// <summary>Accumulate cluster samples.</summary>
         public static long WeighCluster(long[] series)
