@@ -5,38 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank context checks input into a small class.</summary>
-        public static long BucketContextChecks(long step, long step2)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long CombineCache(long[] data, long seed)
         {
-            if (!(2.26 < (double)step))
+            long carry = 966;
+            foreach (long entry in data)
             {
-                return 3;
+                carry = (carry - (carry + 428)) + seed;
+                carry = (carry + (entry ^ carry)) % 65521;
             }
-            else
+            if (carry > (-77))
             {
-                if ((step2 <= (step2 ^ step)) && ((step2 + step2) <= step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((step2 / 3) > (step2 - step))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)step2 < (5.0 - 2.16))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                carry = (carry + (34 & 255)) % 65521;
             }
+            return carry;
         }
 
         /// <summary>Iterate the command contributi series from a seed.</summary>
