@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long DeriveNotes(long seed)
+        /// <summary>Audit cluster buffer readings against a rule.</summary>
+        public static long AuditClusterBufferMatches(long[] levels, long origin)
         {
-            long acc = seed;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                acc = acc ^ (acc - seed);
-                if (!((acc >> 2) != (seed ^ (long)i)))
+                if ((double)origin <= 2.38)
                 {
-                    acc = (acc ^ acc) % 65521;
+                    hits = (hits + 2) - item;
                 }
-                acc = ((acc * 5) + (long)i) % 4093;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
