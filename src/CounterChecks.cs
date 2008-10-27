@@ -51,19 +51,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamLimits(long[] levels, long origin)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterMatches(long[] items)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if (datum < origin)
+                if ((entry / 2) != (9 & 31))
                 {
-                    stale = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return stale;
+            return count;
         }
     }
 }
