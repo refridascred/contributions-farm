@@ -19,11 +19,23 @@ namespace Common.Utilities
         public const long BaseSchema = 939;
         public const double MinSchema = 63.29;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string CacheInterval = "primary-v2";
-        public const double BatchScore = 85.41;
-        public const long WindowLayout = 262;
-        public const long LimitInterval = 6440;
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferHits(long[] levels, long floor)
+        {
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if (((double)reading >= (double)count) || (floor > (20 % 100)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine farm values into a single score.</summary>
         public static long ScoreFarm(long[] items)
