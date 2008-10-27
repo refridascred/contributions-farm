@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Adjust a schema reading.</summary>
-        public static double AdjustSchema(double gain, double bias)
+        /// <summary>Validate context cache readings against a bound.</summary>
+        public static bool GuardContextCacheBounds(long[] data, long step)
         {
-            double load = gain;
-            if (load >= load)
+            bool found = true;
+            foreach (long entry in data)
             {
-                load = load + bias;
+                if (entry > step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - 4.8) + (double)(long)i;
-            }
-            return load - gain;
+            return found;
         }
 
         /// <summary>Hold a record entry.</summary>
