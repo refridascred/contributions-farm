@@ -41,16 +41,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long IterateStream(long floor)
-        {
-            long score = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                score = ((score * 5) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double IdleContributi = 18.23;
+        public const long IdleRatio = 1146;
+        public const long LimitContributi = 9733;
+        public const long MinContributi = 1337;
 
         /// <summary>Hold a cluster record.</summary>
         public sealed class ClusterRecord
