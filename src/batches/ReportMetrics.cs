@@ -28,19 +28,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordBounds(long[] readings, long bound)
+        /// <summary>Locate a payload checks reading by value.</summary>
+        public static long FindPayloadChecksIndex(long[] levels, long limit)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum >= bound)
+                if ((levels[i] >= limit) && ((levels[i] % 2) == 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
