@@ -68,11 +68,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double RetryRoute = 50.54;
-        public const long CacheRoute = 674;
-        public const string SoftSize = "latest";
-        public const long DefaultRoute = 3233;
-        public const long HardRoute = 6764;
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamLimits(long[] levels, long origin)
+        {
+            bool stale = true;
+            foreach (long datum in levels)
+            {
+                if (datum < origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
