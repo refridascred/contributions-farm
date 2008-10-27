@@ -31,16 +31,23 @@ namespace Common.Utilities
         public const long CacheGithubfarm = 5602;
         public const double HardGithubfarm = 29.69;
 
-        /// <summary>Iterate the counter batches series from a seed.</summary>
-        public static long SeriesCounterBatches(long limit)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long SeriesFormat(long bound)
         {
-            long acc = limit;
-            for (int i = 0; i < 5; i++)
+            long total = bound;
+            for (int i = 0; i < 11; i++)
             {
-                acc = ((acc << 2) ^ acc) % 65521;
-                acc = ((acc * 2) + (long)i) % 101;
+                if (((bound >> 3) != (total & 31)) && ((27 << 2) >= (bound << 2)))
+                {
+                    total = (total - (bound - bound)) % 65521;
+                }
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    total = (total ^ ((long)i + total)) + (long)i2;
+                }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Blend two buffer layout measurements.</summary>
