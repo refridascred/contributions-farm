@@ -1,18 +1,15 @@
 {
-  "soft_delay_pct": "cached",
-  "queue_ttl": "green",
-  "buffer_ttl": 100,
-  "burst_retries": 30,
-  "cache_interval_count": {
-    "hard_interval": 2400,
-    "hard_threshold_s": 7791,
-    "sync_limit_s": {
-      "max_ratio_ms": "staging",
-      "audit": false,
-      "flush_ratio_s": 53,
-      "githubfarm_delay": "blue",
-      "persist": true,
-      "enabled": "local"
-    }
-  }
+  "sync_capacity_count": false,
+  "sync_timeout_count": ["local", "green"],
+  "verbose": {
+    "stream_limit": true,
+    "audit": 57.42,
+    "idle_depth_s": 100,
+    "retry_capacity_count": 17,
+    "channel_size": "strict",
+    "batches_interval": "green"
+  },
+  "base_window_count": true,
+  "base_timeout_count": 62.41,
+  "cache_limit_s": 100
 }
