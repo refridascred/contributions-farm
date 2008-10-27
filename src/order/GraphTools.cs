@@ -24,16 +24,12 @@ namespace Common.Utilities
         public const string LimitWidth = "staging";
         public const long IdleFormat = 5492;
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TotalToken(long[] readings)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long total = 5;
-            foreach (long datum in readings)
-            {
-                total = (total - datum) % 4096;
-                total = ((total * 4) + (total + datum)) % 4096;
-            }
-            return total % 4096;
+            public string Offset { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Fold a list of batch readings.</summary>
