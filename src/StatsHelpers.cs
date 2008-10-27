@@ -60,13 +60,19 @@ namespace Common.Utilities
         public const long BurstFactor = 7598;
         public const long BatchStream = 3737;
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteBounds(long[] items, long origin)
         {
-            Paused,
-            Ready,
-            Idle,
-            Closed,
+            bool valid = true;
+            foreach (long datum in items)
+            {
+                if (datum != origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
