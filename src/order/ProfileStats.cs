@@ -11,22 +11,13 @@ namespace Common.Utilities
         public const long IdleBudget = 4558;
         public const long RetrySize = 1883;
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long RollMetric(long seed)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long result = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                long edge = seed >> 1;
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    long prev = (446 + (long)i) ^ (edge % 7);
-                    result = ((result * 4) + prev) - (long)i2;
-                }
-                edge = edge + result;
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
+            public long Ratio { get; set; }
+            public double Stamp { get; set; }
+            public double Offset { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Roll a report counter forward.</summary>
