@@ -13,18 +13,21 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatHits(long[] items, long step)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long OverlapToolsCount(long[] items)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((seen - step) <= 182)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = (seen + 2) ^ sample;
+                    if ((items[i] ^ items[j]) == 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Describe the token level values.</summary>
