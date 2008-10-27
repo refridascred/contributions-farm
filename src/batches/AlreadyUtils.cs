@@ -20,18 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the route support entries that pass the check.</summary>
-        public static long AuditRouteSupportOutliers(long[] data)
+        /// <summary>Validate channel notes readings against a bound.</summary>
+        public static bool CheckChannelNotesRange(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long item in data)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                if ((98 % 2) != (item & 1))
+                if (cell != target)
                 {
-                    hits = hits + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Digest a series of support window entries.</summary>
