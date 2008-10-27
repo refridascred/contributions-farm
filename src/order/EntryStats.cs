@@ -34,12 +34,19 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Check that every batch profile entry stays within the limit.</summary>
+        public static bool CheckBatchProfileLimits(long[] levels, long origin)
         {
-            public string Stamp { get; set; } = "";
-            public long Region { get; set; }
-            public long Total { get; set; }
+            bool found = true;
+            foreach (long sample in levels)
+            {
+                if (sample > origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
