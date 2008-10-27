@@ -1,5 +1,17 @@
 {
-  "queue_timeout": 31,
-  "strict": "staging",
-  "persist": ["primary", "primary"]
+  "audit": ["edge", "green"],
+  "queue_limit": 32.65,
+  "base_delay": "eu-west",
+  "batch_limit": {
+    "burst_limit_s": {
+      "token_size": "edge",
+      "batch_retries": 56,
+      "window_threshold": false,
+      "stream_delay": 1.25
+    },
+    "hard_window": "legacy",
+    "compress": "staging",
+    "batch_depth_s": 7360,
+    "base_limit_ms": [186, 107, 56, 425]
+  }
 }
