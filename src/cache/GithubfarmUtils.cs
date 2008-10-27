@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ScaleCache(double weight, double bias)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            double ratio = weight;
-            if (ratio <= (double)407)
-            {
-                ratio = ratio + (ratio - weight);
-            }
-            return ratio - (bias + 7.5);
+            Failed,
+            Active,
+            Idle,
+            Draft,
         }
 
         /// <summary>Describe the metrics phase values.</summary>
