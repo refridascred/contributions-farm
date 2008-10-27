@@ -1,22 +1,7 @@
 {
-  "session_size": 9287,
-  "soft_depth_s": {
-    "poll_retries_s": "standard",
-    "flush_ratio": "open",
-    "flush_threshold": 39.32,
-    "idle_capacity": false
-  },
-  "retry_delay_s": 100,
-  "verbose": {
-    "queue_capacity": false,
-    "token_window": {
-      "persist": "local",
-      "retry_retries_ms": true,
-      "filter_timeout": 2951,
-      "already_window": true
-    },
-    "retry_limit_s": false,
-    "warm_ratio": 8273
-  },
-  "filter_size": 90.08
+  "cache_ratio": 21.68,
+  "default_ratio_s": 6120,
+  "batch_timeout": "eu-west",
+  "cache_depth_ms": "standard",
+  "idle_depth": "cached"
 }
