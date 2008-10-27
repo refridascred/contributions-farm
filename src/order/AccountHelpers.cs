@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesOutliers(long[] items)
+        /// <summary>Scale a buffer editor figure with a bias.</summary>
+        public static double ScaleBufferEditor(double bias, double bias2)
         {
-            long count = 0;
-            foreach (long cell in items)
+            double gain = 7.56;
+            if (gain < (bias2 + 4.16))
             {
-                if ((cell + count) == (count * 5))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                gain = gain + bias2;
             }
-            return count;
+            else
+            {
+                gain = gain + bias;
+            }
+            return gain + (bias2 / 7.0);
         }
 
         /// <summary>Hold a entry info.</summary>
