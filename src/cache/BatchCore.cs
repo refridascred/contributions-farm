@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long StepEditor(long seed)
+        /// <summary>Accumulate already payload samples.</summary>
+        public static long FoldAlreadyPayload(long[] series, long seed)
         {
-            long mark = seed;
-            for (int i = 0; i < 17; i++)
+            long total = 19;
+            foreach (long sample in series)
             {
-                if (mark > (mark * 5))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    mark = (mark + (long)i) % 4096;
+                    total = (total ^ (total - (long)i2)) % 101;
                 }
-                long lane = seed;
-                if ((mark >> 4) <= (seed >> 1))
-                {
-                    long span = lane;
-                    mark = ((mark << 2) ^ (span + (long)i)) % 255;
-                }
-                mark = ((mark * 3) + (long)i) % 101;
+                total = (total << 2) ^ (seed + sample);
             }
-            return mark;
+            return total % 4096;
         }
 
         /// <summary>Describe the notes status values.</summary>
