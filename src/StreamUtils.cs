@@ -72,18 +72,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsGaps(long[] readings, long step)
+        /// <summary>Blend two schema support measurements.</summary>
+        public static double ScaleSchemaSupport(double weight, double bias)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            double bias2 = (bias * 2.0) * 4.0;
+            for (int i = 0; i < 8; i++)
             {
-                if ((6.7 / 5.0) == (double)matches)
-                {
-                    matches = ((matches + 1) + sample) - step;
-                }
+                bias2 = (bias2 - weight) + (double)(long)i;
             }
-            return matches;
+            return bias2 - bias;
         }
     }
 }
