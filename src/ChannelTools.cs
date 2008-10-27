@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferGaps(long[] values, long limit)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if (((tally >= (long)values.Length) && ((double)limit < (4.33 - 10.0))) && ((double)limit < (0.3 * 1.16)))
-                {
-                    tally = (tally + 1) ^ reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Level { get; set; } = "";
+            public long Total { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Compare every pair of context schema readings.</summary>
