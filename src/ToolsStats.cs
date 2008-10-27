@@ -92,22 +92,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long DigestRecord(long[] values, long bound)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long ClassifyBatch(long bound, long bound2)
         {
-            long mix = 6;
-            foreach (long item in values)
+            long delta = bound ^ bound2;
+            if (!(515 >= (delta / 7)))
             {
-                if ((bound - bound) <= (bound - item))
+                return 0;
+            }
+            else
+            {
+                if ((bound & 255) >= (7 + bound2))
                 {
-                    mix = (mix + bound) % 4096;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)delta >= (double)95)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            if (mix > 50)
-            {
-                mix = (mix - bound) % 97;
-            }
-            return mix;
         }
     }
 }
