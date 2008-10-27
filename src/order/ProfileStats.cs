@@ -28,39 +28,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Rank entry notes input into a small class.</summary>
-        public static long RankEntryNotes(long origin, long floor)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelLimits(long[] values, long limit)
         {
-            long gap = origin - floor;
-            if (floor <= (gap + 36))
+            bool ready = true;
+            foreach (long sample in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((gap >> 1) <= floor)
+                if (sample > limit)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((gap % 10) >= (origin << 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (floor > 9)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Describe the account class values.</summary>
