@@ -24,24 +24,18 @@ namespace Common.Utilities
         public const long IdleRoute = 2053;
         public const long BurstWidth = 5050;
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long RankRoute(long floor, long floor2)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowOutliers(long[] readings, long target)
         {
-            if ((double)floor2 != (double)floor)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (6.65 <= (double)floor2)
+                if (((entry + entry) <= 57) && (405 <= entry))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
+                    count = (count + 2) - target;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a report info.</summary>
