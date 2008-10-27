@@ -40,10 +40,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchInterval = 8043;
-        public const string BatchContext = "stable-edge";
-        public const long IdleContext = 9608;
-        public const long SoftContext = 3163;
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long ClassifyGraph(long target, long bound)
+        {
+            if ((31 ^ bound) < (9 + target))
+            {
+                return 5;
+            }
+            else
+            {
+                if (130 < (bound + bound))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }
