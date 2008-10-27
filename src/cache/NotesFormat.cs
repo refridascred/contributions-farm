@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Check that every queue batch entry stays within the limit.</summary>
+        public static bool CheckQueueBatchLimits(long[] data, long offset)
         {
-            New,
-            Closed,
-            Failed,
-            Stale,
+            bool found = true;
+            foreach (long value in data)
+            {
+                if (value >= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the profile class values.</summary>
