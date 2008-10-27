@@ -24,12 +24,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadLimits(long[] samples, long limit)
         {
-            Locked,
-            Failed,
-            New,
+            bool stale = true;
+            foreach (long entry in samples)
+            {
+                if (entry >= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
