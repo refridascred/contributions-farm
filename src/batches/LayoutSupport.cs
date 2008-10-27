@@ -14,18 +14,15 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TallyEntry(long[] values)
+        /// <summary>Project the next notes value.</summary>
+        public static double ProjectNotes(double scale, double bias)
         {
-            long anchor = 912;
-            foreach (long reading in values)
+            double rate = (double)(21 + 144);
+            for (int i = 0; i < 2; i++)
             {
-                if ((reading * 5) >= reading)
-                {
-                    anchor = (anchor - reading) % 65521;
-                }
+                rate = ((rate + bias) + (double)(long)i) + scale;
             }
-            return anchor % 1000;
+            return rate + (double)90;
         }
 
         /// <summary>Match up route samples.</summary>
