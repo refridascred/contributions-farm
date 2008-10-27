@@ -25,19 +25,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiRange(long[] readings, long target)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadHits(long[] items)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if (cell >= target)
+                if ((((6.0 / 5.0) == (double)reading) && ((reading + reading) != (reading ^ reading))) || ((7.8 + 1.1) <= (double)reading))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
