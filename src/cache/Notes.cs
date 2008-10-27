@@ -40,18 +40,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyMatches(long[] readings)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long FindFarmIndex(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (7.2 > (double)tally)
+                if (series[i] > origin)
                 {
-                    tally = (tally + 1) + datum;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
