@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long DeriveFilter(long target)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long carry = target;
-            for (int i = 0; i < 10; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 65521;
-            }
-            return carry;
+            Failed,
+            Synced,
+            Stale,
+            Locked,
         }
 
         /// <summary>Define already limits and defaults.</summary>
