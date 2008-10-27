@@ -42,21 +42,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long PairCommandCount(long[] samples)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmMatches(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((reading * 3) == (734 << 2))
                 {
-                    if ((samples[i] ^ samples[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
