@@ -35,15 +35,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double BlendMetric(double scale, double span)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long FindCommandIndex(long[] series, long limit)
         {
-            double load = (scale / 4.0) - (span / 8.0);
-            if (load >= (scale - scale))
+            for (int i = 0; i < series.Length; i++)
             {
-                load = load - (double)474;
+                if (series[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            return load + span;
+            return -1;
         }
 
         /// <summary>Hold a order summary.</summary>
