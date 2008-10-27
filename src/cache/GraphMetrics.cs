@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Audit format queue readings against a rule.</summary>
+        public static long AuditFormatQueueOutliers(long[] values)
         {
-            Ready,
-            Stale,
-            New,
-            Queued,
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if (((1.7 > (double)hits) && ((hits ^ hits) >= (cell << 1))) || ((cell * 5) > (87 & 7)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a account tools pair into a bucket.</summary>
