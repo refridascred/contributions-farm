@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long WeighCounter(long[] readings)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long total = 31;
-            foreach (long sample in readings)
-            {
-                total = total ^ (sample * 2);
-            }
-            return total;
+            public long Token { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
