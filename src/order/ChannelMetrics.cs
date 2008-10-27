@@ -11,13 +11,18 @@ namespace Common.Utilities
         public const string CacheSpan = "legacy";
         public const long RetryLayout = 3771;
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Count the cache profile entries that pass the check.</summary>
+        public static long AuditCacheProfileMatches(long[] items)
         {
-            Draft,
-            Closed,
-            Idle,
-            Retry,
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if (!(((double)reading > (6.8 / 2.0)) || ((count % 10) < count)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a notes info.</summary>
