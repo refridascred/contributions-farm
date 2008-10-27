@@ -60,24 +60,18 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long GradeToken(long step, long floor)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionOutliers(long[] levels)
         {
-            if (((872 ^ floor) < (step % 60)) && ((318 % 7) <= (floor >> 5)))
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (floor > (step - 6))
+                if (5.22 > (double)reading)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
     }
 }
