@@ -11,22 +11,14 @@ namespace Common.Utilities
         public const long LimitChannel = 4964;
         public const double SoftChannel = 39.66;
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesMatches(long[] readings)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if (!((matches + 7) == (5 & 31)))
-                {
-                    matches = (matches + 2) + item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Active,
+            Retry,
+            Paused,
+            Closed,
+            Locked,
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
