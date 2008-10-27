@@ -46,25 +46,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long GradeNotes(long origin, long seed)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long ScoreAccount(long[] values, long step)
         {
-            long bound = origin + seed;
-            if (seed > (bound + 767))
+            long mark = 7;
+            foreach (long entry in values)
             {
-                return 6;
+                mark = ((((mark << 2) ^ 466) % 65521) ^ entry) + step;
             }
-            else
-            {
-                if (origin <= (seed ^ (-424)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return mark;
         }
     }
 }
