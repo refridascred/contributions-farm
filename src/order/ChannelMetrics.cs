@@ -20,19 +20,21 @@ namespace Common.Utilities
             return load - (double)556;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyBounds(long[] levels, long step)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long OverlapOrderCount(long[] series)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value < step)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((series[i] - series[j]) == 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Hold a notes info.</summary>
