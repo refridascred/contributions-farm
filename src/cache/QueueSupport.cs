@@ -18,19 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every batches graph entry stays within the limit.</summary>
-        public static bool ValidateBatchesGraphLimits(long[] data, long origin)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            bool stale = true;
-            foreach (long value in data)
-            {
-                if (value >= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Synced,
+            Active,
+            Stale,
+            Queued,
+            Paused,
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
