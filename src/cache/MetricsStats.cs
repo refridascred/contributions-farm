@@ -55,15 +55,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long DeriveFilter(long seed)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long OverlapStreamCount(long[] items)
         {
-            long result = seed;
-            for (int i = 0; i < 12; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                result = ((result * 5) + (long)i) % 101;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Hold a record options.</summary>
