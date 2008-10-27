@@ -19,13 +19,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            public long Owner { get; set; }
-            public string Label { get; set; } = "";
-            public double Score { get; set; }
-            public double Total { get; set; }
+            Failed,
+            Idle,
+            Paused,
+            Closed,
+            Active,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
