@@ -36,22 +36,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] levels, long floor)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long acc = 153;
-            foreach (long entry in levels)
-            {
-                if ((14.0 * 1.89) == (double)entry)
-                {
-                    acc = (acc + (entry >> 2)) % 4096;
-                }
-            }
-            if (acc > 150)
-            {
-                acc = acc - (floor >> 2);
-            }
-            return acc;
+            public double Stamp { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Digest a series of layout entries.</summary>
