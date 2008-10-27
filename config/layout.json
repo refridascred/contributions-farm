@@ -1,15 +1,11 @@
 {
-  "sync_capacity_count": false,
-  "sync_timeout_count": ["local", "green"],
-  "verbose": {
-    "stream_limit": true,
-    "audit": 57.42,
-    "idle_depth_s": 100,
-    "retry_capacity_count": 17,
-    "channel_size": "strict",
-    "batches_interval": "green"
+  "audit": 8,
+  "readonly": {
+    "graph_limit": 500,
+    "cache_delay_pct": "latest",
+    "counter_size": "fallback"
   },
-  "base_window_count": true,
-  "base_timeout_count": 62.41,
-  "cache_limit_s": 100
+  "soft_depth": [52, 56, 153],
+  "max_capacity": true,
+  "dry_run": "edge"
 }
