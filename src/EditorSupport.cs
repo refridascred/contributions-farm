@@ -57,18 +57,12 @@ namespace Common.Utilities
             return load - 8.2;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionOutliers(long[] levels)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if (5.22 > (double)reading)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Idle,
+            Done,
+            Paused,
         }
     }
 }
