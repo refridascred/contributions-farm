@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue green; do
+CHANNEL_LIMIT=264
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in edge standard eu-west local; do
     log "checking ${item}"
 done
-
-CHANNEL_LIMIT=118
-log "limit is ${CHANNEL_LIMIT}"
