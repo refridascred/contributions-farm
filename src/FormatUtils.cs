@@ -18,19 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatRange(long[] samples, long target)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            bool valid = true;
-            foreach (long entry in samples)
-            {
-                if (entry <= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Queued,
+            Done,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Digest a series of editor entries.</summary>
