@@ -19,22 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long CompareEditorCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double SoftAlready = 11.97;
+        public const string CacheAlready = "legacy-edge";
+        public const double WindowAlready = 71.32;
+        public const long HardAlready = 9626;
+        public const double StepLevel = 5.38;
 
         /// <summary>Hold a profile header.</summary>
         public sealed class ProfileHeader
