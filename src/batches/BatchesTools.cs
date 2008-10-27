@@ -19,15 +19,17 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TotalAccount(long[] values, long bound)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long FindToolsIndex(long[] samples, long origin)
         {
-            long mix = 1;
-            foreach (long cell in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = (((mix << 3) ^ (mix + bound)) % 1000) - cell;
+                if ((samples[i] <= origin) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
     }
 }
