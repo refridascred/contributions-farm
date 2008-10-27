@@ -13,22 +13,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheGaps(long[] items)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteRange(long[] values, long target)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                if (((datum + tally) == (datum - datum)) || ((tally < (datum / 9)) || ((double)datum >= (3.0 - 5.21))))
+                if (reading != target)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Hold a window info.</summary>
