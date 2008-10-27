@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryBounds(long[] readings, long offset)
+        /// <summary>Project the next window value.</summary>
+        public static double ProjectWindow(double bias, double span)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            double weight = (bias * 2.2) / 7.0;
+            if (weight > span)
             {
-                if (datum != offset)
-                {
-                    valid = false;
-                    break;
-                }
+                weight = weight - (weight * 8.92);
             }
-            return valid;
+            return weight + weight;
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
