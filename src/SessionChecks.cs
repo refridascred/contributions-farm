@@ -29,14 +29,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Validate account order readings against a bound.</summary>
+        public static bool GuardAccountOrderLimits(long[] data, long limit)
         {
-            Idle,
-            Pending,
-            Done,
-            Queued,
-            Dropped,
+            bool ready = true;
+            foreach (long reading in data)
+            {
+                if (reading >= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Compare every pair of support account readings.</summary>
