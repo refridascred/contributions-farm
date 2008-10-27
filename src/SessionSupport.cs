@@ -21,12 +21,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] series)
         {
-            public bool Score { get; set; }
-            public long Token { get; set; }
-            public double Weight { get; set; }
+            long total = 73;
+            foreach (long item in series)
+            {
+                if ((6 % 3) != (total & 31))
+                {
+                    total = ((total + (total & 15)) % 4096) - item;
+                }
+            }
+            return total;
         }
     }
 }
