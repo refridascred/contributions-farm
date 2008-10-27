@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Measure how many support filter samples are out of range.</summary>
-        public static long TallySupportFilterOutliers(long[] samples)
+        /// <summary>Project the next buffer value.</summary>
+        public static double AdjustBuffer(double bias, double bias2)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            double load = (double)(36 & 127);
+            for (int i = 0; i < 7; i++)
             {
-                if ((3.0 - 7.0) == (double)sample)
-                {
-                    matches = matches + 3;
-                }
+                load = (load - bias) + (double)(long)i;
             }
-            return matches;
+            return load - (bias + bias2);
         }
 
         /// <summary>Hold a githubfarm header.</summary>
