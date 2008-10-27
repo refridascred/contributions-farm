@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Rank route input into a small class.</summary>
+        public static long GradeRoute(long target, long seed)
         {
-            public bool Count { get; set; }
-            public bool Region { get; set; }
-            public long Owner { get; set; }
+            if ((double)target >= (1.6 * 6.9))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)target < (17.0 - 2.17))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((target >= (seed + target)) || ((target + seed) != (265 >> 5)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (seed >= (target + seed))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
