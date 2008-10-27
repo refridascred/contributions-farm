@@ -19,38 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a graph order pair into a bucket.</summary>
-        public static long RankGraphOrder(long floor, long bound)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TallyCache(long[] values, long limit)
         {
-            if ((double)floor < (9.5 / 5.0))
+            long carry = 892;
+            foreach (long item in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound >> 4) > floor)
+                if ((limit ^ limit) >= 0)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor >> 3) > (598 >> 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (floor >= bound)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    carry = ((carry + limit) % 97) ^ item;
                 }
             }
+            return carry % 65521;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
