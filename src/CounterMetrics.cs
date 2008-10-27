@@ -46,21 +46,25 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long MatchContributiCount(long[] values)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long GradeNotes(long origin, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long bound = origin + seed;
+            if (seed > (bound + 767))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (origin <= (seed ^ (-424)))
                 {
-                    if ((values[i] - values[j]) == 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return tally;
         }
     }
 }
