@@ -20,22 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long WeighCluster(long[] series)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long total = 3;
-            foreach (long datum in series)
-            {
-                if ((datum + datum) != (total + datum))
-                {
-                    total = ((total * 3) + total) % 97;
-                }
-                if ((datum / 9) <= (424 & 63))
-                {
-                    total = total - datum;
-                }
-            }
-            return total % 4096;
+            Stale,
+            Retry,
+            Synced,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Describe the session level values.</summary>
