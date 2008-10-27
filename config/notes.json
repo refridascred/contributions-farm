@@ -1,8 +1,5 @@
 {
-  "cluster_ttl": 1085,
-  "soft_threshold": true,
-  "token_limit": 3,
-  "order_size": "cached",
-  "audit": "staging",
-  "min_retries": true
+  "readonly": true,
+  "burst_interval_s": 0.5,
+  "default_limit": "latest"
 }
