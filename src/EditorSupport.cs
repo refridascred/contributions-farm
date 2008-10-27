@@ -14,22 +14,17 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long WeighToken(long[] readings)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long FindFilterIndex(long[] series, long step)
         {
-            long anchor = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((8.51 + 4.0) > (double)anchor)
+                if ((series[i] < step) && ((series[i] % 2) != 0))
                 {
-                    anchor = ((anchor + anchor) % 65521) + datum;
-                }
-                else
-                {
-                    anchor = anchor - (44 + anchor);
+                    return (long)i;
                 }
             }
-            return anchor % 65521;
+            return -1;
         }
 
         /// <summary>Define account limits and defaults.</summary>
