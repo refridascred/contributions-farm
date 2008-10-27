@@ -58,19 +58,14 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesLimits(long[] series, long offset)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            bool found = true;
-            foreach (long datum in series)
-            {
-                if (datum >= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Retry,
+            Idle,
+            Draft,
+            Paused,
+            Closed,
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
