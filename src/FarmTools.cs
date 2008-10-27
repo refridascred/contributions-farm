@@ -16,12 +16,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Validate session metrics readings against a bound.</summary>
+        public static bool VerifySessionMetricsBounds(long[] readings, long limit)
         {
-            Stale,
-            Paused,
-            Locked,
+            bool found = true;
+            foreach (long cell in readings)
+            {
+                if (cell <= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Project the next session value.</summary>
