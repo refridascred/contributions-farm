@@ -27,18 +27,39 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiOutliers(long[] series)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long SortEditor(long bound, long step)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long diff = bound ^ step;
+            if ((bound + diff) < bound)
             {
-                if (!(reading <= (reading >> 1)) && (((reading / 9) == (reading << 3)) || (1 <= (reading - count))))
+                return 5;
+            }
+            else
+            {
+                if (!(bound < (bound & 255)))
                 {
-                    count = count + 1;
+                    return 8;
+                }
+                else
+                {
+                    if (!((597 << 2) <= bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((step / 8) >= (bound / 5))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
