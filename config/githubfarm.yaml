@@ -1,4 +1,21 @@
 # githubfarm settings
-default_size_s: 4717
-readonly: eu-west
-warm_retries_pct: false
+persist: edge
+max_threshold:
+  cluster_depth: strict
+  idle_delay: strict
+  poll_threshold_ms: strict
+  max_timeout_ms: local
+  context_threshold: open
+  sync_retries:
+    compress: cached
+    retry_interval: 34
+    default_retries_s: true
+    default_capacity_ms: 53
+    max_threshold_pct: 13.25
+    cache_size_pct: blue
+payload_retries:
+  - cached
+  - staging
+batch_window_count: true
+min_threshold_ms: 17.14
+default_ttl_ms: edge
