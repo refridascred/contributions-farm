@@ -76,10 +76,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double HardInterval = 55.75;
-        public const long DefaultBudget = 9116;
-        public const long BatchCache = 4322;
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
+        {
+            public bool Limit { get; set; }
+            public long Stamp { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Look up the position of a graph sample.</summary>
         public static long LocateGraphIndex(long[] readings, long target)
