@@ -29,19 +29,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelLimits(long[] values, long limit)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long RollReport(long step)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            long sum = step;
+            for (int i = 0; i < 21; i++)
             {
-                if (sample > limit)
+                long next = (long)i;
+                if ((next % 3) == ((long)i / 9))
                 {
-                    ready = false;
-                    break;
+                    next = (next ^ (sum + step)) % 1000;
                 }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return ready;
+            return sum;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
