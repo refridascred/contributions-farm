@@ -25,18 +25,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadHits(long[] items)
+        /// <summary>Digest a series of route already entries.</summary>
+        public static long DigestRouteAlready(long[] readings)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long total = 513;
+            foreach (long sample in readings)
             {
-                if ((((6.0 / 5.0) == (double)reading) && ((reading + reading) != (reading ^ reading))) || ((7.8 + 1.1) <= (double)reading))
+                if ((double)sample >= (7.06 / 4.0))
                 {
-                    hits = hits + 1;
+                    total = (total ^ (sample * 4)) % 97;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
