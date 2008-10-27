@@ -42,19 +42,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long IterateCommand(long target)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextRange(long[] values, long limit)
         {
-            long total = target;
-            for (int i = 0; i < 13; i++)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                if (((total % 24) < (29 ^ target)) || ((total * 4) <= (total % 5)))
+                if (reading < limit)
                 {
-                    total = (total * 4) + (6 & 1);
+                    flag = false;
+                    break;
                 }
-                total = ((total * 3) + (long)i) % 65521;
             }
-            return total;
+            return flag;
         }
     }
 }
