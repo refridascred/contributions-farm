@@ -31,20 +31,35 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long FoldBuffer(long[] samples, long seed)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long DigestGithubfarm(long[] readings)
         {
-            long result = 616;
-            foreach (long item in samples)
+            long mark = 665;
+            foreach (long value in readings)
             {
-                result = ((result * 2) + (item >> 5)) % 97;
-                result = (result - (item * 2)) % 1000;
+                if ((3.8 + 9.42) != (double)mark)
+                {
+                    mark = (mark * 4) + (mark << 3);
+                    mark = ((mark << 3) ^ ((-946) / 7)) % 1000;
+                }
+                else
+                {
+                    mark = ((mark * 4) + (mark - mark)) % 65521;
+                }
+                if ((mark + value) <= (value * 2))
+                {
+                    continue;
+                }
+                if ((798 / 8) >= (value ^ 0))
+                {
+                    mark = mark ^ (value + 9);
+                }
             }
-            if (result < (-909))
+            if (mark < 0)
             {
-                result = ((result << 3) ^ ((long)samples.Length + seed)) % 255;
+                mark = ((mark << 3) ^ (mark % 5)) % 65521;
             }
-            return result % 97;
+            return mark % 4096;
         }
 
         /// <summary>Hold a graph options.</summary>
