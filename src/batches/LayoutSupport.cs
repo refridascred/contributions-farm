@@ -33,24 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank window metric input into a small class.</summary>
-        public static long ClassifyWindowMetric(long limit, long origin)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsOutliers(long[] samples, long limit)
         {
-            if ((origin + 234) > 4)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((limit * 5) >= (origin + limit))
+                if ((datum << 1) != (939 & 255))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
+                    hits = (hits + 1) - limit;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a contributi summary.</summary>
