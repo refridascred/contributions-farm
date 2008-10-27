@@ -1,19 +1,6 @@
 # support settings
-burst_depth: 63.71
-poll_retries_ms:
-  cluster_ttl: 9179
-  metric_delay: 8454
-  queue_delay: legacy
-  strict:
-    - strict
-    - blue
-  enabled: 27
-  compress: true
-batch_depth_s: 78.34
-idle_ratio_s:
-  strict: blue
-  soft_ttl: 65
-  poll_ttl_ms: open
-  enabled: legacy
-  poll_interval_ms: 500
-  batch_size_s: green
+burst_threshold: fallback
+hard_ratio_s: local
+farm_size: local
+poll_interval: 9803
+sync_interval_s: 77.28
