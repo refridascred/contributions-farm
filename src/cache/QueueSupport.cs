@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double RetryAccount = 32.71;
-        public const long DefaultRatio = 975;
-        public const long DefaultAccount = 1410;
-        public const long BaseBudget = 8309;
+        /// <summary>Audit graph batch readings against a rule.</summary>
+        public static long AuditGraphBatchOutliers(long[] items, long limit)
+        {
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((limit & 127) < entry)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate farm samples.</summary>
         public static long TallyFarm(long[] readings, long seed)
