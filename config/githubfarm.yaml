@@ -1,16 +1,10 @@
 # githubfarm settings
-retry_capacity_s:
-  - standard
-  - open
-sync_retries: 88
-max_limit_s:
-  strict: 100
-  warm_ratio_ms:
-    buffer_ttl: 89.91
-    warm_delay_count: 7852
-    audit: false
-    verbose: true
-    default_delay_s: false
-    cache_timeout: stable
-  filter_interval: 4979
-  burst_depth_pct: 25
+route_retries: open
+warm_timeout: staging
+poll_ratio_s: blue
+payload_interval: 250
+warm_size: 53
+farm_size:
+  - blue
+  - latest
+  - legacy
