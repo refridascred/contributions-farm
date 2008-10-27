@@ -14,17 +14,26 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long RollPayload(long limit)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long FoldFilter(long[] values, long origin)
         {
-            long mix = limit;
-            for (int i = 0; i < 10; i++)
+            long acc = -917;
+            foreach (long cell in values)
             {
-                mix = mix - (limit - (long)i);
-                mix = mix - limit;
-                mix = ((mix * 5) + (long)i) % 1000;
+                if ((double)cell != (double)acc)
+                {
+                    acc = (acc - (cell - origin)) % 255;
+                }
+                if ((cell - cell) != ((long)values.Length + origin))
+                {
+                    acc = (acc ^ acc) % 4096;
+                }
             }
-            return mix;
+            if (acc > 0)
+            {
+                acc = (acc - (acc & 63)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Adjust a window notes reading.</summary>
