@@ -1,14 +1,5 @@
 # entry settings
-account_interval:
-  - stable
-  - primary
-  - strict
-layout_timeout:
-  burst_depth_ms: blue
-  hard_delay_pct: cached
-  cache_ttl_s: 10
-  strict: strict
-  persist: legacy
-burst_threshold_count: 60
-batch_delay_count: eu-west
-retry_limit_s: 16
+base_size_count: 88
+soft_depth_s: staging
+retry_capacity: 500
+persist: cached
