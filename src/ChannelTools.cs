@@ -40,24 +40,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long RankRoute(long step, long step2)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long WeighCounter(long[] readings, long origin)
         {
-            if ((step >> 4) > 39)
+            long total = 756;
+            foreach (long sample in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (step2 >= (step2 % 5))
+                if (((total + origin) >= (total << 3)) || (total >= sample))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    total = (total << 2) ^ 7;
                 }
             }
+            if (total < 255)
+            {
+                total = ((total << 3) ^ (total << 2)) % 97;
+            }
+            return total % 97;
         }
     }
 }
