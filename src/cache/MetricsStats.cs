@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the command farm entries that pass the check.</summary>
-        public static long TallyCommandFarmGaps(long[] series, long seed)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long GradeSession(long origin, long offset)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            if ((double)offset > (17.0 + 16.0))
             {
-                if ((seen <= (entry - seed)) || (((9.07 - 7.22) <= (double)entry) && ((seed << 1) >= entry)))
+                return 6;
+            }
+            else
+            {
+                if (!((63 + offset) != (origin - 4)))
                 {
-                    seen = seen + 2;
+                    return 5;
+                }
+                else
+                {
+                    if ((5 ^ offset) == (offset << 1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
