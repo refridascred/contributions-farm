@@ -23,21 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long MatchTokenCount(long[] data)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] data, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 160;
+            foreach (long value in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                sum = (((sum * 3) + sum) ^ value) - seed;
+                if ((5.0 + 4.4) > (double)sum)
                 {
-                    if ((data[i] ^ data[j]) > 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
