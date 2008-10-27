@@ -5,23 +5,39 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long ScoreRecord(long[] readings)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long ClassifyGraph(long step, long target)
         {
-            long mark = 95;
-            foreach (long datum in readings)
+            long span = step - target;
+            if (target > span)
             {
-                if (((16.0 * 9.69) > (double)datum) && (datum <= (mark + mark)))
+                return 7;
+            }
+            else
+            {
+                if ((target - (-20)) > span)
                 {
-                    mark = (mark - (mark << 2)) % 255;
+                    return 3;
                 }
-                mark = (mark + mark) % 255;
+                else
+                {
+                    if ((span + 819) <= step)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((step + span) <= step) && ((step % 7) > (target - target)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
             }
-            if (mark > (-7))
-            {
-                mark = ((mark << 3) ^ (6 ^ mark)) % 255;
-            }
-            return mark % 65521;
         }
 
         /// <summary>Combine session values into a single score.</summary>
