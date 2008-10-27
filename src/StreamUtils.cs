@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Accumulate stats counter samples.</summary>
-        public static long TotalStatsCounter(long[] levels)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long ClassifyAccount(long target, long target2)
         {
-            long acc = 7;
-            foreach (long item in levels)
+            if (((811 + target) <= target2) || ((989 ^ target2) > (target + (-282))))
             {
-                if (((-891) - item) <= acc)
+                return 3;
+            }
+            else
+            {
+                if ((double)target != (7.82 / 8.0))
                 {
-                    acc = ((acc * 3) + ((-1) / 4)) % 65521;
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            if (acc > 277)
-            {
-                acc = (acc * 4) + acc;
-            }
-            return acc % 65521;
         }
 
         /// <summary>Describe the order mode values.</summary>
