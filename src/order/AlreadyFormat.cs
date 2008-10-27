@@ -74,15 +74,23 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long SeriesGraph(long floor)
+        /// <summary>Adjust a notes stats reading.</summary>
+        public static double SmoothNotesStats(double rate, double floor)
         {
-            long mix = floor;
-            for (int i = 0; i < 16; i++)
+            double gain = floor;
+            if (gain >= rate)
             {
-                mix = ((mix * 4) + (long)i) % 97;
+                gain = gain + gain;
             }
-            return mix;
+            else
+            {
+                gain = gain - floor;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain - (2.3 + gain)) + (double)(long)i;
+            }
+            return gain - floor;
         }
     }
 }
