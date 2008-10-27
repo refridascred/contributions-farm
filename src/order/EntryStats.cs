@@ -34,17 +34,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LocateCommandIndex(long[] series, long seed)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Stamp { get; set; } = "";
+            public long Region { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Audit report readings against a rule.</summary>
