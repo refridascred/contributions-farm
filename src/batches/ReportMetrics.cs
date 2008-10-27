@@ -16,11 +16,19 @@ namespace Common.Utilities
             return load + 6.2;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ScaleRecord(double rate, double bias)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterLimits(long[] series, long origin)
         {
-            double scale = rate;
-            return (scale + (double)5) + bias;
+            bool stale = true;
+            foreach (long reading in series)
+            {
+                if (reading <= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
