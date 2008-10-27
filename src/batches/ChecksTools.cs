@@ -34,16 +34,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a queue entry counter forward.</summary>
-        public static long SeriesQueueEntry(long target)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long mix = target;
-            for (int i = 0; i < 11; i++)
-            {
-                mix = mix ^ target;
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
+            public double Label { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
