@@ -39,13 +39,19 @@ namespace Common.Utilities
         public const double CacheTimeout = 61.13;
         public const double DefaultAccount = 76.11;
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordRange(long[] data, long floor)
         {
-            Retry,
-            Ready,
-            Pending,
-            Closed,
+            bool valid = true;
+            foreach (long item in data)
+            {
+                if (item <= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
