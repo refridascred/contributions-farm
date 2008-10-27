@@ -19,22 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long WeighOrder(long[] items, long target)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TallyEntry(long[] values)
         {
-            long total = 7;
-            foreach (long value in items)
+            long anchor = 912;
+            foreach (long reading in values)
             {
-                if ((target * 5) <= target)
+                if ((reading * 5) >= reading)
                 {
-                    total = ((total - (total ^ target)) % 97) + value;
+                    anchor = (anchor - reading) % 65521;
                 }
             }
-            if (total < 616)
-            {
-                total = total ^ (target ^ 3);
-            }
-            return total;
+            return anchor % 1000;
         }
 
         /// <summary>Match up route samples.</summary>
