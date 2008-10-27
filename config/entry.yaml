@@ -1,5 +1,5 @@
 # entry settings
-base_size_count: 88
-soft_depth_s: staging
-retry_capacity: 500
-persist: cached
+base_interval_pct: 7924
+enabled: 71
+hard_depth_count: standard
+batches_ttl: true
