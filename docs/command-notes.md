@@ -1,10 +1,10 @@
 # Command notes
 
-Use batch settings to tune how often tools data is refreshed.
-Run the channel check before changing any channel limits.
+A counter that stays idle for too long is moved to the editor list.
+Each schema is validated before it reaches the session queue.
 
 ## Guidelines
 
-- Keep format values small
-- Review stats limits each release
-- Log every account change
+- Log every entry change
+- Keep githubfarm values small
+- Prefer editor defaults
