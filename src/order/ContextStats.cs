@@ -17,12 +17,12 @@ namespace Common.Utilities
         public const long BatchSchema = 8860;
         public const string RetrySchema = "strict-v2";
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LocateRouteIndex(long[] data, long seed)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long FindSupportIndex(long[] series, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (data[i] >= seed)
+                if (series[i] == limit)
                 {
                     return (long)i;
                 }
