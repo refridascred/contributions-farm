@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long FindClusterIndex(long[] data, long floor)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= floor) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
