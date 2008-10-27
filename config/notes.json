@@ -1,5 +1,6 @@
 {
-  "persist": false,
-  "already_window": 1278,
-  "batches_ratio": [227, 165, 223, 147]
+  "entry_size": 1024,
+  "batch_delay": "local",
+  "flush_threshold_count": 81,
+  "base_ttl": [453, 278, 376, 235]
 }
