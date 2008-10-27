@@ -21,18 +21,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterHits(long[] readings)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long OverlapCommitsCount(long[] series)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(value < (9 % 24)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((series[i] - series[j]) < 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the metrics class values.</summary>
