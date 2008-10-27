@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultScore = 328;
-        public const long MinInterval = 5515;
-        public const long BurstScore = 6375;
-        public const long WindowBudget = 2545;
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double SmoothStats(double gain, double offset)
+        {
+            double scale = gain;
+            if (scale > (offset * 2.3))
+            {
+                scale = scale + (offset * 1.5);
+            }
+            else
+            {
+                scale = scale - scale;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - (scale * 7.71)) + (double)(long)i;
+            }
+            return scale + gain;
+        }
 
         /// <summary>Validate record readings against a bound.</summary>
         public static bool ValidateRecordRange(long[] items, long seed)
