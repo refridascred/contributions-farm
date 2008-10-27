@@ -1,7 +1,8 @@
 {
-  "cluster_ttl": 250,
-  "githubfarm_window": "fallback",
-  "warm_depth_count": 11.8,
-  "burst_timeout": 80.58,
-  "dry_run": [15, 193]
+  "tools_threshold": 1024,
+  "default_window_pct": 7,
+  "base_ttl_s": ["legacy", "stable"],
+  "idle_ratio": false,
+  "account_retries": "edge",
+  "idle_delay_count": 4854
 }
