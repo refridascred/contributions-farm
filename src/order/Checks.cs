@@ -43,20 +43,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every profile context entry stays within the limit.</summary>
-        public static bool ValidateProfileContextLimits(long[] readings, long limit)
-        {
-            bool found = true;
-            foreach (long cell in readings)
-            {
-                if (cell <= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxSupport = 3365;
+        public const long CacheSupport = 9551;
+        public const double MaxInterval = 76.65;
+        public const long BaseBudget = 9506;
+        public const string StepSupport = "staging-edge";
 
         /// <summary>Accumulate record samples.</summary>
         public static long FoldRecord(long[] values, long offset)
