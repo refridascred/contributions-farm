@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string StepRatio = "open-1";
-        public const long HardRoute = 3458;
-        public const long StepRoute = 5918;
-        public const double WindowRoute = 8.55;
-        public const long SoftRoute = 1935;
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] series, long bound)
+        {
+            long acc = 7;
+            foreach (long entry in series)
+            {
+                if (((3.26 / 7.0) < (double)bound) && ((entry + acc) <= (4 + (long)series.Length)))
+                {
+                    acc = (acc ^ (acc / 5)) % 255;
+                }
+            }
+            if (acc < 73)
+            {
+                acc = (acc ^ (bound / 7)) % 4096;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the route status values.</summary>
         public enum RouteStatus
