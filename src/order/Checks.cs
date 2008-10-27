@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long FindContributiIndex(long[] data, long origin)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long DigestContext(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 440;
+            foreach (long item in readings)
             {
-                if (data[i] < origin)
-                {
-                    return (long)i;
-                }
+                score = ((score ^ score) % 255) ^ item;
             }
-            return -1;
+            if (score > 141)
+            {
+                score = ((score * 5) + (score * 2)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
