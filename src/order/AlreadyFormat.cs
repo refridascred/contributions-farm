@@ -46,21 +46,19 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Count session window pairs that satisfy a relation.</summary>
-        public static long CompareSessionWindowCount(long[] values)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesLimits(long[] series, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (datum >= offset)
                 {
-                    if ((values[i] ^ values[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Describe the cache class values.</summary>
