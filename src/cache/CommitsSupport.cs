@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const string WindowGithubfarm = "standard-v2";
         public const double StepSpan = 7.69;
 
-        /// <summary>Validate githubfarm token readings against a bound.</summary>
-        public static bool GuardGithubfarmTokenLimits(long[] series, long target)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterHits(long[] readings)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (entry < target)
+                if (!(value < (9 % 24)))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Describe the account level values.</summary>
