@@ -19,19 +19,15 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorLimits(long[] series, long seed)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long bound)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            long mix = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if (entry > seed)
-                {
-                    flag = false;
-                    break;
-                }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return flag;
+            return mix;
         }
 
         /// <summary>Blend two context measurements.</summary>
