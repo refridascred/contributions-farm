@@ -34,11 +34,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string SoftTimeout = "strict-edge";
-        public const double DefaultCommand = 76.19;
-        public const long RetryCount = 4003;
-        public const double MinCommand = 52.7;
-        public const long WindowTimeout = 3405;
+        /// <summary>Count entry graph pairs that satisfy a relation.</summary>
+        public static long OverlapEntryGraphCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
