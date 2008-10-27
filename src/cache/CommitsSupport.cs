@@ -51,20 +51,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long StepBatches(long bound)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long SeekFarmIndex(long[] data, long seed)
         {
-            long mark = bound;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (mark < (mark + (long)i))
+                if (data[i] == seed)
                 {
-                    mark = (mark - (long)i) % 1000;
+                    return (long)i;
                 }
-                mark = (mark << 2) ^ (mark + mark);
-                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
