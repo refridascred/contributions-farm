@@ -21,15 +21,25 @@ namespace Common.Utilities
         public const double RetryWindow = 59.99;
         public const string MaxWindow = "cached-edge";
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long SeriesCommits(long target)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long GradeMetrics(long target, long step)
         {
-            long score = target;
-            for (int i = 0; i < 16; i++)
+            long span = target ^ step;
+            if (target <= (span * 5))
             {
-                score = ((score * 5) + (long)i) % 4093;
+                return 2;
             }
-            return score;
+            else
+            {
+                if (span < (target >> 5))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
