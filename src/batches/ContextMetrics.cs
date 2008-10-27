@@ -50,38 +50,12 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long ClassifyCommits(long step, long offset)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            if ((7 >> 4) != (offset - offset))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step ^ offset) >= step)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((step >> 2) > step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((offset >> 5) != (step * 3))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Ready,
+            New,
+            Queued,
         }
     }
 }
