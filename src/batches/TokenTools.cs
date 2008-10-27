@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many checks batches samples are out of range.</summary>
-        public static long CountChecksBatchesMatches(long[] values)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long RankContributi(long limit, long seed)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            if (!((limit % 10) != (seed ^ seed)))
             {
-                if ((sample / 9) <= (hits ^ 729))
+                return 4;
+            }
+            else
+            {
+                if ((limit * 5) == (limit - seed))
                 {
-                    hits = hits + 1;
+                    return 6;
+                }
+                else
+                {
+                    if ((limit - seed) > (97 & 127))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a metrics entry.</summary>
