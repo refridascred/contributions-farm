@@ -19,18 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TallyCache(long[] values, long limit)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long FindLayoutIndex(long[] levels, long seed)
         {
-            long carry = 892;
-            foreach (long item in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((limit ^ limit) >= 0)
+                if (levels[i] == seed)
                 {
-                    carry = ((carry + limit) % 97) ^ item;
+                    return (long)i;
                 }
             }
-            return carry % 65521;
+            return -1;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
