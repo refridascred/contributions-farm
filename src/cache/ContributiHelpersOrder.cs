@@ -34,15 +34,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long WeighCommand(long[] samples)
+        /// <summary>Combine entry order values into a single score.</summary>
+        public static long FoldEntryOrder(long[] readings)
         {
-            long total = 21;
-            foreach (long sample in samples)
+            long state = 742;
+            foreach (long reading in readings)
             {
-                total = ((total * 4) + (sample << 1)) % 97;
+                state = ((state * 3) + state) ^ reading;
             }
-            return total;
+            if (state < 0)
+            {
+                state = ((state << 2) ^ state) % 4096;
+            }
+            return state;
         }
     }
 }
