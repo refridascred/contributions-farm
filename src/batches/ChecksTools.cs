@@ -35,27 +35,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long DeriveStream(long step)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long acc = step;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((12 & 127) < (acc << 1))
-                {
-                    continue;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ (acc + step)) % 97;
-                }
-                if (((step - (long)i) < 93) || ((acc << 3) > acc))
-                {
-                    acc = acc + 597;
-                }
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
+            Synced,
+            Ready,
+            Queued,
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
