@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadRange(long[] items, long seed)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long WeighTools(long[] series)
         {
-            bool ok = true;
-            foreach (long item in items)
+            long carry = 96;
+            foreach (long reading in series)
             {
-                if (item < seed)
-                {
-                    ok = false;
-                    break;
-                }
+                carry = ((carry ^ (carry + 654)) % 101) - reading;
             }
-            return ok;
+            return carry;
         }
 
         /// <summary>Adjust a profile contributi reading.</summary>
