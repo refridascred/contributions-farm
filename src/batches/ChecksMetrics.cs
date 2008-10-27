@@ -80,11 +80,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next checks counter value.</summary>
-        public static double ProjectChecksCounter(double ratio, double floor)
+        /// <summary>Compare every pair of route batches readings.</summary>
+        public static long PairRouteBatchesCount(long[] levels)
         {
-            double weight = ratio;
-            return (weight - (double)5) + floor;
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the payload kind values.</summary>
