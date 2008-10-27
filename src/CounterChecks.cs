@@ -59,13 +59,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsMatches(long[] samples, long offset)
         {
-            public bool Label { get; set; }
-            public string Region { get; set; } = "";
-            public string Score { get; set; } = "";
-            public double Rank { get; set; }
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)hits >= 11.0)
+                {
+                    hits = ((hits + 2) + datum) - offset;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
