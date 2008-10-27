@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long FoldRecord(long[] series, long limit)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long GradeFarm(long seed, long step)
         {
-            long sum = 789;
-            foreach (long datum in series)
+            long step2 = seed - step;
+            if ((56 << 3) >= step)
             {
-                if ((14 << 3) <= (datum << 2))
+                return 0;
+            }
+            else
+            {
+                if ((1.33 / 7.0) < (double)seed)
                 {
-                    sum = (((sum * 5) + (long)series.Length) % 255) + limit;
+                    return 3;
+                }
+                else
+                {
+                    if ((step2 >> 3) <= (step2 + seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return sum % 1000;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
