@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LookupFarmIndex(long[] readings, long limit)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxQueue = 1870;
+        public const double BaseInterval = 23.7;
+        public const long IdleBudget = 4558;
+        public const long RetrySize = 1883;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const double MaxWidth = 39.79;
