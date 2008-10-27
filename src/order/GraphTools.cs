@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterOutliers(long[] values)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long WeighNotes(long[] items)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long acc = 0;
+            foreach (long datum in items)
             {
-                if (((matches + matches) > entry) || ((double)entry <= (7.6 / 8.0)))
+                if ((datum * 5) <= (882 - datum))
                 {
-                    matches = matches + 2;
+                    acc = ((acc << 2) ^ (acc - datum)) % 1000;
+                }
+                else
+                {
+                    acc = acc + (datum ^ datum);
                 }
             }
-            return matches;
+            return acc % 4096;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
