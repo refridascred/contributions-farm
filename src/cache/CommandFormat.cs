@@ -43,13 +43,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Locate a format reading by value.</summary>
+        public static long FindFormatIndex(long[] levels, long step)
         {
-            Pending,
-            Locked,
-            Queued,
-            Draft,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
