@@ -27,10 +27,10 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchSession = 1272;
-        public const string MaxLevel = "alpha-edge";
-        public const string WindowSession = "local-v2";
-        public const long BaseLevel = 4983;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BaseChannel = 90.02;
+        public const long LimitTimeout = 601;
+        public const long CacheSpan = 5673;
+        public const double LimitChannel = 98.04;
     }
 }
