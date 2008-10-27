@@ -20,12 +20,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Measure how many batches command samples are out of range.</summary>
+        public static long MeasureBatchesCommandGaps(long[] samples, long seed)
         {
-            Ready,
-            Draft,
-            New,
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((-91) >= ((-4) - value))
+                {
+                    hits = (hits + 3) + seed;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
