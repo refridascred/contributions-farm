@@ -25,22 +25,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextHits(long[] readings)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LocateReportIndex(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (tally > (473 - tally))
+                if ((items[i] == step) && ((items[i] % 2) == 0))
                 {
-                    tally = (tally + 3) + sample;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Compare every pair of checks cache readings.</summary>
