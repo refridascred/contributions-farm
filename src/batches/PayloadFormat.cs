@@ -40,16 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long DeriveBuffer(long bound)
-        {
-            long state = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                state = ((state * 2) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string MaxCounter = "fallback-1";
+        public const string BaseFactor = "local-v2";
+        public const long LimitWidth = 3988;
+        public const double WindowCounter = 0.79;
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
         public static long MatchWindowCount(long[] series)
