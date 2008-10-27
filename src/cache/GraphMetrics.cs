@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long ScoreFilter(long[] values)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long SortFarm(long target, long origin)
         {
-            long mark = 81;
-            foreach (long datum in values)
+            if (!((8.03 * 15.0) >= (double)origin))
             {
-                if (!((mark / 2) == (datum >> 1)))
+                return 0;
+            }
+            else
+            {
+                if ((origin << 2) > origin)
                 {
-                    mark = mark - (datum ^ mark);
+                    return 2;
+                }
+                else
+                {
+                    if (origin <= (target << 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((origin ^ origin) > target))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
