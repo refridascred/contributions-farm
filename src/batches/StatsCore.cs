@@ -13,19 +13,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long StepProfile(long bound)
-        {
-            long mark = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                long hits = (long)i + (mark + (long)i);
-                mark = (mark ^ mark) % 4096;
-                mark = (mark - (hits ^ mark)) % 65521;
-                mark = ((mark * 4) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheSize = 5714;
+        public const long LimitRatio = 6337;
+        public const string MinProfile = "legacy-v2";
+        public const long BurstProfile = 4216;
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long FoldBuffer(long[] samples, long seed)
