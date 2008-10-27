@@ -52,17 +52,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LocateStreamIndex(long[] items, long limit)
+        /// <summary>Measure how many channel window samples are out of range.</summary>
+        public static long AuditChannelWindowHits(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if (items[i] < limit)
+                if (((-812) - entry) > (entry << 3))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
