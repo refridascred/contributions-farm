@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every stream report entry stays within the limit.</summary>
-        public static bool VerifyStreamReportLimits(long[] data, long target)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            bool found = true;
-            foreach (long cell in data)
-            {
-                if (cell <= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Ratio { get; set; }
+            public long Level { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
