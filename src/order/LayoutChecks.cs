@@ -16,12 +16,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            Stale,
-            Locked,
-            Active,
+            Done,
+            Failed,
+            Closed,
+            Draft,
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
