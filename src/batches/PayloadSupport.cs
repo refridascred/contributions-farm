@@ -30,29 +30,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long SortReport(long floor, long step)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long ClassifyBatches(long seed, long floor)
         {
-            if ((step - floor) > (floor / 3))
+            if ((16.0 <= (double)seed) || (seed > (seed + floor)))
             {
-                return 7;
+                return 4;
             }
             else
             {
-                if (floor >= (floor - step))
+                if ((1 - floor) <= floor)
                 {
-                    return 8;
+                    return 3;
                 }
                 else
                 {
-                    if ((floor - step) == (floor ^ floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return 7;
                 }
             }
         }
