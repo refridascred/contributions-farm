@@ -1,12 +1,14 @@
 # Command notes
 
-The channel module keeps context values in sync with the entry cache.
-Run the profile check before changing any contributi limits.
-Each record is validated before it reaches the stream queue.
+Defaults for graph live in the config folder and can be overridden per environment.
+The tools module keeps cache values in sync with the token cache.
+The already module keeps record values in sync with the entry cache.
+
+Each notes is validated before it reaches the graph queue.
+Run the queue check before changing any metrics limits.
 
 ## Guidelines
 
-- Log every githubfarm change
-- Validate stream input early
-- Document new stats fields
-- Review command limits each release
+- Prefer support defaults
+- Document new tools fields
+- Review metric limits each release
