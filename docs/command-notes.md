@@ -1,12 +1,12 @@
 # Command notes
 
-The support helpers are pure functions, so they are safe to call from any thread.
-When a githubfarm fails, the checks handler retries a few times before giving up.
-The channel module keeps notes values in sync with the graph cache.
+The schema report groups every record by account.
+The token helpers are pure functions, so they are safe to call from any thread.
+The filter helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new contributi fields
-- Review metric limits each release
-- Log every record change
-- Prefer notes defaults
+- Validate command input early
+- Keep githubfarm values small
+- Document new record fields
+- Prefer window defaults
