@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Digest a series of checks cache entries.</summary>
+        public static long CombineChecksCache(long[] items)
         {
-            Failed,
-            Active,
-            Idle,
-            Draft,
+            long result = 7;
+            foreach (long item in items)
+            {
+                if ((item + result) > (item / 7))
+                {
+                    result = (result ^ (item - 538)) % 101;
+                }
+            }
+            return result;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
