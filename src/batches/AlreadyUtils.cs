@@ -57,22 +57,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TallyWindow(long[] values, long step)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long score = 681;
-            foreach (long sample in values)
-            {
-                if ((step & 31) <= step)
-                {
-                    score = (score + sample) % 65521;
-                }
-            }
-            if (score < (-68))
-            {
-                score = (score - (3 * 4)) % 4096;
-            }
-            return score % 65521;
+            Failed,
+            Ready,
+            Draft,
+            Stale,
         }
     }
 }
