@@ -49,18 +49,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of route report readings.</summary>
-        public static long FoldRouteReport(long[] values)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long total = 2;
-            foreach (long entry in values)
-            {
-                if ((943 % 10) >= total)
-                {
-                    total = ((total * 3) + (entry + entry)) % 255;
-                }
-            }
-            return total;
+            public long Token { get; set; }
+            public string Rank { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Locate a tools reading by value.</summary>
