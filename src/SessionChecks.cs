@@ -33,11 +33,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double HardGithubfarm = 42.13;
-        public const long SoftGithubfarm = 7169;
-        public const double BaseGithubfarm = 7.02;
-        public const string CacheScore = "stable-edge";
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double RetryCommits = 39.71;
+        public const string MinRatio = "primary-v2";
+        public const long BaseCommits = 2894;
+        public const string HardTimeout = "staging-v2";
+        public const long BatchCommits = 1763;
 
         /// <summary>Grade a support value against two limits.</summary>
         public static long SortSupport(long step, long step2)
