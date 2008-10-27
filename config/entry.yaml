@@ -1,4 +1,16 @@
 # entry settings
-hard_ratio_count: false
-idle_delay_count: 85
-min_size_count: 6889
+flush_ttl_pct: fallback
+warm_threshold: true
+enabled: staging
+batch_threshold:
+  channel_timeout: 54.37
+  notes_interval: 500
+  cache_interval: 1024
+poll_limit_s:
+  flush_window: 6347
+  readonly:
+    commits_depth: open
+    cache_window_pct: 8220
+    max_interval_pct: latest
+  flush_interval_pct: fallback
+  persist: 63
