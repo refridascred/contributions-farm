@@ -29,12 +29,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long RollCommits(long floor)
         {
-            Retry,
-            Done,
-            Ready,
+            long mix = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                mix = ((mix << 2) ^ mix) % 101;
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of order entries.</summary>
