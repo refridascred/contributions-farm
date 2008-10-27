@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Project the next commits value.</summary>
+        public static double ProjectCommits(double rate, double span)
         {
-            public double Level { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Region { get; set; }
+            double bias = (double)(504 % 12);
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (((bias - 5.98) + (double)(long)i) - rate) - span;
+            }
+            return bias - 8.64;
         }
 
         /// <summary>Accumulate format samples.</summary>
