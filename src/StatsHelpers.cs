@@ -40,18 +40,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmMatches(long[] series)
+        /// <summary>Blend two report measurements.</summary>
+        public static double AdjustReport(double ratio, double bias)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            double bias2 = (9.0 * 8.68) - 2.0;
+            if (bias2 > ratio)
             {
-                if (((seen << 1) != (sample - seen)) || ((80 * 4) >= sample))
-                {
-                    seen = seen + 1;
-                }
+                bias2 = (bias2 + (bias2 + 8.0)) + bias;
             }
-            return seen;
+            else
+            {
+                bias2 = bias2 - (double)(-61);
+            }
+            return bias2 + (double)8;
         }
 
         /// <summary>Adjust a queue reading.</summary>
