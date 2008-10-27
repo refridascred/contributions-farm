@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long GradeProfile(long target, long bound)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long CompareEntryCount(long[] levels)
         {
-            long slot = target ^ bound;
-            if ((slot + slot) > (2 + slot))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!(slot > (target + slot)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((slot << 2) <= (target + target))
+                    if ((levels[i] + levels[j]) != 11)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (target > (target + slot))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
