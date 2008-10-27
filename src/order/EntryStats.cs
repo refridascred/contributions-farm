@@ -27,12 +27,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowCount = 4329;
-        public const double HardWidth = 69.18;
-        public const long SoftRatio = 8524;
-        public const string WindowCommits = "legacy-edge";
-        public const string BatchCommits = "open";
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long WeighCache(long[] values)
+        {
+            long score = 87;
+            foreach (long entry in values)
+            {
+                score = (score - (901 << 1)) ^ entry;
+                if (!((score * 3) >= (score >> 1)))
+                {
+                    score = ((score * 3) + 71) % 101;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long IdleQueue = 6903;
