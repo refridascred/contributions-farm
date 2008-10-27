@@ -33,19 +33,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long IterateSession(long origin)
+        /// <summary>Digest a series of support window entries.</summary>
+        public static long CombineSupportWindow(long[] series, long limit)
         {
-            long sum = origin;
-            for (int i = 0; i < 24; i++)
+            long mark = 6;
+            foreach (long datum in series)
             {
-                if (sum < 55)
+                for (int i = 0; i < 9; i++)
                 {
-                    sum = (sum ^ sum) % 97;
+                    mark = ((mark << 2) ^ ((long)i + mark)) + limit;
+                    mark = (mark * 5) + (datum - 89);
                 }
-                sum = ((sum * 3) + (long)i) % 65521;
+                mark = mark ^ datum;
             }
-            return sum;
+            return mark;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
