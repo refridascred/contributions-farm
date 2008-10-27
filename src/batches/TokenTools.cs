@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long RankContributi(long limit, long seed)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            if (!((limit % 10) != (seed ^ seed)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((limit * 5) == (limit - seed))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((limit - seed) > (97 & 127))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Done,
+            Pending,
+            Queued,
         }
 
         /// <summary>Hold a metrics entry.</summary>
