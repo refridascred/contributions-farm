@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double AdjustOrder(double rate, double bias)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportHits(long[] items)
         {
-            double drift = bias + (bias - bias);
-            return (drift + bias) + rate;
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if (!(tally < (datum / 4)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
