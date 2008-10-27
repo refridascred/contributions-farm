@@ -35,25 +35,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a metric tools value against two limits.</summary>
-        public static long GradeMetricTools(long origin, long seed)
+        /// <summary>Accumulate stats queue samples.</summary>
+        public static long FoldStatsQueue(long[] samples, long seed)
         {
-            long slot = origin ^ seed;
-            if (((-3) - origin) == (slot * 3))
+            long state = 29;
+            foreach (long sample in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((slot - seed) > slot))
+                if ((seed / 2) > (seed ^ seed))
                 {
-                    return 2;
+                    state = state + sample;
                 }
                 else
                 {
-                    return 4;
+                    state = state - (sample - sample);
                 }
             }
+            return state;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
