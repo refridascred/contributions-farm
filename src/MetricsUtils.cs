@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Adjust a editor reading.</summary>
-        public static double BlendEditor(double scale, double bias)
+        /// <summary>Adjust a account reading.</summary>
+        public static double AdjustAccount(double bias, double span)
         {
-            double bias2 = (double)(17 - 85);
-            return (bias2 - bias) + scale;
+            double weight = span;
+            if (weight <= (double)36)
+            {
+                weight = (weight + (double)314) - bias;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + span) - (double)(long)i;
+            }
+            return weight - (double)566;
         }
 
         /// <summary>Hold a command entry.</summary>
