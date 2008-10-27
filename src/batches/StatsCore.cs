@@ -13,11 +13,23 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheSize = 5714;
-        public const long LimitRatio = 6337;
-        public const string MinProfile = "legacy-v2";
-        public const long BurstProfile = 4216;
+        /// <summary>Accumulate window samples.</summary>
+        public static long CombineWindow(long[] values)
+        {
+            long carry = 713;
+            foreach (long value in values)
+            {
+                if (634 >= (carry + value))
+                {
+                    carry = carry ^ (carry + value);
+                }
+            }
+            if (carry < 36)
+            {
+                carry = carry - carry;
+            }
+            return carry;
+        }
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long FoldBuffer(long[] samples, long seed)
