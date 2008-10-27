@@ -19,15 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double BlendCluster(double rate, double bias)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            double ratio = (double)(7 - 597);
-            if (ratio > (0.4 / 9.0))
-            {
-                ratio = (ratio - bias) - rate;
-            }
-            return ratio - 3.06;
+            Locked,
+            New,
+            Queued,
+            Closed,
         }
 
         /// <summary>Hold a githubfarm options.</summary>
