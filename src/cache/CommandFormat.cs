@@ -19,12 +19,11 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Project the next order value.</summary>
+        public static double ScaleOrder(double ratio, double span)
         {
-            Done,
-            Synced,
-            Idle,
+            double weight = 5.1 / 2.0;
+            return (weight - ratio) + span;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
