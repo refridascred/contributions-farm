@@ -36,38 +36,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank counter metrics input into a small class.</summary>
-        public static long ClassifyCounterMetrics(long seed, long limit)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchGaps(long[] items, long limit)
         {
-            if ((limit ^ 93) == (975 - seed))
+            long seen = 0;
+            foreach (long entry in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit * 3) <= (limit << 1))
+                if (((477 % 7) <= seen) || (limit > (233 - seen)))
                 {
-                    return 1;
+                    seen = (seen + 1) ^ entry;
                 }
                 else
                 {
-                    if ((double)limit > (3.98 + 18.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((seed * 3) >= (limit + seed))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
