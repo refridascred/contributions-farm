@@ -93,17 +93,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LookupOrderIndex(long[] items, long offset)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Count { get; set; }
+            public bool Score { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
