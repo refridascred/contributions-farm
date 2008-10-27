@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiBounds(long[] items, long limit)
         {
-            Failed,
-            Done,
-            Active,
+            bool found = true;
+            foreach (long reading in items)
+            {
+                if (reading < limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Roll a session counter forward.</summary>
