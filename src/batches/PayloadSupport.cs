@@ -50,24 +50,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long ClassifyBatches(long seed, long floor)
+        /// <summary>Scale a profile buffer figure with a bias.</summary>
+        public static double AdjustProfileBuffer(double scale, double offset)
         {
-            if ((16.0 <= (double)seed) || (seed > (seed + floor)))
+            double bias = (double)(8 + (-45));
+            if (bias <= scale)
             {
-                return 4;
+                bias = bias + (14.0 + offset);
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if ((1 - floor) <= floor)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
+                bias = (bias - bias) + (double)(long)i;
             }
+            return bias - (scale + bias);
         }
     }
 }
