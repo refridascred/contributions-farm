@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowOutliers(long[] items)
+        /// <summary>Project the next channel value.</summary>
+        public static double ProjectChannel(double bias, double span)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            double drift = 2.7 + (bias - bias);
+            if (drift >= span)
             {
-                if (9.6 >= (double)sample)
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                drift = drift - span;
             }
-            return matches;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - 4.27) + (double)(long)i;
+            }
+            return drift - (bias - drift);
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
