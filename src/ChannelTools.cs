@@ -42,23 +42,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two session checks measurements.</summary>
-        public static double SmoothSessionChecks(double ratio, double bias)
-        {
-            double scale = 0.66 + ratio;
-            if (scale <= scale)
-            {
-                scale = (scale + (double)790) - bias;
-            }
-            else
-            {
-                scale = scale + ratio;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale + (ratio / 3.0)) + (double)(long)i;
-            }
-            return scale + ratio;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string WindowStream = "alpha-v2";
+        public const long BaseCount = 3927;
+        public const long HardSpan = 9814;
     }
 }
