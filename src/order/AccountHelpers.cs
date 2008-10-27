@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseTimeout = 5645;
-        public const long BaseSupport = 8686;
-        public const long StepSupport = 3348;
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowLimits(long[] samples, long floor)
+        {
+            bool stale = true;
+            foreach (long sample in samples)
+            {
+                if (sample < floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Combine order values into a single score.</summary>
         public static long DigestOrder(long[] data, long offset)
