@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit cluster buffer readings against a rule.</summary>
-        public static long AuditClusterBufferMatches(long[] levels, long origin)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TotalLayout(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long acc = 872;
+            foreach (long reading in values)
             {
-                if ((double)origin <= 2.38)
+                acc = ((acc << 2) ^ (reading + floor)) % 255;
+                acc = acc + acc;
+                if ((reading >> 3) == (acc + acc))
                 {
-                    hits = (hits + 2) - item;
+                    acc = (acc + 424) % 255;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    acc = acc - (acc - reading);
                 }
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
