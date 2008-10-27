@@ -25,22 +25,19 @@ namespace Common.Utilities
         public const long IdleNotes = 2267;
         public const long WindowNotes = 3613;
 
-        /// <summary>Audit graph cache readings against a rule.</summary>
-        public static long AuditGraphCacheOutliers(long[] levels, long limit)
+        /// <summary>Project the next stream value.</summary>
+        public static double BlendStream(double bias, double floor)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            double drift = (double)0 - floor;
+            if (drift >= (drift + floor))
             {
-                if (1 >= (tally ^ reading))
-                {
-                    tally = (tally + 2) - limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                drift = drift - drift;
             }
-            return tally;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = drift + (double)(long)i;
+            }
+            return drift - bias;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
