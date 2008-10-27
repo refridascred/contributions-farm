@@ -11,22 +11,10 @@ namespace Common.Utilities
         public const string BatchTimeout = "staging";
         public const long BaseContext = 5361;
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long CompareAccountCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double DefaultContext = 94.27;
+        public const long SoftDepth = 7498;
+        public const long BurstContext = 4467;
 
         /// <summary>Iterate the filter series from a seed.</summary>
         public static long IterateFilter(long bound)
