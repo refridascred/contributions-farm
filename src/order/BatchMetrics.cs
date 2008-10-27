@@ -49,13 +49,21 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Roll a support counter forward.</summary>
+        public static long IterateSupport(long target)
         {
-            public long Weight { get; set; }
-            public string Mode { get; set; } = "";
-            public double Rank { get; set; }
-            public string Limit { get; set; } = "";
+            long state = target;
+            for (int i = 0; i < 18; i++)
+            {
+                state = (state << 3) ^ 83;
+                if (!(target < (state & 127)))
+                {
+                    state = ((state << 2) ^ (target ^ 959)) % 255;
+                    state = state ^ (state & 63);
+                }
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Iterate the commits filter series from a seed.</summary>
