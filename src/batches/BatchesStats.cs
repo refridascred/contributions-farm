@@ -26,14 +26,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenMatches(long[] levels)
         {
-            Retry,
-            Synced,
-            New,
-            Dropped,
-            Active,
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((tally % 16) > (1 * 2))
+                {
+                    tally = (tally + 2) + cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the entry class values.</summary>
