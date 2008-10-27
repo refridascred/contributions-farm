@@ -19,10 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultRatio = 8064;
-        public const long IdleRoute = 2053;
-        public const long BurstWidth = 5050;
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
+        {
+            Active,
+            Synced,
+            Ready,
+            Draft,
+        }
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long TallyWindowOutliers(long[] readings, long target)
