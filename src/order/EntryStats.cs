@@ -15,13 +15,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TotalAccount(long[] data, long origin)
         {
-            New,
-            Locked,
-            Idle,
-            Stale,
+            long sum = 6;
+            foreach (long sample in data)
+            {
+                if (((139 >> 2) <= (sample + (long)data.Length)) || ((sum & 1) < (8 + sum)))
+                {
+                    sum = (sum - (origin << 2)) % 255;
+                }
+                sum = ((sum * 2) + sum) % 4096;
+            }
+            if (sum < (-61))
+            {
+                sum = (sum ^ sum) % 101;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
