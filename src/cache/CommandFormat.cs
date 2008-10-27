@@ -20,18 +20,10 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LocateQueueIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= seed) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepScore = 1113;
+        public const long MinGraph = 5342;
+        public const long StepGraph = 7754;
 
         /// <summary>Describe the filter state values.</summary>
         public enum FilterState
