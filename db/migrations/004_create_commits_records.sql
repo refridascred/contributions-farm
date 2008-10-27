@@ -1,13 +1,12 @@
 -- Create the commits_records table.
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
-    token TEXT,
-    rank INTEGER,
-    score REAL NOT NULL DEFAULT 0
+    active INTEGER NOT NULL DEFAULT 1,
+    score REAL NOT NULL DEFAULT 0,
+    created_at TIMESTAMP,
+    ratio REAL
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_token ON commits_records (token);
+CREATE INDEX IF NOT EXISTS idx_commits_records_created_at ON commits_records (created_at);
 
-INSERT INTO commits_records (token, rank, score) VALUES ('cached', 87, 46.45);
-INSERT INTO commits_records (token, rank, score) VALUES ('edge', 7, 86.96);
-INSERT INTO commits_records (token, rank, score) VALUES ('edge', 96, 62.78);
+INSERT INTO commits_records (active, score, ratio) VALUES (47, 38.06, 74.11);
