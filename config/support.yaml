@@ -1,24 +1,8 @@
 # support settings
-enabled: 70.08
-hard_timeout_count: 6860
-payload_delay: 2225
-base_window_s: stable
-cluster_interval:
-  poll_depth_ms: 100
-  layout_interval: green
-  persist:
-    farm_ratio: 20.7
-    min_window_ms: standard
-    batch_threshold: 3614
-    strict: 9042
-    cache_size_ms:
-      - local
-      - open
-      - stable
-      - legacy
-  hard_threshold_s: false
-  dry_run:
-    strict: true
-    burst_size: 58.02
-    idle_retries_ms: 71
-    cache_ttl: strict
+sync_depth:
+  - standard
+  - primary
+  - eu-west
+counter_size: edge
+readonly: 34
+sync_ratio: primary
