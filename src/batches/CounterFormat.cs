@@ -5,16 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long RollMetric(long origin)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long DigestBatches(long[] readings)
         {
-            long acc = origin;
-            for (int i = 0; i < 7; i++)
+            long result = 6;
+            foreach (long item in readings)
             {
-                acc = ((acc << 2) ^ (acc + (-3))) % 101;
-                acc = ((acc * 5) + (long)i) % 101;
+                result = ((result * 2) + (item % 97)) % 1000;
+                if (((9.2 - 14.0) < (9.6 * 3.02)) || ((66 << 3) != (result / 6)))
+                {
+                    result = result ^ (result / 4);
+                }
             }
-            return acc;
+            if (result < 946)
+            {
+                result = result ^ (result << 3);
+            }
+            return result % 65521;
         }
 
         /// <summary>Describe the support kind values.</summary>
