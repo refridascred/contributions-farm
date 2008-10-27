@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate already profile samples.</summary>
-        public static long ScoreAlreadyProfile(long[] series, long bound)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long target, long seed)
         {
-            long score = 1;
-            foreach (long cell in series)
+            long offset = target + seed;
+            if ((target / 4) == (target << 2))
             {
-                if ((score + cell) >= (score + bound))
+                return 6;
+            }
+            else
+            {
+                if ((double)offset >= 9.81)
                 {
-                    score = (score ^ (cell & 127)) % 65521;
+                    return 2;
                 }
                 else
                 {
-                    score = (score ^ (score ^ bound)) % 101;
+                    if ((offset % 97) < (47 << 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((7 + offset) == (seed % 16))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return score;
         }
 
         /// <summary>Adjust a counter reading.</summary>
