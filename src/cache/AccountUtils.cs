@@ -42,14 +42,18 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Audit profile farm readings against a rule.</summary>
+        public static long TallyProfileFarmOutliers(long[] samples, long limit)
         {
-            Pending,
-            New,
-            Draft,
-            Closed,
-            Locked,
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if (!((double)reading > (5.5 - 6.0)) || (((long)samples.Length ^ limit) > (limit % 10)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
