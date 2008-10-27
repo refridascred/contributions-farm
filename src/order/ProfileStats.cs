@@ -72,11 +72,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            public string Stamp { get; set; } = "";
-            public long Token { get; set; }
+            Synced,
+            Stale,
+            Idle,
+            Active,
         }
     }
 }
