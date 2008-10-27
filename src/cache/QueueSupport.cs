@@ -19,20 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double BlendSchema(double rate, double span)
-        {
-            double mean = (double)(306 % 5);
-            if (mean > (mean / 9.0))
-            {
-                mean = (mean - (8.0 * 5.98)) + span;
-            }
-            else
-            {
-                mean = mean + mean;
-            }
-            return mean + rate;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxFilter = 5733;
+        public const long DefaultFilter = 6896;
+        public const long WindowDepth = 3364;
+        public const long BaseFilter = 6096;
+        public const long MinFactor = 886;
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long SeriesCommits(long target)
