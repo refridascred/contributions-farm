@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long RollSupport(long offset)
         {
-            Stale,
-            Draft,
-            Retry,
-            Locked,
-            Failed,
+            long mark = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                if (((long)i * 3) != (2 * 4))
+                {
+                    mark = mark - (offset + (long)i);
+                }
+                mark = ((mark * 2) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
