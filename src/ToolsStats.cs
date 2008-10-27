@@ -62,12 +62,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            Stale,
-            Locked,
-            New,
+            public long Offset { get; set; }
+            public double Ratio { get; set; }
+            public double Score { get; set; }
+            public double Count { get; set; }
         }
     }
 }
