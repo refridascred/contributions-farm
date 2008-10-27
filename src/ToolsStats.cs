@@ -39,22 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferHits(long[] levels, long floor)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if (((double)reading >= (double)count) || (floor > (20 % 100)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Done,
+            Failed,
+            Active,
         }
 
         /// <summary>Combine farm values into a single score.</summary>
