@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long StepCommand(long step)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long CompareLayoutCount(long[] levels)
         {
-            long acc = step;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = ((acc * 5) + (long)i) % 1000;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 0)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Define format limits and defaults.</summary>
