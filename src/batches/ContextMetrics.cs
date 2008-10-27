@@ -28,13 +28,14 @@ namespace Common.Utilities
         public const long BaseTimeout = 1309;
         public const long CacheStats = 2383;
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            Pending,
-            Dropped,
-            Draft,
+            Idle,
             Closed,
+            Paused,
+            Active,
+            Pending,
         }
 
         /// <summary>Hold a report stats.</summary>
