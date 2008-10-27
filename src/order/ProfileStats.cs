@@ -41,11 +41,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            public long Ratio { get; set; }
-            public bool Flag { get; set; }
+            Ready,
+            Queued,
+            Draft,
         }
     }
 }
