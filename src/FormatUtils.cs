@@ -46,28 +46,29 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long GradeSchema(long floor, long floor2)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long SortBuffer(long target, long target2)
         {
-            if ((double)floor != (double)368)
+            long offset = target ^ target2;
+            if ((offset + target2) > 8)
             {
-                return 4;
+                return 8;
             }
             else
             {
-                if ((double)floor2 < (0.9 / 9.0))
+                if (target2 < (target * 3))
                 {
-                    return 5;
+                    return 4;
                 }
                 else
                 {
-                    if ((2.3 - 2.16) >= (double)floor2)
+                    if (((2.94 * 9.0) >= (double)offset) && ((target >> 3) <= (target2 + target)))
                     {
-                        return 8;
+                        return 2;
                     }
                     else
                     {
-                        return 6;
+                        return 0;
                     }
                 }
             }
