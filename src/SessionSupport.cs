@@ -27,18 +27,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the githubfarm counter entries that pass the check.</summary>
-        public static long CountGithubfarmCounterOutliers(long[] data, long origin)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((matches * 4) > (origin / 7))
-                {
-                    matches = (matches + 3) - value;
-                }
-            }
-            return matches;
+            public double Mode { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Offset { get; set; }
+            public long Label { get; set; }
         }
     }
 }
