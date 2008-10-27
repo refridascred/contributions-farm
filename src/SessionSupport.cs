@@ -20,18 +20,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] series)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long CompareCommandCount(long[] series)
         {
-            long total = 73;
-            foreach (long item in series)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((6 % 3) != (total & 31))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = ((total + (total & 15)) % 4096) - item;
+                    if ((series[i] - series[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return total;
+            return hits;
         }
     }
 }
