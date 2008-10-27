@@ -1,5 +1,7 @@
 {
-  "sync_ttl_count": "standard",
-  "base_threshold_ms": ["blue", "edge"],
-  "stream_delay": "eu-west"
+  "warm_ttl_ms": 40.19,
+  "default_interval_count": 5077,
+  "notes_interval": [419, 101, 139, 450],
+  "readonly": 30,
+  "route_ttl": 5638
 }
