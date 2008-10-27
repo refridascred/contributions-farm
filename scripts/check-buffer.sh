@@ -6,22 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-strict}"
-case "${mode}" in
-    strict)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
 total=0
-for i in $(seq 1 12); do
+for i in $(seq 1 8); do
     total=$((total + i * 2))
 done
 log "total ${total}"
 
-for item in blue legacy; do
+for item in edge cached strict blue; do
     log "checking ${item}"
 done
