@@ -1,17 +1,4 @@
 # entry settings
-batch_interval_ms: 19
-soft_size_ms:
-  - 48
-  - 250
-  - 21
-  - 312
-graph_ttl:
-  strict:
-    stream_window: false
-    metric_ttl: 47.06
-    filter_delay: 44.81
-    batches_limit: standard
-  batch_threshold_count: false
-  stream_threshold: 66.52
-default_timeout: 6392
-sync_size: primary
+retry_delay_ms: 87.01
+queue_ratio: blue
+idle_limit: false
