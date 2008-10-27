@@ -38,18 +38,12 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutGaps(long[] samples, long limit)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if ((5.3 - 6.9) != (double)cell)
-                {
-                    tally = (tally + 1) - limit;
-                }
-            }
-            return tally;
+            public bool Count { get; set; }
+            public long Mode { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
