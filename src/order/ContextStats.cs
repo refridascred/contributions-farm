@@ -19,19 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutBounds(long[] levels, long offset)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long FoldCache(long[] items, long floor)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            long carry = 170;
+            foreach (long value in items)
             {
-                if (entry >= offset)
-                {
-                    valid = false;
-                    break;
-                }
+                carry = (((carry ^ (6 * 4)) % 97) ^ value) + floor;
             }
-            return valid;
+            return carry % 1000;
         }
 
         /// <summary>Fold a list of batches schema readings.</summary>
