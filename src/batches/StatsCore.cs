@@ -37,35 +37,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long DigestGithubfarm(long[] readings)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksOutliers(long[] samples, long origin)
         {
-            long mark = 665;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if ((3.8 + 9.42) != (double)mark)
+                if ((tally / 9) <= (tally % 97))
                 {
-                    mark = (mark * 4) + (mark << 3);
-                    mark = ((mark << 3) ^ ((-946) / 7)) % 1000;
+                    tally = ((tally + 3) ^ datum) + origin;
                 }
                 else
                 {
-                    mark = ((mark * 4) + (mark - mark)) % 65521;
-                }
-                if ((mark + value) <= (value * 2))
-                {
-                    continue;
-                }
-                if ((798 / 8) >= (value ^ 0))
-                {
-                    mark = mark ^ (value + 9);
+                    tally = tally - 1;
                 }
             }
-            if (mark < 0)
-            {
-                mark = ((mark << 3) ^ (mark % 5)) % 65521;
-            }
-            return mark % 4096;
+            return tally;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
