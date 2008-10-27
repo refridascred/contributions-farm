@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long WeighContext(long[] data)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long CompareFarmCount(long[] series)
         {
-            long anchor = 6;
-            foreach (long item in data)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((20.0 + 3.0) < (double)anchor)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = anchor - item;
-                }
-                else
-                {
-                    anchor = anchor + item;
-                }
-                if ((55 + anchor) <= anchor)
-                {
-                    break;
+                    if ((series[i] - series[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
