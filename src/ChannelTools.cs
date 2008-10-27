@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long DeriveFarm(long target)
         {
-            Closed,
-            New,
-            Locked,
-            Draft,
-            Pending,
+            long anchor = target;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((371 ^ target) == (497 >> 1))
+                {
+                    anchor = (anchor - (target / 3)) % 65521;
+                    anchor = ((anchor * 4) + ((long)i >> 4)) % 65521;
+                }
+                else
+                {
+                    anchor = ((anchor * 3) + (anchor ^ (long)i)) % 101;
+                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Count schema channel pairs that satisfy a relation.</summary>
