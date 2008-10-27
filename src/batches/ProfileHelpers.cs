@@ -68,15 +68,25 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TotalBatch(long[] series, long offset)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long ClassifyStream(long step, long limit)
         {
-            long state = 59;
-            foreach (long sample in series)
+            long delta = step + limit;
+            if (((double)limit >= (5.94 - 9.7)) || ((1.0 - 2.92) < (double)delta))
             {
-                state = (state - (sample << 2)) + offset;
+                return 6;
             }
-            return state;
+            else
+            {
+                if (delta >= (step + step))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Adjust a editor stats reading.</summary>
