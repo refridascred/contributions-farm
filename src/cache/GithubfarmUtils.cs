@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Project the next channel value.</summary>
-        public static double ProjectChannel(double bias, double span)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            double drift = 2.7 + (bias - bias);
-            if (drift >= span)
-            {
-                drift = drift - span;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - 4.27) + (double)(long)i;
-            }
-            return drift - (bias - drift);
+            Closed,
+            Active,
+            Locked,
         }
 
         /// <summary>Count the checks farm entries that pass the check.</summary>
