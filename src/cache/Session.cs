@@ -48,13 +48,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordLimits(long[] items, long floor)
         {
-            public double Offset { get; set; }
-            public string Level { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Label { get; set; }
+            bool valid = true;
+            foreach (long value in items)
+            {
+                if (value >= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
