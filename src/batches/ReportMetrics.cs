@@ -34,25 +34,13 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Digest a series of batch queue entries.</summary>
-        public static long TotalBatchQueue(long[] values)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long state = 5;
-            foreach (long cell in values)
-            {
-                if (cell <= (state >> 4))
-                {
-                    state = state - state;
-                }
-                if ((state + cell) > (cell - cell))
-                {
-                    long lane = 52 & 255;
-                    state = (state ^ (lane + state)) % 101;
-                    continue;
-                }
-                state = (state + cell) % 101;
-            }
-            return state % 97;
+            Draft,
+            Done,
+            Active,
+            Synced,
         }
     }
 }
