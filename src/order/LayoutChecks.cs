@@ -40,12 +40,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string DefaultWidth = "stable-edge";
-        public const long IdleBudget = 6078;
-        public const double MinTimeout = 58.29;
-        public const long StepDepth = 7455;
-        public const double BurstDepth = 3.99;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long WindowSession = 8760;
+        public const double RetrySession = 91.02;
+        public const long BatchSession = 3367;
+        public const long HardSession = 8695;
 
         /// <summary>Describe the batches phase values.</summary>
         public enum BatchesPhase
