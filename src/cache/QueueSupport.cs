@@ -25,25 +25,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long GradeMetrics(long target, long step)
+        /// <summary>Derive the next command channel value from a seed.</summary>
+        public static long DeriveCommandChannel(long bound)
         {
-            long span = target ^ step;
-            if (target <= (span * 5))
+            long mark = bound;
+            for (int i = 0; i < 4; i++)
             {
-                return 2;
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if (span < (target >> 5))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return mark;
         }
     }
 }
