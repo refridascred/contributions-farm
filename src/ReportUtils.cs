@@ -19,13 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyOutliers(long[] items)
         {
-            Active,
-            Synced,
-            Ready,
-            Draft,
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((18.0 / 3.0) == (double)item)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the token phase values.</summary>
