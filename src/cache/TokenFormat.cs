@@ -31,19 +31,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long ScoreSchema(long[] readings, long limit)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long state = 440;
-            foreach (long datum in readings)
-            {
-                state = (((state - state) % 101) + datum) - limit;
-            }
-            if (state > 9)
-            {
-                state = (state + (95 + state)) % 4096;
-            }
-            return state;
+            public long Label { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
