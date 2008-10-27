@@ -14,22 +14,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] data, long limit)
+        /// <summary>Digest a series of format metric entries.</summary>
+        public static long ScoreFormatMetric(long[] items, long bound)
         {
-            long anchor = 0;
-            foreach (long sample in data)
+            long result = 372;
+            foreach (long entry in items)
             {
-                if (anchor > (anchor ^ sample))
-                {
-                    anchor = ((anchor * 2) + 6) - limit;
-                }
-                else
-                {
-                    anchor = (anchor * 3) + (anchor - anchor);
-                }
+                result = (((result << 2) ^ (result - 91)) - entry) - bound;
             }
-            return anchor;
+            if (result > (-6))
+            {
+                result = ((result * 4) + (9 % 10)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Measure how many farm schema samples are out of range.</summary>
