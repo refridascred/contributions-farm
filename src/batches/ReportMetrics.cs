@@ -5,16 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long IterateLayout(long limit)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TotalSession(long[] series)
         {
-            long score = limit;
-            for (int i = 0; i < 15; i++)
+            long anchor = 3;
+            foreach (long value in series)
             {
-                score = (score << 2) ^ (score + 99);
-                score = ((score * 3) + (long)i) % 101;
+                for (int i = 0; i < 8; i++)
+                {
+                    anchor = (anchor ^ ((long)series.Length & 63)) - (long)i;
+                }
+                anchor = (anchor * 4) + (value & 255);
+                if ((9.9 - 4.0) >= (double)value)
+                {
+                    anchor = anchor - (anchor / 2);
+                }
             }
-            return score;
+            return anchor % 65521;
         }
 
         /// <summary>Validate schema stream readings against a bound.</summary>
