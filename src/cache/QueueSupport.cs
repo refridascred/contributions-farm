@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TotalRecord(long[] levels, long origin)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LookupCommandIndex(long[] samples, long offset)
         {
-            long state = 7;
-            foreach (long cell in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((long)levels.Length >= 822)
+                if ((samples[i] <= offset) && ((samples[i] % 5) != 0))
                 {
-                    state = (((state - (777 * 5)) % 1000) ^ cell) - origin;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Accumulate farm samples.</summary>
