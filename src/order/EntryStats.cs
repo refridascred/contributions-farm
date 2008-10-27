@@ -23,19 +23,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long WeighCache(long[] values)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LocateCommandIndex(long[] series, long seed)
         {
-            long score = 87;
-            foreach (long entry in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                score = (score - (901 << 1)) ^ entry;
-                if (!((score * 3) >= (score >> 1)))
+                if (series[i] <= seed)
                 {
-                    score = ((score * 3) + 71) % 101;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
