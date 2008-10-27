@@ -32,21 +32,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long PairAccountCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxBuffer = 4995;
+        public const double IdleBuffer = 34.1;
+        public const double BaseBuffer = 66.57;
+        public const string BurstBuffer = "stable-edge";
+        public const long RetryCount = 4459;
     }
 }
