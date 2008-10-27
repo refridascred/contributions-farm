@@ -37,21 +37,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long MatchCounterCount(long[] readings)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Count { get; set; }
+            public string Offset { get; set; } = "";
+            public long Mode { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
