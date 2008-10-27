@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-BUFFER_LIMIT=383
-log "limit is ${BUFFER_LIMIT}"
-
-for item in primary legacy; do
+for item in staging local open eu-west; do
     log "checking ${item}"
 done
+
+BUFFER_LIMIT=341
+log "limit is ${BUFFER_LIMIT}"
