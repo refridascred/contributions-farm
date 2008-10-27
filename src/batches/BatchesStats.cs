@@ -16,13 +16,14 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            public long Region { get; set; }
-            public long Label { get; set; }
-            public string Count { get; set; } = "";
-            public long Stamp { get; set; }
+            Stale,
+            Draft,
+            Done,
+            Queued,
+            Paused,
         }
 
         /// <summary>Describe the editor mode values.</summary>
