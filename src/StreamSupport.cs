@@ -27,31 +27,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long GradeEditor(long seed, long target)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TallyOrder(long[] items, long bound)
         {
-            if (((seed >> 3) > 688) || ((seed + seed) == (target >> 3)))
+            long acc = 3;
+            foreach (long item in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((((-1) + seed) == (174 >> 5)) || ((double)target >= (1.0 * 15.0)))
+                if ((item >> 4) > (item * 4))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((target - seed) == (target - target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    acc = (acc + 96) - bound;
                 }
             }
+            return acc % 97;
         }
     }
 }
