@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long DigestFarm(long[] series)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowBounds(long[] items, long offset)
         {
-            long acc = 0;
-            foreach (long sample in series)
+            bool stale = true;
+            foreach (long cell in items)
             {
-                acc = ((acc << 3) ^ (acc - acc)) - sample;
+                if (cell > offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (acc < 887)
-            {
-                acc = ((acc << 2) ^ (acc >> 1)) % 97;
-            }
-            return acc % 65521;
+            return stale;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
