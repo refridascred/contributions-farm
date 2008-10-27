@@ -74,10 +74,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitSpan = 2426;
-        public const long HardWindow = 2880;
-        public const string DefaultWindow = "alpha-1";
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
+        {
+            Draft,
+            New,
+            Done,
+            Retry,
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long RetryRatio = 6099;
