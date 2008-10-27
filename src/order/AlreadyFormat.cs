@@ -11,12 +11,25 @@ namespace Common.Utilities
         public const string IdleScore = "strict";
         public const long BaseCluster = 7964;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long HardScore = 6532;
-        public const string MaxPayload = "legacy";
-        public const long HardPayload = 2982;
-        public const long CacheBudget = 1036;
-        public const long DefaultScore = 8812;
+        /// <summary>Rank context input into a small class.</summary>
+        public static long RankContext(long step, long step2)
+        {
+            if ((double)step2 < (19.0 * 15.0))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step << 1) <= ((-982) + 7))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Scale a record figure with a bias.</summary>
         public static double SmoothRecord(double rate, double floor)
