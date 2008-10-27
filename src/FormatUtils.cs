@@ -55,32 +55,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long SortBuffer(long target, long target2)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long offset = target ^ target2;
-            if ((offset + target2) > 8)
-            {
-                return 8;
-            }
-            else
-            {
-                if (target2 < (target * 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((2.94 * 9.0) >= (double)offset) && ((target >> 3) <= (target2 + target)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public double Limit { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the queue kind values.</summary>
