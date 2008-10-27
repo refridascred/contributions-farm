@@ -47,20 +47,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long StepBatch(long offset)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long RollGraph(long floor)
         {
-            long sum = offset;
-            for (int i = 0; i < 11; i++)
+            long total = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if (((long)i >> 3) != (offset / 3))
-                {
-                    sum = (sum + (long)i) % 65521;
-                    continue;
-                }
-                sum = ((sum * 2) + (long)i) % 101;
+                total = (total * 3) + (total - 54);
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return sum;
+            return total;
         }
     }
 }
