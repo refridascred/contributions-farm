@@ -40,15 +40,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Scale a counter already figure with a bias.</summary>
-        public static double AdjustCounterAlready(double scale, double span)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            double load = (double)(53 ^ 759);
-            if (load >= (span - scale))
-            {
-                load = load + scale;
-            }
-            return load - (span - span);
+            Closed,
+            Dropped,
+            Stale,
+            Idle,
         }
     }
 }
