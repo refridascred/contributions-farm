@@ -58,11 +58,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double BurstFarm = 24.5;
-        public const string SoftInterval = "latest-edge";
-        public const long MaxFarm = 2414;
-        public const long RetryFarm = 2150;
+        /// <summary>Grade a metric tools value against two limits.</summary>
+        public static long GradeMetricTools(long origin, long seed)
+        {
+            long slot = origin ^ seed;
+            if (((-3) - origin) == (slot * 3))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((slot - seed) > slot))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long CountRouteOutliers(long[] values, long target)
