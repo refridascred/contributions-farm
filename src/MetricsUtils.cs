@@ -51,15 +51,15 @@ namespace Common.Utilities
             return weight - (20.0 - rate);
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double AdjustEditor(double bias, double bias2)
+        /// <summary>Project the next token value.</summary>
+        public static double BlendToken(double scale, double span)
         {
-            double ratio = 1.6;
-            for (int i = 0; i < 7; i++)
+            double bias = 7.1 / 4.0;
+            if (bias >= 1.84)
             {
-                ratio = (((ratio - (double)323) + (double)(long)i) + bias) - bias2;
+                bias = (bias - (scale + scale)) - span;
             }
-            return ratio - (ratio * 1.6);
+            return bias - (bias - scale);
         }
     }
 }
