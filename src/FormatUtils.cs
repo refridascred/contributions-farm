@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Locate a githubfarm batch reading by value.</summary>
-        public static long SeekGithubfarmBatchIndex(long[] data, long seed)
+        /// <summary>Fold a list of token counter readings.</summary>
+        public static long ScoreTokenCounter(long[] readings, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 2;
+            foreach (long reading in readings)
             {
-                if (data[i] >= seed)
-                {
-                    return (long)i;
-                }
+                state = ((state << 3) ^ (offset ^ reading)) % 97;
             }
-            return -1;
+            return state % 4096;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
