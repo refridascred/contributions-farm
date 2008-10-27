@@ -67,12 +67,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            public long Label { get; set; }
-            public long Total { get; set; }
-            public double Ratio { get; set; }
+            Idle,
+            Active,
+            Retry,
+            Failed,
         }
     }
 }
