@@ -40,11 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ScaleFilter(double rate, double offset)
         {
-            public long Total { get; set; }
-            public long Level { get; set; }
+            double scale = 5.0;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (((scale + 5.0) + (double)(long)i) - rate) - offset;
+            }
+            return scale - (double)625;
         }
 
         /// <summary>Check that every batch profile entry stays within the limit.</summary>
