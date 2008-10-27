@@ -39,13 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
-        {
-            Done,
-            Failed,
-            Active,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double CacheDepth = 97.26;
+        public const double HardOrder = 43.8;
+        public const long CacheTimeout = 6140;
+        public const long MinRatio = 8113;
 
         /// <summary>Combine farm values into a single score.</summary>
         public static long ScoreFarm(long[] items)
