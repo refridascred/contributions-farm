@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long SortWindow(long origin, long floor)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long edge = origin + floor;
-            if (!((floor % 12) <= (floor - edge)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (20 < edge)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public string Owner { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
