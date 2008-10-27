@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterRange(long[] readings, long seed)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenMatches(long[] values, long floor)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if (item < seed)
+                if ((floor + 801) <= (floor & 31))
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 2) + entry;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Hold a command summary.</summary>
