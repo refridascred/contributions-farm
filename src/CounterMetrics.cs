@@ -56,13 +56,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TallyNotes(long[] levels)
         {
-            public long Limit { get; set; }
-            public bool Level { get; set; }
-            public long Mode { get; set; }
-            public bool Stamp { get; set; }
+            long score = 472;
+            foreach (long reading in levels)
+            {
+                score = ((score ^ (score % 24)) % 1000) + reading;
+            }
+            if (score > 74)
+            {
+                score = ((score * 3) + score) % 255;
+            }
+            return score;
         }
     }
 }
