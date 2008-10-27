@@ -35,21 +35,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long OverlapStreamCount(long[] readings)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsMatches(long[] data, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)bound < 18.0)
                 {
-                    if ((readings[i] - readings[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 3) + item;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
