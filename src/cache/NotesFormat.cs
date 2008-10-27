@@ -26,21 +26,11 @@ namespace Common.Utilities
         public const long BatchDepth = 1244;
         public const long StepSize = 5380;
 
-        /// <summary>Count entry graph pairs that satisfy a relation.</summary>
-        public static long OverlapEntryGraphCount(long[] values)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Count { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
