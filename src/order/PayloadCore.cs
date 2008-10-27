@@ -54,15 +54,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
-        {
-            Failed,
-            Stale,
-            Queued,
-            Pending,
-            Done,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double LimitChannel = 33.6;
+        public const long IdleFactor = 3190;
+        public const long StepDepth = 6598;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long HardContributi = 4356;
