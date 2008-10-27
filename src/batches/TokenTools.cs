@@ -26,12 +26,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
-        {
-            New,
-            Retry,
-            Done,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BaseTools = 69.11;
+        public const long RetryTools = 3974;
+        public const long BaseTimeout = 2753;
+        public const long MaxInterval = 2502;
     }
 }
