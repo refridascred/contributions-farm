@@ -19,22 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the filter support entries that pass the check.</summary>
-        public static long CountFilterSupportGaps(long[] items)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordLimits(long[] data, long target)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                if ((3.1 / 6.0) < (double)matches)
+                if (cell > target)
                 {
-                    matches = (matches + 3) - cell;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Hold a already header.</summary>
