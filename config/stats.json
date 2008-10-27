@@ -1,8 +1,17 @@
 {
-  "tools_threshold": 1024,
-  "default_window_pct": 7,
-  "base_ttl_s": ["legacy", "stable"],
-  "idle_ratio": false,
-  "account_retries": "edge",
-  "idle_delay_count": 4854
+  "idle_delay_count": {
+    "sync_ratio_count": "fallback",
+    "format_interval": [104, 276, 213, 242],
+    "soft_interval": 6.69
+  },
+  "strict": {
+    "idle_timeout_count": [371, 100, 282, 160],
+    "cache_interval": true,
+    "metrics_depth": ["standard", "open", "primary", "legacy"],
+    "audit": "fallback",
+    "idle_timeout": 1272
+  },
+  "warm_limit_count": false,
+  "format_ttl": "edge",
+  "audit": 68.33
 }
