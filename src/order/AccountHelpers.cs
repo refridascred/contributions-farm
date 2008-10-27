@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteHits(long[] values)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesOutliers(long[] items)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if ((9.7 - 1.6) > (double)hits)
+                if ((cell + count) == (count * 5))
                 {
-                    hits = (hits + 2) ^ entry;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Combine order values into a single score.</summary>
