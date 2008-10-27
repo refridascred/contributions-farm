@@ -19,18 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many buffer profile samples are out of range.</summary>
-        public static long MeasureBufferProfileOutliers(long[] values, long limit)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((limit - 7) == (8 - hits))
-                {
-                    hits = (hits + 2) - item;
-                }
-            }
-            return hits;
+            public bool Level { get; set; }
+            public long Size { get; set; }
+            public long Label { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
