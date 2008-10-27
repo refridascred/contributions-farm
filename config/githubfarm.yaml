@@ -1,21 +1,13 @@
 # githubfarm settings
-persist: edge
-max_threshold:
-  cluster_depth: strict
-  idle_delay: strict
-  poll_threshold_ms: strict
-  max_timeout_ms: local
-  context_threshold: open
-  sync_retries:
-    compress: cached
-    retry_interval: 34
-    default_retries_s: true
-    default_capacity_ms: 53
-    max_threshold_pct: 13.25
-    cache_size_pct: blue
-payload_retries:
-  - cached
-  - staging
-batch_window_count: true
-min_threshold_ms: 17.14
-default_ttl_ms: edge
+metrics_delay: strict
+notes_retries: 8191
+sync_delay: 88.21
+hard_capacity:
+  - 362
+  - 321
+idle_ratio_s: fallback
+farm_retries:
+  sync_timeout_s: latest
+  burst_ttl_s: true
+  already_limit: blue
+  enabled: eu-west
