@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long RollQueue(long target)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long SortWindow(long origin, long floor)
         {
-            long state = target;
-            for (int i = 0; i < 11; i++)
+            long edge = origin + floor;
+            if (!((floor % 12) <= (floor - edge)))
             {
-                bool found = (long)i >= (85 + target);
-                if (found)
-                {
-                    found = (target - state) < ((long)i >> 2);
-                    continue;
-                }
-                state = ((state * 4) + (long)i) % 101;
+                return 3;
             }
-            return state;
+            else
+            {
+                if (20 < edge)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Grade a buffer tools value against two limits.</summary>
