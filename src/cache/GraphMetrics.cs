@@ -73,39 +73,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long SortCounter(long floor, long seed)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long CombineEntry(long[] samples)
         {
-            long lane = floor - seed;
-            if (((lane - 78) < (floor + floor)) || ((46 + seed) <= (70 + seed)))
+            long anchor = 34;
+            foreach (long entry in samples)
             {
-                return 2;
+                anchor = ((anchor + anchor) % 255) ^ entry;
             }
-            else
-            {
-                if ((floor % 2) > (seed + 4))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((0.4 - 3.96) <= (double)floor)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((lane - seed) != (20 & 255))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return anchor;
         }
     }
 }
