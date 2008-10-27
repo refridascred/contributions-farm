@@ -33,18 +33,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesOutliers(long[] levels)
-        {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if (5.0 < (double)item)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchSession = 1272;
+        public const string MaxLevel = "alpha-edge";
+        public const string WindowSession = "local-v2";
+        public const long BaseLevel = 4983;
     }
 }
