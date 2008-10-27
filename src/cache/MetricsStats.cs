@@ -43,19 +43,23 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double ProjectBatches(double ratio, double floor)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long CombineChannel(long[] readings, long floor)
         {
-            double load = (double)((-39) - 3);
-            if (load >= load)
+            long anchor = 6;
+            foreach (long cell in readings)
             {
-                load = (load + (floor * 5.99)) - ratio;
+                if ((cell / 4) > (anchor + floor))
+                {
+                    anchor = (anchor ^ (floor + 82)) % 97;
+                }
+                else
+                {
+                    anchor = anchor ^ anchor;
+                }
+                anchor = (anchor ^ (4 + floor)) % 255;
             }
-            else
-            {
-                load = load + (floor - floor);
-            }
-            return load + 3.05;
+            return anchor;
         }
 
         /// <summary>Blend two stats measurements.</summary>
