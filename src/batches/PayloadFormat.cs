@@ -63,25 +63,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long GradeStream(long floor, long floor2)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long bound = floor - floor2;
-            if ((double)floor2 != (double)bound)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((799 % 10) > floor2)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public bool Count { get; set; }
+            public long Offset { get; set; }
+            public bool Size { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
