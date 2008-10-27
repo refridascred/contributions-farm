@@ -26,21 +26,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long OverlapLayoutCount(long[] items)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Label { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Hold a session header.</summary>
