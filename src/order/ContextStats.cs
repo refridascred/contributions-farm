@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many checks metric samples are out of range.</summary>
-        public static long TallyChecksMetricMatches(long[] samples)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long ClassifyQueue(long origin, long seed)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long slot = origin - seed;
+            if (((slot << 2) >= origin) || ((slot * 5) >= slot))
             {
-                if ((entry - entry) == (entry % 24))
+                return 7;
+            }
+            else
+            {
+                if ((seed >= (537 >> 2)) || ((double)origin > 0.4))
                 {
-                    matches = matches + 3;
+                    return 2;
+                }
+                else
+                {
+                    if ((slot % 10) <= slot)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
