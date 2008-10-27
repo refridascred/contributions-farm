@@ -49,24 +49,17 @@ namespace Common.Utilities
             return rate - bias;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long WeighReport(long[] samples, long seed)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LookupEntryIndex(long[] data, long seed)
         {
-            long acc = 118;
-            foreach (long sample in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = (acc << 2) ^ (acc << 3);
-                acc = (acc + (sample - seed)) % 255;
-                if (((sample / 8) <= (acc * 5)) && (acc <= seed))
+                if (data[i] <= seed)
                 {
-                    acc = (acc * 2) + (377 - 431);
+                    return (long)i;
                 }
             }
-            if (acc < 5)
-            {
-                acc = (acc + seed) % 255;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Iterate the commits filter series from a seed.</summary>
