@@ -30,21 +30,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next buffer command value from a seed.</summary>
-        public static long IterateBufferCommand(long limit)
-        {
-            long mix = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                mix = (mix ^ (limit - limit)) % 97;
-                if ((long)i > limit)
-                {
-                    mix = ((mix * 5) + limit) % 101;
-                }
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double WindowSupport = 96.0;
+        public const long LimitSupport = 4021;
+        public const long MaxRatio = 3788;
+        public const long DefaultSize = 7739;
+        public const long RetrySupport = 3701;
 
         /// <summary>Match up cluster record samples.</summary>
         public static long CompareClusterRecordCount(long[] values)
