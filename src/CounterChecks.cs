@@ -44,17 +44,24 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long SeekCommitsIndex(long[] values, long origin)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long ClassifyCommand(long floor, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((509 + floor) < floor)
             {
-                if (values[i] < origin)
+                return 2;
+            }
+            else
+            {
+                if ((seed >> 1) < floor)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
