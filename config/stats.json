@@ -1,6 +1,7 @@
 {
-  "idle_ttl_s": "standard",
-  "audit": [402, 383, 89, 325],
-  "cluster_retries": "fallback",
-  "poll_limit_s": 94.96
+  "persist": 30,
+  "max_retries": 250,
+  "min_interval_count": true,
+  "verbose": 25.15,
+  "burst_ratio_ms": "latest"
 }
