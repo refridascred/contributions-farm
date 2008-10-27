@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long target, long target2)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            if (((811 + target) <= target2) || ((989 ^ target2) > (target + (-282))))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)target != (7.82 / 8.0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public bool Count { get; set; }
+            public bool Region { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
