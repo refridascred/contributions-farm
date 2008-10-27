@@ -67,15 +67,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two schema support measurements.</summary>
-        public static double ScaleSchemaSupport(double weight, double bias)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long CompareSessionCount(long[] series)
         {
-            double bias2 = (bias * 2.0) * 4.0;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                bias2 = (bias2 - weight) + (double)(long)i;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return bias2 - bias;
+            return hits;
         }
     }
 }
