@@ -40,22 +40,19 @@ namespace Common.Utilities
         public const long CacheBudget = 5148;
         public const double DefaultDepth = 1.38;
 
-        /// <summary>Accumulate stats queue samples.</summary>
-        public static long FoldStatsQueue(long[] samples, long seed)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ScaleContext(double gain, double span)
         {
-            long state = 29;
-            foreach (long sample in samples)
+            double drift = gain * 3.52;
+            if (drift <= (gain + drift))
             {
-                if ((seed / 2) > (seed ^ seed))
-                {
-                    state = state + sample;
-                }
-                else
-                {
-                    state = state - (sample - sample);
-                }
+                drift = drift - (drift * 19.0);
             }
-            return state;
+            else
+            {
+                drift = drift - span;
+            }
+            return drift + (7.16 - drift);
         }
 
         /// <summary>Audit route readings against a rule.</summary>
