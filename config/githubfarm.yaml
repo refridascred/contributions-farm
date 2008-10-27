@@ -1,5 +1,22 @@
 # githubfarm settings
-flush_delay_ms: 4359
-soft_depth: 34.86
-hard_retries: true
-entry_ttl: 67.63
+warm_depth: 10.12
+persist:
+  warm_capacity_count: 1024
+  cache_ratio_pct: stable
+  hard_capacity: green
+  burst_threshold: true
+  sync_ttl_ms:
+    max_capacity_count: stable
+    stream_timeout:
+      - standard
+      - stable
+      - latest
+      - staging
+    hard_depth_count: 70
+poll_delay_ms: 30
+flush_limit_s:
+  - legacy
+  - blue
+  - legacy
+  - local
+readonly: true
