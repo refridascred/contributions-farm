@@ -76,21 +76,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of route batches readings.</summary>
-        public static long PairRouteBatchesCount(long[] levels)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long CombineContributi(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 34;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                mix = ((mix * 2) + (753 - (long)samples.Length)) % 255;
+                if ((698 + mix) > mix)
                 {
-                    if ((levels[i] + levels[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = (mix ^ (cell + mix)) % 1000;
                 }
             }
-            return hits;
+            if (mix < (-1))
+            {
+                mix = ((mix * 2) + (mix % 60)) % 4096;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Describe the payload kind values.</summary>
