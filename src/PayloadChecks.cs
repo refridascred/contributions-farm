@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long WeighBuffer(long[] series, long bound)
         {
-            public long Rank { get; set; }
-            public bool Limit { get; set; }
-            public string Region { get; set; } = "";
+            long anchor = -45;
+            foreach (long cell in series)
+            {
+                if ((double)anchor != (double)cell)
+                {
+                    anchor = (anchor * 4) + (bound % 10);
+                }
+                else
+                {
+                    anchor = anchor - (cell ^ anchor);
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Hold a already stats.</summary>
