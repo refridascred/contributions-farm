@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long OverlapAlreadyCount(long[] readings)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferRange(long[] series, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (cell <= floor)
                 {
-                    if ((readings[i] - readings[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
