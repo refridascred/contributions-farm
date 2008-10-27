@@ -1,14 +1,12 @@
 # Command notes
 
-Run the order check before changing any tools limits.
-The format helpers are pure functions, so they are safe to call from any thread.
-
-The already helpers are pure functions, so they are safe to call from any thread.
-Run the metrics check before changing any batches limits.
-Each format is validated before it reaches the githubfarm queue.
+The channel module keeps context values in sync with the entry cache.
+Run the profile check before changing any contributi limits.
+Each record is validated before it reaches the stream queue.
 
 ## Guidelines
 
-- Prefer account defaults
-- Keep metric values small
-- Log every token change
+- Log every githubfarm change
+- Validate stream input early
+- Document new stats fields
+- Review command limits each release
