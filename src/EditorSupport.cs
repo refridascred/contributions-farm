@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            Done,
-            Dropped,
-            Pending,
-            Paused,
+            Failed,
+            Active,
             Synced,
+            Retry,
         }
 
         /// <summary>Fold a list of token readings.</summary>
