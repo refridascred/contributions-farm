@@ -39,13 +39,31 @@ namespace Common.Utilities
         public const double BaseGithubfarm = 7.02;
         public const string CacheScore = "stable-edge";
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long step, long step2)
         {
-            Draft,
-            Dropped,
-            Stale,
-            Closed,
+            if ((4 % 10) >= step2)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)step2 < (double)step)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((-77) >> 3) <= (step + step2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
