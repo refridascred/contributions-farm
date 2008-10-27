@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenBounds(long[] samples, long origin)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            bool found = true;
-            foreach (long sample in samples)
-            {
-                if (sample > origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Region { get; set; } = "";
+            public double Size { get; set; }
+            public bool Flag { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Roll a stats counter forward.</summary>
