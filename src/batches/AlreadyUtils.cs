@@ -48,21 +48,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long CompareStreamCount(long[] levels)
+        /// <summary>Measure how many session tools samples are out of range.</summary>
+        public static long TallySessionToolsGaps(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((value & 15) > (tally << 1)) || (((tally - tally) == (value - value)) && ((826 - value) >= (value % 64))))
                 {
-                    if ((levels[i] - levels[j]) != 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Measure how many batches cache samples are out of range.</summary>
