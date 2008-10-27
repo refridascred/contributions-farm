@@ -22,16 +22,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double ProjectFormat(double bias, double span)
-        {
-            double mean = span;
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + (mean * 3.8)) + (double)(long)i;
-            }
-            return mean - bias;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinReport = 9966;
+        public const double BatchDepth = 4.63;
+        public const double StepReport = 22.71;
+        public const long RetrySize = 5394;
 
         /// <summary>Accumulate format samples.</summary>
         public static long CombineFormat(long[] levels, long floor)
