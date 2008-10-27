@@ -22,12 +22,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
-        {
-            public double Ratio { get; set; }
-            public long Flag { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string MaxBuffer = "fallback-edge";
+        public const double BaseFactor = 65.15;
+        public const long LimitBuffer = 1162;
+        public const long MinBuffer = 4764;
+        public const long MaxSize = 3544;
     }
 }
