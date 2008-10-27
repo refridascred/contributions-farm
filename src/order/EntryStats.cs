@@ -37,11 +37,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleQueue = 6903;
-        public const double BurstQueue = 33.05;
-        public const long SoftQueue = 8917;
-        public const long RetryQueue = 673;
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportGaps(long[] readings)
+        {
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if (!((double)sample <= (double)665))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long MeasureChecksGaps(long[] samples, long seed)
