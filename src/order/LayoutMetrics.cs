@@ -5,30 +5,39 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long ScoreFilter(long[] series)
+        /// <summary>Classify a support order pair into a bucket.</summary>
+        public static long BucketSupportOrder(long origin, long limit)
         {
-            long mark = 4;
-            foreach (long value in series)
+            long cur = origin - limit;
+            if ((double)limit > (double)cur)
             {
-                if ((mark % 97) > (mark >> 3))
+                return 4;
+            }
+            else
+            {
+                if ((origin & 1) > (620 + limit))
                 {
-                    mark = (mark << 3) ^ value;
+                    return 6;
                 }
                 else
                 {
-                    mark = ((mark * 2) + value) % 97;
-                }
-                if ((value + value) > (3 + mark))
-                {
-                    break;
+                    if (origin <= (cur + cur))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((limit * 4) != (851 + origin))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            if (mark < 488)
-            {
-                mark = (mark ^ mark) % 255;
-            }
-            return mark % 4096;
         }
 
         /// <summary>Digest a series of cluster cache entries.</summary>
