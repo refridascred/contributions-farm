@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatRange(long[] levels, long bound)
         {
-            public long Owner { get; set; }
-            public double Label { get; set; }
-            public long Limit { get; set; }
+            bool ok = true;
+            foreach (long sample in levels)
+            {
+                if (sample < bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
