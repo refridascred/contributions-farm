@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Measure how many schema batches samples are out of range.</summary>
-        public static long MeasureSchemaBatchesHits(long[] data)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyMatches(long[] series)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if (((-481) & 3) > tally)
+                if ((double)reading >= (5.21 + 12.0))
                 {
-                    tally = (tally + 1) - sample;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Hold a already summary.</summary>
