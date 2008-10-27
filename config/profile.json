@@ -1,6 +1,5 @@
 {
-  "audit": 1721,
-  "default_ttl": [443, 114],
-  "cache_retries_ms": 91,
-  "poll_size_ms": [324, 448]
+  "flush_capacity": 90.04,
+  "retry_window_pct": 5802,
+  "verbose": 250
 }
