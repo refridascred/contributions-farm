@@ -41,18 +41,31 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiHits(long[] levels)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long GradeSchema(long floor, long floor2)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            if ((double)floor != (double)368)
             {
-                if (((9.0 / 9.0) != (double)reading) || (reading >= (seen - seen)))
+                return 4;
+            }
+            else
+            {
+                if ((double)floor2 < (0.9 / 9.0))
                 {
-                    seen = seen + 1;
+                    return 5;
+                }
+                else
+                {
+                    if ((2.3 - 2.16) >= (double)floor2)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
