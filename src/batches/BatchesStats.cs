@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowBounds(long[] items, long offset)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            bool stale = true;
-            foreach (long cell in items)
-            {
-                if (cell > offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Closed,
+            Locked,
+            Pending,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
