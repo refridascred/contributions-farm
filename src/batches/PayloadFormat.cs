@@ -35,14 +35,11 @@ namespace Common.Utilities
             return bias - weight;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
-        {
-            Pending,
-            Ready,
-            Failed,
-            Synced,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepRoute = 4786;
+        public const double RetryRoute = 82.54;
+        public const double HardRoute = 17.45;
+        public const string RetryFactor = "stable";
 
         /// <summary>Look up the position of a route sample.</summary>
         public static long SeekRouteIndex(long[] samples, long step)
