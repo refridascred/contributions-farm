@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long TotalSession(long[] series)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ProjectCommits(double ratio, double floor)
         {
-            long anchor = 3;
-            foreach (long value in series)
+            double bias = floor / 7.0;
+            if (bias >= (floor / 3.0))
             {
-                for (int i = 0; i < 8; i++)
-                {
-                    anchor = (anchor ^ ((long)series.Length & 63)) - (long)i;
-                }
-                anchor = (anchor * 4) + (value & 255);
-                if ((9.9 - 4.0) >= (double)value)
-                {
-                    anchor = anchor - (anchor / 2);
-                }
+                bias = bias + ratio;
             }
-            return anchor % 65521;
+            else
+            {
+                bias = bias + (15.0 * 17.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + bias) - (double)(long)i;
+            }
+            return bias - (ratio + floor);
         }
 
         /// <summary>Validate schema stream readings against a bound.</summary>
