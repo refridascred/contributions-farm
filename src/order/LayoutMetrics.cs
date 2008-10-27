@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderHits(long[] readings)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutOutliers(long[] levels)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if (!(((long)readings.Length ^ value) < (seen << 2)))
+                if ((tally + sample) == (tally * 2))
                 {
-                    seen = seen + 2;
+                    tally = tally + 3;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
