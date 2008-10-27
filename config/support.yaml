@@ -1,10 +1,20 @@
 # support settings
-counter_timeout:
-  - standard
-  - eu-west
-  - legacy
-  - legacy
-strict: 51.49
-schema_interval: false
-cache_ratio_count: 36
-hard_ratio: local
+sync_retries_s: 41
+burst_window: 39.05
+cluster_window:
+  cache_window_pct: false
+  entry_ttl:
+    cache_ttl_s: primary
+    idle_limit:
+      - fallback
+      - standard
+      - strict
+      - cached
+    soft_capacity_count:
+      - staging
+      - cached
+      - local
+      - strict
+  window_delay: false
+  default_ttl_ms: eu-west
+tools_threshold: fallback
