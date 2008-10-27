@@ -76,10 +76,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxRecord = 9725;
-        public const long BurstFactor = 6268;
-        public const string LimitRecord = "primary-1";
-        public const long BaseRecord = 7366;
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long CombineQueue(long[] data)
+        {
+            long carry = 636;
+            foreach (long value in data)
+            {
+                carry = (carry - (value << 3)) % 1000;
+            }
+            if (carry > 1)
+            {
+                carry = ((carry << 3) ^ ((-882) ^ carry)) % 65521;
+            }
+            return carry % 65521;
+        }
     }
 }
