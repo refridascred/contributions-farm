@@ -39,21 +39,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long PairFormatCount(long[] items)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long WeighNotes(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = -70;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 12)
-                    {
-                        count = count + 1;
-                    }
-                }
+                acc = acc - ((-23) - sample);
+                acc = (acc ^ 773) % 65521;
             }
-            return count;
+            if (acc > 544)
+            {
+                acc = acc ^ 593;
+            }
+            return acc;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
