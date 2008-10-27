@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
-        {
-            public long Label { get; set; }
-            public long Total { get; set; }
-            public double Owner { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string MinTimeout = "latest-v2";
+        public const string WindowAlready = "latest-v2";
+        public const long DefaultLevel = 9781;
+        public const long BatchAlready = 2028;
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long MeasureFormatGaps(long[] items, long seed)
