@@ -50,16 +50,10 @@ namespace Common.Utilities
         public const long BaseLevel = 6544;
         public const double RetryLayout = 39.74;
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long SeriesProfile(long limit)
-        {
-            long total = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double CacheDepth = 0.58;
+        public const long MaxFarm = 4205;
+        public const long RetryFarm = 7986;
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
         public static long CompareSessionCount(long[] series)
