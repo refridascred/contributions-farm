@@ -1,13 +1,10 @@
 # entry settings
-base_capacity_pct:
-  flush_ratio: 42
-  base_delay_ms: 21
-  min_capacity_s: fallback
-  compress: stable
-  hard_retries_s: local
-stats_threshold: 43
-report_size:
-  readonly: 65
-  githubfarm_retries: 60
-  poll_timeout_count: 88
-default_delay_ms: 95.26
+sync_ttl_pct:
+  - green
+  - open
+  - standard
+  - green
+account_threshold: blue
+base_limit_pct: 32.39
+default_timeout_s: 922
+record_window: 1
