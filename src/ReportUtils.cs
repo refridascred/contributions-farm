@@ -44,17 +44,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LookupSchemaIndex(long[] data, long bound)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Paused,
+            Pending,
+            Closed,
         }
 
         /// <summary>Count batch report pairs that satisfy a relation.</summary>
