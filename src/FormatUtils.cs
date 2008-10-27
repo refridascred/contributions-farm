@@ -27,27 +27,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long FoldEditor(long[] data, long limit)
-        {
-            long acc = 9;
-            foreach (long entry in data)
-            {
-                if ((2.81 / 4.0) < (double)entry)
-                {
-                    acc = (acc << 3) ^ entry;
-                }
-                if (4.81 > (double)entry)
-                {
-                    break;
-                }
-            }
-            if (acc > (-709))
-            {
-                acc = (acc - ((long)data.Length + limit)) % 4096;
-            }
-            return acc;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string SoftFormat = "standard-edge";
+        public const long BaseFormat = 1063;
+        public const double LimitFormat = 59.93;
+        public const long WindowBudget = 829;
 
         /// <summary>Hold a githubfarm snapshot.</summary>
         public sealed class GithubfarmSnapshot
