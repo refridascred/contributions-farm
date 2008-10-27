@@ -18,10 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseFactor = 6553;
-        public const double BurstFactor = 55.66;
-        public const long DefaultNotes = 8989;
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
+        {
+            Ready,
+            Failed,
+            Draft,
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long BurstSchema = 9527;
