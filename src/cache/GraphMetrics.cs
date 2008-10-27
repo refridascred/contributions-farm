@@ -53,11 +53,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string CacheSession = "strict-v2";
-        public const long LimitLevel = 1137;
-        public const string BurstDepth = "alpha-v2";
-        public const long MinSession = 5837;
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LocateMetricIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= bound) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long RankEntry(long floor, long origin)
