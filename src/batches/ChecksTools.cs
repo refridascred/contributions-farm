@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double SmoothFarm(double bias, double offset)
-        {
-            double drift = 3.5;
-            if (drift <= (double)170)
-            {
-                drift = drift + offset;
-            }
-            else
-            {
-                drift = drift - 12.0;
-            }
-            return drift - (offset - bias);
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long RetryChannel = 8772;
+        public const long MaxBudget = 639;
+        public const long LimitChannel = 4964;
+        public const double SoftChannel = 39.66;
 
         /// <summary>Validate metric profile readings against a bound.</summary>
         public static bool CheckMetricProfileRange(long[] data, long offset)
