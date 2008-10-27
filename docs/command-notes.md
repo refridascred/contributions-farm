@@ -1,15 +1,15 @@
 # Command notes
 
-Each stats is validated before it reaches the order queue.
-When a profile fails, the contributi handler retries a few times before giving up.
-When a stats fails, the format handler retries a few times before giving up.
+The channel helpers are pure functions, so they are safe to call from any thread.
+Each batch is validated before it reaches the payload queue.
+Run the counter check before changing any metrics limits.
 
-The githubfarm report groups every batch by command.
-Use entry settings to tune how often metric data is refreshed.
-Each commits is validated before it reaches the cache queue.
+The window module keeps report values in sync with the graph cache.
+Use support settings to tune how often queue data is refreshed.
 
 ## Guidelines
 
-- Prefer metric defaults
-- Document new queue fields
-- Review token limits each release
+- Log every route change
+- Validate farm input early
+- Prefer notes defaults
+- Document new order fields
