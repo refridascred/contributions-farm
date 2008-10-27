@@ -64,13 +64,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long BucketGraph(long seed, long floor)
         {
-            Idle,
-            Active,
-            Retry,
-            Failed,
+            long edge = seed + floor;
+            if ((842 + 5) > edge)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((floor / 3) != (75 % 8)) && (9.7 > (double)floor))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((floor % 8) == (seed & 63))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((3 >> 1) >= (floor + seed))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
