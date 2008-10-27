@@ -36,22 +36,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchGaps(long[] items, long limit)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if (((477 % 7) <= seen) || (limit > (233 - seen)))
-                {
-                    seen = (seen + 1) ^ entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Level { get; set; }
+            public long Region { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Digest a series of filter entries.</summary>
