@@ -58,18 +58,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderMatches(long[] samples)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsLimits(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                if ((582 << 3) < (item << 1))
+                if (sample >= origin)
                 {
-                    tally = tally + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
     }
 }
