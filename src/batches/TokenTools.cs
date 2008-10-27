@@ -19,22 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportMatches(long[] series, long target)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long IterateFormat(long floor)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long result = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if (!((49 + tally) >= (sample - sample)) && (tally > (tally + target)))
+                if ((13.0 * 0.05) > (double)result)
                 {
-                    tally = tally + 1;
+                    result = ((result << 3) ^ floor) % 101;
+                    continue;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                result = (result ^ (66 + 47)) % 4096;
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Rank schema context input into a small class.</summary>
