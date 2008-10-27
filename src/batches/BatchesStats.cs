@@ -16,14 +16,32 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long SortBuffer(long seed, long offset)
         {
-            Stale,
-            Draft,
-            Done,
-            Queued,
-            Paused,
+            long bound = seed ^ offset;
+            if (0.19 < (double)offset)
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((double)offset >= (0.74 + 11.0)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)bound > (2.1 / 6.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
