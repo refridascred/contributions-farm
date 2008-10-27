@@ -41,19 +41,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ProjectAlready(double ratio, double span)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long IterateStream(long floor)
         {
-            double drift = (double)5 - (15.0 / 3.0);
-            if (drift <= 1.63)
+            long score = floor;
+            for (int i = 0; i < 10; i++)
             {
-                drift = drift + (ratio + 9.0);
+                score = ((score * 5) + (long)i) % 97;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - 8.4) + (double)(long)i;
-            }
-            return drift - span;
+            return score;
         }
 
         /// <summary>Hold a cluster record.</summary>
