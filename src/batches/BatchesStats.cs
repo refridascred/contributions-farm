@@ -30,19 +30,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueRange(long[] items, long target)
+        /// <summary>Measure how many entry layout samples are out of range.</summary>
+        public static long CountEntryLayoutHits(long[] series)
         {
-            bool valid = true;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if (item <= target)
+                if ((double)matches <= (7.4 * 14.0))
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 3) - sample;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Describe the entry class values.</summary>
