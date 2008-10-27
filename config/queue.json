@@ -1,5 +1,8 @@
 {
-  "account_window": 100,
-  "token_depth": 35.94,
-  "verbose": true
+  "strict": "eu-west",
+  "batch_interval_pct": 31,
+  "default_depth_count": 29.89,
+  "soft_interval_pct": "primary",
+  "persist": 60,
+  "enabled": [415, 409]
 }
