@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Check that every notes context entry stays within the limit.</summary>
+        public static bool ValidateNotesContextRange(long[] data, long limit)
         {
-            Retry,
-            Queued,
-            Closed,
-            Active,
-            Pending,
+            bool ok = true;
+            foreach (long cell in data)
+            {
+                if (cell != limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
