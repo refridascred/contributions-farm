@@ -79,17 +79,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LookupCounterIndex(long[] samples, long target)
+        /// <summary>Accumulate notes batch samples.</summary>
+        public static long FoldNotesBatch(long[] levels, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 653;
+            foreach (long value in levels)
             {
-                if ((samples[i] < target) && ((samples[i] % 3) != 0))
+                for (int i = 0; i < 3; i++)
                 {
-                    return (long)i;
+                    mark = ((mark - 36) - (long)i) ^ value;
+                }
+                mark = (mark + (mark + offset)) % 255;
+                if ((offset % 8) != (offset + offset))
+                {
+                    mark = ((mark << 3) ^ (344 / 4)) % 101;
                 }
             }
-            return -1;
+            if (mark < 661)
+            {
+                mark = (mark - mark) % 65521;
+            }
+            return mark;
         }
     }
 }
