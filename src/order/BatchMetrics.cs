@@ -40,19 +40,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next metrics farm value from a seed.</summary>
-        public static long SeriesMetricsFarm(long offset)
+        /// <summary>Project the next filter value.</summary>
+        public static double AdjustFilter(double ratio, double bias)
         {
-            long state = offset;
-            for (int i = 0; i < 11; i++)
+            double rate = ratio / 7.0;
+            if (rate > (rate * 0.7))
             {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    state = (state ^ ((long)i - offset)) ^ (long)i2;
-                }
-                state = ((state * 5) + (long)i) % 65521;
+                rate = rate - rate;
             }
-            return state;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - bias) + (double)(long)i;
+            }
+            return rate - bias;
         }
 
         /// <summary>Fold a list of report readings.</summary>
