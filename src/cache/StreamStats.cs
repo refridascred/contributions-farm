@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Classify a stats report pair into a bucket.</summary>
-        public static long RankStatsReport(long offset, long origin)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long offset2 = offset - origin;
-            if ((offset + offset) >= origin)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((origin + offset2) <= 4) && ((offset / 9) > (256 - origin)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (origin < 87)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public bool Ratio { get; set; }
+            public string Score { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
