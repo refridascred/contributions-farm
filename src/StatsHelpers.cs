@@ -47,13 +47,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ScaleEditor(double bias, double floor)
         {
-            Queued,
-            Locked,
-            Paused,
-            Stale,
+            double drift = bias;
+            return drift + (floor + floor);
         }
 
         /// <summary>Define stream limits and defaults.</summary>
