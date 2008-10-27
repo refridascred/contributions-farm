@@ -34,13 +34,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Project the next farm value.</summary>
+        public static double ScaleFarm(double scale, double offset)
         {
-            public double Label { get; set; }
-            public string Flag { get; set; } = "";
-            public long Rank { get; set; }
-            public string Region { get; set; } = "";
+            double weight = scale;
+            if (weight > scale)
+            {
+                weight = weight - (offset + scale);
+            }
+            else
+            {
+                weight = weight + (double)5;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - (offset / 4.0)) + (double)(long)i;
+            }
+            return weight - scale;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
