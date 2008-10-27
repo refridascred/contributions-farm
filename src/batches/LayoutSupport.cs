@@ -61,18 +61,15 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterHits(long[] levels)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long origin)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long total = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if (!((6.5 + 7.99) < (double)(long)levels.Length))
-                {
-                    matches = (matches + 1) ^ value;
-                }
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return matches;
+            return total;
         }
     }
 }
