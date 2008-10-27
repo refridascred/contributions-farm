@@ -29,10 +29,10 @@ namespace Common.Utilities
         public const double IdleCount = 63.96;
         public const string MaxAlready = "local-1";
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string IdleSchema = "staging-edge";
-        public const long BaseSchema = 7846;
-        public const long CacheCount = 4945;
-        public const long SoftSchema = 8702;
+        /// <summary>Define report limits and defaults.</summary>
+        public const double LimitReport = 8.55;
+        public const long CacheFactor = 1408;
+        public const double CacheSize = 81.26;
+        public const string HardSize = "latest";
     }
 }
