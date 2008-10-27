@@ -16,11 +16,17 @@ namespace Common.Utilities
             return load - (bias + bias2);
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long RollPayload(long limit)
         {
-            public string Label { get; set; } = "";
-            public long Rank { get; set; }
+            long mix = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                mix = mix - (limit - (long)i);
+                mix = mix - limit;
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Adjust a window notes reading.</summary>
