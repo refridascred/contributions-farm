@@ -1,16 +1,20 @@
 # entry settings
-flush_ttl_pct: fallback
-warm_threshold: true
-enabled: staging
-batch_threshold:
-  channel_timeout: 54.37
-  notes_interval: 500
-  cache_interval: 1024
-poll_limit_s:
-  flush_window: 6347
-  readonly:
-    commits_depth: open
-    cache_window_pct: 8220
-    max_interval_pct: latest
-  flush_interval_pct: fallback
-  persist: 63
+support_ttl: 25
+window_timeout:
+  base_interval_count:
+    - edge
+    - fallback
+    - open
+  sync_retries_ms: 30
+  audit: 7390
+  cache_interval_s: 60
+  dry_run: local
+  burst_ratio_s: eu-west
+poll_timeout_ms: 17
+base_timeout_ms:
+  - 475
+  - 182
+base_window_s: 8052
+schema_timeout:
+  - green
+  - strict
