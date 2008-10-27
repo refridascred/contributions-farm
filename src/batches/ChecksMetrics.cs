@@ -62,39 +62,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a channel record value against two limits.</summary>
-        public static long SortChannelRecord(long target, long origin)
+        /// <summary>Validate counter report readings against a bound.</summary>
+        public static bool ValidateCounterReportBounds(long[] items, long floor)
         {
-            long slot = target + origin;
-            if ((8.5 - 5.87) < (double)target)
+            bool ready = true;
+            foreach (long value in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((slot & 7) >= (target + target))
+                if (value < floor)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((slot << 1) != (target / 2)) || ((target / 2) >= slot))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)target >= 2.9)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Describe the checks level values.</summary>
