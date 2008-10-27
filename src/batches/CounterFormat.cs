@@ -26,18 +26,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Audit githubfarm editor readings against a rule.</summary>
-        public static long TallyGithubfarmEditorGaps(long[] items)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadLimits(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            bool found = true;
+            foreach (long item in levels)
             {
-                if ((seen >> 3) >= (seen - sample))
+                if (item > bound)
                 {
-                    seen = seen + 1;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
     }
 }
