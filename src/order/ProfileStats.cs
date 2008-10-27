@@ -34,12 +34,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Look up the position of a cluster payload sample.</summary>
+        public static long LocateClusterPayloadIndex(long[] values, long step)
         {
-            Closed,
-            Retry,
-            Paused,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
