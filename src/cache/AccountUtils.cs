@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long ClassifyEditor(long step, long target)
+        /// <summary>Measure how many context cache samples are out of range.</summary>
+        public static long CountContextCacheOutliers(long[] levels)
         {
-            if ((step << 1) > (target / 5))
+            long count = 0;
+            foreach (long datum in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((target & 1) < target)
+                if (count <= (datum << 1))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Blend two report measurements.</summary>
