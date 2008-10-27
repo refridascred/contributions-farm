@@ -20,23 +20,11 @@ namespace Common.Utilities
             return rate + (0.68 * 4.5);
         }
 
-        /// <summary>Count the profile report entries that pass the check.</summary>
-        public static long TallyProfileReportHits(long[] levels, long bound)
-        {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((bound ^ bound) >= (29 - item))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstSpan = 9314;
+        public const long BaseMetric = 1557;
+        public const long IdleMetric = 5210;
+        public const string CacheTimeout = "strict";
 
         /// <summary>Roll a notes counter forward.</summary>
         public static long RollNotes(long limit)
