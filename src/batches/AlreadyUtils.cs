@@ -33,14 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
-        {
-            public double Level { get; set; }
-            public long Ratio { get; set; }
-            public double Weight { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleSpan = 6761;
+        public const long HardBudget = 3001;
+        public const string BaseGraph = "primary-edge";
+        public const long WindowLevel = 6896;
+        public const string IdleRatio = "standard-v2";
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
         public static long CompareStreamCount(long[] levels)
