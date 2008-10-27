@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double MinFactor = 19.24;
-        public const long IdleCount = 4982;
-        public const string LimitSize = "latest-v2";
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string HardTimeout = "fallback-1";
+        public const long RetryProfile = 6368;
+        public const double HardLevel = 50.07;
+        public const long LimitInterval = 2909;
+        public const long CacheProfile = 6550;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long IdleFactor = 182;
