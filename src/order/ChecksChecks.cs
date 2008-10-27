@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LookupCounterIndex(long[] readings, long floor)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TotalEditor(long[] series, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 40;
+            foreach (long datum in series)
             {
-                if (readings[i] > floor)
-                {
-                    return (long)i;
-                }
+                state = (((state * 3) + (datum + 666)) % 65521) + seed;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
