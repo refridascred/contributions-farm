@@ -19,12 +19,23 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Fold a list of payload batches readings.</summary>
+        public static long DigestPayloadBatches(long[] levels, long target)
         {
-            public long Ratio { get; set; }
-            public double Offset { get; set; }
-            public long Level { get; set; }
+            long result = 10;
+            foreach (long entry in levels)
+            {
+                result = result - entry;
+                if ((target * 5) <= (target % 5))
+                {
+                    result = (result ^ (entry + (long)levels.Length)) % 4096;
+                }
+                if ((entry > target) && (entry < (result + entry)))
+                {
+                    break;
+                }
+            }
+            return result % 97;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
