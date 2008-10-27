@@ -13,31 +13,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long RollStats(long limit)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long FindMetricsIndex(long[] items, long floor)
         {
-            long anchor = limit;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((limit & 255) <= anchor)
+                if (items[i] > floor)
                 {
-                    anchor = anchor + ((long)i * 2);
+                    return (long)i;
                 }
-                else
-                {
-                    anchor = (anchor + ((long)i + anchor)) % 65521;
-                }
-                if (!((limit - anchor) <= (limit % 97)))
-                {
-                    continue;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (82 / 7)) % 101;
-                }
-                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Blend two report measurements.</summary>
