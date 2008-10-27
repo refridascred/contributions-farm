@@ -59,39 +59,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long ClassifyQueue(long origin, long floor)
+        /// <summary>Accumulate metrics schema samples.</summary>
+        public static long ScoreMetricsSchema(long[] values, long origin)
         {
-            long edge = origin ^ floor;
-            if (((origin & 7) != (origin + edge)) && ((floor * 3) == (edge & 7)))
+            long mark = -470;
+            foreach (long entry in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (6.4 <= (double)floor)
+                if (mark <= (origin ^ origin))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((-1) <= (91 - edge))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((edge / 6) < (floor / 9))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    mark = ((mark + (58 << 1)) % 4096) ^ entry;
                 }
             }
+            if (mark < 99)
+            {
+                mark = (mark ^ (origin * 2)) % 101;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
