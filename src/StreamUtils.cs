@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long CombineFilter(long[] values)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long mix = 688;
-            foreach (long entry in values)
-            {
-                mix = (mix << 3) ^ (1 ^ mix);
-                if ((double)entry < 2.3)
-                {
-                    mix = mix ^ (entry >> 5);
-                }
-            }
-            if (mix > 0)
-            {
-                mix = ((mix * 2) + (117 >> 1)) % 255;
-            }
-            return mix % 4096;
+            Ready,
+            New,
+            Closed,
         }
 
         /// <summary>Define token limits and defaults.</summary>
