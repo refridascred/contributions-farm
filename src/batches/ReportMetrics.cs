@@ -31,13 +31,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportLimits(long[] items, long step)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordBounds(long[] readings, long bound)
         {
             bool found = true;
-            foreach (long item in items)
+            foreach (long datum in readings)
             {
-                if (item > step)
+                if (datum >= bound)
                 {
                     found = false;
                     break;
