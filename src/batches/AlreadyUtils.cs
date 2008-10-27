@@ -30,21 +30,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long MatchFormatCount(long[] readings)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Label { get; set; }
+            public string Rank { get; set; } = "";
+            public double Total { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Compare every pair of already readings.</summary>
