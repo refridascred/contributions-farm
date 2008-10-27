@@ -61,18 +61,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long ScoreChecks(long[] series, long step)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double ScaleBatches(double rate, double bias)
         {
-            long state = -798;
-            foreach (long item in series)
-            {
-                if ((774 << 3) != (state * 5))
-                {
-                    state = (((state * 3) + (71 - item)) % 1000) + step;
-                }
-            }
-            return state;
+            double ratio = (double)(60 + 1);
+            return (ratio - rate) + bias;
         }
 
         /// <summary>Match up channel commits samples.</summary>
