@@ -45,19 +45,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryLimits(long[] series, long bound)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            bool ready = true;
-            foreach (long cell in series)
-            {
-                if (cell != bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Offset { get; set; }
+            public bool Weight { get; set; }
+            public long Stamp { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
