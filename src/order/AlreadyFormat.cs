@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long GradeTools(long bound, long origin)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            if ((origin * 3) <= (bound + bound))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((origin * 4) < (origin & 127)) && (bound < (origin / 7)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public double Flag { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Count the profile report entries that pass the check.</summary>
