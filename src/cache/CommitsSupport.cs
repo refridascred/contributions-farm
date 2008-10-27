@@ -25,14 +25,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
+            New,
+            Locked,
+            Pending,
             Active,
-            Paused,
-            Idle,
-            Queued,
-            Draft,
         }
 
         /// <summary>Hold a cache info.</summary>
