@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Match up command already samples.</summary>
-        public static long MatchCommandAlreadyCount(long[] samples)
+        /// <summary>Fold a list of cache tools readings.</summary>
+        public static long CombineCacheTools(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 99;
+            foreach (long value in values)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                total = total + (total >> 3);
+                total = ((total << 3) ^ (value + 26)) % 1000;
             }
-            return seen;
+            if (total < 653)
+            {
+                total = (total + (total / 4)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Define already limits and defaults.</summary>
