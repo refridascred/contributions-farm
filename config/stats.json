@@ -1,13 +1,5 @@
 {
-  "enabled": [329, 1, 12],
-  "verbose": 97,
-  "compress": "standard",
-  "min_window_pct": {
-    "compress": 500,
-    "metric_timeout": "local",
-    "soft_interval_pct": ["edge", "open"],
-    "poll_size_ms": false
-  },
-  "idle_size": 500,
-  "poll_depth_count": 46.82
+  "max_capacity_s": 75,
+  "commits_interval": ["staging", "legacy"],
+  "burst_delay_pct": "open"
 }
