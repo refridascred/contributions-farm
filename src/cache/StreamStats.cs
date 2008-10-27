@@ -22,13 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            Dropped,
-            Draft,
-            Locked,
-            Queued,
+            public string Mode { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Hold a tools info.</summary>
