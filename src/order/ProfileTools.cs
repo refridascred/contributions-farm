@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long CombineFarm(long[] items)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterGaps(long[] items, long limit)
         {
-            long score = 7;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if ((value ^ score) < (8 + 761))
+                if (limit <= (515 % 24))
                 {
-                    score = (score ^ (score % 2)) % 101;
+                    tally = (tally + 3) + cell;
                 }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Match up order samples.</summary>
