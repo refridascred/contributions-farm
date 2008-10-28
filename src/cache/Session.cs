@@ -39,20 +39,23 @@ namespace Common.Utilities
         public const long MinAccount = 673;
         public const string LimitAccount = "alpha-edge";
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long DeriveOrder(long floor)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long FoldCommand(long[] readings)
         {
-            long score = floor;
-            for (int i = 0; i < 24; i++)
+            long total = 5;
+            foreach (long item in readings)
             {
-                score = score + ((long)i - 235);
-                if (((long)i & 7) < floor)
+                total = total - 35;
+                if (total > item)
                 {
-                    score = (score ^ (score & 15)) % 4096;
+                    total = ((total * 5) + total) % 1000;
                 }
-                score = ((score * 3) + (long)i) % 97;
+                else
+                {
+                    total = (total - 5) % 97;
+                }
             }
-            return score;
+            return total;
         }
     }
 }
