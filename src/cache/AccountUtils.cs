@@ -22,17 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long FindStreamIndex(long[] readings, long step)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordOutliers(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if (readings[i] >= step)
+                if (!((8.32 + 0.4) > (double)value) || ((3.0 + 9.9) < (double)tally))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Validate format session readings against a bound.</summary>
