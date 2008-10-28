@@ -33,22 +33,13 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Fold a list of batches githubfarm readings.</summary>
-        public static long TotalBatchesGithubfarm(long[] data, long floor)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long total = 87;
-            foreach (long cell in data)
-            {
-                if (floor >= cell)
-                {
-                    total = (total + (-7)) % 65521;
-                }
-                else
-                {
-                    total = (total ^ (floor - floor)) % 65521;
-                }
-            }
-            return total;
+            public bool Limit { get; set; }
+            public long Score { get; set; }
+            public string Token { get; set; } = "";
+            public long Rank { get; set; }
         }
     }
 }
