@@ -49,18 +49,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorOutliers(long[] samples, long floor)
+        /// <summary>Find the first report account entry that matches the target.</summary>
+        public static long FindReportAccountIndex(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((long)samples.Length % 5) <= (tally / 3))
+                if (readings[i] == step)
                 {
-                    tally = ((tally + 1) ^ sample) + floor;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
