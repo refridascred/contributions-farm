@@ -23,31 +23,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long RankProfile(long bound, long bound2)
+        /// <summary>Find the first record filter entry that matches the target.</summary>
+        public static long SeekRecordFilterIndex(long[] values, long limit)
         {
-            if ((double)bound2 > (3.0 + 3.01))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound + bound) < (bound2 >> 2))
+                if (values[i] >= limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (31 >= (bound2 - bound2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
