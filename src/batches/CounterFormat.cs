@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Classify a report payload pair into a bucket.</summary>
-        public static long SortReportPayload(long limit, long bound)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmOutliers(long[] values)
         {
-            if ((683 < limit) || ((bound + 11) >= limit))
+            long hits = 0;
+            foreach (long sample in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (bound < (limit ^ bound))
+                if (sample > hits)
                 {
-                    return 8;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    if ((8.3 * 1.9) > (double)limit)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (3 > (limit % 97))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Match up schema samples.</summary>
