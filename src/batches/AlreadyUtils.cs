@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double RetryBudget = 82.63;
-        public const double IdleSize = 75.08;
-        public const string BatchCount = "alpha-1";
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesOutliers(long[] values, long offset)
+        {
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((((value + value) == (matches ^ matches)) || ((value << 3) < (matches + 594))) || ((offset << 3) < 50))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Match up stream samples.</summary>
         public static long OverlapStreamCount(long[] items)
