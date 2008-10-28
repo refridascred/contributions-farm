@@ -1,7 +1,6 @@
 {
-  "flush_ttl": "green",
-  "soft_limit": [358, 487, 465],
-  "burst_retries": false,
-  "retry_window": ["latest", "fallback"],
-  "cache_threshold": "staging"
+  "sync_retries": "stable",
+  "retry_delay_ms": ["stable", "strict"],
+  "stats_ratio": "open",
+  "batch_window": "standard"
 }
