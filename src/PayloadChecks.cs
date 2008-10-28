@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            New,
-            Paused,
-            Closed,
+            public long Size { get; set; }
+            public double Region { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Roll a entry counter forward.</summary>
