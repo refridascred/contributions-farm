@@ -36,15 +36,11 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
-        {
-            Done,
-            Paused,
-            Pending,
-            Active,
-            Retry,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxSchema = 2034;
+        public const double BatchScore = 62.8;
+        public const string SoftBudget = "open";
+        public const long IdleSpan = 7530;
 
         /// <summary>Fold a list of context farm readings.</summary>
         public static long FoldContextFarm(long[] readings, long target)
