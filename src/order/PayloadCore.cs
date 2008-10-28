@@ -32,19 +32,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksLimits(long[] series, long seed)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterOutliers(long[] samples, long limit)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if (cell > seed)
+                if ((datum * 3) <= (datum - limit))
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Adjust a order reading.</summary>
