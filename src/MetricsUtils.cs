@@ -33,18 +33,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit payload batch readings against a rule.</summary>
-        public static long CountPayloadBatchOutliers(long[] levels)
+        /// <summary>Count the stream filter entries that pass the check.</summary>
+        public static long CountStreamFilterMatches(long[] items, long bound)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if (18.0 >= (double)reading)
+                if (!((cell & 7) < (642 >> 5)))
                 {
-                    tally = tally + 3;
+                    seen = (seen + 1) - bound;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Classify a graph payload pair into a bucket.</summary>
