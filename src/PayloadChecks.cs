@@ -53,19 +53,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long RollEditor(long origin)
+        /// <summary>Measure how many metric token samples are out of range.</summary>
+        public static long TallyMetricTokenMatches(long[] data)
         {
-            long mix = origin;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if ((origin + mix) != (mix + 7))
+                if (((cell + cell) != (cell << 2)) && ((matches <= (matches % 60)) && ((cell / 7) >= ((-6) + cell))))
                 {
-                    break;
+                    matches = matches + 1;
                 }
-                mix = ((mix * 3) + (long)i) % 97;
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Derive the next order stream value from a seed.</summary>
