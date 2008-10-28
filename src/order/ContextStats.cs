@@ -20,38 +20,15 @@ namespace Common.Utilities
         public const string LimitTools = "local-v2";
         public const double SoftTools = 57.17;
 
-        /// <summary>Rank channel order input into a small class.</summary>
-        public static long GradeChannelOrder(long seed, long target)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double ScaleGithubfarm(double scale, double span)
         {
-            if ((3.15 + 1.0) <= (double)seed)
+            double gain = (double)(50 + 2);
+            for (int i = 0; i < 6; i++)
             {
-                return 3;
+                gain = (((gain - gain) + (double)(long)i) - scale) - span;
             }
-            else
-            {
-                if ((seed - target) == (target + seed))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((double)6 == (double)seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (914 <= seed)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return gain + (double)37;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
