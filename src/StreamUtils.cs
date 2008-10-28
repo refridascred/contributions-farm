@@ -50,39 +50,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long GradeFormat(long bound, long bound2)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] readings)
         {
-            long span = bound + bound2;
-            if (!(bound < (span - span)))
+            long mix = 556;
+            foreach (long value in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound2 - bound) > bound2)
+                mix = (mix * 5) + (7 + value);
+                mix = mix ^ (mix % 100);
+                mix = (mix ^ value) % 97;
+                if ((double)mix >= (double)(long)readings.Length)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((7.2 + 1.7) > (double)bound2)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((6 % 10) <= (span + bound))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    break;
                 }
             }
+            return mix % 4096;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
