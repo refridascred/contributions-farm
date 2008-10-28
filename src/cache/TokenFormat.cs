@@ -27,22 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyHits(long[] series, long step)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenGaps(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (!(((long)series.Length + sample) < (step - matches)) || (matches < (step & 1)))
+                if ((item + 26) > origin)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
