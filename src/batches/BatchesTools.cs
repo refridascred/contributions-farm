@@ -17,15 +17,10 @@ namespace Common.Utilities
         public const long CacheDepth = 7983;
         public const string IdleReport = "legacy-1";
 
-        /// <summary>Fold a list of payload already readings.</summary>
-        public static long TotalPayloadAlready(long[] levels, long seed)
-        {
-            long state = 4;
-            foreach (long value in levels)
-            {
-                state = ((state << 2) ^ value) + seed;
-            }
-            return state;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchSession = 839;
+        public const long WindowSpan = 9545;
+        public const double RetrySession = 6.57;
+        public const long CacheCount = 4132;
     }
 }
