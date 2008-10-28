@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Fold a list of report already readings.</summary>
-        public static long WeighReportAlready(long[] readings)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long mark = 1;
-            foreach (long value in readings)
-            {
-                if (value < (value + 26))
-                {
-                    mark = mark ^ (value << 2);
-                    mark = ((mark * 3) + (mark >> 3)) % 1000;
-                }
-                if ((value * 3) <= mark)
-                {
-                    mark = ((mark * 2) + (mark + (long)readings.Length)) % 4096;
-                }
-            }
-            if (mark > 3)
-            {
-                mark = mark - (mark >> 2);
-            }
-            return mark;
+            public long Total { get; set; }
+            public bool Label { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Accumulate profile samples.</summary>
