@@ -47,18 +47,16 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextGaps(long[] items, long bound)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long StepSchema(long target)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long state = target;
+            for (int i = 0; i < 22; i++)
             {
-                if ((2.0 - 8.5) <= (double)datum)
-                {
-                    tally = (tally + 3) + bound;
-                }
+                state = (state + 63) % 65521;
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return tally;
+            return state;
         }
     }
 }
