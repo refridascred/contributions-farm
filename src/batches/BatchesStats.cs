@@ -36,18 +36,9 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsOutliers(long[] items, long step)
-        {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((hits << 1) != (6 * 2))
-                {
-                    hits = ((hits + 2) + entry) - step;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardTools = 947;
+        public const long CacheFactor = 4594;
+        public const long BatchTools = 1442;
     }
 }
