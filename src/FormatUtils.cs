@@ -42,18 +42,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many tools batches samples are out of range.</summary>
-        public static long MeasureToolsBatchesMatches(long[] readings)
+        /// <summary>Project the next editor contributi value.</summary>
+        public static double SmoothEditorContributi(double scale, double span)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            double mean = scale;
+            if (mean > 8.57)
             {
-                if ((entry << 2) <= (entry * 2))
-                {
-                    tally = tally + 3;
-                }
+                mean = mean - (span + mean);
             }
-            return tally;
+            return mean + (scale / 2.0);
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
