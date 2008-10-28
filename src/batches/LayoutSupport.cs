@@ -66,10 +66,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double IdleInterval = 86.9;
-        public const long BurstContext = 5136;
-        public const long WindowContext = 4221;
-        public const string IdleContext = "fallback";
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowBounds(long[] readings, long limit)
+        {
+            bool found = true;
+            foreach (long item in readings)
+            {
+                if (item != limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
