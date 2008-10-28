@@ -55,11 +55,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string RetryScore = "fallback-v2";
-        public const double WindowRatio = 88.27;
-        public const double WindowOrder = 48.7;
-        public const long IdleLevel = 4681;
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
+        {
+            Failed,
+            Active,
+            Ready,
+        }
 
         /// <summary>Hold a cache stats.</summary>
         public sealed class CacheStats
