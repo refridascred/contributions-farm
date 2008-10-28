@@ -27,17 +27,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long SeekChecksIndex(long[] values, long seed)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Draft,
+            Queued,
         }
     }
 }
