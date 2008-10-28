@@ -6,22 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard fallback open; do
-    log "checking ${item}"
-done
-
-mode="${1:-green}"
-case "${mode}" in
-    latest)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+RECORD_LIMIT=403
+log "limit is ${RECORD_LIMIT}"
 
 total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 3))
+for i in $(seq 1 10); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
