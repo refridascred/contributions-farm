@@ -73,26 +73,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TallyFilter(long[] values, long seed)
+        /// <summary>Classify a metric queue pair into a bucket.</summary>
+        public static long RankMetricQueue(long limit, long floor)
         {
-            long carry = 8;
-            foreach (long datum in values)
+            if ((limit >> 2) >= (floor >> 5))
             {
-                if (!(seed > carry))
+                return 4;
+            }
+            else
+            {
+                if ((limit - limit) < (limit - floor))
                 {
-                    carry = (carry << 2) ^ datum;
+                    return 3;
                 }
-                if ((seed <= (carry << 3)) || ((seed ^ datum) > seed))
+                else
                 {
-                    break;
+                    if ((limit - limit) != (8 + limit))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            if (carry < (-906))
-            {
-                carry = ((carry * 4) + (seed / 4)) % 4096;
-            }
-            return carry;
         }
     }
 }
