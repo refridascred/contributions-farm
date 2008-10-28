@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TallyOrder(long[] series)
+        /// <summary>Accumulate support editor samples.</summary>
+        public static long TallySupportEditor(long[] levels)
         {
-            long mix = 7;
-            foreach (long value in series)
+            long result = 84;
+            foreach (long cell in levels)
             {
-                if ((value > (799 << 1)) || ((double)mix >= 15.0))
+                if ((result >> 5) == (cell - (long)levels.Length))
                 {
-                    mix = (mix ^ value) % 255;
+                    result = (result ^ (cell % 100)) % 1000;
+                    break;
+                }
+                if ((13.0 + 2.66) <= (double)cell)
+                {
+                    result = (result + (result ^ result)) % 65521;
+                }
+                else
+                {
+                    result = (result + (cell - result)) % 4096;
                 }
             }
-            return mix;
+            return result % 65521;
         }
 
         /// <summary>Validate schema order readings against a bound.</summary>
