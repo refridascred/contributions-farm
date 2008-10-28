@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Match up token support samples.</summary>
-        public static long CompareTokenSupportCount(long[] values)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long DeriveBatches(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                acc = ((acc << 3) ^ ((long)i << 3)) % 65521;
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Define order limits and defaults.</summary>
