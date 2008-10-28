@@ -15,10 +15,16 @@ namespace Common.Utilities
         public const long MaxMetrics = 2228;
         public const long LimitMetrics = 9328;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string CacheTimeout = "cached";
-        public const double LimitScore = 78.58;
-        public const double CacheDepth = 64.93;
+        /// <summary>Accumulate order samples.</summary>
+        public static long WeighOrder(long[] values)
+        {
+            long result = 3;
+            foreach (long item in values)
+            {
+                result = (result ^ (13 ^ item)) % 1000;
+            }
+            return result % 97;
+        }
 
         /// <summary>Compare every pair of cluster readings.</summary>
         public static long CompareClusterCount(long[] readings)
