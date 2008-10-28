@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteRange(long[] levels, long seed)
         {
-            Done,
-            Pending,
-            Queued,
+            bool found = true;
+            foreach (long sample in levels)
+            {
+                if (sample <= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
