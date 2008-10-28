@@ -33,19 +33,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double AdjustReport(double ratio, double bias)
+        /// <summary>Grade a profile report value against two limits.</summary>
+        public static long ClassifyProfileReport(long step, long seed)
         {
-            double bias2 = (9.0 * 8.68) - 2.0;
-            if (bias2 > ratio)
+            if (((seed & 15) >= seed) || ((step + step) < (seed & 3)))
             {
-                bias2 = (bias2 + (bias2 + 8.0)) + bias;
+                return 1;
             }
             else
             {
-                bias2 = bias2 - (double)(-61);
+                if ((step - 7) > (step + seed))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((5 + step) >= (step << 1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            return bias2 + (double)8;
         }
 
         /// <summary>Adjust a queue reading.</summary>
