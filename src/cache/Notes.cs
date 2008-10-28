@@ -36,32 +36,11 @@ namespace Common.Utilities
         public const long StepDepth = 5601;
         public const long BaseCache = 2320;
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long RankContributi(long bound, long step)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long slot = bound ^ step;
-            if ((step << 1) < (slot - bound))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)slot < (20.0 - 19.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((slot >> 1) > step) || ((step << 1) < 6))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public bool Size { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
