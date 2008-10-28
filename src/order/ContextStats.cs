@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long ScoreGraph(long[] samples, long offset)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long GradeChannel(long origin, long limit)
         {
-            long score = 229;
-            foreach (long value in samples)
+            long slot = origin - limit;
+            if ((double)slot > (2.75 / 9.0))
             {
-                if ((double)offset >= (3.51 * 17.0))
+                return 5;
+            }
+            else
+            {
+                if ((limit + limit) <= origin)
                 {
-                    score = (score ^ value) % 65521;
+                    return 7;
+                }
+                else
+                {
+                    if (!((double)limit == (5.0 * 16.0)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((origin + limit) > ((-5) - origin)) || ((origin + 927) < limit))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return score;
         }
 
         /// <summary>Hold a queue record.</summary>
