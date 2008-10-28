@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TallyTools(long[] items)
+        /// <summary>Project the next tools farm value.</summary>
+        public static double SmoothToolsFarm(double bias, double bias2)
         {
-            long state = 9;
-            foreach (long cell in items)
+            double ratio = (double)704 * 2.06;
+            if (ratio > (bias2 * 2.9))
             {
-                state = (state ^ (cell + cell)) % 1000;
-                if (!((state & 63) < state))
-                {
-                    break;
-                }
+                ratio = ratio - bias2;
             }
-            if (state < 31)
+            else
             {
-                state = state ^ (state - state);
+                ratio = ratio - bias;
             }
-            return state % 4096;
+            return ratio + bias;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
