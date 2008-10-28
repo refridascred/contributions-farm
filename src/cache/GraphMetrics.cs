@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitWidth = 3487;
-        public const double RetryBuffer = 29.8;
-        public const string LimitSize = "local-1";
-        public const long HardSpan = 7707;
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
+        {
+            Draft,
+            Dropped,
+            Queued,
+        }
 
         /// <summary>Validate counter readings against a bound.</summary>
         public static bool CheckCounterBounds(long[] data, long target)
