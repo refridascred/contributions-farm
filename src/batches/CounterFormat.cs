@@ -39,22 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionHits(long[] data, long step)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatOutliers(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if (!((hits >> 1) >= step))
+                if ((double)matches < (3.7 / 7.0))
                 {
-                    hits = (hits + 3) + datum;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = ((matches + 3) - reading) - bound;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Hold a token stats.</summary>
