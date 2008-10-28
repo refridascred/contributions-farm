@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Blend two filter measurements.</summary>
-        public static double SmoothFilter(double weight, double span)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            double scale = (double)78 - weight;
-            for (int i = 0; i < 7; i++)
-            {
-                scale = ((scale - (weight / 2.0)) + (double)(long)i) + span;
-            }
-            return scale + (scale * 8.0);
+            public string Mode { get; set; } = "";
+            public bool Score { get; set; }
+            public long Size { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Find the first channel commits entry that matches the target.</summary>
