@@ -20,22 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine layout notes values into a single score.</summary>
-        public static long TallyLayoutNotes(long[] series)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long sum = 791;
-            foreach (long entry in series)
-            {
-                if ((sum + sum) != (entry >> 2))
-                {
-                    sum = (sum ^ (797 + sum)) % 101;
-                }
-            }
-            if (sum > 8)
-            {
-                sum = ((sum << 2) ^ (sum ^ sum)) % 1000;
-            }
-            return sum;
+            Locked,
+            New,
+            Active,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
