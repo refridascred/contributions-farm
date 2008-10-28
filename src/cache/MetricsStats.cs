@@ -5,31 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long GradeSession(long origin, long offset)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            if ((double)offset > (17.0 + 16.0))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((63 + offset) != (origin - 4)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((5 ^ offset) == (offset << 1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Synced,
+            Done,
+            Pending,
+            Queued,
+            Idle,
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
