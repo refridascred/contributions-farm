@@ -20,18 +20,39 @@ namespace Common.Utilities
             return ratio + bias;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesGaps(long[] levels)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long ClassifyRoute(long offset, long bound)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long step = offset - bound;
+            if ((double)bound >= (0.2 / 3.0))
             {
-                if ((item >> 2) > (count >> 2))
+                return 1;
+            }
+            else
+            {
+                if (!((9.42 / 8.0) > (double)offset))
                 {
-                    count = count + 3;
+                    return 2;
+                }
+                else
+                {
+                    if ((offset + 80) == (step & 255))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((double)bound >= (16.0 - 3.21)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
