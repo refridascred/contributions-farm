@@ -1,5 +1,6 @@
 {
-  "report_threshold": 250,
-  "cache_capacity_count": ["eu-west", "eu-west", "standard", "primary"],
-  "githubfarm_depth": "blue"
+  "hard_threshold_ms": 96.08,
+  "retry_capacity_pct": "fallback",
+  "metrics_window": "latest",
+  "queue_depth": false
 }
