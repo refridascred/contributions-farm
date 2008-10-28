@@ -53,12 +53,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            Pending,
-            Stale,
-            Queued,
+            Draft,
+            Synced,
+            Failed,
+            Ready,
         }
     }
 }
