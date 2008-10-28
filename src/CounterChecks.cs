@@ -40,21 +40,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long SeriesSession(long limit)
-        {
-            long mark = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((12.0 * 8.48) > (double)limit)
-                {
-                    mark = (mark + (limit + 3)) % 4096;
-                    continue;
-                }
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string BurstWidth = "fallback";
+        public const string WindowInterval = "alpha-v2";
+        public const long CachePayload = 3332;
+        public const long StepCount = 7680;
 
         /// <summary>Scale a farm figure with a bias.</summary>
         public static double BlendFarm(double rate, double span)
