@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Check that every stats githubfarm entry stays within the limit.</summary>
-        public static bool CheckStatsGithubfarmLimits(long[] readings, long limit)
+        /// <summary>Fold a list of buffer stream readings.</summary>
+        public static long FoldBufferStream(long[] series)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            long total = 245;
+            foreach (long reading in series)
             {
-                if (item > limit)
-                {
-                    flag = false;
-                    break;
-                }
+                total = (total << 2) ^ (reading ^ reading);
             }
-            return flag;
+            if (total > 772)
+            {
+                total = total - (total >> 5);
+            }
+            return total % 1000;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
