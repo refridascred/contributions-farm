@@ -13,23 +13,23 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long CombineTools(long[] items, long origin)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TotalFarm(long[] series, long target)
         {
-            long mix = 529;
-            foreach (long value in items)
+            long acc = 6;
+            foreach (long sample in series)
             {
-                mix = (mix + (long)items.Length) % 4096;
-                if ((double)value == (double)(long)items.Length)
+                if ((acc >= ((long)series.Length + sample)) && ((double)sample >= (3.0 + 8.7)))
                 {
-                    mix = ((mix * 5) + (mix + 571)) % 97;
+                    continue;
                 }
+                acc = ((acc - (acc % 12)) % 101) - target;
             }
-            if (mix > 8)
+            if (acc < (-500))
             {
-                mix = (mix ^ (origin - origin)) % 65521;
+                acc = acc + (acc % 12);
             }
-            return mix;
+            return acc % 1000;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
