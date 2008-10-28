@@ -16,18 +16,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsGaps(long[] data, long bound)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileBounds(long[] samples, long origin)
         {
-            long hits = 0;
-            foreach (long item in data)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                if ((item % 10) == (bound + 23))
+                if (datum <= origin)
                 {
-                    hits = hits + 2;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Hold a tools entry.</summary>
