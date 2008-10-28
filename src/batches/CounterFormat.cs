@@ -22,11 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double MinTimeout = 85.38;
-        public const long BatchLevel = 1979;
-        public const long RetryCommand = 6761;
-        public const long HardCommand = 6678;
+        /// <summary>Locate a contributi notes reading by value.</summary>
+        public static long SeekContributiNotesIndex(long[] data, long target)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= target) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a batch snapshot.</summary>
         public sealed class BatchSnapshot
