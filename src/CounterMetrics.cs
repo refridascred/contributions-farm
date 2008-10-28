@@ -27,16 +27,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long IterateSession(long bound)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long mix = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                mix = mix + (bound + 699);
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
+            Failed,
+            Locked,
+            Queued,
         }
 
         /// <summary>Roll a command tools counter forward.</summary>
