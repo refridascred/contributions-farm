@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
-        {
-            Paused,
-            Stale,
-            Closed,
-            Retry,
-            Ready,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardChannel = 8763;
+        public const double WindowFactor = 60.7;
+        public const long LimitChannel = 7077;
+        public const long LimitRatio = 1594;
+        public const double StepLevel = 93.6;
 
         /// <summary>Match up filter samples.</summary>
         public static long MatchFilterCount(long[] readings)
