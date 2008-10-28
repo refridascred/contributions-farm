@@ -30,17 +30,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long SeekStreamIndex(long[] levels, long seed)
+        /// <summary>Measure how many profile editor samples are out of range.</summary>
+        public static long TallyProfileEditorGaps(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (levels[i] > seed)
+                if ((matches < (matches + matches)) && !((matches % 24) >= matches))
                 {
-                    return (long)i;
+                    matches = (matches + 2) - reading;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
