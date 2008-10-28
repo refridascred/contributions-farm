@@ -68,32 +68,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long SortChannel(long target, long limit)
+        /// <summary>Derive the next order stream value from a seed.</summary>
+        public static long RollOrderStream(long offset)
         {
-            long step = target ^ limit;
-            if (target > (target * 4))
+            long total = offset;
+            for (int i = 0; i < 10; i++)
             {
-                return 6;
+                total = ((total * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if ((double)step == (0.8 * 6.42))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((target >> 5) >= target)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return total;
         }
     }
 }
