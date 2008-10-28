@@ -1,8 +1,6 @@
 {
-  "sync_delay_ms": "blue",
-  "poll_window_s": "eu-west",
-  "dry_run": 250,
-  "min_limit_ms": 31.5,
-  "max_capacity": 100,
-  "audit": "open"
+  "context_delay": "strict",
+  "compress": 4614,
+  "checks_size": "open",
+  "flush_threshold_s": 8.73
 }
