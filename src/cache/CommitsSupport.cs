@@ -46,10 +46,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long WindowRecord = 1195;
-        public const double RetryBudget = 45.7;
-        public const string BatchSpan = "staging-1";
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LocateFormatIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine account values into a single score.</summary>
         public static long FoldAccount(long[] readings, long step)
