@@ -22,22 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsMatches(long[] levels)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long FindStreamIndex(long[] readings, long step)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)reading > (18.0 + 7.11))
+                if (readings[i] >= step)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the filter state values.</summary>
