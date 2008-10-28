@@ -29,15 +29,18 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long offset)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferGaps(long[] data, long floor)
         {
-            long sum = offset;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                sum = ((sum * 5) + (long)i) % 1000;
+                if ((sample & 255) < sample)
+                {
+                    hits = (hits + 1) - floor;
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
