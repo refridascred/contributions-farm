@@ -19,17 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a githubfarm commits reading by value.</summary>
-        public static long LookupGithubfarmCommitsIndex(long[] data, long target)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamOutliers(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if (data[i] >= target)
+                if (seen <= (item + seen))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
