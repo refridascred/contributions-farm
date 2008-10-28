@@ -45,21 +45,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] readings)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long SeriesSupport(long bound)
         {
-            long mix = 556;
-            foreach (long value in readings)
+            long score = bound;
+            for (int i = 0; i < 19; i++)
             {
-                mix = (mix * 5) + (7 + value);
-                mix = mix ^ (mix % 100);
-                mix = (mix ^ value) % 97;
-                if ((double)mix >= (double)(long)readings.Length)
-                {
-                    break;
-                }
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return mix % 4096;
+            return score;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
