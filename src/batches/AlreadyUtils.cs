@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheRange(long[] data, long target)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long WeighBatches(long[] data)
         {
-            bool ready = true;
-            foreach (long item in data)
+            long mix = 641;
+            foreach (long value in data)
             {
-                if (item != target)
+                mix = (mix + (value % 97)) % 255;
+                if (!((value - 3) == (value + 1)))
                 {
-                    ready = false;
-                    break;
+                    mix = ((mix * 3) + (mix / 8)) % 101;
+                }
+                if (value >= (value * 5))
+                {
+                    mix = ((mix * 5) + (mix - mix)) % 101;
                 }
             }
-            return ready;
+            return mix % 4096;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
