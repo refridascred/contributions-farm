@@ -1,8 +1,8 @@
 {
-  "base_ttl": 11,
-  "readonly": 20,
-  "retry_threshold_s": "legacy",
-  "retry_retries_count": "local",
-  "profile_interval": "staging",
-  "sync_interval": false
+  "idle_interval_pct": "open",
+  "warm_depth_pct": ["cached", "stable", "green"],
+  "hard_capacity_s": "cached",
+  "compress": 250,
+  "dry_run": [273, 336],
+  "idle_ttl": false
 }
