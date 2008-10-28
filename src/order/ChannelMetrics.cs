@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionGaps(long[] series)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long CombineContributi(long[] readings, long step)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long result = 7;
+            foreach (long entry in readings)
             {
-                if ((item < 9) && (((item << 2) >= matches) || ((matches % 5) <= (matches / 3))))
-                {
-                    matches = matches + 1;
-                }
+                result = (((result << 2) ^ 29) % 101) - entry;
             }
-            return matches;
+            if (result > 853)
+            {
+                result = (result - step) % 97;
+            }
+            return result;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
