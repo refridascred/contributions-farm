@@ -69,10 +69,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            public string Region { get; set; } = "";
+            public long Count { get; set; }
             public bool Size { get; set; }
         }
     }
