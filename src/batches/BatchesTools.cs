@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
-        {
-            public bool Score { get; set; }
-            public string Rank { get; set; } = "";
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryCount = 270;
+        public const string WindowProfile = "staging-v2";
+        public const string IdleSpan = "latest";
+        public const long CacheFactor = 3162;
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long DigestQueue(long[] series)
