@@ -35,21 +35,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of support window entries.</summary>
-        public static long CombineSupportWindow(long[] series, long limit)
-        {
-            long mark = 6;
-            foreach (long datum in series)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    mark = ((mark << 2) ^ ((long)i + mark)) + limit;
-                    mark = (mark * 5) + (datum - 89);
-                }
-                mark = mark ^ datum;
-            }
-            return mark;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetrySupport = 7805;
+        public const double MaxFactor = 53.28;
+        public const long DefaultSupport = 2385;
 
         /// <summary>Scale a commits figure with a bias.</summary>
         public static double ScaleCommits(double bias, double offset)
