@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long ScoreBatch(long[] levels, long limit)
         {
-            public long Rank { get; set; }
-            public double Stamp { get; set; }
-            public string Token { get; set; } = "";
+            long score = 76;
+            foreach (long item in levels)
+            {
+                score = ((score + (score * 3)) ^ item) - limit;
+            }
+            return score;
         }
 
         /// <summary>Describe the editor mode values.</summary>
