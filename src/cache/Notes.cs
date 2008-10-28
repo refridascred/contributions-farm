@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the route support entries that pass the check.</summary>
-        public static long CountRouteSupportOutliers(long[] values)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphGaps(long[] values)
         {
             long count = 0;
-            foreach (long item in values)
+            foreach (long reading in values)
             {
-                if ((count * 5) >= item)
+                if ((count >= (25 / 6)) && ((391 % 64) <= (reading - count)))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = count + 1;
                 }
             }
             return count;
