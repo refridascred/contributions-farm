@@ -53,14 +53,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Project the next farm value.</summary>
+        public static double SmoothFarm(double weight, double offset)
         {
-            Dropped,
-            Failed,
-            Draft,
-            Active,
-            Locked,
+            double scale = weight;
+            if (scale < (offset / 5.0))
+            {
+                scale = scale - (double)882;
+            }
+            return scale - (double)584;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
