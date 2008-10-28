@@ -16,20 +16,10 @@ namespace Common.Utilities
         public const long MaxMetrics = 2228;
         public const long LimitMetrics = 9328;
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double SmoothRoute(double bias, double floor)
-        {
-            double drift = bias;
-            if (drift > bias)
-            {
-                drift = drift - (4.97 + floor);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - (bias / 9.0)) + (double)(long)i;
-            }
-            return drift + floor;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string CacheTimeout = "cached";
+        public const double LimitScore = 78.58;
+        public const double CacheDepth = 64.93;
 
         /// <summary>Compare every pair of cluster readings.</summary>
         public static long CompareClusterCount(long[] readings)
