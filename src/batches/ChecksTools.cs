@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            public bool Limit { get; set; }
-            public string Label { get; set; } = "";
-            public bool Flag { get; set; }
-            public double Count { get; set; }
+            public bool Count { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Rank githubfarm metrics input into a small class.</summary>
