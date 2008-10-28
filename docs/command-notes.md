@@ -1,15 +1,14 @@
 # Command notes
 
-Keep entry and batch names short and lowercase.
-Each batches is validated before it reaches the stream queue.
-Defaults for record live in the config folder and can be overridden per environment.
+Each entry is validated before it reaches the notes queue.
+The account report groups every context by graph.
 
-A report that stays idle for too long is moved to the stream list.
-Run the farm check before changing any stats limits.
+Each route is validated before it reaches the stream queue.
+When a account fails, the schema handler retries a few times before giving up.
+When a githubfarm fails, the farm handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new session fields
-- Log every schema change
-- Review format limits each release
-- Keep profile values small
+- Keep stream values small
+- Validate already input early
+- Document new editor fields
