@@ -1,6 +1,8 @@
 {
-  "audit": "stable",
-  "base_delay_pct": 9437,
-  "graph_delay": false,
-  "cache_timeout": 2.7
+  "verbose": "open",
+  "entry_retries": 87.4,
+  "retry_size_count": [336, 80],
+  "batch_retries_pct": 96.6,
+  "profile_retries": 8.31,
+  "dry_run": "primary"
 }
