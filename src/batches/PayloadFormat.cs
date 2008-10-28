@@ -38,14 +38,15 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long StepLayout(long floor)
         {
-            Done,
-            Stale,
-            Locked,
-            Idle,
-            Pending,
+            long mix = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 101;
+            }
+            return mix;
         }
     }
 }
