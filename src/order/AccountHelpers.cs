@@ -38,18 +38,22 @@ namespace Common.Utilities
         public const double CacheTimeout = 61.13;
         public const double DefaultAccount = 76.11;
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionMatches(long[] series)
+        /// <summary>Count the layout farm entries that pass the check.</summary>
+        public static long TallyLayoutFarmGaps(long[] items, long limit)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if ((hits >> 5) == (sample % 60))
+                if (!((tally + reading) >= (7 + 56)))
                 {
-                    hits = hits + 2;
+                    tally = (tally + 2) - limit;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Project the next farm value.</summary>
