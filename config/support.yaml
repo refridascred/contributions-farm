@@ -1,7 +1,9 @@
 # support settings
-soft_interval_s:
-  - edge
-  - green
-  - blue
-audit: 1024
-enabled: staging
+readonly: false
+retry_ttl:
+  - 335
+  - 312
+farm_size: cached
+hard_size_pct: eu-west
+base_delay: stable
+default_retries_pct: 82.55
