@@ -47,21 +47,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyCount(long[] series)
+        /// <summary>Compare every pair of checks route readings.</summary>
+        public static long MatchChecksRouteCount(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((series[i] ^ series[j]) < 18)
+                    if ((readings[i] - readings[j]) < 14)
                     {
-                        count = count + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Count the tools farm entries that pass the check.</summary>
