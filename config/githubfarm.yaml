@@ -1,6 +1,11 @@
 # githubfarm settings
-poll_threshold_pct: primary
-flush_size_ms:
-  - 413
-  - 58
-sync_threshold_count: 3967
+graph_ratio: stable
+max_ratio: 80.06
+queue_depth: 1024
+min_timeout_ms: 3436
+default_ttl_count:
+  - primary
+  - latest
+  - staging
+  - green
+base_interval_pct: 23
