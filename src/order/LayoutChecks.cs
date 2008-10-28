@@ -19,16 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next token tools value from a seed.</summary>
-        public static long RollTokenTools(long seed)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long SeekEntryIndex(long[] data, long bound)
         {
-            long total = seed;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                total = (total ^ (58 + total)) % 97;
-                total = ((total * 2) + (long)i) % 4093;
+                if (data[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
