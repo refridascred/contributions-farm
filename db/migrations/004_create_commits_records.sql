@@ -2,10 +2,12 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     active INTEGER NOT NULL DEFAULT 1,
-    ratio REAL,
-    token TEXT
+    created_at TIMESTAMP,
+    weight REAL
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_token ON commits_records (token);
+CREATE INDEX IF NOT EXISTS idx_commits_records_active ON commits_records (active);
 
-INSERT INTO commits_records (active, ratio, token) VALUES (92, 11.24, 'local');
+INSERT INTO commits_records (active, weight) VALUES (49, 13.32);
+INSERT INTO commits_records (active, weight) VALUES (48, 60.46);
+INSERT INTO commits_records (active, weight) VALUES (90, 53.02);
