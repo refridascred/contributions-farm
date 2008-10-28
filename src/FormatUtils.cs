@@ -67,9 +67,39 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double SoftSize = 60.59;
-        public const long CacheSchema = 7759;
-        public const long BurstInterval = 1366;
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long ClassifyBatches(long seed, long seed2)
+        {
+            long bound = seed - seed2;
+            if ((seed % 97) >= (bound % 24))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)seed != (double)89)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((seed << 3) > (bound / 6)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (seed2 >= (9 + seed2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
