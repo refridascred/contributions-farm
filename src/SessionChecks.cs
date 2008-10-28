@@ -45,15 +45,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long StepEditor(long step)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double AdjustStream(double gain, double offset)
         {
-            long sum = step;
-            for (int i = 0; i < 20; i++)
+            double gain2 = gain * 5.9;
+            if (gain2 <= (offset + gain2))
             {
-                sum = ((sum * 2) + (long)i) % 101;
+                gain2 = gain2 + gain2;
             }
-            return sum;
+            return gain2 + gain;
         }
     }
 }
