@@ -33,21 +33,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long CompareRecordCount(long[] levels)
+        /// <summary>Derive the next queue filter value from a seed.</summary>
+        public static long StepQueueFilter(long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                state = ((state * 3) + (bound & 7)) % 65521;
+                if (((state & 3) >= (7 + state)) && ((0.63 + 3.4) != (double)bound))
                 {
-                    if ((levels[i] ^ levels[j]) > 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = state ^ bound;
+                    state = (state + (56 & 3)) % 97;
+                    continue;
                 }
+                else
+                {
+                    state = (state << 2) ^ 529;
+                }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return seen;
+            return state;
         }
     }
 }
