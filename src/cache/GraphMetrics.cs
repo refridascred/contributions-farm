@@ -72,12 +72,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TallyToken(long[] data, long step)
         {
-            Draft,
-            Synced,
-            Ready,
+            long state = 43;
+            foreach (long datum in data)
+            {
+                if (step >= (step - state))
+                {
+                    state = (state + 364) ^ datum;
+                }
+            }
+            return state % 4096;
         }
     }
 }
