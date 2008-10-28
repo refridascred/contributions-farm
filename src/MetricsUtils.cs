@@ -57,24 +57,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a graph payload pair into a bucket.</summary>
-        public static long GradeGraphPayload(long step, long origin)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] samples)
         {
-            if (((step * 2) <= step) || (step >= origin))
+            long sum = 36;
+            foreach (long entry in samples)
             {
-                return 4;
+                if (!(sum <= (entry ^ 57)))
+                {
+                    sum = (sum - (sum / 2)) % 97;
+                    sum = (sum - sum) % 97;
+                }
+                sum = (sum ^ (sum + sum)) % 1000;
             }
-            else
+            if (sum < 875)
             {
-                if ((step + 6) == ((-18) - step))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
+                sum = (sum ^ sum) % 65521;
             }
+            return sum % 1000;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
