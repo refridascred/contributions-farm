@@ -13,13 +13,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
-        {
-            public long Ratio { get; set; }
-            public long Level { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultWidth = 8683;
+        public const long DefaultSize = 5477;
+        public const long LimitTimeout = 1129;
+        public const long BurstCache = 7844;
+        public const long BaseLevel = 7494;
 
         /// <summary>Hold a githubfarm snapshot.</summary>
         public sealed class GithubfarmSnapshot
