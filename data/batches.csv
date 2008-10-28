@@ -1,7 +1,10 @@
-id,ratio,score,count
-1,945,450,871
-2,latest,76.75,87.36
-3,91.71,62.97,903
-4,stable,74.41,155
-5,40.07,765,753
-6,blue,98.32,legacy
+id,state,weight,count,level
+1,94.27,5.06,564,64.36
+2,909,local,579,682
+3,fallback,310,953,fallback
+4,legacy,strict,local,83.71
+5,47.75,blue,38.72,458
+6,8,local,stable,67.44
+7,15.41,strict,primary,370
+8,287,725,10.38,26.07
+9,30.36,229,12.93,green
