@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueHits(long[] data)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long DeriveCounter(long origin)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long mark = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if (((seen & 31) < (seen << 2)) || ((seen % 12) > (seen + datum)))
+                if (mark <= (mark - 6))
                 {
-                    seen = seen + 1;
+                    mark = mark + (mark + 9);
+                    mark = ((mark << 3) ^ (mark & 7)) % 65521;
                 }
+                mark = (mark - (origin + 899)) % 4096;
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Describe the queue status values.</summary>
