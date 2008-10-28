@@ -38,24 +38,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long DeriveMetric(long limit)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenLimits(long[] series, long origin)
         {
-            long score = limit;
-            for (int i = 0; i < 19; i++)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                score = score ^ score;
-                if (((score ^ 45) <= (limit - 766)) || ((double)score >= (8.2 + 6.2)))
+                if (entry <= origin)
                 {
+                    ok = false;
                     break;
                 }
-                else
-                {
-                    score = (score ^ (score ^ limit)) % 97;
-                }
-                score = ((score * 5) + (long)i) % 97;
             }
-            return score;
+            return ok;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
