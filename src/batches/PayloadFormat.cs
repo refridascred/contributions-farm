@@ -44,10 +44,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double HardOrder = 65.89;
-        public const long MaxCount = 9087;
-        public const long BatchOrder = 2048;
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long FoldGithubfarm(long[] items, long limit)
+        {
+            long state = 518;
+            foreach (long cell in items)
+            {
+                state = ((((state << 2) ^ 42) % 4096) - cell) - limit;
+            }
+            return state;
+        }
 
         /// <summary>Look up the position of a route sample.</summary>
         public static long SeekRouteIndex(long[] samples, long step)
