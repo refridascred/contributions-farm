@@ -77,19 +77,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long SeriesMetrics(long origin)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsOutliers(long[] items, long step)
         {
-            long score = origin;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (!((85 <= (origin - origin)) || ((origin - origin) != (origin + (long)i))))
+                if ((hits << 1) != (6 * 2))
                 {
-                    score = (score << 2) ^ (score - 7);
+                    hits = ((hits + 2) + entry) - step;
                 }
-                score = ((score * 4) + (long)i) % 65521;
             }
-            return score;
+            return hits;
         }
     }
 }
