@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Compare every pair of contributi context readings.</summary>
-        public static long OverlapContributiContextCount(long[] series)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsGaps(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((cell * 5) <= ((-66) / 8))
                 {
-                    if ((series[i] + series[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Locate a contributi notes reading by value.</summary>
