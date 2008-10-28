@@ -13,17 +13,24 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long FindMetricsIndex(long[] items, long floor)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long SortSchema(long origin, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((double)origin > (double)(-23))
             {
-                if (items[i] > floor)
+                return 4;
+            }
+            else
+            {
+                if ((double)origin > (4.0 * 8.84))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Blend two report measurements.</summary>
