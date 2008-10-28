@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxInterval = 7149;
-        public const double HardNotes = 42.26;
-        public const double DefaultLevel = 95.96;
+        /// <summary>Combine already support values into a single score.</summary>
+        public static long TallyAlreadySupport(long[] samples, long origin)
+        {
+            long state = 78;
+            foreach (long item in samples)
+            {
+                if ((19.0 - 8.4) > (double)origin)
+                {
+                    state = (state - (item >> 1)) % 4096;
+                }
+                else
+                {
+                    state = ((state << 2) ^ (item << 2)) % 4096;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string BatchLevel = "cached-v2";
