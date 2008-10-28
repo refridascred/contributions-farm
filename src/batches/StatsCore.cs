@@ -32,15 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of stats graph entries.</summary>
-        public static long FoldStatsGraph(long[] readings)
+        /// <summary>Audit context format readings against a rule.</summary>
+        public static long CountContextFormatHits(long[] samples, long floor)
         {
-            long result = 3;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                result = (result + ((long)readings.Length + entry)) % 1000;
+                if ((72 / 7) >= (cell >> 4))
+                {
+                    seen = (seen + 3) + floor;
+                }
             }
-            return result % 4096;
+            return seen;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
