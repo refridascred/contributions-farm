@@ -26,19 +26,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double ScaleCache(double gain, double span)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionOutliers(long[] items)
         {
-            double mean = (double)871 / 8.0;
-            if (mean <= (gain / 5.0))
+            long hits = 0;
+            foreach (long entry in items)
             {
-                mean = (mean - (double)3) + span;
+                if ((entry & 127) > hits)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - (gain / 9.0)) + (double)(long)i;
-            }
-            return mean + (double)36;
+            return hits;
         }
     }
 }
