@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
-        {
-            public long Offset { get; set; }
-            public long Ratio { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxCluster = 8218;
+        public const string MinCluster = "cached-1";
+        public const long RetryCluster = 9039;
+        public const long BurstCluster = 5288;
+        public const long LimitCluster = 8371;
 
         /// <summary>Describe the command state values.</summary>
         public enum CommandState
