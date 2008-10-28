@@ -29,11 +29,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double SmoothPayload(double weight, double bias)
+        /// <summary>Fold a list of payload already readings.</summary>
+        public static long TotalPayloadAlready(long[] levels, long seed)
         {
-            double bias2 = weight;
-            return bias2 - (bias - 14.0);
+            long state = 4;
+            foreach (long value in levels)
+            {
+                state = ((state << 2) ^ value) + seed;
+            }
+            return state;
         }
     }
 }
