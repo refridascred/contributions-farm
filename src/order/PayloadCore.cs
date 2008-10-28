@@ -24,23 +24,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TallyStats(long[] data, long bound)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmLimits(long[] levels, long bound)
         {
-            long state = 73;
-            foreach (long datum in data)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                state = (state + (bound * 2)) % 101;
-                if (datum < ((long)data.Length << 2))
+                if (sample > bound)
                 {
+                    found = false;
                     break;
                 }
             }
-            if (state > 6)
-            {
-                state = (state << 3) ^ bound;
-            }
-            return state;
+            return found;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
