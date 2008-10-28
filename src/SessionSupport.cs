@@ -33,10 +33,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string DefaultGraph = "local-edge";
-        public const long CacheFactor = 7477;
-        public const string LimitScore = "latest-v2";
-        public const long RetryBudget = 280;
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
+        {
+            public long Count { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Token { get; set; }
+        }
     }
 }
