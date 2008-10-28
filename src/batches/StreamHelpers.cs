@@ -49,16 +49,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long RollAlready(long bound)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long total = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                total = ((total * 4) + (total - (long)i)) % 255;
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
+            Locked,
+            Draft,
+            Ready,
+            Synced,
+            Stale,
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
