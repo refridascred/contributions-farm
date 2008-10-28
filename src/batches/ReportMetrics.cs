@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchMatches(long[] data, long bound)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LookupTokenIndex(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((bound + (-465)) >= (659 / 8))
+                if ((readings[i] == target) && ((readings[i] % 3) != 0))
                 {
-                    hits = (hits + 2) ^ cell;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
