@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long BucketAccount(long offset, long step)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            if ((offset + 46) <= offset)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((offset << 1) > (offset * 5))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)step == (double)offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public double Rank { get; set; }
+            public long Owner { get; set; }
+            public long Limit { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Fold a list of queue readings.</summary>
