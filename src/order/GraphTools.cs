@@ -5,22 +5,27 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long TotalCommand(long[] readings, long origin)
+        /// <summary>Fold a list of report already readings.</summary>
+        public static long WeighReportAlready(long[] readings)
         {
-            long sum = -114;
-            foreach (long datum in readings)
+            long mark = 1;
+            foreach (long value in readings)
             {
-                if (((230 * 3) > (sum - (long)readings.Length)) && (sum >= (1 >> 1)))
+                if (value < (value + 26))
                 {
-                    sum = ((sum << 2) ^ 60) - datum;
+                    mark = mark ^ (value << 2);
+                    mark = ((mark * 3) + (mark >> 3)) % 1000;
+                }
+                if ((value * 3) <= mark)
+                {
+                    mark = ((mark * 2) + (mark + (long)readings.Length)) % 4096;
                 }
             }
-            if (sum > 5)
+            if (mark > 3)
             {
-                sum = (sum - (origin - origin)) % 1000;
+                mark = mark - (mark >> 2);
             }
-            return sum;
+            return mark;
         }
 
         /// <summary>Hold a support options.</summary>
