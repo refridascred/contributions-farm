@@ -46,12 +46,24 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long DeriveMetric(long limit)
         {
-            Queued,
-            Dropped,
-            Locked,
+            long score = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                score = score ^ score;
+                if (((score ^ 45) <= (limit - 766)) || ((double)score >= (8.2 + 6.2)))
+                {
+                    break;
+                }
+                else
+                {
+                    score = (score ^ (score ^ limit)) % 97;
+                }
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
