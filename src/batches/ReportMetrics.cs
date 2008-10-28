@@ -13,18 +13,25 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportOutliers(long[] data, long target)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long RankWindow(long step, long limit)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long edge = step - limit;
+            if (!((edge & 63) != (17 ^ limit)))
             {
-                if ((double)datum <= (5.71 * 6.0))
+                return 3;
+            }
+            else
+            {
+                if ((edge % 5) >= (limit << 1))
                 {
-                    hits = (hits + 1) - target;
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return hits;
         }
 
         /// <summary>Locate a payload checks reading by value.</summary>
