@@ -54,11 +54,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double SmoothRecord(double rate, double bias)
         {
-            public string Count { get; set; } = "";
-            public double Stamp { get; set; }
+            double bias2 = rate;
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = ((bias2 - (rate * 0.54)) + (double)(long)i) - bias;
+            }
+            return bias2 - (double)58;
         }
     }
 }
