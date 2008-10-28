@@ -43,12 +43,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenHits(long[] readings)
         {
-            public string Rank { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Count { get; set; }
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if ((value / 6) == (count << 1))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
