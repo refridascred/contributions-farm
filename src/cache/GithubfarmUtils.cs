@@ -40,13 +40,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long GradeProfile(long step, long limit)
         {
-            public long Rank { get; set; }
-            public bool Offset { get; set; }
-            public long Label { get; set; }
-            public long Count { get; set; }
+            long delta = step - limit;
+            if ((8.7 * 6.4) == (double)delta)
+            {
+                return 7;
+            }
+            else
+            {
+                if (!(delta < (limit / 9)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((8 + step) <= (step / 4))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
