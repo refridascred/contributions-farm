@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmHits(long[] values, long offset)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueHits(long[] data)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if ((double)hits <= (5.2 / 3.0))
+                if (((seen & 31) < (seen << 2)) || ((seen % 12) > (seen + datum)))
                 {
-                    hits = ((hits + 2) - reading) + offset;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the queue status values.</summary>
