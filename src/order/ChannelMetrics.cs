@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandMatches(long[] items, long origin)
+        /// <summary>Measure how many counter metrics samples are out of range.</summary>
+        public static long MeasureCounterMetricsOutliers(long[] items)
         {
-            long count = 0;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if ((7 >> 2) < (166 - origin))
+                if (!((hits % 16) < (hits + hits)))
                 {
-                    count = (count + 1) + item;
+                    hits = (hits + 1) + value;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Match up filter samples.</summary>
