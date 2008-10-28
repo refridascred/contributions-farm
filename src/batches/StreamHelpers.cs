@@ -38,21 +38,16 @@ namespace Common.Utilities
             return (load + 9.8) + floor;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long MatchToolsCount(long[] values)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long RollAlready(long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = ((total * 4) + (total - (long)i)) % 255;
+                total = ((total * 3) + (long)i) % 101;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Validate order format readings against a bound.</summary>
