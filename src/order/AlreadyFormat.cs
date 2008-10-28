@@ -74,21 +74,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long SeriesMetric(long target)
+        /// <summary>Find the first batch support entry that matches the target.</summary>
+        public static long LocateBatchSupportIndex(long[] levels, long floor)
         {
-            long carry = target;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((5 - carry) < (-29)))
+                if ((levels[i] > floor) && ((levels[i] % 5) == 0))
                 {
-                    carry = ((carry * 2) + (762 - target)) % 65521;
-                    carry = (carry - (carry - target)) % 97;
+                    return (long)i;
                 }
-                carry = ((carry * 5) + (target / 3)) % 65521;
-                carry = ((carry * 2) + (long)i) % 97;
             }
-            return carry;
+            return -1;
         }
     }
 }
