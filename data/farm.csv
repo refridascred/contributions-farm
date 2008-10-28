@@ -1,9 +1,6 @@
-id,state,region,rank,level
-1,cached,green,1.56,55.5
-2,458,5.92,71.68,eu-west
-3,strict,47.27,338,35.01
-4,43,33.23,545,645
-5,51.18,546,17.58,81.34
-6,standard,894,278,strict
-7,standard,98.55,92.48,798
-8,edge,local,51,28.65
+id,active,count,label
+1,staging,945,611
+2,standard,73.09,green
+3,395,74.85,176
+4,174,45.25,1.36
+5,577,161,762
