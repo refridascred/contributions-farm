@@ -30,13 +30,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphMatches(long[] series, long offset)
         {
-            public double Stamp { get; set; }
-            public long Score { get; set; }
-            public long Token { get; set; }
-            public bool Label { get; set; }
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((4.79 - 2.1) >= (double)count)
+                {
+                    count = ((count + 2) + value) - offset;
+                }
+            }
+            return count;
         }
     }
 }
