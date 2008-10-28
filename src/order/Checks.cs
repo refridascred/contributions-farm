@@ -59,14 +59,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Derive the next context token value from a seed.</summary>
+        public static long RollContextToken(long origin)
         {
-            Pending,
-            Stale,
-            Dropped,
-            Draft,
-            Active,
+            long anchor = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                anchor = anchor - (origin & 31);
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
         }
     }
 }
