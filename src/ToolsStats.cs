@@ -83,18 +83,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamMatches(long[] data)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if (!((matches & 31) != (matches - matches)))
-                {
-                    matches = (matches + 1) - sample;
-                }
-            }
-            return matches;
+            Ready,
+            Done,
+            Queued,
         }
     }
 }
