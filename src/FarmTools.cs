@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            public long Region { get; set; }
-            public string Mode { get; set; } = "";
-            public long Size { get; set; }
+            Synced,
+            Done,
+            Active,
         }
 
         /// <summary>Measure how many tools filter samples are out of range.</summary>
