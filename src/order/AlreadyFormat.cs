@@ -45,13 +45,14 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
+            Ready,
+            Closed,
             Stale,
-            Done,
-            Retry,
             Pending,
+            Active,
         }
 
         /// <summary>Describe the graph class values.</summary>
