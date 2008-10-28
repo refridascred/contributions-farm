@@ -59,12 +59,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            Dropped,
+            Locked,
             New,
-            Closed,
+            Failed,
+            Stale,
         }
     }
 }
