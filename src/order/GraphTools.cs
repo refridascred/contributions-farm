@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Scale a farm githubfarm figure with a bias.</summary>
+        public static double ScaleFarmGithubfarm(double gain, double span)
         {
-            public long Total { get; set; }
-            public string Weight { get; set; } = "";
-            public string Label { get; set; } = "";
-            public string Owner { get; set; } = "";
+            double ratio = span;
+            if (ratio > 9.46)
+            {
+                ratio = ratio - gain;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + gain) - (double)(long)i;
+            }
+            return ratio - gain;
         }
 
         /// <summary>Look up the position of a tools contributi sample.</summary>
