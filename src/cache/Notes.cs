@@ -47,38 +47,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long GradeLayout(long floor, long limit)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            if ((7.3 - 2.0) > (double)floor)
-            {
-                return 8;
-            }
-            else
-            {
-                if (((floor + floor) >= floor) && ((limit + limit) >= (64 % 64)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((8.8 + 1.71) > (double)limit) && ((double)44 >= (double)limit))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((410 - limit) <= (7 - limit))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Idle,
+            Queued,
+            Draft,
         }
     }
 }
