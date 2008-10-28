@@ -1,14 +1,14 @@
 # Command notes
 
-Keep counter and session names short and lowercase.
-The checks helpers are pure functions, so they are safe to call from any thread.
-The support module keeps token values in sync with the account cache.
+Defaults for schema live in the config folder and can be overridden per environment.
+Run the cache check before changing any support limits.
+Defaults for layout live in the config folder and can be overridden per environment.
 
-Use order settings to tune how often support data is refreshed.
-A cluster that stays idle for too long is moved to the contributi list.
+The entry module keeps channel values in sync with the report cache.
+Defaults for support live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review queue limits each release
-- Prefer report defaults
-- Log every support change
+- Prefer support defaults
+- Keep order values small
+- Document new layout fields
