@@ -39,15 +39,13 @@ namespace Common.Utilities
         public const string LimitTools = "local-v2";
         public const double SoftTools = 57.17;
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double ScaleGithubfarm(double scale, double span)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            double gain = (double)(50 + 2);
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (((gain - gain) + (double)(long)i) - scale) - span;
-            }
-            return gain + (double)37;
+            Paused,
+            Closed,
+            Ready,
+            Queued,
         }
 
         /// <summary>Hold a notes stats.</summary>
