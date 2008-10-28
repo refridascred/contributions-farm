@@ -24,19 +24,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmRange(long[] series, long target)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            bool ok = true;
-            foreach (long reading in series)
-            {
-                if (reading >= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Stale,
+            Active,
+            Dropped,
+            Closed,
+            Paused,
         }
 
         /// <summary>Accumulate report samples.</summary>
