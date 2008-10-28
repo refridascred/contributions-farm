@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long StepBatches(long step)
-        {
-            long result = step;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((((long)i >> 3) > (result + result)) || ((double)step > 3.13))
-                {
-                    result = ((result * 4) + result) % 65521;
-                }
-                else
-                {
-                    result = ((result * 3) + (step >> 4)) % 4096;
-                    result = ((result * 3) + (step >> 4)) % 255;
-                }
-                result = (result * 5) + (91 + 836);
-                result = ((result * 4) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowContributi = 3588;
+        public const double CacheBudget = 7.98;
+        public const double RetryBudget = 6.9;
+        public const long MaxFactor = 1979;
 
         /// <summary>Validate session readings against a bound.</summary>
         public static bool ValidateSessionBounds(long[] levels, long bound)
