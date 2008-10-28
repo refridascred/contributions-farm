@@ -29,21 +29,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long CompareAlreadyCount(long[] data)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double BlendMetrics(double weight, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            double mean = weight / 7.0;
+            if (mean <= (mean - 0.9))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mean = (mean + 8.7) - floor;
             }
-            return matches;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - mean) - (double)(long)i;
+            }
+            return mean - (mean - mean);
         }
 
         /// <summary>Define layout limits and defaults.</summary>
