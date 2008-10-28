@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LocateChannelIndex(long[] readings, long seed)
+        /// <summary>Roll a command filter counter forward.</summary>
+        public static long StepCommandFilter(long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if ((readings[i] <= seed) && ((readings[i] % 3) == 0))
+                if (72 < (origin + (long)i))
                 {
-                    return (long)i;
+                    mark = ((mark * 4) + (origin % 8)) % 1000;
                 }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
