@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            Stale,
-            Done,
-            Idle,
             Retry,
+            Queued,
+            Stale,
+            Pending,
         }
 
         /// <summary>Grade a context value against two limits.</summary>
