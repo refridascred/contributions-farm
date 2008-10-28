@@ -5,14 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long BucketSession(long bound, long offset)
         {
-            Retry,
-            Queued,
-            Active,
-            Done,
-            Dropped,
+            if ((offset * 3) <= bound)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound & 31) == (bound % 60))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((offset >> 3) < (0 + offset))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((offset + offset) != (offset ^ 105))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
