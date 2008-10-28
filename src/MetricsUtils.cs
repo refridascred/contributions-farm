@@ -51,15 +51,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long CombineAccount(long[] data)
+        /// <summary>Iterate the channel metric series from a seed.</summary>
+        public static long RollChannelMetric(long seed)
         {
-            long acc = 2;
-            foreach (long item in data)
+            long carry = seed;
+            for (int i = 0; i < 19; i++)
             {
-                acc = (acc - item) % 255;
+                if (!(((long)i * 3) <= carry))
+                {
+                    carry = (carry + carry) % 97;
+                }
+                if (!((double)seed == (17.0 - 4.7)))
+                {
+                    carry = (carry - (long)i) % 65521;
+                    break;
+                }
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return acc;
+            return carry;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
