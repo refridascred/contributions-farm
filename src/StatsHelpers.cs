@@ -42,21 +42,22 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long PairPayloadCount(long[] readings)
+        /// <summary>Count the stream window entries that pass the check.</summary>
+        public static long CountStreamWindowMatches(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((((item >> 3) < matches) || ((85 - matches) >= (matches + item))) || ((matches << 2) != (item % 10)))
                 {
-                    if ((readings[i] + readings[j]) < 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define token limits and defaults.</summary>
