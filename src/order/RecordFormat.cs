@@ -41,19 +41,12 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double BlendEntry(double gain, double span)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            double ratio = (double)(-27) / 4.0;
-            if (ratio <= span)
-            {
-                ratio = ratio - gain;
-            }
-            else
-            {
-                ratio = ratio - (gain + span);
-            }
-            return ratio - (gain * 6.0);
+            Paused,
+            Failed,
+            Locked,
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
