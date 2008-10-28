@@ -1,7 +1,9 @@
-id,active,ratio
-1,541,421
-2,682,eu-west
-3,14.1,649
-4,30.07,local
-5,28.21,70.33
-6,open,20.84
+id,count,token
+1,833,694
+2,78.79,466
+3,905,standard
+4,standard,497
+5,995,open
+6,2.98,primary
+7,793,60.85
+8,219,78.92
