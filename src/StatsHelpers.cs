@@ -40,20 +40,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double BlendRecord(double gain, double floor)
-        {
-            double drift = gain / 8.0;
-            if (drift <= (8.9 * 3.0))
-            {
-                drift = (drift - (double)4) - floor;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + (drift / 4.0)) + (double)(long)i;
-            }
-            return drift + (double)78;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinDepth = 2762;
+        public const long BatchCount = 6272;
+        public const double IdleAlready = 91.61;
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long MeasureSupportHits(long[] readings, long floor)
