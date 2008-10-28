@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            public double Rank { get; set; }
-            public long Owner { get; set; }
-            public long Limit { get; set; }
-            public string Flag { get; set; } = "";
+            public double Weight { get; set; }
+            public bool Ratio { get; set; }
+            public bool Limit { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
