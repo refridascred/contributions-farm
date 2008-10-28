@@ -37,15 +37,38 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double BlendBatches(double bias, double offset)
+        /// <summary>Grade a profile batches value against two limits.</summary>
+        public static long GradeProfileBatches(long step, long origin)
         {
-            double bias2 = (bias / 6.0) / 3.0;
-            for (int i = 0; i < 7; i++)
+            if ((471 - origin) <= (7 + origin))
             {
-                bias2 = ((bias2 - 7.9) + (double)(long)i) - offset;
+                return 7;
             }
-            return bias2 - (double)201;
+            else
+            {
+                if ((18.0 >= (double)origin) && ((origin + step) == (step / 9)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (step >= (origin - origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (origin < (origin + origin))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
