@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit metrics profile readings against a rule.</summary>
-        public static long TallyMetricsProfileGaps(long[] items, long origin)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TallyNotes(long[] series, long target)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long result = 974;
+            foreach (long cell in series)
             {
-                if (((origin - 53) >= origin) || ((8.9 + 9.0) < (double)origin))
-                {
-                    count = (count + 2) ^ sample;
-                }
+                result = ((result * 4) + (target + target)) ^ cell;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Validate metric farm readings against a bound.</summary>
