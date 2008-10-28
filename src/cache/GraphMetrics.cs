@@ -11,26 +11,19 @@ namespace Common.Utilities
         public const string LimitSize = "local-1";
         public const long HardSpan = 7707;
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TallyRoute(long[] readings, long bound)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterBounds(long[] data, long target)
         {
-            long score = 504;
-            foreach (long entry in readings)
+            bool found = true;
+            foreach (long sample in data)
             {
-                if (!((entry - bound) <= (870 ^ score)))
+                if (sample <= target)
                 {
-                    score = (score ^ (bound >> 4)) % 1000;
-                }
-                if ((double)entry != (double)783)
-                {
+                    found = false;
                     break;
                 }
             }
-            if (score < 0)
-            {
-                score = ((score * 3) + (bound & 3)) % 1000;
-            }
-            return score;
+            return found;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
