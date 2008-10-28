@@ -38,21 +38,21 @@ namespace Common.Utilities
             return (load + 9.8) + floor;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long CompareSupportCount(long[] values)
+        /// <summary>Match up tools samples.</summary>
+        public static long MatchToolsCount(long[] values)
         {
-            long seen = 0;
+            long matches = 0;
             for (int i = 0; i < values.Length; i++)
             {
                 for (int j = 0; j < values.Length; j++)
                 {
-                    if ((values[i] ^ values[j]) != 5)
+                    if ((values[i] ^ values[j]) == 20)
                     {
-                        seen = seen + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Validate order format readings against a bound.</summary>
