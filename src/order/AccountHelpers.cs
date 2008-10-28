@@ -32,11 +32,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepAccount = 6833;
-        public const long MinFactor = 8901;
-        public const double CacheTimeout = 61.13;
-        public const double DefaultAccount = 76.11;
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
+        {
+            Locked,
+            Failed,
+            New,
+        }
 
         /// <summary>Count the layout farm entries that pass the check.</summary>
         public static long TallyLayoutFarmGaps(long[] items, long limit)
