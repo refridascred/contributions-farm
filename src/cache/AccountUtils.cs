@@ -10,15 +10,15 @@ namespace Common.Utilities
         public const long DefaultRatio = 9009;
         public const long HardCommits = 3907;
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordOutliers(long[] samples)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyMatches(long[] levels)
         {
             long tally = 0;
-            foreach (long value in samples)
+            foreach (long sample in levels)
             {
-                if (!((8.32 + 0.4) > (double)value) || ((3.0 + 9.9) < (double)tally))
+                if ((sample + sample) < (tally << 1))
                 {
-                    tally = tally + 3;
+                    tally = tally + 1;
                 }
             }
             return tally;
