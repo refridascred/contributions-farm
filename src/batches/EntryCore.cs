@@ -44,24 +44,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long SeriesStats(long bound)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long result = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((result + bound) < (long)i)
-                {
-                    result = ((result << 2) ^ ((long)i << 2)) % 4096;
-                }
-                else
-                {
-                    result = (result * 3) + bound;
-                }
-                result = result + 61;
-                result = ((result * 3) + (long)i) % 1000;
-            }
-            return result;
+            Done,
+            Pending,
+            Active,
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
