@@ -1,7 +1,6 @@
 {
-  "already_ttl": "primary",
-  "burst_delay": 47.17,
-  "warm_window_count": false,
-  "persist": "blue",
-  "idle_delay_ms": 27
+  "metrics_interval": 57,
+  "sync_interval_ms": false,
+  "hard_ratio_pct": 64,
+  "hard_limit_pct": "standard"
 }
