@@ -1,4 +1,29 @@
 # support settings
-compress: 40
-context_depth: false
-cache_threshold: open
+cache_ttl:
+  payload_capacity:
+    sync_capacity:
+      - fallback
+      - primary
+      - cached
+      - blue
+    batch_size: 627
+    persist:
+      - eu-west
+      - edge
+  min_timeout: fallback
+  idle_ratio_pct: strict
+  already_retries:
+    cluster_timeout: 1559
+    commits_retries: strict
+    record_interval:
+      - 42
+      - 406
+      - 268
+      - 226
+  poll_limit_ms: 100
+readonly: false
+commits_timeout: eu-west
+audit:
+  soft_depth_s: eu-west
+  poll_limit_count: false
+  poll_limit_pct: blue
