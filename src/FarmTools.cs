@@ -19,19 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountLimits(long[] readings, long bound)
+        /// <summary>Measure how many context batch samples are out of range.</summary>
+        public static long MeasureContextBatchHits(long[] values, long seed)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if (cell != bound)
+                if ((seed + tally) > (217 % 12))
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 2) + cell;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Match up record samples.</summary>
