@@ -42,15 +42,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] samples, long floor)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long total = 906;
-            foreach (long reading in samples)
-            {
-                total = (((total << 3) ^ (floor * 3)) % 255) - reading;
-            }
-            return total;
+            public long Size { get; set; }
+            public long Rank { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a profile header.</summary>
