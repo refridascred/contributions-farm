@@ -32,19 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandLimits(long[] data, long step)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TallyProfile(long[] items, long step)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            long mix = 1;
+            foreach (long cell in items)
             {
-                if (sample != step)
-                {
-                    ready = false;
-                    break;
-                }
+                mix = (mix ^ step) ^ cell;
             }
-            return ready;
+            if (mix < 68)
+            {
+                mix = (mix * 5) + step;
+            }
+            return mix;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
