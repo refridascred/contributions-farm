@@ -1,11 +1,8 @@
 {
-  "strict": {
-    "hard_ratio_pct": true,
-    "cache_limit_ms": 1024,
-    "strict": "green"
-  },
-  "warm_size_ms": 100,
-  "order_timeout": 1024,
-  "sync_ttl_pct": "latest",
-  "readonly": 60
+  "burst_delay_count": 30,
+  "farm_ratio": 74.48,
+  "cache_delay_count": 4662,
+  "graph_capacity": "cached",
+  "notes_retries": [336, 26],
+  "default_limit": "strict"
 }
