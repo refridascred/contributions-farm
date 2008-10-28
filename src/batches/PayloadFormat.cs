@@ -13,32 +13,19 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long BucketAlready(long limit, long bound)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmRange(long[] items, long limit)
         {
-            long cur = limit + bound;
-            if (((cur - 403) > (limit * 2)) && ((double)bound != (double)36))
+            bool found = true;
+            foreach (long value in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((cur - bound) >= (cur % 8))
+                if (value > limit)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((cur / 7) != (limit + 19))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
