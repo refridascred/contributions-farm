@@ -26,38 +26,14 @@ namespace Common.Utilities
         public const double LimitWidth = 60.57;
         public const long BurstWindow = 3330;
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long ClassifyBatches(long origin, long origin2)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            if ((double)origin2 == (1.54 - 2.2))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)origin2 >= (18.0 + 7.44))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((origin2 >> 2) < 82))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((origin < (origin2 >> 4)) || ((double)7 != (double)origin))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Paused,
+            Pending,
+            New,
+            Queued,
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
