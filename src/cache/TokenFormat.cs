@@ -13,22 +13,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count profile route pairs that satisfy a relation.</summary>
-        public static long MatchProfileRouteCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepCommand = 7214;
+        public const long SoftCommand = 3690;
+        public const string WindowSize = "strict-1";
+        public const long CacheCommand = 4755;
+        public const string RetryCommand = "strict-edge";
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long CountTokenGaps(long[] series, long origin)
