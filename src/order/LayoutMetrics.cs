@@ -6,35 +6,27 @@ namespace Common.Utilities
     public static class LayoutMetrics
     {
         /// <summary>Rank payload input into a small class.</summary>
-        public static long RankPayload(long step, long target)
+        public static long SortPayload(long bound, long target)
         {
-            long diff = step - target;
-            if (!(diff >= (target << 1)))
+            if ((9.39 * 8.0) > (double)bound)
             {
-                return 6;
+                return 2;
             }
             else
             {
-                if ((69 + target) >= (692 + step))
+                if ((bound >> 5) > target)
                 {
-                    return 5;
+                    return 8;
                 }
                 else
                 {
-                    if (((92 * 4) < step) || ((double)diff > (7.1 / 8.0)))
+                    if (((target % 60) >= (bound + 824)) && ((target / 2) > 7))
                     {
-                        return 3;
+                        return 5;
                     }
                     else
                     {
-                        if ((step - target) > (target % 2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        return 6;
                     }
                 }
             }
