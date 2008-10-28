@@ -65,23 +65,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double AdjustReport(double bias, double span)
-        {
-            double mean = 9.6;
-            if (mean > span)
-            {
-                mean = (mean - span) - bias;
-            }
-            else
-            {
-                mean = mean - (7.0 + 7.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - span) + (double)(long)i;
-            }
-            return mean + (mean / 7.0);
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheTimeout = 9079;
+        public const long MinInterval = 1489;
+        public const long IdleLevel = 1939;
+        public const long IdleWidth = 8966;
     }
 }
