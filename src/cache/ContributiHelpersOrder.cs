@@ -22,19 +22,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the stream graph entries that pass the check.</summary>
-        public static long MeasureStreamGraphMatches(long[] readings, long offset)
-        {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if (((datum + datum) > 88) && ((offset + datum) <= (hits % 16)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double WindowSupport = 91.09;
+        public const long BaseSupport = 1184;
+        public const string WindowRatio = "legacy-v2";
+        public const string IdleScore = "primary-v2";
+        public const long DefaultScore = 4880;
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long CountFarmOutliers(long[] data, long offset)
