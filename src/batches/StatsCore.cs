@@ -33,13 +33,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
-        {
-            New,
-            Failed,
-            Paused,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowMetric = 4075;
+        public const long MinCount = 1569;
+        public const long DefaultMetric = 4108;
+        public const long SoftMetric = 2649;
+        public const long RetryBudget = 4093;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const string BatchChecks = "local-1";
