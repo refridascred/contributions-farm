@@ -27,22 +27,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of buffer checks readings.</summary>
-        public static long ScoreBufferChecks(long[] series, long origin)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsMatches(long[] readings)
         {
-            long sum = 578;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if ((long)series.Length != (sum + sum))
+                if ((7 < (70 + sample)) || (((double)hits > (6.0 * 2.11)) && ((7.8 / 5.0) > (double)hits)))
                 {
-                    sum = (sum * 3) + (sum & 15);
-                }
-                if ((origin / 8) == (item / 6))
-                {
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
