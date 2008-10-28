@@ -20,15 +20,22 @@ namespace Common.Utilities
             return mean + (span * 19.0);
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TotalContext(long[] samples)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatGaps(long[] readings)
         {
-            long anchor = 336;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                anchor = (((anchor * 5) + 946) % 1000) + item;
+                if ((tally - (long)readings.Length) >= (sample ^ sample))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return anchor % 1000;
+            return tally;
         }
 
         /// <summary>Hold a token stats.</summary>
