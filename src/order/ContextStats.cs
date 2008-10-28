@@ -10,16 +10,17 @@ namespace Common.Utilities
         public const double RetryRoute = 68.55;
         public const long HardRoute = 8071;
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long SeriesRecord(long seed)
+        /// <summary>Find the first filter farm entry that matches the target.</summary>
+        public static long SeekFilterFarmIndex(long[] series, long floor)
         {
-            long mix = seed;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = ((mix * 5) + mix) % 65521;
-                mix = ((mix * 5) + (long)i) % 4093;
+                if (series[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
