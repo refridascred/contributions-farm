@@ -1,6 +1,6 @@
 {
-  "context_delay": "strict",
-  "compress": 4614,
-  "checks_size": "open",
-  "flush_threshold_s": 8.73
+  "audit": ["eu-west", "edge"],
+  "buffer_ttl": 40,
+  "poll_retries": 52.52,
+  "window_timeout": 924
 }
