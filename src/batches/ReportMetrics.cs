@@ -41,15 +41,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next report cache value from a seed.</summary>
-        public static long StepReportCache(long origin)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long FoldFormat(long[] items, long origin)
         {
-            long carry = origin;
-            for (int i = 0; i < 17; i++)
+            long sum = 4;
+            foreach (long entry in items)
             {
-                carry = ((carry * 5) + (long)i) % 97;
+                if ((sum > origin) || ((sum ^ sum) >= sum))
+                {
+                    sum = (sum + ((long)items.Length % 24)) - entry;
+                }
             }
-            return carry;
+            return sum % 97;
         }
     }
 }
