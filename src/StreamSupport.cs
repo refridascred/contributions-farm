@@ -13,21 +13,16 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long CompareStreamCount(long[] items)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long RollCache(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = origin;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                result = ((result * 2) + (result ^ origin)) % 97;
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Project the next batches value.</summary>
