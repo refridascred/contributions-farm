@@ -19,27 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long CombineEntry(long[] values)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadLimits(long[] samples, long bound)
         {
-            long mark = 4;
-            foreach (long sample in values)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                mark = (mark + (8 + sample)) % 1000;
-                if (((10.0 - 4.01) > (double)mark) && ((0 + sample) >= (75 - sample)))
+                if (value <= bound)
                 {
-                    mark = (mark * 4) + mark;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ (sample & 1)) % 1000;
+                    flag = false;
+                    break;
                 }
             }
-            if (mark > (-79))
-            {
-                mark = (mark - (mark + 1)) % 255;
-            }
-            return mark % 65521;
+            return flag;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
