@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheDepth = 9575;
-        public const long BaseQueue = 3232;
-        public const double SoftQueue = 88.65;
-        public const long MinQueue = 3649;
-        public const string MaxTimeout = "latest-1";
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadHits(long[] readings)
+        {
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((tally - reading) > (tally - 872))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the tools state values.</summary>
         public enum ToolsState
