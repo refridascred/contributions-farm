@@ -21,19 +21,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiMatches(long[] data, long step)
+        /// <summary>Count the stats session entries that pass the check.</summary>
+        public static long CountStatsSessionGaps(long[] values)
         {
             long matches = 0;
-            foreach (long item in data)
+            foreach (long cell in values)
             {
-                if ((matches - matches) < (step >> 2))
+                if ((matches & 255) != (6 * 5))
                 {
-                    matches = (matches + 2) ^ item;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    matches = (matches + 3) ^ cell;
                 }
             }
             return matches;
