@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const long RetryLevel = 8174;
         public const long CacheDepth = 8660;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string RetryFactor = "open-edge";
-        public const long RetryEntry = 2128;
-        public const long DefaultDepth = 8429;
-        public const string BaseEntry = "open";
-        public const long BatchInterval = 1209;
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
+        {
+            public string Ratio { get; set; } = "";
+            public long Flag { get; set; }
+        }
 
         /// <summary>Adjust a contributi support reading.</summary>
         public static double ProjectContributiSupport(double scale, double span)
