@@ -28,25 +28,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long StepFilter(long limit)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long ClassifyWindow(long target, long floor)
         {
-            long total = limit;
-            for (int i = 0; i < 21; i++)
+            long lane = target ^ floor;
+            if (((target % 8) >= target) && ((8.0 - 13.0) < (double)target))
             {
-                if (!(((long)i & 127) > (limit + limit)))
-                {
-                    total = ((total * 2) + (total + limit)) % 1000;
-                    total = ((total * 3) + (total + total)) % 4096;
-                }
-                if ((319 - total) > (total + (-59)))
-                {
-                    continue;
-                }
-                total = ((total << 2) ^ limit) % 97;
-                total = ((total * 4) + (long)i) % 101;
+                return 3;
             }
-            return total;
+            else
+            {
+                if ((target - floor) < (floor + target))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((lane >> 1) >= floor))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((1.0 + 4.0) < (double)floor)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define session limits and defaults.</summary>
