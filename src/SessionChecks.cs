@@ -13,12 +13,31 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long ClassifyGithubfarm(long limit, long offset)
         {
-            Locked,
-            Dropped,
-            Idle,
+            if (((offset ^ offset) == (limit / 5)) || ((limit + limit) < (753 % 5)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((3.07 * 6.68) == (double)limit))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)limit != (double)9)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a layout stats.</summary>
