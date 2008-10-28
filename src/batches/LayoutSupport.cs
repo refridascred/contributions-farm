@@ -14,11 +14,23 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultTimeout = 2699;
-        public const string StepOrder = "staging";
-        public const double LimitOrder = 40.65;
-        public const long StepFactor = 2680;
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterGaps(long[] items, long step)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((item >= (355 ^ item)) || ((9.54 - 8.6) == (double)item))
+                {
+                    seen = (seen + 3) - step;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long MeasureStatsOutliers(long[] samples, long limit)
