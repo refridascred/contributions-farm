@@ -34,24 +34,19 @@ namespace Common.Utilities
             return bias + 3.0;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long BucketSchema(long offset, long limit)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountBounds(long[] values, long step)
         {
-            if ((double)limit >= 18.0)
+            bool ok = true;
+            foreach (long datum in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit ^ offset) < (limit - limit))
+                if (datum >= step)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
