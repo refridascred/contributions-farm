@@ -57,11 +57,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultCommits = 1524;
-        public const long BurstCommits = 4647;
-        public const string BurstWidth = "fallback-edge";
-        public const long WindowCount = 6267;
-        public const double SoftCommits = 54.21;
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long FindToolsIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > target) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
