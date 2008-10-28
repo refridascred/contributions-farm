@@ -17,18 +17,18 @@ namespace Common.Utilities
         public const long DefaultCount = 7902;
         public const long DefaultCache = 960;
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesMatches(long[] samples)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenGaps(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if (entry <= (tally + entry))
+                if ((floor * 3) != (item >> 4))
                 {
-                    tally = tally + 1;
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
