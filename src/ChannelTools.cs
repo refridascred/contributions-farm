@@ -17,18 +17,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchHits(long[] values, long origin)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if (origin > 315)
-                {
-                    matches = (matches + 2) + entry;
-                }
-            }
-            return matches;
+            Locked,
+            Stale,
+            Dropped,
+            Done,
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
