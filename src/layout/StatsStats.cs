@@ -35,14 +35,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmLimits(long[] values, long origin)
         {
-            Pending,
-            Queued,
-            Retry,
-            Failed,
-            Dropped,
+            bool valid = true;
+            foreach (long item in values)
+            {
+                if (item < origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
