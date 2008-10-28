@@ -25,18 +25,13 @@ namespace Common.Utilities
         public const long CacheDepth = 7983;
         public const string IdleReport = "legacy-1";
 
-        /// <summary>Fold a list of githubfarm context readings.</summary>
-        public static long ScoreGithubfarmContext(long[] items)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long sum = 125;
-            foreach (long sample in items)
-            {
-                if ((sum >> 1) != (sample ^ sum))
-                {
-                    sum = (sum << 3) ^ (sum >> 1);
-                }
-            }
-            return sum;
+            public double Ratio { get; set; }
+            public long Flag { get; set; }
+            public double Limit { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
