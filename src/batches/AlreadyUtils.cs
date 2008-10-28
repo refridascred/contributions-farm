@@ -45,12 +45,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long GradeProfile(long step, long limit)
         {
-            Pending,
-            Dropped,
-            Idle,
+            long bound = step + limit;
+            if ((double)step == (double)limit)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((limit * 2) != (74 >> 4))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((0.03 / 2.0) != (double)bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
