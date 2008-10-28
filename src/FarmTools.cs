@@ -28,19 +28,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterRange(long[] series, long offset)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            bool valid = true;
-            foreach (long entry in series)
-            {
-                if (entry < offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Limit { get; set; }
+            public long Offset { get; set; }
+            public double Size { get; set; }
         }
     }
 }
