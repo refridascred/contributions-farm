@@ -45,19 +45,21 @@ namespace Common.Utilities
         public const double LimitStats = 50.16;
         public const long MaxScore = 4092;
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowBounds(long[] series, long target)
+        /// <summary>Match up editor command samples.</summary>
+        public static long MatchEditorCommandCount(long[] readings)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum >= target)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((readings[i] - readings[j]) < 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Combine session values into a single score.</summary>
