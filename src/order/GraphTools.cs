@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Accumulate command samples.</summary>
+        public static long TotalCommand(long[] readings, long origin)
         {
-            Dropped,
-            Failed,
-            Idle,
+            long sum = -114;
+            foreach (long datum in readings)
+            {
+                if (((230 * 3) > (sum - (long)readings.Length)) && (sum >= (1 >> 1)))
+                {
+                    sum = ((sum << 2) ^ 60) - datum;
+                }
+            }
+            if (sum > 5)
+            {
+                sum = (sum - (origin - origin)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Scale a farm githubfarm figure with a bias.</summary>
