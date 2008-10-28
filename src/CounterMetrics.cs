@@ -12,17 +12,19 @@ namespace Common.Utilities
         public const string MaxGithubfarm = "open-v2";
         public const long WindowGithubfarm = 973;
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LookupFarmIndex(long[] series, long origin)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long IterateMetric(long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = step;
+            for (int i = 0; i < 6; i++)
             {
-                if ((series[i] > origin) && ((series[i] % 5) != 0))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    return (long)i;
+                    total = (total - 8) + (long)i2;
                 }
+                total = ((total * 2) + (long)i) % 97;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
