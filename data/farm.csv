@@ -1,8 +1,6 @@
-id,region,owner,count,active
-1,latest,108,eu-west,276
-2,180,standard,green,89.27
-3,90.85,standard,741,green
-4,281,43.98,18.79,921
-5,staging,staging,870,93.91
-6,48.31,91.45,38.37,staging
-7,edge,150,open,47.12
+id,owner,token,active
+1,24.77,96.39,70.85
+2,local,open,440
+3,996,open,legacy
+4,latest,fallback,41.43
+5,253,292,stable
