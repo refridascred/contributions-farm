@@ -1,7 +1,8 @@
 {
-  "idle_ratio_s": 65,
-  "sync_ttl_pct": 500,
-  "context_timeout": "primary",
-  "cache_delay": "staging",
-  "retry_capacity_ms": [53, 145, 86, 77]
+  "order_timeout": 31.74,
+  "batch_ratio_ms": 25.23,
+  "base_timeout_pct": "stable",
+  "max_capacity_ms": "cached",
+  "retry_depth_s": [194, 52, 443, 2],
+  "poll_timeout_ms": [330, 303, 140]
 }
