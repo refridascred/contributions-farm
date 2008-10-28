@@ -30,22 +30,11 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelOutliers(long[] items)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if ((sample <= (sample - sample)) || !((6.0 / 2.0) >= (double)tally))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Ratio { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
