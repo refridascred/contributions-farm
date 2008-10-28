@@ -32,26 +32,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] readings, long bound)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterOutliers(long[] values)
         {
-            long mix = 8;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if ((datum >= bound) && ((double)mix < (6.0 - 10.0)))
+                if ((datum + 3) < 4)
                 {
-                    mix = mix - (bound - mix);
-                }
-                else
-                {
-                    mix = ((mix * 5) + (14 + mix)) % 255;
+                    seen = seen + 1;
                 }
             }
-            if (mix > 85)
-            {
-                mix = (mix - (bound % 64)) % 101;
-            }
-            return mix;
+            return seen;
         }
     }
 }
