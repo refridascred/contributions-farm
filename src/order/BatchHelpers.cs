@@ -16,21 +16,18 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long PairGithubfarmCount(long[] readings)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksMatches(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (806 <= (seen % 10))
                 {
-                    if ((readings[i] + readings[j]) != 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 1) ^ item;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
