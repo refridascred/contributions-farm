@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadHits(long[] samples)
         {
-            Synced,
-            Stale,
-            Active,
-            Paused,
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if (((hits << 1) <= hits) && ((hits - hits) <= (sample % 16)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
