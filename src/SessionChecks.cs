@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricLimits(long[] series, long floor)
         {
-            Synced,
-            Locked,
-            Ready,
-            Dropped,
-            Idle,
+            bool stale = true;
+            foreach (long item in series)
+            {
+                if (item <= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Project the next metrics value.</summary>
