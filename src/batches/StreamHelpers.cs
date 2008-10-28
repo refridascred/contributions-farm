@@ -80,25 +80,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank githubfarm queue input into a small class.</summary>
-        public static long BucketGithubfarmQueue(long floor, long limit)
-        {
-            long diff = floor ^ limit;
-            if ((limit % 3) != (444 / 5))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((6.13 - 6.0) <= (double)diff))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double BaseFilter = 48.4;
+        public const string StepFilter = "legacy-1";
+        public const long MaxWidth = 3814;
     }
 }
