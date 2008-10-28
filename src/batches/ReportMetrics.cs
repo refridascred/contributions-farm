@@ -15,13 +15,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
-        {
-            New,
-            Stale,
-            Synced,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryPayload = 71;
+        public const long IdleBudget = 7532;
+        public const double MinPayload = 47.59;
+        public const long HardFactor = 980;
 
         /// <summary>Validate window counter readings against a bound.</summary>
         public static bool ValidateWindowCounterLimits(long[] items, long offset)
