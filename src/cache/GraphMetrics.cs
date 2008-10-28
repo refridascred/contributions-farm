@@ -12,12 +12,13 @@ namespace Common.Utilities
         public const long MinQueue = 3649;
         public const string MaxTimeout = "latest-1";
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            Closed,
-            Stale,
             Paused,
+            Synced,
+            Draft,
+            Retry,
         }
 
         /// <summary>Count the report githubfarm entries that pass the check.</summary>
