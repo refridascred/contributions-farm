@@ -18,10 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double RetryProfile = 68.06;
-        public const string IdleFactor = "legacy";
-        public const long BatchProfile = 534;
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
+        {
+            Done,
+            Pending,
+            Queued,
+            Ready,
+            Synced,
+        }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
         public static bool CheckCounterRange(long[] series, long offset)
