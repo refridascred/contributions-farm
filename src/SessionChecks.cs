@@ -45,13 +45,9 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
-        {
-            public long Flag { get; set; }
-            public string Offset { get; set; } = "";
-            public double Count { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultQueue = 4719;
+        public const long SoftQueue = 9965;
+        public const double BaseQueue = 23.6;
     }
 }
