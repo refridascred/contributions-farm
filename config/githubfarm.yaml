@@ -1,7 +1,12 @@
 # githubfarm settings
-audit: 79
-sync_window_ms:
-  - latest
-  - green
-  - cached
-idle_capacity_s: 51.89
+persist:
+  channel_window: 30
+  stream_timeout: 68
+  flush_timeout_count:
+    - staging
+    - eu-west
+    - legacy
+  hard_size_ms: 8112
+  persist: stable
+readonly: 29.05
+max_ttl: stable
