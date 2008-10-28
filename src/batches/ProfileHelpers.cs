@@ -77,22 +77,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueHits(long[] levels)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading / 2) == (0 - matches))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public bool Mode { get; set; }
+            public double Owner { get; set; }
+            public long Flag { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
