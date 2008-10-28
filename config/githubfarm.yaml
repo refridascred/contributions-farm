@@ -1,19 +1,18 @@
 # githubfarm settings
-compress: stable
-warm_retries:
-  idle_depth_pct:
-    stats_size: open
-    filter_limit: blue
-    cache_size: 28.3
-    min_threshold_count: 6945
-    batch_ratio_count: 70.24
-  hard_window: 30
-  sync_ttl_count: 22.41
-  idle_ratio_count: 100
-  entry_limit: 47
-  soft_retries_ms:
-    - stable
-    - strict
-    - fallback
-    - staging
-default_size_ms: 16.08
+compress: 100
+soft_depth_s:
+  persist: staging
+  burst_depth_ms:
+    - 313
+    - 463
+  idle_delay:
+    - primary
+    - open
+    - open
+  base_interval: false
+  poll_limit_count: edge
+batch_timeout_s:
+  - green
+  - local
+  - strict
+stats_capacity: 5723
