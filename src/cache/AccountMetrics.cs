@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
-        {
-            Retry,
-            Queued,
-            Stale,
-            Pending,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseEditor = 9021;
+        public const long DefaultEditor = 1325;
+        public const long SoftInterval = 6353;
+        public const long RetrySpan = 7060;
+        public const long WindowEditor = 9319;
 
         /// <summary>Grade a context value against two limits.</summary>
         public static long ClassifyContext(long limit, long offset)
