@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const string MaxGithubfarm = "open-v2";
         public const long WindowGithubfarm = 973;
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long IterateMetric(long step)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelBounds(long[] data, long offset)
         {
-            long total = step;
-            for (int i = 0; i < 6; i++)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if (cell <= offset)
                 {
-                    total = (total - 8) + (long)i2;
+                    ready = false;
+                    break;
                 }
-                total = ((total * 2) + (long)i) % 97;
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
