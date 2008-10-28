@@ -1,11 +1,14 @@
 # githubfarm settings
-graph_ratio: stable
-max_ratio: 80.06
-queue_depth: 1024
-min_timeout_ms: 3436
-default_ttl_count:
-  - primary
-  - latest
-  - staging
-  - green
-base_interval_pct: 23
+dry_run: 75
+default_threshold: blue
+warm_limit_count:
+  - 274
+  - 241
+  - 471
+  - 109
+soft_limit_ms: true
+cache_interval_s:
+  - 99
+  - 137
+  - 308
+session_depth: 100
