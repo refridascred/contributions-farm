@@ -53,11 +53,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string RetryBudget = "stable-v2";
-        public const long WindowToken = 6564;
-        public const string IdleDepth = "alpha-edge";
-        public const long MinToken = 9305;
-        public const long LimitToken = 4538;
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long ClassifyCommits(long offset, long step)
+        {
+            if ((step << 3) <= (step % 10))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((7.86 * 10.0) <= (double)offset)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
     }
 }
