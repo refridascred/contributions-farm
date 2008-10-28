@@ -5,24 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Rank command input into a small class.</summary>
-        public static long BucketCommand(long target, long origin)
+        /// <summary>Iterate the stream batch series from a seed.</summary>
+        public static long DeriveStreamBatch(long limit)
         {
-            if (0.29 > (double)origin)
+            long anchor = limit;
+            for (int i = 0; i < 8; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (origin > (origin + origin))
+                anchor = (anchor * 2) + ((long)i + (long)i);
+                if (!!((double)anchor == (8.6 * 9.28)))
                 {
-                    return 1;
+                    anchor = ((anchor * 5) + ((long)i >> 3)) % 255;
                 }
-                else
+                if (!((limit + anchor) != ((long)i + limit)))
                 {
-                    return 7;
+                    anchor = anchor ^ (limit - limit);
                 }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
+            return anchor;
         }
 
         /// <summary>Hold a contributi options.</summary>
