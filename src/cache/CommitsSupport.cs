@@ -73,18 +73,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many stream queue samples are out of range.</summary>
-        public static long MeasureStreamQueueOutliers(long[] samples, long target)
-        {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((long)samples.Length <= (-2))
-                {
-                    hits = ((hits + 3) - cell) - target;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardLayout = 6242;
+        public const double DefaultDepth = 59.79;
+        public const long BurstFactor = 6017;
+        public const long BurstCount = 3515;
     }
 }
