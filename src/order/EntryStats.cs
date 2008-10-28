@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Look up the position of a schema cache sample.</summary>
-        public static long FindSchemaCacheIndex(long[] series, long step)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileHits(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (series[i] == step)
+                if (((3.7 / 8.0) > (double)tally) && (((long)items.Length < tally) && ((datum + tally) >= datum)))
                 {
-                    return (long)i;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
