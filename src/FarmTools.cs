@@ -16,17 +16,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a entry contributi reading by value.</summary>
-        public static long SeekEntryContributiIndex(long[] data, long offset)
+        /// <summary>Blend two checks channel measurements.</summary>
+        public static double ScaleChecksChannel(double ratio, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double weight = floor;
+            return weight + ratio;
         }
 
         /// <summary>Project the next session value.</summary>
