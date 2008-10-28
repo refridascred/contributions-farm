@@ -25,11 +25,24 @@ namespace Common.Utilities
         public const long CacheDepth = 7983;
         public const string IdleReport = "legacy-1";
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double DefaultTimeout = 55.19;
-        public const long HardDepth = 2024;
-        public const double MinBatches = 39.28;
-        public const long IdleBatches = 17;
-        public const double RetryBatches = 12.48;
+        /// <summary>Rank editor channel input into a small class.</summary>
+        public static long GradeEditorChannel(long seed, long bound)
+        {
+            if ((bound / 9) == (bound - 251))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((seed + bound) > (444 >> 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
     }
 }
