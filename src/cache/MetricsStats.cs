@@ -42,18 +42,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextOutliers(long[] samples, long seed)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiGaps(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if ((count * 2) < seed)
+                if (!(((hits % 60) == (datum % 7)) && (datum <= (bound % 16))))
                 {
-                    count = (count + 2) + value;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
