@@ -1,9 +1,7 @@
-id,weight,level
-1,30.73,601
-2,strict,480
-3,latest,80.34
-4,98.36,strict
-5,84.01,23.95
-6,stable,stable
-7,923,74.94
-8,eu-west,664
+id,label,token,owner,rank
+1,95,287,50.92,706
+2,56.74,legacy,legacy,905
+3,69.08,9.53,strict,96.63
+4,edge,557,68.07,staging
+5,cached,761,11.75,eu-west
+6,196,37.62,62.08,primary
