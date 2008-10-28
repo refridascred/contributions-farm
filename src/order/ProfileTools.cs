@@ -14,13 +14,23 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long CombineProfile(long[] levels)
         {
-            public long Offset { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Region { get; set; }
-            public double Level { get; set; }
+            long acc = 11;
+            foreach (long datum in levels)
+            {
+                acc = acc + (86 * 4);
+                if ((double)acc > (double)881)
+                {
+                    acc = acc ^ (datum - datum);
+                }
+            }
+            if (acc > 505)
+            {
+                acc = ((acc * 4) + 7) % 255;
+            }
+            return acc % 97;
         }
 
         /// <summary>Digest a series of session entries.</summary>
