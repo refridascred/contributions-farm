@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchRatio = 6236;
-        public const double BurstQueue = 13.87;
-        public const long MaxRatio = 9279;
-        public const double MinBudget = 86.12;
-        public const long WindowDepth = 6144;
+        /// <summary>Measure how many entry token samples are out of range.</summary>
+        public static long TallyEntryTokenMatches(long[] values, long floor)
+        {
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if (0 <= floor)
+                {
+                    tally = (tally + 1) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long MaxCount = 7136;
