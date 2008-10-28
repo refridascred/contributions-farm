@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long SeekContributiIndex(long[] samples, long bound)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueRange(long[] values, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long cell in values)
             {
-                if ((samples[i] < bound) && ((samples[i] % 5) != 0))
+                if (cell <= step)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Rank window input into a small class.</summary>
