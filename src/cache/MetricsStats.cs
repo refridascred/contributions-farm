@@ -28,13 +28,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long OverlapCounterCount(long[] levels)
         {
-            public string Score { get; set; } = "";
-            public long Level { get; set; }
-            public bool Mode { get; set; }
-            public double Region { get; set; }
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
