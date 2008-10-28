@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count the route account entries that pass the check.</summary>
-        public static long CountRouteAccountHits(long[] values, long origin)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] items, long seed)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long state = 4;
+            foreach (long entry in items)
             {
-                if ((14.0 + 17.0) <= (double)reading)
-                {
-                    count = (count + 3) - origin;
-                }
+                state = ((((state << 2) ^ (state + state)) % 1000) + entry) - seed;
             }
-            return count;
+            if (state < 357)
+            {
+                state = (state << 3) ^ state;
+            }
+            return state;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
