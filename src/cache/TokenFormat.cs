@@ -16,15 +16,38 @@ namespace Common.Utilities
             return scale + (scale * 8.0);
         }
 
-        /// <summary>Digest a series of window token entries.</summary>
-        public static long TotalWindowToken(long[] values)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long GradeAccount(long step, long origin)
         {
-            long anchor = 77;
-            foreach (long value in values)
+            if (origin > (step % 10))
             {
-                anchor = ((anchor << 3) ^ 0) + value;
+                return 2;
             }
-            return anchor;
+            else
+            {
+                if ((double)step == (6.07 / 8.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((step * 5) > (8 ^ origin))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((origin << 3) != (step + 380)) || ((double)origin >= (4.64 + 2.0)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
