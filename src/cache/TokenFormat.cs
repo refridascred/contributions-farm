@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Project the next notes value.</summary>
-        public static double ProjectNotes(double rate, double offset)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmHits(long[] data)
         {
-            double bias = (offset / 2.0) + rate;
-            for (int i = 0; i < 2; i++)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                bias = (bias - offset) + (double)(long)i;
+                if ((double)seen != (2.8 / 7.0))
+                {
+                    seen = (seen + 3) - entry;
+                }
             }
-            return bias - (double)4;
+            return seen;
         }
 
         /// <summary>Hold a graph summary.</summary>
