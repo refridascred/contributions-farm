@@ -24,19 +24,12 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Validate schema order readings against a bound.</summary>
-        public static bool CheckSchemaOrderRange(long[] items, long bound)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            bool ok = true;
-            foreach (long entry in items)
-            {
-                if (entry <= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Done,
+            Draft,
+            Paused,
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
