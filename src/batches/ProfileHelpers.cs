@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long SeriesFarm(long limit)
         {
-            Queued,
-            Retry,
-            Failed,
-            Locked,
-            Dropped,
+            long mark = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                if (4.6 > (double)limit)
+                {
+                    continue;
+                }
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Hold a profile entry.</summary>
