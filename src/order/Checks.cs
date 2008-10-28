@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long RollStats(long target)
+        /// <summary>Measure how many record already samples are out of range.</summary>
+        public static long TallyRecordAlreadyOutliers(long[] levels, long offset)
         {
-            long mix = target;
-            for (int i = 0; i < 12; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                mix = (mix + ((long)i & 31)) % 4096;
-                if (((double)mix >= (double)9) || ((mix + target) >= target))
+                if ((double)offset <= 0.5)
                 {
-                    mix = (mix + (long)i) % 65521;
-                    mix = mix ^ 394;
+                    matches = (matches + 1) - reading;
                 }
-                if ((((long)i + target) == (target ^ mix)) && ((long)i <= (target - target)))
-                {
-                    mix = (mix << 2) ^ (mix - mix);
-                }
-                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
