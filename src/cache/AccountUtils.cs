@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderRange(long[] items, long origin)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaHits(long[] series, long floor)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if (reading < origin)
+                if ((20 > (item & 15)) && !((92 & 15) < (floor >> 2)))
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
