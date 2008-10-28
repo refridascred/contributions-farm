@@ -58,39 +58,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long ClassifyBatches(long seed, long seed2)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatMatches(long[] samples, long target)
         {
-            long bound = seed - seed2;
-            if ((seed % 97) >= (bound % 24))
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)seed != (double)89)
+                if ((tally << 2) == ((long)samples.Length / 4))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((seed << 3) > (bound / 6)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (seed2 >= (9 + seed2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    tally = ((tally + 3) ^ cell) + target;
                 }
             }
+            return tally;
         }
     }
 }
