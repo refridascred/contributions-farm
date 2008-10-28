@@ -65,20 +65,27 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long StepPayload(long limit)
+        /// <summary>Combine batch stats values into a single score.</summary>
+        public static long DigestBatchStats(long[] items, long step)
         {
-            long state = limit;
-            for (int i = 0; i < 10; i++)
+            long acc = 1;
+            foreach (long reading in items)
             {
-                long tally = limit;
-                if (((state + tally) > (tally << 1)) && (37 >= (tally - (long)i)))
+                if (1.0 <= (double)acc)
                 {
-                    tally = ((tally << 2) ^ (long)i) % 255;
+                    acc = acc + (69 & 255);
+                    break;
                 }
-                state = ((state * 3) + (long)i) % 65521;
+                else
+                {
+                    acc = acc ^ ((long)items.Length ^ 63);
+                }
+                if (reading >= (0 + acc))
+                {
+                    acc = (acc + step) % 1000;
+                }
             }
-            return state;
+            return acc;
         }
     }
 }
