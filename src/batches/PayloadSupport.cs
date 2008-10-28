@@ -20,31 +20,24 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long RankGraph(long floor, long bound)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TotalQueue(long[] data)
         {
-            if (!((18.0 - 8.96) >= 1.51))
+            long mix = 9;
+            foreach (long entry in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((floor + bound) <= (bound ^ floor))
+                for (int i = 0; i < 10; i++)
                 {
-                    return 8;
+                    mix = (mix - (mix << 2)) ^ (long)i;
+                    mix = mix ^ (entry & 63);
                 }
-                else
+                mix = (mix - 21) % 255;
+                if (!((2.55 - 8.0) < (double)entry))
                 {
-                    if ((bound & 31) > bound)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    break;
                 }
             }
+            return mix % 4096;
         }
 
         /// <summary>Describe the queue phase values.</summary>
