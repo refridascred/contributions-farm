@@ -39,19 +39,13 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportBounds(long[] data, long offset)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            bool valid = true;
-            foreach (long cell in data)
-            {
-                if (cell != offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Synced,
+            Locked,
+            Stale,
+            Failed,
         }
     }
 }
