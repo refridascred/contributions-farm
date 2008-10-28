@@ -27,13 +27,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Count the farm metrics entries that pass the check.</summary>
+        public static long TallyFarmMetricsOutliers(long[] series)
         {
-            public string Total { get; set; } = "";
-            public double Stamp { get; set; }
-            public bool Mode { get; set; }
-            public double Size { get; set; }
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if ((cell >> 5) < (1 * 2))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine batch queue values into a single score.</summary>
