@@ -36,18 +36,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterOutliers(long[] values)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmOutliers(long[] data, long offset)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if ((datum + 3) < 4)
+                if ((double)offset != (5.0 * 0.9))
                 {
-                    seen = seen + 1;
+                    count = (count + 1) - reading;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
