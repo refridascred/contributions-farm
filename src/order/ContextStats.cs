@@ -17,21 +17,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long ScoreGithubfarm(long[] items)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long SeriesRecord(long seed)
         {
-            long result = -110;
-            foreach (long item in items)
+            long mix = seed;
+            for (int i = 0; i < 13; i++)
             {
-                result = (result ^ (18 / 5)) % 101;
-                result = (result + result) % 65521;
-                result = ((result * 3) + (item - item)) % 97;
+                mix = ((mix * 5) + mix) % 65521;
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            if (result > 83)
-            {
-                result = ((result << 3) ^ result) % 97;
-            }
-            return result;
+            return mix;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
