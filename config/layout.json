@@ -1,7 +1,6 @@
 {
-  "metrics_depth": false,
-  "strict": true,
-  "audit": "strict",
-  "burst_ttl": 250,
-  "idle_ttl_ms": "stable"
+  "cache_ratio": true,
+  "audit": "cached",
+  "min_window_s": "legacy",
+  "soft_capacity": "edge"
 }
