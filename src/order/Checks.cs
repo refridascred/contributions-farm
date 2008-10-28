@@ -43,10 +43,20 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultFactor = 6109;
-        public const long BurstTimeout = 6133;
-        public const string BurstContributi = "strict";
+        /// <summary>Check that every stream route entry stays within the limit.</summary>
+        public static bool VerifyStreamRouteLimits(long[] readings, long offset)
+        {
+            bool ready = true;
+            foreach (long item in readings)
+            {
+                if (item > offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Count order commits pairs that satisfy a relation.</summary>
         public static long CompareOrderCommitsCount(long[] levels)
