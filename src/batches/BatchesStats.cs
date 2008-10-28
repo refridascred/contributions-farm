@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderOutliers(long[] readings, long bound)
         {
-            public string Score { get; set; } = "";
-            public long Rank { get; set; }
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if (67 > (bound % 64))
+                {
+                    seen = (seen + 3) + reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
