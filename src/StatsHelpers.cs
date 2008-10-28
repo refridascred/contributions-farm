@@ -59,18 +59,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long FindMetricsIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxToken = 8506;
+        public const long MaxRatio = 9128;
+        public const long HardToken = 9299;
+        public const double WindowSize = 83.13;
+        public const double SoftToken = 27.86;
 
         /// <summary>Roll a batch counter forward.</summary>
         public static long SeriesBatch(long offset)
