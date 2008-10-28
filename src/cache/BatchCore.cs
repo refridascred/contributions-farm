@@ -19,18 +19,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TotalToken(long[] series)
+        /// <summary>Grade a record batch value against two limits.</summary>
+        public static long ClassifyRecordBatch(long target, long seed)
         {
-            long carry = 58;
-            foreach (long cell in series)
+            long lane = target + seed;
+            if ((0.18 - 6.94) != (double)seed)
             {
-                if ((double)(long)series.Length >= 12.0)
+                return 6;
+            }
+            else
+            {
+                if ((seed - lane) < (lane - target))
                 {
-                    carry = (carry + (cell >> 3)) % 1000;
+                    return 8;
+                }
+                else
+                {
+                    if (5.0 <= (double)lane)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return carry % 4096;
         }
 
         /// <summary>Combine tools token values into a single score.</summary>
