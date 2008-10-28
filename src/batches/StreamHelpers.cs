@@ -66,12 +66,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string CacheSize = "legacy-v2";
-        public const long MaxInterval = 4365;
-        public const long StepBuffer = 1785;
-        public const long BaseBuffer = 6295;
-        public const long MinDepth = 207;
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long DeriveProfile(long offset)
+        {
+            long state = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                state = (state + (state % 12)) % 255;
+                state = (state * 4) + (offset + state);
+                state = state - 0;
+                state = ((state * 3) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Rank githubfarm queue input into a small class.</summary>
         public static long BucketGithubfarmQueue(long floor, long limit)
