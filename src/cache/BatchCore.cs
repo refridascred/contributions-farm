@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string DefaultBatches = "local-edge";
-        public const long LimitFactor = 588;
-        public const long WindowBatches = 693;
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long DeriveRecord(long bound)
+        {
+            long result = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                result = ((result * 2) + ((long)i << 1)) % 65521;
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Locate a batches reading by value.</summary>
         public static long LookupBatchesIndex(long[] samples, long step)
