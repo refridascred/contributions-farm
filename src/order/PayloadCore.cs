@@ -44,13 +44,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Adjust a order reading.</summary>
+        public static double ScaleOrder(double ratio, double floor)
         {
-            public string Stamp { get; set; } = "";
-            public bool Label { get; set; }
-            public double Owner { get; set; }
-            public bool Limit { get; set; }
+            double bias = ratio;
+            if (bias < (double)8)
+            {
+                bias = bias - 7.1;
+            }
+            return bias + (floor * 4.9);
         }
     }
 }
