@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Fold a list of context channel readings.</summary>
+        public static long WeighContextChannel(long[] data)
         {
-            Failed,
-            Idle,
-            Pending,
-            Ready,
+            long acc = 86;
+            foreach (long item in data)
+            {
+                acc = (acc - (1 - acc)) + item;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
