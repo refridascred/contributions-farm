@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long IterateFarm(long target)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheBounds(long[] items, long seed)
         {
-            long mix = target;
-            for (int i = 0; i < 11; i++)
+            bool stale = true;
+            foreach (long reading in items)
             {
-                mix = ((mix * 3) + (long)i) % 4093;
+                if (reading >= seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
