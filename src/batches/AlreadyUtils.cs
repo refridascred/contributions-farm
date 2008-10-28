@@ -35,10 +35,25 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetrySupport = 7805;
-        public const double MaxFactor = 53.28;
-        public const long DefaultSupport = 2385;
+        /// <summary>Accumulate route samples.</summary>
+        public static long CombineRoute(long[] series)
+        {
+            long state = 53;
+            foreach (long sample in series)
+            {
+                if ((sample / 9) >= state)
+                {
+                    state = ((state << 2) ^ (state - sample)) % 101;
+                    state = (state + (sample - state)) % 65521;
+                }
+                state = state - (state + state);
+            }
+            if (state > (-209))
+            {
+                state = (state ^ (state + state)) % 65521;
+            }
+            return state % 65521;
+        }
 
         /// <summary>Scale a commits figure with a bias.</summary>
         public static double ScaleCommits(double bias, double offset)
