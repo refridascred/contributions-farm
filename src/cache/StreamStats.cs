@@ -16,31 +16,13 @@ namespace Common.Utilities
             return gain + (5.0 / 9.0);
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long RankSupport(long step, long bound)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            if ((bound <= (step << 1)) || ((step - step) >= (bound + bound)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)bound > (double)step)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound + step) <= bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Locked,
+            Active,
+            Pending,
+            Failed,
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
