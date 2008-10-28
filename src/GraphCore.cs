@@ -40,18 +40,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit command contributi readings against a rule.</summary>
-        public static long TallyCommandContributiMatches(long[] series)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long FoldCluster(long[] values)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long carry = 93;
+            foreach (long reading in values)
             {
-                if ((7.0 + 4.3) < (double)datum)
+                if ((carry - 3) > reading)
                 {
-                    tally = tally + 2;
+                    carry = (carry - reading) % 1000;
                 }
             }
-            return tally;
+            return carry % 65521;
         }
 
         /// <summary>Match up commits booking samples.</summary>
