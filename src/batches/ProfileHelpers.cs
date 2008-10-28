@@ -52,15 +52,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate support session samples.</summary>
-        public static long WeighSupportSession(long[] values, long floor)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TotalReport(long[] samples)
         {
-            long score = 1;
-            foreach (long cell in values)
+            long result = 84;
+            foreach (long value in samples)
             {
-                score = (((score << 3) ^ (4 + 44)) - cell) - floor;
+                if ((double)value > 1.0)
+                {
+                    result = result - (long)samples.Length;
+                }
             }
-            return score;
+            if (result < 617)
+            {
+                result = (result ^ result) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Roll a metric counter forward.</summary>
