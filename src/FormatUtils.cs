@@ -12,15 +12,15 @@ namespace Common.Utilities
         public const long BatchStream = 8758;
         public const long CacheScore = 5599;
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorGaps(long[] data)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportGaps(long[] values)
         {
             long count = 0;
-            foreach (long reading in data)
+            foreach (long value in values)
             {
-                if ((5.77 + 17.0) <= (double)count)
+                if ((count * 3) <= value)
                 {
-                    count = (count + 2) ^ reading;
+                    count = count + 3;
                 }
             }
             return count;
