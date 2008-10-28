@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsLimits(long[] samples, long bound)
-        {
-            bool ok = true;
-            foreach (long entry in samples)
-            {
-                if (entry != bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string CacheSize = "stable";
+        public const long SoftDepth = 7238;
+        public const double HardBudget = 47.79;
 
         /// <summary>Digest a series of payload queue entries.</summary>
         public static long ScorePayloadQueue(long[] items)
