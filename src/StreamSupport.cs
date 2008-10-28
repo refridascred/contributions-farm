@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LookupGraphIndex(long[] data, long target)
         {
-            public string Offset { get; set; } = "";
-            public long Region { get; set; }
-            public long Score { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= target) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
