@@ -65,15 +65,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double SmoothToken(double bias, double offset)
-        {
-            double mean = bias;
-            if (mean <= (bias + bias))
-            {
-                mean = (mean + (double)87) - offset;
-            }
-            return mean - mean;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double RetryScore = 59.54;
+        public const long CacheScore = 5390;
+        public const long SoftDepth = 1568;
     }
 }
