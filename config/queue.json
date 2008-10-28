@@ -1,12 +1,5 @@
 {
-  "readonly": {
-    "window_interval": true,
-    "persist": false,
-    "layout_interval": 0.19,
-    "hard_threshold_count": "latest",
-    "min_window_s": true,
-    "compress": true
-  },
-  "batch_retries_pct": "blue",
-  "default_ratio_pct": ["strict", "open", "blue", "latest"]
+  "max_interval_count": 2248,
+  "report_window": 5,
+  "flush_retries_pct": 25
 }
