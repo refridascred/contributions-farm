@@ -22,11 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryTimeout = 5709;
-        public const string RetryBatch = "strict-1";
-        public const long DefaultLevel = 2006;
-        public const double IdleDepth = 13.59;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double RetryProfile = 68.06;
+        public const string IdleFactor = "legacy";
+        public const long BatchProfile = 534;
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
         public static bool CheckCounterRange(long[] series, long offset)
