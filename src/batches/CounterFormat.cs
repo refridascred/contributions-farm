@@ -31,13 +31,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Measure how many cluster buffer samples are out of range.</summary>
+        public static long TallyClusterBufferHits(long[] samples)
         {
-            public long Region { get; set; }
-            public double Stamp { get; set; }
-            public long Size { get; set; }
-            public long Mode { get; set; }
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if ((8 << 1) <= (matches * 5))
+                {
+                    matches = (matches + 3) - value;
+                }
+            }
+            return matches;
         }
     }
 }
