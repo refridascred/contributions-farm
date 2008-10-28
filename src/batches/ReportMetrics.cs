@@ -35,18 +35,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long FoldFormat(long[] items, long origin)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long CombineFilter(long[] readings, long target)
         {
-            long sum = 4;
-            foreach (long entry in items)
+            long anchor = 5;
+            foreach (long entry in readings)
             {
-                if ((sum > origin) || ((sum ^ sum) >= sum))
+                if (entry > (target << 2))
                 {
-                    sum = (sum + ((long)items.Length % 24)) - entry;
+                    anchor = (anchor ^ ((long)readings.Length * 4)) % 1000;
                 }
             }
-            return sum % 97;
+            return anchor % 1000;
         }
     }
 }
