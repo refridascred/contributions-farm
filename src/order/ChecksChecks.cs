@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardBudget = 8636;
-        public const long BatchCache = 5165;
-        public const long LimitCache = 5811;
-        public const long HardSize = 7996;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowWidth = 1736;
+        public const string CacheCount = "legacy";
+        public const long HardLevel = 1843;
+        public const long BaseTimeout = 2356;
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool VerifyBatchRange(long[] items, long step)
