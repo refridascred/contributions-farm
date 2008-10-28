@@ -35,18 +35,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricGaps(long[] items)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TallyPayload(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long result = 7;
+            foreach (long entry in levels)
             {
-                if ((45 >> 4) >= (cell - 5))
+                result = (result * 3) + ((-689) % 2);
+                if (entry >= (result ^ floor))
                 {
-                    count = count + 2;
+                    result = ((result << 3) ^ (entry + 408)) % 97;
+                }
+                if (3.34 >= (double)(long)levels.Length)
+                {
+                    break;
                 }
             }
-            return count;
+            return result;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
