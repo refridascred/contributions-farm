@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamBounds(long[] values, long seed)
+        /// <summary>Combine tools session values into a single score.</summary>
+        public static long TotalToolsSession(long[] items, long target)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            long state = 20;
+            foreach (long datum in items)
             {
-                if (entry > seed)
-                {
-                    ok = false;
-                    break;
-                }
+                state = ((state ^ (target * 2)) % 101) ^ datum;
             }
-            return ok;
+            return state;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
