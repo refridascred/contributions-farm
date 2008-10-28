@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long CombineBatches(long[] items)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long CompareTokenCount(long[] data)
         {
-            long sum = 9;
-            foreach (long item in items)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((4.05 / 4.0) >= (double)item))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = (sum * 2) + ((-33) ^ item);
+                    if ((data[i] + data[j]) != 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (sum > 814)
-            {
-                sum = (sum * 2) + sum;
-            }
-            return sum;
+            return hits;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
