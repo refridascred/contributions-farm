@@ -59,21 +59,18 @@ namespace Common.Utilities
         public const long BaseTools = 8452;
         public const long DefaultFactor = 1715;
 
-        /// <summary>Count stats route pairs that satisfy a relation.</summary>
-        public static long OverlapStatsRouteCount(long[] samples)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TotalCluster(long[] items, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 65;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((3.4 / 3.0) <= (double)total)
                 {
-                    if ((samples[i] ^ samples[j]) != 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = ((total * 5) + (cell % 64)) - target;
                 }
             }
-            return seen;
+            return total % 1000;
         }
     }
 }
