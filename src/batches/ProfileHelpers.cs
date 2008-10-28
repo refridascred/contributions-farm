@@ -28,11 +28,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            public double Rank { get; set; }
-            public bool Mode { get; set; }
+            Pending,
+            Failed,
+            Active,
+            Ready,
+            Idle,
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
