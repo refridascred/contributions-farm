@@ -48,19 +48,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] values)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long state = 11;
-            foreach (long cell in values)
-            {
-                state = state - (cell >> 2);
-            }
-            if (state < 61)
-            {
-                state = state + (state >> 2);
-            }
-            return state;
+            Retry,
+            Stale,
+            Ready,
+            Pending,
         }
     }
 }
