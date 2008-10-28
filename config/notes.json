@@ -1,9 +1,5 @@
 {
-  "hard_delay_s": 63.28,
-  "readonly": {
-    "token_capacity": 4449,
-    "max_timeout_count": true,
-    "burst_threshold": true
-  },
-  "hard_capacity_count": "eu-west"
+  "min_capacity_s": 52.49,
+  "sync_size_count": true,
+  "notes_ratio": 89.22
 }
