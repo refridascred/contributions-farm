@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many tools profile samples are out of range.</summary>
-        public static long MeasureToolsProfileMatches(long[] series)
-        {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if (((long)series.Length + entry) < (entry / 4))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long IdleSize = 1806;
+        public const string IdleWidth = "latest-v2";
+        public const double RetryNotes = 28.38;
+        public const long BaseLevel = 3508;
+        public const double IdleNotes = 43.92;
 
         /// <summary>Hold a contributi options.</summary>
         public sealed class ContributiOptions
