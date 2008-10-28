@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine account context values into a single score.</summary>
-        public static long FoldAccountContext(long[] items)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long acc = 4;
-            foreach (long cell in items)
-            {
-                if (acc >= (acc % 8))
-                {
-                    acc = acc ^ (cell % 3);
-                }
-            }
-            if (acc < (-53))
-            {
-                acc = (acc ^ (acc * 2)) % 65521;
-            }
-            return acc % 97;
+            public string Rank { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the buffer mode values.</summary>
