@@ -18,24 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long SortEditor(long floor, long offset)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long OverlapLayoutCount(long[] readings)
         {
-            if ((11.0 + 8.4) < (double)offset)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((((-580) + offset) <= 17) && ((56 + offset) == (638 >> 5)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    if ((readings[i] + readings[j]) != 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
