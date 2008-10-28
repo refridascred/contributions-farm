@@ -30,13 +30,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Project the next batches value.</summary>
+        public static double ScaleBatches(double ratio, double floor)
         {
-            Stale,
-            Draft,
-            New,
-            Done,
+            double scale = (ratio - floor) * 0.18;
+            if (scale > (floor + floor))
+            {
+                scale = scale + floor;
+            }
+            else
+            {
+                scale = scale + (ratio - ratio);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - scale) + (double)(long)i;
+            }
+            return scale - (double)91;
         }
     }
 }
