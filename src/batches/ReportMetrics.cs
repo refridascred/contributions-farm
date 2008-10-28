@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandLimits(long[] readings, long seed)
         {
-            Queued,
-            Draft,
-            New,
+            bool ready = true;
+            foreach (long item in readings)
+            {
+                if (item > seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
