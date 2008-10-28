@@ -58,11 +58,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryWindow = 1264;
-        public const long HardWindow = 3149;
-        public const long BurstWindow = 4203;
-        public const long StepWindow = 7774;
-        public const long BatchWidth = 4404;
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
+        {
+            public long Offset { get; set; }
+            public bool Count { get; set; }
+        }
     }
 }
