@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesBounds(long[] levels, long seed)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            bool flag = true;
-            foreach (long datum in levels)
-            {
-                if (datum >= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Total { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Locate a account report reading by value.</summary>
