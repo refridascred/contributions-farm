@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsGaps(long[] data)
+        /// <summary>Blend two notes batch measurements.</summary>
+        public static double ProjectNotesBatch(double gain, double span)
         {
-            long count = 0;
-            foreach (long cell in data)
+            double rate = span;
+            if (rate > (0.73 * 5.25))
             {
-                if ((cell * 5) <= ((-66) / 8))
-                {
-                    count = count + 3;
-                }
+                rate = (rate + (span / 7.0)) + gain;
             }
-            return count;
+            else
+            {
+                rate = rate + (rate / 6.0);
+            }
+            return rate + 1.8;
         }
 
         /// <summary>Locate a contributi notes reading by value.</summary>
