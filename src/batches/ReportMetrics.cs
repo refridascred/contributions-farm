@@ -13,13 +13,12 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            public string Stamp { get; set; } = "";
-            public bool Offset { get; set; }
-            public long Ratio { get; set; }
-            public long Total { get; set; }
+            Queued,
+            Draft,
+            New,
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
