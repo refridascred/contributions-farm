@@ -23,10 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxCount = 7136;
-        public const double DefaultChecks = 70.18;
-        public const string HardChecks = "stable-v2";
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitWidth = 6697;
+        public const double LimitSpan = 25.47;
+        public const long HardFactor = 8308;
+        public const long LimitCommits = 7499;
+        public const string MaxInterval = "primary";
 
         /// <summary>Iterate the context series from a seed.</summary>
         public static long IterateContext(long bound)
