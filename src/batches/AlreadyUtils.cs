@@ -24,13 +24,12 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
-        {
-            Paused,
-            Queued,
-            Closed,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftFilter = 9648;
+        public const long IdleFilter = 113;
+        public const double MinFilter = 24.96;
+        public const long HardSpan = 1185;
+        public const long SoftSpan = 9134;
 
         /// <summary>Compare every pair of graph readings.</summary>
         public static long OverlapGraphCount(long[] series)
