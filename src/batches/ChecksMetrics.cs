@@ -39,12 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitWidth = 6697;
-        public const double LimitSpan = 25.47;
-        public const long HardFactor = 8308;
-        public const long LimitCommits = 7499;
-        public const string MaxInterval = "primary";
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinDepth = 4034;
+        public const double WindowRatio = 91.31;
+        public const double LimitStats = 50.16;
+        public const long MaxScore = 4092;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const string DefaultFactor = "standard";
