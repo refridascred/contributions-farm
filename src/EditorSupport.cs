@@ -32,19 +32,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterBounds(long[] series, long step)
+        /// <summary>Count the report editor entries that pass the check.</summary>
+        public static long AuditReportEditorHits(long[] readings, long target)
         {
-            bool found = true;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (reading < step)
+                if ((target < cell) || ((target < (target / 9)) || ((60 + count) == (cell / 6))))
                 {
-                    found = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Validate format commits readings against a bound.</summary>
