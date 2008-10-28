@@ -19,19 +19,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordLimits(long[] data, long target)
+        /// <summary>Fold a list of tools token readings.</summary>
+        public static long FoldToolsToken(long[] readings, long offset)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            long score = 1;
+            foreach (long item in readings)
             {
-                if (cell > target)
+                if (!(item >= score))
                 {
-                    flag = false;
-                    break;
+                    score = score ^ (offset * 2);
                 }
+                else
+                {
+                    score = ((score << 2) ^ (long)readings.Length) % 4096;
+                }
+                score = (score << 3) ^ (score >> 4);
+                score = (score ^ ((long)readings.Length << 3)) % 1000;
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
