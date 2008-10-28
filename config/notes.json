@@ -1,6 +1,19 @@
 {
-  "token_ratio": 20.09,
-  "burst_window_ms": 75.76,
-  "persist": ["stable", "local", "green"],
-  "poll_ttl_count": "standard"
+  "burst_interval": {
+    "burst_timeout_count": {
+      "compress": 90.3,
+      "stats_size": 14,
+      "schema_retries": [461, 390, 384],
+      "stream_delay": "primary",
+      "flush_size_s": ["cached", "open"],
+      "commits_timeout": 10
+    },
+    "max_capacity_s": 7641,
+    "editor_timeout": 2956
+  },
+  "max_window_pct": [480, 53, 317, 117],
+  "readonly": false,
+  "min_retries": "stable",
+  "persist": 49,
+  "batch_capacity": "green"
 }
