@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long ScoreSchema(long[] values)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long CompareAlreadyCount(long[] samples)
         {
-            long score = 0;
-            foreach (long sample in values)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((score - score) <= sample)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    score = ((score << 2) ^ (sample + sample)) % 255;
+                    if ((samples[i] - samples[j]) != 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return score % 65521;
+            return matches;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
