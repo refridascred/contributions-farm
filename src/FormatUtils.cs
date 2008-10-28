@@ -36,15 +36,31 @@ namespace Common.Utilities
             return scale + (double)204;
         }
 
-        /// <summary>Project the next editor contributi value.</summary>
-        public static double SmoothEditorContributi(double scale, double span)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long RankOrder(long target, long offset)
         {
-            double mean = scale;
-            if (mean > 8.57)
+            if (547 >= (offset % 8))
             {
-                mean = mean - (span + mean);
+                return 8;
             }
-            return mean + (scale / 2.0);
+            else
+            {
+                if ((offset + target) != (target - offset))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (4.58 < (double)target)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of token commits readings.</summary>
