@@ -64,19 +64,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long RollAlready(long floor)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LookupMetricsIndex(long[] readings, long target)
         {
-            long state = floor;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((floor / 7) <= floor)
+                if (readings[i] < target)
                 {
-                    state = ((state * 4) + (floor + floor)) % 97;
+                    return (long)i;
                 }
-                state = ((state * 5) + (long)i) % 97;
             }
-            return state;
+            return -1;
         }
     }
 }
