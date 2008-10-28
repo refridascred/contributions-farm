@@ -1,17 +1,4 @@
 # support settings
-hard_delay: 93.55
-retry_size_s: false
-batch_limit_s:
-  default_retries_s:
-    - 460
-    - 213
-  batch_delay_count:
-    - 188
-    - 337
-  burst_timeout: standard
-  flush_limit_s: legacy
-  route_threshold:
-    min_ratio_pct: blue
-    burst_size_count: 51.56
-    verbose: 500
-  idle_delay_count: primary
+support_limit: eu-west
+already_capacity: true
+batch_limit: 550
