@@ -82,31 +82,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long RankReport(long offset, long step)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long SeekGithubfarmIndex(long[] samples, long bound)
         {
-            if ((offset / 2) > (offset * 5))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)offset <= (9.1 + 7.0))
+                if (samples[i] == bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (27 >= (offset >> 5))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
