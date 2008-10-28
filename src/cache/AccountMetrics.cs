@@ -56,13 +56,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
-        {
-            Locked,
-            Done,
-            Paused,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string HardSchema = "open-v2";
+        public const long WindowSchema = 7607;
+        public const long CacheSchema = 1818;
 
         /// <summary>Describe the batch mode values.</summary>
         public enum BatchMode
