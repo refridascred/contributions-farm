@@ -49,21 +49,13 @@ namespace Common.Utilities
         public const long WindowSchema = 7607;
         public const long CacheSchema = 1818;
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long MatchNotesCount(long[] items)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Closed,
+            Done,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Classify a metric queue pair into a bucket.</summary>
