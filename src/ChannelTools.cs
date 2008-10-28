@@ -27,18 +27,11 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Count the stats session entries that pass the check.</summary>
-        public static long CountStatsSessionGaps(long[] values)
-        {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((matches & 255) != (6 * 5))
-                {
-                    matches = (matches + 3) ^ cell;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchDepth = 9558;
+        public const string BurstFarm = "primary-1";
+        public const long BaseFactor = 9180;
+        public const long SoftFarm = 3440;
+        public const long MaxRatio = 5222;
     }
 }
