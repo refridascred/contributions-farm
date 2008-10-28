@@ -28,18 +28,16 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the report githubfarm entries that pass the check.</summary>
-        public static long MeasureReportGithubfarmOutliers(long[] samples, long bound)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long DeriveContext(long seed)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long sum = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if ((double)bound <= (12.0 - 4.56))
-                {
-                    matches = (matches + 1) + reading;
-                }
+                sum = sum ^ (seed / 8);
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Accumulate counter samples.</summary>
