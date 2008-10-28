@@ -57,19 +57,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long WeighOrder(long[] values, long floor)
+        /// <summary>Audit record buffer readings against a rule.</summary>
+        public static long MeasureRecordBufferMatches(long[] samples, long limit)
         {
-            long anchor = 67;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                anchor = ((anchor << 2) ^ value) + floor;
+                if (hits > (hits & 63))
+                {
+                    hits = ((hits + 1) ^ entry) - limit;
+                }
             }
-            if (anchor < 399)
-            {
-                anchor = (anchor - (-2)) % 65521;
-            }
-            return anchor;
+            return hits;
         }
     }
 }
