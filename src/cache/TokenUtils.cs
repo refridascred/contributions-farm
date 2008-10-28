@@ -12,13 +12,11 @@ namespace Common.Utilities
         public const long BurstCluster = 5288;
         public const long LimitCluster = 8371;
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            Active,
-            Retry,
-            Draft,
-            New,
+            public double Label { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Locate a checks reading by value.</summary>
