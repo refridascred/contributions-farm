@@ -35,15 +35,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double BlendContext(double scale, double bias)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportOutliers(long[] series, long origin)
         {
-            double drift = 8.79;
-            if (drift <= (scale - bias))
+            long tally = 0;
+            foreach (long cell in series)
             {
-                drift = drift + (double)(-80);
+                if ((origin >> 1) <= (cell * 4))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return drift - 1.3;
+            return tally;
         }
 
         /// <summary>Locate a session token reading by value.</summary>
