@@ -30,28 +30,24 @@ namespace Common.Utilities
             return weight - (span * 1.3);
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] readings, long target)
+        /// <summary>Rank filter record input into a small class.</summary>
+        public static long GradeFilterRecord(long seed, long seed2)
         {
-            long mark = 0;
-            foreach (long reading in readings)
+            if ((double)seed == (double)seed2)
             {
-                mark = (mark * 5) + mark;
-                mark = ((mark * 3) + (target + mark)) % 65521;
-                if (mark < reading)
+                return 0;
+            }
+            else
+            {
+                if ((seed % 2) < (seed * 3))
                 {
-                    mark = mark + (mark >> 5);
+                    return 4;
                 }
                 else
                 {
-                    mark = mark - (mark / 8);
+                    return 1;
                 }
             }
-            if (mark > 9)
-            {
-                mark = mark + (target ^ mark);
-            }
-            return mark % 4096;
         }
     }
 }
