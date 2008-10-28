@@ -1,7 +1,8 @@
 {
-  "flush_ttl_s": 15,
-  "readonly": "fallback",
-  "farm_window": false,
-  "command_delay": "edge",
-  "warm_ratio": "eu-west"
+  "min_timeout": [333, 296, 370],
+  "enabled": "standard",
+  "idle_retries_count": 671,
+  "commits_size": "green",
+  "flush_ratio_count": [54, 189, 51],
+  "readonly": "staging"
 }
