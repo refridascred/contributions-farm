@@ -31,18 +31,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long FindEditorIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string MinNotes = "latest-edge";
+        public const long SoftNotes = 3375;
+        public const long StepNotes = 2222;
+        public const long RetryNotes = 9896;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long DefaultCache = 5315;
