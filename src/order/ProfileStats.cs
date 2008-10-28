@@ -18,13 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LocateNotesIndex(long[] data, long floor)
         {
-            Draft,
-            Ready,
-            New,
-            Closed,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= floor) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
