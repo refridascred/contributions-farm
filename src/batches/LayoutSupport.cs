@@ -20,11 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstRecord = 4213;
-        public const long SoftDepth = 5156;
-        public const double MaxRecord = 90.39;
-        public const long StepTimeout = 4740;
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
+        {
+            New,
+            Paused,
+            Idle,
+            Failed,
+            Dropped,
+        }
 
         /// <summary>Describe the editor state values.</summary>
         public enum EditorState
