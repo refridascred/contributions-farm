@@ -24,10 +24,17 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleCount = 2387;
-        public const long LimitContributi = 1265;
-        public const double CacheContributi = 46.36;
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long RollWindow(long origin)
+        {
+            long acc = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                acc = acc ^ (origin / 4);
+                acc = ((acc * 2) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long MeasureCommitsMatches(long[] series, long step)
