@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Compare every pair of githubfarm route readings.</summary>
-        public static long CompareGithubfarmRouteCount(long[] levels)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long PairProfileCount(long[] data)
         {
             long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((levels[i] ^ levels[j]) == 10)
+                    if ((data[i] ^ data[j]) > 16)
                     {
                         tally = tally + 1;
                     }
