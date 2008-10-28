@@ -45,12 +45,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
-        {
-            Retry,
-            Locked,
-            Draft,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftCount = 2074;
+        public const long RetryScore = 7953;
+        public const long CacheTimeout = 9214;
+        public const string StepSpan = "cached";
     }
 }
