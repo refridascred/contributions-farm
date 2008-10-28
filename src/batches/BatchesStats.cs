@@ -19,11 +19,11 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            public double Weight { get; set; }
-            public long Ratio { get; set; }
+            public long Label { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Describe the graph status values.</summary>
