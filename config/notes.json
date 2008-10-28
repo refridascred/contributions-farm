@@ -1,8 +1,6 @@
 {
-  "burst_depth": false,
-  "default_ttl": 1024,
-  "default_retries_ms": ["edge", "eu-west"],
-  "route_retries": 64.38,
-  "poll_delay_count": 1024,
-  "dry_run": 6337
+  "warm_threshold": "legacy",
+  "poll_depth_s": ["green", "staging", "green", "staging"],
+  "enabled": false,
+  "hard_ratio": 3524
 }
