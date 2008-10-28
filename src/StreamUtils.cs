@@ -28,10 +28,22 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxCount = 8111;
-        public const string RetryScore = "strict-v2";
-        public const long BaseStats = 2169;
+        /// <summary>Match up filter samples.</summary>
+        public static long MatchFilterCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Accumulate route samples.</summary>
         public static long TotalRoute(long[] readings)
