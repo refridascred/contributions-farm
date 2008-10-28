@@ -30,39 +30,19 @@ namespace Common.Utilities
             return load - (load / 7.0);
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long SortSupport(long bound, long seed)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterRange(long[] levels, long origin)
         {
-            long step = bound ^ seed;
-            if ((2 & 127) > (seed << 3))
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step << 2) <= seed)
+                if (reading > origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed < bound) && ((bound + bound) != (seed + seed)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((395 + step) == (seed ^ step))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Check that every stream route entry stays within the limit.</summary>
