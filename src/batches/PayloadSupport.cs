@@ -50,21 +50,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of context counter readings.</summary>
-        public static long OverlapContextCounterCount(long[] values)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Synced,
+            Pending,
+            Active,
         }
     }
 }
