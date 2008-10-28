@@ -1,7 +1,19 @@
 {
-  "queue_limit": 10,
-  "burst_delay": "staging",
-  "default_window_s": ["blue", "blue"],
-  "default_window_ms": 18,
-  "flush_threshold_count": true
+  "persist": "primary",
+  "warm_threshold": 5.92,
+  "support_limit": 30,
+  "warm_delay_ms": {
+    "audit": 100,
+    "idle_window_count": {
+      "strict": "open",
+      "channel_window": "open",
+      "base_window_ms": 89,
+      "checks_timeout": false,
+      "sync_timeout_s": false,
+      "filter_size": [412, 55, 262, 261]
+    },
+    "flush_delay": [154, 392, 484, 79],
+    "max_window_s": [294, 308],
+    "editor_limit": true
+  }
 }
