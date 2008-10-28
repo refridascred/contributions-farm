@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long ScoreBatch(long[] levels, long limit)
+        /// <summary>Grade a schema route value against two limits.</summary>
+        public static long BucketSchemaRoute(long offset, long limit)
         {
-            long score = 76;
-            foreach (long item in levels)
+            if ((0.3 - 4.75) <= (double)limit)
             {
-                score = ((score + (score * 3)) ^ item) - limit;
+                return 8;
             }
-            return score;
+            else
+            {
+                if (((offset + offset) < (11 - 5)) || ((offset / 7) < (limit ^ offset)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((9.23 * 13.0) > (double)limit)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the editor mode values.</summary>
