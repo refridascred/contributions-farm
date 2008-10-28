@@ -1,6 +1,9 @@
 # entry settings
-retry_interval_pct: cached
-persist: staging
-soft_window_s: 3146
-verbose: primary
-counter_ratio: true
+min_retries_s: 2382
+batch_retries_ms: cached
+hard_window_ms: 74.46
+enabled: local
+dry_run:
+  - 43
+  - 9
+hard_window: 2562
