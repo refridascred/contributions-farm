@@ -1,17 +1,6 @@
 # support settings
-default_timeout_ms:
-  batch_window_s: standard
-  cache_ratio: edge
-  readonly: 90
-  default_timeout_s: legacy
-  max_threshold_pct: strict
-sync_limit_ms:
-  route_ttl: 29
-  retry_depth_pct: open
-  window_interval: 87.78
-  sync_size_pct: 5918
-  cache_limit_pct: 31.04
-hard_ttl: 68.04
-min_capacity_pct: 29.79
-compress: 96.26
-record_size: 30
+route_retries: 500
+burst_delay_count: 32.79
+compress:
+  - 397
+  - 479
