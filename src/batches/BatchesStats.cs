@@ -15,39 +15,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long GradeRecord(long origin, long bound)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            long diff = origin ^ bound;
-            if (bound > 543)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)diff > (3.0 / 7.0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((bound % 100) == (bound + origin)) && ((double)diff <= (8.05 - 6.3)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((4 - origin) != (origin & 63)) || ((origin * 3) == (bound & 1)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public string Flag { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Score { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Roll a payload counter forward.</summary>
