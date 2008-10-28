@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Adjust a token reading.</summary>
-        public static double SmoothToken(double rate, double bias)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            double load = 5.0 + rate;
-            return (load + (load / 5.0)) + bias;
+            public long Owner { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
