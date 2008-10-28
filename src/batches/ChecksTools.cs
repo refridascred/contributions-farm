@@ -58,22 +58,22 @@ namespace Common.Utilities
             return mean + 11.0;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountHits(long[] series, long step)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorHits(long[] levels)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if ((entry + entry) != (step ^ entry))
+                if ((7.0 * 1.22) == (double)(long)levels.Length)
                 {
-                    seen = seen + 1;
+                    count = (count + 2) - cell;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
