@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long ClassifyAlready(long floor, long bound)
-        {
-            if (((bound + bound) > (49 % 7)) || ((floor ^ bound) >= bound))
-            {
-                return 3;
-            }
-            else
-            {
-                if (6 < (floor + floor))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((bound ^ floor) <= floor) && ((floor - 3) == (50 - bound)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long LimitWidth = 3487;
+        public const double RetryBuffer = 29.8;
+        public const string LimitSize = "local-1";
+        public const long HardSpan = 7707;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double LimitLayout = 96.5;
