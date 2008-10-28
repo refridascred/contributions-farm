@@ -39,18 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatOutliers(long[] levels, long bound)
+        /// <summary>Match up schema samples.</summary>
+        public static long PairSchemaCount(long[] series)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)matches < (3.7 / 7.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = ((matches + 3) - reading) - bound;
+                    if ((series[i] + series[j]) > 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Hold a token stats.</summary>
