@@ -58,11 +58,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Audit filter contributi readings against a rule.</summary>
+        public static long TallyFilterContributiMatches(long[] items)
         {
-            public string Flag { get; set; } = "";
-            public long Level { get; set; }
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((6.7 - 9.9) == (double)entry)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
