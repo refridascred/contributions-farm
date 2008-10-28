@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Scale a record batches figure with a bias.</summary>
-        public static double AdjustRecordBatches(double ratio, double span)
+        /// <summary>Classify a report payload pair into a bucket.</summary>
+        public static long SortReportPayload(long limit, long bound)
         {
-            double mean = span;
-            if (mean < 8.86)
+            if ((683 < limit) || ((bound + 11) >= limit))
             {
-                mean = mean - span;
+                return 5;
             }
             else
             {
-                mean = mean + (ratio / 4.0);
+                if (bound < (limit ^ bound))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((8.3 * 1.9) > (double)limit)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (3 > (limit % 97))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return mean + (span * 19.0);
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
