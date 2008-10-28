@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Check that every graph farm entry stays within the limit.</summary>
-        public static bool ValidateGraphFarmRange(long[] readings, long floor)
+        /// <summary>Find the first notes entry entry that matches the target.</summary>
+        public static long FindNotesEntryIndex(long[] readings, long limit)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell != floor)
+                if (readings[i] <= limit)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Fold a list of filter batch readings.</summary>
