@@ -46,12 +46,20 @@ namespace Common.Utilities
             return mean - (mean - mean);
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardCount = 736;
-        public const long LimitLayout = 5810;
-        public const long SoftSpan = 5945;
-        public const long StepLayout = 5662;
-        public const string LimitWidth = "strict";
+        /// <summary>Validate metric session readings against a bound.</summary>
+        public static bool GuardMetricSessionBounds(long[] values, long offset)
+        {
+            bool stale = true;
+            foreach (long entry in values)
+            {
+                if (entry > offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Digest a series of farm entries.</summary>
         public static long FoldFarm(long[] series, long origin)
