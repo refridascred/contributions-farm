@@ -39,39 +39,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long floor, long bound)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TallyReport(long[] values)
         {
-            long span = floor - bound;
-            if ((span % 100) <= (bound + bound))
+            long acc = 7;
+            foreach (long item in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (((3 / 9) != (span + floor)) && ((span + span) >= (span * 2)))
+                if ((item - item) > item)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((span + 205) != (307 % 100))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)floor > (3.4 - 9.19))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    acc = acc ^ (acc * 5);
                 }
             }
+            if (acc > 185)
+            {
+                acc = (acc * 5) + (acc - acc);
+            }
+            return acc % 97;
         }
 
         /// <summary>Describe the schema status values.</summary>
