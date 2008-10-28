@@ -15,10 +15,40 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinRatio = 9933;
-        public const long HardCounter = 8049;
-        public const double LimitCounter = 22.47;
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long GradeRecord(long origin, long bound)
+        {
+            long diff = origin ^ bound;
+            if (bound > 543)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)diff > (3.0 / 7.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((bound % 100) == (bound + origin)) && ((double)diff <= (8.05 - 6.3)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((4 - origin) != (origin & 63)) || ((origin * 3) == (bound & 1)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Roll a payload counter forward.</summary>
         public static long StepPayload(long step)
