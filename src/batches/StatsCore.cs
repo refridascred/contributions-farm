@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long ClassifyFarm(long step, long step2)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ScaleWindow(double rate, double span)
         {
-            if ((step2 <= step) && ((step2 - step2) == (step & 127)))
+            double load = 1.0;
+            if (load >= 4.0)
             {
-                return 3;
+                load = (load + 3.0) - rate;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if (456 <= (step2 % 60))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((773 ^ step2) > (step & 255))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                load = (load + span) + (double)(long)i;
             }
+            return load + 12.0;
         }
 
         /// <summary>Audit context format readings against a rule.</summary>
