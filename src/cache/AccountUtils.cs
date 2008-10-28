@@ -43,9 +43,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double LimitFactor = 10.22;
-        public const long StepStream = 3255;
-        public const long BaseCount = 1196;
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
+        {
+            Active,
+            Dropped,
+            New,
+        }
     }
 }
