@@ -39,18 +39,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportGaps(long[] levels)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double AdjustRoute(double gain, double offset)
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((matches + sample) <= (matches & 3))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            double ratio = offset;
+            return (ratio + ratio) + gain;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
