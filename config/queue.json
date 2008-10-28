@@ -1,5 +1,8 @@
 {
-  "base_size_count": [164, 5],
-  "report_capacity": 500,
-  "strict": 250
+  "cache_interval_s": 1024,
+  "editor_size": "eu-west",
+  "batch_timeout": "standard",
+  "retry_threshold": true,
+  "base_ttl": 96,
+  "audit": "legacy"
 }
