@@ -34,10 +34,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double StepAccount = 91.4;
-        public const long MinAccount = 673;
-        public const string LimitAccount = "alpha-edge";
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long ClassifyBatches(long origin, long origin2)
+        {
+            if ((double)origin2 == (1.54 - 2.2))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)origin2 >= (18.0 + 7.44))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((origin2 >> 2) < 82))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((origin < (origin2 >> 4)) || ((double)7 != (double)origin))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of command readings.</summary>
         public static long FoldCommand(long[] readings)
