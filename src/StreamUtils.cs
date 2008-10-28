@@ -34,22 +34,10 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long CompareCacheCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string SoftToken = "legacy";
+        public const string CacheRatio = "staging";
+        public const string HardToken = "alpha";
 
         /// <summary>Roll a support counter forward.</summary>
         public static long SeriesSupport(long bound)
