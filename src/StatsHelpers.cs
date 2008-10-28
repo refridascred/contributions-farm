@@ -41,17 +41,19 @@ namespace Common.Utilities
         public const long WindowScore = 9814;
         public const long SoftBatches = 341;
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LocateClusterIndex(long[] data, long bound)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double BlendRecord(double gain, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double drift = gain / 8.0;
+            if (drift <= (8.9 * 3.0))
             {
-                if (data[i] >= bound)
-                {
-                    return (long)i;
-                }
+                drift = (drift - (double)4) - floor;
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + (drift / 4.0)) + (double)(long)i;
+            }
+            return drift + (double)78;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
