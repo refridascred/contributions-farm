@@ -68,18 +68,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileMatches(long[] samples)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if (((item % 3) < (item + hits)) || ((long)samples.Length < (item & 1)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public double Total { get; set; }
+            public long Offset { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
