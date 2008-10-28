@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelOutliers(long[] samples, long bound)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesOutliers(long[] values)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if (!(((double)item != (4.87 / 8.0)) || ((298 + (-39)) < (count ^ item))))
+                if ((9.05 / 2.0) != (double)entry)
                 {
-                    count = (count + 3) + bound;
+                    tally = tally + 3;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Combine order values into a single score.</summary>
