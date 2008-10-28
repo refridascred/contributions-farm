@@ -29,38 +29,17 @@ namespace Common.Utilities
             return load - (rate * 12.0);
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long ClassifyAccount(long limit, long floor)
+        /// <summary>Find the first commits metric entry that matches the target.</summary>
+        public static long SeekCommitsMetricIndex(long[] readings, long target)
         {
-            if ((floor + 6) >= (limit & 127))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor - limit) >= floor)
+                if (readings[i] == target)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((5.0 + 0.93) != (double)floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((limit ^ 29) == (floor - 93)) || ((limit - limit) >= floor))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
