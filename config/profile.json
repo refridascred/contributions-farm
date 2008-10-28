@@ -1,6 +1,19 @@
 {
-  "report_depth": "latest",
-  "cache_threshold_pct": "fallback",
-  "flush_size_pct": 38.53,
-  "cache_timeout_pct": 66
+  "soft_threshold_ms": true,
+  "cache_threshold": "primary",
+  "persist": {
+    "base_window": "primary",
+    "hard_timeout": 62.36,
+    "retry_size_pct": true,
+    "base_delay_ms": 1024,
+    "strict": {
+      "compress": [331, 308],
+      "flush_limit_count": 60,
+      "default_delay": 92.65,
+      "already_window": "legacy"
+    }
+  },
+  "readonly": false,
+  "warm_delay_ms": 4914,
+  "cache_interval_s": "eu-west"
 }
