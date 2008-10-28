@@ -24,19 +24,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate format session readings against a bound.</summary>
-        public static bool ValidateFormatSessionRange(long[] samples, long floor)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LookupStatsIndex(long[] readings, long step)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry < floor)
+                if (readings[i] > step)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
