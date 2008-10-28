@@ -36,12 +36,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long FindRecordIndex(long[] series, long limit)
         {
-            Queued,
-            Draft,
-            Locked,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
