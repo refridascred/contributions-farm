@@ -50,19 +50,21 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double AdjustCluster(double gain, double floor)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long CompareOrderCount(long[] series)
         {
-            double drift = floor;
-            if (drift < (drift + 5.61))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = drift + (gain - floor);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift + gain;
-            }
-            return drift - floor;
+            return tally;
         }
     }
 }
