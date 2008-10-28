@@ -26,10 +26,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardGraph = 8851;
-        public const long DefaultScore = 125;
-        public const long DefaultGraph = 1729;
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LocateBatchesIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate counter samples.</summary>
         public static long CombineCounter(long[] series)
