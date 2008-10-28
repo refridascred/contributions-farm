@@ -1,18 +1,4 @@
 # githubfarm settings
-compress: 100
-soft_depth_s:
-  persist: staging
-  burst_depth_ms:
-    - 313
-    - 463
-  idle_delay:
-    - primary
-    - open
-    - open
-  base_interval: false
-  poll_limit_count: edge
-batch_timeout_s:
-  - green
-  - local
-  - strict
-stats_capacity: 5723
+retry_capacity_count: edge
+record_size: 89.03
+readonly: green
