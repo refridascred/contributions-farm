@@ -32,18 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LookupStatsIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= step) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double LimitLayout = 96.5;
+        public const double IdleInterval = 11.04;
+        public const long CacheSize = 99;
+        public const string CacheRatio = "primary-edge";
+        public const string LimitFactor = "local-v2";
 
         /// <summary>Iterate the context series from a seed.</summary>
         public static long DeriveContext(long seed)
