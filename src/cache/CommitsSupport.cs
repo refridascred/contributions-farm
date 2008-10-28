@@ -49,17 +49,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long SeekRouteIndex(long[] values, long origin)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorOutliers(long[] samples, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (values[i] < origin)
+                if (((long)samples.Length % 5) <= (tally / 3))
                 {
-                    return (long)i;
+                    tally = ((tally + 1) ^ sample) + floor;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
