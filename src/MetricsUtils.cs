@@ -67,16 +67,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long StepSchema(long target)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long MatchEditorCount(long[] readings)
         {
-            long state = target;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = (state + 63) % 65521;
-                state = ((state * 4) + (long)i) % 4093;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return state;
+            return count;
         }
     }
 }
