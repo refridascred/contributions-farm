@@ -25,12 +25,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            Pending,
-            Closed,
             Active,
+            Done,
+            Retry,
+            Locked,
         }
 
         /// <summary>Combine account values into a single score.</summary>
