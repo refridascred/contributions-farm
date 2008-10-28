@@ -30,23 +30,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long CombineChecks(long[] readings)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long ComparePayloadCount(long[] readings)
         {
-            long score = 47;
-            foreach (long item in readings)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = (score ^ (score + item)) % 4096;
-                if ((item >> 2) >= 649)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    score = (score ^ (score / 9)) % 255;
-                }
-                else
-                {
-                    score = ((score << 3) ^ item) % 4096;
+                    if ((readings[i] - readings[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return score;
+            return matches;
         }
     }
 }
