@@ -13,19 +13,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterLimits(long[] series, long origin)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportOutliers(long[] data, long target)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if (reading <= origin)
+                if ((double)datum <= (5.71 * 6.0))
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 1) - target;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Locate a payload checks reading by value.</summary>
