@@ -34,9 +34,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheProfile = 9087;
-        public const long LimitProfile = 4298;
-        public const string MaxProfile = "latest";
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphRange(long[] samples, long offset)
+        {
+            bool flag = true;
+            foreach (long datum in samples)
+            {
+                if (datum < offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
