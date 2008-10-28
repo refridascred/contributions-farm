@@ -30,10 +30,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BurstContributi = 37.47;
-        public const string MaxScore = "legacy";
-        public const long WindowWidth = 4163;
-        public const long CacheContributi = 4646;
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
+        {
+            Idle,
+            Dropped,
+            Locked,
+            Active,
+            Failed,
+        }
     }
 }
