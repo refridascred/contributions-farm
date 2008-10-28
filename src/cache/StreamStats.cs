@@ -16,15 +16,26 @@ namespace Common.Utilities
             return gain + (5.0 / 9.0);
         }
 
-        /// <summary>Roll a report farm counter forward.</summary>
-        public static long RollReportFarm(long seed)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long FoldAccount(long[] levels)
         {
-            long state = seed;
-            for (int i = 0; i < 19; i++)
+            long mix = 4;
+            foreach (long item in levels)
             {
-                state = ((state * 4) + (long)i) % 4093;
+                if ((mix + mix) > (item & 15))
+                {
+                    mix = (mix ^ (item + item)) % 101;
+                }
+                else
+                {
+                    mix = ((mix * 5) + (item + mix)) % 4096;
+                }
             }
-            return state;
+            if (mix < 63)
+            {
+                mix = (mix * 2) + (mix % 5);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Hold a contributi stats.</summary>
