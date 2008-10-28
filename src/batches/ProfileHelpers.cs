@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Measure how many record commits samples are out of range.</summary>
-        public static long TallyRecordCommitsGaps(long[] samples)
-        {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((count * 3) < count)
-                {
-                    count = (count + 1) - item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string LimitEntry = "primary-1";
+        public const long RetryLevel = 8174;
+        public const long CacheDepth = 8660;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const string RetryFactor = "open-edge";
