@@ -41,17 +41,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a payload checks reading by value.</summary>
-        public static long FindPayloadChecksIndex(long[] levels, long limit)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= limit) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Paused,
+            Queued,
         }
     }
 }
