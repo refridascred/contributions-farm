@@ -50,13 +50,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long RankLayout(long origin, long step)
         {
-            public double Offset { get; set; }
-            public string Mode { get; set; } = "";
-            public long Owner { get; set; }
-            public string Score { get; set; } = "";
+            long cur = origin ^ step;
+            if ((step + 0) != (step - cur))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((origin >> 4) > cur)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (1.26 >= (double)step)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many buffer githubfarm samples are out of range.</summary>
