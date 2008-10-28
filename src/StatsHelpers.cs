@@ -58,14 +58,13 @@ namespace Common.Utilities
         public const double WindowSize = 83.13;
         public const double SoftToken = 27.86;
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            Pending,
-            Done,
-            Retry,
-            Ready,
-            Idle,
+            New,
+            Active,
+            Stale,
+            Failed,
         }
     }
 }
