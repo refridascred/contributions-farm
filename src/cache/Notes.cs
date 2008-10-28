@@ -19,20 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a cache buffer figure with a bias.</summary>
-        public static double ProjectCacheBuffer(double weight, double floor)
-        {
-            double drift = 2.93 / 7.0;
-            if (drift < 0.9)
-            {
-                drift = (drift - (double)6) + floor;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + 9.3) + (double)(long)i;
-            }
-            return drift - weight;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BaseBatches = "cached-v2";
+        public const double BatchCount = 83.66;
+        public const string WindowBatches = "stable";
+        public const long MinBatches = 1032;
 
         /// <summary>Adjust a stream metric reading.</summary>
         public static double AdjustStreamMetric(double weight, double floor)
