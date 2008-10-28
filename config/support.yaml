@@ -1,7 +1,19 @@
 # support settings
-strict: stable
-idle_ratio_pct:
-  verbose: 3185
-  cache_depth_pct: 1
-  retry_retries_count: standard
-audit: 9127
+soft_threshold_pct: 54
+readonly:
+  - 71
+  - 197
+  - 23
+  - 85
+soft_timeout:
+  soft_retries_s: green
+  audit:
+    max_delay_ms: edge
+    window_threshold: 5734
+    account_ttl: cached
+    warm_size: false
+  order_window: cached
+  hard_size:
+    - legacy
+    - open
+  dry_run: eu-west
