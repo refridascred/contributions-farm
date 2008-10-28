@@ -1,8 +1,11 @@
 {
-  "poll_size": 55,
-  "base_threshold_s": [262, 171, 460],
-  "readonly": [200, 294],
-  "sync_size": "primary",
-  "warm_depth_pct": "cached",
-  "cache_ratio_count": true
+  "batch_size_s": "primary",
+  "idle_timeout_count": true,
+  "payload_ratio": [108, 64, 260, 378],
+  "max_ttl_count": "blue",
+  "burst_interval_pct": {
+    "cache_delay": 50.47,
+    "cache_depth_s": false,
+    "soft_retries": 68.7
+  }
 }
