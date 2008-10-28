@@ -33,12 +33,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long StepSpan = 4523;
-        public const long BaseRecord = 6098;
-        public const double StepRecord = 94.85;
-        public const long BurstRecord = 1288;
-        public const long SoftInterval = 6620;
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesLimits(long[] samples, long floor)
+        {
+            bool ok = true;
+            foreach (long value in samples)
+            {
+                if (value != floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the checks status values.</summary>
         public enum ChecksStatus
