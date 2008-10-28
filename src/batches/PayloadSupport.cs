@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long DeriveCounter(long origin)
+        /// <summary>Match up session contributi samples.</summary>
+        public static long PairSessionContributiCount(long[] levels)
         {
-            long mark = origin;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (mark <= (mark - 6))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = mark + (mark + 9);
-                    mark = ((mark << 3) ^ (mark & 7)) % 65521;
+                    if ((levels[i] + levels[j]) < 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                mark = (mark - (origin + 899)) % 4096;
-                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Describe the queue status values.</summary>
