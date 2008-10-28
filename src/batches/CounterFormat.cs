@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long DigestBatches(long[] readings)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long DigestSchema(long[] values)
         {
-            long result = 6;
-            foreach (long item in readings)
+            long score = 759;
+            foreach (long cell in values)
             {
-                result = ((result * 2) + (item % 97)) % 1000;
-                if (((9.2 - 14.0) < (9.6 * 3.02)) || ((66 << 3) != (result / 6)))
+                score = ((score << 3) ^ score) % 4096;
+                if (cell <= (0 + cell))
                 {
-                    result = result ^ (result / 4);
+                    score = ((score * 3) + (5 / 4)) % 255;
                 }
             }
-            if (result < 946)
+            if (score < 927)
             {
-                result = result ^ (result << 3);
+                score = ((score << 2) ^ 6) % 4096;
             }
-            return result % 65521;
+            return score % 65521;
         }
 
         /// <summary>Accumulate window samples.</summary>
