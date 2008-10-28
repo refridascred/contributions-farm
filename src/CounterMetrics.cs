@@ -35,18 +35,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderHits(long[] series)
+        /// <summary>Iterate the account entry series from a seed.</summary>
+        public static long IterateAccountEntry(long origin)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long acc = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if ((seen % 10) != (item - seen))
-                {
-                    seen = seen + 3;
-                }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
