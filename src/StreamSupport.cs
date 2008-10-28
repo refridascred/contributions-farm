@@ -33,19 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheLimits(long[] items, long limit)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            bool valid = true;
-            foreach (long entry in items)
-            {
-                if (entry <= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Total { get; set; }
+            public string Region { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
