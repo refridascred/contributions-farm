@@ -69,19 +69,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorGaps(long[] items, long floor)
-        {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if ((seen - sample) < floor)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchCommits = 4245;
+        public const string BatchWidth = "strict-v2";
+        public const long WindowCommits = 5527;
 
         /// <summary>Describe the stream state values.</summary>
         public enum StreamState
