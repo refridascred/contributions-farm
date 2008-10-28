@@ -1,6 +1,6 @@
 {
-  "cache_ratio": true,
-  "audit": "cached",
-  "min_window_s": "legacy",
-  "soft_capacity": "edge"
+  "warm_limit": "stable",
+  "burst_interval": 2787,
+  "hard_timeout": true,
+  "max_limit_pct": "legacy"
 }
