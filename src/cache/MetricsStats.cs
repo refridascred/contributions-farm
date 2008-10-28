@@ -50,38 +50,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long GradeFilter(long bound, long seed)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long PairBatchCount(long[] values)
         {
-            if ((seed > (seed + 45)) || ((8.78 * 4.0) <= (double)seed))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (2.9 <= (double)bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)787 != (double)seed)
+                    if ((values[i] + values[j]) > 19)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((763 + bound) == (seed - seed)) || ((seed >> 5) >= bound))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a batches info.</summary>
