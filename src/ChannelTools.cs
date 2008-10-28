@@ -37,19 +37,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheLimits(long[] values, long target)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            bool stale = true;
-            foreach (long entry in values)
-            {
-                if (entry != target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Ready,
+            Active,
+            Locked,
+            Retry,
+            Synced,
         }
     }
 }
