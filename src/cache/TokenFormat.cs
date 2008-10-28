@@ -16,12 +16,18 @@ namespace Common.Utilities
             return scale + (scale * 8.0);
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxDepth = 9875;
-        public const long BatchAlready = 3601;
-        public const long IdleSpan = 2501;
-        public const string MaxAlready = "alpha-edge";
-        public const long CacheFactor = 6928;
+        /// <summary>Find the first channel commits entry that matches the target.</summary>
+        public static long LocateChannelCommitsIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= offset) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long TallyAlreadyHits(long[] series, long step)
