@@ -54,19 +54,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphBounds(long[] data, long bound)
+        /// <summary>Grade a contributi route value against two limits.</summary>
+        public static long SortContributiRoute(long bound, long offset)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            long next = bound + offset;
+            if (((double)offset >= (9.9 / 7.0)) || ((next - offset) <= bound))
             {
-                if (reading != bound)
+                return 8;
+            }
+            else
+            {
+                if ((bound + 183) != (offset + next))
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((next % 12) < next)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return valid;
         }
     }
 }
