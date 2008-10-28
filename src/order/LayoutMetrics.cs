@@ -57,9 +57,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double LimitStream = 16.21;
-        public const long WindowStream = 1423;
-        public const string BatchStream = "open-v2";
+        /// <summary>Fold a list of order readings.</summary>
+        public static long WeighOrder(long[] values, long floor)
+        {
+            long anchor = 67;
+            foreach (long value in values)
+            {
+                anchor = ((anchor << 2) ^ value) + floor;
+            }
+            if (anchor < 399)
+            {
+                anchor = (anchor - (-2)) % 65521;
+            }
+            return anchor;
+        }
     }
 }
