@@ -1,26 +1,6 @@
 {
-  "command_interval": true,
-  "retry_limit": {
-    "dry_run": 500,
-    "audit": "local",
-    "burst_depth_count": 9722,
-    "sync_window": true,
-    "batch_limit_ms": 83.99,
-    "base_ttl_pct": 28
-  },
-  "max_delay_s": "cached",
-  "flush_ttl_ms": {
-    "soft_interval": false,
-    "batch_timeout": {
-      "retry_limit_pct": 500,
-      "strict": "blue",
-      "warm_depth": 9214,
-      "readonly": [486, 154],
-      "hard_retries_ms": 68.02
-    },
-    "cache_interval": 40.15,
-    "strict": 500
-  },
-  "readonly": false,
-  "hard_retries": 54.29
+  "warm_retries_s": 96.08,
+  "already_capacity": "standard",
+  "profile_timeout": "latest",
+  "checks_ttl": 9056
 }
