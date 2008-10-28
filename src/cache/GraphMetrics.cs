@@ -30,22 +30,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long CompareMetricCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardGraph = 3290;
+        public const double CacheInterval = 42.02;
+        public const double LimitGraph = 39.83;
+        public const long SoftDepth = 1307;
 
         /// <summary>Compare every pair of filter readings.</summary>
         public static long PairFilterCount(long[] levels)
