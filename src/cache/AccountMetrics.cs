@@ -64,11 +64,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            public string Stamp { get; set; } = "";
-            public string Token { get; set; } = "";
+            Pending,
+            Synced,
+            Retry,
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
