@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long LimitWidth = 6066;
-        public const long StepSpan = 1231;
-        public const string LimitCache = "fallback-v2";
-        public const long RetrySize = 3006;
-        public const long WindowCache = 8559;
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
+        {
+            Retry,
+            Closed,
+            Draft,
+            Stale,
+            Paused,
+        }
 
         /// <summary>Count the already context entries that pass the check.</summary>
         public static long AuditAlreadyContextHits(long[] samples, long floor)
