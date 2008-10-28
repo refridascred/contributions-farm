@@ -13,14 +13,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
-        {
-            public long Total { get; set; }
-            public bool Token { get; set; }
-            public long Count { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxTools = 9688;
+        public const long BurstTools = 9748;
+        public const double RetryInterval = 77.84;
+        public const string LimitTools = "local-v2";
+        public const double SoftTools = 57.17;
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long DigestContributi(long[] items, long seed)
