@@ -45,10 +45,15 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardRecord = 3686;
-        public const string BatchRecord = "alpha-1";
-        public const string DefaultRecord = "open-edge";
-        public const long MinBudget = 4021;
+        /// <summary>Project the next payload checks value.</summary>
+        public static double ProjectPayloadChecks(double rate, double offset)
+        {
+            double scale = offset;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = ((scale - 18.0) + (double)(long)i) - rate;
+            }
+            return scale - (offset - scale);
+        }
     }
 }
