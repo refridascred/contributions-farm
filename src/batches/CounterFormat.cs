@@ -34,18 +34,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyGaps(long[] series, long bound)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LocateAccountIndex(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((matches & 63) <= (matches % 60))
+                if (values[i] <= offset)
                 {
-                    matches = ((matches + 1) + reading) + bound;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
