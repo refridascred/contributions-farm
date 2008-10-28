@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            public string Stamp { get; set; } = "";
+            public long Total { get; set; }
             public bool Token { get; set; }
-            public string Region { get; set; } = "";
+            public long Count { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Blend two batches entry measurements.</summary>
