@@ -23,19 +23,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a farm githubfarm figure with a bias.</summary>
-        public static double ScaleFarmGithubfarm(double gain, double span)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            double ratio = span;
-            if (ratio > 9.46)
-            {
-                ratio = ratio - gain;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + gain) - (double)(long)i;
-            }
-            return ratio - gain;
+            public long Level { get; set; }
+            public long Flag { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Describe the stream status values.</summary>
