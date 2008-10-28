@@ -26,12 +26,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
-        {
-            public long Flag { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftRatio = 5285;
+        public const long SoftSupport = 6947;
+        public const long RetryBudget = 2265;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long CacheMetrics = 8350;
