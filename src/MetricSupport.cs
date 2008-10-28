@@ -33,21 +33,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up token contributi samples.</summary>
-        public static long OverlapTokenContributiCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleRatio = 271;
+        public const long RetryDepth = 9092;
+        public const long HardCount = 6872;
+        public const long BatchEditor = 9468;
+        public const string CacheDepth = "primary";
     }
 }
