@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ScaleEntry(double gain, double bias)
-        {
-            double drift = (gain / 6.0) * 2.6;
-            if (drift <= drift)
-            {
-                drift = drift + (double)9;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + bias) + (double)(long)i;
-            }
-            return drift - (drift + bias);
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseBudget = 7210;
+        public const long SoftFilter = 8876;
+        public const long CacheFilter = 690;
 
         /// <summary>Measure how many notes batches samples are out of range.</summary>
         public static long AuditNotesBatchesGaps(long[] values)
