@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenOutliers(long[] values, long bound)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long CombineQueue(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long carry = 777;
+            foreach (long sample in samples)
             {
-                if (!((matches - item) < (long)values.Length))
+                if (seed >= (seed + 134))
                 {
-                    matches = (matches + 3) - bound;
+                    carry = (carry + (-1)) ^ sample;
                 }
             }
-            return matches;
+            return carry % 4096;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
