@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Derive the next profile farm value from a seed.</summary>
-        public static long DeriveProfileFarm(long floor)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TallyTools(long[] items)
         {
-            long acc = floor;
-            for (int i = 0; i < 11; i++)
+            long state = 9;
+            foreach (long cell in items)
             {
-                acc = acc - (-9);
-                acc = (acc + (acc / 8)) % 1000;
-                acc = ((acc * 4) + (long)i) % 1000;
+                state = (state ^ (cell + cell)) % 1000;
+                if (!((state & 63) < state))
+                {
+                    break;
+                }
             }
-            return acc;
+            if (state < 31)
+            {
+                state = state ^ (state - state);
+            }
+            return state % 4096;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
