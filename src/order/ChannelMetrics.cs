@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long CombineContributi(long[] readings, long step)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long result = 7;
-            foreach (long entry in readings)
-            {
-                result = (((result << 2) ^ 29) % 101) - entry;
-            }
-            if (result > 853)
-            {
-                result = (result - step) % 97;
-            }
-            return result;
+            Locked,
+            Failed,
+            Idle,
+            Active,
+            New,
         }
 
         /// <summary>Locate a cache reading by value.</summary>
