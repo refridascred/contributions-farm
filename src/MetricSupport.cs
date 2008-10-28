@@ -13,12 +13,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            public double Total { get; set; }
-            public bool Token { get; set; }
-            public string Size { get; set; } = "";
+            Closed,
+            Active,
+            Failed,
+            Retry,
         }
 
         /// <summary>Describe the stream class values.</summary>
