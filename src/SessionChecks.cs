@@ -19,21 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long PairBufferCount(long[] samples)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Queued,
+            Ready,
+            Retry,
+            New,
+            Stale,
         }
 
         /// <summary>Hold a profile summary.</summary>
