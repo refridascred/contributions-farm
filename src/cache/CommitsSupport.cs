@@ -51,18 +51,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LocateFormatIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleSpan = 3815;
+        public const double SoftSession = 48.04;
+        public const long MaxFactor = 5894;
+        public const long BaseSession = 262;
 
         /// <summary>Match up report samples.</summary>
         public static long MatchReportCount(long[] values)
