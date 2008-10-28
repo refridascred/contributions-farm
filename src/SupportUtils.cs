@@ -44,11 +44,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Validate contributi buffer readings against a bound.</summary>
+        public static bool ValidateContributiBufferBounds(long[] items, long bound)
         {
-            public long Region { get; set; }
-            public double Weight { get; set; }
+            bool ready = true;
+            foreach (long sample in items)
+            {
+                if (sample < bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
