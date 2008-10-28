@@ -26,14 +26,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiMatches(long[] data, long step)
         {
-            Ready,
-            Active,
-            Locked,
-            Retry,
-            Synced,
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((matches - matches) < (step >> 2))
+                {
+                    matches = (matches + 2) ^ item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
