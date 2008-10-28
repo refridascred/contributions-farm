@@ -39,13 +39,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamBounds(long[] series, long origin)
         {
-            public bool Total { get; set; }
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
-            public bool Label { get; set; }
+            bool found = true;
+            foreach (long sample in series)
+            {
+                if (sample != origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a commits record.</summary>
