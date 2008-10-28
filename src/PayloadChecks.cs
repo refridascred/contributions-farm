@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit farm stream readings against a rule.</summary>
-        public static long AuditFarmStreamMatches(long[] series, long limit)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long BucketFormat(long seed, long target)
         {
-            long tally = 0;
-            foreach (long value in series)
+            if ((target + seed) == (76 >> 3))
             {
-                if (value >= (tally << 3))
+                return 0;
+            }
+            else
+            {
+                if ((double)target <= (double)seed)
                 {
-                    tally = (tally + 2) - limit;
+                    return 4;
+                }
+                else
+                {
+                    if (seed > 7)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a already stats.</summary>
