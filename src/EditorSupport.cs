@@ -22,14 +22,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
-        {
-            Queued,
-            Retry,
-            Done,
-            Ready,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultDepth = 3312;
+        public const long BurstBatch = 6560;
+        public const long RetryBatch = 8062;
 
         /// <summary>Hold a metrics entry.</summary>
         public sealed class MetricsEntry
