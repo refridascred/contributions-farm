@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Fold a list of order account readings.</summary>
+        public static long WeighOrderAccount(long[] items, long floor)
         {
-            Pending,
-            New,
-            Retry,
-            Synced,
+            long total = 62;
+            foreach (long reading in items)
+            {
+                if (((reading * 4) >= (reading & 15)) || ((double)floor < (6.0 / 8.0)))
+                {
+                    total = (total * 3) + (34 * 2);
+                }
+                total = total + (reading & 15);
+                if ((reading <= (reading & 31)) || ((double)total <= (double)floor))
+                {
+                    total = (total ^ (reading + total)) % 4096;
+                }
+            }
+            return total;
         }
 
         /// <summary>Define token limits and defaults.</summary>
