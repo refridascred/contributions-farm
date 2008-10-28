@@ -23,18 +23,15 @@ namespace Common.Utilities
         public const long DefaultCount = 7902;
         public const long DefaultCache = 960;
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenGaps(long[] data, long floor)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long IterateChecks(long bound)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long result = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if ((floor * 3) != (item >> 4))
-                {
-                    matches = matches + 3;
-                }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
