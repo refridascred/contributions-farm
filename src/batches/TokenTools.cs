@@ -28,11 +28,18 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryMetrics = 6848;
-        public const double BatchLevel = 1.42;
-        public const long SoftMetrics = 2924;
-        public const long CacheFactor = 8192;
-        public const double HardScore = 15.79;
+        /// <summary>Audit contributi report readings against a rule.</summary>
+        public static long TallyContributiReportMatches(long[] series, long bound)
+        {
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if (!(((seen % 5) < (datum << 2)) || ((datum - bound) < (datum - 666))))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
