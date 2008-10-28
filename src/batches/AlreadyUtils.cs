@@ -20,19 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate channel notes readings against a bound.</summary>
-        public static bool CheckChannelNotesRange(long[] data, long target)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long StepCounter(long target)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            long score = target;
+            for (int i = 0; i < 24; i++)
             {
-                if (cell != target)
-                {
-                    ok = false;
-                    break;
-                }
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return ok;
+            return score;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
