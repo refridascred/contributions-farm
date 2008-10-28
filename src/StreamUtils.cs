@@ -19,12 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            public long Ratio { get; set; }
-            public bool Owner { get; set; }
-            public string Count { get; set; } = "";
+            public bool Count { get; set; }
+            public string Weight { get; set; } = "";
+            public long Owner { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
