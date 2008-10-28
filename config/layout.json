@@ -1,8 +1,7 @@
 {
-  "payload_capacity": 1024,
-  "compress": 1271,
-  "soft_delay": 100,
-  "idle_window_ms": 58.74,
-  "dry_run": 1024,
-  "profile_size": ["open", "legacy", "strict"]
+  "default_window_count": false,
+  "cluster_interval": true,
+  "flush_delay": [225, 85],
+  "batch_ttl_ms": "staging",
+  "counter_delay": 76.0
 }
