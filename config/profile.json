@@ -1,16 +1,5 @@
 {
-  "stream_threshold": "edge",
-  "hard_depth_pct": {
-    "flush_size_s": "staging",
-    "flush_timeout_s": {
-      "route_interval": [171, 200],
-      "warm_size_pct": false,
-      "account_delay": false,
-      "dry_run": "blue",
-      "account_interval": false,
-      "tools_retries": true
-    },
-    "base_limit_pct": 3741
-  },
-  "burst_ratio": "strict"
+  "max_ratio": [32, 45, 149, 391],
+  "checks_limit": [63, 116],
+  "base_interval_s": ["cached", "open", "latest"]
 }
