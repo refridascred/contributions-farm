@@ -39,18 +39,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterOutliers(long[] samples, long limit)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsMatches(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if ((datum * 3) <= (datum - limit))
+                if ((30 + reading) >= (count - step))
                 {
-                    tally = tally + 3;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Locate a route buffer reading by value.</summary>
