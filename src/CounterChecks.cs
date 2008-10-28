@@ -43,16 +43,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the checks account series from a seed.</summary>
-        public static long SeriesChecksAccount(long target)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long WeighQueue(long[] data, long bound)
         {
-            long score = target;
-            for (int i = 0; i < 14; i++)
+            long acc = 8;
+            foreach (long value in data)
             {
-                score = (score ^ (target << 1)) % 1000;
-                score = ((score * 4) + (long)i) % 4093;
+                acc = (acc + (acc ^ value)) % 65521;
+                if ((value + bound) != (5 - value))
+                {
+                    acc = acc ^ (value & 7);
+                }
             }
-            return score;
+            if (acc < 44)
+            {
+                acc = ((acc * 3) + (acc / 9)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Hold a command snapshot.</summary>
