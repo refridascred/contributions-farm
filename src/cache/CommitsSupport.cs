@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit counter command readings against a rule.</summary>
-        public static long CountCounterCommandGaps(long[] values)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferMatches(long[] readings)
         {
             long tally = 0;
-            foreach (long sample in values)
+            foreach (long entry in readings)
             {
-                if (3.0 < (double)sample)
+                if ((double)tally == (6.0 + 5.1))
                 {
-                    tally = tally + 1;
+                    tally = (tally + 2) ^ entry;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
