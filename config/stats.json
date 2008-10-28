@@ -1,6 +1,22 @@
 {
-  "warm_retries_s": 96.08,
-  "already_capacity": "standard",
-  "profile_timeout": "latest",
-  "checks_ttl": 9056
+  "poll_capacity_s": 1958,
+  "sync_interval_count": {
+    "readonly": 6479,
+    "warm_ratio": 6730,
+    "base_ratio": {
+      "stream_retries": 6616,
+      "audit": true,
+      "default_ttl": "cached"
+    },
+    "hard_size_pct": 90.98,
+    "retry_timeout_s": true
+  },
+  "flush_depth_count": {
+    "metric_threshold": false,
+    "warm_window_s": false,
+    "command_limit": 5974
+  },
+  "warm_retries_count": 1024,
+  "sync_size_pct": "stable",
+  "burst_size_s": 9087
 }
