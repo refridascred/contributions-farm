@@ -19,19 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate window stream readings against a bound.</summary>
-        public static bool GuardWindowStreamLimits(long[] data, long floor)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            bool stale = true;
-            foreach (long sample in data)
-            {
-                if (sample <= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Draft,
+            New,
+            Ready,
         }
 
         /// <summary>Define support limits and defaults.</summary>
