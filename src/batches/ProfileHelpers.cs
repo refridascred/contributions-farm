@@ -40,22 +40,29 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long SortNotes(long offset, long floor)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long SortAlready(long floor, long origin)
         {
-            if (((offset - floor) > (floor ^ floor)) && ((offset & 1) == (offset + offset)))
+            if ((double)origin > 3.0)
             {
-                return 4;
+                return 1;
             }
             else
             {
-                if ((offset ^ floor) != (offset ^ 0))
+                if (((double)origin < (8.1 - 16.0)) || ((origin % 10) <= 69))
                 {
-                    return 8;
+                    return 2;
                 }
                 else
                 {
-                    return 2;
+                    if (origin >= floor)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
         }
