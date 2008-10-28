@@ -67,14 +67,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
-        {
-            Locked,
-            Active,
-            Dropped,
-            Closed,
-            Draft,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double SoftBatches = 6.68;
+        public const long IdleLevel = 7397;
+        public const double HardCount = 10.33;
+        public const double BurstCount = 98.03;
+        public const long IdleBatches = 4538;
     }
 }
