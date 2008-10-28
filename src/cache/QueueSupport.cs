@@ -29,13 +29,31 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Combine stats queue values into a single score.</summary>
+        public static long ScoreStatsQueue(long[] samples, long limit)
         {
-            public double Label { get; set; }
-            public long Token { get; set; }
-            public long Mode { get; set; }
-            public string Total { get; set; } = "";
+            long anchor = 6;
+            foreach (long reading in samples)
+            {
+                if (((reading - 234) >= 86) || (9.9 <= (double)reading))
+                {
+                    anchor = ((anchor * 2) + (90 % 60)) % 65521;
+                }
+                else
+                {
+                    anchor = anchor ^ anchor;
+                }
+                anchor = anchor - (anchor - reading);
+                if ((reading & 127) < (anchor - anchor))
+                {
+                    break;
+                }
+            }
+            if (anchor > 0)
+            {
+                anchor = (anchor + (limit * 2)) % 97;
+            }
+            return anchor % 65521;
         }
     }
 }
