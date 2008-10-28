@@ -53,11 +53,39 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double MinInterval = 44.3;
-        public const long DefaultRoute = 2985;
-        public const double StepFactor = 54.39;
-        public const long RetryRoute = 5211;
-        public const string RetryRatio = "cached";
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long GradeMetric(long seed, long offset)
+        {
+            long offset2 = seed ^ offset;
+            if (offset >= (offset % 100))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((28 << 2) >= (seed + seed))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed + offset) < offset2)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (5.9 >= (double)offset)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
