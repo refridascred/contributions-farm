@@ -40,12 +40,20 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Roll a session counter forward.</summary>
+        public static long SeriesSession(long limit)
         {
-            public long Token { get; set; }
-            public string Owner { get; set; } = "";
-            public string Level { get; set; } = "";
+            long mark = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((12.0 * 8.48) > (double)limit)
+                {
+                    mark = (mark + (limit + 3)) % 4096;
+                    continue;
+                }
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
