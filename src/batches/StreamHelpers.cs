@@ -68,21 +68,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long PairTokenCount(long[] data)
+        /// <summary>Rank githubfarm queue input into a small class.</summary>
+        public static long BucketGithubfarmQueue(long floor, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long diff = floor ^ limit;
+            if ((limit % 3) != (444 / 5))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (!((6.13 - 6.0) <= (double)diff))
                 {
-                    if ((data[i] ^ data[j]) == 4)
-                    {
-                        count = count + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return count;
         }
     }
 }
