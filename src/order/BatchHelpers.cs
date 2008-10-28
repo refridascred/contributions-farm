@@ -14,19 +14,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksMatches(long[] series)
-        {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if (806 <= (seen % 10))
-                {
-                    seen = (seen + 1) ^ item;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftRatio = 8875;
+        public const long HardFactor = 453;
+        public const string CacheWidth = "latest";
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long AuditGraphMatches(long[] series, long offset)
