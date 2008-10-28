@@ -22,21 +22,19 @@ namespace Common.Utilities
         public const long BaseWidth = 565;
         public const double MaxNotes = 70.88;
 
-        /// <summary>Match up contributi support samples.</summary>
-        public static long PairContributiSupportCount(long[] samples)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double BlendEntry(double gain, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double ratio = (double)(-27) / 4.0;
+            if (ratio <= span)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                ratio = ratio - gain;
             }
-            return hits;
+            else
+            {
+                ratio = ratio - (gain + span);
+            }
+            return ratio - (gain * 6.0);
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
