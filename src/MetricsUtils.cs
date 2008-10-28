@@ -67,12 +67,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LocateBatchIndex(long[] series, long target)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LocateFilterIndex(long[] readings, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((series[i] == target) && ((series[i] % 5) != 0))
+                if (readings[i] == target)
                 {
                     return (long)i;
                 }
