@@ -66,26 +66,17 @@ namespace Common.Utilities
         public const long BaseBudget = 9506;
         public const string StepSupport = "staging-edge";
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long FoldRecord(long[] values, long offset)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long FindOrderIndex(long[] items, long offset)
         {
-            long score = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((entry % 97) < offset))
+                if (items[i] >= offset)
                 {
-                    score = score - (score / 8);
-                }
-                if ((65 + entry) == (score / 9))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (score > 71)
-            {
-                score = (score + score) % 97;
-            }
-            return score;
+            return -1;
         }
     }
 }
