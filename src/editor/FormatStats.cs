@@ -60,9 +60,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxPayload = 7415;
-        public const long LimitPayload = 7507;
-        public const long BasePayload = 8378;
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
+        {
+            public long Label { get; set; }
+            public double Level { get; set; }
+            public long Count { get; set; }
+        }
     }
 }
