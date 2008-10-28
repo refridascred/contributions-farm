@@ -14,18 +14,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the graph route entries that pass the check.</summary>
-        public static long MeasureGraphRouteGaps(long[] items)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksOutliers(long[] series)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if (hits > ((long)items.Length & 15))
+                if ((3.85 - 5.4) > (double)sample)
                 {
-                    hits = (hits + 2) ^ cell;
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
