@@ -1,8 +1,7 @@
 {
-  "default_ttl_ms": 60.89,
-  "max_interval_s": "legacy",
-  "commits_ratio": 28.65,
-  "idle_ratio": 9867,
-  "flush_retries_pct": 30,
-  "channel_size": "primary"
+  "hard_limit": 57.85,
+  "burst_limit": 14.01,
+  "sync_capacity_ms": true,
+  "max_ttl_pct": [357, 132],
+  "warm_timeout_s": 49.95
 }
