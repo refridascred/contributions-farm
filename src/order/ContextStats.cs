@@ -53,21 +53,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long CompareOrderCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultCommits = 1524;
+        public const long BurstCommits = 4647;
+        public const string BurstWidth = "fallback-edge";
+        public const long WindowCount = 6267;
+        public const double SoftCommits = 54.21;
     }
 }
