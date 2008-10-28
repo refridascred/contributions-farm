@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
-        {
-            Synced,
-            Closed,
-            Locked,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultPayload = 8064;
+        public const string IdleBudget = "primary-edge";
+        public const long HardPayload = 8058;
+        public const long LimitScore = 5513;
 
         /// <summary>Hold a route options.</summary>
         public sealed class RouteOptions
