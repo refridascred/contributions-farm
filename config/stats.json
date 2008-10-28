@@ -1,11 +1,7 @@
 {
-  "burst_delay_s": {
-    "base_capacity_count": ["blue", "standard", "legacy"],
-    "cluster_size": 90.46,
-    "channel_ttl": "staging",
-    "audit": false,
-    "githubfarm_limit": "stable"
-  },
-  "batch_ttl_ms": 250,
-  "audit": 16.02
+  "cache_interval_count": 3076,
+  "soft_interval_ms": "standard",
+  "audit": true,
+  "cache_interval_pct": "staging",
+  "farm_depth": 500
 }
