@@ -33,18 +33,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatGaps(long[] values, long step)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if (!(((hits + (long)values.Length) < step) && ((19.0 * 8.89) > (double)step)))
-                {
-                    hits = (hits + 1) ^ item;
-                }
-            }
-            return hits;
+            Idle,
+            Done,
+            Dropped,
         }
     }
 }
