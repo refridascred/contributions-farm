@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyBounds(long[] readings, long seed)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long DeriveFarm(long bound)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            long score = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if (item >= seed)
+                if ((7.5 / 3.0) != (double)bound)
                 {
-                    ready = false;
-                    break;
+                    score = score + (long)i;
                 }
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return ready;
+            return score;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
