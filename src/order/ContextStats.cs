@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BatchCommand = 48.59;
-        public const double HardDepth = 57.19;
-        public const long MaxWidth = 3296;
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long RollQueue(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                anchor = anchor ^ 5;
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long ScoreGithubfarm(long[] items)
