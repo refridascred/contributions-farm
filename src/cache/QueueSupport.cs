@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of already editor readings.</summary>
-        public static long WeighAlreadyEditor(long[] series)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long DeriveQueue(long floor)
         {
-            long mark = 8;
-            foreach (long reading in series)
+            long total = floor;
+            for (int i = 0; i < 10; i++)
             {
-                mark = ((mark << 2) ^ (mark & 127)) - reading;
+                total = ((total * 3) + (long)i) % 4093;
             }
-            if (mark < 8)
-            {
-                mark = mark - (mark * 3);
-            }
-            return mark % 97;
+            return total;
         }
 
         /// <summary>Accumulate farm samples.</summary>
