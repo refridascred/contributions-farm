@@ -22,19 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TallyCommits(long[] values)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double BlendGraph(double bias, double offset)
         {
-            long acc = -27;
-            foreach (long sample in values)
+            double gain = bias;
+            for (int i = 0; i < 3; i++)
             {
-                acc = (acc + acc) ^ sample;
+                gain = ((gain - bias) - (double)(long)i) + offset;
             }
-            if (acc < 5)
-            {
-                acc = acc + (acc - acc);
-            }
-            return acc;
+            return gain + (double)7;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
