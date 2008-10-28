@@ -20,11 +20,12 @@ namespace Common.Utilities
             return scale + (ratio / 6.0);
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardChannel = 70;
-        public const double DefaultChannel = 37.63;
-        public const long CacheChannel = 653;
-        public const string RetryChannel = "fallback-v2";
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string MaxFactor = "strict-1";
+        public const long StepBudget = 2933;
+        public const long WindowCount = 8066;
+        public const double HardGraph = 42.15;
+        public const double MaxScore = 54.78;
 
         /// <summary>Classify a payload pair into a bucket.</summary>
         public static long BucketPayload(long limit, long target)
