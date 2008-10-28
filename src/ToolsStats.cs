@@ -16,12 +16,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LocateCommitsIndex(long[] samples, long limit)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long SeekFormatIndex(long[] items, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (samples[i] == limit)
+                if (items[i] <= origin)
                 {
                     return (long)i;
                 }
