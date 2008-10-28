@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheBounds(long[] items, long seed)
-        {
-            bool stale = true;
-            foreach (long reading in items)
-            {
-                if (reading >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardCount = 2865;
+        public const long DefaultBudget = 2247;
+        public const long CacheDepth = 1879;
+        public const double RetryChannel = 69.87;
+        public const string IdleChannel = "standard-edge";
 
         /// <summary>Scale a buffer figure with a bias.</summary>
         public static double ScaleBuffer(double rate, double bias)
