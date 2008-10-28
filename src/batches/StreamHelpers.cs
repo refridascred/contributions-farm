@@ -46,25 +46,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long RollCounter(long bound)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long carry = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                carry = (carry ^ (bound - carry)) % 4096;
-                if (!(carry <= (long)i))
-                {
-                    carry = (carry ^ bound) % 97;
-                }
-                else
-                {
-                    long diff = carry;
-                    carry = (carry - diff) % 97;
-                }
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
+            Draft,
+            New,
+            Stale,
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
