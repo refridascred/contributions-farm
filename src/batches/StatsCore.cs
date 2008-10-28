@@ -40,11 +40,12 @@ namespace Common.Utilities
             return weight + (double)533;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double BurstFarm = 97.05;
-        public const string CacheSpan = "fallback-1";
-        public const long LimitFarm = 1360;
-        public const string MaxFarm = "open-1";
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardCount = 736;
+        public const long LimitLayout = 5810;
+        public const long SoftSpan = 5945;
+        public const long StepLayout = 5662;
+        public const string LimitWidth = "strict";
 
         /// <summary>Digest a series of farm entries.</summary>
         public static long FoldFarm(long[] series, long origin)
