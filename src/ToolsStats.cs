@@ -14,21 +14,29 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Compare every pair of already notes readings.</summary>
-        public static long PairAlreadyNotesCount(long[] series)
+        /// <summary>Iterate the queue counter series from a seed.</summary>
+        public static long SeriesQueueCounter(long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = floor;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((anchor < (floor + floor)) || ((double)anchor <= (5.8 * 9.3)))
                 {
-                    if ((series[i] ^ series[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = (anchor ^ (anchor >> 5)) % 255;
                 }
+                else
+                {
+                    anchor = anchor ^ 1;
+                    anchor = anchor ^ (floor + 949);
+                }
+                if ((59 < ((long)i + floor)) && ((925 << 3) <= (63 ^ (long)i)))
+                {
+                    anchor = anchor - (floor + floor);
+                    continue;
+                }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Match up support samples.</summary>
