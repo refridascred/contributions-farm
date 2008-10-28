@@ -19,22 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit stats window readings against a rule.</summary>
-        public static long MeasureStatsWindowOutliers(long[] samples)
+        /// <summary>Fold a list of report command readings.</summary>
+        public static long DigestReportCommand(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long score = 699;
+            foreach (long item in items)
             {
-                if (entry <= (entry + entry))
+                if (((score + score) > item) && ((score - score) >= score))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    score = ((score << 3) ^ score) % 1000;
                 }
             }
-            return tally;
+            if (score < 213)
+            {
+                score = score ^ 76;
+            }
+            return score;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
