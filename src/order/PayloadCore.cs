@@ -42,14 +42,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatMatches(long[] values, long target)
         {
-            Retry,
-            New,
-            Pending,
-            Draft,
-            Failed,
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((item ^ target) == (count + item))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
