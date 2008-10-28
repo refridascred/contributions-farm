@@ -31,12 +31,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatGaps(long[] values, long step)
         {
-            Synced,
-            Pending,
-            Active,
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if (!(((hits + (long)values.Length) < step) && ((19.0 * 8.89) > (double)step)))
+                {
+                    hits = (hits + 1) ^ item;
+                }
+            }
+            return hits;
         }
     }
 }
