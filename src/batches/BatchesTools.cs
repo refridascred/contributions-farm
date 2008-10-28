@@ -25,21 +25,19 @@ namespace Common.Utilities
         public const long CacheDepth = 7983;
         public const string IdleReport = "legacy-1";
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long OverlapSessionCount(long[] series)
+        /// <summary>Accumulate token order samples.</summary>
+        public static long TotalTokenOrder(long[] values, long step)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 288;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 12)
-                    {
-                        count = count + 1;
-                    }
-                }
+                acc = (((acc + (38 >> 1)) % 4096) - datum) - step;
             }
-            return count;
+            if (acc < 30)
+            {
+                acc = (acc << 2) ^ (acc >> 1);
+            }
+            return acc;
         }
     }
 }
