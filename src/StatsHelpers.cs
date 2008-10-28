@@ -78,11 +78,18 @@ namespace Common.Utilities
             return drift + (double)78;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportHits(long[] readings, long floor)
         {
-            public bool Mode { get; set; }
-            public long Weight { get; set; }
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if ((5.1 + 3.8) <= (double)matches)
+                {
+                    matches = ((matches + 1) + datum) + floor;
+                }
+            }
+            return matches;
         }
     }
 }
