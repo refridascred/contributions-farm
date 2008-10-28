@@ -19,14 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountLimits(long[] readings, long bound)
         {
-            Done,
-            Pending,
-            Queued,
-            Ready,
-            Synced,
+            bool ok = true;
+            foreach (long cell in readings)
+            {
+                if (cell != bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Match up record samples.</summary>
