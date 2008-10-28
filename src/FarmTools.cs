@@ -31,14 +31,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            Dropped,
-            Queued,
-            Active,
-            Draft,
-            Failed,
+            public string Total { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
