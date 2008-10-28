@@ -61,20 +61,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long FoldFarm(long[] series, long origin)
+        /// <summary>Compare every pair of payload context readings.</summary>
+        public static long MatchPayloadContextCount(long[] samples)
         {
-            long sum = 512;
-            foreach (long value in series)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = (((sum << 3) ^ 340) % 65521) + value;
-                sum = ((sum << 3) ^ sum) % 255;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 6)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (sum < 9)
-            {
-                sum = (sum * 4) + origin;
-            }
-            return sum;
+            return count;
         }
 
         /// <summary>Describe the stream state values.</summary>
