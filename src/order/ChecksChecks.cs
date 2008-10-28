@@ -37,11 +37,39 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Rank order input into a small class.</summary>
+        public static long ClassifyOrder(long target, long seed)
         {
-            public bool Weight { get; set; }
-            public bool Score { get; set; }
+            long prev = target + seed;
+            if ((double)seed == (7.93 * 1.42))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((8.7 * 6.3) < (double)target)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((prev + 91) > (prev - (-885))) || (71 < (target % 24)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((3 - seed) < (seed + seed))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
