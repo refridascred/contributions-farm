@@ -55,11 +55,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double BlendFarm(double rate, double span)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            double scale = span;
-            return scale - (span + rate);
+            public string Label { get; set; } = "";
+            public bool Ratio { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Roll a payload counter forward.</summary>
