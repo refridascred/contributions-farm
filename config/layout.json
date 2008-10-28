@@ -1,7 +1,8 @@
 {
-  "command_threshold": 5318,
-  "burst_ttl_count": true,
-  "verbose": 30,
-  "dry_run": 100,
-  "sync_limit": 4761
+  "poll_timeout_count": "stable",
+  "sync_limit_pct": 972,
+  "commits_window": "eu-west",
+  "batch_limit": 1024,
+  "poll_window_pct": false,
+  "sync_retries": [27, 148, 159]
 }
