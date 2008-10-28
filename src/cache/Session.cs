@@ -20,18 +20,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsHits(long[] values, long floor)
+        /// <summary>Roll a buffer cluster counter forward.</summary>
+        public static long StepBufferCluster(long origin)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long sum = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if ((floor / 4) < (reading + 6))
-                {
-                    seen = seen + 3;
-                }
+                sum = ((sum * 4) + (sum << 3)) % 101;
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
