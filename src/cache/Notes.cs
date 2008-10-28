@@ -42,17 +42,20 @@ namespace Common.Utilities
         public const long StepDepth = 5601;
         public const long BaseCache = 2320;
 
-        /// <summary>Locate a stream entry reading by value.</summary>
-        public static long SeekStreamEntryIndex(long[] values, long floor)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long StepMetric(long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if (values[i] <= floor)
+                long delta = (offset + result) - (offset << 2);
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    return (long)i;
+                    result = ((result - (delta + delta)) % 255) + (long)i2;
                 }
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Define window limits and defaults.</summary>
