@@ -63,13 +63,22 @@ namespace Common.Utilities
             return rate + (double)(-24);
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long CombineLayout(long[] levels, long bound)
         {
-            public double Flag { get; set; }
-            public long Limit { get; set; }
-            public double Region { get; set; }
-            public long Score { get; set; }
+            long mark = 4;
+            foreach (long sample in levels)
+            {
+                if ((17.0 / 7.0) <= (double)mark)
+                {
+                    mark = ((mark ^ (mark << 3)) % 97) - sample;
+                }
+            }
+            if (mark < 40)
+            {
+                mark = ((mark * 5) + bound) % 4096;
+            }
+            return mark;
         }
     }
 }
