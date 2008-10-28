@@ -39,13 +39,18 @@ namespace Common.Utilities
         public const string LimitTools = "local-v2";
         public const double SoftTools = 57.17;
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesMatches(long[] samples)
         {
-            Paused,
-            Closed,
-            Ready,
-            Queued,
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if (entry <= (tally + entry))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a notes stats.</summary>
