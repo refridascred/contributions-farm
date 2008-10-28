@@ -1,6 +1,8 @@
 {
-  "default_size_pct": 500,
-  "readonly": "primary",
-  "checks_size": 28.84,
-  "idle_capacity_pct": ["blue", "stable", "stable", "stable"]
+  "readonly": true,
+  "warm_depth_pct": "edge",
+  "report_threshold": "open",
+  "soft_threshold_count": "fallback",
+  "sync_interval_count": 2205,
+  "strict": 500
 }
