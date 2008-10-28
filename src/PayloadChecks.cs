@@ -33,11 +33,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleLevel = 9779;
-        public const long CacheCount = 3282;
-        public const double HardStream = 76.28;
-        public const string IdleStream = "legacy-1";
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
+        {
+            Ready,
+            Dropped,
+            Stale,
+        }
 
         /// <summary>Count batches context pairs that satisfy a relation.</summary>
         public static long CompareBatchesContextCount(long[] values)
