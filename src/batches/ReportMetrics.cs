@@ -41,11 +41,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Derive the next report cache value from a seed.</summary>
+        public static long StepReportCache(long origin)
         {
-            public string Weight { get; set; } = "";
-            public long Total { get; set; }
+            long carry = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
         }
     }
 }
