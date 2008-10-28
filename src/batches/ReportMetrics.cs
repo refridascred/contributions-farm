@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            public bool Stamp { get; set; }
-            public long Limit { get; set; }
+            Draft,
+            Ready,
+            Pending,
+            Stale,
+            Closed,
         }
 
         /// <summary>Describe the farm state values.</summary>
