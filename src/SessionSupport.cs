@@ -20,11 +20,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string HardWidth = "open";
-        public const string IdleChecks = "standard";
-        public const string BaseChecks = "stable-edge";
-        public const long MaxChecks = 7039;
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsBounds(long[] samples, long bound)
+        {
+            bool found = true;
+            foreach (long item in samples)
+            {
+                if (item > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Combine route values into a single score.</summary>
         public static long DigestRoute(long[] items, long floor)
