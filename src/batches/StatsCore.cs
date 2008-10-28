@@ -57,15 +57,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double AdjustCache(double ratio, double span)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorGaps(long[] items, long floor)
         {
-            double mean = span;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                mean = ((mean + span) + (double)(long)i) + ratio;
+                if ((seen - sample) < floor)
+                {
+                    seen = seen + 1;
+                }
             }
-            return mean + (double)90;
+            return seen;
         }
 
         /// <summary>Describe the stream state values.</summary>
