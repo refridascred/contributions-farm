@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            public double Rank { get; set; }
-            public string Size { get; set; } = "";
+            Idle,
+            Pending,
+            Done,
+            Stale,
         }
 
         /// <summary>Match up filter samples.</summary>
