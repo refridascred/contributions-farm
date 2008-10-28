@@ -17,10 +17,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double SoftSpan = 90.52;
-        public const string DefaultTimeout = "latest";
-        public const long WindowOrder = 9090;
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchHits(long[] values, long origin)
+        {
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if (origin > 315)
+                {
+                    matches = (matches + 2) + entry;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the githubfarm level values.</summary>
         public enum GithubfarmLevel
