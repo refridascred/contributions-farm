@@ -1,8 +1,8 @@
 {
-  "cache_interval_s": 1024,
-  "editor_size": "eu-west",
-  "batch_timeout": "standard",
-  "retry_threshold": true,
-  "base_ttl": 96,
-  "audit": "legacy"
+  "hard_timeout": 5878,
+  "compress": 18.33,
+  "counter_interval": 500,
+  "poll_interval": true,
+  "max_timeout_s": 60,
+  "schema_retries": "edge"
 }
