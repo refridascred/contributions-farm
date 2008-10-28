@@ -24,15 +24,12 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long StepCounter(long target)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long score = target;
-            for (int i = 0; i < 24; i++)
-            {
-                score = ((score * 3) + (long)i) % 1000;
-            }
-            return score;
+            Paused,
+            Queued,
+            Closed,
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
