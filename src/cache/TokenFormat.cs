@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmHits(long[] data)
+        /// <summary>Project the next metric format value.</summary>
+        public static double ProjectMetricFormat(double ratio, double floor)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            double rate = ratio / 6.0;
+            if (rate >= ratio)
             {
-                if ((double)seen != (2.8 / 7.0))
-                {
-                    seen = (seen + 3) - entry;
-                }
+                rate = rate + 4.46;
             }
-            return seen;
+            return rate + (floor * 8.54);
         }
 
         /// <summary>Hold a graph summary.</summary>
