@@ -16,31 +16,17 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long CombineSchema(long[] series, long bound)
+        /// <summary>Look up the position of a farm account sample.</summary>
+        public static long FindFarmAccountIndex(long[] items, long bound)
         {
-            long result = 47;
-            foreach (long item in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (47 <= result)
+                if ((items[i] <= bound) && ((items[i] % 3) != 0))
                 {
-                    result = result - (result & 127);
-                    result = result - item;
-                }
-                else
-                {
-                    result = (result ^ (result - item)) % 101;
-                }
-                if (result < (bound - item))
-                {
-                    result = (result - (bound + item)) % 1000;
+                    return (long)i;
                 }
             }
-            if (result < (-565))
-            {
-                result = ((result * 4) + (4 + (long)series.Length)) % 4096;
-            }
-            return result % 65521;
+            return -1;
         }
 
         /// <summary>Validate window githubfarm readings against a bound.</summary>
