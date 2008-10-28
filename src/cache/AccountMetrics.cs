@@ -54,18 +54,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit order entry readings against a rule.</summary>
-        public static long TallyOrderEntryOutliers(long[] series)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if (((reading >= (reading ^ tally)) || ((tally - 60) <= (reading * 3))) && ((((long)series.Length * 4) > (tally % 97)) || ((6 & 127) == (582 - tally))))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Stale,
+            Ready,
+            New,
+            Draft,
+            Synced,
         }
 
         /// <summary>Describe the profile kind values.</summary>
