@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryRange(long[] series, long step)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long CompareContributiCount(long[] values)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell > step)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((values[i] + values[j]) < 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Match up order samples.</summary>
