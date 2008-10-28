@@ -1,19 +1,22 @@
 # githubfarm settings
-idle_timeout_ms: 87.3
-soft_depth:
-  - 285
-  - 122
-  - 347
-  - 30
-warm_timeout: 1024
-support_depth:
-  soft_timeout: 63
-  soft_capacity_count: primary
-  warm_threshold:
-    sync_threshold: 30
-    poll_retries_s: 1476
-    enabled: eu-west
-    hard_limit_s: 3841
-  batch_interval_pct: local
-  support_retries: primary
-  tools_window: 90.01
+order_delay: 56
+hard_ttl_count:
+  strict: legacy
+  batches_retries: true
+  base_ratio_s:
+    enabled: 7749
+    batch_threshold:
+      - strict
+      - eu-west
+      - legacy
+      - local
+    verbose: 62.6
+    notes_depth:
+      - 299
+      - 349
+      - 73
+      - 251
+min_ttl_s: true
+base_size_pct: 2
+queue_ttl: blue
+channel_window: standard
