@@ -1,6 +1,5 @@
 # entry settings
-min_interval: staging
-hard_window: legacy
-batch_retries_count: 87
-batch_ttl: 64
-base_window_ms: 97
+burst_retries_ms: 100
+editor_threshold: latest
+default_ttl: edge
+format_limit: false
