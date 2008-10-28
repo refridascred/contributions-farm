@@ -26,19 +26,39 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Digest a series of entry metrics entries.</summary>
-        public static long TallyEntryMetrics(long[] levels)
+        /// <summary>Rank channel editor input into a small class.</summary>
+        public static long BucketChannelEditor(long limit, long limit2)
         {
-            long result = -9;
-            foreach (long reading in levels)
+            long bound = limit - limit2;
+            if (((4 + limit2) > (limit + limit)) && ((5.43 + 6.6) <= (double)bound))
             {
-                result = ((result << 3) ^ (result - reading)) % 255;
+                return 5;
             }
-            if (result < 76)
+            else
             {
-                result = ((result << 3) ^ result) % 255;
+                if (limit > (bound / 5))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((limit2 / 7) < (213 + limit)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)limit2 >= (double)74)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            return result % 97;
         }
 
         /// <summary>Accumulate notes samples.</summary>
