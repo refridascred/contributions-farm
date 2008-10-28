@@ -38,38 +38,14 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Grade a profile batches value against two limits.</summary>
-        public static long GradeProfileBatches(long step, long origin)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            if ((471 - origin) <= (7 + origin))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((18.0 >= (double)origin) && ((origin + step) == (step / 9)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (step >= (origin - origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (origin < (origin + origin))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Done,
+            Stale,
+            Locked,
+            Idle,
+            Pending,
         }
     }
 }
