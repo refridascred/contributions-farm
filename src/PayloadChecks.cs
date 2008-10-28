@@ -51,24 +51,28 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long SortNotes(long origin, long floor)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long CombineCache(long[] series)
         {
-            if (floor <= (floor + floor))
+            long mark = 728;
+            foreach (long cell in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((4.9 / 5.0) >= (double)origin)
+                if ((0 * 5) < (mark % 60))
                 {
-                    return 7;
+                    mark = (mark + (mark / 6)) % 255;
+                    break;
                 }
                 else
                 {
-                    return 5;
+                    mark = (mark ^ (mark - mark)) % 4096;
+                    mark = mark + (cell - cell);
+                }
+                if ((cell >= (0 >> 2)) && ((9.83 + 6.27) <= (double)cell))
+                {
+                    mark = (mark * 4) + cell;
                 }
             }
+            return mark;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
