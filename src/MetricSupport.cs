@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileMatches(long[] series)
         {
-            public long Score { get; set; }
-            public string Count { get; set; } = "";
-            public double Offset { get; set; }
-            public bool Stamp { get; set; }
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if (493 < (seen >> 2))
+                {
+                    seen = (seen + 1) + sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
