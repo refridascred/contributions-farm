@@ -38,22 +38,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricGaps(long[] values, long step)
+        /// <summary>Find the first graph cluster entry that matches the target.</summary>
+        public static long FindGraphClusterIndex(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((step - (long)values.Length) >= 6)
+                if ((series[i] == offset) && ((series[i] % 2) == 0))
                 {
-                    count = (count + 1) ^ datum;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the window state values.</summary>
