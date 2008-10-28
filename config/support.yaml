@@ -1,8 +1,15 @@
 # support settings
-farm_window: local
-readonly:
-  - cached
-  - primary
-  - fallback
-  - stable
-dry_run: 56.66
+burst_interval:
+  - 34
+  - 269
+  - 164
+  - 389
+sync_ratio: false
+idle_ttl_ms:
+  - 412
+  - 28
+  - 471
+  - 246
+audit: 30
+channel_retries: true
+graph_capacity: 21.09
