@@ -20,19 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteMatches(long[] series)
-        {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((18.0 + 10.0) >= (double)datum)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double IdleTimeout = 80.1;
+        public const double RetrySupport = 74.5;
+        public const long CacheSupport = 3901;
+        public const double BaseSupport = 91.28;
+        public const long IdleSupport = 9948;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string RetryWidth = "cached-v2";
