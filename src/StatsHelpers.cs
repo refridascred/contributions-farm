@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            Draft,
-            Dropped,
+            Retry,
+            Idle,
             Locked,
             Closed,
+            Done,
         }
 
         /// <summary>Blend two support measurements.</summary>
