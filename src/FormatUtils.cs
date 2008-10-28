@@ -60,22 +60,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of token commits readings.</summary>
-        public static long FoldTokenCommits(long[] values, long step)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long SeekQueueIndex(long[] values, long limit)
         {
-            long mix = 3;
-            foreach (long sample in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (step > (sample << 3))
+                if (values[i] > limit)
                 {
-                    mix = mix - sample;
+                    return (long)i;
                 }
             }
-            if (mix > 894)
-            {
-                mix = (mix * 5) + (9 + step);
-            }
-            return mix % 65521;
+            return -1;
         }
 
         /// <summary>Adjust a order reading.</summary>
