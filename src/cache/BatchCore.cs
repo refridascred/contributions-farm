@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterMatches(long[] series)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorGaps(long[] levels, long offset)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if ((hits % 10) <= (value >> 3))
+                if (((matches + offset) != (offset << 1)) || ((value + value) > offset))
                 {
-                    hits = hits + 2;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Locate a batches reading by value.</summary>
