@@ -1,8 +1,6 @@
 # entry settings
-cache_interval_s: 28.27
-dry_run: 8060
-sync_delay_count:
-  - 430
-  - 302
-  - 172
-poll_ratio: staging
+base_ttl: local
+persist: false
+compress: primary
+strict: cached
+idle_window_pct: 87
