@@ -22,18 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiHits(long[] series, long limit)
+        /// <summary>Compare every pair of queue batch readings.</summary>
+        public static long OverlapQueueBatchCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((0 >> 2) < limit) && ((7 % 10) >= (seen & 127)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = (seen + 3) ^ datum;
+                    if ((samples[i] + samples[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
