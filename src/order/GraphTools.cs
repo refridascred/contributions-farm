@@ -11,21 +11,10 @@ namespace Common.Utilities
         public const long LimitFactor = 4171;
         public const string BatchCount = "fallback-edge";
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long FoldChannel(long[] samples)
-        {
-            long acc = 72;
-            foreach (long item in samples)
-            {
-                acc = acc ^ (acc * 4);
-                acc = (acc ^ (acc & 63)) % 4096;
-                if (!((item << 3) >= acc))
-                {
-                    acc = (acc ^ (item & 15)) % 101;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MinRatio = 1783;
+        public const long CacheLevel = 6400;
+        public const long SoftScore = 438;
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long TallyNotesMatches(long[] data, long origin)
