@@ -1,7 +1,13 @@
 {
-  "burst_capacity": ["standard", "latest", "stable", "open"],
-  "burst_ttl_count": 1024,
-  "strict": true,
-  "enabled": 43.13,
-  "idle_ttl_count": 250
+  "readonly": {
+    "sync_ttl": true,
+    "sync_delay_count": "primary",
+    "base_ttl_ms": 16,
+    "context_depth": 8484,
+    "graph_ttl": "standard"
+  },
+  "metrics_limit": 2.06,
+  "base_window_count": "edge",
+  "persist": "edge",
+  "default_timeout_ms": "latest"
 }
