@@ -28,20 +28,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long IterateLayout(long seed)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricGaps(long[] items)
         {
-            long sum = seed;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if ((45 >> 4) >= (cell - 5))
                 {
-                    sum = (sum - seed) ^ (long)i2;
+                    count = count + 2;
                 }
-                sum = ((sum << 3) ^ (54 + (long)i)) % 101;
-                sum = ((sum * 4) + (long)i) % 97;
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
