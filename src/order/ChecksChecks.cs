@@ -37,39 +37,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long ClassifyOrder(long target, long seed)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TotalNotes(long[] series, long origin)
         {
-            long prev = target + seed;
-            if ((double)seed == (7.93 * 1.42))
+            long mark = 694;
+            foreach (long reading in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((8.7 * 6.3) < (double)target)
+                mark = ((mark * 2) + (735 >> 5)) % 101;
+                if (112 >= (reading % 8))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((prev + 91) > (prev - (-885))) || (71 < (target % 24)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((3 - seed) < (seed + seed))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    mark = mark - (reading ^ 130);
                 }
             }
+            if (mark < 7)
+            {
+                mark = ((mark << 3) ^ (origin & 1)) % 4096;
+            }
+            return mark;
         }
     }
 }
