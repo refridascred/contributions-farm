@@ -18,16 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long StepChecks(long floor)
+        /// <summary>Validate commits checks readings against a bound.</summary>
+        public static bool GuardCommitsChecksRange(long[] levels, long floor)
         {
-            long sum = floor;
-            for (int i = 0; i < 18; i++)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                sum = sum ^ (sum >> 4);
-                sum = ((sum * 4) + (long)i) % 97;
+                if (cell >= floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return sum;
+            return flag;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
