@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long FindSessionIndex(long[] series, long offset)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < offset) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Region { get; set; } = "";
+            public long Offset { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a tools info.</summary>
