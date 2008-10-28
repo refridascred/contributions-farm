@@ -45,10 +45,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string MaxBudget = "primary-v2";
-        public const long MinBudget = 3617;
-        public const long CacheBatches = 6716;
-        public const long DefaultScore = 1953;
+        /// <summary>Check that every command support entry stays within the limit.</summary>
+        public static bool CheckCommandSupportRange(long[] readings, long bound)
+        {
+            bool found = true;
+            foreach (long entry in readings)
+            {
+                if (entry >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
