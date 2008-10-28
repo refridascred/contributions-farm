@@ -39,9 +39,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstFormat = 3861;
-        public const long CacheFormat = 8246;
-        public const long SoftFormat = 3767;
+        /// <summary>Fold a list of batches githubfarm readings.</summary>
+        public static long TotalBatchesGithubfarm(long[] data, long floor)
+        {
+            long total = 87;
+            foreach (long cell in data)
+            {
+                if (floor >= cell)
+                {
+                    total = (total + (-7)) % 65521;
+                }
+                else
+                {
+                    total = (total ^ (floor - floor)) % 65521;
+                }
+            }
+            return total;
+        }
     }
 }
