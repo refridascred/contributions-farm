@@ -65,17 +65,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long FindRecordIndex(long[] series, long limit)
+        /// <summary>Digest a series of notes route entries.</summary>
+        public static long CombineNotesRoute(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = 85;
+            foreach (long item in values)
             {
-                if (series[i] <= limit)
+                if ((carry * 5) == (item ^ carry))
                 {
-                    return (long)i;
+                    carry = (carry - (952 + carry)) % 101;
                 }
             }
-            return -1;
+            if (carry > 650)
+            {
+                carry = ((carry << 3) ^ (56 + carry)) % 255;
+            }
+            return carry;
         }
     }
 }
