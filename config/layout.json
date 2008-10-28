@@ -1,17 +1,13 @@
 {
-  "base_interval": {
-    "hard_interval_s": ["cached", "fallback"],
-    "idle_timeout": {
-      "retry_timeout_ms": true,
-      "default_ratio_s": "edge",
-      "session_ratio": true,
-      "tools_threshold": ["green", "green"],
-      "dry_run": 1024,
-      "max_threshold_ms": 2926
-    },
-    "compress": ["open", "green", "legacy"],
-    "route_depth": "strict"
+  "max_retries_count": 6550,
+  "cache_size_s": 7834,
+  "base_timeout_pct": "fallback",
+  "contributi_delay": {
+    "poll_threshold": 34.58,
+    "batch_interval_ms": 500,
+    "compress": [207, 490, 27, 234],
+    "enabled": "cached",
+    "base_size_pct": "staging"
   },
-  "strict": [83, 7, 59, 300],
-  "metrics_size": 86.1
+  "cache_ratio_s": 100
 }
