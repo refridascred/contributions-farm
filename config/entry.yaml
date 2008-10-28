@@ -1,9 +1,6 @@
 # entry settings
-order_ttl: 100
-report_window: 43.13
-warm_timeout: 46
-session_interval: 9886
-warm_delay_pct:
-  - strict
-  - green
-  - edge
+enabled:
+  - 52
+  - 318
+readonly: 64
+flush_interval_pct: 8274
