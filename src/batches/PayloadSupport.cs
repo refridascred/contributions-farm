@@ -26,22 +26,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderOutliers(long[] values, long offset)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((sample - 935) > sample)
-                {
-                    tally = (tally + 2) - offset;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Flag { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
