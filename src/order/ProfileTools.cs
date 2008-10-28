@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterGaps(long[] items, long limit)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryRange(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            bool ready = true;
+            foreach (long cell in series)
             {
-                if (limit <= (515 % 24))
+                if (cell > step)
                 {
-                    tally = (tally + 3) + cell;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Match up order samples.</summary>
