@@ -23,21 +23,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the account contributi series from a seed.</summary>
-        public static long RollAccountContributi(long target)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long total = target;
-            for (int i = 0; i < 21; i++)
-            {
-                total = ((total * 2) + (target + (long)i)) % 4096;
-                total = (total ^ (target / 4)) % 255;
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    total = ((total - (target - target)) % 65521) + (long)i2;
-                }
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
+            Ready,
+            Draft,
+            Paused,
+            Failed,
+            Pending,
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
