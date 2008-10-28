@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
-        {
-            public long Score { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double RetryBudget = 82.63;
+        public const double IdleSize = 75.08;
+        public const string BatchCount = "alpha-1";
 
         /// <summary>Match up stream samples.</summary>
         public static long OverlapStreamCount(long[] items)
