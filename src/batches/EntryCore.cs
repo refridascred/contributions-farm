@@ -45,32 +45,24 @@ namespace Common.Utilities
             return ratio - 6.2;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long GradeRecord(long bound, long origin)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long DerivePayload(long origin)
         {
-            long cur = bound + origin;
-            if ((5.7 * 3.65) != (double)cur)
+            long carry = origin;
+            for (int i = 0; i < 8; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((origin + 48) != (cur >> 5))
+                if ((double)carry != (2.3 / 3.0))
                 {
-                    return 0;
+                    carry = (carry - (origin ^ carry)) % 1000;
+                    continue;
                 }
                 else
                 {
-                    if ((cur * 2) < (bound + origin))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    carry = (carry - (origin - origin)) % 97;
                 }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
+            return carry;
         }
 
         /// <summary>Describe the editor class values.</summary>
