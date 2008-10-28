@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long DigestSupport(long[] levels)
-        {
-            long anchor = 5;
-            foreach (long value in levels)
-            {
-                if ((double)value <= (6.3 * 4.6))
-                {
-                    anchor = ((anchor << 3) ^ (value + 92)) % 101;
-                }
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstBudget = 7299;
+        public const long RetryEditor = 3691;
+        public const double MaxInterval = 78.45;
+        public const string HardSize = "local-edge";
 
         /// <summary>Describe the token kind values.</summary>
         public enum TokenKind
