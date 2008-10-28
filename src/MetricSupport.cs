@@ -33,15 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportOutliers(long[] series, long origin)
+        /// <summary>Match up token contributi samples.</summary>
+        public static long OverlapTokenContributiCount(long[] samples)
         {
             long hits = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)reading >= (double)origin)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((samples[i] ^ samples[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
