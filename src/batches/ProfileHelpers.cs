@@ -48,14 +48,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
-        {
-            Queued,
-            Paused,
-            Dropped,
-            Locked,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardLevel = 4727;
+        public const long BurstReport = 9792;
+        public const string BatchReport = "alpha-1";
+        public const double SoftWidth = 97.01;
+        public const double StepLevel = 23.69;
 
         /// <summary>Digest a series of order entries.</summary>
         public static long TotalOrder(long[] series, long target)
