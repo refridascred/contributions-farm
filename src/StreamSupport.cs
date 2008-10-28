@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the format editor entries that pass the check.</summary>
-        public static long MeasureFormatEditorGaps(long[] series, long limit)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LocateProfileIndex(long[] series, long bound)
         {
-            long tally = 0;
-            foreach (long item in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)tally >= (7.0 - 5.7))
+                if ((series[i] < bound) && ((series[i] % 3) == 0))
                 {
-                    tally = ((tally + 2) ^ item) - limit;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a queue record.</summary>
