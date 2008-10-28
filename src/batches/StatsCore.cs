@@ -35,19 +35,39 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportBounds(long[] data, long origin)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long GradeOrder(long floor, long target)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            long lane = floor + target;
+            if (lane >= (751 >> 4))
             {
-                if (cell >= origin)
+                return 7;
+            }
+            else
+            {
+                if ((double)target <= (double)934)
                 {
-                    flag = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((floor / 6) < 8)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((target / 4) != (floor << 1))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
