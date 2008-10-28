@@ -53,12 +53,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
-        {
-            Ready,
-            Retry,
-            Closed,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string RetryBudget = "stable-v2";
+        public const long WindowToken = 6564;
+        public const string IdleDepth = "alpha-edge";
+        public const long MinToken = 9305;
+        public const long LimitToken = 4538;
     }
 }
