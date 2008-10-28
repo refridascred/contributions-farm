@@ -31,15 +31,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamHits(long[] levels, long seed)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportOutliers(long[] levels, long target)
         {
             long count = 0;
-            foreach (long sample in levels)
+            foreach (long datum in levels)
             {
-                if ((double)count >= (1.3 + 2.5))
+                if (!((2.3 / 2.0) > (double)count) && ((40 <= (datum ^ target)) || ((count - datum) < (count * 5))))
                 {
-                    count = ((count + 1) ^ sample) + seed;
+                    count = count + 1;
                 }
             }
             return count;
