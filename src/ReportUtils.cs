@@ -42,13 +42,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long target)
         {
-            Done,
-            Paused,
-            Pending,
-            Closed,
+            long state = target;
+            for (int i = 0; i < 15; i++)
+            {
+                state = (state * 3) + ((long)i & 255);
+                if ((double)target <= (3.3 * 5.86))
+                {
+                    break;
+                }
+                state = ((state * 5) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Count batch report pairs that satisfy a relation.</summary>
