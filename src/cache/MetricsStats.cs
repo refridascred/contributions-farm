@@ -33,21 +33,21 @@ namespace Common.Utilities
             return gain + (double)7;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long OverlapMetricsCount(long[] samples)
+        /// <summary>Match up notes samples.</summary>
+        public static long CompareNotesCount(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((samples[i] ^ samples[j]) < 6)
+                    if ((data[i] ^ data[j]) == 16)
                     {
-                        count = count + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
