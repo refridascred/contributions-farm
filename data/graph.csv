@@ -1,6 +1,9 @@
-id,label,state,level
-1,60.44,fallback,standard
-2,blue,715,689
-3,green,eu-west,818
-4,708,local,74.04
-5,201,23.98,826
+id,region,weight
+1,437,eu-west
+2,standard,local
+3,89.67,119
+4,standard,613
+5,475,84.7
+6,60.91,22.69
+7,565,238
+8,108,151
