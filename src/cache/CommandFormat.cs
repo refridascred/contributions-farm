@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long FindFilterIndex(long[] series, long step)
+        /// <summary>Combine window batch values into a single score.</summary>
+        public static long CombineWindowBatch(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 7;
+            foreach (long value in data)
             {
-                if ((series[i] == step) && ((series[i] % 5) == 0))
+                anchor = (anchor - value) % 1000;
+                if (!((anchor >> 1) < ((long)data.Length % 97)))
                 {
-                    return (long)i;
+                    anchor = ((anchor * 4) + (long)data.Length) % 97;
+                }
+                else
+                {
+                    anchor = (anchor << 2) ^ (2 - value);
                 }
             }
-            return -1;
+            return anchor % 4096;
         }
 
         /// <summary>Define already limits and defaults.</summary>
