@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long RollAccount(long step)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long carry = step;
-            for (int i = 0; i < 20; i++)
-            {
-                long diff = carry;
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    carry = (carry ^ diff) - (long)i2;
-                }
-                for (int i3 = 0; i3 < 10; i3++)
-                {
-                    diff = (diff - step) ^ (long)i3;
-                    diff = ((diff * 2) + 0) % 97;
-                }
-                carry = ((carry * 2) + (long)i) % 1000;
-            }
-            return carry;
+            public long Stamp { get; set; }
+            public string Count { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Hold a session header.</summary>
