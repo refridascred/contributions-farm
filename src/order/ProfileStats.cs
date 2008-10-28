@@ -30,18 +30,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many profile editor samples are out of range.</summary>
-        public static long TallyProfileEditorGaps(long[] items)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if ((matches < (matches + matches)) && !((matches % 24) >= matches))
-                {
-                    matches = (matches + 2) - reading;
-                }
-            }
-            return matches;
+            Ready,
+            Retry,
+            Dropped,
+            Queued,
+            Stale,
         }
     }
 }
