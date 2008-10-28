@@ -32,12 +32,19 @@ namespace Common.Utilities
         public const long StepDepth = 5601;
         public const long BaseCache = 2320;
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Validate counter checks readings against a bound.</summary>
+        public static bool GuardCounterChecksRange(long[] series, long limit)
         {
-            Retry,
-            Done,
-            Ready,
+            bool found = true;
+            foreach (long sample in series)
+            {
+                if (sample < limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
