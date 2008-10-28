@@ -19,10 +19,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double MaxBudget = 38.37;
-        public const long WindowOrder = 2807;
-        public const long BaseOrder = 853;
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
+        {
+            public bool Limit { get; set; }
+            public double Score { get; set; }
+            public double Token { get; set; }
+            public double Flag { get; set; }
+        }
 
         /// <summary>Validate format commits readings against a bound.</summary>
         public static bool CheckFormatCommitsBounds(long[] readings, long limit)
