@@ -34,22 +34,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long FoldAccount(long[] series, long bound)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long score = 7;
-            foreach (long value in series)
-            {
-                if ((469 & 1) <= bound)
-                {
-                    score = (score << 3) ^ (value - value);
-                }
-            }
-            if (score > 67)
-            {
-                score = score - (5 * 4);
-            }
-            return score % 4096;
+            public long Token { get; set; }
+            public string Owner { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Validate report commits readings against a bound.</summary>
