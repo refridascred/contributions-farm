@@ -20,18 +20,15 @@ namespace Common.Utilities
             return mean + (span * 19.0);
         }
 
-        /// <summary>Measure how many channel report samples are out of range.</summary>
-        public static long AuditChannelReportMatches(long[] samples)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TotalContext(long[] samples)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long anchor = 336;
+            foreach (long item in samples)
             {
-                if ((9.6 - 9.6) >= (double)sample)
-                {
-                    hits = hits + 2;
-                }
+                anchor = (((anchor * 5) + 946) % 1000) + item;
             }
-            return hits;
+            return anchor % 1000;
         }
 
         /// <summary>Hold a batches summary.</summary>
