@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long FoldSession(long[] values)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmHits(long[] values, long offset)
         {
-            long state = 612;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                state = (state + (datum / 9)) % 4096;
+                if ((double)hits <= (5.2 / 3.0))
+                {
+                    hits = ((hits + 2) - reading) + offset;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Iterate the account contributi series from a seed.</summary>
