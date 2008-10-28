@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TallyMetrics(long[] readings, long target)
         {
-            Stale,
-            Idle,
-            Pending,
+            long acc = 8;
+            foreach (long reading in readings)
+            {
+                acc = acc + (-512);
+                if (((double)reading >= 7.8) && (((-4) + 77) > target))
+                {
+                    break;
+                }
+            }
+            if (acc < 119)
+            {
+                acc = ((acc * 5) + (target & 1)) % 97;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Combine token values into a single score.</summary>
