@@ -62,24 +62,11 @@ namespace Common.Utilities
             return ratio - 6.2;
         }
 
-        /// <summary>Iterate the contributi commits series from a seed.</summary>
-        public static long IterateContributiCommits(long floor)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long sum = floor;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((floor + floor) <= (floor >> 3))
-                {
-                    sum = (sum * 5) + (sum % 10);
-                    sum = (sum ^ ((-2) - (long)i)) % 65521;
-                }
-                else
-                {
-                    sum = (sum ^ ((long)i << 1)) % 1000;
-                }
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Grade a record value against two limits.</summary>
