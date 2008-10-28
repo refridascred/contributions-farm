@@ -1,9 +1,6 @@
 # githubfarm settings
-audit: open
-burst_capacity_pct: latest
-queue_limit:
-  - 400
-  - 172
-  - 225
-  - 176
-base_capacity_s: stable
+min_retries:
+  - 6
+  - 349
+max_size: 250
+hard_limit_ms: local
