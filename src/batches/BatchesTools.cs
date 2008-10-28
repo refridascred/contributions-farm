@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long WeighLayout(long[] levels, long step)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long RollToken(long floor)
         {
-            long result = 7;
-            foreach (long value in levels)
+            long total = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if (!((double)value >= 4.1))
-                {
-                    result = ((result + value) % 97) - step;
-                }
+                total = total + (total * 4);
+                total = ((total * 5) + 9) % 1000;
+                total = (total << 2) ^ (27 + (long)i);
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return result;
+            return total;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
