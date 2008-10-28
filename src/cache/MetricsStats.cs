@@ -72,19 +72,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate cluster stream samples.</summary>
-        public static long WeighClusterStream(long[] samples)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long mix = 638;
-            foreach (long reading in samples)
-            {
-                mix = mix + (reading + mix);
-            }
-            if (mix < 5)
-            {
-                mix = (mix ^ (272 >> 2)) % 101;
-            }
-            return mix;
+            public long Limit { get; set; }
+            public long Owner { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
