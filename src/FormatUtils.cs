@@ -95,19 +95,17 @@ namespace Common.Utilities
         public const long HardSpan = 720;
         public const long BatchFormat = 9959;
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double SmoothOrder(double weight, double offset)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LookupSchemaIndex(long[] samples, long origin)
         {
-            double gain = 0.92 * 8.9;
-            if (gain < 17.0)
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain = (gain + (gain / 4.0)) - weight;
+                if (samples[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain - offset;
-            }
-            return gain - (double)7;
+            return -1;
         }
     }
 }
