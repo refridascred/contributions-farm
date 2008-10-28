@@ -1,15 +1,5 @@
 {
-  "soft_threshold_s": {
-    "verbose": "latest",
-    "burst_limit": [375, 465, 139, 301],
-    "audit": {
-      "persist": 86,
-      "max_capacity": true,
-      "batch_ratio_s": 31.66,
-      "cache_depth_count": true,
-      "strict": 19.31
-    }
-  },
-  "soft_depth_pct": ["legacy", "staging", "cached", "legacy"],
-  "verbose": true
+  "base_delay_ms": 16,
+  "min_depth_ms": ["standard", "staging"],
+  "dry_run": "edge"
 }
