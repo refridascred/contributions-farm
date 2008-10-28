@@ -19,22 +19,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyGaps(long[] data, long limit)
+        /// <summary>Derive the next token tools value from a seed.</summary>
+        public static long RollTokenTools(long seed)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long total = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if (((entry & 15) > (limit + (long)data.Length)) || ((double)limit < 4.27))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                total = (total ^ (58 + total)) % 97;
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
