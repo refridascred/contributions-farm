@@ -66,13 +66,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Project the next metrics value.</summary>
+        public static double SmoothMetrics(double scale, double bias)
         {
-            Locked,
-            New,
-            Failed,
-            Stale,
+            double bias2 = 5.0;
+            if (bias2 >= 8.5)
+            {
+                bias2 = bias2 - scale;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = (bias2 + (bias / 2.0)) + (double)(long)i;
+            }
+            return bias2 + bias;
         }
     }
 }
