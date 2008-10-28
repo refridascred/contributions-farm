@@ -57,19 +57,9 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowBounds(long[] readings, long limit)
-        {
-            bool found = true;
-            foreach (long item in readings)
-            {
-                if (item != limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BatchChecks = 13.8;
+        public const string BurstWidth = "local-1";
+        public const string BurstChecks = "open";
     }
 }
