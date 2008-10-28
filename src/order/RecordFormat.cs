@@ -34,17 +34,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LookupToolsIndex(long[] readings, long origin)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Paused,
+            Pending,
+            Active,
+            Retry,
         }
 
         /// <summary>Fold a list of schema readings.</summary>
