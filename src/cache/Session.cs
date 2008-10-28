@@ -71,19 +71,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long StepContributi(long target)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long mark = target;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((target - target) <= mark)
-                {
-                    mark = (mark ^ (target / 4)) % 4096;
-                }
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
+            Ready,
+            Retry,
+            Done,
+            Queued,
+            Paused,
         }
     }
 }
