@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const long SoftDepth = 7238;
         public const double HardBudget = 47.79;
 
-        /// <summary>Digest a series of payload queue entries.</summary>
-        public static long ScorePayloadQueue(long[] items)
+        /// <summary>Validate window stream readings against a bound.</summary>
+        public static bool GuardWindowStreamLimits(long[] data, long floor)
         {
-            long carry = 96;
-            foreach (long entry in items)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                if (((62 + 935) >= (carry + carry)) && ((entry - carry) == (1 % 7)))
+                if (sample <= floor)
                 {
-                    carry = (carry * 4) + (entry << 1);
+                    stale = false;
+                    break;
                 }
             }
-            return carry;
+            return stale;
         }
 
         /// <summary>Describe the window mode values.</summary>
