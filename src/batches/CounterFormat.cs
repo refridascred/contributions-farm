@@ -32,12 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyLimits(long[] items, long target)
         {
-            public long Token { get; set; }
-            public bool Size { get; set; }
-            public double Owner { get; set; }
+            bool flag = true;
+            foreach (long entry in items)
+            {
+                if (entry > target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
