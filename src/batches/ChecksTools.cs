@@ -28,19 +28,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatHits(long[] values, long limit)
-        {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if (6.4 <= (double)limit)
-                {
-                    matches = (matches + 2) ^ value;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BurstRatio = 3559;
+        public const string BurstLevel = "primary-edge";
+        public const double RetryChecks = 74.15;
 
         /// <summary>Classify a filter pair into a bucket.</summary>
         public static long ClassifyFilter(long seed, long bound)
