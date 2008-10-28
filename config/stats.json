@@ -1,8 +1,8 @@
 {
-  "idle_delay": false,
-  "readonly": "fallback",
-  "max_ttl_count": 60,
-  "soft_delay_s": 36,
-  "graph_timeout": 85.62,
-  "profile_timeout": false
+  "enabled": true,
+  "hard_retries": true,
+  "payload_retries": 30,
+  "soft_timeout_ms": false,
+  "cache_timeout": false,
+  "persist": [66, 132]
 }
