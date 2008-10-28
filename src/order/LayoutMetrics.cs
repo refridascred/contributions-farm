@@ -47,11 +47,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double MinGraph = 86.62;
-        public const double DefaultGraph = 79.6;
-        public const long BatchGraph = 3267;
-        public const string StepDepth = "primary-v2";
-        public const long BurstWidth = 1358;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double LimitStream = 16.21;
+        public const long WindowStream = 1423;
+        public const string BatchStream = "open-v2";
     }
 }
