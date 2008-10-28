@@ -20,19 +20,15 @@ namespace Common.Utilities
         public const long HardCounter = 8049;
         public const double LimitCounter = 22.47;
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterBounds(long[] levels, long target)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long StepPayload(long step)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            long result = step;
+            for (int i = 0; i < 15; i++)
             {
-                if (reading >= target)
-                {
-                    found = false;
-                    break;
-                }
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return found;
+            return result;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
