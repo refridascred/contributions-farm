@@ -39,11 +39,13 @@ namespace Common.Utilities
         public const double HardStream = 76.28;
         public const string IdleStream = "legacy-1";
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BaseQueue = "primary-v2";
-        public const long MaxQueue = 2924;
-        public const double HardQueue = 68.76;
-        public const string MinLevel = "cached-v2";
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
+        {
+            public long Ratio { get; set; }
+            public long Size { get; set; }
+            public double Label { get; set; }
+        }
 
         /// <summary>Describe the payload status values.</summary>
         public enum PayloadStatus
