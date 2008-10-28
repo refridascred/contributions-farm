@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long BucketEntry(long bound, long limit)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            if ((bound ^ bound) >= bound)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((limit + limit) != (limit >> 1))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((bound + bound) > limit) || (bound <= (limit / 9)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            New,
+            Idle,
+            Draft,
+            Synced,
         }
 
         /// <summary>Hold a channel summary.</summary>
