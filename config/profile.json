@@ -1,10 +1,18 @@
 {
-  "burst_retries_count": {
-    "dry_run": 38.54,
-    "cache_interval": 30,
-    "sync_interval_ms": 100
+  "account_depth": {
+    "retry_interval_pct": {
+      "default_retries_count": "green",
+      "dry_run": "cached",
+      "min_ttl": false,
+      "batch_delay_s": 37,
+      "layout_ttl": ["cached", "eu-west", "standard", "standard"],
+      "soft_depth_ms": false
+    },
+    "sync_delay_ms": 30,
+    "record_ttl": 1024
   },
-  "batch_depth_s": "standard",
-  "stream_retries": ["staging", "primary", "latest"],
-  "base_delay_count": 47.01
+  "stats_delay": 30,
+  "payload_window": ["stable", "primary"],
+  "idle_depth": "standard",
+  "entry_delay": 55.45
 }
