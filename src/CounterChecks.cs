@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsLimits(long[] samples, long bound)
         {
-            public double Flag { get; set; }
-            public string Label { get; set; } = "";
-            public double Limit { get; set; }
-            public bool Rank { get; set; }
+            bool ok = true;
+            foreach (long entry in samples)
+            {
+                if (entry != bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the context phase values.</summary>
