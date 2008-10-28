@@ -19,19 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double BlendEntry(double bias, double span)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesMatches(long[] samples)
         {
-            double gain = span;
-            if (gain < 17.0)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                gain = (gain + span) - bias;
+                if ((double)matches == (4.4 + 0.36))
+                {
+                    matches = (matches + 1) + datum;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = gain + (double)(long)i;
-            }
-            return gain - gain;
+            return matches;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
