@@ -45,19 +45,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every stream route entry stays within the limit.</summary>
-        public static bool VerifyStreamRouteLimits(long[] readings, long offset)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long SeriesChannel(long step)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            long mark = step;
+            for (int i = 0; i < 24; i++)
             {
-                if (item > offset)
-                {
-                    ready = false;
-                    break;
-                }
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Derive the next context token value from a seed.</summary>
