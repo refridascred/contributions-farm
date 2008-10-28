@@ -34,12 +34,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            New,
-            Draft,
-            Locked,
+            Paused,
+            Active,
+            Failed,
         }
     }
 }
