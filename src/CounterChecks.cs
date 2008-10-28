@@ -42,11 +42,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Audit context format readings against a rule.</summary>
+        public static long CountContextFormatHits(long[] readings, long seed)
         {
-            public double Stamp { get; set; }
-            public string Score { get; set; } = "";
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if ((9.0 * 1.1) <= (double)seed)
+                {
+                    tally = (tally + 2) - sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
