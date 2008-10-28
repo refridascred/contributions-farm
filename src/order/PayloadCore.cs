@@ -29,21 +29,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count support batches pairs that satisfy a relation.</summary>
-        public static long MatchSupportBatchesCount(long[] samples)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksLimits(long[] series, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (cell > seed)
                 {
-                    if ((samples[i] ^ samples[j]) != 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Hold a window header.</summary>
