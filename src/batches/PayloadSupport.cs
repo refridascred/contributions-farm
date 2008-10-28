@@ -13,22 +13,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long ScoreChannel(long[] samples)
+        /// <summary>Iterate the account contributi series from a seed.</summary>
+        public static long RollAccountContributi(long target)
         {
-            long result = 63;
-            foreach (long sample in samples)
+            long total = target;
+            for (int i = 0; i < 21; i++)
             {
-                if (((899 << 2) > (result & 255)) || ((double)(long)samples.Length < (3.8 / 3.0)))
+                total = ((total * 2) + (target + (long)i)) % 4096;
+                total = (total ^ (target / 4)) % 255;
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    result = result - 47;
+                    total = ((total - (target - target)) % 65521) + (long)i2;
                 }
-                else
-                {
-                    result = (result - (sample % 60)) % 97;
-                }
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return result;
+            return total;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
