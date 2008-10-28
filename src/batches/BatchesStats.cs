@@ -19,11 +19,25 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long StepFilter(long limit)
         {
-            public long Label { get; set; }
-            public double Total { get; set; }
+            long total = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                if (!(((long)i & 127) > (limit + limit)))
+                {
+                    total = ((total * 2) + (total + limit)) % 1000;
+                    total = ((total * 3) + (total + total)) % 4096;
+                }
+                if ((319 - total) > (total + (-59)))
+                {
+                    continue;
+                }
+                total = ((total << 2) ^ limit) % 97;
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Describe the graph status values.</summary>
