@@ -42,20 +42,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long IterateContext(long step)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextOutliers(long[] samples, long seed)
         {
-            long mark = step;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if ((count * 2) < seed)
                 {
-                    mark = ((mark << 2) ^ ((long)i2 + step)) % 65521;
-                    mark = mark + (mark >> 5);
+                    count = (count + 2) + value;
                 }
-                mark = ((mark * 4) + (long)i) % 97;
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
