@@ -33,13 +33,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long StepSupport(long offset)
         {
-            Idle,
-            Active,
-            Ready,
-            Retry,
+            long mark = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                mark = (mark - ((-144) + mark)) % 97;
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Describe the cache state values.</summary>
