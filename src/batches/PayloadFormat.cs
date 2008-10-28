@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long WeighTools(long[] series)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long carry = 96;
-            foreach (long reading in series)
-            {
-                carry = ((carry ^ (carry + 654)) % 101) - reading;
-            }
-            return carry;
+            Idle,
+            Queued,
+            Locked,
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
