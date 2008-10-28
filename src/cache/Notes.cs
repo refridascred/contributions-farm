@@ -31,21 +31,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long PairGithubfarmCount(long[] series)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenRange(long[] series, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (datum <= floor)
                 {
-                    if ((series[i] ^ series[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
