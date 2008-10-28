@@ -23,11 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string MinNotes = "latest-edge";
-        public const long SoftNotes = 3375;
-        public const long StepNotes = 2222;
-        public const long RetryNotes = 9896;
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
+        {
+            public long Token { get; set; }
+            public long Offset { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long DefaultCache = 5315;
