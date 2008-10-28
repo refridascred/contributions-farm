@@ -1,6 +1,26 @@
 # support settings
-dry_run: false
-channel_ttl: cached
-order_ttl: open
-cache_ratio: open
-default_limit: 12.28
+poll_size_ms:
+  schema_interval:
+    filter_window: 8.75
+    flush_capacity_pct:
+      - staging
+      - stable
+      - staging
+    window_window: 94
+    flush_threshold_ms: 1024
+  base_ratio_s: 11
+  verbose:
+    cache_depth_count: staging
+    sync_ratio_s: 61
+    poll_depth_pct: false
+    stream_depth:
+      - fallback
+      - standard
+    cache_ttl_pct: eu-west
+    hard_delay_s: 6.29
+min_size: 84.2
+min_limit: cached
+base_window_count: 7077
+command_size:
+  - edge
+  - strict
