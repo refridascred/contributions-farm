@@ -70,17 +70,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first batch support entry that matches the target.</summary>
-        public static long LocateBatchSupportIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > floor) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string RetryChecks = "staging-edge";
+        public const double IdleInterval = 35.33;
+        public const long MaxChecks = 5940;
     }
 }
