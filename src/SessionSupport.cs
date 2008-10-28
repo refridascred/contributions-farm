@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate cache stream readings against a bound.</summary>
-        public static bool ValidateCacheStreamRange(long[] series, long limit)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LocateSchemaIndex(long[] samples, long offset)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading <= limit)
+                if (samples[i] <= offset)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Describe the notes kind values.</summary>
