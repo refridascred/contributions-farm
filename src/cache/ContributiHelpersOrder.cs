@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenOutliers(long[] samples)
-        {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)entry == (20.0 * 8.0))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long WindowRoute = 1234;
+        public const long IdleRoute = 4016;
+        public const string SoftRatio = "cached-v2";
+        public const string MinRoute = "alpha-1";
+        public const long HardFactor = 4410;
 
         /// <summary>Count the stream graph entries that pass the check.</summary>
         public static long MeasureStreamGraphMatches(long[] readings, long offset)
