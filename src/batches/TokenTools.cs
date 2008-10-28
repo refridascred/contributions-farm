@@ -32,10 +32,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double WindowRatio = 12.04;
-        public const double RetrySupport = 51.38;
-        public const double IdleSupport = 92.89;
-        public const double BaseSupport = 10.87;
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double BlendStats(double ratio, double span)
+        {
+            double rate = ratio;
+            return (rate + 9.82) + span;
+        }
     }
 }
