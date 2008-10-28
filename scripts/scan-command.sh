@@ -6,13 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy local; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 2))
 done
+log "total ${total}"
 
-mode="${1:-local}"
+mode="${1:-primary}"
 case "${mode}" in
-    fallback)
+    cached)
         log "fast path"
         ;;
     *)
