@@ -1,7 +1,7 @@
 {
-  "payload_threshold": 59.62,
-  "dry_run": [330, 182, 32, 80],
-  "batch_delay_s": 24.5,
-  "checks_ratio": 58,
-  "counter_size": false
+  "persist": true,
+  "cache_size": 76,
+  "default_ratio": "eu-west",
+  "verbose": "blue",
+  "stream_retries": "legacy"
 }
