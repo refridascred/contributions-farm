@@ -1,19 +1,6 @@
 {
-  "soft_threshold_ms": true,
-  "cache_threshold": "primary",
-  "persist": {
-    "base_window": "primary",
-    "hard_timeout": 62.36,
-    "retry_size_pct": true,
-    "base_delay_ms": 1024,
-    "strict": {
-      "compress": [331, 308],
-      "flush_limit_count": 60,
-      "default_delay": 92.65,
-      "already_window": "legacy"
-    }
-  },
-  "readonly": false,
-  "warm_delay_ms": 4914,
-  "cache_interval_s": "eu-west"
+  "retry_window_ms": true,
+  "persist": 6196,
+  "idle_interval_s": "primary",
+  "record_timeout": 6.97
 }
