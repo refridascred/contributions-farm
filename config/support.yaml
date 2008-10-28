@@ -1,9 +1,26 @@
 # support settings
-readonly: false
-retry_ttl:
-  - 335
-  - 312
-farm_size: cached
-hard_size_pct: eu-west
-base_delay: stable
-default_retries_pct: 82.55
+batch_capacity_s:
+  - local
+  - stable
+  - legacy
+poll_interval_s: 5364
+base_ttl_ms:
+  idle_timeout_count:
+    dry_run: cached
+    verbose: true
+    readonly: 1024
+    graph_size:
+      - blue
+      - legacy
+    payload_depth:
+      - edge
+      - latest
+      - fallback
+    profile_depth: edge
+  audit: 62.65
+  soft_delay_pct:
+    - strict
+    - legacy
+    - stable
+    - primary
+  retry_delay: edge
