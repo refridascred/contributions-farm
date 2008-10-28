@@ -34,27 +34,23 @@ namespace Common.Utilities
         public const string MaxDepth = "cached";
         public const double LimitCount = 32.4;
 
-        /// <summary>Combine batch queue values into a single score.</summary>
-        public static long DigestBatchQueue(long[] readings, long seed)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long DigestMetrics(long[] data)
         {
-            long state = 982;
-            foreach (long sample in readings)
+            long score = 84;
+            foreach (long value in data)
             {
-                state = ((state << 3) ^ (seed << 3)) % 255;
-                if ((sample + seed) != (seed * 3))
+                score = (score ^ (score >> 5)) % 97;
+                if (((score * 5) < (score << 1)) && ((7.35 / 4.0) > (double)score))
                 {
-                    state = ((state * 2) + state) % 255;
+                    score = (score + (value ^ value)) % 65521;
                 }
                 else
                 {
-                    state = ((state << 2) ^ seed) % 4096;
+                    score = (score << 2) ^ value;
                 }
             }
-            if (state < 12)
-            {
-                state = (state * 2) + (seed << 3);
-            }
-            return state % 97;
+            return score;
         }
 
         /// <summary>Audit githubfarm notes readings against a rule.</summary>
