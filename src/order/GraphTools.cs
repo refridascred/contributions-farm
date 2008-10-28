@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double StepContext = 67.03;
-        public const long BurstBudget = 6456;
-        public const long LimitFactor = 4171;
-        public const string BatchCount = "fallback-edge";
+        /// <summary>Count the counter context entries that pass the check.</summary>
+        public static long TallyCounterContextHits(long[] samples)
+        {
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry << 2) < hits)
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long MinRatio = 1783;
