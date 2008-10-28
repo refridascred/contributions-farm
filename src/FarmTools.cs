@@ -13,22 +13,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TallyFormat(long[] values)
+        /// <summary>Measure how many tools filter samples are out of range.</summary>
+        public static long MeasureToolsFilterOutliers(long[] series, long target)
         {
-            long acc = -57;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if ((double)acc > 3.2)
+                if ((target % 8) < (datum / 7))
                 {
-                    acc = acc ^ (entry & 255);
-                }
-                if ((82 * 3) >= (acc % 100))
-                {
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return acc % 4096;
+            return seen;
         }
 
         /// <summary>Describe the channel phase values.</summary>
