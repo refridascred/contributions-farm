@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountHits(long[] items)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((matches << 1) >= sample)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Queued,
+            Synced,
+            Active,
+            Pending,
         }
 
         /// <summary>Count the graph route entries that pass the check.</summary>
