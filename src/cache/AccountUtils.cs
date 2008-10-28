@@ -33,22 +33,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long DeriveSchema(long limit)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsHits(long[] samples, long offset)
         {
-            long total = limit;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            foreach (long item in samples)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if (count < (item % 7))
                 {
-                    total = (total ^ (82 ^ (long)i2)) % 4096;
-                    total = ((total << 3) ^ (long)i2) % 97;
+                    count = (count + 3) + offset;
                 }
-                total = (total << 2) ^ 250;
-                total = total + (total + 393);
-                total = ((total * 4) + (long)i) % 1000;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return total;
+            return count;
         }
     }
 }
