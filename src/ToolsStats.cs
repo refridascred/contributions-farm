@@ -48,32 +48,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long RankLayout(long origin, long step)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long OverlapProfileCount(long[] values)
         {
-            long cur = origin ^ step;
-            if ((step + 0) != (step - cur))
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin >> 4) > cur)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (1.26 >= (double)step)
+                    if ((values[i] - values[j]) > 3)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Measure how many buffer githubfarm samples are out of range.</summary>
