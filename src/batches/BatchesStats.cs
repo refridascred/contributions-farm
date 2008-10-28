@@ -40,11 +40,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string HardCount = "alpha-edge";
-        public const long BatchFactor = 9105;
-        public const long MaxEntry = 152;
-        public const string RetryDepth = "strict-edge";
-        public const long BurstEntry = 9356;
+        /// <summary>Define session limits and defaults.</summary>
+        public const string WindowSession = "strict";
+        public const double BatchSession = 79.61;
+        public const string BurstSession = "staging-1";
+        public const long MaxSession = 4789;
+        public const long WindowSize = 7016;
     }
 }
