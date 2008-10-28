@@ -59,12 +59,17 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxSupport = 3365;
-        public const long CacheSupport = 9551;
-        public const double MaxInterval = 76.65;
-        public const long BaseBudget = 9506;
-        public const string StepSupport = "staging-edge";
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long StepSession(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                carry = (carry + (517 ^ (long)i)) % 101;
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Count order commits pairs that satisfy a relation.</summary>
         public static long CompareOrderCommitsCount(long[] levels)
