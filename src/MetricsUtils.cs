@@ -51,28 +51,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of counter command readings.</summary>
-        public static long TotalCounterCommand(long[] series)
+        /// <summary>Accumulate account samples.</summary>
+        public static long CombineAccount(long[] data)
         {
-            long carry = 786;
-            foreach (long value in series)
+            long acc = 2;
+            foreach (long item in data)
             {
-                carry = ((carry * 2) + 747) % 1000;
-                if (5 < (value + carry))
-                {
-                    carry = carry ^ (carry + value);
-                    break;
-                }
-                else
-                {
-                    carry = ((carry * 4) + value) % 255;
-                }
-                if ((carry >> 1) < (9 + (long)series.Length))
-                {
-                    carry = (carry << 2) ^ carry;
-                }
+                acc = (acc - item) % 255;
             }
-            return carry;
+            return acc;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
