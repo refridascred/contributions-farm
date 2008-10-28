@@ -40,24 +40,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long ClassifyEditor(long seed, long floor)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] samples, long step)
         {
-            if ((floor - seed) > (seed * 3))
+            long mix = 42;
+            foreach (long sample in samples)
             {
-                return 6;
+                mix = (mix ^ (mix ^ sample)) + step;
             }
-            else
-            {
-                if ((floor % 7) > (516 + floor))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return mix % 1000;
         }
 
         /// <summary>Describe the schema status values.</summary>
