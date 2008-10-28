@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long WindowRoute = 1234;
-        public const long IdleRoute = 4016;
-        public const string SoftRatio = "cached-v2";
-        public const string MinRoute = "alpha-1";
-        public const long HardFactor = 4410;
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BaseRatio = "cached-1";
+        public const long IdleCount = 7191;
+        public const double MaxCommand = 62.32;
+        public const double BurstCommand = 8.34;
 
         /// <summary>Count the stream graph entries that pass the check.</summary>
         public static long MeasureStreamGraphMatches(long[] readings, long offset)
