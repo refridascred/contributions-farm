@@ -47,15 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ScalePayload(double bias, double bias2)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long ScoreSession(long[] data)
         {
-            double mean = bias2 + (bias2 - 2.92);
-            if (mean > 7.0)
+            long score = 271;
+            foreach (long entry in data)
             {
-                mean = (mean + bias2) - bias;
+                if ((double)score == (4.59 + 2.6))
+                {
+                    score = score - entry;
+                }
             }
-            return mean + 11.0;
+            return score;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
