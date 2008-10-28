@@ -39,11 +39,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportBounds(long[] data, long offset)
         {
-            public string Offset { get; set; } = "";
-            public long Mode { get; set; }
+            bool valid = true;
+            foreach (long cell in data)
+            {
+                if (cell != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
