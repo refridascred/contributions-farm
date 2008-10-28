@@ -42,19 +42,21 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Validate report commits readings against a bound.</summary>
-        public static bool ValidateReportCommitsBounds(long[] levels, long bound)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long MatchNotesCount(long[] levels)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry >= bound)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((levels[i] + levels[j]) < 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
