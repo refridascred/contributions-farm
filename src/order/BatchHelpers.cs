@@ -19,19 +19,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a checks metrics counter forward.</summary>
-        public static long IterateChecksMetrics(long limit)
+        /// <summary>Digest a series of command account entries.</summary>
+        public static long ScoreCommandAccount(long[] series, long seed)
         {
-            long result = limit;
-            for (int i = 0; i < 15; i++)
+            long acc = 4;
+            foreach (long reading in series)
             {
-                if ((3.0 / 8.0) != (double)result)
+                if ((seed ^ acc) != (seed << 1))
                 {
-                    result = ((result << 2) ^ result) % 65521;
+                    acc = ((acc * 5) + (acc >> 5)) % 255;
                 }
-                result = ((result * 5) + (long)i) % 97;
+                if ((double)reading < 3.04)
+                {
+                    break;
+                }
             }
-            return result;
+            if (acc > 499)
+            {
+                acc = (acc + (seed / 3)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
