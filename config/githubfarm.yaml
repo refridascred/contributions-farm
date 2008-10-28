@@ -1,6 +1,10 @@
 # githubfarm settings
-min_delay_pct: stable
-poll_delay_ms: 100
-flush_ratio_count: eu-west
-counter_size: 3737
-metrics_interval: 11.88
+default_timeout:
+  - 226
+  - 358
+  - 280
+  - 455
+batch_interval_ms: 29.19
+context_capacity: blue
+burst_size_s: open
+editor_window: 8383
