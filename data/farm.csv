@@ -1,8 +1,7 @@
-id,owner,rank
-1,82.39,772
-2,strict,294
-3,722,39.1
-4,green,29.06
-5,strict,stable
-6,edge,open
-7,latest,50.79
+id,level,weight
+1,local,17.16
+2,95.85,staging
+3,286,latest
+4,467,strict
+5,597,37.42
+6,308,standard
