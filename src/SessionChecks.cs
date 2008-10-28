@@ -13,14 +13,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            Queued,
-            Ready,
-            Retry,
-            New,
-            Stale,
+            Locked,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Hold a layout stats.</summary>
