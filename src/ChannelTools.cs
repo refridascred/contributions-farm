@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesMatches(long[] levels, long bound)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long DigestCommand(long[] levels)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long carry = 8;
+            foreach (long reading in levels)
             {
-                if ((bound / 6) <= (bound - bound))
-                {
-                    matches = (matches + 1) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                carry = carry ^ (reading - reading);
+                carry = carry - reading;
+                carry = (carry + (reading ^ carry)) % 101;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Define order limits and defaults.</summary>
