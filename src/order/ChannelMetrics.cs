@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Look up the position of a queue entry sample.</summary>
-        public static long FindQueueEntryIndex(long[] readings, long seed)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Ratio { get; set; }
+            public long Stamp { get; set; }
+            public double Owner { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Match up filter samples.</summary>
