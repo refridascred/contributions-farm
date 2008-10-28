@@ -23,19 +23,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate window counter readings against a bound.</summary>
-        public static bool ValidateWindowCounterLimits(long[] items, long offset)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            bool ready = true;
-            foreach (long entry in items)
-            {
-                if (entry >= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Paused,
+            Active,
+            Locked,
+            Failed,
         }
     }
 }
