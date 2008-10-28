@@ -5,18 +5,30 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesHits(long[] readings, long origin)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long ScoreProfile(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long carry = 587;
+            foreach (long cell in values)
             {
-                if ((hits % 2) == (datum % 16))
+                if ((double)origin < (6.0 * 1.3))
                 {
-                    hits = (hits + 1) + origin;
+                    carry = carry - (346 * 2);
+                }
+                else
+                {
+                    carry = carry + (cell % 12);
+                }
+                if ((double)origin >= (8.6 * 4.81))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (carry < 93)
+            {
+                carry = carry ^ carry;
+            }
+            return carry;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
