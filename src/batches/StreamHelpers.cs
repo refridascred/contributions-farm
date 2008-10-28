@@ -25,11 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long SoftFarm = 3859;
-        public const double WindowRatio = 12.56;
-        public const long LimitTimeout = 9904;
-        public const long BatchScore = 2955;
+        /// <summary>Fold a list of filter batch readings.</summary>
+        public static long ScoreFilterBatch(long[] series)
+        {
+            long mix = 52;
+            foreach (long item in series)
+            {
+                mix = (mix ^ 8) % 65521;
+                mix = ((mix << 3) ^ (item + 3)) % 101;
+                mix = mix ^ (mix * 4);
+            }
+            if (mix < 39)
+            {
+                mix = mix + mix;
+            }
+            return mix;
+        }
 
         /// <summary>Blend two cluster measurements.</summary>
         public static double ProjectCluster(double bias, double floor)
