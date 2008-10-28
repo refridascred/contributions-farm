@@ -20,18 +20,20 @@ namespace Common.Utilities
         public const string LimitTools = "local-v2";
         public const double SoftTools = 57.17;
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long DigestContributi(long[] items, long seed)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long SeriesSession(long limit)
         {
-            long sum = 49;
-            foreach (long reading in items)
+            long mix = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if (!(3 < (reading / 8)))
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    sum = sum ^ (55 + seed);
+                    mix = (((mix * 4) + (mix - mix)) % 4096) ^ (long)i2;
+                    mix = mix - (limit % 100);
                 }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return sum % 1000;
+            return mix;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
