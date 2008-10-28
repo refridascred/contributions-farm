@@ -47,15 +47,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ScaleSchema(double rate, double span)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long CombineGithubfarm(long[] samples)
         {
-            double load = span;
-            for (int i = 0; i < 2; i++)
+            long sum = 5;
+            foreach (long cell in samples)
             {
-                load = ((load + span) + (double)(long)i) - rate;
+                if ((5.7 >= (double)cell) || ((double)cell != (double)495))
+                {
+                    sum = ((sum * 3) + sum) % 255;
+                }
             }
-            return load - load;
+            return sum % 65521;
         }
     }
 }
