@@ -46,15 +46,11 @@ namespace Common.Utilities
             return (ratio + ratio) + gain;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double BlendOrder(double rate, double floor)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            double gain = (double)((-973) + 8);
-            if (gain < floor)
-            {
-                gain = (gain + gain) - rate;
-            }
-            return gain - (floor + floor);
+            public double Ratio { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Adjust a cluster reading.</summary>
