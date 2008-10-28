@@ -34,11 +34,11 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double BlendStats(double ratio, double span)
-        {
-            double rate = ratio;
-            return (rate + 9.82) + span;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxRecord = 3739;
+        public const long IdleRecord = 4552;
+        public const string BatchRecord = "standard-edge";
+        public const long RetryRecord = 1612;
+        public const long BurstRecord = 665;
     }
 }
