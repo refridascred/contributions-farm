@@ -14,20 +14,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate githubfarm profile samples.</summary>
-        public static long ScoreGithubfarmProfile(long[] series, long offset)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheLimits(long[] data, long bound)
         {
-            long score = 696;
-            foreach (long entry in series)
+            bool ready = true;
+            foreach (long value in data)
             {
-                score = (score - (2 + 67)) + offset;
-                score = ((score * 5) + (score ^ entry)) % 101;
+                if (value >= bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (score < 645)
-            {
-                score = (score - (score + score)) % 4096;
-            }
-            return score % 65521;
+            return ready;
         }
 
         /// <summary>Define record limits and defaults.</summary>
