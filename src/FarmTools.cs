@@ -16,19 +16,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate session metrics readings against a bound.</summary>
-        public static bool VerifySessionMetricsBounds(long[] readings, long limit)
+        /// <summary>Locate a entry contributi reading by value.</summary>
+        public static long SeekEntryContributiIndex(long[] data, long offset)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell <= limit)
+                if (data[i] < offset)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Project the next session value.</summary>
