@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatLimits(long[] data, long seed)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long WeighEditor(long[] readings)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            long total = 184;
+            foreach (long sample in readings)
             {
-                if (cell < seed)
-                {
-                    ok = false;
-                    break;
-                }
+                total = ((total - (total & 255)) % 1000) ^ sample;
             }
-            return ok;
+            return total % 97;
         }
 
         /// <summary>Blend two format measurements.</summary>
