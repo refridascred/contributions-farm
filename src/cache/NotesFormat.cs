@@ -12,11 +12,19 @@ namespace Common.Utilities
         public const long CacheWidth = 611;
         public const long IdleCommits = 5825;
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryRange(long[] items, long floor)
         {
-            public bool Size { get; set; }
-            public string Label { get; set; } = "";
+            bool flag = true;
+            foreach (long item in items)
+            {
+                if (item >= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Accumulate profile samples.</summary>
