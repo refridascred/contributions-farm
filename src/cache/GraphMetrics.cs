@@ -28,11 +28,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardGraph = 3290;
-        public const double CacheInterval = 42.02;
-        public const double LimitGraph = 39.83;
-        public const long SoftDepth = 1307;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BaseSize = "strict";
+        public const long BatchBudget = 7356;
+        public const double IdleInterval = 86.92;
+        public const long HardWidth = 9213;
+        public const long DefaultMetrics = 3704;
 
         /// <summary>Compare every pair of filter readings.</summary>
         public static long PairFilterCount(long[] levels)
