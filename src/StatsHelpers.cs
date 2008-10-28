@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountBounds(long[] samples, long floor)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterOutliers(long[] samples)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if (item >= floor)
+                if (entry > (63 + count))
                 {
-                    ready = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Hold a schema header.</summary>
