@@ -36,32 +36,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long GradeProfile(long step, long limit)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterHits(long[] values)
         {
-            long bound = step + limit;
-            if ((double)step == (double)limit)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit * 2) != (74 >> 4))
+                if (((tally + sample) <= (long)values.Length) || ((double)sample == (5.3 + 2.6)))
                 {
-                    return 0;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    if ((0.03 / 2.0) != (double)bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
