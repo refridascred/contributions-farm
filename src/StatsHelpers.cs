@@ -34,32 +34,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a profile report value against two limits.</summary>
-        public static long ClassifyProfileReport(long step, long seed)
-        {
-            if (((seed & 15) >= seed) || ((step + step) < (seed & 3)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step - 7) > (step + seed))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((5 + step) >= (step << 1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheRatio = 1744;
+        public const long IdleFactor = 4967;
+        public const double BurstBatches = 72.85;
+        public const long WindowScore = 9814;
+        public const long SoftBatches = 341;
 
         /// <summary>Adjust a queue reading.</summary>
         public static double ProjectQueue(double scale, double offset)
