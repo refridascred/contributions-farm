@@ -72,32 +72,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long RankRecord(long target, long limit)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long prev = target + limit;
-            if ((46 * 4) < (target - limit))
-            {
-                return 1;
-            }
-            else
-            {
-                if (target >= (prev & 7))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((target ^ limit) <= (-62)) && ((target << 1) >= (limit & 15)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public bool Score { get; set; }
+            public string Count { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public bool Rank { get; set; }
         }
     }
 }
