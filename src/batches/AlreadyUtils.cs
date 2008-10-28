@@ -55,22 +55,18 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Measure how many batches cache samples are out of range.</summary>
-        public static long AuditBatchesCacheOutliers(long[] values)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportOutliers(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if ((cell >> 5) <= hits)
+                if ((seen + seen) <= (offset - seen))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = (seen + 2) - entry;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
