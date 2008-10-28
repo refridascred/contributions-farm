@@ -40,19 +40,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long SeriesRecord(long floor)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long SortNotes(long offset, long floor)
         {
-            long total = floor;
-            for (int i = 0; i < 22; i++)
+            if (((offset - floor) > (floor ^ floor)) && ((offset & 1) == (offset + offset)))
             {
-                if (20.0 <= (double)floor)
-                {
-                    total = total + floor;
-                }
-                total = ((total * 3) + (long)i) % 1000;
+                return 4;
             }
-            return total;
+            else
+            {
+                if ((offset ^ floor) != (offset ^ 0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Digest a series of order entries.</summary>
