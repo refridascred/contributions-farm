@@ -72,24 +72,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long SortFilter(long bound, long target)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            if ((target * 2) >= (target - bound))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((7.31 + 2.3) <= (double)target)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Draft,
+            Synced,
+            Ready,
         }
     }
 }
