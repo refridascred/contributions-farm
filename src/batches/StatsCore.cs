@@ -18,11 +18,18 @@ namespace Common.Utilities
         public const long DefaultCluster = 6789;
         public const long BaseCluster = 1667;
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextOutliers(long[] series, long origin)
         {
-            public long Flag { get; set; }
-            public double Region { get; set; }
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if (((value & 15) > (matches << 2)) || ((matches < value) && (matches < (origin % 12))))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define support limits and defaults.</summary>
