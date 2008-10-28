@@ -1,14 +1,8 @@
 # githubfarm settings
-dry_run: 75
-default_threshold: blue
-warm_limit_count:
-  - 274
-  - 241
-  - 471
-  - 109
-soft_limit_ms: true
-cache_interval_s:
-  - 99
-  - 137
-  - 308
-session_depth: 100
+retry_delay_ms: primary
+sync_ratio:
+  - 207
+  - 286
+  - 198
+  - 148
+default_window_pct: 4781
