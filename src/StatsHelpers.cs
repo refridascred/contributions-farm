@@ -42,22 +42,18 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Count the stream window entries that pass the check.</summary>
-        public static long CountStreamWindowMatches(long[] items)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountGaps(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if ((((item >> 3) < matches) || ((85 - matches) >= (matches + item))) || ((matches << 2) != (item % 10)))
+                if ((double)76 >= (double)count)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = ((count + 2) + sample) + seed;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define token limits and defaults.</summary>
