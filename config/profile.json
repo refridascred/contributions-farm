@@ -1,8 +1,5 @@
 {
-  "soft_ratio": "cached",
-  "poll_threshold_count": 70,
-  "verbose": 116,
-  "min_retries_pct": "green",
-  "soft_timeout": "fallback",
-  "default_ttl_s": "legacy"
+  "burst_timeout_count": "strict",
+  "retry_ttl_ms": true,
+  "cache_ttl_ms": "latest"
 }
