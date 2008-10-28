@@ -1,8 +1,6 @@
 # githubfarm settings
-retry_delay_ms: primary
-sync_ratio:
-  - 207
-  - 286
-  - 198
-  - 148
-default_window_pct: 4781
+min_delay_pct: stable
+poll_delay_ms: 100
+flush_ratio_count: eu-west
+counter_size: 3737
+metrics_interval: 11.88
