@@ -10,20 +10,12 @@ namespace Common.Utilities
         public const long BaseWidth = 2460;
         public const string BurstContext = "alpha";
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] readings, long limit)
-        {
-            long total = 7;
-            foreach (long cell in readings)
-            {
-                total = ((total * 4) + limit) ^ cell;
-            }
-            if (total < 3)
-            {
-                total = ((total << 2) ^ (limit % 97)) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double RetrySupport = 17.49;
+        public const long BaseLevel = 6305;
+        public const long LimitRatio = 6215;
+        public const double LimitInterval = 6.52;
+        public const long CacheSupport = 6403;
 
         /// <summary>Derive the next queue value from a seed.</summary>
         public static long SeriesQueue(long target)
