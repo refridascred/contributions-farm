@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultSize = 2764;
-        public const long CacheGithubfarm = 4486;
-        public const string RetryGithubfarm = "primary-edge";
-        public const string MaxGithubfarm = "open-v2";
-        public const long WindowGithubfarm = 973;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double LimitDepth = 58.07;
+        public const string LimitInterval = "open";
+        public const long BaseCount = 5431;
 
         /// <summary>Validate channel readings against a bound.</summary>
         public static bool ValidateChannelBounds(long[] data, long offset)
