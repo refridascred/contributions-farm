@@ -19,13 +19,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long CombineEntry(long[] values)
         {
-            public long Score { get; set; }
-            public long Total { get; set; }
-            public string Owner { get; set; } = "";
-            public string Size { get; set; } = "";
+            long mark = 4;
+            foreach (long sample in values)
+            {
+                mark = (mark + (8 + sample)) % 1000;
+                if (((10.0 - 4.01) > (double)mark) && ((0 + sample) >= (75 - sample)))
+                {
+                    mark = (mark * 4) + mark;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ (sample & 1)) % 1000;
+                }
+            }
+            if (mark > (-79))
+            {
+                mark = (mark - (mark + 1)) % 255;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Match up payload samples.</summary>
