@@ -19,15 +19,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double BlendSchema(double weight, double floor)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            double weight2 = (double)(514 >> 3);
-            if (weight2 <= (weight * 20.0))
-            {
-                weight2 = weight2 - (floor - weight2);
-            }
-            return weight2 - (floor / 2.0);
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Find the first cluster batch entry that matches the target.</summary>
