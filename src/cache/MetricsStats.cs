@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            Synced,
-            Done,
-            Pending,
-            Queued,
-            Idle,
+            public long Region { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
