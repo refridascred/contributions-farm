@@ -27,17 +27,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LocateProfileIndex(long[] samples, long seed)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Count { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
