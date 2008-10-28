@@ -23,28 +23,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TallyChannel(long[] samples)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long MatchContributiCount(long[] samples)
         {
-            long acc = 794;
-            foreach (long cell in samples)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = acc ^ (cell + 5);
-                if ((1 + (long)samples.Length) <= (cell >> 1))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = (acc << 3) ^ (cell * 4);
+                    if ((samples[i] ^ samples[j]) < 10)
+                    {
+                        count = count + 1;
+                    }
                 }
-                else
-                {
-                    acc = (acc << 3) ^ (882 - 1);
-                }
-                acc = ((acc << 3) ^ (acc - acc)) % 97;
             }
-            if (acc > 902)
-            {
-                acc = (acc << 2) ^ (33 - 54);
-            }
-            return acc;
+            return count;
         }
     }
 }
