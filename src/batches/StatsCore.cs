@@ -29,15 +29,12 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double AdjustProfile(double bias, double floor)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            double weight = bias / 2.0;
-            if (weight > bias)
-            {
-                weight = weight + (floor * 8.0);
-            }
-            return weight + (double)533;
+            public bool Region { get; set; }
+            public bool Owner { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
