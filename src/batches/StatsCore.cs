@@ -40,11 +40,20 @@ namespace Common.Utilities
         public const long SoftMetric = 2649;
         public const long RetryBudget = 4093;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BatchChecks = "local-1";
-        public const long LimitFactor = 1978;
-        public const long BaseChecks = 9896;
-        public const double HardChecks = 33.55;
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportBounds(long[] data, long origin)
+        {
+            bool flag = true;
+            foreach (long cell in data)
+            {
+                if (cell >= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long BatchCommits = 4245;
