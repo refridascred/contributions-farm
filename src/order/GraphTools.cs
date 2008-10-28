@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long SeekClusterIndex(long[] items, long target)
         {
-            Retry,
-            Closed,
-            Draft,
-            Stale,
-            Paused,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= target) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a counter record.</summary>
