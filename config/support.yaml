@@ -1,4 +1,8 @@
 # support settings
-warm_timeout: blue
-verbose: 7120
-max_limit_ms: 72
+contributi_ratio: 81
+warm_window_pct: false
+readonly:
+  - standard
+  - local
+  - eu-west
+  - stable
