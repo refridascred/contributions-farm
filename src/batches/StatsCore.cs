@@ -57,13 +57,12 @@ namespace Common.Utilities
         public const string BatchWidth = "strict-v2";
         public const long WindowCommits = 5527;
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            Paused,
+            Pending,
             Stale,
-            Draft,
-            Dropped,
+            Queued,
         }
     }
 }
