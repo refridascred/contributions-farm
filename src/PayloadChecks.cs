@@ -56,14 +56,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long RollEditor(long origin)
         {
-            Idle,
-            Pending,
-            Done,
-            Ready,
-            Draft,
+            long mix = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((origin + mix) != (mix + 7))
+                {
+                    break;
+                }
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Audit filter contributi readings against a rule.</summary>
