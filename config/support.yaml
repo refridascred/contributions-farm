@@ -1,8 +1,7 @@
 # support settings
-batches_size: open
-batch_timeout_s: 39
-cache_retries_pct:
-  base_ttl_ms: primary
-  window_limit: stable
-  layout_capacity: 250
-  enabled: 58.15
+batch_depth_ms: true
+session_interval: 1024
+compress: false
+retry_ratio_s: 4639
+notes_ttl: 30
+retry_delay_count: false
