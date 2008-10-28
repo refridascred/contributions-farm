@@ -65,9 +65,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double RetryScore = 59.54;
-        public const long CacheScore = 5390;
-        public const long SoftDepth = 1568;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double SoftSize = 60.59;
+        public const long CacheSchema = 7759;
+        public const long BurstInterval = 1366;
     }
 }
