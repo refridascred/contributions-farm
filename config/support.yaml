@@ -1,4 +1,4 @@
 # support settings
-dry_run: true
-default_size_pct: 4.65
-verbose: true
+warm_timeout: blue
+verbose: 7120
+max_limit_ms: 72
