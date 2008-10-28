@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate batches commits readings against a bound.</summary>
-        public static bool VerifyBatchesCommitsRange(long[] values, long limit)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long PairToolsCount(long[] readings)
         {
-            bool stale = true;
-            foreach (long value in values)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value >= limit)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((readings[i] - readings[j]) > 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Hold a window summary.</summary>
