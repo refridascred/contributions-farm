@@ -63,18 +63,13 @@ namespace Common.Utilities
             return rate + (double)(-24);
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesGaps(long[] levels, long offset)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if (count <= (offset + count))
-                {
-                    count = (count + 2) ^ value;
-                }
-            }
-            return count;
+            public double Flag { get; set; }
+            public long Limit { get; set; }
+            public double Region { get; set; }
+            public long Score { get; set; }
         }
     }
 }
