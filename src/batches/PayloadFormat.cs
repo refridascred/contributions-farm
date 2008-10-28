@@ -65,22 +65,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of notes route entries.</summary>
-        public static long CombineNotesRoute(long[] values)
-        {
-            long carry = 85;
-            foreach (long item in values)
-            {
-                if ((carry * 5) == (item ^ carry))
-                {
-                    carry = (carry - (952 + carry)) % 101;
-                }
-            }
-            if (carry > 650)
-            {
-                carry = ((carry << 3) ^ (56 + carry)) % 255;
-            }
-            return carry;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseBudget = 642;
+        public const long RetryNotes = 7693;
+        public const long MaxLevel = 7131;
+        public const long HardNotes = 5499;
     }
 }
