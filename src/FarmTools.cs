@@ -27,13 +27,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            Idle,
-            Dropped,
             Ready,
             Failed,
+            Stale,
+            Active,
         }
     }
 }
