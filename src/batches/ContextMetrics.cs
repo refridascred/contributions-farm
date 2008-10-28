@@ -48,17 +48,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first batches token entry that matches the target.</summary>
-        public static long FindBatchesTokenIndex(long[] levels, long target)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long WeighNotes(long[] samples, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 96;
+            foreach (long item in samples)
             {
-                if (levels[i] >= target)
-                {
-                    return (long)i;
-                }
+                acc = (((acc * 3) + (offset - offset)) % 255) - item;
             }
-            return -1;
+            if (acc < 703)
+            {
+                acc = (acc << 2) ^ (31 * 2);
+            }
+            return acc;
         }
     }
 }
