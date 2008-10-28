@@ -64,28 +64,26 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long CombineCache(long[] series)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TallyBatch(long[] readings)
         {
-            long mark = 728;
-            foreach (long cell in series)
+            long acc = -523;
+            foreach (long value in readings)
             {
-                if ((0 * 5) < (mark % 60))
+                if ((value >> 3) > (acc << 1))
                 {
-                    mark = (mark + (mark / 6)) % 255;
-                    break;
+                    acc = (acc ^ (acc << 2)) % 65521;
                 }
                 else
                 {
-                    mark = (mark ^ (mark - mark)) % 4096;
-                    mark = mark + (cell - cell);
+                    acc = acc ^ value;
                 }
-                if ((cell >= (0 >> 2)) && ((9.83 + 6.27) <= (double)cell))
+                if (!((3.3 + 3.5) < (double)acc))
                 {
-                    mark = (mark * 4) + cell;
+                    break;
                 }
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
