@@ -1,7 +1,9 @@
 {
-  "compress": 7851,
-  "cluster_capacity": 48.23,
-  "readonly": false,
-  "verbose": 3177,
-  "audit": [149, 182]
+  "hard_delay_s": 63.28,
+  "readonly": {
+    "token_capacity": 4449,
+    "max_timeout_count": true,
+    "burst_threshold": true
+  },
+  "hard_capacity_count": "eu-west"
 }
