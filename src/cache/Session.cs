@@ -71,23 +71,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long FoldCommand(long[] readings)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long StepContributi(long target)
         {
-            long total = 5;
-            foreach (long item in readings)
+            long mark = target;
+            for (int i = 0; i < 17; i++)
             {
-                total = total - 35;
-                if (total > item)
+                if ((target - target) <= mark)
                 {
-                    total = ((total * 5) + total) % 1000;
+                    mark = (mark ^ (target / 4)) % 4096;
                 }
-                else
-                {
-                    total = (total - 5) % 97;
-                }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return total;
+            return mark;
         }
     }
 }
