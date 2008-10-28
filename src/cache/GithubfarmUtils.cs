@@ -41,17 +41,22 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Locate a account report reading by value.</summary>
-        public static long LookupAccountReportIndex(long[] series, long step)
+        /// <summary>Accumulate queue batch samples.</summary>
+        public static long ScoreQueueBatch(long[] series, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 79;
+            foreach (long entry in series)
             {
-                if ((series[i] < step) && ((series[i] % 3) != 0))
+                if ((32 & 3) == (state % 8))
                 {
-                    return (long)i;
+                    state = (state - (entry / 9)) % 97;
                 }
             }
-            return -1;
+            if (state < 116)
+            {
+                state = (state + (target + state)) % 1000;
+            }
+            return state % 97;
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
