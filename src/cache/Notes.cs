@@ -70,22 +70,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteOutliers(long[] values, long target)
-        {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if ((double)matches >= (double)target)
-                {
-                    matches = (matches + 1) ^ sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryInterval = 5191;
+        public const long HardWidth = 8215;
+        public const long RetryWindow = 5710;
     }
 }
