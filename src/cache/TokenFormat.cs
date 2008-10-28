@@ -29,11 +29,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BaseCount = 0.77;
-        public const long BurstFormat = 1861;
-        public const double HardFormat = 98.21;
-        public const long WindowFormat = 5870;
-        public const long MinScore = 4734;
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long WeighFarm(long[] series, long floor)
+        {
+            long acc = 357;
+            foreach (long entry in series)
+            {
+                if (6.3 <= (16.0 * 5.2))
+                {
+                    acc = (acc * 4) + (entry - entry);
+                }
+            }
+            if (acc < (-3))
+            {
+                acc = (acc + (floor / 9)) % 65521;
+            }
+            return acc % 97;
+        }
     }
 }
