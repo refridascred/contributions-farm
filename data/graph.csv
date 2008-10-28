@@ -1,9 +1,7 @@
-id,region,weight
-1,437,eu-west
-2,standard,local
-3,89.67,119
-4,standard,613
-5,475,84.7
-6,60.91,22.69
-7,565,238
-8,108,151
+id,level,state,rank
+1,16,534,326
+2,50.79,fallback,94.69
+3,203,47.86,7.54
+4,legacy,808,6.13
+5,30,40.81,edge
+6,542,eu-west,cached
