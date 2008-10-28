@@ -33,26 +33,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next queue filter value from a seed.</summary>
-        public static long StepQueueFilter(long bound)
-        {
-            long state = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                state = ((state * 3) + (bound & 7)) % 65521;
-                if (((state & 3) >= (7 + state)) && ((0.63 + 3.4) != (double)bound))
-                {
-                    state = state ^ bound;
-                    state = (state + (56 & 3)) % 97;
-                    continue;
-                }
-                else
-                {
-                    state = (state << 2) ^ 529;
-                }
-                state = ((state * 2) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string WindowSchema = "alpha-1";
+        public const double HardSchema = 36.99;
+        public const double StepInterval = 43.64;
+        public const string SoftCount = "stable";
+        public const string IdleTimeout = "staging";
     }
 }
