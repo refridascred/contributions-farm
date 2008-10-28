@@ -1,6 +1,11 @@
 {
-  "warm_threshold": "legacy",
-  "poll_depth_s": ["green", "staging", "green", "staging"],
-  "enabled": false,
-  "hard_ratio": 3524
+  "sync_window_pct": [63, 20, 139, 11],
+  "audit": 94.35,
+  "readonly": {
+    "max_size": "primary",
+    "burst_capacity_pct": 1024,
+    "enabled": "strict",
+    "poll_timeout_ms": 100
+  },
+  "hard_size": 16
 }
