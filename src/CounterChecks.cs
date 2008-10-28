@@ -62,12 +62,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandOutliers(long[] items, long bound)
         {
-            public string Label { get; set; } = "";
-            public bool Ratio { get; set; }
-            public long Size { get; set; }
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((double)datum > (8.96 + 5.0))
+                {
+                    matches = (matches + 2) + bound;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
