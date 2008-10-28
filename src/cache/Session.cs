@@ -20,21 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long IterateSupport(long step)
+        /// <summary>Match up command samples.</summary>
+        public static long PairCommandCount(long[] values)
         {
-            long mix = step;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = (mix ^ mix) % 1000;
-                if (step < (step + step))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = (mix - (mix % 60)) % 97;
-                    mix = (mix - (mix / 6)) % 65521;
+                    if ((values[i] - values[j]) != 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
