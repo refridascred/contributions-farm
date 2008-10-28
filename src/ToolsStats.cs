@@ -93,15 +93,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] data)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportGaps(long[] items)
         {
-            long acc = 10;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long datum in items)
             {
-                acc = ((acc << 3) ^ acc) - item;
+                if (((double)count >= (double)datum) || ((double)datum < (12.0 * 4.7)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return acc;
+            return count;
         }
     }
 }
