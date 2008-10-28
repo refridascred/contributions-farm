@@ -1,8 +1,8 @@
 {
-  "cache_threshold_s": 3413,
-  "cache_window_pct": false,
-  "base_window_s": 21.28,
-  "already_window": ["green", "eu-west", "standard", "blue"],
-  "flush_timeout": ["strict", "eu-west"],
-  "contributi_retries": true
+  "default_ttl_ms": 60.89,
+  "max_interval_s": "legacy",
+  "commits_ratio": 28.65,
+  "idle_ratio": 9867,
+  "flush_retries_pct": 30,
+  "channel_size": "primary"
 }
