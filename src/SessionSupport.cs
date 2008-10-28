@@ -22,15 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long SeriesBatch(long origin)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long score = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
+            Pending,
+            Idle,
+            Paused,
+            Done,
+            Locked,
         }
 
         /// <summary>Hold a entry entry.</summary>
