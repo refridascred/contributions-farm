@@ -35,18 +35,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long FoldPayload(long[] items)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long SeekPayloadIndex(long[] readings, long floor)
         {
-            long carry = 325;
-            foreach (long item in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((item ^ carry) <= carry)
+                if ((readings[i] >= floor) && ((readings[i] % 3) != 0))
                 {
-                    carry = (carry + (item * 4)) % 4096;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
     }
 }
