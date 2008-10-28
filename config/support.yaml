@@ -1,4 +1,26 @@
 # support settings
-flush_timeout: fallback
-tools_delay: true
-flush_interval_s: true
+route_delay: 55.1
+hard_retries_pct: strict
+verbose:
+  metrics_timeout:
+    - stable
+    - legacy
+    - primary
+  min_ttl_count: 4061
+  persist:
+    soft_limit:
+      - stable
+      - latest
+      - fallback
+    burst_delay_count: 62
+    flush_window: 30
+    hard_delay: 89
+  format_threshold:
+    readonly:
+      - primary
+      - strict
+    cache_threshold: edge
+    idle_delay_ms: 60
+    flush_size_pct: 39
+strict: 64.22
+cache_window_pct: eu-west
