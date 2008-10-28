@@ -28,10 +28,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryFactor = 5584;
-        public const long LimitTools = 8271;
-        public const string BaseTimeout = "standard-1";
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
+        {
+            public long Flag { get; set; }
+            public double Region { get; set; }
+        }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool GuardReportBounds(long[] data, long origin)
