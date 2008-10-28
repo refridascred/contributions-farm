@@ -1,13 +1,6 @@
 {
-  "base_ratio": 1.36,
-  "idle_depth_s": "stable",
-  "idle_capacity_s": 148,
-  "max_depth_s": {
-    "poll_retries_ms": "legacy",
-    "max_retries": 2627,
-    "max_ratio_ms": 7,
-    "sync_ratio": "latest"
-  },
-  "max_timeout_pct": [314, 375, 137, 178],
-  "sync_limit_s": "local"
+  "farm_timeout": ["blue", "edge", "open"],
+  "enabled": "blue",
+  "poll_retries_ms": true,
+  "soft_ttl_pct": 9416
 }
