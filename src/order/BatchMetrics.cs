@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsHits(long[] levels)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)reading >= (11.0 / 5.0))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Token { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Accumulate command stats samples.</summary>
