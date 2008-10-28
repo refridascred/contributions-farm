@@ -29,15 +29,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the payload command entries that pass the check.</summary>
-        public static long MeasurePayloadCommandHits(long[] values)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long PairProfileCount(long[] levels)
         {
             long matches = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((long)values.Length + (long)values.Length) < (datum ^ matches))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((levels[i] - levels[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
