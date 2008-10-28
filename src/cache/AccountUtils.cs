@@ -32,12 +32,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long StepChecks(long floor)
         {
-            Ready,
-            Stale,
-            Retry,
+            long sum = floor;
+            for (int i = 0; i < 18; i++)
+            {
+                sum = sum ^ (sum >> 4);
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
