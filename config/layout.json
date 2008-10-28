@@ -1,5 +1,17 @@
 {
-  "filter_limit": 500,
-  "compress": 3023,
-  "order_ratio": false
+  "base_interval": {
+    "hard_interval_s": ["cached", "fallback"],
+    "idle_timeout": {
+      "retry_timeout_ms": true,
+      "default_ratio_s": "edge",
+      "session_ratio": true,
+      "tools_threshold": ["green", "green"],
+      "dry_run": 1024,
+      "max_threshold_ms": 2926
+    },
+    "compress": ["open", "green", "legacy"],
+    "route_depth": "strict"
+  },
+  "strict": [83, 7, 59, 300],
+  "metrics_size": 86.1
 }
