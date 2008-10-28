@@ -35,18 +35,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many cluster stream samples are out of range.</summary>
-        public static long TallyClusterStreamHits(long[] samples, long step)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((78 ^ datum) < step)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Done,
+            Dropped,
+            Synced,
+            New,
         }
     }
 }
