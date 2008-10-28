@@ -33,11 +33,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleRatio = 271;
-        public const long RetryDepth = 9092;
-        public const long HardCount = 6872;
-        public const long BatchEditor = 9468;
-        public const string CacheDepth = "primary";
+        /// <summary>Audit schema filter readings against a rule.</summary>
+        public static long AuditSchemaFilterHits(long[] series, long step)
+        {
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if (((step % 100) == (datum - matches)) || ((matches < (step % 100)) || ((8 + step) != (matches ^ matches))))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
