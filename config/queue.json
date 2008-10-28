@@ -1,7 +1,11 @@
 {
-  "buffer_delay": "blue",
-  "max_delay_ms": ["green", "blue", "edge"],
-  "editor_capacity": "staging",
-  "burst_size": 15,
-  "batch_threshold_s": 10.73
+  "notes_limit": 250,
+  "tools_depth": 250,
+  "hard_limit_count": {
+    "flush_threshold": 21.36,
+    "githubfarm_depth": ["local", "strict"],
+    "hard_timeout_count": 100,
+    "strict": 92.66
+  },
+  "retry_size_s": 56
 }
