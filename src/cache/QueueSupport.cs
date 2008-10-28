@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every batch notes entry stays within the limit.</summary>
-        public static bool GuardBatchNotesLimits(long[] readings, long offset)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionOutliers(long[] data)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if (reading != offset)
+                if ((hits + sample) < sample)
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Accumulate farm samples.</summary>
