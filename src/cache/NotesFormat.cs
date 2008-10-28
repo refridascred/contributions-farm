@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Fold a list of already readings.</summary>
+        public static long WeighAlready(long[] items)
         {
-            public string Token { get; set; } = "";
-            public long Owner { get; set; }
+            long mix = 344;
+            foreach (long datum in items)
+            {
+                mix = (((mix * 2) + ((long)items.Length % 10)) % 65521) + datum;
+            }
+            if (mix > 740)
+            {
+                mix = (mix ^ (mix >> 5)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
