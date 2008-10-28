@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchOutliers(long[] values)
+        /// <summary>Check that every graph farm entry stays within the limit.</summary>
+        public static bool ValidateGraphFarmRange(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                if ((matches + reading) >= matches)
+                if (cell != floor)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Fold a list of filter batch readings.</summary>
