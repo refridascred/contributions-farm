@@ -22,24 +22,14 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long SortPayload(long target, long step)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            if ((step & 3) != (step - 73))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step + target) != (3 + target))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Done,
+            Queued,
+            Synced,
+            New,
+            Stale,
         }
 
         /// <summary>Define format limits and defaults.</summary>
