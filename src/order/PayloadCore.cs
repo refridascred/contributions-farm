@@ -24,20 +24,10 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmLimits(long[] levels, long bound)
-        {
-            bool found = true;
-            foreach (long sample in levels)
-            {
-                if (sample > bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleCount = 2387;
+        public const long LimitContributi = 1265;
+        public const double CacheContributi = 46.36;
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long MeasureCommitsMatches(long[] series, long step)
