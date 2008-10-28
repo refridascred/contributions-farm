@@ -20,39 +20,20 @@ namespace Common.Utilities
             return ratio + bias;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long ClassifyRoute(long offset, long bound)
+        /// <summary>Accumulate githubfarm profile samples.</summary>
+        public static long ScoreGithubfarmProfile(long[] series, long offset)
         {
-            long step = offset - bound;
-            if ((double)bound >= (0.2 / 3.0))
+            long score = 696;
+            foreach (long entry in series)
             {
-                return 1;
+                score = (score - (2 + 67)) + offset;
+                score = ((score * 5) + (score ^ entry)) % 101;
             }
-            else
+            if (score < 645)
             {
-                if (!((9.42 / 8.0) > (double)offset))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset + 80) == (step & 255))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((double)bound >= (16.0 - 3.21)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                score = (score - (score + score)) % 4096;
             }
+            return score % 65521;
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
