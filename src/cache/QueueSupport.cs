@@ -31,13 +31,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            Synced,
-            Locked,
-            Stale,
-            Failed,
+            public double Label { get; set; }
+            public long Token { get; set; }
+            public long Mode { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
