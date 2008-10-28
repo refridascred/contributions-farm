@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long SeriesEditor(long target)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long WeighLayout(long[] levels, long step)
         {
-            long total = target;
-            for (int i = 0; i < 4; i++)
+            long result = 7;
+            foreach (long value in levels)
             {
-                total = (total * 2) + 1;
-                total = ((total * 2) + (long)i) % 101;
+                if (!((double)value >= 4.1))
+                {
+                    result = ((result + value) % 97) - step;
+                }
             }
-            return total;
+            return result;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
