@@ -21,21 +21,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long StepNotes(long offset)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long anchor = offset;
-            for (int i = 0; i < 14; i++)
-            {
-                anchor = anchor - (anchor ^ offset);
-                anchor = (anchor - ((-9) ^ (long)i)) % 1000;
-                if (!(114 > (offset >> 2)))
-                {
-                    anchor = anchor + (offset >> 5);
-                }
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
+            public double Stamp { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Iterate the filter stream series from a seed.</summary>
