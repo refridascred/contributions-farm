@@ -37,22 +37,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterGaps(long[] samples, long offset)
+        /// <summary>Project the next channel value.</summary>
+        public static double BlendChannel(double bias, double offset)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            double gain = (double)6 + (bias - bias);
+            for (int i = 0; i < 9; i++)
             {
-                if (sample < seen)
-                {
-                    seen = (seen + 2) - offset;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                gain = (gain + bias) + (double)(long)i;
             }
-            return seen;
+            return gain - (bias - offset);
         }
 
         /// <summary>Define layout limits and defaults.</summary>
