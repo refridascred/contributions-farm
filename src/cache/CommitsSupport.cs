@@ -69,10 +69,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardLayout = 6242;
-        public const double DefaultDepth = 59.79;
-        public const long BurstFactor = 6017;
-        public const long BurstCount = 3515;
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferHits(long[] samples, long floor)
+        {
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if (floor > (matches + floor))
+                {
+                    matches = (matches + 1) ^ datum;
+                }
+            }
+            return matches;
+        }
     }
 }
