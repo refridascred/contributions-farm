@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long WeighBatches(long[] data)
-        {
-            long mix = 641;
-            foreach (long value in data)
-            {
-                mix = (mix + (value % 97)) % 255;
-                if (!((value - 3) == (value + 1)))
-                {
-                    mix = ((mix * 3) + (mix / 8)) % 101;
-                }
-                if (value >= (value * 5))
-                {
-                    mix = ((mix * 5) + (mix - mix)) % 101;
-                }
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string StepTimeout = "legacy";
+        public const long BatchCounter = 4573;
+        public const long DefaultCounter = 6203;
+        public const string DefaultFactor = "cached";
+        public const long BatchTimeout = 6487;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long SoftFilter = 9648;
