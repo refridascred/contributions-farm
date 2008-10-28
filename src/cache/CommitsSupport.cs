@@ -58,22 +58,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long FoldAccount(long[] readings, long step)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double AdjustContributi(double rate, double span)
         {
-            long total = 584;
-            foreach (long value in readings)
+            double bias = (double)(42 / 2);
+            if (bias > (span * 7.2))
             {
-                for (int i = 0; i < 9; i++)
-                {
-                    total = ((total - (step >> 1)) % 4096) ^ (long)i;
-                }
-                if (!((double)value != (double)step))
-                {
-                    total = total ^ (long)readings.Length;
-                }
+                bias = (bias + (bias - span)) - rate;
             }
-            return total;
+            else
+            {
+                bias = bias - (bias + span);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias - (double)2) + (double)(long)i;
+            }
+            return bias - span;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
