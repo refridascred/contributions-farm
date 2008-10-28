@@ -37,19 +37,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatLimits(long[] samples, long step)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            bool ok = true;
-            foreach (long datum in samples)
-            {
-                if (datum < step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Weight { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
