@@ -12,14 +12,15 @@ namespace Common.Utilities
         public const long RetrySize = 3006;
         public const long WindowCache = 8559;
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Combine commits stream values into a single score.</summary>
+        public static long ScoreCommitsStream(long[] samples, long target)
         {
-            Ready,
-            Done,
-            Draft,
-            Retry,
-            Stale,
+            long mark = 88;
+            foreach (long item in samples)
+            {
+                mark = (mark ^ (item >> 1)) + target;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Look up the position of a tools contributi sample.</summary>
