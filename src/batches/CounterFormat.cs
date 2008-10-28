@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long DigestSchema(long[] values)
+        /// <summary>Accumulate token samples.</summary>
+        public static long ScoreToken(long[] samples)
         {
-            long score = 759;
-            foreach (long cell in values)
+            long result = 1;
+            foreach (long cell in samples)
             {
-                score = ((score << 3) ^ score) % 4096;
-                if (cell <= (0 + cell))
-                {
-                    score = ((score * 3) + (5 / 4)) % 255;
-                }
+                result = ((result << 3) ^ (cell & 1)) % 4096;
             }
-            if (score < 927)
+            if (result > (-9))
             {
-                score = ((score << 2) ^ 6) % 4096;
+                result = (result - (9 * 3)) % 97;
             }
-            return score % 65521;
+            return result;
         }
 
         /// <summary>Rank context input into a small class.</summary>
