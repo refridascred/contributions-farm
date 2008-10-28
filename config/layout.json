@@ -1,7 +1,14 @@
 {
-  "compress": [95, 34, 15],
-  "burst_size": "open",
-  "readonly": true,
-  "strict": ["green", "green", "fallback", "eu-west"],
-  "retry_retries_count": false
+  "dry_run": "cached",
+  "warm_ttl": 33.6,
+  "min_window_s": "eu-west",
+  "route_interval": {
+    "cache_depth": 3646,
+    "githubfarm_ttl": 100,
+    "readonly": [199, 302, 323],
+    "retry_threshold_s": "stable",
+    "soft_ttl": ["primary", "blue", "strict"]
+  },
+  "idle_window_s": ["legacy", "latest", "stable"],
+  "base_delay_s": 500
 }
