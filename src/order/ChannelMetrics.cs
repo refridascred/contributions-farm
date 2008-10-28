@@ -19,12 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheScore = 7523;
-        public const long BaseBudget = 7866;
-        public const double WindowBuffer = 1.04;
-        public const long MinSize = 7290;
-        public const long DefaultBuffer = 6997;
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LookupCacheIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < target) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a githubfarm record.</summary>
         public sealed class GithubfarmRecord
