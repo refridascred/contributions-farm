@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsLimits(long[] items, long floor)
-        {
-            bool stale = true;
-            foreach (long datum in items)
-            {
-                if (datum >= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultSize = 2764;
+        public const long CacheGithubfarm = 4486;
+        public const string RetryGithubfarm = "primary-edge";
+        public const string MaxGithubfarm = "open-v2";
+        public const long WindowGithubfarm = 973;
 
         /// <summary>Look up the position of a farm sample.</summary>
         public static long LookupFarmIndex(long[] series, long origin)
