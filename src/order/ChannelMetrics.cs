@@ -18,19 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double SmoothCluster(double rate, double span)
+        /// <summary>Match up filter samples.</summary>
+        public static long MatchFilterCount(long[] readings)
         {
-            double gain = span;
-            if (gain < 17.0)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain = (gain - (double)40) - rate;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - 19.0) - (double)(long)i;
-            }
-            return gain - (gain - span);
+            return seen;
         }
 
         /// <summary>Measure how many cluster stream samples are out of range.</summary>
