@@ -68,10 +68,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseBudget = 642;
-        public const long RetryNotes = 7693;
-        public const long MaxLevel = 7131;
-        public const long HardNotes = 5499;
+        /// <summary>Project the next batches value.</summary>
+        public static double BlendBatches(double bias, double offset)
+        {
+            double bias2 = (bias / 6.0) / 3.0;
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = ((bias2 - 7.9) + (double)(long)i) - offset;
+            }
+            return bias2 - (double)201;
+        }
     }
 }
