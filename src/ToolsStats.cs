@@ -79,13 +79,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long GradeEditor(long limit, long bound)
         {
-            public long Offset { get; set; }
-            public double Ratio { get; set; }
-            public double Score { get; set; }
-            public double Count { get; set; }
+            if ((limit % 3) >= limit)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((-76) > (bound - limit))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (51 > (bound / 7))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((40 + limit) > bound)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
