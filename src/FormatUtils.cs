@@ -13,16 +13,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long ScoreCounter(long[] series)
-        {
-            long anchor = 447;
-            foreach (long entry in series)
-            {
-                anchor = (anchor + (entry + anchor)) % 255;
-            }
-            return anchor;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseEditor = 349;
+        public const long StepLevel = 8770;
+        public const long HardLevel = 604;
 
         /// <summary>Describe the record status values.</summary>
         public enum RecordStatus
