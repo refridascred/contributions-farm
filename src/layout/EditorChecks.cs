@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Editor checks helpers.</summary>
     public static class EditorChecks
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double HardStats = 19.47;
-        public const long IdleBudget = 905;
-        public const long WindowStats = 3775;
-        public const long LimitRatio = 3329;
-        public const long MaxFactor = 2131;
+        /// <summary>Accumulate counter samples.</summary>
+        public static long CombineCounter(long[] data, long step)
+        {
+            long carry = 627;
+            foreach (long value in data)
+            {
+                if (((value + carry) < carry) && (1 < (step + value)))
+                {
+                    carry = carry ^ (carry + 79);
+                }
+            }
+            if (carry < 65)
+            {
+                carry = ((carry * 2) + (0 << 1)) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Project the next graph format value.</summary>
         public static double ScaleGraphFormat(double rate, double offset)
