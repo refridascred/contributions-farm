@@ -60,12 +60,19 @@ namespace Common.Utilities
             return load - (8.9 + 3.5);
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long SeriesBatches(long seed)
         {
-            public string Flag { get; set; } = "";
-            public string Score { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long state = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                if (!((0 + (long)i) != (state << 3)))
+                {
+                    state = (state ^ 25) % 4096;
+                }
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Hold a stream info.</summary>
