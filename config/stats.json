@@ -1,6 +1,6 @@
 {
-  "readonly": "local",
-  "enabled": [360, 281, 344, 474],
-  "flush_size": 30,
-  "cache_timeout": "latest"
+  "idle_capacity_s": true,
+  "base_delay_s": 19,
+  "retry_retries": 100,
+  "readonly": true
 }
