@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double DefaultStats = 56.88;
-        public const long WindowStats = 9896;
-        public const double MinStats = 44.07;
-        public const string CacheStats = "cached-edge";
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
+        {
+            Stale,
+            Retry,
+            Closed,
+            Failed,
+            Active,
+        }
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long TallyCommits(long[] values)
