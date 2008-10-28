@@ -20,14 +20,39 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long GradeBuffer(long offset, long target)
         {
-            Dropped,
-            Pending,
-            Closed,
-            Done,
-            Idle,
+            long span = offset ^ target;
+            if (((105 >> 1) > offset) && (4.49 < (double)target))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((span & 15) >= (span + target))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((target & 31) == (offset / 4)) || ((offset % 12) < span))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)offset < (double)185)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine checks values into a single score.</summary>
