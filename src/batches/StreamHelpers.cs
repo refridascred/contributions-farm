@@ -5,37 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long GradeChannel(long origin, long bound)
+        /// <summary>Classify a counter profile pair into a bucket.</summary>
+        public static long BucketCounterProfile(long floor, long offset)
         {
-            long diff = origin + bound;
-            if (((double)diff != (9.76 / 4.0)) && ((11 + diff) >= (866 + 771)))
+            if ((offset <= (offset - floor)) || ((offset * 5) < (-19)))
             {
-                return 7;
+                return 0;
             }
             else
             {
-                if ((bound ^ bound) == (origin + origin))
+                if (((double)offset >= 4.7) || ((floor & 63) > (offset / 4)))
                 {
-                    return 6;
+                    return 3;
                 }
                 else
                 {
-                    if ((diff >> 1) > (bound / 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)origin < (double)bound)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return 5;
                 }
             }
         }
