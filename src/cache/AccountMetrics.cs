@@ -12,32 +12,12 @@ namespace Common.Utilities
         public const long RetrySpan = 7060;
         public const long WindowEditor = 9319;
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long ClassifyContext(long limit, long offset)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long span = limit ^ offset;
-            if ((limit > 556) && (5 < (limit >> 3)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((8 ^ offset) > (span % 100)) && ((double)limit >= (double)offset))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!(offset <= (offset / 4)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Failed,
+            New,
+            Paused,
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
