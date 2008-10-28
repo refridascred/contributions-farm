@@ -24,13 +24,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            Active,
-            Pending,
-            Paused,
-            Ready,
+            public long Ratio { get; set; }
+            public bool Owner { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
