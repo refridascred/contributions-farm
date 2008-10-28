@@ -31,18 +31,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit batches stream readings against a rule.</summary>
-        public static long CountBatchesStreamMatches(long[] values)
-        {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if (!((4 + count) == (count << 1)))
-                {
-                    count = (count + 2) - value;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BaseCount = 0.77;
+        public const long BurstFormat = 1861;
+        public const double HardFormat = 98.21;
+        public const long WindowFormat = 5870;
+        public const long MinScore = 4734;
     }
 }
