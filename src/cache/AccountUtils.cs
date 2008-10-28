@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate commits checks readings against a bound.</summary>
-        public static bool GuardCommitsChecksRange(long[] levels, long floor)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderRange(long[] items, long origin)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            bool stale = true;
+            foreach (long reading in items)
             {
-                if (cell >= floor)
+                if (reading < origin)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
