@@ -7,20 +7,14 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 9 ]; do
+while [ "${count}" -lt 7 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-COMMAND_LIMIT=202
-log "limit is ${COMMAND_LIMIT}"
+for item in eu-west cached local edge; do
+    log "checking ${item}"
+done
 
-mode="${1:-legacy}"
-case "${mode}" in
-    strict)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+COMMAND_LIMIT=286
+log "limit is ${COMMAND_LIMIT}"
