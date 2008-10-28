@@ -48,21 +48,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long CompareToolsCount(long[] series)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderRange(long[] values, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long item in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (item >= target)
                 {
-                    if ((series[i] - series[j]) == 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
     }
 }
