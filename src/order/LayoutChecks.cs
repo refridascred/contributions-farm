@@ -16,15 +16,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long IterateOrder(long origin)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyGaps(long[] data, long limit)
         {
-            long carry = origin;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            foreach (long entry in data)
             {
-                carry = ((carry * 5) + (long)i) % 97;
+                if (((entry & 15) > (limit + (long)data.Length)) || ((double)limit < 4.27))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Hold a contributi entry.</summary>
