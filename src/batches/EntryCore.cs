@@ -34,16 +34,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next support counter value from a seed.</summary>
-        public static long RollSupportCounter(long floor)
-        {
-            long total = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftStream = 3153;
+        public const long CacheStream = 4498;
+        public const long RetryBudget = 7534;
+        public const long IdleStream = 9455;
 
         /// <summary>Classify a metric pair into a bucket.</summary>
         public static long GradeMetric(long step, long floor)
