@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long CombineCommits(long[] data, long step)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long mix = 546;
-            foreach (long value in data)
-            {
-                mix = ((mix * 5) + (value + 54)) - step;
-            }
-            return mix;
+            public long Offset { get; set; }
+            public bool Stamp { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
