@@ -40,19 +40,24 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate format commits readings against a bound.</summary>
-        public static bool CheckFormatCommitsBounds(long[] readings, long limit)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long seed, long floor)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            if ((floor - seed) > (seed * 3))
             {
-                if (cell >= limit)
+                return 6;
+            }
+            else
+            {
+                if ((floor % 7) > (516 + floor))
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return valid;
         }
 
         /// <summary>Describe the schema status values.</summary>
