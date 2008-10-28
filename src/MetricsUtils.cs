@@ -84,11 +84,16 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BaseContributi = "stable-1";
-        public const long WindowContributi = 9239;
-        public const long DefaultContributi = 5859;
-        public const long IdleContributi = 4017;
-        public const long StepSpan = 4490;
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long DeriveStream(long limit)
+        {
+            long mark = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                mark = ((mark << 2) ^ (mark & 63)) % 4096;
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
+        }
     }
 }
