@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long DeriveFarm(long bound)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long DeriveToken(long target)
         {
-            long score = bound;
-            for (int i = 0; i < 6; i++)
+            long state = target;
+            for (int i = 0; i < 10; i++)
             {
-                if ((7.5 / 3.0) != (double)bound)
+                state = state + state;
+                if ((target - target) > (target * 4))
                 {
-                    score = score + (long)i;
+                    state = (state << 2) ^ ((long)i - target);
+                    continue;
                 }
-                score = ((score * 2) + (long)i) % 4093;
+                if (!((target >> 4) >= 459))
+                {
+                    state = (state << 3) ^ 327;
+                }
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return score;
+            return state;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
