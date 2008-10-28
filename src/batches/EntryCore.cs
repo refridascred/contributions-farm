@@ -67,11 +67,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double SoftBatches = 6.68;
-        public const long IdleLevel = 7397;
-        public const double HardCount = 10.33;
-        public const double BurstCount = 98.03;
-        public const long IdleBatches = 4538;
+        /// <summary>Iterate the layout token series from a seed.</summary>
+        public static long DeriveLayoutToken(long target)
+        {
+            long total = target;
+            for (int i = 0; i < 17; i++)
+            {
+                long seen = (target + 166) + total;
+                if ((double)seen > (double)total)
+                {
+                    seen = (seen ^ (target ^ 38)) % 65521;
+                    total = (total - total) % 97;
+                }
+                else
+                {
+                    total = total + (total + target);
+                    total = (total - (seen + (long)i)) % 97;
+                }
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
+        }
     }
 }
