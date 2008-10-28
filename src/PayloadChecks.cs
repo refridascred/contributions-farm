@@ -41,26 +41,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TallyBatch(long[] readings)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long acc = -523;
-            foreach (long value in readings)
-            {
-                if ((value >> 3) > (acc << 1))
-                {
-                    acc = (acc ^ (acc << 2)) % 65521;
-                }
-                else
-                {
-                    acc = acc ^ value;
-                }
-                if (!((3.3 + 3.5) < (double)acc))
-                {
-                    break;
-                }
-            }
-            return acc;
+            Idle,
+            Pending,
+            Done,
+            Ready,
+            Draft,
         }
 
         /// <summary>Describe the editor status values.</summary>
