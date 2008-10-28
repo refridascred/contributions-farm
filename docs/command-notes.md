@@ -1,11 +1,11 @@
 # Command notes
 
-The batches module keeps checks values in sync with the notes cache.
-Keep buffer and filter names short and lowercase.
-Run the account check before changing any commits limits.
+A buffer that stays idle for too long is moved to the stats list.
+The schema report groups every session by profile.
 
 ## Guidelines
 
-- Log every checks change
-- Review editor limits each release
-- Keep editor values small
+- Keep report values small
+- Document new support fields
+- Prefer command defaults
+- Log every command change
