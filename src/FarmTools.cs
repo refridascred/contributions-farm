@@ -19,12 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MinRatio = 71.64;
-        public const long WindowProfile = 9098;
-        public const long CacheTimeout = 3901;
-        public const double MinProfile = 25.1;
-        public const string BaseFactor = "fallback-edge";
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderMatches(long[] items)
+        {
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if (!((39 + 6) > (reading ^ reading)) && (((long)items.Length - hits) >= (hits % 97)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
         public static bool VerifyMetricRange(long[] readings, long origin)
