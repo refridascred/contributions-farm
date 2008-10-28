@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate context cache readings against a bound.</summary>
-        public static bool GuardContextCacheBounds(long[] data, long step)
-        {
-            bool found = true;
-            foreach (long entry in data)
-            {
-                if (entry > step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleBatch = 3490;
+        public const double MinBatch = 63.79;
+        public const double BatchRatio = 2.72;
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
         public static long MatchContributiCount(long[] readings)
