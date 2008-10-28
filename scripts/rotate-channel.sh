@@ -6,22 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback green; do
-    log "checking ${item}"
-done
+CHANNEL_LIMIT=42
+log "limit is ${CHANNEL_LIMIT}"
 
 count=0
-while [ "${count}" -lt 6 ]; do
+while [ "${count}" -lt 4 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-mode="${1:-local}"
-case "${mode}" in
-    open)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
