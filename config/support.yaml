@@ -1,15 +1,4 @@
 # support settings
-idle_window_s:
-  layout_capacity: local
-  sync_ratio_pct:
-    metric_retries: cached
-    verbose: blue
-    cache_ttl_count: edge
-  readonly: 5447
-max_interval_count:
-  - 195
-  - 290
-warm_depth_count: 10
-soft_window_pct:
-  - edge
-  - open
+persist: edge
+compress: 500
+cache_timeout_ms: 54
