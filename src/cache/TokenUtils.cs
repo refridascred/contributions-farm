@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit notes channel readings against a rule.</summary>
-        public static long MeasureNotesChannelHits(long[] values)
-        {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((double)reading > 8.9)
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string IdleCount = "standard-v2";
+        public const long HardPayload = 9874;
+        public const string SoftWidth = "strict-edge";
+        public const long BurstPayload = 4429;
+        public const long HardLevel = 4414;
 
         /// <summary>Measure how many notes batches samples are out of range.</summary>
         public static long AuditNotesBatchesGaps(long[] values)
