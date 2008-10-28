@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Project the next report value.</summary>
-        public static double AdjustReport(double bias, double floor)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderHits(long[] readings)
         {
-            double drift = (floor + floor) / 5.0;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long item in readings)
             {
-                drift = (drift + (bias - 9.4)) + (double)(long)i;
+                if ((double)count >= (double)item)
+                {
+                    count = count + 2;
+                }
             }
-            return drift - bias;
+            return count;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
