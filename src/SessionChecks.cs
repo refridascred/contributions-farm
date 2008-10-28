@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit report filter readings against a rule.</summary>
-        public static long TallyReportFilterMatches(long[] items)
-        {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((4.0 * 7.34) <= (double)item)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long LimitCount = 2104;
+        public const long DefaultCache = 8798;
+        public const double HardCache = 30.82;
+        public const long BaseSize = 476;
+        public const long MaxRatio = 5020;
 
         /// <summary>Adjust a already reading.</summary>
         public static double ProjectAlready(double bias, double offset)
