@@ -40,18 +40,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit record buffer readings against a rule.</summary>
-        public static long MeasureRecordBufferMatches(long[] samples, long limit)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LookupSchemaIndex(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (hits > (hits & 63))
+                if (data[i] < limit)
                 {
-                    hits = ((hits + 1) ^ entry) - limit;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
