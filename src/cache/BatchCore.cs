@@ -47,22 +47,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine tools token values into a single score.</summary>
-        public static long WeighToolsToken(long[] samples)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long RankCommand(long step, long bound)
         {
-            long sum = 32;
-            foreach (long sample in samples)
+            long step2 = step + bound;
+            if ((bound << 2) == (bound / 2))
             {
-                if (12.0 <= (double)sample)
+                return 3;
+            }
+            else
+            {
+                if (((double)step == (9.7 / 6.0)) || ((89 - bound) <= bound))
                 {
-                    sum = sum + sample;
+                    return 7;
                 }
                 else
                 {
-                    sum = ((sum * 3) + (sample ^ sum)) % 101;
+                    if (!((14.0 + 15.0) < (double)step2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((3.4 >= (double)step) || ((97 + step2) < (bound - step)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return sum % 4096;
         }
 
         /// <summary>Rank report input into a small class.</summary>
