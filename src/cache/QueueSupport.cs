@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of support queue entries.</summary>
-        public static long ScoreSupportQueue(long[] levels, long limit)
+        /// <summary>Fold a list of already editor readings.</summary>
+        public static long WeighAlreadyEditor(long[] series)
         {
-            long state = 130;
-            foreach (long item in levels)
+            long mark = 8;
+            foreach (long reading in series)
             {
-                if (state >= (item - item))
-                {
-                    state = ((state + (item % 16)) % 65521) - limit;
-                }
+                mark = ((mark << 2) ^ (mark & 127)) - reading;
             }
-            if (state > 429)
+            if (mark < 8)
             {
-                state = ((state * 2) + (62 >> 2)) % 1000;
+                mark = mark - (mark * 3);
             }
-            return state % 65521;
+            return mark % 97;
         }
 
         /// <summary>Accumulate farm samples.</summary>
