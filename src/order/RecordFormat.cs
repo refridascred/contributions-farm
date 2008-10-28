@@ -33,26 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long ScoreGraph(long[] items)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long carry = 57;
-            foreach (long reading in items)
-            {
-                if ((reading / 2) <= reading)
-                {
-                    carry = (carry + (reading % 5)) % 101;
-                }
-                if (!((reading - reading) >= (carry - carry)))
-                {
-                    break;
-                }
-            }
-            if (carry > (-764))
-            {
-                carry = carry - (carry << 2);
-            }
-            return carry % 97;
+            public bool Mode { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a record record.</summary>
