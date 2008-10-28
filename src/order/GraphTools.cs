@@ -32,12 +32,32 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long BucketNotes(long limit, long target)
         {
-            Dropped,
-            Retry,
-            Ready,
+            long bound = limit - target;
+            if (!((target / 8) > limit))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((double)limit >= (double)target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((target % 3) >= (limit + bound))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a queue summary.</summary>
