@@ -1,22 +1,7 @@
 # githubfarm settings
-order_delay: 56
-hard_ttl_count:
-  strict: legacy
-  batches_retries: true
-  base_ratio_s:
-    enabled: 7749
-    batch_threshold:
-      - strict
-      - eu-west
-      - legacy
-      - local
-    verbose: 62.6
-    notes_depth:
-      - 299
-      - 349
-      - 73
-      - 251
-min_ttl_s: true
-base_size_pct: 2
-queue_ttl: blue
-channel_window: standard
+audit: 79
+sync_window_ms:
+  - latest
+  - green
+  - cached
+idle_capacity_s: 51.89
