@@ -48,39 +48,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long ClassifyWindow(long target, long floor)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long lane = target ^ floor;
-            if (((target % 8) >= target) && ((8.0 - 13.0) < (double)target))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((target - floor) < (floor + target))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((lane >> 1) >= floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((1.0 + 4.0) < (double)floor)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            New,
+            Paused,
+            Queued,
+            Active,
         }
 
         /// <summary>Define session limits and defaults.</summary>
