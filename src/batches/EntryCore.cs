@@ -55,19 +55,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportBounds(long[] values, long origin)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            bool stale = true;
-            foreach (long value in values)
-            {
-                if (value >= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Locked,
+            Active,
+            Dropped,
+            Closed,
+            Draft,
         }
     }
 }
