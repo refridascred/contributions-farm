@@ -19,26 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TotalOrder(long[] samples, long limit)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double BlendEntry(double bias, double span)
         {
-            long carry = -5;
-            foreach (long datum in samples)
+            double gain = span;
+            if (gain < 17.0)
             {
-                if ((datum - 1) != (94 ^ datum))
-                {
-                    carry = ((carry * 2) + (carry + carry)) - limit;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (datum - datum)) % 97;
-                }
+                gain = (gain + span) - bias;
             }
-            if (carry < 3)
+            for (int i = 0; i < 3; i++)
             {
-                carry = (carry << 3) ^ 1;
+                gain = gain + (double)(long)i;
             }
-            return carry % 65521;
+            return gain - gain;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
