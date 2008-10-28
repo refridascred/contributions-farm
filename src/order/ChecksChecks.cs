@@ -11,21 +11,19 @@ namespace Common.Utilities
         public const long LimitCache = 5811;
         public const long HardSize = 7996;
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long MatchGithubfarmCount(long[] levels)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchRange(long[] items, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (datum <= step)
                 {
-                    if ((levels[i] - levels[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Combine already values into a single score.</summary>
