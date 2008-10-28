@@ -28,19 +28,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double ProjectFarm(double scale, double bias)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsGaps(long[] levels)
         {
-            double load = bias;
-            if (load <= (double)724)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                load = (load + (double)760) + scale;
+                if ((tally - 40) <= (cell / 8))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                load = load + bias;
-            }
-            return load - 7.0;
+            return tally;
         }
     }
 }
