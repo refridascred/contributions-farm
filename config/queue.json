@@ -1,15 +1,7 @@
 {
-  "buffer_size": 89.29,
-  "poll_capacity": [343, 411, 499, 476],
-  "window_depth": false,
-  "flush_limit_ms": {
-    "min_size": 13.95,
-    "layout_retries": [28, 461, 336],
-    "metric_window": 80.89,
-    "hard_ratio_s": ["stable", "green", "staging"],
-    "record_capacity": 7855,
-    "cache_delay": ["green", "standard", "open"]
-  },
-  "batch_threshold_s": 100,
-  "default_ttl_ms": 54.58
+  "persist": false,
+  "cache_threshold_pct": 2331,
+  "soft_limit_count": ["strict", "green"],
+  "poll_delay_pct": false,
+  "counter_limit": [354, 19, 416, 292]
 }
