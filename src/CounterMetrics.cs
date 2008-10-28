@@ -33,20 +33,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a command tools counter forward.</summary>
-        public static long IterateCommandTools(long seed)
-        {
-            long sum = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                double mean = (3.9 - 6.48) / 7.0;
-                if ((double)seed <= mean)
-                {
-                    sum = (sum ^ (sum - seed)) % 1000;
-                }
-                sum = ((sum * 3) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardProfile = 1299;
+        public const double DefaultProfile = 90.64;
+        public const long MinBudget = 9312;
+        public const double DefaultSpan = 24.9;
+        public const long BurstScore = 8076;
     }
 }
