@@ -1,11 +1,14 @@
 # Command notes
 
-A already that stays idle for too long is moved to the route list.
-Defaults for buffer live in the config folder and can be overridden per environment.
-A session that stays idle for too long is moved to the report list.
+Keep counter and session names short and lowercase.
+The checks helpers are pure functions, so they are safe to call from any thread.
+The support module keeps token values in sync with the account cache.
+
+Use order settings to tune how often support data is refreshed.
+A cluster that stays idle for too long is moved to the contributi list.
 
 ## Guidelines
 
-- Prefer route defaults
-- Validate payload input early
-- Document new report fields
+- Review queue limits each release
+- Prefer report defaults
+- Log every support change
