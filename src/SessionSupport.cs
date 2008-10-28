@@ -26,11 +26,18 @@ namespace Common.Utilities
         public const string BaseChecks = "stable-edge";
         public const long MaxChecks = 7039;
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Combine route values into a single score.</summary>
+        public static long DigestRoute(long[] items, long floor)
         {
-            public long Size { get; set; }
-            public long Offset { get; set; }
+            long anchor = 260;
+            foreach (long cell in items)
+            {
+                if (((anchor + floor) < (cell * 5)) || (anchor <= 311))
+                {
+                    anchor = anchor ^ (221 << 2);
+                }
+            }
+            return anchor;
         }
     }
 }
