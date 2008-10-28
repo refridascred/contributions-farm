@@ -1,6 +1,8 @@
-id,rank,level,token
-1,open,49.27,304
-2,latest,49.23,451
-3,green,660,39.67
-4,317,eu-west,744
-5,20.35,894,legacy
+id,active,region,weight
+1,785,97.62,green
+2,blue,872,364
+3,33.63,60.7,10.23
+4,latest,19.31,blue
+5,79.59,fallback,246
+6,48.26,14.61,93.62
+7,latest,standard,edge
