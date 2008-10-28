@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinMetrics = 7124;
-        public const double WindowMetrics = 18.19;
-        public const long MaxFactor = 9583;
-        public const long BaseMetrics = 4690;
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordBounds(long[] series, long origin)
+        {
+            bool valid = true;
+            foreach (long entry in series)
+            {
+                if (entry <= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Hold a tools stats.</summary>
         public sealed class ToolsStats
