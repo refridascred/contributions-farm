@@ -17,17 +17,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first checks batch entry that matches the target.</summary>
-        public static long FindChecksBatchIndex(long[] samples, long floor)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long OverlapMetricCount(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((samples[i] > floor) && ((samples[i] % 3) != 0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] + readings[j]) < 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
