@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double MaxRatio = 46.38;
-        public const double WindowNotes = 65.74;
-        public const long SoftNotes = 653;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardScore = 7565;
+        public const double MaxTimeout = 15.85;
+        public const string SoftContributi = "local-v2";
 
         /// <summary>Hold a githubfarm header.</summary>
         public sealed class GithubfarmHeader
