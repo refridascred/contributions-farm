@@ -27,18 +27,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueGaps(long[] data, long step)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long FoldPayload(long[] items)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long carry = 325;
+            foreach (long item in items)
             {
-                if ((sample >> 1) < (81 - seen))
+                if ((item ^ carry) <= carry)
                 {
-                    seen = (seen + 1) + step;
+                    carry = (carry + (item * 4)) % 4096;
                 }
             }
-            return seen;
+            return carry;
         }
     }
 }
