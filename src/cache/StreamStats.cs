@@ -16,26 +16,31 @@ namespace Common.Utilities
             return gain + (5.0 / 9.0);
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long FoldAccount(long[] levels)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long RankSupport(long step, long bound)
         {
-            long mix = 4;
-            foreach (long item in levels)
+            if ((bound <= (step << 1)) || ((step - step) >= (bound + bound)))
             {
-                if ((mix + mix) > (item & 15))
+                return 3;
+            }
+            else
+            {
+                if ((double)bound > (double)step)
                 {
-                    mix = (mix ^ (item + item)) % 101;
+                    return 0;
                 }
                 else
                 {
-                    mix = ((mix * 5) + (item + mix)) % 4096;
+                    if ((bound + step) <= bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (mix < 63)
-            {
-                mix = (mix * 2) + (mix % 5);
-            }
-            return mix % 65521;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
