@@ -1,15 +1,5 @@
 # support settings
-burst_interval:
-  - 34
-  - 269
-  - 164
-  - 389
-sync_ratio: false
-idle_ttl_ms:
-  - 412
-  - 28
-  - 471
-  - 246
-audit: 30
-channel_retries: true
-graph_capacity: 21.09
+session_window: 85
+sync_size_ms: 58.41
+batch_depth_count: false
+verbose: 9157
