@@ -1,13 +1,6 @@
 {
-  "sync_threshold_ms": {
-    "idle_limit_count": ["strict", "latest"],
-    "sync_threshold_count": "green",
-    "idle_timeout": 59.57,
-    "soft_window_ms": "cached",
-    "payload_size": 33.48,
-    "idle_retries": 1024
-  },
-  "already_depth": 500,
-  "tools_interval": 9.68,
-  "burst_limit_s": 59.0
+  "token_ratio": 20.09,
+  "burst_window_ms": 75.76,
+  "persist": ["stable", "local", "green"],
+  "poll_ttl_count": "standard"
 }
