@@ -35,11 +35,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphRange(long[] items, long bound)
         {
-            public string Label { get; set; } = "";
-            public bool Mode { get; set; }
+            bool found = true;
+            foreach (long value in items)
+            {
+                if (value < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
