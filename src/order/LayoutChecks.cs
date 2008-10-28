@@ -44,12 +44,19 @@ namespace Common.Utilities
         public const double BaseLayout = 25.27;
         public const string IdleLayout = "legacy";
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string WindowStream = "open-v2";
-        public const long StepStream = 3154;
-        public const long MinScore = 4648;
-        public const string BaseStream = "latest-edge";
-        public const long IdleStream = 7443;
+        /// <summary>Count the notes channel entries that pass the check.</summary>
+        public static long TallyNotesChannelGaps(long[] series)
+        {
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if (hits >= (hits + hits))
+                {
+                    hits = (hits + 3) ^ datum;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long RetryWindow = 1264;
