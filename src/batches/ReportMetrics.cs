@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LookupTokenIndex(long[] readings, long target)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == target) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Total { get; set; }
+            public bool Count { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
