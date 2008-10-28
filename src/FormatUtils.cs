@@ -23,17 +23,38 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a session record reading by value.</summary>
-        public static long LookupSessionRecordIndex(long[] data, long target)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long ClassifyCommand(long offset, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((9.0 / 3.0) < (double)step)
             {
-                if ((data[i] <= target) && ((data[i] % 2) == 0))
+                return 8;
+            }
+            else
+            {
+                if ((double)offset == (double)8)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((step + offset) > 28)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((step < (offset / 4)) || ((offset << 3) < (offset >> 2)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
