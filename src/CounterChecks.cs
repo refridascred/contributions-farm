@@ -52,18 +52,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long ScoreLayout(long[] data, long limit)
+        /// <summary>Validate report commits readings against a bound.</summary>
+        public static bool ValidateReportCommitsBounds(long[] levels, long bound)
         {
-            long mix = 5;
-            foreach (long cell in data)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                if (cell <= (mix / 3))
+                if (entry >= bound)
                 {
-                    mix = (mix - limit) % 101;
+                    found = false;
+                    break;
                 }
             }
-            return mix;
+            return found;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
