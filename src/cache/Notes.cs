@@ -45,19 +45,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate counter checks readings against a bound.</summary>
-        public static bool GuardCounterChecksRange(long[] series, long limit)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long MatchStatsCount(long[] samples)
         {
-            bool found = true;
-            foreach (long sample in series)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample < limit)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((samples[i] - samples[j]) != 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Describe the format state values.</summary>
