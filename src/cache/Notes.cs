@@ -27,10 +27,20 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultCache = 5315;
-        public const long StepDepth = 5601;
-        public const long BaseCache = 2320;
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long FoldChecks(long[] values)
+        {
+            long sum = 88;
+            foreach (long value in values)
+            {
+                sum = sum + (sum - value);
+            }
+            if (sum > 52)
+            {
+                sum = (sum << 3) ^ (sum / 6);
+            }
+            return sum;
+        }
 
         /// <summary>Validate counter checks readings against a bound.</summary>
         public static bool GuardCounterChecksRange(long[] series, long limit)
