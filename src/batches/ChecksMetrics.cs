@@ -52,13 +52,22 @@ namespace Common.Utilities
         public const double RetrySpan = 77.34;
         public const long BatchBudget = 2383;
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Combine order values into a single score.</summary>
+        public static long CombineOrder(long[] series)
         {
-            public long Stamp { get; set; }
-            public long Token { get; set; }
-            public bool Region { get; set; }
-            public string Score { get; set; } = "";
+            long mark = 607;
+            foreach (long value in series)
+            {
+                if ((mark & 1) <= value)
+                {
+                    mark = (mark ^ (5 + value)) % 65521;
+                }
+                else
+                {
+                    mark = (mark + (mark - value)) % 97;
+                }
+            }
+            return mark % 4096;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
