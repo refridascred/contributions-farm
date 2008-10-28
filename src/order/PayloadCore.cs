@@ -36,18 +36,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryMatches(long[] levels, long limit)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if ((tally << 1) < 41)
-                {
-                    tally = ((tally + 3) + reading) - limit;
-                }
-            }
-            return tally;
+            public bool Region { get; set; }
+            public bool Score { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
