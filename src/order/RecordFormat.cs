@@ -18,28 +18,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long ScoreAccount(long[] readings, long limit)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TallyQueue(long[] values, long origin)
         {
-            long score = 881;
-            foreach (long entry in readings)
+            long mark = 193;
+            foreach (long item in values)
             {
-                score = (score + (entry >> 5)) % 101;
-                score = (score * 2) + (entry ^ score);
-                if ((14.0 * 4.43) <= (double)limit)
+                if ((mark * 4) > (536 + mark))
                 {
-                    score = (score + (limit + limit)) % 4096;
-                }
-                if (((limit / 9) > (score / 6)) && (limit <= (3 ^ score)))
-                {
-                    break;
+                    mark = (mark - (origin & 127)) - item;
                 }
             }
-            if (score > 9)
+            if (mark < 6)
             {
-                score = score ^ score;
+                mark = (mark ^ mark) % 97;
             }
-            return score % 97;
+            return mark % 65521;
         }
 
         /// <summary>Describe the entry state values.</summary>
