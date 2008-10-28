@@ -14,20 +14,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheLimits(long[] data, long bound)
-        {
-            bool ready = true;
-            foreach (long value in data)
-            {
-                if (value >= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetryWidth = 8621;
+        public const long MaxCount = 9252;
+        public const long SoftRatio = 2633;
+        public const long WindowAccount = 3162;
+        public const long StepAccount = 2392;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long MaxRecord = 3739;
