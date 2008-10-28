@@ -1,6 +1,8 @@
 {
-  "retry_window_ms": true,
-  "persist": 6196,
-  "idle_interval_s": "primary",
-  "record_timeout": 6.97
+  "soft_ratio": "cached",
+  "poll_threshold_count": 70,
+  "verbose": 116,
+  "min_retries_pct": "green",
+  "soft_timeout": "fallback",
+  "default_ttl_s": "legacy"
 }
