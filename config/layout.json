@@ -1,6 +1,8 @@
 {
-  "sync_ttl": "fallback",
-  "verbose": ["primary", "open"],
-  "report_ttl": "edge",
-  "persist": [410, 229, 16]
+  "order_interval": true,
+  "cache_threshold_count": ["primary", "strict"],
+  "readonly": "fallback",
+  "soft_ttl_s": "staging",
+  "retry_depth": "legacy",
+  "batch_limit": 30
 }
