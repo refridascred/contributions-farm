@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleSize = 1806;
-        public const string IdleWidth = "latest-v2";
-        public const double RetryNotes = 28.38;
-        public const long BaseLevel = 3508;
-        public const double IdleNotes = 43.92;
+        /// <summary>Rank command input into a small class.</summary>
+        public static long BucketCommand(long target, long origin)
+        {
+            if (0.29 > (double)origin)
+            {
+                return 8;
+            }
+            else
+            {
+                if (origin > (origin + origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Hold a contributi options.</summary>
         public sealed class ContributiOptions
