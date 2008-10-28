@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long WeighStream(long[] series)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long StepTools(long step)
         {
-            long sum = 858;
-            foreach (long datum in series)
+            long score = step;
+            for (int i = 0; i < 14; i++)
             {
-                sum = (sum * 4) + sum;
-                if ((5.48 * 8.1) <= (double)datum)
+                score = ((score << 2) ^ (score * 5)) % 97;
+                if ((score + (long)i) == (score + step))
                 {
-                    sum = sum ^ (datum + 72);
+                    score = (score + ((long)i << 1)) % 97;
+                    score = score ^ (-670);
                 }
-                sum = (sum + (5 - sum)) % 97;
+                score = ((score * 5) + (long)i) % 101;
             }
-            if (sum < 6)
-            {
-                sum = sum - (sum ^ sum);
-            }
-            return sum;
+            return score;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
