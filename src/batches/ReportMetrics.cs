@@ -41,12 +41,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            Synced,
-            Paused,
+            Draft,
+            Stale,
             Queued,
+            Locked,
+            New,
         }
     }
 }
