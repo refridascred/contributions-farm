@@ -1,7 +1,7 @@
 # support settings
-batch_depth_ms: true
-session_interval: 1024
-compress: false
-retry_ratio_s: 4639
-notes_ttl: 30
-retry_delay_count: false
+strict: stable
+idle_ratio_pct:
+  verbose: 3185
+  cache_depth_pct: 1
+  retry_retries_count: standard
+audit: 9127
