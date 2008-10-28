@@ -2,13 +2,13 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     token TEXT,
-    state TEXT NOT NULL DEFAULT 'new',
-    rank INTEGER,
-    ratio REAL
+    created_at TIMESTAMP,
+    label TEXT,
+    ratio REAL,
+    owner TEXT NOT NULL
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_ratio ON stats_logs (ratio);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_owner ON stats_logs (owner);
 
-INSERT INTO stats_logs (token, state, rank, ratio) VALUES ('staging', 'cached', 18, 55.07);
-INSERT INTO stats_logs (token, state, rank, ratio) VALUES ('strict', 'standard', 96, 69.05);
-INSERT INTO stats_logs (token, state, rank, ratio) VALUES ('strict', 'primary', 47, 58.98);
+INSERT INTO stats_logs (token, label, ratio, owner) VALUES ('eu-west', 'primary', 51.71, 'primary');
+INSERT INTO stats_logs (token, label, ratio, owner) VALUES ('standard', 'cached', 3.26, 'primary');
