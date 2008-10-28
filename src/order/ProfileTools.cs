@@ -42,12 +42,11 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
-        {
-            public long Owner { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double MaxBatch = 35.44;
+        public const long IdleLevel = 8933;
+        public const long HardWidth = 1314;
+        public const double SoftBatch = 27.17;
 
         /// <summary>Project the next editor value.</summary>
         public static double ScaleEditor(double gain, double bias)
