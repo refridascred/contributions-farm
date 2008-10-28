@@ -28,13 +28,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LocateToolsIndex(long[] values, long offset)
         {
-            public long Level { get; set; }
-            public long Flag { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Size { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank notes input into a small class.</summary>
