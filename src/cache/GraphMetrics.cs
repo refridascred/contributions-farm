@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsHits(long[] items, long floor)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long ClassifyAlready(long floor, long bound)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            if (((bound + bound) > (49 % 7)) || ((floor ^ bound) >= bound))
             {
-                if ((cell & 31) > tally)
+                return 3;
+            }
+            else
+            {
+                if (6 < (floor + floor))
                 {
-                    tally = (tally + 1) + floor;
+                    return 0;
+                }
+                else
+                {
+                    if (((bound ^ floor) <= floor) && ((floor - 3) == (50 - bound)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the context phase values.</summary>
