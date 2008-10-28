@@ -39,39 +39,10 @@ namespace Common.Utilities
             return drift - (1.82 + weight);
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long BucketBatch(long offset, long target)
-        {
-            long edge = offset ^ target;
-            if ((edge & 31) > (target - 64))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((235 % 64) < edge))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset - edge) == (offset % 7))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)edge < (16.0 + 8.65))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string DefaultGraph = "local-edge";
+        public const long CacheFactor = 7477;
+        public const string LimitScore = "latest-v2";
+        public const long RetryBudget = 280;
     }
 }
