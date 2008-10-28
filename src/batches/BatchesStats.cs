@@ -20,15 +20,11 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long StepPayload(long step)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long result = step;
-            for (int i = 0; i < 15; i++)
-            {
-                result = ((result * 3) + (long)i) % 4093;
-            }
-            return result;
+            public double Weight { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Blend two report record measurements.</summary>
