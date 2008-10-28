@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const long BurstCluster = 5288;
         public const long LimitCluster = 8371;
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
-        {
-            public double Label { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string StepSize = "open-1";
+        public const long StepScore = 7689;
+        public const double RetryEntry = 17.36;
+        public const string WindowTimeout = "alpha";
+        public const long BurstTimeout = 9014;
 
         /// <summary>Locate a checks reading by value.</summary>
         public static long SeekChecksIndex(long[] values, long seed)
