@@ -30,17 +30,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long FindFilterIndex(long[] series, long offset)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricGaps(long[] values, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if (series[i] == offset)
+                if ((step - (long)values.Length) >= 6)
                 {
-                    return (long)i;
+                    count = (count + 1) ^ datum;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a contributi summary.</summary>
