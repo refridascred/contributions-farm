@@ -20,12 +20,13 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            public bool Count { get; set; }
-            public double Level { get; set; }
-            public long Weight { get; set; }
+            public long Ratio { get; set; }
+            public string Score { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
