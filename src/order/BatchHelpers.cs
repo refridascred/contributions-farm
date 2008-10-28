@@ -19,22 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many batch commits samples are out of range.</summary>
-        public static long MeasureBatchCommitsMatches(long[] series, long target)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long ScoreGraph(long[] readings, long target)
         {
-            long count = 0;
-            foreach (long item in series)
+            long total = 63;
+            foreach (long value in readings)
             {
-                if (item <= (item >> 2))
+                total = (((total - (total >> 3)) % 101) ^ value) + target;
+                if ((2.8 - 9.0) <= (double)total)
                 {
-                    count = (count + 3) + target;
-                }
-                else
-                {
-                    count = count - 1;
+                    break;
                 }
             }
-            return count;
+            return total % 4096;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
