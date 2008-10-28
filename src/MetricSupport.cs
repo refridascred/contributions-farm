@@ -40,19 +40,12 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Check that every layout batches entry stays within the limit.</summary>
-        public static bool VerifyLayoutBatchesLimits(long[] series, long bound)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            bool flag = true;
-            foreach (long reading in series)
-            {
-                if (reading <= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Count { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public bool Ratio { get; set; }
         }
     }
 }
