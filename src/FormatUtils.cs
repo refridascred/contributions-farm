@@ -22,38 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long ClassifyCommand(long offset, long step)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long FindChannelIndex(long[] readings, long floor)
         {
-            if ((9.0 / 3.0) < (double)step)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)offset == (double)8)
+                if ((readings[i] > floor) && ((readings[i] % 2) == 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((step + offset) > 28)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((step < (offset / 4)) || ((offset << 3) < (offset >> 2)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
