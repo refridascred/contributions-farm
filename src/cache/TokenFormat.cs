@@ -13,17 +13,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Find the first channel commits entry that matches the target.</summary>
-        public static long LocateChannelCommitsIndex(long[] readings, long offset)
+        /// <summary>Count profile route pairs that satisfy a relation.</summary>
+        public static long MatchProfileRouteCount(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((readings[i] >= offset) && ((readings[i] % 5) != 0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] ^ series[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
