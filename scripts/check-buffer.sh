@@ -6,16 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local cached blue; do
-    log "checking ${item}"
-done
+BUFFER_LIMIT=495
+log "limit is ${BUFFER_LIMIT}"
 
-mode="${1:-eu-west}"
-case "${mode}" in
-    cached)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
