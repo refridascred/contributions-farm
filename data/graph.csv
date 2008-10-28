@@ -1,10 +1,7 @@
-id,label,weight,rank
-1,837,4.19,latest
-2,9.87,cached,9.92
-3,standard,592,8.63
-4,latest,primary,51.45
-5,blue,96.77,690
-6,528,strict,edge
-7,237,268,legacy
-8,892,blue,standard
-9,328,668,76
+id,active,ratio
+1,541,421
+2,682,eu-west
+3,14.1,649
+4,30.07,local
+5,28.21,70.33
+6,open,20.84
