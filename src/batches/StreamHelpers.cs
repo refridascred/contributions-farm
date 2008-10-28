@@ -55,18 +55,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricOutliers(long[] samples)
+        /// <summary>Validate order format readings against a bound.</summary>
+        public static bool CheckOrderFormatLimits(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                if (cell < 460)
+                if (datum >= origin)
                 {
-                    count = count + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Rank githubfarm queue input into a small class.</summary>
