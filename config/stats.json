@@ -1,28 +1,5 @@
 {
-  "schema_size": 42,
-  "hard_capacity": {
-    "cache_delay": 27.48,
-    "max_size_count": {
-      "verbose": 26.84,
-      "min_delay_pct": "strict",
-      "soft_depth": 48.64
-    },
-    "burst_limit_s": "blue",
-    "hard_depth_count": [490, 298, 3],
-    "enabled": 250,
-    "report_size": 500
-  },
-  "verbose": ["stable", "stable"],
-  "compress": [239, 456, 221],
-  "readonly": {
-    "hard_ttl": 2067,
-    "warm_depth": 8288,
-    "poll_depth_pct": 100,
-    "strict": 55,
-    "audit": {
-      "hard_size_s": "primary",
-      "stream_ratio": true,
-      "poll_size_ms": "open"
-    }
-  }
+  "report_window": 1750,
+  "warm_threshold_ms": 30,
+  "poll_window": 0.26
 }
