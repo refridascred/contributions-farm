@@ -58,19 +58,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsLimits(long[] series, long seed)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmRange(long[] readings, long seed)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                if (entry >= seed)
+                if (item != seed)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
     }
 }
