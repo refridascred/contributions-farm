@@ -1,6 +1,8 @@
 {
-  "readonly": "latest",
-  "default_ratio_count": "blue",
-  "buffer_interval": "staging",
-  "max_depth": 98.46
+  "idle_delay": false,
+  "readonly": "fallback",
+  "max_ttl_count": 60,
+  "soft_delay_s": 36,
+  "graph_timeout": 85.62,
+  "profile_timeout": false
 }
