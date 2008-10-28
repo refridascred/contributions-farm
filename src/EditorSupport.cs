@@ -47,21 +47,39 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long MatchAccountCount(long[] samples)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long floor, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long span = floor - bound;
+            if ((span % 100) <= (bound + bound))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (((3 / 9) != (span + floor)) && ((span + span) >= (span * 2)))
                 {
-                    if ((samples[i] + samples[j]) != 15)
+                    return 4;
+                }
+                else
+                {
+                    if ((span + 205) != (307 % 100))
                     {
-                        matches = matches + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)floor > (3.4 - 9.19))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the schema status values.</summary>
