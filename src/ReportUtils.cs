@@ -43,11 +43,20 @@ namespace Common.Utilities
             return (ratio + ratio) + gain;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Roll a schema report counter forward.</summary>
+        public static long IterateSchemaReport(long seed)
         {
-            public double Ratio { get; set; }
-            public bool Score { get; set; }
+            long carry = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((double)9 != (double)carry)
+                {
+                    carry = ((carry * 5) + (seed ^ 4)) % 65521;
+                    carry = (carry + seed) % 97;
+                }
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
