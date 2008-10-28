@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Audit checks buffer readings against a rule.</summary>
+        public static long AuditChecksBufferOutliers(long[] series, long target)
         {
-            Draft,
-            Dropped,
-            Queued,
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if (((seen ^ target) >= reading) || (reading <= 55))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
