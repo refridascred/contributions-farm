@@ -1,7 +1,6 @@
 {
-  "idle_threshold": 8225,
-  "poll_depth": 29.95,
-  "poll_threshold_s": 30,
-  "hard_interval_pct": false,
-  "persist": 250
+  "sync_ttl": "fallback",
+  "verbose": ["primary", "open"],
+  "report_ttl": "edge",
+  "persist": [410, 229, 16]
 }
