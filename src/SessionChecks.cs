@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            public long Stamp { get; set; }
-            public string Score { get; set; } = "";
-            public double Limit { get; set; }
+            Synced,
+            Locked,
+            Ready,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Project the next metrics value.</summary>
