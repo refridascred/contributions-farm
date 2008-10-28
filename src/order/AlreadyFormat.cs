@@ -22,18 +22,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many window metrics samples are out of range.</summary>
-        public static long AuditWindowMetricsOutliers(long[] values, long offset)
+        /// <summary>Project the next channel value.</summary>
+        public static double ProjectChannel(double gain, double bias)
         {
-            long hits = 0;
-            foreach (long item in values)
+            double gain2 = bias + (bias * 3.5);
+            if (gain2 >= (double)43)
             {
-                if ((item & 127) <= ((long)values.Length >> 2))
-                {
-                    hits = (hits + 2) - offset;
-                }
+                gain2 = (gain2 - bias) - gain;
             }
-            return hits;
+            else
+            {
+                gain2 = gain2 - (gain2 - 1.1);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain2 = (gain2 - (double)19) + (double)(long)i;
+            }
+            return gain2 - (bias - 16.0);
         }
 
         /// <summary>Hold a batch record.</summary>
