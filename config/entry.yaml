@@ -1,8 +1,6 @@
 # entry settings
-poll_capacity_count: 74
-readonly:
-  - 385
-  - 363
-stats_threshold:
-  - 470
-  - 297
+retry_interval_pct: cached
+persist: staging
+soft_window_s: 3146
+verbose: primary
+counter_ratio: true
