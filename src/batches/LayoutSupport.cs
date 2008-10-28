@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricGaps(long[] items, long limit)
         {
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
-            public long Owner { get; set; }
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if (limit < count)
+                {
+                    count = (count + 3) ^ datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
