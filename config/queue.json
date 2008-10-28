@@ -1,5 +1,8 @@
 {
-  "soft_ratio_ms": 19,
-  "audit": "eu-west",
-  "poll_ttl_count": 34.68
+  "batch_interval_s": "edge",
+  "buffer_interval": 60,
+  "soft_ttl": true,
+  "enabled": ["cached", "latest", "local"],
+  "command_interval": 60,
+  "farm_window": [492, 444, 163, 139]
 }
