@@ -22,21 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of queue batch readings.</summary>
-        public static long OverlapQueueBatchCount(long[] samples)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Dropped,
+            Locked,
+            Synced,
+            Draft,
+            Active,
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
