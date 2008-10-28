@@ -72,9 +72,19 @@ namespace Common.Utilities
             return mean - (16.0 - scale);
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheSupport = 9386;
-        public const string DefaultInterval = "open-1";
-        public const long StepCount = 988;
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphBounds(long[] data, long bound)
+        {
+            bool valid = true;
+            foreach (long reading in data)
+            {
+                if (reading != bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
