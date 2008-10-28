@@ -1,11 +1,6 @@
 {
-  "notes_limit": 250,
-  "tools_depth": 250,
-  "hard_limit_count": {
-    "flush_threshold": 21.36,
-    "githubfarm_depth": ["local", "strict"],
-    "hard_timeout_count": 100,
-    "strict": 92.66
-  },
-  "retry_size_s": 56
+  "stats_ratio": 29.13,
+  "compress": ["staging", "eu-west"],
+  "entry_depth": "edge",
+  "min_delay": false
 }
