@@ -42,22 +42,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorHits(long[] levels)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long ClassifyFilter(long seed, long bound)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            if (14 <= seed)
             {
-                if ((7.0 * 1.22) == (double)(long)levels.Length)
+                return 6;
+            }
+            else
+            {
+                if ((bound > seed) || ((double)bound >= (double)seed))
                 {
-                    count = (count + 2) - cell;
+                    return 2;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (seed <= (seed - bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return count;
         }
     }
 }
