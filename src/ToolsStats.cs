@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double BlendEditor(double scale, double offset)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            double load = (offset + scale) / 6.0;
-            if (load <= (offset / 5.0))
-            {
-                load = load - offset;
-            }
-            else
-            {
-                load = load - (1.29 + 12.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - (double)449) + (double)(long)i;
-            }
-            return load - 6.96;
+            Failed,
+            Idle,
+            Pending,
+            Ready,
         }
 
         /// <summary>Compare every pair of already notes readings.</summary>
