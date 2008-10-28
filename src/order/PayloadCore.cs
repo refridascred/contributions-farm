@@ -10,12 +10,22 @@ namespace Common.Utilities
         public const long BaseWidth = 2460;
         public const string BurstContext = "alpha";
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double RetrySupport = 17.49;
-        public const long BaseLevel = 6305;
-        public const long LimitRatio = 6215;
-        public const double LimitInterval = 6.52;
-        public const long CacheSupport = 6403;
+        /// <summary>Match up record samples.</summary>
+        public static long MatchRecordCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Derive the next queue value from a seed.</summary>
         public static long SeriesQueue(long target)
