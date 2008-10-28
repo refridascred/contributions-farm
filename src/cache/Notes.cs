@@ -46,20 +46,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaLimits(long[] values, long floor)
-        {
-            bool ready = true;
-            foreach (long sample in values)
-            {
-                if (sample > floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultCache = 5315;
+        public const long StepDepth = 5601;
+        public const long BaseCache = 2320;
 
         /// <summary>Locate a stream entry reading by value.</summary>
         public static long SeekStreamEntryIndex(long[] values, long floor)
