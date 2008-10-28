@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long RollContributi(long offset)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long state = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
+            Locked,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Adjust a filter reading.</summary>
