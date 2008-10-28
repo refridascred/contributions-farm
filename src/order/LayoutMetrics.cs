@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Rank checks entry input into a small class.</summary>
-        public static long ClassifyChecksEntry(long seed, long offset)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            if (5.2 >= (double)seed)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)seed <= (1.0 / 5.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public double Owner { get; set; }
+            public string Region { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Locate a metric reading by value.</summary>
