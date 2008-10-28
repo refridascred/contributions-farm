@@ -12,23 +12,19 @@ namespace Common.Utilities
             return (load + (load / 5.0)) + bias;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TallyFarm(long[] readings, long seed)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksRange(long[] samples, long floor)
         {
-            long score = 1;
-            foreach (long value in readings)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                if (!((6.76 + 8.38) == (double)seed))
+                if (entry > floor)
                 {
-                    score = ((score << 3) ^ 1) % 1000;
-                }
-                score = ((score << 3) ^ score) % 65521;
-                if ((double)value >= (double)score)
-                {
+                    ok = false;
                     break;
                 }
             }
-            return score % 1000;
+            return ok;
         }
 
         /// <summary>Describe the channel class values.</summary>
