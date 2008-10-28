@@ -1,7 +1,8 @@
 {
-  "persist": true,
-  "cache_size": 76,
-  "default_ratio": "eu-west",
-  "verbose": "blue",
-  "stream_retries": "legacy"
+  "poll_size": 55,
+  "base_threshold_s": [262, 171, 460],
+  "readonly": [200, 294],
+  "sync_size": "primary",
+  "warm_depth_pct": "cached",
+  "cache_ratio_count": true
 }
