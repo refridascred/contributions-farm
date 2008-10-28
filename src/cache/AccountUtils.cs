@@ -22,18 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaHits(long[] series, long floor)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsMatches(long[] levels)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if ((20 > (item & 15)) && !((92 & 15) < (floor >> 2)))
+                if ((double)reading > (18.0 + 7.11))
                 {
-                    tally = tally + 3;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the filter state values.</summary>
