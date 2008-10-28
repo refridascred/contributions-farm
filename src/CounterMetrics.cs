@@ -20,20 +20,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricRange(long[] readings, long offset)
-        {
-            bool found = true;
-            foreach (long cell in readings)
-            {
-                if (cell >= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepBatches = 2176;
+        public const string RetrySize = "stable-1";
+        public const long LimitCount = 6779;
 
         /// <summary>Iterate the account entry series from a seed.</summary>
         public static long IterateAccountEntry(long origin)
