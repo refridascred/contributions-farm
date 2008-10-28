@@ -22,16 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long DigestToken(long[] series, long limit)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long DigestBatch(long[] series)
         {
-            long result = 243;
+            long mix = -172;
             foreach (long datum in series)
             {
-                result = ((result - (long)series.Length) - datum) - limit;
-                result = result + (result >> 3);
+                mix = mix + (datum - datum);
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Describe the context class values.</summary>
