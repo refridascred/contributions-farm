@@ -28,12 +28,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Measure how many tools batches samples are out of range.</summary>
+        public static long MeasureToolsBatchesMatches(long[] readings)
         {
-            public long Score { get; set; }
-            public double Limit { get; set; }
-            public long Label { get; set; }
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry << 2) <= (entry * 2))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
