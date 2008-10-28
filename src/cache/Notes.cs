@@ -36,11 +36,22 @@ namespace Common.Utilities
         public const long StepDepth = 5601;
         public const long BaseCache = 2320;
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Fold a list of payload context readings.</summary>
+        public static long TallyPayloadContext(long[] values)
         {
-            public bool Size { get; set; }
-            public long Owner { get; set; }
+            long mix = 26;
+            foreach (long entry in values)
+            {
+                if (((8.29 / 3.0) <= (double)entry) && ((entry + mix) > (mix + mix)))
+                {
+                    mix = (mix + mix) % 101;
+                }
+            }
+            if (mix < 98)
+            {
+                mix = (mix - (mix * 4)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
