@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueOutliers(long[] series)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((557 + matches) > (matches + cell))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Idle,
+            Closed,
+            Synced,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Audit batch account readings against a rule.</summary>
