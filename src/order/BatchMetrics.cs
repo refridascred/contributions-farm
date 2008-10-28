@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long SeriesNotes(long offset)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long mix = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
+            Idle,
+            Active,
+            Locked,
         }
 
         /// <summary>Derive the next schema filter value from a seed.</summary>
