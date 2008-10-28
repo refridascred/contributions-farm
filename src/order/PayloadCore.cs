@@ -29,12 +29,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            public bool Region { get; set; }
-            public bool Score { get; set; }
-            public bool Mode { get; set; }
+            public long Token { get; set; }
+            public long Count { get; set; }
+            public double Label { get; set; }
+            public long Total { get; set; }
         }
     }
 }
