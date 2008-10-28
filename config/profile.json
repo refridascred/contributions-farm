@@ -1,13 +1,7 @@
 {
-  "readonly": {
-    "sync_ttl": true,
-    "sync_delay_count": "primary",
-    "base_ttl_ms": 16,
-    "context_depth": 8484,
-    "graph_ttl": "standard"
-  },
-  "metrics_limit": 2.06,
-  "base_window_count": "edge",
-  "persist": "edge",
-  "default_timeout_ms": "latest"
+  "buffer_ratio": 2.37,
+  "graph_interval": ["blue", "edge"],
+  "max_delay": 35,
+  "flush_ratio_s": "eu-west",
+  "max_capacity_s": false
 }
