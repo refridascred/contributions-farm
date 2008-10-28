@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileHits(long[] items)
+        /// <summary>Audit metrics profile readings against a rule.</summary>
+        public static long TallyMetricsProfileGaps(long[] items, long origin)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if (((3.7 / 8.0) > (double)tally) && (((long)items.Length < tally) && ((datum + tally) >= datum)))
+                if (((origin - 53) >= origin) || ((8.9 + 9.0) < (double)origin))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = (count + 2) ^ sample;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Locate a githubfarm commits reading by value.</summary>
