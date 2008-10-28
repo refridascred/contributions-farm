@@ -43,19 +43,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenLimits(long[] series, long origin)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksGaps(long[] levels)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if (entry <= origin)
+                if (entry >= (matches + matches))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
