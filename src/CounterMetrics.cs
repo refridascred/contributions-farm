@@ -33,15 +33,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the account entry series from a seed.</summary>
-        public static long IterateAccountEntry(long origin)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long IterateReport(long offset)
         {
-            long acc = origin;
-            for (int i = 0; i < 13; i++)
+            long mix = offset;
+            for (int i = 0; i < 17; i++)
             {
-                acc = ((acc * 2) + (long)i) % 1000;
+                long edge = offset;
+                if ((double)edge > (3.0 * 8.0))
+                {
+                    edge = edge ^ ((long)i & 7);
+                    edge = (edge << 2) ^ edge;
+                }
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
