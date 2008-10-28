@@ -66,17 +66,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LocateNotesIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double IdleInterval = 86.9;
+        public const long BurstContext = 5136;
+        public const long WindowContext = 4221;
+        public const string IdleContext = "fallback";
     }
 }
