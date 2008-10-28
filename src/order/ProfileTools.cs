@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long CombineFarm(long[] items)
         {
-            public long Owner { get; set; }
-            public double Token { get; set; }
-            public string Level { get; set; } = "";
-            public long Offset { get; set; }
+            long score = 7;
+            foreach (long value in items)
+            {
+                if ((value ^ score) < (8 + 761))
+                {
+                    score = (score ^ (score % 2)) % 101;
+                }
+            }
+            return score;
         }
 
         /// <summary>Match up order samples.</summary>
