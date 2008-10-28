@@ -57,21 +57,17 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Derive the next schema context value from a seed.</summary>
-        public static long SeriesSchemaContext(long step)
+        /// <summary>Find the first batches token entry that matches the target.</summary>
+        public static long FindBatchesTokenIndex(long[] levels, long target)
         {
-            long total = step;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = (total + (total & 63)) % 65521;
-                total = (total ^ (total - total)) % 101;
-                if (step > (step - step))
+                if (levels[i] >= target)
                 {
-                    total = (total ^ (total * 2)) % 1000;
+                    return (long)i;
                 }
-                total = ((total * 5) + (long)i) % 1000;
             }
-            return total;
+            return -1;
         }
     }
 }
