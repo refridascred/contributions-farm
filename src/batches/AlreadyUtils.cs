@@ -92,11 +92,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            public double Level { get; set; }
-            public string Offset { get; set; } = "";
+            public long Level { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
