@@ -47,39 +47,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long GradeMetric(long seed, long offset)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileMatches(long[] series)
         {
-            long offset2 = seed ^ offset;
-            if (offset >= (offset % 100))
+            long hits = 0;
+            foreach (long item in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((28 << 2) >= (seed + seed))
+                if (((0 <= hits) || ((item + item) >= 556)) && ((hits - item) >= (item >> 2)))
                 {
-                    return 7;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    if ((seed + offset) < offset2)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (5.9 >= (double)offset)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
