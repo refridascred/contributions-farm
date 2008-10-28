@@ -50,11 +50,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Combine buffer editor values into a single score.</summary>
+        public static long FoldBufferEditor(long[] values, long limit)
         {
-            public double Size { get; set; }
-            public long Ratio { get; set; }
+            long acc = -8;
+            foreach (long value in values)
+            {
+                acc = ((((acc << 3) ^ (80 % 24)) % 1000) ^ value) + limit;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Describe the order level values.</summary>
