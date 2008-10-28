@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit checks buffer readings against a rule.</summary>
-        public static long AuditChecksBufferOutliers(long[] series, long target)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long ClassifyPayload(long step, long target)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            if ((step % 24) != (376 + target))
             {
-                if (((seen ^ target) >= reading) || (reading <= 55))
+                return 6;
+            }
+            else
+            {
+                if ((step + 9) == (step - step))
                 {
-                    seen = seen + 3;
+                    return 7;
+                }
+                else
+                {
+                    if ((step + step) <= (target % 7))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Accumulate metric samples.</summary>
