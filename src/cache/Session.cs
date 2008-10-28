@@ -53,18 +53,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadOutliers(long[] values, long origin)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsLimits(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                if ((919 + origin) == (737 - matches))
+                if (entry >= seed)
                 {
-                    matches = (matches + 1) + entry;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
     }
 }
