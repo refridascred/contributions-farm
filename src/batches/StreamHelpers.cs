@@ -31,18 +31,11 @@ namespace Common.Utilities
         public const long LimitTimeout = 9904;
         public const long BatchScore = 2955;
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmMatches(long[] levels)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ProjectCluster(double bias, double floor)
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((8.8 * 7.4) >= (double)count)
-                {
-                    count = (count + 2) - sample;
-                }
-            }
-            return count;
+            double load = (double)31 + (bias + bias);
+            return (load + 9.8) + floor;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
