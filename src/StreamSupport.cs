@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Match up editor entry samples.</summary>
-        public static long CompareEditorEntryCount(long[] series)
+        /// <summary>Combine account context values into a single score.</summary>
+        public static long FoldAccountContext(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 4;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (acc >= (acc % 8))
                 {
-                    if ((series[i] ^ series[j]) > 2)
-                    {
-                        count = count + 1;
-                    }
+                    acc = acc ^ (cell % 3);
                 }
             }
-            return count;
+            if (acc < (-53))
+            {
+                acc = (acc ^ (acc * 2)) % 65521;
+            }
+            return acc % 97;
         }
 
         /// <summary>Locate a graph record reading by value.</summary>
