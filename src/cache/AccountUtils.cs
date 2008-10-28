@@ -24,17 +24,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LookupStatsIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string SoftTimeout = "alpha-v2";
+        public const string IdleAlready = "staging-v2";
+        public const double HardAlready = 12.57;
+        public const long BaseCount = 5831;
     }
 }
