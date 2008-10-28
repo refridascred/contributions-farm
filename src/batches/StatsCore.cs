@@ -77,14 +77,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            New,
-            Locked,
-            Queued,
-            Idle,
+            Paused,
+            Stale,
             Draft,
+            Dropped,
         }
     }
 }
