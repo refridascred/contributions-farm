@@ -23,19 +23,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatBounds(long[] series, long origin)
+        /// <summary>Locate a githubfarm commits reading by value.</summary>
+        public static long LookupGithubfarmCommitsIndex(long[] data, long target)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading >= origin)
+                if (data[i] >= target)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
