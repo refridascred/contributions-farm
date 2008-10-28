@@ -13,10 +13,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseEditor = 349;
-        public const long StepLevel = 8770;
-        public const long HardLevel = 604;
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorGaps(long[] data)
+        {
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((5.77 + 17.0) <= (double)count)
+                {
+                    count = (count + 2) ^ reading;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
         public static long SeekQueueIndex(long[] values, long floor)
