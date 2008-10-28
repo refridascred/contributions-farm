@@ -67,14 +67,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsOutliers(long[] series)
         {
-            Ready,
-            Retry,
-            Done,
-            Queued,
-            Paused,
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if (reading <= (hits % 97))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
