@@ -66,16 +66,14 @@ namespace Common.Utilities
         public const double WindowSize = 83.13;
         public const double SoftToken = 27.86;
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long SeriesBatch(long offset)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long sum = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                sum = sum + ((long)i + offset);
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
+            Pending,
+            Done,
+            Retry,
+            Ready,
+            Idle,
         }
     }
 }
