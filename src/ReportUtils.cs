@@ -36,11 +36,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double AdjustRoute(double gain, double offset)
+        /// <summary>Fold a list of buffer checks readings.</summary>
+        public static long ScoreBufferChecks(long[] series, long origin)
         {
-            double ratio = offset;
-            return (ratio + ratio) + gain;
+            long sum = 578;
+            foreach (long item in series)
+            {
+                if ((long)series.Length != (sum + sum))
+                {
+                    sum = (sum * 3) + (sum & 15);
+                }
+                if ((origin / 8) == (item / 6))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
