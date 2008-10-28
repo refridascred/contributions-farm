@@ -10,13 +10,22 @@ namespace Common.Utilities
         public const double MaxTimeout = 15.85;
         public const string SoftContributi = "local-v2";
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long ScoreMetrics(long[] readings)
         {
-            public string Flag { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Score { get; set; }
-            public string Level { get; set; } = "";
+            long acc = 317;
+            foreach (long entry in readings)
+            {
+                if ((entry ^ entry) < (entry / 8))
+                {
+                    acc = ((acc * 3) + (acc * 4)) % 4096;
+                }
+                if ((entry >> 5) >= (142 - acc))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
