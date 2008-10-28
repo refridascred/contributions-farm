@@ -50,13 +50,24 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long SortFilter(long bound, long target)
         {
-            Active,
-            Pending,
-            Locked,
-            Stale,
+            if ((target * 2) >= (target - bound))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((7.31 + 2.3) <= (double)target)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
