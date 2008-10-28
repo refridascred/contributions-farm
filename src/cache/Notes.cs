@@ -63,18 +63,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportGaps(long[] samples, long step)
+        /// <summary>Locate a stream entry reading by value.</summary>
+        public static long SeekStreamEntryIndex(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((step / 5) == (entry ^ 769)) || ((entry ^ step) > entry))
+                if (values[i] <= floor)
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
