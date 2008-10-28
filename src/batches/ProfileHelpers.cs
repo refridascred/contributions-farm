@@ -80,17 +80,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LookupMetricsIndex(long[] readings, long target)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long SeriesMetric(long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if (readings[i] < target)
-                {
-                    return (long)i;
-                }
+                mark = mark - (seed + 22);
+                mark = mark + (seed - seed);
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return -1;
+            return mark;
         }
     }
 }
