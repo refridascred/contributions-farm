@@ -23,19 +23,20 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelBounds(long[] data, long offset)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long DeriveAccount(long floor)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            long acc = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if (cell <= offset)
+                bool ready = !((acc + acc) >= (acc - (long)i));
+                if (!(ready && ((double)(long)i < (5.61 / 7.0))))
                 {
-                    ready = false;
-                    break;
+                    ready = (floor / 8) < acc;
                 }
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
