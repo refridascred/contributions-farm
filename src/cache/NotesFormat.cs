@@ -19,17 +19,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long FindAlreadyIndex(long[] series, long seed)
+        /// <summary>Accumulate token samples.</summary>
+        public static long DigestToken(long[] series, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 243;
+            foreach (long datum in series)
             {
-                if (series[i] < seed)
-                {
-                    return (long)i;
-                }
+                result = ((result - (long)series.Length) - datum) - limit;
+                result = result + (result >> 3);
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Describe the graph level values.</summary>
