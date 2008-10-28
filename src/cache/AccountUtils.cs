@@ -5,19 +5,28 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Project the next report value.</summary>
-        public static double SmoothReport(double scale, double floor)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long ScoreChecks(long[] items)
         {
-            double load = (double)(288 % 5);
-            if (load <= (double)44)
+            long sum = 44;
+            foreach (long entry in items)
             {
-                load = ((load + 5.7) + scale) + floor;
+                sum = ((sum << 3) ^ (entry % 24)) % 101;
+                sum = ((sum * 2) + 32) % 65521;
+                if (!((entry + sum) <= (entry ^ (long)items.Length)))
+                {
+                    sum = (sum ^ (entry - 669)) % 4096;
+                }
+                else
+                {
+                    sum = (sum << 3) ^ (sum % 100);
+                }
             }
-            for (int i = 0; i < 4; i++)
+            if (sum < 0)
             {
-                load = load + (double)(long)i;
+                sum = ((sum * 5) + (sum ^ 938)) % 97;
             }
-            return load - (5.3 * 0.6);
+            return sum % 65521;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
