@@ -1,4 +1,4 @@
 # support settings
-cache_delay: 500
-strict: true
-burst_interval_count: true
+compress: 40
+context_depth: false
+cache_threshold: open
