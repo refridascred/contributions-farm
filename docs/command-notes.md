@@ -1,10 +1,11 @@
 # Command notes
 
-The account helpers are pure functions, so they are safe to call from any thread.
-The tools report groups every metrics by already.
+Use metric settings to tune how often command data is refreshed.
+Keep token and farm names short and lowercase.
 
 ## Guidelines
 
-- Document new channel fields
-- Keep profile values small
-- Prefer contributi defaults
+- Validate queue input early
+- Review editor limits each release
+- Log every window change
+- Prefer account defaults
