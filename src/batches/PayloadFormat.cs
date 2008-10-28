@@ -11,21 +11,17 @@ namespace Common.Utilities
         public const double MaxInterval = 78.45;
         public const string HardSize = "local-edge";
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long MatchReportCount(long[] levels)
+        /// <summary>Look up the position of a payload window sample.</summary>
+        public static long LocatePayloadWindowIndex(long[] items, long step)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((items[i] > step) && ((items[i] % 3) != 0))
                 {
-                    if ((levels[i] - levels[j]) == 15)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
