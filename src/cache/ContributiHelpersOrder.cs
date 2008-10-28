@@ -13,17 +13,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LookupNotesIndex(long[] samples, long bound)
+        /// <summary>Audit report queue readings against a rule.</summary>
+        public static long TallyReportQueueHits(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if (samples[i] >= bound)
+                if ((4.7 * 14.0) == (double)sample)
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
