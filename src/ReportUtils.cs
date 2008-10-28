@@ -43,21 +43,11 @@ namespace Common.Utilities
             return (ratio + ratio) + gain;
         }
 
-        /// <summary>Roll a schema report counter forward.</summary>
-        public static long IterateSchemaReport(long seed)
-        {
-            long carry = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((double)9 != (double)carry)
-                {
-                    carry = ((carry * 5) + (seed ^ 4)) % 65521;
-                    carry = (carry + seed) % 97;
-                }
-                carry = ((carry * 5) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleRatio = 2473;
+        public const long DefaultBudget = 295;
+        public const long DefaultCommand = 8284;
+        public const double IdleCommand = 88.46;
 
         /// <summary>Compare every pair of order readings.</summary>
         public static long CompareOrderCount(long[] series)
