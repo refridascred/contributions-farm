@@ -51,11 +51,21 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MaxSize = 1378;
-        public const long MinInterval = 4954;
-        public const string MaxMetric = "stable";
-        public const string RetryTimeout = "legacy-v2";
-        public const double BurstMetric = 1.98;
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long MatchTokenCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
