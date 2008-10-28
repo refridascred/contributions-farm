@@ -45,11 +45,26 @@ namespace Common.Utilities
         public const double LimitStats = 50.16;
         public const long MaxScore = 4092;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string DefaultFactor = "standard";
-        public const string BatchScore = "primary-edge";
-        public const double RetrySpan = 77.34;
-        public const long BatchBudget = 2383;
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long ClassifyCluster(long bound, long bound2)
+        {
+            long slot = bound + bound2;
+            if ((bound >= 84) && ((9.7 + 14.0) == (double)bound2))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((bound2 / 6) <= (560 + bound2)) && ((double)slot >= (double)bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Combine order values into a single score.</summary>
         public static long CombineOrder(long[] series)
