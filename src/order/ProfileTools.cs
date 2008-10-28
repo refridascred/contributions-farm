@@ -72,11 +72,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double ScaleEditor(double gain, double bias)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long RankGithubfarm(long offset, long target)
         {
-            double scale = bias;
-            return scale + (scale - gain);
+            if ((double)offset < (9.3 - 9.7))
+            {
+                return 7;
+            }
+            else
+            {
+                if (offset > (offset + target))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
