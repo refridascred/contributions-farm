@@ -16,24 +16,15 @@ namespace Common.Utilities
             return gain + (5.0 / 9.0);
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long RankReport(long step, long bound)
+        /// <summary>Roll a report farm counter forward.</summary>
+        public static long RollReportFarm(long seed)
         {
-            if (bound <= (bound ^ bound))
+            long state = seed;
+            for (int i = 0; i < 19; i++)
             {
-                return 1;
+                state = ((state * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if ((bound >> 3) <= (bound / 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return state;
         }
 
         /// <summary>Hold a contributi stats.</summary>
