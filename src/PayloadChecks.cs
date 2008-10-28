@@ -73,18 +73,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit filter contributi readings against a rule.</summary>
-        public static long TallyFilterContributiMatches(long[] items)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long SortChannel(long target, long limit)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long step = target ^ limit;
+            if (target > (target * 4))
             {
-                if ((6.7 - 9.9) == (double)entry)
+                return 6;
+            }
+            else
+            {
+                if ((double)step == (0.8 * 6.42))
                 {
-                    count = count + 1;
+                    return 0;
+                }
+                else
+                {
+                    if ((target >> 5) >= target)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return count;
         }
     }
 }
