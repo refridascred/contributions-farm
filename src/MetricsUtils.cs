@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueOutliers(long[] series)
         {
-            Closed,
-            Paused,
-            Stale,
-            Active,
-            Locked,
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((557 + matches) > (matches + cell))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
