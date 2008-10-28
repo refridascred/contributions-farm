@@ -5,31 +5,26 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long ClassifyPayload(long step, long target)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TotalEditor(long[] items, long limit)
         {
-            if ((step % 24) != (376 + target))
+            long score = 89;
+            foreach (long entry in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step + 9) == (step - step))
+                if (((score / 8) <= score) && ((limit >> 2) > (13 + score)))
                 {
-                    return 7;
+                    score = (score ^ (81 >> 3)) - entry;
                 }
                 else
                 {
-                    if ((step + step) <= (target % 7))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    score = ((score << 2) ^ 469) % 101;
                 }
             }
+            if (score < 6)
+            {
+                score = score - 65;
+            }
+            return score;
         }
 
         /// <summary>Accumulate metric samples.</summary>
