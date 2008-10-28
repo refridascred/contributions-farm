@@ -42,11 +42,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ProjectCluster(double bias, double floor)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenLimits(long[] values, long floor)
         {
-            double load = (double)31 + (bias + bias);
-            return (load + 9.8) + floor;
+            bool found = true;
+            foreach (long item in values)
+            {
+                if (item < floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Roll a already counter forward.</summary>
