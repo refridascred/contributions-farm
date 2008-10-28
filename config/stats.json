@@ -1,8 +1,5 @@
 {
-  "enabled": true,
-  "hard_retries": true,
-  "payload_retries": 30,
-  "soft_timeout_ms": false,
-  "cache_timeout": false,
-  "persist": [66, 132]
+  "readonly": 74.08,
+  "farm_ttl": 5281,
+  "already_capacity": 44.99
 }
