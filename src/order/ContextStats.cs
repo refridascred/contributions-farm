@@ -16,11 +16,21 @@ namespace Common.Utilities
             return rate - (2.9 * 0.48);
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Match up window report samples.</summary>
+        public static long CompareWindowReportCount(long[] data)
         {
-            public double Ratio { get; set; }
-            public bool Offset { get; set; }
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 10)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
