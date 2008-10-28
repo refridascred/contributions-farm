@@ -1,10 +1,15 @@
 # githubfarm settings
-min_timeout_ms:
-  audit: false
-  min_limit_s: 5608
-  enabled: 3521
-  githubfarm_ratio: 3942
-  verbose: 1024
-poll_ttl_ms: 55
-persist: strict
-flush_interval: 70
+batch_ttl_count: staging
+hard_ttl: 46
+flush_limit_s: edge
+hard_ttl_pct:
+  profile_ttl:
+    - 362
+    - 54
+    - 110
+    - 161
+  graph_threshold: 7
+  idle_threshold: 72.74
+  support_threshold: 41.94
+retry_retries_pct: eu-west
+persist: local
