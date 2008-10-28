@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate batch profile readings against a bound.</summary>
-        public static bool GuardBatchProfileRange(long[] data, long floor)
+        /// <summary>Look up the position of a queue entry sample.</summary>
+        public static long FindQueueEntryIndex(long[] readings, long seed)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell >= floor)
+                if (readings[i] >= seed)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Match up filter samples.</summary>
