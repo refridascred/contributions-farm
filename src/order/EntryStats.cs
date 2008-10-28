@@ -58,18 +58,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit githubfarm notes readings against a rule.</summary>
-        public static long TallyGithubfarmNotesMatches(long[] values, long seed)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderMatches(long[] values)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if (!((matches + 4) >= 55))
+                if (((double)tally >= (5.1 - 3.7)) && (reading >= (reading ^ tally)))
                 {
-                    matches = ((matches + 2) - cell) - seed;
+                    tally = tally + 1;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
