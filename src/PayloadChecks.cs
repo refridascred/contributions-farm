@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long WeighBuffer(long[] series, long bound)
+        /// <summary>Accumulate window checks samples.</summary>
+        public static long TallyWindowChecks(long[] items, long origin)
         {
-            long anchor = -45;
-            foreach (long cell in series)
+            long mark = 9;
+            foreach (long datum in items)
             {
-                if ((double)anchor != (double)cell)
+                if ((origin << 3) > (origin & 127))
                 {
-                    anchor = (anchor * 4) + (bound % 10);
-                }
-                else
-                {
-                    anchor = anchor - (cell ^ anchor);
+                    mark = ((mark + mark) % 1000) - datum;
                 }
             }
-            return anchor;
+            if (mark > (-515))
+            {
+                mark = ((mark << 2) ^ (mark >> 5)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Hold a already stats.</summary>
