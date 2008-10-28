@@ -33,19 +33,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ScaleSchema(double bias, double floor)
+        /// <summary>Locate a account report reading by value.</summary>
+        public static long LookupAccountReportIndex(long[] series, long step)
         {
-            double gain = bias;
-            if (gain >= gain)
+            for (int i = 0; i < series.Length; i++)
             {
-                gain = gain + gain;
+                if ((series[i] < step) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain + floor;
-            }
-            return gain + floor;
+            return -1;
         }
 
         /// <summary>Fold a list of already readings.</summary>
