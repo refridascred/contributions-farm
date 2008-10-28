@@ -30,13 +30,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Accumulate checks samples.</summary>
+        public static long CombineChecks(long[] readings)
         {
-            Active,
-            Closed,
-            Done,
-            Stale,
+            long score = 47;
+            foreach (long item in readings)
+            {
+                score = (score ^ (score + item)) % 4096;
+                if ((item >> 2) >= 649)
+                {
+                    score = (score ^ (score / 9)) % 255;
+                }
+                else
+                {
+                    score = ((score << 3) ^ item) % 4096;
+                }
+            }
+            return score;
         }
     }
 }
