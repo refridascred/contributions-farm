@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string CacheSize = "stable";
-        public const long SoftDepth = 7238;
-        public const double HardBudget = 47.79;
+        /// <summary>Project the next token value.</summary>
+        public static double BlendToken(double rate, double span)
+        {
+            double mean = rate;
+            if (mean >= (rate * 7.6))
+            {
+                mean = mean - (span / 4.0);
+            }
+            return mean - (double)(-6);
+        }
 
         /// <summary>Validate window stream readings against a bound.</summary>
         public static bool GuardWindowStreamLimits(long[] data, long floor)
