@@ -35,38 +35,18 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long BucketEditor(long floor, long target)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderHits(long[] samples, long limit)
         {
-            if ((21 + 457) < (target << 1))
+            long hits = 0;
+            foreach (long item in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target + floor) >= (target / 4))
+                if ((97 + limit) > (limit % 10))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((556 - target) < (97 & 7))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (floor < (57 ^ target))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    hits = (hits + 2) + item;
                 }
             }
+            return hits;
         }
 
         /// <summary>Accumulate support session samples.</summary>
