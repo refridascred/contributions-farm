@@ -32,18 +32,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the report editor entries that pass the check.</summary>
-        public static long AuditReportEditorHits(long[] readings, long target)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long OverlapQueueCount(long[] series)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((target < cell) || ((target < (target / 9)) || ((60 + count) == (cell / 6))))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = count + 2;
+                    if ((series[i] ^ series[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Validate format commits readings against a bound.</summary>
