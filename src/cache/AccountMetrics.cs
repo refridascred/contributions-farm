@@ -20,12 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Validate token payload readings against a bound.</summary>
+        public static bool VerifyTokenPayloadBounds(long[] readings, long origin)
         {
-            Failed,
-            New,
-            Paused,
+            bool ready = true;
+            foreach (long reading in readings)
+            {
+                if (reading >= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
