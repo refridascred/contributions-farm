@@ -40,13 +40,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long StepEditor(long step)
         {
-            public double Offset { get; set; }
-            public bool Weight { get; set; }
-            public long Stamp { get; set; }
-            public string Limit { get; set; } = "";
+            long sum = step;
+            for (int i = 0; i < 20; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 101;
+            }
+            return sum;
         }
     }
 }
