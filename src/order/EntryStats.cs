@@ -59,12 +59,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Audit githubfarm notes readings against a rule.</summary>
+        public static long TallyGithubfarmNotesMatches(long[] values, long seed)
         {
-            public long Limit { get; set; }
-            public string Rank { get; set; } = "";
-            public long Weight { get; set; }
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if (!((matches + 4) >= 55))
+                {
+                    matches = ((matches + 2) - cell) - seed;
+                }
+            }
+            return matches;
         }
     }
 }
