@@ -1,6 +1,19 @@
 # entry settings
-batch_threshold_s: 1024
-sync_ttl_ms: primary
-compress: 7623
-cache_window_ms: 39
-flush_retries: 7476
+base_capacity_ms: legacy
+sync_retries:
+  - 436
+  - 135
+  - 241
+flush_depth_pct:
+  retry_threshold_ms:
+    payload_depth: strict
+    readonly: 37.71
+    warm_interval_s: 60.66
+    hard_retries: true
+    persist: latest
+  metric_delay: true
+  format_size: primary
+  profile_retries: primary
+buffer_timeout: eu-west
+cluster_limit: 9586
+retry_ttl: latest
