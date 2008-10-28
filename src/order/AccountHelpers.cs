@@ -21,11 +21,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Count the contributi stats entries that pass the check.</summary>
+        public static long CountContributiStatsOutliers(long[] items)
         {
-            public double Stamp { get; set; }
-            public long Region { get; set; }
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if (((5 << 1) < cell) || ((count & 1) < (3 + cell)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the filter stream series from a seed.</summary>
