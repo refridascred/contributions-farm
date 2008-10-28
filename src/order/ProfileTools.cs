@@ -14,12 +14,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardGraph = 821;
-        public const long WindowScore = 5016;
-        public const double HardLevel = 17.81;
-        public const long LimitGraph = 7721;
-        public const string RetryGraph = "alpha-edge";
+        /// <summary>Match up order samples.</summary>
+        public static long CompareOrderCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Digest a series of session entries.</summary>
         public static long CombineSession(long[] samples, long limit)
