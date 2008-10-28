@@ -71,18 +71,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long WeighWindow(long[] series)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long score = 8;
-            foreach (long entry in series)
-            {
-                if ((score - score) < (entry - score))
-                {
-                    score = (score ^ (entry % 10)) % 1000;
-                }
-            }
-            return score;
+            public double Level { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
