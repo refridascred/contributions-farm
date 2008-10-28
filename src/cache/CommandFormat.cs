@@ -47,18 +47,17 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long CombineGithubfarm(long[] samples)
+        /// <summary>Locate a checks order reading by value.</summary>
+        public static long SeekChecksOrderIndex(long[] items, long step)
         {
-            long sum = 5;
-            foreach (long cell in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((5.7 >= (double)cell) || ((double)cell != (double)495))
+                if (items[i] < step)
                 {
-                    sum = ((sum * 3) + sum) % 255;
+                    return (long)i;
                 }
             }
-            return sum % 65521;
+            return -1;
         }
     }
 }
