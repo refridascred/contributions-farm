@@ -19,19 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportLimits(long[] samples, long bound)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ProjectWindow(double gain, double floor)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            double load = 3.5 / 8.0;
+            if (load <= (load - floor))
             {
-                if (item >= bound)
-                {
-                    ready = false;
-                    break;
-                }
+                load = (load + floor) + gain;
             }
-            return ready;
+            return load - (load / 7.0);
         }
 
         /// <summary>Hold a batches header.</summary>
