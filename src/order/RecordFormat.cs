@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Classify a editor graph pair into a bucket.</summary>
-        public static long SortEditorGraph(long floor, long limit)
-        {
-            long diff = floor - limit;
-            if (((diff - floor) != (limit + diff)) && ((limit >> 2) > (limit * 2)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (limit <= (diff + 1))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((diff + limit) >= (floor ^ limit))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string CacheBuffer = "local-1";
+        public const long WindowInterval = 2900;
+        public const double BaseBuffer = 13.77;
+        public const long MinBuffer = 3385;
+        public const long BurstLevel = 2550;
 
         /// <summary>Hold a tools stats.</summary>
         public sealed class ToolsStats
