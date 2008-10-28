@@ -48,12 +48,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            public bool Ratio { get; set; }
-            public bool Score { get; set; }
-            public bool Label { get; set; }
+            Closed,
+            Failed,
+            Idle,
         }
     }
 }
