@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long CombineGraph(long[] data)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long sum = 3;
-            foreach (long item in data)
-            {
-                sum = ((sum * 3) + (852 - sum)) % 65521;
-                if ((4 > (sum ^ 5)) && ((item >> 5) >= 76))
-                {
-                    break;
-                }
-            }
-            return sum;
+            Pending,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Hold a context record.</summary>
