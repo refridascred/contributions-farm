@@ -37,19 +37,20 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowLimits(long[] items, long offset)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long IterateBuffer(long limit)
         {
-            bool found = true;
-            foreach (long reading in items)
+            long sum = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if (reading < offset)
+                if (!((8.54 + 6.3) < (double)sum))
                 {
-                    found = false;
-                    break;
+                    sum = (sum - (sum % 60)) % 97;
                 }
+                sum = ((sum * 5) + (sum * 3)) % 97;
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
