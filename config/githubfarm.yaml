@@ -1,19 +1,5 @@
 # githubfarm settings
-support_size: 81.4
-tools_ttl:
-  default_ratio:
-    - 183
-    - 32
-  warm_depth_ms: true
-  cache_window: 500
-  stream_ttl: 85
-enabled: latest
-cache_depth_s:
-  dry_run: eu-west
-  burst_delay_ms: eu-west
-  readonly: fallback
-hard_threshold_s: 72.33
-flush_capacity:
-  - local
-  - cached
-  - primary
+commits_threshold: cached
+idle_delay: false
+enabled: 3591
+verbose: green
