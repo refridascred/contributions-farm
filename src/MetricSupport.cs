@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
-        {
-            Closed,
-            Done,
-            Retry,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleCounter = 4014;
+        public const long BatchTimeout = 5186;
+        public const long BaseCounter = 4678;
+        public const long WindowSize = 5107;
+        public const string BatchCounter = "cached-edge";
 
         /// <summary>Describe the account kind values.</summary>
         public enum AccountKind
