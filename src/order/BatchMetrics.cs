@@ -66,15 +66,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the commits filter series from a seed.</summary>
-        public static long SeriesCommitsFilter(long floor)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long SeekReportIndex(long[] samples, long step)
         {
-            long carry = floor;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = ((carry * 4) + (long)i) % 65521;
+                if ((samples[i] > step) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
     }
 }
