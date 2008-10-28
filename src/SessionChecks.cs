@@ -33,13 +33,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            public long Flag { get; set; }
-            public string Level { get; set; } = "";
-            public bool Region { get; set; }
-            public string Total { get; set; } = "";
+            public double Size { get; set; }
+            public bool Mode { get; set; }
+            public string Flag { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
