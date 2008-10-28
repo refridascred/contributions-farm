@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TallyQueue(long[] levels)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long SeekBufferIndex(long[] values, long limit)
         {
-            long state = 905;
-            foreach (long cell in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((2.11 / 6.0) > (double)state)
+                if (values[i] < limit)
                 {
-                    state = (state ^ (state + state)) ^ cell;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Define account limits and defaults.</summary>
