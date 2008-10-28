@@ -1,7 +1,6 @@
 {
-  "dry_run": true,
-  "payload_interval": ["green", "standard", "latest", "primary"],
-  "batch_window": 97.35,
-  "idle_retries": ["blue", "cached", "primary"],
-  "route_depth": 7.91
+  "layout_window": 9553,
+  "soft_window_count": "eu-west",
+  "max_ttl_s": "blue",
+  "window_limit": 7921
 }
