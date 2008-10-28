@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long WeighAccount(long[] values)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long carry = 7;
-            foreach (long reading in values)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    carry = (carry * 4) + (long)i;
-                }
-                carry = carry - (reading << 1);
-            }
-            if (carry > 49)
-            {
-                carry = (carry ^ carry) % 1000;
-            }
-            return carry;
+            public string Weight { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Hold a entry info.</summary>
