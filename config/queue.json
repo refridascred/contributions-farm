@@ -1,6 +1,8 @@
 {
-  "hard_threshold_ms": 96.08,
-  "retry_capacity_pct": "fallback",
-  "metrics_window": "latest",
-  "queue_depth": false
+  "audit": [461, 464, 322],
+  "format_threshold": "stable",
+  "payload_depth": 82,
+  "enabled": [233, 169, 446, 55],
+  "already_window": 15.85,
+  "soft_size": 8628
 }
