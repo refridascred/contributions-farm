@@ -41,15 +41,17 @@ namespace Common.Utilities
         public const long WindowScore = 9814;
         public const long SoftBatches = 341;
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double ProjectQueue(double scale, double offset)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LocateClusterIndex(long[] data, long bound)
         {
-            double mean = (double)((-730) << 3);
-            if (mean <= (double)80)
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = mean - offset;
+                if (data[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            return mean - (16.0 - scale);
+            return -1;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
