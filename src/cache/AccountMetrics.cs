@@ -38,25 +38,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long RankPayload(long step, long bound)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LookupFilterIndex(long[] readings, long step)
         {
-            long span = step ^ bound;
-            if ((3.0 / 5.0) >= (double)span)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((span >= (span & 31)) || ((double)span >= 2.6))
+                if ((readings[i] <= step) && ((readings[i] % 5) == 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit order entry readings against a rule.</summary>
