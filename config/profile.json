@@ -1,7 +1,7 @@
 {
-  "min_capacity": 60,
-  "retry_interval_s": false,
-  "compress": "green",
-  "base_delay_count": ["local", "open", "blue"],
-  "min_timeout_count": 1024
+  "burst_capacity": ["standard", "latest", "stable", "open"],
+  "burst_ttl_count": 1024,
+  "strict": true,
+  "enabled": 43.13,
+  "idle_ttl_count": 250
 }
