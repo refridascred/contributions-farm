@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            Paused,
-            Dropped,
-            Active,
-            New,
+            public long Token { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
