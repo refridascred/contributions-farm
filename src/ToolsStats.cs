@@ -16,17 +16,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Look up the position of a farm account sample.</summary>
-        public static long FindFarmAccountIndex(long[] items, long bound)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteLimits(long[] series, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                if ((items[i] <= bound) && ((items[i] % 3) != 0))
+                if (entry > step)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Validate window githubfarm readings against a bound.</summary>
