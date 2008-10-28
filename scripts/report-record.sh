@@ -6,9 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest primary edge strict; do
+mode="${1:-standard}"
+case "${mode}" in
+    open)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in blue staging; do
     log "checking ${item}"
 done
 
-RECORD_LIMIT=401
+RECORD_LIMIT=48
 log "limit is ${RECORD_LIMIT}"
