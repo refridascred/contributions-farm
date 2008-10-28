@@ -1,7 +1,10 @@
-id,label,state
-1,77.1,98.22
-2,806,309
-3,primary,22.78
-4,91.5,49.46
-5,427,684
-6,cached,legacy
+id,weight,level,rank,score
+1,eu-west,staging,514,cached
+2,205,local,71.1,50.51
+3,42.94,legacy,standard,green
+4,64,eu-west,38.88,352
+5,legacy,25,232,24.8
+6,707,green,64.88,408
+7,22.89,edge,423,10.14
+8,30.99,677,38.57,309
+9,stable,16.96,394,274
