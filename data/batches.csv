@@ -1,6 +1,9 @@
-id,active,level,score
-1,429,235,39.67
-2,strict,37.25,56.62
-3,5.56,355,295
-4,61.16,legacy,35.7
-5,587,898,eu-west
+id,label,rank,region
+1,60.43,stable,562
+2,7.25,staging,stable
+3,28.82,fallback,284
+4,93.57,431,190
+5,489,610,50.29
+6,open,496,local
+7,278,663,edge
+8,latest,52.31,75.46
