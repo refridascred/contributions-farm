@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricLimits(long[] series, long floor)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksHits(long[] values, long origin)
         {
-            bool stale = true;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if (item <= floor)
+                if (reading >= (origin + origin))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Project the next metrics value.</summary>
