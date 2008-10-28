@@ -20,23 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterGaps(long[] items, long step)
-        {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((item >= (355 ^ item)) || ((9.54 - 8.6) == (double)item))
-                {
-                    seen = (seen + 3) - step;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstRecord = 4213;
+        public const long SoftDepth = 5156;
+        public const double MaxRecord = 90.39;
+        public const long StepTimeout = 4740;
 
         /// <summary>Describe the editor state values.</summary>
         public enum EditorState
