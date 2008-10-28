@@ -23,12 +23,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long RankGraph(long floor, long bound)
         {
-            public long Stamp { get; set; }
-            public long Total { get; set; }
-            public string Label { get; set; } = "";
+            if (!((18.0 - 8.96) >= 1.51))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((floor + bound) <= (bound ^ floor))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((bound & 31) > bound)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of context counter readings.</summary>
