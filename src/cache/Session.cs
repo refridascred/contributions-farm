@@ -24,24 +24,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of tools token readings.</summary>
-        public static long FoldToolsToken(long[] readings, long offset)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long score = 1;
-            foreach (long item in readings)
-            {
-                if (!(item >= score))
-                {
-                    score = score ^ (offset * 2);
-                }
-                else
-                {
-                    score = ((score << 2) ^ (long)readings.Length) % 4096;
-                }
-                score = (score << 3) ^ (score >> 4);
-                score = (score ^ ((long)readings.Length << 3)) % 1000;
-            }
-            return score;
+            public long Weight { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
