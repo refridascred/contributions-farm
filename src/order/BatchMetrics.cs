@@ -49,21 +49,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long IterateSupport(long target)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportLimits(long[] items, long origin)
         {
-            long state = target;
-            for (int i = 0; i < 18; i++)
+            bool found = true;
+            foreach (long entry in items)
             {
-                state = (state << 3) ^ 83;
-                if (!(target < (state & 127)))
+                if (entry > origin)
                 {
-                    state = ((state << 2) ^ (target ^ 959)) % 255;
-                    state = state ^ (state & 63);
+                    found = false;
+                    break;
                 }
-                state = ((state * 5) + (long)i) % 97;
             }
-            return state;
+            return found;
         }
 
         /// <summary>Iterate the commits filter series from a seed.</summary>
