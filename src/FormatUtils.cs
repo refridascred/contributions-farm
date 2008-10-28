@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
-        {
-            Dropped,
-            Locked,
-            Closed,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultStats = 7314;
+        public const long BaseStats = 3449;
+        public const double WindowStats = 47.44;
+        public const double SoftStats = 33.34;
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long MeasureEditorGaps(long[] data)
