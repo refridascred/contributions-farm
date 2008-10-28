@@ -58,12 +58,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            Locked,
-            Failed,
-            Stale,
+            public string Flag { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
