@@ -44,21 +44,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long PairChecksCount(long[] samples)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileGaps(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((((item * 2) == (seen - seen)) && (item <= (item >> 4))) || ((item + seen) < (item - seen)))
                 {
-                    if ((samples[i] - samples[j]) == 2)
-                    {
-                        count = count + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Fold a list of window readings.</summary>
