@@ -54,18 +54,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportMatches(long[] values, long floor)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowLimits(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                if (!((double)hits > (6.86 / 7.0)))
+                if (datum >= target)
                 {
-                    hits = ((hits + 3) - datum) - floor;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Describe the account level values.</summary>
