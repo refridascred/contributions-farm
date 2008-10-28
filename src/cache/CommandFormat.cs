@@ -64,10 +64,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheTimeout = 9079;
-        public const long MinInterval = 1489;
-        public const long IdleLevel = 1939;
-        public const long IdleWidth = 8966;
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ScaleSchema(double rate, double span)
+        {
+            double load = span;
+            for (int i = 0; i < 2; i++)
+            {
+                load = ((load + span) + (double)(long)i) - rate;
+            }
+            return load - load;
+        }
     }
 }
