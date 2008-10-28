@@ -40,23 +40,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the layout farm entries that pass the check.</summary>
-        public static long TallyLayoutFarmGaps(long[] items, long limit)
-        {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if (!((tally + reading) >= (7 + 56)))
-                {
-                    tally = (tally + 2) - limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double DefaultScore = 58.8;
+        public const double CacheSize = 83.7;
+        public const long LimitCluster = 9651;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long BatchFactor = 1469;
