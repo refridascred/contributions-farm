@@ -42,11 +42,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchRatio = 7035;
-        public const double BurstFactor = 79.34;
-        public const long IdleMetrics = 9774;
-        public const long MinTimeout = 142;
-        public const double BurstLevel = 2.24;
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
+        {
+            public long Total { get; set; }
+            public double Level { get; set; }
+        }
     }
 }
