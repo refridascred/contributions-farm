@@ -38,17 +38,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LookupFilterIndex(long[] readings, long step)
+        /// <summary>Roll a entry cache counter forward.</summary>
+        public static long SeriesEntryCache(long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if ((readings[i] <= step) && ((readings[i] % 5) == 0))
+                if ((carry < (carry << 1)) || ((floor / 8) >= ((long)i & 127)))
                 {
-                    return (long)i;
+                    carry = ((carry << 3) ^ 7) % 1000;
+                    break;
                 }
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Audit order entry readings against a rule.</summary>
