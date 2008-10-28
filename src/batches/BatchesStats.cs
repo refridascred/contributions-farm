@@ -28,12 +28,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsLimits(long[] readings, long bound)
         {
-            public long Region { get; set; }
-            public bool Stamp { get; set; }
-            public bool Owner { get; set; }
+            bool ready = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
