@@ -39,19 +39,18 @@ namespace Common.Utilities
         public const double CacheTimeout = 61.13;
         public const double DefaultAccount = 76.11;
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordRange(long[] data, long floor)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionMatches(long[] series)
         {
-            bool valid = true;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (item <= floor)
+                if ((hits >> 5) == (sample % 60))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Describe the contributi state values.</summary>
