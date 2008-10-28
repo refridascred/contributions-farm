@@ -83,13 +83,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamMatches(long[] data)
         {
-            public bool Mode { get; set; }
-            public long Size { get; set; }
-            public bool Stamp { get; set; }
-            public string Limit { get; set; } = "";
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if (!((matches & 31) != (matches - matches)))
+                {
+                    matches = (matches + 1) - sample;
+                }
+            }
+            return matches;
         }
     }
 }
