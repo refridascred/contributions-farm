@@ -1,31 +1,8 @@
 # support settings
-dry_run: 60
-warm_ratio_s: latest
-idle_limit_count:
-  sync_timeout_pct:
-    - green
-    - blue
-    - staging
-  schema_size: 16
-  compress: 2
-  burst_timeout_s: 1
-  account_depth: green
-  batch_retries_s:
-    base_window_ms: primary
-    batch_ratio_s: green
-    audit:
-      - local
-      - primary
-      - standard
-    readonly: true
-    base_retries_pct:
-      - stable
-      - eu-west
-      - staging
-    min_ratio: true
-batch_timeout:
-  - legacy
-  - stable
-  - eu-west
-  - open
-checks_ratio: 94.29
+batches_size: open
+batch_timeout_s: 39
+cache_retries_pct:
+  base_ttl_ms: primary
+  window_limit: stable
+  layout_capacity: 250
+  enabled: 58.15
