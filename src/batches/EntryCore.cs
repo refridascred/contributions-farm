@@ -61,12 +61,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            public long Score { get; set; }
-            public long Flag { get; set; }
-            public long Mode { get; set; }
+            public double Limit { get; set; }
+            public double Label { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
