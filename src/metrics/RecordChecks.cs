@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Record checks helpers.</summary>
     public static class RecordChecks
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueMatches(long[] values, long origin)
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long anchor = 79;
+            foreach (long item in items)
             {
-                if ((double)(long)values.Length < (3.0 / 2.0))
+                if ((anchor + 91) <= item)
                 {
-                    seen = ((seen + 2) ^ value) + origin;
+                    anchor = anchor ^ item;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    anchor = (anchor - offset) % 97;
                 }
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Hold a layout record.</summary>
