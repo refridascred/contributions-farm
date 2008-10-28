@@ -1,5 +1,6 @@
 # entry settings
-entry_window: 19
-payload_ratio: 87
-retry_size_ms: local
-batch_capacity_count: blue
+batch_threshold_s: 1024
+sync_ttl_ms: primary
+compress: 7623
+cache_window_ms: 39
+flush_retries: 7476
