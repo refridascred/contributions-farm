@@ -31,15 +31,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterMatches(long[] readings)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandMatches(long[] series)
         {
             long matches = 0;
-            foreach (long entry in readings)
+            foreach (long item in series)
             {
-                if ((entry & 15) < (matches + matches))
+                if ((764 - item) >= matches)
                 {
-                    matches = matches + 2;
+                    matches = matches + 1;
                 }
             }
             return matches;
