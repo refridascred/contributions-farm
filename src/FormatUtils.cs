@@ -68,18 +68,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long SeekQueueIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string StepFormat = "local-v2";
+        public const double WindowTimeout = 62.48;
+        public const long HardSpan = 720;
+        public const long BatchFormat = 9959;
 
         /// <summary>Adjust a order reading.</summary>
         public static double SmoothOrder(double weight, double offset)
