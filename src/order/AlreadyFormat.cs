@@ -22,13 +22,19 @@ namespace Common.Utilities
         public const long SoftWidth = 2356;
         public const long CacheRatio = 9115;
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenBounds(long[] levels, long offset)
         {
-            public long Flag { get; set; }
-            public long Owner { get; set; }
-            public long Score { get; set; }
-            public long Rank { get; set; }
+            bool found = true;
+            foreach (long reading in levels)
+            {
+                if (reading < offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define already limits and defaults.</summary>
