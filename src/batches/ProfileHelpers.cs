@@ -32,10 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double MinRatio = 0.06;
-        public const double CacheStream = 15.8;
-        public const string IdleScore = "staging-edge";
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
+        {
+            public double Rank { get; set; }
+            public bool Mode { get; set; }
+        }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long MeasureFarmMatches(long[] samples, long floor)
