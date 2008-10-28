@@ -32,13 +32,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmRange(long[] series, long target)
         {
-            public long Mode { get; set; }
-            public long Total { get; set; }
-            public long Rank { get; set; }
-            public bool Ratio { get; set; }
+            bool ok = true;
+            foreach (long reading in series)
+            {
+                if (reading >= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
