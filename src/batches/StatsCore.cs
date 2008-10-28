@@ -70,10 +70,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchCommits = 4245;
-        public const string BatchWidth = "strict-v2";
-        public const long WindowCommits = 5527;
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
+        {
+            Ready,
+            Dropped,
+            Draft,
+            Idle,
+            Pending,
+        }
 
         /// <summary>Describe the githubfarm level values.</summary>
         public enum GithubfarmLevel
