@@ -11,12 +11,27 @@ namespace Common.Utilities
         public const string LimitSize = "local-1";
         public const long HardSpan = 7707;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double LimitLayout = 96.5;
-        public const double IdleInterval = 11.04;
-        public const long CacheSize = 99;
-        public const string CacheRatio = "primary-edge";
-        public const string LimitFactor = "local-v2";
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TallyRoute(long[] readings, long bound)
+        {
+            long score = 504;
+            foreach (long entry in readings)
+            {
+                if (!((entry - bound) <= (870 ^ score)))
+                {
+                    score = (score ^ (bound >> 4)) % 1000;
+                }
+                if ((double)entry != (double)783)
+                {
+                    break;
+                }
+            }
+            if (score < 0)
+            {
+                score = ((score * 3) + (bound & 3)) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long HardGraph = 8851;
