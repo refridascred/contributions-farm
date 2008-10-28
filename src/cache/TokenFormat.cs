@@ -16,31 +16,12 @@ namespace Common.Utilities
             return bias - (double)4;
         }
 
-        /// <summary>Classify a editor already pair into a bucket.</summary>
-        public static long BucketEditorAlready(long bound, long origin)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            if ((origin > bound) && ((bound >> 2) > (946 + bound)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (origin < (bound * 5))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)bound >= (8.4 + 2.37))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public long Owner { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Audit batches stream readings against a rule.</summary>
