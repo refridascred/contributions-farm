@@ -32,24 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a githubfarm stats value against two limits.</summary>
-        public static long BucketGithubfarmStats(long step, long seed)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            if ((10.0 < (double)step) || (step <= (step % 100)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((step + seed) <= (seed - seed))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Locked,
+            Ready,
+            New,
+            Stale,
         }
 
         /// <summary>Locate a stream reading by value.</summary>
