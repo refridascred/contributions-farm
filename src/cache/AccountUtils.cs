@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Compare every pair of githubfarm route readings.</summary>
+        public static long CompareGithubfarmRouteCount(long[] levels)
         {
-            Done,
-            Locked,
-            Closed,
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
