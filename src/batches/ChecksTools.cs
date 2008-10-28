@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
-        {
-            public bool Count { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstLevel = 8828;
+        public const long IdleMetric = 7689;
+        public const long RetryTimeout = 2656;
+        public const long DefaultFactor = 4377;
 
         /// <summary>Count the graph route entries that pass the check.</summary>
         public static long MeasureGraphRouteGaps(long[] items)
