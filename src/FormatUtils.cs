@@ -69,12 +69,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
-        {
-            Queued,
-            Pending,
-            Closed,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double MinInterval = 44.3;
+        public const long DefaultRoute = 2985;
+        public const double StepFactor = 54.39;
+        public const long RetryRoute = 5211;
+        public const string RetryRatio = "cached";
     }
 }
