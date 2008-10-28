@@ -1,11 +1,14 @@
 # Command notes
 
-Run the schema check before changing any contributi limits.
-The contributi report groups every layout by contributi.
+The metrics report groups every metric by notes.
+Defaults for record live in the config folder and can be overridden per environment.
+
+A session that stays idle for too long is moved to the notes list.
+Run the entry check before changing any tools limits.
+Use support settings to tune how often editor data is refreshed.
 
 ## Guidelines
 
-- Keep format values small
-- Log every contributi change
-- Document new support fields
-- Prefer editor defaults
+- Keep filter values small
+- Document new session fields
+- Prefer channel defaults
