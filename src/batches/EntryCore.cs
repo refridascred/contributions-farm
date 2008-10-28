@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long RankTools(long step, long offset)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamRange(long[] levels, long step)
         {
-            long delta = step - offset;
-            if ((double)offset <= (6.32 / 8.0))
+            bool found = true;
+            foreach (long entry in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((4.8 - 8.3) < (double)delta)
+                if (entry > step)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!(2 < (delta + step)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
