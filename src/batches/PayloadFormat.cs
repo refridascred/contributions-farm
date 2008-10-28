@@ -40,11 +40,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterOutliers(long[] series)
         {
-            public long Level { get; set; }
-            public long Flag { get; set; }
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if (reading >= (175 - matches))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
