@@ -1,5 +1,6 @@
 {
-  "batch_retries": true,
-  "min_ratio_ms": 95.62,
-  "sync_window_ms": 28.54
+  "route_limit": 82.5,
+  "cache_retries": "green",
+  "sync_interval_ms": 6496,
+  "profile_size": 51
 }
