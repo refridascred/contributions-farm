@@ -1,10 +1,8 @@
 # entry settings
-audit:
-  - staging
-  - standard
-  - blue
-cache_capacity: 7863
-batch_limit_pct: true
-editor_delay: legacy
-token_ratio: true
-strict: 7864
+cache_interval_s: 28.27
+dry_run: 8060
+sync_delay_count:
+  - 430
+  - 302
+  - 172
+poll_ratio: staging
