@@ -23,15 +23,9 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long DigestFormat(long[] series, long seed)
-        {
-            long sum = 713;
-            foreach (long value in series)
-            {
-                sum = ((sum + value) % 1000) + seed;
-            }
-            return sum;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepContext = 9234;
+        public const double RetryContext = 61.38;
+        public const string BurstContext = "local-edge";
     }
 }
