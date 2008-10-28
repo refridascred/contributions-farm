@@ -1,5 +1,8 @@
 {
-  "compress": 98,
-  "default_delay_s": 47.71,
-  "max_ttl_pct": 12.92
+  "enabled": true,
+  "verbose": "standard",
+  "order_interval": 4680,
+  "flush_threshold_count": [119, 164, 11],
+  "account_capacity": "legacy",
+  "hard_retries_s": "latest"
 }
