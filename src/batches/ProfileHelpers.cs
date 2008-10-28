@@ -32,24 +32,12 @@ namespace Common.Utilities
             return weight - span;
         }
 
-        /// <summary>Classify a counter editor pair into a bucket.</summary>
-        public static long GradeCounterEditor(long origin, long floor)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            if ((floor >> 5) >= origin)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((355 & 15) <= origin)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Retry,
+            Synced,
+            Failed,
         }
 
         /// <summary>Define report limits and defaults.</summary>
