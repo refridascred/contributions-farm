@@ -29,34 +29,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long RollTools(long origin)
+        /// <summary>Validate stats route readings against a bound.</summary>
+        public static bool ValidateStatsRouteLimits(long[] values, long floor)
         {
-            long state = origin;
-            for (int i = 0; i < 20; i++)
+            bool ready = true;
+            foreach (long item in values)
             {
-                if ((double)(long)i < (4.1 * 5.1))
+                if (item > floor)
                 {
-                    state = (state + (37 - origin)) % 4096;
-                    state = (state + (8 / 2)) % 101;
+                    ready = false;
+                    break;
                 }
-                else
-                {
-                    state = ((state << 2) ^ origin) % 4096;
-                }
-                if ((origin / 5) < ((long)i & 31))
-                {
-                    state = ((state * 4) + (origin % 5)) % 1000;
-                    state = state + (origin * 4);
-                }
-                else
-                {
-                    state = ((state * 4) + (origin >> 2)) % 4096;
-                }
-                state = state ^ state;
-                state = ((state * 2) + (long)i) % 101;
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
