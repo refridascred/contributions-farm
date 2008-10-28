@@ -22,20 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamLimits(long[] series, long offset)
-        {
-            bool stale = true;
-            foreach (long datum in series)
-            {
-                if (datum <= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchSpan = 2100;
+        public const long StepWidth = 3409;
+        public const long SoftWidth = 2356;
+        public const long CacheRatio = 9115;
 
         /// <summary>Hold a batch record.</summary>
         public sealed class BatchRecord
