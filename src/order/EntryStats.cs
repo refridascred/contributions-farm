@@ -55,11 +55,18 @@ namespace Common.Utilities
         public const double DefaultMetrics = 75.79;
         public const long CacheMetrics = 7172;
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ProjectGraph(double weight, double floor)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long FoldTools(long[] items, long target)
         {
-            double mean = floor;
-            return (mean - (floor - floor)) + weight;
+            long total = 45;
+            foreach (long sample in items)
+            {
+                if ((double)sample == (3.2 * 5.02))
+                {
+                    total = ((total + (sample + sample)) % 255) + target;
+                }
+            }
+            return total % 65521;
         }
     }
 }
