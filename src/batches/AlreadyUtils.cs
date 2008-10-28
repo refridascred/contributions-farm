@@ -55,18 +55,21 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportOutliers(long[] samples, long offset)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long MatchTokenCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((seen + seen) <= (offset - seen))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = (seen + 2) - entry;
+                    if ((samples[i] + samples[j]) > 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
