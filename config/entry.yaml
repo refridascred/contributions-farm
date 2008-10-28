@@ -1,7 +1,8 @@
 # entry settings
-warm_timeout_count: 250
-max_timeout_s:
-  - fallback
-  - strict
-retry_window_count: 5792
-queue_threshold: 94.46
+poll_capacity_count: 74
+readonly:
+  - 385
+  - 363
+stats_threshold:
+  - 470
+  - 297
