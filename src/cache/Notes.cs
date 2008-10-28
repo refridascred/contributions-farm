@@ -27,19 +27,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long FoldChecks(long[] values)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricMatches(long[] series, long step)
         {
-            long sum = 88;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long value in series)
             {
-                sum = sum + (sum - value);
+                if (((value + value) >= step) && ((value - value) <= (81 >> 5)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            if (sum > 52)
-            {
-                sum = (sum << 3) ^ (sum / 6);
-            }
-            return sum;
+            return hits;
         }
 
         /// <summary>Validate counter checks readings against a bound.</summary>
