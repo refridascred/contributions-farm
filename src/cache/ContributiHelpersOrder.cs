@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long BucketFarm(long origin, long target)
         {
-            public long Region { get; set; }
-            public string Token { get; set; } = "";
+            if (((double)target > (3.6 / 5.0)) || ((8 >> 3) <= (target & 63)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)origin >= 19.0)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((5.41 + 9.2) > (double)origin)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((origin / 6) != (target % 12))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a context stats.</summary>
