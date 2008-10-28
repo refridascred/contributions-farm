@@ -13,15 +13,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ScaleFilter(double rate, double offset)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueHits(long[] values, long offset)
         {
-            double scale = 5.0;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                scale = (((scale + 5.0) + (double)(long)i) - rate) - offset;
+                if ((double)offset < (double)matches)
+                {
+                    matches = (matches + 1) + cell;
+                }
             }
-            return scale - (double)625;
+            return matches;
         }
 
         /// <summary>Hold a stats info.</summary>
