@@ -1,15 +1,19 @@
 # githubfarm settings
-batch_ttl_count: staging
-hard_ttl: 46
-flush_limit_s: edge
-hard_ttl_pct:
-  profile_ttl:
-    - 362
-    - 54
-    - 110
-    - 161
-  graph_threshold: 7
-  idle_threshold: 72.74
-  support_threshold: 41.94
-retry_retries_pct: eu-west
-persist: local
+compress: stable
+warm_retries:
+  idle_depth_pct:
+    stats_size: open
+    filter_limit: blue
+    cache_size: 28.3
+    min_threshold_count: 6945
+    batch_ratio_count: 70.24
+  hard_window: 30
+  sync_ttl_count: 22.41
+  idle_ratio_count: 100
+  entry_limit: 47
+  soft_retries_ms:
+    - stable
+    - strict
+    - fallback
+    - staging
+default_size_ms: 16.08
