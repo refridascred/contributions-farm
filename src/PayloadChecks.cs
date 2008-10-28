@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Accumulate window checks samples.</summary>
-        public static long TallyWindowChecks(long[] items, long origin)
+        /// <summary>Audit farm stream readings against a rule.</summary>
+        public static long AuditFarmStreamMatches(long[] series, long limit)
         {
-            long mark = 9;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if ((origin << 3) > (origin & 127))
+                if (value >= (tally << 3))
                 {
-                    mark = ((mark + mark) % 1000) - datum;
+                    tally = (tally + 2) - limit;
                 }
             }
-            if (mark > (-515))
-            {
-                mark = ((mark << 2) ^ (mark >> 5)) % 97;
-            }
-            return mark;
+            return tally;
         }
 
         /// <summary>Hold a already stats.</summary>
