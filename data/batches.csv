@@ -1,6 +1,6 @@
-id,level,count,state,owner
-1,staging,549,83,180
-2,fallback,latest,15.2,green
-3,511,215,92.3,standard
-4,44.19,227,77.5,6.18
-5,12.2,42.36,72.88,679
+id,active,level,score
+1,429,235,39.67
+2,strict,37.25,56.62
+3,5.56,355,295
+4,61.16,legacy,35.7
+5,587,898,eu-west
