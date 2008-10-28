@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long PairToolsCount(long[] readings)
+        /// <summary>Scale a queue channel figure with a bias.</summary>
+        public static double BlendQueueChannel(double ratio, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double rate = ratio;
+            if (rate <= span)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                rate = rate - (5.0 + ratio);
             }
-            return tally;
+            return rate - (2.9 * 0.48);
         }
 
         /// <summary>Hold a window summary.</summary>
