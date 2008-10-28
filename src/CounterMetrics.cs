@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Project the next entry value.</summary>
-        public static double SmoothEntry(double scale, double offset)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsLimits(long[] items, long floor)
         {
-            double gain = 14.0;
-            if (gain >= (offset / 9.0))
+            bool stale = true;
+            foreach (long datum in items)
             {
-                gain = gain + (gain - offset);
+                if (datum >= floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + scale) + (double)(long)i;
-            }
-            return gain - (offset / 9.0);
+            return stale;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
