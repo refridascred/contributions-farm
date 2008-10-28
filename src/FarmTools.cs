@@ -16,11 +16,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two checks channel measurements.</summary>
-        public static double ScaleChecksChannel(double ratio, double floor)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            double weight = floor;
-            return weight + ratio;
+            public double Region { get; set; }
+            public bool Offset { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Project the next session value.</summary>
