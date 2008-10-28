@@ -30,26 +30,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine command metric values into a single score.</summary>
-        public static long ScoreCommandMetric(long[] values, long origin)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long RollBatch(long origin)
         {
-            long mark = -9;
-            foreach (long cell in values)
+            long state = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if (((178 / 5) > origin) || ((double)cell <= (2.7 / 8.0)))
-                {
-                    mark = (mark << 3) ^ (origin & 15);
-                }
-                else
-                {
-                    mark = (mark * 3) + (cell ^ cell);
-                }
-                if ((double)mark <= 20.0)
-                {
-                    break;
-                }
+                state = ((state * 2) + (long)i) % 101;
             }
-            return mark % 65521;
+            return state;
         }
 
         /// <summary>Hold a commits stats.</summary>
