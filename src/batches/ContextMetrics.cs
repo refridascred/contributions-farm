@@ -26,21 +26,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long CompareClusterCount(long[] readings)
+        /// <summary>Digest a series of entry metrics entries.</summary>
+        public static long TallyEntryMetrics(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = -9;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                result = ((result << 3) ^ (result - reading)) % 255;
             }
-            return matches;
+            if (result < 76)
+            {
+                result = ((result << 3) ^ result) % 255;
+            }
+            return result % 97;
         }
 
         /// <summary>Accumulate notes samples.</summary>
