@@ -35,24 +35,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long CombineRoute(long[] series)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long SeekChannelIndex(long[] values, long target)
         {
-            long state = 53;
-            foreach (long sample in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((sample / 9) >= state)
+                if ((values[i] > target) && ((values[i] % 5) != 0))
                 {
-                    state = ((state << 2) ^ (state - sample)) % 101;
-                    state = (state + (sample - state)) % 65521;
+                    return (long)i;
                 }
-                state = state - (state + state);
             }
-            if (state > (-209))
-            {
-                state = (state ^ (state + state)) % 65521;
-            }
-            return state % 65521;
+            return -1;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
