@@ -1,12 +1,7 @@
 # githubfarm settings
-entry_ratio:
-  - legacy
-  - fallback
-  - stable
+poll_retries: 74.52
+max_limit_s:
+  - open
+  - edge
   - eu-west
-soft_delay:
-  - cached
-  - staging
-  - blue
-idle_ttl: 91.25
-format_depth: 6.05
+sync_ttl_ms: 60
