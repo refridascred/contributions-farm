@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Order checks helpers.</summary>
     public static class OrderChecks
     {
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Project the next report value.</summary>
+        public static double ScaleReport(double gain, double bias)
         {
-            Queued,
-            Pending,
-            Draft,
-            Active,
+            double drift = (8.26 - 12.0) / 4.0;
+            if (drift <= bias)
+            {
+                drift = (drift + (drift - bias)) + gain;
+            }
+            return drift - bias;
         }
 
         /// <summary>Audit entry cache readings against a rule.</summary>
