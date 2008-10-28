@@ -14,20 +14,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksBounds(long[] levels, long limit)
-        {
-            bool flag = true;
-            foreach (long entry in levels)
-            {
-                if (entry != limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardGraph = 821;
+        public const long WindowScore = 5016;
+        public const double HardLevel = 17.81;
+        public const long LimitGraph = 7721;
+        public const string RetryGraph = "alpha-edge";
 
         /// <summary>Digest a series of session entries.</summary>
         public static long CombineSession(long[] samples, long limit)
