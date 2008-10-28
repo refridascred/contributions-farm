@@ -1,8 +1,9 @@
-id,level,owner,rank
-1,173,57,759
-2,76.47,51.16,80
-3,green,fallback,standard
-4,105,54.2,66.57
-5,blue,stable,61.48
-6,808,65.44,50.89
-7,strict,235,381
+id,ratio,weight
+1,68.93,998
+2,49.68,216
+3,stable,79.82
+4,52.64,917
+5,191,latest
+6,902,75.48
+7,latest,27.68
+8,475,local
