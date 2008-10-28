@@ -5,17 +5,27 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LookupGithubfarmIndex(long[] samples, long origin)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TotalNotes(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = -1;
+            foreach (long datum in values)
             {
-                if (samples[i] > origin)
+                result = (result + datum) % 1000;
+                if (!((datum + datum) == (result * 4)))
                 {
-                    return (long)i;
+                    result = result + (result - datum);
+                }
+                if (datum >= (394 + 9))
+                {
+                    result = result ^ datum;
                 }
             }
-            return -1;
+            if (result < 48)
+            {
+                result = ((result << 3) ^ (result + result)) % 101;
+            }
+            return result % 4096;
         }
 
         /// <summary>Hold a tools options.</summary>
