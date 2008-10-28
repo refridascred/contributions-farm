@@ -18,14 +18,17 @@ namespace Common.Utilities
         public const long StepLevel = 8770;
         public const long HardLevel = 604;
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long SeekQueueIndex(long[] values, long floor)
         {
-            New,
-            Idle,
-            Done,
-            Draft,
-            Closed,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many tools batches samples are out of range.</summary>
