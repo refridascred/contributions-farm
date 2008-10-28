@@ -50,18 +50,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenHits(long[] readings, long step)
+        /// <summary>Count the command filter entries that pass the check.</summary>
+        public static long TallyCommandFilterMatches(long[] readings, long bound)
         {
-            long count = 0;
+            long tally = 0;
             foreach (long value in readings)
             {
-                if ((double)count < (6.7 + 8.75))
+                if (!((value <= 72) && (value > (94 + value))))
                 {
-                    count = ((count + 2) + value) - step;
+                    tally = (tally + 2) - bound;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
