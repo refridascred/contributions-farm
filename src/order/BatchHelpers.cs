@@ -42,17 +42,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long SeekSchemaIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchRatio = 7035;
+        public const double BurstFactor = 79.34;
+        public const long IdleMetrics = 9774;
+        public const long MinTimeout = 142;
+        public const double BurstLevel = 2.24;
     }
 }
