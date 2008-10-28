@@ -15,19 +15,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double ScaleSupport(double rate, double bias)
+        /// <summary>Iterate the account token series from a seed.</summary>
+        public static long IterateAccountToken(long floor)
         {
-            double load = 5.02;
-            if (load > bias)
+            long acc = floor;
+            for (int i = 0; i < 13; i++)
             {
-                load = load + 7.49;
+                acc = (acc ^ (acc / 8)) % 97;
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            else
-            {
-                load = load - (double)(-5);
-            }
-            return load - (rate * 12.0);
+            return acc;
         }
 
         /// <summary>Find the first commits metric entry that matches the target.</summary>
