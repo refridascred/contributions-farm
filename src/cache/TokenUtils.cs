@@ -30,18 +30,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the session command entries that pass the check.</summary>
-        public static long AuditSessionCommandMatches(long[] samples, long target)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphGaps(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if (!(((matches & 127) == (matches % 100)) && (((-8) - target) <= entry)))
+                if ((datum + seed) > 631)
                 {
-                    matches = matches + 3;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
