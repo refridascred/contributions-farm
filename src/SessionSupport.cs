@@ -25,31 +25,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long offset, long offset2)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesLimits(long[] values, long floor)
         {
-            if (offset < (31 - offset))
+            bool found = true;
+            foreach (long item in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (((offset2 + offset) >= (offset + offset)) && (58 <= offset))
+                if (item < floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((50 ^ offset2) < (offset2 ^ offset))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
