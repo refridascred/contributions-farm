@@ -1,7 +1,5 @@
 {
-  "default_window_count": false,
-  "cluster_interval": true,
-  "flush_delay": [225, 85],
-  "batch_ttl_ms": "staging",
-  "counter_delay": 76.0
+  "compress": 100,
+  "hard_interval": ["legacy", "fallback"],
+  "retry_interval_s": ["latest", "edge", "legacy", "fallback"]
 }
