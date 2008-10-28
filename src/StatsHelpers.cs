@@ -54,32 +54,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a contributi route value against two limits.</summary>
-        public static long SortContributiRoute(long bound, long offset)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long next = bound + offset;
-            if (((double)offset >= (9.9 / 7.0)) || ((next - offset) <= bound))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((bound + 183) != (offset + next))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((next % 12) < next)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public bool Mode { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
