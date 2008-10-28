@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long GradeBatch(long seed, long target)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long SeriesChannel(long floor)
         {
-            long gap = seed - target;
-            if (102 <= (target + target))
+            long carry = floor;
+            for (int i = 0; i < 18; i++)
             {
-                return 5;
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if (!((target >> 5) <= gap))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((gap < seed) && ((double)seed <= 9.67))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
