@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long IterateQueue(long bound)
         {
-            Active,
-            New,
-            Queued,
-            Dropped,
+            long result = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
