@@ -18,16 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long RollCache(long origin)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long SortEditor(long floor, long offset)
         {
-            long result = origin;
-            for (int i = 0; i < 15; i++)
+            if ((11.0 + 8.4) < (double)offset)
             {
-                result = ((result * 2) + (result ^ origin)) % 97;
-                result = ((result * 3) + (long)i) % 1000;
+                return 4;
             }
-            return result;
+            else
+            {
+                if ((((-580) + offset) <= 17) && ((56 + offset) == (638 >> 5)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Project the next batches value.</summary>
