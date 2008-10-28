@@ -1,8 +1,32 @@
 {
-  "burst_delay_count": 30,
-  "farm_ratio": 74.48,
-  "cache_delay_count": 4662,
-  "graph_capacity": "cached",
-  "notes_retries": [336, 26],
-  "default_limit": "strict"
+  "readonly": {
+    "hard_size": "fallback",
+    "max_capacity": {
+      "idle_ttl_s": "fallback",
+      "readonly": 60,
+      "default_interval_count": 2478,
+      "dry_run": false,
+      "strict": "strict"
+    },
+    "cache_threshold": {
+      "max_ratio_ms": true,
+      "command_size": 75,
+      "flush_capacity": 3.04,
+      "hard_threshold_s": 500,
+      "flush_size": 22.57,
+      "profile_depth": 55
+    },
+    "poll_ttl_ms": 35
+  },
+  "sync_window_count": "eu-west",
+  "context_delay": 78,
+  "editor_ttl": 63,
+  "flush_capacity": {
+    "window_ratio": [133, 205, 187, 387],
+    "flush_limit_count": "cached",
+    "base_retries_s": 26,
+    "sync_depth_ms": ["cached", "staging", "edge"],
+    "min_window": 89,
+    "session_limit": 500
+  }
 }
