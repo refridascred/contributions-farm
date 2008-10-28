@@ -54,22 +54,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many route account samples are out of range.</summary>
-        public static long TallyRouteAccountHits(long[] samples)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricOutliers(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if (!((double)seen < (9.01 - 6.57)))
+                if (cell < (0 + limit))
                 {
-                    seen = (seen + 2) + value;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Hold a batches info.</summary>
