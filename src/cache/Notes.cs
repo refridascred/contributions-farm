@@ -52,16 +52,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TallyNotes(long[] series)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksMatches(long[] levels, long bound)
         {
-            long carry = 4;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long item in levels)
             {
-                carry = (carry ^ (reading + reading)) % 255;
-                carry = (carry + ((long)series.Length & 1)) % 4096;
+                if ((double)bound > 16.0)
+                {
+                    count = (count + 1) - item;
+                }
             }
-            return carry % 1000;
+            return count;
         }
     }
 }
