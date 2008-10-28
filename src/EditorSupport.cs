@@ -22,10 +22,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultDepth = 3312;
-        public const long BurstBatch = 6560;
-        public const long RetryBatch = 8062;
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
+        {
+            Closed,
+            New,
+            Active,
+            Pending,
+            Synced,
+        }
 
         /// <summary>Hold a metrics entry.</summary>
         public sealed class MetricsEntry
