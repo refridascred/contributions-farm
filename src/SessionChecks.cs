@@ -30,39 +30,12 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long GradeLayout(long origin, long origin2)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long edge = origin - origin2;
-            if (!((94 - edge) >= (origin2 + origin)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((origin * 5) < (6 % 24))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((edge & 127) > (edge >> 1))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)origin2 < (4.3 - 5.8))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Pending,
+            Failed,
         }
     }
 }
