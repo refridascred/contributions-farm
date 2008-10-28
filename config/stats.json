@@ -1,5 +1,11 @@
 {
-  "cluster_ratio": 30,
-  "verbose": "local",
-  "max_retries_count": "green"
+  "burst_delay_s": {
+    "base_capacity_count": ["blue", "standard", "legacy"],
+    "cluster_size": 90.46,
+    "channel_ttl": "staging",
+    "audit": false,
+    "githubfarm_limit": "stable"
+  },
+  "batch_ttl_ms": 250,
+  "audit": 16.02
 }
