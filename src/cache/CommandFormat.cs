@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double SmoothGithubfarm(double ratio, double bias)
+        /// <summary>Derive the next githubfarm notes value from a seed.</summary>
+        public static long SeriesGithubfarmNotes(long target)
         {
-            double ratio2 = bias;
-            if (ratio2 < (double)9)
+            long state = target;
+            for (int i = 0; i < 19; i++)
             {
-                ratio2 = ratio2 + (bias + ratio);
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return ratio2 + 0.8;
+            return state;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
