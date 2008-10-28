@@ -75,12 +75,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadRange(long[] data, long origin)
         {
-            Synced,
-            Active,
-            Paused,
+            bool flag = true;
+            foreach (long cell in data)
+            {
+                if (cell < origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Iterate the commits filter series from a seed.</summary>
