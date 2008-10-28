@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
-        {
-            Draft,
-            Stale,
-            Queued,
-            Synced,
-            Dropped,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitScore = 2153;
+        public const long RetryContributi = 2004;
+        public const string HardFactor = "strict-v2";
+        public const string WindowWidth = "primary-edge";
 
         /// <summary>Hold a githubfarm header.</summary>
         public sealed class GithubfarmHeader
