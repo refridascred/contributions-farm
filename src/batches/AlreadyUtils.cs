@@ -57,22 +57,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long ScoreContext(long[] samples, long origin)
+        /// <summary>Grade a buffer githubfarm value against two limits.</summary>
+        public static long GradeBufferGithubfarm(long floor, long origin)
         {
-            long score = 642;
-            foreach (long entry in samples)
+            long span = floor + origin;
+            if (((floor * 4) == (span - span)) || ((floor - span) != (origin - span)))
             {
-                if ((entry > (entry + origin)) || (origin <= (origin & 3)))
+                return 5;
+            }
+            else
+            {
+                if (((6.7 + 5.05) > (double)span) || ((327 >> 1) == (span - 545)))
                 {
-                    score = ((score * 2) + (score + score)) % 97;
+                    return 8;
                 }
                 else
                 {
-                    score = score + (score - entry);
+                    return 3;
                 }
             }
-            return score;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
