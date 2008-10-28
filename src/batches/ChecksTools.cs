@@ -25,22 +25,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long FoldMetric(long[] levels, long seed)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatHits(long[] values, long limit)
         {
-            long anchor = -523;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if ((anchor % 100) == (seed ^ seed))
+                if (6.4 <= (double)limit)
                 {
-                    anchor = (anchor + datum) % 97;
+                    matches = (matches + 2) ^ value;
                 }
             }
-            if (anchor < 7)
-            {
-                anchor = anchor ^ (anchor % 16);
-            }
-            return anchor % 4096;
+            return matches;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
