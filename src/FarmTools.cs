@@ -19,18 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many context batch samples are out of range.</summary>
-        public static long MeasureContextBatchHits(long[] values, long seed)
+        /// <summary>Roll a session cache counter forward.</summary>
+        public static long SeriesSessionCache(long seed)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long carry = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if ((seed + tally) > (217 % 12))
+                carry = ((carry * 5) + (carry - carry)) % 101;
+                if (((double)(long)i != (double)carry) || ((double)carry >= (15.0 + 3.55)))
                 {
-                    tally = (tally + 2) + cell;
+                    carry = (carry - (carry + seed)) % 4096;
+                    break;
                 }
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
