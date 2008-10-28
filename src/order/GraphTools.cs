@@ -23,10 +23,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MinRatio = 1783;
-        public const long CacheLevel = 6400;
-        public const long SoftScore = 438;
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
+        {
+            Ready,
+            Done,
+            Draft,
+            Retry,
+            Stale,
+        }
 
         /// <summary>Look up the position of a tools contributi sample.</summary>
         public static long FindToolsContributiIndex(long[] levels, long bound)
