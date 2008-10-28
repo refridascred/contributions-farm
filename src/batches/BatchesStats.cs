@@ -10,17 +10,39 @@ namespace Common.Utilities
         public const double MaxTimeout = 15.85;
         public const string SoftContributi = "local-v2";
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LocateProfileIndex(long[] values, long step)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long SortEntry(long target, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long slot = target - bound;
+            if ((double)target == (10.0 / 5.0))
             {
-                if ((values[i] <= step) && ((values[i] % 3) != 0))
+                return 1;
+            }
+            else
+            {
+                if (((-74) ^ bound) > (slot * 5))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (!(11 >= (482 + bound)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (7 < target)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Rank window input into a small class.</summary>
