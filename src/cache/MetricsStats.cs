@@ -22,11 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double SmoothSchema(double rate, double span)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long DeriveStream(long target)
         {
-            double gain = span;
-            return (gain + span) + rate;
+            long carry = target;
+            for (int i = 0; i < 15; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Match up notes samples.</summary>
