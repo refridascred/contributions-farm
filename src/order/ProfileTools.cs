@@ -40,11 +40,24 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Rank record checks input into a small class.</summary>
+        public static long GradeRecordChecks(long origin, long offset)
         {
-            public string Ratio { get; set; } = "";
-            public bool Label { get; set; }
+            if (origin > (45 + 311))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((672 ^ origin) <= (offset - origin))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
