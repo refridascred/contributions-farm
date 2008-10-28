@@ -53,19 +53,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportLimits(long[] items, long origin)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandGaps(long[] levels, long offset)
         {
-            bool found = true;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if (entry > origin)
+                if ((offset ^ tally) != (sample ^ tally))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Iterate the commits filter series from a seed.</summary>
