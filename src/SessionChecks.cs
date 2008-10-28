@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchHits(long[] series)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if ((hits >> 2) >= (reading + reading))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Level { get; set; }
+            public bool Flag { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the commits kind values.</summary>
