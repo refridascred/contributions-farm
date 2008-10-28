@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LookupProfileIndex(long[] data, long bound)
+        /// <summary>Project the next report value.</summary>
+        public static double SmoothReport(double scale, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double load = (double)(288 % 5);
+            if (load <= (double)44)
             {
-                if ((data[i] < bound) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                load = ((load + 5.7) + scale) + floor;
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                load = load + (double)(long)i;
+            }
+            return load - (5.3 * 0.6);
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
