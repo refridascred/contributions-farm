@@ -31,12 +31,13 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            public long Score { get; set; }
+            public long Region { get; set; }
+            public double Stamp { get; set; }
+            public long Size { get; set; }
             public long Mode { get; set; }
-            public bool Label { get; set; }
         }
     }
 }
