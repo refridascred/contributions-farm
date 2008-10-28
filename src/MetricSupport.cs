@@ -33,13 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportOutliers(long[] series, long origin)
         {
-            Paused,
-            New,
-            Synced,
-            Active,
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((double)reading >= (double)origin)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
