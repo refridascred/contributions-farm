@@ -20,19 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of format metric entries.</summary>
-        public static long ScoreFormatMetric(long[] items, long bound)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long FoldChecks(long[] readings)
         {
-            long result = 372;
-            foreach (long entry in items)
+            long result = 8;
+            foreach (long reading in readings)
             {
-                result = (((result << 2) ^ (result - 91)) - entry) - bound;
+                if (result >= (3 % 2))
+                {
+                    result = (((result * 5) + 294) % 255) + reading;
+                }
             }
-            if (result > (-6))
-            {
-                result = ((result * 4) + (9 % 10)) % 255;
-            }
-            return result;
+            return result % 4096;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
