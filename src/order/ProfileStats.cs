@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TallyMetrics(long[] readings, long target)
-        {
-            long acc = 8;
-            foreach (long reading in readings)
-            {
-                acc = acc + (-512);
-                if (((double)reading >= 7.8) && (((-4) + 77) > target))
-                {
-                    break;
-                }
-            }
-            if (acc < 119)
-            {
-                acc = ((acc * 5) + (target & 1)) % 97;
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftBatches = 9706;
+        public const double BatchBatches = 62.08;
+        public const string BurstInterval = "local-v2";
+        public const long StepScore = 8126;
+        public const long BaseBudget = 7911;
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long AuditEntryMatches(long[] values, long origin)
