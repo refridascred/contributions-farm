@@ -1,9 +1,8 @@
 {
-  "max_retries_ms": "legacy",
-  "commits_delay": false,
-  "already_timeout": {
-    "sync_ttl_pct": 5987,
-    "batch_interval": "strict",
-    "retry_interval_count": false
-  }
+  "stats_retries": 34.76,
+  "idle_depth_ms": [109, 426, 223, 265],
+  "already_delay": 6.7,
+  "batch_ttl_count": false,
+  "idle_retries_pct": 53.58,
+  "hard_capacity": "blue"
 }
