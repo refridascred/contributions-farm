@@ -18,19 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every channel graph entry stays within the limit.</summary>
-        public static bool CheckChannelGraphLimits(long[] series, long origin)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            bool flag = true;
-            foreach (long cell in series)
-            {
-                if (cell < origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Closed,
+            New,
+            Locked,
+            Done,
+            Paused,
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
