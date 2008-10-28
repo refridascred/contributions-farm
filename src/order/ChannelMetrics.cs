@@ -19,21 +19,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long MatchGithubfarmCount(long[] readings)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double SmoothCluster(double rate, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double gain = span;
+            if (gain < 17.0)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                gain = (gain - (double)40) - rate;
             }
-            return matches;
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - 19.0) - (double)(long)i;
+            }
+            return gain - (gain - span);
         }
 
         /// <summary>Measure how many cluster stream samples are out of range.</summary>
