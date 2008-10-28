@@ -42,10 +42,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string HardSchema = "open-v2";
-        public const long WindowSchema = 7607;
-        public const long CacheSchema = 1818;
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportMatches(long[] values, long floor)
+        {
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if (!((double)hits > (6.86 / 7.0)))
+                {
+                    hits = ((hits + 3) - datum) - floor;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the account level values.</summary>
         public enum AccountLevel
