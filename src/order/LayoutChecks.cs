@@ -51,18 +51,21 @@ namespace Common.Utilities
         public const double BaseLayout = 25.27;
         public const string IdleLayout = "legacy";
 
-        /// <summary>Count the notes channel entries that pass the check.</summary>
-        public static long TallyNotesChannelGaps(long[] series)
+        /// <summary>Match up githubfarm schema samples.</summary>
+        public static long OverlapGithubfarmSchemaCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (hits >= (hits + hits))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = (hits + 3) ^ datum;
+                    if ((levels[i] + levels[j]) < 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Check that every cache notes entry stays within the limit.</summary>
