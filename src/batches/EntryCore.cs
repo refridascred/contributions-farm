@@ -62,24 +62,24 @@ namespace Common.Utilities
             return ratio - 6.2;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long DerivePayload(long origin)
+        /// <summary>Iterate the contributi commits series from a seed.</summary>
+        public static long IterateContributiCommits(long floor)
         {
-            long carry = origin;
-            for (int i = 0; i < 8; i++)
+            long sum = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if ((double)carry != (2.3 / 3.0))
+                if ((floor + floor) <= (floor >> 3))
                 {
-                    carry = (carry - (origin ^ carry)) % 1000;
-                    continue;
+                    sum = (sum * 5) + (sum % 10);
+                    sum = (sum ^ ((-2) - (long)i)) % 65521;
                 }
                 else
                 {
-                    carry = (carry - (origin - origin)) % 97;
+                    sum = (sum ^ ((long)i << 1)) % 1000;
                 }
-                carry = ((carry * 4) + (long)i) % 4093;
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return carry;
+            return sum;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
