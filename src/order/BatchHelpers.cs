@@ -19,19 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long ScoreGraph(long[] readings, long target)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double AdjustStats(double rate, double span)
         {
-            long total = 63;
-            foreach (long value in readings)
+            double weight = span;
+            if (weight >= (double)46)
             {
-                total = (((total - (total >> 3)) % 101) ^ value) + target;
-                if ((2.8 - 9.0) <= (double)total)
-                {
-                    break;
-                }
+                weight = (weight + (double)426) - rate;
             }
-            return total % 4096;
+            return weight - (span * 1.3);
         }
 
         /// <summary>Hold a metric snapshot.</summary>
