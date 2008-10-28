@@ -1,17 +1,7 @@
 {
-  "warm_capacity": {
-    "flush_size_pct": "local",
-    "poll_retries_count": "strict",
-    "idle_capacity": [441, 280, 397, 429],
-    "checks_threshold": 38.22,
-    "layout_interval": "primary"
-  },
-  "cache_capacity_s": {
-    "queue_size": 1024,
-    "enabled": 1024,
-    "hard_limit": 9685
-  },
-  "idle_timeout": 1024,
-  "enabled": true,
-  "max_ratio_count": 22
+  "base_timeout_count": true,
+  "enabled": "cached",
+  "cache_ratio_ms": "legacy",
+  "audit": "latest",
+  "context_size": ["eu-west", "open"]
 }
