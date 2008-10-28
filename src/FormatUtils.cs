@@ -22,20 +22,14 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long IterateBuffer(long limit)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long sum = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                if (!((8.54 + 6.3) < (double)sum))
-                {
-                    sum = (sum - (sum % 60)) % 97;
-                }
-                sum = ((sum * 5) + (sum * 3)) % 97;
-                sum = ((sum * 3) + (long)i) % 1000;
-            }
-            return sum;
+            New,
+            Idle,
+            Done,
+            Draft,
+            Closed,
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
