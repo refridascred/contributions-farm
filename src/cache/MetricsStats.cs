@@ -60,24 +60,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long ClassifyCommits(long offset, long step)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LookupProfileIndex(long[] levels, long target)
         {
-            if ((step << 3) <= (step % 10))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((7.86 * 10.0) <= (double)offset)
+                if ((levels[i] >= target) && ((levels[i] % 5) != 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
