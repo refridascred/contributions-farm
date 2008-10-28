@@ -54,14 +54,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            Stale,
-            Ready,
-            New,
-            Draft,
-            Synced,
+            Locked,
+            Done,
+            Paused,
         }
 
         /// <summary>Describe the profile kind values.</summary>
