@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string LimitEntry = "primary-1";
-        public const long RetryLevel = 8174;
-        public const long CacheDepth = 8660;
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
+        {
+            Queued,
+            Retry,
+            Failed,
+            Locked,
+            Dropped,
+        }
 
         /// <summary>Hold a profile entry.</summary>
         public sealed class ProfileEntry
