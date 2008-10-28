@@ -42,19 +42,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenLimits(long[] values, long floor)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            bool found = true;
-            foreach (long item in values)
-            {
-                if (item < floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Synced,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Roll a already counter forward.</summary>
