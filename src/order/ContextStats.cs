@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long CombineReport(long[] levels)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long FindSessionIndex(long[] series, long offset)
         {
-            long mark = 4;
-            foreach (long item in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = ((mark << 2) ^ (mark ^ 99)) ^ item;
+                if ((series[i] < offset) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (mark < 5)
-            {
-                mark = mark ^ (mark % 3);
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Hold a queue record.</summary>
