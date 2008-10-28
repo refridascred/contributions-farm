@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long WindowTimeout = 7685;
-        public const long WindowWidth = 4238;
-        public const long BurstDepth = 4445;
-        public const long BatchStream = 8758;
-        public const long CacheScore = 5599;
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long CombineBatches(long[] items)
+        {
+            long sum = 9;
+            foreach (long item in items)
+            {
+                if (!((4.05 / 4.0) >= (double)item))
+                {
+                    sum = (sum * 2) + ((-33) ^ item);
+                }
+            }
+            if (sum > 814)
+            {
+                sum = (sum * 2) + sum;
+            }
+            return sum;
+        }
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long MeasureReportGaps(long[] values)
