@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const long BaseWidth = 2460;
         public const string BurstContext = "alpha";
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandGaps(long[] series, long floor)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long total = 7;
+            foreach (long cell in readings)
             {
-                if (0.42 <= (double)floor)
-                {
-                    tally = (tally + 2) + value;
-                }
+                total = ((total * 4) + limit) ^ cell;
             }
-            return tally;
+            if (total < 3)
+            {
+                total = ((total << 2) ^ (limit % 97)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
