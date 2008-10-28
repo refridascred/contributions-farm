@@ -19,13 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            public bool Count { get; set; }
-            public string Weight { get; set; } = "";
-            public long Owner { get; set; }
-            public double Mode { get; set; }
+            public bool Flag { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Offset { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Match up filter samples.</summary>
