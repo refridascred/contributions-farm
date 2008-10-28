@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteRange(long[] levels, long seed)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long SeekCounterIndex(long[] series, long bound)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample <= seed)
+                if ((series[i] < bound) && ((series[i] % 3) == 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
