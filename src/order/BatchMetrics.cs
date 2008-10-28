@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long RollWindow(long offset)
         {
-            public long Token { get; set; }
-            public bool Ratio { get; set; }
+            long anchor = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                anchor = (anchor << 3) ^ (anchor - anchor);
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate command stats samples.</summary>
