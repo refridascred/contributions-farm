@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Match up already commits samples.</summary>
-        public static long PairAlreadyCommitsCount(long[] values)
+        /// <summary>Accumulate order session samples.</summary>
+        public static long DigestOrderSession(long[] series, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 234;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                total = (((total << 3) ^ (5 << 1)) - reading) + origin;
             }
-            return tally;
+            return total % 65521;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
