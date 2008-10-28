@@ -15,19 +15,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long WeighMetric(long[] items)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long FindEditorIndex(long[] values, long origin)
         {
-            long mark = 2;
-            foreach (long cell in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = ((mark ^ (0 + 46)) % 4096) + cell;
+                if ((values[i] >= origin) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (mark < 3)
-            {
-                mark = (mark << 2) ^ (mark ^ mark);
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
