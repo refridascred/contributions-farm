@@ -20,31 +20,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long ClassifyContext(long seed, long seed2)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmOutliers(long[] samples)
         {
-            if (seed < 320)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((66 > seed2) || ((seed2 >> 3) > (seed + seed)))
+                if ((reading * 5) < reading)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!(seed < (seed >> 4)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
