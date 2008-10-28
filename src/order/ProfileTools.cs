@@ -14,23 +14,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long CombineProfile(long[] levels)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksBounds(long[] levels, long limit)
         {
-            long acc = 11;
-            foreach (long datum in levels)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                acc = acc + (86 * 4);
-                if ((double)acc > (double)881)
+                if (entry != limit)
                 {
-                    acc = acc ^ (datum - datum);
+                    flag = false;
+                    break;
                 }
             }
-            if (acc > 505)
-            {
-                acc = ((acc * 4) + 7) % 255;
-            }
-            return acc % 97;
+            return flag;
         }
 
         /// <summary>Digest a series of session entries.</summary>
