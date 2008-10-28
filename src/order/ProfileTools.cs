@@ -42,23 +42,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Fold a list of session layout readings.</summary>
-        public static long DigestSessionLayout(long[] values)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmRange(long[] readings, long origin)
         {
-            long score = -763;
-            foreach (long reading in values)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                score = (score * 3) + (reading - score);
-                if ((13.0 * 14.0) >= (double)score)
+                if (entry <= origin)
                 {
-                    score = (score * 4) + (200 + reading);
+                    found = false;
+                    break;
                 }
             }
-            if (score > 4)
-            {
-                score = score - (score - 770);
-            }
-            return score % 4096;
+            return found;
         }
 
         /// <summary>Project the next editor value.</summary>
