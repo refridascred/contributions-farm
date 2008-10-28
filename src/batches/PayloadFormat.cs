@@ -13,19 +13,14 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmRange(long[] items, long limit)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            bool found = true;
-            foreach (long value in items)
-            {
-                if (value > limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            New,
+            Locked,
+            Ready,
+            Queued,
+            Retry,
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
