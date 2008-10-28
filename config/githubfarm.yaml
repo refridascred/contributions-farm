@@ -1,19 +1,30 @@
 # githubfarm settings
-burst_window: 100
-stream_retries:
-  - eu-west
-  - strict
-  - strict
-  - strict
-poll_interval_pct:
-  notes_ttl: stable
-  cache_ttl_s: green
-  stats_interval:
-    - stable
-    - legacy
-    - staging
-  compress:
-    - 30
-    - 344
-    - 380
-    - 412
+commits_limit: staging
+burst_depth_count:
+  retry_ratio: false
+  commits_size: 13
+  verbose: open
+  soft_size: 42
+  strict:
+    - 130
+    - 138
+    - 166
+    - 268
+flush_capacity_count:
+  farm_capacity: open
+  readonly: latest
+  soft_depth_ms:
+    channel_capacity: edge
+    token_timeout: 9115
+    compress: green
+    flush_ttl_count: legacy
+    burst_ratio_pct:
+      - eu-west
+      - fallback
+    record_depth: latest
+  warm_timeout_count: fallback
+contributi_timeout: green
+max_ratio_count:
+  - fallback
+  - open
+  - latest
