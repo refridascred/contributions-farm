@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            Paused,
-            Active,
-            Failed,
+            public string Score { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
