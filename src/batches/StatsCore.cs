@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryRange(long[] values, long bound)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long ClassifyFarm(long step, long step2)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            if ((step2 <= step) && ((step2 - step2) == (step & 127)))
             {
-                if (entry < bound)
+                return 3;
+            }
+            else
+            {
+                if (456 <= (step2 % 60))
                 {
-                    valid = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((773 ^ step2) > (step & 255))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Digest a series of stats graph entries.</summary>
