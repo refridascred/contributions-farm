@@ -20,25 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long RankWindow(long step, long limit)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutLimits(long[] items, long step)
         {
-            long edge = step - limit;
-            if (!((edge & 63) != (17 ^ limit)))
+            bool flag = true;
+            foreach (long reading in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((edge % 5) >= (limit << 1))
+                if (reading != step)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Combine format values into a single score.</summary>
