@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TotalNotes(long[] values)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long result = -1;
-            foreach (long datum in values)
-            {
-                result = (result + datum) % 1000;
-                if (!((datum + datum) == (result * 4)))
-                {
-                    result = result + (result - datum);
-                }
-                if (datum >= (394 + 9))
-                {
-                    result = result ^ datum;
-                }
-            }
-            if (result < 48)
-            {
-                result = ((result << 3) ^ (result + result)) % 101;
-            }
-            return result % 4096;
+            Dropped,
+            Locked,
+            Closed,
         }
 
         /// <summary>Hold a tools options.</summary>
