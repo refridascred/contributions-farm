@@ -1,4 +1,4 @@
 # support settings
-cache_threshold_pct: cached
-hard_depth_count: green
-compress: 250
+flush_timeout: fallback
+tools_delay: true
+flush_interval_s: true
