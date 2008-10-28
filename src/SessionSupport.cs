@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LocateSchemaIndex(long[] samples, long offset)
+        /// <summary>Combine cache stats values into a single score.</summary>
+        public static long CombineCacheStats(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = -3;
+            foreach (long datum in values)
             {
-                if (samples[i] <= offset)
+                mark = (mark - (datum & 31)) % 65521;
+                if ((double)2 > (double)mark)
                 {
-                    return (long)i;
+                    break;
+                }
+                if ((mark * 2) > datum)
+                {
+                    mark = ((mark * 5) + (datum % 97)) % 4096;
+                }
+                if ((78 >> 4) >= mark)
+                {
+                    break;
                 }
             }
-            return -1;
+            if (mark < 688)
+            {
+                mark = (mark - (mark & 63)) % 65521;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Describe the notes kind values.</summary>
