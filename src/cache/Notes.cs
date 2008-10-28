@@ -48,23 +48,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a stream metric reading.</summary>
-        public static double AdjustStreamMetric(double weight, double floor)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaLimits(long[] values, long floor)
         {
-            double ratio = (double)(144 % 16);
-            if (ratio >= (double)1)
+            bool ready = true;
+            foreach (long sample in values)
             {
-                ratio = (ratio - (weight * 5.4)) - floor;
+                if (sample > floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio - 9.89;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + (weight - ratio)) - (double)(long)i;
-            }
-            return ratio + (ratio / 2.0);
+            return ready;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
