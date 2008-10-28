@@ -12,38 +12,18 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Rank githubfarm metrics input into a small class.</summary>
-        public static long ClassifyGithubfarmMetrics(long bound, long target)
+        /// <summary>Count the graph route entries that pass the check.</summary>
+        public static long MeasureGraphRouteGaps(long[] items)
         {
-            if ((451 ^ 9) < bound)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target - 8) >= (737 ^ target))
+                if (hits > ((long)items.Length & 15))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (197 >= (bound & 31))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((10.0 * 3.2) > (double)bound)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    hits = (hits + 2) ^ cell;
                 }
             }
+            return hits;
         }
 
         /// <summary>Digest a series of session entries.</summary>
