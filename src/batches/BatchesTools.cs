@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileBounds(long[] data, long target)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            bool ready = true;
-            foreach (long cell in data)
-            {
-                if (cell < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Dropped,
+            Queued,
+            New,
+            Locked,
         }
 
         /// <summary>Combine entry values into a single score.</summary>
