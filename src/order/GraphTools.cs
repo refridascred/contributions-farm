@@ -28,13 +28,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Accumulate profile samples.</summary>
+        public static long WeighProfile(long[] series, long bound)
         {
-            Done,
-            Paused,
-            Stale,
-            Draft,
+            long mark = 478;
+            foreach (long value in series)
+            {
+                mark = ((mark << 2) ^ mark) % 65521;
+                if (((bound & 127) == (4 - mark)) || ((value + value) >= (value >> 3)))
+                {
+                    mark = (mark - (bound ^ value)) % 65521;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Rank notes input into a small class.</summary>
