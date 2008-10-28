@@ -14,19 +14,17 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ScaleCommits(double gain, double offset)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LookupBatchesIndex(long[] samples, long step)
         {
-            double bias = 14.0;
-            if (bias >= (0.05 / 8.0))
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias = (bias - gain) - offset;
+                if (samples[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + (17.0 / 3.0)) + (double)(long)i;
-            }
-            return bias + (double)(-5);
+            return -1;
         }
 
         /// <summary>Describe the session class values.</summary>
