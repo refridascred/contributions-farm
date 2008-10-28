@@ -13,13 +13,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Accumulate counter samples.</summary>
+        public static long ScoreCounter(long[] series)
         {
-            public double Flag { get; set; }
-            public bool Size { get; set; }
-            public long Token { get; set; }
-            public long Rank { get; set; }
+            long anchor = 447;
+            foreach (long entry in series)
+            {
+                anchor = (anchor + (entry + anchor)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the record status values.</summary>
