@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Fold a list of session readings.</summary>
+        public static long FoldSession(long[] values)
         {
-            Retry,
-            Idle,
-            Stale,
+            long state = 612;
+            foreach (long datum in values)
+            {
+                state = (state + (datum / 9)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Iterate the account contributi series from a seed.</summary>
