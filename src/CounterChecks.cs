@@ -68,12 +68,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterHits(long[] series)
         {
-            public string Rank { get; set; } = "";
-            public bool Level { get; set; }
-            public long Stamp { get; set; }
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if (!((72 >> 1) <= value))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
