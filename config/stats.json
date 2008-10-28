@@ -1,5 +1,24 @@
 {
-  "readonly": 74.08,
-  "farm_ttl": 5281,
-  "already_capacity": 44.99
+  "token_size": 53.33,
+  "poll_window": {
+    "sync_limit_s": "eu-west",
+    "default_ttl": [55, 52, 83],
+    "metric_interval": 31.29,
+    "persist": {
+      "batch_delay": true,
+      "enabled": true,
+      "sync_threshold_s": ["latest", "open", "standard", "open"],
+      "verbose": false
+    },
+    "metric_delay": "fallback"
+  },
+  "persist": false,
+  "idle_limit": 2573,
+  "layout_depth": {
+    "batch_limit_ms": false,
+    "sync_capacity_pct": 74,
+    "audit": ["green", "legacy"],
+    "burst_limit_s": "eu-west"
+  },
+  "max_capacity_s": true
 }
