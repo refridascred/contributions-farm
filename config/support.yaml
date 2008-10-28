@@ -1,26 +1,4 @@
 # support settings
-batch_capacity_s:
-  - local
-  - stable
-  - legacy
-poll_interval_s: 5364
-base_ttl_ms:
-  idle_timeout_count:
-    dry_run: cached
-    verbose: true
-    readonly: 1024
-    graph_size:
-      - blue
-      - legacy
-    payload_depth:
-      - edge
-      - latest
-      - fallback
-    profile_depth: edge
-  audit: 62.65
-  soft_delay_pct:
-    - strict
-    - legacy
-    - stable
-    - primary
-  retry_delay: edge
+cache_delay: 500
+strict: true
+burst_interval_count: true
