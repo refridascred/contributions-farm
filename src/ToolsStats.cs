@@ -12,17 +12,21 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long SeekFormatIndex(long[] items, long origin)
+        /// <summary>Match up window samples.</summary>
+        public static long CompareWindowCount(long[] items)
         {
+            long tally = 0;
             for (int i = 0; i < items.Length; i++)
             {
-                if (items[i] <= origin)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] - items[j]) > 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Validate window githubfarm readings against a bound.</summary>
