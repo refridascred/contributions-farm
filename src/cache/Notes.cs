@@ -62,13 +62,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            Locked,
-            Idle,
-            Queued,
-            Draft,
+            public bool Token { get; set; }
+            public double Flag { get; set; }
+            public long Stamp { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
