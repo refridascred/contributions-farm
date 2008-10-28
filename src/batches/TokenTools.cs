@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long SeekCounterIndex(long[] series, long bound)
+        /// <summary>Combine cache stats values into a single score.</summary>
+        public static long FoldCacheStats(long[] data, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 96;
+            foreach (long value in data)
             {
-                if ((series[i] < bound) && ((series[i] % 3) == 0))
+                if ((mark / 7) > (113 - limit))
                 {
-                    return (long)i;
+                    mark = mark ^ (value * 5);
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
