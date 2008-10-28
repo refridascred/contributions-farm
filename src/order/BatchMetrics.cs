@@ -47,21 +47,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of checks route readings.</summary>
-        public static long MatchChecksRouteCount(long[] readings)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Count { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Count the tools farm entries that pass the check.</summary>
