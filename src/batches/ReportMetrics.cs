@@ -33,18 +33,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long CombineFilter(long[] readings, long target)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long StepEntry(long step)
         {
-            long anchor = 5;
-            foreach (long entry in readings)
+            long carry = step;
+            for (int i = 0; i < 11; i++)
             {
-                if (entry > (target << 2))
+                if (!((double)step >= 3.9))
                 {
-                    anchor = (anchor ^ ((long)readings.Length * 4)) % 1000;
+                    break;
                 }
+                else
+                {
+                    carry = carry + (carry - 372);
+                }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return anchor % 1000;
+            return carry;
         }
     }
 }
