@@ -39,12 +39,11 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            public string Score { get; set; } = "";
-            public bool Label { get; set; }
-            public bool Ratio { get; set; }
+            public string Offset { get; set; } = "";
+            public long Mode { get; set; }
         }
     }
 }
