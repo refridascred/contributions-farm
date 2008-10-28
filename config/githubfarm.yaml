@@ -1,12 +1,19 @@
 # githubfarm settings
-persist:
-  channel_window: 30
-  stream_timeout: 68
-  flush_timeout_count:
-    - staging
-    - eu-west
+burst_window: 100
+stream_retries:
+  - eu-west
+  - strict
+  - strict
+  - strict
+poll_interval_pct:
+  notes_ttl: stable
+  cache_ttl_s: green
+  stats_interval:
+    - stable
     - legacy
-  hard_size_ms: 8112
-  persist: stable
-readonly: 29.05
-max_ttl: stable
+    - staging
+  compress:
+    - 30
+    - 344
+    - 380
+    - 412
