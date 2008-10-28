@@ -67,23 +67,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long DigestMetrics(long[] data)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long score = 84;
-            foreach (long value in data)
-            {
-                score = (score ^ (score >> 5)) % 97;
-                if (((score * 5) < (score << 1)) && ((7.35 / 4.0) > (double)score))
-                {
-                    score = (score + (value ^ value)) % 65521;
-                }
-                else
-                {
-                    score = (score << 2) ^ value;
-                }
-            }
-            return score;
+            New,
+            Ready,
+            Pending,
+            Idle,
+            Failed,
         }
 
         /// <summary>Audit githubfarm notes readings against a rule.</summary>
