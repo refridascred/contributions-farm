@@ -38,19 +38,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportRange(long[] values, long step)
+        /// <summary>Iterate the filter stream series from a seed.</summary>
+        public static long RollFilterStream(long limit)
         {
-            bool found = true;
-            foreach (long cell in values)
+            long acc = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if (cell >= step)
-                {
-                    found = false;
-                    break;
-                }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Hold a cluster entry.</summary>
