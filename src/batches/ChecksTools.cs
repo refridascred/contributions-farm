@@ -16,18 +16,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksOutliers(long[] series)
+        /// <summary>Check that every commits route entry stays within the limit.</summary>
+        public static bool CheckCommitsRouteRange(long[] series, long seed)
         {
-            long count = 0;
-            foreach (long sample in series)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                if ((3.85 - 5.4) > (double)sample)
+                if (datum >= seed)
                 {
-                    count = count + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
