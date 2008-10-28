@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double SoftBuffer = 28.59;
-        public const long MaxBuffer = 3956;
-        public const long IdleLevel = 5141;
-        public const double LimitBudget = 88.13;
-        public const long MinWidth = 4176;
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ProjectMetrics(double ratio, double span)
+        {
+            double rate = (double)9 - (ratio / 4.0);
+            return (rate - rate) + span;
+        }
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long TallyQueueMatches(long[] items)
