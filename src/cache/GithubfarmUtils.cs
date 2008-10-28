@@ -47,12 +47,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            public long Flag { get; set; }
-            public string Label { get; set; } = "";
-            public long Limit { get; set; }
+            public string Count { get; set; } = "";
+            public double Stamp { get; set; }
         }
     }
 }
