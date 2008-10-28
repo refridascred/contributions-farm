@@ -39,22 +39,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiGaps(long[] samples, long bound)
+        /// <summary>Measure how many route account samples are out of range.</summary>
+        public static long TallyRouteAccountHits(long[] samples)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if (!(((hits % 60) == (datum % 7)) && (datum <= (bound % 16))))
+                if (!((double)seen < (9.01 - 6.57)))
                 {
-                    hits = hits + 1;
+                    seen = (seen + 2) + value;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
