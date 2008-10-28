@@ -1,6 +1,10 @@
 {
-  "audit": ["eu-west", "edge"],
-  "buffer_ttl": 40,
-  "poll_retries": 52.52,
-  "window_timeout": 924
+  "burst_retries_count": {
+    "dry_run": 38.54,
+    "cache_interval": 30,
+    "sync_interval_ms": 100
+  },
+  "batch_depth_s": "standard",
+  "stream_retries": ["staging", "primary", "latest"],
+  "base_delay_count": 47.01
 }
