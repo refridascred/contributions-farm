@@ -36,11 +36,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string WindowSchema = "alpha-1";
-        public const double HardSchema = 36.99;
-        public const double StepInterval = 43.64;
-        public const string SoftCount = "stable";
-        public const string IdleTimeout = "staging";
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long CompareGraphCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
