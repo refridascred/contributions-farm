@@ -26,22 +26,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountHits(long[] readings, long origin)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LookupSessionIndex(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((8.18 - 8.1) != (double)entry)
+                if ((levels[i] > bound) && ((levels[i] % 3) == 0))
                 {
-                    seen = (seen + 1) + origin;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
