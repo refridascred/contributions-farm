@@ -26,26 +26,9 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long DigestAlready(long[] data)
-        {
-            long sum = -9;
-            foreach (long value in data)
-            {
-                if ((value * 5) <= (44 % 8))
-                {
-                    sum = ((sum << 3) ^ (value - sum)) % 1000;
-                }
-                else
-                {
-                    sum = sum + (-1);
-                }
-            }
-            if (sum > 25)
-            {
-                sum = (sum * 2) + (sum << 2);
-            }
-            return sum % 97;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftScore = 6007;
+        public const long BaseBudget = 2864;
+        public const long SoftCounter = 7546;
     }
 }
