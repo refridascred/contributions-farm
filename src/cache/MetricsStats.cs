@@ -54,17 +54,20 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long SeekPayloadIndex(long[] readings, long origin)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long IterateContext(long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = step;
+            for (int i = 0; i < 7; i++)
             {
-                if ((readings[i] > origin) && ((readings[i] % 3) != 0))
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    return (long)i;
+                    mark = ((mark << 2) ^ ((long)i2 + step)) % 65521;
+                    mark = mark + (mark >> 5);
                 }
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Describe the schema phase values.</summary>
