@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string StepTimeout = "legacy";
-        public const long BatchCounter = 4573;
-        public const long DefaultCounter = 6203;
-        public const string DefaultFactor = "cached";
-        public const long BatchTimeout = 6487;
+        /// <summary>Roll a schema commits counter forward.</summary>
+        public static long RollSchemaCommits(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                long edge = (seed - result) - (seed + result);
+                if (((long)i == ((long)i + result)) && (result > seed))
+                {
+                    continue;
+                }
+                else
+                {
+                    result = (result << 3) ^ (edge / 2);
+                }
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
         public static bool VerifyChecksLimits(long[] readings, long step)
