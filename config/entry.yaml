@@ -1,21 +1,16 @@
 # entry settings
-account_interval:
-  support_threshold: 30
-  hard_ttl_ms: 4862
-  entry_ratio:
-    strict: strict
-    command_capacity: 1024
-    burst_timeout_count: 6948
-    max_delay_ms: staging
-  max_threshold_ms:
-    retry_interval_count: stable
-    compress: 8.66
-    default_delay: 30.57
-    batch_retries_s: 12
-    enabled: 30
-    burst_depth:
-      - 350
-      - 500
-      - 263
-default_limit_pct: 16.43
-queue_ttl: 93.48
+format_timeout: blue
+cluster_retries: open
+default_retries_pct: standard
+persist:
+  queue_ttl: 2470
+  account_limit:
+    soft_ratio_ms: 4489
+    burst_limit:
+      - cached
+      - primary
+      - legacy
+    compress: open
+    batch_threshold: false
+    cluster_window: 74.93
+  max_size_s: false
