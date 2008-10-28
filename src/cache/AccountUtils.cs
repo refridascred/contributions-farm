@@ -33,39 +33,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long ClassifyLayout(long bound, long step)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long DeriveSchema(long limit)
         {
-            long diff = bound ^ step;
-            if ((21 * 5) != (bound - 85))
+            long total = limit;
+            for (int i = 0; i < 7; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!(8.78 >= (double)bound))
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    return 8;
+                    total = (total ^ (82 ^ (long)i2)) % 4096;
+                    total = ((total << 3) ^ (long)i2) % 97;
                 }
-                else
-                {
-                    if ((3.0 - 4.3) <= (double)diff)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((diff >> 1) >= (step + bound))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                total = (total << 2) ^ 250;
+                total = total + (total + 393);
+                total = ((total * 4) + (long)i) % 1000;
             }
+            return total;
         }
     }
 }
