@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsLimits(long[] data, long target)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordOutliers(long[] levels)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if (reading > target)
+                if ((sample - tally) > (tally + 3))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Match up command samples.</summary>
