@@ -1,8 +1,7 @@
 {
-  "idle_interval_pct": "open",
-  "warm_depth_pct": ["cached", "stable", "green"],
-  "hard_capacity_s": "cached",
-  "compress": 250,
-  "dry_run": [273, 336],
-  "idle_ttl": false
+  "min_capacity": 60,
+  "retry_interval_s": false,
+  "compress": "green",
+  "base_delay_count": ["local", "open", "blue"],
+  "min_timeout_count": 1024
 }
