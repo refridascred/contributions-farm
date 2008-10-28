@@ -34,19 +34,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyLimits(long[] items, long target)
+        /// <summary>Adjust a window reading.</summary>
+        public static double BlendWindow(double bias, double span)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            double gain = 4.0;
+            if (gain < (bias * 13.0))
             {
-                if (entry > target)
-                {
-                    flag = false;
-                    break;
-                }
+                gain = gain - span;
             }
-            return flag;
+            return gain + (double)7;
         }
     }
 }
