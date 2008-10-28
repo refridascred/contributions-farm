@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatRange(long[] data, long offset)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionGaps(long[] series)
         {
-            bool stale = true;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if (item <= offset)
+                if ((item < 9) && (((item << 2) >= matches) || ((matches % 5) <= (matches / 3))))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
