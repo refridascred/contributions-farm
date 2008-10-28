@@ -41,13 +41,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
+            Ready,
+            Done,
+            Failed,
             Dropped,
-            Synced,
-            Closed,
-            Idle,
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
