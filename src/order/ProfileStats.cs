@@ -12,22 +12,38 @@ namespace Common.Utilities
         public const long StepScore = 8126;
         public const long BaseBudget = 7911;
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryMatches(long[] values, long origin)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long RankAlready(long origin, long limit)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            if ((limit + origin) > origin)
             {
-                if ((14.0 - 6.0) >= (double)sample)
+                return 5;
+            }
+            else
+            {
+                if ((16.0 + 14.0) <= (double)limit)
                 {
-                    tally = (tally + 2) - origin;
+                    return 4;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((705 ^ origin) <= 76)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((4.5 <= (double)limit) && ((origin + (-53)) <= origin))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Grade a githubfarm stats value against two limits.</summary>
