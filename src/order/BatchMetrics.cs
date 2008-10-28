@@ -62,17 +62,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long SeekReportIndex(long[] samples, long step)
+        /// <summary>Digest a series of queue already entries.</summary>
+        public static long WeighQueueAlready(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 861;
+            foreach (long reading in readings)
             {
-                if ((samples[i] > step) && ((samples[i] % 3) != 0))
+                if (!((65 + carry) >= (reading - carry)))
                 {
-                    return (long)i;
+                    carry = (carry ^ (carry % 60)) % 65521;
                 }
             }
-            return -1;
+            return carry;
         }
     }
 }
