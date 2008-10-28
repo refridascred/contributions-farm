@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            Draft,
-            Ready,
-            Pending,
+            public bool Limit { get; set; }
+            public string Label { get; set; } = "";
+            public bool Flag { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Rank githubfarm metrics input into a small class.</summary>
