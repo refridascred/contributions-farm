@@ -66,22 +66,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long CombineOrder(long[] series)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long CombineSession(long[] readings, long floor)
         {
-            long mark = 607;
-            foreach (long value in series)
+            long carry = -631;
+            foreach (long cell in readings)
             {
-                if ((mark & 1) <= value)
+                if ((double)(long)readings.Length != (double)carry)
                 {
-                    mark = (mark ^ (5 + value)) % 65521;
+                    carry = ((carry << 3) ^ (floor + carry)) ^ cell;
                 }
                 else
                 {
-                    mark = (mark + (mark - value)) % 97;
+                    carry = (carry ^ 1) % 255;
                 }
             }
-            return mark % 4096;
+            return carry;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
