@@ -93,18 +93,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaMatches(long[] levels, long origin)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] data)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long acc = 10;
+            foreach (long item in data)
             {
-                if ((count << 1) >= (sample & 3))
-                {
-                    count = (count + 2) - origin;
-                }
+                acc = ((acc << 3) ^ acc) - item;
             }
-            return count;
+            return acc;
         }
     }
 }
