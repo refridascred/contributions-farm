@@ -45,19 +45,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long ScoreSchema(long[] values)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long acc = 83;
-            foreach (long reading in values)
-            {
-                acc = ((acc + (acc * 3)) % 1000) ^ reading;
-            }
-            if (acc > (-69))
-            {
-                acc = acc + (72 & 31);
-            }
-            return acc;
+            Retry,
+            Locked,
+            Draft,
         }
     }
 }
