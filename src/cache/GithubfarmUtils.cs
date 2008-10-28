@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long GradeOrder(long floor, long limit)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long offset = floor + limit;
-            if (((offset ^ floor) < offset) && ((double)offset < (7.8 * 0.98)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((offset << 2) > ((-587) ^ offset)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (floor >= (floor - 149))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public string Level { get; set; } = "";
+            public double Rank { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
