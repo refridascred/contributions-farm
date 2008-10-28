@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowWidth = 1736;
-        public const string CacheCount = "legacy";
-        public const long HardLevel = 1843;
-        public const long BaseTimeout = 2356;
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
+        {
+            Dropped,
+            Active,
+            Locked,
+        }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool VerifyBatchRange(long[] items, long step)
