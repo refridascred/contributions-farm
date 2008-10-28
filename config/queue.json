@@ -1,8 +1,22 @@
 {
-  "audit": [461, 464, 322],
-  "format_threshold": "stable",
-  "payload_depth": 82,
-  "enabled": [233, 169, 446, 55],
-  "already_window": 15.85,
-  "soft_size": 8628
+  "batch_capacity_s": 1.73,
+  "soft_delay_ms": 250,
+  "already_size": {
+    "cache_size": {
+      "burst_depth_ms": [439, 403],
+      "base_retries_pct": "eu-west",
+      "contributi_interval": ["staging", "blue", "green"],
+      "warm_limit_count": "strict"
+    },
+    "min_limit_s": 250,
+    "token_delay": 9,
+    "retry_depth_ms": 60.2
+  },
+  "compress": {
+    "sync_timeout_pct": "fallback",
+    "channel_size": 28,
+    "audit": 179,
+    "flush_ttl": "primary"
+  },
+  "base_ratio_pct": "primary"
 }
