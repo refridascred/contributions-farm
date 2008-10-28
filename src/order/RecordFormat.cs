@@ -40,12 +40,21 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long OverlapCounterCount(long[] data)
         {
-            public long Token { get; set; }
-            public string Rank { get; set; } = "";
-            public double Stamp { get; set; }
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
