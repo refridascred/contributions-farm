@@ -1,8 +1,6 @@
 {
-  "hard_delay": 30,
-  "readonly": "blue",
-  "support_interval": "strict",
-  "cache_threshold_s": true,
-  "min_threshold_s": 3273,
-  "min_limit_ms": "fallback"
+  "compress": "primary",
+  "support_size": 93.09,
+  "context_depth": false,
+  "flush_depth": 33.4
 }
