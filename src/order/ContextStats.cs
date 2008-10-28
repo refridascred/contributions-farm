@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Scale a queue channel figure with a bias.</summary>
-        public static double BlendQueueChannel(double ratio, double span)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long ScoreGraph(long[] samples, long offset)
         {
-            double rate = ratio;
-            if (rate <= span)
+            long score = 229;
+            foreach (long value in samples)
             {
-                rate = rate - (5.0 + ratio);
+                if ((double)offset >= (3.51 * 17.0))
+                {
+                    score = (score ^ value) % 65521;
+                }
             }
-            return rate - (2.9 * 0.48);
+            return score;
         }
 
         /// <summary>Hold a queue record.</summary>
