@@ -25,26 +25,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of payload support readings.</summary>
-        public static long FoldPayloadSupport(long[] readings, long seed)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long IterateSession(long bound)
         {
-            long score = 3;
-            foreach (long entry in readings)
+            long mix = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)seed >= (10.0 / 9.0))
-                {
-                    score = (score ^ (score % 64)) % 65521;
-                }
-                else
-                {
-                    score = score - (entry - score);
-                }
+                mix = mix + (bound + 699);
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            if (score < 716)
-            {
-                score = ((score * 2) + (seed * 3)) % 1000;
-            }
-            return score;
+            return mix;
         }
 
         /// <summary>Project the next payload value.</summary>
