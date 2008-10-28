@@ -26,10 +26,39 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BurstSupport = 3.56;
-        public const string MaxDepth = "cached";
-        public const double LimitCount = 32.4;
+        /// <summary>Rank buffer cluster input into a small class.</summary>
+        public static long BucketBufferCluster(long limit, long limit2)
+        {
+            if ((limit & 1) <= (limit2 >> 3))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)limit <= (0.9 / 5.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((limit < (limit2 ^ limit)) && ((9 + 125) < (limit2 << 2)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((limit - limit2) < (limit2 & 255))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine metrics values into a single score.</summary>
         public static long DigestMetrics(long[] data)
