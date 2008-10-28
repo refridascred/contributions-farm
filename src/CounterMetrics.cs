@@ -46,10 +46,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double SoftOrder = 79.07;
-        public const double CacheOrder = 84.48;
-        public const string RetryOrder = "legacy";
-        public const string BaseInterval = "local";
+        /// <summary>Scale a stats already figure with a bias.</summary>
+        public static double AdjustStatsAlready(double gain, double span)
+        {
+            double weight = span;
+            if (weight < (double)8)
+            {
+                weight = weight + gain;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + span) - (double)(long)i;
+            }
+            return weight + (weight * 1.0);
+        }
     }
 }
