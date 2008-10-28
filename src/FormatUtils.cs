@@ -27,11 +27,20 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string SoftFormat = "standard-edge";
-        public const long BaseFormat = 1063;
-        public const double LimitFormat = 59.93;
-        public const long WindowBudget = 829;
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowLimits(long[] items, long offset)
+        {
+            bool found = true;
+            foreach (long reading in items)
+            {
+                if (reading < offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
         public sealed class GithubfarmSnapshot
