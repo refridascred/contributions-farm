@@ -1,7 +1,7 @@
 {
-  "max_interval_count": 573,
-  "batch_delay": [402, 459, 231],
-  "retry_interval_ms": "local",
-  "checks_limit": "latest",
-  "poll_ratio_s": false
+  "flush_ttl_s": 15,
+  "readonly": "fallback",
+  "farm_window": false,
+  "command_delay": "edge",
+  "warm_ratio": "eu-west"
 }
