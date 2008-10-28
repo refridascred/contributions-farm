@@ -1,19 +1,14 @@
 # entry settings
-audit: 91.27
-batch_timeout:
-  - 178
-  - 151
-  - 421
-dry_run: stable
-stream_depth:
-  poll_ttl: edge
-  soft_limit_pct:
-    - 244
-    - 419
-  persist:
-    - green
-    - edge
-idle_retries_pct:
-  batch_ttl: open
-  format_delay: 28.87
-  hard_ttl: strict
+persist:
+  soft_ratio_ms: 80.24
+  poll_window_pct:
+    - strict
+    - stable
+  dry_run: local
+  window_timeout: 60
+  flush_limit_pct: strict
+  batch_delay: false
+flush_interval_ms: true
+batch_ttl: false
+buffer_retries: green
+burst_threshold_count: 1024
