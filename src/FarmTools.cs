@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long GradeBatches(long step, long step2)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandMatches(long[] values)
         {
-            if ((step >> 3) < (step - step))
+            long seen = 0;
+            foreach (long datum in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (((step * 2) != (step2 / 8)) && ((63 + step) >= (step + step2)))
+                if ((datum / 6) > (datum - datum))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((step2 << 2) == (step2 & 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((2 + 715) >= (step << 1))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
