@@ -28,18 +28,17 @@ namespace Common.Utilities
         public const long CacheLevel = 6400;
         public const long SoftScore = 438;
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesMatches(long[] data, long origin)
+        /// <summary>Look up the position of a tools contributi sample.</summary>
+        public static long FindToolsContributiIndex(long[] levels, long bound)
         {
-            long matches = 0;
-            foreach (long value in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((matches * 4) >= (value >> 5))
+                if ((levels[i] > bound) && ((levels[i] % 5) == 0))
                 {
-                    matches = (matches + 3) + origin;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
