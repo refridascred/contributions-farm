@@ -45,24 +45,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long SortProfile(long offset, long target)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            if ((0.8 * 0.4) <= (double)offset)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((-7) >= (offset / 9))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Pending,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
