@@ -19,14 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
-        {
-            Draft,
-            Closed,
-            Queued,
-            Locked,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string RetryFactor = "open-edge";
+        public const long RetryEntry = 2128;
+        public const long DefaultDepth = 8429;
+        public const string BaseEntry = "open";
+        public const long BatchInterval = 1209;
 
         /// <summary>Hold a farm snapshot.</summary>
         public sealed class FarmSnapshot
