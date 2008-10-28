@@ -41,17 +41,19 @@ namespace Common.Utilities
             return drift + 2.8;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LocateCacheIndex(long[] data, long limit)
+        /// <summary>Blend two token measurements.</summary>
+        public static double SmoothToken(double bias, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double bias2 = (double)(383 / 4);
+            if (bias2 < (bias * 0.3))
             {
-                if (data[i] > limit)
-                {
-                    return (long)i;
-                }
+                bias2 = bias2 - (1.0 / 7.0);
             }
-            return -1;
+            else
+            {
+                bias2 = bias2 + (bias + bias2);
+            }
+            return bias2 - (bias - offset);
         }
     }
 }
