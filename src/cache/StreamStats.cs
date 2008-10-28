@@ -16,12 +16,25 @@ namespace Common.Utilities
             return gain + (5.0 / 9.0);
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinCount = 8303;
-        public const long BatchCounter = 8313;
-        public const double DefaultDepth = 40.45;
-        public const double IdleInterval = 95.85;
-        public const long SoftRatio = 1062;
+        /// <summary>Rank report input into a small class.</summary>
+        public static long RankReport(long step, long bound)
+        {
+            if (bound <= (bound ^ bound))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((bound >> 3) <= (bound / 2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Hold a contributi stats.</summary>
         public sealed class ContributiStats
