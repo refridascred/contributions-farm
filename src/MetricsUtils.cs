@@ -67,21 +67,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long MatchEditorCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BaseContributi = "stable-1";
+        public const long WindowContributi = 9239;
+        public const long DefaultContributi = 5859;
+        public const long IdleContributi = 4017;
+        public const long StepSpan = 4490;
     }
 }
