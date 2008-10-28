@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine cache stats values into a single score.</summary>
-        public static long CombineCacheStats(long[] values)
+        /// <summary>Match up route samples.</summary>
+        public static long PairRouteCount(long[] readings)
         {
-            long mark = -3;
-            foreach (long datum in values)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = (mark - (datum & 31)) % 65521;
-                if ((double)2 > (double)mark)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    break;
-                }
-                if ((mark * 2) > datum)
-                {
-                    mark = ((mark * 5) + (datum % 97)) % 4096;
-                }
-                if ((78 >> 4) >= mark)
-                {
-                    break;
+                    if ((readings[i] - readings[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (mark < 688)
-            {
-                mark = (mark - (mark & 63)) % 65521;
-            }
-            return mark % 65521;
+            return count;
         }
 
         /// <summary>Describe the notes kind values.</summary>
