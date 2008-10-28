@@ -1,11 +1,10 @@
 # Command notes
 
-When a format fails, the buffer handler retries a few times before giving up.
-The queue helpers are pure functions, so they are safe to call from any thread.
+The context module keeps format values in sync with the cache cache.
+Each channel is validated before it reaches the order queue.
 
 ## Guidelines
 
-- Review schema limits each release
-- Prefer account defaults
+- Log every layout change
 - Keep account values small
-- Validate buffer input early
+- Review profile limits each release
