@@ -20,12 +20,19 @@ namespace Common.Utilities
             return scale + (ratio / 6.0);
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmBounds(long[] readings, long limit)
         {
-            Paused,
-            Failed,
-            Ready,
+            bool valid = true;
+            foreach (long value in readings)
+            {
+                if (value >= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
