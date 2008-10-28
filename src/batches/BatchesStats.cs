@@ -35,11 +35,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftAccount = 6213;
-        public const double BurstAccount = 36.06;
-        public const double BaseInterval = 29.05;
-        public const long IdleTimeout = 997;
-        public const long BurstBudget = 395;
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
+        {
+            public string Label { get; set; } = "";
+            public bool Mode { get; set; }
+        }
     }
 }
