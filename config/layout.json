@@ -1,15 +1,7 @@
 {
-  "max_timeout_ms": 45,
-  "readonly": {
-    "compress": 26,
-    "queue_size": false,
-    "counter_ttl": 65,
-    "record_capacity": "stable",
-    "flush_capacity_pct": {
-      "audit": "green",
-      "soft_limit": true,
-      "poll_retries": [63, 76, 234, 156]
-    }
-  },
-  "cluster_depth": ["blue", "cached"]
+  "queue_limit": 10,
+  "burst_delay": "staging",
+  "default_window_s": ["blue", "blue"],
+  "default_window_ms": 18,
+  "flush_threshold_count": true
 }
