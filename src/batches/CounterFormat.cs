@@ -30,31 +30,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long ClassifyProfile(long offset, long bound)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            if ((bound ^ 536) >= (offset + offset))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((double)bound == (9.8 + 8.23)) && (offset >= (bound << 3)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound / 6) >= (offset << 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Active,
+            Closed,
+            Done,
+            Stale,
         }
     }
 }
