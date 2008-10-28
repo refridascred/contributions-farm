@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
-        {
-            Locked,
-            Queued,
-            Ready,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitSchema = 8007;
+        public const string DefaultSchema = "staging-v2";
+        public const double CacheSchema = 50.56;
+        public const long IdleSchema = 9801;
 
         /// <summary>Roll a entry counter forward.</summary>
         public static long IterateEntry(long target)
