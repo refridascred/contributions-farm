@@ -49,14 +49,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Project the next farm tools value.</summary>
+        public static double BlendFarmTools(double ratio, double offset)
         {
-            Locked,
-            Draft,
-            Ready,
-            Synced,
-            Stale,
+            double load = (double)(223 * 4);
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - (offset - ratio)) + (double)(long)i;
+            }
+            return load - (8.9 + 3.5);
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
