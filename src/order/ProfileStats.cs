@@ -40,14 +40,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Count the metric contributi entries that pass the check.</summary>
+        public static long MeasureMetricContributiMatches(long[] values, long seed)
         {
-            Ready,
-            Retry,
-            Dropped,
-            Queued,
-            Stale,
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if ((cell - cell) < seed)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
