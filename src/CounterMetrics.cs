@@ -46,9 +46,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinRatio = 9755;
-        public const long BaseChannel = 2283;
-        public const double MaxCount = 17.07;
+        /// <summary>Define order limits and defaults.</summary>
+        public const double SoftOrder = 79.07;
+        public const double CacheOrder = 84.48;
+        public const string RetryOrder = "legacy";
+        public const string BaseInterval = "local";
     }
 }
