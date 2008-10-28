@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            public double Label { get; set; }
-            public string Limit { get; set; } = "";
-            public long Total { get; set; }
+            Draft,
+            Dropped,
+            Locked,
+            Closed,
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
