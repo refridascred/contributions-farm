@@ -42,12 +42,11 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            Closed,
-            Ready,
-            Synced,
+            public long Owner { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Project the next editor value.</summary>
