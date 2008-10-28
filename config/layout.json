@@ -1,7 +1,7 @@
 {
-  "base_timeout_count": true,
-  "enabled": "cached",
-  "cache_ratio_ms": "legacy",
-  "audit": "latest",
-  "context_size": ["eu-west", "open"]
+  "command_threshold": 5318,
+  "burst_ttl_count": true,
+  "verbose": 30,
+  "dry_run": 100,
+  "sync_limit": 4761
 }
