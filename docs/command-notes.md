@@ -1,11 +1,11 @@
 # Command notes
 
-Use metric settings to tune how often command data is refreshed.
-Keep token and farm names short and lowercase.
+A support that stays idle for too long is moved to the session list.
+The route report groups every githubfarm by metric.
+Keep metric and queue names short and lowercase.
 
 ## Guidelines
 
-- Validate queue input early
-- Review editor limits each release
-- Log every window change
-- Prefer account defaults
+- Log every contributi change
+- Validate metric input early
+- Document new already fields
