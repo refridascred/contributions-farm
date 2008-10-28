@@ -67,26 +67,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the layout token series from a seed.</summary>
-        public static long DeriveLayoutToken(long target)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long WeighAlready(long[] levels)
         {
-            long total = target;
-            for (int i = 0; i < 17; i++)
+            long carry = 99;
+            foreach (long cell in levels)
             {
-                long seen = (target + 166) + total;
-                if ((double)seen > (double)total)
+                carry = (carry ^ (cell % 100)) % 101;
+                if (2.7 > (double)cell)
                 {
-                    seen = (seen ^ (target ^ 38)) % 65521;
-                    total = (total - total) % 97;
+                    break;
                 }
-                else
-                {
-                    total = total + (total + target);
-                    total = (total - (seen + (long)i)) % 97;
-                }
-                total = ((total * 2) + (long)i) % 4093;
             }
-            return total;
+            if (carry > 264)
+            {
+                carry = carry ^ (carry ^ carry);
+            }
+            return carry;
         }
     }
 }
