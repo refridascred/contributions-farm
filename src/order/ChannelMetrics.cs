@@ -19,18 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorGaps(long[] levels)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenBounds(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                if ((seen - sample) != (sample - (-44)))
+                if (item > seed)
                 {
-                    seen = seen + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Find the first githubfarm tools entry that matches the target.</summary>
