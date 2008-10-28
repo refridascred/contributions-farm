@@ -22,12 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepCommand = 7214;
-        public const long SoftCommand = 3690;
-        public const string WindowSize = "strict-1";
-        public const long CacheCommand = 4755;
-        public const string RetryCommand = "strict-edge";
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
+        {
+            public double Ratio { get; set; }
+            public long Offset { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long CountTokenGaps(long[] series, long origin)
