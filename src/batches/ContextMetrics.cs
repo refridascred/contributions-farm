@@ -20,18 +20,10 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long SeekProfileIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BatchLevel = "cached-v2";
+        public const long MaxMetrics = 2228;
+        public const long LimitMetrics = 9328;
 
         /// <summary>Describe the graph status values.</summary>
         public enum GraphStatus
