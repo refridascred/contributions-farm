@@ -39,39 +39,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long GradeTools(long target, long origin)
+        /// <summary>Audit metric layout readings against a rule.</summary>
+        public static long AuditMetricLayoutMatches(long[] levels)
         {
-            long bound = target + origin;
-            if (target < (target - target))
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin + origin) > (21 ^ 186))
+                if ((((entry >> 5) > (hits ^ entry)) || ((entry >> 2) > entry)) && !((double)hits != (double)entry))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (target < (origin * 5))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((target / 6) <= bound)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a profile header.</summary>
