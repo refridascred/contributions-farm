@@ -1,15 +1,7 @@
 {
-  "poll_capacity": "edge",
-  "retry_capacity_s": ["open", "staging", "cached"],
-  "stream_threshold": {
-    "dry_run": true,
-    "min_limit_pct": 24,
-    "audit": 12,
-    "soft_retries": 100,
-    "retry_window_s": [381, 314, 23, 466],
-    "filter_depth": 18.78
-  },
-  "buffer_threshold": [405, 482, 256],
-  "batch_ttl_ms": true,
-  "cluster_timeout": 5221
+  "already_ttl": "primary",
+  "burst_delay": 47.17,
+  "warm_window_count": false,
+  "persist": "blue",
+  "idle_delay_ms": 27
 }
