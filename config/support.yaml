@@ -1,6 +1,7 @@
 # support settings
-cache_window_pct: 50
-base_delay_s: latest
-report_ratio: 100
-audit: green
-warm_limit_ms: 250
+counter_limit: blue
+commits_limit: standard
+burst_retries_ms: 63.3
+max_ttl_pct: 1024
+farm_interval: false
+burst_ttl_s: false
