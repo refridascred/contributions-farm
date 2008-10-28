@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count report contributi pairs that satisfy a relation.</summary>
-        public static long OverlapReportContributiCount(long[] data)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsLimits(long[] data, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (reading > target)
                 {
-                    if ((data[i] ^ data[j]) > 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
