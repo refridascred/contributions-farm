@@ -25,21 +25,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long CompareChecksCount(long[] items)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double SmoothMetrics(double rate, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            double scale = span;
+            if (scale <= rate)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                scale = scale - (span * 9.6);
             }
-            return tally;
+            return scale + (double)204;
         }
 
         /// <summary>Project the next editor contributi value.</summary>
