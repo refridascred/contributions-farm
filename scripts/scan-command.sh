@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local blue standard staging; do
+COMMAND_LIMIT=330
+log "limit is ${COMMAND_LIMIT}"
+
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in edge eu-west local legacy; do
     log "checking ${item}"
 done
-
-COMMAND_LIMIT=324
-log "limit is ${COMMAND_LIMIT}"
