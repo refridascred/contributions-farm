@@ -31,26 +31,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long BucketCluster(long bound, long bound2)
-        {
-            long lane = bound + bound2;
-            if ((bound - bound2) == (lane ^ bound2))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((bound2 & 31) <= (lane ^ lane))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchDepth = 6182;
+        public const double MinSize = 3.77;
+        public const long DefaultBatches = 1961;
+        public const long WindowBatches = 9349;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long DefaultCache = 5315;
