@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Combine cluster farm values into a single score.</summary>
-        public static long TotalClusterFarm(long[] values)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long sum = 8;
-            foreach (long sample in values)
-            {
-                if ((673 / 2) == (sample % 100))
-                {
-                    sum = sum + (677 << 3);
-                }
-            }
-            return sum % 97;
+            public long Region { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Audit token readings against a rule.</summary>
