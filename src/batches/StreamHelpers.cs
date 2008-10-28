@@ -31,19 +31,18 @@ namespace Common.Utilities
         public const long LimitTimeout = 9904;
         public const long BatchScore = 2955;
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowBounds(long[] levels, long origin)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmMatches(long[] levels)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (datum <= origin)
+                if ((8.8 * 7.4) >= (double)count)
                 {
-                    ready = false;
-                    break;
+                    count = (count + 2) - sample;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
