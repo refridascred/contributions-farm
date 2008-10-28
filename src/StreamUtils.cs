@@ -62,32 +62,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long SortMetrics(long origin, long step)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long next = origin ^ step;
-            if (next <= 13)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((next % 16) < (step >> 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)origin < 8.1)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public double Size { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the order level values.</summary>
