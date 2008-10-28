@@ -57,21 +57,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count batch report pairs that satisfy a relation.</summary>
-        public static long CompareBatchReportCount(long[] samples)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double AdjustCluster(double gain, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double drift = floor;
+            if (drift < (drift + 5.61))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                drift = drift + (gain - floor);
             }
-            return tally;
+            else
+            {
+                drift = drift + gain;
+            }
+            return drift - floor;
         }
     }
 }
