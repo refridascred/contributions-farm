@@ -1,6 +1,7 @@
-id,score,level,ratio
-1,125,589,47.42
-2,710,8.34,39
-3,943,741,edge
-4,11.93,standard,blue
-5,eu-west,edge,703
+id,score,state,count,owner
+1,47.49,738,44.91,blue
+2,179,71.67,edge,854
+3,cached,175,latest,872
+4,43.19,35.13,edge,519
+5,18.2,516,238,11.84
+6,751,843,10.97,11.48
