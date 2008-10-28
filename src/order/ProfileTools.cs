@@ -30,21 +30,22 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long MatchBufferCount(long[] samples)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelOutliers(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((sample <= (sample - sample)) || !((6.0 / 2.0) >= (double)tally))
                 {
-                    if ((samples[i] - samples[j]) == 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
