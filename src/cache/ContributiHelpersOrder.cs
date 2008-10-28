@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Iterate the stats tools series from a seed.</summary>
-        public static long StepStatsTools(long origin)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long PairSchemaCount(long[] values)
         {
-            long score = origin;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((origin / 9) < score))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = ((score * 2) + score) % 255;
-                    score = ((score * 3) + score) % 97;
+                    if ((values[i] ^ values[j]) == 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                score = ((score << 3) ^ score) % 4096;
-                score = ((score * 2) + (long)i) % 65521;
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Audit report queue readings against a rule.</summary>
