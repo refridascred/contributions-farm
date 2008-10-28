@@ -1,6 +1,14 @@
 # entry settings
-compress: standard
-persist: fallback
-graph_delay: latest
-readonly: standard
-batch_window: strict
+graph_ttl: open
+dry_run:
+  burst_depth: local
+  warm_limit_count: staging
+  min_window_count:
+    - local
+    - latest
+    - fallback
+  audit:
+    base_retries: 30
+    default_ttl: false
+    hard_depth_pct: 1024
+audit: eu-west
