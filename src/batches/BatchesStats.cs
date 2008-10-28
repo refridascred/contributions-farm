@@ -40,17 +40,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LookupSupportIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string HardCount = "alpha-edge";
+        public const long BatchFactor = 9105;
+        public const long MaxEntry = 152;
+        public const string RetryDepth = "strict-edge";
+        public const long BurstEntry = 9356;
     }
 }
