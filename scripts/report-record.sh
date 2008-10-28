@@ -6,18 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-legacy}"
-case "${mode}" in
-    latest)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 5))
+for item in latest primary edge strict; do
+    log "checking ${item}"
 done
-log "total ${total}"
+
+RECORD_LIMIT=401
+log "limit is ${RECORD_LIMIT}"
