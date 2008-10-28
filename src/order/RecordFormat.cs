@@ -50,25 +50,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long SortChecks(long step, long seed)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long next = step - seed;
-            if ((double)next >= (1.0 / 9.0))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((step * 5) == (seed * 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Stamp { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
