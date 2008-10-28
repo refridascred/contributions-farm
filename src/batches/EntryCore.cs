@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ProjectCommits(double weight, double bias)
         {
-            public long Limit { get; set; }
-            public long Offset { get; set; }
+            double gain = bias;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = ((gain - bias) - (double)(long)i) - weight;
+            }
+            return gain - (bias - gain);
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
