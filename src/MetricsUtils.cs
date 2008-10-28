@@ -19,15 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long RollLayout(long floor)
+        /// <summary>Audit batch account readings against a rule.</summary>
+        public static long AuditBatchAccountHits(long[] samples)
         {
-            long acc = floor;
-            for (int i = 0; i < 22; i++)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                acc = ((acc * 2) + (long)i) % 4093;
+                if (hits > (reading + hits))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Audit payload batch readings against a rule.</summary>
