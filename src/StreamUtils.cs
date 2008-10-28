@@ -28,21 +28,21 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long MatchFilterCount(long[] values)
+        /// <summary>Match up cache samples.</summary>
+        public static long CompareCacheCount(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((values[i] ^ values[j]) != 15)
+                    if ((levels[i] ^ levels[j]) == 12)
                     {
-                        hits = hits + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Accumulate route samples.</summary>
