@@ -28,17 +28,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LocateToolsIndex(long[] values, long offset)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Paused,
+            Stale,
+            Draft,
         }
 
         /// <summary>Rank notes input into a small class.</summary>
