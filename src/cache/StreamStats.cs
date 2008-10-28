@@ -13,13 +13,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Count the command stream entries that pass the check.</summary>
+        public static long MeasureCommandStreamGaps(long[] levels, long bound)
         {
-            Locked,
-            Active,
-            Pending,
-            Failed,
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((double)bound > (double)sample)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
