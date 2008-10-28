@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricMatches(long[] items)
+        /// <summary>Derive the next cache metrics value from a seed.</summary>
+        public static long IterateCacheMetrics(long floor)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long score = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if ((reading << 1) > matches)
-                {
-                    matches = matches + 2;
-                }
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Hold a tools stats.</summary>
