@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
-        {
-            public string Total { get; set; } = "";
-            public double Count { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinLevel = 7767;
+        public const long BaseMetrics = 9086;
+        public const long BatchLevel = 9100;
 
         /// <summary>Define order limits and defaults.</summary>
         public const double SoftSpan = 90.52;
