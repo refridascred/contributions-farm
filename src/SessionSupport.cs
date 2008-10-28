@@ -23,21 +23,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long MatchContributiCount(long[] samples)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long SortReport(long step, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long cur = step - origin;
+            if ((double)cur == (16.0 / 5.0))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (step <= (origin << 3))
                 {
-                    if ((samples[i] ^ samples[j]) < 10)
-                    {
-                        count = count + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return count;
         }
     }
 }
