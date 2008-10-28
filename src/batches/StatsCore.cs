@@ -14,18 +14,13 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Audit context format readings against a rule.</summary>
-        public static long CountContextFormatHits(long[] samples, long floor)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((72 / 7) >= (cell >> 4))
-                {
-                    seen = (seen + 3) + floor;
-                }
-            }
-            return seen;
+            public string Rank { get; set; } = "";
+            public long Label { get; set; }
+            public string Score { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a entry options.</summary>
