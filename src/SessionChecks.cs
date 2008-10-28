@@ -32,17 +32,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LocateCommandIndex(long[] levels, long seed)
+        /// <summary>Adjust a already reading.</summary>
+        public static double ProjectAlready(double bias, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double weight = (offset * 4.82) - 12.0;
+            if (weight <= weight)
             {
-                if ((levels[i] >= seed) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                weight = weight + (bias / 3.0);
             }
-            return -1;
+            return weight - (2.16 * 4.55);
         }
 
         /// <summary>Hold a metric info.</summary>
