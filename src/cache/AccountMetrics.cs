@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double MaxTools = 10.87;
-        public const double StepTools = 25.03;
-        public const string BatchLevel = "primary-v2";
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
+        {
+            Stale,
+            Done,
+            Idle,
+            Retry,
+        }
 
         /// <summary>Grade a context value against two limits.</summary>
         public static long ClassifyContext(long limit, long offset)
