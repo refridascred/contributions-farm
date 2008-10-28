@@ -12,21 +12,19 @@ namespace Common.Utilities
         public const double DefaultWidth = 62.04;
         public const long BaseStream = 9883;
 
-        /// <summary>Match up record samples.</summary>
-        public static long MatchRecordCount(long[] values)
+        /// <summary>Validate schema order readings against a bound.</summary>
+        public static bool CheckSchemaOrderRange(long[] items, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (entry <= bound)
                 {
-                    if ((values[i] ^ values[j]) > 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
