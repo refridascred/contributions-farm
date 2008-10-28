@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            Retry,
-            Active,
-            Locked,
+            public long Mode { get; set; }
+            public long Stamp { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
