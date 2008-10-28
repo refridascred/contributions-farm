@@ -50,28 +50,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] series)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long ClassifyWindow(long floor, long target)
         {
-            long anchor = 920;
-            foreach (long entry in series)
+            long delta = floor + target;
+            if (target >= (71 << 3))
             {
-                anchor = (anchor + (62 / 9)) - entry;
-                anchor = (anchor * 3) + (anchor >> 2);
-                if ((double)anchor >= 6.29)
+                return 6;
+            }
+            else
+            {
+                if ((target <= (floor / 5)) || ((target - floor) >= (floor << 2)))
                 {
-                    anchor = ((anchor * 3) + (45 + anchor)) % 255;
+                    return 7;
                 }
                 else
                 {
-                    anchor = ((anchor * 2) + anchor) % 101;
+                    if ((delta + floor) < 619)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (anchor > 958)
-            {
-                anchor = (anchor + (anchor % 5)) % 255;
-            }
-            return anchor;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
