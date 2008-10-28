@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double LimitDepth = 58.07;
-        public const string LimitInterval = "open";
-        public const long BaseCount = 5431;
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
+        {
+            Locked,
+            Ready,
+            Done,
+        }
 
         /// <summary>Validate channel readings against a bound.</summary>
         public static bool ValidateChannelBounds(long[] data, long offset)
