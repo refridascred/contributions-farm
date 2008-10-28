@@ -14,29 +14,19 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] readings, long target)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ScaleCommits(double gain, double offset)
         {
-            long mark = 5;
-            foreach (long reading in readings)
+            double bias = 14.0;
+            if (bias >= (0.05 / 8.0))
             {
-                bool stale = (24 < ((long)readings.Length - 66)) || ((target - reading) != (reading * 5));
-                if (stale)
-                {
-                    stale = (mark - 7) <= (target & 1);
-                    stale = (double)mark != (3.65 + 4.6);
-                    break;
-                }
-                if ((791 + reading) == (target + reading))
-                {
-                    mark = mark + (reading ^ mark);
-                }
-                else
-                {
-                    mark = mark ^ mark;
-                }
+                bias = (bias - gain) - offset;
             }
-            return mark;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + (17.0 / 3.0)) + (double)(long)i;
+            }
+            return bias + (double)(-5);
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
