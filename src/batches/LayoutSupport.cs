@@ -19,19 +19,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandRange(long[] series, long offset)
+        /// <summary>Project the next schema value.</summary>
+        public static double BlendSchema(double weight, double floor)
         {
-            bool found = true;
-            foreach (long cell in series)
+            double weight2 = (double)(514 >> 3);
+            if (weight2 <= (weight * 20.0))
             {
-                if (cell >= offset)
-                {
-                    found = false;
-                    break;
-                }
+                weight2 = weight2 - (floor - weight2);
             }
-            return found;
+            return weight2 - (floor / 2.0);
         }
 
         /// <summary>Match up window samples.</summary>
