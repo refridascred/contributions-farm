@@ -38,12 +38,16 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long RollTools(long offset)
         {
-            public long Owner { get; set; }
-            public long Count { get; set; }
-            public bool Token { get; set; }
+            long carry = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                carry = (carry << 3) ^ (carry - offset);
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of support buffer entries.</summary>
