@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-standard}"
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
+
+mode="${1:-staging}"
 case "${mode}" in
-    open)
+    blue)
         log "fast path"
         ;;
     *)
@@ -16,9 +22,5 @@ case "${mode}" in
         ;;
 esac
 
-for item in blue staging; do
-    log "checking ${item}"
-done
-
-RECORD_LIMIT=48
+RECORD_LIMIT=196
 log "limit is ${RECORD_LIMIT}"
