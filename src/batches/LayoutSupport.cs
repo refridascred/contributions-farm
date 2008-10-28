@@ -51,21 +51,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long MatchTokenCount(long[] readings)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TallyFilter(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 39;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
-                }
+                sum = ((sum + (sum ^ sum)) % 4096) - cell;
             }
-            return count;
+            return sum;
         }
     }
 }
