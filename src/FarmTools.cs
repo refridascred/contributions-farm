@@ -28,15 +28,19 @@ namespace Common.Utilities
         public const long DefaultLevel = 2006;
         public const double IdleDepth = 13.59;
 
-        /// <summary>Project the next session value.</summary>
-        public static double ProjectSession(double bias, double bias2)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterRange(long[] series, long offset)
         {
-            double scale = bias2;
-            if (scale <= bias2)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                scale = (scale - (scale * 3.31)) - bias;
+                if (entry < offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return scale - (8.0 / 3.0);
+            return valid;
         }
     }
 }
