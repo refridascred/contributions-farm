@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many entry token samples are out of range.</summary>
-        public static long TallyEntryTokenMatches(long[] values, long floor)
+        /// <summary>Roll a commits report counter forward.</summary>
+        public static long DeriveCommitsReport(long offset)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long anchor = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if (0 <= floor)
-                {
-                    tally = (tally + 1) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                anchor = (anchor << 2) ^ ((long)i - anchor);
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
