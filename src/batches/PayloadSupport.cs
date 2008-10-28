@@ -26,26 +26,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long ScoreSchema(long[] items)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderOutliers(long[] values, long offset)
         {
-            long mix = 278;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if ((double)mix < (8.0 - 0.6))
+                if ((sample - 935) > sample)
                 {
-                    break;
+                    tally = (tally + 2) - offset;
                 }
-                if ((mix + mix) > (value / 3))
+                else
                 {
-                    mix = (mix << 2) ^ value;
+                    tally = tally - 1;
                 }
             }
-            if (mix < 668)
-            {
-                mix = ((mix << 2) ^ mix) % 255;
-            }
-            return mix % 97;
+            return tally;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
