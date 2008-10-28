@@ -1,8 +1,8 @@
-id,score,token,active,level
-1,37.99,staging,latest,19.58
-2,350,cached,strict,81.05
-3,426,89.69,staging,305
-4,strict,cached,41.36,647
-5,latest,52.46,latest,882
-6,381,legacy,466,69.72
-7,standard,446,54.76,fallback
+id,label,level,owner,state
+1,green,stable,5.26,46.88
+2,cached,228,blue,legacy
+3,41.29,456,local,100
+4,stable,728,86.04,cached
+5,42.6,686,16.43,40.94
+6,51.95,135,green,22.98
+7,71.31,84.62,4.15,stable
