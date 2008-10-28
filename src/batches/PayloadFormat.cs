@@ -11,14 +11,21 @@ namespace Common.Utilities
         public const double MaxInterval = 78.45;
         public const string HardSize = "local-edge";
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long MatchReportCount(long[] levels)
         {
-            New,
-            Locked,
-            Ready,
-            Queued,
-            Retry,
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 15)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
