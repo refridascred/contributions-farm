@@ -35,22 +35,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportOutliers(long[] series, long origin)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((origin >> 1) <= (cell * 4))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Stamp { get; set; }
+            public long Token { get; set; }
+            public bool Region { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Locate a session token reading by value.</summary>
