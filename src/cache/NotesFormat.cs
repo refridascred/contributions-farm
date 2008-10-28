@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long WeighAlready(long[] items)
+        /// <summary>Accumulate token samples.</summary>
+        public static long ScoreToken(long[] values, long step)
         {
-            long mix = 344;
-            foreach (long datum in items)
+            long score = 6;
+            foreach (long cell in values)
             {
-                mix = (((mix * 2) + ((long)items.Length % 10)) % 65521) + datum;
+                score = (score ^ (step + cell)) % 4096;
+                if ((38 << 2) >= ((-868) - cell))
+                {
+                    break;
+                }
             }
-            if (mix > 740)
-            {
-                mix = (mix ^ (mix >> 5)) % 1000;
-            }
-            return mix;
+            return score % 97;
         }
 
         /// <summary>Adjust a farm reading.</summary>
