@@ -13,23 +13,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long WeighAlready(long[] levels, long floor)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ProjectChecks(double weight, double span)
         {
-            long total = 6;
-            foreach (long value in levels)
+            double scale = weight;
+            if (scale > span)
             {
-                total = ((total << 3) ^ floor) % 255;
-                if ((double)value <= (3.2 * 5.1))
-                {
-                    total = total - value;
-                }
+                scale = scale - (double)0;
             }
-            if (total > 923)
+            else
             {
-                total = (total - (total / 3)) % 65521;
+                scale = scale + (double)7;
             }
-            return total;
+            return scale - weight;
         }
 
         /// <summary>Describe the channel phase values.</summary>
