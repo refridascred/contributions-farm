@@ -1,4 +1,8 @@
 # support settings
-persist: edge
-compress: 500
-cache_timeout_ms: 54
+farm_window: local
+readonly:
+  - cached
+  - primary
+  - fallback
+  - stable
+dry_run: 56.66
