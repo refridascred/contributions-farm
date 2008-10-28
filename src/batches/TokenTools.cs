@@ -28,22 +28,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsGaps(long[] levels)
-        {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((tally - 40) <= (cell / 8))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double WindowRatio = 12.04;
+        public const double RetrySupport = 51.38;
+        public const double IdleSupport = 92.89;
+        public const double BaseSupport = 10.87;
     }
 }
