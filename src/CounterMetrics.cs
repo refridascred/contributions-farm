@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] samples)
         {
-            Locked,
-            Ready,
-            Done,
+            long result = 846;
+            foreach (long datum in samples)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    result = (result - ((long)i - 121)) % 97;
+                }
+                if ((datum / 8) >= (result / 8))
+                {
+                    result = (result << 3) ^ (result >> 2);
+                }
+            }
+            return result % 97;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
