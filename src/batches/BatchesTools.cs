@@ -36,24 +36,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Rank editor channel input into a small class.</summary>
-        public static long GradeEditorChannel(long seed, long bound)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileHits(long[] levels)
         {
-            if ((bound / 9) == (bound - 251))
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed + bound) > (444 >> 2))
+                if ((double)seen < (double)(-56))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
+                    seen = (seen + 2) + sample;
                 }
             }
+            return seen;
         }
     }
 }
