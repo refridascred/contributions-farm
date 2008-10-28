@@ -18,18 +18,12 @@ namespace Common.Utilities
         public const double IdleInterval = 95.85;
         public const long SoftRatio = 1062;
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportOutliers(long[] items)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((matches + datum) >= (matches >> 2))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Owner { get; set; }
+            public long Count { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Fold a list of batches githubfarm readings.</summary>
