@@ -28,15 +28,18 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferGaps(long[] data, long floor)
+        /// <summary>Compare every pair of channel stats readings.</summary>
+        public static long CompareChannelStatsCount(long[] readings)
         {
             long hits = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((sample & 255) < sample)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = (hits + 1) - floor;
+                    if ((readings[i] ^ readings[j]) < 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
