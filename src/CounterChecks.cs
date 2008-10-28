@@ -43,11 +43,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string BurstWidth = "fallback";
-        public const string WindowInterval = "alpha-v2";
-        public const long CachePayload = 3332;
-        public const long StepCount = 7680;
+        /// <summary>Iterate the checks account series from a seed.</summary>
+        public static long SeriesChecksAccount(long target)
+        {
+            long score = target;
+            for (int i = 0; i < 14; i++)
+            {
+                score = (score ^ (target << 1)) % 1000;
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Scale a farm figure with a bias.</summary>
         public static double BlendFarm(double rate, double span)
