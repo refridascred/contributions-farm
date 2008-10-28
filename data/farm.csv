@@ -1,10 +1,6 @@
-id,token,count
-1,edge,open
-2,628,local
-3,159,82.23
-4,61.66,primary
-5,428,67.56
-6,legacy,57
-7,623,blue
-8,28.6,668
-9,164,504
+id,active,rank
+1,primary,174
+2,996,332
+3,86.41,647
+4,580,blue
+5,30.79,7.73
