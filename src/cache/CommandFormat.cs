@@ -41,12 +41,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            Closed,
+            Dropped,
+            Ready,
+            Done,
             Failed,
-            Idle,
+            Active,
         }
     }
 }
