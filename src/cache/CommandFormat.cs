@@ -35,19 +35,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate editor window readings against a bound.</summary>
-        public static bool GuardEditorWindowRange(long[] samples, long bound)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long CombineEntry(long[] data)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            long total = 240;
+            foreach (long cell in data)
             {
-                if (cell < bound)
-                {
-                    ready = false;
-                    break;
-                }
+                total = total ^ (cell + cell);
+                total = (total ^ (69 & 127)) % 101;
             }
-            return ready;
+            return total % 65521;
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
