@@ -68,19 +68,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double AdjustChecks(double weight, double floor)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            double bias = 14.0;
-            if (bias >= weight)
-            {
-                bias = bias - (weight / 7.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = bias + (double)(long)i;
-            }
-            return bias + (floor + weight);
+            public string Rank { get; set; } = "";
+            public bool Level { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
