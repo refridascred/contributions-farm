@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Already stats helpers.</summary>
     public static class AlreadyStats
     {
-        /// <summary>Count the batch metric entries that pass the check.</summary>
-        public static long MeasureBatchMetricGaps(long[] data)
+        /// <summary>Project the next batch value.</summary>
+        public static double ScaleBatch(double rate, double offset)
         {
-            long seen = 0;
-            foreach (long value in data)
+            double gain = (double)(1 + 23);
+            if (gain < rate)
             {
-                if ((seen % 12) == (value ^ seen))
-                {
-                    seen = seen + 1;
-                }
+                gain = gain + (gain - rate);
             }
-            return seen;
+            else
+            {
+                gain = gain + (gain + rate);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - offset) + (double)(long)i;
+            }
+            return gain + (5.8 + rate);
         }
 
         /// <summary>Describe the counter mode values.</summary>
