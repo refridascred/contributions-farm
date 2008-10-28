@@ -1,23 +1,5 @@
 {
-  "dry_run": 95,
-  "batches_threshold": {
-    "queue_retries": "cached",
-    "default_size_ms": 8024,
-    "strict": false,
-    "warm_depth_s": "green",
-    "verbose": true
-  },
-  "sync_interval": false,
-  "default_depth_pct": {
-    "schema_interval": ["edge", "eu-west"],
-    "contributi_ratio": {
-      "buffer_limit": 99,
-      "account_ttl": 92,
-      "base_size": true,
-      "enabled": [171, 437, 51, 169],
-      "base_timeout_ms": 6658
-    },
-    "min_retries": true,
-    "payload_limit": 2.04
-  }
+  "filter_limit": 500,
+  "compress": 3023,
+  "order_ratio": false
 }
