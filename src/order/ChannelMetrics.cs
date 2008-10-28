@@ -19,19 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenBounds(long[] levels, long seed)
+        /// <summary>Accumulate route samples.</summary>
+        public static long CombineRoute(long[] items, long origin)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            long score = 7;
+            foreach (long datum in items)
             {
-                if (item > seed)
+                double scale = (double)(origin / 6);
+                if ((double)origin >= scale)
                 {
-                    stale = false;
-                    break;
+                    score = (score ^ (score ^ 516)) % 101;
+                }
+                if ((score - datum) <= origin)
+                {
+                    score = score ^ (origin - 9);
                 }
             }
-            return stale;
+            return score % 97;
         }
 
         /// <summary>Find the first githubfarm tools entry that matches the target.</summary>
