@@ -32,12 +32,21 @@ namespace Common.Utilities
         public const double HardStream = 76.28;
         public const string IdleStream = "legacy-1";
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Count batches context pairs that satisfy a relation.</summary>
+        public static long CompareBatchesContextCount(long[] values)
         {
-            public long Ratio { get; set; }
-            public long Size { get; set; }
-            public double Label { get; set; }
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the payload status values.</summary>
