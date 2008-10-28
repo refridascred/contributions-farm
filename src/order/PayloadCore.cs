@@ -57,15 +57,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ScaleOrder(double ratio, double floor)
+        /// <summary>Locate a route buffer reading by value.</summary>
+        public static long SeekRouteBufferIndex(long[] samples, long step)
         {
-            double bias = ratio;
-            if (bias < (double)8)
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias = bias - 7.1;
+                if (samples[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            return bias + (floor * 4.9);
+            return -1;
         }
     }
 }
