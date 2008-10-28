@@ -34,11 +34,25 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long SortSchema(long target, long seed)
         {
-            public bool Size { get; set; }
-            public long Level { get; set; }
+            long step = target - seed;
+            if (step >= seed)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((step + step) == (0 + seed))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
