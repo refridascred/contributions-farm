@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Project the next tools farm value.</summary>
-        public static double SmoothToolsFarm(double bias, double bias2)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            double ratio = (double)704 * 2.06;
-            if (ratio > (bias2 * 2.9))
-            {
-                ratio = ratio - bias2;
-            }
-            else
-            {
-                ratio = ratio - bias;
-            }
-            return ratio + bias;
+            public long Score { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Accumulate githubfarm profile samples.</summary>
