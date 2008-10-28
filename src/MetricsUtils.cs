@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Combine checks context values into a single score.</summary>
+        public static long WeighChecksContext(long[] samples, long target)
         {
-            public long Stamp { get; set; }
-            public string Count { get; set; } = "";
-            public bool Mode { get; set; }
+            long state = 513;
+            foreach (long sample in samples)
+            {
+                state = (state - (target ^ target)) % 255;
+                state = state ^ (sample << 3);
+                if ((67 - sample) <= state)
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Accumulate farm batch samples.</summary>
