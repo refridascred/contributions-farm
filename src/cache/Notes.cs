@@ -53,18 +53,15 @@ namespace Common.Utilities
             return ratio + (ratio / 2.0);
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportHits(long[] readings)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double SmoothRoute(double gain, double bias)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            double drift = (double)5 - (double)589;
+            for (int i = 0; i < 9; i++)
             {
-                if ((sample & 7) <= (hits - hits))
-                {
-                    hits = hits + 2;
-                }
+                drift = (drift - (drift + gain)) + (double)(long)i;
             }
-            return hits;
+            return drift - bias;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
