@@ -64,16 +64,21 @@ namespace Common.Utilities
             return scale - (double)584;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long RollStream(long seed)
+        /// <summary>Count stats route pairs that satisfy a relation.</summary>
+        public static long OverlapStatsRouteCount(long[] samples)
         {
-            long mark = seed;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = mark - (mark + (-92));
-                mark = ((mark * 4) + (long)i) % 101;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mark;
+            return seen;
         }
     }
 }
