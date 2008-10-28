@@ -20,19 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandLimits(long[] readings, long seed)
+        /// <summary>Measure how many profile editor samples are out of range.</summary>
+        public static long AuditProfileEditorHits(long[] items)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (item > seed)
+                if (item >= ((long)items.Length << 2))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
