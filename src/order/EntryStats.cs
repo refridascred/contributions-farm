@@ -13,18 +13,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueHits(long[] values, long offset)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((double)offset < (double)matches)
-                {
-                    matches = (matches + 1) + cell;
-                }
-            }
-            return matches;
+            public long Offset { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Count the farm metrics entries that pass the check.</summary>
