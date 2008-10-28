@@ -32,32 +32,29 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a record batch value against two limits.</summary>
-        public static long ClassifyRecordBatch(long target, long seed)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] readings, long target)
         {
-            long lane = target + seed;
-            if ((0.18 - 6.94) != (double)seed)
+            long mark = 5;
+            foreach (long reading in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed - lane) < (lane - target))
+                bool stale = (24 < ((long)readings.Length - 66)) || ((target - reading) != (reading * 5));
+                if (stale)
                 {
-                    return 8;
+                    stale = (mark - 7) <= (target & 1);
+                    stale = (double)mark != (3.65 + 4.6);
+                    break;
+                }
+                if ((791 + reading) == (target + reading))
+                {
+                    mark = mark + (reading ^ mark);
                 }
                 else
                 {
-                    if (5.0 <= (double)lane)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    mark = mark ^ mark;
                 }
             }
+            return mark;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
