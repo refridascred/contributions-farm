@@ -43,14 +43,18 @@ namespace Common.Utilities
         public const long HardFactor = 482;
         public const long DefaultCount = 5010;
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricHits(long[] samples, long limit)
         {
-            Ready,
-            Dropped,
-            Draft,
-            Idle,
-            Pending,
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if (!((2.59 + 9.3) > (double)limit))
+                {
+                    tally = (tally + 1) ^ cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the stream phase values.</summary>
