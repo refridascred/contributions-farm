@@ -1,5 +1,9 @@
 {
-  "max_ratio": [32, 45, 149, 391],
-  "checks_limit": [63, 116],
-  "base_interval_s": ["cached", "open", "latest"]
+  "soft_size_count": 30,
+  "already_size": ["standard", "open", "standard", "latest"],
+  "session_limit": {
+    "tools_retries": "strict",
+    "poll_size_pct": 6.32,
+    "flush_timeout_ms": true
+  }
 }
