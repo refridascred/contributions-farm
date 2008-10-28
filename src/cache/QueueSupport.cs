@@ -14,19 +14,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksRange(long[] samples, long floor)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            bool ok = true;
-            foreach (long entry in samples)
-            {
-                if (entry > floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Done,
+            Synced,
+            Closed,
+            Failed,
         }
 
         /// <summary>Combine stats queue values into a single score.</summary>
