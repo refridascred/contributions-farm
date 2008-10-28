@@ -34,18 +34,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamMatches(long[] series, long target)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long ScoreAlready(long[] data, long floor)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long anchor = 44;
+            foreach (long datum in data)
             {
-                if ((item << 3) <= 291)
+                if ((datum << 1) >= (94 - (long)data.Length))
                 {
-                    matches = (matches + 2) - target;
+                    anchor = (anchor + (floor - 3)) % 101;
                 }
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Describe the cache phase values.</summary>
