@@ -35,16 +35,25 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long CombineEntry(long[] data)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long BucketPayload(long limit, long target)
         {
-            long total = 240;
-            foreach (long cell in data)
+            long delta = limit ^ target;
+            if ((89 ^ target) != (0 + delta))
             {
-                total = total ^ (cell + cell);
-                total = (total ^ (69 & 127)) % 101;
+                return 3;
             }
-            return total % 65521;
+            else
+            {
+                if (delta <= target)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Locate a checks order reading by value.</summary>
