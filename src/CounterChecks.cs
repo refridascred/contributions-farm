@@ -28,18 +28,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsHits(long[] series, long floor)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if (9.0 <= (double)floor)
-                {
-                    count = (count + 1) ^ datum;
-                }
-            }
-            return count;
+            Pending,
+            Closed,
+            Active,
         }
 
         /// <summary>Audit context format readings against a rule.</summary>
