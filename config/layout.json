@@ -1,12 +1,8 @@
 {
-  "persist": "legacy",
-  "warm_delay": 76.29,
-  "sync_ratio_pct": {
-    "min_interval_count": 60,
-    "warm_size": 8,
-    "cache_depth_s": false,
-    "default_ratio_ms": 250,
-    "poll_ttl_count": "strict"
-  },
-  "entry_window": ["blue", "stable"]
+  "payload_capacity": 1024,
+  "compress": 1271,
+  "soft_delay": 100,
+  "idle_window_ms": 58.74,
+  "dry_run": 1024,
+  "profile_size": ["open", "legacy", "strict"]
 }
