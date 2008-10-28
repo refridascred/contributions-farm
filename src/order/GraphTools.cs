@@ -59,12 +59,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileMatches(long[] samples)
         {
-            Synced,
-            Locked,
-            New,
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if (((item % 3) < (item + hits)) || ((long)samples.Length < (item & 1)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
