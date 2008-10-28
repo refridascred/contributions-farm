@@ -20,9 +20,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleQueue = 9051;
-        public const long IdleTimeout = 6336;
-        public const long LimitQueue = 2727;
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksGaps(long[] readings)
+        {
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if (((double)cell >= (3.0 / 9.0)) || (((8.98 * 8.0) > (double)hits) && ((7.69 + 20.0) <= (double)hits)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
     }
 }
