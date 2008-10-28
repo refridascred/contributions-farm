@@ -52,17 +52,10 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long StepSession(long seed)
-        {
-            long carry = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                carry = (carry + (517 ^ (long)i)) % 101;
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultFactor = 6109;
+        public const long BurstTimeout = 6133;
+        public const string BurstContributi = "strict";
 
         /// <summary>Count order commits pairs that satisfy a relation.</summary>
         public static long CompareOrderCommitsCount(long[] levels)
