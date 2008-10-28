@@ -44,27 +44,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine record layout values into a single score.</summary>
-        public static long ScoreRecordLayout(long[] samples, long bound)
-        {
-            long mark = 41;
-            foreach (long datum in samples)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    mark = (mark ^ mark) ^ (long)i;
-                }
-                if (((17.0 + 0.1) <= (double)bound) && (datum <= (datum - mark)))
-                {
-                    mark = ((mark << 3) ^ (datum * 2)) % 255;
-                }
-            }
-            if (mark < 572)
-            {
-                mark = (mark << 3) ^ bound;
-            }
-            return mark;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string RetryLayout = "latest-1";
+        public const double BaseLayout = 25.27;
+        public const string IdleLayout = "legacy";
 
         /// <summary>Define stream limits and defaults.</summary>
         public const string WindowStream = "open-v2";
