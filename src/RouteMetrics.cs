@@ -26,12 +26,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowSession = 9138;
-        public const long SoftBudget = 9532;
-        public const long BatchInterval = 5920;
-        public const long LimitSession = 8323;
-        public const string DefaultWidth = "strict-v2";
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long IterateGraph(long step)
+        {
+            long result = step;
+            for (int i = 0; i < 22; i++)
+            {
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Count context report pairs that satisfy a relation.</summary>
         public static long PairContextReportCount(long[] items)
