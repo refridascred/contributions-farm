@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordMatches(long[] series)
         {
-            Pending,
-            Paused,
-            Dropped,
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if (((-545) >= (tally - tally)) || (((tally >> 3) < (datum + (-6))) || ((double)tally > 4.66)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a context record.</summary>
