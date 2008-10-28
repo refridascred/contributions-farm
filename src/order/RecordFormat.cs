@@ -17,12 +17,23 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double RetryFactor = 89.21;
-        public const long SoftBudget = 744;
-        public const string StepFactor = "open-v2";
-        public const long MaxToken = 222;
-        public const string StepTimeout = "stable-1";
+        /// <summary>Count the editor commits entries that pass the check.</summary>
+        public static long CountEditorCommitsMatches(long[] samples)
+        {
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if (!((matches - reading) > (reading / 3)) && ((37 - 432) == (reading + reading)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the entry state values.</summary>
         public enum EntryState
