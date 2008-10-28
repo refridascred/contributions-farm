@@ -35,11 +35,10 @@ namespace Common.Utilities
             return bias - 0.29;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
-        {
-            public long Total { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BurstContributi = 37.47;
+        public const string MaxScore = "legacy";
+        public const long WindowWidth = 4163;
+        public const long CacheContributi = 4646;
     }
 }
