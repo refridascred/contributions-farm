@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Fold a list of order account readings.</summary>
-        public static long WeighOrderAccount(long[] items, long floor)
+        /// <summary>Measure how many tools profile samples are out of range.</summary>
+        public static long MeasureToolsProfileMatches(long[] series)
         {
-            long total = 62;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if (((reading * 4) >= (reading & 15)) || ((double)floor < (6.0 / 8.0)))
+                if (((long)series.Length + entry) < (entry / 4))
                 {
-                    total = (total * 3) + (34 * 2);
-                }
-                total = total + (reading & 15);
-                if ((reading <= (reading & 31)) || ((double)total <= (double)floor))
-                {
-                    total = (total ^ (reading + total)) % 4096;
+                    tally = tally + 1;
                 }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Hold a session header.</summary>
