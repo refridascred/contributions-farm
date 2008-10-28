@@ -16,12 +16,12 @@ namespace Common.Utilities
             return scale + (scale * 8.0);
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
-        {
-            public long Region { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxDepth = 9875;
+        public const long BatchAlready = 3601;
+        public const long IdleSpan = 2501;
+        public const string MaxAlready = "alpha-edge";
+        public const long CacheFactor = 6928;
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long TallyAlreadyHits(long[] series, long step)
