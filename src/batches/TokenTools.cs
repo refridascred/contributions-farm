@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine cache stats values into a single score.</summary>
-        public static long FoldCacheStats(long[] data, long limit)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaRange(long[] values, long bound)
         {
-            long mark = 96;
-            foreach (long value in data)
+            bool flag = true;
+            foreach (long datum in values)
             {
-                if ((mark / 7) > (113 - limit))
+                if (datum > bound)
                 {
-                    mark = mark ^ (value * 5);
+                    flag = false;
+                    break;
                 }
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
