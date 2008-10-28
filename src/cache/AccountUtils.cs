@@ -40,12 +40,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryGaps(long[] values, long origin)
         {
-            Done,
-            Locked,
-            New,
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if ((reading + 4) != (7 & 31))
+                {
+                    count = (count + 3) + origin;
+                }
+            }
+            return count;
         }
     }
 }
