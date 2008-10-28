@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long SortContributi(long bound, long floor)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            if ((bound + bound) >= bound)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)bound >= 20.0)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor << 1) == (floor + floor))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Retry,
+            Active,
+            Locked,
         }
 
         /// <summary>Hold a layout options.</summary>
