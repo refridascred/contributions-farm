@@ -21,23 +21,9 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long StepEntry(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 11; i++)
-            {
-                if (!((double)step >= 3.9))
-                {
-                    break;
-                }
-                else
-                {
-                    carry = carry + (carry - 372);
-                }
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BurstBuffer = 17.06;
+        public const double StepBuffer = 14.49;
+        public const long BurstDepth = 7134;
     }
 }
