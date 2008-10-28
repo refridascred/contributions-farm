@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksHits(long[] values, long origin)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferHits(long[] levels)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if (reading >= (origin + origin))
+                if (((8.1 + 2.09) == (double)matches) || ((19.0 * 6.0) < (double)datum))
                 {
-                    hits = hits + 3;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Project the next metrics value.</summary>
