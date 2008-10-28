@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long RollToken(long floor)
-        {
-            long total = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                total = total + (total * 4);
-                total = ((total * 5) + 9) % 1000;
-                total = (total << 2) ^ (27 + (long)i);
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchLevel = 92;
+        public const long DefaultSupport = 4107;
+        public const string BurstSupport = "open";
+        public const string BatchSupport = "alpha-v2";
+        public const double StepSupport = 6.2;
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
         public static long MatchNotesCount(long[] values)
