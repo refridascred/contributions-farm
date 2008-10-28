@@ -20,18 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandMatches(long[] values, long seed)
+        /// <summary>Combine layout notes values into a single score.</summary>
+        public static long TallyLayoutNotes(long[] series)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long sum = 791;
+            foreach (long entry in series)
             {
-                if ((1 + seen) == (seen >> 5))
+                if ((sum + sum) != (entry >> 2))
                 {
-                    seen = ((seen + 1) + reading) + seed;
+                    sum = (sum ^ (797 + sum)) % 101;
                 }
             }
-            return seen;
+            if (sum > 8)
+            {
+                sum = ((sum << 2) ^ (sum ^ sum)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
