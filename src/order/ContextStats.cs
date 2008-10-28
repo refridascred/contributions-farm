@@ -22,10 +22,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitCommand = 1474;
-        public const string HardCommand = "legacy-v2";
-        public const string BurstCommand = "standard-edge";
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long DigestContributi(long[] items, long seed)
+        {
+            long sum = 49;
+            foreach (long reading in items)
+            {
+                if (!(3 < (reading / 8)))
+                {
+                    sum = sum ^ (55 + seed);
+                }
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long LimitFarm = 5980;
