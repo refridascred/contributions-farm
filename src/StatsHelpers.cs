@@ -54,18 +54,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportHits(long[] readings, long floor)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long SeekChannelIndex(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((5.1 + 3.8) <= (double)matches)
+                if ((readings[i] <= floor) && ((readings[i] % 3) != 0))
                 {
-                    matches = ((matches + 1) + datum) + floor;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
