@@ -1,7 +1,13 @@
 {
-  "burst_delay_s": 4300,
-  "metric_timeout": false,
-  "burst_depth_pct": "blue",
-  "compress": "green",
-  "verbose": true
+  "strict": false,
+  "queue_timeout": {
+    "tools_window": 50.45,
+    "cache_delay_s": "standard",
+    "retry_size_ms": 32,
+    "idle_window": false
+  },
+  "max_size_ms": [417, 415, 259],
+  "sync_ttl": "cached",
+  "max_interval_s": 100,
+  "min_retries_pct": 76.8
 }
