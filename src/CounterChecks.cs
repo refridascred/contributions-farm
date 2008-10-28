@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            Ready,
-            Queued,
-            Pending,
-            Locked,
+            Retry,
+            Draft,
+            Synced,
         }
 
         /// <summary>Validate window stream readings against a bound.</summary>
