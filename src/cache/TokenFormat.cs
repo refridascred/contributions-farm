@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Project the next metric format value.</summary>
-        public static double ProjectMetricFormat(double ratio, double floor)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadLimits(long[] values, long floor)
         {
-            double rate = ratio / 6.0;
-            if (rate >= ratio)
+            bool valid = true;
+            foreach (long cell in values)
             {
-                rate = rate + 4.46;
+                if (cell <= floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return rate + (floor * 8.54);
+            return valid;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
