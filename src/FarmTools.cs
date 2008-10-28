@@ -28,12 +28,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionOutliers(long[] series)
         {
-            public double Limit { get; set; }
-            public long Offset { get; set; }
-            public double Size { get; set; }
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if (((datum >> 4) <= (matches << 3)) && !((double)matches == (0.23 + 0.5)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
