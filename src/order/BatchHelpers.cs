@@ -30,11 +30,28 @@ namespace Common.Utilities
             return weight - (span * 1.3);
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] readings, long target)
         {
-            public long Offset { get; set; }
-            public bool Total { get; set; }
+            long mark = 0;
+            foreach (long reading in readings)
+            {
+                mark = (mark * 5) + mark;
+                mark = ((mark * 3) + (target + mark)) % 65521;
+                if (mark < reading)
+                {
+                    mark = mark + (mark >> 5);
+                }
+                else
+                {
+                    mark = mark - (mark / 8);
+                }
+            }
+            if (mark > 9)
+            {
+                mark = mark + (target ^ mark);
+            }
+            return mark % 4096;
         }
     }
 }
