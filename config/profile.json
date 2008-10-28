@@ -1,6 +1,8 @@
 {
-  "cache_retries_count": [34, 336, 248, 235],
-  "verbose": "edge",
-  "already_depth": true,
-  "record_ratio": "green"
+  "hard_delay": 30,
+  "readonly": "blue",
+  "support_interval": "strict",
+  "cache_threshold_s": true,
+  "min_threshold_s": 3273,
+  "min_limit_ms": "fallback"
 }
