@@ -23,10 +23,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BatchLevel = "cached-v2";
-        public const long MaxMetrics = 2228;
-        public const long LimitMetrics = 9328;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BaseChecks = "primary-1";
+        public const double HardRatio = 98.76;
+        public const long HardLevel = 1345;
+        public const long SoftChecks = 7992;
+        public const long CacheTimeout = 8794;
 
         /// <summary>Accumulate order samples.</summary>
         public static long WeighOrder(long[] values)
