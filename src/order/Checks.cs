@@ -30,18 +30,39 @@ namespace Common.Utilities
             return load - (load / 7.0);
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileOutliers(long[] items)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long SortSupport(long bound, long seed)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long step = bound ^ seed;
+            if ((2 & 127) > (seed << 3))
             {
-                if (((double)datum <= (8.5 + 9.0)) && ((hits % 2) >= hits))
+                return 1;
+            }
+            else
+            {
+                if ((step << 2) <= seed)
                 {
-                    hits = hits + 1;
+                    return 5;
+                }
+                else
+                {
+                    if ((seed < bound) && ((bound + bound) != (seed + seed)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((395 + step) == (seed ^ step))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Check that every stream route entry stays within the limit.</summary>
