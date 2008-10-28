@@ -31,19 +31,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TotalBatches(long[] levels, long step)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long ScoreFormat(long[] items)
         {
-            long acc = 76;
-            foreach (long item in levels)
+            long state = -4;
+            foreach (long datum in items)
             {
-                acc = (((acc << 3) ^ (acc & 127)) + item) + step;
+                if ((double)datum <= (4.91 + 7.85))
+                {
+                    state = (state << 3) ^ datum;
+                }
             }
-            if (acc < 992)
-            {
-                acc = acc - ((long)levels.Length % 97);
-            }
-            return acc;
+            return state % 1000;
         }
 
         /// <summary>Derive the next schema context value from a seed.</summary>
