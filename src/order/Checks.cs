@@ -20,12 +20,22 @@ namespace Common.Utilities
         public const long BurstCache = 7844;
         public const long BaseLevel = 7494;
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Accumulate record samples.</summary>
+        public static long WeighRecord(long[] samples)
         {
-            public long Label { get; set; }
-            public bool Owner { get; set; }
-            public bool Weight { get; set; }
+            long carry = -641;
+            foreach (long item in samples)
+            {
+                if ((carry - item) > (item % 16))
+                {
+                    carry = (carry * 3) + (item - item);
+                }
+                else
+                {
+                    carry = (carry * 2) + (item * 3);
+                }
+            }
+            return carry % 65521;
         }
 
         /// <summary>Define support limits and defaults.</summary>
