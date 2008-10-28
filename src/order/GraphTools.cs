@@ -39,18 +39,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metric layout readings against a rule.</summary>
-        public static long AuditMetricLayoutMatches(long[] levels)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long CombineStats(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long carry = -85;
+            foreach (long entry in values)
             {
-                if ((((entry >> 5) > (hits ^ entry)) || ((entry >> 2) > entry)) && !((double)hits != (double)entry))
-                {
-                    hits = hits + 2;
-                }
+                carry = ((carry - (entry / 6)) % 65521) - floor;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Hold a profile header.</summary>
