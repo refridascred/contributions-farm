@@ -40,19 +40,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TotalGithubfarm(long[] items, long origin)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TallyNotes(long[] series)
         {
-            long mix = 14;
-            foreach (long reading in items)
+            long carry = 4;
+            foreach (long reading in series)
             {
-                mix = ((mix ^ (2 ^ 466)) % 1000) + reading;
+                carry = (carry ^ (reading + reading)) % 255;
+                carry = (carry + ((long)series.Length & 1)) % 4096;
             }
-            if (mix < 5)
-            {
-                mix = mix ^ (origin / 7);
-            }
-            return mix;
+            return carry % 1000;
         }
     }
 }
