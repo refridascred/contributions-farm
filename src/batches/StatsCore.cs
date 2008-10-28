@@ -48,19 +48,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate metric session readings against a bound.</summary>
-        public static bool GuardMetricSessionBounds(long[] values, long offset)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            bool stale = true;
-            foreach (long entry in values)
-            {
-                if (entry > offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Idle,
+            Dropped,
+            Active,
+            Locked,
         }
 
         /// <summary>Compare every pair of payload context readings.</summary>
