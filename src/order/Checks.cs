@@ -34,22 +34,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long WeighRecord(long[] samples)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long carry = -641;
-            foreach (long item in samples)
-            {
-                if ((carry - item) > (item % 16))
-                {
-                    carry = (carry * 3) + (item - item);
-                }
-                else
-                {
-                    carry = (carry * 2) + (item * 3);
-                }
-            }
-            return carry % 65521;
+            public bool Token { get; set; }
+            public long Owner { get; set; }
+            public long Weight { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
