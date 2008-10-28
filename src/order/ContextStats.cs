@@ -29,19 +29,21 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Validate stats route readings against a bound.</summary>
-        public static bool ValidateStatsRouteLimits(long[] values, long floor)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long RollAlready(long target)
         {
-            bool ready = true;
-            foreach (long item in values)
+            long sum = target;
+            for (int i = 0; i < 24; i++)
             {
-                if (item > floor)
+                if (!((double)8 <= (double)sum))
                 {
-                    ready = false;
+                    sum = sum ^ (sum ^ (-6));
+                    sum = ((sum << 2) ^ ((long)i + sum)) % 255;
                     break;
                 }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return ready;
+            return sum;
         }
 
         /// <summary>Describe the checks class values.</summary>
