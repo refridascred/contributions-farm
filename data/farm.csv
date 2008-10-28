@@ -1,8 +1,9 @@
-id,score,token,region
-1,88.46,40.77,49.93
-2,402,staging,377
-3,7.47,360,676
-4,staging,eu-west,3.74
-5,76.74,534,145
-6,71.52,25.71,green
-7,970,401,823
+id,weight,level
+1,30.73,601
+2,strict,480
+3,latest,80.34
+4,98.36,strict
+5,84.01,23.95
+6,stable,stable
+7,923,74.94
+8,eu-west,664
