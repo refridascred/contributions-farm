@@ -58,22 +58,22 @@ namespace Common.Utilities
             return mean + 11.0;
         }
 
-        /// <summary>Combine already route values into a single score.</summary>
-        public static long CombineAlreadyRoute(long[] values)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountHits(long[] series, long step)
         {
-            long anchor = 130;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if (!((double)anchor < (double)value))
+                if ((entry + entry) != (step ^ entry))
                 {
-                    anchor = (anchor << 3) ^ (4 * 5);
+                    seen = seen + 1;
                 }
                 else
                 {
-                    anchor = (anchor ^ (anchor / 2)) % 101;
+                    seen = seen - 1;
                 }
             }
-            return anchor;
+            return seen;
         }
     }
 }
