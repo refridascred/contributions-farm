@@ -31,18 +31,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportOutliers(long[] levels, long target)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if (!((2.3 / 2.0) > (double)count) && ((40 <= (datum ^ target)) || ((count - datum) < (count * 5))))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Paused,
+            Retry,
+            Active,
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
