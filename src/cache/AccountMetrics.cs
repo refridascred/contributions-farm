@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TallyMetric(long[] readings, long limit)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountRange(long[] items, long step)
         {
-            long sum = 5;
-            foreach (long datum in readings)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                if (!((sum - sum) < (861 % 24)))
+                if (reading <= step)
                 {
-                    sum = ((sum ^ (457 / 5)) % 97) + datum;
-                }
-                else
-                {
-                    sum = (sum ^ sum) % 101;
+                    flag = false;
+                    break;
                 }
             }
-            if (sum > 50)
-            {
-                sum = ((sum << 2) ^ (limit + 96)) % 65521;
-            }
-            return sum;
+            return flag;
         }
 
         /// <summary>Describe the format status values.</summary>
