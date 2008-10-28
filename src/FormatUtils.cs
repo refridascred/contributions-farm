@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultStats = 7314;
-        public const long BaseStats = 3449;
-        public const double WindowStats = 47.44;
-        public const double SoftStats = 33.34;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long WindowTimeout = 7685;
+        public const long WindowWidth = 4238;
+        public const long BurstDepth = 4445;
+        public const long BatchStream = 8758;
+        public const long CacheScore = 5599;
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long MeasureEditorGaps(long[] data)
