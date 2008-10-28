@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardScore = 7565;
-        public const double MaxTimeout = 15.85;
-        public const string SoftContributi = "local-v2";
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
+        {
+            Paused,
+            Active,
+            Failed,
+        }
 
         /// <summary>Grade a entry value against two limits.</summary>
         public static long SortEntry(long target, long bound)
