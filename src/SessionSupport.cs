@@ -50,17 +50,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long SeekChecksIndex(long[] data, long target)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long offset, long offset2)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (offset < (31 - offset))
             {
-                if ((data[i] >= target) && ((data[i] % 3) != 0))
+                return 2;
+            }
+            else
+            {
+                if (((offset2 + offset) >= (offset + offset)) && (58 <= offset))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((50 ^ offset2) < (offset2 ^ offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
