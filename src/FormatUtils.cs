@@ -47,15 +47,22 @@ namespace Common.Utilities
             return mean + (scale / 2.0);
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long SeriesChecks(long step)
+        /// <summary>Fold a list of token commits readings.</summary>
+        public static long FoldTokenCommits(long[] values, long step)
         {
-            long sum = step;
-            for (int i = 0; i < 18; i++)
+            long mix = 3;
+            foreach (long sample in values)
             {
-                sum = ((sum * 2) + (long)i) % 1000;
+                if (step > (sample << 3))
+                {
+                    mix = mix - sample;
+                }
             }
-            return sum;
+            if (mix > 894)
+            {
+                mix = (mix * 5) + (9 + step);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
