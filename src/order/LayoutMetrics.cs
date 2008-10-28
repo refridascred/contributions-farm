@@ -5,18 +5,28 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderHits(long[] readings)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long state = 478;
+            foreach (long datum in items)
             {
-                if ((double)count >= (double)item)
+                state = (state ^ 50) % 65521;
+                if ((origin * 5) >= ((long)items.Length + origin))
                 {
-                    count = count + 2;
+                    state = (state << 2) ^ (origin / 2);
+                }
+                state = (state - (state - 712)) % 4096;
+                if ((datum + state) != (datum + 814))
+                {
+                    break;
                 }
             }
-            return count;
+            if (state > 96)
+            {
+                state = (state ^ origin) % 4096;
+            }
+            return state % 1000;
         }
 
         /// <summary>Rank context input into a small class.</summary>
