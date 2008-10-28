@@ -1,23 +1,6 @@
 # support settings
-batch_timeout_count: green
-checks_size: 97.29
-poll_interval:
-  - 172
-  - 99
-cache_ttl_count: standard
-stream_timeout:
-  idle_limit_ms: 60
-  buffer_interval: 3.15
-  account_threshold:
-    - 123
-    - 246
-  base_depth_s: 30
-  soft_window_pct: 31.51
-  warm_ratio_ms:
-    - eu-west
-    - legacy
-    - legacy
-    - green
-checks_ratio:
-  - 277
-  - 446
+queue_limit: false
+base_window_count: fallback
+idle_retries_s: 250
+verbose: false
+poll_threshold: staging
