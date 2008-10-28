@@ -1,6 +1,5 @@
 {
-  "sync_retries": "stable",
-  "retry_delay_ms": ["stable", "strict"],
-  "stats_ratio": "open",
-  "batch_window": "standard"
+  "audit": 5325,
+  "soft_window_ms": true,
+  "retry_depth_pct": false
 }
