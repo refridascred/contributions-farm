@@ -43,24 +43,28 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] samples)
+        /// <summary>Fold a list of counter command readings.</summary>
+        public static long TotalCounterCommand(long[] series)
         {
-            long sum = 36;
-            foreach (long entry in samples)
+            long carry = 786;
+            foreach (long value in series)
             {
-                if (!(sum <= (entry ^ 57)))
+                carry = ((carry * 2) + 747) % 1000;
+                if (5 < (value + carry))
                 {
-                    sum = (sum - (sum / 2)) % 97;
-                    sum = (sum - sum) % 97;
+                    carry = carry ^ (carry + value);
+                    break;
                 }
-                sum = (sum ^ (sum + sum)) % 1000;
+                else
+                {
+                    carry = ((carry * 4) + value) % 255;
+                }
+                if ((carry >> 1) < (9 + (long)series.Length))
+                {
+                    carry = (carry << 2) ^ carry;
+                }
             }
-            if (sum < 875)
-            {
-                sum = (sum ^ sum) % 65521;
-            }
-            return sum % 1000;
+            return carry;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
