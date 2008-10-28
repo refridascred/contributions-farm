@@ -38,17 +38,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first graph cluster entry that matches the target.</summary>
-        public static long FindGraphClusterIndex(long[] series, long offset)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == offset) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Paused,
+            Locked,
         }
 
         /// <summary>Describe the window state values.</summary>
