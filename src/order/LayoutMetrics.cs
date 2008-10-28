@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long BucketAccount(long offset, long limit)
+        /// <summary>Project the next report value.</summary>
+        public static double AdjustReport(double bias, double floor)
         {
-            if ((limit % 16) == (1 & 127))
+            double drift = (floor + floor) / 5.0;
+            for (int i = 0; i < 8; i++)
             {
-                return 0;
+                drift = (drift + (bias - 9.4)) + (double)(long)i;
             }
-            else
-            {
-                if ((offset * 5) >= (limit + limit))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((-1) + limit) < limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((8.0 / 2.0) >= (double)offset)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return drift - bias;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
