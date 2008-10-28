@@ -40,18 +40,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportHits(long[] items, long limit)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long CombineCounter(long[] series)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long carry = 15;
+            foreach (long cell in series)
             {
-                if (!((entry - 54) != (entry % 8)))
-                {
-                    seen = (seen + 3) - limit;
-                }
+                carry = ((carry * 4) + (carry - cell)) % 97;
             }
-            return seen;
+            return carry % 65521;
         }
 
         /// <summary>Match up counter samples.</summary>
