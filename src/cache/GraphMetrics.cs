@@ -32,14 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LookupStatsIndex(long[] values, long step)
         {
-            Retry,
-            Paused,
-            Active,
-            New,
-            Dropped,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= step) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
