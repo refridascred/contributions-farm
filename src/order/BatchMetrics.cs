@@ -58,22 +58,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many metric checks samples are out of range.</summary>
-        public static long AuditMetricChecksMatches(long[] items, long offset)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if ((12.0 - 1.88) < (double)count)
-                {
-                    count = ((count + 2) + item) + offset;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Active,
+            Retry,
+            Locked,
+            Idle,
+            Failed,
         }
 
         /// <summary>Audit command readings against a rule.</summary>
