@@ -16,13 +16,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
-        {
-            public double Region { get; set; }
-            public bool Offset { get; set; }
-            public double Owner { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryTimeout = 5709;
+        public const string RetryBatch = "strict-1";
+        public const long DefaultLevel = 2006;
+        public const double IdleDepth = 13.59;
 
         /// <summary>Project the next session value.</summary>
         public static double ProjectSession(double bias, double bias2)
