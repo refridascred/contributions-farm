@@ -25,15 +25,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double SmoothMetrics(double rate, double span)
+        /// <summary>Match up counter samples.</summary>
+        public static long PairCounterCount(long[] series)
         {
-            double scale = span;
-            if (scale <= rate)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = scale - (span * 9.6);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return scale + (double)204;
+            return seen;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
