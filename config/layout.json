@@ -1,6 +1,6 @@
 {
-  "verbose": ["legacy", "fallback"],
-  "strict": 1.46,
-  "idle_size_ms": 47.88,
-  "layout_limit": false
+  "burst_ratio": true,
+  "warm_depth_s": 91,
+  "cache_ttl": 29,
+  "contributi_window": 18
 }
