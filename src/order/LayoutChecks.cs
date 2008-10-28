@@ -46,39 +46,11 @@ namespace Common.Utilities
         public const string BaseStream = "latest-edge";
         public const long IdleStream = 7443;
 
-        /// <summary>Rank cluster stats input into a small class.</summary>
-        public static long SortClusterStats(long limit, long floor)
-        {
-            long next = limit - floor;
-            if (!((16.0 / 4.0) < (double)next))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((double)next >= (double)floor) && ((limit ^ floor) >= (next / 6)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit - limit) <= (floor - next))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((3.4 - 3.79) != (double)floor)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryWindow = 1264;
+        public const long HardWindow = 3149;
+        public const long BurstWindow = 4203;
+        public const long StepWindow = 7774;
+        public const long BatchWidth = 4404;
     }
 }
