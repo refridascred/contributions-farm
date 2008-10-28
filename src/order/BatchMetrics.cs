@@ -17,22 +17,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long OverlapMetricCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string MaxSession = "legacy";
+        public const long IdleSession = 8626;
+        public const double WindowSession = 78.09;
 
         /// <summary>Fold a list of cache readings.</summary>
         public static long WeighCache(long[] values, long bound)
