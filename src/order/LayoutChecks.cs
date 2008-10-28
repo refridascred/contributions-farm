@@ -37,15 +37,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double BlendChannel(double bias, double offset)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesGaps(long[] data)
         {
-            double gain = (double)6 + (bias - bias);
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long value in data)
             {
-                gain = (gain + bias) + (double)(long)i;
+                if ((tally * 3) == (value + value))
+                {
+                    tally = tally + 2;
+                }
             }
-            return gain - (bias - offset);
+            return tally;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
