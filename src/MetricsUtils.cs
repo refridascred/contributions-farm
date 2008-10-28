@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionGaps(long[] items, long bound)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long RollAccount(long step)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long carry = step;
+            for (int i = 0; i < 20; i++)
             {
-                if ((1.0 < (double)hits) && (((hits >> 2) < (bound - 73)) || ((46 * 4) > (reading + reading))))
+                long diff = carry;
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    hits = hits + 3;
+                    carry = (carry ^ diff) - (long)i2;
                 }
+                for (int i3 = 0; i3 < 10; i3++)
+                {
+                    diff = (diff - step) ^ (long)i3;
+                    diff = ((diff * 2) + 0) % 97;
+                }
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
