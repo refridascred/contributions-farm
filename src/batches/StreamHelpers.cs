@@ -31,11 +31,19 @@ namespace Common.Utilities
         public const long LimitTimeout = 9904;
         public const long BatchScore = 2955;
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowBounds(long[] levels, long origin)
         {
-            public long Token { get; set; }
-            public double Limit { get; set; }
+            bool ready = true;
+            foreach (long datum in levels)
+            {
+                if (datum <= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
