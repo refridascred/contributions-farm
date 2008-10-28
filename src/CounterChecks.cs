@@ -53,23 +53,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long WeighQueue(long[] data, long bound)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long acc = 8;
-            foreach (long value in data)
-            {
-                acc = (acc + (acc ^ value)) % 65521;
-                if ((value + bound) != (5 - value))
-                {
-                    acc = acc ^ (value & 7);
-                }
-            }
-            if (acc < 44)
-            {
-                acc = ((acc * 3) + (acc / 9)) % 101;
-            }
-            return acc;
+            Active,
+            Idle,
+            Failed,
+            Retry,
         }
 
         /// <summary>Combine graph values into a single score.</summary>
