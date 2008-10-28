@@ -14,21 +14,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long MatchFilterCount(long[] readings)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long WeighOrder(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 286;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                carry = (carry - datum) % 65521;
+                if ((carry + datum) <= carry)
                 {
-                    if ((readings[i] ^ readings[j]) < 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = carry - (carry / 9);
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Count the payload command entries that pass the check.</summary>
