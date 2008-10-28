@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaRange(long[] values, long bound)
+        /// <summary>Derive the next profile farm value from a seed.</summary>
+        public static long DeriveProfileFarm(long floor)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            long acc = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if (datum > bound)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = acc - (-9);
+                acc = (acc + (acc / 8)) % 1000;
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return flag;
+            return acc;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
