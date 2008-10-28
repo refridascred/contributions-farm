@@ -45,22 +45,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TallyRoute(long[] samples)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long total = 453;
-            foreach (long datum in samples)
-            {
-                if (!(total <= (datum * 4)))
-                {
-                    total = ((total * 4) + (datum << 2)) % 97;
-                }
-            }
-            if (total > 976)
-            {
-                total = ((total << 3) ^ total) % 101;
-            }
-            return total % 4096;
+            public long Size { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
