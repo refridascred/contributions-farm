@@ -13,12 +13,20 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultWidth = 8683;
-        public const long DefaultSize = 5477;
-        public const long LimitTimeout = 1129;
-        public const long BurstCache = 7844;
-        public const long BaseLevel = 7494;
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportLimits(long[] samples, long bound)
+        {
+            bool ready = true;
+            foreach (long item in samples)
+            {
+                if (item >= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Accumulate record samples.</summary>
         public static long WeighRecord(long[] samples)
