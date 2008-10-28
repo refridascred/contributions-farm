@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteOutliers(long[] readings)
         {
-            public long Level { get; set; }
-            public string Label { get; set; } = "";
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell + matches) > cell)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit context format readings against a rule.</summary>
