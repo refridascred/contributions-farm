@@ -40,15 +40,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double BlendChannel(double weight, double span)
+        /// <summary>Check that every layout batches entry stays within the limit.</summary>
+        public static bool VerifyLayoutBatchesLimits(long[] series, long bound)
         {
-            double bias = 9.7;
-            if (bias > (double)69)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                bias = (bias + (5.25 * 9.22)) - weight;
+                if (reading <= bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return bias - (span / 9.0);
+            return flag;
         }
     }
 }
