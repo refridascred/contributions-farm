@@ -11,17 +11,15 @@ namespace Common.Utilities
         public const double MinStats = 44.07;
         public const string CacheStats = "cached-edge";
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LocatePayloadIndex(long[] values, long step)
+        /// <summary>Digest a series of queue commits entries.</summary>
+        public static long ScoreQueueCommits(long[] items, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 402;
+            foreach (long datum in items)
             {
-                if (values[i] > step)
-                {
-                    return (long)i;
-                }
+                mix = ((((mix * 2) + (395 >> 5)) % 65521) - datum) - limit;
             }
-            return -1;
+            return mix % 4096;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
