@@ -34,17 +34,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long StepAlready(long seed)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long result = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                result = (result ^ (seed % 2)) % 1000;
-                result = result - ((-766) << 2);
-                result = ((result * 4) + (long)i) % 101;
-            }
-            return result;
+            public long Size { get; set; }
+            public long Region { get; set; }
+            public long Total { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
