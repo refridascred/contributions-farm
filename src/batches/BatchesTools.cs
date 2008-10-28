@@ -25,32 +25,11 @@ namespace Common.Utilities
         public const long CacheDepth = 7983;
         public const string IdleReport = "legacy-1";
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long GradeBuffer(long bound, long seed)
-        {
-            long delta = bound ^ seed;
-            if ((seed % 3) > (bound * 2))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((3.06 + 3.0) < (double)bound)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed >= (99 - delta)) && ((bound / 2) <= (delta + seed)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double DefaultTimeout = 55.19;
+        public const long HardDepth = 2024;
+        public const double MinBatches = 39.28;
+        public const long IdleBatches = 17;
+        public const double RetryBatches = 12.48;
     }
 }
