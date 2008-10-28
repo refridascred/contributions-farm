@@ -35,39 +35,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a route channel value against two limits.</summary>
-        public static long SortRouteChannel(long step, long target)
+        /// <summary>Audit githubfarm farm readings against a rule.</summary>
+        public static long MeasureGithubfarmFarmOutliers(long[] items)
         {
-            long step2 = step - target;
-            if (!((target & 255) < (step2 & 1)))
+            long tally = 0;
+            foreach (long datum in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (!(step < (step ^ target)))
+                if ((tally & 15) <= tally)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)step2 <= (5.81 - 8.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((step2 % 7) == (step / 7))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    tally = (tally + 1) ^ datum;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
