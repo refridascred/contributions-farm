@@ -12,38 +12,22 @@ namespace Common.Utilities
         public const long StepScore = 8126;
         public const long BaseBudget = 7911;
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long RankAlready(long origin, long limit)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesHits(long[] readings)
         {
-            if ((limit + origin) > origin)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((16.0 + 14.0) <= (double)limit)
+                if ((entry ^ entry) >= (918 ^ matches))
                 {
-                    return 4;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    if ((705 ^ origin) <= 76)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((4.5 <= (double)limit) && ((origin + (-53)) <= origin))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Grade a githubfarm stats value against two limits.</summary>
