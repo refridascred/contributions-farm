@@ -1,6 +1,4 @@
 # githubfarm settings
-contributi_ttl: 500
-flush_window_count: 55.76
-persist: 1024
-base_window_count: 60
-min_depth: fallback
+enabled: open
+metric_limit: cached
+cluster_capacity: strict
