@@ -12,14 +12,10 @@ namespace Common.Utilities
         public const double MinBudget = 86.12;
         public const long WindowDepth = 6144;
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
-        {
-            Idle,
-            Closed,
-            Paused,
-            Retry,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxCount = 7136;
+        public const double DefaultChecks = 70.18;
+        public const string HardChecks = "stable-v2";
 
         /// <summary>Iterate the context series from a seed.</summary>
         public static long IterateContext(long bound)
