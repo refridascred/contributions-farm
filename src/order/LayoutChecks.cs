@@ -65,11 +65,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Check that every cache notes entry stays within the limit.</summary>
+        public static bool VerifyCacheNotesBounds(long[] readings, long target)
         {
-            public long Offset { get; set; }
-            public bool Count { get; set; }
+            bool found = true;
+            foreach (long datum in readings)
+            {
+                if (datum > target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
