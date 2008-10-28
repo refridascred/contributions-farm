@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextGaps(long[] values, long floor)
         {
-            public long Owner { get; set; }
-            public long Flag { get; set; }
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((hits >> 5) >= ((-949) << 1))
+                {
+                    hits = ((hits + 1) + reading) - floor;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
