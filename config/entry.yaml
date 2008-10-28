@@ -1,37 +1,35 @@
 # entry settings
-hard_window:
-  layout_ratio:
-    - strict
-    - primary
-  verbose:
-    - standard
-    - latest
-    - eu-west
-    - local
-  batch_depth_s:
-    - 358
-    - 34
-    - 132
-    - 157
-min_limit_count:
-  - 34
-  - 285
-min_limit: 30
-verbose: false
-base_interval_pct:
-  - 9
-  - 26
-  - 439
-hard_delay:
-  cache_timeout:
-    - legacy
-    - green
-    - legacy
-  default_limit_count: 51
-  readonly:
-    token_retries: 43.15
-    max_ratio_ms: true
-    retry_limit: legacy
-    audit: strict
-  burst_delay: 97
-  compress: 22
+soft_retries: 75.58
+checks_retries:
+  - 324
+  - 486
+  - 134
+  - 209
+audit:
+  warm_timeout_s: 73.17
+  burst_delay_ms:
+    context_retries:
+      - 214
+      - 285
+      - 428
+    persist:
+      - 186
+      - 92
+    filter_threshold: false
+    channel_size: true
+  already_interval: 44.18
+  readonly: 30
+  githubfarm_timeout: 39
+  context_window: 7
+cache_threshold_ms:
+  warm_capacity_count: true
+  readonly: 57.15
+  cache_timeout_ms: 24.32
+  soft_interval_ms: 1024
+  retry_limit_ms:
+    - 378
+    - 480
+    - 398
+    - 167
+metric_size: 60
+idle_retries_ms: 30
