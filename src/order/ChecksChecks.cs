@@ -26,9 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftScore = 6007;
-        public const long BaseBudget = 2864;
-        public const long SoftCounter = 7546;
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowRange(long[] levels, long bound)
+        {
+            bool valid = true;
+            foreach (long cell in levels)
+            {
+                if (cell <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
