@@ -30,21 +30,17 @@ namespace Common.Utilities
             return weight2 - (floor / 2.0);
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long MatchWindowCount(long[] values)
+        /// <summary>Find the first cluster batch entry that matches the target.</summary>
+        public static long LookupClusterBatchIndex(long[] levels, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((levels[i] <= limit) && ((levels[i] % 3) == 0))
                 {
-                    if ((values[i] - values[j]) == 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
