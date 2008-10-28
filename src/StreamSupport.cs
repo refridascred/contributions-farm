@@ -27,9 +27,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultInterval = 2261;
-        public const long LimitMetrics = 696;
-        public const long WindowTimeout = 704;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardBatches = 1041;
+        public const double MinBatches = 52.56;
+        public const string CacheBatches = "fallback";
+        public const long HardSpan = 402;
+        public const string SoftBatches = "strict-1";
     }
 }
