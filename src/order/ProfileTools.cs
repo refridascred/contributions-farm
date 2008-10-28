@@ -36,15 +36,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long CombineSession(long[] samples, long limit)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long SeekSchemaIndex(long[] data, long origin)
         {
-            long carry = 3;
-            foreach (long cell in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = ((carry ^ (5 >> 5)) ^ cell) - limit;
+                if (data[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            return carry % 97;
+            return -1;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
