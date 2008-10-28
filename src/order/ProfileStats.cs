@@ -40,22 +40,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the metric contributi entries that pass the check.</summary>
-        public static long MeasureMetricContributiMatches(long[] values, long seed)
-        {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((cell - cell) < seed)
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string MaxBudget = "primary-v2";
+        public const long MinBudget = 3617;
+        public const long CacheBatches = 6716;
+        public const long DefaultScore = 1953;
     }
 }
