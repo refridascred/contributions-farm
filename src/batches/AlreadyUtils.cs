@@ -61,21 +61,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long CompareRouteCount(long[] values)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long WeighWindow(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 8;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((score - score) < (entry - score))
                 {
-                    if ((values[i] - values[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = (score ^ (entry % 10)) % 1000;
                 }
             }
-            return tally;
+            return score;
         }
     }
 }
