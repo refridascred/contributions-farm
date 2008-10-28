@@ -33,20 +33,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long SeriesGraph(long bound)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ScaleSchema(double bias, double floor)
         {
-            long carry = bound;
-            for (int i = 0; i < 5; i++)
+            double gain = bias;
+            if (gain >= gain)
             {
-                carry = (carry ^ (bound % 3)) % 65521;
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    carry = ((carry * 3) + (bound + 7)) ^ (long)i2;
-                }
-                carry = ((carry * 2) + (long)i) % 1000;
+                gain = gain + gain;
             }
-            return carry;
+            else
+            {
+                gain = gain + floor;
+            }
+            return gain + floor;
         }
 
         /// <summary>Fold a list of already readings.</summary>
