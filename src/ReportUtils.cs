@@ -44,20 +44,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate context contributi samples.</summary>
-        public static long ScoreContextContributi(long[] levels, long limit)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long IterateGraph(long limit)
         {
-            long result = -105;
-            foreach (long datum in levels)
+            long score = limit;
+            for (int i = 0; i < 24; i++)
             {
-                result = (result * 5) + result;
-                result = result - (datum * 5);
+                score = (score << 2) ^ (limit & 7);
+                score = (score + (limit + limit)) % 97;
+                score = ((score * 2) + (long)i) % 101;
             }
-            if (result < 5)
-            {
-                result = (result - limit) % 101;
-            }
-            return result;
+            return score;
         }
 
         /// <summary>Count batch report pairs that satisfy a relation.</summary>
