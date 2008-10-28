@@ -101,9 +101,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinBudget = 721;
-        public const string MinEntry = "cached";
-        public const long RetryEntry = 5373;
+        /// <summary>Define context limits and defaults.</summary>
+        public const double SoftContext = 16.46;
+        public const long LimitContext = 9469;
+        public const string BatchTimeout = "staging";
+        public const string CacheContext = "standard-1";
     }
 }
