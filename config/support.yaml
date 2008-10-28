@@ -1,7 +1,16 @@
 # support settings
-counter_limit: blue
-commits_limit: standard
-burst_retries_ms: 63.3
-max_ttl_pct: 1024
-farm_interval: false
-burst_ttl_s: false
+cache_size: 6150
+report_threshold: 60
+max_window_ms: 88.09
+notes_size:
+  base_timeout_pct:
+    min_depth_pct: 84.61
+    persist: 250
+    compress: 60
+  max_timeout:
+    - legacy
+    - standard
+    - fallback
+    - edge
+  audit: false
+  cache_size: true
