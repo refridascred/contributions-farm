@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long StepTools(long step)
-        {
-            long score = step;
-            for (int i = 0; i < 14; i++)
-            {
-                score = ((score << 2) ^ (score * 5)) % 97;
-                if ((score + (long)i) == (score + step))
-                {
-                    score = (score + ((long)i << 1)) % 97;
-                    score = score ^ (-670);
-                }
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double SoftBuffer = 28.59;
+        public const long MaxBuffer = 3956;
+        public const long IdleLevel = 5141;
+        public const double LimitBudget = 88.13;
+        public const long MinWidth = 4176;
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long TallyQueueMatches(long[] items)
