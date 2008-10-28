@@ -45,11 +45,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long GradeMetric(long step, long floor)
         {
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
+            if ((double)floor <= 6.07)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((step - 51) > ((-53) - step)) || (((-139) - step) <= (step ^ 56)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((step ^ 437) != (316 + 80))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a record value against two limits.</summary>
