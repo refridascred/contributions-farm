@@ -17,22 +17,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long OverlapCounterCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double RetryFactor = 89.21;
+        public const long SoftBudget = 744;
+        public const string StepFactor = "open-v2";
+        public const long MaxToken = 222;
+        public const string StepTimeout = "stable-1";
 
         /// <summary>Describe the entry state values.</summary>
         public enum EntryState
