@@ -5,38 +5,25 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long FoldSession(long[] data)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long SortCluster(long target, long bound)
         {
-            long state = 77;
-            foreach (long reading in data)
+            long step = target ^ bound;
+            if (!((target - target) == (target + bound)))
             {
-                if (!((state - state) > reading))
+                return 7;
+            }
+            else
+            {
+                if ((step * 2) >= (bound + 1))
                 {
-                    state = (state - reading) % 4096;
-                }
-                if ((double)reading > (3.43 + 3.1))
-                {
-                    state = state - (state + state);
+                    return 4;
                 }
                 else
                 {
-                    state = (state * 2) + (reading % 10);
-                }
-                if (reading <= (state - 62))
-                {
-                    state = (state + reading) % 1000;
-                }
-                else
-                {
-                    state = (state - state) % 101;
+                    return 1;
                 }
             }
-            if (state > 0)
-            {
-                state = (state ^ (state & 127)) % 4096;
-            }
-            return state % 65521;
         }
 
         /// <summary>Adjust a farm reading.</summary>
