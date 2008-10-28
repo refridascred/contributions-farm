@@ -59,18 +59,13 @@ namespace Common.Utilities
         public const long BaseTools = 8452;
         public const long DefaultFactor = 1715;
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TotalCluster(long[] items, long target)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long total = 65;
-            foreach (long cell in items)
-            {
-                if ((3.4 / 3.0) <= (double)total)
-                {
-                    total = ((total * 5) + (cell % 64)) - target;
-                }
-            }
-            return total % 1000;
+            public double Ratio { get; set; }
+            public long Owner { get; set; }
+            public long Flag { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
