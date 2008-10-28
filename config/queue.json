@@ -1,10 +1,5 @@
 {
-  "batch_retries": "fallback",
-  "strict": 500,
-  "batches_limit": {
-    "enabled": ["eu-west", "eu-west", "local", "standard"],
-    "poll_window_s": "primary",
-    "max_capacity_s": 6467
-  },
-  "idle_size_count": 31.27
+  "base_size_count": [164, 5],
+  "report_capacity": 500,
+  "strict": 250
 }
