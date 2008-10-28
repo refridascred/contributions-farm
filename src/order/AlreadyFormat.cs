@@ -26,23 +26,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long RollNotes(long limit)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            long result = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                for (int i3 = 0; i3 < 9; i3++)
-                {
-                    result = (result ^ (result + result)) ^ (long)i3;
-                }
-                if (limit > (limit % 5))
-                {
-                    continue;
-                }
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
+            public long Flag { get; set; }
+            public long Owner { get; set; }
+            public long Score { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
