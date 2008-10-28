@@ -38,12 +38,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowMetric = 4075;
-        public const long MinCount = 1569;
-        public const long DefaultMetric = 4108;
-        public const long SoftMetric = 2649;
-        public const long RetryBudget = 4093;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryFactor = 5584;
+        public const long LimitTools = 8271;
+        public const string BaseTimeout = "standard-1";
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool GuardReportBounds(long[] data, long origin)
