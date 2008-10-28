@@ -42,19 +42,12 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmRange(long[] readings, long origin)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            bool found = true;
-            foreach (long entry in readings)
-            {
-                if (entry <= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Closed,
+            Ready,
+            Synced,
         }
 
         /// <summary>Project the next editor value.</summary>
