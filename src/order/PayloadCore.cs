@@ -39,13 +39,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            public long Token { get; set; }
-            public long Count { get; set; }
-            public double Label { get; set; }
-            public long Total { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Label { get; set; }
+            public double Owner { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
