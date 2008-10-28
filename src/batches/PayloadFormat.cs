@@ -29,18 +29,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the order channel entries that pass the check.</summary>
-        public static long MeasureOrderChannelOutliers(long[] samples, long step)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double SmoothNotes(double scale, double bias)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            double bias2 = bias;
+            if (bias2 >= 2.61)
             {
-                if ((446 << 3) <= (cell ^ 5))
-                {
-                    count = (count + 1) - step;
-                }
+                bias2 = (bias2 + (double)6) + scale;
             }
-            return count;
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = (bias2 - 8.2) + (double)(long)i;
+            }
+            return bias2 - bias2;
         }
 
         /// <summary>Project the next batches value.</summary>
