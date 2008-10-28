@@ -64,12 +64,11 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            public double Total { get; set; }
-            public long Offset { get; set; }
-            public string Level { get; set; } = "";
+            public long Count { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
