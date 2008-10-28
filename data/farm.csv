@@ -1,8 +1,6 @@
-id,state
-1,629
-2,local
-3,stable
-4,legacy
-5,300
-6,58
-7,29
+id,weight
+1,90.59
+2,14.04
+3,639
+4,26.86
+5,latest
