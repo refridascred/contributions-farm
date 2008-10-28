@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardCount = 2865;
-        public const long DefaultBudget = 2247;
-        public const long CacheDepth = 1879;
-        public const double RetryChannel = 69.87;
-        public const string IdleChannel = "standard-edge";
+        /// <summary>Match up already commits samples.</summary>
+        public static long PairAlreadyCommitsCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many window metrics samples are out of range.</summary>
         public static long AuditWindowMetricsOutliers(long[] values, long offset)
