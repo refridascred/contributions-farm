@@ -20,17 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long FindAccountIndex(long[] values, long bound)
+        /// <summary>Digest a series of order cluster entries.</summary>
+        public static long WeighOrderCluster(long[] series, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 73;
+            foreach (long entry in series)
             {
-                if ((values[i] <= bound) && ((values[i] % 3) == 0))
+                if ((513 < target) || ((entry >> 2) == (mark + entry)))
                 {
-                    return (long)i;
+                    mark = (mark * 5) + (mark >> 5);
                 }
             }
-            return -1;
+            if (mark > 67)
+            {
+                mark = mark - (target & 1);
+            }
+            return mark % 1000;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
