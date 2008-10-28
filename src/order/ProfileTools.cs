@@ -36,17 +36,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long SeekSchemaIndex(long[] data, long origin)
+        /// <summary>Adjust a payload editor reading.</summary>
+        public static double AdjustPayloadEditor(double scale, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double rate = scale;
+            if (rate < rate)
             {
-                if (data[i] > origin)
-                {
-                    return (long)i;
-                }
+                rate = (rate + scale) - span;
             }
-            return -1;
+            return rate - scale;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
