@@ -20,16 +20,11 @@ namespace Common.Utilities
             return scale + (ratio / 6.0);
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long floor)
-        {
-            long sum = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardChannel = 70;
+        public const double DefaultChannel = 37.63;
+        public const long CacheChannel = 653;
+        public const string RetryChannel = "fallback-v2";
 
         /// <summary>Classify a payload pair into a bucket.</summary>
         public static long BucketPayload(long limit, long target)
