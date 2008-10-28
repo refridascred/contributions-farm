@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Roll a command filter counter forward.</summary>
-        public static long StepCommandFilter(long origin)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long mark = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                if (72 < (origin + (long)i))
-                {
-                    mark = ((mark * 4) + (origin % 8)) % 1000;
-                }
-                mark = ((mark * 5) + (long)i) % 101;
-            }
-            return mark;
+            public long Limit { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
