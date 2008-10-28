@@ -13,16 +13,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long bound)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportLimits(long[] levels, long limit)
         {
-            long total = bound;
-            for (int i = 0; i < 12; i++)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                total = ((total * 2) + ((long)i - total)) % 101;
-                total = ((total * 4) + (long)i) % 101;
+                if (item != limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
