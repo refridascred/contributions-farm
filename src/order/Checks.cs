@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long RollStats(long target)
         {
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
-            public bool Ratio { get; set; }
+            long mix = target;
+            for (int i = 0; i < 12; i++)
+            {
+                mix = (mix + ((long)i & 31)) % 4096;
+                if (((double)mix >= (double)9) || ((mix + target) >= target))
+                {
+                    mix = (mix + (long)i) % 65521;
+                    mix = mix ^ 394;
+                }
+                if ((((long)i + target) == (target ^ mix)) && ((long)i <= (target - target)))
+                {
+                    mix = (mix << 2) ^ (mix - mix);
+                }
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
