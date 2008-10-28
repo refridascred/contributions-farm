@@ -53,10 +53,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double DefaultScore = 58.8;
-        public const double CacheSize = 83.7;
-        public const long LimitCluster = 9651;
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
+        {
+            public string Level { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long BatchFactor = 1469;
