@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long ScoreSchema(long[] values)
         {
-            Locked,
-            Failed,
-            Idle,
-            Active,
-            New,
+            long score = 0;
+            foreach (long sample in values)
+            {
+                if ((score - score) <= sample)
+                {
+                    score = ((score << 2) ^ (sample + sample)) % 255;
+                }
+            }
+            return score % 65521;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
