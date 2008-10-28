@@ -31,13 +31,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamMatches(long[] series, long target)
         {
-            public double Region { get; set; }
-            public bool Stamp { get; set; }
-            public long Score { get; set; }
-            public long Total { get; set; }
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if ((item << 3) <= 291)
+                {
+                    matches = (matches + 2) - target;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
