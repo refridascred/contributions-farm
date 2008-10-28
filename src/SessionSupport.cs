@@ -35,18 +35,39 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long DigestRoute(long[] items, long floor)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long BucketBatch(long offset, long target)
         {
-            long anchor = 260;
-            foreach (long cell in items)
+            long edge = offset ^ target;
+            if ((edge & 31) > (target - 64))
             {
-                if (((anchor + floor) < (cell * 5)) || (anchor <= 311))
+                return 8;
+            }
+            else
+            {
+                if (!((235 % 64) < edge))
                 {
-                    anchor = anchor ^ (221 << 2);
+                    return 2;
+                }
+                else
+                {
+                    if ((offset - edge) == (offset % 7))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)edge < (16.0 + 8.65))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return anchor;
         }
     }
 }
