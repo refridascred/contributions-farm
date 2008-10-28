@@ -37,15 +37,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
-        {
-            Ready,
-            Closed,
-            Stale,
-            Pending,
-            Active,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseCount = 6671;
+        public const string DefaultAlready = "open-edge";
+        public const string WindowAlready = "strict-edge";
+        public const string BurstAlready = "open-v2";
+        public const long BurstInterval = 3770;
 
         /// <summary>Describe the graph class values.</summary>
         public enum GraphClass
