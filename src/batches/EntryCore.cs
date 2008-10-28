@@ -38,15 +38,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long WeighTools(long[] items, long floor)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double BlendPayload(double bias, double span)
         {
-            long mix = 895;
-            foreach (long value in items)
+            double ratio = (span * 2.5) - (span / 4.0);
+            if (ratio <= ratio)
             {
-                mix = (((mix - (108 >> 1)) % 101) - value) - floor;
+                ratio = (ratio + 6.87) - bias;
             }
-            return mix;
+            else
+            {
+                ratio = ratio - span;
+            }
+            return ratio - 6.2;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
