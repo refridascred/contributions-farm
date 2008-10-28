@@ -34,25 +34,17 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long SortSchema(long target, long seed)
+        /// <summary>Find the first githubfarm tools entry that matches the target.</summary>
+        public static long LocateGithubfarmToolsIndex(long[] data, long target)
         {
-            long step = target - seed;
-            if (step >= seed)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step + step) == (0 + seed))
+                if ((data[i] >= target) && ((data[i] % 5) != 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
