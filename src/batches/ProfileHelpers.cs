@@ -77,15 +77,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TotalOrder(long[] series, long target)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueHits(long[] levels)
         {
-            long mark = 1;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                mark = ((mark << 3) ^ cell) - target;
+                if ((reading / 2) == (0 - matches))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mark % 1000;
+            return matches;
         }
     }
 }
