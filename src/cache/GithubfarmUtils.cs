@@ -40,32 +40,33 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long GradeProfile(long step, long limit)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long CombineAlready(long[] levels)
         {
-            long delta = step - limit;
-            if ((8.7 * 6.4) == (double)delta)
+            long sum = 82;
+            foreach (long cell in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (!(delta < (limit / 9)))
+                double ratio = (double)(cell * 3);
+                if ((double)sum >= ratio)
                 {
-                    return 6;
+                    ratio = ratio - (double)sum;
+                    sum = (sum + (sum >> 2)) % 101;
+                    break;
+                }
+                if ((-630) > (cell - 5))
+                {
+                    sum = ((sum << 2) ^ (128 << 3)) % 101;
                 }
                 else
                 {
-                    if ((8 + step) <= (step / 4))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    sum = (sum + sum) % 65521;
                 }
             }
+            if (sum > (-14))
+            {
+                sum = (sum << 2) ^ sum;
+            }
+            return sum % 97;
         }
     }
 }
