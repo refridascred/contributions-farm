@@ -20,18 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many notes batches samples are out of range.</summary>
-        public static long AuditNotesBatchesGaps(long[] values)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if (seen < (486 + seen))
-                {
-                    seen = (seen + 2) + entry;
-                }
-            }
-            return seen;
+            Failed,
+            Draft,
+            Locked,
+            New,
+            Done,
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
