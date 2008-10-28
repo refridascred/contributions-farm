@@ -84,22 +84,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportGaps(long[] items)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if (((double)count >= (double)datum) || ((double)datum < (12.0 * 4.7)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Mode { get; set; }
+            public long Size { get; set; }
+            public bool Stamp { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
