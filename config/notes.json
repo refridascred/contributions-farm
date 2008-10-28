@@ -1,6 +1,6 @@
 {
-  "metrics_interval": 57,
-  "sync_interval_ms": false,
-  "hard_ratio_pct": 64,
-  "hard_limit_pct": "standard"
+  "enabled": "primary",
+  "cluster_window": "eu-west",
+  "layout_capacity": 250,
+  "dry_run": 60
 }
