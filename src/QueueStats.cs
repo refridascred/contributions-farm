@@ -33,19 +33,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheBounds(long[] readings, long bound)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            bool ok = true;
-            foreach (long value in readings)
-            {
-                if (value <= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Token { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Weight { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
