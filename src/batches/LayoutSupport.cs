@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long CombineToken(long[] items, long target)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LookupChecksIndex(long[] samples, long offset)
         {
-            long total = 5;
-            foreach (long value in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)value < (double)total)
+                if (samples[i] < offset)
                 {
-                    total = ((total ^ (total & 3)) % 255) - target;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Hold a checks info.</summary>
