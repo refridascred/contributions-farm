@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepScore = 8954;
-        public const long BaseLevel = 5231;
-        public const long HardRatio = 2250;
+        /// <summary>Roll a stats command counter forward.</summary>
+        public static long RollStatsCommand(long step)
+        {
+            long total = step;
+            for (int i = 0; i < 7; i++)
+            {
+                total = total + (step + total);
+                if (!(((long)i - 880) <= step))
+                {
+                    total = ((total << 2) ^ total) % 65521;
+                    total = (total * 4) + (step - step);
+                }
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Describe the checks mode values.</summary>
         public enum ChecksMode
