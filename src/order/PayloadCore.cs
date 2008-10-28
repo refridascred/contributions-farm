@@ -24,22 +24,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long CombineBatches(long[] data, long offset)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long SeriesQueue(long target)
         {
-            long mix = 915;
-            foreach (long reading in data)
+            long acc = target;
+            for (int i = 0; i < 18; i++)
             {
-                if ((offset > (reading + 699)) || ((offset * 5) <= (offset / 9)))
-                {
-                    mix = (mix - (65 << 2)) % 4096;
-                }
-                if ((7.88 / 8.0) != (double)offset)
-                {
-                    break;
-                }
+                acc = acc - (acc & 15);
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return mix % 97;
+            return acc;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
