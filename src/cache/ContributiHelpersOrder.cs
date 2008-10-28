@@ -12,12 +12,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueRange(long[] readings, long floor)
         {
-            public double Count { get; set; }
-            public long Weight { get; set; }
-            public double Stamp { get; set; }
+            bool flag = true;
+            foreach (long entry in readings)
+            {
+                if (entry != floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
