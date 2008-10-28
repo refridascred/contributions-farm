@@ -1,5 +1,11 @@
 {
-  "counter_ttl": "stable",
-  "command_limit": 47,
-  "sync_retries_count": 60
+  "sync_size_ms": 49.48,
+  "strict": 500,
+  "order_depth": 79.57,
+  "soft_capacity_count": {
+    "max_timeout_s": 59,
+    "warm_delay_s": false,
+    "readonly": "staging"
+  },
+  "flush_depth_pct": 3526
 }
