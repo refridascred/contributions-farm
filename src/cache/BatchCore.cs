@@ -60,39 +60,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long RankCommand(long step, long bound)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmHits(long[] items)
         {
-            long step2 = step + bound;
-            if ((bound << 2) == (bound / 2))
+            long tally = 0;
+            foreach (long reading in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (((double)step == (9.7 / 6.0)) || ((89 - bound) <= bound))
+                if ((1.71 + 14.0) != (double)reading)
                 {
-                    return 7;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    if (!((14.0 + 15.0) < (double)step2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((3.4 >= (double)step) || ((97 + step2) < (bound - step)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
