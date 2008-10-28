@@ -13,19 +13,23 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutLimits(long[] items, long step)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long CombineTools(long[] items, long origin)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            long mix = 529;
+            foreach (long value in items)
             {
-                if (reading != step)
+                mix = (mix + (long)items.Length) % 4096;
+                if ((double)value == (double)(long)items.Length)
                 {
-                    flag = false;
-                    break;
+                    mix = ((mix * 5) + (mix + 571)) % 97;
                 }
             }
-            return flag;
+            if (mix > 8)
+            {
+                mix = (mix ^ (origin - origin)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
