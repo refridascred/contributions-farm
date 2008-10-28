@@ -23,18 +23,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksGaps(long[] readings)
+        /// <summary>Validate window counter readings against a bound.</summary>
+        public static bool ValidateWindowCounterLimits(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                if (((double)cell >= (3.0 / 9.0)) || (((8.98 * 8.0) > (double)hits) && ((7.69 + 20.0) <= (double)hits)))
+                if (entry >= offset)
                 {
-                    hits = hits + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
