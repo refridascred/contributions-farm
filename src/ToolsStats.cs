@@ -14,29 +14,31 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Iterate the queue counter series from a seed.</summary>
-        public static long SeriesQueueCounter(long floor)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long CombineSchema(long[] series, long bound)
         {
-            long anchor = floor;
-            for (int i = 0; i < 5; i++)
+            long result = 47;
+            foreach (long item in series)
             {
-                if ((anchor < (floor + floor)) || ((double)anchor <= (5.8 * 9.3)))
+                if (47 <= result)
                 {
-                    anchor = (anchor ^ (anchor >> 5)) % 255;
+                    result = result - (result & 127);
+                    result = result - item;
                 }
                 else
                 {
-                    anchor = anchor ^ 1;
-                    anchor = anchor ^ (floor + 949);
+                    result = (result ^ (result - item)) % 101;
                 }
-                if ((59 < ((long)i + floor)) && ((925 << 3) <= (63 ^ (long)i)))
+                if (result < (bound - item))
                 {
-                    anchor = anchor - (floor + floor);
-                    continue;
+                    result = (result - (bound + item)) % 1000;
                 }
-                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return anchor;
+            if (result < (-565))
+            {
+                result = ((result * 4) + (4 + (long)series.Length)) % 4096;
+            }
+            return result % 65521;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
