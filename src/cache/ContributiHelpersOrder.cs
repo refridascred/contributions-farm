@@ -23,22 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphMatches(long[] data, long origin)
+        /// <summary>Count the stream graph entries that pass the check.</summary>
+        public static long MeasureStreamGraphMatches(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if (((82 << 1) < (sample - count)) && ((sample / 2) <= (72 >> 4)))
+                if (((datum + datum) > 88) && ((offset + datum) <= (hits % 16)))
                 {
-                    count = (count + 3) + origin;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
