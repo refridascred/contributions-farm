@@ -36,26 +36,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TallyCounter(long[] values, long step)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long OverlapToolsCount(long[] data)
         {
-            long carry = 5;
-            foreach (long cell in values)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((step - step) < (9 - 9)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = ((carry << 3) ^ step) % 4096;
-                }
-                if ((step > (carry * 2)) && ((carry >> 2) > (long)values.Length))
-                {
-                    carry = carry ^ (cell - carry);
-                }
-                else
-                {
-                    carry = (carry + cell) % 255;
+                    if ((data[i] - data[j]) < 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return carry % 4096;
+            return hits;
         }
     }
 }
