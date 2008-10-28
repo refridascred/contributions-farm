@@ -24,26 +24,31 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TallyWindow(long[] samples, long floor)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long ClassifyContext(long seed, long seed2)
         {
-            long anchor = 9;
-            foreach (long entry in samples)
+            if (seed < 320)
             {
-                for (int i = 0; i < 7; i++)
+                return 2;
+            }
+            else
+            {
+                if ((66 > seed2) || ((seed2 >> 3) > (seed + seed)))
                 {
-                    anchor = ((anchor * 2) + ((long)i >> 1)) + entry;
-                }
-                if (((8.2 / 7.0) > (5.0 / 6.0)) || ((12.0 + 3.12) <= (double)floor))
-                {
-                    anchor = anchor + (anchor / 9);
+                    return 8;
                 }
                 else
                 {
-                    anchor = anchor + (floor % 8);
+                    if (!(seed < (seed >> 4)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return anchor % 97;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
