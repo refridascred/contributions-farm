@@ -48,29 +48,19 @@ namespace Common.Utilities
             return rate - scale;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long IterateChecks(long floor)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double BlendOrder(double bias, double span)
         {
-            long carry = floor;
-            for (int i = 0; i < 12; i++)
+            double rate = (double)71 - span;
+            if (rate < (double)30)
             {
-                if ((carry + floor) == (carry / 8))
-                {
-                    carry = (carry - carry) % 1000;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (carry + carry)) % 65521;
-                }
-                if ((carry % 10) == ((-88) >> 3))
-                {
-                    long cur = (carry + carry) + (carry - carry);
-                    carry = ((carry << 3) ^ (619 + cur)) % 101;
-                    break;
-                }
-                carry = ((carry * 5) + (long)i) % 65521;
+                rate = (rate - (double)74) - bias;
             }
-            return carry;
+            else
+            {
+                rate = rate + 9.89;
+            }
+            return rate + (double)(-24);
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
