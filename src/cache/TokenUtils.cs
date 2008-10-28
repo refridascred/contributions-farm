@@ -20,14 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            Failed,
-            Draft,
-            Locked,
-            New,
+            Dropped,
+            Pending,
+            Closed,
             Done,
+            Idle,
         }
 
         /// <summary>Combine checks values into a single score.</summary>
