@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
-        {
-            public double Owner { get; set; }
-            public string Region { get; set; } = "";
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double LimitBudget = 59.04;
+        public const string StepScore = "latest-v2";
+        public const double BurstFormat = 23.99;
 
         /// <summary>Locate a metric reading by value.</summary>
         public static long FindMetricIndex(long[] levels, long floor)
