@@ -1,7 +1,7 @@
 # support settings
-githubfarm_timeout:
-  - 97
-  - 302
-report_timeout: false
-sync_capacity_s: false
-audit: standard
+dry_run: 3761
+session_window: legacy
+poll_capacity:
+  - standard
+  - stable
+  - latest
