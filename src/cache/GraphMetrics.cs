@@ -42,17 +42,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LocateBatchesIndex(long[] values, long offset)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long CompareMetricCount(long[] values)
         {
+            long tally = 0;
             for (int i = 0; i < values.Length; i++)
             {
-                if (values[i] >= offset)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] ^ values[j]) < 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
