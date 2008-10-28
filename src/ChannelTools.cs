@@ -10,22 +10,10 @@ namespace Common.Utilities
         public const double MinBatch = 63.79;
         public const double BatchRatio = 2.72;
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long MatchContributiCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double SoftSpan = 90.52;
+        public const string DefaultTimeout = "latest";
+        public const long WindowOrder = 9090;
 
         /// <summary>Describe the githubfarm level values.</summary>
         public enum GithubfarmLevel
