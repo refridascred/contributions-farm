@@ -43,11 +43,22 @@ namespace Common.Utilities
             return (ratio + ratio) + gain;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleRatio = 2473;
-        public const long DefaultBudget = 295;
-        public const long DefaultCommand = 8284;
-        public const double IdleCommand = 88.46;
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long PairSchemaCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Compare every pair of order readings.</summary>
         public static long CompareOrderCount(long[] series)
