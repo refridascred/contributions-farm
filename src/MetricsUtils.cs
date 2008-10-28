@@ -84,16 +84,17 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long DeriveStream(long limit)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LocateBatchIndex(long[] series, long target)
         {
-            long mark = limit;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = ((mark << 2) ^ (mark & 63)) % 4096;
-                mark = ((mark * 4) + (long)i) % 65521;
+                if ((series[i] == target) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
     }
 }
