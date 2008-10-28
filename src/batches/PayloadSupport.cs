@@ -22,24 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TotalQueue(long[] data)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long ScoreChannel(long[] samples)
         {
-            long mix = 9;
-            foreach (long entry in data)
+            long result = 63;
+            foreach (long sample in samples)
             {
-                for (int i = 0; i < 10; i++)
+                if (((899 << 2) > (result & 255)) || ((double)(long)samples.Length < (3.8 / 3.0)))
                 {
-                    mix = (mix - (mix << 2)) ^ (long)i;
-                    mix = mix ^ (entry & 63);
+                    result = result - 47;
                 }
-                mix = (mix - 21) % 255;
-                if (!((2.55 - 8.0) < (double)entry))
+                else
                 {
-                    break;
+                    result = (result - (sample % 60)) % 97;
                 }
             }
-            return mix % 4096;
+            return result;
         }
 
         /// <summary>Describe the queue phase values.</summary>
