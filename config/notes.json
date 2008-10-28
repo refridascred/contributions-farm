@@ -1,11 +1,6 @@
 {
-  "sync_window_pct": [63, 20, 139, 11],
-  "audit": 94.35,
-  "readonly": {
-    "max_size": "primary",
-    "burst_capacity_pct": 1024,
-    "enabled": "strict",
-    "poll_timeout_ms": 100
-  },
-  "hard_size": 16
+  "dry_run": true,
+  "checks_threshold": 19.06,
+  "max_size_pct": 29.25,
+  "retry_delay_ms": ["primary", "blue", "fallback", "staging"]
 }
