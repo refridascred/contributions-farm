@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long IterateEntry(long target)
         {
-            public long Count { get; set; }
-            public long Size { get; set; }
-            public long Token { get; set; }
+            long mark = target;
+            for (int i = 0; i < 5; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    mark = ((mark * 2) + (mark - target)) ^ (long)i2;
+                }
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
