@@ -58,16 +58,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double SmoothFarm(double weight, double offset)
-        {
-            double scale = weight;
-            if (scale < (offset / 5.0))
-            {
-                scale = scale - (double)882;
-            }
-            return scale - (double)584;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchFactor = 1469;
+        public const long BaseTools = 8452;
+        public const long DefaultFactor = 1715;
 
         /// <summary>Count stats route pairs that satisfy a relation.</summary>
         public static long OverlapStatsRouteCount(long[] samples)
