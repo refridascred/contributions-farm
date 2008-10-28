@@ -33,10 +33,9 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryTimeout = 3861;
-        public const long CacheEditor = 3187;
-        public const long IdleTimeout = 1363;
-        public const long DefaultInterval = 8471;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double LimitFactor = 10.22;
+        public const long StepStream = 3255;
+        public const long BaseCount = 1196;
     }
 }
