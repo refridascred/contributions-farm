@@ -13,27 +13,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long FoldEntry(long[] samples)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long DeriveRecord(long offset)
         {
-            long carry = 2;
-            foreach (long cell in samples)
+            long carry = offset;
+            for (int i = 0; i < 5; i++)
             {
-                carry = ((carry * 5) + (carry * 5)) % 4096;
-                if (carry < (cell + carry))
+                for (int i3 = 0; i3 < 8; i3++)
                 {
-                    carry = (carry << 2) ^ 400;
+                    carry = ((carry << 3) ^ (13 / 4)) - (long)i3;
                 }
-                else
-                {
-                    carry = (carry + cell) % 4096;
-                }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            if (carry > 529)
-            {
-                carry = (carry ^ (carry >> 5)) % 65521;
-            }
-            return carry % 4096;
+            return carry;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
