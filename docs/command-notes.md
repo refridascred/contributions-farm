@@ -1,14 +1,11 @@
 # Command notes
 
-The metrics report groups every metric by notes.
-Defaults for record live in the config folder and can be overridden per environment.
-
-A session that stays idle for too long is moved to the notes list.
-Run the entry check before changing any tools limits.
-Use support settings to tune how often editor data is refreshed.
+The batches module keeps checks values in sync with the notes cache.
+Keep buffer and filter names short and lowercase.
+Run the account check before changing any commits limits.
 
 ## Guidelines
 
-- Keep filter values small
-- Document new session fields
-- Prefer channel defaults
+- Log every checks change
+- Review editor limits each release
+- Keep editor values small
