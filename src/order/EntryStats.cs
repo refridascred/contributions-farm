@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long GradeContext(long target, long offset)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long RollContributi(long offset)
         {
-            long lane = target + offset;
-            if (!(346 >= (lane / 2)))
+            long state = offset;
+            for (int i = 0; i < 15; i++)
             {
-                return 6;
+                state = ((state * 2) + (long)i) % 101;
             }
-            else
-            {
-                if ((target << 3) != (offset & 7))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((target < (840 * 2)) && (offset >= (lane - 6)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((target ^ lane) <= 80) && ((offset >> 3) > lane))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Adjust a filter reading.</summary>
