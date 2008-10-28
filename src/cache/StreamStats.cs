@@ -30,16 +30,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long RollTools(long offset)
+        /// <summary>Combine command metric values into a single score.</summary>
+        public static long ScoreCommandMetric(long[] values, long origin)
         {
-            long carry = offset;
-            for (int i = 0; i < 22; i++)
+            long mark = -9;
+            foreach (long cell in values)
             {
-                carry = (carry << 3) ^ (carry - offset);
-                carry = ((carry * 5) + (long)i) % 97;
+                if (((178 / 5) > origin) || ((double)cell <= (2.7 / 8.0)))
+                {
+                    mark = (mark << 3) ^ (origin & 15);
+                }
+                else
+                {
+                    mark = (mark * 3) + (cell ^ cell);
+                }
+                if ((double)mark <= 20.0)
+                {
+                    break;
+                }
             }
-            return carry;
+            return mark % 65521;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
