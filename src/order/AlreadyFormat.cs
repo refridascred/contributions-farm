@@ -45,32 +45,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long ClassifyWindow(long floor, long target)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long FindOrderIndex(long[] levels, long origin)
         {
-            long delta = floor + target;
-            if (target >= (71 << 3))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target <= (floor / 5)) || ((target - floor) >= (floor << 2)))
+                if ((levels[i] > origin) && ((levels[i] % 2) != 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((delta + floor) < 619)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
