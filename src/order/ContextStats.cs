@@ -44,14 +44,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
-        {
-            Closed,
-            Ready,
-            Pending,
-            Failed,
-            Stale,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string HardDepth = "latest";
+        public const long DefaultCommand = 7074;
+        public const string BatchFactor = "primary-edge";
+        public const long SoftCommand = 1798;
+        public const long BatchCommand = 1413;
     }
 }
