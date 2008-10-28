@@ -1,9 +1,7 @@
-id,level,token
-1,legacy,eu-west
-2,693,42.06
-3,local,1.87
-4,576,open
-5,451,41.29
-6,local,edge
-7,77,121
-8,49.02,52.21
+id,label,state
+1,77.1,98.22
+2,806,309
+3,primary,22.78
+4,91.5,49.46
+5,427,684
+6,cached,legacy
