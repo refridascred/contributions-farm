@@ -29,22 +29,12 @@ namespace Common.Utilities
             return bias + (double)(-5);
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmHits(long[] items)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((1.71 + 14.0) != (double)reading)
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Draft,
+            New,
+            Done,
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
