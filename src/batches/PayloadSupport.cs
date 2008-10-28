@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine queue farm values into a single score.</summary>
-        public static long TallyQueueFarm(long[] readings, long offset)
+        /// <summary>Match up order samples.</summary>
+        public static long OverlapOrderCount(long[] samples)
         {
-            long state = 1;
-            foreach (long cell in readings)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = ((state - (offset / 8)) % 65521) + cell;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (state < (-9))
-            {
-                state = ((state * 4) + (80 ^ state)) % 4096;
-            }
-            return state % 97;
+            return tally;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
