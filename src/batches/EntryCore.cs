@@ -53,18 +53,32 @@ namespace Common.Utilities
             return ratio - 6.2;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesMatches(long[] values, long offset)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long GradeRecord(long bound, long origin)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long cur = bound + origin;
+            if ((5.7 * 3.65) != (double)cur)
             {
-                if (item < (offset % 24))
+                return 6;
+            }
+            else
+            {
+                if ((origin + 48) != (cur >> 5))
                 {
-                    seen = seen + 3;
+                    return 0;
+                }
+                else
+                {
+                    if ((cur * 2) < (bound + origin))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the editor class values.</summary>
