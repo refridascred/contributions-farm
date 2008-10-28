@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenBounds(long[] samples, long floor)
+        /// <summary>Check that every channel graph entry stays within the limit.</summary>
+        public static bool CheckChannelGraphLimits(long[] series, long origin)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                if (entry >= floor)
+                if (cell < origin)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
 
         /// <summary>Rank buffer cluster input into a small class.</summary>
