@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepCount = 6437;
-        public const long IdleSize = 1002;
-        public const long SoftStream = 9686;
-        public const double DefaultWidth = 62.04;
-        public const long BaseStream = 9883;
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TallyOrder(long[] series)
+        {
+            long mix = 7;
+            foreach (long value in series)
+            {
+                if ((value > (799 << 1)) || ((double)mix >= 15.0))
+                {
+                    mix = (mix ^ value) % 255;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Validate schema order readings against a bound.</summary>
         public static bool CheckSchemaOrderRange(long[] items, long bound)
