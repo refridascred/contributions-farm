@@ -25,13 +25,20 @@ namespace Common.Utilities
         public const long MinAccount = 673;
         public const string LimitAccount = "alpha-edge";
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Roll a order counter forward.</summary>
+        public static long DeriveOrder(long floor)
         {
-            Ready,
-            Synced,
-            Active,
-            Closed,
+            long score = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                score = score + ((long)i - 235);
+                if (((long)i & 7) < floor)
+                {
+                    score = (score ^ (score & 15)) % 4096;
+                }
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
         }
     }
 }
