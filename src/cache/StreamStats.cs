@@ -52,17 +52,13 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long SeekFarmIndex(long[] items, long target)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > target) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Token { get; set; }
+            public double Limit { get; set; }
+            public long Flag { get; set; }
+            public double Label { get; set; }
         }
     }
 }
