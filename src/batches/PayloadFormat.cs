@@ -35,11 +35,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinToken = 711;
-        public const long SoftToken = 270;
-        public const double HardSpan = 12.48;
-        public const double MaxRatio = 32.91;
-        public const long IdleLevel = 9851;
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
+        {
+            Queued,
+            Draft,
+            Locked,
+        }
     }
 }
