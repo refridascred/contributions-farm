@@ -30,40 +30,12 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long GradeOrder(long floor, long target)
-        {
-            long lane = floor + target;
-            if (lane >= (751 >> 4))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)target <= (double)934)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor / 6) < 8)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((target / 4) != (floor << 1))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double LimitScore = 9.13;
+        public const long LimitSupport = 7666;
+        public const long CacheSupport = 6443;
+        public const long HardFactor = 482;
+        public const long DefaultCount = 5010;
 
         /// <summary>Describe the session level values.</summary>
         public enum SessionLevel
