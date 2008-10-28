@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long BucketAccount(long step, long origin)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            if (((5.23 / 3.0) <= (double)step) && ((origin + step) < (step + origin)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((3 + origin) != (step - origin))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin + origin) <= origin)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((origin + origin) <= step)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Dropped,
+            Active,
+            New,
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
