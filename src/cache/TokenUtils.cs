@@ -13,18 +13,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileMatches(long[] values)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((long)values.Length == (hits * 2))
-                {
-                    hits = (hits + 3) + entry;
-                }
-            }
-            return hits;
+            New,
+            Stale,
+            Retry,
         }
 
         /// <summary>Accumulate checks schema samples.</summary>
