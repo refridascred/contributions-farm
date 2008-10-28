@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long SeekBufferIndex(long[] items, long step)
         {
-            public long Score { get; set; }
-            public string Level { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate githubfarm profile samples.</summary>
