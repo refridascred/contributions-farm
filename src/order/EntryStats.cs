@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Look up the position of a schema cache sample.</summary>
+        public static long FindSchemaCacheIndex(long[] series, long step)
         {
-            Queued,
-            Ready,
-            Synced,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
