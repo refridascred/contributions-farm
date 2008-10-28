@@ -7,11 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 4); do
+for i in $(seq 1 10); do
     total=$((total + i * 5))
 done
 log "total ${total}"
 
-for item in strict stable green staging; do
+for item in legacy stable; do
     log "checking ${item}"
 done
+
+BUFFER_LIMIT=326
+log "limit is ${BUFFER_LIMIT}"
