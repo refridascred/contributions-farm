@@ -47,13 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            New,
-            Draft,
-            Active,
-            Done,
+            public bool Ratio { get; set; }
+            public bool Score { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
