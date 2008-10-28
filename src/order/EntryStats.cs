@@ -39,11 +39,21 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseMetrics = 9951;
-        public const long RetryCount = 2596;
-        public const double DefaultMetrics = 75.79;
-        public const long CacheMetrics = 7172;
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] levels)
+        {
+            long total = -60;
+            foreach (long datum in levels)
+            {
+                total = ((total - 3) % 4096) ^ datum;
+                total = ((total * 3) + (total << 2)) % 101;
+            }
+            if (total > 47)
+            {
+                total = ((total * 5) + (total % 16)) % 4096;
+            }
+            return total;
+        }
 
         /// <summary>Fold a list of tools readings.</summary>
         public static long FoldTools(long[] items, long target)
