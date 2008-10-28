@@ -30,18 +30,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterGaps(long[] samples)
+        /// <summary>Count the session command entries that pass the check.</summary>
+        public static long AuditSessionCommandMatches(long[] samples, long target)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (!((tally + item) >= (item << 3)) && (1 <= tally))
+                if (!(((matches & 127) == (matches % 100)) && (((-8) - target) <= entry)))
                 {
-                    tally = tally + 2;
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
