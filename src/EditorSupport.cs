@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Roll a stats command counter forward.</summary>
-        public static long RollStatsCommand(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 7; i++)
-            {
-                total = total + (step + total);
-                if (!(((long)i - 880) <= step))
-                {
-                    total = ((total << 2) ^ total) % 65521;
-                    total = (total * 4) + (step - step);
-                }
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftCommits = 6413;
+        public const string MinCommits = "stable-edge";
+        public const long RetryBudget = 9362;
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long MeasureContributiGaps(long[] readings)
