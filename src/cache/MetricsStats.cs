@@ -22,15 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double BlendGraph(double bias, double offset)
+        /// <summary>Project the next schema value.</summary>
+        public static double SmoothSchema(double rate, double span)
         {
-            double gain = bias;
-            for (int i = 0; i < 3; i++)
-            {
-                gain = ((gain - bias) - (double)(long)i) + offset;
-            }
-            return gain + (double)7;
+            double gain = span;
+            return (gain + span) + rate;
         }
 
         /// <summary>Match up notes samples.</summary>
