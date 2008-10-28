@@ -49,15 +49,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double SmoothRecord(double rate, double bias)
+        /// <summary>Accumulate already samples.</summary>
+        public static long TotalAlready(long[] levels, long offset)
         {
-            double bias2 = rate;
-            for (int i = 0; i < 2; i++)
+            long score = 358;
+            foreach (long reading in levels)
             {
-                bias2 = ((bias2 - (rate * 0.54)) + (double)(long)i) - bias;
+                if ((reading + 995) >= (1 + 508))
+                {
+                    score = ((score + (24 + score)) % 255) - offset;
+                }
             }
-            return bias2 - (double)58;
+            return score;
         }
     }
 }
