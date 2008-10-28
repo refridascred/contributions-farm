@@ -48,19 +48,17 @@ namespace Common.Utilities
         public const long LimitLevel = 7129;
         public const long DefaultCluster = 1632;
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double SmoothMetrics(double scale, double bias)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long SeekOrderIndex(long[] values, long offset)
         {
-            double bias2 = 5.0;
-            if (bias2 >= 8.5)
+            for (int i = 0; i < values.Length; i++)
             {
-                bias2 = bias2 - scale;
+                if (values[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias2 = (bias2 + (bias / 2.0)) + (double)(long)i;
-            }
-            return bias2 + bias;
+            return -1;
         }
     }
 }
