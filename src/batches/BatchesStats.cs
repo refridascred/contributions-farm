@@ -33,39 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long SortEntry(long target, long bound)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long slot = target - bound;
-            if ((double)target == (10.0 / 5.0))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((-74) ^ bound) > (slot * 5))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!(11 >= (482 + bound)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (7 < target)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Active,
+            Ready,
+            Retry,
         }
 
         /// <summary>Describe the cache state values.</summary>
