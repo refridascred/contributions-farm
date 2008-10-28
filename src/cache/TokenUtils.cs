@@ -39,19 +39,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowLimits(long[] items, long limit)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterGaps(long[] samples)
         {
-            bool ready = true;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (item != limit)
+                if (!((tally + item) >= (item << 3)) && (1 <= tally))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return ready;
+            return tally;
         }
     }
 }
