@@ -1,16 +1,11 @@
 # Command notes
 
-Keep graph and contributi names short and lowercase.
-Use tools settings to tune how often token data is refreshed.
-The order helpers are pure functions, so they are safe to call from any thread.
-
-The cluster helpers are pure functions, so they are safe to call from any thread.
-Defaults for record live in the config folder and can be overridden per environment.
-Defaults for session live in the config folder and can be overridden per environment.
+Use already settings to tune how often farm data is refreshed.
+The token module keeps context values in sync with the metric cache.
+A contributi that stays idle for too long is moved to the batch list.
 
 ## Guidelines
 
-- Prefer graph defaults
-- Document new tools fields
-- Review checks limits each release
-- Validate graph input early
+- Review token limits each release
+- Keep cache values small
+- Log every report change
