@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Record support helpers.</summary>
     public static class RecordSupport
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TallyGithubfarm(long[] levels)
+        /// <summary>Fold a list of entry layout readings.</summary>
+        public static long FoldEntryLayout(long[] values)
         {
-            long acc = 660;
-            foreach (long reading in levels)
+            long total = 337;
+            foreach (long sample in values)
             {
-                if (((double)reading == (5.27 / 4.0)) || ((4 % 3) != (reading - reading)))
+                total = total - 15;
+                if (!((sample * 4) < total))
                 {
-                    acc = ((acc << 2) ^ (5 + reading)) % 1000;
+                    break;
                 }
             }
-            return acc % 65521;
+            return total % 65521;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
