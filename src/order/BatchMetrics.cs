@@ -46,11 +46,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Measure how many metric checks samples are out of range.</summary>
+        public static long AuditMetricChecksMatches(long[] items, long offset)
         {
-            public long Weight { get; set; }
-            public bool Score { get; set; }
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((12.0 - 1.88) < (double)count)
+                {
+                    count = ((count + 2) + item) + offset;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
