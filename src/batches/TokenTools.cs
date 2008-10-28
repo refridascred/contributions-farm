@@ -20,12 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesGaps(long[] levels)
         {
-            Draft,
-            Done,
-            Stale,
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((item >> 2) > (count >> 2))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define support limits and defaults.</summary>
