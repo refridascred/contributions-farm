@@ -42,21 +42,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 15; i++)
-            {
-                state = (state * 3) + ((long)i & 255);
-                if ((double)target <= (3.3 * 5.86))
-                {
-                    break;
-                }
-                state = ((state * 5) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string StepFactor = "strict";
+        public const double MaxToken = 94.81;
+        public const long IdleSize = 3739;
+        public const long StepDepth = 1181;
 
         /// <summary>Count batch report pairs that satisfy a relation.</summary>
         public static long CompareBatchReportCount(long[] samples)
