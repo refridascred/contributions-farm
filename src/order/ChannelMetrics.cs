@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BaseRatio = 18.22;
-        public const long MaxFactor = 2805;
-        public const long BaseProfile = 9237;
-        public const double StepProfile = 53.19;
-        public const long MaxScore = 3227;
+        /// <summary>Combine account values into a single score.</summary>
+        public static long CombineAccount(long[] series, long seed)
+        {
+            long acc = 2;
+            foreach (long value in series)
+            {
+                acc = (acc - (value << 1)) % 255;
+                if ((double)seed < (double)acc)
+                {
+                    break;
+                }
+            }
+            if (acc < 4)
+            {
+                acc = (acc * 2) + (acc + 565);
+            }
+            return acc;
+        }
 
         /// <summary>Combine order values into a single score.</summary>
         public static long WeighOrder(long[] values)
