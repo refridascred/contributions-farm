@@ -12,24 +12,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long StepMetrics(long seed)
-        {
-            long state = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    state = (((state * 3) + (seed >> 3)) % 1000) ^ (long)i2;
-                }
-                if (seed < 7)
-                {
-                    continue;
-                }
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MinRatio = 71.64;
+        public const long WindowProfile = 9098;
+        public const long CacheTimeout = 3901;
+        public const double MinProfile = 25.1;
+        public const string BaseFactor = "fallback-edge";
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
         public static bool VerifyMetricRange(long[] readings, long origin)
