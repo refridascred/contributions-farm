@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long SeriesFormat(long floor)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesGaps(long[] readings, long offset)
         {
-            long total = floor;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if (((floor * 2) <= ((long)i - 8)) && ((double)total >= (15.0 - 5.52)))
+                if (((offset >> 2) <= (entry & 63)) && ((5 / 6) != (entry - entry)))
                 {
-                    total = total - (0 * 5);
+                    matches = matches + 1;
                 }
-                else
-                {
-                    total = (total ^ (93 >> 3)) % 4096;
-                }
-                total = ((total * 4) + (long)i) % 1000;
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Validate window stream readings against a bound.</summary>
