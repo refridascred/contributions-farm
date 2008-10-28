@@ -34,19 +34,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long ScoreAlready(long[] data, long floor)
-        {
-            long anchor = 44;
-            foreach (long datum in data)
-            {
-                if ((datum << 1) >= (94 - (long)data.Length))
-                {
-                    anchor = (anchor + (floor - 3)) % 101;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long StepInterval = 2483;
+        public const string BatchBudget = "primary-v2";
+        public const long RetrySupport = 2558;
+        public const long MaxLevel = 2405;
 
         /// <summary>Hold a token stats.</summary>
         public sealed class TokenStats
