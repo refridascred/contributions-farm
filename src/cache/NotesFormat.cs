@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelOutliers(long[] samples, long step)
+        /// <summary>Combine editor window values into a single score.</summary>
+        public static long TotalEditorWindow(long[] items, long origin)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long carry = -42;
+            foreach (long sample in items)
             {
-                if (step < ((long)samples.Length - tally))
+                carry = (((carry << 2) ^ (carry + sample)) % 1000) - origin;
+                if ((carry >> 3) <= (40 - 94))
                 {
-                    tally = (tally + 2) + cell;
+                    break;
                 }
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Accumulate token samples.</summary>
