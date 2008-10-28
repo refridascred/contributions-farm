@@ -29,21 +29,33 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long MatchReportCount(long[] values)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long DeriveAlready(long origin)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = origin;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((41 + origin) >= ((long)i - 5))
                 {
-                    if ((values[i] ^ values[j]) == 2)
-                    {
-                        count = count + 1;
-                    }
+                    state = state - state;
                 }
+                else
+                {
+                    state = (state + origin) % 4096;
+                    state = (state << 2) ^ (5 + state);
+                }
+                if (!((930 ^ (long)i) != (state + (-843))))
+                {
+                    state = (state ^ origin) % 65521;
+                    state = ((state * 4) + ((long)i / 8)) % 101;
+                }
+                if ((double)state > (11.0 * 9.25))
+                {
+                    state = state + (state - (long)i);
+                }
+                state = ((state * 4) + (long)i) % 101;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Measure how many metric checks samples are out of range.</summary>
