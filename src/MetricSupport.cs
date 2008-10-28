@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            New,
-            Idle,
-            Draft,
-            Synced,
+            Closed,
+            Done,
+            Retry,
         }
 
         /// <summary>Hold a channel summary.</summary>
