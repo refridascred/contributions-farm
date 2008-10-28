@@ -1,4 +1,23 @@
 # githubfarm settings
-enabled: open
-metric_limit: cached
-cluster_capacity: strict
+warm_delay_ms: 76
+counter_retries: true
+base_capacity_pct: 9051
+retry_ttl:
+  enabled: primary
+  base_threshold: cached
+  min_ttl: 89.65
+  flush_depth:
+    retry_retries: legacy
+    base_delay_count: cached
+    min_retries_count: cached
+    cluster_capacity: 500
+    idle_ttl_ms: stable
+    readonly:
+      - cached
+      - green
+      - green
+      - primary
+  sync_delay_s: 28.63
+  base_size_pct: primary
+retry_limit: 4014
+verbose: blue
