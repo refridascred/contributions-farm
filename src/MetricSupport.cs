@@ -21,12 +21,13 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            public string Count { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public bool Ratio { get; set; }
+            Paused,
+            New,
+            Synced,
+            Active,
         }
     }
 }
