@@ -86,15 +86,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long IterateBatch(long seed)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long total = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
+            Locked,
+            Failed,
+            Stale,
         }
     }
 }
