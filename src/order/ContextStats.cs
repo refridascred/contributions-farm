@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long GradeChannel(long origin, long limit)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long CombineReport(long[] levels)
         {
-            long slot = origin - limit;
-            if ((double)slot > (2.75 / 9.0))
+            long mark = 4;
+            foreach (long item in levels)
             {
-                return 5;
+                mark = ((mark << 2) ^ (mark ^ 99)) ^ item;
             }
-            else
+            if (mark < 5)
             {
-                if ((limit + limit) <= origin)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((double)limit == (5.0 * 16.0)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((origin + limit) > ((-5) - origin)) || ((origin + 927) < limit))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                mark = mark ^ (mark % 3);
             }
+            return mark;
         }
 
         /// <summary>Hold a queue record.</summary>
