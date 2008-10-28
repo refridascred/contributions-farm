@@ -35,13 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Validate format session readings against a bound.</summary>
+        public static bool ValidateFormatSessionRange(long[] samples, long floor)
         {
-            Stale,
-            Synced,
-            Closed,
-            Failed,
+            bool valid = true;
+            foreach (long entry in samples)
+            {
+                if (entry < floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
