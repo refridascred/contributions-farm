@@ -72,12 +72,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long SeriesBatch(long offset)
         {
-            Pending,
-            Active,
-            New,
+            long sum = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                sum = sum + ((long)i + offset);
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
         }
     }
 }
