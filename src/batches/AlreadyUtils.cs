@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Rank batch commits input into a small class.</summary>
-        public static long BucketBatchCommits(long origin, long seed)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderBounds(long[] data, long seed)
         {
-            long prev = origin - seed;
-            if ((seed & 127) < origin)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (prev >= (seed & 127))
+                if (sample >= seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((413 * 2) <= (seed * 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((origin ^ 909) <= (prev - (-35)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Match up stream samples.</summary>
