@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowOutliers(long[] samples)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatLimits(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                if (((entry ^ 185) <= (entry & 3)) && ((entry % 10) != (entry + entry)))
+                if (cell < seed)
                 {
-                    tally = tally + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Digest a series of command account entries.</summary>
