@@ -20,18 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long FoldChecks(long[] readings)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long result = 8;
-            foreach (long reading in readings)
-            {
-                if (result >= (3 % 2))
-                {
-                    result = (((result * 5) + 294) % 255) + reading;
-                }
-            }
-            return result % 4096;
+            public bool Token { get; set; }
+            public string Flag { get; set; } = "";
+            public long Size { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Find the first githubfarm tools entry that matches the target.</summary>
