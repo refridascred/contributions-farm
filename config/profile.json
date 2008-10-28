@@ -1,7 +1,6 @@
 {
-  "buffer_ratio": 2.37,
-  "graph_interval": ["blue", "edge"],
-  "max_delay": 35,
-  "flush_ratio_s": "eu-west",
-  "max_capacity_s": false
+  "cache_retries_count": [34, 336, 248, 235],
+  "verbose": "edge",
+  "already_depth": true,
+  "record_ratio": "green"
 }
