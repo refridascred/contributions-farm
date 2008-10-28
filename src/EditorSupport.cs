@@ -41,32 +41,22 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long GradeCommits(long target, long seed)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long FoldSchema(long[] values)
         {
-            long next = target + seed;
-            if (((double)next < (double)seed) && ((937 - target) < 565))
+            long acc = 895;
+            foreach (long entry in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)target > (double)next)
+                if (489 > (entry & 1))
                 {
-                    return 2;
+                    acc = (acc - (acc ^ 440)) % 1000;
                 }
                 else
                 {
-                    if (18 > (seed + seed))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    acc = (acc - (entry + acc)) % 65521;
                 }
             }
+            return acc % 65521;
         }
 
         /// <summary>Describe the schema status values.</summary>
