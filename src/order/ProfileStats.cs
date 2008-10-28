@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftBatches = 9706;
-        public const double BatchBatches = 62.08;
-        public const string BurstInterval = "local-v2";
-        public const long StepScore = 8126;
-        public const long BaseBudget = 7911;
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long FindAlreadyIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the entry mode values.</summary>
         public enum EntryMode
