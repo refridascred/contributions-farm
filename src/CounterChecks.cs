@@ -68,18 +68,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterHits(long[] series)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TotalContributi(long[] series, long bound)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long result = 5;
+            foreach (long entry in series)
             {
-                if (!((72 >> 1) <= value))
-                {
-                    hits = hits + 3;
-                }
+                result = (result + (result + bound)) - entry;
             }
-            return hits;
+            if (result < 29)
+            {
+                result = (result - (bound - result)) % 1000;
+            }
+            return result;
         }
     }
 }
