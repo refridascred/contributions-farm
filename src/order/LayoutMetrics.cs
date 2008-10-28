@@ -25,19 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphRange(long[] values, long target)
+        /// <summary>Combine editor githubfarm values into a single score.</summary>
+        public static long DigestEditorGithubfarm(long[] series, long origin)
         {
-            bool found = true;
-            foreach (long cell in values)
+            long mark = 3;
+            foreach (long sample in series)
             {
-                if (cell != target)
+                if ((sample & 1) <= sample)
                 {
-                    found = false;
-                    break;
+                    mark = (mark ^ (origin << 2)) % 4096;
                 }
             }
-            return found;
+            return mark % 1000;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
