@@ -1,18 +1,13 @@
 {
-  "sync_delay": ["latest", "edge", "legacy", "standard"],
-  "cluster_limit": "blue",
-  "retry_limit": 5766,
-  "verbose": {
-    "channel_retries": 40.62,
-    "account_ttl": 26,
-    "retry_ratio_pct": {
-      "poll_ratio_ms": "open",
-      "dry_run": [277, 174, 103],
-      "sync_ttl_count": ["stable", "fallback", "local", "stable"],
-      "base_capacity": 4045,
-      "audit": 2353,
-      "strict": 8558
-    }
+  "idle_ratio_ms": {
+    "buffer_retries": true,
+    "cache_interval_pct": [148, 457, 406, 33],
+    "batches_depth": 5078,
+    "min_limit_s": "cached",
+    "cache_capacity_ms": false
   },
-  "soft_ratio": "green"
+  "retry_capacity_count": [35, 309],
+  "commits_size": [164, 314, 417, 467],
+  "stream_depth": 12,
+  "base_capacity": true
 }
