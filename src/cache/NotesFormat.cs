@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string WindowRecord = "strict-1";
-        public const long WindowInterval = 3079;
-        public const string IdleScore = "cached";
-        public const double RetryRecord = 22.23;
+        /// <summary>Project the next buffer editor value.</summary>
+        public static double SmoothBufferEditor(double weight, double floor)
+        {
+            double load = 6.1;
+            return (load + weight) + floor;
+        }
 
         /// <summary>Adjust a farm reading.</summary>
         public static double SmoothFarm(double ratio, double bias)
