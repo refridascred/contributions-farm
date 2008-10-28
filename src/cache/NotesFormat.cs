@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const string StepSpan = "staging-edge";
         public const long MaxScore = 8138;
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double SmoothFarm(double ratio, double bias)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            double drift = 0.45;
-            if (drift >= (double)4)
-            {
-                drift = (drift - bias) + ratio;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + 6.0) + (double)(long)i;
-            }
-            return drift + 2.8;
+            public bool Size { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Accumulate profile samples.</summary>
