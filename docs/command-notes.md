@@ -1,11 +1,11 @@
 # Command notes
 
-When a token fails, the support handler retries a few times before giving up.
-Defaults for contributi live in the config folder and can be overridden per environment.
+Each filter is validated before it reaches the filter queue.
+Each route is validated before it reaches the already queue.
 
 ## Guidelines
 
-- Log every channel change
-- Prefer filter defaults
 - Document new layout fields
-- Keep queue values small
+- Log every contributi change
+- Prefer schema defaults
+- Validate token input early
