@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine editor window values into a single score.</summary>
-        public static long TotalEditorWindow(long[] items, long origin)
+        /// <summary>Compare every pair of order account readings.</summary>
+        public static long PairOrderAccountCount(long[] levels)
         {
-            long carry = -42;
-            foreach (long sample in items)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = (((carry << 2) ^ (carry + sample)) % 1000) - origin;
-                if ((carry >> 3) <= (40 - 94))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    break;
+                    if ((levels[i] ^ levels[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Accumulate token samples.</summary>
