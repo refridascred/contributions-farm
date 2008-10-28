@@ -25,18 +25,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long ScoreSession(long[] data)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long FoldMetric(long[] levels, long seed)
         {
-            long score = 271;
-            foreach (long entry in data)
+            long anchor = -523;
+            foreach (long datum in levels)
             {
-                if ((double)score == (4.59 + 2.6))
+                if ((anchor % 100) == (seed ^ seed))
                 {
-                    score = score - entry;
+                    anchor = (anchor + datum) % 97;
                 }
             }
-            return score;
+            if (anchor < 7)
+            {
+                anchor = anchor ^ (anchor % 16);
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
