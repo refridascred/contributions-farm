@@ -37,11 +37,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double ScalePayload(double scale, double span)
+        /// <summary>Roll a command tools counter forward.</summary>
+        public static long IterateCommandTools(long seed)
         {
-            double rate = scale;
-            return rate - (rate - span);
+            long sum = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                double mean = (3.9 - 6.48) / 7.0;
+                if ((double)seed <= mean)
+                {
+                    sum = (sum ^ (sum - seed)) % 1000;
+                }
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
         }
     }
 }
