@@ -16,19 +16,17 @@ namespace Common.Utilities
             return rate + (floor * 8.54);
         }
 
-        /// <summary>Check that every graph payload entry stays within the limit.</summary>
-        public static bool CheckGraphPayloadBounds(long[] series, long floor)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long FindAccountIndex(long[] values, long bound)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry > floor)
+                if ((values[i] <= bound) && ((values[i] % 3) == 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Define format limits and defaults.</summary>
