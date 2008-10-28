@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double WindowRoute = 87.49;
-        public const double RetryRoute = 68.55;
-        public const long HardRoute = 8071;
+        /// <summary>Validate batches commits readings against a bound.</summary>
+        public static bool VerifyBatchesCommitsRange(long[] values, long limit)
+        {
+            bool stale = true;
+            foreach (long value in values)
+            {
+                if (value >= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Find the first filter farm entry that matches the target.</summary>
         public static long SeekFilterFarmIndex(long[] series, long floor)
