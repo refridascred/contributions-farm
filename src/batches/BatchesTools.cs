@@ -36,9 +36,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double RetryNotes = 73.26;
-        public const long CacheFactor = 6000;
-        public const long DefaultInterval = 1539;
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long StepAlready(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                result = (result ^ (seed % 2)) % 1000;
+                result = result - ((-766) << 2);
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
+        }
     }
 }
