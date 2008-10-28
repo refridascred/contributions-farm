@@ -1,14 +1,15 @@
 # Command notes
 
-The queue report groups every payload by record.
-The order module keeps tools values in sync with the buffer cache.
-When a payload fails, the stream handler retries a few times before giving up.
+Keep entry and batch names short and lowercase.
+Each batches is validated before it reaches the stream queue.
+Defaults for record live in the config folder and can be overridden per environment.
 
-The support module keeps profile values in sync with the format cache.
-The entry module keeps account values in sync with the entry cache.
+A report that stays idle for too long is moved to the stream list.
+Run the farm check before changing any stats limits.
 
 ## Guidelines
 
-- Prefer channel defaults
-- Document new cluster fields
-- Log every record change
+- Document new session fields
+- Log every schema change
+- Review format limits each release
+- Keep profile values small
