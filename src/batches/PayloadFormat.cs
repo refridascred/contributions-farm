@@ -29,19 +29,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double SmoothNotes(double scale, double bias)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            double bias2 = bias;
-            if (bias2 >= 2.61)
-            {
-                bias2 = (bias2 + (double)6) + scale;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = (bias2 - 8.2) + (double)(long)i;
-            }
-            return bias2 - bias2;
+            public string Weight { get; set; } = "";
+            public bool Level { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Project the next batches value.</summary>
