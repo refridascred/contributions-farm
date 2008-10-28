@@ -1,8 +1,5 @@
 {
-  "verbose": "open",
-  "entry_retries": 87.4,
-  "retry_size_count": [336, 80],
-  "batch_retries_pct": 96.6,
-  "profile_retries": 8.31,
-  "dry_run": "primary"
+  "poll_threshold_s": 250,
+  "strict": 74,
+  "sync_window_count": "fallback"
 }
