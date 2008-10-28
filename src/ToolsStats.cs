@@ -13,24 +13,21 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Grade a token layout value against two limits.</summary>
-        public static long SortTokenLayout(long offset, long bound)
+        /// <summary>Compare every pair of already notes readings.</summary>
+        public static long PairAlreadyNotesCount(long[] series)
         {
-            if ((offset < bound) && ((double)bound > (double)(-194)))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((double)bound <= 0.45) && ((bound + offset) < (bound * 3)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    if ((series[i] ^ series[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Match up support samples.</summary>
