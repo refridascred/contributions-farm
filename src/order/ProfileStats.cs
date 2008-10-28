@@ -30,11 +30,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double BlendGithubfarm(double bias, double floor)
+        /// <summary>Grade a githubfarm stats value against two limits.</summary>
+        public static long BucketGithubfarmStats(long step, long seed)
         {
-            double scale = 9.0;
-            return ((scale + (double)193) + bias) + floor;
+            if ((10.0 < (double)step) || (step <= (step % 100)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((step + seed) <= (seed - seed))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Locate a stream reading by value.</summary>
