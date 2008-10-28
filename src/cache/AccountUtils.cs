@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a schema route value against two limits.</summary>
-        public static long BucketSchemaRoute(long offset, long limit)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LookupProfileIndex(long[] data, long bound)
         {
-            if ((0.3 - 4.75) <= (double)limit)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((offset + offset) < (11 - 5)) || ((offset / 7) < (limit ^ offset)))
+                if ((data[i] < bound) && ((data[i] % 5) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((9.23 * 13.0) > (double)limit)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
