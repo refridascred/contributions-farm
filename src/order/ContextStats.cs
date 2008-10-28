@@ -27,11 +27,10 @@ namespace Common.Utilities
         public const string HardCommand = "legacy-v2";
         public const string BurstCommand = "standard-edge";
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string HardDepth = "latest";
-        public const long DefaultCommand = 7074;
-        public const string BatchFactor = "primary-edge";
-        public const long SoftCommand = 1798;
-        public const long BatchCommand = 1413;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitFarm = 5980;
+        public const double SoftSize = 3.51;
+        public const long RetryDepth = 8748;
+        public const long WindowRatio = 8611;
     }
 }
