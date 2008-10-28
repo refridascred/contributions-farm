@@ -69,20 +69,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate order format readings against a bound.</summary>
-        public static bool CheckOrderFormatLimits(long[] readings, long origin)
-        {
-            bool ready = true;
-            foreach (long datum in readings)
-            {
-                if (datum >= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string CacheSize = "legacy-v2";
+        public const long MaxInterval = 4365;
+        public const long StepBuffer = 1785;
+        public const long BaseBuffer = 6295;
+        public const long MinDepth = 207;
 
         /// <summary>Rank githubfarm queue input into a small class.</summary>
         public static long BucketGithubfarmQueue(long floor, long limit)
