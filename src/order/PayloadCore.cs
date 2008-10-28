@@ -29,16 +29,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long SeriesQueue(long target)
+        /// <summary>Count support batches pairs that satisfy a relation.</summary>
+        public static long MatchSupportBatchesCount(long[] samples)
         {
-            long acc = target;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = acc - (acc & 15);
-                acc = ((acc * 5) + (long)i) % 101;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Hold a window header.</summary>
