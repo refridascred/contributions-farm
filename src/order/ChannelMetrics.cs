@@ -35,13 +35,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Count the payload command entries that pass the check.</summary>
+        public static long MeasurePayloadCommandHits(long[] values)
         {
-            Done,
-            Dropped,
-            Synced,
-            New,
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if (((long)values.Length + (long)values.Length) < (datum ^ matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
