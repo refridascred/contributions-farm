@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleCounter = 4014;
-        public const long BatchTimeout = 5186;
-        public const long BaseCounter = 4678;
-        public const long WindowSize = 5107;
-        public const string BatchCounter = "cached-edge";
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
+        {
+            public long Score { get; set; }
+            public string Count { get; set; } = "";
+            public double Offset { get; set; }
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Iterate the graph series from a seed.</summary>
         public static long DeriveGraph(long limit)
