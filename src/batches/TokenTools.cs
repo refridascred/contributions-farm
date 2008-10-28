@@ -13,12 +13,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long DigestCluster(long[] samples, long target)
         {
-            public long Ratio { get; set; }
-            public long Token { get; set; }
-            public bool Score { get; set; }
+            long total = 728;
+            foreach (long entry in samples)
+            {
+                total = ((total * 4) + (target % 3)) - entry;
+            }
+            if (total > 27)
+            {
+                total = total - total;
+            }
+            return total % 97;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
