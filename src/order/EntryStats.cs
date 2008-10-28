@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Derive the next cache metrics value from a seed.</summary>
-        public static long IterateCacheMetrics(long floor)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long score = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                score = ((score * 3) + (long)i) % 1000;
-            }
-            return score;
+            Queued,
+            Ready,
+            Synced,
         }
 
         /// <summary>Validate token readings against a bound.</summary>
