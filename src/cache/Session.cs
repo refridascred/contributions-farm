@@ -20,16 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a buffer cluster counter forward.</summary>
-        public static long StepBufferCluster(long origin)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long IterateSupport(long step)
         {
-            long sum = origin;
-            for (int i = 0; i < 10; i++)
+            long mix = step;
+            for (int i = 0; i < 5; i++)
             {
-                sum = ((sum * 4) + (sum << 3)) % 101;
-                sum = ((sum * 3) + (long)i) % 101;
+                mix = (mix ^ mix) % 1000;
+                if (step < (step + step))
+                {
+                    mix = (mix - (mix % 60)) % 97;
+                    mix = (mix - (mix / 6)) % 65521;
+                }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return sum;
+            return mix;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
