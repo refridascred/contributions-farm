@@ -12,24 +12,13 @@ namespace Common.Utilities
         public const long StepScore = 8126;
         public const long BaseBudget = 7911;
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long RankSession(long floor, long limit)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            if ((0.6 - 1.6) <= (double)floor)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((limit / 7) <= floor)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Draft,
+            Ready,
+            New,
+            Closed,
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
