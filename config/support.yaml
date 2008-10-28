@@ -1,4 +1,40 @@
 # support settings
-flush_delay_count: 21
-idle_window: 8873
-default_ttl_count: 100
+warm_delay_count:
+  queue_threshold: 39.27
+  base_interval_s: open
+  warm_timeout_ms:
+    readonly:
+      - 68
+      - 416
+      - 80
+    strict:
+      - standard
+      - local
+      - open
+    hard_capacity_s: staging
+    batch_size_count: standard
+    enabled: standard
+retry_retries:
+  soft_delay:
+    - 315
+    - 32
+    - 238
+    - 95
+  sync_limit_s: false
+  flush_threshold_count: false
+  context_threshold: eu-west
+  batch_timeout: standard
+  cache_delay_ms: true
+soft_window:
+  retry_ttl_pct: 60
+  warm_timeout:
+    burst_timeout: cached
+    metric_delay: 71
+    persist:
+      - 256
+      - 150
+      - 434
+    batch_depth: staging
+    warm_retries: 77
+  format_limit: false
+poll_window: 3.99
