@@ -1,17 +1,7 @@
 {
-  "metric_ttl": "green",
-  "format_delay": 250,
-  "flush_window": {
-    "flush_timeout_s": {
-      "min_threshold": ["strict", "latest"],
-      "cache_threshold": "green",
-      "poll_retries": false,
-      "default_delay_s": 71.91
-    },
-    "sync_interval_count": [225, 294, 175],
-    "stats_capacity": 8606,
-    "schema_limit": 75,
-    "editor_window": "cached"
-  },
-  "base_window_pct": "strict"
+  "compress": 7851,
+  "cluster_capacity": 48.23,
+  "readonly": false,
+  "verbose": 3177,
+  "audit": [149, 182]
 }
