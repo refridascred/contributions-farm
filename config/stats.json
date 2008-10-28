@@ -1,5 +1,8 @@
 {
-  "idle_window_s": true,
-  "compress": 562,
-  "cache_capacity": 1024
+  "stream_interval": 60,
+  "hard_capacity_s": "strict",
+  "flush_interval_count": 70,
+  "strict": false,
+  "max_depth_ms": 67,
+  "warm_capacity_ms": "blue"
 }
