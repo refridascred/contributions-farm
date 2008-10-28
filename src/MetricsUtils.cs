@@ -26,24 +26,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long SortStats(long limit, long bound)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            if ((double)limit == (9.6 + 3.4))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!(limit >= (bound * 2)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Rank { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Describe the tools status values.</summary>
