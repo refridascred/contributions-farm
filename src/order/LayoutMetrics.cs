@@ -25,18 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine editor githubfarm values into a single score.</summary>
-        public static long DigestEditorGithubfarm(long[] series, long origin)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long FindMetricIndex(long[] levels, long floor)
         {
-            long mark = 3;
-            foreach (long sample in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((sample & 1) <= sample)
+                if ((levels[i] > floor) && ((levels[i] % 2) == 0))
                 {
-                    mark = (mark ^ (origin << 2)) % 4096;
+                    return (long)i;
                 }
             }
-            return mark % 1000;
+            return -1;
         }
 
         /// <summary>Hold a entry header.</summary>
