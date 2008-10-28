@@ -16,11 +16,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenBounds(long[] samples, long floor)
         {
-            public long Offset { get; set; }
-            public long Mode { get; set; }
+            bool ok = true;
+            foreach (long entry in samples)
+            {
+                if (entry >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Rank buffer cluster input into a small class.</summary>
