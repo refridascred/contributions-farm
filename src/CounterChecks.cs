@@ -42,21 +42,11 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long MatchNotesCount(long[] levels)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double BlendFarm(double rate, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            double scale = span;
+            return scale - (span + rate);
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
