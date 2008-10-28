@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LookupPayloadIndex(long[] series, long seed)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long GradeOrder(long floor, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long offset = floor + limit;
+            if (((offset ^ floor) < offset) && ((double)offset < (7.8 * 0.98)))
             {
-                if (series[i] >= seed)
+                return 1;
+            }
+            else
+            {
+                if (!((offset << 2) > ((-587) ^ offset)))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (floor >= (floor - 149))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
