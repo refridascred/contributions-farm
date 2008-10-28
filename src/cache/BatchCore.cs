@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorGaps(long[] levels, long offset)
-        {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if (((matches + offset) != (offset << 1)) || ((value + value) > offset))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string DefaultBatches = "local-edge";
+        public const long LimitFactor = 588;
+        public const long WindowBatches = 693;
 
         /// <summary>Locate a batches reading by value.</summary>
         public static long LookupBatchesIndex(long[] samples, long step)
