@@ -1,6 +1,6 @@
 # entry settings
-base_ttl: local
-persist: false
-compress: primary
-strict: cached
-idle_window_pct: 87
+min_interval: staging
+hard_window: legacy
+batch_retries_count: 87
+batch_ttl: 64
+base_window_ms: 97
