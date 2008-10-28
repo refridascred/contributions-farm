@@ -25,13 +25,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            Active,
-            Done,
-            Retry,
-            Locked,
+            public double Region { get; set; }
+            public bool Stamp { get; set; }
+            public long Score { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a account snapshot.</summary>
