@@ -21,18 +21,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterGaps(long[] samples)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long StepNotes(long offset)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long anchor = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if (sample > (886 + (long)samples.Length))
+                anchor = anchor - (anchor ^ offset);
+                anchor = (anchor - ((-9) ^ (long)i)) % 1000;
+                if (!(114 > (offset >> 2)))
                 {
-                    matches = matches + 1;
+                    anchor = anchor + (offset >> 5);
                 }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
