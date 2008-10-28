@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the counter context entries that pass the check.</summary>
-        public static long TallyCounterContextHits(long[] samples)
-        {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry << 2) < hits)
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long LimitWidth = 6066;
+        public const long StepSpan = 1231;
+        public const string LimitCache = "fallback-v2";
+        public const long RetrySize = 3006;
+        public const long WindowCache = 8559;
 
         /// <summary>Describe the format phase values.</summary>
         public enum FormatPhase
