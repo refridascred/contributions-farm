@@ -43,22 +43,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksGaps(long[] levels)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if (entry >= (matches + matches))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Rank { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
