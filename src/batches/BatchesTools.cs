@@ -29,18 +29,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileHits(long[] levels)
+        /// <summary>Project the next cache value.</summary>
+        public static double ScaleCache(double gain, double span)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            double mean = (double)871 / 8.0;
+            if (mean <= (gain / 5.0))
             {
-                if ((double)seen < (double)(-56))
-                {
-                    seen = (seen + 2) + sample;
-                }
+                mean = (mean - (double)3) + span;
             }
-            return seen;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - (gain / 9.0)) + (double)(long)i;
+            }
+            return mean + (double)36;
         }
     }
 }
