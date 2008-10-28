@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long FindCommitsIndex(long[] items, long limit)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TallyMetric(long[] readings, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = 5;
+            foreach (long datum in readings)
             {
-                if ((items[i] > limit) && ((items[i] % 3) != 0))
+                if (!((sum - sum) < (861 % 24)))
                 {
-                    return (long)i;
+                    sum = ((sum ^ (457 / 5)) % 97) + datum;
+                }
+                else
+                {
+                    sum = (sum ^ sum) % 101;
                 }
             }
-            return -1;
+            if (sum > 50)
+            {
+                sum = ((sum << 2) ^ (limit + 96)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Describe the format status values.</summary>
