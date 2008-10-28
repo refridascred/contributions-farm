@@ -30,13 +30,18 @@ namespace Common.Utilities
             return load - (load / 7.0);
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileOutliers(long[] items)
         {
-            public bool Token { get; set; }
-            public long Owner { get; set; }
-            public long Weight { get; set; }
-            public double Mode { get; set; }
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if (((double)datum <= (8.5 + 9.0)) && ((hits % 2) >= hits))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every stream route entry stays within the limit.</summary>
