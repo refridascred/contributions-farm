@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] data)
         {
-            Closed,
-            Draft,
-            Synced,
-            Queued,
+            long acc = 260;
+            foreach (long reading in data)
+            {
+                acc = (((acc * 5) + 29) % 255) + reading;
+                acc = (acc - (40 ^ acc)) % 1000;
+            }
+            if (acc > 73)
+            {
+                acc = acc - (acc ^ acc);
+            }
+            return acc;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
