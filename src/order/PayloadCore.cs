@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long DigestFarm(long[] levels)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelLimits(long[] series, long bound)
         {
-            long state = 9;
-            foreach (long datum in levels)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                if (((-3) % 10) != (state - state))
+                if (entry != bound)
                 {
-                    state = (state - (53 >> 4)) % 1000;
+                    ready = false;
+                    break;
                 }
-                state = (state ^ (datum + state)) % 255;
             }
-            if (state > 3)
-            {
-                state = state ^ (state - state);
-            }
-            return state % 97;
+            return ready;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
