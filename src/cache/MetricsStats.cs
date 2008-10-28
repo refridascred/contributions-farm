@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
-        {
-            public long Region { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double DefaultStats = 56.88;
+        public const long WindowStats = 9896;
+        public const double MinStats = 44.07;
+        public const string CacheStats = "cached-edge";
 
         /// <summary>Look up the position of a payload sample.</summary>
         public static long LocatePayloadIndex(long[] values, long step)
