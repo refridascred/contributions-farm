@@ -19,21 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long PairCommandCount(long[] values)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadOutliers(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((25 + tally) != (tally - tally)))
                 {
-                    if ((values[i] - values[j]) != 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 1) + sample;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
