@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Rank context input into a small class.</summary>
+        public static long RankContext(long floor, long limit)
         {
-            Idle,
-            Active,
-            Locked,
+            if ((limit / 6) != (86 << 1))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((9.4 / 9.0) == (double)floor)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((limit - limit) <= (floor * 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate command stats samples.</summary>
