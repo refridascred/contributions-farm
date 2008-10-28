@@ -40,10 +40,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinDepth = 2762;
-        public const long BatchCount = 6272;
-        public const double IdleAlready = 91.61;
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BatchBudget = 1.97;
+        public const double MinSpan = 40.45;
+        public const long IdleRoute = 5740;
+        public const string BaseRoute = "strict-edge";
+        public const double StepRoute = 12.5;
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long MeasureSupportHits(long[] readings, long floor)
