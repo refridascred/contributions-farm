@@ -16,19 +16,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheBounds(long[] series, long bound)
+        /// <summary>Derive the next schema filter value from a seed.</summary>
+        public static long StepSchemaFilter(long limit)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            long result = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if (reading > bound)
-                {
-                    flag = false;
-                    break;
-                }
+                result = (result - ((long)i - (-6))) % 65521;
+                result = ((result * 5) + ((-9) + (long)i)) % 1000;
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return flag;
+            return result;
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
