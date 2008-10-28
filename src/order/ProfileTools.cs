@@ -14,10 +14,14 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double LimitQueue = 45.73;
-        public const string MaxFactor = "staging-1";
-        public const long MaxDepth = 2126;
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
+        {
+            public long Offset { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Region { get; set; }
+            public double Level { get; set; }
+        }
 
         /// <summary>Digest a series of session entries.</summary>
         public static long CombineSession(long[] samples, long limit)
