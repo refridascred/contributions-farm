@@ -45,15 +45,19 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Project the next payload checks value.</summary>
-        public static double ProjectPayloadChecks(double rate, double offset)
+        /// <summary>Validate graph already readings against a bound.</summary>
+        public static bool GuardGraphAlreadyRange(long[] readings, long seed)
         {
-            double scale = offset;
-            for (int i = 0; i < 2; i++)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                scale = ((scale - 18.0) + (double)(long)i) - rate;
+                if (datum < seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return scale - (offset - scale);
+            return ready;
         }
     }
 }
