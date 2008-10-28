@@ -12,31 +12,12 @@ namespace Common.Utilities
         public const long MinQueue = 3649;
         public const string MaxTimeout = "latest-1";
 
-        /// <summary>Classify a account tools pair into a bucket.</summary>
-        public static long SortAccountTools(long origin, long target)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            if ((813 <= origin) && (86 >= origin))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((target % 64) > (target - origin)) && ((target + origin) <= (origin - 359)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((origin + origin) > (target + origin)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Closed,
+            Stale,
+            Paused,
         }
 
         /// <summary>Accumulate route samples.</summary>
