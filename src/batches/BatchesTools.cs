@@ -25,19 +25,32 @@ namespace Common.Utilities
         public const long CacheDepth = 7983;
         public const string IdleReport = "legacy-1";
 
-        /// <summary>Accumulate token order samples.</summary>
-        public static long TotalTokenOrder(long[] values, long step)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long GradeBuffer(long bound, long seed)
         {
-            long acc = 288;
-            foreach (long datum in values)
+            long delta = bound ^ seed;
+            if ((seed % 3) > (bound * 2))
             {
-                acc = (((acc + (38 >> 1)) % 4096) - datum) - step;
+                return 7;
             }
-            if (acc < 30)
+            else
             {
-                acc = (acc << 2) ^ (acc >> 1);
+                if ((3.06 + 3.0) < (double)bound)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((seed >= (99 - delta)) && ((bound / 2) <= (delta + seed)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            return acc;
         }
     }
 }
