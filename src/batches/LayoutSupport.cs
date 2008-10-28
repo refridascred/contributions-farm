@@ -20,14 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandRange(long[] series, long offset)
         {
-            New,
-            Paused,
-            Idle,
-            Failed,
-            Dropped,
+            bool found = true;
+            foreach (long cell in series)
+            {
+                if (cell >= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the editor state values.</summary>
