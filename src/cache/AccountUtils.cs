@@ -33,10 +33,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string SoftTimeout = "alpha-v2";
-        public const string IdleAlready = "staging-v2";
-        public const double HardAlready = 12.57;
-        public const long BaseCount = 5831;
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long ClassifyLayout(long bound, long step)
+        {
+            long diff = bound ^ step;
+            if ((21 * 5) != (bound - 85))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!(8.78 >= (double)bound))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((3.0 - 4.3) <= (double)diff)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((diff >> 1) >= (step + bound))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
