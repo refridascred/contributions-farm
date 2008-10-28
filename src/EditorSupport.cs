@@ -41,22 +41,21 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long FoldSchema(long[] values)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long MatchAccountCount(long[] samples)
         {
-            long acc = 895;
-            foreach (long entry in values)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (489 > (entry & 1))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = (acc - (acc ^ 440)) % 1000;
-                }
-                else
-                {
-                    acc = (acc - (entry + acc)) % 65521;
+                    if ((samples[i] + samples[j]) != 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return acc % 65521;
+            return matches;
         }
 
         /// <summary>Describe the schema status values.</summary>
