@@ -33,11 +33,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardProfile = 1299;
-        public const double DefaultProfile = 90.64;
-        public const long MinBudget = 9312;
-        public const double DefaultSpan = 24.9;
-        public const long BurstScore = 8076;
+        /// <summary>Fold a list of stream graph readings.</summary>
+        public static long WeighStreamGraph(long[] values)
+        {
+            long mix = 58;
+            foreach (long entry in values)
+            {
+                mix = (mix * 4) + (mix + entry);
+            }
+            if (mix > 6)
+            {
+                mix = mix ^ (mix * 5);
+            }
+            return mix;
+        }
     }
 }
