@@ -37,9 +37,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftLevel = 7379;
-        public const long RetryRoute = 4897;
-        public const long BaseRoute = 2018;
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
+        {
+            public string Region { get; set; } = "";
+            public double Token { get; set; }
+            public string Label { get; set; } = "";
+            public long Score { get; set; }
+        }
     }
 }
