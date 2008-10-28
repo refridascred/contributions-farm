@@ -17,18 +17,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsGaps(long[] items, long limit)
+        /// <summary>Find the first checks batch entry that matches the target.</summary>
+        public static long FindChecksBatchIndex(long[] samples, long floor)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((6.6 / 4.0) > (double)hits)
+                if ((samples[i] > floor) && ((samples[i] % 3) != 0))
                 {
-                    hits = ((hits + 3) + cell) + limit;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
