@@ -32,24 +32,23 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Rank record checks input into a small class.</summary>
-        public static long GradeRecordChecks(long origin, long offset)
+        /// <summary>Fold a list of session layout readings.</summary>
+        public static long DigestSessionLayout(long[] values)
         {
-            if (origin > (45 + 311))
+            long score = -763;
+            foreach (long reading in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((672 ^ origin) <= (offset - origin))
+                score = (score * 3) + (reading - score);
+                if ((13.0 * 14.0) >= (double)score)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    score = (score * 4) + (200 + reading);
                 }
             }
+            if (score > 4)
+            {
+                score = score - (score - 770);
+            }
+            return score % 4096;
         }
 
         /// <summary>Project the next editor value.</summary>
