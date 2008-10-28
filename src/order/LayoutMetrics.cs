@@ -53,17 +53,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long SeekEntryIndex(long[] items, long floor)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long StepFilter(long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = step;
+            for (int i = 0; i < 21; i++)
             {
-                if ((items[i] == floor) && ((items[i] % 2) == 0))
+                if ((step ^ step) <= (mix + mix))
                 {
-                    return (long)i;
+                    mix = (mix * 5) + step;
+                    mix = ((mix << 3) ^ step) % 1000;
                 }
+                else
+                {
+                    mix = (mix ^ ((long)i * 4)) % 65521;
+                }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return -1;
+            return mix;
         }
     }
 }
