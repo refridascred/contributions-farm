@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderOutliers(long[] readings, long bound)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long GradeBatch(long seed, long target)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long gap = seed - target;
+            if (102 <= (target + target))
             {
-                if (67 > (bound % 64))
+                return 5;
+            }
+            else
+            {
+                if (!((target >> 5) <= gap))
                 {
-                    seen = (seen + 3) + reading;
+                    return 6;
+                }
+                else
+                {
+                    if ((gap < seed) && ((double)seed <= 9.67))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
