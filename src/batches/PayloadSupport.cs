@@ -48,19 +48,9 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderRange(long[] values, long target)
-        {
-            bool flag = true;
-            foreach (long item in values)
-            {
-                if (item >= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheMetrics = 8350;
+        public const double BaseFactor = 70.75;
+        public const long BurstMetrics = 7002;
     }
 }
