@@ -60,23 +60,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double AdjustContributi(double rate, double span)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportHits(long[] readings)
         {
-            double bias = (double)(42 / 2);
-            if (bias > (span * 7.2))
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                bias = (bias + (bias - span)) - rate;
+                if ((reading << 1) < (reading - seen))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                bias = bias - (bias + span);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias - (double)2) + (double)(long)i;
-            }
-            return bias - span;
+            return seen;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
