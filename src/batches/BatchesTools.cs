@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the format payload entries that pass the check.</summary>
-        public static long CountFormatPayloadMatches(long[] data, long origin)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long SeriesEditor(long target)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long total = target;
+            for (int i = 0; i < 4; i++)
             {
-                if (((long)data.Length + seen) < (origin + origin))
-                {
-                    seen = (seen + 2) - item;
-                }
+                total = (total * 2) + 1;
+                total = ((total * 2) + (long)i) % 101;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
