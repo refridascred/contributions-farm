@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine window batch values into a single score.</summary>
-        public static long CombineWindowBatch(long[] data)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorMatches(long[] readings)
         {
-            long anchor = 7;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                anchor = (anchor - value) % 1000;
-                if (!((anchor >> 1) < ((long)data.Length % 97)))
+                if (!((count + count) > (937 >> 1)) && ((sample - sample) > (count + count)))
                 {
-                    anchor = ((anchor * 4) + (long)data.Length) % 97;
+                    count = count + 1;
                 }
                 else
                 {
-                    anchor = (anchor << 2) ^ (2 - value);
+                    count = count - 1;
                 }
             }
-            return anchor % 4096;
+            return count;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
