@@ -41,15 +41,32 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] samples, long step)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long GradeCommits(long target, long seed)
         {
-            long mix = 42;
-            foreach (long sample in samples)
+            long next = target + seed;
+            if (((double)next < (double)seed) && ((937 - target) < 565))
             {
-                mix = (mix ^ (mix ^ sample)) + step;
+                return 4;
             }
-            return mix % 1000;
+            else
+            {
+                if ((double)target > (double)next)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (18 > (seed + seed))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the schema status values.</summary>
