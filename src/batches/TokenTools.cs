@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long SeekBufferIndex(long[] items, long step)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Retry,
+            Dropped,
+            Done,
         }
 
         /// <summary>Accumulate githubfarm profile samples.</summary>
