@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] samples, long seed)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ScaleChecks(double scale, double offset)
         {
-            long carry = 777;
-            foreach (long sample in samples)
+            double ratio = scale;
+            if (ratio < (double)(-181))
             {
-                if (seed >= (seed + 134))
-                {
-                    carry = (carry + (-1)) ^ sample;
-                }
+                ratio = (ratio - (ratio - scale)) + offset;
             }
-            return carry % 4096;
+            else
+            {
+                ratio = ratio - scale;
+            }
+            return ratio - scale;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
