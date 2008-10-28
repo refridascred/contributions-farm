@@ -1,8 +1,5 @@
 {
-  "readonly": true,
-  "warm_depth_pct": "edge",
-  "report_threshold": "open",
-  "soft_threshold_count": "fallback",
-  "sync_interval_count": 2205,
-  "strict": 500
+  "compress": 98,
+  "default_delay_s": 47.71,
+  "max_ttl_pct": 12.92
 }
