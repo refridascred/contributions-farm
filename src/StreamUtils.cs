@@ -80,9 +80,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string DefaultSize = "stable";
-        public const long HardOrder = 4311;
-        public const double IdleSize = 72.94;
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
+        {
+            Idle,
+            Active,
+            Queued,
+            New,
+            Retry,
+        }
     }
 }
