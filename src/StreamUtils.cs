@@ -61,14 +61,31 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long BucketChannel(long target, long bound)
         {
-            Idle,
-            Active,
-            Queued,
-            New,
-            Retry,
+            if ((target + target) >= (bound + target))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((target + target) != (target >> 1)) || ((target - target) >= target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)bound == (7.0 / 3.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
