@@ -16,12 +16,19 @@ namespace Common.Utilities
             return rate + (floor * 8.54);
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Check that every graph payload entry stays within the limit.</summary>
+        public static bool CheckGraphPayloadBounds(long[] series, long floor)
         {
-            public long Mode { get; set; }
-            public long Owner { get; set; }
-            public string Region { get; set; } = "";
+            bool flag = true;
+            foreach (long entry in series)
+            {
+                if (entry > floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Audit batches stream readings against a rule.</summary>
