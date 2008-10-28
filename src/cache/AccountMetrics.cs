@@ -73,21 +73,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long MatchStatsCount(long[] samples)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TallyFilter(long[] values, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 8;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!(seed > carry))
                 {
-                    if ((samples[i] ^ samples[j]) > 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = (carry << 2) ^ datum;
+                }
+                if ((seed <= (carry << 3)) || ((seed ^ datum) > seed))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (carry < (-906))
+            {
+                carry = ((carry * 4) + (seed / 4)) % 4096;
+            }
+            return carry;
         }
     }
 }
