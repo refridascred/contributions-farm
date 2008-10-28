@@ -10,22 +10,19 @@ namespace Common.Utilities
         public const double MaxTimeout = 15.85;
         public const string SoftContributi = "local-v2";
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long ScoreMetrics(long[] readings)
+        /// <summary>Check that every already layout entry stays within the limit.</summary>
+        public static bool CheckAlreadyLayoutLimits(long[] levels, long bound)
         {
-            long acc = 317;
-            foreach (long entry in readings)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                if ((entry ^ entry) < (entry / 8))
+                if (cell < bound)
                 {
-                    acc = ((acc * 3) + (acc * 4)) % 4096;
-                }
-                if ((entry >> 5) >= (142 - acc))
-                {
+                    valid = false;
                     break;
                 }
             }
-            return acc;
+            return valid;
         }
 
         /// <summary>Rank window input into a small class.</summary>
