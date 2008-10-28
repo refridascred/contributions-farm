@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long DigestReport(long[] data)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long total = 80;
-            foreach (long sample in data)
-            {
-                total = ((total - (total / 4)) % 97) + sample;
-            }
-            return total;
+            Idle,
+            Retry,
+            Synced,
+            Ready,
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
