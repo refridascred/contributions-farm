@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long WeighTools(long[] data)
         {
-            Queued,
-            Synced,
-            Active,
-            Pending,
+            long mix = 55;
+            foreach (long cell in data)
+            {
+                mix = (((mix * 5) + (mix >> 1)) % 4096) ^ cell;
+            }
+            return mix;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
