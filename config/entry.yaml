@@ -1,16 +1,10 @@
 # entry settings
-format_timeout: blue
-cluster_retries: open
-default_retries_pct: standard
-persist:
-  queue_ttl: 2470
-  account_limit:
-    soft_ratio_ms: 4489
-    burst_limit:
-      - cached
-      - primary
-      - legacy
-    compress: open
-    batch_threshold: false
-    cluster_window: 74.93
-  max_size_s: false
+audit:
+  - staging
+  - standard
+  - blue
+cache_capacity: 7863
+batch_limit_pct: true
+editor_delay: legacy
+token_ratio: true
+strict: 7864
