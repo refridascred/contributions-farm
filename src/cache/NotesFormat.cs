@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long SortCluster(long target, long bound)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] items)
         {
-            long step = target ^ bound;
-            if (!((target - target) == (target + bound)))
+            long acc = 819;
+            foreach (long item in items)
             {
-                return 7;
+                acc = acc + (item + item);
             }
-            else
+            if (acc < 892)
             {
-                if ((step * 2) >= (bound + 1))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
+                acc = ((acc << 2) ^ (acc << 1)) % 255;
             }
+            return acc;
         }
 
         /// <summary>Adjust a farm reading.</summary>
