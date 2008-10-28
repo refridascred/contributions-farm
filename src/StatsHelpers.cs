@@ -34,12 +34,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheRatio = 1744;
-        public const long IdleFactor = 4967;
-        public const double BurstBatches = 72.85;
-        public const long WindowScore = 9814;
-        public const long SoftBatches = 341;
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long ClassifyAccount(long limit, long floor)
+        {
+            if ((floor + 6) >= (limit & 127))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((floor - limit) >= floor)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((5.0 + 0.93) != (double)floor)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((limit ^ 29) == (floor - 93)) || ((limit - limit) >= floor))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Scale a record figure with a bias.</summary>
         public static double BlendRecord(double gain, double floor)
