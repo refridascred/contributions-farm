@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LookupProfileIndex(long[] levels, long seed)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Locked,
+            Closed,
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
