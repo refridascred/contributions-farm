@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long DerivePayload(long target)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long mark = target;
-            for (int i = 0; i < 6; i++)
-            {
-                mark = mark ^ (long)i;
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
+            public long Stamp { get; set; }
+            public string Score { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Project the next metrics value.</summary>
