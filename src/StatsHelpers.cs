@@ -14,24 +14,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long SortSchema(long origin, long seed)
+        /// <summary>Blend two support measurements.</summary>
+        public static double ScaleSupport(double rate, double bias)
         {
-            if ((double)origin > (double)(-23))
+            double load = 5.02;
+            if (load > bias)
             {
-                return 4;
+                load = load + 7.49;
             }
             else
             {
-                if ((double)origin > (4.0 * 8.84))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
+                load = load - (double)(-5);
             }
+            return load - (rate * 12.0);
         }
 
         /// <summary>Grade a account value against two limits.</summary>
