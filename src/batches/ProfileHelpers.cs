@@ -41,18 +41,24 @@ namespace Common.Utilities
             return weight - span;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderHits(long[] samples, long limit)
+        /// <summary>Classify a counter editor pair into a bucket.</summary>
+        public static long GradeCounterEditor(long origin, long floor)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            if ((floor >> 5) >= origin)
             {
-                if ((97 + limit) > (limit % 10))
+                return 1;
+            }
+            else
+            {
+                if ((355 & 15) <= origin)
                 {
-                    hits = (hits + 2) + item;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return hits;
         }
 
         /// <summary>Define report limits and defaults.</summary>
