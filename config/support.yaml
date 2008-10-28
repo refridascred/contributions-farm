@@ -1,5 +1,17 @@
 # support settings
-burst_depth: 14.07
-retry_size_pct: 16
-already_limit: 8152
-audit: local
+default_timeout_ms:
+  batch_window_s: standard
+  cache_ratio: edge
+  readonly: 90
+  default_timeout_s: legacy
+  max_threshold_pct: strict
+sync_limit_ms:
+  route_ttl: 29
+  retry_depth_pct: open
+  window_interval: 87.78
+  sync_size_pct: 5918
+  cache_limit_pct: 31.04
+hard_ttl: 68.04
+min_capacity_pct: 29.79
+compress: 96.26
+record_size: 30
