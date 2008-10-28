@@ -13,23 +13,13 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TotalFarm(long[] series, long target)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long acc = 6;
-            foreach (long sample in series)
-            {
-                if ((acc >= ((long)series.Length + sample)) && ((double)sample >= (3.0 + 8.7)))
-                {
-                    continue;
-                }
-                acc = ((acc - (acc % 12)) % 101) - target;
-            }
-            if (acc < (-500))
-            {
-                acc = acc + (acc % 12);
-            }
-            return acc % 1000;
+            public string Stamp { get; set; } = "";
+            public bool Offset { get; set; }
+            public long Ratio { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
