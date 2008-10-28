@@ -1,20 +1,7 @@
 # support settings
-strict: fallback
-support_threshold:
-  base_threshold: false
-  min_timeout_s:
-    - 479
-    - 281
-  sync_ttl:
-    - fallback
-    - strict
-    - cached
-    - strict
-  dry_run: standard
-  burst_ratio: cached
-route_interval: true
-checks_threshold:
-  - 193
-  - 47
-  - 362
-idle_limit: cached
+githubfarm_timeout:
+  - 97
+  - 302
+report_timeout: false
+sync_capacity_s: false
+audit: standard
