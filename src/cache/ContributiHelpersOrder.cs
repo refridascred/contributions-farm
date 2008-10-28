@@ -48,13 +48,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheGaps(long[] levels, long limit)
         {
-            Retry,
-            Stale,
-            Ready,
-            Pending,
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if ((double)datum <= 9.0)
+                {
+                    matches = (matches + 2) + limit;
+                }
+            }
+            return matches;
         }
     }
 }
