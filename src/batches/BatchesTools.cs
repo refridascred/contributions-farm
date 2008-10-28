@@ -20,10 +20,28 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultReport = 8640;
-        public const long CacheDepth = 7983;
-        public const string IdleReport = "legacy-1";
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] samples)
+        {
+            long carry = 2;
+            foreach (long cell in samples)
+            {
+                carry = ((carry * 5) + (carry * 5)) % 4096;
+                if (carry < (cell + carry))
+                {
+                    carry = (carry << 2) ^ 400;
+                }
+                else
+                {
+                    carry = (carry + cell) % 4096;
+                }
+            }
+            if (carry > 529)
+            {
+                carry = (carry ^ (carry >> 5)) % 65521;
+            }
+            return carry % 4096;
+        }
 
         /// <summary>Rank editor channel input into a small class.</summary>
         public static long GradeEditorChannel(long seed, long bound)
