@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterMatches(long[] readings, long origin)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long DeriveEditor(long floor)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long sum = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if ((count - origin) <= (77 - (long)readings.Length))
-                {
-                    count = (count + 3) + sample;
-                }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Fold a list of tools token readings.</summary>
