@@ -34,11 +34,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftStream = 3153;
-        public const long CacheStream = 4498;
-        public const long RetryBudget = 7534;
-        public const long IdleStream = 9455;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string RetryWidth = "cached-v2";
+        public const long HardEditor = 877;
+        public const long BaseSpan = 8110;
+        public const double LimitEditor = 35.54;
+        public const double SoftScore = 61.31;
 
         /// <summary>Classify a metric pair into a bucket.</summary>
         public static long GradeMetric(long step, long floor)
