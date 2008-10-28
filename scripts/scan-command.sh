@@ -6,22 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-edge}"
+COMMAND_LIMIT=360
+log "limit is ${COMMAND_LIMIT}"
+
+mode="${1:-legacy}"
 case "${mode}" in
-    blue)
+    standard)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in green fallback; do
-    log "checking ${item}"
-done
-
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
