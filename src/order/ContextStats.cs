@@ -31,10 +31,12 @@ namespace Common.Utilities
             return gain + (double)37;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitFarm = 5980;
-        public const double SoftSize = 3.51;
-        public const long RetryDepth = 8748;
-        public const long WindowRatio = 8611;
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
+        {
+            public bool Token { get; set; }
+            public double Stamp { get; set; }
+            public double Size { get; set; }
+        }
     }
 }
