@@ -23,17 +23,13 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Locate a graph record reading by value.</summary>
-        public static long SeekGraphRecordIndex(long[] levels, long limit)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= limit) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Queued,
+            Retry,
+            Active,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
