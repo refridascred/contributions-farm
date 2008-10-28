@@ -35,18 +35,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit githubfarm farm readings against a rule.</summary>
-        public static long MeasureGithubfarmFarmOutliers(long[] items)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportRange(long[] values, long step)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            bool found = true;
+            foreach (long cell in values)
             {
-                if ((tally & 15) <= tally)
+                if (cell >= step)
                 {
-                    tally = (tally + 1) ^ datum;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
