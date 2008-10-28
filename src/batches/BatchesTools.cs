@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            Dropped,
-            Queued,
-            New,
-            Locked,
+            public bool Score { get; set; }
+            public string Rank { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Combine entry values into a single score.</summary>
