@@ -5,29 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools metrics helpers.</summary>
     public static class ToolsMetrics
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long DigestStats(long[] values, long floor)
+        /// <summary>Project the next buffer value.</summary>
+        public static double AdjustBuffer(double bias, double offset)
         {
-            long result = 39;
-            foreach (long cell in values)
+            double scale = 7.2;
+            if (scale >= scale)
             {
-                if (!((5 & 15) != (result ^ 42)))
-                {
-                    result = result - cell;
-                    result = ((result * 5) + (cell + cell)) % 4096;
-                }
-                if ((159 ^ 28) <= floor)
-                {
-                    result = (result ^ result) % 4096;
-                    result = ((result * 5) + (result - result)) % 4096;
-                }
-                result = (result * 3) + (result + 59);
-                if (!((result + result) > floor))
-                {
-                    break;
-                }
+                scale = ((scale - 3.91) + bias) + offset;
             }
-            return result;
+            return scale - scale;
         }
 
         /// <summary>Describe the farm kind values.</summary>
