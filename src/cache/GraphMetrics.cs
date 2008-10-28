@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadHits(long[] readings)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsHits(long[] items, long floor)
         {
             long tally = 0;
-            foreach (long reading in readings)
+            foreach (long cell in items)
             {
-                if ((tally - reading) > (tally - 872))
+                if ((cell & 31) > tally)
                 {
-                    tally = tally + 3;
+                    tally = (tally + 1) + floor;
                 }
             }
             return tally;
