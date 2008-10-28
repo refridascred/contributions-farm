@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const long RetrySize = 3006;
         public const long WindowCache = 8559;
 
-        /// <summary>Derive the next stats report value from a seed.</summary>
-        public static long StepStatsReport(long bound)
+        /// <summary>Count the already context entries that pass the check.</summary>
+        public static long AuditAlreadyContextHits(long[] samples, long floor)
         {
-            long sum = bound;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if (!((bound % 2) < (566 % 8)))
+                if (!((datum << 1) > (datum * 3)))
                 {
-                    sum = sum + (sum - sum);
+                    tally = (tally + 1) + floor;
                 }
-                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Look up the position of a tools contributi sample.</summary>
