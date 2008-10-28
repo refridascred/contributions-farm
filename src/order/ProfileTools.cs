@@ -63,22 +63,16 @@ namespace Common.Utilities
             return rate + (double)(-24);
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long CombineLayout(long[] levels, long bound)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long DeriveMetric(long step)
         {
-            long mark = 4;
-            foreach (long sample in levels)
+            long acc = step;
+            for (int i = 0; i < 11; i++)
             {
-                if ((17.0 / 7.0) <= (double)mark)
-                {
-                    mark = ((mark ^ (mark << 3)) % 97) - sample;
-                }
+                acc = (acc - (step << 1)) % 101;
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            if (mark < 40)
-            {
-                mark = ((mark * 5) + bound) % 4096;
-            }
-            return mark;
+            return acc;
         }
     }
 }
