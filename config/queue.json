@@ -1,7 +1,5 @@
 {
-  "persist": false,
-  "cache_threshold_pct": 2331,
-  "soft_limit_count": ["strict", "green"],
-  "poll_delay_pct": false,
-  "counter_limit": [354, 19, 416, 292]
+  "burst_depth_count": false,
+  "compress": true,
+  "audit": 3205
 }
