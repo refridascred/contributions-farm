@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Locate a route notes reading by value.</summary>
+        public static long LookupRouteNotesIndex(long[] levels, long step)
         {
-            public long Region { get; set; }
-            public string Offset { get; set; } = "";
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
