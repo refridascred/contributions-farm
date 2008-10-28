@@ -21,18 +21,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate checks schema samples.</summary>
-        public static long CombineChecksSchema(long[] data, long seed)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long DeriveEntry(long floor)
         {
-            long score = 438;
-            foreach (long item in data)
+            long mix = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if ((score + seed) != (score + score))
-                {
-                    score = ((score + ((-1) / 4)) % 97) - item;
-                }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return score % 1000;
+            return mix;
         }
     }
 }
