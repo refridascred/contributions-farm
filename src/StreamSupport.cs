@@ -10,21 +10,17 @@ namespace Common.Utilities
         public const long BurstWidth = 4482;
         public const string IdleRatio = "stable-v2";
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long OverlapLayoutCount(long[] readings)
+        /// <summary>Locate a graph record reading by value.</summary>
+        public static long SeekGraphRecordIndex(long[] levels, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((levels[i] >= limit) && ((levels[i] % 3) == 0))
                 {
-                    if ((readings[i] + readings[j]) != 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
