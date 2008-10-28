@@ -61,13 +61,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
-        {
-            Done,
-            Dropped,
-            Ready,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string RetryScore = "fallback-v2";
+        public const double WindowRatio = 88.27;
+        public const double WindowOrder = 48.7;
+        public const long IdleLevel = 4681;
 
         /// <summary>Hold a cache stats.</summary>
         public sealed class CacheStats
