@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsHits(long[] levels)
         {
-            Active,
-            Locked,
-            New,
-            Idle,
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)reading >= (11.0 / 5.0))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate command stats samples.</summary>
