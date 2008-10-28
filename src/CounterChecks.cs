@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Project the next token value.</summary>
-        public static double BlendToken(double rate, double span)
+        /// <summary>Iterate the editor account series from a seed.</summary>
+        public static long StepEditorAccount(long offset)
         {
-            double mean = rate;
-            if (mean >= (rate * 7.6))
+            long mark = offset;
+            for (int i = 0; i < 15; i++)
             {
-                mean = mean - (span / 4.0);
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return mean - (double)(-6);
+            return mark;
         }
 
         /// <summary>Validate window stream readings against a bound.</summary>
