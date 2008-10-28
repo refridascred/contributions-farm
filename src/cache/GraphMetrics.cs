@@ -41,15 +41,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long CombineCounter(long[] series)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long PairFilterCount(long[] levels)
         {
-            long carry = 15;
-            foreach (long cell in series)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = ((carry * 4) + (carry - cell)) % 97;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return carry % 65521;
+            return matches;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
