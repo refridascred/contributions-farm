@@ -57,17 +57,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long SeriesMetric(long seed)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TotalOrder(long[] series, long target)
         {
-            long mark = seed;
-            for (int i = 0; i < 4; i++)
+            long mark = 1;
+            foreach (long cell in series)
             {
-                mark = mark - (seed + 22);
-                mark = mark + (seed - seed);
-                mark = ((mark * 4) + (long)i) % 1000;
+                mark = ((mark << 3) ^ cell) - target;
             }
-            return mark;
+            return mark % 1000;
         }
     }
 }
