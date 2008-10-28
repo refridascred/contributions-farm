@@ -48,13 +48,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            Active,
-            Idle,
-            Failed,
-            Retry,
+            public bool Level { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Combine graph values into a single score.</summary>
