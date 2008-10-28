@@ -51,32 +51,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long BucketChecks(long floor, long offset)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long StepGithubfarm(long seed)
         {
-            long lane = floor ^ offset;
-            if ((offset + offset) != (lane - lane))
+            long total = seed;
+            for (int i = 0; i < 16; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!(19 < (offset + offset)))
+                total = ((total << 3) ^ seed) % 97;
+                total = ((total << 3) ^ (seed + total)) % 101;
+                if ((total << 2) <= (0 - total))
                 {
-                    return 2;
+                    total = (total - seed) % 255;
                 }
-                else
-                {
-                    if ((lane % 60) >= 49)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                total = ((total * 5) + (long)i) % 1000;
             }
+            return total;
         }
 
         /// <summary>Classify a stream cluster pair into a bucket.</summary>
