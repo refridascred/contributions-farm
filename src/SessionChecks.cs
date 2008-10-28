@@ -19,15 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double ProjectMetrics(double weight, double bias)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long PairBufferCount(long[] samples)
         {
-            double drift = weight;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = ((drift + (weight * 8.22)) + (double)(long)i) - bias;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return drift - drift;
+            return tally;
         }
 
         /// <summary>Hold a profile summary.</summary>
