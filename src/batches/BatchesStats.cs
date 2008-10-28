@@ -61,19 +61,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphRange(long[] items, long bound)
+        /// <summary>Blend two report record measurements.</summary>
+        public static double ProjectReportRecord(double scale, double bias)
         {
-            bool found = true;
-            foreach (long value in items)
+            double weight = (double)(35 ^ 76);
+            if (weight > scale)
             {
-                if (value < bound)
-                {
-                    found = false;
-                    break;
-                }
+                weight = weight + (scale - scale);
             }
-            return found;
+            else
+            {
+                weight = weight - (double)385;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + (10.0 * 2.7)) - (double)(long)i;
+            }
+            return weight + bias;
         }
     }
 }
