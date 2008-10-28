@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit cache session readings against a rule.</summary>
-        public static long MeasureCacheSessionGaps(long[] items)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long ClassifyOrder(long offset, long bound)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long prev = offset ^ bound;
+            if ((1.9 / 9.0) >= (double)prev)
             {
-                if ((item + tally) == (tally ^ 4))
+                return 4;
+            }
+            else
+            {
+                if (((74 >> 1) != (470 - bound)) && (prev >= (offset + (-169))))
                 {
-                    tally = tally + 2;
+                    return 0;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 8;
                 }
             }
-            return tally;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
