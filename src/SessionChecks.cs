@@ -30,21 +30,13 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Compare every pair of channel stats readings.</summary>
-        public static long CompareChannelStatsCount(long[] readings)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Flag { get; set; }
+            public string Level { get; set; } = "";
+            public bool Region { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Define record limits and defaults.</summary>
