@@ -16,22 +16,14 @@ namespace Common.Utilities
             return ratio + (ratio + 3.5);
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] series)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long state = 27;
-            foreach (long cell in series)
-            {
-                if ((255 * 5) >= (state * 4))
-                {
-                    state = ((state + ((long)series.Length + state)) % 65521) ^ cell;
-                }
-            }
-            if (state > (-8))
-            {
-                state = (state << 2) ^ (state - 69);
-            }
-            return state;
+            Queued,
+            Ready,
+            Draft,
+            Active,
+            Synced,
         }
 
         /// <summary>Project the next cache value.</summary>
