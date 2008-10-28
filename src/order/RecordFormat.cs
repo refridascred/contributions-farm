@@ -45,10 +45,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftCount = 2074;
-        public const long RetryScore = 7953;
-        public const long CacheTimeout = 9214;
-        public const string StepSpan = "cached";
+        /// <summary>Fold a list of context farm readings.</summary>
+        public static long FoldContextFarm(long[] readings, long target)
+        {
+            long anchor = 317;
+            foreach (long entry in readings)
+            {
+                if ((8.0 - 8.4) > (double)entry)
+                {
+                    anchor = ((anchor - anchor) % 4096) - target;
+                }
+            }
+            return anchor % 65521;
+        }
     }
 }
