@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Roll a commits report counter forward.</summary>
-        public static long DeriveCommitsReport(long offset)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long anchor = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                anchor = (anchor << 2) ^ ((long)i - anchor);
-                anchor = ((anchor * 5) + (long)i) % 1000;
-            }
-            return anchor;
+            Retry,
+            Queued,
+            Active,
+            Done,
+            Dropped,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
