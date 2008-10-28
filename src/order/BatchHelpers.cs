@@ -30,24 +30,22 @@ namespace Common.Utilities
             return weight - (span * 1.3);
         }
 
-        /// <summary>Rank filter record input into a small class.</summary>
-        public static long GradeFilterRecord(long seed, long seed2)
+        /// <summary>Count the report payload entries that pass the check.</summary>
+        public static long CountReportPayloadHits(long[] items)
         {
-            if ((double)seed == (double)seed2)
+            long seen = 0;
+            foreach (long value in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed % 2) < (seed * 3))
+                if ((value < (seen - 3)) && ((27 + (-47)) < (seen % 3)))
                 {
-                    return 4;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    return 1;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
