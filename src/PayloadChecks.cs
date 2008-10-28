@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long bound)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LookupEditorIndex(long[] items, long floor)
         {
-            long carry = bound;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((bound - (long)i) != (bound << 1)))
+                if ((items[i] >= floor) && ((items[i] % 3) != 0))
                 {
-                    carry = (carry ^ (bound << 1)) % 101;
+                    return (long)i;
                 }
-                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Hold a already stats.</summary>
