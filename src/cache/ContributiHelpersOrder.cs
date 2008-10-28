@@ -23,13 +23,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphMatches(long[] data, long origin)
         {
-            Active,
-            Synced,
-            Stale,
-            Done,
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if (((82 << 1) < (sample - count)) && ((sample / 2) <= (72 >> 4)))
+                {
+                    count = (count + 3) + origin;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
