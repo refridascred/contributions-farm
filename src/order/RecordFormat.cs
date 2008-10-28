@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmMatches(long[] series)
-        {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if ((double)value > (double)22)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string StepEditor = "stable-edge";
+        public const long MinTimeout = 6851;
+        public const long WindowEditor = 968;
 
         /// <summary>Hold a tools stats.</summary>
         public sealed class ToolsStats
