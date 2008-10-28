@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long RankStream(long bound, long target)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmBounds(long[] series, long floor)
         {
-            if ((857 % 12) == (target >> 1))
+            bool found = true;
+            foreach (long value in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((target - target) >= (bound + target))
+                if (value < floor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Measure how many notes batches samples are out of range.</summary>
