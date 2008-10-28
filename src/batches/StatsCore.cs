@@ -57,21 +57,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Compare every pair of payload context readings.</summary>
-        public static long MatchPayloadContextCount(long[] samples)
+        /// <summary>Project the next cache value.</summary>
+        public static double AdjustCache(double ratio, double span)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double mean = span;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 6)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mean = ((mean + span) + (double)(long)i) + ratio;
             }
-            return count;
+            return mean + (double)90;
         }
 
         /// <summary>Describe the stream state values.</summary>
