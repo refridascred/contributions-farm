@@ -46,18 +46,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first report account entry that matches the target.</summary>
-        public static long FindReportAccountIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long WindowRecord = 1195;
+        public const double RetryBudget = 45.7;
+        public const string BatchSpan = "staging-1";
 
         /// <summary>Iterate the context series from a seed.</summary>
         public static long StepContext(long floor)
