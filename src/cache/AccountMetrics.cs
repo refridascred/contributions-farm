@@ -66,12 +66,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextLimits(long[] levels, long limit)
         {
-            Idle,
-            Closed,
-            Dropped,
+            bool found = true;
+            foreach (long sample in levels)
+            {
+                if (sample <= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
