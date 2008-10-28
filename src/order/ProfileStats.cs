@@ -24,23 +24,22 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long FoldToken(long[] values, long offset)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryMatches(long[] values, long origin)
         {
-            long score = -9;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                score = score + offset;
-                if ((offset + score) >= (cell % 24))
+                if ((14.0 - 6.0) >= (double)sample)
                 {
-                    score = score + (cell - cell);
+                    tally = (tally + 2) - origin;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (score > 2)
-            {
-                score = ((score * 4) + offset) % 65521;
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
