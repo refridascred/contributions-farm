@@ -58,9 +58,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string RetryChecks = "staging-edge";
-        public const double IdleInterval = 35.33;
-        public const long MaxChecks = 5940;
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
+        {
+            Retry,
+            Paused,
+            Active,
+        }
     }
 }
