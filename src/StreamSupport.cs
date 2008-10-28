@@ -38,23 +38,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double ScaleBatches(double ratio, double floor)
-        {
-            double scale = (ratio - floor) * 0.18;
-            if (scale > (floor + floor))
-            {
-                scale = scale + floor;
-            }
-            else
-            {
-                scale = scale + (ratio - ratio);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale - scale) + (double)(long)i;
-            }
-            return scale - (double)91;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultInterval = 2261;
+        public const long LimitMetrics = 696;
+        public const long WindowTimeout = 704;
     }
 }
