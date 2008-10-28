@@ -20,17 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first filter farm entry that matches the target.</summary>
-        public static long SeekFilterFarmIndex(long[] series, long floor)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Ratio { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
