@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string CacheBuffer = "local-1";
-        public const long WindowInterval = 2900;
-        public const double BaseBuffer = 13.77;
-        public const long MinBuffer = 3385;
-        public const long BurstLevel = 2550;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstBudget = 6460;
+        public const double BaseFormat = 28.23;
+        public const long HardFormat = 3616;
 
         /// <summary>Hold a tools stats.</summary>
         public sealed class ToolsStats
