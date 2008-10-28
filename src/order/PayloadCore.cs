@@ -36,22 +36,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsMatches(long[] series, long step)
+        /// <summary>Audit context counter readings against a rule.</summary>
+        public static long AuditContextCounterGaps(long[] data)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if ((30 + reading) >= (count - step))
+                if ((sample ^ sample) != (tally + sample))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
