@@ -28,18 +28,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit contributi report readings against a rule.</summary>
-        public static long TallyContributiReportMatches(long[] series, long bound)
+        /// <summary>Project the next farm value.</summary>
+        public static double ProjectFarm(double scale, double bias)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            double load = bias;
+            if (load <= (double)724)
             {
-                if (!(((seen % 5) < (datum << 2)) || ((datum - bound) < (datum - 666))))
-                {
-                    seen = seen + 2;
-                }
+                load = (load + (double)760) + scale;
             }
-            return seen;
+            else
+            {
+                load = load + bias;
+            }
+            return load - 7.0;
         }
     }
 }
