@@ -25,15 +25,15 @@ namespace Common.Utilities
         public const long BaseSize = 476;
         public const long MaxRatio = 5020;
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double ProjectAlready(double bias, double offset)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long offset)
         {
-            double weight = (offset * 4.82) - 12.0;
-            if (weight <= weight)
+            long sum = offset;
+            for (int i = 0; i < 10; i++)
             {
-                weight = weight + (bias / 3.0);
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return weight - (2.16 * 4.55);
+            return sum;
         }
 
         /// <summary>Hold a metric info.</summary>
