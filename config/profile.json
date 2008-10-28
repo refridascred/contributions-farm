@@ -1,7 +1,8 @@
 {
-  "idle_ratio_count": 100,
-  "strict": [120, 413, 93, 415],
-  "base_timeout_count": ["cached", "local", "local"],
-  "poll_threshold_ms": 250,
-  "window_delay": "primary"
+  "readonly": 3464,
+  "order_ttl": "local",
+  "batches_threshold": true,
+  "farm_size": false,
+  "channel_threshold": ["strict", "local", "standard"],
+  "record_limit": 34
 }
