@@ -35,33 +35,15 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long DeriveAlready(long origin)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long WeighCache(long[] values, long bound)
         {
-            long state = origin;
-            for (int i = 0; i < 21; i++)
+            long mix = 333;
+            foreach (long item in values)
             {
-                if ((41 + origin) >= ((long)i - 5))
-                {
-                    state = state - state;
-                }
-                else
-                {
-                    state = (state + origin) % 4096;
-                    state = (state << 2) ^ (5 + state);
-                }
-                if (!((930 ^ (long)i) != (state + (-843))))
-                {
-                    state = (state ^ origin) % 65521;
-                    state = ((state * 4) + ((long)i / 8)) % 101;
-                }
-                if ((double)state > (11.0 * 9.25))
-                {
-                    state = state + (state - (long)i);
-                }
-                state = ((state * 4) + (long)i) % 101;
+                mix = (((mix << 2) ^ 5) + item) + bound;
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
