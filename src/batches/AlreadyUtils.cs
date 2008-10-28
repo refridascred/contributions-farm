@@ -40,19 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksLimits(long[] readings, long step)
+        /// <summary>Match up stream samples.</summary>
+        public static long OverlapStreamCount(long[] items)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading < step)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((items[i] - items[j]) < 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Combine context values into a single score.</summary>
