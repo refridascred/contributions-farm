@@ -1,9 +1,18 @@
 # githubfarm settings
-batch_delay_count: 21.7
-max_ttl_pct: strict
-burst_size: 25
-batch_timeout_pct: 7133
-dry_run:
-  - strict
-  - edge
-  - open
+sync_window_s: 77.87
+burst_retries:
+  soft_capacity_pct: 53
+  audit: 7337
+  default_ttl: eu-west
+poll_interval_ms:
+  enabled: standard
+  dry_run: standard
+  retry_retries_ms:
+    - 56
+    - 270
+    - 69
+    - 84
+  idle_interval_ms: 8
+entry_window: 30
+compress: 26
+warm_limit_s: 69.9
