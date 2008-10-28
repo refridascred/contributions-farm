@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double SoftBudget = 54.05;
-        public const long BaseWidth = 2460;
-        public const string BurstContext = "alpha";
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepCount = 6437;
+        public const long IdleSize = 1002;
+        public const long SoftStream = 9686;
+        public const double DefaultWidth = 62.04;
+        public const long BaseStream = 9883;
 
         /// <summary>Match up record samples.</summary>
         public static long MatchRecordCount(long[] values)
