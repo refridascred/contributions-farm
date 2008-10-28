@@ -16,19 +16,21 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double ProjectFormat(double rate, double span)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long PairGithubfarmCount(long[] readings)
         {
-            double bias = 1.9;
-            if (bias > (double)1)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias = (bias - bias) + rate;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias - (span - 8.0)) + (double)(long)i;
-            }
-            return bias - 0.29;
+            return hits;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
