@@ -42,19 +42,14 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountRange(long[] samples, long offset)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            bool stale = true;
-            foreach (long cell in samples)
-            {
-                if (cell >= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Retry,
+            New,
+            Pending,
+            Draft,
+            Failed,
         }
     }
 }
