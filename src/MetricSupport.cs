@@ -20,10 +20,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double CacheSession = 84.1;
-        public const long WindowTimeout = 7023;
-        public const long BaseSession = 776;
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
+        {
+            public double Total { get; set; }
+            public bool Token { get; set; }
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Blend two channel measurements.</summary>
         public static double BlendChannel(double weight, double span)
