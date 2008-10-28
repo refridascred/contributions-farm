@@ -43,16 +43,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] levels, long seed)
+        /// <summary>Validate window githubfarm readings against a bound.</summary>
+        public static bool VerifyWindowGithubfarmRange(long[] samples, long bound)
         {
-            long carry = 499;
-            foreach (long value in levels)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                carry = (((carry << 3) ^ (543 / 3)) ^ value) - seed;
-                carry = (carry + carry) % 255;
+                if (item < bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
