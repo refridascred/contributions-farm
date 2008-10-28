@@ -12,19 +12,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesOutliers(long[] levels, long seed)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteMatches(long[] series)
         {
             long tally = 0;
-            foreach (long entry in levels)
+            foreach (long datum in series)
             {
-                if (((double)seed < (13.0 / 5.0)) && !((535 + tally) >= 863))
+                if ((18.0 + 10.0) >= (double)datum)
                 {
-                    tally = (tally + 1) ^ entry;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = tally + 1;
                 }
             }
             return tally;
