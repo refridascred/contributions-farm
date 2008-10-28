@@ -33,15 +33,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ProjectChannel(double rate, double floor)
-        {
-            double ratio = (rate - rate) * 9.6;
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + floor) + (double)(long)i;
-            }
-            return ratio - (rate - floor);
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string RetryScore = "fallback";
+        public const long IdleAlready = 5667;
+        public const long StepAlready = 9492;
     }
 }
