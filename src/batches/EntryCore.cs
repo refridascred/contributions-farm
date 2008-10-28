@@ -27,21 +27,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count already batches pairs that satisfy a relation.</summary>
-        public static long PairAlreadyBatchesCount(long[] values)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long WeighTools(long[] items, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 895;
+            foreach (long value in items)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = (((mix - (108 >> 1)) % 101) - value) - floor;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Describe the payload phase values.</summary>
