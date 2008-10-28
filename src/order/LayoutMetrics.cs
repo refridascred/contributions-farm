@@ -19,22 +19,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatMatches(long[] series)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long limit, long floor)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long delta = limit + floor;
+            if (floor <= (limit & 127))
             {
-                if ((count - count) > (3 << 3))
+                return 0;
+            }
+            else
+            {
+                if (((floor + delta) != (floor & 7)) || ((double)floor != (8.91 / 8.0)))
                 {
-                    count = (count + 3) - cell;
+                    return 7;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((1 + floor) < (limit + delta))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
