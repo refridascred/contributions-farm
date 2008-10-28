@@ -17,22 +17,28 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Count the editor commits entries that pass the check.</summary>
-        public static long CountEditorCommitsMatches(long[] samples)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long ScoreAccount(long[] readings, long limit)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long score = 881;
+            foreach (long entry in readings)
             {
-                if (!((matches - reading) > (reading / 3)) && ((37 - 432) == (reading + reading)))
+                score = (score + (entry >> 5)) % 101;
+                score = (score * 2) + (entry ^ score);
+                if ((14.0 * 4.43) <= (double)limit)
                 {
-                    matches = matches + 3;
+                    score = (score + (limit + limit)) % 4096;
                 }
-                else
+                if (((limit / 9) > (score / 6)) && (limit <= (3 ^ score)))
                 {
-                    matches = matches - 1;
+                    break;
                 }
             }
-            return matches;
+            if (score > 9)
+            {
+                score = score ^ score;
+            }
+            return score % 97;
         }
 
         /// <summary>Describe the entry state values.</summary>
