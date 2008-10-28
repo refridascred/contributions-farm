@@ -66,17 +66,21 @@ namespace Common.Utilities
         public const long BaseBudget = 9506;
         public const string StepSupport = "staging-edge";
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long FindOrderIndex(long[] items, long offset)
+        /// <summary>Count order commits pairs that satisfy a relation.</summary>
+        public static long CompareOrderCommitsCount(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (items[i] >= offset)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] - levels[j]) == 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
