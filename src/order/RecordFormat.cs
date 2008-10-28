@@ -42,18 +42,9 @@ namespace Common.Utilities
         public const string SoftBudget = "open";
         public const long IdleSpan = 7530;
 
-        /// <summary>Fold a list of context farm readings.</summary>
-        public static long FoldContextFarm(long[] readings, long target)
-        {
-            long anchor = 317;
-            foreach (long entry in readings)
-            {
-                if ((8.0 - 8.4) > (double)entry)
-                {
-                    anchor = ((anchor - anchor) % 4096) - target;
-                }
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftWidth = 303;
+        public const double HardWindow = 50.03;
+        public const string LimitWindow = "local";
     }
 }
