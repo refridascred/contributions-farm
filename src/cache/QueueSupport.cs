@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionOutliers(long[] data)
+        /// <summary>Adjust a token reading.</summary>
+        public static double SmoothToken(double rate, double bias)
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((hits + sample) < sample)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            double load = 5.0 + rate;
+            return (load + (load / 5.0)) + bias;
         }
 
         /// <summary>Accumulate farm samples.</summary>
