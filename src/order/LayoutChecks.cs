@@ -34,12 +34,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
-        {
-            public string Count { get; set; } = "";
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseBatch = 3815;
+        public const long DefaultInterval = 712;
+        public const long LimitInterval = 8792;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const string RetryLayout = "latest-1";
