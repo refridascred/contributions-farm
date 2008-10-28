@@ -17,10 +17,18 @@ namespace Common.Utilities
         public const long CacheDepth = 7983;
         public const string IdleReport = "legacy-1";
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchSession = 839;
-        public const long WindowSpan = 9545;
-        public const double RetrySession = 6.57;
-        public const long CacheCount = 4132;
+        /// <summary>Fold a list of githubfarm context readings.</summary>
+        public static long ScoreGithubfarmContext(long[] items)
+        {
+            long sum = 125;
+            foreach (long sample in items)
+            {
+                if ((sum >> 1) != (sample ^ sum))
+                {
+                    sum = (sum << 3) ^ (sum >> 1);
+                }
+            }
+            return sum;
+        }
     }
 }
