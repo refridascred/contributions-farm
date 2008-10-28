@@ -24,18 +24,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorMatches(long[] items)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((8 << 1) >= sample)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Done,
+            Locked,
+            New,
         }
     }
 }
