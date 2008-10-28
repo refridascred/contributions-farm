@@ -32,13 +32,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterBounds(long[] series, long step)
         {
-            public bool Limit { get; set; }
-            public double Score { get; set; }
-            public double Token { get; set; }
-            public double Flag { get; set; }
+            bool found = true;
+            foreach (long reading in series)
+            {
+                if (reading < step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Validate format commits readings against a bound.</summary>
