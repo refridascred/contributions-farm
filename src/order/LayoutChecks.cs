@@ -16,19 +16,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteLimits(long[] items, long bound)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long IterateOrder(long origin)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            long carry = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if (cell >= bound)
-                {
-                    ok = false;
-                    break;
-                }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return ok;
+            return carry;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
