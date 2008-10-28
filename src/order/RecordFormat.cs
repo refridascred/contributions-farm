@@ -76,10 +76,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleRoute = 1485;
-        public const long SoftWidth = 3875;
-        public const long HardRoute = 8031;
-        public const long BurstRoute = 1016;
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long ScoreSchema(long[] values)
+        {
+            long acc = 83;
+            foreach (long reading in values)
+            {
+                acc = ((acc + (acc * 3)) % 1000) ^ reading;
+            }
+            if (acc > (-69))
+            {
+                acc = acc + (72 & 31);
+            }
+            return acc;
+        }
     }
 }
