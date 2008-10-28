@@ -57,11 +57,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string WindowSession = "strict";
-        public const double BatchSession = 79.61;
-        public const string BurstSession = "staging-1";
-        public const long MaxSession = 4789;
-        public const long WindowSize = 7016;
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long SeriesMetrics(long origin)
+        {
+            long score = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                if (!((85 <= (origin - origin)) || ((origin - origin) != (origin + (long)i))))
+                {
+                    score = (score << 2) ^ (score - 7);
+                }
+                score = ((score * 4) + (long)i) % 65521;
+            }
+            return score;
+        }
     }
 }
