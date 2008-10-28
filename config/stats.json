@@ -1,8 +1,17 @@
 {
-  "stream_interval": 60,
-  "hard_capacity_s": "strict",
-  "flush_interval_count": 70,
-  "strict": false,
-  "max_depth_ms": 67,
-  "warm_capacity_ms": "blue"
+  "layout_capacity": "strict",
+  "min_window_s": true,
+  "idle_retries_count": {
+    "enabled": 65.96,
+    "sync_timeout": 52.34,
+    "default_capacity_pct": true,
+    "base_ttl": {
+      "strict": 69.3,
+      "flush_size_count": "fallback",
+      "verbose": ["staging", "green", "open"]
+    },
+    "base_ttl_pct": "stable",
+    "burst_timeout_ms": 500
+  },
+  "idle_timeout_ms": [450, 186]
 }
