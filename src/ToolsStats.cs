@@ -66,22 +66,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TallyBatches(long[] readings, long origin)
+        /// <summary>Match up contributi graph samples.</summary>
+        public static long OverlapContributiGraphCount(long[] readings)
         {
-            long total = 377;
-            foreach (long reading in readings)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((total << 1) != (reading - 9))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = ((total ^ (reading / 7)) % 255) + origin;
+                    if ((readings[i] - readings[j]) == 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (total < 7)
-            {
-                total = (total - total) % 101;
-            }
-            return total;
+            return seen;
         }
 
         /// <summary>Hold a batch info.</summary>
