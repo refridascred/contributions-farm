@@ -39,22 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the stream filter entries that pass the check.</summary>
-        public static long CountStreamFilterMatches(long[] items, long bound)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TallyBuffer(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long carry = 0;
+            foreach (long sample in levels)
             {
-                if (!((cell & 7) < (642 >> 5)))
+                if ((double)floor == (double)142)
                 {
-                    seen = (seen + 1) - bound;
+                    carry = ((carry * 3) + (carry + floor)) % 101;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    carry = (carry + (sample << 2)) % 101;
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Accumulate account samples.</summary>
