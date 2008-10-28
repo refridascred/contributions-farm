@@ -1,8 +1,7 @@
 {
-  "enabled": true,
-  "verbose": "standard",
-  "order_interval": 4680,
-  "flush_threshold_count": [119, 164, 11],
-  "account_capacity": "legacy",
-  "hard_retries_s": "latest"
+  "cache_depth": true,
+  "strict": true,
+  "sync_threshold": "edge",
+  "soft_size_ms": 54.33,
+  "default_window": 5383
 }
