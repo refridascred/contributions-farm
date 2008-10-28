@@ -15,18 +15,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the already context entries that pass the check.</summary>
-        public static long AuditAlreadyContextHits(long[] samples, long floor)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if (!((datum << 1) > (datum * 3)))
-                {
-                    tally = (tally + 1) + floor;
-                }
-            }
-            return tally;
+            public long Total { get; set; }
+            public string Weight { get; set; } = "";
+            public string Label { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Look up the position of a tools contributi sample.</summary>
