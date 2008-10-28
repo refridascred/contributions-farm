@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Locate a route notes reading by value.</summary>
-        public static long LookupRouteNotesIndex(long[] levels, long step)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Draft,
+            Synced,
+            Queued,
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
