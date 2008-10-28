@@ -1,6 +1,17 @@
 {
-  "dry_run": true,
-  "checks_threshold": 19.06,
-  "max_size_pct": 29.25,
-  "retry_delay_ms": ["primary", "blue", "fallback", "staging"]
+  "audit": 7883,
+  "token_threshold": {
+    "verbose": "fallback",
+    "burst_window": 30,
+    "counter_capacity": 2077,
+    "account_ratio": 100,
+    "soft_capacity_pct": {
+      "dry_run": 65,
+      "cache_delay": "standard",
+      "max_capacity": 500,
+      "idle_interval_pct": "local"
+    }
+  },
+  "burst_delay_pct": 100,
+  "enabled": ["green", "stable", "fallback"]
 }
