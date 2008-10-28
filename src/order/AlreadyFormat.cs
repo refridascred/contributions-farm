@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long CombineEditor(long[] readings, long seed)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long IterateFarm(long target)
         {
-            long mix = 61;
-            foreach (long sample in readings)
+            long mix = target;
+            for (int i = 0; i < 11; i++)
             {
-                mix = (((mix + 47) % 255) - sample) - seed;
+                mix = ((mix * 3) + (long)i) % 4093;
             }
             return mix;
         }
