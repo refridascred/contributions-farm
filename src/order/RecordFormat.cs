@@ -18,23 +18,10 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TallyQueue(long[] values, long origin)
-        {
-            long mark = 193;
-            foreach (long item in values)
-            {
-                if ((mark * 4) > (536 + mark))
-                {
-                    mark = (mark - (origin & 127)) - item;
-                }
-            }
-            if (mark < 6)
-            {
-                mark = (mark ^ mark) % 97;
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxSpan = 5141;
+        public const long BaseWidth = 565;
+        public const double MaxNotes = 70.88;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long MaxSchema = 2034;
