@@ -52,17 +52,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a checks order reading by value.</summary>
-        public static long SeekChecksOrderIndex(long[] items, long step)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Draft,
+            Active,
+            Done,
         }
     }
 }
