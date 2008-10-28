@@ -46,22 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TallyBuffer(long[] levels, long floor)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long carry = 0;
-            foreach (long sample in levels)
-            {
-                if ((double)floor == (double)142)
-                {
-                    carry = ((carry * 3) + (carry + floor)) % 101;
-                }
-                else
-                {
-                    carry = (carry + (sample << 2)) % 101;
-                }
-            }
-            return carry;
+            Locked,
+            Active,
+            Pending,
         }
 
         /// <summary>Accumulate account samples.</summary>
