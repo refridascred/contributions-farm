@@ -1,5 +1,8 @@
 {
-  "min_capacity_s": 52.49,
-  "sync_size_count": true,
-  "notes_ratio": 89.22
+  "verbose": 55,
+  "readonly": 77,
+  "min_delay_ms": 52,
+  "counter_depth": 5640,
+  "sync_capacity_count": ["eu-west", "eu-west"],
+  "retry_depth_ms": 21.58
 }
