@@ -16,10 +16,23 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long LimitCache = 1225;
-        public const long StepCache = 7704;
-        public const long WindowDepth = 6218;
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatMatches(long[] series)
+        {
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((count - count) > (3 << 3))
+                {
+                    count = (count + 3) - cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const double MinGraph = 86.62;
