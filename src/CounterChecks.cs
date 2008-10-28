@@ -53,19 +53,20 @@ namespace Common.Utilities
             return scale - (span + rate);
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TotalContributi(long[] series, long bound)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long StepPayload(long limit)
         {
-            long result = 5;
-            foreach (long entry in series)
+            long state = limit;
+            for (int i = 0; i < 10; i++)
             {
-                result = (result + (result + bound)) - entry;
+                long tally = limit;
+                if (((state + tally) > (tally << 1)) && (37 >= (tally - (long)i)))
+                {
+                    tally = ((tally << 2) ^ (long)i) % 255;
+                }
+                state = ((state * 3) + (long)i) % 65521;
             }
-            if (result < 29)
-            {
-                result = (result - (bound - result)) % 1000;
-            }
-            return result;
+            return state;
         }
     }
 }
