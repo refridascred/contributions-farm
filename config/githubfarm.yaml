@@ -1,17 +1,21 @@
 # githubfarm settings
-burst_ttl_ms:
-  - 318
-  - 305
-  - 17
-  - 176
-githubfarm_capacity: eu-west
-counter_delay:
-  - 412
-  - 115
-flush_threshold:
-  cache_window: green
-  batch_interval: open
-  layout_threshold: 72.56
-  editor_delay: false
-  idle_threshold_count: false
-dry_run: 90.65
+batch_capacity_s:
+  - fallback
+  - cached
+  - primary
+  - eu-west
+flush_timeout_count: true
+idle_capacity: 70.17
+poll_timeout:
+  readonly: green
+  base_retries_pct:
+    cache_interval: 7586
+    idle_size_ms:
+      - 413
+      - 130
+      - 50
+      - 324
+    readonly: eu-west
+    retry_delay: 6230
+    flush_ratio_pct: false
+  persist: 500
