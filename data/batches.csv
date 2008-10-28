@@ -1,6 +1,11 @@
-id,owner,level,score
-1,73,681,524
-2,eu-west,33.7,706
-3,local,577,711
-4,434,704,cached
-5,234,standard,strict
+id,count
+1,6.15
+2,591
+3,52.67
+4,624
+5,595
+6,45.46
+7,84.79
+8,182
+9,fallback
+10,359
