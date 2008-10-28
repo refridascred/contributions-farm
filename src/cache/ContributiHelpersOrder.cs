@@ -48,18 +48,26 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheGaps(long[] levels, long limit)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long WeighRoute(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long mix = 8;
+            foreach (long datum in readings)
             {
-                if ((double)datum <= 9.0)
+                if ((datum >= bound) && ((double)mix < (6.0 - 10.0)))
                 {
-                    matches = (matches + 2) + limit;
+                    mix = mix - (bound - mix);
+                }
+                else
+                {
+                    mix = ((mix * 5) + (14 + mix)) % 255;
                 }
             }
-            return matches;
+            if (mix > 85)
+            {
+                mix = (mix - (bound % 64)) % 101;
+            }
+            return mix;
         }
     }
 }
