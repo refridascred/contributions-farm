@@ -5,30 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long ScoreProfile(long[] values, long origin)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long carry = 587;
-            foreach (long cell in values)
-            {
-                if ((double)origin < (6.0 * 1.3))
-                {
-                    carry = carry - (346 * 2);
-                }
-                else
-                {
-                    carry = carry + (cell % 12);
-                }
-                if ((double)origin >= (8.6 * 4.81))
-                {
-                    break;
-                }
-            }
-            if (carry < 93)
-            {
-                carry = carry ^ carry;
-            }
-            return carry;
+            public long Limit { get; set; }
+            public double Level { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Define notes limits and defaults.</summary>
