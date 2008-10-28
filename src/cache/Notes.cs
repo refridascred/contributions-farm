@@ -31,19 +31,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenRange(long[] series, long floor)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long BucketCluster(long bound, long bound2)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long lane = bound + bound2;
+            if ((bound - bound2) == (lane ^ bound2))
             {
-                if (datum <= floor)
+                return 3;
+            }
+            else
+            {
+                if ((bound2 & 31) <= (lane ^ lane))
                 {
-                    found = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return found;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
