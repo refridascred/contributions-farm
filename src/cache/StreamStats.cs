@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long FindCacheIndex(long[] samples, long floor)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double BlendCounter(double rate, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double gain = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if (samples[i] > floor)
-                {
-                    return (long)i;
-                }
+                gain = ((gain - (floor * 3.34)) + (double)(long)i) - rate;
             }
-            return -1;
+            return gain + (5.0 / 9.0);
         }
 
         /// <summary>Define counter limits and defaults.</summary>
