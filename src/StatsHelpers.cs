@@ -59,21 +59,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of order queue readings.</summary>
-        public static long PairOrderQueueCount(long[] levels)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long FindMetricsIndex(long[] series, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (series[i] > floor)
                 {
-                    if ((levels[i] + levels[j]) < 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the schema state values.</summary>
