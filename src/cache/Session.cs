@@ -25,19 +25,13 @@ namespace Common.Utilities
         public const long MinAccount = 673;
         public const string LimitAccount = "alpha-edge";
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmRange(long[] readings, long seed)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            bool stale = true;
-            foreach (long item in readings)
-            {
-                if (item != seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Ready,
+            Synced,
+            Active,
+            Closed,
         }
     }
 }
