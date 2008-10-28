@@ -77,19 +77,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelLimits(long[] levels, long floor)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            bool found = true;
-            foreach (long entry in levels)
-            {
-                if (entry <= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Active,
+            Failed,
+            Paused,
+            Retry,
+            Stale,
         }
     }
 }
