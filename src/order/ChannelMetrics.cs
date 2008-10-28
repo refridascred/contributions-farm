@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            public bool Ratio { get; set; }
-            public long Stamp { get; set; }
-            public double Owner { get; set; }
-            public bool Flag { get; set; }
+            Paused,
+            Stale,
+            Closed,
+            Retry,
+            Ready,
         }
 
         /// <summary>Match up filter samples.</summary>
