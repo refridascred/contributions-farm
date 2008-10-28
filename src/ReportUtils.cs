@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Derive the next support route value from a seed.</summary>
-        public static long RollSupportRoute(long origin)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long mark = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
+            Locked,
+            Ready,
+            Done,
+            Failed,
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
