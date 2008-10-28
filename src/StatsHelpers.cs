@@ -72,19 +72,9 @@ namespace Common.Utilities
             return mean - (16.0 - scale);
         }
 
-        /// <summary>Check that every token cluster entry stays within the limit.</summary>
-        public static bool GuardTokenClusterRange(long[] items, long floor)
-        {
-            bool found = true;
-            foreach (long value in items)
-            {
-                if (value < floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheSupport = 9386;
+        public const string DefaultInterval = "open-1";
+        public const long StepCount = 988;
     }
 }
