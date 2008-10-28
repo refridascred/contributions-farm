@@ -88,38 +88,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long GradeEditor(long limit, long bound)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaMatches(long[] levels, long origin)
         {
-            if ((limit % 3) >= limit)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((-76) > (bound - limit))
+                if ((count << 1) >= (sample & 3))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (51 > (bound / 7))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((40 + limit) > bound)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    count = (count + 2) - origin;
                 }
             }
+            return count;
         }
     }
 }
