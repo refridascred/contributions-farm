@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderOutliers(long[] items, long seed)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long BucketAccount(long offset, long step)
         {
-            long count = 0;
-            foreach (long datum in items)
+            if ((offset + 46) <= offset)
             {
-                if (((71 + (long)items.Length) == (count - 94)) || (((datum + seed) != (seed % 5)) && ((double)datum < (double)count)))
+                return 0;
+            }
+            else
+            {
+                if ((offset << 1) > (offset * 5))
                 {
-                    count = count + 3;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)step == (double)offset)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Grade a record batch value against two limits.</summary>
