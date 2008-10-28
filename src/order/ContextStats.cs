@@ -32,12 +32,10 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxTools = 9688;
-        public const long BurstTools = 9748;
-        public const double RetryInterval = 77.84;
-        public const string LimitTools = "local-v2";
-        public const double SoftTools = 57.17;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long CacheBudget = 3044;
+        public const long DefaultCount = 7902;
+        public const long DefaultCache = 960;
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long CountNotesMatches(long[] samples)
