@@ -45,19 +45,13 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Validate graph already readings against a bound.</summary>
-        public static bool GuardGraphAlreadyRange(long[] readings, long seed)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            bool ready = true;
-            foreach (long datum in readings)
-            {
-                if (datum < seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Flag { get; set; }
+            public string Offset { get; set; } = "";
+            public double Count { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
