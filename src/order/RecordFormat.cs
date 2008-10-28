@@ -23,11 +23,22 @@ namespace Common.Utilities
         public const long BaseWidth = 565;
         public const double MaxNotes = 70.88;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxSchema = 2034;
-        public const double BatchScore = 62.8;
-        public const string SoftBudget = "open";
-        public const long IdleSpan = 7530;
+        /// <summary>Match up contributi support samples.</summary>
+        public static long PairContributiSupportCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long SoftWidth = 303;
