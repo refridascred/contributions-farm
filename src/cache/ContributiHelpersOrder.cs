@@ -12,18 +12,12 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Audit report queue readings against a rule.</summary>
-        public static long TallyReportQueueHits(long[] readings)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if ((4.7 * 14.0) == (double)sample)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public double Count { get; set; }
+            public long Weight { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Hold a support stats.</summary>
