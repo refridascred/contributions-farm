@@ -1,5 +1,17 @@
 # githubfarm settings
-commits_threshold: cached
-idle_delay: false
-enabled: 3591
-verbose: green
+burst_ttl_ms:
+  - 318
+  - 305
+  - 17
+  - 176
+githubfarm_capacity: eu-west
+counter_delay:
+  - 412
+  - 115
+flush_threshold:
+  cache_window: green
+  batch_interval: open
+  layout_threshold: 72.56
+  editor_delay: false
+  idle_threshold_count: false
+dry_run: 90.65
