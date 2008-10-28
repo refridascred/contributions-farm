@@ -15,17 +15,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long FindEditorIndex(long[] values, long origin)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= origin) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Stale,
+            Active,
+            Failed,
+            Closed,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
