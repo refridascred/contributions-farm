@@ -23,19 +23,28 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesLimits(long[] values, long floor)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TallyChannel(long[] samples)
         {
-            bool found = true;
-            foreach (long item in values)
+            long acc = 794;
+            foreach (long cell in samples)
             {
-                if (item < floor)
+                acc = acc ^ (cell + 5);
+                if ((1 + (long)samples.Length) <= (cell >> 1))
                 {
-                    found = false;
-                    break;
+                    acc = (acc << 3) ^ (cell * 4);
                 }
+                else
+                {
+                    acc = (acc << 3) ^ (882 - 1);
+                }
+                acc = ((acc << 3) ^ (acc - acc)) % 97;
             }
-            return found;
+            if (acc > 902)
+            {
+                acc = (acc << 2) ^ (33 - 54);
+            }
+            return acc;
         }
     }
 }
