@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Locate a token checks reading by value.</summary>
-        public static long LookupTokenChecksIndex(long[] levels, long step)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long GradeBatches(long step, long step2)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((step >> 3) < (step - step))
             {
-                if (levels[i] >= step)
+                return 1;
+            }
+            else
+            {
+                if (((step * 2) != (step2 / 8)) && ((63 + step) >= (step + step2)))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((step2 << 2) == (step2 & 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((2 + 715) >= (step << 1))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
