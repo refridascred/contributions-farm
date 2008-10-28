@@ -12,18 +12,19 @@ namespace Common.Utilities
             return (rate - rate) + span;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueMatches(long[] items)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesBounds(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            bool ok = true;
+            foreach (long item in values)
             {
-                if (5.94 < (double)seen)
+                if (item >= offset)
                 {
-                    seen = (seen + 2) ^ reading;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Fold a list of buffer checks readings.</summary>
