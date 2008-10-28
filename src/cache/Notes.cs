@@ -47,18 +47,38 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksMatches(long[] levels, long bound)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long GradeLayout(long floor, long limit)
         {
-            long count = 0;
-            foreach (long item in levels)
+            if ((7.3 - 2.0) > (double)floor)
             {
-                if ((double)bound > 16.0)
+                return 8;
+            }
+            else
+            {
+                if (((floor + floor) >= floor) && ((limit + limit) >= (64 % 64)))
                 {
-                    count = (count + 1) - item;
+                    return 2;
+                }
+                else
+                {
+                    if (((8.8 + 1.71) > (double)limit) && ((double)44 >= (double)limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((410 - limit) <= (7 - limit))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
