@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenMatches(long[] samples, long origin)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterGaps(long[] samples)
         {
-            long seen = 0;
+            long matches = 0;
             foreach (long sample in samples)
             {
-                if (((9.8 + 1.6) >= (double)seen) && (origin <= (origin << 2)))
+                if (sample > (886 + (long)samples.Length))
                 {
-                    seen = (seen + 3) ^ sample;
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Describe the channel mode values.</summary>
