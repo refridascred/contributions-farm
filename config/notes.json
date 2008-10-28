@@ -1,5 +1,6 @@
 {
-  "audit": 5325,
-  "soft_window_ms": true,
-  "retry_depth_pct": false
+  "audit": "stable",
+  "base_delay_pct": 9437,
+  "graph_delay": false,
+  "cache_timeout": 2.7
 }
