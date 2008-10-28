@@ -47,10 +47,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleReport = 833;
-        public const long BaseWidth = 8688;
-        public const long LimitSpan = 2469;
+        /// <summary>Classify a graph payload pair into a bucket.</summary>
+        public static long GradeGraphPayload(long step, long origin)
+        {
+            if (((step * 2) <= step) || (step >= origin))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((step + 6) == ((-18) - step))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Iterate the schema series from a seed.</summary>
         public static long StepSchema(long target)
