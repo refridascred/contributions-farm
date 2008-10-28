@@ -42,12 +42,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Measure how many batch account samples are out of range.</summary>
+        public static long MeasureBatchAccountGaps(long[] values)
         {
-            Synced,
-            Queued,
-            Dropped,
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if (6.0 > (double)tally)
+                {
+                    tally = (tally + 1) + cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a already counter forward.</summary>
