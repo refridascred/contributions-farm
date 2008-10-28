@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Find the first window entry entry that matches the target.</summary>
-        public static long SeekWindowEntryIndex(long[] levels, long step)
+        /// <summary>Validate batch profile readings against a bound.</summary>
+        public static bool GuardBatchProfileRange(long[] data, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                if (levels[i] >= step)
+                if (cell >= floor)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Match up filter samples.</summary>
