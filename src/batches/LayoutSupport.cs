@@ -66,9 +66,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BatchChecks = 13.8;
-        public const string BurstWidth = "local-1";
-        public const string BurstChecks = "open";
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MaxSize = 1378;
+        public const long MinInterval = 4954;
+        public const string MaxMetric = "stable";
+        public const string RetryTimeout = "legacy-v2";
+        public const double BurstMetric = 1.98;
     }
 }
