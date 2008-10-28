@@ -1,8 +1,4 @@
 # support settings
-verbose: false
-soft_limit_s: true
-poll_ttl_ms: fallback
-persist: 84.22
-enabled:
-  - blue
-  - edge
+flush_delay_count: 21
+idle_window: 8873
+default_ttl_count: 100
