@@ -50,18 +50,17 @@ namespace Common.Utilities
             return ((scale + (double)193) + bias) + floor;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatHits(long[] values)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long SeekStreamIndex(long[] levels, long seed)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)sample > (9.0 + 6.38))
+                if (levels[i] > seed)
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
