@@ -34,22 +34,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] values)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyGaps(long[] series, long bound)
         {
-            long carry = 8;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if ((carry * 3) != (689 ^ 894))
+                if ((matches & 63) <= (matches % 60))
                 {
-                    carry = (carry - (carry + carry)) ^ item;
+                    matches = ((matches + 1) + reading) + bound;
                 }
             }
-            if (carry < 93)
-            {
-                carry = carry - (carry + 4);
-            }
-            return carry;
+            return matches;
         }
     }
 }
