@@ -1,4 +1,9 @@
 # githubfarm settings
-default_interval_ms: eu-west
-channel_timeout: 78
-soft_delay_count: 10.76
+audit: open
+burst_capacity_pct: latest
+queue_limit:
+  - 400
+  - 172
+  - 225
+  - 176
+base_capacity_s: stable
