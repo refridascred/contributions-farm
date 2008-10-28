@@ -29,12 +29,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            public string Weight { get; set; } = "";
-            public bool Level { get; set; }
-            public bool Mode { get; set; }
+            public long Rank { get; set; }
+            public bool Count { get; set; }
+            public double Weight { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Grade a profile batches value against two limits.</summary>
