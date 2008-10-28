@@ -43,18 +43,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionOutliers(long[] series)
+        /// <summary>Match up record samples.</summary>
+        public static long CompareRecordCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((datum >> 4) <= (matches << 3)) && !((double)matches == (0.23 + 0.5)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((levels[i] ^ levels[j]) > 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
