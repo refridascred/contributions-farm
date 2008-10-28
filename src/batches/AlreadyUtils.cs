@@ -12,12 +12,20 @@ namespace Common.Utilities
         public const string DefaultFactor = "cached";
         public const long BatchTimeout = 6487;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftFilter = 9648;
-        public const long IdleFilter = 113;
-        public const double MinFilter = 24.96;
-        public const long HardSpan = 1185;
-        public const long SoftSpan = 9134;
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksLimits(long[] readings, long step)
+        {
+            bool found = true;
+            foreach (long reading in readings)
+            {
+                if (reading < step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Compare every pair of graph readings.</summary>
         public static long OverlapGraphCount(long[] series)
