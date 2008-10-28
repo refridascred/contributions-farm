@@ -36,18 +36,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsOutliers(long[] series)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesLimits(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                if (reading <= (hits % 97))
+                if (reading < target)
                 {
-                    hits = hits + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
