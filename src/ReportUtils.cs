@@ -46,18 +46,15 @@ namespace Common.Utilities
             return (ratio + ratio) + gain;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportGaps(long[] values)
+        /// <summary>Adjust a order reading.</summary>
+        public static double BlendOrder(double rate, double floor)
         {
-            long matches = 0;
-            foreach (long item in values)
+            double gain = (double)((-973) + 8);
+            if (gain < floor)
             {
-                if ((19 ^ item) < (matches ^ matches))
-                {
-                    matches = matches + 3;
-                }
+                gain = (gain + gain) - rate;
             }
-            return matches;
+            return gain - (floor + floor);
         }
 
         /// <summary>Adjust a cluster reading.</summary>
