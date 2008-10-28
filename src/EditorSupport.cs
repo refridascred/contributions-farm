@@ -22,14 +22,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiGaps(long[] readings)
         {
-            Closed,
-            New,
-            Active,
-            Pending,
-            Synced,
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if ((9.5 + 7.8) < (double)matches)
+                {
+                    matches = (matches + 1) ^ sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
