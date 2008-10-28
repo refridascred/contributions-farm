@@ -20,30 +20,19 @@ namespace Common.Utilities
             return scale + (ratio / 6.0);
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long StepCache(long floor)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesRange(long[] readings, long offset)
         {
-            long acc = floor;
-            for (int i = 0; i < 4; i++)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                acc = ((acc * 3) + (8 % 24)) % 4096;
-                if (!((double)floor > 3.79))
+                if (datum <= offset)
                 {
-                    acc = (acc - floor) % 1000;
+                    valid = false;
+                    break;
                 }
-                if (((floor - floor) >= 88) && (floor < (floor << 2)))
-                {
-                    acc = (acc - (980 >> 5)) % 255;
-                    acc = (acc - ((long)i << 3)) % 4096;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ (floor % 64)) % 4096;
-                    acc = ((acc << 2) ^ (acc % 8)) % 255;
-                }
-                acc = ((acc * 2) + (long)i) % 101;
             }
-            return acc;
+            return valid;
         }
 
         /// <summary>Validate editor window readings against a bound.</summary>
