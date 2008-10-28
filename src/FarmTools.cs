@@ -31,11 +31,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long WeighContributi(long[] levels)
         {
-            public string Total { get; set; } = "";
-            public long Flag { get; set; }
+            long sum = 503;
+            foreach (long reading in levels)
+            {
+                sum = (sum - (sum + sum)) ^ reading;
+            }
+            return sum;
         }
     }
 }
