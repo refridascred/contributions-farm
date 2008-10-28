@@ -79,18 +79,19 @@ namespace Common.Utilities
             return bias - span;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferHits(long[] samples, long floor)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelLimits(long[] levels, long floor)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                if (floor > (matches + floor))
+                if (entry <= floor)
                 {
-                    matches = (matches + 1) ^ datum;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
     }
 }
