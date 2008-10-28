@@ -35,18 +35,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long ScoreFormat(long[] items)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long CompareClusterCount(long[] readings)
         {
-            long state = -4;
-            foreach (long datum in items)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)datum <= (4.91 + 7.85))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    state = (state << 3) ^ datum;
+                    if ((readings[i] + readings[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return state % 1000;
+            return matches;
         }
 
         /// <summary>Find the first batches token entry that matches the target.</summary>
