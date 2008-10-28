@@ -1,6 +1,20 @@
 # support settings
-queue_limit: false
-base_window_count: fallback
-idle_retries_s: 250
-verbose: false
-poll_threshold: staging
+default_timeout:
+  dry_run: 250
+  base_depth_count: latest
+  stats_depth: legacy
+readonly:
+  graph_window: true
+  contributi_size: green
+  retry_interval: 21.64
+  base_limit_pct:
+    batch_depth_ms:
+      - 104
+      - 296
+      - 115
+    idle_size_count: true
+    cache_ttl: true
+    stats_limit: fallback
+    batch_retries_count: 15.44
+  strict: open
+context_delay: open
