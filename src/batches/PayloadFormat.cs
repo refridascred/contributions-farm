@@ -35,18 +35,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterOutliers(long[] series)
-        {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if (reading >= (175 - matches))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinToken = 711;
+        public const long SoftToken = 270;
+        public const double HardSpan = 12.48;
+        public const double MaxRatio = 32.91;
+        public const long IdleLevel = 9851;
     }
 }
