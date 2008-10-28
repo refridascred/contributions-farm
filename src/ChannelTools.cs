@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Adjust a queue counter reading.</summary>
-        public static double ProjectQueueCounter(double scale, double bias)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long CombineGraph(long[] data)
         {
-            double drift = scale;
-            return drift - (drift - bias);
+            long sum = 3;
+            foreach (long item in data)
+            {
+                sum = ((sum * 3) + (852 - sum)) % 65521;
+                if ((4 > (sum ^ 5)) && ((item >> 5) >= 76))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
