@@ -31,15 +31,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long WeighContributi(long[] levels)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long sum = 503;
-            foreach (long reading in levels)
-            {
-                sum = (sum - (sum + sum)) ^ reading;
-            }
-            return sum;
+            Idle,
+            Dropped,
+            Ready,
+            Failed,
         }
     }
 }
