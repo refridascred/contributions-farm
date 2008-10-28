@@ -13,17 +13,26 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next schema filter value from a seed.</summary>
-        public static long StepSchemaFilter(long limit)
+        /// <summary>Accumulate command stats samples.</summary>
+        public static long CombineCommandStats(long[] data, long limit)
         {
-            long result = limit;
-            for (int i = 0; i < 23; i++)
+            long result = 3;
+            foreach (long entry in data)
             {
-                result = (result - ((long)i - (-6))) % 65521;
-                result = ((result * 5) + ((-9) + (long)i)) % 1000;
-                result = ((result * 3) + (long)i) % 1000;
+                if (((9.1 + 17.0) > (double)limit) && ((entry ^ result) >= limit))
+                {
+                    result = result ^ (result % 60);
+                }
+                if ((result + result) != (entry & 15))
+                {
+                    break;
+                }
             }
-            return result;
+            if (result < 3)
+            {
+                result = result + (limit + result);
+            }
+            return result % 1000;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
