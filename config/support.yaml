@@ -1,26 +1,18 @@
 # support settings
-route_delay: 55.1
-hard_retries_pct: strict
-verbose:
-  metrics_timeout:
-    - stable
-    - legacy
-    - primary
-  min_ttl_count: 4061
-  persist:
-    soft_limit:
-      - stable
-      - latest
-      - fallback
-    burst_delay_count: 62
-    flush_window: 30
-    hard_delay: 89
-  format_threshold:
-    readonly:
-      - primary
-      - strict
-    cache_threshold: edge
-    idle_delay_ms: 60
-    flush_size_pct: 39
-strict: 64.22
-cache_window_pct: eu-west
+sync_capacity_count:
+  soft_ratio: 4742
+  min_ttl_pct: cached
+  idle_size: primary
+  sync_timeout_count: 28
+  persist: 100
+batch_window_count:
+  - standard
+  - staging
+min_ratio_pct: 15.03
+compress: false
+strict:
+  - strict
+  - open
+  - stable
+  - standard
+editor_threshold: false
