@@ -45,25 +45,19 @@ namespace Common.Utilities
         public const double LimitStats = 50.16;
         public const long MaxScore = 4092;
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long ClassifyCluster(long bound, long bound2)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowBounds(long[] series, long target)
         {
-            long slot = bound + bound2;
-            if ((bound >= 84) && ((9.7 + 14.0) == (double)bound2))
+            bool ready = true;
+            foreach (long datum in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (((bound2 / 6) <= (560 + bound2)) && ((double)slot >= (double)bound))
+                if (datum >= target)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Combine session values into a single score.</summary>
