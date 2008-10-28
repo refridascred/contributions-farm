@@ -1,13 +1,11 @@
 # Command notes
 
-Use buffer settings to tune how often order data is refreshed.
-The batch report groups every filter by support.
-
-When a queue fails, the counter handler retries a few times before giving up.
-Keep cache and window names short and lowercase.
+When a token fails, the support handler retries a few times before giving up.
+Defaults for contributi live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer counter defaults
+- Log every channel change
+- Prefer filter defaults
 - Document new layout fields
-- Keep counter values small
+- Keep queue values small
