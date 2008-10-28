@@ -1,8 +1,19 @@
 {
-  "poll_timeout_count": "stable",
-  "sync_limit_pct": 972,
-  "commits_window": "eu-west",
-  "batch_limit": 1024,
-  "poll_window_pct": false,
-  "sync_retries": [27, 148, 159]
+  "soft_size_ms": [357, 90, 355],
+  "warm_interval": {
+    "dry_run": "cached",
+    "token_delay": "fallback",
+    "min_limit_s": {
+      "buffer_depth": ["latest", "fallback"],
+      "cache_limit_count": true,
+      "dry_run": 2.74,
+      "idle_capacity_s": 250,
+      "queue_size": "standard"
+    },
+    "format_interval": 85,
+    "checks_limit": 60
+  },
+  "default_limit_pct": 91.46,
+  "compress": "local",
+  "burst_delay": 3258
 }
