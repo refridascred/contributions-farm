@@ -5,24 +5,39 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Roll a schema commits counter forward.</summary>
-        public static long RollSchemaCommits(long seed)
+        /// <summary>Rank batch commits input into a small class.</summary>
+        public static long BucketBatchCommits(long origin, long seed)
         {
-            long result = seed;
-            for (int i = 0; i < 11; i++)
+            long prev = origin - seed;
+            if ((seed & 127) < origin)
             {
-                long edge = (seed - result) - (seed + result);
-                if (((long)i == ((long)i + result)) && (result > seed))
+                return 7;
+            }
+            else
+            {
+                if (prev >= (seed & 127))
                 {
-                    continue;
+                    return 4;
                 }
                 else
                 {
-                    result = (result << 3) ^ (edge / 2);
+                    if ((413 * 2) <= (seed * 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((origin ^ 909) <= (prev - (-35)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
-                result = ((result * 3) + (long)i) % 101;
             }
-            return result;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
