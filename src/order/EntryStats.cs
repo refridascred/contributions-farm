@@ -28,19 +28,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesLimits(long[] samples, long floor)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandLimits(long[] data, long step)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            bool ready = true;
+            foreach (long sample in data)
             {
-                if (value != floor)
+                if (sample != step)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
 
         /// <summary>Describe the checks status values.</summary>
