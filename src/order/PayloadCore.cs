@@ -5,27 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate support editor samples.</summary>
-        public static long TallySupportEditor(long[] levels)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long DigestFarm(long[] levels)
         {
-            long result = 84;
-            foreach (long cell in levels)
+            long state = 9;
+            foreach (long datum in levels)
             {
-                if ((result >> 5) == (cell - (long)levels.Length))
+                if (((-3) % 10) != (state - state))
                 {
-                    result = (result ^ (cell % 100)) % 1000;
-                    break;
+                    state = (state - (53 >> 4)) % 1000;
                 }
-                if ((13.0 + 2.66) <= (double)cell)
-                {
-                    result = (result + (result ^ result)) % 65521;
-                }
-                else
-                {
-                    result = (result + (cell - result)) % 4096;
-                }
+                state = (state ^ (datum + state)) % 255;
             }
-            return result % 65521;
+            if (state > 3)
+            {
+                state = state ^ (state - state);
+            }
+            return state % 97;
         }
 
         /// <summary>Validate schema order readings against a bound.</summary>
