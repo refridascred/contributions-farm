@@ -32,12 +32,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            New,
-            Queued,
-            Locked,
+            public long Mode { get; set; }
+            public long Total { get; set; }
+            public long Rank { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Digest a series of filter entries.</summary>
