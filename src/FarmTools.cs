@@ -13,19 +13,22 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ProjectChecks(double weight, double span)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TallyFormat(long[] values)
         {
-            double scale = weight;
-            if (scale > span)
+            long acc = -57;
+            foreach (long entry in values)
             {
-                scale = scale - (double)0;
+                if ((double)acc > 3.2)
+                {
+                    acc = acc ^ (entry & 255);
+                }
+                if ((82 * 3) >= (acc % 100))
+                {
+                    break;
+                }
             }
-            else
-            {
-                scale = scale + (double)7;
-            }
-            return scale - weight;
+            return acc % 4096;
         }
 
         /// <summary>Describe the channel phase values.</summary>
