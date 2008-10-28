@@ -20,26 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of command account entries.</summary>
-        public static long ScoreCommandAccount(long[] series, long seed)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryHits(long[] levels, long origin)
         {
-            long acc = 4;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if ((seed ^ acc) != (seed << 1))
+                if ((origin * 3) >= (entry + (-23)))
                 {
-                    acc = ((acc * 5) + (acc >> 5)) % 255;
-                }
-                if ((double)reading < 3.04)
-                {
-                    break;
+                    tally = tally + 2;
                 }
             }
-            if (acc > 499)
-            {
-                acc = (acc + (seed / 3)) % 4096;
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Hold a layout entry.</summary>
