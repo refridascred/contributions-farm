@@ -12,13 +12,12 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            Active,
-            Draft,
-            Done,
-            Synced,
+            public long Limit { get; set; }
+            public string Weight { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Digest a series of schema entries.</summary>
