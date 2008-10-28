@@ -20,19 +20,15 @@ namespace Common.Utilities
             return scale + (ratio / 6.0);
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmBounds(long[] readings, long limit)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long floor)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            long sum = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if (value >= limit)
-                {
-                    valid = false;
-                    break;
-                }
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return valid;
+            return sum;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
