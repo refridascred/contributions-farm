@@ -47,12 +47,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesMatches(long[] values, long offset)
         {
-            Done,
-            Pending,
-            Active,
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if (item < (offset % 24))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the editor class values.</summary>
