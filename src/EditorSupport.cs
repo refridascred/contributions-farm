@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftCommits = 6413;
-        public const string MinCommits = "stable-edge";
-        public const long RetryBudget = 9362;
+        /// <summary>Count the route account entries that pass the check.</summary>
+        public static long CountRouteAccountHits(long[] values, long origin)
+        {
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if ((14.0 + 17.0) <= (double)reading)
+                {
+                    count = (count + 3) - origin;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long MeasureContributiGaps(long[] readings)
