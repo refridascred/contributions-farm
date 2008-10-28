@@ -1,8 +1,8 @@
-id,rank,region,active,token
-1,147,fallback,997,70.07
-2,60,455,190,418
-3,89.84,475,cached,stable
-4,97.93,331,legacy,staging
-5,24.61,905,156,18.05
-6,eu-west,490,1.1,964
-7,37.03,51.85,cached,cached
+id,level,owner,rank
+1,173,57,759
+2,76.47,51.16,80
+3,green,fallback,standard
+4,105,54.2,66.57
+5,blue,stable,61.48
+6,808,65.44,50.89
+7,strict,235,381
