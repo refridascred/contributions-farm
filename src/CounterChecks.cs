@@ -61,18 +61,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandOutliers(long[] items, long bound)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long ScoreGraph(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long sum = 91;
+            foreach (long item in readings)
             {
-                if ((double)datum > (8.96 + 5.0))
+                if (!((item - (long)readings.Length) >= item))
                 {
-                    matches = (matches + 2) + bound;
+                    sum = (((sum << 2) ^ item) % 4096) - origin;
+                }
+                else
+                {
+                    sum = sum + (sum / 2);
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
