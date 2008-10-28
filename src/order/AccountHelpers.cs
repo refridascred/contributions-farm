@@ -67,21 +67,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long CompareMetricCount(long[] values)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long CombineFilter(long[] values, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 6;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
-                }
+                sum = ((sum + (537 % 60)) % 1000) + floor;
+                sum = ((sum << 2) ^ (cell >> 2)) % 4096;
             }
-            return count;
+            if (sum > 18)
+            {
+                sum = (sum + (-323)) % 65521;
+            }
+            return sum % 97;
         }
     }
 }
