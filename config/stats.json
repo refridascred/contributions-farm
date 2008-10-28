@@ -1,9 +1,20 @@
 {
-  "verbose": 20,
-  "enabled": false,
-  "sync_ttl_count": {
-    "compress": "local",
-    "batch_timeout": 3959,
-    "burst_capacity_s": "strict"
+  "sync_ttl_s": 5831,
+  "schema_delay": [301, 139, 37],
+  "warm_size": {
+    "retry_delay_count": "eu-west",
+    "readonly": "cached",
+    "max_depth": "standard",
+    "base_ttl": false,
+    "strict": 2623
+  },
+  "base_depth_count": 8402,
+  "batch_ratio": {
+    "poll_size_ms": 1527,
+    "route_timeout": "cached",
+    "flush_retries": "cached",
+    "stream_depth": 8.65,
+    "soft_interval_ms": "green",
+    "batch_timeout_pct": ["standard", "legacy", "staging"]
   }
 }
