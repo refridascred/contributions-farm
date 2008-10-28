@@ -1,6 +1,8 @@
 {
-  "batch_delay_ms": "strict",
-  "retry_limit": 77.93,
-  "default_limit_pct": 41.54,
-  "default_ttl": [19, 20, 151]
+  "burst_depth": false,
+  "default_ttl": 1024,
+  "default_retries_ms": ["edge", "eu-west"],
+  "route_retries": 64.38,
+  "poll_delay_count": 1024,
+  "dry_run": 6337
 }
