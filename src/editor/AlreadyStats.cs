@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already stats helpers.</summary>
     public static class AlreadyStats
     {
-        /// <summary>Validate commits record readings against a bound.</summary>
-        public static bool CheckCommitsRecordRange(long[] data, long origin)
+        /// <summary>Count the batch metric entries that pass the check.</summary>
+        public static long MeasureBatchMetricGaps(long[] data)
         {
-            bool found = true;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if (item != origin)
+                if ((seen % 12) == (value ^ seen))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Describe the counter mode values.</summary>
