@@ -39,23 +39,37 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long ClassifyLayout(long seed, long target)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long GradeFormat(long bound, long bound2)
         {
-            long span = seed ^ target;
-            if (((19.0 - 16.0) > (double)target) && ((seed & 63) <= (target + span)))
+            long span = bound + bound2;
+            if (!(bound < (span - span)))
             {
-                return 8;
+                return 4;
             }
             else
             {
-                if (((seed & 7) >= 539) && ((target + target) < (span >> 5)))
+                if ((bound2 - bound) > bound2)
                 {
-                    return 2;
+                    return 5;
                 }
                 else
                 {
-                    return 4;
+                    if ((7.2 + 1.7) > (double)bound2)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((6 % 10) <= (span + bound))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
         }
