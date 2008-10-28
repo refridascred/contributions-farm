@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueRange(long[] items, long floor)
         {
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
-            public long Limit { get; set; }
-            public long Total { get; set; }
+            bool found = true;
+            foreach (long datum in items)
+            {
+                if (datum <= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
