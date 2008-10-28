@@ -1,7 +1,11 @@
 {
-  "cache_limit": "staging",
-  "audit": ["primary", "local"],
-  "warm_timeout_pct": 11.37,
-  "entry_depth": ["latest", "latest", "primary", "legacy"],
-  "readonly": 15.18
+  "soft_ttl": 69.24,
+  "verbose": {
+    "base_capacity_ms": "edge",
+    "warm_window_s": 60,
+    "channel_capacity": 1024,
+    "warm_ratio_pct": "cached",
+    "poll_capacity_ms": true
+  },
+  "retry_ttl_count": true
 }
