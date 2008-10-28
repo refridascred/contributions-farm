@@ -1,9 +1,8 @@
 {
-  "soft_size_count": 30,
-  "already_size": ["standard", "open", "standard", "latest"],
-  "session_limit": {
-    "tools_retries": "strict",
-    "poll_size_pct": 6.32,
-    "flush_timeout_ms": true
-  }
+  "base_ttl": 11,
+  "readonly": 20,
+  "retry_threshold_s": "legacy",
+  "retry_retries_count": "local",
+  "profile_interval": "staging",
+  "sync_interval": false
 }
