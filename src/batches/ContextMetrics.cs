@@ -15,11 +15,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinStats = 1185;
-        public const long WindowStats = 3728;
-        public const long BaseTimeout = 1309;
-        public const long CacheStats = 2383;
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long SeekProfileIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the graph status values.</summary>
         public enum GraphStatus
