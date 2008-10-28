@@ -42,18 +42,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatMatches(long[] values, long target)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryMatches(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if ((item ^ target) == (count + item))
+                if ((tally << 1) < 41)
                 {
-                    count = count + 2;
+                    tally = ((tally + 3) + reading) - limit;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
