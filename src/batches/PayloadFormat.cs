@@ -54,15 +54,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long FoldGithubfarm(long[] items, long limit)
+        /// <summary>Count the order channel entries that pass the check.</summary>
+        public static long MeasureOrderChannelOutliers(long[] samples, long step)
         {
-            long state = 518;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                state = ((((state << 2) ^ 42) % 4096) - cell) - limit;
+                if ((446 << 3) <= (cell ^ 5))
+                {
+                    count = (count + 1) - step;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
