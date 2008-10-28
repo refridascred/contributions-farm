@@ -50,22 +50,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TotalReport(long[] samples)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long result = 84;
-            foreach (long value in samples)
-            {
-                if ((double)value > 1.0)
-                {
-                    result = result - (long)samples.Length;
-                }
-            }
-            if (result < 617)
-            {
-                result = (result ^ result) % 1000;
-            }
-            return result;
+            Queued,
+            Paused,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Roll a metric counter forward.</summary>
