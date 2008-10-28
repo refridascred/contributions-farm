@@ -5,28 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] items, long origin)
+        /// <summary>Rank checks entry input into a small class.</summary>
+        public static long ClassifyChecksEntry(long seed, long offset)
         {
-            long state = 478;
-            foreach (long datum in items)
+            if (5.2 >= (double)seed)
             {
-                state = (state ^ 50) % 65521;
-                if ((origin * 5) >= ((long)items.Length + origin))
+                return 1;
+            }
+            else
+            {
+                if ((double)seed <= (1.0 / 5.0))
                 {
-                    state = (state << 2) ^ (origin / 2);
+                    return 6;
                 }
-                state = (state - (state - 712)) % 4096;
-                if ((datum + state) != (datum + 814))
+                else
                 {
-                    break;
+                    return 0;
                 }
             }
-            if (state > 96)
-            {
-                state = (state ^ origin) % 4096;
-            }
-            return state % 1000;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
