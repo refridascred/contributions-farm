@@ -23,12 +23,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long RankProfile(long bound, long bound2)
         {
-            Paused,
-            Active,
-            Failed,
+            if ((double)bound2 > (3.0 + 3.01))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((bound + bound) < (bound2 >> 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (31 >= (bound2 - bound2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
