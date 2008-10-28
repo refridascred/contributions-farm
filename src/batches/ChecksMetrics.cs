@@ -44,18 +44,11 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Locate a session token reading by value.</summary>
-        public static long LookupSessionTokenIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinCluster = 1681;
+        public const string BaseCluster = "fallback-v2";
+        public const long LimitLevel = 7129;
+        public const long DefaultCluster = 1632;
 
         /// <summary>Project the next metrics value.</summary>
         public static double SmoothMetrics(double scale, double bias)
