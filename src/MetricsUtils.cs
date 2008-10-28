@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionGaps(long[] items, long bound)
         {
-            Idle,
-            Closed,
-            Synced,
-            Paused,
-            Dropped,
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((1.0 < (double)hits) && (((hits >> 2) < (bound - 73)) || ((46 * 4) > (reading + reading))))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit batch account readings against a rule.</summary>
