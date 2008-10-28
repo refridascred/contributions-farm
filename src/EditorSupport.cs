@@ -56,15 +56,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a already stats reading.</summary>
-        public static double BlendAlreadyStats(double rate, double bias)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            double load = (rate + rate) - rate;
-            if (load <= (double)39)
-            {
-                load = (load - rate) + bias;
-            }
-            return load - 8.2;
+            Done,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Hold a cache stats.</summary>
