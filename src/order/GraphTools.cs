@@ -69,12 +69,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            public long Size { get; set; }
-            public long Rank { get; set; }
-            public long Mode { get; set; }
+            public bool Stamp { get; set; }
+            public long Level { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Hold a counter header.</summary>
