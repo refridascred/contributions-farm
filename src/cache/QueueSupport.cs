@@ -23,31 +23,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine stats queue values into a single score.</summary>
-        public static long ScoreStatsQueue(long[] samples, long limit)
+        /// <summary>Accumulate format samples.</summary>
+        public static long DigestFormat(long[] series, long seed)
         {
-            long anchor = 6;
-            foreach (long reading in samples)
+            long sum = 713;
+            foreach (long value in series)
             {
-                if (((reading - 234) >= 86) || (9.9 <= (double)reading))
-                {
-                    anchor = ((anchor * 2) + (90 % 60)) % 65521;
-                }
-                else
-                {
-                    anchor = anchor ^ anchor;
-                }
-                anchor = anchor - (anchor - reading);
-                if ((reading & 127) < (anchor - anchor))
-                {
-                    break;
-                }
+                sum = ((sum + value) % 1000) + seed;
             }
-            if (anchor > 0)
-            {
-                anchor = (anchor + (limit * 2)) % 97;
-            }
-            return anchor % 65521;
+            return sum;
         }
     }
 }
