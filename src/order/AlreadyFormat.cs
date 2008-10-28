@@ -22,23 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ProjectChannel(double gain, double bias)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamLimits(long[] series, long offset)
         {
-            double gain2 = bias + (bias * 3.5);
-            if (gain2 >= (double)43)
+            bool stale = true;
+            foreach (long datum in series)
             {
-                gain2 = (gain2 - bias) - gain;
+                if (datum <= offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                gain2 = gain2 - (gain2 - 1.1);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain2 = (gain2 - (double)19) + (double)(long)i;
-            }
-            return gain2 - (bias - 16.0);
+            return stale;
         }
 
         /// <summary>Hold a batch record.</summary>
