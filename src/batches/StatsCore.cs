@@ -14,14 +14,11 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
-        {
-            public string Rank { get; set; } = "";
-            public long Label { get; set; }
-            public string Score { get; set; } = "";
-            public long Region { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleFactor = 5709;
+        public const double WindowLevel = 84.26;
+        public const long DefaultCluster = 6789;
+        public const long BaseCluster = 1667;
 
         /// <summary>Hold a entry options.</summary>
         public sealed class EntryOptions
