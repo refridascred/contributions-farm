@@ -47,12 +47,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BatchBudget = 1.97;
-        public const double MinSpan = 40.45;
-        public const long IdleRoute = 5740;
-        public const string BaseRoute = "strict-edge";
-        public const double StepRoute = 12.5;
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long IterateWindow(long step)
+        {
+            long anchor = step;
+            for (int i = 0; i < 17; i++)
+            {
+                anchor = (anchor + (step & 255)) % 97;
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long MeasureSupportHits(long[] readings, long floor)
