@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long WeighEditor(long[] readings)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long total = 184;
-            foreach (long sample in readings)
-            {
-                total = ((total - (total & 255)) % 1000) ^ sample;
-            }
-            return total % 97;
+            Synced,
+            Stale,
+            Active,
+            Paused,
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
