@@ -40,20 +40,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueLimits(long[] levels, long seed)
-        {
-            bool valid = true;
-            foreach (long entry in levels)
-            {
-                if (entry < seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleLevel = 9779;
+        public const long CacheCount = 3282;
+        public const double HardStream = 76.28;
+        public const string IdleStream = "legacy-1";
 
         /// <summary>Describe the account state values.</summary>
         public enum AccountState
