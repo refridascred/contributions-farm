@@ -35,18 +35,38 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmMatches(long[] samples, long floor)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long BucketEditor(long floor, long target)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            if ((21 + 457) < (target << 1))
             {
-                if ((7.0 - 7.0) <= (double)entry)
+                return 2;
+            }
+            else
+            {
+                if ((target + floor) >= (target / 4))
                 {
-                    matches = (matches + 3) - floor;
+                    return 1;
+                }
+                else
+                {
+                    if ((556 - target) < (97 & 7))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (floor < (57 ^ target))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Accumulate support session samples.</summary>
