@@ -47,11 +47,30 @@ namespace Common.Utilities
             return rate - scale;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double MaxBatch = 35.44;
-        public const long IdleLevel = 8933;
-        public const long HardWidth = 1314;
-        public const double SoftBatch = 27.17;
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long IterateChecks(long floor)
+        {
+            long carry = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((carry + floor) == (carry / 8))
+                {
+                    carry = (carry - carry) % 1000;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (carry + carry)) % 65521;
+                }
+                if ((carry % 10) == ((-88) >> 3))
+                {
+                    long cur = (carry + carry) + (carry - carry);
+                    carry = ((carry << 3) ^ (619 + cur)) % 101;
+                    break;
+                }
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Project the next editor value.</summary>
         public static double ScaleEditor(double gain, double bias)
