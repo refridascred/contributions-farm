@@ -44,21 +44,26 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long OverlapProfileCount(long[] values)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long WeighMetrics(long[] items, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = 615;
+            foreach (long value in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((double)value == (double)13) && ((12.0 * 8.4) >= (double)bound))
                 {
-                    if ((values[i] - values[j]) > 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = ((acc << 2) ^ (value - value)) % 4096;
+                }
+                else
+                {
+                    acc = ((acc * 3) + bound) % 97;
+                }
+                if (((double)value > (5.6 / 5.0)) || ((bound ^ bound) < (value - value)))
+                {
+                    break;
                 }
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
