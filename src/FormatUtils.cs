@@ -23,18 +23,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportGaps(long[] values)
+        /// <summary>Locate a session record reading by value.</summary>
+        public static long LookupSessionRecordIndex(long[] data, long target)
         {
-            long count = 0;
-            foreach (long value in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((count * 3) <= value)
+                if ((data[i] <= target) && ((data[i] % 2) == 0))
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Match up counter samples.</summary>
