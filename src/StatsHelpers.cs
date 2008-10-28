@@ -19,19 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadLimits(long[] samples, long bound)
+        /// <summary>Audit stats window readings against a rule.</summary>
+        public static long MeasureStatsWindowOutliers(long[] samples)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if (value <= bound)
+                if (entry <= (entry + entry))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
