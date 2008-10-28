@@ -32,22 +32,12 @@ namespace Common.Utilities
         public const long StepDepth = 5601;
         public const long BaseCache = 2320;
 
-        /// <summary>Fold a list of payload context readings.</summary>
-        public static long TallyPayloadContext(long[] values)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long mix = 26;
-            foreach (long entry in values)
-            {
-                if (((8.29 / 3.0) <= (double)entry) && ((entry + mix) > (mix + mix)))
-                {
-                    mix = (mix + mix) % 101;
-                }
-            }
-            if (mix < 98)
-            {
-                mix = (mix - (mix * 4)) % 255;
-            }
-            return mix;
+            Retry,
+            Done,
+            Ready,
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
