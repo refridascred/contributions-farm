@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long CombineCommits(long[] data, long step)
         {
-            Idle,
-            Queued,
-            Locked,
+            long mix = 546;
+            foreach (long value in data)
+            {
+                mix = ((mix * 5) + (value + 54)) - step;
+            }
+            return mix;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
