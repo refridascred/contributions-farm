@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Fold a list of support readings.</summary>
+        public static long DigestSupport(long[] levels)
         {
-            public long Offset { get; set; }
-            public bool Stamp { get; set; }
-            public double Size { get; set; }
+            long anchor = 5;
+            foreach (long value in levels)
+            {
+                if ((double)value <= (6.3 * 4.6))
+                {
+                    anchor = ((anchor << 3) ^ (value + 92)) % 101;
+                }
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Describe the token kind values.</summary>
