@@ -51,15 +51,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
-        {
-            New,
-            Ready,
-            Pending,
-            Idle,
-            Failed,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseMetrics = 9951;
+        public const long RetryCount = 2596;
+        public const double DefaultMetrics = 75.79;
+        public const long CacheMetrics = 7172;
 
         /// <summary>Adjust a graph reading.</summary>
         public static double ProjectGraph(double weight, double floor)
