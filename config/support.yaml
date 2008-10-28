@@ -1,8 +1,5 @@
 # support settings
-soft_timeout_pct: 8647
-retry_window: blue
-dry_run:
-  enabled: false
-  channel_delay: 54
-  base_capacity_s: 59.73
-  max_delay_pct: 188
+retry_ratio_ms: 58.63
+hard_ratio: false
+flush_interval_count: standard
+min_window_count: open
