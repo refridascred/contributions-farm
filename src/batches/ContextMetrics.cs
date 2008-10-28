@@ -16,14 +16,19 @@ namespace Common.Utilities
         public const long MaxMetrics = 2228;
         public const long LimitMetrics = 9328;
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double SmoothRoute(double bias, double floor)
         {
-            Idle,
-            Closed,
-            Paused,
-            Active,
-            Pending,
+            double drift = bias;
+            if (drift > bias)
+            {
+                drift = drift - (4.97 + floor);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - (bias / 9.0)) + (double)(long)i;
+            }
+            return drift + floor;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
