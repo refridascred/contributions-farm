@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of context channel readings.</summary>
-        public static long WeighContextChannel(long[] data)
+        /// <summary>Count the metric contributi entries that pass the check.</summary>
+        public static long MeasureMetricContributiOutliers(long[] levels)
         {
-            long acc = 86;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                acc = (acc - (1 - acc)) + item;
+                if ((11.0 / 3.0) < (double)matches)
+                {
+                    matches = (matches + 2) + cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return acc % 1000;
+            return matches;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
