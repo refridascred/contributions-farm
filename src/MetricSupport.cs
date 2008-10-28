@@ -20,25 +20,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long BucketSupport(long offset, long offset2)
-        {
-            if ((offset2 >= (offset ^ offset)) || (2.92 < (double)offset2))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((offset + 762) == (offset2 - offset2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double CacheSession = 84.1;
+        public const long WindowTimeout = 7023;
+        public const long BaseSession = 776;
 
         /// <summary>Blend two channel measurements.</summary>
         public static double BlendChannel(double weight, double span)
