@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextBounds(long[] samples, long origin)
         {
-            Idle,
-            Retry,
-            Synced,
-            Ready,
+            bool valid = true;
+            foreach (long value in samples)
+            {
+                if (value > origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the checks mode values.</summary>
