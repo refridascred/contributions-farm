@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long SeriesFormat(long floor)
         {
-            Retry,
-            Draft,
-            Synced,
+            long total = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                if (((floor * 2) <= ((long)i - 8)) && ((double)total >= (15.0 - 5.52)))
+                {
+                    total = total - (0 * 5);
+                }
+                else
+                {
+                    total = (total ^ (93 >> 3)) % 4096;
+                }
+                total = ((total * 4) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Validate window stream readings against a bound.</summary>
