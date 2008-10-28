@@ -49,12 +49,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            public string Level { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public bool Weight { get; set; }
+            public double Token { get; set; }
+            public long Limit { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
