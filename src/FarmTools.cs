@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandMatches(long[] values)
-        {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((datum / 6) > (datum - datum))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxCounter = 7470;
+        public const string WindowCount = "fallback-1";
+        public const long IdleLevel = 2612;
+        public const long HardFactor = 7303;
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long TallyOrderMatches(long[] items)
