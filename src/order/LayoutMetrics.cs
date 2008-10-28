@@ -29,12 +29,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphRange(long[] values, long target)
         {
-            public bool Token { get; set; }
-            public long Count { get; set; }
-            public bool Ratio { get; set; }
+            bool found = true;
+            foreach (long cell in values)
+            {
+                if (cell != target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Audit record buffer readings against a rule.</summary>
