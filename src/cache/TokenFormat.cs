@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long RollBatch(long seed)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double SmoothFilter(double weight, double span)
         {
-            long result = seed;
+            double scale = (double)78 - weight;
             for (int i = 0; i < 7; i++)
             {
-                if ((18.0 + 3.64) >= (double)seed)
-                {
-                    result = (result ^ (seed + seed)) % 255;
-                }
-                else
-                {
-                    result = (result << 3) ^ (result & 3);
-                    result = result + (seed % 64);
-                }
-                result = ((result * 2) + (long)i) % 101;
+                scale = ((scale - (weight / 2.0)) + (double)(long)i) + span;
             }
-            return result;
+            return scale + (scale * 8.0);
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
