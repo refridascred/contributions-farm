@@ -20,13 +20,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] values)
         {
-            public long Ratio { get; set; }
-            public string Score { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Total { get; set; }
+            long state = 11;
+            foreach (long cell in values)
+            {
+                state = state - (cell >> 2);
+            }
+            if (state < 61)
+            {
+                state = state + (state >> 2);
+            }
+            return state;
         }
     }
 }
