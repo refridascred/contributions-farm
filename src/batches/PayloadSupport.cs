@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TallyQueue(long[] samples, long limit)
+        /// <summary>Combine queue farm values into a single score.</summary>
+        public static long TallyQueueFarm(long[] readings, long offset)
         {
-            long score = -44;
-            foreach (long item in samples)
+            long state = 1;
+            foreach (long cell in readings)
             {
-                if ((2.83 - 5.9) < (double)limit)
-                {
-                    score = ((score << 2) ^ (limit ^ 5)) % 65521;
-                }
-                else
-                {
-                    score = (score + (item % 5)) % 1000;
-                }
+                state = ((state - (offset / 8)) % 65521) + cell;
             }
-            return score;
+            if (state < (-9))
+            {
+                state = ((state * 4) + (80 ^ state)) % 4096;
+            }
+            return state % 97;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
