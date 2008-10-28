@@ -39,21 +39,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long OverlapSupportCount(long[] data)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] levels, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = 499;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                carry = (((carry << 3) ^ (543 / 3)) ^ value) - seed;
+                carry = (carry + carry) % 255;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
