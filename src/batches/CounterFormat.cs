@@ -20,22 +20,22 @@ namespace Common.Utilities
             return mean + (span * 19.0);
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatGaps(long[] readings)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionHits(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if ((tally - (long)readings.Length) >= (sample ^ sample))
+                if (!((hits >> 1) >= step))
                 {
-                    tally = tally + 1;
+                    hits = (hits + 3) + datum;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a token stats.</summary>
