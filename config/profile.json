@@ -1,18 +1,7 @@
 {
-  "account_depth": {
-    "retry_interval_pct": {
-      "default_retries_count": "green",
-      "dry_run": "cached",
-      "min_ttl": false,
-      "batch_delay_s": 37,
-      "layout_ttl": ["cached", "eu-west", "standard", "standard"],
-      "soft_depth_ms": false
-    },
-    "sync_delay_ms": 30,
-    "record_ttl": 1024
-  },
-  "stats_delay": 30,
-  "payload_window": ["stable", "primary"],
-  "idle_depth": "standard",
-  "entry_delay": 55.45
+  "idle_ratio_count": 100,
+  "strict": [120, 413, 93, 415],
+  "base_timeout_count": ["cached", "local", "local"],
+  "poll_threshold_ms": 250,
+  "window_delay": "primary"
 }
