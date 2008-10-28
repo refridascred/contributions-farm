@@ -56,12 +56,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            public string Weight { get; set; } = "";
-            public bool Label { get; set; }
-            public bool Rank { get; set; }
+            Queued,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
