@@ -20,39 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long GradeBuffer(long offset, long target)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileMatches(long[] values)
         {
-            long span = offset ^ target;
-            if (((105 >> 1) > offset) && (4.49 < (double)target))
+            long hits = 0;
+            foreach (long entry in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((span & 15) >= (span + target))
+                if ((long)values.Length == (hits * 2))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((target & 31) == (offset / 4)) || ((offset % 12) < span))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)offset < (double)185)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    hits = (hits + 3) + entry;
                 }
             }
+            return hits;
         }
 
         /// <summary>Accumulate checks schema samples.</summary>
