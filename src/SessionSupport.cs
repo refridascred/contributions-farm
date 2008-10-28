@@ -20,23 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ScaleLayout(double weight, double offset)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandMatches(long[] values, long seed)
         {
-            double drift = offset;
-            if (drift >= (double)5)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                drift = drift + (double)964;
+                if ((1 + seen) == (seen >> 5))
+                {
+                    seen = ((seen + 1) + reading) + seed;
+                }
             }
-            else
-            {
-                drift = drift - (offset * 3.55);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - drift) + (double)(long)i;
-            }
-            return drift - (1.82 + weight);
+            return seen;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
