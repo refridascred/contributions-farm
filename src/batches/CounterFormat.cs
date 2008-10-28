@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long ScoreToken(long[] samples)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long StepGraph(long step)
         {
-            long result = 1;
-            foreach (long cell in samples)
+            long state = step;
+            for (int i = 0; i < 20; i++)
             {
-                result = ((result << 3) ^ (cell & 1)) % 4096;
+                state = ((state * 5) + (long)i) % 97;
             }
-            if (result > (-9))
-            {
-                result = (result - (9 * 3)) % 97;
-            }
-            return result;
+            return state;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
