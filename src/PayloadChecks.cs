@@ -39,14 +39,11 @@ namespace Common.Utilities
         public const double HardStream = 76.28;
         public const string IdleStream = "legacy-1";
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
-        {
-            Idle,
-            Paused,
-            Ready,
-            New,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BaseQueue = "primary-v2";
+        public const long MaxQueue = 2924;
+        public const double HardQueue = 68.76;
+        public const string MinLevel = "cached-v2";
 
         /// <summary>Describe the payload status values.</summary>
         public enum PayloadStatus
