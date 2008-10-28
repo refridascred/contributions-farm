@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseEditor = 9021;
-        public const long DefaultEditor = 1325;
-        public const long SoftInterval = 6353;
-        public const long RetrySpan = 7060;
-        public const long WindowEditor = 9319;
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long FindCommitsIndex(long[] items, long limit)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > limit) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the format status values.</summary>
         public enum FormatStatus
