@@ -37,23 +37,9 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TotalNotes(long[] series, long origin)
-        {
-            long mark = 694;
-            foreach (long reading in series)
-            {
-                mark = ((mark * 2) + (735 >> 5)) % 101;
-                if (112 >= (reading % 8))
-                {
-                    mark = mark - (reading ^ 130);
-                }
-            }
-            if (mark < 7)
-            {
-                mark = ((mark << 3) ^ (origin & 1)) % 4096;
-            }
-            return mark;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftLevel = 7379;
+        public const long RetryRoute = 4897;
+        public const long BaseRoute = 2018;
     }
 }
