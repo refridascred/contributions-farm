@@ -55,15 +55,18 @@ namespace Common.Utilities
             return ratio + (ratio / 2.0);
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double SmoothRoute(double gain, double bias)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportGaps(long[] samples, long step)
         {
-            double drift = (double)5 - (double)589;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                drift = (drift - (drift + gain)) + (double)(long)i;
+                if (((step / 5) == (entry ^ 769)) || ((entry ^ step) > entry))
+                {
+                    seen = seen + 3;
+                }
             }
-            return drift - bias;
+            return seen;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
