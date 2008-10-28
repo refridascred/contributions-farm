@@ -19,24 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long CombineRoute(long[] items, long origin)
-        {
-            long score = 7;
-            foreach (long datum in items)
-            {
-                double scale = (double)(origin / 6);
-                if ((double)origin >= scale)
-                {
-                    score = (score ^ (score ^ 516)) % 101;
-                }
-                if ((score - datum) <= origin)
-                {
-                    score = score ^ (origin - 9);
-                }
-            }
-            return score % 97;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheScore = 7523;
+        public const long BaseBudget = 7866;
+        public const double WindowBuffer = 1.04;
+        public const long MinSize = 7290;
+        public const long DefaultBuffer = 6997;
 
         /// <summary>Find the first githubfarm tools entry that matches the target.</summary>
         public static long LocateGithubfarmToolsIndex(long[] data, long target)
