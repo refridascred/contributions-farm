@@ -27,10 +27,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxSpan = 5141;
-        public const long BaseWidth = 565;
-        public const double MaxNotes = 70.88;
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long WeighBatch(long[] readings, long limit)
+        {
+            long state = 176;
+            foreach (long item in readings)
+            {
+                if ((item + limit) >= (50 - limit))
+                {
+                    state = ((state << 2) ^ 47) % 101;
+                }
+            }
+            return state % 4096;
+        }
 
         /// <summary>Blend two entry measurements.</summary>
         public static double BlendEntry(double gain, double span)
