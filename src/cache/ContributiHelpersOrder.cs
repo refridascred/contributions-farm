@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Iterate the stats tools series from a seed.</summary>
+        public static long StepStatsTools(long origin)
         {
-            public long Owner { get; set; }
-            public bool Level { get; set; }
-            public long Limit { get; set; }
+            long score = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                if (!((origin / 9) < score))
+                {
+                    score = ((score * 2) + score) % 255;
+                    score = ((score * 3) + score) % 97;
+                }
+                score = ((score << 3) ^ score) % 4096;
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Audit report queue readings against a rule.</summary>
