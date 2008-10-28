@@ -1,11 +1,11 @@
 # Command notes
 
-Use already settings to tune how often farm data is refreshed.
-The token module keeps context values in sync with the metric cache.
-A contributi that stays idle for too long is moved to the batch list.
+When a payload fails, the filter handler retries a few times before giving up.
+Each already is validated before it reaches the order queue.
+The checks helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review token limits each release
-- Keep cache values small
-- Log every report change
+- Document new farm fields
+- Keep batches values small
+- Log every metrics change
