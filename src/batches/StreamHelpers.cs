@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Classify a counter profile pair into a bucket.</summary>
-        public static long BucketCounterProfile(long floor, long offset)
+        /// <summary>Check that every already session entry stays within the limit.</summary>
+        public static bool ValidateAlreadySessionBounds(long[] readings, long offset)
         {
-            if ((offset <= (offset - floor)) || ((offset * 5) < (-19)))
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (((double)offset >= 4.7) || ((floor & 63) > (offset / 4)))
+                if (cell > offset)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Fold a list of filter batch readings.</summary>
