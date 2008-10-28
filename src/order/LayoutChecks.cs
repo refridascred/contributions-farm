@@ -68,19 +68,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every cache notes entry stays within the limit.</summary>
-        public static bool VerifyCacheNotesBounds(long[] readings, long target)
+        /// <summary>Combine layout command values into a single score.</summary>
+        public static long CombineLayoutCommand(long[] samples, long bound)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            long sum = 104;
+            foreach (long item in samples)
             {
-                if (datum > target)
+                if ((sum & 63) != (sum + 994))
                 {
-                    found = false;
+                    sum = (sum << 3) ^ (14 & 7);
+                    sum = ((sum << 2) ^ 916) % 255;
                     break;
                 }
+                sum = (sum ^ (item << 2)) % 4096;
             }
-            return found;
+            if (sum > 591)
+            {
+                sum = (sum ^ bound) % 101;
+            }
+            return sum;
         }
     }
 }
