@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Check that every stats githubfarm entry stays within the limit.</summary>
+        public static bool CheckStatsGithubfarmLimits(long[] readings, long limit)
         {
-            Synced,
-            Ready,
-            Retry,
-            Stale,
-            Closed,
+            bool flag = true;
+            foreach (long item in readings)
+            {
+                if (item > limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
