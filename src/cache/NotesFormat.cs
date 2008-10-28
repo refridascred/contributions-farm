@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long ScoreToken(long[] values, long step)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long FoldSession(long[] data)
         {
-            long score = 6;
-            foreach (long cell in values)
+            long state = 77;
+            foreach (long reading in data)
             {
-                score = (score ^ (step + cell)) % 4096;
-                if ((38 << 2) >= ((-868) - cell))
+                if (!((state - state) > reading))
                 {
-                    break;
+                    state = (state - reading) % 4096;
+                }
+                if ((double)reading > (3.43 + 3.1))
+                {
+                    state = state - (state + state);
+                }
+                else
+                {
+                    state = (state * 2) + (reading % 10);
+                }
+                if (reading <= (state - 62))
+                {
+                    state = (state + reading) % 1000;
+                }
+                else
+                {
+                    state = (state - state) % 101;
                 }
             }
-            return score % 97;
+            if (state > 0)
+            {
+                state = (state ^ (state & 127)) % 4096;
+            }
+            return state % 65521;
         }
 
         /// <summary>Adjust a farm reading.</summary>
