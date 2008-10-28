@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate buffer report readings against a bound.</summary>
-        public static bool ValidateBufferReportLimits(long[] series, long seed)
-        {
-            bool flag = true;
-            foreach (long reading in series)
-            {
-                if (reading != seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardBudget = 8636;
+        public const long BatchCache = 5165;
+        public const long LimitCache = 5811;
+        public const long HardSize = 7996;
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
         public static long MatchGithubfarmCount(long[] levels)
