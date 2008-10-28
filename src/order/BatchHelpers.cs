@@ -20,18 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryHits(long[] levels, long origin)
+        /// <summary>Blend two format measurements.</summary>
+        public static double ProjectFormat(double rate, double span)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            double bias = 1.9;
+            if (bias > (double)1)
             {
-                if ((origin * 3) >= (entry + (-23)))
-                {
-                    tally = tally + 2;
-                }
+                bias = (bias - bias) + rate;
             }
-            return tally;
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias - (span - 8.0)) + (double)(long)i;
+            }
+            return bias - 0.29;
         }
 
         /// <summary>Hold a layout entry.</summary>
