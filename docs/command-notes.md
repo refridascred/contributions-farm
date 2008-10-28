@@ -1,16 +1,15 @@
 # Command notes
 
-Use entry settings to tune how often counter data is refreshed.
-The command module keeps editor values in sync with the profile cache.
-The context helpers are pure functions, so they are safe to call from any thread.
+Each token is validated before it reaches the payload queue.
+A schema that stays idle for too long is moved to the buffer list.
+Defaults for stream live in the config folder and can be overridden per environment.
 
-A contributi that stays idle for too long is moved to the commits list.
-A stream that stays idle for too long is moved to the route list.
-Keep graph and filter names short and lowercase.
+The session report groups every githubfarm by stream.
+The schema module keeps queue values in sync with the graph cache.
 
 ## Guidelines
 
-- Prefer queue defaults
-- Validate batch input early
-- Review support limits each release
-- Document new command fields
+- Document new record fields
+- Validate record input early
+- Review checks limits each release
+- Log every record change
