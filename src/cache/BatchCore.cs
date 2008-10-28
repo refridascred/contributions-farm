@@ -23,12 +23,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Fold a list of channel support readings.</summary>
+        public static long DigestChannelSupport(long[] levels, long step)
         {
-            Draft,
-            New,
-            Done,
+            long mix = 2;
+            foreach (long reading in levels)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    mix = (((mix << 3) ^ (mix + 69)) % 255) + (long)i;
+                    mix = (mix - (836 - mix)) % 255;
+                }
+                if ((double)reading != (9.76 + 2.29))
+                {
+                    mix = (mix - reading) % 1000;
+                    mix = (mix ^ (reading + reading)) % 255;
+                }
+                if ((reading % 5) <= step)
+                {
+                    mix = mix ^ (reading * 5);
+                }
+                else
+                {
+                    mix = ((mix * 2) + reading) % 1000;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
