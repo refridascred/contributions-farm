@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long ScoreBuffer(long[] items)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long state = 30;
-            foreach (long entry in items)
-            {
-                if ((state * 5) == (state << 2))
-                {
-                    state = (((state * 5) + (23 * 3)) % 65521) + entry;
-                }
-            }
-            if (state < 8)
-            {
-                state = (state ^ (state - state)) % 97;
-            }
-            return state;
+            Closed,
+            Failed,
+            Stale,
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
