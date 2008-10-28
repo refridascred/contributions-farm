@@ -1,6 +1,7 @@
 {
-  "idle_capacity_s": true,
-  "base_delay_s": 19,
-  "retry_retries": 100,
-  "readonly": true
+  "dry_run": true,
+  "payload_interval": ["green", "standard", "latest", "primary"],
+  "batch_window": 97.35,
+  "idle_retries": ["blue", "cached", "primary"],
+  "route_depth": 7.91
 }
