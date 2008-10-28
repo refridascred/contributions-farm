@@ -1,10 +1,7 @@
-id,level,region,label
-1,cached,80.34,697
-2,fallback,128,63.42
-3,stable,10.6,1.17
-4,877,619,open
-5,latest,stable,15.5
-6,stable,187,79.74
-7,548,eu-west,12.56
-8,224,staging,eu-west
-9,196,371,268
+id,ratio,score,count
+1,945,450,871
+2,latest,76.75,87.36
+3,91.71,62.97,903
+4,stable,74.41,155
+5,40.07,765,753
+6,blue,98.32,legacy
