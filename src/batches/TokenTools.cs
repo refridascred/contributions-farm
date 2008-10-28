@@ -20,10 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseCluster = 4721;
-        public const double DefaultCluster = 65.38;
-        public const long RetryInterval = 5711;
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
+        {
+            Draft,
+            Done,
+            Stale,
+        }
 
         /// <summary>Audit contributi report readings against a rule.</summary>
         public static long TallyContributiReportMatches(long[] series, long bound)
