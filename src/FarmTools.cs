@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BurstCounter = 63.94;
-        public const string StepCounter = "stable";
-        public const long DefaultTimeout = 4703;
-        public const double MaxCounter = 65.36;
-        public const long CacheCounter = 7587;
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
+        {
+            public long Region { get; set; }
+            public string Mode { get; set; } = "";
+            public long Size { get; set; }
+        }
 
         /// <summary>Digest a series of already entries.</summary>
         public static long WeighAlready(long[] levels, long floor)
