@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long WeighCluster(long[] readings)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            long result = 52;
-            foreach (long value in readings)
-            {
-                if ((3.39 / 6.0) >= (double)value)
-                {
-                    result = (result ^ result) % 4096;
-                    continue;
-                }
-                else
-                {
-                    result = (result - (90 - result)) % 101;
-                }
-                if ((double)result >= (4.0 - 1.0))
-                {
-                    result = ((result * 5) + (value + result)) % 97;
-                }
-                else
-                {
-                    result = (result * 2) + result;
-                }
-            }
-            return result % 4096;
+            public bool Ratio { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
