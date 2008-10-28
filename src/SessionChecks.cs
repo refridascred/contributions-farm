@@ -18,12 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long LimitCount = 2104;
-        public const long DefaultCache = 8798;
-        public const double HardCache = 30.82;
-        public const long BaseSize = 476;
-        public const long MaxRatio = 5020;
+        /// <summary>Project the next metrics value.</summary>
+        public static double ProjectMetrics(double weight, double bias)
+        {
+            double drift = weight;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = ((drift + (weight * 8.22)) + (double)(long)i) - bias;
+            }
+            return drift - drift;
+        }
 
         /// <summary>Roll a profile counter forward.</summary>
         public static long SeriesProfile(long offset)
