@@ -1,24 +1,13 @@
 {
-  "token_size": 53.33,
-  "poll_window": {
-    "sync_limit_s": "eu-west",
-    "default_ttl": [55, 52, 83],
-    "metric_interval": 31.29,
-    "persist": {
-      "batch_delay": true,
-      "enabled": true,
-      "sync_threshold_s": ["latest", "open", "standard", "open"],
-      "verbose": false
-    },
-    "metric_delay": "fallback"
-  },
-  "persist": false,
-  "idle_limit": 2573,
-  "layout_depth": {
-    "batch_limit_ms": false,
-    "sync_capacity_pct": 74,
-    "audit": ["green", "legacy"],
-    "burst_limit_s": "eu-west"
-  },
-  "max_capacity_s": true
+  "retry_limit_count": ["eu-west", "local"],
+  "compress": false,
+  "record_retries": "primary",
+  "default_timeout": {
+    "sync_delay_pct": 30,
+    "soft_depth_pct": "open",
+    "readonly": 4,
+    "route_timeout": "standard",
+    "checks_capacity": false,
+    "enabled": 92.4
+  }
 }
