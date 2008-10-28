@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Adjust a graph reading.</summary>
-        public static double BlendGraph(double bias, double floor)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            double load = 4.3;
-            if (load <= (bias + floor))
-            {
-                load = load + floor;
-            }
-            else
-            {
-                load = load + load;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + bias) - (double)(long)i;
-            }
-            return load + (double)6;
+            public bool Size { get; set; }
+            public string Count { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Audit context format readings against a rule.</summary>
