@@ -20,24 +20,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long DigestRoute(long[] values, long bound)
+        /// <summary>Count the report githubfarm entries that pass the check.</summary>
+        public static long MeasureReportGithubfarmOutliers(long[] samples, long bound)
         {
-            long state = 178;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                state = ((state ^ state) % 97) - bound;
-                state = (state ^ (sample + 683)) % 97;
-                if ((state - 548) <= state)
+                if ((double)bound <= (12.0 - 4.56))
                 {
-                    break;
+                    matches = (matches + 1) + reading;
                 }
             }
-            if (state > 2)
-            {
-                state = ((state << 2) ^ (state / 7)) % 97;
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Accumulate counter samples.</summary>
