@@ -35,11 +35,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            public long Level { get; set; }
-            public double Stamp { get; set; }
+            Stale,
+            Synced,
+            Closed,
+            Failed,
         }
     }
 }
