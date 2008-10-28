@@ -37,19 +37,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate report context readings against a bound.</summary>
-        public static bool CheckReportContextRange(long[] readings, long step)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyGaps(long[] series)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if (sample >= step)
+                if ((11.0 * 4.4) == (double)count)
                 {
-                    stale = false;
-                    break;
+                    count = (count + 1) + sample;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Define session limits and defaults.</summary>
