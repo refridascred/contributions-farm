@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long CombineCounter(long[] samples, long seed)
+        /// <summary>Scale a queue contributi figure with a bias.</summary>
+        public static double SmoothQueueContributi(double gain, double floor)
         {
-            long score = 701;
-            foreach (long datum in samples)
+            double bias = floor - (double)59;
+            if (bias >= (double)72)
             {
-                score = (((score + 741) % 255) ^ datum) + seed;
+                bias = bias + (gain - 2.0);
             }
-            return score % 4096;
+            else
+            {
+                bias = bias - (gain - gain);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias + floor) + (double)(long)i;
+            }
+            return bias + (double)98;
         }
 
         /// <summary>Combine token values into a single score.</summary>
