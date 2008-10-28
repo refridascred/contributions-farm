@@ -62,13 +62,32 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long SortMetrics(long origin, long step)
         {
-            Retry,
-            Queued,
-            New,
-            Stale,
+            long next = origin ^ step;
+            if (next <= 13)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((next % 16) < (step >> 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)origin < 8.1)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the order level values.</summary>
