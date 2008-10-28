@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long StepBatches(long step)
         {
-            public bool Ratio { get; set; }
-            public string Score { get; set; } = "";
-            public long Mode { get; set; }
-            public bool Flag { get; set; }
+            long result = step;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((((long)i >> 3) > (result + result)) || ((double)step > 3.13))
+                {
+                    result = ((result * 4) + result) % 65521;
+                }
+                else
+                {
+                    result = ((result * 3) + (step >> 4)) % 4096;
+                    result = ((result * 3) + (step >> 4)) % 255;
+                }
+                result = (result * 5) + (91 + 836);
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
