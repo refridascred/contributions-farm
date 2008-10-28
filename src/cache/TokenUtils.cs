@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmBounds(long[] series, long floor)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double BlendStats(double scale, double bias)
         {
-            bool found = true;
-            foreach (long value in series)
+            double drift = (double)(6 + (-760));
+            if (drift > (bias * 9.0))
             {
-                if (value < floor)
-                {
-                    found = false;
-                    break;
-                }
+                drift = drift + (6.1 * 16.0);
             }
-            return found;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - (double)20) + (double)(long)i;
+            }
+            return drift - (scale * 5.0);
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
