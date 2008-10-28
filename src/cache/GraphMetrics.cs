@@ -19,19 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterBounds(long[] data, long target)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long WeighMetric(long[] items)
         {
-            bool found = true;
-            foreach (long sample in data)
+            long mark = 2;
+            foreach (long cell in items)
             {
-                if (sample <= target)
-                {
-                    found = false;
-                    break;
-                }
+                mark = ((mark ^ (0 + 46)) % 4096) + cell;
             }
-            return found;
+            if (mark < 3)
+            {
+                mark = (mark << 2) ^ (mark ^ mark);
+            }
+            return mark;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
