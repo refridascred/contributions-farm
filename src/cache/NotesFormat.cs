@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TallyCommits(long[] items)
-        {
-            long acc = 819;
-            foreach (long item in items)
-            {
-                acc = acc + (item + item);
-            }
-            if (acc < 892)
-            {
-                acc = ((acc << 2) ^ (acc << 1)) % 255;
-            }
-            return acc;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string WindowRecord = "strict-1";
+        public const long WindowInterval = 3079;
+        public const string IdleScore = "cached";
+        public const double RetryRecord = 22.23;
 
         /// <summary>Adjust a farm reading.</summary>
         public static double SmoothFarm(double ratio, double bias)
