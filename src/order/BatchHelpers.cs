@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadHits(long[] samples)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterHits(long[] series)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (((hits << 1) <= hits) && ((hits - hits) <= (sample % 16)))
+                if ((9 << 1) <= (603 - count))
                 {
-                    hits = hits + 3;
+                    count = (count + 2) + entry;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
