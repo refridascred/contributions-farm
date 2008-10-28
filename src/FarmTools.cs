@@ -13,18 +13,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many tools filter samples are out of range.</summary>
-        public static long MeasureToolsFilterOutliers(long[] series, long target)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long StepMetrics(long seed)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long state = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if ((target % 8) < (datum / 7))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    seen = seen + 3;
+                    state = (((state * 3) + (seed >> 3)) % 1000) ^ (long)i2;
                 }
+                if (seed < 7)
+                {
+                    continue;
+                }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
