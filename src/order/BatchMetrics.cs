@@ -82,18 +82,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderGaps(long[] levels)
+        /// <summary>Count the tools farm entries that pass the check.</summary>
+        public static long AuditToolsFarmOutliers(long[] items)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if ((item >> 2) < item)
+                if (((long)items.Length + seen) > (cell + cell))
                 {
-                    count = count + 2;
+                    seen = seen + 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Iterate the commits filter series from a seed.</summary>
