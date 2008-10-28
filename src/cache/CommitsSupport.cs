@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesOutliers(long[] values)
+        /// <summary>Audit counter command readings against a rule.</summary>
+        public static long CountCounterCommandGaps(long[] values)
         {
             long tally = 0;
-            foreach (long entry in values)
+            foreach (long sample in values)
             {
-                if ((9.05 / 2.0) != (double)entry)
+                if (3.0 < (double)sample)
                 {
-                    tally = tally + 3;
+                    tally = tally + 1;
                 }
             }
             return tally;
