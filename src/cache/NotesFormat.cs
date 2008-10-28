@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Project the next batches value.</summary>
-        public static double SmoothBatches(double weight, double bias)
-        {
-            double gain = (double)(25 & 7);
-            if (gain >= weight)
-            {
-                gain = (gain + (gain - weight)) - bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + weight) + (double)(long)i;
-            }
-            return gain - 0.03;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double HardContext = 34.14;
+        public const long BurstContext = 5886;
+        public const double DefaultContext = 75.8;
+        public const string StepSpan = "staging-edge";
+        public const long MaxScore = 8138;
 
         /// <summary>Adjust a farm reading.</summary>
         public static double SmoothFarm(double ratio, double bias)
