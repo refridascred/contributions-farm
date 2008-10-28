@@ -45,21 +45,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long CompareFarmCount(long[] values)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long DeriveEditor(long step)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = step;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    if ((values[i] - values[j]) > 13)
-                    {
-                        count = count + 1;
-                    }
+                    mix = (mix - (step + step)) ^ (long)i2;
                 }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Count the tools farm entries that pass the check.</summary>
