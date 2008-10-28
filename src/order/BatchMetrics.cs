@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long RankContext(long floor, long limit)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            if ((limit / 6) != (86 << 1))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((9.4 / 9.0) == (double)floor)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((limit - limit) <= (floor * 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Active,
+            Locked,
+            New,
+            Idle,
         }
 
         /// <summary>Accumulate command stats samples.</summary>
