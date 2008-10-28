@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long CompareCounterCount(long[] series)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long DigestEditor(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 82;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (862 > (entry ^ (-82)))
                 {
-                    if ((series[i] + series[j]) > 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = ((total << 3) ^ (entry - 70)) % 255;
+                    total = total ^ (total & 1);
                 }
+                total = ((total << 3) ^ (total - 473)) % 4096;
+                total = total ^ entry;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Count the stream graph entries that pass the check.</summary>
