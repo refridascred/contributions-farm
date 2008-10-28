@@ -42,19 +42,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphRange(long[] samples, long offset)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long SeekFarmIndex(long[] items, long target)
         {
-            bool flag = true;
-            foreach (long datum in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum < offset)
+                if ((items[i] > target) && ((items[i] % 3) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
