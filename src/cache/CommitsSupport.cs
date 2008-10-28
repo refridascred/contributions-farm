@@ -19,17 +19,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LocateReportIndex(long[] items, long step)
+        /// <summary>Derive the next context session value from a seed.</summary>
+        public static long IterateContextSession(long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if ((items[i] == step) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                anchor = (anchor ^ (floor % 60)) % 255;
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
