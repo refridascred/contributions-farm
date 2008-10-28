@@ -31,19 +31,21 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double BlendMetrics(double weight, double floor)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long MatchEditorCount(long[] readings)
         {
-            double mean = weight / 7.0;
-            if (mean <= (mean - 0.9))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = (mean + 8.7) - floor;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - mean) - (double)(long)i;
-            }
-            return mean - (mean - mean);
+            return hits;
         }
 
         /// <summary>Validate metric session readings against a bound.</summary>
