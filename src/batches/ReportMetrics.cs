@@ -41,14 +41,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            Draft,
-            Stale,
-            Queued,
-            Locked,
-            New,
+            public string Weight { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
