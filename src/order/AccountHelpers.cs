@@ -32,12 +32,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Grade a route channel value against two limits.</summary>
+        public static long SortRouteChannel(long step, long target)
         {
-            Locked,
-            Failed,
-            New,
+            long step2 = step - target;
+            if (!((target & 255) < (step2 & 1)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!(step < (step ^ target)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)step2 <= (5.81 - 8.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((step2 % 7) == (step / 7))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
