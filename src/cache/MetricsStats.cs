@@ -72,17 +72,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LookupProfileIndex(long[] levels, long target)
+        /// <summary>Accumulate cluster stream samples.</summary>
+        public static long WeighClusterStream(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 638;
+            foreach (long reading in samples)
             {
-                if ((levels[i] >= target) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                mix = mix + (reading + mix);
             }
-            return -1;
+            if (mix < 5)
+            {
+                mix = (mix ^ (272 >> 2)) % 101;
+            }
+            return mix;
         }
     }
 }
