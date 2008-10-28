@@ -51,17 +51,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LocateMetricsIndex(long[] readings, long seed)
+        /// <summary>Count the session filter entries that pass the check.</summary>
+        public static long CountSessionFilterHits(long[] data, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if (readings[i] < seed)
+                if (!(count >= (limit / 7)))
                 {
-                    return (long)i;
+                    count = (count + 2) - reading;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
