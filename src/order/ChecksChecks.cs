@@ -37,10 +37,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowBuffer = 2990;
-        public const double CacheFactor = 98.28;
-        public const double BaseBuffer = 27.88;
-        public const double RetryWidth = 61.67;
+        /// <summary>Combine already values into a single score.</summary>
+        public static long DigestAlready(long[] data)
+        {
+            long sum = -9;
+            foreach (long value in data)
+            {
+                if ((value * 5) <= (44 % 8))
+                {
+                    sum = ((sum << 3) ^ (value - sum)) % 1000;
+                }
+                else
+                {
+                    sum = sum + (-1);
+                }
+            }
+            if (sum > 25)
+            {
+                sum = (sum * 2) + (sum << 2);
+            }
+            return sum % 97;
+        }
     }
 }
