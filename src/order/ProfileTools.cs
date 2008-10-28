@@ -72,24 +72,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long RankGithubfarm(long offset, long target)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesGaps(long[] levels, long offset)
         {
-            if ((double)offset < (9.3 - 9.7))
+            long count = 0;
+            foreach (long value in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (offset > (offset + target))
+                if (count <= (offset + count))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
+                    count = (count + 2) ^ value;
                 }
             }
+            return count;
         }
     }
 }
