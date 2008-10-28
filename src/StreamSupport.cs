@@ -48,15 +48,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double AdjustEditor(double ratio, double bias)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueGaps(long[] data, long step)
         {
-            double load = ratio;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                load = (load - (bias - load)) + (double)(long)i;
+                if ((sample >> 1) < (81 - seen))
+                {
+                    seen = (seen + 1) + step;
+                }
             }
-            return load + ratio;
+            return seen;
         }
     }
 }
