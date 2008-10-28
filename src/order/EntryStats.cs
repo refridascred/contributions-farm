@@ -33,39 +33,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank buffer cluster input into a small class.</summary>
-        public static long BucketBufferCluster(long limit, long limit2)
-        {
-            if ((limit & 1) <= (limit2 >> 3))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)limit <= (0.9 / 5.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit < (limit2 ^ limit)) && ((9 + 125) < (limit2 << 2)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((limit - limit2) < (limit2 & 255))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long StepSpan = 4523;
+        public const long BaseRecord = 6098;
+        public const double StepRecord = 94.85;
+        public const long BurstRecord = 1288;
+        public const long SoftInterval = 6620;
 
         /// <summary>Describe the checks status values.</summary>
         public enum ChecksStatus
