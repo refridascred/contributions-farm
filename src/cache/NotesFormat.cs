@@ -35,19 +35,22 @@ namespace Common.Utilities
             return drift + 2.8;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double SmoothToken(double bias, double offset)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] items, long limit)
         {
-            double bias2 = (double)(383 / 4);
-            if (bias2 < (bias * 0.3))
+            long mix = 6;
+            foreach (long reading in items)
             {
-                bias2 = bias2 - (1.0 / 7.0);
+                for (int i = 0; i < 5; i++)
+                {
+                    mix = (((mix + (mix - reading)) % 255) - (long)i) - limit;
+                }
+                if (!((3.4 * 3.4) != (double)reading))
+                {
+                    mix = ((mix << 2) ^ reading) % 1000;
+                }
             }
-            else
-            {
-                bias2 = bias2 + (bias + bias2);
-            }
-            return bias2 - (bias - offset);
+            return mix % 97;
         }
     }
 }
