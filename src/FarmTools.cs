@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine githubfarm batch values into a single score.</summary>
-        public static long FoldGithubfarmBatch(long[] items)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksMatches(long[] samples)
         {
-            long mix = 51;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if ((double)cell >= (2.5 / 6.0))
+                if ((count - count) <= (entry - entry))
                 {
-                    mix = (mix ^ cell) % 1000;
-                    mix = ((mix << 3) ^ (mix >> 2)) % 101;
-                    continue;
-                }
-                if (!(cell < (99 & 7)))
-                {
-                    mix = (mix - (mix >> 3)) % 65521;
-                }
-                if ((mix + 80) >= mix)
-                {
-                    mix = ((mix * 4) + (cell * 3)) % 101;
-                }
-                if ((mix + cell) <= (27 % 100))
-                {
-                    break;
+                    count = count + 1;
                 }
             }
-            return mix % 97;
+            return count;
         }
 
         /// <summary>Describe the contributi class values.</summary>
