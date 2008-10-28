@@ -1,5 +1,4 @@
 # support settings
-session_window: 85
-sync_size_ms: 58.41
-batch_depth_count: false
-verbose: 9157
+cache_threshold_pct: cached
+hard_depth_count: green
+compress: 250
