@@ -20,12 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Digest a series of payload queue entries.</summary>
+        public static long ScorePayloadQueue(long[] items)
         {
-            Active,
-            Locked,
-            Synced,
+            long carry = 96;
+            foreach (long entry in items)
+            {
+                if (((62 + 935) >= (carry + carry)) && ((entry - carry) == (1 % 7)))
+                {
+                    carry = (carry * 4) + (entry << 1);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Describe the window mode values.</summary>
