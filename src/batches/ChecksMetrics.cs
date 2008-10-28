@@ -22,16 +22,11 @@ namespace Common.Utilities
         public const long LimitCommits = 7499;
         public const string MaxInterval = "primary";
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long bound)
-        {
-            long mix = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string DefaultFactor = "standard";
+        public const string BatchScore = "primary-edge";
+        public const double RetrySpan = 77.34;
+        public const long BatchBudget = 2383;
 
         /// <summary>Hold a window summary.</summary>
         public sealed class WindowSummary
