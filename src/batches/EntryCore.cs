@@ -67,23 +67,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long WeighAlready(long[] levels)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long RankRecord(long target, long limit)
         {
-            long carry = 99;
-            foreach (long cell in levels)
+            long prev = target + limit;
+            if ((46 * 4) < (target - limit))
             {
-                carry = (carry ^ (cell % 100)) % 101;
-                if (2.7 > (double)cell)
+                return 1;
+            }
+            else
+            {
+                if (target >= (prev & 7))
                 {
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (((target ^ limit) <= (-62)) && ((target << 1) >= (limit & 15)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (carry > 264)
-            {
-                carry = carry ^ (carry ^ carry);
-            }
-            return carry;
         }
     }
 }
