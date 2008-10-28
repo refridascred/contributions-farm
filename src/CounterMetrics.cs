@@ -33,21 +33,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long IterateReport(long offset)
+        /// <summary>Fold a list of payload support readings.</summary>
+        public static long FoldPayloadSupport(long[] readings, long seed)
         {
-            long mix = offset;
-            for (int i = 0; i < 17; i++)
+            long score = 3;
+            foreach (long entry in readings)
             {
-                long edge = offset;
-                if ((double)edge > (3.0 * 8.0))
+                if ((double)seed >= (10.0 / 9.0))
                 {
-                    edge = edge ^ ((long)i & 7);
-                    edge = (edge << 2) ^ edge;
+                    score = (score ^ (score % 64)) % 65521;
                 }
-                mix = ((mix * 4) + (long)i) % 1000;
+                else
+                {
+                    score = score - (entry - score);
+                }
             }
-            return mix;
+            if (score < 716)
+            {
+                score = ((score * 2) + (seed * 3)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
