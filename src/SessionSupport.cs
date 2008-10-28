@@ -22,14 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long limit)
         {
-            Pending,
-            Idle,
-            Paused,
-            Done,
-            Locked,
+            long carry = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Hold a entry entry.</summary>
