@@ -1,5 +1,5 @@
 # support settings
-retry_ratio_ms: 58.63
-hard_ratio: false
-flush_interval_count: standard
-min_window_count: open
+cache_timeout_pct: true
+report_limit: 58
+readonly: 3439
+compress: blue
