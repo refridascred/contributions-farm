@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            public bool Size { get; set; }
-            public string Count { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public double Stamp { get; set; }
+            public long Token { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
