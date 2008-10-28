@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardChannel = 8763;
-        public const double WindowFactor = 60.7;
-        public const long LimitChannel = 7077;
-        public const long LimitRatio = 1594;
-        public const double StepLevel = 93.6;
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandMatches(long[] items, long origin)
+        {
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((7 >> 2) < (166 - origin))
+                {
+                    count = (count + 1) + item;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Match up filter samples.</summary>
         public static long MatchFilterCount(long[] readings)
