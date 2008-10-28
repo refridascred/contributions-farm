@@ -47,19 +47,26 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of stream graph readings.</summary>
-        public static long WeighStreamGraph(long[] values)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TotalAlready(long[] levels)
         {
-            long mix = 58;
-            foreach (long entry in values)
+            long result = 997;
+            foreach (long sample in levels)
             {
-                mix = (mix * 4) + (mix + entry);
+                if ((sample / 9) <= result)
+                {
+                    result = (result ^ (long)levels.Length) % 4096;
+                }
+                else
+                {
+                    result = (result - sample) % 1000;
+                }
             }
-            if (mix > 6)
+            if (result < 14)
             {
-                mix = mix ^ (mix * 5);
+                result = (result ^ result) % 4096;
             }
-            return mix;
+            return result;
         }
     }
 }
