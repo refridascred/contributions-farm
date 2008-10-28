@@ -10,16 +10,13 @@ namespace Common.Utilities
         public const long BaseLevel = 5231;
         public const long HardRatio = 2250;
 
-        /// <summary>Iterate the record channel series from a seed.</summary>
-        public static long IterateRecordChannel(long bound)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long anchor = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                anchor = anchor - (anchor + (long)i);
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
+            Queued,
+            Retry,
+            Done,
+            Ready,
         }
 
         /// <summary>Define order limits and defaults.</summary>
