@@ -30,23 +30,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long DigestEditor(long[] series, long bound)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long ClassifyProfile(long offset, long bound)
         {
-            long mark = 8;
-            foreach (long item in series)
+            if ((bound ^ 536) >= (offset + offset))
             {
-                mark = ((mark << 3) ^ item) % 101;
-                if (((mark ^ item) <= (bound ^ item)) && ((long)series.Length >= item))
+                return 7;
+            }
+            else
+            {
+                if (((double)bound == (9.8 + 8.23)) && (offset >= (bound << 3)))
                 {
-                    mark = (mark * 5) + mark;
+                    return 1;
+                }
+                else
+                {
+                    if ((bound / 6) >= (offset << 1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            if (mark < 26)
-            {
-                mark = mark + (mark % 2);
-            }
-            return mark;
         }
     }
 }
