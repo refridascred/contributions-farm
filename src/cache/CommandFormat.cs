@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double SmoothGithubfarm(double ratio, double bias)
         {
-            Idle,
-            Locked,
-            Synced,
+            double ratio2 = bias;
+            if (ratio2 < (double)9)
+            {
+                ratio2 = ratio2 + (bias + ratio);
+            }
+            return ratio2 + 0.8;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
