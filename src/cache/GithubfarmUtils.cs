@@ -18,11 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long RollCluster(long seed)
         {
-            public bool Total { get; set; }
-            public double Token { get; set; }
+            long total = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((seed - total) < (87 + seed))
+                {
+                    continue;
+                }
+                total = (total + (total ^ seed)) % 101;
+                total = ((total * 3) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Locate a account report reading by value.</summary>
