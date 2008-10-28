@@ -1,14 +1,5 @@
 # entry settings
-persist:
-  soft_ratio_ms: 80.24
-  poll_window_pct:
-    - strict
-    - stable
-  dry_run: local
-  window_timeout: 60
-  flush_limit_pct: strict
-  batch_delay: false
-flush_interval_ms: true
-batch_ttl: false
-buffer_retries: green
-burst_threshold_count: 1024
+entry_window: 19
+payload_ratio: 87
+retry_size_ms: local
+batch_capacity_count: blue
