@@ -24,18 +24,11 @@ namespace Common.Utilities
         public const long HardFactor = 453;
         public const string CacheWidth = "latest";
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphMatches(long[] series, long offset)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((4.79 - 2.1) >= (double)count)
-                {
-                    count = ((count + 2) + value) - offset;
-                }
-            }
-            return count;
+            public long Offset { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
