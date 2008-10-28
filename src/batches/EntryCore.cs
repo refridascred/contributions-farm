@@ -67,13 +67,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            public bool Score { get; set; }
-            public string Count { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public bool Rank { get; set; }
+            public long Score { get; set; }
+            public long Flag { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
