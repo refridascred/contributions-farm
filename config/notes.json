@@ -1,6 +1,6 @@
 {
-  "strict": [432, 205, 397, 213],
-  "audit": "eu-west",
-  "hard_window": "staging",
-  "idle_ratio": "edge"
+  "notes_depth": 100,
+  "enabled": "open",
+  "farm_retries": 10.0,
+  "hard_depth_ms": ["standard", "staging", "blue"]
 }
