@@ -28,14 +28,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            Pending,
-            Failed,
-            Active,
-            Ready,
-            Idle,
+            public bool Limit { get; set; }
+            public long Offset { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
