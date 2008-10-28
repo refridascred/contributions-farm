@@ -30,17 +30,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LocateAccountIndex(long[] values, long offset)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long DigestEditor(long[] series, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 8;
+            foreach (long item in series)
             {
-                if (values[i] <= offset)
+                mark = ((mark << 3) ^ item) % 101;
+                if (((mark ^ item) <= (bound ^ item)) && ((long)series.Length >= item))
                 {
-                    return (long)i;
+                    mark = (mark * 5) + mark;
                 }
             }
-            return -1;
+            if (mark < 26)
+            {
+                mark = mark + (mark % 2);
+            }
+            return mark;
         }
     }
 }
