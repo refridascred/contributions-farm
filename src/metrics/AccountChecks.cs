@@ -48,15 +48,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a profile layout figure with a bias.</summary>
-        public static double ScaleProfileLayout(double scale, double floor)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long ScoreCommits(long[] series)
         {
-            double scale2 = (double)5 - scale;
-            if (scale2 >= scale2)
+            long mark = 59;
+            foreach (long value in series)
             {
-                scale2 = scale2 + floor;
+                if (6.12 > (double)mark)
+                {
+                    mark = ((mark << 2) ^ (302 % 24)) ^ value;
+                }
+                else
+                {
+                    mark = (mark << 2) ^ (mark & 7);
+                }
             }
-            return scale2 - (floor / 4.0);
+            return mark % 1000;
         }
 
         /// <summary>Iterate the window channel series from a seed.</summary>
