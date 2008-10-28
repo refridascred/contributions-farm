@@ -33,18 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit queue support readings against a rule.</summary>
-        public static long AuditQueueSupportHits(long[] levels, long target)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadGaps(long[] samples)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if (!((reading & 7) > 3) || (target >= (matches << 2)))
+                if (seen <= (28 + 0))
                 {
-                    matches = matches + 1;
+                    seen = (seen + 3) + entry;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Hold a record record.</summary>
