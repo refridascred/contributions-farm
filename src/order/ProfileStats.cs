@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Scale a queue contributi figure with a bias.</summary>
-        public static double SmoothQueueContributi(double gain, double floor)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            double bias = floor - (double)59;
-            if (bias >= (double)72)
-            {
-                bias = bias + (gain - 2.0);
-            }
-            else
-            {
-                bias = bias - (gain - gain);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias + floor) + (double)(long)i;
-            }
-            return bias + (double)98;
+            Stale,
+            Idle,
+            Pending,
         }
 
         /// <summary>Combine token values into a single score.</summary>
