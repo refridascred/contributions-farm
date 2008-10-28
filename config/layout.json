@@ -1,6 +1,7 @@
 {
-  "warm_limit": "stable",
-  "burst_interval": 2787,
-  "hard_timeout": true,
-  "max_limit_pct": "legacy"
+  "payload_threshold": 59.62,
+  "dry_run": [330, 182, 32, 80],
+  "batch_delay_s": 24.5,
+  "checks_ratio": 58,
+  "counter_size": false
 }
