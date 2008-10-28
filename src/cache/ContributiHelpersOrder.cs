@@ -39,12 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            public long Limit { get; set; }
-            public string Weight { get; set; } = "";
-            public long Offset { get; set; }
+            Active,
+            Synced,
+            Stale,
+            Done,
         }
 
         /// <summary>Digest a series of schema entries.</summary>
