@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double BlendGithubfarm(double ratio, double span)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            double scale = ratio;
-            if (scale < (ratio + ratio))
-            {
-                scale = scale - (double)69;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - span) + (double)(long)i;
-            }
-            return scale + (ratio / 6.0);
+            Idle,
+            Locked,
+            Synced,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
