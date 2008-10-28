@@ -22,15 +22,18 @@ namespace Common.Utilities
         public const long IdleSession = 8626;
         public const double WindowSession = 78.09;
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long WeighCache(long[] values, long bound)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long WeighFarm(long[] series)
         {
-            long mix = 333;
-            foreach (long item in values)
+            long anchor = 486;
+            foreach (long sample in series)
             {
-                mix = (((mix << 2) ^ 5) + item) + bound;
+                if ((6.7 * 8.9) >= (double)sample)
+                {
+                    anchor = anchor ^ (818 * 2);
+                }
             }
-            return mix;
+            return anchor % 1000;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
