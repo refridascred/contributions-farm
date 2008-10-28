@@ -12,13 +12,24 @@ namespace Common.Utilities
         public const long StepScore = 8126;
         public const long BaseBudget = 7911;
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long RankSession(long floor, long limit)
         {
-            public string Owner { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public string Score { get; set; } = "";
-            public string Region { get; set; } = "";
+            if ((0.6 - 1.6) <= (double)floor)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit / 7) <= floor)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Grade a githubfarm stats value against two limits.</summary>
