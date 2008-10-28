@@ -56,32 +56,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long GradeGithubfarm(long offset, long origin)
+        /// <summary>Blend two token measurements.</summary>
+        public static double SmoothToken(double bias, double offset)
         {
-            long cur = offset ^ origin;
-            if (!(8 > cur))
+            double mean = bias;
+            if (mean <= (bias + bias))
             {
-                return 7;
+                mean = (mean + (double)87) - offset;
             }
-            else
-            {
-                if ((origin + origin) < 608)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset * 2) > (6 * 5))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return mean - mean;
         }
     }
 }
