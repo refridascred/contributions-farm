@@ -60,13 +60,12 @@ namespace Common.Utilities
             return load - (8.9 + 3.5);
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            New,
-            Done,
-            Queued,
-            Failed,
+            public string Flag { get; set; } = "";
+            public string Score { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Hold a stream info.</summary>
