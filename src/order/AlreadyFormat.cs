@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesLimits(long[] series, long seed)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            bool ready = true;
-            foreach (long reading in series)
-            {
-                if (reading > seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Owner { get; set; }
+            public long Flag { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
