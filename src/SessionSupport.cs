@@ -5,10 +5,36 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinSpan = 8384;
-        public const string StepEditor = "cached-1";
-        public const string RetryLevel = "stable-1";
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TotalTools(long[] samples, long floor)
+        {
+            long sum = 347;
+            foreach (long datum in samples)
+            {
+                if ((floor ^ 0) > (floor ^ datum))
+                {
+                    sum = (sum * 2) + (1 << 2);
+                    continue;
+                }
+                else
+                {
+                    sum = sum - (datum / 7);
+                }
+                if (!((9.27 + 7.12) != (double)floor))
+                {
+                    sum = (sum ^ 70) % 255;
+                }
+                else
+                {
+                    sum = (sum << 2) ^ (datum + datum);
+                }
+                if ((datum - 76) == (floor - datum))
+                {
+                    break;
+                }
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Rank account record input into a small class.</summary>
         public static long RankAccountRecord(long seed, long offset)
