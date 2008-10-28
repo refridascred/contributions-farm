@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterOutliers(long[] samples)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long SeriesNotes(long offset)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long acc = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if (entry > (63 + count))
-                {
-                    count = count + 3;
-                }
+                acc = (acc + (offset / 6)) % 65521;
+                acc = acc - ((long)i ^ acc);
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Fold a list of report command readings.</summary>
