@@ -17,26 +17,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate command stats samples.</summary>
-        public static long CombineCommandStats(long[] data, long limit)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsGaps(long[] items, long limit)
         {
-            long result = 3;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if (((9.1 + 17.0) > (double)limit) && ((entry ^ result) >= limit))
+                if ((6.6 / 4.0) > (double)hits)
                 {
-                    result = result ^ (result % 60);
-                }
-                if ((result + result) != (entry & 15))
-                {
-                    break;
+                    hits = ((hits + 3) + cell) + limit;
                 }
             }
-            if (result < 3)
-            {
-                result = result + (limit + result);
-            }
-            return result % 1000;
+            return hits;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
