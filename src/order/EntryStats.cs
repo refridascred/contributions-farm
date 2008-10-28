@@ -34,19 +34,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TallyProfile(long[] items, long step)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long mix = 1;
-            foreach (long cell in items)
-            {
-                mix = (mix ^ step) ^ cell;
-            }
-            if (mix < 68)
-            {
-                mix = (mix * 5) + step;
-            }
-            return mix;
+            public long Token { get; set; }
+            public bool Mode { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
