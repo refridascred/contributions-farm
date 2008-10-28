@@ -1,6 +1,6 @@
 {
-  "flush_threshold": 11,
-  "default_delay": 63.34,
-  "stream_window": "edge",
-  "audit": [442, 209]
+  "strict": [432, 205, 397, 213],
+  "audit": "eu-west",
+  "hard_window": "staging",
+  "idle_ratio": "edge"
 }
