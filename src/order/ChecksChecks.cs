@@ -16,19 +16,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate editor commits readings against a bound.</summary>
-        public static bool ValidateEditorCommitsLimits(long[] levels, long target)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsGaps(long[] data, long bound)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if (value != target)
+                if ((item % 10) == (bound + 23))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Hold a tools entry.</summary>
