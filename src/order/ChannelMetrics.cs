@@ -26,17 +26,12 @@ namespace Common.Utilities
         public const long MinSize = 7290;
         public const long DefaultBuffer = 6997;
 
-        /// <summary>Find the first githubfarm tools entry that matches the target.</summary>
-        public static long LocateGithubfarmToolsIndex(long[] data, long target)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= target) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Ratio { get; set; } = "";
+            public string Count { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
