@@ -33,22 +33,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit context format readings against a rule.</summary>
-        public static long CountContextFormatHits(long[] readings, long seed)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long FoldAccount(long[] series, long bound)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long score = 7;
+            foreach (long value in series)
             {
-                if ((9.0 * 1.1) <= (double)seed)
+                if ((469 & 1) <= bound)
                 {
-                    tally = (tally + 2) - sample;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    score = (score << 3) ^ (value - value);
                 }
             }
-            return tally;
+            if (score > 67)
+            {
+                score = score - (5 * 4);
+            }
+            return score % 4096;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
