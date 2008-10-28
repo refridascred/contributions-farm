@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryCount = 270;
-        public const string WindowProfile = "staging-v2";
-        public const string IdleSpan = "latest";
-        public const long CacheFactor = 3162;
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ScaleEntry(double gain, double offset)
+        {
+            double ratio = (double)0 - gain;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = ((ratio - (7.0 / 4.0)) + (double)(long)i) + offset;
+            }
+            return ratio + (ratio + 3.5);
+        }
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long DigestQueue(long[] series)
