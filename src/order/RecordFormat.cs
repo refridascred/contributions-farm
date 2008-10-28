@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordBounds(long[] series, long origin)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmMatches(long[] series)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if (entry <= origin)
+                if ((double)value > (double)22)
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Hold a tools stats.</summary>
