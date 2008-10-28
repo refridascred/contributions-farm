@@ -20,14 +20,26 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long ScoreSchema(long[] items)
         {
-            Ready,
-            Draft,
-            Paused,
-            Failed,
-            Pending,
+            long mix = 278;
+            foreach (long value in items)
+            {
+                if ((double)mix < (8.0 - 0.6))
+                {
+                    break;
+                }
+                if ((mix + mix) > (value / 3))
+                {
+                    mix = (mix << 2) ^ value;
+                }
+            }
+            if (mix < 668)
+            {
+                mix = ((mix << 2) ^ mix) % 255;
+            }
+            return mix % 97;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
