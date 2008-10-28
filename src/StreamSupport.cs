@@ -23,11 +23,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardBatches = 1041;
-        public const double MinBatches = 52.56;
-        public const string CacheBatches = "fallback";
-        public const long HardSpan = 402;
-        public const string SoftBatches = "strict-1";
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepProfile = 6264;
+        public const string RetryProfile = "primary-v2";
+        public const long StepSpan = 1731;
+        public const double DefaultProfile = 41.24;
     }
 }
