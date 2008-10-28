@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphGaps(long[] values)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((count >= (25 / 6)) && ((391 % 64) <= (reading - count)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Synced,
+            Closed,
+            Locked,
         }
 
         /// <summary>Hold a route options.</summary>
