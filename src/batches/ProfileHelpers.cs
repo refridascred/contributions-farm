@@ -26,12 +26,19 @@ namespace Common.Utilities
         public const string BaseEntry = "open";
         public const long BatchInterval = 1209;
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Adjust a contributi support reading.</summary>
+        public static double ProjectContributiSupport(double scale, double span)
         {
-            public bool Limit { get; set; }
-            public long Offset { get; set; }
-            public bool Rank { get; set; }
+            double weight = (double)4 * 1.44;
+            if (weight < (scale + scale))
+            {
+                weight = weight + (16.0 / 4.0);
+            }
+            else
+            {
+                weight = weight - (weight + 9.8);
+            }
+            return weight - span;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
