@@ -1,11 +1,15 @@
 # Command notes
 
-The contributi module keeps already values in sync with the cluster cache.
-The cluster module keeps support values in sync with the batch cache.
+Keep editor and command names short and lowercase.
+Run the profile check before changing any command limits.
+A token that stays idle for too long is moved to the record list.
+
+The filter module keeps githubfarm values in sync with the farm cache.
+Each payload is validated before it reaches the report queue.
+The queue helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate report input early
-- Prefer cache defaults
-- Keep commits values small
-- Review tools limits each release
+- Log every editor change
+- Review order limits each release
+- Prefer buffer defaults
