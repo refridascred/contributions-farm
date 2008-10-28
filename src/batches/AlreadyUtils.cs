@@ -44,22 +44,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterHits(long[] values)
+        /// <summary>Match up checks samples.</summary>
+        public static long PairChecksCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((tally + sample) <= (long)values.Length) || ((double)sample == (5.3 + 2.6)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((samples[i] - samples[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
