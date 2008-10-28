@@ -13,19 +13,22 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long DeriveRecord(long offset)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] series)
         {
-            long carry = offset;
-            for (int i = 0; i < 5; i++)
+            long state = 27;
+            foreach (long cell in series)
             {
-                for (int i3 = 0; i3 < 8; i3++)
+                if ((255 * 5) >= (state * 4))
                 {
-                    carry = ((carry << 3) ^ (13 / 4)) - (long)i3;
+                    state = ((state + ((long)series.Length + state)) % 65521) ^ cell;
                 }
-                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return carry;
+            if (state > (-8))
+            {
+                state = (state << 2) ^ (state - 69);
+            }
+            return state;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
