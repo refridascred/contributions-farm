@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferRange(long[] series, long floor)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            bool ready = true;
-            foreach (long cell in series)
-            {
-                if (cell <= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Closed,
+            Paused,
+            Stale,
+            Active,
+            Locked,
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
