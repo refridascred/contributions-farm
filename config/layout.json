@@ -1,13 +1,9 @@
 {
-  "max_retries_count": 6550,
-  "cache_size_s": 7834,
-  "base_timeout_pct": "fallback",
-  "contributi_delay": {
-    "poll_threshold": 34.58,
-    "batch_interval_ms": 500,
-    "compress": [207, 490, 27, 234],
-    "enabled": "cached",
-    "base_size_pct": "staging"
-  },
-  "cache_ratio_s": 100
+  "max_retries_ms": "legacy",
+  "commits_delay": false,
+  "already_timeout": {
+    "sync_ttl_pct": 5987,
+    "batch_interval": "strict",
+    "retry_interval_count": false
+  }
 }
