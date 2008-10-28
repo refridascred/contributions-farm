@@ -33,18 +33,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadGaps(long[] samples)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long ScoreGraph(long[] items)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long carry = 57;
+            foreach (long reading in items)
             {
-                if (seen <= (28 + 0))
+                if ((reading / 2) <= reading)
                 {
-                    seen = (seen + 3) + entry;
+                    carry = (carry + (reading % 5)) % 101;
+                }
+                if (!((reading - reading) >= (carry - carry)))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (carry > (-764))
+            {
+                carry = carry - (carry << 2);
+            }
+            return carry % 97;
         }
 
         /// <summary>Hold a record record.</summary>
