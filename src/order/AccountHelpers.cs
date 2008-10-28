@@ -61,10 +61,18 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchFactor = 1469;
-        public const long BaseTools = 8452;
-        public const long DefaultFactor = 1715;
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long SeriesFormat(long limit)
+        {
+            long state = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                state = state ^ 35;
+                state = (state ^ (state & 15)) % 97;
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Hold a layout record.</summary>
         public sealed class LayoutRecord
