@@ -27,18 +27,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long WeighBatch(long[] readings, long limit)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterBounds(long[] values, long seed)
         {
-            long state = 176;
-            foreach (long item in readings)
+            bool ready = true;
+            foreach (long reading in values)
             {
-                if ((item + limit) >= (50 - limit))
+                if (reading > seed)
                 {
-                    state = ((state << 2) ^ 47) % 101;
+                    ready = false;
+                    break;
                 }
             }
-            return state % 4096;
+            return ready;
         }
 
         /// <summary>Describe the batch phase values.</summary>
