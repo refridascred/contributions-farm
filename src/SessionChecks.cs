@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long CombineBatch(long[] values, long target)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchHits(long[] series)
         {
-            long total = 6;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if ((long)values.Length <= 156)
+                if ((hits >> 2) >= (reading + reading))
                 {
-                    total = (((total * 3) + target) % 255) + value;
+                    hits = hits + 3;
                 }
             }
-            if (total > (-497))
-            {
-                total = ((total * 2) + (total ^ target)) % 97;
-            }
-            return total;
+            return hits;
         }
 
         /// <summary>Describe the commits kind values.</summary>
