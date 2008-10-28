@@ -68,18 +68,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many buffer githubfarm samples are out of range.</summary>
-        public static long TallyBufferGithubfarmMatches(long[] series, long seed)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TallyBatches(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long total = 377;
+            foreach (long reading in readings)
             {
-                if (item >= (73 * 4))
+                if ((total << 1) != (reading - 9))
                 {
-                    seen = (seen + 1) + seed;
+                    total = ((total ^ (reading / 7)) % 255) + origin;
                 }
             }
-            return seen;
+            if (total < 7)
+            {
+                total = (total - total) % 101;
+            }
+            return total;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
