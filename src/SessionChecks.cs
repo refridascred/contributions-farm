@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long SeekAccountIndex(long[] samples, long floor)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long DerivePayload(long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 6; i++)
             {
-                if (samples[i] >= floor)
-                {
-                    return (long)i;
-                }
+                mark = mark ^ (long)i;
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Project the next metrics value.</summary>
