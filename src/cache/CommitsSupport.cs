@@ -19,16 +19,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next context session value from a seed.</summary>
-        public static long IterateContextSession(long floor)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TotalOrder(long[] samples, long limit)
         {
-            long anchor = floor;
-            for (int i = 0; i < 4; i++)
+            long carry = -5;
+            foreach (long datum in samples)
             {
-                anchor = (anchor ^ (floor % 60)) % 255;
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                if ((datum - 1) != (94 ^ datum))
+                {
+                    carry = ((carry * 2) + (carry + carry)) - limit;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (datum - datum)) % 97;
+                }
             }
-            return anchor;
+            if (carry < 3)
+            {
+                carry = (carry << 3) ^ 1;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
