@@ -26,14 +26,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportOutliers(long[] items)
         {
-            Done,
-            Queued,
-            Synced,
-            New,
-            Stale,
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((matches + datum) >= (matches >> 2))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of batches githubfarm readings.</summary>
