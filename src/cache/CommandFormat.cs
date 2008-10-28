@@ -65,10 +65,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string LimitStats = "alpha-v2";
-        public const long StepLevel = 5566;
-        public const string HardStats = "fallback-v2";
-        public const string MinStats = "alpha-v2";
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double AdjustReport(double bias, double span)
+        {
+            double mean = 9.6;
+            if (mean > span)
+            {
+                mean = (mean - span) - bias;
+            }
+            else
+            {
+                mean = mean - (7.0 + 7.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - span) + (double)(long)i;
+            }
+            return mean + (mean / 7.0);
+        }
     }
 }
