@@ -34,19 +34,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double BlendPayload(double bias, double span)
+        /// <summary>Derive the next support counter value from a seed.</summary>
+        public static long RollSupportCounter(long floor)
         {
-            double ratio = (span * 2.5) - (span / 4.0);
-            if (ratio <= ratio)
+            long total = floor;
+            for (int i = 0; i < 6; i++)
             {
-                ratio = (ratio + 6.87) - bias;
+                total = ((total * 3) + (long)i) % 1000;
             }
-            else
-            {
-                ratio = ratio - span;
-            }
-            return ratio - 6.2;
+            return total;
         }
 
         /// <summary>Hold a batches options.</summary>
