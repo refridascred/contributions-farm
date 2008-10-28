@@ -1,4 +1,24 @@
 # support settings
-support_limit: eu-west
-already_capacity: true
-batch_limit: 550
+hard_depth_pct:
+  - 386
+  - 241
+  - 313
+  - 287
+poll_timeout_count:
+  - 382
+  - 227
+  - 163
+graph_threshold: 4109
+soft_delay:
+  sync_limit_ms: 0.78
+  default_depth_pct: 45
+  retry_size: true
+  default_timeout:
+    strict: stable
+    base_threshold_s: latest
+    soft_limit: 34.8
+    flush_size_s: 65.44
+    default_window_ms: 15.96
+    audit: 4948
+  base_ttl_s: false
+  soft_ttl_pct: legacy
