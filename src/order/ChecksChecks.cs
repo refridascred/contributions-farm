@@ -27,19 +27,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowRange(long[] levels, long bound)
+        /// <summary>Match up route window samples.</summary>
+        public static long MatchRouteWindowCount(long[] data)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell <= bound)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((data[i] + data[j]) < 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
