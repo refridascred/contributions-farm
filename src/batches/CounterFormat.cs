@@ -20,17 +20,18 @@ namespace Common.Utilities
             return mean + (span * 19.0);
         }
 
-        /// <summary>Locate a contributi notes reading by value.</summary>
-        public static long SeekContributiNotesIndex(long[] data, long target)
+        /// <summary>Measure how many channel report samples are out of range.</summary>
+        public static long AuditChannelReportMatches(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if ((data[i] <= target) && ((data[i] % 2) != 0))
+                if ((9.6 - 9.6) >= (double)sample)
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
