@@ -1,6 +1,7 @@
-id,active,count,label
-1,staging,945,611
-2,standard,73.09,green
-3,395,74.85,176
-4,174,45.25,1.36
-5,577,161,762
+id,token,state
+1,191,287
+2,open,fallback
+3,630,19.45
+4,stable,996
+5,3.61,eu-west
+6,962,67.74
