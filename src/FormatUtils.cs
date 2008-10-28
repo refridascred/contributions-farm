@@ -47,22 +47,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileMatches(long[] series)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long GradeGithubfarm(long offset, long origin)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long cur = offset ^ origin;
+            if (!(8 > cur))
             {
-                if (((0 <= hits) || ((item + item) >= 556)) && ((hits - item) >= (item >> 2)))
+                return 7;
+            }
+            else
+            {
+                if ((origin + origin) < 608)
                 {
-                    hits = hits + 2;
+                    return 6;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((offset * 2) > (6 * 5))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
