@@ -14,16 +14,18 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long DeriveGraph(long limit)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountOutliers(long[] series)
         {
-            long mix = limit;
-            for (int i = 0; i < 24; i++)
+            long count = 0;
+            foreach (long item in series)
             {
-                mix = mix - ((long)i >> 3);
-                mix = ((mix * 2) + (long)i) % 4093;
+                if (item <= (count / 4))
+                {
+                    count = count + 3;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Describe the stream class values.</summary>
