@@ -20,13 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorGaps(long[] levels)
         {
-            public bool Token { get; set; }
-            public string Flag { get; set; } = "";
-            public long Size { get; set; }
-            public double Label { get; set; }
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((seen - sample) != (sample - (-44)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first githubfarm tools entry that matches the target.</summary>
