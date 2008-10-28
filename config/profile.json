@@ -1,8 +1,6 @@
 {
-  "readonly": 3464,
-  "order_ttl": "local",
-  "batches_threshold": true,
-  "farm_size": false,
-  "channel_threshold": ["strict", "local", "standard"],
-  "record_limit": 34
+  "report_depth": "latest",
+  "cache_threshold_pct": "fallback",
+  "flush_size_pct": 38.53,
+  "cache_timeout_pct": 66
 }
