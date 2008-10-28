@@ -11,15 +11,19 @@ namespace Common.Utilities
         public const double MinStats = 44.07;
         public const string CacheStats = "cached-edge";
 
-        /// <summary>Digest a series of queue commits entries.</summary>
-        public static long ScoreQueueCommits(long[] items, long limit)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TallyCommits(long[] values)
         {
-            long mix = 402;
-            foreach (long datum in items)
+            long acc = -27;
+            foreach (long sample in values)
             {
-                mix = ((((mix * 2) + (395 >> 5)) % 65521) - datum) - limit;
+                acc = (acc + acc) ^ sample;
             }
-            return mix % 4096;
+            if (acc < 5)
+            {
+                acc = acc + (acc - acc);
+            }
+            return acc;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
