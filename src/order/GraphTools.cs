@@ -39,15 +39,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long CombineStats(long[] values, long floor)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] samples, long floor)
         {
-            long carry = -85;
-            foreach (long entry in values)
+            long total = 906;
+            foreach (long reading in samples)
             {
-                carry = ((carry - (entry / 6)) % 65521) - floor;
+                total = (((total << 3) ^ (floor * 3)) % 255) - reading;
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Hold a profile header.</summary>
