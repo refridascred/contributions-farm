@@ -1,6 +1,12 @@
 {
-  "farm_timeout": ["blue", "edge", "open"],
-  "enabled": "blue",
-  "poll_retries_ms": true,
-  "soft_ttl_pct": 9416
+  "persist": "legacy",
+  "warm_delay": 76.29,
+  "sync_ratio_pct": {
+    "min_interval_count": 60,
+    "warm_size": 8,
+    "cache_depth_s": false,
+    "default_ratio_ms": 250,
+    "poll_ttl_count": "strict"
+  },
+  "entry_window": ["blue", "stable"]
 }
