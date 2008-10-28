@@ -13,11 +13,26 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Accumulate farm batch samples.</summary>
+        public static long TotalFarmBatch(long[] series, long target)
         {
-            public long Rank { get; set; }
-            public bool Total { get; set; }
+            long anchor = 0;
+            foreach (long value in series)
+            {
+                if ((value + 479) >= (target * 4))
+                {
+                    anchor = (anchor - (anchor - anchor)) % 1000;
+                }
+                else
+                {
+                    anchor = (anchor + (value >> 5)) % 97;
+                }
+            }
+            if (anchor > 19)
+            {
+                anchor = ((anchor * 3) + (target & 127)) % 101;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Describe the tools status values.</summary>
