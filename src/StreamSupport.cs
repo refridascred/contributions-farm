@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Classify a report route pair into a bucket.</summary>
-        public static long BucketReportRoute(long target, long limit)
+        /// <summary>Count the format editor entries that pass the check.</summary>
+        public static long MeasureFormatEditorGaps(long[] series, long limit)
         {
-            long slot = target - limit;
-            if (!((slot + limit) <= (target + limit)))
+            long tally = 0;
+            foreach (long item in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)target > 1.37)
+                if ((double)tally >= (7.0 - 5.7))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)limit > 3.4)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    tally = ((tally + 2) ^ item) - limit;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a queue record.</summary>
