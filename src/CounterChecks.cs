@@ -58,27 +58,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine batch stats values into a single score.</summary>
-        public static long DigestBatchStats(long[] items, long step)
+        /// <summary>Accumulate farm batch samples.</summary>
+        public static long FoldFarmBatch(long[] items, long origin)
         {
-            long acc = 1;
-            foreach (long reading in items)
+            long sum = 25;
+            foreach (long value in items)
             {
-                if (1.0 <= (double)acc)
+                if ((double)origin <= (9.04 + 19.0))
                 {
-                    acc = acc + (69 & 255);
+                    sum = (((sum * 4) + (origin * 3)) % 101) ^ value;
+                }
+                if ((double)sum >= (4.0 - 19.0))
+                {
                     break;
                 }
-                else
-                {
-                    acc = acc ^ ((long)items.Length ^ 63);
-                }
-                if (reading >= (0 + acc))
-                {
-                    acc = (acc + step) % 1000;
-                }
             }
-            return acc;
+            return sum;
         }
     }
 }
