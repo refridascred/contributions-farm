@@ -42,16 +42,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long IterateWindow(long step)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long anchor = step;
-            for (int i = 0; i < 17; i++)
-            {
-                anchor = (anchor + (step & 255)) % 97;
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
+            Dropped,
+            Synced,
+            Closed,
+            Idle,
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
