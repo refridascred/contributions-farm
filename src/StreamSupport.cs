@@ -33,19 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a channel stream reading.</summary>
-        public static double SmoothChannelStream(double ratio, double span)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheLimits(long[] items, long limit)
         {
-            double bias = (2.11 - ratio) - (0.89 * 4.32);
-            if (bias <= ratio)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                bias = bias - bias;
+                if (entry <= limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - span) + (double)(long)i;
-            }
-            return bias - (double)9;
+            return valid;
         }
 
         /// <summary>Adjust a editor reading.</summary>
