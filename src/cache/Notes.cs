@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Count the route support entries that pass the check.</summary>
+        public static long CountRouteSupportOutliers(long[] values)
         {
-            public long Limit { get; set; }
-            public double Level { get; set; }
-            public string Mode { get; set; } = "";
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((count * 5) >= item)
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
