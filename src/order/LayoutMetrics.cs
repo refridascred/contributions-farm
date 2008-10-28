@@ -29,32 +29,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long limit, long floor)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long delta = limit + floor;
-            if (floor <= (limit & 127))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((floor + delta) != (floor & 7)) || ((double)floor != (8.91 / 8.0)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((1 + floor) < (limit + delta))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public bool Token { get; set; }
+            public long Count { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Audit record buffer readings against a rule.</summary>
