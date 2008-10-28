@@ -14,12 +14,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionBounds(long[] levels, long bound)
         {
-            public long Label { get; set; }
-            public bool Owner { get; set; }
-            public bool Offset { get; set; }
+            bool ready = true;
+            foreach (long item in levels)
+            {
+                if (item <= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the format state values.</summary>
