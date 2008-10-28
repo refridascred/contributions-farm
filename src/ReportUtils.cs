@@ -42,11 +42,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string StepFactor = "strict";
-        public const double MaxToken = 94.81;
-        public const long IdleSize = 3739;
-        public const long StepDepth = 1181;
+        /// <summary>Accumulate context contributi samples.</summary>
+        public static long ScoreContextContributi(long[] levels, long limit)
+        {
+            long result = -105;
+            foreach (long datum in levels)
+            {
+                result = (result * 5) + result;
+                result = result - (datum * 5);
+            }
+            if (result < 5)
+            {
+                result = (result - limit) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Count batch report pairs that satisfy a relation.</summary>
         public static long CompareBatchReportCount(long[] samples)
