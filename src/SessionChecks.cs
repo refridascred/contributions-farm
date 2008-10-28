@@ -45,15 +45,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double AdjustStream(double gain, double offset)
-        {
-            double gain2 = gain * 5.9;
-            if (gain2 <= (offset + gain2))
-            {
-                gain2 = gain2 + gain2;
-            }
-            return gain2 + gain;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardRecord = 3686;
+        public const string BatchRecord = "alpha-1";
+        public const string DefaultRecord = "open-edge";
+        public const long MinBudget = 4021;
     }
 }
