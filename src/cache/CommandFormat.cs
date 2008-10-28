@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of cache tools readings.</summary>
-        public static long CombineCacheTools(long[] values)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long FindFilterIndex(long[] series, long step)
         {
-            long total = 99;
-            foreach (long value in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                total = total + (total >> 3);
-                total = ((total << 3) ^ (value + 26)) % 1000;
+                if ((series[i] == step) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (total < 653)
-            {
-                total = (total + (total / 4)) % 65521;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Define already limits and defaults.</summary>
