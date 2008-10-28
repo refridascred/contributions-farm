@@ -18,10 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstAccount = 5428;
-        public const long MaxScore = 683;
-        public const double IdleWidth = 76.38;
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesBounds(long[] levels, long seed)
+        {
+            bool flag = true;
+            foreach (long datum in levels)
+            {
+                if (datum >= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Roll a graph counter forward.</summary>
         public static long SeriesGraph(long bound)
