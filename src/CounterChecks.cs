@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Iterate the editor account series from a seed.</summary>
-        public static long StepEditorAccount(long offset)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long mark = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
+            Ready,
+            Queued,
+            Pending,
+            Locked,
         }
 
         /// <summary>Validate window stream readings against a bound.</summary>
