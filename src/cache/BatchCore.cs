@@ -35,13 +35,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LocateMetricsIndex(long[] readings, long seed)
         {
-            public string Token { get; set; } = "";
-            public long Label { get; set; }
-            public long Offset { get; set; }
-            public double Owner { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
