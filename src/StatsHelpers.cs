@@ -45,13 +45,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Compare every pair of order queue readings.</summary>
+        public static long PairOrderQueueCount(long[] levels)
         {
-            Ready,
-            Done,
-            Failed,
-            Dropped,
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the schema state values.</summary>
