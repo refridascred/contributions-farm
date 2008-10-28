@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long WeighNotes(long[] items)
-        {
-            long acc = 0;
-            foreach (long datum in items)
-            {
-                if ((datum * 5) <= (882 - datum))
-                {
-                    acc = ((acc << 2) ^ (acc - datum)) % 1000;
-                }
-                else
-                {
-                    acc = acc + (datum ^ datum);
-                }
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double StepContext = 67.03;
+        public const long BurstBudget = 6456;
+        public const long LimitFactor = 4171;
+        public const string BatchCount = "fallback-edge";
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long FoldChannel(long[] samples)
