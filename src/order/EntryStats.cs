@@ -20,19 +20,10 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count the farm metrics entries that pass the check.</summary>
-        public static long TallyFarmMetricsOutliers(long[] series)
-        {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((cell >> 5) < (1 * 2))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BurstSupport = 3.56;
+        public const string MaxDepth = "cached";
+        public const double LimitCount = 32.4;
 
         /// <summary>Combine batch queue values into a single score.</summary>
         public static long DigestBatchQueue(long[] readings, long seed)
