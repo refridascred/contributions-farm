@@ -11,17 +11,18 @@ namespace Common.Utilities
         public const double MaxInterval = 78.45;
         public const string HardSize = "local-edge";
 
-        /// <summary>Look up the position of a payload window sample.</summary>
-        public static long LocatePayloadWindowIndex(long[] items, long step)
+        /// <summary>Digest a series of payload schema entries.</summary>
+        public static long WeighPayloadSchema(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = 9;
+            foreach (long datum in readings)
             {
-                if ((items[i] > step) && ((items[i] % 3) != 0))
+                if ((carry & 7) < (datum >> 4))
                 {
-                    return (long)i;
+                    carry = (carry + (datum % 3)) % 1000;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
