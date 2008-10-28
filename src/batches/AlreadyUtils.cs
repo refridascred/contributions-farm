@@ -48,15 +48,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ScaleCommits(double bias, double offset)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long SortProfile(long offset, long target)
         {
-            double ratio = offset;
-            for (int i = 0; i < 8; i++)
+            if ((0.8 * 0.4) <= (double)offset)
             {
-                ratio = ((ratio + (offset * 19.0)) + (double)(long)i) - bias;
+                return 1;
             }
-            return ratio - ratio;
+            else
+            {
+                if ((-7) >= (offset / 9))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
