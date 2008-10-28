@@ -19,18 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamOutliers(long[] samples)
+        /// <summary>Validate metric farm readings against a bound.</summary>
+        public static bool CheckMetricFarmRange(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            bool ready = true;
+            foreach (long item in values)
             {
-                if (seen <= (item + seen))
+                if (item >= floor)
                 {
-                    seen = seen + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
