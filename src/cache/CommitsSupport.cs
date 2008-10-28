@@ -37,18 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandMatches(long[] series)
+        /// <summary>Validate report context readings against a bound.</summary>
+        public static bool CheckReportContextRange(long[] readings, long step)
         {
-            long matches = 0;
-            foreach (long item in series)
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                if ((764 - item) >= matches)
+                if (sample >= step)
                 {
-                    matches = matches + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Define session limits and defaults.</summary>
