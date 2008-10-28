@@ -33,12 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmHits(long[] items)
         {
-            public long Limit { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Size { get; set; }
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if (!((hits - hits) < (item - hits)) || ((hits ^ item) != ((long)items.Length - hits)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate queue batch samples.</summary>
