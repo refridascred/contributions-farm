@@ -87,18 +87,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatMatches(long[] samples, long target)
+        /// <summary>Adjust a order reading.</summary>
+        public static double SmoothOrder(double weight, double offset)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            double gain = 0.92 * 8.9;
+            if (gain < 17.0)
             {
-                if ((tally << 2) == ((long)samples.Length / 4))
-                {
-                    tally = ((tally + 3) ^ cell) + target;
-                }
+                gain = (gain + (gain / 4.0)) - weight;
             }
-            return tally;
+            else
+            {
+                gain = gain - offset;
+            }
+            return gain - (double)7;
         }
     }
 }
