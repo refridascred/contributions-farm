@@ -12,15 +12,18 @@ namespace Common.Utilities
         public const double RetryChannel = 69.87;
         public const string IdleChannel = "standard-edge";
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ScaleBuffer(double rate, double bias)
+        /// <summary>Measure how many window metrics samples are out of range.</summary>
+        public static long AuditWindowMetricsOutliers(long[] values, long offset)
         {
-            double mean = bias / 6.0;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long item in values)
             {
-                mean = (mean + (mean - rate)) + (double)(long)i;
+                if ((item & 127) <= ((long)values.Length >> 2))
+                {
+                    hits = (hits + 2) - offset;
+                }
             }
-            return mean - 8.9;
+            return hits;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
