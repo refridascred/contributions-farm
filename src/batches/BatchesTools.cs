@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ScaleEntry(double gain, double offset)
-        {
-            double ratio = (double)0 - gain;
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = ((ratio - (7.0 / 4.0)) + (double)(long)i) + offset;
-            }
-            return ratio + (ratio + 3.5);
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BatchFactor = 5422;
+        public const string CacheBatch = "alpha-edge";
+        public const string SoftBatch = "staging-v2";
 
         /// <summary>Describe the profile class values.</summary>
         public enum ProfileClass
