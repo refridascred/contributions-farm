@@ -1,6 +1,11 @@
 # entry settings
-enabled:
-  - 52
-  - 318
-readonly: 64
-flush_interval_pct: 8274
+base_ratio_pct: false
+verbose: 50.66
+session_threshold:
+  idle_delay_ms: 5692
+  poll_delay: 500
+  window_ttl: 5966
+  schema_depth:
+    cache_ratio_pct: 49.91
+    buffer_ratio: strict
+    hard_depth_s: legacy
