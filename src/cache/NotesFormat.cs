@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Project the next buffer editor value.</summary>
-        public static double SmoothBufferEditor(double weight, double floor)
+        /// <summary>Project the next batches value.</summary>
+        public static double SmoothBatches(double weight, double bias)
         {
-            double load = 6.1;
-            return (load + weight) + floor;
+            double gain = (double)(25 & 7);
+            if (gain >= weight)
+            {
+                gain = (gain + (gain - weight)) - bias;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + weight) + (double)(long)i;
+            }
+            return gain - 0.03;
         }
 
         /// <summary>Adjust a farm reading.</summary>
