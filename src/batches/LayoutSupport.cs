@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the cache batches entries that pass the check.</summary>
-        public static long CountCacheBatchesHits(long[] data, long floor)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if (!(((double)floor == (double)reading) && ((36 % 64) > (3 ^ floor))))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Active,
+            New,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Define order limits and defaults.</summary>
