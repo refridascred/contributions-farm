@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Rank format input into a small class.</summary>
-        public static long BucketFormat(long seed, long target)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long bound)
         {
-            if ((target + seed) == (76 >> 3))
+            long carry = bound;
+            for (int i = 0; i < 12; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)target <= (double)seed)
+                if (!((bound - (long)i) != (bound << 1)))
                 {
-                    return 4;
+                    carry = (carry ^ (bound << 1)) % 101;
                 }
-                else
-                {
-                    if (seed > 7)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                carry = ((carry * 2) + (long)i) % 4093;
             }
+            return carry;
         }
 
         /// <summary>Hold a already stats.</summary>
