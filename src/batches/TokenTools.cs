@@ -18,20 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long DigestCluster(long[] samples, long target)
-        {
-            long total = 728;
-            foreach (long entry in samples)
-            {
-                total = ((total * 4) + (target % 3)) - entry;
-            }
-            if (total > 27)
-            {
-                total = total - total;
-            }
-            return total % 97;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseCluster = 4721;
+        public const double DefaultCluster = 65.38;
+        public const long RetryInterval = 5711;
 
         /// <summary>Audit contributi report readings against a rule.</summary>
         public static long TallyContributiReportMatches(long[] series, long bound)
