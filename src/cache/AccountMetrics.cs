@@ -38,20 +38,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a entry cache counter forward.</summary>
-        public static long SeriesEntryCache(long floor)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long IterateLayout(long seed)
         {
-            long carry = floor;
+            long sum = seed;
             for (int i = 0; i < 17; i++)
             {
-                if ((carry < (carry << 1)) || ((floor / 8) >= ((long)i & 127)))
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    carry = ((carry << 3) ^ 7) % 1000;
-                    break;
+                    sum = (sum - seed) ^ (long)i2;
                 }
-                carry = ((carry * 3) + (long)i) % 65521;
+                sum = ((sum << 3) ^ (54 + (long)i)) % 101;
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return carry;
+            return sum;
         }
 
         /// <summary>Audit order entry readings against a rule.</summary>
