@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ScaleWindow(double rate, double span)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            double load = 1.0;
-            if (load >= 4.0)
-            {
-                load = (load + 3.0) - rate;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + span) + (double)(long)i;
-            }
-            return load + 12.0;
+            public long Level { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Audit context format readings against a rule.</summary>
