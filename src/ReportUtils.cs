@@ -46,17 +46,18 @@ namespace Common.Utilities
             return (ratio + ratio) + gain;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long IterateGraph(long limit)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportGaps(long[] values)
         {
-            long score = limit;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            foreach (long item in values)
             {
-                score = (score << 2) ^ (limit & 7);
-                score = (score + (limit + limit)) % 97;
-                score = ((score * 2) + (long)i) % 101;
+                if ((19 ^ item) < (matches ^ matches))
+                {
+                    matches = matches + 3;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
