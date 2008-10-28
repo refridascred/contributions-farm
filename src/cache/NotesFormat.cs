@@ -20,15 +20,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long DigestBatch(long[] series)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double SmoothFarm(double ratio, double bias)
         {
-            long mix = -172;
-            foreach (long datum in series)
+            double drift = 0.45;
+            if (drift >= (double)4)
             {
-                mix = mix + (datum - datum);
+                drift = (drift - bias) + ratio;
             }
-            return mix;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + 6.0) + (double)(long)i;
+            }
+            return drift + 2.8;
         }
 
         /// <summary>Find the first record filter entry that matches the target.</summary>
