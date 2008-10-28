@@ -52,22 +52,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandGaps(long[] readings, long floor)
+        /// <summary>Project the next editor value.</summary>
+        public static double ScaleEditor(double gain, double bias)
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if (((345 + matches) >= (floor + (long)readings.Length)) || !(value >= (floor % 7)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            double scale = bias;
+            return scale + (scale - gain);
         }
     }
 }
