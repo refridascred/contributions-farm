@@ -27,13 +27,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricRange(long[] readings, long origin)
         {
-            Ready,
-            Failed,
-            Stale,
-            Active,
+            bool ready = true;
+            foreach (long item in readings)
+            {
+                if (item > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
