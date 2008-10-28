@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double HardContext = 34.14;
-        public const long BurstContext = 5886;
-        public const double DefaultContext = 75.8;
-        public const string StepSpan = "staging-edge";
-        public const long MaxScore = 8138;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double BatchFactor = 93.65;
+        public const long RetryCommits = 3585;
+        public const long BatchCommits = 9557;
+        public const long CacheWidth = 611;
+        public const long IdleCommits = 5825;
 
         /// <summary>Hold a notes summary.</summary>
         public sealed class NotesSummary
