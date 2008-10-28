@@ -13,17 +13,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LocateSchemaIndex(long[] data, long bound)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiHits(long[] series, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (data[i] > bound)
+                if (((0 >> 2) < limit) && ((7 % 10) >= (seen & 127)))
                 {
-                    return (long)i;
+                    seen = (seen + 3) ^ datum;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
