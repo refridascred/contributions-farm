@@ -22,20 +22,10 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Blend two batches entry measurements.</summary>
-        public static double ScaleBatchesEntry(double scale, double offset)
-        {
-            double load = (double)(-3);
-            if (load > (offset - scale))
-            {
-                load = load - offset;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = load + (double)(long)i;
-            }
-            return load + (double)46;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long LimitCommand = 1474;
+        public const string HardCommand = "legacy-v2";
+        public const string BurstCommand = "standard-edge";
 
         /// <summary>Define command limits and defaults.</summary>
         public const string HardDepth = "latest";
