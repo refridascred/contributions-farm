@@ -36,20 +36,32 @@ namespace Common.Utilities
         public const long StepDepth = 5601;
         public const long BaseCache = 2320;
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long StepMetric(long offset)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long RankContributi(long bound, long step)
         {
-            long result = offset;
-            for (int i = 0; i < 11; i++)
+            long slot = bound ^ step;
+            if ((step << 1) < (slot - bound))
             {
-                long delta = (offset + result) - (offset << 2);
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    result = ((result - (delta + delta)) % 255) + (long)i2;
-                }
-                result = ((result * 5) + (long)i) % 65521;
+                return 4;
             }
-            return result;
+            else
+            {
+                if ((double)slot < (20.0 - 19.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((slot >> 1) > step) || ((step << 1) < 6))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
