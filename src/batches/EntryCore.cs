@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ProjectCommits(double weight, double bias)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long FindWindowIndex(long[] series, long origin)
         {
-            double gain = bias;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                gain = ((gain - bias) - (double)(long)i) - weight;
+                if (series[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            return gain - (bias - gain);
+            return -1;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
