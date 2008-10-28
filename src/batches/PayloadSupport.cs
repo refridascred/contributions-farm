@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Match up order samples.</summary>
-        public static long OverlapOrderCount(long[] samples)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Retry,
+            Idle,
+            Stale,
         }
 
         /// <summary>Combine channel values into a single score.</summary>
