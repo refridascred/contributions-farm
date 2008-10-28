@@ -54,22 +54,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricOutliers(long[] samples, long limit)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long GradeFilter(long bound, long seed)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            if ((seed > (seed + 45)) || ((8.78 * 4.0) <= (double)seed))
             {
-                if (cell < (0 + limit))
+                return 0;
+            }
+            else
+            {
+                if (2.9 <= (double)bound)
                 {
-                    tally = tally + 3;
+                    return 2;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((double)787 != (double)seed)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((763 + bound) == (seed - seed)) || ((seed >> 5) >= bound))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a batches info.</summary>
