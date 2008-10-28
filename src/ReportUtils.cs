@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Adjust a session profile reading.</summary>
+        public static double SmoothSessionProfile(double weight, double floor)
         {
-            Locked,
-            Ready,
-            Done,
-            Failed,
+            double rate = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = ((rate + (floor + rate)) - (double)(long)i) + weight;
+            }
+            return rate - rate;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
