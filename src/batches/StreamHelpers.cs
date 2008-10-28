@@ -80,9 +80,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BaseFilter = 48.4;
-        public const string StepFilter = "legacy-1";
-        public const long MaxWidth = 3814;
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
+        {
+            public long Rank { get; set; }
+            public bool Size { get; set; }
+            public long Limit { get; set; }
+        }
     }
 }
