@@ -24,10 +24,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double SoftCount = 31.85;
-        public const long DefaultCount = 2441;
-        public const string MinToken = "strict-1";
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
+        {
+            Active,
+            Pending,
+            Paused,
+            Ready,
+        }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
         public static long PairCounterCount(long[] values)
