@@ -28,19 +28,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsLimits(long[] readings, long bound)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long BucketOrder(long floor, long origin)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long edge = floor ^ origin;
+            if ((floor / 9) == (edge % 12))
             {
-                if (entry <= bound)
+                return 4;
+            }
+            else
+            {
+                if (!(edge <= floor))
                 {
-                    ready = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((origin << 2) >= (floor >> 4))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((origin % 5) <= (edge % 16))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
