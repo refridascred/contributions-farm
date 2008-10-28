@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstBudget = 6460;
-        public const double BaseFormat = 28.23;
-        public const long HardFormat = 3616;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinMetrics = 7124;
+        public const double WindowMetrics = 18.19;
+        public const long MaxFactor = 9583;
+        public const long BaseMetrics = 4690;
 
         /// <summary>Hold a tools stats.</summary>
         public sealed class ToolsStats
