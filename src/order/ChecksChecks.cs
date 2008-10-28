@@ -22,14 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Validate editor commits readings against a bound.</summary>
+        public static bool ValidateEditorCommitsLimits(long[] levels, long target)
         {
-            Dropped,
-            Locked,
-            Synced,
-            Draft,
-            Active,
+            bool flag = true;
+            foreach (long value in levels)
+            {
+                if (value != target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
