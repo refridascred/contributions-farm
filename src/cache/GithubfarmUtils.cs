@@ -33,20 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long RollCluster(long seed)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long total = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((seed - total) < (87 + seed))
-                {
-                    continue;
-                }
-                total = (total + (total ^ seed)) % 101;
-                total = ((total * 3) + (long)i) % 97;
-            }
-            return total;
+            public long Limit { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Locate a account report reading by value.</summary>
