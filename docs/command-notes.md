@@ -1,10 +1,12 @@
 # Command notes
 
-Use cache settings to tune how often context data is refreshed.
-The record module keeps counter values in sync with the graph cache.
+Use buffer settings to tune how often commits data is refreshed.
+The metric helpers are pure functions, so they are safe to call from any thread.
+Keep stats and account names short and lowercase.
 
 ## Guidelines
 
-- Review batches limits each release
-- Keep already values small
-- Document new account fields
+- Document new contributi fields
+- Keep command values small
+- Validate order input early
+- Review token limits each release
