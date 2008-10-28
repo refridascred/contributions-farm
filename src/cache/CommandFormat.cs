@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double BlendGithubfarm(double ratio, double span)
         {
-            public long Stamp { get; set; }
-            public bool Mode { get; set; }
-            public bool Count { get; set; }
+            double scale = ratio;
+            if (scale < (ratio + ratio))
+            {
+                scale = scale - (double)69;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - span) + (double)(long)i;
+            }
+            return scale + (ratio / 6.0);
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
