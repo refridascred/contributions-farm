@@ -18,18 +18,22 @@ namespace Common.Utilities
         public const long DefaultCluster = 6789;
         public const long BaseCluster = 1667;
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextOutliers(long[] series, long origin)
+        /// <summary>Measure how many support report samples are out of range.</summary>
+        public static long TallySupportReportHits(long[] values)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if (((value & 15) > (matches << 2)) || ((matches < value) && (matches < (origin % 12))))
+                if ((hits & 255) <= (hits - sample))
                 {
-                    matches = matches + 3;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define support limits and defaults.</summary>
