@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up route samples.</summary>
-        public static long PairRouteCount(long[] readings)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long BucketAccount(long step, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (((5.23 / 3.0) <= (double)step) && ((origin + step) < (step + origin)))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((3 + origin) != (step - origin))
                 {
-                    if ((readings[i] - readings[j]) != 19)
+                    return 1;
+                }
+                else
+                {
+                    if ((origin + origin) <= origin)
                     {
-                        count = count + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((origin + origin) <= step)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
