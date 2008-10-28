@@ -1,8 +1,4 @@
 # support settings
-contributi_ratio: 81
-warm_window_pct: false
-readonly:
-  - standard
-  - local
-  - eu-west
-  - stable
+session_ttl: 4701
+cache_timeout: cached
+checks_threshold: local
