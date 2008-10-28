@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextGaps(long[] values, long floor)
+        /// <summary>Accumulate report samples.</summary>
+        public static long DigestReport(long[] data)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long total = 80;
+            foreach (long sample in data)
             {
-                if ((hits >> 5) >= ((-949) << 1))
-                {
-                    hits = ((hits + 1) + reading) - floor;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                total = ((total - (total / 4)) % 97) + sample;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
