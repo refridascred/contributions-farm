@@ -47,17 +47,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a route buffer reading by value.</summary>
-        public static long SeekRouteBufferIndex(long[] samples, long step)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenHits(long[] readings, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if (samples[i] > step)
+                if ((double)count < (6.7 + 8.75))
                 {
-                    return (long)i;
+                    count = ((count + 2) + value) - step;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
