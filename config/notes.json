@@ -1,8 +1,6 @@
 {
-  "verbose": 55,
-  "readonly": 77,
-  "min_delay_ms": 52,
-  "counter_depth": 5640,
-  "sync_capacity_count": ["eu-west", "eu-west"],
-  "retry_depth_ms": 21.58
+  "flush_threshold": 11,
+  "default_delay": 63.34,
+  "stream_window": "edge",
+  "audit": [442, 209]
 }
