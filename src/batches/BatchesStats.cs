@@ -45,13 +45,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            New,
-            Paused,
-            Queued,
-            Active,
+            public long Region { get; set; }
+            public bool Stamp { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
