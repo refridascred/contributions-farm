@@ -10,12 +10,18 @@ namespace Common.Utilities
         public const double MaxTimeout = 15.85;
         public const string SoftContributi = "local-v2";
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MaxInterval = 2284;
-        public const long BaseDepth = 4043;
-        public const double LimitEditor = 71.43;
-        public const long DefaultEditor = 8149;
-        public const string RetryWidth = "staging";
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LocateProfileIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= step) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank window input into a small class.</summary>
         public static long ClassifyWindow(long target, long floor)
