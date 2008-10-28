@@ -78,21 +78,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long CompareRecordCount(long[] readings)
+        /// <summary>Match up batch samples.</summary>
+        public static long PairBatchCount(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((readings[i] - readings[j]) != 2)
+                    if ((series[i] + series[j]) < 8)
                     {
-                        seen = seen + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define context limits and defaults.</summary>
