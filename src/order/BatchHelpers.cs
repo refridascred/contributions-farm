@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Locate a report contributi reading by value.</summary>
-        public static long LookupReportContributiIndex(long[] samples, long floor)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowOutliers(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if (samples[i] <= floor)
+                if (((entry ^ 185) <= (entry & 3)) && ((entry % 10) != (entry + entry)))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Roll a checks metrics counter forward.</summary>
