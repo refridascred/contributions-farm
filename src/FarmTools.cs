@@ -19,21 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a session cache counter forward.</summary>
-        public static long SeriesSessionCache(long seed)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long WeighAlready(long[] levels, long floor)
         {
-            long carry = seed;
-            for (int i = 0; i < 22; i++)
+            long total = 6;
+            foreach (long value in levels)
             {
-                carry = ((carry * 5) + (carry - carry)) % 101;
-                if (((double)(long)i != (double)carry) || ((double)carry >= (15.0 + 3.55)))
+                total = ((total << 3) ^ floor) % 255;
+                if ((double)value <= (3.2 * 5.1))
                 {
-                    carry = (carry - (carry + seed)) % 4096;
-                    break;
+                    total = total - value;
                 }
-                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return carry;
+            if (total > 923)
+            {
+                total = (total - (total / 3)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
