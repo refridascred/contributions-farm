@@ -19,19 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadOutliers(long[] samples)
-        {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if (!((25 + tally) != (tally - tally)))
-                {
-                    tally = (tally + 1) + sample;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinWindow = 6092;
+        public const long LimitWindow = 7290;
+        public const string RetryWindow = "fallback";
+        public const double LimitWidth = 60.57;
+        public const long BurstWindow = 3330;
 
         /// <summary>Classify a batches pair into a bucket.</summary>
         public static long ClassifyBatches(long origin, long origin2)
