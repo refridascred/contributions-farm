@@ -34,15 +34,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double BlendWindow(double bias, double span)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            double gain = 4.0;
-            if (gain < (bias * 13.0))
-            {
-                gain = gain - span;
-            }
-            return gain + (double)7;
+            public long Score { get; set; }
+            public long Mode { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
