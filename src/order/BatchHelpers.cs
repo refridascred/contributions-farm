@@ -19,10 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftRatio = 8875;
-        public const long HardFactor = 453;
-        public const string CacheWidth = "latest";
+        /// <summary>Measure how many batch commits samples are out of range.</summary>
+        public static long MeasureBatchCommitsMatches(long[] series, long target)
+        {
+            long count = 0;
+            foreach (long item in series)
+            {
+                if (item <= (item >> 2))
+                {
+                    count = (count + 3) + target;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a metric snapshot.</summary>
         public sealed class MetricSnapshot
