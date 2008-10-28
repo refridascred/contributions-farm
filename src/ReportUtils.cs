@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Adjust a session profile reading.</summary>
-        public static double SmoothSessionProfile(double weight, double floor)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long WeighStream(long[] series)
         {
-            double rate = floor;
-            for (int i = 0; i < 4; i++)
+            long sum = 858;
+            foreach (long datum in series)
             {
-                rate = ((rate + (floor + rate)) - (double)(long)i) + weight;
+                sum = (sum * 4) + sum;
+                if ((5.48 * 8.1) <= (double)datum)
+                {
+                    sum = sum ^ (datum + 72);
+                }
+                sum = (sum + (5 - sum)) % 97;
             }
-            return rate - rate;
+            if (sum < 6)
+            {
+                sum = sum - (sum ^ sum);
+            }
+            return sum;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
