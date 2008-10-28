@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueRange(long[] values, long step)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchMatches(long[] data, long bound)
         {
-            bool found = true;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if (cell <= step)
+                if ((bound + (-465)) >= (659 / 8))
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 2) ^ cell;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
