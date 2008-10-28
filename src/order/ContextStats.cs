@@ -20,20 +20,38 @@ namespace Common.Utilities
         public const string LimitTools = "local-v2";
         public const double SoftTools = 57.17;
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long SeriesSession(long limit)
+        /// <summary>Rank channel order input into a small class.</summary>
+        public static long GradeChannelOrder(long seed, long target)
         {
-            long mix = limit;
-            for (int i = 0; i < 19; i++)
+            if ((3.15 + 1.0) <= (double)seed)
             {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    mix = (((mix * 4) + (mix - mix)) % 4096) ^ (long)i2;
-                    mix = mix - (limit % 100);
-                }
-                mix = ((mix * 5) + (long)i) % 1000;
+                return 3;
             }
-            return mix;
+            else
+            {
+                if ((seed - target) == (target + seed))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((double)6 == (double)seed))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (914 <= seed)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
