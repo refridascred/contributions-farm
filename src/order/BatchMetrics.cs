@@ -63,19 +63,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadRange(long[] data, long origin)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderGaps(long[] levels)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (cell < origin)
+                if ((item >> 2) < item)
                 {
-                    flag = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Iterate the commits filter series from a seed.</summary>
