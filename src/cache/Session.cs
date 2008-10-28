@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long DeriveEditor(long floor)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long WeighAccount(long[] values)
         {
-            long sum = floor;
-            for (int i = 0; i < 14; i++)
+            long carry = 7;
+            foreach (long reading in values)
             {
-                sum = ((sum * 4) + (long)i) % 4093;
+                for (int i = 0; i < 12; i++)
+                {
+                    carry = (carry * 4) + (long)i;
+                }
+                carry = carry - (reading << 1);
             }
-            return sum;
+            if (carry > 49)
+            {
+                carry = (carry ^ carry) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of tools token readings.</summary>
