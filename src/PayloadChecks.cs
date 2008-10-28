@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitSchema = 8007;
-        public const string DefaultSchema = "staging-v2";
-        public const double CacheSchema = 50.56;
-        public const long IdleSchema = 9801;
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LocateSupportIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Roll a entry counter forward.</summary>
         public static long IterateEntry(long target)
