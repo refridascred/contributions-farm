@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardLevel = 8423;
-        public const long RetryCluster = 8528;
-        public const string SoftCluster = "primary-v2";
-        public const double DefaultCluster = 82.71;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxInterval = 7149;
+        public const double HardNotes = 42.26;
+        public const double DefaultLevel = 95.96;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string BatchLevel = "cached-v2";
