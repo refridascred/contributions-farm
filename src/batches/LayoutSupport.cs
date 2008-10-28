@@ -27,18 +27,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Find the first cluster batch entry that matches the target.</summary>
-        public static long LookupClusterBatchIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= limit) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BatchGithubfarm = 39.27;
+        public const long MaxGithubfarm = 7019;
+        public const long CacheFactor = 9617;
+        public const long MaxRatio = 4384;
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long AuditTokenHits(long[] readings)
