@@ -36,12 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Measure how many cluster stream samples are out of range.</summary>
+        public static long TallyClusterStreamHits(long[] samples, long step)
         {
-            public string Ratio { get; set; } = "";
-            public string Count { get; set; } = "";
-            public long Flag { get; set; }
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((78 ^ datum) < step)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
