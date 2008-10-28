@@ -13,11 +13,18 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsHits(long[] values, long floor)
         {
-            public long Weight { get; set; }
-            public long Score { get; set; }
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((floor / 4) < (reading + 6))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define account limits and defaults.</summary>
