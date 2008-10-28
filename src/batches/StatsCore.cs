@@ -43,14 +43,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
-        {
-            Idle,
-            Dropped,
-            Active,
-            Locked,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BatchChecks = "local-1";
+        public const long LimitFactor = 1978;
+        public const long BaseChecks = 9896;
+        public const double HardChecks = 33.55;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long BatchCommits = 4245;
