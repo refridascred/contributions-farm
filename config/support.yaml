@@ -1,19 +1,5 @@
 # support settings
-soft_threshold_pct: 54
-readonly:
-  - 71
-  - 197
-  - 23
-  - 85
-soft_timeout:
-  soft_retries_s: green
-  audit:
-    max_delay_ms: edge
-    window_threshold: 5734
-    account_ttl: cached
-    warm_size: false
-  order_window: cached
-  hard_size:
-    - legacy
-    - open
-  dry_run: eu-west
+burst_depth: 14.07
+retry_size_pct: 16
+already_limit: 8152
+audit: local
