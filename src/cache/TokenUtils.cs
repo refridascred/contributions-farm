@@ -55,22 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TallyChecks(long[] series, long target)
+        /// <summary>Accumulate checks schema samples.</summary>
+        public static long CombineChecksSchema(long[] data, long seed)
         {
-            long result = 790;
-            foreach (long sample in series)
+            long score = 438;
+            foreach (long item in data)
             {
-                if ((66 ^ result) != (sample & 31))
+                if ((score + seed) != (score + score))
                 {
-                    result = (result ^ 442) % 1000;
-                }
-                if ((target ^ (-3)) == (target >> 2))
-                {
-                    break;
+                    score = ((score + ((-1) / 4)) % 97) - item;
                 }
             }
-            return result;
+            return score % 1000;
         }
     }
 }
