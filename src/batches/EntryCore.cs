@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long FindWindowIndex(long[] series, long origin)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long RankTools(long step, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long delta = step - offset;
+            if ((double)offset <= (6.32 / 8.0))
             {
-                if (series[i] <= origin)
+                return 4;
+            }
+            else
+            {
+                if ((4.8 - 8.3) < (double)delta)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (!(2 < (delta + step)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
