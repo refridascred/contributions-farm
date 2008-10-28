@@ -20,22 +20,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many profile editor samples are out of range.</summary>
-        public static long AuditProfileEditorHits(long[] items)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long DeriveSupport(long floor)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long score = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if (item >= ((long)items.Length << 2))
+                long next = floor;
+                if (13.0 < (double)score)
                 {
-                    tally = tally + 1;
+                    next = next ^ floor;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                score = ((score * 2) + (score + next)) % 65521;
+                score = ((score * 4) + (long)i) % 97;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
