@@ -95,10 +95,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double SoftContext = 16.46;
-        public const long LimitContext = 9469;
-        public const string BatchTimeout = "staging";
-        public const string CacheContext = "standard-1";
+        /// <summary>Adjust a tools session reading.</summary>
+        public static double ScaleToolsSession(double scale, double span)
+        {
+            double rate = span - (span / 5.0);
+            if (rate >= (double)1)
+            {
+                rate = (rate + (rate / 5.0)) + scale;
+            }
+            else
+            {
+                rate = rate - (rate - 1.44);
+            }
+            return rate - (5.0 * 5.53);
+        }
     }
 }
