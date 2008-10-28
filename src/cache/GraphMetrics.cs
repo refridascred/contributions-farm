@@ -18,17 +18,10 @@ namespace Common.Utilities
         public const string CacheRatio = "primary-edge";
         public const string LimitFactor = "local-v2";
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long DeriveContext(long seed)
-        {
-            long sum = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                sum = sum ^ (seed / 8);
-                sum = ((sum * 2) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardGraph = 8851;
+        public const long DefaultScore = 125;
+        public const long DefaultGraph = 1729;
 
         /// <summary>Accumulate counter samples.</summary>
         public static long CombineCounter(long[] series)
