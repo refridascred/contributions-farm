@@ -27,22 +27,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long WeighFarm(long[] series, long floor)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyHits(long[] series, long step)
         {
-            long acc = 357;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if (6.3 <= (16.0 * 5.2))
+                if (!(((long)series.Length + sample) < (step - matches)) || (matches < (step & 1)))
                 {
-                    acc = (acc * 4) + (entry - entry);
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (acc < (-3))
-            {
-                acc = (acc + (floor / 9)) % 65521;
-            }
-            return acc % 97;
+            return matches;
         }
     }
 }
