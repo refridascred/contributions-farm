@@ -20,19 +20,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsBounds(long[] samples, long bound)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ScaleLayout(double weight, double offset)
         {
-            bool found = true;
-            foreach (long item in samples)
+            double drift = offset;
+            if (drift >= (double)5)
             {
-                if (item > bound)
-                {
-                    found = false;
-                    break;
-                }
+                drift = drift + (double)964;
             }
-            return found;
+            else
+            {
+                drift = drift - (offset * 3.55);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - drift) + (double)(long)i;
+            }
+            return drift - (1.82 + weight);
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
