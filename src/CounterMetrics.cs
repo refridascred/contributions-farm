@@ -36,19 +36,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a stats already figure with a bias.</summary>
-        public static double AdjustStatsAlready(double gain, double span)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TallyCounter(long[] values, long step)
         {
-            double weight = span;
-            if (weight < (double)8)
+            long carry = 5;
+            foreach (long cell in values)
             {
-                weight = weight + gain;
+                if (!((step - step) < (9 - 9)))
+                {
+                    carry = ((carry << 3) ^ step) % 4096;
+                }
+                if ((step > (carry * 2)) && ((carry >> 2) > (long)values.Length))
+                {
+                    carry = carry ^ (cell - carry);
+                }
+                else
+                {
+                    carry = (carry + cell) % 255;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + span) - (double)(long)i;
-            }
-            return weight + (weight * 1.0);
+            return carry % 4096;
         }
     }
 }
