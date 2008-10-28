@@ -40,19 +40,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of commits farm readings.</summary>
-        public static long CombineCommitsFarm(long[] levels, long seed)
-        {
-            long score = 151;
-            foreach (long cell in levels)
-            {
-                if ((cell >> 3) != (cell - 559))
-                {
-                    score = (((score * 3) + (137 - cell)) % 101) - seed;
-                }
-            }
-            return score % 65521;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleReport = 833;
+        public const long BaseWidth = 8688;
+        public const long LimitSpan = 2469;
 
         /// <summary>Iterate the schema series from a seed.</summary>
         public static long StepSchema(long target)
