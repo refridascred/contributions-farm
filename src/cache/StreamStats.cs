@@ -11,20 +11,12 @@ namespace Common.Utilities
         public const double RetryBudget = 6.9;
         public const long MaxFactor = 1979;
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionBounds(long[] levels, long bound)
-        {
-            bool ready = true;
-            foreach (long item in levels)
-            {
-                if (item <= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinCount = 8303;
+        public const long BatchCounter = 8313;
+        public const double DefaultDepth = 40.45;
+        public const double IdleInterval = 95.85;
+        public const long SoftRatio = 1062;
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long AuditSupportOutliers(long[] items)
