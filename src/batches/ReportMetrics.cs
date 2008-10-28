@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long WeighBatch(long[] readings)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsHits(long[] levels)
         {
-            long anchor = 144;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if (!((entry + entry) >= (anchor - anchor)))
+                if ((sample < (hits / 9)) || ((hits - sample) <= 6))
                 {
-                    anchor = ((anchor << 3) ^ (entry % 10)) % 4096;
-                }
-                for (int i = 0; i < 10; i++)
-                {
-                    anchor = ((anchor * 3) + (entry << 1)) + (long)i;
-                }
-                if ((double)entry < (9.0 + 4.3))
-                {
-                    anchor = (anchor * 2) + ((long)readings.Length / 2);
+                    hits = hits + 2;
                 }
             }
-            return anchor % 65521;
+            return hits;
         }
 
         /// <summary>Describe the report mode values.</summary>
