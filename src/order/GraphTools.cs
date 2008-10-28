@@ -49,12 +49,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            public long Score { get; set; }
-            public double Mode { get; set; }
-            public long Limit { get; set; }
+            Synced,
+            Locked,
+            New,
         }
     }
 }
