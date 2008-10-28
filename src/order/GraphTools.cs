@@ -28,12 +28,12 @@ namespace Common.Utilities
             return ratio - gain;
         }
 
-        /// <summary>Look up the position of a tools contributi sample.</summary>
-        public static long FindToolsContributiIndex(long[] levels, long bound)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LookupTokenIndex(long[] samples, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((levels[i] > bound) && ((levels[i] % 5) == 0))
+                if ((samples[i] < limit) && ((samples[i] % 2) == 0))
                 {
                     return (long)i;
                 }
