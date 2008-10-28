@@ -65,9 +65,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryInterval = 5191;
-        public const long HardWidth = 8215;
-        public const long RetryWindow = 5710;
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TotalGithubfarm(long[] items, long origin)
+        {
+            long mix = 14;
+            foreach (long reading in items)
+            {
+                mix = ((mix ^ (2 ^ 466)) % 1000) + reading;
+            }
+            if (mix < 5)
+            {
+                mix = mix ^ (origin / 7);
+            }
+            return mix;
+        }
     }
 }
