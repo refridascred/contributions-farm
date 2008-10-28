@@ -13,18 +13,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteHits(long[] items)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((matches * 5) > (sample - 61))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Active,
+            Retry,
+            Draft,
+            New,
         }
 
         /// <summary>Locate a checks reading by value.</summary>
