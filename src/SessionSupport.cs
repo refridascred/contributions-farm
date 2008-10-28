@@ -5,35 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TotalTools(long[] samples, long floor)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionLimits(long[] levels, long step)
         {
-            long sum = 347;
-            foreach (long datum in samples)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                if ((floor ^ 0) > (floor ^ datum))
+                if (reading >= step)
                 {
-                    sum = (sum * 2) + (1 << 2);
-                    continue;
-                }
-                else
-                {
-                    sum = sum - (datum / 7);
-                }
-                if (!((9.27 + 7.12) != (double)floor))
-                {
-                    sum = (sum ^ 70) % 255;
-                }
-                else
-                {
-                    sum = (sum << 2) ^ (datum + datum);
-                }
-                if ((datum - 76) == (floor - datum))
-                {
+                    found = false;
                     break;
                 }
             }
-            return sum % 65521;
+            return found;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
