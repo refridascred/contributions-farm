@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long DeriveQueue(long floor)
+        /// <summary>Check that every batch notes entry stays within the limit.</summary>
+        public static bool GuardBatchNotesLimits(long[] readings, long offset)
         {
-            long total = floor;
-            for (int i = 0; i < 10; i++)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                total = ((total * 3) + (long)i) % 4093;
+                if (reading != offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return total;
+            return ok;
         }
 
         /// <summary>Accumulate farm samples.</summary>
