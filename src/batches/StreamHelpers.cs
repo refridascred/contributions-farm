@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Check that every already session entry stays within the limit.</summary>
-        public static bool ValidateAlreadySessionBounds(long[] readings, long offset)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchOutliers(long[] values)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if (cell > offset)
+                if ((matches + reading) >= matches)
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Fold a list of filter batch readings.</summary>
