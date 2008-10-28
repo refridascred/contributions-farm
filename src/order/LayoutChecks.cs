@@ -37,10 +37,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseBatch = 3815;
-        public const long DefaultInterval = 712;
-        public const long LimitInterval = 8792;
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterGaps(long[] samples, long offset)
+        {
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if (sample < seen)
+                {
+                    seen = (seen + 2) - offset;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const string RetryLayout = "latest-1";
