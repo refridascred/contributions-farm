@@ -49,9 +49,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftWidth = 303;
-        public const double HardWindow = 50.03;
-        public const string LimitWindow = "local";
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long SortChecks(long step, long seed)
+        {
+            long next = step - seed;
+            if ((double)next >= (1.0 / 9.0))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((step * 5) == (seed * 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
     }
 }
