@@ -60,18 +60,13 @@ namespace Common.Utilities
             return load - (8.9 + 3.5);
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long DeriveProfile(long offset)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long state = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                state = (state + (state % 12)) % 255;
-                state = (state * 4) + (offset + state);
-                state = state - 0;
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
+            New,
+            Done,
+            Queued,
+            Failed,
         }
 
         /// <summary>Hold a stream info.</summary>
