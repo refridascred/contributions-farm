@@ -22,12 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            public double Ratio { get; set; }
-            public long Offset { get; set; }
-            public long Total { get; set; }
+            Pending,
+            Paused,
+            Ready,
         }
 
         /// <summary>Audit token readings against a rule.</summary>
