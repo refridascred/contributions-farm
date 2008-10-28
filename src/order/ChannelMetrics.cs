@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
-        {
-            Idle,
-            Pending,
-            Done,
-            Stale,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BaseRatio = 18.22;
+        public const long MaxFactor = 2805;
+        public const long BaseProfile = 9237;
+        public const double StepProfile = 53.19;
+        public const long MaxScore = 3227;
 
         /// <summary>Combine order values into a single score.</summary>
         public static long WeighOrder(long[] values)
