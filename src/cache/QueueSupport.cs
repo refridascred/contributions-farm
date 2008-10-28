@@ -14,13 +14,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksBounds(long[] series, long offset)
         {
-            Done,
-            Synced,
-            Closed,
-            Failed,
+            bool flag = true;
+            foreach (long entry in series)
+            {
+                if (entry <= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define context limits and defaults.</summary>
