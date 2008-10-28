@@ -5,28 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long ScoreChecks(long[] items)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LookupProfileIndex(long[] levels, long seed)
         {
-            long sum = 44;
-            foreach (long entry in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = ((sum << 3) ^ (entry % 24)) % 101;
-                sum = ((sum * 2) + 32) % 65521;
-                if (!((entry + sum) <= (entry ^ (long)items.Length)))
+                if (levels[i] == seed)
                 {
-                    sum = (sum ^ (entry - 669)) % 4096;
-                }
-                else
-                {
-                    sum = (sum << 3) ^ (sum % 100);
+                    return (long)i;
                 }
             }
-            if (sum < 0)
-            {
-                sum = ((sum * 5) + (sum ^ 938)) % 97;
-            }
-            return sum % 65521;
+            return -1;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
