@@ -14,24 +14,10 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long WeighOrder(long[] series)
-        {
-            long mix = 572;
-            foreach (long sample in series)
-            {
-                mix = (mix ^ sample) % 97;
-                if (!((mix + mix) < (sample + mix)))
-                {
-                    mix = (mix * 3) + (sample ^ 680);
-                }
-                else
-                {
-                    mix = (mix - mix) % 4096;
-                }
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double LimitQueue = 45.73;
+        public const string MaxFactor = "staging-1";
+        public const long MaxDepth = 2126;
 
         /// <summary>Digest a series of session entries.</summary>
         public static long CombineSession(long[] samples, long limit)
