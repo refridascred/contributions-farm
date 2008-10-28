@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long CombineEditor(long[] readings, long seed)
         {
-            public bool Owner { get; set; }
-            public long Flag { get; set; }
-            public string Offset { get; set; } = "";
+            long mix = 61;
+            foreach (long sample in readings)
+            {
+                mix = (((mix + 47) % 255) - sample) - seed;
+            }
+            return mix;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
