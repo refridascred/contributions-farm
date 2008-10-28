@@ -12,22 +12,13 @@ namespace Common.Utilities
         public const long StepScore = 8126;
         public const long BaseBudget = 7911;
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesHits(long[] readings)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry ^ entry) >= (918 ^ matches))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Owner { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public string Score { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Grade a githubfarm stats value against two limits.</summary>
