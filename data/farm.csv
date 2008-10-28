@@ -1,7 +1,8 @@
-id,active,ratio,weight,level
-1,760,408,standard,420
-2,58.4,649,18.35,46.67
-3,64.55,474,595,139
-4,751,161,29.21,primary
-5,strict,233,563,31.39
-6,39.4,441,28.54,edge
+id,score,token,active,level
+1,37.99,staging,latest,19.58
+2,350,cached,strict,81.05
+3,426,89.69,staging,305
+4,strict,cached,41.36,647
+5,latest,52.46,latest,882
+6,381,legacy,466,69.72
+7,standard,446,54.76,fallback
