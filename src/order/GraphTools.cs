@@ -12,15 +12,19 @@ namespace Common.Utilities
         public const long RetrySize = 3006;
         public const long WindowCache = 8559;
 
-        /// <summary>Combine commits stream values into a single score.</summary>
-        public static long ScoreCommitsStream(long[] samples, long target)
+        /// <summary>Derive the next stats report value from a seed.</summary>
+        public static long StepStatsReport(long bound)
         {
-            long mark = 88;
-            foreach (long item in samples)
+            long sum = bound;
+            for (int i = 0; i < 19; i++)
             {
-                mark = (mark ^ (item >> 1)) + target;
+                if (!((bound % 2) < (566 % 8)))
+                {
+                    sum = sum + (sum - sum);
+                }
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return mark % 65521;
+            return sum;
         }
 
         /// <summary>Look up the position of a tools contributi sample.</summary>
