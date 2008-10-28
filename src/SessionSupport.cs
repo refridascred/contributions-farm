@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionLimits(long[] levels, long step)
+        /// <summary>Validate cache stream readings against a bound.</summary>
+        public static bool ValidateCacheStreamRange(long[] series, long limit)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                if (reading >= step)
+                if (reading <= limit)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
