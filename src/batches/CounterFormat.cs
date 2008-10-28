@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Scale a record batches figure with a bias.</summary>
+        public static double AdjustRecordBatches(double ratio, double span)
         {
-            Dropped,
-            Closed,
-            New,
-            Done,
+            double mean = span;
+            if (mean < 8.86)
+            {
+                mean = mean - span;
+            }
+            else
+            {
+                mean = mean + (ratio / 4.0);
+            }
+            return mean + (span * 19.0);
         }
 
         /// <summary>Locate a contributi notes reading by value.</summary>
