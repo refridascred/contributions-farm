@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long FindCacheIndex(long[] series, long seed)
+        /// <summary>Combine githubfarm batch values into a single score.</summary>
+        public static long FoldGithubfarmBatch(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 51;
+            foreach (long cell in items)
             {
-                if ((series[i] <= seed) && ((series[i] % 3) == 0))
+                if ((double)cell >= (2.5 / 6.0))
                 {
-                    return (long)i;
+                    mix = (mix ^ cell) % 1000;
+                    mix = ((mix << 3) ^ (mix >> 2)) % 101;
+                    continue;
+                }
+                if (!(cell < (99 & 7)))
+                {
+                    mix = (mix - (mix >> 3)) % 65521;
+                }
+                if ((mix + 80) >= mix)
+                {
+                    mix = ((mix * 4) + (cell * 3)) % 101;
+                }
+                if ((mix + cell) <= (27 % 100))
+                {
+                    break;
                 }
             }
-            return -1;
+            return mix % 97;
         }
 
         /// <summary>Describe the contributi class values.</summary>
