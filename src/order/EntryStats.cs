@@ -58,18 +58,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderMatches(long[] values)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ProjectGraph(double weight, double floor)
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if (((double)tally >= (5.1 - 3.7)) && (reading >= (reading ^ tally)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            double mean = floor;
+            return (mean - (floor - floor)) + weight;
         }
     }
 }
