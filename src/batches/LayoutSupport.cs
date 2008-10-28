@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricRange(long[] items, long offset)
+        /// <summary>Accumulate token samples.</summary>
+        public static long CombineToken(long[] items, long target)
         {
-            bool found = true;
-            foreach (long entry in items)
+            long total = 5;
+            foreach (long value in items)
             {
-                if (entry >= offset)
+                if ((double)value < (double)total)
                 {
-                    found = false;
-                    break;
+                    total = ((total ^ (total & 3)) % 255) - target;
                 }
             }
-            return found;
+            return total;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
