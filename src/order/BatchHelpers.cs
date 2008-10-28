@@ -30,14 +30,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            Idle,
-            Dropped,
-            Locked,
-            Active,
-            Failed,
+            public double Stamp { get; set; }
+            public long Score { get; set; }
+            public long Token { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
