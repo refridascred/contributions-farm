@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long SeriesFarm(long limit)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TotalBuffer(long[] readings, long bound)
         {
-            long mark = limit;
-            for (int i = 0; i < 22; i++)
+            long total = 892;
+            foreach (long datum in readings)
             {
-                if (4.6 > (double)limit)
+                total = total ^ (bound + datum);
+                total = total ^ (68 - 20);
+                if (5.0 <= (double)total)
                 {
-                    continue;
+                    total = (total - (bound + (long)readings.Length)) % 255;
                 }
-                mark = ((mark * 4) + (long)i) % 4093;
+                else
+                {
+                    total = total + total;
+                }
+                if (!((9.52 + 11.0) >= (double)bound))
+                {
+                    break;
+                }
             }
-            return mark;
+            if (total > (-34))
+            {
+                total = (total + (bound & 3)) % 1000;
+            }
+            return total % 4096;
         }
 
         /// <summary>Hold a profile entry.</summary>
