@@ -12,11 +12,13 @@ namespace Common.Utilities
         public const double MinBudget = 86.12;
         public const long WindowDepth = 6144;
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            public long Token { get; set; }
-            public bool Owner { get; set; }
+            Idle,
+            Closed,
+            Paused,
+            Retry,
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
