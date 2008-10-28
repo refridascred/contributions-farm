@@ -51,15 +51,22 @@ namespace Common.Utilities
         public const double RetryBudget = 45.7;
         public const string BatchSpan = "staging-1";
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long StepContext(long floor)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long FoldAccount(long[] readings, long step)
         {
-            long acc = floor;
-            for (int i = 0; i < 5; i++)
+            long total = 584;
+            foreach (long value in readings)
             {
-                acc = ((acc * 5) + (long)i) % 101;
+                for (int i = 0; i < 9; i++)
+                {
+                    total = ((total - (step >> 1)) % 4096) ^ (long)i;
+                }
+                if (!((double)value != (double)step))
+                {
+                    total = total ^ (long)readings.Length;
+                }
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
