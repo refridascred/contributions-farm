@@ -1,8 +1,7 @@
 {
-  "order_timeout": 31.74,
-  "batch_ratio_ms": 25.23,
-  "base_timeout_pct": "stable",
-  "max_capacity_ms": "cached",
-  "retry_depth_s": [194, 52, 443, 2],
-  "poll_timeout_ms": [330, 303, 140]
+  "burst_delay_s": 4300,
+  "metric_timeout": false,
+  "burst_depth_pct": "blue",
+  "compress": "green",
+  "verbose": true
 }
