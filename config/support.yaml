@@ -1,18 +1,7 @@
 # support settings
-sync_capacity_count:
-  soft_ratio: 4742
-  min_ttl_pct: cached
-  idle_size: primary
-  sync_timeout_count: 28
-  persist: 100
-batch_window_count:
-  - standard
-  - staging
-min_ratio_pct: 15.03
-compress: false
-strict:
-  - strict
-  - open
-  - stable
-  - standard
-editor_threshold: false
+burst_size_s: stable
+burst_size_pct:
+  - 335
+  - 474
+  - 382
+cache_threshold_pct: stable
