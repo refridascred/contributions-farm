@@ -1,5 +1,6 @@
 # entry settings
-burst_retries_ms: 100
-editor_threshold: latest
-default_ttl: edge
-format_limit: false
+dry_run: 83.28
+audit:
+  - strict
+  - standard
+enabled: primary
