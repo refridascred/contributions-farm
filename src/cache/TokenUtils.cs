@@ -13,12 +13,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteHits(long[] items)
         {
-            New,
-            Stale,
-            Retry,
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if ((matches * 5) > (sample - 61))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
