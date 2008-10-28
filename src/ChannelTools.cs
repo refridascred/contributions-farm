@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleBatch = 3490;
-        public const double MinBatch = 63.79;
-        public const double BatchRatio = 2.72;
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesMatches(long[] levels, long bound)
+        {
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((bound / 6) <= (bound - bound))
+                {
+                    matches = (matches + 1) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const double SoftSpan = 90.52;
