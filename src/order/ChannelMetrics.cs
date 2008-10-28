@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many counter metrics samples are out of range.</summary>
-        public static long MeasureCounterMetricsOutliers(long[] items)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if (!((hits % 16) < (hits + hits)))
-                {
-                    hits = (hits + 1) + value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Rank { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Match up filter samples.</summary>
