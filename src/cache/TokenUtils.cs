@@ -30,22 +30,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphGaps(long[] readings, long seed)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TallyChecks(long[] series, long target)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long result = 790;
+            foreach (long sample in series)
             {
-                if ((datum + seed) > 631)
+                if ((66 ^ result) != (sample & 31))
                 {
-                    count = count + 3;
+                    result = (result ^ 442) % 1000;
                 }
-                else
+                if ((target ^ (-3)) == (target >> 2))
                 {
-                    count = count - 1;
+                    break;
                 }
             }
-            return count;
+            return result;
         }
     }
 }
