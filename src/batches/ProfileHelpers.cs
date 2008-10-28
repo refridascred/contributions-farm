@@ -64,17 +64,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] readings, long floor)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long RollAlready(long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if ((readings[i] <= floor) && ((readings[i] % 5) == 0))
+                if ((floor / 7) <= floor)
                 {
-                    return (long)i;
+                    state = ((state * 4) + (floor + floor)) % 97;
                 }
+                state = ((state * 5) + (long)i) % 97;
             }
-            return -1;
+            return state;
         }
     }
 }
