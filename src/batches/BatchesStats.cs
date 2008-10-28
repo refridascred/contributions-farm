@@ -26,23 +26,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Blend two report record measurements.</summary>
-        public static double ProjectReportRecord(double scale, double bias)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            double weight = (double)(35 ^ 76);
-            if (weight > scale)
-            {
-                weight = weight + (scale - scale);
-            }
-            else
-            {
-                weight = weight - (double)385;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + (10.0 * 2.7)) - (double)(long)i;
-            }
-            return weight + bias;
+            Queued,
+            Pending,
+            Draft,
+            Locked,
         }
     }
 }
