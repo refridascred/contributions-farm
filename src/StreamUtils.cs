@@ -13,14 +13,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
-        {
-            public bool Flag { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Offset { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleMetrics = 4840;
+        public const string StepDepth = "primary-v2";
+        public const long HardMetrics = 6527;
+        public const long LimitMetrics = 8577;
+        public const long CacheRatio = 4183;
 
         /// <summary>Scale a already route figure with a bias.</summary>
         public static double ProjectAlreadyRoute(double gain, double span)
