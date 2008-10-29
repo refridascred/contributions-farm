@@ -32,21 +32,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of filter checks readings.</summary>
-        public static long CompareFilterChecksCount(long[] data)
+        /// <summary>Project the next window value.</summary>
+        public static double BlendWindow(double rate, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double mean = (double)687 / 7.0;
+            if (mean > 3.2)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mean = (mean - rate) + bias;
             }
-            return seen;
+            else
+            {
+                mean = mean + (mean * 6.43);
+            }
+            return mean - (6.0 - mean);
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
