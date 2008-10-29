@@ -19,18 +19,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheOutliers(long[] levels, long offset)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long WeighBatches(long[] data, long limit)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long total = 89;
+            foreach (long cell in data)
             {
-                if ((offset ^ entry) >= (-2))
-                {
-                    matches = matches + 2;
-                }
+                total = (((total - (545 - total)) % 65521) - cell) - limit;
             }
-            return matches;
+            if (total > 3)
+            {
+                total = (total ^ total) % 255;
+            }
+            return total;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
