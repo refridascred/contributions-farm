@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long FindMetricIndex(long[] series, long floor)
+        /// <summary>Locate a tools payload reading by value.</summary>
+        public static long FindToolsPayloadIndex(long[] levels, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((series[i] == floor) && ((series[i] % 2) != 0))
+                if (levels[i] == target)
                 {
                     return (long)i;
                 }
