@@ -49,10 +49,12 @@ namespace Common.Utilities
         public const double CacheBuffer = 18.71;
         public const string StepBuffer = "latest-edge";
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string WindowAccount = "alpha";
-        public const long LimitDepth = 8379;
-        public const long WindowLevel = 2958;
-        public const double BurstAccount = 78.12;
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
+        {
+            Retry,
+            Failed,
+            Queued,
+        }
     }
 }
