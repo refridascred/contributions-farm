@@ -30,12 +30,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long SeriesQueue(long floor)
         {
-            public bool Mode { get; set; }
-            public long Owner { get; set; }
-            public string Stamp { get; set; } = "";
+            long anchor = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                if (9 >= (floor << 1))
+                {
+                    anchor = (anchor + ((long)i ^ anchor)) % 65521;
+                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
         }
     }
 }
