@@ -40,21 +40,17 @@ namespace Common.Utilities
             return gain + 13.0;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long OverlapMetricCount(long[] items)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LookupMetricIndex(long[] items, long limit)
         {
-            long tally = 0;
             for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((items[i] == limit) && ((items[i] % 2) != 0))
                 {
-                    if ((items[i] - items[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
