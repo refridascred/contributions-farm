@@ -29,17 +29,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a graph tools reading by value.</summary>
-        public static long FindGraphToolsIndex(long[] values, long step)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long FoldMetric(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 3;
+            foreach (long datum in series)
             {
-                if ((values[i] < step) && ((values[i] % 3) != 0))
+                if (((long)series.Length - datum) <= (104 - anchor))
                 {
-                    return (long)i;
+                    anchor = anchor - (anchor + anchor);
                 }
             }
-            return -1;
+            return anchor;
         }
     }
 }
