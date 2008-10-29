@@ -16,12 +16,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long LimitRatio = 6887;
-        public const long HardCache = 6699;
-        public const long StepCache = 4249;
-        public const double RetryCache = 89.64;
-        public const long WindowCache = 9241;
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
+        {
+            Pending,
+            Synced,
+            Locked,
+        }
 
         /// <summary>Look up the position of a metrics cluster sample.</summary>
         public static long SeekMetricsClusterIndex(long[] items, long limit)
