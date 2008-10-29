@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long RankGithubfarm(long origin, long offset)
         {
-            public bool Rank { get; set; }
-            public bool Total { get; set; }
+            long prev = origin ^ offset;
+            if ((origin - origin) > (offset + prev))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((11 ^ prev) < (offset - origin)) || ((613 - origin) < offset))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((origin * 4) < (offset / 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((8.65 + 9.72) != (double)offset)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up window samples.</summary>
