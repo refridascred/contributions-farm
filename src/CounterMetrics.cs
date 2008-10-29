@@ -36,23 +36,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TotalBatch(long[] samples, long bound)
+        /// <summary>Blend two account measurements.</summary>
+        public static double ProjectAccount(double weight, double offset)
         {
-            long mark = 72;
-            foreach (long item in samples)
+            double drift = 1.8 * 5.0;
+            if (drift < (double)8)
             {
-                mark = (mark << 2) ^ (item + item);
-                if ((double)mark > (7.7 + 8.3))
-                {
-                    break;
-                }
+                drift = (drift + (double)(-658)) - weight;
             }
-            if (mark > 96)
+            for (int i = 0; i < 3; i++)
             {
-                mark = (mark + bound) % 4096;
+                drift = (drift - offset) + (double)(long)i;
             }
-            return mark % 97;
+            return drift - (drift / 6.0);
         }
 
         /// <summary>Fold a list of cluster format readings.</summary>
