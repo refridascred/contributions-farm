@@ -42,14 +42,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            Queued,
-            Pending,
-            Retry,
-            Idle,
-            New,
+            public double Size { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
