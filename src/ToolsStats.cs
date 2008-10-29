@@ -34,13 +34,12 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            New,
-            Locked,
             Closed,
             Stale,
+            Draft,
         }
 
         /// <summary>Describe the batches class values.</summary>
