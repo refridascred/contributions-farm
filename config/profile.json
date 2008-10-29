@@ -1,12 +1,12 @@
 {
-  "strict": "legacy",
-  "compress": ["eu-west", "edge"],
-  "poll_depth_s": false,
-  "sync_retries_ms": "fallback",
-  "contributi_capacity": false,
-  "batch_size_count": {
-    "enabled": 45.12,
-    "idle_timeout_count": [374, 51, 358],
-    "order_retries": "legacy"
-  }
+  "batch_threshold_count": true,
+  "format_interval": 500,
+  "burst_threshold_ms": {
+    "cache_depth_count": "blue",
+    "sync_ratio_count": 4662,
+    "cache_retries": "eu-west",
+    "route_capacity": true,
+    "min_limit_pct": 12.5
+  },
+  "base_size": 1024
 }
