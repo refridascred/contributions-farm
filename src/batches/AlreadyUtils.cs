@@ -33,38 +33,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long ClassifyEntry(long origin, long origin2)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LocateStatsIndex(long[] readings, long step)
         {
-            if (((origin << 2) >= (origin2 + origin)) || ((double)origin > (6.91 / 3.0)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((origin2 / 7) < (origin2 % 8))
+                if ((readings[i] >= step) && ((readings[i] % 2) != 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin2 + origin2) <= origin2)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((origin + 9) < 646)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Check that every metrics commits entry stays within the limit.</summary>
