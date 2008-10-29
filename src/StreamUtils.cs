@@ -91,13 +91,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderRange(long[] readings, long bound)
         {
-            public double Limit { get; set; }
-            public long Mode { get; set; }
-            public double Score { get; set; }
-            public bool Rank { get; set; }
+            bool valid = true;
+            foreach (long datum in readings)
+            {
+                if (datum <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
