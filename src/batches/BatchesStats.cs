@@ -35,12 +35,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long SeriesChecks(long limit)
         {
-            Done,
-            Active,
-            Pending,
+            long mix = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                mix = ((mix << 3) ^ ((long)i & 31)) % 4096;
+                mix = (mix ^ limit) % 101;
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
         }
     }
 }
