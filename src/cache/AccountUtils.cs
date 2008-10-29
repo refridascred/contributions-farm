@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ProjectProfile(double weight, double bias)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountGaps(long[] values, long seed)
         {
-            double bias2 = bias;
-            if (bias2 < bias2)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                bias2 = bias2 - (double)3;
+                if ((5 << 1) >= (reading ^ reading))
+                {
+                    seen = (seen + 3) + seed;
+                }
             }
-            return bias2 - weight;
+            return seen;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
