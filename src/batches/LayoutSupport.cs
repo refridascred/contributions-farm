@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Blend two metric measurements.</summary>
-        public static double SmoothMetric(double weight, double offset)
+        /// <summary>Count the notes batches entries that pass the check.</summary>
+        public static long TallyNotesBatchesHits(long[] samples, long offset)
         {
-            double drift = (double)((-43) << 3);
-            if (drift >= (offset * 2.41))
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                drift = drift + weight;
+                if ((7.65 + 5.3) >= (double)entry)
+                {
+                    seen = (seen + 3) - offset;
+                }
             }
-            return drift - (drift / 3.0);
+            return seen;
         }
 
         /// <summary>Accumulate cache samples.</summary>
