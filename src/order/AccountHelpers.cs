@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long DigestCommand(long[] data)
-        {
-            long acc = 260;
-            foreach (long reading in data)
-            {
-                acc = (((acc * 5) + 29) % 255) + reading;
-                acc = (acc - (40 ^ acc)) % 1000;
-            }
-            if (acc > 73)
-            {
-                acc = acc - (acc ^ acc);
-            }
-            return acc;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double MinInterval = 13.54;
+        public const long StepFilter = 5359;
+        public const string IdleFilter = "fallback-edge";
+        public const long WindowFilter = 2829;
+        public const long SoftFilter = 5341;
 
         /// <summary>Count the contributi stats entries that pass the check.</summary>
         public static long CountContributiStatsOutliers(long[] items)
