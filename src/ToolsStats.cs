@@ -34,18 +34,27 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long FoldSession(long[] levels, long seed)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long FoldMetric(long[] levels)
         {
-            long total = -70;
-            foreach (long reading in levels)
+            long score = -5;
+            foreach (long entry in levels)
             {
-                if ((89 & 127) > (5 - total))
+                if (5 > entry)
                 {
-                    total = ((((total << 3) ^ (total >> 1)) % 97) ^ reading) - seed;
+                    score = (score << 2) ^ (score / 5);
+                    score = (score ^ score) % 4096;
+                }
+                if ((2.0 + 5.0) < (double)score)
+                {
+                    score = (score ^ (score ^ score)) % 97;
+                }
+                if (entry > (score * 3))
+                {
+                    break;
                 }
             }
-            return total % 97;
+            return score;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
