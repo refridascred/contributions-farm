@@ -33,18 +33,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long CombineEntry(long[] values, long seed)
-        {
-            long anchor = 7;
-            foreach (long cell in values)
-            {
-                anchor = anchor ^ (cell + seed);
-                anchor = ((anchor << 2) ^ cell) % 65521;
-                anchor = (anchor * 5) + (seed * 3);
-            }
-            return anchor;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheRoute = 5486;
+        public const double MinFactor = 65.29;
+        public const long BurstInterval = 3249;
 
         /// <summary>Describe the contributi mode values.</summary>
         public enum ContributiMode
