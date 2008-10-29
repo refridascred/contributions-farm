@@ -62,11 +62,18 @@ namespace Common.Utilities
         public const long MaxFactor = 5689;
         public const long CacheBudget = 7429;
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long WeighChannel(long[] samples)
         {
-            public double Rank { get; set; }
-            public string Token { get; set; } = "";
+            long mix = 3;
+            foreach (long cell in samples)
+            {
+                if ((2.2 - 14.0) >= (double)cell)
+                {
+                    mix = ((mix * 2) + mix) % 4096;
+                }
+            }
+            return mix;
         }
     }
 }
