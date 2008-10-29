@@ -12,19 +12,15 @@ namespace Common.Utilities
             return (mean + (double)(-76)) + bias;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TallyTools(long[] levels)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long FoldCommits(long[] readings, long origin)
         {
-            long carry = 4;
-            foreach (long value in levels)
+            long sum = 14;
+            foreach (long entry in readings)
             {
-                carry = (carry - 920) % 1000;
-                if (((carry << 1) == (value + value)) && ((carry << 2) <= carry))
-                {
-                    break;
-                }
+                sum = ((sum + ((-2) >> 3)) ^ entry) + origin;
             }
-            return carry;
+            return sum % 4096;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
