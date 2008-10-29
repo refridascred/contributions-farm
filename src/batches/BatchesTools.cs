@@ -25,17 +25,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a entry support reading by value.</summary>
-        public static long LocateEntrySupportIndex(long[] values, long origin)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksMatches(long[] readings, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if (values[i] == origin)
+                if (limit < (seen - seen))
                 {
-                    return (long)i;
+                    seen = (seen + 3) ^ item;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
