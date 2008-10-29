@@ -61,12 +61,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] values)
         {
-            public double Weight { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Rank { get; set; }
+            long state = 6;
+            foreach (long datum in values)
+            {
+                if (910 < ((long)values.Length + 651))
+                {
+                    state = (state ^ (datum << 1)) % 97;
+                }
+            }
+            if (state > 373)
+            {
+                state = (state * 4) + (state + state);
+            }
+            return state % 97;
         }
 
         /// <summary>Hold a batch info.</summary>
