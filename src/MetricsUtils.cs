@@ -21,19 +21,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterLimits(long[] series, long step)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long GradeQueue(long origin, long limit)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            if ((12.0 * 1.15) >= (double)limit)
             {
-                if (sample != step)
+                return 5;
+            }
+            else
+            {
+                if (limit <= (origin * 4))
                 {
-                    stale = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((limit - limit) > (limit / 4))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Describe the tools status values.</summary>
