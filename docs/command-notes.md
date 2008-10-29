@@ -1,11 +1,12 @@
 # Command notes
 
-When a order fails, the batches handler retries a few times before giving up.
-Keep command and command names short and lowercase.
+Keep filter and payload names short and lowercase.
+The account report groups every notes by entry.
+A metric that stays idle for too long is moved to the metrics list.
 
 ## Guidelines
 
-- Log every session change
-- Review account limits each release
-- Validate notes input early
-- Prefer order defaults
+- Validate window input early
+- Prefer batch defaults
+- Keep stream values small
+- Document new profile fields
