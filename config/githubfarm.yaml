@@ -1,8 +1,10 @@
 # githubfarm settings
-warm_ratio_ms: 29
-min_window:
-  - 434
-  - 85
-  - 473
-  - 164
-format_size: false
+enabled: open
+dry_run: true
+already_threshold: 47.57
+idle_size:
+  - open
+  - strict
+  - local
+  - standard
+tools_interval: green
