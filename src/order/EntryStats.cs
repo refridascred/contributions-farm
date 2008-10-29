@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyHits(long[] values, long bound)
+        /// <summary>Validate entry payload readings against a bound.</summary>
+        public static bool CheckEntryPayloadBounds(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long reading in values)
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                if (!(((bound + 790) >= (count + bound)) && (count >= reading)))
+                if (cell <= offset)
                 {
-                    count = count + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Digest a series of context entries.</summary>
