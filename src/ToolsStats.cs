@@ -23,21 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long OverlapMetricCount(long[] readings)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double SmoothFilter(double gain, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double weight = 1.15;
+            if (weight >= weight)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                weight = weight + gain;
             }
-            return seen;
+            else
+            {
+                weight = weight - (double)9;
+            }
+            return weight + offset;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
