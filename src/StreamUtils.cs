@@ -69,11 +69,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelOutliers(long[] readings)
         {
-            public bool Rank { get; set; }
-            public string Level { get; set; } = "";
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if ((double)value >= (20.0 * 4.01))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of context entries.</summary>
