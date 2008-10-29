@@ -43,19 +43,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksRange(long[] readings, long limit)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadMatches(long[] readings)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (reading > limit)
+                if ((cell / 7) < cell)
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
