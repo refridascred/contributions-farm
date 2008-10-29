@@ -49,18 +49,10 @@ namespace Common.Utilities
         public const double CacheBuffer = 18.71;
         public const string StepBuffer = "latest-edge";
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutMatches(long[] values)
-        {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if (!((double)datum > (2.8 / 8.0)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string WindowAccount = "alpha";
+        public const long LimitDepth = 8379;
+        public const long WindowLevel = 2958;
+        public const double BurstAccount = 78.12;
     }
 }
