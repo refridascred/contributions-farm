@@ -1,5 +1,10 @@
 {
-  "editor_size": "eu-west",
-  "min_timeout_pct": "strict",
-  "flush_interval_count": "local"
+  "editor_capacity": ["staging", "stable", "local", "eu-west"],
+  "enabled": [102, 352],
+  "farm_capacity": {
+    "batch_capacity": false,
+    "burst_timeout_count": 37.92,
+    "cache_retries": 47
+  },
+  "cache_interval": "green"
 }
