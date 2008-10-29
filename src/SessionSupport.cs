@@ -25,18 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit githubfarm stream readings against a rule.</summary>
-        public static long CountGithubfarmStreamGaps(long[] data)
+        /// <summary>Measure how many stats account samples are out of range.</summary>
+        public static long CountStatsAccountGaps(long[] levels)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if ((double)sample < (8.84 / 4.0))
+                if ((16 - count) >= (entry / 2))
                 {
-                    hits = hits + 1;
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
