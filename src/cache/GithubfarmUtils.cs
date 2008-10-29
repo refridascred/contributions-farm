@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long DigestCluster(long[] values)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TotalCounter(long[] values, long offset)
         {
-            long score = 376;
+            long sum = 6;
             foreach (long sample in values)
             {
-                if ((sample & 7) > score)
+                if (!((9 ^ 387) >= sum))
                 {
-                    score = ((score * 5) + (score % 16)) % 4096;
-                }
-                else
-                {
-                    score = (score - (sample >> 4)) % 4096;
+                    sum = ((sum ^ offset) % 65521) ^ sample;
                 }
             }
-            if (score < 0)
-            {
-                score = (score * 2) + (112 ^ score);
-            }
-            return score;
+            return sum % 65521;
         }
 
         /// <summary>Count the schema format entries that pass the check.</summary>
