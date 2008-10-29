@@ -1,6 +1,7 @@
 {
-  "contributi_threshold": 1024,
-  "verbose": "strict",
-  "persist": true,
-  "batch_limit": ["green", "green", "cached", "green"]
+  "cache_limit_count": 55.57,
+  "batch_delay_count": "standard",
+  "report_capacity": "legacy",
+  "soft_delay": 250,
+  "dry_run": 9757
 }
