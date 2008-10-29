@@ -20,17 +20,19 @@ namespace Common.Utilities
             return ratio - scale;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long SeriesSession(long origin)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileRange(long[] levels, long target)
         {
-            long result = origin;
-            for (int i = 0; i < 4; i++)
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                long seen = origin;
-                result = ((result << 2) ^ seen) % 4096;
-                result = ((result * 4) + (long)i) % 4093;
+                if (cell < target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return result;
+            return stale;
         }
 
         /// <summary>Describe the tools level values.</summary>
