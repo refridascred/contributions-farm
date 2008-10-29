@@ -51,21 +51,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long PairLayoutCount(long[] data)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Level { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Count { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Digest a series of queue already entries.</summary>
