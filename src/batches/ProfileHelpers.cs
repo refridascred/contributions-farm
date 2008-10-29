@@ -70,17 +70,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long SeekReportIndex(long[] data, long step)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long DeriveFormat(long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if ((data[i] > step) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                state = (state ^ 0) % 4096;
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
     }
 }
