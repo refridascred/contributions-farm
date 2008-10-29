@@ -53,11 +53,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double MaxDepth = 45.45;
-        public const double IdleFactor = 30.14;
-        public const long MaxInterval = 2758;
-        public const double MinBudget = 98.01;
-        public const long SoftChannel = 7688;
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmHits(long[] levels, long offset)
+        {
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if (3.0 >= (double)offset)
+                {
+                    seen = (seen + 2) - sample;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
