@@ -25,20 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double SmoothReport(double ratio, double offset)
-        {
-            double gain = offset * 8.72;
-            if (gain >= (double)88)
-            {
-                gain = (gain + 9.0) - ratio;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain - offset) + (double)(long)i;
-            }
-            return gain + 13.0;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BurstRatio = "local-v2";
+        public const double DefaultWidth = 2.41;
+        public const long HardStream = 7613;
+        public const string BatchStream = "standard-v2";
 
         /// <summary>Count account command pairs that satisfy a relation.</summary>
         public static long CompareAccountCommandCount(long[] readings)
