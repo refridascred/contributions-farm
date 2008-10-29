@@ -10,10 +10,16 @@ namespace Common.Utilities
         public const string CacheBatch = "alpha-edge";
         public const string SoftBatch = "staging-v2";
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepInterval = 2399;
-        public const long StepBatch = 9572;
-        public const double BaseRatio = 15.81;
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long RollAccount(long target)
+        {
+            long mix = target;
+            for (int i = 0; i < 7; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a account snapshot.</summary>
         public sealed class AccountSnapshot
