@@ -32,19 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportRange(long[] samples, long offset)
-        {
-            bool stale = true;
-            foreach (long sample in samples)
-            {
-                if (sample != offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstLayout = 5275;
+        public const long BatchSize = 7908;
+        public const long RetryFactor = 5533;
+        public const double MinLayout = 71.6;
+        public const long BurstWidth = 3513;
     }
 }
