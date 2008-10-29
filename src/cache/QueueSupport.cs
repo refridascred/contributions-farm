@@ -39,31 +39,17 @@ namespace Common.Utilities
         public const double BaseWidth = 28.75;
         public const string MaxSpan = "legacy-edge";
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long SortChannel(long bound, long limit)
+        /// <summary>Roll a metric batches counter forward.</summary>
+        public static long DeriveMetricBatches(long target)
         {
-            if ((bound ^ limit) >= (limit * 3))
+            long state = target;
+            for (int i = 0; i < 21; i++)
             {
-                return 7;
+                state = ((state * 5) + (94 % 7)) % 1000;
+                state = ((state * 4) + (state + (long)i)) % 255;
+                state = ((state * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if ((limit + limit) >= 976)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound << 2) != (27 / 9))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return state;
         }
     }
 }
