@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Rank command input into a small class.</summary>
+        public static long SortCommand(long offset, long limit)
         {
-            public long Token { get; set; }
-            public long Flag { get; set; }
+            if (((98 % 16) != (offset - offset)) && ((double)limit > (19.0 + 6.0)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit + limit) >= 959)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
