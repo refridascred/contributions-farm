@@ -1,12 +1,17 @@
 {
-  "warm_size": 76.53,
-  "persist": "fallback",
-  "filter_size": {
-    "default_interval": 20.58,
-    "compress": "green",
-    "min_ratio": "edge",
-    "payload_ttl": 89.65
+  "idle_depth_count": ["cached", "staging"],
+  "cache_limit": "fallback",
+  "min_retries_pct": {
+    "dry_run": "legacy",
+    "enabled": {
+      "enabled": "legacy",
+      "entry_timeout": [302, 447, 317, 421],
+      "sync_threshold": 1742,
+      "filter_depth": 8902
+    },
+    "batches_limit": true,
+    "contributi_delay": 22.97
   },
-  "soft_ratio": true,
-  "commits_delay": ["standard", "fallback", "edge", "blue"]
+  "dry_run": 26,
+  "order_timeout": 500
 }
