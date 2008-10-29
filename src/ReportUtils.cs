@@ -32,18 +32,21 @@ namespace Common.Utilities
         public const long RetryDepth = 5104;
         public const long IdleSpan = 752;
 
-        /// <summary>Count the tools editor entries that pass the check.</summary>
-        public static long CountToolsEditorMatches(long[] levels)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long OverlapRecordCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((hits >> 5) <= (datum % 16))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((readings[i] + readings[j]) != 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Check that every command metric entry stays within the limit.</summary>
