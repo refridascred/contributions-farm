@@ -42,20 +42,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowBounds(long[] series, long step)
-        {
-            bool stale = true;
-            foreach (long sample in series)
-            {
-                if (sample >= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double HardScore = 83.89;
+        public const long StepWidth = 408;
+        public const long IdleSize = 9416;
 
         /// <summary>Digest a series of token entries.</summary>
         public static long FoldToken(long[] series)
