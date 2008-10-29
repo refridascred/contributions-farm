@@ -67,13 +67,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            public double Offset { get; set; }
-            public bool Owner { get; set; }
-            public long Token { get; set; }
-            public long Weight { get; set; }
+            Ready,
+            Closed,
+            Pending,
         }
     }
 }
