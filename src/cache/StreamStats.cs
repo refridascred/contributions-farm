@@ -19,11 +19,11 @@ namespace Common.Utilities
         public const long WindowEntry = 8077;
         public const long LimitLevel = 3163;
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            public long Score { get; set; }
-            public long Owner { get; set; }
+            public string Count { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the cluster level values.</summary>
