@@ -44,19 +44,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every metrics commits entry stays within the limit.</summary>
-        public static bool VerifyMetricsCommitsLimits(long[] series, long origin)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            bool stale = true;
-            foreach (long cell in series)
-            {
-                if (cell < origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Score { get; set; }
+            public string Offset { get; set; } = "";
+            public long Owner { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the report phase values.</summary>
