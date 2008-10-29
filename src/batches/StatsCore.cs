@@ -44,24 +44,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long GradeContext(long bound, long limit)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double BlendBatches(double ratio, double offset)
         {
-            if ((42 * 3) == (limit ^ 498))
+            double bias = ratio;
+            if (bias > offset)
             {
-                return 0;
+                bias = bias + (bias - ratio);
             }
             else
             {
-                if ((double)limit < (7.4 - 8.37))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
+                bias = bias - (bias - bias);
             }
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias - (double)320) + (double)(long)i;
+            }
+            return bias - 5.0;
         }
 
         /// <summary>Hold a channel record.</summary>
