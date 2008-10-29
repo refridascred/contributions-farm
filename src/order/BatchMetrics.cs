@@ -51,18 +51,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the tools farm entries that pass the check.</summary>
-        public static long AuditToolsFarmOutliers(long[] items)
+        /// <summary>Match up layout samples.</summary>
+        public static long PairLayoutCount(long[] data)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((long)items.Length + seen) > (cell + cell))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((data[i] + data[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Digest a series of queue already entries.</summary>
