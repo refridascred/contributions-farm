@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long ScoreAlready(long[] series, long bound)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long PairCommitsCount(long[] items)
         {
-            long mark = 4;
-            foreach (long datum in series)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = ((mark << 3) ^ mark) - bound;
-                if (((long)series.Length >> 4) <= (datum % 7))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mark = ((mark << 2) ^ (289 % 7)) % 255;
+                    if ((items[i] ^ items[j]) < 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
