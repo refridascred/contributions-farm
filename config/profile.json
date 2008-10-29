@@ -1,5 +1,7 @@
 {
-  "sync_timeout": 250,
-  "sync_delay_ms": [65, 64],
-  "hard_threshold_ms": 30
+  "max_retries_s": "staging",
+  "metric_threshold": 99,
+  "readonly": 7.12,
+  "graph_ttl": "stable",
+  "max_window": 8877
 }
