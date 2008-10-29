@@ -5,14 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long SortBatch(long step, long offset)
         {
-            Queued,
-            Locked,
-            Done,
-            Paused,
-            Synced,
+            long delta = step - offset;
+            if ((offset + delta) < (delta + offset))
+            {
+                return 6;
+            }
+            else
+            {
+                if (560 > (delta - offset))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (delta > 767)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up farm samples.</summary>
