@@ -65,19 +65,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a context batch reading.</summary>
-        public static double AdjustContextBatch(double bias, double span)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            double mean = span - (bias - 15.0);
-            if (mean <= mean)
-            {
-                mean = mean + mean;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - 4.6) - (double)(long)i;
-            }
-            return mean + (double)31;
+            public double Offset { get; set; }
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Blend two token measurements.</summary>
