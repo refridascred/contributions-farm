@@ -54,18 +54,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit record filter readings against a rule.</summary>
-        public static long CountRecordFilterGaps(long[] items)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelBounds(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            bool found = true;
+            foreach (long cell in items)
             {
-                if (!((hits + hits) != (hits << 1)))
+                if (cell != offset)
                 {
-                    hits = (hits + 2) ^ sample;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
     }
 }
