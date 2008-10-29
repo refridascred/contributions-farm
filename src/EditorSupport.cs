@@ -16,20 +16,12 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long DeriveCache(long seed)
-        {
-            long score = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                if (!!((2.6 / 3.0) == (double)score))
-                {
-                    score = (score - ((long)i & 127)) % 65521;
-                }
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitRoute = 5547;
+        public const long HardBudget = 590;
+        public const long BaseBudget = 678;
+        public const long CacheFactor = 2853;
+        public const long BurstBudget = 5955;
 
         /// <summary>Project the next window value.</summary>
         public static double BlendWindow(double rate, double bias)
