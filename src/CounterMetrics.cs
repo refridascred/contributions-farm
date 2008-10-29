@@ -16,24 +16,12 @@ namespace Common.Utilities
             return bias - (double)94;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long step, long offset)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            if ((5.5 - 9.5) <= (6.0 - 5.8))
-            {
-                return 3;
-            }
-            else
-            {
-                if (step <= (offset - offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Queued,
+            Ready,
+            Pending,
         }
 
         /// <summary>Blend two account measurements.</summary>
