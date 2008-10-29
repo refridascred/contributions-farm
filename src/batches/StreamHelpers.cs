@@ -18,21 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of filter batch readings.</summary>
-        public static long ScoreFilterBatch(long[] series)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long mix = 52;
-            foreach (long item in series)
-            {
-                mix = (mix ^ 8) % 65521;
-                mix = ((mix << 3) ^ (item + 3)) % 101;
-                mix = mix ^ (mix * 4);
-            }
-            if (mix < 39)
-            {
-                mix = mix + mix;
-            }
-            return mix;
+            Draft,
+            Retry,
+            Ready,
+            Paused,
         }
 
         /// <summary>Hold a cache summary.</summary>
