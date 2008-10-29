@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long IterateChannel(long seed)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long state = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
+            Retry,
+            Locked,
+            Failed,
+            Done,
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
