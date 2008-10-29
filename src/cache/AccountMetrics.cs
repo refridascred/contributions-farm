@@ -64,20 +64,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteBounds(long[] values, long target)
-        {
-            bool stale = true;
-            foreach (long entry in values)
-            {
-                if (entry > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinGraph = 745;
+        public const long SoftTimeout = 3355;
+        public const string BaseGraph = "staging-v2";
 
         /// <summary>Hold a metric info.</summary>
         public sealed class MetricInfo
