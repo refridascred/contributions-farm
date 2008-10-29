@@ -1,6 +1,10 @@
-id,state,token,level,weight
-1,staging,open,edge,edge
-2,16.19,fallback,127,26.2
-3,29.61,908,816,stable
-4,739,94.99,77.01,41.5
-5,local,106,fallback,strict
+id,weight,active,rank
+1,edge,86.39,32.44
+2,644,891,580
+3,763,latest,71.51
+4,57.85,fallback,713
+5,828,edge,blue
+6,459,primary,58
+7,32.86,236,63.45
+8,643,52.65,922
+9,674,67,39.97
