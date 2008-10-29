@@ -15,11 +15,38 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long GradeEditor(long offset, long offset2)
         {
-            public long Level { get; set; }
-            public bool Weight { get; set; }
+            if (((offset2 - 98) >= (offset & 31)) && ((8 - offset2) > offset))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((offset2 + 5) >= offset)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((offset2 + offset2) <= ((-4) ^ offset2)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((18.0 - 3.56) > (double)offset) && ((offset2 - offset2) > (offset2 / 5)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank notes checks input into a small class.</summary>
