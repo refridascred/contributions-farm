@@ -12,18 +12,31 @@ namespace Common.Utilities
             return (ratio2 - (double)7) + ratio;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutGaps(long[] values)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long RankCache(long offset, long origin)
         {
-            long matches = 0;
-            foreach (long value in values)
+            if ((double)offset != (5.06 / 5.0))
             {
-                if (((value - matches) == (value + matches)) && ((value + matches) < matches))
+                return 0;
+            }
+            else
+            {
+                if (offset >= (origin ^ offset))
                 {
-                    matches = matches + 1;
+                    return 7;
+                }
+                else
+                {
+                    if ((19 % 64) == (origin / 8))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
