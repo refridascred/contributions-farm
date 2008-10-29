@@ -56,24 +56,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long SortCache(long target, long target2)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            if ((9.0 - 5.39) != (double)target2)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((target & 7) > target) && (target2 > (target % 2)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public double Size { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the session kind values.</summary>
