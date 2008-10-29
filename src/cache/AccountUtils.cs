@@ -10,26 +10,13 @@ namespace Common.Utilities
         public const string RetryMetrics = "fallback-edge";
         public const long SoftBudget = 2273;
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] levels, long limit)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long mix = 79;
-            foreach (long cell in levels)
-            {
-                if ((limit % 16) <= (limit % 3))
-                {
-                    mix = (mix + cell) % 97;
-                }
-                for (int i = 0; i < 9; i++)
-                {
-                    mix = (mix - (mix * 5)) - (long)i;
-                }
-                if (((limit - 774) == (limit >> 1)) && (limit > 585))
-                {
-                    mix = mix - limit;
-                }
-            }
-            return mix % 65521;
+            public bool Offset { get; set; }
+            public string Count { get; set; } = "";
+            public bool Rank { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
