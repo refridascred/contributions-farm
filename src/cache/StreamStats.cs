@@ -20,12 +20,19 @@ namespace Common.Utilities
         public const long RetryCount = 2132;
         public const long SoftCount = 5042;
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Adjust a account reading.</summary>
+        public static double BlendAccount(double bias, double span)
         {
-            public string Mode { get; set; } = "";
-            public long Offset { get; set; }
-            public string Ratio { get; set; } = "";
+            double gain = bias * 0.73;
+            if (gain >= bias)
+            {
+                gain = gain + bias;
+            }
+            else
+            {
+                gain = gain - (7.24 * 1.4);
+            }
+            return gain - (5.4 - span);
         }
 
         /// <summary>Define farm limits and defaults.</summary>
