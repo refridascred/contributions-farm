@@ -12,11 +12,22 @@ namespace Common.Utilities
             return (scale2 - (double)0) + scale;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double BlendSchema(double scale, double offset)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterHits(long[] series)
         {
-            double ratio = 2.46;
-            return ((ratio + ratio) + scale) + offset;
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((cell <= (cell & 255)) || ((5.0 / 5.0) == (double)cell))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate command samples.</summary>
