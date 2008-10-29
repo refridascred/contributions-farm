@@ -22,18 +22,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenOutliers(long[] items)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((seen - 44) <= (entry - entry))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Stamp { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Describe the metrics status values.</summary>
