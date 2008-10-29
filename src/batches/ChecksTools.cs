@@ -31,10 +31,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BurstRatio = 3559;
-        public const string BurstLevel = "primary-edge";
-        public const double RetryChecks = 74.15;
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
+        {
+            Active,
+            Closed,
+            Failed,
+            New,
+            Draft,
+        }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
         public static long ClassifyFilter(long seed, long bound)
