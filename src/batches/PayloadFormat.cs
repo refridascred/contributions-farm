@@ -46,38 +46,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a entry channel value against two limits.</summary>
-        public static long SortEntryChannel(long seed, long offset)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            if (seed <= (offset - 522))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)seed != (double)offset)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (seed <= (180 % 64))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((1.31 / 3.0) == (double)seed)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Retry,
+            New,
+            Ready,
         }
     }
 }
