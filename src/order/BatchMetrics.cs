@@ -37,10 +37,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BurstCount = 5672;
-        public const long BurstScore = 206;
-        public const long RetryLevel = 4409;
+        /// <summary>Iterate the already stream series from a seed.</summary>
+        public static long SeriesAlreadyStream(long limit)
+        {
+            long state = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                state = state + (85 - (long)i);
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Rank session cluster input into a small class.</summary>
         public static long RankSessionCluster(long bound, long floor)
