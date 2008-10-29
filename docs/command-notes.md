@@ -1,14 +1,12 @@
 # Command notes
 
-Each stats is validated before it reaches the window queue.
-Defaults for entry live in the config folder and can be overridden per environment.
-
-When a buffer fails, the payload handler retries a few times before giving up.
-The cache report groups every report by cache.
+When a layout fails, the route handler retries a few times before giving up.
+The support module keeps route values in sync with the graph cache.
+When a already fails, the schema handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every command change
-- Review schema limits each release
-- Validate notes input early
-- Prefer route defaults
+- Review batch limits each release
+- Prefer record defaults
+- Document new format fields
+- Keep entry values small
