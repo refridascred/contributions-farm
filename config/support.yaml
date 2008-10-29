@@ -1,6 +1,24 @@
 # support settings
-tools_timeout: standard
-batch_depth_pct: false
-soft_retries_ms: 3195
-cache_limit_ms: 2.5
-hard_limit: false
+base_size_pct: fallback
+support_interval: legacy
+enabled:
+  enabled:
+    soft_interval_s:
+      - 149
+      - 485
+      - 182
+    strict: 3606
+    poll_ttl:
+      - 418
+      - 490
+      - 334
+      - 99
+    sync_depth_s: 91.68
+    dry_run: 45.76
+  editor_size: false
+  record_ratio: staging
+  retry_ratio_pct:
+    enabled: true
+    stats_window: stable
+    readonly: 6.09
+  audit: edge
