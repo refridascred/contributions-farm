@@ -30,12 +30,19 @@ namespace Common.Utilities
             return scale - rate;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardChecks = 4682;
-        public const string MaxChecks = "legacy-1";
-        public const double MaxFactor = 67.92;
-        public const long SoftScore = 9109;
-        public const long SoftChecks = 1044;
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionMatches(long[] items)
+        {
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((double)matches <= (6.5 + 17.0))
+                {
+                    matches = (matches + 1) + item;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Validate githubfarm metrics readings against a bound.</summary>
         public static bool GuardGithubfarmMetricsBounds(long[] values, long target)
