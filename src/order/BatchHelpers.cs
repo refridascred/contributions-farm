@@ -18,15 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double AdjustStats(double rate, double span)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long FoldContext(long[] items, long step)
         {
-            double weight = span;
-            if (weight >= (double)46)
+            long score = 6;
+            foreach (long entry in items)
             {
-                weight = (weight + (double)426) - rate;
+                score = ((((score << 3) ^ (score * 5)) % 65521) ^ entry) + step;
             }
-            return weight - (span * 1.3);
+            return score % 65521;
         }
 
         /// <summary>Hold a cluster header.</summary>
