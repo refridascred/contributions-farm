@@ -16,15 +16,15 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double BlendSupport(double bias, double bias2)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TotalTools(long[] values, long floor)
         {
-            double rate = bias2;
-            if (rate < (double)827)
+            long sum = 348;
+            foreach (long cell in values)
             {
-                rate = rate - (rate * 6.0);
+                sum = sum ^ (floor ^ cell);
             }
-            return rate - bias;
+            return sum;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
