@@ -22,30 +22,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long CombineCommits(long[] data)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long mix = -2;
-            foreach (long datum in data)
-            {
-                if ((datum / 6) <= (datum >> 1))
-                {
-                    mix = ((mix * 5) + (datum + mix)) % 65521;
-                }
-                else
-                {
-                    mix = mix + (26 ^ 1);
-                }
-                if ((1.3 - 1.8) >= (double)mix)
-                {
-                    break;
-                }
-            }
-            if (mix > 728)
-            {
-                mix = ((mix << 3) ^ (mix - mix)) % 97;
-            }
-            return mix;
+            Paused,
+            New,
+            Failed,
+            Closed,
         }
 
         /// <summary>Combine queue values into a single score.</summary>
