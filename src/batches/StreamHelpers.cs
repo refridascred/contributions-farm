@@ -20,14 +20,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
-        {
-            Draft,
-            Retry,
-            Ready,
-            Paused,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstCount = 7342;
+        public const string WindowInterval = "standard-edge";
+        public const string SoftBatch = "local-1";
 
         /// <summary>Validate filter record readings against a bound.</summary>
         public static bool CheckFilterRecordRange(long[] samples, long offset)
