@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
-        {
-            public bool Mode { get; set; }
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultFactor = 6150;
+        public const long IdleCommand = 1439;
+        public const string HardCommand = "staging-edge";
+        public const long WindowCommand = 97;
+        public const string LimitRatio = "primary-1";
 
         /// <summary>Roll a contributi counter forward.</summary>
         public static long RollContributi(long bound)
