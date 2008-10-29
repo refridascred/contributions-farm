@@ -25,16 +25,15 @@ namespace Common.Utilities
         public const long CacheAlready = 5282;
         public const long StepRatio = 1600;
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long StepChannel(long floor)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long SeriesCounter(long bound)
         {
-            long result = floor;
-            for (int i = 0; i < 18; i++)
+            long state = bound;
+            for (int i = 0; i < 17; i++)
             {
-                result = result + 9;
-                result = ((result * 4) + (long)i) % 101;
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return result;
+            return state;
         }
     }
 }
