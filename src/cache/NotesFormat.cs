@@ -30,19 +30,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextLimits(long[] items, long offset)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            bool flag = true;
-            foreach (long entry in items)
-            {
-                if (entry <= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Retry,
+            Failed,
+            Active,
         }
     }
 }
