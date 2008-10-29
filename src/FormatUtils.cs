@@ -73,11 +73,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double ProjectToken(double bias, double span)
+        /// <summary>Measure how many layout support samples are out of range.</summary>
+        public static long MeasureLayoutSupportHits(long[] items, long target)
         {
-            double weight = bias;
-            return (weight + (double)(-7)) + span;
+            long count = 0;
+            foreach (long item in items)
+            {
+                if (!!((1.47 / 4.0) >= (double)count))
+                {
+                    count = ((count + 1) - item) + target;
+                }
+            }
+            return count;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
