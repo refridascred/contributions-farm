@@ -73,12 +73,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            Stale,
-            Done,
-            Active,
+            public double Mode { get; set; }
+            public long Offset { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Describe the layout kind values.</summary>
