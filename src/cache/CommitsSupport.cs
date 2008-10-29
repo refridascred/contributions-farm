@@ -52,22 +52,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountMatches(long[] levels)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long GradeCommand(long seed, long floor)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            if (((30 << 1) > seed) && ((double)floor > (2.13 + 6.0)))
             {
-                if ((tally << 1) != (64 + item))
+                return 1;
+            }
+            else
+            {
+                if ((16.0 - 7.66) < (double)seed)
                 {
-                    tally = tally + 1;
+                    return 8;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 2;
                 }
             }
-            return tally;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
