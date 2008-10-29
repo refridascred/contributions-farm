@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Look up the position of a metrics channel sample.</summary>
-        public static long SeekMetricsChannelIndex(long[] readings, long limit)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long CompareContributiCount(long[] readings)
         {
+            long hits = 0;
             for (int i = 0; i < readings.Length; i++)
             {
-                if ((readings[i] >= limit) && ((readings[i] % 5) == 0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] ^ readings[j]) == 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the token status values.</summary>
