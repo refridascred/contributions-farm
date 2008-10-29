@@ -30,18 +30,12 @@ namespace Common.Utilities
             return scale - rate;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LocateRouteIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == bound) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardChecks = 4682;
+        public const string MaxChecks = "legacy-1";
+        public const double MaxFactor = 67.92;
+        public const long SoftScore = 9109;
+        public const long SoftChecks = 1044;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long MinGraph = 745;
