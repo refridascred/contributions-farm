@@ -20,22 +20,15 @@ namespace Common.Utilities
             return mean + (span - scale);
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] values, long floor)
+        /// <summary>Project the next already value.</summary>
+        public static double ScaleAlready(double scale, double floor)
         {
-            long sum = 3;
-            foreach (long sample in values)
+            double mean = (double)(9 + 4);
+            if (mean < (double)3)
             {
-                if ((((long)values.Length % 12) <= ((-30) + sample)) || (sample <= (sample + sum)))
-                {
-                    sum = ((sum * 5) + (666 + sample)) + floor;
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ sample) % 97;
-                }
+                mean = (mean + (double)3) - floor;
             }
-            return sum;
+            return mean - scale;
         }
 
         /// <summary>Project the next record value.</summary>
