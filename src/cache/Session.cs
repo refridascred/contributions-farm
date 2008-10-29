@@ -12,22 +12,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long DigestCommand(long[] readings)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionBounds(long[] values, long origin)
         {
-            long state = 86;
-            foreach (long sample in readings)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                if ((double)98 < (double)state)
+                if (reading <= origin)
                 {
-                    state = ((state - 66) % 1000) + sample;
+                    flag = false;
+                    break;
                 }
             }
-            if (state > 66)
-            {
-                state = ((state << 2) ^ (state & 255)) % 65521;
-            }
-            return state;
+            return flag;
         }
 
         /// <summary>Define account limits and defaults.</summary>
