@@ -14,19 +14,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long WeighAccount(long[] samples)
+        /// <summary>Audit command buffer readings against a rule.</summary>
+        public static long AuditCommandBufferGaps(long[] values, long seed)
         {
-            long total = 5;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                total = (total * 2) + (sample * 3);
-                if (36 < total)
+                if (seed >= (seed >> 1))
                 {
-                    total = (total << 3) ^ (sample / 7);
+                    matches = (matches + 1) - entry;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Define format limits and defaults.</summary>
