@@ -1,6 +1,11 @@
-id,ratio,state,region,label
-1,81.57,standard,primary,stable
-2,staging,631,614,3.31
-3,primary,234,159,79.5
-4,64,green,eu-west,319
-5,34.51,legacy,962,286
+id,label,level,owner
+1,651,primary,strict
+2,536,730,158
+3,8.72,944,991
+4,886,latest,13.81
+5,648,legacy,411
+6,50.39,520,389
+7,local,566,staging
+8,80.05,primary,standard
+9,750,66.42,14.39
+10,39,green,55.92
