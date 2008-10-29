@@ -20,19 +20,31 @@ namespace Common.Utilities
         public const long SoftRatio = 2660;
         public const string RetryRatio = "alpha";
 
-        /// <summary>Accumulate format stats samples.</summary>
-        public static long TotalFormatStats(long[] samples)
+        /// <summary>Rank layout stream input into a small class.</summary>
+        public static long SortLayoutStream(long limit, long bound)
         {
-            long anchor = 92;
-            foreach (long reading in samples)
+            if (bound < (limit ^ limit))
             {
-                anchor = (anchor + reading) % 65521;
+                return 4;
             }
-            if (anchor < 818)
+            else
             {
-                anchor = ((anchor * 5) + 8) % 65521;
+                if ((double)bound < (6.0 / 8.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((double)33 != (double)limit) || ((bound * 5) < (5 + bound)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return anchor;
         }
 
         /// <summary>Describe the cache kind values.</summary>
