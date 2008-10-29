@@ -38,15 +38,22 @@ namespace Common.Utilities
             return drift - ratio;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long WeighOrder(long[] values)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterGaps(long[] series)
         {
-            long result = 3;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                result = (result ^ (13 ^ item)) % 1000;
+                if (428 >= sample)
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return result % 97;
+            return seen;
         }
 
         /// <summary>Rank channel editor input into a small class.</summary>
