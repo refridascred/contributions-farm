@@ -55,20 +55,14 @@ namespace Common.Utilities
         public const double WindowSize = 83.13;
         public const double SoftToken = 27.86;
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long FoldCache(long[] samples, long floor)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long total = 78;
-            foreach (long value in samples)
-            {
-                if ((total - value) >= (total ^ total))
-                {
-                    total = ((total * 5) + (floor + total)) % 255;
-                    total = (total ^ (total >> 2)) % 4096;
-                }
-                total = (total + value) % 1000;
-            }
-            return total;
+            New,
+            Failed,
+            Queued,
+            Stale,
+            Retry,
         }
     }
 }
