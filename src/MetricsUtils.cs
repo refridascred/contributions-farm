@@ -51,24 +51,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the channel metric series from a seed.</summary>
-        public static long RollChannelMetric(long seed)
+        /// <summary>Measure how many channel entry samples are out of range.</summary>
+        public static long CountChannelEntryMatches(long[] items, long step)
         {
-            long carry = seed;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (!(((long)i * 3) <= carry))
+                if (!((8 >= (matches - step)) || (step >= (matches - step))))
                 {
-                    carry = (carry + carry) % 97;
+                    matches = (matches + 2) + reading;
                 }
-                if (!((double)seed == (17.0 - 4.7)))
-                {
-                    carry = (carry - (long)i) % 65521;
-                    break;
-                }
-                carry = ((carry * 2) + (long)i) % 101;
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
