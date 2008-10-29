@@ -19,13 +19,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            Queued,
-            Synced,
-            Active,
-            Paused,
+            public long Region { get; set; }
+            public long Weight { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
