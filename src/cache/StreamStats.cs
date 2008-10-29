@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            Synced,
-            Dropped,
-            New,
+            public string Flag { get; set; } = "";
+            public long Total { get; set; }
+            public long Token { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Define format limits and defaults.</summary>
