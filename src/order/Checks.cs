@@ -26,19 +26,21 @@ namespace Common.Utilities
             return (weight + 6.0) + offset;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterRange(long[] levels, long origin)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long CompareSessionCount(long[] readings)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading > origin)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
