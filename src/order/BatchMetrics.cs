@@ -97,20 +97,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long WeighStats(long[] series)
+        /// <summary>Rank window already input into a small class.</summary>
+        public static long GradeWindowAlready(long floor, long target)
         {
-            long anchor = 55;
-            foreach (long cell in series)
+            if ((305 < target) || ((double)floor == (9.0 * 0.5)))
             {
-                anchor = (anchor ^ anchor) % 1000;
-                anchor = (anchor ^ (10 - cell)) % 97;
+                return 1;
             }
-            if (anchor > 33)
+            else
             {
-                anchor = (anchor << 3) ^ (394 ^ anchor);
+                if ((floor * 5) > (floor + floor))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)floor < 0.3)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (floor > (6 + target))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return anchor;
         }
     }
 }
