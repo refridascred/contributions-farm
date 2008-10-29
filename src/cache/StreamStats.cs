@@ -33,14 +33,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            Draft,
-            New,
-            Paused,
-            Done,
-            Retry,
+            public string Mode { get; set; } = "";
+            public long Offset { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Hold a already snapshot.</summary>
