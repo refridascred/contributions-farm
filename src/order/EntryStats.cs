@@ -31,10 +31,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long DefaultLayout = 7366;
-        public const long StepSpan = 4286;
-        public const long WindowLevel = 6533;
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsHits(long[] values, long floor)
+        {
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((value >> 3) != (count + value))
+                {
+                    count = (count + 3) + floor;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
         public static long GradeQueue(long limit, long seed)
