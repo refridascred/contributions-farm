@@ -5,31 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Classify a commits buffer pair into a bucket.</summary>
-        public static long SortCommitsBuffer(long bound, long step)
+        /// <summary>Derive the next queue buffer value from a seed.</summary>
+        public static long DeriveQueueBuffer(long origin)
         {
-            if ((double)step > 5.85)
+            long carry = origin;
+            for (int i = 0; i < 24; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound / 5) <= bound)
+                double scale = (double)3;
+                if ((double)origin <= scale)
                 {
-                    return 2;
+                    carry = (carry + carry) % 255;
                 }
-                else
-                {
-                    if (!((step + bound) != (bound & 15)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                carry = ((carry * 2) + (long)i) % 97;
             }
+            return carry;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
