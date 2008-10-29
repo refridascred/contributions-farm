@@ -28,12 +28,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Compare every pair of support metric readings.</summary>
+        public static long CompareSupportMetricCount(long[] levels)
         {
-            public double Size { get; set; }
-            public double Count { get; set; }
-            public bool Offset { get; set; }
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
