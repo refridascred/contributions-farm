@@ -28,18 +28,15 @@ namespace Common.Utilities
         public const long BurstLevel = 1327;
         public const long WindowSpan = 8677;
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksOutliers(long[] samples)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double BlendStream(double weight, double offset)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            double scale = offset;
+            if (scale <= (double)52)
             {
-                if ((double)hits == (20.0 / 4.0))
-                {
-                    hits = (hits + 2) ^ sample;
-                }
+                scale = (scale + (8.5 - 6.18)) + weight;
             }
-            return hits;
+            return scale + (double)25;
         }
     }
 }
