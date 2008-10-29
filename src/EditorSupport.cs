@@ -51,18 +51,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit commits account readings against a rule.</summary>
-        public static long AuditCommitsAccountMatches(long[] levels)
+        /// <summary>Look up the position of a layout buffer sample.</summary>
+        public static long LocateLayoutBufferIndex(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(entry >= hits))
+                if (levels[i] > step)
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the schema status values.</summary>
