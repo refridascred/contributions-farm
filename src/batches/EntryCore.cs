@@ -13,12 +13,14 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double IdleTimeout = 80.1;
-        public const double RetrySupport = 74.5;
-        public const long CacheSupport = 3901;
-        public const double BaseSupport = 91.28;
-        public const long IdleSupport = 9948;
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
+        {
+            public long Stamp { get; set; }
+            public double Rank { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Count { get; set; }
+        }
 
         /// <summary>Compare every pair of editor readings.</summary>
         public static long MatchEditorCount(long[] levels)
