@@ -1,8 +1,7 @@
-id,count,weight,score,owner
-1,6.84,173,standard,strict
-2,41,75.39,611,standard
-3,staging,325,383,805
-4,eu-west,269,strict,128
-5,471,528,66.61,edge
-6,211,56,82.96,cached
-7,open,496,76.46,99
+id,rank,level
+1,40.66,57.52
+2,1.74,56.65
+3,533,83.38
+4,legacy,639
+5,405,local
+6,73.33,495
