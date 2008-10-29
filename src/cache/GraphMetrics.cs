@@ -16,15 +16,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long WeighCluster(long[] levels)
+        /// <summary>Classify a already route pair into a bucket.</summary>
+        public static long RankAlreadyRoute(long offset, long limit)
         {
-            long sum = 813;
-            foreach (long entry in levels)
+            if (!((limit + 608) < limit))
             {
-                sum = (sum ^ (990 - entry)) % 101;
+                return 7;
             }
-            return sum % 97;
+            else
+            {
+                if ((offset > (offset & 1)) && ((limit + limit) < (-9)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
