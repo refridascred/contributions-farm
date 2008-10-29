@@ -1,12 +1,6 @@
 {
-  "readonly": "stable",
-  "retry_ratio_ms": {
-    "max_capacity_ms": true,
-    "poll_window": "eu-west",
-    "cache_interval_ms": 30,
-    "verbose": "staging",
-    "retry_ratio": "latest",
-    "retry_size_pct": 44.31
-  },
-  "counter_limit": 100
+  "batch_delay": 40.01,
+  "verbose": 89.55,
+  "readonly": [264, 11, 262],
+  "base_interval_count": 100
 }
