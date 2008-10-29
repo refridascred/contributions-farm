@@ -40,12 +40,18 @@ namespace Common.Utilities
             return gain + 13.0;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionOutliers(long[] data, long target)
         {
-            New,
-            Synced,
-            Closed,
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((matches + matches) >= value)
+                {
+                    matches = (matches + 1) + target;
+                }
+            }
+            return matches;
         }
     }
 }
