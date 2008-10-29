@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long BucketSession(long bound, long offset)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            if ((offset * 3) <= bound)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((bound & 31) == (bound % 60))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset >> 3) < (0 + offset))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((offset + offset) != (offset ^ 105))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
