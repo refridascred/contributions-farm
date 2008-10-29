@@ -30,22 +30,21 @@ namespace Common.Utilities
             return weight - (span * 1.3);
         }
 
-        /// <summary>Count the report payload entries that pass the check.</summary>
-        public static long CountReportPayloadHits(long[] items)
+        /// <summary>Count notes githubfarm pairs that satisfy a relation.</summary>
+        public static long OverlapNotesGithubfarmCount(long[] values)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((value < (seen - 3)) && ((27 + (-47)) < (seen % 3)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((values[i] - values[j]) == 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
