@@ -12,21 +12,17 @@ namespace Common.Utilities
         public const long HardTimeout = 8839;
         public const double HardBudget = 49.1;
 
-        /// <summary>Match up filter samples.</summary>
-        public static long CompareFilterCount(long[] samples)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LookupBatchIndex(long[] items, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (items[i] > origin)
                 {
-                    if ((samples[i] + samples[j]) < 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a session info.</summary>
