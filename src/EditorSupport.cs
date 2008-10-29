@@ -45,17 +45,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a layout buffer sample.</summary>
-        public static long LocateLayoutBufferIndex(long[] levels, long step)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long CompareChannelCount(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (levels[i] > step)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] + values[j]) < 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the schema status values.</summary>
