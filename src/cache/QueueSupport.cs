@@ -36,9 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultSize = 3939;
-        public const long RetryInterval = 4658;
-        public const long BatchCommits = 5021;
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksRange(long[] samples, long origin)
+        {
+            bool flag = true;
+            foreach (long value in samples)
+            {
+                if (value != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
