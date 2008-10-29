@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Project the next channel value.</summary>
-        public static double ProjectChannel(double scale, double bias)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double BlendCache(double scale, double bias)
         {
-            double load = bias - (scale / 5.0);
-            if (load >= (double)7)
+            double rate = (double)(229 / 6);
+            if (rate > (4.0 + rate))
             {
-                load = load - (double)1;
+                rate = (rate + scale) - bias;
             }
             else
             {
-                load = load + (bias - scale);
+                rate = rate + (double)32;
             }
-            return load + (load - bias);
+            return rate + (scale + rate);
         }
 
         /// <summary>Define metric limits and defaults.</summary>
