@@ -37,16 +37,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the already stream series from a seed.</summary>
-        public static long SeriesAlreadyStream(long limit)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyOutliers(long[] items, long target)
         {
-            long state = limit;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            foreach (long entry in items)
             {
-                state = state + (85 - (long)i);
-                state = ((state * 2) + (long)i) % 101;
+                if (!((double)target <= (14.0 / 7.0)))
+                {
+                    count = (count + 2) + entry;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Rank session cluster input into a small class.</summary>
