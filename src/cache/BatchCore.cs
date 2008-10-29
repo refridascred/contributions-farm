@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long OverlapSchemaCount(long[] samples)
+        /// <summary>Measure how many cluster payload samples are out of range.</summary>
+        public static long MeasureClusterPayloadGaps(long[] values, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!(hits > (9 + sample)) || (((hits & 63) == (677 - 4)) && ((sample >> 5) > (hits % 60))))
                 {
-                    if ((samples[i] + samples[j]) > 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 1) + target;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Describe the command mode values.</summary>
