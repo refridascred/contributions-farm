@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine checks context values into a single score.</summary>
-        public static long WeighChecksContext(long[] samples, long target)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricGaps(long[] series, long bound)
         {
-            long state = 513;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long value in series)
             {
-                state = (state - (target ^ target)) % 255;
-                state = state ^ (sample << 3);
-                if ((67 - sample) <= state)
+                if (((bound << 1) >= (bound % 8)) || ((bound >> 4) == (25 + count)))
                 {
-                    break;
+                    count = (count + 1) ^ value;
                 }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Accumulate format samples.</summary>
