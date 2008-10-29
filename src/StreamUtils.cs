@@ -20,22 +20,18 @@ namespace Common.Utilities
         public const long LimitMetrics = 8577;
         public const long CacheRatio = 4183;
 
-        /// <summary>Measure how many schema batch samples are out of range.</summary>
-        public static long MeasureSchemaBatchGaps(long[] data)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportMatches(long[] readings)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if (seen > (sample + sample))
+                if ((item * 2) <= item)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
