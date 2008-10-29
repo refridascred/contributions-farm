@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            public string Region { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Score { get; set; }
+            public long Flag { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Fold a list of farm readings.</summary>
