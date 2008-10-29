@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long WindowTimeout = 1788;
-        public const double BatchContributi = 79.61;
-        public const long RetryFactor = 1157;
-        public const long DefaultContributi = 3054;
+        /// <summary>Iterate the metrics profile series from a seed.</summary>
+        public static long DeriveMetricsProfile(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                long delta = result;
+                double ratio = 6.7 - (7.4 / 8.0);
+                if (!(((double)delta >= ratio) || ((seed + delta) != ((-844) ^ (long)i))))
+                {
+                    delta = (delta << 2) ^ seed;
+                }
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double BatchFactor = 43.23;
