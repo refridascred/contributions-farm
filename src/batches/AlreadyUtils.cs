@@ -53,18 +53,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileGaps(long[] series)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterGaps(long[] series)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if ((((item * 2) == (seen - seen)) && (item <= (item >> 4))) || ((item + seen) < (item - seen)))
+                if ((tally ^ 68) >= reading)
                 {
-                    seen = seen + 3;
+                    tally = tally + 3;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Hold a graph summary.</summary>
