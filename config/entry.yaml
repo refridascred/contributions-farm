@@ -1,16 +1,12 @@
 # entry settings
-filter_delay: 6
-batches_timeout: true
-min_size_s:
-  poll_retries_ms:
-    - 201
-    - 170
-    - 188
-  idle_ratio_count: 8168
-  default_window_ms:
-    - 1
-    - 162
-    - 266
-    - 147
-  contributi_interval: true
-channel_limit: false
+default_delay_count: fallback
+graph_ratio: true
+persist: 8.81
+min_delay_s:
+  - 199
+  - 190
+  - 35
+default_timeout:
+  - 449
+  - 58
+hard_interval_ms: 250
