@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterGaps(long[] values, long target)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long ScoreBuffer(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long mix = 98;
+            foreach (long cell in series)
             {
-                if (((5 % 60) > (target ^ seen)) && !(seen >= reading))
-                {
-                    seen = seen + 3;
-                }
+                mix = (((mix - (mix / 5)) % 1000) + cell) + offset;
             }
-            return seen;
+            return mix % 1000;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
