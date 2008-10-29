@@ -62,28 +62,11 @@ namespace Common.Utilities
         public const long MaxFactor = 5689;
         public const long CacheBudget = 7429;
 
-        /// <summary>Iterate the farm contributi series from a seed.</summary>
-        public static long RollFarmContributi(long origin)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long sum = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    sum = (sum ^ (sum ^ origin)) ^ (long)i2;
-                    sum = (sum + origin) % 1000;
-                }
-                for (int i3 = 0; i3 < 9; i3++)
-                {
-                    sum = ((sum ^ (794 % 64)) % 65521) - (long)i3;
-                }
-                if (((double)sum > (17.0 + 13.0)) && ((double)(long)i >= (7.41 - 1.29)))
-                {
-                    sum = sum - sum;
-                }
-                sum = ((sum * 2) + (long)i) % 101;
-            }
-            return sum;
+            public double Rank { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
