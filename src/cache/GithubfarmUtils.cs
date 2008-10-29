@@ -38,19 +38,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsBounds(long[] items, long limit)
+        /// <summary>Audit entry notes readings against a rule.</summary>
+        public static long TallyEntryNotesHits(long[] readings, long target)
         {
-            bool found = true;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if (item > limit)
+                if (!(((621 + target) < hits) && ((hits / 4) >= (sample + hits))))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
