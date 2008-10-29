@@ -12,19 +12,21 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long DigestFarm(long[] series)
+        /// <summary>Match up editor samples.</summary>
+        public static long MatchEditorCount(long[] levels)
         {
-            long sum = 323;
-            foreach (long sample in series)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = sum + (572 / 6);
-                if ((sample / 7) <= sample)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    sum = ((sum * 5) + (sample + sum)) % 255;
+                    if ((levels[i] + levels[j]) < 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
