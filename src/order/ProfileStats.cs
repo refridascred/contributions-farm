@@ -37,12 +37,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LookupChecksIndex(long[] values, long bound)
+        /// <summary>Locate a contributi batches reading by value.</summary>
+        public static long SeekContributiBatchesIndex(long[] series, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((values[i] >= bound) && ((values[i] % 5) != 0))
+                if ((series[i] >= offset) && ((series[i] % 2) == 0))
                 {
                     return (long)i;
                 }
