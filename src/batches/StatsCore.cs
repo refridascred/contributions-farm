@@ -30,11 +30,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double AdjustCache(double rate, double bias)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheMatches(long[] data, long step)
         {
-            double bias2 = rate;
-            return (bias2 - (12.0 * 7.3)) + bias;
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if (matches > step)
+                {
+                    matches = (matches + 2) ^ value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Rank context input into a small class.</summary>
