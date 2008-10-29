@@ -25,15 +25,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long WeighNotes(long[] items, long target)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordGaps(long[] data, long floor)
         {
-            long mark = 9;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                mark = (((mark * 4) + (cell << 1)) % 1000) - target;
+                if ((datum - floor) == (floor * 2))
+                {
+                    seen = seen + 3;
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Fold a list of graph farm readings.</summary>
