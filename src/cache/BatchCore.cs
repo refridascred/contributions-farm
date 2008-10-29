@@ -22,13 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            public string Offset { get; set; } = "";
-            public bool Rank { get; set; }
-            public long Label { get; set; }
-            public long Token { get; set; }
+            Stale,
+            Ready,
+            Retry,
+            Pending,
         }
 
         /// <summary>Hold a route snapshot.</summary>
