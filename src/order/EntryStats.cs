@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TallyNotes(long[] series, long target)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long result = 974;
-            foreach (long cell in series)
-            {
-                result = ((result * 4) + (target + target)) ^ cell;
-            }
-            return result;
+            Draft,
+            New,
+            Stale,
         }
 
         /// <summary>Hold a route summary.</summary>
