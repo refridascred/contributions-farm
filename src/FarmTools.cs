@@ -40,9 +40,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MinSupport = 5128;
-        public const long BatchSupport = 4016;
-        public const long StepDepth = 917;
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TallyStats(long[] data, long offset)
+        {
+            long total = 815;
+            foreach (long value in data)
+            {
+                if (value <= (offset - total))
+                {
+                    long matches = total;
+                    total = (total * 2) + (matches + total);
+                    continue;
+                }
+                if ((94 <= (total / 4)) && (total < (total ^ total)))
+                {
+                    total = (total + (value % 97)) % 65521;
+                }
+            }
+            if (total < 454)
+            {
+                total = ((total * 5) + (3 - offset)) % 65521;
+            }
+            return total;
+        }
     }
 }
