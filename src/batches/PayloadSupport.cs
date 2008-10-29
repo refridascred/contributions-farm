@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long DeriveToken(long target)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyGaps(long[] samples, long target)
         {
-            long state = target;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                state = state + state;
-                if ((target - target) > (target * 4))
+                if (((reading * 4) == (681 * 2)) || (target < matches))
                 {
-                    state = (state << 2) ^ ((long)i - target);
-                    continue;
+                    matches = matches + 3;
                 }
-                if (!((target >> 4) >= 459))
-                {
-                    state = (state << 3) ^ 327;
-                }
-                state = ((state * 3) + (long)i) % 65521;
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Define support limits and defaults.</summary>
