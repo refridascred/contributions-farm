@@ -29,13 +29,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            public long Mode { get; set; }
-            public long Region { get; set; }
-            public bool Token { get; set; }
-            public bool Flag { get; set; }
+            Synced,
+            Stale,
+            Locked,
+            Active,
         }
     }
 }
