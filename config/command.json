@@ -1,8 +1,6 @@
 {
-  "default_depth_count": 1024,
-  "readonly": "blue",
-  "enabled": 63.37,
-  "audit": "strict",
-  "cache_timeout": [206, 481, 490],
-  "batch_interval": "stable"
+  "audit": 84.59,
+  "layout_size": "strict",
+  "soft_limit": 30,
+  "flush_depth_pct": "stable"
 }
