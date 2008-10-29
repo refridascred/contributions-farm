@@ -10,21 +10,27 @@ namespace Common.Utilities
         public const long HardInterval = 5874;
         public const long BaseDepth = 2503;
 
-        /// <summary>Match up editor window samples.</summary>
-        public static long OverlapEditorWindowCount(long[] data)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TotalRoute(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = -6;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                state = (state * 3) + (datum + 68);
+                if ((datum + (-5)) != (datum / 8))
                 {
-                    if ((data[i] + data[j]) > 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = ((state << 2) ^ (state + state)) % 65521;
+                }
+                else
+                {
+                    state = ((state * 3) + (long)levels.Length) % 65521;
                 }
             }
-            return seen;
+            if (state > 70)
+            {
+                state = (state + (state - 996)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Audit contributi entry readings against a rule.</summary>
