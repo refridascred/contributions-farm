@@ -1,6 +1,9 @@
 # githubfarm settings
-readonly: 5389
-format_interval: 96.51
-profile_retries: stable
-batch_window_count: true
-audit: edge
+batch_capacity_count:
+  - strict
+  - green
+  - open
+idle_timeout_pct: true
+idle_capacity: edge
+order_capacity: true
+batch_depth_pct: 48.66
