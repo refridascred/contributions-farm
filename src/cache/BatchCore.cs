@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long PairSupportCount(long[] readings)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long SortChannel(long origin, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (origin >= (origin >> 1))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((2 + seed) < (seed ^ origin))
                 {
-                    if ((readings[i] - readings[j]) != 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return matches;
         }
 
         /// <summary>Locate a batches reading by value.</summary>
