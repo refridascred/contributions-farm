@@ -31,18 +31,22 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Measure how many cluster buffer samples are out of range.</summary>
-        public static long TallyClusterBufferHits(long[] samples)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiOutliers(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if ((8 << 1) <= (matches * 5))
+                if (target > (entry ^ target))
                 {
-                    matches = (matches + 3) - value;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
