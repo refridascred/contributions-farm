@@ -26,23 +26,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long FoldSchema(long[] data, long origin)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorHits(long[] levels, long limit)
         {
-            long anchor = 876;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                for (int i = 0; i < 11; i++)
+                if ((492 << 2) < (4 - limit))
                 {
-                    anchor = ((anchor - origin) + (long)i) + datum;
-                    anchor = ((anchor << 2) ^ anchor) % 1000;
-                }
-                if ((9.77 * 0.89) > (double)origin)
-                {
-                    anchor = anchor ^ (0 + anchor);
+                    matches = (matches + 2) ^ reading;
                 }
             }
-            return anchor;
+            return matches;
         }
     }
 }
