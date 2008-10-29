@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LocateSchemaIndex(long[] data, long floor)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long IterateMetric(long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = step;
+            for (int i = 0; i < 14; i++)
             {
-                if ((data[i] > floor) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                mix = (mix - (step - mix)) % 97;
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Define support limits and defaults.</summary>
