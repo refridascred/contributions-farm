@@ -33,15 +33,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long RollBatch(long origin)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long state = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
+            Draft,
+            New,
+            Paused,
+            Done,
+            Retry,
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
