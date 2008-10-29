@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadOutliers(long[] levels, long origin)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandOutliers(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if ((origin - datum) > matches)
+                if (step >= (4 & 15))
                 {
-                    matches = matches + 1;
+                    tally = (tally + 2) + cell;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define session limits and defaults.</summary>
