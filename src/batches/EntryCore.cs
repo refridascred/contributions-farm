@@ -65,15 +65,26 @@ namespace Common.Utilities
         public const long LimitScore = 6514;
         public const string SoftFactor = "local-1";
 
-        /// <summary>Project the next queue value.</summary>
-        public static double SmoothQueue(double gain, double span)
+        /// <summary>Roll a counter batch counter forward.</summary>
+        public static long DeriveCounterBatch(long origin)
         {
-            double drift = 3.67;
-            if (drift <= (double)0)
+            long result = origin;
+            for (int i = 0; i < 22; i++)
             {
-                drift = drift - (gain / 6.0);
+                if ((double)origin > (2.72 + 15.0))
+                {
+                    result = (result - (origin + result)) % 97;
+                    result = (result << 2) ^ (4 + (long)i);
+                    continue;
+                }
+                else
+                {
+                    result = (result << 2) ^ (result >> 4);
+                    result = (result * 3) + (823 % 10);
+                }
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return drift + span;
+            return result;
         }
     }
 }
