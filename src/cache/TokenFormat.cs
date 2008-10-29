@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryInterval = 7981;
-        public const double LimitToken = 10.37;
-        public const string RetryToken = "open";
+        /// <summary>Scale a filter account figure with a bias.</summary>
+        public static double BlendFilterAccount(double ratio, double span)
+        {
+            double gain = ratio;
+            if (gain <= 3.4)
+            {
+                gain = (gain - (1.8 - ratio)) + span;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + (6.0 * 5.93)) + (double)(long)i;
+            }
+            return gain - (gain * 10.0);
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const string BurstRatio = "local-v2";
