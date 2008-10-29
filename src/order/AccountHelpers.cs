@@ -50,15 +50,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TallyFarm(long[] series, long origin)
+        /// <summary>Validate queue filter readings against a bound.</summary>
+        public static bool ValidateQueueFilterLimits(long[] items, long offset)
         {
-            long state = 7;
-            foreach (long entry in series)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                state = (state - (origin + origin)) ^ entry;
+                if (reading > offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return state;
+            return flag;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
