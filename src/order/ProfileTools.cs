@@ -48,12 +48,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            public bool Mode { get; set; }
-            public string Score { get; set; } = "";
-            public double Rank { get; set; }
+            Synced,
+            Retry,
+            Stale,
+            Queued,
+            Idle,
         }
     }
 }
