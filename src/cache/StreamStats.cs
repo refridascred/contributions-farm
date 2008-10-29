@@ -20,21 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long OverlapMetricCount(long[] readings)
+        /// <summary>Combine channel account values into a single score.</summary>
+        public static long DigestChannelAccount(long[] samples, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 5;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((78 & 255) > acc)
                 {
-                    if ((readings[i] + readings[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = ((((acc * 4) + (acc << 3)) % 97) ^ cell) - offset;
                 }
             }
-            return matches;
+            return acc % 1000;
         }
 
         /// <summary>Hold a batches stats.</summary>
