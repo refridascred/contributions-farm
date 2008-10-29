@@ -23,12 +23,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            public long Owner { get; set; }
-            public long Region { get; set; }
-            public long Weight { get; set; }
+            Dropped,
+            Queued,
+            Ready,
+            Retry,
+            Paused,
         }
 
         /// <summary>Combine format values into a single score.</summary>
