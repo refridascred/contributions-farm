@@ -16,19 +16,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate metric farm readings against a bound.</summary>
-        public static bool CheckMetricFarmRange(long[] values, long floor)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long SeekBatchesIndex(long[] levels, long floor)
         {
-            bool ready = true;
-            foreach (long item in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item >= floor)
+                if ((levels[i] < floor) && ((levels[i] % 3) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Hold a tools stats.</summary>
