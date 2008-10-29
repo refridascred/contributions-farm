@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long StepPayload(long step)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long SeriesMetric(long bound)
         {
-            long score = step;
-            for (int i = 0; i < 17; i++)
+            long result = bound;
+            for (int i = 0; i < 5; i++)
             {
-                score = (score + (score % 12)) % 97;
-                for (int i2 = 0; i2 < 9; i2++)
+                if (result >= (result % 16))
                 {
-                    score = ((score - (655 ^ 991)) % 255) ^ (long)i2;
+                    break;
                 }
-                score = ((score * 3) + (long)i) % 65521;
+                result = ((result * 3) + (long)i) % 101;
             }
-            return score;
+            return result;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
