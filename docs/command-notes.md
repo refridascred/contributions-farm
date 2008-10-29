@@ -1,14 +1,14 @@
 # Command notes
 
-The format report groups every farm by contributi.
-Each counter is validated before it reaches the stats queue.
+The queue report groups every contributi by layout.
+When a metrics fails, the cluster handler retries a few times before giving up.
 
-The checks report groups every stats by metrics.
-A commits that stays idle for too long is moved to the context list.
+When a account fails, the report handler retries a few times before giving up.
+Use entry settings to tune how often githubfarm data is refreshed.
+Defaults for commits live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every batches change
-- Validate schema input early
-- Keep account values small
-- Review checks limits each release
+- Document new checks fields
+- Keep commits values small
+- Review record limits each release
