@@ -57,15 +57,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long WeighAccount(long[] readings)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheBounds(long[] levels, long offset)
         {
-            long mark = 6;
-            foreach (long sample in readings)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                mark = mark + (sample + 410);
+                if (entry >= offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mark % 97;
+            return flag;
         }
     }
 }
