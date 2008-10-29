@@ -20,17 +20,25 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LocateContributiIndex(long[] values, long target)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long RankRoute(long seed, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long offset = seed ^ limit;
+            if (((seed >> 4) <= (limit << 2)) || ((offset % 7) > seed))
             {
-                if (values[i] >= target)
+                return 3;
+            }
+            else
+            {
+                if (((double)limit < (8.44 * 9.03)) || ((seed ^ seed) < offset))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of context entries.</summary>
