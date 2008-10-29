@@ -20,19 +20,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmRange(long[] series, long origin)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LocateStreamIndex(long[] samples, long limit)
         {
-            bool stale = true;
-            foreach (long value in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value != origin)
+                if (samples[i] <= limit)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Combine batches session values into a single score.</summary>
