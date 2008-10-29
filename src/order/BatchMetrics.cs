@@ -26,21 +26,19 @@ namespace Common.Utilities
         public const long IdleSession = 8626;
         public const double WindowSession = 78.09;
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long PairNotesCount(long[] data)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsBounds(long[] items, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (reading < limit)
                 {
-                    if ((data[i] - data[j]) != 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Find the first notes stream entry that matches the target.</summary>
