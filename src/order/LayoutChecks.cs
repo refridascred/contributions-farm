@@ -59,15 +59,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ScaleEntry(double gain, double offset)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderMatches(long[] levels, long origin)
         {
-            double rate = (offset - offset) - offset;
-            if (rate <= (double)(-7))
+            long matches = 0;
+            foreach (long value in levels)
             {
-                rate = rate - gain;
+                if (((double)origin < (18.0 * 6.9)) && ((6 << 1) < (value / 5)))
+                {
+                    matches = matches + 3;
+                }
             }
-            return rate - gain;
+            return matches;
         }
 
         /// <summary>Describe the profile state values.</summary>
