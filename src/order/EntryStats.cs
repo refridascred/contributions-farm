@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long RankGraph(long bound, long offset)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyHits(long[] values, long bound)
         {
-            long step = bound ^ offset;
-            if (((-607) % 64) != (step << 1))
+            long count = 0;
+            foreach (long reading in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((6.29 + 0.6) < (double)step)
+                if (!(((bound + 790) >= (count + bound)) && (count >= reading)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Roll a context counter forward.</summary>
