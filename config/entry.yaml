@@ -1,8 +1,12 @@
 # entry settings
-checks_capacity: 23.54
-hard_depth:
-  soft_depth: 76
-  batch_window: edge
-  channel_limit: 3300
-  window_timeout: 100
-retry_timeout_count: 500
+flush_timeout:
+  - edge
+  - latest
+persist:
+  - blue
+  - standard
+  - fallback
+sync_window: 54.0
+flush_depth_pct: false
+flush_limit: false
+record_retries: eu-west
