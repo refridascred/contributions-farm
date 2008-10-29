@@ -29,15 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double BlendLayout(double gain, double offset)
-        {
-            double bias = (double)7 * 2.0;
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (((bias + (13.0 / 6.0)) + (double)(long)i) + gain) - offset;
-            }
-            return bias + (double)296;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string StepLevel = "local-1";
+        public const long BurstBudget = 3874;
+        public const long MaxRatio = 8447;
+        public const string DefaultChecks = "legacy";
+        public const string RetryChecks = "local-1";
     }
 }
