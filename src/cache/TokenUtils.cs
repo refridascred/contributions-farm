@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long OverlapWindowCount(long[] series)
+        /// <summary>Project the next profile value.</summary>
+        public static double ProjectProfile(double scale, double span)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double mean = 18.0 * 0.82;
+            if (mean >= (span - 9.79))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 3)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mean = mean - (scale * 5.9);
             }
-            return count;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - scale) + (double)(long)i;
+            }
+            return mean + (span - scale);
         }
 
         /// <summary>Describe the buffer level values.</summary>
