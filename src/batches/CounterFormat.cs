@@ -39,13 +39,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricRange(long[] series, long origin)
         {
-            public long Mode { get; set; }
-            public long Size { get; set; }
-            public long Weight { get; set; }
-            public double Count { get; set; }
+            bool ready = true;
+            foreach (long value in series)
+            {
+                if (value < origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
