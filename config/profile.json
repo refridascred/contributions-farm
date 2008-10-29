@@ -1,6 +1,7 @@
 {
-  "hard_timeout_ms": 40.81,
-  "default_retries_ms": 98,
-  "checks_delay": 65.74,
-  "flush_limit": 46.34
+  "min_ratio": 32.08,
+  "base_threshold_pct": true,
+  "readonly": "standard",
+  "cache_size_pct": 60,
+  "window_limit": false
 }
