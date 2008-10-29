@@ -54,13 +54,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long MatchNotesCount(long[] items)
         {
-            public string Total { get; set; } = "";
-            public double Mode { get; set; }
-            public string Size { get; set; } = "";
-            public long Level { get; set; }
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
