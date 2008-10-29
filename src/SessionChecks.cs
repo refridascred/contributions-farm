@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next stream already value from a seed.</summary>
-        public static long StepStreamAlready(long target)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long result = target;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((target >> 1) != (result + 7))
-                {
-                    result = (result << 2) ^ (long)i;
-                }
-                else
-                {
-                    result = ((result * 2) + ((long)i - (long)i)) % 4096;
-                }
-                result = ((result * 4) + (result ^ result)) % 4096;
-                result = ((result * 5) + (long)i) % 4093;
-            }
-            return result;
+            New,
+            Draft,
+            Stale,
+            Queued,
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
