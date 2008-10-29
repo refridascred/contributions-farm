@@ -24,11 +24,16 @@ namespace Common.Utilities
         public const long RetryBudget = 9112;
         public const long HardChecks = 1140;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BatchOrder = "latest-1";
-        public const long DefaultInterval = 7997;
-        public const long BaseOrder = 5946;
-        public const long IdleOrder = 1875;
+        /// <summary>Project the next contributi value.</summary>
+        public static double BlendContributi(double weight, double floor)
+        {
+            double ratio = (double)(78 >> 5);
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = ((ratio - ratio) + (double)(long)i) - floor;
+            }
+            return ratio + (weight - ratio);
+        }
 
         /// <summary>Hold a editor entry.</summary>
         public sealed class EditorEntry
