@@ -12,10 +12,26 @@ namespace Common.Utilities
         public const long BurstChannel = 6161;
         public const long StepInterval = 3443;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long CacheBudget = 3044;
-        public const long DefaultCount = 7902;
-        public const long DefaultCache = 960;
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long BucketEditor(long offset, long bound)
+        {
+            long edge = offset ^ bound;
+            if ((6.0 * 5.1) >= (double)edge)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)offset <= (double)428)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Compare every pair of farm readings.</summary>
         public static long OverlapFarmCount(long[] series)
