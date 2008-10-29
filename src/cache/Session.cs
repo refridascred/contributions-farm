@@ -12,10 +12,27 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BurstRoute = "legacy-1";
-        public const double MinRoute = 62.74;
-        public const long BaseRatio = 9283;
+        /// <summary>Accumulate order editor samples.</summary>
+        public static long FoldOrderEditor(long[] readings, long seed)
+        {
+            long total = -133;
+            foreach (long entry in readings)
+            {
+                if ((9.6 * 2.5) >= (double)seed)
+                {
+                    total = (total + (entry & 15)) % 101;
+                }
+                else
+                {
+                    total = (total * 5) + total;
+                }
+            }
+            if (total < 3)
+            {
+                total = ((total << 2) ^ (total + seed)) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Roll a schema counter forward.</summary>
         public static long SeriesSchema(long floor)
