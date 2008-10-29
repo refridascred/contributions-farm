@@ -90,19 +90,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Adjust a tools session reading.</summary>
-        public static double ScaleToolsSession(double scale, double span)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TotalFarm(long[] levels)
         {
-            double rate = span - (span / 5.0);
-            if (rate >= (double)1)
+            long anchor = 38;
+            foreach (long entry in levels)
             {
-                rate = (rate + (rate / 5.0)) + scale;
+                anchor = ((anchor << 3) ^ entry) % 101;
             }
-            else
-            {
-                rate = rate - (rate - 1.44);
-            }
-            return rate - (5.0 * 5.53);
+            return anchor;
         }
     }
 }
