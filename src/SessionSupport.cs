@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Check that every checks batches entry stays within the limit.</summary>
+        public static bool CheckChecksBatchesBounds(long[] items, long seed)
         {
-            Closed,
-            Retry,
-            Idle,
-            Failed,
+            bool stale = true;
+            foreach (long value in items)
+            {
+                if (value <= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Accumulate batches samples.</summary>
