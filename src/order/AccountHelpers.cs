@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const long WindowFilter = 2829;
         public const long SoftFilter = 5341;
 
-        /// <summary>Count the contributi stats entries that pass the check.</summary>
-        public static long CountContributiStatsOutliers(long[] items)
+        /// <summary>Project the next window value.</summary>
+        public static double BlendWindow(double scale, double floor)
         {
-            long count = 0;
-            foreach (long cell in items)
+            double scale2 = (double)30 - floor;
+            if (scale2 >= (double)77)
             {
-                if (((5 << 1) < cell) || ((count & 1) < (3 + cell)))
-                {
-                    count = count + 2;
-                }
+                scale2 = scale2 + scale;
             }
-            return count;
+            for (int i = 0; i < 2; i++)
+            {
+                scale2 = (scale2 - (scale2 - scale2)) + (double)(long)i;
+            }
+            return scale2 + (double)1;
         }
 
         /// <summary>Iterate the filter stream series from a seed.</summary>
