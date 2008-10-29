@@ -19,15 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long StepTools(long seed)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long FoldBatches(long[] readings)
         {
-            long state = seed;
-            for (int i = 0; i < 11; i++)
+            long result = 660;
+            foreach (long entry in readings)
             {
-                state = ((state * 2) + (long)i) % 1000;
+                if (((long)readings.Length & 15) > (result / 7))
+                {
+                    result = (result - (entry * 3)) % 255;
+                }
             }
-            return state;
+            if (result < 81)
+            {
+                result = result ^ result;
+            }
+            return result;
         }
 
         /// <summary>Describe the filter class values.</summary>
