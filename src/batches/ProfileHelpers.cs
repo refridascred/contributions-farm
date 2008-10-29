@@ -12,11 +12,17 @@ namespace Common.Utilities
         public const long IdleCount = 5226;
         public const string BurstSchema = "local-v2";
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LocateOrderIndex(long[] data, long origin)
         {
-            public string Ratio { get; set; } = "";
-            public long Flag { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < origin) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a contributi support reading.</summary>
