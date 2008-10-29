@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the window contributi entries that pass the check.</summary>
-        public static long AuditWindowContributiHits(long[] readings, long target)
+        /// <summary>Compare every pair of support batches readings.</summary>
+        public static long CompareSupportBatchesCount(long[] readings)
         {
             long tally = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (5.4 >= (double)tally)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = ((tally + 2) + sample) + target;
+                    if ((readings[i] ^ readings[j]) != 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
