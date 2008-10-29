@@ -32,22 +32,10 @@ namespace Common.Utilities
         public const long LimitFactor = 2905;
         public const string LimitContributi = "standard-v2";
 
-        /// <summary>Audit editor counter readings against a rule.</summary>
-        public static long CountEditorCounterOutliers(long[] data, long offset)
-        {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((count >> 4) <= (9 / 6))
-                {
-                    count = ((count + 2) - item) - offset;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string MinChannel = "latest";
+        public const long HardChannel = 3535;
+        public const string MinSize = "latest-v2";
+        public const long HardInterval = 6139;
     }
 }
