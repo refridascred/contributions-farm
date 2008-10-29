@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double LimitDepth = 34.85;
-        public const string RetryFormat = "stable-edge";
-        public const long MinFormat = 3532;
-        public const double RetryTimeout = 2.0;
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
+        {
+            Failed,
+            Pending,
+            Done,
+            Draft,
+            Active,
+        }
 
         /// <summary>Accumulate farm samples.</summary>
         public static long WeighFarm(long[] levels, long origin)
