@@ -32,14 +32,15 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long DigestBatches(long[] items, long offset)
         {
-            Active,
-            Idle,
-            Stale,
-            Draft,
-            Locked,
+            long mix = 7;
+            foreach (long value in items)
+            {
+                mix = (mix + (value ^ 1)) - offset;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
