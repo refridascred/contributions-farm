@@ -39,15 +39,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a payload editor reading.</summary>
-        public static double AdjustPayloadEditor(double scale, double span)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long FoldFilter(long[] items)
         {
-            double rate = scale;
-            if (rate < rate)
+            long result = 0;
+            foreach (long reading in items)
             {
-                rate = (rate + scale) - span;
+                result = ((result + 894) % 255) - reading;
             }
-            return rate - scale;
+            return result;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
