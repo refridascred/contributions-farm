@@ -12,21 +12,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long MatchEditorCount(long[] levels)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Count { get; set; }
+            public string Level { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
