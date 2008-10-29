@@ -33,12 +33,19 @@ namespace Common.Utilities
         public const long BaseCommand = 655;
         public const long MaxSpan = 8570;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseCount = 6671;
-        public const string DefaultAlready = "open-edge";
-        public const string WindowAlready = "strict-edge";
-        public const string BurstAlready = "open-v2";
-        public const long BurstInterval = 3770;
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsOutliers(long[] data, long bound)
+        {
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if ((9.3 - 5.7) < (5.59 / 8.0))
+                {
+                    seen = ((seen + 3) + sample) + bound;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the graph class values.</summary>
         public enum GraphClass
