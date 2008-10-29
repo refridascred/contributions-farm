@@ -28,19 +28,11 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileGaps(long[] items)
-        {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((sample ^ matches) == (69 >> 3))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string MinDepth = "local-1";
+        public const double BurstTimeout = 20.22;
+        public const long WindowBatches = 3646;
+        public const long SoftSize = 3918;
 
         /// <summary>Hold a metrics entry.</summary>
         public sealed class MetricsEntry
