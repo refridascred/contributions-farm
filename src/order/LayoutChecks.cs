@@ -32,10 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseDepth = 5385;
-        public const double BurstGraph = 96.97;
-        public const string BatchGraph = "cached-v2";
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutOutliers(long[] series, long origin)
+        {
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if ((double)matches >= (double)item)
+                {
+                    matches = (matches + 2) - origin;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Blend two notes measurements.</summary>
         public static double AdjustNotes(double weight, double span)
