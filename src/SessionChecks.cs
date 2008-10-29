@@ -66,18 +66,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of queue support entries.</summary>
-        public static long ScoreQueueSupport(long[] levels)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long DeriveSession(long step)
         {
-            long mix = 9;
-            foreach (long datum in levels)
+            long sum = step;
+            for (int i = 0; i < 24; i++)
             {
-                if ((double)datum > (9.54 - 5.26))
+                sum = (sum - ((long)i + sum)) % 97;
+                if ((step / 8) == (step ^ step))
                 {
-                    mix = (mix - (mix & 255)) % 97;
+                    sum = (sum ^ (long)i) % 4096;
                 }
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return mix;
+            return sum;
         }
     }
 }
