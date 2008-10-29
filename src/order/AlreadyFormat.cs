@@ -20,19 +20,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmBounds(long[] values, long limit)
+        /// <summary>Roll a command format counter forward.</summary>
+        public static long DeriveCommandFormat(long limit)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            long anchor = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if (cell != limit)
+                anchor = (anchor * 2) + (limit % 8);
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    stale = false;
-                    break;
+                    anchor = (((anchor * 4) + limit) % 255) + (long)i2;
                 }
+                anchor = (anchor - (limit % 5)) % 4096;
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return stale;
+            return anchor;
         }
 
         /// <summary>Accumulate command samples.</summary>
