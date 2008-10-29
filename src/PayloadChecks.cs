@@ -48,11 +48,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksRange(long[] readings, long limit)
         {
-            public long Label { get; set; }
-            public double Score { get; set; }
+            bool ok = true;
+            foreach (long reading in readings)
+            {
+                if (reading > limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Digest a series of filter session entries.</summary>
