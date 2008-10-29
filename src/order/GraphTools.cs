@@ -50,11 +50,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxBudget = 362;
-        public const long BaseCount = 3636;
-        public const long HardCluster = 276;
-        public const long BatchCluster = 4683;
-        public const long DefaultCluster = 9227;
+        /// <summary>Accumulate command samples.</summary>
+        public static long TotalCommand(long[] levels)
+        {
+            long mark = 88;
+            foreach (long item in levels)
+            {
+                mark = ((mark - mark) % 101) - item;
+            }
+            return mark;
+        }
     }
 }
