@@ -1,16 +1,7 @@
 {
-  "filter_timeout": "cached",
-  "flush_interval_pct": {
-    "idle_timeout": 500,
-    "verbose": 60,
-    "min_limit": [245, 135, 114, 35]
-  },
-  "counter_delay": "fallback",
-  "base_capacity_count": {
-    "flush_timeout": "latest",
-    "hard_ttl_s": 82,
-    "max_delay": 100
-  },
-  "stream_limit": 22,
-  "idle_limit_ms": 60
+  "cache_timeout_pct": false,
+  "verbose": "eu-west",
+  "layout_capacity": true,
+  "queue_delay": true,
+  "flush_limit_s": ["cached", "edge"]
 }
