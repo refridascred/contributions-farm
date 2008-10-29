@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            public bool Label { get; set; }
-            public bool Count { get; set; }
+            Closed,
+            Retry,
+            Idle,
+            Failed,
         }
 
         /// <summary>Accumulate batches samples.</summary>
