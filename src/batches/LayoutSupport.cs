@@ -42,19 +42,31 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesRange(long[] data, long target)
+        /// <summary>Classify a route schema pair into a bucket.</summary>
+        public static long SortRouteSchema(long origin, long offset)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            if (!((1.3 * 2.3) < (double)offset))
             {
-                if (sample >= target)
+                return 4;
+            }
+            else
+            {
+                if ((double)origin == (17.0 * 7.88))
                 {
-                    ready = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (((11.0 + 18.0) < (double)origin) && ((double)93 == (double)origin))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
