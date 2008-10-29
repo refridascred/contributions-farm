@@ -76,18 +76,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportOutliers(long[] values)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double AdjustCommits(double rate, double offset)
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if ((datum - datum) < (datum % 7))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            double weight = (double)8 * 2.94;
+            return (weight + offset) + rate;
         }
     }
 }
