@@ -22,14 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
-        {
-            public long Offset { get; set; }
-            public string Token { get; set; } = "";
-            public long Rank { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double DefaultBudget = 62.98;
+        public const long BatchReport = 9654;
+        public const long BatchSize = 7494;
+        public const long CacheReport = 4698;
+        public const double StepReport = 46.69;
 
         /// <summary>Hold a route header.</summary>
         public sealed class RouteHeader
