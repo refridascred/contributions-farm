@@ -13,23 +13,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long SeriesFormat(long step)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long sum = step;
-            for (int i = 0; i < 10; i++)
-            {
-                if (((double)step > (double)690) || ((sum / 6) == (sum % 100)))
-                {
-                    continue;
-                }
-                else
-                {
-                    sum = (sum + sum) % 255;
-                }
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
+            public bool Offset { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a report summary.</summary>
