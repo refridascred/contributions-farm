@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double RetryTimeout = 77.51;
-        public const double DefaultFormat = 96.68;
-        public const double BurstFormat = 69.39;
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordMatches(long[] series, long origin)
+        {
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((8.9 > (double)count) && (origin < (count - origin)))
+                {
+                    count = (count + 2) - entry;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Scale a layout figure with a bias.</summary>
         public static double ScaleLayout(double rate, double span)
