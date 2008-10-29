@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many command layout samples are out of range.</summary>
-        public static long TallyCommandLayoutGaps(long[] series, long limit)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((123 ^ limit) == ((long)series.Length + limit))
-                {
-                    count = (count + 2) - sample;
-                }
-            }
-            return count;
+            Queued,
+            Locked,
+            Done,
+            Paused,
+            Synced,
         }
 
         /// <summary>Define session limits and defaults.</summary>
