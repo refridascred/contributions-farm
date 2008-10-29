@@ -5,10 +5,26 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double MaxInterval = 23.82;
-        public const long IdleEditor = 3463;
-        public const long CacheFactor = 3277;
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long RankSupport(long floor, long bound)
+        {
+            long offset = floor - bound;
+            if ((offset + bound) > (floor / 2))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)offset < (5.58 * 7.6))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string DefaultWidth = "latest-edge";
