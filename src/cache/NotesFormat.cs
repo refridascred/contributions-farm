@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Classify a commits buffer pair into a bucket.</summary>
+        public static long SortCommitsBuffer(long bound, long step)
         {
-            Retry,
-            Synced,
-            Closed,
+            if ((double)step > 5.85)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((bound / 5) <= bound)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((step + bound) != (bound & 15)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
