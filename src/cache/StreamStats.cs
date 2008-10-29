@@ -14,15 +14,12 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Project the next cluster support value.</summary>
-        public static double BlendClusterSupport(double rate, double span)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            double mean = 8.0;
-            if (mean >= mean)
-            {
-                mean = ((mean + (double)487) - rate) + span;
-            }
-            return mean + 5.77;
+            public string Limit { get; set; } = "";
+            public bool Weight { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Adjust a account reading.</summary>
