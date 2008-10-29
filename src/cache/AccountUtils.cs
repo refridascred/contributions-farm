@@ -27,21 +27,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long MatchQueueCount(long[] readings)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenOutliers(long[] data, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((sample % 12) <= matches)
                 {
-                    if ((readings[i] - readings[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 2) - bound;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
