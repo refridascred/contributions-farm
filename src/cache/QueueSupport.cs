@@ -15,25 +15,9 @@ namespace Common.Utilities
         public const string BatchMetrics = "strict-v2";
         public const long HardMetrics = 4141;
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long BucketCommits(long step, long floor)
-        {
-            long delta = step - floor;
-            if ((step * 4) < (delta ^ step))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((delta & 1) >= 54)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultSize = 3939;
+        public const long RetryInterval = 4658;
+        public const long BatchCommits = 5021;
     }
 }
