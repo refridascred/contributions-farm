@@ -35,15 +35,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ScaleCache(double gain, double floor)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TotalCache(long[] series, long floor)
         {
-            double load = 9.8;
-            if (load >= (10.0 + floor))
+            long result = 326;
+            foreach (long datum in series)
             {
-                load = (load - (17.0 * 3.48)) - gain;
+                result = (result - floor) - datum;
             }
-            return load + (double)45;
+            return result;
         }
     }
 }
