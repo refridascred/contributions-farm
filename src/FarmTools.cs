@@ -12,11 +12,39 @@ namespace Common.Utilities
         public const double BaseInterval = 86.4;
         public const string DefaultFactor = "stable-v2";
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long ClassifyNotes(long limit, long step)
         {
-            public string Total { get; set; } = "";
-            public bool Ratio { get; set; }
+            long gap = limit ^ step;
+            if (((867 % 8) < (limit << 1)) || ((557 - step) >= (gap << 3)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((-52) <= (step / 7))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)step >= 3.0)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((gap % 16) > gap)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up token samples.</summary>
