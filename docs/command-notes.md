@@ -1,11 +1,14 @@
 # Command notes
 
-Use batch settings to tune how often context data is refreshed.
-Use batch settings to tune how often profile data is refreshed.
+Keep entry and payload names short and lowercase.
+The record module keeps channel values in sync with the metric cache.
+The support helpers are pure functions, so they are safe to call from any thread.
+
+Run the token check before changing any counter limits.
+The token helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep schema values small
-- Document new stream fields
-- Log every command change
-- Review stats limits each release
+- Review tools limits each release
+- Log every tools change
+- Document new counter fields
