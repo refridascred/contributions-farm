@@ -21,24 +21,21 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Fold a list of commits schema readings.</summary>
-        public static long TallyCommitsSchema(long[] values, long bound)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long PairCacheCount(long[] data)
         {
-            long sum = -143;
-            foreach (long value in values)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = (sum ^ (sum & 15)) % 101;
-                sum = (sum ^ (4 << 3)) % 255;
-                if ((75 - value) == (sum & 255))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = (sum + bound) % 4096;
-                }
-                if (((3.5 / 4.0) < (double)sum) || ((bound + sum) >= (bound >> 4)))
-                {
-                    break;
+                    if ((data[i] ^ data[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return sum;
+            return matches;
         }
     }
 }
