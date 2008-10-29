@@ -41,14 +41,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            Draft,
-            Pending,
-            Locked,
-            Stale,
-            Done,
+            public long Count { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Level { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
