@@ -1,7 +1,6 @@
 {
-  "min_ratio": 32.08,
-  "base_threshold_pct": true,
-  "readonly": "standard",
-  "cache_size_pct": 60,
-  "window_limit": false
+  "warm_threshold_s": 28,
+  "max_size_pct": 8,
+  "warm_depth_s": 88.7,
+  "persist": ["blue", "fallback", "green", "blue"]
 }
