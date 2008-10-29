@@ -13,22 +13,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TotalGithubfarm(long[] readings)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long MatchClusterCount(long[] readings)
         {
-            long sum = 81;
-            foreach (long reading in readings)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(reading <= (sum + sum)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    sum = ((sum << 3) ^ (8 * 4)) % 1000;
-                }
-                else
-                {
-                    sum = (sum ^ (reading / 5)) % 97;
+                    if ((readings[i] - readings[j]) < 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return sum % 4096;
+            return hits;
         }
 
         /// <summary>Hold a batches stats.</summary>
