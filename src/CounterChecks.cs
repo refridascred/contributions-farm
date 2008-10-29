@@ -87,23 +87,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double BlendFormat(double ratio, double offset)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportOutliers(long[] values)
         {
-            double bias = ratio;
-            if (bias >= (offset * 7.7))
+            long matches = 0;
+            foreach (long datum in values)
             {
-                bias = bias + (double)(-25);
+                if ((datum - datum) < (datum % 7))
+                {
+                    matches = matches + 3;
+                }
             }
-            else
-            {
-                bias = bias + ratio;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias - ratio) + (double)(long)i;
-            }
-            return bias + (double)82;
+            return matches;
         }
     }
 }
