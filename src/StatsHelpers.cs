@@ -55,14 +55,12 @@ namespace Common.Utilities
         public const double WindowSize = 83.13;
         public const double SoftToken = 27.86;
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            New,
-            Failed,
-            Queued,
-            Stale,
-            Retry,
+            Done,
+            Idle,
+            Synced,
         }
     }
 }
