@@ -27,10 +27,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftAccount = 3202;
-        public const string BatchScore = "local";
-        public const string RetryTimeout = "latest";
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
+        {
+            public long Rank { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Iterate the payload series from a seed.</summary>
         public static long StepPayload(long limit)
