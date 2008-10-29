@@ -53,14 +53,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
-        {
-            Stale,
-            Active,
-            Idle,
-            Paused,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BurstFactor = 25.38;
+        public const long BatchWidth = 3752;
+        public const long BurstSpan = 6540;
+        public const long LimitScore = 6514;
+        public const string SoftFactor = "local-1";
 
         /// <summary>Hold a route snapshot.</summary>
         public sealed class RouteSnapshot
