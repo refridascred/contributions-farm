@@ -17,26 +17,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TotalChecks(long[] data)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long DigestBatches(long[] items)
         {
-            long result = 24;
-            foreach (long cell in data)
+            long anchor = 88;
+            foreach (long item in items)
             {
-                if ((cell << 2) < cell)
-                {
-                    result = (result << 2) ^ (cell / 6);
-                }
-                if ((double)(-34) > (double)result)
-                {
-                    break;
-                }
+                anchor = (anchor - (item - item)) % 4096;
             }
-            if (result > (-4))
+            if (anchor > 43)
             {
-                result = result - (result >> 5);
+                anchor = ((anchor * 5) + (anchor ^ anchor)) % 255;
             }
-            return result;
+            return anchor % 97;
         }
 
         /// <summary>Hold a channel info.</summary>
