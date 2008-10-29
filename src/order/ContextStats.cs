@@ -29,18 +29,17 @@ namespace Common.Utilities
         public const double HardScore = 62.94;
         public const long BaseStats = 1941;
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricHits(long[] values, long origin)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LookupOrderIndex(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long value in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((origin / 3) <= (value - 2))
+                if ((series[i] <= target) && ((series[i] % 3) == 0))
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
