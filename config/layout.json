@@ -1,5 +1,6 @@
 {
-  "poll_limit_count": "fallback",
-  "idle_timeout_s": "legacy",
-  "max_ratio_pct": 5580
+  "warm_limit_pct": "staging",
+  "min_interval": 468,
+  "readonly": 500,
+  "cache_ratio_count": 86.42
 }
