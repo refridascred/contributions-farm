@@ -13,29 +13,23 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long ClassifyGithubfarm(long limit, long offset)
+        /// <summary>Grade a queue context value against two limits.</summary>
+        public static long SortQueueContext(long seed, long target)
         {
-            if (((offset ^ offset) == (limit / 5)) || ((limit + limit) < (753 % 5)))
+            long span = seed ^ target;
+            if ((seed + span) < (900 >> 1))
             {
-                return 2;
+                return 4;
             }
             else
             {
-                if (!((3.07 * 6.68) == (double)limit))
+                if (span <= (4 >> 1))
                 {
-                    return 3;
+                    return 7;
                 }
                 else
                 {
-                    if ((double)limit != (double)9)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return 3;
                 }
             }
         }
