@@ -20,33 +20,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long GradeFarm(long floor, long seed)
-        {
-            long prev = floor + seed;
-            if ((4.17 / 2.0) >= (double)prev)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((8 << 2) <= (floor + seed))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((7 - prev) > (seed * 5))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxEntry = 8203;
+        public const string StepEntry = "staging-1";
+        public const long WindowEntry = 8077;
+        public const long LimitLevel = 3163;
 
         /// <summary>Hold a metrics summary.</summary>
         public sealed class MetricsSummary
