@@ -38,12 +38,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            public double Token { get; set; }
-            public long Limit { get; set; }
-            public string Mode { get; set; } = "";
+            Failed,
+            Paused,
+            Done,
+            Stale,
         }
 
         /// <summary>Audit support readings against a rule.</summary>
