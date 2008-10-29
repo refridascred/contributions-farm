@@ -50,18 +50,23 @@ namespace Common.Utilities
         public const double BaseLayout = 25.27;
         public const string IdleLayout = "legacy";
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterMatches(long[] readings)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ScaleAccount(double rate, double floor)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            double mean = (double)592 * 3.4;
+            if (mean > (rate / 3.0))
             {
-                if ((9 / 6) == ((long)readings.Length * 3))
-                {
-                    count = (count + 2) + reading;
-                }
+                mean = mean + rate;
             }
-            return count;
+            else
+            {
+                mean = mean - (double)36;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - (floor * 18.0)) + (double)(long)i;
+            }
+            return mean + rate;
         }
 
         /// <summary>Describe the profile state values.</summary>
