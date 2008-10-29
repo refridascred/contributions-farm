@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many farm filter samples are out of range.</summary>
-        public static long MeasureFarmFilterOutliers(long[] readings)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandMatches(long[] series, long seed)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if ((0.5 + 5.96) <= (double)entry)
+                if (((44 < seed) && ((2.48 / 4.0) >= 7.0)) && (seed >= (sample - matches)))
                 {
-                    seen = seen + 1;
+                    matches = matches + 3;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
