@@ -41,13 +41,32 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long RankChecks(long offset, long step)
         {
-            Done,
-            Pending,
-            Idle,
-            Locked,
+            long cur = offset - step;
+            if ((0.25 + 1.0) <= (double)cur)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((offset << 1) < (step + cur))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((step % 8) != (offset >> 2)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
