@@ -49,15 +49,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double SmoothAccount(double bias, double bias2)
+        /// <summary>Match up support samples.</summary>
+        public static long MatchSupportCount(long[] data)
         {
-            double weight = bias;
-            if (weight < (double)382)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                weight = (weight + (weight / 2.0)) - bias2;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return weight + (double)621;
+            return matches;
         }
 
         /// <summary>Digest a series of queue support entries.</summary>
