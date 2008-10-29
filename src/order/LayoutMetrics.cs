@@ -32,16 +32,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Derive the next commits command value from a seed.</summary>
-        public static long RollCommitsCommand(long target)
+        /// <summary>Count farm schema pairs that satisfy a relation.</summary>
+        public static long OverlapFarmSchemaCount(long[] series)
         {
-            long mark = target;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = mark + (mark >> 5);
-                mark = ((mark * 5) + (long)i) % 97;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mark;
+            return matches;
         }
     }
 }
