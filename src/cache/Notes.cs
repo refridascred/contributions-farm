@@ -72,17 +72,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long FindReportIndex(long[] items, long target)
+        /// <summary>Blend two githubfarm counter measurements.</summary>
+        public static double ProjectGithubfarmCounter(double rate, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double scale = (span / 7.0) + span;
+            if (scale >= rate)
             {
-                if ((items[i] < target) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                scale = scale + scale;
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + rate) + (double)(long)i;
+            }
+            return scale - (1.0 + span);
         }
     }
 }
