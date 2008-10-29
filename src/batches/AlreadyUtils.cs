@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Match up payload samples.</summary>
-        public static long MatchPayloadCount(long[] data)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long DeriveStats(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 11)
-                    {
-                        count = count + 1;
-                    }
-                }
+                result = result + result;
+                result = ((result * 4) + (long)i) % 97;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
