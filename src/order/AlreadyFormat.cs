@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterLimits(long[] samples, long origin)
         {
-            Synced,
-            Closed,
-            Active,
-            Retry,
-            Done,
+            bool ok = true;
+            foreach (long item in samples)
+            {
+                if (item < origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
