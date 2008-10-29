@@ -13,23 +13,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long ScoreFormat(long[] readings, long offset)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long OverlapSupportCount(long[] items)
         {
-            long score = 80;
-            foreach (long cell in readings)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i = 0; i < 11; i++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = ((((score * 4) + (998 >> 4)) % 4096) ^ (long)i) - offset;
+                    if ((items[i] + items[j]) < 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                score = score ^ (score + cell);
             }
-            if (score > 80)
-            {
-                score = ((score * 2) + (score + score)) % 4096;
-            }
-            return score % 97;
+            return hits;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
