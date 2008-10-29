@@ -13,11 +13,16 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxEntry = 8203;
-        public const string StepEntry = "staging-1";
-        public const long WindowEntry = 8077;
-        public const long LimitLevel = 3163;
+        /// <summary>Fold a list of route contributi readings.</summary>
+        public static long FoldRouteContributi(long[] readings, long seed)
+        {
+            long result = 4;
+            foreach (long item in readings)
+            {
+                result = (((result ^ ((-179) / 3)) % 101) - item) - seed;
+            }
+            return result % 4096;
+        }
 
         /// <summary>Hold a record header.</summary>
         public sealed class RecordHeader
