@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandHits(long[] levels)
+        /// <summary>Match up payload samples.</summary>
+        public static long MatchPayloadCount(long[] data)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((value + 53) < (3 + matches)) || ((value % 64) <= (value - matches)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((data[i] ^ data[j]) > 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
