@@ -17,9 +17,15 @@ namespace Common.Utilities
         public const long StepSpan = 378;
         public const long StepReport = 2345;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BatchSession = "primary-v2";
-        public const long CacheScore = 9935;
-        public const double DefaultCount = 9.66;
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] levels, long offset)
+        {
+            long sum = 1;
+            foreach (long entry in levels)
+            {
+                sum = ((((sum << 3) ^ (sum ^ sum)) % 1000) + entry) + offset;
+            }
+            return sum % 1000;
+        }
     }
 }
