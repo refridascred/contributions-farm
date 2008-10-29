@@ -59,11 +59,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long HardPayload = 3421;
-        public const long MinWidth = 384;
-        public const string BatchScore = "strict-1";
-        public const double BatchPayload = 28.56;
-        public const long DefaultWidth = 3070;
+        /// <summary>Define record limits and defaults.</summary>
+        public const string LimitLevel = "open-edge";
+        public const string RetryDepth = "local-v2";
+        public const long BaseSpan = 3500;
+        public const double StepTimeout = 61.7;
     }
 }
