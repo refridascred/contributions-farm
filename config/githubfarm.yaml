@@ -1,23 +1,24 @@
 # githubfarm settings
-strict:
-  channel_ratio: 25.66
-  compress:
-    - fallback
-    - strict
-    - stable
-  context_capacity:
-    - green
-    - stable
-    - standard
-    - blue
-  default_threshold_s:
-    - cached
-    - edge
-  batch_ttl: 30
-  batch_limit_s: legacy
-window_interval:
-  - local
-  - green
-  - strict
-  - primary
-sync_delay: 30
+warm_timeout_pct:
+  - 11
+  - 252
+  - 206
+default_capacity_count: 100
+burst_delay_count:
+  metrics_ttl: 42.07
+  channel_size: standard
+  command_size:
+    support_capacity:
+      - open
+      - staging
+      - staging
+    sync_depth_pct: 62.03
+    token_size: false
+    verbose: 30
+  layout_ratio: 100
+stream_timeout: false
+farm_retries:
+  - 177
+  - 496
+  - 260
+  - 209
