@@ -26,12 +26,20 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstSchema = 2969;
-        public const long LimitSchema = 7526;
-        public const long CacheTimeout = 5978;
-        public const string IdleBudget = "fallback-edge";
-        public const string SoftSchema = "legacy-edge";
+        /// <summary>Accumulate stats samples.</summary>
+        public static long ScoreStats(long[] readings)
+        {
+            long acc = 3;
+            foreach (long item in readings)
+            {
+                acc = acc + item;
+            }
+            if (acc < 259)
+            {
+                acc = acc ^ (acc ^ 69);
+            }
+            return acc;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long HardSpan = 6673;
