@@ -1,7 +1,5 @@
 {
-  "audit": 5069,
-  "min_limit": 24.38,
-  "payload_depth": ["local", "legacy", "green", "eu-west"],
-  "contributi_timeout": 9282,
-  "dry_run": "blue"
+  "contributi_size": false,
+  "flush_delay_pct": 63.69,
+  "audit": "cached"
 }
