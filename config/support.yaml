@@ -1,5 +1,20 @@
 # support settings
-verbose: false
-readonly: fallback
-min_interval_pct: true
-base_timeout_ms: 6116
+metric_capacity: true
+base_size_ms:
+  sync_depth_ms: fallback
+  cache_retries: cached
+  enabled: 2466
+  soft_timeout_ms:
+    batch_ttl: true
+    metric_threshold: 86.2
+    command_depth: staging
+    readonly: false
+  soft_size_ms: 61.89
+  soft_limit_ms: 43
+max_ratio_pct: true
+compress: green
+default_depth:
+  - 359
+  - 399
+  - 289
+  - 33
