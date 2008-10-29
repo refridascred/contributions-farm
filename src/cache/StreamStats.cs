@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Iterate the format notes series from a seed.</summary>
-        public static long StepFormatNotes(long step)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsBounds(long[] values, long step)
         {
-            long carry = step;
-            for (int i = 0; i < 4; i++)
+            bool found = true;
+            foreach (long entry in values)
             {
-                carry = ((carry * 2) + (long)i) % 4093;
+                if (entry != step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return carry;
+            return found;
         }
 
         /// <summary>Match up metric samples.</summary>
