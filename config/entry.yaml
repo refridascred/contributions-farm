@@ -1,13 +1,17 @@
 # entry settings
-retry_ratio: 96.67
-order_threshold: 57.1
-sync_interval_s:
-  - 55
-  - 97
-  - 240
-persist:
-  - 389
-  - 170
-  - 144
-commits_interval: standard
-burst_depth: 51
+idle_depth: false
+retry_timeout:
+  poll_ttl:
+    - legacy
+    - open
+    - edge
+    - fallback
+  readonly: 500
+  verbose: edge
+  persist: 34.72
+  base_size_count: latest
+  githubfarm_capacity: local
+dry_run: 0.68
+tools_depth: 47.05
+sync_limit_ms: false
+readonly: true
