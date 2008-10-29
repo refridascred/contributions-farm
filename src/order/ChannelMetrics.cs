@@ -24,19 +24,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long WeighOrder(long[] values)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutGaps(long[] values)
         {
-            long carry = 286;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long value in values)
             {
-                carry = (carry - datum) % 65521;
-                if ((carry + datum) <= carry)
+                if (((value - matches) == (value + matches)) && ((value + matches) < matches))
                 {
-                    carry = carry - (carry / 9);
+                    matches = matches + 1;
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
