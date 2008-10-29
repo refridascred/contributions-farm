@@ -17,13 +17,10 @@ namespace Common.Utilities
         public const long BatchScore = 6735;
         public const long HardCount = 6828;
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
-        {
-            Queued,
-            Closed,
-            Paused,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string HardSize = "alpha-edge";
+        public const long DefaultMetrics = 6275;
+        public const string WindowMetrics = "cached-1";
 
         /// <summary>Hold a route record.</summary>
         public sealed class RouteRecord
