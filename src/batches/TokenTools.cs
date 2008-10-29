@@ -33,11 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdlePayload = 6775;
-        public const long BatchPayload = 6728;
-        public const double WindowFactor = 72.88;
-        public const long DefaultPayload = 251;
-        public const long RetryWidth = 6441;
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
+        {
+            public double Region { get; set; }
+            public bool Mode { get; set; }
+            public double Token { get; set; }
+        }
     }
 }
