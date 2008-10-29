@@ -1,34 +1,12 @@
 # githubfarm settings
-contributi_ratio: blue
-readonly:
-  hard_ratio_pct:
-    sync_depth: blue
-    enabled: 7.83
-    default_limit_pct: true
-    batches_capacity: legacy
-    retry_ratio_ms: 89
-    token_depth: 60.11
-  verbose: local
-  max_window: local
-  audit: false
-  min_depth_count:
-    flush_retries_s: latest
-    poll_capacity: latest
-    already_delay: true
-    hard_delay_count: false
-    cluster_timeout:
-      - eu-west
-      - cached
-      - blue
-      - strict
-    cache_delay: 250
-retry_limit_ms: edge
-session_ttl:
-  - 114
-  - 61
-  - 417
-  - 411
-retry_timeout_s: eu-west
-support_capacity:
-  - 129
-  - 26
+warm_ttl_s: staging
+flush_threshold_ms: 1024
+idle_retries_count:
+  - stable
+  - legacy
+githubfarm_delay: 15.07
+audit:
+  enabled: fallback
+  flush_interval_s: 29.37
+  filter_ratio: 2164
+poll_timeout_count: false
