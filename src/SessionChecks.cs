@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long FoldMetrics(long[] samples, long origin)
+        /// <summary>Derive the next stream already value from a seed.</summary>
+        public static long StepStreamAlready(long target)
         {
-            long anchor = 77;
-            foreach (long datum in samples)
+            long result = target;
+            for (int i = 0; i < 19; i++)
             {
-                if ((origin / 9) >= (8 << 1))
+                if ((target >> 1) != (result + 7))
                 {
-                    anchor = (((anchor << 3) ^ anchor) % 101) ^ datum;
+                    result = (result << 2) ^ (long)i;
                 }
+                else
+                {
+                    result = ((result * 2) + ((long)i - (long)i)) % 4096;
+                }
+                result = ((result * 4) + (result ^ result)) % 4096;
+                result = ((result * 5) + (long)i) % 4093;
             }
-            if (anchor > (-19))
-            {
-                anchor = ((anchor * 5) + origin) % 65521;
-            }
-            return anchor;
+            return result;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
