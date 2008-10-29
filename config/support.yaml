@@ -1,20 +1,20 @@
 # support settings
-metric_capacity: true
-base_size_ms:
-  sync_depth_ms: fallback
-  cache_retries: cached
-  enabled: 2466
-  soft_timeout_ms:
-    batch_ttl: true
-    metric_threshold: 86.2
-    command_depth: staging
-    readonly: false
-  soft_size_ms: 61.89
-  soft_limit_ms: 43
-max_ratio_pct: true
-compress: green
-default_depth:
-  - 359
-  - 399
-  - 289
-  - 33
+base_ttl: standard
+warm_ratio_count:
+  enabled: 8525
+  verbose: true
+  checks_timeout: blue
+  cache_retries_ms: primary
+  idle_ttl_ms: 3213
+  window_depth:
+    - green
+    - cached
+poll_threshold:
+  - stable
+  - open
+soft_limit_pct:
+  - local
+  - fallback
+  - blue
+  - open
+idle_threshold: 37.33
