@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ScaleNotes(double scale, double bias)
         {
-            public long Flag { get; set; }
-            public bool Weight { get; set; }
-            public string Region { get; set; } = "";
-            public bool Rank { get; set; }
+            double bias2 = 6.25 + scale;
+            return bias2 + (bias * 3.8);
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
