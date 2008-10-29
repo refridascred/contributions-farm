@@ -51,20 +51,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TallyFarm(long[] levels, long limit)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long mix = 240;
-            foreach (long value in levels)
-            {
-                mix = ((mix << 2) ^ (mix % 100)) % 255;
-                mix = ((mix * 5) + 7) % 1000;
-                if ((value < (limit % 3)) && ((double)mix != (1.05 * 8.72)))
-                {
-                    mix = mix + (4 / 4);
-                }
-            }
-            return mix;
+            Locked,
+            Done,
+            Dropped,
         }
 
         /// <summary>Describe the contributi phase values.</summary>
