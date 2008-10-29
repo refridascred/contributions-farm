@@ -29,22 +29,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine stream githubfarm values into a single score.</summary>
-        public static long WeighStreamGithubfarm(long[] samples)
+        /// <summary>Measure how many layout support samples are out of range.</summary>
+        public static long TallyLayoutSupportOutliers(long[] samples)
         {
-            long result = 3;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if (((reading >> 1) < (result - result)) || ((result - 146) > (reading + reading)))
+                if (808 >= (value << 1))
                 {
-                    result = ((result * 2) + (reading - reading)) % 65521;
-                }
-                else
-                {
-                    result = (result - (reading & 7)) % 65521;
+                    seen = seen + 1;
                 }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Describe the already status values.</summary>
