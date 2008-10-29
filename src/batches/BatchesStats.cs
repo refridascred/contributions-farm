@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long SeriesChannel(long floor)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long carry = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 1000;
-            }
-            return carry;
+            Active,
+            Stale,
+            Idle,
+            Locked,
+            Paused,
         }
 
         /// <summary>Describe the route kind values.</summary>
