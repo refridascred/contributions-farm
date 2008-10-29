@@ -17,13 +17,13 @@ namespace Common.Utilities
         public const long MaxTools = 9321;
         public const long HardTools = 7100;
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            Closed,
-            Stale,
-            Idle,
-            New,
+            Draft,
+            Paused,
+            Retry,
+            Done,
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
