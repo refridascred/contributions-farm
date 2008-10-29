@@ -49,19 +49,12 @@ namespace Common.Utilities
         public const long StepLayout = 7732;
         public const double BatchLayout = 54.28;
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterLimits(long[] series, long limit)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            bool ready = true;
-            foreach (long entry in series)
-            {
-                if (entry < limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Ratio { get; set; }
+            public long Level { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
