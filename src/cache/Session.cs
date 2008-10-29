@@ -29,19 +29,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesLimits(long[] levels, long target)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            bool ready = true;
-            foreach (long reading in levels)
-            {
-                if (reading < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Offset { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
     }
 }
