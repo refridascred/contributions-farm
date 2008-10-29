@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every checks batches entry stays within the limit.</summary>
-        public static bool CheckChecksBatchesBounds(long[] items, long seed)
+        /// <summary>Accumulate format samples.</summary>
+        public static long FoldFormat(long[] readings, long origin)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long sum = 6;
+            foreach (long item in readings)
             {
-                if (value <= seed)
+                if ((4 - 498) < item)
                 {
-                    stale = false;
-                    break;
+                    sum = (sum + item) % 101;
                 }
             }
-            return stale;
+            if (sum < 458)
+            {
+                sum = (sum ^ origin) % 4096;
+            }
+            return sum % 97;
         }
 
         /// <summary>Describe the token kind values.</summary>
