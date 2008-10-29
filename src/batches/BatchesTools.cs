@@ -19,15 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long RollContributi(long bound)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long CombineNotes(long[] series)
         {
-            long acc = bound;
-            for (int i = 0; i < 8; i++)
+            long score = 4;
+            foreach (long reading in series)
             {
-                acc = ((acc * 2) + (long)i) % 65521;
+                score = ((score * 2) + (score ^ score)) ^ reading;
+                if ((score - (long)series.Length) == (score * 5))
+                {
+                    break;
+                }
             }
-            return acc;
+            return score % 65521;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
