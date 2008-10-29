@@ -53,15 +53,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TotalCommand(long[] levels)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long mark = 88;
-            foreach (long item in levels)
-            {
-                mark = ((mark - mark) % 101) - item;
-            }
-            return mark;
+            public long Size { get; set; }
+            public long Rank { get; set; }
+            public double Weight { get; set; }
+            public long Label { get; set; }
         }
     }
 }
