@@ -31,10 +31,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepProfile = 6264;
-        public const string RetryProfile = "primary-v2";
-        public const long StepSpan = 1731;
-        public const double DefaultProfile = 41.24;
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
+        {
+            public double Score { get; set; }
+            public long Flag { get; set; }
+            public string Region { get; set; } = "";
+            public long Total { get; set; }
+        }
     }
 }
