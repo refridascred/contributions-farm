@@ -19,11 +19,11 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double StepInterval = 49.51;
-        public const string BurstAlready = "standard-1";
-        public const long CacheAlready = 5282;
-        public const long StepRatio = 1600;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitTimeout = 7976;
+        public const long MaxInterval = 1684;
+        public const double WindowQueue = 68.03;
+        public const long BatchBudget = 4;
 
         /// <summary>Iterate the counter series from a seed.</summary>
         public static long SeriesCounter(long bound)
