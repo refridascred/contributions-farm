@@ -1,5 +1,5 @@
 {
-  "default_timeout_count": [222, 165, 99],
-  "warm_ratio_ms": 14.64,
-  "layout_size": 26
+  "compress": "edge",
+  "persist": true,
+  "base_ttl_s": [470, 368, 18, 457]
 }
