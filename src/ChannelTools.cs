@@ -22,11 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitTimeout = 7976;
-        public const long MaxInterval = 1684;
-        public const double WindowQueue = 68.03;
-        public const long BatchBudget = 4;
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
+        {
+            public long Stamp { get; set; }
+            public bool Mode { get; set; }
+        }
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long TallyStats(long[] levels, long step)
