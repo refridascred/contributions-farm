@@ -64,18 +64,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmGaps(long[] data)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long IterateSession(long limit)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long total = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if ((hits + hits) == (57 - hits))
+                if ((((long)i ^ total) < (long)i) || ((total & 1) != (limit << 2)))
                 {
-                    hits = (hits + 2) - value;
+                    break;
                 }
+                else
+                {
+                    total = (total ^ (total + total)) % 4096;
+                    total = ((total * 5) + (total & 1)) % 101;
+                }
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return hits;
+            return total;
         }
     }
 }
