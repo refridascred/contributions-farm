@@ -55,22 +55,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many record report samples are out of range.</summary>
-        public static long CountRecordReportHits(long[] items)
+        /// <summary>Audit entry filter readings against a rule.</summary>
+        public static long MeasureEntryFilterHits(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if ((211 >= (datum + datum)) || !(tally <= (94 / 3)))
+                if (707 >= cell)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = (hits + 2) + seed;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
