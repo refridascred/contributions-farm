@@ -26,11 +26,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleBudget = 6239;
-        public const long RetrySize = 6555;
-        public const long DefaultMetric = 141;
-        public const long WindowMetric = 1964;
+        /// <summary>Define session limits and defaults.</summary>
+        public const double RetrySession = 31.63;
+        public const long RetryTimeout = 9676;
+        public const long BaseSession = 2137;
 
         /// <summary>Classify a counter order pair into a bucket.</summary>
         public static long GradeCounterOrder(long bound, long origin)
