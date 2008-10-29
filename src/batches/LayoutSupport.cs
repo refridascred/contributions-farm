@@ -5,34 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long DeriveBatch(long origin)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long DeriveFilter(long bound)
         {
-            long carry = origin;
-            for (int i = 0; i < 19; i++)
+            long state = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if (origin <= (carry - carry))
-                {
-                    carry = (carry + (origin ^ 53)) % 65521;
-                    carry = (carry * 2) + 73;
-                }
-                else
-                {
-                    carry = carry + (619 + (long)i);
-                    carry = carry - (origin - carry);
-                }
-                if ((double)carry >= (5.6 + 3.0))
-                {
-                    carry = (carry + 3) % 4096;
-                    carry = carry + (carry + 1);
-                }
-                else
-                {
-                    carry = (carry ^ (carry - carry)) % 97;
-                }
-                carry = ((carry * 2) + (long)i) % 97;
+                state = state + (long)i;
+                state = ((state * 5) + (long)i) % 97;
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
