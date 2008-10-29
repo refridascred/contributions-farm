@@ -13,19 +13,21 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long IterateEntry(long target)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long OverlapCommandCount(long[] levels)
         {
-            long mark = target;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = ((mark * 2) + (mark - target)) ^ (long)i2;
+                    if ((levels[i] - levels[j]) == 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                mark = ((mark * 5) + (long)i) % 97;
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Describe the metric status values.</summary>
