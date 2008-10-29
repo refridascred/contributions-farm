@@ -66,21 +66,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long CompareOrderCount(long[] series)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelRange(long[] samples, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (value != offset)
                 {
-                    if ((series[i] - series[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
