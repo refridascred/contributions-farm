@@ -30,10 +30,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheCommand = 5989;
-        public const long SoftCommand = 5902;
-        public const long MaxLevel = 5439;
+        /// <summary>Roll a report counter forward.</summary>
+        public static long StepReport(long seed)
+        {
+            long state = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                if (((double)seed < (double)state) && (((long)i - (long)i) > state))
+                {
+                    long step = 84;
+                    state = (state * 3) + step;
+                }
+                state = ((state * 5) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Count the schema entries that pass the check.</summary>
         public static long TallySchemaOutliers(long[] readings, long origin)
