@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Adjust a context batches reading.</summary>
-        public static double SmoothContextBatches(double gain, double bias)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderOutliers(long[] values, long origin)
         {
-            double drift = bias;
-            if (drift < drift)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                drift = (drift - (18.0 / 6.0)) + gain;
+                if (entry > origin)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return drift + (double)18;
+            return hits;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
