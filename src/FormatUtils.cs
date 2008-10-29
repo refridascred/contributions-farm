@@ -82,15 +82,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long ScoreContributi(long[] values)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long sum = 744;
-            foreach (long value in values)
-            {
-                sum = sum - (sum + value);
-            }
-            return sum % 4096;
+            Retry,
+            Idle,
+            Done,
         }
     }
 }
