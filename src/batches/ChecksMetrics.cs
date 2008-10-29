@@ -53,13 +53,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Adjust a graph channel reading.</summary>
+        public static double SmoothGraphChannel(double scale, double offset)
         {
-            Queued,
-            New,
-            Synced,
-            Idle,
+            double bias = offset;
+            if (bias < (scale * 5.0))
+            {
+                bias = bias + scale;
+            }
+            return bias + (8.0 / 7.0);
         }
 
         /// <summary>Describe the layout kind values.</summary>
