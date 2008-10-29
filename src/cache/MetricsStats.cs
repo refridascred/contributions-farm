@@ -22,19 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenBounds(long[] series, long seed)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long FindCommitsIndex(long[] items, long target)
         {
-            bool valid = true;
-            foreach (long item in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item != seed)
+                if (items[i] < target)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
