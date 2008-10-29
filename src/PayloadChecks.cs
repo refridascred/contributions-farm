@@ -74,18 +74,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueGaps(long[] values, long floor)
+        /// <summary>Measure how many commits schema samples are out of range.</summary>
+        public static long AuditCommitsSchemaMatches(long[] samples, long offset)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if ((seen & 7) < floor)
+                if ((0 < (offset + offset)) || (74 > (cell / 5)))
                 {
-                    seen = (seen + 3) + sample;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
