@@ -20,22 +20,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionOutliers(long[] items)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((entry & 127) > hits)
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Offset { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
