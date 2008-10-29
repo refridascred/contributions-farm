@@ -29,22 +29,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long FoldBatch(long[] values, long step)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long MatchToolsCount(long[] readings)
         {
-            long carry = 5;
-            foreach (long value in values)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (carry < value)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = (((carry * 2) + (value ^ (-49))) % 1000) - step;
-                }
-                else
-                {
-                    carry = (carry * 5) + (value - value);
+                    if ((readings[i] + readings[j]) == 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
