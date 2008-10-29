@@ -58,13 +58,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TallyToken(long[] series)
         {
-            public string Offset { get; set; } = "";
-            public long Ratio { get; set; }
-            public double Score { get; set; }
-            public bool Flag { get; set; }
+            long state = 6;
+            foreach (long item in series)
+            {
+                if ((3.8 >= (double)state) && (state <= (state + item)))
+                {
+                    continue;
+                }
+                if (20 <= (state / 2))
+                {
+                    state = ((state << 3) ^ (state - 6)) % 97;
+                }
+            }
+            return state;
         }
     }
 }
