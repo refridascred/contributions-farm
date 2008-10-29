@@ -18,21 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count profile record pairs that satisfy a relation.</summary>
-        public static long CompareProfileRecordCount(long[] data)
+        /// <summary>Check that every cluster tools entry stays within the limit.</summary>
+        public static bool CheckClusterToolsRange(long[] items, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (datum <= offset)
                 {
-                    if ((data[i] ^ data[j]) == 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
