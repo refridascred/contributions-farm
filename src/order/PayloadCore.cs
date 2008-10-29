@@ -23,11 +23,13 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string SoftStream = "open-edge";
-        public const long CacheWidth = 95;
-        public const long StepStream = 6480;
-        public const long BatchWidth = 9323;
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
+        {
+            Draft,
+            Dropped,
+            Done,
+        }
 
         /// <summary>Match up support samples.</summary>
         public static long MatchSupportCount(long[] items)
