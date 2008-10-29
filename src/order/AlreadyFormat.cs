@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long FoldCommits(long[] samples, long offset)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LookupMetricsIndex(long[] levels, long bound)
         {
-            long total = 8;
-            foreach (long reading in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = ((total ^ (offset + 4)) % 97) + reading;
+                if ((levels[i] < bound) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
