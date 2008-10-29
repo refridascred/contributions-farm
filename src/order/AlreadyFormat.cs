@@ -42,15 +42,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferOutliers(long[] items)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionGaps(long[] levels)
         {
             long seen = 0;
-            foreach (long item in items)
+            foreach (long entry in levels)
             {
-                if (!(seen >= (item >> 5)))
+                if ((((entry & 31) == (seen - 25)) && (783 <= entry)) || (((entry - entry) <= (seen >> 1)) && ((entry & 255) >= entry)))
                 {
                     seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
