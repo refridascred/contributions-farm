@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long FindQueueIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= limit) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetryAlready = 3360;
+        public const long IdleAlready = 4172;
+        public const long MaxAlready = 2088;
+        public const double HardAlready = 5.25;
+        public const long MinSpan = 3470;
 
         /// <summary>Classify a notes pair into a bucket.</summary>
         public static long ClassifyNotes(long limit, long step)
