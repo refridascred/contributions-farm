@@ -44,29 +44,35 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long seed, long bound)
+        /// <summary>Rank schema profile input into a small class.</summary>
+        public static long GradeSchemaProfile(long offset, long floor)
         {
-            long lane = seed ^ bound;
-            if ((lane * 5) > (bound >> 2))
+            if (((floor + offset) > offset) && ((double)offset > (double)36))
             {
-                return 2;
+                return 0;
             }
             else
             {
-                if (0.3 >= (double)bound)
+                if (((2.0 + 4.9) >= (double)floor) || ((6.05 + 4.0) != (double)offset))
                 {
-                    return 0;
+                    return 8;
                 }
                 else
                 {
-                    if ((seed + seed) == (394 + bound))
+                    if (((482 + offset) < floor) && (offset > (floor % 16)))
                     {
                         return 7;
                     }
                     else
                     {
-                        return 5;
+                        if ((floor % 10) >= (4 / 2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
