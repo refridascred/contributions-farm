@@ -1,8 +1,18 @@
 # entry settings
-min_ttl_pct:
-  - 443
-  - 456
-  - 407
-  - 428
-persist: false
-sync_retries_s: false
+counter_ttl:
+  dry_run: strict
+  enabled: false
+  flush_ratio: standard
+  max_depth_ms:
+    - legacy
+    - green
+    - staging
+  audit: 69.47
+  context_ratio: 72.07
+flush_ratio_ms:
+  - 261
+  - 313
+  - 41
+  - 134
+hard_depth: 32.92
+idle_capacity_ms: 5988
