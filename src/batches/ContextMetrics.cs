@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Combine already support values into a single score.</summary>
-        public static long TallyAlreadySupport(long[] samples, long origin)
-        {
-            long state = 78;
-            foreach (long item in samples)
-            {
-                if ((19.0 - 8.4) > (double)origin)
-                {
-                    state = (state - (item >> 1)) % 4096;
-                }
-                else
-                {
-                    state = ((state << 2) ^ (item << 2)) % 4096;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstAlready = 3652;
+        public const double RetryWidth = 75.0;
+        public const double MaxAlready = 38.87;
 
         /// <summary>Hold a support info.</summary>
         public sealed class SupportInfo
