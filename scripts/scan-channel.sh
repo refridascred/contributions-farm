@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback open latest local; do
-    log "checking ${item}"
-done
-
 total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 5))
+for i in $(seq 1 4); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
 
-mode="${1:-eu-west}"
+mode="${1:-primary}"
 case "${mode}" in
-    green)
+    legacy)
         log "fast path"
         ;;
     *)
