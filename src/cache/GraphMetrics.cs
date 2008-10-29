@@ -19,22 +19,37 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a already route pair into a bucket.</summary>
-        public static long RankAlreadyRoute(long offset, long limit)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long GradeEntry(long origin, long offset)
         {
-            if (!((limit + 608) < limit))
+            long next = origin + offset;
+            if ((74 + 38) < (next + offset))
             {
-                return 7;
+                return 4;
             }
             else
             {
-                if ((offset > (offset & 1)) && ((limit + limit) < (-9)))
+                if (!((3.9 + 7.66) <= (double)next))
                 {
-                    return 6;
+                    return 7;
                 }
                 else
                 {
-                    return 4;
+                    if (origin > offset)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((2.8 * 0.1) <= (double)next)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
         }
