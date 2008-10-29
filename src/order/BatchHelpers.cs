@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of cluster counter readings.</summary>
-        public static long ScoreClusterCounter(long[] readings, long offset)
+        /// <summary>Accumulate editor githubfarm samples.</summary>
+        public static long CombineEditorGithubfarm(long[] items)
         {
-            long sum = 2;
-            foreach (long reading in readings)
+            long anchor = 10;
+            foreach (long cell in items)
             {
-                if ((sum % 64) == (offset + reading))
+                if (anchor > (anchor >> 3))
                 {
-                    sum = ((sum << 3) ^ offset) % 4096;
+                    anchor = (((anchor * 4) + anchor) % 255) - cell;
                 }
             }
-            return sum;
+            if (anchor < 517)
+            {
+                anchor = anchor - (anchor + anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate batches samples.</summary>
