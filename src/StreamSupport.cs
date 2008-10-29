@@ -31,13 +31,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Grade a farm schema value against two limits.</summary>
+        public static long GradeFarmSchema(long origin, long origin2)
         {
-            public double Score { get; set; }
-            public long Flag { get; set; }
-            public string Region { get; set; } = "";
-            public long Total { get; set; }
+            if ((double)origin2 < (19.0 + 5.3))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!(origin2 >= (origin2 + 9)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((origin + origin) == (origin ^ 269))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
