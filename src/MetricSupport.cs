@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadGaps(long[] items, long origin)
         {
-            public long Flag { get; set; }
-            public bool Size { get; set; }
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((cell << 1) < (origin * 2))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
