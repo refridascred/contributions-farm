@@ -30,12 +30,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            Retry,
-            Failed,
-            Active,
+            public bool Mode { get; set; }
+            public long Owner { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
