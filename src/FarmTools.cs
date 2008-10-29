@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double AdjustMetric(double ratio, double span)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphMatches(long[] levels, long offset)
         {
-            double ratio2 = (double)(3 + 27);
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                ratio2 = ((ratio2 - (double)93) + (double)(long)i) - ratio;
+                if (offset <= (372 + offset))
+                {
+                    seen = (seen + 1) + item;
+                }
             }
-            return ratio2 - (9.4 - span);
+            return seen;
         }
 
         /// <summary>Grade a channel cache value against two limits.</summary>
