@@ -1,8 +1,13 @@
 {
-  "account_interval": "open",
-  "base_ttl": "eu-west",
-  "default_capacity_count": "eu-west",
-  "base_ratio_s": 72.03,
-  "base_interval": 73,
-  "persist": 60
+  "readonly": "eu-west",
+  "token_interval": {
+    "min_window_ms": 44.18,
+    "hard_capacity": "latest",
+    "sync_depth": ["blue", "strict", "blue"],
+    "report_size": 77.36,
+    "compress": 76
+  },
+  "audit": 30,
+  "idle_retries": 30,
+  "enabled": "green"
 }
