@@ -25,15 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stats account samples are out of range.</summary>
-        public static long CountStatsAccountGaps(long[] levels)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmMatches(long[] series)
         {
             long count = 0;
-            foreach (long entry in levels)
+            foreach (long value in series)
             {
-                if ((16 - count) >= (entry / 2))
+                if (((count * 2) > (92 - value)) && (((value ^ count) <= (count + count)) && ((double)count >= (0.1 / 2.0))))
                 {
-                    count = count + 1;
+                    count = count + 3;
                 }
             }
             return count;
