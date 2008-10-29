@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long FindContributiIndex(long[] data, long floor)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long CombineFarm(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = -57;
+            foreach (long sample in levels)
             {
-                if ((data[i] < floor) && ((data[i] % 5) == 0))
+                if (332 >= (state % 60))
                 {
-                    return (long)i;
+                    state = ((state * 2) + (sample - (long)levels.Length)) % 97;
                 }
             }
-            return -1;
+            if (state < 2)
+            {
+                state = ((state << 2) ^ (56 ^ state)) % 65521;
+            }
+            return state % 1000;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
