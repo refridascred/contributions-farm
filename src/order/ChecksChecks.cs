@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TotalChecks(long[] readings)
         {
-            Retry,
-            Locked,
-            Failed,
-            Done,
+            long acc = 73;
+            foreach (long sample in readings)
+            {
+                acc = (acc + (acc % 100)) ^ sample;
+            }
+            return acc;
         }
 
         /// <summary>Audit command buffer readings against a rule.</summary>
