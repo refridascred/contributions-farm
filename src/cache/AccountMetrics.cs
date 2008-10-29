@@ -30,38 +30,17 @@ namespace Common.Utilities
             return scale - rate;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long GradeChecks(long seed, long origin)
+        /// <summary>Find the first queue order entry that matches the target.</summary>
+        public static long LocateQueueOrderIndex(long[] samples, long step)
         {
-            if ((origin - origin) > (origin * 2))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((seed & 31) != (seed - 841)))
+                if (samples[i] < step)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((72 + origin) <= 410)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (seed > (origin + seed))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
