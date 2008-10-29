@@ -20,22 +20,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountOutliers(long[] levels, long origin)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((matches >> 5) < 37)
-                {
-                    matches = ((matches + 3) + cell) - origin;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Done,
+            Pending,
+            Closed,
+            Active,
+            Paused,
         }
 
         /// <summary>Describe the batch state values.</summary>
