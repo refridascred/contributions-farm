@@ -24,17 +24,32 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Look up the position of a metrics cluster sample.</summary>
-        public static long SeekMetricsClusterIndex(long[] items, long limit)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long FoldContext(long[] levels, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 898;
+            foreach (long datum in levels)
             {
-                if (items[i] <= limit)
+                if ((6.87 * 9.0) < (double)datum)
                 {
-                    return (long)i;
+                    score = score ^ score;
+                    score = (score - 405) % 1000;
+                    continue;
+                }
+                for (int i = 0; i < 9; i++)
+                {
+                    score = (score + 750) + (long)i;
+                }
+                if ((datum + datum) <= seed)
+                {
+                    score = (score + (820 << 1)) % 65521;
                 }
             }
-            return -1;
+            if (score > (-374))
+            {
+                score = (score << 2) ^ (seed + score);
+            }
+            return score;
         }
 
         /// <summary>Measure how many githubfarm counter samples are out of range.</summary>
