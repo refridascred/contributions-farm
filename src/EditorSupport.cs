@@ -49,19 +49,38 @@ namespace Common.Utilities
             return mean - (6.0 - mean);
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ScaleBuffer(double gain, double offset)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long GradeProfile(long target, long floor)
         {
-            double gain2 = gain * 8.0;
-            if (gain2 >= 10.0)
+            if ((3 & 15) != (floor & 15))
             {
-                gain2 = gain2 + (offset / 3.0);
+                return 5;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                gain2 = (gain2 + offset) + (double)(long)i;
+                if ((floor + 233) > (4 << 1))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((floor << 3) <= (floor - target))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (target < floor)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return gain2 + 9.9;
         }
 
         /// <summary>Hold a queue options.</summary>
