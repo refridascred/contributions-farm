@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TallyCounter(long[] readings)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long mix = 193;
-            foreach (long datum in readings)
-            {
-                mix = ((mix << 3) ^ (mix + mix)) % 97;
-                if ((mix % 8) <= (mix - (long)readings.Length))
-                {
-                    mix = (mix ^ (datum << 2)) % 1000;
-                }
-            }
-            return mix % 65521;
+            Synced,
+            Closed,
+            Active,
+            Retry,
+            Done,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
