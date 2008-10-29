@@ -47,12 +47,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferOutliers(long[] items)
         {
-            Retry,
-            Paused,
-            Active,
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if (!(seen >= (item >> 5)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
