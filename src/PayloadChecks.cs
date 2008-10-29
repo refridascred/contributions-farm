@@ -24,14 +24,17 @@ namespace Common.Utilities
             return ratio - (scale * 12.0);
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LocateClusterIndex(long[] series, long floor)
         {
-            Active,
-            Draft,
-            Queued,
-            Paused,
-            Stale,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > floor) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
