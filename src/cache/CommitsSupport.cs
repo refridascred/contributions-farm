@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
-        {
-            New,
-            Ready,
-            Draft,
-            Active,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowTimeout = 1788;
+        public const double BatchContributi = 79.61;
+        public const long RetryFactor = 1157;
+        public const long DefaultContributi = 3054;
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long AuditEditorGaps(long[] levels)
