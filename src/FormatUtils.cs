@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Accumulate buffer schema samples.</summary>
-        public static long TallyBufferSchema(long[] data)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutMatches(long[] series, long seed)
         {
-            long state = -6;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if ((sample - state) != (sample - sample))
+                if ((seed + count) <= count)
                 {
-                    state = state ^ (state - state);
+                    count = (count + 2) ^ sample;
                 }
             }
-            if (state > 3)
-            {
-                state = ((state << 3) ^ (state * 2)) % 65521;
-            }
-            return state % 1000;
+            return count;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
