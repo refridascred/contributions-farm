@@ -1,9 +1,6 @@
 {
-  "idle_window_ms": [478, 313],
-  "base_limit_pct": {
-    "warm_delay_ms": "local",
-    "default_limit_pct": "stable",
-    "poll_threshold_count": "latest"
-  },
-  "checks_timeout": 84.62
+  "flush_threshold_s": 3146,
+  "order_delay": 5470,
+  "retry_limit_s": 54.79,
+  "route_capacity": [421, 370]
 }
