@@ -29,12 +29,12 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Locate a order record reading by value.</summary>
-        public static long LocateOrderRecordIndex(long[] data, long step)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long SeekContributiIndex(long[] data, long offset)
         {
             for (int i = 0; i < data.Length; i++)
             {
-                if (data[i] <= step)
+                if (data[i] == offset)
                 {
                     return (long)i;
                 }
