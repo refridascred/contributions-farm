@@ -21,12 +21,39 @@ namespace Common.Utilities
         public const long SoftWidth = 2356;
         public const long CacheRatio = 9115;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string WindowCommand = "primary-edge";
-        public const long LimitCount = 7323;
-        public const long IdleCommand = 4862;
-        public const long BaseCommand = 655;
-        public const long MaxSpan = 8570;
+        /// <summary>Rank session input into a small class.</summary>
+        public static long RankSession(long offset, long seed)
+        {
+            if ((double)seed == (double)3)
+            {
+                return 7;
+            }
+            else
+            {
+                if (seed < (offset - offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((3.0 / 8.0) <= (double)seed)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((double)offset < 7.0) && (seed < (seed - offset)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long AuditMetricsOutliers(long[] data, long bound)
