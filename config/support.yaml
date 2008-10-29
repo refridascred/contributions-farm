@@ -1,7 +1,8 @@
 # support settings
-window_retries:
-  - cached
-  - local
-compress: latest
-min_depth_count: 82.1
-burst_size_pct: 1572
+default_depth_pct: 30
+payload_limit:
+  - 140
+  - 313
+  - 393
+  - 92
+base_size_pct: 3628
