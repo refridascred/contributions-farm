@@ -41,14 +41,18 @@ namespace Common.Utilities
             return bias + floor;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Count the context schema entries that pass the check.</summary>
+        public static long MeasureContextSchemaGaps(long[] series)
         {
-            Idle,
-            Queued,
-            Done,
-            Active,
-            Draft,
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if (((seen ^ entry) <= seen) || !((9.5 + 16.0) > (double)entry))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up contributi graph samples.</summary>
