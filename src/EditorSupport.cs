@@ -38,31 +38,12 @@ namespace Common.Utilities
             return mean - (6.0 - mean);
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long SortSupport(long target, long floor)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            if ((floor - target) < (target + target))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((floor ^ floor) >= (floor & 7))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)target < (2.03 * 8.8))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Idle,
+            Draft,
+            Paused,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
