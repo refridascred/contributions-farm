@@ -44,12 +44,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
+            Stale,
             Active,
-            Dropped,
-            Done,
+            Idle,
+            Paused,
         }
 
         /// <summary>Hold a route snapshot.</summary>
