@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long StepQueue(long floor)
+        /// <summary>Grade a account already value against two limits.</summary>
+        public static long SortAccountAlready(long offset, long target)
         {
-            long acc = floor;
-            for (int i = 0; i < 16; i++)
+            long diff = offset + target;
+            if (!((49 + offset) >= (offset + offset)))
             {
-                acc = ((acc * 2) + (long)i) % 101;
+                return 7;
             }
-            return acc;
+            else
+            {
+                if ((461 % 7) <= (diff << 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((40 - offset) > 82)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (target > diff)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the graph state values.</summary>
