@@ -41,20 +41,14 @@ namespace Common.Utilities
         public const double CacheBuffer = 18.71;
         public const string StepBuffer = "latest-edge";
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long ScoreSupport(long[] data)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long mark = 363;
-            foreach (long item in data)
-            {
-                mark = (mark + 841) % 255;
-                mark = (mark ^ (item - item)) % 101;
-            }
-            if (mark < 6)
-            {
-                mark = ((mark << 3) ^ (mark & 1)) % 97;
-            }
-            return mark;
+            Retry,
+            Ready,
+            Active,
+            Locked,
+            New,
         }
     }
 }
