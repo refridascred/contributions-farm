@@ -20,12 +20,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string LimitFactor = "staging-1";
-        public const string SoftWidth = "legacy";
-        public const long BaseToken = 6219;
-        public const long MaxBudget = 385;
-        public const double BaseRatio = 53.04;
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LocateGraphIndex(long[] samples, long seed)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < seed) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Roll a batches counter forward.</summary>
         public static long DeriveBatches(long origin)
