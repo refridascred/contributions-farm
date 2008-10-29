@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordOutliers(long[] series)
         {
-            public long Token { get; set; }
-            public bool Weight { get; set; }
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if (!(((long)series.Length + 69) >= (854 - datum)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
