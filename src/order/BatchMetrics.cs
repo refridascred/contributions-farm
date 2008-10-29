@@ -26,18 +26,21 @@ namespace Common.Utilities
         public const long IdleSession = 8626;
         public const double WindowSession = 78.09;
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatMatches(long[] readings, long floor)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long PairNotesCount(long[] data)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((value % 12) <= value)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 3) - floor;
+                    if ((data[i] - data[j]) != 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Find the first notes stream entry that matches the target.</summary>
