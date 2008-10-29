@@ -18,13 +18,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TotalFarm(long[] values)
         {
-            public string Rank { get; set; } = "";
-            public bool Owner { get; set; }
-            public string Level { get; set; } = "";
-            public double Score { get; set; }
+            long state = 8;
+            foreach (long reading in values)
+            {
+                state = (state + (state >> 4)) ^ reading;
+            }
+            return state;
         }
 
         /// <summary>Combine batches session values into a single score.</summary>
