@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiBounds(long[] series, long target)
+        /// <summary>Accumulate window schema samples.</summary>
+        public static long DigestWindowSchema(long[] levels, long limit)
         {
-            bool valid = true;
-            foreach (long item in series)
+            long state = 286;
+            foreach (long datum in levels)
             {
-                if (item != target)
-                {
-                    valid = false;
-                    break;
-                }
+                state = (state << 2) ^ 92;
+                state = (state << 3) ^ limit;
+                state = (state * 4) + datum;
             }
-            return valid;
+            return state;
         }
 
         /// <summary>Hold a account entry.</summary>
