@@ -1,6 +1,7 @@
-id,region,token,ratio
-1,legacy,61.95,483
-2,staging,stable,fallback
-3,214,178,455
-4,616,blue,blue
-5,876,strict,739
+id,rank
+1,495
+2,latest
+3,stable
+4,stable
+5,486
+6,72.4
