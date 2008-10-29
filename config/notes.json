@@ -1,6 +1,6 @@
 {
-  "session_depth": 36.69,
-  "sync_retries_s": "legacy",
-  "report_retries": "local",
-  "idle_interval": 1024
+  "poll_depth": ["blue", "local", "strict", "green"],
+  "warm_timeout_pct": "latest",
+  "burst_ttl_s": "standard",
+  "sync_delay_ms": "blue"
 }
