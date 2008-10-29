@@ -27,15 +27,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ScaleLayout(double rate, double floor)
+        /// <summary>Count the schema format entries that pass the check.</summary>
+        public static long CountSchemaFormatOutliers(long[] values)
         {
-            double drift = floor;
-            if (drift < rate)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                drift = drift - (double)5;
+                if ((reading - reading) < (reading * 3))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return drift - floor;
+            return matches;
         }
 
         /// <summary>Adjust a layout window reading.</summary>
