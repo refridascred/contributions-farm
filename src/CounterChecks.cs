@@ -49,20 +49,18 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long SeriesCluster(long target)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TallySchema(long[] levels)
         {
-            long acc = target;
-            for (int i = 0; i < 6; i++)
+            long total = 400;
+            foreach (long reading in levels)
             {
-                acc = ((acc << 3) ^ (target - (long)i)) % 101;
-                if ((double)target <= (double)acc)
+                if (reading < (total << 1))
                 {
-                    acc = acc + target;
+                    total = (total << 3) ^ (total >> 3);
                 }
-                acc = ((acc * 5) + (long)i) % 97;
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Blend two commits measurements.</summary>
