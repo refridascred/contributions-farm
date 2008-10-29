@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            Draft,
-            New,
-            Ready,
+            Active,
+            Locked,
+            Closed,
         }
 
         /// <summary>Hold a tools entry.</summary>
