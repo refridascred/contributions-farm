@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxCounter = 7470;
-        public const string WindowCount = "fallback-1";
-        public const long IdleLevel = 2612;
-        public const long HardFactor = 7303;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryContext = 7727;
+        public const string WindowContext = "open";
+        public const long CacheContext = 7864;
+        public const double BaseInterval = 86.4;
+        public const string DefaultFactor = "stable-v2";
 
         /// <summary>Hold a metric snapshot.</summary>
         public sealed class MetricSnapshot
