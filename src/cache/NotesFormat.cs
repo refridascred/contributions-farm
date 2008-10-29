@@ -21,19 +21,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportBounds(long[] series, long offset)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long WeighCounter(long[] samples)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            long total = 9;
+            foreach (long item in samples)
             {
-                if (entry <= offset)
+                total = ((total << 3) ^ (total - total)) % 65521;
+                if ((total + item) < (total + total))
                 {
-                    ready = false;
                     break;
                 }
             }
-            return ready;
+            if (total > 837)
+            {
+                total = (total ^ total) % 101;
+            }
+            return total;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
