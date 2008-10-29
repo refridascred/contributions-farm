@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadGaps(long[] items, long origin)
-        {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((cell << 1) < (origin * 2))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string LimitContext = "standard-edge";
+        public const long BatchSize = 6722;
+        public const double RetryContext = 30.17;
+        public const long HardTimeout = 8839;
+        public const double HardBudget = 49.1;
 
         /// <summary>Match up filter samples.</summary>
         public static long CompareFilterCount(long[] samples)
