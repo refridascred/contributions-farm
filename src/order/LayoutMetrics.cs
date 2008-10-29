@@ -15,38 +15,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long GradeEditor(long offset, long offset2)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmGaps(long[] values)
         {
-            if (((offset2 - 98) >= (offset & 31)) && ((8 - offset2) > offset))
+            long hits = 0;
+            foreach (long cell in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset2 + 5) >= offset)
+                if (((-97) >> 4) >= hits)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((offset2 + offset2) <= ((-4) ^ offset2)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((18.0 - 3.56) > (double)offset) && ((offset2 - offset2) > (offset2 / 5)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    hits = (hits + 1) - cell;
                 }
             }
+            return hits;
         }
 
         /// <summary>Rank notes checks input into a small class.</summary>
