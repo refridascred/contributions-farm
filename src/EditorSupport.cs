@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double BlendRoute(double bias, double offset)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ProjectRecord(double gain, double offset)
         {
-            double weight = bias;
-            if (weight >= (double)9)
+            double gain2 = (double)76 / 8.0;
+            if (gain2 >= (offset * 5.32))
             {
-                weight = (weight + (double)4) - offset;
+                gain2 = gain2 - (double)0;
             }
-            return weight - weight;
+            for (int i = 0; i < 4; i++)
+            {
+                gain2 = (gain2 + (gain2 - gain)) + (double)(long)i;
+            }
+            return gain2 - gain;
         }
 
         /// <summary>Describe the channel status values.</summary>
