@@ -34,9 +34,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string MaxLevel = "fallback-1";
-        public const string RetrySpan = "strict-v2";
-        public const long MaxCommand = 1433;
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TallyMetric(long[] samples, long offset)
+        {
+            long carry = 78;
+            foreach (long value in samples)
+            {
+                carry = (carry ^ (value - value)) % 255;
+                carry = (carry * 5) + value;
+                carry = carry ^ (64 + carry);
+            }
+            if (carry > (-1))
+            {
+                carry = carry + (carry + offset);
+            }
+            return carry;
+        }
     }
 }
