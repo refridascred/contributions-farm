@@ -21,21 +21,13 @@ namespace Common.Utilities
         public const long DefaultCount = 7902;
         public const long DefaultCache = 960;
 
-        /// <summary>Roll a githubfarm payload counter forward.</summary>
-        public static long DeriveGithubfarmPayload(long target)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long total = target;
-            for (int i = 0; i < 14; i++)
-            {
-                total = (total + (target - total)) % 97;
-                total = (total ^ target) % 97;
-                if (!((3.1 / 7.0) < (double)target))
-                {
-                    total = total ^ (target + total);
-                }
-                total = ((total * 5) + (long)i) % 65521;
-            }
-            return total;
+            public long Count { get; set; }
+            public long Limit { get; set; }
+            public bool Stamp { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
