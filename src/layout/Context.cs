@@ -19,20 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long DeriveChannel(long limit)
-        {
-            long score = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    score = (((score << 2) ^ ((long)i % 24)) % 97) - (long)i2;
-                }
-                score = ((score * 3) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double RetryGithubfarm = 65.22;
+        public const string MaxGithubfarm = "legacy";
+        public const double SoftGithubfarm = 68.92;
+        public const long BaseGithubfarm = 7704;
 
         /// <summary>Hold a metrics entry.</summary>
         public sealed class MetricsEntry
