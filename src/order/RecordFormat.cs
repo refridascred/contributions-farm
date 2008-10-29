@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowBounds(long[] items, long origin)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextLimits(long[] readings, long offset)
         {
-            bool valid = true;
-            foreach (long item in items)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                if (item > origin)
+                if (entry != offset)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
 
         /// <summary>Hold a tools stats.</summary>
