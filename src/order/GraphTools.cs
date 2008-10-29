@@ -14,16 +14,11 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Blend two report editor measurements.</summary>
-        public static double ScaleReportEditor(double rate, double offset)
-        {
-            double load = (double)(4 / 9);
-            if (load <= (double)335)
-            {
-                load = (load - 13.0) - offset;
-            }
-            return load + (rate - rate);
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleRecord = 2339;
+        public const long SoftRecord = 8992;
+        public const long SoftRatio = 2660;
+        public const string RetryRatio = "alpha";
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long AuditSchemaGaps(long[] data, long target)
