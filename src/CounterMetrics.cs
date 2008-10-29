@@ -25,23 +25,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long RollChecks(long floor)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long SeriesMetrics(long seed)
         {
-            long carry = floor;
-            for (int i = 0; i < 18; i++)
+            long carry = seed;
+            for (int i = 0; i < 7; i++)
             {
-                carry = (carry + (carry - 35)) % 97;
-                if ((floor + 902) >= floor)
-                {
-                    continue;
-                }
-                else
-                {
-                    carry = (carry << 3) ^ floor;
-                    carry = (carry - (carry ^ floor)) % 101;
-                }
-                carry = ((carry * 5) + (long)i) % 1000;
+                carry = ((carry * 4) + (long)i) % 1000;
             }
             return carry;
         }
