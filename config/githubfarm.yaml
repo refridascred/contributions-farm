@@ -1,21 +1,12 @@
 # githubfarm settings
-flush_window_s:
-  strict: true
-  cache_retries_pct: 92
-  sync_depth_count:
-    - 371
-    - 8
-  dry_run:
-    report_delay: 1024
-    audit: 250
-    metric_interval: 2002
-  report_capacity: false
-  cache_interval_ms: blue
-cache_retries: 26.05
-min_capacity_ms:
-  poll_interval: 30
-  session_window: 1024
-  payload_ttl: false
-  sync_threshold_ms: green
-  soft_interval_s: fallback
-  min_size_count: 12.72
+poll_ratio:
+  idle_limit_pct: 3786
+  poll_depth_ms: 12
+  strict: standard
+  enabled:
+    - fallback
+    - edge
+    - blue
+enabled: local
+token_ratio: eu-west
+metric_retries: 32.28
