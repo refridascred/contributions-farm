@@ -61,14 +61,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
-        {
-            Dropped,
-            Paused,
-            New,
-            Active,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheWidth = 6550;
+        public const long RetryFactor = 5652;
+        public const long RetryScore = 5813;
+        public const long StepLayout = 4454;
 
         /// <summary>Roll a metric counter forward.</summary>
         public static long IterateMetric(long origin)
