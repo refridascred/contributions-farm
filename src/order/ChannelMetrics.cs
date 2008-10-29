@@ -33,39 +33,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long RankOrder(long target, long limit)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] samples, long limit)
         {
-            long delta = target ^ limit;
-            if (target >= (579 & 1))
+            long mark = 473;
+            foreach (long value in samples)
             {
-                return 8;
+                mark = ((mark - (value >> 4)) % 97) + limit;
             }
-            else
-            {
-                if (limit >= (target & 15))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)target >= (double)delta)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((limit + limit) == (delta / 2)) && ((0 - limit) != ((-166) + limit)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
     }
 }
