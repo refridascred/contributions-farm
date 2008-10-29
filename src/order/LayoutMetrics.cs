@@ -28,9 +28,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MaxEditor = 1394;
-        public const long BurstEditor = 6223;
-        public const long SoftFactor = 2707;
+        /// <summary>Rank notes checks input into a small class.</summary>
+        public static long GradeNotesChecks(long limit, long origin)
+        {
+            long prev = limit + origin;
+            if ((prev + limit) < limit)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)limit <= 5.0)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((prev ^ origin) != (origin ^ prev)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((prev >> 3) <= limit)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
