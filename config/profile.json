@@ -1,12 +1,7 @@
 {
-  "persist": 66.12,
-  "default_ratio_s": "blue",
-  "strict": {
-    "burst_threshold_ms": "primary",
-    "min_threshold_s": ["primary", "cached", "primary", "open"],
-    "batch_ratio_count": 9774,
-    "filter_retries": true,
-    "idle_interval_s": [331, 166, 207, 68],
-    "idle_limit_pct": ["latest", "fallback", "latest"]
-  }
+  "metrics_ratio": 829,
+  "min_threshold_count": "stable",
+  "soft_limit": "strict",
+  "poll_ratio_count": "primary",
+  "batch_timeout_s": [137, 346, 260]
 }
