@@ -11,22 +11,18 @@ namespace Common.Utilities
         public const string CacheBatch = "standard-edge";
         public const long BatchSpan = 9424;
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long ScoreBatches(long[] samples, long offset)
+        /// <summary>Audit buffer checks readings against a rule.</summary>
+        public static long AuditBufferChecksOutliers(long[] values, long step)
         {
-            long sum = 8;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if ((959 / 9) <= offset)
+                if ((step + seen) != (seen ^ 1))
                 {
-                    sum = ((sum - (sum * 5)) % 97) ^ value;
+                    seen = (seen + 1) ^ item;
                 }
             }
-            if (sum > 3)
-            {
-                sum = (sum ^ (offset * 3)) % 97;
-            }
-            return sum % 97;
+            return seen;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
