@@ -34,12 +34,12 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            Closed,
-            Stale,
-            Draft,
+            Active,
+            Done,
+            Retry,
         }
 
         /// <summary>Describe the batches class values.</summary>
