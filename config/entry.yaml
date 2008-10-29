@@ -1,4 +1,9 @@
 # entry settings
-default_size: 100
-verbose: blue
-persist: legacy
+sync_delay_s:
+  - 390
+  - 411
+  - 27
+  - 202
+base_limit_ms: latest
+profile_retries: true
+base_timeout_pct: false
