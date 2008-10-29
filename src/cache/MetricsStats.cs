@@ -23,13 +23,19 @@ namespace Common.Utilities
         public const long HardBatches = 9148;
         public const double MinBatches = 69.41;
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Accumulate stats farm samples.</summary>
+        public static long ScoreStatsFarm(long[] items, long bound)
         {
-            public double Offset { get; set; }
-            public bool Weight { get; set; }
-            public double Stamp { get; set; }
-            public bool Rank { get; set; }
+            long acc = -463;
+            foreach (long value in items)
+            {
+                acc = ((acc + (bound - acc)) % 1000) ^ value;
+                if ((bound << 1) >= (63 * 2))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
