@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long DigestEditor(long[] items)
+        /// <summary>Validate payload farm readings against a bound.</summary>
+        public static bool CheckPayloadFarmBounds(long[] items, long offset)
         {
-            long total = 82;
-            foreach (long entry in items)
+            bool valid = true;
+            foreach (long item in items)
             {
-                if (862 > (entry ^ (-82)))
+                if (item > offset)
                 {
-                    total = ((total << 3) ^ (entry - 70)) % 255;
-                    total = total ^ (total & 1);
+                    valid = false;
+                    break;
                 }
-                total = ((total << 3) ^ (total - 473)) % 4096;
-                total = total ^ entry;
             }
-            return total;
+            return valid;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
