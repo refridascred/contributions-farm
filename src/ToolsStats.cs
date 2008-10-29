@@ -32,17 +32,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LocateChecksIndex(long[] values, long step)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long FoldCluster(long[] readings, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 642;
+            foreach (long entry in readings)
             {
-                if ((values[i] < step) && ((values[i] % 2) != 0))
+                if (entry < (carry - carry))
                 {
-                    return (long)i;
+                    carry = ((carry << 2) ^ (seed * 4)) % 65521;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Describe the batches class values.</summary>
