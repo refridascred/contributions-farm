@@ -36,15 +36,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long CombineWindow(long[] samples, long limit)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double BlendFormat(double gain, double floor)
         {
-            long mark = 473;
-            foreach (long value in samples)
+            double ratio = gain;
+            if (ratio > gain)
             {
-                mark = ((mark - (value >> 4)) % 97) + limit;
+                ratio = ratio - (double)51;
             }
-            return mark;
+            else
+            {
+                ratio = ratio - (double)903;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio - floor) + (double)(long)i;
+            }
+            return ratio - (gain - 3.75);
         }
     }
 }
