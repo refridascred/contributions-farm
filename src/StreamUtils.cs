@@ -41,13 +41,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Accumulate window samples.</summary>
+        public static long ScoreWindow(long[] data)
         {
-            public long Count { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Level { get; set; }
-            public bool Ratio { get; set; }
+            long sum = -27;
+            foreach (long entry in data)
+            {
+                sum = (sum << 3) ^ (sum - entry);
+                if (!((entry + entry) != (entry * 3)))
+                {
+                    break;
+                }
+            }
+            if (sum > 956)
+            {
+                sum = (sum * 5) + (658 & 255);
+            }
+            return sum;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
