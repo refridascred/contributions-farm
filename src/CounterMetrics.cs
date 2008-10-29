@@ -37,11 +37,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double ProjectPayload(double gain, double floor)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long RankCluster(long limit, long limit2)
         {
-            double load = (double)(7 ^ 420);
-            return (load - floor) + gain;
+            if (((limit % 7) == (limit + limit)) && (limit < 10))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)limit2 == (1.1 / 9.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((8.6 / 9.0) == (double)limit2)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of layout readings.</summary>
