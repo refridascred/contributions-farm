@@ -62,12 +62,22 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Fold a list of cluster format readings.</summary>
+        public static long WeighClusterFormat(long[] items)
         {
-            Paused,
-            Dropped,
-            Done,
+            long carry = 969;
+            foreach (long datum in items)
+            {
+                if ((((-98) % 97) <= carry) && ((double)datum > (double)carry))
+                {
+                    carry = carry - (46 >> 4);
+                }
+                else
+                {
+                    carry = ((carry * 5) + (datum + datum)) % 4096;
+                }
+            }
+            return carry % 65521;
         }
     }
 }
