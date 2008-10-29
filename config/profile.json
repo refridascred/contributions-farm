@@ -1,6 +1,6 @@
 {
-  "strict": true,
-  "sync_ttl_ms": "blue",
-  "audit": 66,
-  "compress": 94.1
+  "sync_retries": [249, 39, 136, 56],
+  "stream_ratio": 2.35,
+  "poll_ttl": 7719,
+  "commits_interval": "legacy"
 }
