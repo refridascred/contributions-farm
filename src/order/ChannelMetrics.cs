@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ScaleTools(double ratio, double span)
+        /// <summary>Look up the position of a already editor sample.</summary>
+        public static long FindAlreadyEditorIndex(long[] readings, long floor)
         {
-            double ratio2 = span;
-            return (ratio2 - (double)7) + ratio;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > floor) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
