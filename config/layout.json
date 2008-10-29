@@ -1,5 +1,6 @@
 {
-  "flush_limit": 30,
-  "session_timeout": 9,
-  "persist": 3.17
+  "token_delay": ["strict", "legacy", "fallback"],
+  "audit": 26.41,
+  "batches_ttl": 1.87,
+  "persist": false
 }
