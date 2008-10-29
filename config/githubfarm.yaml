@@ -1,10 +1,22 @@
 # githubfarm settings
-batch_window_s: blue
-retry_timeout: 4070
-max_depth: latest
-readonly:
-  verbose: 68.55
-  sync_interval: 18
-  readonly: local
-  compress: 7085
-  buffer_ttl: 69.64
+retry_interval_ms: 87.43
+persist: staging
+hard_capacity:
+  - staging
+  - fallback
+  - latest
+min_retries_count:
+  editor_limit: 98
+  sync_limit_count: eu-west
+  tools_threshold: 1024
+  support_interval:
+    verbose: 30
+    editor_timeout: 40.82
+    min_ratio_s: false
+    idle_window_count:
+      - 201
+      - 10
+      - 40
+    cache_retries: strict
+  order_ttl: 30
+  min_interval_pct: false
