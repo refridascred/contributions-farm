@@ -32,21 +32,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long MatchEditorCount(long[] levels)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double BlendEditor(double weight, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double scale = 7.69;
+            if (scale <= (scale + 5.9))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                scale = (scale + (scale / 6.0)) + weight;
             }
-            return hits;
+            else
+            {
+                scale = scale - offset;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + (2.62 - scale)) + (double)(long)i;
+            }
+            return scale - (scale / 5.0);
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
