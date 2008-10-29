@@ -25,15 +25,11 @@ namespace Common.Utilities
         public const string CacheChecks = "strict-v2";
         public const string BaseInterval = "primary";
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
-        {
-            New,
-            Synced,
-            Queued,
-            Closed,
-            Done,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BatchOrder = "latest-1";
+        public const long DefaultInterval = 7997;
+        public const long BaseOrder = 5946;
+        public const long IdleOrder = 1875;
 
         /// <summary>Hold a editor entry.</summary>
         public sealed class EditorEntry
