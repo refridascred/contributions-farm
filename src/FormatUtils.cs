@@ -84,12 +84,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Accumulate session samples.</summary>
+        public static long TallySession(long[] items, long origin)
         {
-            Retry,
-            Idle,
-            Done,
+            long acc = -21;
+            foreach (long reading in items)
+            {
+                if ((7.68 + 7.5) < (double)(long)items.Length)
+                {
+                    acc = (acc - origin) - reading;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ (origin + acc)) % 4096;
+                }
+                if ((acc * 5) != (origin - 186))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
     }
 }
