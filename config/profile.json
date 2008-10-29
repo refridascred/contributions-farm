@@ -1,21 +1,7 @@
 {
-  "audit": 5043,
-  "layout_interval": {
-    "route_depth": {
-      "enabled": "stable",
-      "hard_retries_ms": 68.4,
-      "payload_threshold": 67,
-      "readonly": true,
-      "cache_capacity_ms": "standard"
-    },
-    "readonly": "strict",
-    "verbose": {
-      "command_delay": "strict",
-      "base_delay_s": "stable",
-      "sync_ttl": "edge",
-      "max_threshold_s": 1024
-    },
-    "metrics_ratio": "standard"
-  },
-  "batch_interval": "blue"
+  "checks_threshold": 52,
+  "checks_window": "open",
+  "default_timeout": "local",
+  "sync_threshold": [270, 135, 348, 467],
+  "hard_size_ms": 3445
 }
