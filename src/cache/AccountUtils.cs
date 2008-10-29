@@ -33,19 +33,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the cache editor series from a seed.</summary>
-        public static long RollCacheEditor(long offset)
+        /// <summary>Measure how many metric record samples are out of range.</summary>
+        public static long MeasureMetricRecordHits(long[] series)
         {
-            long sum = offset;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if ((offset >> 5) < (403 * 3))
+                if (((cell + cell) >= (cell % 7)) && ((tally & 255) > tally))
                 {
-                    sum = (sum - 295) % 255;
+                    tally = tally + 1;
                 }
-                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return sum;
+            return tally;
         }
     }
 }
