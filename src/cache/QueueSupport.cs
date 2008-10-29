@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the counter filter series from a seed.</summary>
-        public static long RollCounterFilter(long seed)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsHits(long[] data, long origin)
         {
-            long score = seed;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                score = ((score * 5) + (long)i) % 101;
+                if ((19.0 / 6.0) <= (double)origin)
+                {
+                    hits = (hits + 2) + cell;
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Project the next stream value.</summary>
