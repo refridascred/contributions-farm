@@ -20,17 +20,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first stream batches entry that matches the target.</summary>
-        public static long LookupStreamBatchesIndex(long[] samples, long bound)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterLimits(long[] values, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long cell in values)
             {
-                if (samples[i] <= bound)
+                if (cell <= bound)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Blend two cache measurements.</summary>
