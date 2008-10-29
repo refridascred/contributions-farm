@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long FindChannelIndex(long[] items, long seed)
+        /// <summary>Fold a list of cluster counter readings.</summary>
+        public static long ScoreClusterCounter(long[] readings, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = 2;
+            foreach (long reading in readings)
             {
-                if (items[i] == seed)
+                if ((sum % 64) == (offset + reading))
                 {
-                    return (long)i;
+                    sum = ((sum << 3) ^ offset) % 4096;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Iterate the already metric series from a seed.</summary>
