@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Count the window contributi entries that pass the check.</summary>
+        public static long AuditWindowContributiHits(long[] readings, long target)
         {
-            Pending,
-            Paused,
-            Ready,
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if (5.4 >= (double)tally)
+                {
+                    tally = ((tally + 2) + sample) + target;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
