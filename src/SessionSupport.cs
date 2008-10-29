@@ -17,21 +17,13 @@ namespace Common.Utilities
         public const long StepSpan = 378;
         public const long StepReport = 2345;
 
-        /// <summary>Match up account samples.</summary>
-        public static long OverlapAccountCount(long[] values)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Score { get; set; }
+            public long Mode { get; set; }
+            public string Owner { get; set; } = "";
+            public double Stamp { get; set; }
         }
     }
 }
