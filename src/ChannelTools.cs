@@ -29,27 +29,22 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TallyStats(long[] levels, long step)
+        /// <summary>Count the schema already entries that pass the check.</summary>
+        public static long TallySchemaAlreadyGaps(long[] series)
         {
-            long score = 827;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long value in series)
             {
-                long diff = 1;
-                if (!(((double)diff < 20.0) || (57 > score)))
+                if ((double)value != (8.36 + 4.7))
                 {
-                    diff = diff + (diff >> 4);
+                    seen = seen + 2;
                 }
-                if (step <= (step * 5))
+                else
                 {
-                    score = (score + (entry & 127)) % 1000;
+                    seen = seen - 1;
                 }
             }
-            if (score > 0)
-            {
-                score = (score << 2) ^ (score + 23);
-            }
-            return score;
+            return seen;
         }
     }
 }
