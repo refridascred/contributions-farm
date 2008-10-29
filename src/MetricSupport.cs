@@ -12,17 +12,11 @@ namespace Common.Utilities
         public const long HardTimeout = 8839;
         public const double HardBudget = 49.1;
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LookupBatchIndex(long[] items, long origin)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Offset { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a session info.</summary>
