@@ -1,11 +1,11 @@
 # Command notes
 
-Each profile is validated before it reaches the route queue.
-Each schema is validated before it reaches the token queue.
+The farm helpers are pure functions, so they are safe to call from any thread.
+When a stream fails, the report handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every tools change
-- Prefer githubfarm defaults
-- Keep entry values small
-- Validate layout input early
+- Prefer commits defaults
+- Document new order fields
+- Keep format values small
+- Validate format input early
