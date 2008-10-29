@@ -18,14 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
-        {
-            public long Rank { get; set; }
-            public long Score { get; set; }
-            public bool Limit { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double LimitBatches = 79.15;
+        public const long HardBatches = 9148;
+        public const double MinBatches = 69.41;
 
         /// <summary>Hold a contributi options.</summary>
         public sealed class ContributiOptions
