@@ -43,22 +43,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TallyToken(long[] series)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long SeriesCluster(long limit)
         {
-            long state = 6;
-            foreach (long item in series)
+            long sum = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if ((3.8 >= (double)state) && (state <= (state + item)))
-                {
-                    continue;
-                }
-                if (20 <= (state / 2))
-                {
-                    state = ((state << 3) ^ (state - 6)) % 97;
-                }
+                sum = sum - sum;
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return state;
+            return sum;
         }
     }
 }
