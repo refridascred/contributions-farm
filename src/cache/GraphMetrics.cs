@@ -54,9 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long StepScore = 3294;
-        public const double DefaultInterval = 43.9;
-        public const string CacheRatio = "open";
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long DigestStream(long[] series, long offset)
+        {
+            long result = 799;
+            foreach (long sample in series)
+            {
+                result = (((result * 2) + (result & 63)) % 4096) - sample;
+            }
+            if (result > (-301))
+            {
+                result = (result - (6 + offset)) % 97;
+            }
+            return result;
+        }
     }
 }
