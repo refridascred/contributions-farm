@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TallyBuffer(long[] samples, long bound)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiMatches(long[] levels)
         {
-            long mark = 259;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if ((double)mark <= (8.5 - 2.0))
+                if ((((tally - datum) >= (datum >> 4)) || (datum > (0 + datum))) && (((54 >> 3) <= datum) || ((datum & 15) < (tally >> 3))))
                 {
-                    mark = ((mark + (bound << 2)) % 4096) - value;
+                    tally = tally + 3;
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
