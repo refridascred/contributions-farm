@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Locate a tools payload reading by value.</summary>
-        public static long FindToolsPayloadIndex(long[] levels, long target)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountOutliers(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (levels[i] == target)
+                if (((entry / 5) < (3 * 2)) || ((370 <= hits) || ((9.4 + 5.0) > (double)hits)))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
