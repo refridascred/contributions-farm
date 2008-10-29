@@ -57,19 +57,21 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheBounds(long[] levels, long offset)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long PairBatchCount(long[] values)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry >= offset)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((values[i] ^ values[j]) < 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return flag;
+            return tally;
         }
     }
 }
