@@ -25,17 +25,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long RollChecks(long floor)
+        /// <summary>Locate a notes schema reading by value.</summary>
+        public static long LocateNotesSchemaIndex(long[] values, long bound)
         {
-            long sum = floor;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = (sum ^ floor) % 97;
-                sum = (sum * 3) + (floor % 3);
-                sum = ((sum * 3) + (long)i) % 1000;
+                if (values[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
     }
 }
