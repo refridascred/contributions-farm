@@ -51,23 +51,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TotalFormat(long[] series, long target)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long seed, long step)
         {
-            long total = 51;
-            foreach (long reading in series)
+            if ((seed + step) != (step - seed))
             {
-                total = ((total << 2) ^ (target + 88)) % 1000;
-                if ((reading + reading) > (target & 15))
+                return 6;
+            }
+            else
+            {
+                if (step >= 7)
                 {
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (65 >= (seed & 255))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            if (total < (-5))
-            {
-                total = total - total;
-            }
-            return total % 4096;
         }
 
         /// <summary>Hold a order info.</summary>
