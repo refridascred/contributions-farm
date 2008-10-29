@@ -29,21 +29,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long MatchTokenCount(long[] levels)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long CompareQueueCount(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((levels[i] - levels[j]) == 3)
+                    if ((series[i] - series[j]) < 5)
                     {
-                        count = count + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
