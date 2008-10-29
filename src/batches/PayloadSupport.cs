@@ -31,12 +31,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            public string Size { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Count { get; set; }
+            Closed,
+            Retry,
+            Synced,
+            Idle,
+            Failed,
         }
     }
 }
