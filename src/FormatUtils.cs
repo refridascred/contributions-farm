@@ -61,18 +61,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine tools support values into a single score.</summary>
-        public static long CombineToolsSupport(long[] series, long bound)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long total = -49;
-            foreach (long reading in series)
-            {
-                if (!((double)reading > (2.6 / 7.0)))
-                {
-                    total = (total ^ (bound + bound)) % 1000;
-                }
-            }
-            return total;
+            public long Level { get; set; }
+            public long Score { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Roll a metric counter forward.</summary>
