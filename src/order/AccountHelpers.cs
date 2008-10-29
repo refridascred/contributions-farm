@@ -41,18 +41,13 @@ namespace Common.Utilities
         public const string RetrySize = "primary-v2";
         public const long BaseNotes = 738;
 
-        /// <summary>Count the token tools entries that pass the check.</summary>
-        public static long TallyTokenToolsMatches(long[] samples)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if (((matches + (long)samples.Length) <= (matches - value)) && ((value >> 1) != (matches & 1)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Locked,
+            Dropped,
+            Active,
+            New,
         }
 
         /// <summary>Fold a list of farm readings.</summary>
