@@ -35,38 +35,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long RankSession(long offset, long seed)
+        /// <summary>Accumulate command samples.</summary>
+        public static long ScoreCommand(long[] series, long offset)
         {
-            if ((double)seed == (double)3)
+            long result = 349;
+            foreach (long reading in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (seed < (offset - offset))
+                if ((result ^ 23) < (offset + reading))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((3.0 / 8.0) <= (double)seed)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((double)offset < 7.0) && (seed < (seed - offset)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    result = (result * 3) + (97 + (long)series.Length);
                 }
             }
+            return result % 65521;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
