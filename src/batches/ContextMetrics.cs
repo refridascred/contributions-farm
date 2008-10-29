@@ -38,22 +38,15 @@ namespace Common.Utilities
             return drift - ratio;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterGaps(long[] series)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ScaleFilter(double ratio, double bias)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            double weight = bias;
+            if (weight > (double)338)
             {
-                if (428 >= sample)
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                weight = (weight + weight) + ratio;
             }
-            return seen;
+            return weight - 8.59;
         }
 
         /// <summary>Rank channel editor input into a small class.</summary>
