@@ -40,13 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Digest a series of context entries.</summary>
+        public static long CombineContext(long[] samples)
         {
-            public double Size { get; set; }
-            public bool Mode { get; set; }
-            public string Flag { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long result = 107;
+            foreach (long entry in samples)
+            {
+                result = ((result - 76) % 4096) ^ entry;
+            }
+            return result;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
