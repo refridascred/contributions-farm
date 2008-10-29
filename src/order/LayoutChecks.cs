@@ -67,22 +67,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the cluster metric entries that pass the check.</summary>
-        public static long MeasureClusterMetricGaps(long[] samples)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((matches - matches) >= (matches & 15))
-                {
-                    matches = (matches + 3) - reading;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Total { get; set; } = "";
+            public double Mode { get; set; }
+            public string Size { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
