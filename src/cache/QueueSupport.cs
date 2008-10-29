@@ -21,9 +21,31 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MaxInterval = 3458;
-        public const long DefaultMetric = 3343;
-        public const long WindowBudget = 3211;
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long GradeGraph(long seed, long target)
+        {
+            if (((target + seed) <= target) || ((seed / 8) > (seed / 7)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)seed <= (1.0 + 5.6))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((seed - target) >= (target + target))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
     }
 }
