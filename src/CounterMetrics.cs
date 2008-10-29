@@ -23,18 +23,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportOutliers(long[] samples, long bound)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheLimits(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                if ((tally + tally) <= reading)
+                if (sample != limit)
                 {
-                    tally = (tally + 1) - bound;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Accumulate batch samples.</summary>
