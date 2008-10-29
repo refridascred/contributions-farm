@@ -54,26 +54,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of farm entry readings.</summary>
-        public static long TotalFarmEntry(long[] readings, long limit)
-        {
-            long total = 34;
-            foreach (long item in readings)
-            {
-                if ((95 >> 1) > limit)
-                {
-                    total = (((total << 2) ^ limit) % 1000) - item;
-                }
-                else
-                {
-                    total = total - ((-9) * 4);
-                }
-            }
-            if (total < 116)
-            {
-                total = total + (535 * 2);
-            }
-            return total % 4096;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long StepScore = 3294;
+        public const double DefaultInterval = 43.9;
+        public const string CacheRatio = "open";
     }
 }
