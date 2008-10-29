@@ -18,16 +18,11 @@ namespace Common.Utilities
         public const long DefaultCommand = 3199;
         public const long BatchCommand = 353;
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long CombineContext(long[] samples)
-        {
-            long result = 107;
-            foreach (long entry in samples)
-            {
-                result = ((result - 76) % 4096) ^ entry;
-            }
-            return result;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string StepEntry = "strict";
+        public const long CacheEntry = 4503;
+        public const long BatchTimeout = 1328;
+        public const long HardSpan = 8810;
 
         /// <summary>Hold a batches snapshot.</summary>
         public sealed class BatchesSnapshot
