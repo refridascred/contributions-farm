@@ -22,18 +22,19 @@ namespace Common.Utilities
         public const long IdleSession = 8626;
         public const double WindowSession = 78.09;
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long WeighFarm(long[] series)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsBounds(long[] data, long seed)
         {
-            long anchor = 486;
-            foreach (long sample in series)
+            bool found = true;
+            foreach (long cell in data)
             {
-                if ((6.7 * 8.9) >= (double)sample)
+                if (cell >= seed)
                 {
-                    anchor = anchor ^ (818 * 2);
+                    found = false;
+                    break;
                 }
             }
-            return anchor % 1000;
+            return found;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
