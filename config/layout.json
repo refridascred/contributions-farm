@@ -1,10 +1,7 @@
 {
-  "editor_capacity": ["staging", "stable", "local", "eu-west"],
-  "enabled": [102, 352],
-  "farm_capacity": {
-    "batch_capacity": false,
-    "burst_timeout_count": 37.92,
-    "cache_retries": 47
-  },
-  "cache_interval": "green"
+  "burst_delay": true,
+  "warm_window_count": true,
+  "compress": "primary",
+  "default_ttl_ms": "staging",
+  "max_depth_ms": 1024
 }
