@@ -1,8 +1,15 @@
 {
-  "flush_window_s": "standard",
-  "batch_delay_pct": 5037,
-  "record_limit": 26.36,
-  "buffer_retries": false,
-  "burst_ttl_ms": "stable",
-  "soft_size": "local"
+  "burst_window_ms": {
+    "idle_threshold": 2,
+    "warm_interval_s": ["cached", "open", "standard"],
+    "farm_retries": {
+      "queue_limit": 30,
+      "flush_window_pct": [35, 211],
+      "max_depth_pct": "latest",
+      "base_ttl_pct": 1024,
+      "min_limit_pct": 6666
+    }
+  },
+  "record_timeout": 250,
+  "cache_capacity_count": 15.14
 }
