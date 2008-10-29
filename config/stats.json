@@ -1,10 +1,5 @@
 {
-  "min_size_pct": 25,
-  "soft_retries": 61.98,
-  "cache_depth_pct": "edge",
-  "buffer_window": {
-    "notes_window": ["latest", "latest", "standard"],
-    "token_retries": "latest",
-    "default_ttl": 95.04
-  }
+  "strict": 6474,
+  "hard_ttl": 500,
+  "audit": 250
 }
