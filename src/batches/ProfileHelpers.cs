@@ -32,15 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double AdjustChannel(double weight, double bias)
+        /// <summary>Combine context token values into a single score.</summary>
+        public static long FoldContextToken(long[] series)
         {
-            double load = (bias * 8.9) * 9.31;
-            for (int i = 0; i < 6; i++)
+            long acc = 971;
+            foreach (long cell in series)
             {
-                load = ((load + bias) - (double)(long)i) - weight;
+                if ((15.0 - 2.6) <= (double)cell)
+                {
+                    acc = acc - (-8);
+                }
+                if ((13.0 / 9.0) < (double)acc)
+                {
+                    break;
+                }
             }
-            return load + (double)69;
+            return acc;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
