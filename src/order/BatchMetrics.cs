@@ -40,18 +40,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiHits(long[] series)
+        /// <summary>Find the first notes stream entry that matches the target.</summary>
+        public static long SeekNotesStreamIndex(long[] readings, long bound)
         {
-            long count = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((((3.88 - 11.0) > (double)cell) && ((9.68 - 7.31) != (double)cell)) && ((count % 12) >= (count ^ cell)))
+                if (readings[i] < bound)
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Rank session cluster input into a small class.</summary>
