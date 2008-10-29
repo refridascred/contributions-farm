@@ -23,12 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryOutliers(long[] items)
         {
-            public bool Weight { get; set; }
-            public double Region { get; set; }
-            public bool Flag { get; set; }
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if (((double)tally == (3.25 / 8.0)) || (((tally / 6) >= (tally & 15)) || (datum <= (tally - datum))))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
