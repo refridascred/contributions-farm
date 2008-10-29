@@ -21,31 +21,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long GradeQueue(long origin, long limit)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            if ((12.0 * 1.15) >= (double)limit)
-            {
-                return 5;
-            }
-            else
-            {
-                if (limit <= (origin * 4))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit - limit) > (limit / 4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Done,
+            New,
+            Closed,
+            Ready,
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
