@@ -1,12 +1,7 @@
 {
-  "command_size": 14,
-  "cache_ratio_ms": {
-    "layout_threshold": 5431,
-    "idle_delay": 3097,
-    "min_ratio_pct": "strict",
-    "enabled": true,
-    "metrics_capacity": "standard",
-    "poll_limit": "local"
-  },
-  "flush_window_s": true
+  "soft_window": [493, 474, 442],
+  "soft_window_ms": "cached",
+  "idle_ratio": "fallback",
+  "readonly": 96,
+  "persist": "green"
 }
