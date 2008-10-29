@@ -16,17 +16,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long SeekBatchesIndex(long[] levels, long floor)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < floor) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Flag { get; set; }
+            public string Owner { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Classify a batch cluster pair into a bucket.</summary>
