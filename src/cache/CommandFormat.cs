@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Derive the next githubfarm notes value from a seed.</summary>
-        public static long SeriesGithubfarmNotes(long target)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long state = target;
-            for (int i = 0; i < 19; i++)
-            {
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
+            New,
+            Locked,
+            Dropped,
+            Synced,
+            Closed,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
