@@ -69,19 +69,10 @@ namespace Common.Utilities
         public const double MinScore = 12.98;
         public const string DefaultCount = "cached";
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionLimits(long[] data, long seed)
-        {
-            bool stale = true;
-            foreach (long entry in data)
-            {
-                if (entry <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long RetryGithubfarm = 1173;
+        public const double BatchGithubfarm = 89.15;
+        public const string CacheScore = "fallback-v2";
+        public const string SoftCount = "primary-edge";
     }
 }
