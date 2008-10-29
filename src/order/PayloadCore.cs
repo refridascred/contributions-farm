@@ -46,15 +46,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a route payload reading.</summary>
-        public static double AdjustRoutePayload(double weight, double span)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            double ratio = (double)21;
-            if (ratio <= (double)46)
-            {
-                ratio = (ratio + (double)324) + weight;
-            }
-            return ratio - span;
+            public long Limit { get; set; }
+            public string Offset { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
