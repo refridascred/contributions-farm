@@ -1,5 +1,11 @@
 {
-  "readonly": 100,
-  "cache_window_ms": false,
-  "burst_size_ms": "open"
+  "command_timeout": [455, 353, 255, 411],
+  "flush_ttl_s": true,
+  "soft_delay_ms": {
+    "readonly": 1088,
+    "audit": ["cached", "legacy", "stable", "primary"],
+    "poll_window_s": 500
+  },
+  "base_delay": "local",
+  "verbose": 3427
 }
