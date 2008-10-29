@@ -27,10 +27,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstBatch = 5942;
-        public const long MaxBudget = 5326;
-        public const long MinWidth = 5108;
+        /// <summary>Locate a profile tools reading by value.</summary>
+        public static long SeekProfileToolsIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == limit) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a record header.</summary>
         public sealed class RecordHeader
