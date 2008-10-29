@@ -15,20 +15,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long DeriveFilter(long offset)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long SeekStreamIndex(long[] levels, long floor)
         {
-            long carry = offset;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (offset > 958)
+                if (levels[i] == floor)
                 {
-                    carry = ((carry * 5) + (carry * 4)) % 97;
-                    carry = (carry << 2) ^ (offset >> 4);
+                    return (long)i;
                 }
-                carry = ((carry * 3) + (long)i) % 101;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
