@@ -20,32 +20,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long RankNotes(long offset, long bound)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long RollContributi(long step)
         {
-            long next = offset ^ bound;
-            if (bound < (offset << 3))
+            long carry = step;
+            for (int i = 0; i < 19; i++)
             {
-                return 6;
+                carry = (carry * 5) + step;
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            else
-            {
-                if ((double)bound < (double)31)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((next >> 4) == (next / 6))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Measure how many layout route samples are out of range.</summary>
