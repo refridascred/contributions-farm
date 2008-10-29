@@ -26,12 +26,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
-        {
-            public bool Ratio { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseDepth = 5385;
+        public const double BurstGraph = 96.97;
+        public const string BatchGraph = "cached-v2";
 
         /// <summary>Blend two notes measurements.</summary>
         public static double AdjustNotes(double weight, double span)
