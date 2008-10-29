@@ -44,26 +44,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TotalWindow(long[] data)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TallyEntry(long[] values)
         {
-            long result = 62;
-            foreach (long entry in data)
+            long score = 73;
+            foreach (long datum in values)
             {
-                if (((8.0 + 4.5) == (double)result) && (((long)data.Length / 5) != (645 - entry)))
-                {
-                    result = (result << 2) ^ result;
-                }
-                else
-                {
-                    result = result + entry;
-                }
+                score = (score * 5) + (datum % 16);
             }
-            if (result > 405)
+            if (score < 12)
             {
-                result = (result << 2) ^ (result << 2);
+                score = (score + (score << 2)) % 255;
             }
-            return result;
+            return score % 97;
         }
 
         /// <summary>Describe the report phase values.</summary>
