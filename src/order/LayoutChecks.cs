@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long ScoreRecord(long[] samples)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricOutliers(long[] samples, long bound)
         {
-            long total = 855;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if ((530 >> 2) < (reading + reading))
+                if (!(count > (bound - bound)))
                 {
-                    total = ((total * 4) + reading) % 1000;
+                    count = (count + 1) - datum;
                 }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Locate a route order reading by value.</summary>
