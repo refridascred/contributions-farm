@@ -23,32 +23,11 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long RankSchema(long target, long limit)
-        {
-            if ((double)469 >= (double)target)
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((4.72 * 16.0) <= (double)limit))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit + limit) < (limit + target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string SoftStream = "open-edge";
+        public const long CacheWidth = 95;
+        public const long StepStream = 6480;
+        public const long BatchWidth = 9323;
 
         /// <summary>Match up support samples.</summary>
         public static long MatchSupportCount(long[] items)
