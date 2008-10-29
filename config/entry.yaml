@@ -1,14 +1,8 @@
 # entry settings
-hard_ratio_count:
-  commits_interval: 83.16
-  max_depth_count:
-    - stable
-    - stable
-    - primary
-    - stable
-  metrics_depth: primary
-min_ratio: green
-strict: legacy
-farm_timeout: edge
-batch_ttl_pct: legacy
-idle_size_pct: 92.77
+checks_capacity: 23.54
+hard_depth:
+  soft_depth: 76
+  batch_window: edge
+  channel_limit: 3300
+  window_timeout: 100
+retry_timeout_count: 500
