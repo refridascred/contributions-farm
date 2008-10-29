@@ -25,13 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileRange(long[] series, long bound)
         {
-            public long Label { get; set; }
-            public long Mode { get; set; }
-            public double Size { get; set; }
-            public double Stamp { get; set; }
+            bool valid = true;
+            foreach (long sample in series)
+            {
+                if (sample <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Blend two account measurements.</summary>
