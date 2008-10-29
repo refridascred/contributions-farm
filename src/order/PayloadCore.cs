@@ -20,13 +20,38 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Classify a channel cache pair into a bucket.</summary>
+        public static long BucketChannelCache(long limit, long floor)
         {
-            public double Offset { get; set; }
-            public long Region { get; set; }
-            public double Weight { get; set; }
-            public bool Token { get; set; }
+            if (limit < (floor / 9))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit >> 2) <= (342 << 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((limit * 2) != (floor & 3)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (limit > (floor & 127))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
