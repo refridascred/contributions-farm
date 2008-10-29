@@ -76,17 +76,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LocateFilterIndex(long[] readings, long target)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long DigestCache(long[] items, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 9;
+            foreach (long sample in items)
             {
-                if (readings[i] == target)
+                if (((6.0 - 7.3) >= (double)sample) && ((acc + acc) >= (87 >> 2)))
                 {
-                    return (long)i;
+                    acc = (acc ^ (sample ^ (-79))) % 65521;
+                }
+                else
+                {
+                    acc = (acc ^ (sample - target)) % 97;
                 }
             }
-            return -1;
+            return acc;
         }
     }
 }
