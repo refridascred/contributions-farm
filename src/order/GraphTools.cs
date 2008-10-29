@@ -62,11 +62,11 @@ namespace Common.Utilities
         public const long BatchRatio = 3602;
         public const long BatchSchema = 2779;
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
-        {
-            public long Count { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxBudget = 362;
+        public const long BaseCount = 3636;
+        public const long HardCluster = 276;
+        public const long BatchCluster = 4683;
+        public const long DefaultCluster = 9227;
     }
 }
