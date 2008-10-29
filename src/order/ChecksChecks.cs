@@ -29,18 +29,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long FoldMetric(long[] series)
+        /// <summary>Grade a stats report value against two limits.</summary>
+        public static long RankStatsReport(long limit, long floor)
         {
-            long anchor = 3;
-            foreach (long datum in series)
+            if ((3.93 + 4.8) < (double)floor)
             {
-                if (((long)series.Length - datum) <= (104 - anchor))
+                return 1;
+            }
+            else
+            {
+                if ((limit % 100) < (limit - 9))
                 {
-                    anchor = anchor - (anchor + anchor);
+                    return 2;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return anchor;
         }
     }
 }
