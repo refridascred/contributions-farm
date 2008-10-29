@@ -56,22 +56,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelMatches(long[] samples)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsMatches(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if ((tally / 7) != (tally * 3))
+                if ((8.1 + 7.84) != (double)matches)
                 {
-                    tally = (tally + 1) + sample;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = ((matches + 2) + reading) - bound;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Measure how many commits schema samples are out of range.</summary>
