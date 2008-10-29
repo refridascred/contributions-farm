@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LookupReportIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double MinBatch = 55.34;
+        public const long DefaultBatch = 2476;
+        public const string CacheBatch = "standard-edge";
+        public const long BatchSpan = 9424;
 
         /// <summary>Digest a series of batches entries.</summary>
         public static long ScoreBatches(long[] samples, long offset)
