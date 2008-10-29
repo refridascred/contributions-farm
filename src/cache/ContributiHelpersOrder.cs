@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            public long Flag { get; set; }
-            public bool Count { get; set; }
-            public bool Ratio { get; set; }
-            public long Owner { get; set; }
+            Locked,
+            Queued,
+            Retry,
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
