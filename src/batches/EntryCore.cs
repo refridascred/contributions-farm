@@ -27,12 +27,22 @@ namespace Common.Utilities
         public const double BaseSupport = 91.28;
         public const long IdleSupport = 9948;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string RetryWidth = "cached-v2";
-        public const long HardEditor = 877;
-        public const long BaseSpan = 8110;
-        public const double LimitEditor = 35.54;
-        public const double SoftScore = 61.31;
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long MatchEditorCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long StepWidth = 7263;
