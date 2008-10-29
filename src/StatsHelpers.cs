@@ -20,17 +20,26 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LocateStreamIndex(long[] samples, long limit)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] readings, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 17;
+            foreach (long cell in readings)
             {
-                if (samples[i] <= limit)
+                if ((bound & 7) < (sum + bound))
                 {
-                    return (long)i;
+                    sum = sum ^ (cell / 2);
+                }
+                if ((cell ^ 91) >= (bound - 47))
+                {
+                    sum = (sum << 2) ^ (sum - cell);
+                }
+                else
+                {
+                    sum = (sum << 2) ^ (cell & 127);
                 }
             }
-            return -1;
+            return sum % 65521;
         }
 
         /// <summary>Combine batches session values into a single score.</summary>
