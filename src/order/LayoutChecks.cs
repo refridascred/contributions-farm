@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long IterateSchema(long bound)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiLimits(long[] levels, long target)
         {
-            long anchor = bound;
-            for (int i = 0; i < 10; i++)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                if (sample != target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
