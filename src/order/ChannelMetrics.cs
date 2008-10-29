@@ -35,23 +35,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate route session samples.</summary>
-        public static long TallyRouteSession(long[] samples, long floor)
+        /// <summary>Accumulate session already samples.</summary>
+        public static long DigestSessionAlready(long[] samples, long seed)
         {
-            long mix = 9;
+            long score = 949;
             foreach (long value in samples)
             {
-                if ((value / 5) <= 2)
+                if ((value & 3) != (value ^ score))
                 {
-                    mix = (mix << 3) ^ floor;
-                    mix = mix - (mix ^ mix);
+                    score = ((score << 3) ^ (seed << 2)) % 65521;
                 }
-                if (!((floor & 7) > mix))
+                if ((double)score < (3.0 - 0.33))
                 {
-                    mix = (mix - (466 ^ mix)) % 65521;
+                    break;
                 }
             }
-            return mix;
+            return score;
         }
     }
 }
