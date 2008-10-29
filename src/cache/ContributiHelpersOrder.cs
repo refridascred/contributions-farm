@@ -35,31 +35,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TallyFilter(long[] values, long step)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long FindGithubfarmIndex(long[] data, long origin)
         {
-            long result = 881;
-            foreach (long reading in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                result = (result - (result >> 4)) % 65521;
-                if ((12 % 12) < (step - result))
+                if ((data[i] > origin) && ((data[i] % 2) == 0))
                 {
-                    result = ((result * 5) + ((long)values.Length >> 1)) % 255;
-                }
-                if (((step << 3) < reading) && (353 < (result + step)))
-                {
-                    result = ((result << 3) ^ (result * 4)) % 1000;
-                }
-                else
-                {
-                    result = ((result * 2) + (217 / 9)) % 101;
-                }
-                if ((double)reading <= 1.2)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return result % 4096;
+            return -1;
         }
     }
 }
