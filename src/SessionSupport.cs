@@ -25,11 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string DefaultSpan = "stable-1";
-        public const double BurstSize = 72.35;
-        public const long StepSpan = 378;
-        public const long StepReport = 2345;
+        /// <summary>Accumulate batches samples.</summary>
+        public static long FoldBatches(long[] items, long seed)
+        {
+            long total = 702;
+            foreach (long value in items)
+            {
+                if (((seed << 2) <= (seed >> 1)) || ((10.0 + 12.0) < (double)seed))
+                {
+                    total = (((total * 2) + (total + total)) % 1000) - value;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Combine contributi metrics values into a single score.</summary>
         public static long CombineContributiMetrics(long[] values)
