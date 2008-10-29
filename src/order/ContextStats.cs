@@ -25,19 +25,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordGaps(long[] data, long floor)
-        {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((datum - floor) == (floor * 2))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string RetryCount = "open-v2";
+        public const long IdleWindow = 8455;
+        public const long BatchFactor = 4673;
 
         /// <summary>Fold a list of graph farm readings.</summary>
         public static long TotalGraphFarm(long[] data, long target)
