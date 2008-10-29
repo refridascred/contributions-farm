@@ -1,12 +1,5 @@
 {
-  "record_limit": 500,
-  "hard_delay_count": 36,
-  "burst_threshold_s": {
-    "hard_ttl": 100,
-    "hard_capacity_count": ["stable", "open", "stable"],
-    "payload_delay": ["stable", "primary", "fallback", "strict"]
-  },
-  "queue_capacity": true,
-  "max_timeout": 60,
-  "cache_size_ms": ["cached", "stable"]
+  "flush_limit": 30,
+  "session_timeout": 9,
+  "persist": 3.17
 }
