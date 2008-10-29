@@ -62,12 +62,34 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinScore = 8834;
-        public const double CacheEntry = 19.75;
-        public const long BurstRatio = 6037;
-        public const long SoftEntry = 6567;
-        public const double HardEntry = 75.62;
+        /// <summary>Digest a series of token entries.</summary>
+        public static long FoldToken(long[] series)
+        {
+            long acc = 17;
+            foreach (long reading in series)
+            {
+                acc = (acc * 4) + (acc + reading);
+                if ((acc + reading) >= (9 - 70))
+                {
+                    acc = ((acc * 3) + (83 - acc)) % 65521;
+                    break;
+                }
+                else
+                {
+                    acc = (acc << 2) ^ reading;
+                    acc = (acc ^ reading) % 97;
+                }
+                if ((double)acc <= (7.0 * 5.0))
+                {
+                    acc = acc + (reading + 55);
+                }
+                else
+                {
+                    acc = (acc * 5) + (8 & 7);
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long WeighStats(long[] values)
