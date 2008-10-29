@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long BucketCommand(long offset, long step)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            if (4.0 >= (double)offset)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((step * 5) < (step + offset))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public bool Label { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Accumulate batches samples.</summary>
