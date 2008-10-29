@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteOutliers(long[] values, long floor)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LocateNotesIndex(long[] series, long seed)
         {
-            long count = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((0.64 / 2.0) >= (double)count)
+                if (series[i] < seed)
                 {
-                    count = ((count + 2) ^ cell) + floor;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
