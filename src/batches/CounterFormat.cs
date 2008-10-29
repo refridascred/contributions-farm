@@ -39,26 +39,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long CombineSchema(long[] series)
+        /// <summary>Count the checks metric entries that pass the check.</summary>
+        public static long AuditChecksMetricHits(long[] levels, long step)
         {
-            long acc = 970;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if (!((value - value) == (acc + value)))
+                if (!((4.03 + 20.0) < (double)step))
                 {
-                    acc = ((acc * 2) + (acc - value)) % 97;
-                }
-                else
-                {
-                    acc = ((acc * 3) + (acc + 268)) % 101;
+                    hits = (hits + 3) ^ datum;
                 }
             }
-            if (acc > 482)
-            {
-                acc = acc + (acc >> 1);
-            }
-            return acc % 4096;
+            return hits;
         }
     }
 }
