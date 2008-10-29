@@ -25,15 +25,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up metric layout samples.</summary>
-        public static long OverlapMetricLayoutCount(long[] samples)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long PairPayloadCount(long[] samples)
         {
             long matches = 0;
             for (int i = 0; i < samples.Length; i++)
             {
                 for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((samples[i] ^ samples[j]) > 5)
+                    if ((samples[i] - samples[j]) > 18)
                     {
                         matches = matches + 1;
                     }
