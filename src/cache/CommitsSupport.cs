@@ -67,14 +67,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            Active,
-            Failed,
-            Paused,
-            Retry,
-            Stale,
+            public string Owner { get; set; } = "";
+            public double Region { get; set; }
         }
     }
 }
