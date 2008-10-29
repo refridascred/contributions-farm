@@ -1,5 +1,5 @@
 # support settings
-checks_interval: 69.62
-default_capacity_pct: 500
-compress: strict
-min_ttl: 32.54
+verbose: false
+readonly: fallback
+min_interval_pct: true
+base_timeout_ms: 6116
