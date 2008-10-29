@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long DeriveTools(long step)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long carry = step;
-            for (int i = 0; i < 18; i++)
-            {
-                carry = (carry << 3) ^ carry;
-                carry = ((carry * 3) + (long)i) % 1000;
-            }
-            return carry;
+            Retry,
+            Paused,
+            Synced,
         }
 
         /// <summary>Locate a farm reading by value.</summary>
