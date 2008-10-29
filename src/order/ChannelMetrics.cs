@@ -35,27 +35,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long RollLayout(long bound)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long DeriveBatch(long floor)
         {
-            long mix = bound;
-            for (int i = 0; i < 19; i++)
+            long mark = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if ((bound + bound) <= (bound / 7))
+                if ((3.8 - 1.4) != (double)mark)
                 {
-                    mix = mix - (226 + mix);
+                    mark = (mark - (mark << 2)) % 255;
                 }
-                else
-                {
-                    mix = ((mix << 2) ^ bound) % 255;
-                }
-                if (!(55 >= (long)i))
-                {
-                    mix = ((mix << 3) ^ mix) % 4096;
-                }
-                mix = ((mix * 3) + (long)i) % 101;
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return mix;
+            return mark;
         }
     }
 }
