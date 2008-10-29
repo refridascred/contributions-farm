@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long CompareLayoutCount(long[] samples)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long CompareAccountCount(long[] levels)
         {
             long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((samples[i] - samples[j]) == 3)
+                    if ((levels[i] ^ levels[j]) < 14)
                     {
                         matches = matches + 1;
                     }
