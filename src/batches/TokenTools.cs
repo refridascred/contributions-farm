@@ -21,11 +21,17 @@ namespace Common.Utilities
         public const long WindowAccount = 3162;
         public const long StepAccount = 2392;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxRecord = 3739;
-        public const long IdleRecord = 4552;
-        public const string BatchRecord = "standard-edge";
-        public const long RetryRecord = 1612;
-        public const long BurstRecord = 665;
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LookupContributiIndex(long[] levels, long target)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
