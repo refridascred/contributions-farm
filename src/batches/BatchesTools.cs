@@ -34,32 +34,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long ClassifyChecks(long step, long floor)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long FoldSupport(long[] items)
         {
-            long slot = step ^ floor;
-            if (((47 + floor) < (floor + slot)) || ((step % 100) == (1 - slot)))
+            long total = 675;
+            foreach (long value in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (((418 / 3) <= (step >> 3)) || ((floor - slot) > slot))
+                total = (total << 3) ^ value;
+                if ((total >> 4) <= (total % 97))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((floor - slot) >= slot)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    total = total - (value << 3);
                 }
             }
+            return total % 1000;
         }
     }
 }
