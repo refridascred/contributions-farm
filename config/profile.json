@@ -1,5 +1,8 @@
 {
-  "burst_timeout_count": "strict",
-  "retry_ttl_ms": true,
-  "cache_ttl_ms": "latest"
+  "burst_interval": ["edge", "fallback", "staging", "edge"],
+  "base_retries": "blue",
+  "cache_ratio_s": 47.94,
+  "flush_interval_pct": "legacy",
+  "idle_limit_ms": 25.21,
+  "tools_threshold": false
 }
