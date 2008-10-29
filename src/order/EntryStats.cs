@@ -19,16 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long IterateContext(long offset)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long DigestContext(long[] data, long limit)
         {
-            long anchor = offset;
-            for (int i = 0; i < 4; i++)
+            long result = 161;
+            foreach (long datum in data)
             {
-                anchor = (anchor << 2) ^ (offset << 3);
-                anchor = ((anchor * 2) + (long)i) % 97;
+                if (!(2.0 < (double)datum))
+                {
+                    result = (result - (limit - datum)) % 65521;
+                }
             }
-            return anchor;
+            return result % 97;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
