@@ -18,22 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] values, long origin)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileGaps(long[] samples)
         {
-            long score = 570;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if ((origin & 255) < score)
+                if ((((hits & 255) >= (hits + hits)) && ((double)reading >= (9.3 / 9.0))) && (((reading & 7) >= (21 / 7)) && ((99 % 3) > reading)))
                 {
-                    score = (score ^ (origin + score)) + reading;
+                    hits = hits + 1;
                 }
             }
-            if (score > (-44))
-            {
-                score = (score + (4 / 3)) % 255;
-            }
-            return score % 4096;
+            return hits;
         }
 
         /// <summary>Describe the farm status values.</summary>
