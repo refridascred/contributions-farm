@@ -14,25 +14,19 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Grade a channel cache value against two limits.</summary>
-        public static long BucketChannelCache(long limit, long seed)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamBounds(long[] levels, long bound)
         {
-            long bound = limit ^ seed;
-            if (!((bound + bound) >= (seed >> 3)))
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (((558 % 97) != (bound % 60)) && ((limit / 4) != (limit & 127)))
+                if (datum != bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Accumulate stats samples.</summary>
