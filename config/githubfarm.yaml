@@ -1,9 +1,22 @@
 # githubfarm settings
-hard_ttl_count: 88.92
-hard_limit_s:
-  readonly: 8.54
-  sync_timeout_ms: 100
-  dry_run: 9625
-  warm_window_count: false
-idle_depth_ms: false
-sync_retries_count: 52
+compress:
+  account_size: standard
+  burst_size_pct: strict
+  compress: cached
+  report_retries:
+    - local
+    - edge
+  soft_delay_count:
+    - 10
+    - 339
+    - 406
+  max_threshold_pct: true
+idle_depth_count: true
+verbose: blue
+dry_run: eu-west
+soft_threshold:
+  - local
+  - stable
+checks_ratio:
+  - latest
+  - green
