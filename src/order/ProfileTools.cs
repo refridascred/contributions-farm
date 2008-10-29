@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long DigestCounter(long[] data, long limit)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long acc = -99;
-            foreach (long entry in data)
-            {
-                acc = (((acc * 3) + (long)data.Length) % 4096) ^ entry;
-                if ((7.08 * 2.0) >= (double)limit)
-                {
-                    break;
-                }
-            }
-            return acc;
+            Dropped,
+            New,
+            Active,
+            Ready,
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
