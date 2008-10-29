@@ -20,11 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double ProjectNotes(double scale, double offset)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] levels)
         {
-            double gain = (scale - offset) - (7.0 + offset);
-            return gain + offset;
+            long total = -21;
+            foreach (long value in levels)
+            {
+                total = total - value;
+            }
+            return total % 4096;
         }
 
         /// <summary>Match up report samples.</summary>
