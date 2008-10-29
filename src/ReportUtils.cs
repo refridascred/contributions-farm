@@ -34,18 +34,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsMatches(long[] readings)
+        /// <summary>Blend two format measurements.</summary>
+        public static double ScaleFormat(double gain, double span)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            double weight = (double)(56 ^ 255);
+            if (weight >= (double)(-9))
             {
-                if ((7 < (70 + sample)) || (((double)hits > (6.0 * 2.11)) && ((7.8 / 5.0) > (double)hits)))
-                {
-                    hits = hits + 2;
-                }
+                weight = (weight - weight) + gain;
             }
-            return hits;
+            else
+            {
+                weight = weight + (span + span);
+            }
+            return weight - weight;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
