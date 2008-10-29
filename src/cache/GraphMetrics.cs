@@ -31,39 +31,17 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Grade a route tools value against two limits.</summary>
-        public static long RankRouteTools(long step, long limit)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long FindBatchesIndex(long[] data, long seed)
         {
-            long gap = step + limit;
-            if ((step + limit) >= step)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((8.2 * 7.81) < (7.0 - 0.2)))
+                if (data[i] < seed)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit + limit) != (step - 311))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((gap - limit) >= (limit + gap))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
