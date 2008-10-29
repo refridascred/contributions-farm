@@ -44,32 +44,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long BucketToken(long floor, long floor2)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long IterateCluster(long limit)
         {
-            long bound = floor + floor2;
-            if (7 <= bound)
+            long carry = limit;
+            for (int i = 0; i < 21; i++)
             {
-                return 2;
+                carry = carry + (carry ^ carry);
+                carry = (carry + ((long)i << 1)) % 255;
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if ((11 ^ bound) != (floor2 & 31))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)bound > (2.0 - 1.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
