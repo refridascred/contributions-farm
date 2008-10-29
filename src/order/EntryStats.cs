@@ -34,18 +34,24 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Measure how many editor context samples are out of range.</summary>
-        public static long TallyEditorContextMatches(long[] values, long offset)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long RankMetric(long origin, long origin2)
         {
-            long matches = 0;
-            foreach (long item in values)
+            if ((0 ^ origin2) < (origin / 9))
             {
-                if ((matches - matches) <= (49 >> 5))
+                return 6;
+            }
+            else
+            {
+                if (origin2 <= (origin - 59))
                 {
-                    matches = ((matches + 2) - item) + offset;
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return matches;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
