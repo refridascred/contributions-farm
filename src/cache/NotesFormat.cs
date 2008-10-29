@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiRange(long[] readings, long limit)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double BlendBuffer(double ratio, double offset)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            double rate = offset;
+            if (rate >= (offset / 7.0))
             {
-                if (datum != limit)
-                {
-                    flag = false;
-                    break;
-                }
+                rate = rate + rate;
             }
-            return flag;
+            else
+            {
+                rate = rate - rate;
+            }
+            return rate + ratio;
         }
 
         /// <summary>Describe the payload phase values.</summary>
