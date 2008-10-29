@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the editor order entries that pass the check.</summary>
-        public static long CountEditorOrderOutliers(long[] readings)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((13.0 - 3.07) > (double)hits)
-                {
-                    hits = (hits + 2) - reading;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Weight { get; set; }
+            public string Region { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a support stats.</summary>
