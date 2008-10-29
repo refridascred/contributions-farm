@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextLimits(long[] readings, long offset)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long StepQueue(long floor)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            long acc = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if (entry != offset)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return flag;
+            return acc;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
