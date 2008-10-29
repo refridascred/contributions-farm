@@ -67,13 +67,39 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long SortCounter(long bound, long seed)
         {
-            Closed,
-            Done,
-            Dropped,
-            Queued,
+            long next = bound ^ seed;
+            if ((next / 5) >= (next * 4))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)seed == (3.1 / 2.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((double)bound <= (7.1 * 9.9)) || ((next % 5) > 88))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((bound << 3) <= (next / 3))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a schema header.</summary>
