@@ -1,11 +1,6 @@
-id,ratio,token
-1,standard,strict
-2,strict,blue
-3,95.45,2.76
-4,583,37.78
-5,primary,21.29
-6,strict,latest
-7,419,320
-8,50.4,858
-9,standard,open
-10,593,73.06
+id,region
+1,83.43
+2,38
+3,green
+4,682
+5,28.08
