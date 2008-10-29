@@ -61,12 +61,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Blend two window channel measurements.</summary>
+        public static double BlendWindowChannel(double rate, double bias)
         {
-            public long Level { get; set; }
-            public double Weight { get; set; }
-            public string Limit { get; set; } = "";
+            double bias2 = (rate + rate) / 9.0;
+            if (bias2 > (double)3)
+            {
+                bias2 = (bias2 + (bias2 + rate)) - bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = (bias2 + rate) + (double)(long)i;
+            }
+            return bias2 - bias2;
         }
     }
 }
