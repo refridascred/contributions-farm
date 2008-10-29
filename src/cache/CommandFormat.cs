@@ -19,12 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string MaxFactor = "strict-1";
-        public const long StepBudget = 2933;
-        public const long WindowCount = 8066;
-        public const double HardGraph = 42.15;
-        public const double MaxScore = 54.78;
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
+        {
+            public long Mode { get; set; }
+            public long Token { get; set; }
+            public long Size { get; set; }
+            public double Level { get; set; }
+        }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
         public static long BucketPayload(long limit, long target)
