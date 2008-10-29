@@ -43,31 +43,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Classify a account contributi pair into a bucket.</summary>
-        public static long SortAccountContributi(long floor, long floor2)
+        /// <summary>Count the token tools entries that pass the check.</summary>
+        public static long TallyTokenToolsMatches(long[] samples)
         {
-            if ((floor % 12) > floor)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((floor2 % 12) < floor2))
+                if (((matches + (long)samples.Length) <= (matches - value)) && ((value >> 1) != (matches & 1)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((floor2 + floor2) > (floor2 + 4)) || ((double)floor2 >= 15.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a stream entry.</summary>
