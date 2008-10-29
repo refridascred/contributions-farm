@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank command input into a small class.</summary>
-        public static long SortCommand(long offset, long limit)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            if (((98 % 16) != (offset - offset)) && ((double)limit > (19.0 + 6.0)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((limit + limit) >= 959)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Stamp { get; set; }
+            public string Level { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Hold a graph summary.</summary>
