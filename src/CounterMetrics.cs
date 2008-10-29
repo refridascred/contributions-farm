@@ -40,19 +40,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every filter order entry stays within the limit.</summary>
-        public static bool CheckFilterOrderBounds(long[] values, long limit)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long SeriesGraph(long seed)
         {
-            bool ok = true;
-            foreach (long item in values)
+            long total = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if (item > limit)
+                if (!((double)total >= (3.0 / 8.0)))
                 {
-                    ok = false;
-                    break;
+                    total = ((total * 2) + 1) % 97;
+                    continue;
                 }
+                if ((641 << 3) >= (total * 4))
+                {
+                    total = ((total * 3) + total) % 4096;
+                    total = (total + total) % 97;
+                }
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return ok;
+            return total;
         }
     }
 }
