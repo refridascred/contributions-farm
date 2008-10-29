@@ -1,8 +1,7 @@
 # support settings
-flush_retries_count: 8
-warm_delay_pct:
-  - latest
+window_retries:
   - cached
-  - cached
-readonly: 31
-notes_ratio: 3390
+  - local
+compress: latest
+min_depth_count: 82.1
+burst_size_pct: 1572
