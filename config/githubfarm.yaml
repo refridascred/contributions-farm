@@ -1,5 +1,7 @@
 # githubfarm settings
-entry_size: cached
-notes_size: fallback
-context_capacity: primary
-strict: 3.67
+soft_interval_count: 47.32
+soft_ratio_ms: legacy
+poll_ratio: 76.31
+flush_threshold_ms: true
+graph_size: stable
+soft_retries_pct: local
