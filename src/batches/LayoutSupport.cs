@@ -17,19 +17,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteBounds(long[] levels, long origin)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmHits(long[] series)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if (sample <= origin)
+                if (((7.0 / 8.0) >= (double)matches) && (datum < (matches >> 5)))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
