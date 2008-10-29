@@ -27,10 +27,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheRoute = 5486;
-        public const double MinFactor = 65.29;
-        public const long BurstInterval = 3249;
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenRange(long[] data, long seed)
+        {
+            bool found = true;
+            foreach (long datum in data)
+            {
+                if (datum > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Match up entry samples.</summary>
         public static long OverlapEntryCount(long[] levels)
