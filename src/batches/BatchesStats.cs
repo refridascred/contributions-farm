@@ -35,9 +35,38 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardTools = 947;
-        public const long CacheFactor = 4594;
-        public const long BatchTools = 1442;
+        /// <summary>Classify a channel record pair into a bucket.</summary>
+        public static long BucketChannelRecord(long floor, long seed)
+        {
+            if ((floor - seed) < seed)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((seed ^ seed) > (seed << 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((floor + seed) < floor)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((floor & 15) != (seed - seed))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
