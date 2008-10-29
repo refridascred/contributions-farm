@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long WeighGraph(long[] values)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long carry = 0;
-            foreach (long value in values)
-            {
-                carry = ((carry ^ carry) % 97) + value;
-            }
-            if (carry > (-744))
-            {
-                carry = (carry * 4) + (carry % 10);
-            }
-            return carry;
+            public long Flag { get; set; }
+            public double Count { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Define entry limits and defaults.</summary>
