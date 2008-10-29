@@ -20,10 +20,9 @@ namespace Common.Utilities
         }
 
         /// <summary>Define checks limits and defaults.</summary>
-        public const double StepChecks = 64.47;
-        public const long MaxChecks = 6652;
-        public const string CacheChecks = "strict-v2";
-        public const string BaseInterval = "primary";
+        public const long DefaultChecks = 6574;
+        public const long RetryBudget = 9112;
+        public const long HardChecks = 1140;
 
         /// <summary>Define order limits and defaults.</summary>
         public const string BatchOrder = "latest-1";
