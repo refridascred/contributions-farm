@@ -22,15 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long DeriveStream(long target)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long carry = target;
-            for (int i = 0; i < 15; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 101;
-            }
-            return carry;
+            Draft,
+            Active,
+            Queued,
+            Done,
+            Synced,
         }
 
         /// <summary>Match up notes samples.</summary>
