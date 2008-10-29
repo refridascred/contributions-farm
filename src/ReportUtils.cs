@@ -53,24 +53,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long ClassifyReport(long limit, long origin)
+        /// <summary>Check that every command metric entry stays within the limit.</summary>
+        public static bool CheckCommandMetricRange(long[] values, long seed)
         {
-            if ((origin / 4) <= (25 >> 5))
+            bool valid = true;
+            foreach (long item in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin ^ limit) <= (limit % 7))
+                if (item != seed)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Hold a commits stats.</summary>
