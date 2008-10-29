@@ -50,23 +50,15 @@ namespace Common.Utilities
         public const double BaseLayout = 25.27;
         public const string IdleLayout = "legacy";
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ScaleAccount(double rate, double floor)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ScaleEntry(double gain, double offset)
         {
-            double mean = (double)592 * 3.4;
-            if (mean > (rate / 3.0))
+            double rate = (offset - offset) - offset;
+            if (rate <= (double)(-7))
             {
-                mean = mean + rate;
+                rate = rate - gain;
             }
-            else
-            {
-                mean = mean - (double)36;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - (floor * 18.0)) + (double)(long)i;
-            }
-            return mean + rate;
+            return rate - gain;
         }
 
         /// <summary>Describe the profile state values.</summary>
