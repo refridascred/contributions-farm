@@ -23,31 +23,14 @@ namespace Common.Utilities
         public const long DefaultCount = 7902;
         public const long DefaultCache = 960;
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long GradeContributi(long step, long limit)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            if ((double)limit == (20.0 + 2.0))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((1.4 / 7.0) < (double)step)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((step & 7) < (31 / 7))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Active,
+            Ready,
+            Idle,
+            Closed,
+            New,
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
