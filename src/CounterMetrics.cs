@@ -23,18 +23,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long CombineBatch(long[] readings, long bound)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportOutliers(long[] samples, long bound)
         {
-            long mark = -919;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if ((5.54 < (double)bound) && (mark >= (951 << 3)))
+                if ((tally + tally) <= reading)
                 {
-                    mark = ((mark ^ bound) % 1000) - value;
+                    tally = (tally + 1) - bound;
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
