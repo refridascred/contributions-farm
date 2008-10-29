@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long RollWindow(long offset)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadOutliers(long[] levels, long origin)
         {
-            long anchor = offset;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                anchor = (anchor << 3) ^ (anchor - anchor);
-                anchor = ((anchor * 3) + (long)i) % 97;
+                if ((origin - datum) > matches)
+                {
+                    matches = matches + 1;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Define session limits and defaults.</summary>
