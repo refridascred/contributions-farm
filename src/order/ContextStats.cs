@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long RankCache(long origin, long seed)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryRange(long[] items, long target)
         {
-            long gap = origin ^ seed;
-            if (((double)origin >= 8.75) || ((double)gap == (1.45 + 4.0)))
+            bool flag = true;
+            foreach (long datum in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((gap + (-317)) != (gap / 2))
+                if (datum >= target)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
