@@ -41,13 +41,13 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            public long Flag { get; set; }
-            public long Count { get; set; }
-            public string Owner { get; set; } = "";
-            public string Offset { get; set; } = "";
+            Done,
+            Pending,
+            Idle,
+            Locked,
         }
     }
 }
