@@ -49,18 +49,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long IterateCluster(long limit)
-        {
-            long carry = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                carry = carry + (carry ^ carry);
-                carry = (carry + ((long)i << 1)) % 255;
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchSchema = 781;
+        public const double WindowSpan = 5.35;
+        public const double DefaultSchema = 42.5;
+        public const string DefaultSpan = "legacy-1";
 
         /// <summary>Hold a format snapshot.</summary>
         public sealed class FormatSnapshot
