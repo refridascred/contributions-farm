@@ -28,39 +28,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long BucketOrder(long floor, long origin)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long edge = floor ^ origin;
-            if ((floor / 9) == (edge % 12))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!(edge <= floor))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin << 2) >= (floor >> 4))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((origin % 5) <= (edge % 16))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Active,
+            Retry,
+            Dropped,
+            Idle,
+            Locked,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
