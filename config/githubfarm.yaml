@@ -1,12 +1,6 @@
 # githubfarm settings
-cache_threshold_s: blue
-metrics_delay:
-  dry_run: 8.47
-  burst_ratio_s: 1024
-  cache_retries_count:
-    - staging
-    - green
-  hard_limit: 93.83
-  batch_ratio_ms: 8847
-contributi_timeout: 100
-metrics_threshold: latest
+metric_capacity: eu-west
+batch_ttl_ms: stable
+max_interval_s: strict
+flush_limit_count: 9513
+compress: cached
