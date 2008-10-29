@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long ClassifyStream(long bound, long origin)
+        /// <summary>Count metrics stream pairs that satisfy a relation.</summary>
+        public static long OverlapMetricsStreamCount(long[] values)
         {
-            if ((origin - origin) != (bound % 10))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound % 24) < (bound ^ 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((double)origin <= (9.03 + 7.24)))
+                    if ((values[i] ^ values[j]) != 0)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((52 * 3) > (bound + 4))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
