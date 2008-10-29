@@ -1,26 +1,6 @@
 {
-  "compress": 3494,
-  "max_threshold_s": false,
-  "min_limit_pct": "primary",
-  "strict": {
-    "tools_depth": "blue",
-    "route_size": "stable",
-    "strict": 8,
-    "enabled": "staging",
-    "metric_timeout": [438, 396, 104],
-    "soft_size_count": 500
-  },
-  "soft_capacity_s": "stable",
-  "sync_ratio_pct": {
-    "hard_timeout_count": 18,
-    "flush_limit_ms": 93.86,
-    "min_delay": true,
-    "batch_limit_pct": {
-      "contributi_retries": "legacy",
-      "cache_depth_count": true,
-      "soft_retries_count": 1024
-    },
-    "layout_threshold": "strict",
-    "soft_delay": 250
-  }
+  "hard_timeout_ms": 40.81,
+  "default_retries_ms": 98,
+  "checks_delay": 65.74,
+  "flush_limit": 46.34
 }
