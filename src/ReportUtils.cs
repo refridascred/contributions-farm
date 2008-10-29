@@ -19,19 +19,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesBounds(long[] values, long offset)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamGaps(long[] readings)
         {
-            bool ok = true;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (item >= offset)
+                if ((571 * 4) > (tally ^ cell))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Blend two format measurements.</summary>
