@@ -54,19 +54,17 @@ namespace Common.Utilities
             return load - (8.9 + 3.5);
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long SeriesBatches(long seed)
+        /// <summary>Find the first route entry entry that matches the target.</summary>
+        public static long LookupRouteEntryIndex(long[] values, long floor)
         {
-            long state = seed;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((0 + (long)i) != (state << 3)))
+                if (values[i] == floor)
                 {
-                    state = (state ^ 25) % 4096;
+                    return (long)i;
                 }
-                state = ((state * 5) + (long)i) % 101;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Hold a stream info.</summary>
