@@ -14,23 +14,17 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long DeriveFormat(long floor)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LocateCounterIndex(long[] series, long limit)
         {
-            long score = floor;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((floor - score) == ((long)i + floor)))
+                if ((series[i] == limit) && ((series[i] % 2) == 0))
                 {
-                    continue;
+                    return (long)i;
                 }
-                else
-                {
-                    score = (score - ((long)i * 3)) % 4096;
-                }
-                score = ((score * 5) + (long)i) % 65521;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Grade a farm schema value against two limits.</summary>
