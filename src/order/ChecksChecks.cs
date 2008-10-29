@@ -31,13 +31,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Locate a graph tools reading by value.</summary>
+        public static long FindGraphToolsIndex(long[] values, long step)
         {
-            public string Region { get; set; } = "";
-            public double Token { get; set; }
-            public string Label { get; set; } = "";
-            public long Score { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < step) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
