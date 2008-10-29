@@ -41,13 +41,39 @@ namespace Common.Utilities
         public const long BurstScore = 206;
         public const long RetryLevel = 4409;
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Rank session cluster input into a small class.</summary>
+        public static long RankSessionCluster(long bound, long floor)
         {
-            public long Level { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Count { get; set; }
-            public string Size { get; set; } = "";
+            long diff = bound + floor;
+            if ((double)bound != (10.0 + 19.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)diff != (6.6 / 6.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)62 == (double)floor)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (5 > (floor + 559))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a metrics summary.</summary>
