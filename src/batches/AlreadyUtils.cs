@@ -40,13 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiBounds(long[] samples, long seed)
         {
-            Paused,
-            Failed,
-            Queued,
-            Active,
+            bool flag = true;
+            foreach (long value in samples)
+            {
+                if (value != seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
