@@ -34,15 +34,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long StepLayout(long floor)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long mix = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
+            public string Mode { get; set; } = "";
+            public double Level { get; set; }
+            public bool Total { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
