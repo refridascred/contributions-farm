@@ -16,16 +16,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long StepSupport(long offset)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long BucketRecord(long bound, long origin)
         {
-            long mark = offset;
-            for (int i = 0; i < 18; i++)
+            long next = bound + origin;
+            if ((bound + bound) > (origin + bound))
             {
-                mark = (mark - ((-144) + mark)) % 97;
-                mark = ((mark * 2) + (long)i) % 97;
+                return 6;
             }
-            return mark;
+            else
+            {
+                if ((next & 63) >= bound)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((14.0 * 18.0) > (double)next)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the route status values.</summary>
