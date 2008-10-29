@@ -18,12 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long RollBuffer(long offset)
         {
-            public long Weight { get; set; }
-            public string Region { get; set; } = "";
-            public long Ratio { get; set; }
+            long result = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                result = (result - ((-67) & 255)) % 1000;
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Hold a support stats.</summary>
