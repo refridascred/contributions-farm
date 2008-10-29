@@ -26,11 +26,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyOutliers(long[] items, long offset)
         {
-            public double Region { get; set; }
-            public string Offset { get; set; } = "";
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if (30 > (195 - tally))
+                {
+                    tally = ((tally + 1) + item) - offset;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
