@@ -46,11 +46,26 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BatchGithubfarm = 39.27;
-        public const long MaxGithubfarm = 7019;
-        public const long CacheFactor = 9617;
-        public const long MaxRatio = 4384;
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long BucketFilter(long offset, long offset2)
+        {
+            long step = offset ^ offset2;
+            if (offset < (offset * 4))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((step << 1) < (step & 255)) && (step > offset2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long AuditTokenHits(long[] readings)
