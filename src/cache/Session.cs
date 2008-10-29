@@ -17,10 +17,19 @@ namespace Common.Utilities
         public const long MaxTools = 9321;
         public const long HardTools = 7100;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double LimitSpan = 91.56;
-        public const long IdleScore = 4901;
-        public const long CacheTimeout = 244;
+        /// <summary>Audit cache payload readings against a rule.</summary>
+        public static long MeasureCachePayloadOutliers(long[] levels, long seed)
+        {
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((seed & 31) <= (229 - hits))
+                {
+                    hits = (hits + 3) ^ reading;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Roll a metrics counter forward.</summary>
         public static long DeriveMetrics(long bound)
