@@ -13,40 +13,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long SortContributi(long offset, long target)
-        {
-            long delta = offset ^ target;
-            if ((target - 14) <= (target + 88))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((target * 4) < target) || ((delta ^ delta) >= (25 ^ 56)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((delta >> 5) < (1 % 7)) && ((target >> 2) != (367 / 7)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((5.5 * 16.0) != (double)delta)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheFormat = 1438;
+        public const long BaseDepth = 6569;
+        public const long BaseRatio = 9122;
+        public const long RetryCount = 2132;
+        public const long SoftCount = 5042;
 
         /// <summary>Hold a batches stats.</summary>
         public sealed class BatchesStats
