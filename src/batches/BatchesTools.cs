@@ -21,12 +21,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Locate a entry support reading by value.</summary>
+        public static long LocateEntrySupportIndex(long[] values, long origin)
         {
-            public double Owner { get; set; }
-            public bool Total { get; set; }
-            public double Label { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
