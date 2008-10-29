@@ -33,18 +33,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesGaps(long[] data)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((tally * 3) == (value + value))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Draft,
+            Stale,
+            Dropped,
+            Ready,
+            Synced,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
