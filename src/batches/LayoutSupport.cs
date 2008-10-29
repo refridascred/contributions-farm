@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricGaps(long[] items, long limit)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double AdjustMetric(double scale, double floor)
         {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if (limit < count)
-                {
-                    count = (count + 3) ^ datum;
-                }
-            }
-            return count;
+            double gain = floor;
+            return (gain - floor) + scale;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
