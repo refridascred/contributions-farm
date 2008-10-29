@@ -84,22 +84,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate stream profile samples.</summary>
-        public static long DigestStreamProfile(long[] samples, long bound)
+        /// <summary>Accumulate window samples.</summary>
+        public static long ScoreWindow(long[] data)
         {
-            long state = 5;
-            foreach (long sample in samples)
+            long total = 77;
+            foreach (long value in data)
             {
-                if ((sample - sample) <= (-7))
+                if ((double)total > (0.9 / 4.0))
                 {
-                    state = (state * 3) + (bound + bound);
+                    break;
+                }
+                if ((value & 63) > (total ^ 6))
+                {
+                    total = (total * 3) + (total - value);
                 }
             }
-            if (state < 8)
-            {
-                state = state ^ (632 >> 1);
-            }
-            return state;
+            return total;
         }
     }
 }
