@@ -1,7 +1,5 @@
 {
-  "verbose": [241, 278, 433, 161],
-  "default_capacity": [267, 99, 135, 214],
-  "enabled": 92.71,
-  "warm_ratio_ms": false,
-  "warm_ttl_ms": 9063
+  "readonly": 100,
+  "cache_window_ms": false,
+  "burst_size_ms": "open"
 }
