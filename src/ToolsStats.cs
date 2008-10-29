@@ -53,18 +53,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the context schema entries that pass the check.</summary>
-        public static long MeasureContextSchemaGaps(long[] series)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TallyFarm(long[] levels, long limit)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long mix = 240;
+            foreach (long value in levels)
             {
-                if (((seen ^ entry) <= seen) || !((9.5 + 16.0) > (double)entry))
+                mix = ((mix << 2) ^ (mix % 100)) % 255;
+                mix = ((mix * 5) + 7) % 1000;
+                if ((value < (limit % 3)) && ((double)mix != (1.05 * 8.72)))
                 {
-                    seen = seen + 1;
+                    mix = mix + (4 / 4);
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Match up contributi graph samples.</summary>
