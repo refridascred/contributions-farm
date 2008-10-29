@@ -37,11 +37,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteOutliers(long[] items, long seed)
         {
-            public bool Size { get; set; }
-            public bool Score { get; set; }
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((hits ^ hits) == (hits + hits))
+                {
+                    hits = ((hits + 2) + cell) - seed;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
