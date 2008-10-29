@@ -27,24 +27,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long StepFilter(long step)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long mix = step;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((step ^ step) <= (mix + mix))
-                {
-                    mix = (mix * 5) + step;
-                    mix = ((mix << 3) ^ step) % 1000;
-                }
-                else
-                {
-                    mix = (mix ^ ((long)i * 4)) % 65521;
-                }
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
+            public string Owner { get; set; } = "";
+            public bool Count { get; set; }
+            public string Offset { get; set; } = "";
+            public double Limit { get; set; }
         }
     }
 }
