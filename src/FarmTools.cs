@@ -22,19 +22,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamBounds(long[] levels, long bound)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TotalChecks(long[] data)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            long result = 24;
+            foreach (long cell in data)
             {
-                if (datum != bound)
+                if ((cell << 2) < cell)
                 {
-                    ready = false;
+                    result = (result << 2) ^ (cell / 6);
+                }
+                if ((double)(-34) > (double)result)
+                {
                     break;
                 }
             }
-            return ready;
+            if (result > (-4))
+            {
+                result = result - (result >> 5);
+            }
+            return result;
         }
 
         /// <summary>Hold a channel info.</summary>
