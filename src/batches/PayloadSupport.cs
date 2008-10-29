@@ -24,18 +24,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksGaps(long[] data)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((seen & 15) > ((-7) - 2))
-                {
-                    seen = (seen + 1) ^ value;
-                }
-            }
-            return seen;
+            Draft,
+            Retry,
+            Paused,
         }
     }
 }
