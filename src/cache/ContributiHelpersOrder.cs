@@ -27,39 +27,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long ClassifyRoute(long floor, long floor2)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamBounds(long[] levels, long limit)
         {
-            long diff = floor - floor2;
-            if ((5.2 + 2.57) <= (double)floor)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (((diff + floor2) <= floor2) && ((floor2 >> 2) >= (diff % 60)))
+                if (cell >= limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((0.7 * 2.2) > (double)floor2) && (((-2) >> 5) != (floor2 << 3)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((floor ^ floor) != (46 - floor))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
