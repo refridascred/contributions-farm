@@ -35,23 +35,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TallyPayload(long[] levels, long floor)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorBounds(long[] series, long offset)
         {
-            long result = 7;
-            foreach (long entry in levels)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                result = (result * 3) + ((-689) % 2);
-                if (entry >= (result ^ floor))
+                if (datum < offset)
                 {
-                    result = ((result << 3) ^ (entry + 408)) % 97;
-                }
-                if (3.34 >= (double)(long)levels.Length)
-                {
+                    ready = false;
                     break;
                 }
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
