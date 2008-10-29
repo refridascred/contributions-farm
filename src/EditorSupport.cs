@@ -29,19 +29,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double BlendWindow(double rate, double bias)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long FindWindowIndex(long[] readings, long limit)
         {
-            double mean = (double)687 / 7.0;
-            if (mean > 3.2)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = (mean - rate) + bias;
+                if ((readings[i] <= limit) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean + (mean * 6.43);
-            }
-            return mean - (6.0 - mean);
+            return -1;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
