@@ -19,18 +19,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterHits(long[] values)
+        /// <summary>Count counter buffer pairs that satisfy a relation.</summary>
+        public static long OverlapCounterBufferCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((2.1 + 16.0) != (double)tally)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = (tally + 3) ^ reading;
+                    if ((readings[i] ^ readings[j]) == 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
