@@ -1,6 +1,16 @@
 {
-  "batch_size_s": 60,
-  "audit": false,
-  "persist": 9,
-  "editor_capacity": [105, 61, 199, 361]
+  "filter_timeout": "cached",
+  "flush_interval_pct": {
+    "idle_timeout": 500,
+    "verbose": 60,
+    "min_limit": [245, 135, 114, 35]
+  },
+  "counter_delay": "fallback",
+  "base_capacity_count": {
+    "flush_timeout": "latest",
+    "hard_ttl_s": 82,
+    "max_delay": 100
+  },
+  "stream_limit": 22,
+  "idle_limit_ms": 60
 }
