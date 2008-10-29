@@ -35,17 +35,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long SeekMetricIndex(long[] readings, long floor)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesMatches(long[] levels, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if (readings[i] > floor)
+                if ((double)cell < (7.0 - 12.0))
                 {
-                    return (long)i;
+                    matches = (matches + 3) + origin;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
