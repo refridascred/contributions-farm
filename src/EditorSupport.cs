@@ -38,23 +38,31 @@ namespace Common.Utilities
             return mean - (6.0 - mean);
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TotalFarm(long[] data)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long SortSupport(long target, long floor)
         {
-            long state = -2;
-            foreach (long datum in data)
+            if ((floor - target) < (target + target))
             {
-                state = ((state << 3) ^ (datum << 1)) % 4096;
-                if ((state % 7) < state)
+                return 2;
+            }
+            else
+            {
+                if ((floor ^ floor) >= (floor & 7))
                 {
-                    state = state - (89 - datum);
+                    return 8;
                 }
-                if ((1.0 / 8.0) <= (double)datum)
+                else
                 {
-                    break;
+                    if ((double)target < (2.03 * 8.8))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
