@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
+            Synced,
             Retry,
-            Dropped,
-            Pending,
+            Idle,
+            Locked,
+            Draft,
         }
 
         /// <summary>Define window limits and defaults.</summary>
