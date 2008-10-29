@@ -32,15 +32,39 @@ namespace Common.Utilities
         public const long DefaultMetric = 141;
         public const long WindowMetric = 1964;
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double BlendCache(double weight, double bias)
+        /// <summary>Classify a counter order pair into a bucket.</summary>
+        public static long GradeCounterOrder(long bound, long origin)
         {
-            double rate = (double)(99 + 2);
-            if (rate >= (weight + weight))
+            long delta = bound + origin;
+            if ((delta + origin) != (origin + origin))
             {
-                rate = (rate - rate) - bias;
+                return 4;
             }
-            return rate - rate;
+            else
+            {
+                if ((double)bound >= 6.0)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((895 & 63) <= delta)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)origin >= (double)798)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
