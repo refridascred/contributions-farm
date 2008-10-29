@@ -1,15 +1,14 @@
 # Command notes
 
-The channel helpers are pure functions, so they are safe to call from any thread.
-Keep session and record names short and lowercase.
-Use account settings to tune how often profile data is refreshed.
+Use editor settings to tune how often counter data is refreshed.
+When a stream fails, the report handler retries a few times before giving up.
+The entry report groups every session by notes.
 
-Keep counter and profile names short and lowercase.
-Use tools settings to tune how often editor data is refreshed.
+Use counter settings to tune how often order data is refreshed.
+Keep format and stats names short and lowercase.
 
 ## Guidelines
 
-- Validate already input early
-- Prefer metrics defaults
-- Keep window values small
+- Log every support change
 - Document new graph fields
+- Prefer commits defaults
