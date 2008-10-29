@@ -16,12 +16,22 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitRoute = 5547;
-        public const long HardBudget = 590;
-        public const long BaseBudget = 678;
-        public const long CacheFactor = 2853;
-        public const long BurstBudget = 5955;
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long OverlapRouteCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Project the next window value.</summary>
         public static double BlendWindow(double rate, double bias)
