@@ -29,22 +29,9 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsHits(long[] samples)
-        {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((8.4 / 9.0) <= (double)hits)
-                {
-                    hits = (hits + 1) + datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepBudget = 8957;
+        public const double MaxWidth = 82.73;
+        public const long CacheScore = 5566;
     }
 }
