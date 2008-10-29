@@ -75,18 +75,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamMatches(long[] series, long bound)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long IterateMetric(long origin)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long carry = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if ((cell ^ matches) < (747 >> 1))
-                {
-                    matches = (matches + 1) - bound;
-                }
+                carry = (carry * 3) + (long)i;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
