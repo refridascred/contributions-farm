@@ -20,31 +20,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Classify a report tools pair into a bucket.</summary>
-        public static long BucketReportTools(long bound, long origin)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long DigestGraph(long[] readings, long offset)
         {
-            if ((1 >> 1) < (bound >> 3))
+            long anchor = -81;
+            foreach (long datum in readings)
             {
-                return 0;
+                anchor = (((anchor * 4) + (long)readings.Length) % 255) + datum;
             }
-            else
+            if (anchor > 453)
             {
-                if ((origin > (-81)) || ((-9) > bound))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin * 3) < bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                anchor = anchor + (26 + offset);
             }
+            return anchor % 4096;
         }
 
         /// <summary>Describe the stats class values.</summary>
