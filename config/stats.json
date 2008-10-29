@@ -1,7 +1,24 @@
 {
-  "retry_size_pct": true,
-  "strict": "local",
-  "soft_ratio": 100,
-  "command_threshold": "strict",
-  "default_retries": "strict"
+  "soft_depth_ms": {
+    "readonly": false,
+    "poll_limit": {
+      "batch_threshold_s": [487, 317, 76],
+      "warm_ratio_pct": "edge",
+      "audit": true,
+      "default_threshold": false,
+      "default_depth_count": 53.3,
+      "stream_timeout": "latest"
+    },
+    "enabled": {
+      "flush_delay_ms": "legacy",
+      "audit": 77,
+      "enabled": "primary"
+    },
+    "order_retries": "standard"
+  },
+  "burst_ratio_pct": "standard",
+  "audit": [316, 249, 366, 287],
+  "base_delay_count": 4214,
+  "base_ttl_count": [474, 110, 235, 163],
+  "cache_timeout": 87
 }
