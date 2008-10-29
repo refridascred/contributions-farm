@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Project the next profile value.</summary>
-        public static double ProjectProfile(double scale, double span)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            double mean = 18.0 * 0.82;
-            if (mean >= (span - 9.79))
-            {
-                mean = mean - (scale * 5.9);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - scale) + (double)(long)i;
-            }
-            return mean + (span - scale);
+            Draft,
+            Queued,
+            Synced,
+            Retry,
         }
 
         /// <summary>Derive the next cluster profile value from a seed.</summary>
