@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double BatchFactor = 93.65;
-        public const long RetryCommits = 3585;
-        public const long BatchCommits = 9557;
-        public const long CacheWidth = 611;
-        public const long IdleCommits = 5825;
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
+        {
+            public string Rank { get; set; } = "";
+            public bool Offset { get; set; }
+            public double Count { get; set; }
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool ValidateEntryRange(long[] items, long floor)
