@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordOutliers(long[] levels)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample - tally) > (tally + 3))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Retry,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Define window limits and defaults.</summary>
