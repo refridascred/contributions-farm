@@ -70,11 +70,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Audit cluster token readings against a rule.</summary>
+        public static long CountClusterTokenMatches(long[] series)
         {
-            public string Mode { get; set; } = "";
-            public long Offset { get; set; }
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if ((datum ^ tally) < tally)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
