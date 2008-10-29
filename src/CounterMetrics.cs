@@ -23,20 +23,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long DeriveAccount(long floor)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long CombineBatch(long[] readings, long bound)
         {
-            long acc = floor;
-            for (int i = 0; i < 20; i++)
+            long mark = -919;
+            foreach (long value in readings)
             {
-                bool ready = !((acc + acc) >= (acc - (long)i));
-                if (!(ready && ((double)(long)i < (5.61 / 7.0))))
+                if ((5.54 < (double)bound) && (mark >= (951 << 3)))
                 {
-                    ready = (floor / 8) < acc;
+                    mark = ((mark ^ bound) % 1000) - value;
                 }
-                acc = ((acc * 2) + (long)i) % 97;
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Project the next payload value.</summary>
