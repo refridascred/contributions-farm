@@ -20,17 +20,31 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LocateClusterIndex(long[] series, long floor)
+        /// <summary>Classify a report tools pair into a bucket.</summary>
+        public static long BucketReportTools(long bound, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((1 >> 1) < (bound >> 3))
             {
-                if ((series[i] > floor) && ((series[i] % 2) != 0))
+                return 0;
+            }
+            else
+            {
+                if ((origin > (-81)) || ((-9) > bound))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((origin * 3) < bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the stats class values.</summary>
