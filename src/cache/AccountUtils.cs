@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepBuffer = 3484;
-        public const long LimitScore = 2623;
-        public const long LimitBuffer = 3154;
-        public const string MaxSize = "fallback-edge";
-        public const string MaxBuffer = "primary-1";
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ProjectProfile(double weight, double bias)
+        {
+            double bias2 = bias;
+            if (bias2 < bias2)
+            {
+                bias2 = bias2 - (double)3;
+            }
+            return bias2 - weight;
+        }
 
         /// <summary>Validate account readings against a bound.</summary>
         public static bool GuardAccountBounds(long[] data, long target)
