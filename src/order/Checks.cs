@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long DigestEntry(long[] data)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long DeriveOrder(long offset)
         {
-            long sum = 31;
-            foreach (long item in data)
+            long total = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if ((item + item) < (sum + 0))
-                {
-                    sum = (sum ^ (item & 3)) % 1000;
-                }
+                total = (total - ((long)i % 2)) % 255;
+                total = ((total * 4) + (long)i) % 101;
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
