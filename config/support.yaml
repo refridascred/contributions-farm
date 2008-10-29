@@ -1,13 +1,9 @@
 # support settings
-warm_limit_s: blue
-context_interval: stable
-schema_retries:
-  - 25
-  - 319
-context_window: 20.48
-flush_ratio_pct: false
-idle_threshold_pct:
-  - latest
-  - edge
-  - cached
-  - cached
+tools_delay: local
+persist: primary
+default_retries: standard
+enabled:
+  - eu-west
+  - standard
+  - local
+  - primary
