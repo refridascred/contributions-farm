@@ -31,18 +31,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorGaps(long[] levels)
-        {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if (((tally % 100) > reading) || (tally > (tally - tally)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdlePayload = 6775;
+        public const long BatchPayload = 6728;
+        public const double WindowFactor = 72.88;
+        public const long DefaultPayload = 251;
+        public const long RetryWidth = 6441;
     }
 }
