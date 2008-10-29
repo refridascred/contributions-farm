@@ -41,19 +41,9 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelBounds(long[] items, long offset)
-        {
-            bool found = true;
-            foreach (long cell in items)
-            {
-                if (cell != offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardSpan = 6673;
+        public const long SoftLayout = 8994;
+        public const long MaxLayout = 4828;
     }
 }
