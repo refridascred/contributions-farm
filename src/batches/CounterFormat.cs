@@ -16,18 +16,27 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long FoldAlready(long[] samples, long origin)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long DigestFarm(long[] series, long origin)
         {
-            long acc = -55;
-            foreach (long sample in samples)
+            long carry = 4;
+            foreach (long value in series)
             {
-                if ((41 ^ sample) != (acc + acc))
+                carry = (carry << 3) ^ (carry & 255);
+                if ((carry * 2) >= (value + origin))
                 {
-                    acc = ((acc ^ (sample + acc)) % 1000) + origin;
+                    carry = (carry * 2) + value;
+                }
+                else
+                {
+                    carry = (carry << 2) ^ (origin ^ value);
                 }
             }
-            return acc % 1000;
+            if (carry < 3)
+            {
+                carry = ((carry * 4) + carry) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
