@@ -12,22 +12,19 @@ namespace Common.Utilities
         public const string SoftStream = "local-1";
         public const long BurstStream = 4044;
 
-        /// <summary>Count the schema format entries that pass the check.</summary>
-        public static long CountSchemaFormatOutliers(long[] values)
+        /// <summary>Validate stream command readings against a bound.</summary>
+        public static bool CheckStreamCommandLimits(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                if ((reading - reading) < (reading * 3))
+                if (entry < seed)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
