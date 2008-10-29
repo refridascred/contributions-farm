@@ -35,19 +35,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TotalWindow(long[] levels)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenLimits(long[] readings, long floor)
         {
-            long state = 8;
-            foreach (long value in levels)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                state = ((state + state) % 101) - value;
+                if (item > floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (state < 406)
-            {
-                state = ((state * 3) + (state << 1)) % 1000;
-            }
-            return state % 97;
+            return ready;
         }
 
         /// <summary>Count the token tools entries that pass the check.</summary>
