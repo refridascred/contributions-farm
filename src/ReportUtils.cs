@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string CacheCluster = "open-1";
-        public const long BaseCluster = 9781;
-        public const string HardCluster = "staging-1";
-        public const long HardLevel = 4771;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string StepWidth = "stable";
+        public const long StepPayload = 4239;
+        public const long IdleDepth = 7538;
+        public const long StepCount = 9037;
+        public const long WindowPayload = 1719;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long HardEditor = 9984;
