@@ -32,23 +32,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit editor context readings against a rule.</summary>
-        public static long AuditEditorContextMatches(long[] items)
-        {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if ((double)cell < (6.9 + 0.4))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowFilter = 7967;
+        public const string StepRatio = "open-1";
+        public const double IdleInterval = 30.27;
+        public const string SoftFilter = "legacy-v2";
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long BatchMetric = 4127;
