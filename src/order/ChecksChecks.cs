@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next contributi buffer value from a seed.</summary>
-        public static long RollContributiBuffer(long seed)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long result = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    result = ((result << 2) ^ (result ^ result)) - (long)i2;
-                }
-                result = ((result * 3) + (long)i) % 4093;
-            }
-            return result;
+            public long Flag { get; set; }
+            public bool Weight { get; set; }
+            public string Region { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
