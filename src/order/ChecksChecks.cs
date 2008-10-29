@@ -14,11 +14,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Combine account values into a single score.</summary>
+        public static long WeighAccount(long[] samples)
         {
-            public double Total { get; set; }
-            public long Rank { get; set; }
+            long total = 5;
+            foreach (long sample in samples)
+            {
+                total = (total * 2) + (sample * 3);
+                if (36 < total)
+                {
+                    total = (total << 3) ^ (sample / 7);
+                }
+            }
+            return total;
         }
 
         /// <summary>Define format limits and defaults.</summary>
