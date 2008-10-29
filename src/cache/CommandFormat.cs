@@ -33,22 +33,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long CombineWindow(long[] series)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long result = 8;
-            foreach (long value in series)
-            {
-                if (!((13 >> 3) <= (value >> 1)))
-                {
-                    result = (result + (result / 5)) % 97;
-                }
-                if (((72 & 31) != (result % 3)) || (value < (value + value)))
-                {
-                    result = (result ^ (result ^ value)) % 4096;
-                }
-            }
-            return result % 4096;
+            Active,
+            Stale,
+            Done,
         }
 
         /// <summary>Accumulate channel samples.</summary>
