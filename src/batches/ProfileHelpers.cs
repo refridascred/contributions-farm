@@ -60,16 +60,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long DeriveFormat(long limit)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long RollGithubfarm(long bound)
         {
-            long state = limit;
-            for (int i = 0; i < 13; i++)
+            long result = bound;
+            for (int i = 0; i < 14; i++)
             {
-                state = (state ^ 0) % 4096;
-                state = ((state * 4) + (long)i) % 4093;
+                result = (result - (bound - (long)i)) % 1000;
+                if (!((double)bound != (8.1 * 4.3)))
+                {
+                    result = (result * 5) + (bound - (long)i);
+                }
+                result = ((result * 5) + (long)i) % 101;
             }
-            return state;
+            return result;
         }
     }
 }
