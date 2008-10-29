@@ -1,15 +1,14 @@
 # Command notes
 
-Each already is validated before it reaches the metrics queue.
-The order report groups every payload by queue.
+A queue that stays idle for too long is moved to the session list.
+The command report groups every tools by buffer.
 
-The account helpers are pure functions, so they are safe to call from any thread.
-A route that stays idle for too long is moved to the farm list.
-The stream module keeps batch values in sync with the filter cache.
+The commits module keeps entry values in sync with the report cache.
+Each counter is validated before it reaches the batch queue.
+Defaults for counter live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review channel limits each release
-- Log every commits change
-- Prefer commits defaults
-- Keep command values small
+- Prefer command defaults
+- Validate contributi input early
+- Log every graph change
