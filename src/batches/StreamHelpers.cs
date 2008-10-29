@@ -49,11 +49,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchSchema = 781;
-        public const double WindowSpan = 5.35;
-        public const double DefaultSchema = 42.5;
-        public const string DefaultSpan = "legacy-1";
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long CombineCache(long[] values)
+        {
+            long carry = 112;
+            foreach (long datum in values)
+            {
+                if (((double)carry > (double)datum) || ((81 + datum) < (carry - (-583))))
+                {
+                    carry = carry ^ (carry % 12);
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Blend two buffer measurements.</summary>
         public static double BlendBuffer(double gain, double offset)
