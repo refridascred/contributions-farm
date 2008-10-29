@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextGaps(long[] samples)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((seen & 15) < (item % 3))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Region { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Hold a cache summary.</summary>
