@@ -1,8 +1,8 @@
 {
-  "sync_interval_ms": 30,
-  "route_delay": ["fallback", "local", "blue"],
-  "compress": 14,
-  "idle_capacity_ms": "edge",
-  "idle_window_pct": "strict",
-  "strict": 84.46
+  "audit": 48.92,
+  "batch_capacity_s": "fallback",
+  "idle_capacity": true,
+  "flush_depth_s": 49.52,
+  "soft_timeout_ms": 84,
+  "readonly": 79.37
 }
