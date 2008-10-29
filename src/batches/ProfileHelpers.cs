@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long StepCounter(long seed)
         {
-            public long Region { get; set; }
-            public bool Stamp { get; set; }
+            long sum = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
