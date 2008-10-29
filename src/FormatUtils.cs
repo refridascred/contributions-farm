@@ -61,12 +61,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Combine tools support values into a single score.</summary>
+        public static long CombineToolsSupport(long[] series, long bound)
         {
-            public double Offset { get; set; }
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
+            long total = -49;
+            foreach (long reading in series)
+            {
+                if (!((double)reading > (2.6 / 7.0)))
+                {
+                    total = (total ^ (bound + bound)) % 1000;
+                }
+            }
+            return total;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
