@@ -32,22 +32,17 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsHits(long[] samples, long offset)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long StepCluster(long origin)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long total = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (count < (item % 7))
-                {
-                    count = (count + 3) + offset;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                total = ((total * 5) + ((long)i + origin)) % 255;
+                total = (total ^ (total / 2)) % 255;
+                total = ((total * 2) + (long)i) % 101;
             }
-            return count;
+            return total;
         }
     }
 }
