@@ -14,19 +14,14 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Combine metrics tools values into a single score.</summary>
-        public static long CombineMetricsTools(long[] readings)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long acc = 3;
-            foreach (long entry in readings)
-            {
-                acc = ((acc + (acc << 3)) % 1000) ^ entry;
-            }
-            if (acc > 9)
-            {
-                acc = (acc - (acc - acc)) % 97;
-            }
-            return acc;
+            Idle,
+            Failed,
+            Ready,
+            New,
+            Retry,
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
