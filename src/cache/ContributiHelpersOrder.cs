@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long FindMetricIndex(long[] series, long floor)
         {
-            Locked,
-            Queued,
-            Retry,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == floor) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
