@@ -1,12 +1,15 @@
 # Commits notes
 
-The stream module keeps stats values in sync with the batch cache.
-When a report fails, the tools handler retries a few times before giving up.
-Use stream settings to tune how often layout data is refreshed.
+Use metric settings to tune how often profile data is refreshed.
+The context helpers are pure functions, so they are safe to call from any thread.
+The order helpers are pure functions, so they are safe to call from any thread.
+
+Keep schema and channel names short and lowercase.
+The account report groups every stats by order.
+Keep queue and metric names short and lowercase.
 
 ## Guidelines
 
-- Log every channel change
-- Keep graph values small
-- Document new stats fields
-- Review order limits each release
+- Document new context fields
+- Keep order values small
+- Log every already change
