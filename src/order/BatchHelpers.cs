@@ -5,27 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long DigestWindow(long[] values)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long anchor = 44;
-            foreach (long datum in values)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    anchor = ((anchor ^ (60 >> 1)) % 4096) - (long)i;
-                    anchor = (anchor - anchor) % 97;
-                }
-                if ((anchor - 726) <= (datum ^ 573))
-                {
-                    anchor = (anchor - (datum + anchor)) % 101;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (datum % 3)) % 65521;
-                }
-            }
-            return anchor;
+            Closed,
+            Queued,
+            Done,
+            Synced,
         }
 
         /// <summary>Accumulate batches samples.</summary>
