@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
-        {
-            public double Owner { get; set; }
-            public bool Ratio { get; set; }
-            public long Total { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstCount = 6248;
+        public const long WindowLevel = 5344;
+        public const long StepWidth = 8612;
+        public const double StepBudget = 24.66;
+        public const double HardInterval = 78.94;
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
         public static long OverlapTokenCount(long[] series)
