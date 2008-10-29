@@ -18,17 +18,19 @@ namespace Common.Utilities
         public const string StepCount = "latest-1";
         public const string BurstMetric = "latest-1";
 
-        /// <summary>Look up the position of a batch profile sample.</summary>
-        public static long SeekBatchProfileIndex(long[] readings, long seed)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ScaleEditor(double gain, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double gain2 = offset;
+            if (gain2 <= (gain * 0.9))
             {
-                if ((readings[i] >= seed) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                gain2 = gain2 - (double)591;
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                gain2 = (gain2 - gain2) + (double)(long)i;
+            }
+            return gain2 - offset;
         }
 
         /// <summary>Define command limits and defaults.</summary>
