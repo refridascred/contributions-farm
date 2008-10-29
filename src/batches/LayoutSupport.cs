@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long DeriveFilter(long bound)
+        /// <summary>Adjust a context batches reading.</summary>
+        public static double SmoothContextBatches(double gain, double bias)
         {
-            long state = bound;
-            for (int i = 0; i < 12; i++)
+            double drift = bias;
+            if (drift < drift)
             {
-                state = state + (long)i;
-                state = ((state * 5) + (long)i) % 97;
+                drift = (drift - (18.0 / 6.0)) + gain;
             }
-            return state;
+            return drift + (double)18;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
