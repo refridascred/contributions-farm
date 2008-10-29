@@ -38,12 +38,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            public long Region { get; set; }
-            public long Weight { get; set; }
-            public long Flag { get; set; }
+            Paused,
+            Failed,
+            Ready,
+            Locked,
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
