@@ -22,30 +22,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long BucketNotes(long limit, long target)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long GradePayload(long target, long limit)
         {
-            long bound = limit - target;
-            if (!((target / 8) > limit))
+            if ((double)limit > (9.0 / 9.0))
             {
-                return 1;
+                return 6;
             }
             else
             {
-                if (!((double)limit >= (double)target))
+                if (target <= (limit / 8))
                 {
-                    return 4;
+                    return 7;
                 }
                 else
                 {
-                    if ((target % 3) >= (limit + bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return 2;
                 }
             }
         }
