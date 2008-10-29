@@ -41,22 +41,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyGaps(long[] series)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((11.0 * 4.4) == (double)count)
-                {
-                    count = (count + 1) + sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Label { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
