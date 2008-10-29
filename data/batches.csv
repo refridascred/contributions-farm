@@ -1,9 +1,6 @@
-id,state,count,ratio
-1,fallback,cached,990
-2,967,staging,eu-west
-3,360,latest,845
-4,17,667,101
-5,legacy,80.32,local
-6,677,684,59.82
-7,553,green,71.03
-8,cached,standard,379
+id,count,region,state,active
+1,stable,23.05,127,open
+2,61,207,995,259
+3,latest,823,426,fallback
+4,804,0.91,487,cached
+5,68.03,55.44,98.57,64.07
