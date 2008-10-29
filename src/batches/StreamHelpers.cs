@@ -94,10 +94,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string LimitLevel = "open-edge";
-        public const string RetryDepth = "local-v2";
-        public const long BaseSpan = 3500;
-        public const double StepTimeout = 61.7;
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyBounds(long[] samples, long target)
+        {
+            bool ready = true;
+            foreach (long entry in samples)
+            {
+                if (entry <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
