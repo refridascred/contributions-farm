@@ -1,8 +1,7 @@
 {
-  "hard_timeout": 5878,
-  "compress": 18.33,
-  "counter_interval": 500,
-  "poll_interval": true,
-  "max_timeout_s": 60,
-  "schema_retries": "edge"
+  "idle_capacity_ms": 30,
+  "burst_retries": 12,
+  "default_ratio_count": "legacy",
+  "cache_timeout_count": "local",
+  "cache_retries_ms": 0.9
 }
