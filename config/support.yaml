@@ -1,33 +1,5 @@
 # support settings
-idle_ratio_ms:
-  batch_delay: latest
-  poll_capacity:
-    - 335
-    - 253
-    - 301
-  batch_window: 24.63
-  format_size:
-    metrics_ttl: 34.7
-    hard_capacity_pct: strict
-    cache_ttl: true
-    soft_ttl_pct:
-      - 69
-      - 193
-      - 205
-      - 403
-retry_threshold_s:
-  - local
-  - eu-west
-sync_depth:
-  session_delay: false
-  readonly: local
-  compress: 6993
-  burst_window_count: 56.02
-  verbose: 1853
-  batch_threshold: 7209
-idle_capacity_ms:
-  cache_ratio: 51
-  audit: true
-  command_ratio: false
-  persist: 34
-max_timeout_pct: false
+batch_size_count: 10
+idle_ratio_pct: 30
+window_ratio: false
+warm_interval: true
