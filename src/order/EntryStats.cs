@@ -26,14 +26,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
-        {
-            public long Mode { get; set; }
-            public long Level { get; set; }
-            public long Size { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string HardBuffer = "local-1";
+        public const long BaseDepth = 6712;
+        public const long LimitBuffer = 8032;
 
         /// <summary>Validate metric readings against a bound.</summary>
         public static bool CheckMetricLimits(long[] values, long target)
