@@ -30,13 +30,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorGaps(long[] levels)
         {
-            public long Count { get; set; }
-            public long Label { get; set; }
-            public string Region { get; set; } = "";
-            public long Ratio { get; set; }
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if (((tally % 100) > reading) || (tally > (tally - tally)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
