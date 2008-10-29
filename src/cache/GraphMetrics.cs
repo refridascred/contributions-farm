@@ -36,10 +36,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long StepChannel = 5731;
-        public const double MaxSize = 94.69;
-        public const string BatchSpan = "stable-1";
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
+        {
+            Queued,
+            Paused,
+            Ready,
+        }
 
         /// <summary>Compare every pair of command readings.</summary>
         public static long PairCommandCount(long[] items)
