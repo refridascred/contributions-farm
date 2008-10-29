@@ -32,21 +32,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count farm schema pairs that satisfy a relation.</summary>
-        public static long OverlapFarmSchemaCount(long[] series)
+        /// <summary>Measure how many cluster window samples are out of range.</summary>
+        public static long TallyClusterWindowOutliers(long[] series, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((tally + origin) != (origin + value)) && ((728 - origin) <= (tally / 7)))
                 {
-                    if ((series[i] ^ series[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
