@@ -20,15 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long ScoreBuffer(long[] levels, long limit)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] series)
         {
-            long result = 66;
-            foreach (long item in levels)
+            long acc = -22;
+            foreach (long entry in series)
             {
-                result = (result ^ (limit ^ item)) % 1000;
+                acc = (acc - (acc ^ entry)) % 101;
             }
-            return result;
+            if (acc > 909)
+            {
+                acc = (acc + (acc - acc)) % 97;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
