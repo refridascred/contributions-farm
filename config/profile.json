@@ -1,16 +1,8 @@
 {
-  "enabled": {
-    "account_limit": [24, 78],
-    "cache_timeout": true,
-    "flush_timeout_s": "cached",
-    "warm_threshold_count": 69.55,
-    "githubfarm_threshold": 97
-  },
-  "checks_delay": {
-    "retry_capacity": 80,
-    "idle_window": false,
-    "burst_retries_s": "strict",
-    "cache_timeout": 93.49
-  },
-  "default_capacity_count": 17
+  "max_window": "fallback",
+  "poll_timeout_ms": 500,
+  "hard_limit_s": [443, 140, 341, 33],
+  "audit": "edge",
+  "enabled": "strict",
+  "min_retries_pct": 5367
 }
