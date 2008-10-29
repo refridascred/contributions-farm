@@ -1,6 +1,22 @@
 # githubfarm settings
-poll_ttl: false
-profile_ttl: 21
-notes_timeout:
-  - 275
-  - 93
+base_depth_count:
+  soft_threshold_s:
+    account_retries: 59.52
+    enabled: stable
+    flush_delay_ms: false
+    tools_retries: 7742
+    farm_retries:
+      - strict
+      - eu-west
+    max_delay_count: 4815
+  burst_ttl_count: 500
+  cache_ratio: strict
+  base_interval_ms: false
+  min_size: true
+  soft_window_ms: 500
+min_window_s: strict
+retry_delay: 26
+base_window:
+  - strict
+  - edge
+  - staging
