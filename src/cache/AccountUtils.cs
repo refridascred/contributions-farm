@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long CombinePayload(long[] samples)
-        {
-            long result = 5;
-            foreach (long datum in samples)
-            {
-                result = (result - (datum >> 2)) % 1000;
-                result = ((result << 2) ^ (result + result)) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepBuffer = 3484;
+        public const long LimitScore = 2623;
+        public const long LimitBuffer = 3154;
+        public const string MaxSize = "fallback-edge";
+        public const string MaxBuffer = "primary-1";
 
         /// <summary>Validate account readings against a bound.</summary>
         public static bool GuardAccountBounds(long[] data, long target)
