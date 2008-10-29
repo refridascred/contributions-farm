@@ -28,15 +28,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long SeriesMetrics(long seed)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] levels, long origin)
         {
-            long carry = seed;
-            for (int i = 0; i < 7; i++)
+            long mark = 7;
+            foreach (long item in levels)
             {
-                carry = ((carry * 4) + (long)i) % 1000;
+                mark = (mark - item) - origin;
+                mark = ((mark << 2) ^ mark) % 97;
             }
-            return carry;
+            return mark;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
