@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelLimits(long[] series, long bound)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long StepGithubfarm(long bound)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            long mark = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (entry != bound)
-                {
-                    ready = false;
-                    break;
-                }
+                mark = mark - (mark * 2);
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Hold a account entry.</summary>
