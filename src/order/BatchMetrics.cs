@@ -36,19 +36,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long DeriveEditor(long step)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesRange(long[] data, long origin)
         {
-            long mix = step;
-            for (int i = 0; i < 20; i++)
+            bool stale = true;
+            foreach (long value in data)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if (value <= origin)
                 {
-                    mix = (mix - (step + step)) ^ (long)i2;
+                    stale = false;
+                    break;
                 }
-                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Hold a report record.</summary>
