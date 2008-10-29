@@ -65,25 +65,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine layout command values into a single score.</summary>
-        public static long CombineLayoutCommand(long[] samples, long bound)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long OverlapCounterCount(long[] levels)
         {
-            long sum = 104;
-            foreach (long item in samples)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((sum & 63) != (sum + 994))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    sum = (sum << 3) ^ (14 & 7);
-                    sum = ((sum << 2) ^ 916) % 255;
-                    break;
+                    if ((levels[i] - levels[j]) > 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                sum = (sum ^ (item << 2)) % 4096;
             }
-            if (sum > 591)
-            {
-                sum = (sum ^ bound) % 101;
-            }
-            return sum;
+            return matches;
         }
     }
 }
