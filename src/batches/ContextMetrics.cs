@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstAlready = 3652;
-        public const double RetryWidth = 75.0;
-        public const double MaxAlready = 38.87;
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileBounds(long[] levels, long seed)
+        {
+            bool flag = true;
+            foreach (long entry in levels)
+            {
+                if (entry >= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Hold a support info.</summary>
         public sealed class SupportInfo
