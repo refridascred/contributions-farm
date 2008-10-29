@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowGraph = 3824;
-        public const double DefaultInterval = 62.25;
-        public const double BaseCount = 90.47;
-        public const string CacheGraph = "primary-v2";
-        public const long StepBudget = 2596;
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
+        {
+            public bool Mode { get; set; }
+            public string Flag { get; set; } = "";
+        }
 
         /// <summary>Roll a contributi counter forward.</summary>
         public static long RollContributi(long bound)
