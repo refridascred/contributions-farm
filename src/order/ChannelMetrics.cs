@@ -35,19 +35,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long DeriveBatch(long floor)
+        /// <summary>Accumulate route session samples.</summary>
+        public static long TallyRouteSession(long[] samples, long floor)
         {
-            long mark = floor;
-            for (int i = 0; i < 9; i++)
+            long mix = 9;
+            foreach (long value in samples)
             {
-                if ((3.8 - 1.4) != (double)mark)
+                if ((value / 5) <= 2)
                 {
-                    mark = (mark - (mark << 2)) % 255;
+                    mix = (mix << 3) ^ floor;
+                    mix = mix - (mix ^ mix);
                 }
-                mark = ((mark * 2) + (long)i) % 101;
+                if (!((floor & 7) > mix))
+                {
+                    mix = (mix - (466 ^ mix)) % 65521;
+                }
             }
-            return mark;
+            return mix;
         }
     }
 }
