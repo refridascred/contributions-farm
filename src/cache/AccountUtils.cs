@@ -33,18 +33,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenOutliers(long[] data, long bound)
+        /// <summary>Iterate the cache editor series from a seed.</summary>
+        public static long RollCacheEditor(long offset)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long sum = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if ((sample % 12) <= matches)
+                if ((offset >> 5) < (403 * 3))
                 {
-                    matches = (matches + 2) - bound;
+                    sum = (sum - 295) % 255;
                 }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return matches;
+            return sum;
         }
     }
 }
