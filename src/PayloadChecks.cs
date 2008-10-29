@@ -58,19 +58,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of filter session entries.</summary>
-        public static long CombineFilterSession(long[] series, long limit)
-        {
-            long mark = 58;
-            foreach (long reading in series)
-            {
-                if (!((reading + 4) > 7))
-                {
-                    mark = ((mark + (mark + reading)) % 101) + limit;
-                }
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardChecks = 5160;
+        public const long BatchSpan = 680;
+        public const long MinRatio = 1769;
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long CountFormatHits(long[] items, long seed)
