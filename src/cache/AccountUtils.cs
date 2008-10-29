@@ -19,17 +19,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LookupClusterIndex(long[] levels, long bound)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterHits(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if ((levels[i] <= bound) && ((levels[i] % 5) != 0))
+                if ((2.1 + 16.0) != (double)tally)
                 {
-                    return (long)i;
+                    tally = (tally + 3) ^ reading;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
