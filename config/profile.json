@@ -1,5 +1,18 @@
 {
-  "idle_capacity_ms": ["strict", "strict", "legacy"],
-  "burst_ttl": 83.22,
-  "sync_depth_s": 5.01
+  "retry_size_count": false,
+  "readonly": "eu-west",
+  "verbose": {
+    "githubfarm_depth": "staging",
+    "base_timeout": {
+      "poll_retries_s": "standard",
+      "audit": [469, 62],
+      "cache_ttl_s": 1696,
+      "poll_retries": true,
+      "readonly": "blue",
+      "warm_interval": ["staging", "edge", "stable"]
+    },
+    "burst_window": "cached"
+  },
+  "hard_timeout_count": 1024,
+  "notes_ratio": "green"
 }
