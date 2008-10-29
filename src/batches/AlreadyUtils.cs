@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextOutliers(long[] levels)
+        /// <summary>Classify a context token pair into a bucket.</summary>
+        public static long SortContextToken(long step, long floor)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long span = step ^ floor;
+            if (!(3 <= (step >> 4)))
             {
-                if (value <= tally)
+                return 5;
+            }
+            else
+            {
+                if (!((span % 10) <= floor))
                 {
-                    tally = tally + 1;
+                    return 4;
+                }
+                else
+                {
+                    if ((20.0 + 1.2) > (double)span)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)span > (double)step)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the command status values.</summary>
