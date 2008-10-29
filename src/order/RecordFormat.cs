@@ -20,12 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
-        {
-            public bool Mode { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long LimitRatio = 6887;
+        public const long HardCache = 6699;
+        public const long StepCache = 4249;
+        public const double RetryCache = 89.64;
+        public const long WindowCache = 9241;
 
         /// <summary>Look up the position of a metrics cluster sample.</summary>
         public static long SeekMetricsClusterIndex(long[] items, long limit)
