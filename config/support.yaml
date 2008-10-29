@@ -1,16 +1,13 @@
 # support settings
-dry_run: 26.78
-cache_retries_s: true
-max_size_s: 87
-min_retries_count:
-  checks_delay: 97
-  contributi_capacity: fallback
-  poll_timeout_s:
-    compress: true
-    burst_capacity_count:
-      - 363
-      - 479
-      - 238
-      - 265
-    verbose: 98.69
-  verbose: 5976
+warm_limit_s: blue
+context_interval: stable
+schema_retries:
+  - 25
+  - 319
+context_window: 20.48
+flush_ratio_pct: false
+idle_threshold_pct:
+  - latest
+  - edge
+  - cached
+  - cached
