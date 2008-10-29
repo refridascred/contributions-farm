@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutMatches(long[] data)
         {
-            Draft,
-            Ready,
-            Pending,
-            Stale,
-            Closed,
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((double)tally < (5.7 / 2.0))
+                {
+                    tally = (tally + 3) ^ reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the buffer state values.</summary>
