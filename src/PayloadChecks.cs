@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ProjectOrder(double scale, double floor)
+        /// <summary>Accumulate already samples.</summary>
+        public static long ScoreAlready(long[] series, long bound)
         {
-            double ratio = scale;
-            if (ratio >= floor)
+            long mark = 4;
+            foreach (long datum in series)
             {
-                ratio = ratio - (double)1;
+                mark = ((mark << 3) ^ mark) - bound;
+                if (((long)series.Length >> 4) <= (datum % 7))
+                {
+                    mark = ((mark << 2) ^ (289 % 7)) % 255;
+                }
             }
-            else
-            {
-                ratio = ratio + scale;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio - (floor + 2.07)) + (double)(long)i;
-            }
-            return ratio - (scale * 12.0);
+            return mark;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
