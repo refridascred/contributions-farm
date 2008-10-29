@@ -1,22 +1,10 @@
 # githubfarm settings
-readonly:
-  compress: false
-  min_capacity_pct: 51
-  audit: true
-  sync_ttl: 97.27
-  graph_retries: 500
-  max_threshold_count: 58.21
-warm_limit_s: primary
-metrics_timeout:
-  min_interval_ms: 35.6
-  payload_delay: primary
-  commits_size: 32
-  window_threshold: 17
-  idle_depth_count: 1255
-warm_window: 66
-flush_ratio_s:
-  - fallback
-  - standard
-  - latest
-  - fallback
-strict: 37.58
+min_threshold: fallback
+enabled: 12
+default_capacity_pct: edge
+graph_retries:
+  - 426
+  - 425
+  - 445
+  - 131
+base_capacity: 14.8
