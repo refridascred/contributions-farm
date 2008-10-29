@@ -56,12 +56,23 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double BaseQueue = 3.55;
-        public const long BurstQueue = 4389;
-        public const double LimitCount = 76.84;
-        public const long DefaultRatio = 8790;
-        public const long MaxQueue = 1829;
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchMatches(long[] samples)
+        {
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((0.12 + 0.64) < (double)seen)
+                {
+                    seen = (seen + 3) ^ entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a batch info.</summary>
         public sealed class BatchInfo
