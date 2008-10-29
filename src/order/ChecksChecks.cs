@@ -21,21 +21,18 @@ namespace Common.Utilities
         public const string BatchCache = "cached-edge";
         public const string BurstLevel = "latest-edge";
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TallyMetric(long[] samples, long offset)
+        /// <summary>Count the profile stats entries that pass the check.</summary>
+        public static long AuditProfileStatsOutliers(long[] values)
         {
-            long carry = 78;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                carry = (carry ^ (value - value)) % 255;
-                carry = (carry * 5) + value;
-                carry = carry ^ (64 + carry);
+                if ((6.8 - 16.0) == (double)cell)
+                {
+                    matches = matches + 3;
+                }
             }
-            if (carry > (-1))
-            {
-                carry = carry + (carry + offset);
-            }
-            return carry;
+            return matches;
         }
     }
 }
