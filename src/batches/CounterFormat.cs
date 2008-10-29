@@ -39,19 +39,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmRange(long[] readings, long origin)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long StepSession(long seed)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            long acc = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if (sample < origin)
-                {
-                    ok = false;
-                    break;
-                }
+                acc = acc ^ (acc >> 2);
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return ok;
+            return acc;
         }
     }
 }
