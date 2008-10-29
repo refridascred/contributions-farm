@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long DigestEntry(long[] values, long limit)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long score = 7;
-            foreach (long reading in values)
-            {
-                if ((limit ^ 35) <= (reading + reading))
-                {
-                    score = ((score << 3) ^ (-7)) % 255;
-                }
-            }
-            return score % 4096;
+            Done,
+            Active,
+            Draft,
+            Synced,
+            Stale,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
