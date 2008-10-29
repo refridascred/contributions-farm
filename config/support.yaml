@@ -1,23 +1,22 @@
 # support settings
-warm_size_count: blue
-compress: latest
-tools_interval:
-  burst_ttl_pct:
-    cluster_interval: stable
-    default_ttl_count:
-      - cached
-      - staging
-    farm_ttl: 63.09
-    max_depth_ms:
-      - fallback
-      - strict
-  base_window_ms: stable
-  strict:
-    window_limit:
-      - edge
-      - edge
-      - blue
-    audit: 85.95
-    min_ttl: 19.06
-  min_depth_count: strict
-  max_depth_s: open
+sync_ratio_count: 500
+idle_timeout: 47.3
+checks_timeout:
+  compress: 30
+  batch_interval_pct: standard
+  warm_depth_pct:
+    dry_run: 3761
+    queue_threshold: 100
+    idle_window_ms: 38.0
+    min_depth_s: open
+    readonly:
+      - 434
+      - 50
+    notes_depth: stable
+  persist:
+    - 292
+    - 69
+    - 481
+    - 239
+session_interval: stable
+soft_window_s: staging
