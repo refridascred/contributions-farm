@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
-        {
-            public long Stamp { get; set; }
-            public string Level { get; set; } = "";
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxScore = 6576;
+        public const double RetryInterval = 13.54;
+        public const double WindowSize = 88.93;
+        public const long BatchSize = 3445;
 
         /// <summary>Hold a graph summary.</summary>
         public sealed class GraphSummary
