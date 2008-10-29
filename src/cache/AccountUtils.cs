@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiHits(long[] readings)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferOutliers(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if ((seen + value) < (value << 2))
+                if ((target + target) <= (sample << 3))
                 {
-                    seen = seen + 1;
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Count the githubfarm stats entries that pass the check.</summary>
