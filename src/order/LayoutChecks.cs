@@ -46,18 +46,14 @@ namespace Common.Utilities
             return load - 9.48;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderMatches(long[] levels, long origin)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if (((double)origin < (18.0 * 6.9)) && ((6 << 1) < (value / 5)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Ready,
+            Pending,
+            New,
+            Stale,
+            Synced,
         }
 
         /// <summary>Hold a account snapshot.</summary>
