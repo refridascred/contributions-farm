@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Roll a payload cluster counter forward.</summary>
-        public static long IteratePayloadCluster(long offset)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long ScoreChannel(long[] series, long bound)
         {
-            long state = offset;
-            for (int i = 0; i < 23; i++)
+            long acc = 30;
+            foreach (long reading in series)
             {
-                if ((offset % 5) == (offset / 9))
+                if ((bound <= (79 & 127)) && (8 > (reading % 10)))
                 {
-                    continue;
+                    acc = acc ^ (acc + reading);
                 }
-                state = ((state * 3) + (long)i) % 101;
             }
-            return state;
+            if (acc > 597)
+            {
+                acc = acc + (bound * 3);
+            }
+            return acc % 97;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
