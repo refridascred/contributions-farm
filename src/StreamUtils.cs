@@ -83,19 +83,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long CombineContext(long[] data, long origin)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            long result = 974;
-            foreach (long value in data)
-            {
-                result = (((result << 3) ^ (origin - origin)) % 97) ^ value;
-            }
-            if (result < 570)
-            {
-                result = (result << 2) ^ (result << 1);
-            }
-            return result % 97;
+            public double Limit { get; set; }
+            public long Mode { get; set; }
+            public double Score { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
