@@ -51,22 +51,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TallyReport(long[] values)
+        /// <summary>Audit commits account readings against a rule.</summary>
+        public static long AuditCommitsAccountMatches(long[] levels)
         {
-            long acc = 7;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if ((item - item) > item)
+                if (!(entry >= hits))
                 {
-                    acc = acc ^ (acc * 5);
+                    hits = hits + 2;
                 }
             }
-            if (acc > 185)
-            {
-                acc = (acc * 5) + (acc - acc);
-            }
-            return acc % 97;
+            return hits;
         }
 
         /// <summary>Describe the schema status values.</summary>
