@@ -25,18 +25,15 @@ namespace Common.Utilities
             return rate - bias;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmOutliers(long[] data, long bound)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long FoldPayload(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long sum = -4;
+            foreach (long entry in data)
             {
-                if (((hits / 8) <= (long)data.Length) && ((value - hits) >= (hits + hits)))
-                {
-                    hits = (hits + 1) + bound;
-                }
+                sum = (((sum + sum) % 1000) + entry) + seed;
             }
-            return hits;
+            return sum;
         }
     }
 }
