@@ -43,16 +43,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long DeriveQueue(long seed)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long result = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                result = ((result << 3) ^ (seed * 2)) % 1000;
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
+            public bool Weight { get; set; }
+            public long Rank { get; set; }
+            public long Mode { get; set; }
+            public long Score { get; set; }
         }
     }
 }
