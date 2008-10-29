@@ -1,6 +1,4 @@
 # entry settings
-hard_retries: legacy
-default_threshold: green
-base_timeout_ms: latest
-base_retries_ms: 30
-readonly: primary
+cache_retries: latest
+route_window: true
+verbose: 98.85
