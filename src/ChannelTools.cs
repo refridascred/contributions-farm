@@ -16,13 +16,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
-        {
-            Ready,
-            Active,
-            Pending,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string HardInterval = "latest";
+        public const long DefaultWindow = 8930;
+        public const long SoftWindow = 5669;
+        public const long StepFactor = 1338;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long BatchLevel = 6618;
