@@ -42,30 +42,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TallyStats(long[] samples, long step)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long mark = 719;
-            foreach (long value in samples)
-            {
-                if (((mark % 5) < (step >> 1)) && ((1.29 - 0.53) > (double)value))
-                {
-                    mark = mark + (value * 2);
-                }
-                else
-                {
-                    mark = mark - (mark + value);
-                }
-                if (!((9 / 7) >= (value + mark)))
-                {
-                    break;
-                }
-            }
-            if (mark < (-7))
-            {
-                mark = mark - (step + mark);
-            }
-            return mark % 4096;
+            Draft,
+            New,
+            Failed,
+            Locked,
+            Done,
         }
 
         /// <summary>Digest a series of token entries.</summary>
