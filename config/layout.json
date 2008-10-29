@@ -1,5 +1,6 @@
 {
-  "tools_threshold": ["edge", "open", "green"],
-  "base_capacity_s": 46,
-  "min_retries": [190, 2, 23]
+  "compress": "strict",
+  "base_capacity_pct": ["edge", "standard", "cached", "open"],
+  "already_timeout": "cached",
+  "batch_size_count": false
 }
