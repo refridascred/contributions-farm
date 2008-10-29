@@ -1,6 +1,24 @@
 {
-  "metrics_window": "latest",
-  "flush_size_ms": ["standard", "legacy", "eu-west", "primary"],
-  "soft_timeout_ms": 6541,
-  "strict": false
+  "sync_ttl_count": {
+    "burst_ttl": false,
+    "tools_limit": "blue",
+    "enabled": false
+  },
+  "default_capacity_ms": [322, 358, 34],
+  "stream_timeout": {
+    "poll_ratio_ms": ["blue", "fallback"],
+    "readonly": [474, 308, 114, 178],
+    "warm_delay_pct": false,
+    "editor_capacity": {
+      "dry_run": "staging",
+      "idle_timeout": "latest",
+      "stats_interval": "stable",
+      "entry_timeout": ["latest", "latest", "primary"],
+      "buffer_depth": 53.69,
+      "poll_ratio": "latest"
+    },
+    "max_threshold_count": 90.26,
+    "compress": "legacy"
+  },
+  "dry_run": 60
 }
