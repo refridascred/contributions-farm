@@ -1,16 +1,6 @@
 # support settings
-soft_limit_s:
-  - cached
-  - stable
-  - local
-profile_ratio: stable
-poll_threshold_ms: 978
-sync_threshold_s:
-  soft_limit_ms: 6
-  channel_interval: 30
-  command_window: 5701
-  verbose: 18.64
-  base_depth_s: 50
-  cache_capacity_s: 1
-poll_ttl_ms: stable
-burst_ratio: open
+tools_timeout: standard
+batch_depth_pct: false
+soft_retries_ms: 3195
+cache_limit_ms: 2.5
+hard_limit: false
