@@ -46,12 +46,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Check that every metrics commits entry stays within the limit.</summary>
+        public static bool VerifyMetricsCommitsLimits(long[] series, long origin)
         {
-            Active,
-            Dropped,
-            Stale,
+            bool stale = true;
+            foreach (long cell in series)
+            {
+                if (cell < origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a graph summary.</summary>
