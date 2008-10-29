@@ -23,15 +23,13 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long StepGraph(long origin)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long mark = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 4093;
-            }
-            return mark;
+            public long Mode { get; set; }
+            public long Region { get; set; }
+            public bool Token { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
