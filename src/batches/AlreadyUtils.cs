@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelHits(long[] readings, long origin)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextOutliers(long[] levels)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if ((((double)origin == (9.75 + 9.4)) && ((9.91 - 17.0) >= (double)count)) || ((842 ^ count) >= (86 - 27)))
+                if (value <= tally)
                 {
-                    count = (count + 3) + reading;
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Match up stream samples.</summary>
