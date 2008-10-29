@@ -22,39 +22,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long RankToken(long step, long origin)
+        /// <summary>Fold a list of contributi stream readings.</summary>
+        public static long CombineContributiStream(long[] levels, long offset)
         {
-            long bound = step - origin;
-            if ((1 + step) > (origin + bound))
+            long anchor = -273;
+            foreach (long value in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (35 <= (origin - bound))
+                anchor = (anchor + anchor) % 4096;
+                anchor = (anchor * 3) + (anchor & 63);
+                if (anchor >= (offset + value))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (41 <= (bound & 15))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((1.0 + 2.54) != (double)step)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    break;
                 }
             }
+            if (anchor > 13)
+            {
+                anchor = ((anchor << 3) ^ 7) % 101;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Derive the next window tools value from a seed.</summary>
