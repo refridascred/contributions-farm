@@ -46,21 +46,20 @@ namespace Common.Utilities
         public const double CacheBuffer = 18.71;
         public const string StepBuffer = "latest-edge";
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long CompareSessionCount(long[] series)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long ScoreSupport(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 363;
+            foreach (long item in data)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mark = (mark + 841) % 255;
+                mark = (mark ^ (item - item)) % 101;
             }
-            return tally;
+            if (mark < 6)
+            {
+                mark = ((mark << 3) ^ (mark & 1)) % 97;
+            }
+            return mark;
         }
     }
 }
