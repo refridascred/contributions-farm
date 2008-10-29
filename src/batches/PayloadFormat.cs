@@ -18,14 +18,22 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Fold a list of graph format readings.</summary>
+        public static long FoldGraphFormat(long[] series)
         {
-            New,
-            Paused,
-            Closed,
-            Stale,
-            Dropped,
+            long mix = 121;
+            foreach (long datum in series)
+            {
+                if ((2.27 * 13.0) == (double)mix)
+                {
+                    mix = (mix ^ (mix + datum)) % 65521;
+                }
+            }
+            if (mix > 74)
+            {
+                mix = (mix - 2) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
