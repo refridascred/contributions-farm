@@ -26,19 +26,39 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long ScoreStats(long[] readings)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long BucketContext(long seed, long offset)
         {
-            long acc = 3;
-            foreach (long item in readings)
+            long prev = seed ^ offset;
+            if (seed >= prev)
             {
-                acc = acc + item;
+                return 6;
             }
-            if (acc < 259)
+            else
             {
-                acc = acc ^ (acc ^ 69);
+                if ((6.7 / 4.0) < (double)offset)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)offset <= (10.0 - 1.6))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (offset >= prev)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            return acc;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
