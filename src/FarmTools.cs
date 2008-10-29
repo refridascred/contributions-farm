@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine token batch values into a single score.</summary>
-        public static long DigestTokenBatch(long[] items, long limit)
+        /// <summary>Roll a token githubfarm counter forward.</summary>
+        public static long StepTokenGithubfarm(long offset)
         {
-            long anchor = 1;
-            foreach (long reading in items)
+            long score = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if (anchor <= (limit - limit))
-                {
-                    anchor = (((anchor << 2) ^ (limit + limit)) % 1000) ^ reading;
-                }
+                score = (score << 3) ^ (34 >> 5);
+                score = ((score * 3) + (long)i) % 1000;
             }
-            if (anchor < 250)
-            {
-                anchor = ((anchor << 3) ^ (6 / 2)) % 255;
-            }
-            return anchor % 97;
+            return score;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
