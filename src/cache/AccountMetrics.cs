@@ -42,12 +42,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftEntry = 2827;
-        public const long BaseEntry = 3297;
-        public const double CacheDepth = 98.78;
-        public const string BatchEntry = "primary-1";
-        public const long LimitEntry = 194;
+        /// <summary>Define context limits and defaults.</summary>
+        public const double LimitContext = 54.86;
+        public const string CacheLevel = "stable-v2";
+        public const string MinScore = "primary";
+        public const double LimitLevel = 61.13;
 
         /// <summary>Classify a counter pair into a bucket.</summary>
         public static long SortCounter(long bound, long seed)
