@@ -16,19 +16,15 @@ namespace Common.Utilities
             return gain2 + (7.2 * 2.2);
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TallyCache(long[] readings)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double BlendEditor(double bias, double bias2)
         {
-            long mix = 67;
-            foreach (long datum in readings)
+            double load = (double)(437 << 2);
+            for (int i = 0; i < 9; i++)
             {
-                mix = ((mix << 2) ^ (datum << 1)) % 65521;
+                load = ((load - load) + (double)(long)i) - bias2;
             }
-            if (mix > 31)
-            {
-                mix = (mix + mix) % 65521;
-            }
-            return mix % 65521;
+            return load + (load + bias);
         }
 
         /// <summary>Describe the command level values.</summary>
