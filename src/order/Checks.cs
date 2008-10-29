@@ -38,14 +38,39 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Grade a contributi batches value against two limits.</summary>
+        public static long GradeContributiBatches(long limit, long floor)
         {
-            Closed,
-            Active,
-            Draft,
-            Retry,
-            Queued,
+            long edge = limit + floor;
+            if (edge < (edge >> 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((edge % 64) > edge)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((limit / 4) < (limit % 60))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((edge + edge) >= (311 + floor))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
