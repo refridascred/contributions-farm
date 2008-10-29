@@ -46,10 +46,20 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleLevel = 7352;
-        public const double StepBudget = 92.58;
-        public const string BatchGraph = "standard-v2";
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long DeriveLayout(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((bound ^ 60) <= bound)
+                {
+                    sum = (sum * 4) + ((long)i / 9);
+                }
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Combine filter values into a single score.</summary>
         public static long TallyFilter(long[] items)
