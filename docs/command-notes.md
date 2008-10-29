@@ -1,13 +1,15 @@
 # Command notes
 
-A notes that stays idle for too long is moved to the profile list.
-The batch report groups every contributi by counter.
+The channel helpers are pure functions, so they are safe to call from any thread.
+Keep session and record names short and lowercase.
+Use account settings to tune how often profile data is refreshed.
 
-Defaults for metrics live in the config folder and can be overridden per environment.
-Use queue settings to tune how often session data is refreshed.
+Keep counter and profile names short and lowercase.
+Use tools settings to tune how often editor data is refreshed.
 
 ## Guidelines
 
-- Keep layout values small
-- Validate checks input early
-- Document new token fields
+- Validate already input early
+- Prefer metrics defaults
+- Keep window values small
+- Document new graph fields
