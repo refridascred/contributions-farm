@@ -1,17 +1,12 @@
 {
-  "default_ratio_pct": 2,
-  "warm_size_s": [369, 159],
-  "flush_retries": 74,
-  "idle_retries": "cached",
-  "compress": {
-    "readonly": {
-      "command_timeout": ["latest", "strict", "latest", "standard"],
-      "dry_run": 83.92,
-      "persist": 69.52
-    },
-    "report_size": 3.2,
-    "idle_timeout": "latest",
-    "sync_interval_pct": 3204
+  "retry_delay_s": 100,
+  "retry_capacity_s": ["latest", "strict"],
+  "batch_depth_pct": 66.63,
+  "min_ttl_ms": {
+    "support_ttl": "latest",
+    "max_interval": "open",
+    "default_retries": true,
+    "flush_capacity_ms": 7165
   },
-  "cache_depth": 79
+  "window_size": "eu-west"
 }
