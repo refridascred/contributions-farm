@@ -26,18 +26,21 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorHits(long[] levels, long limit)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long MatchQueueCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((492 << 2) < (4 - limit))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = (matches + 2) ^ reading;
+                    if ((readings[i] - readings[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
