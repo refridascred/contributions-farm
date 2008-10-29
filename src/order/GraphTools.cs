@@ -25,24 +25,18 @@ namespace Common.Utilities
             return load + (rate - rate);
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long GradePayload(long target, long limit)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaGaps(long[] data, long target)
         {
-            if ((double)limit > (9.0 / 9.0))
+            long hits = 0;
+            foreach (long reading in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (target <= (limit / 8))
+                if ((double)reading >= (10.0 - 0.86))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    hits = (hits + 1) - target;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the cache kind values.</summary>
