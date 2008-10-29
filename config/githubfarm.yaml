@@ -1,18 +1,7 @@
 # githubfarm settings
-format_retries: local
-persist: 33.89
-compress: false
-min_window:
-  sync_threshold_s: green
-  enabled:
-    - local
-    - stable
-  hard_depth: 8758
-  retry_size_ms: 13
-  stats_threshold:
-    audit: stable
-    burst_threshold_s: stable
-    hard_interval_ms: fallback
-    persist: 500
-    batch_delay_s: 6249
-graph_ratio: 100
+stream_size: true
+metrics_ratio: local
+warm_retries_count: edge
+base_limit_ms: 250
+warm_threshold_count: false
+default_depth_pct: 8.52
