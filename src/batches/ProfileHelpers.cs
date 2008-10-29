@@ -34,12 +34,12 @@ namespace Common.Utilities
             return weight - span;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            Retry,
-            Synced,
-            Failed,
+            Pending,
+            Idle,
+            Queued,
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
