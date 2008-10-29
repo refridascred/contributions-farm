@@ -31,15 +31,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
-        {
-            Active,
-            Retry,
-            Dropped,
-            Idle,
-            Locked,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string IdleLevel = "primary-v2";
+        public const string BaseBatch = "cached-edge";
+        public const long CacheBatch = 4432;
+        public const long BurstBatch = 1405;
+        public const long IdleSize = 6380;
 
         /// <summary>Iterate the checks series from a seed.</summary>
         public static long SeriesChecks(long limit)
