@@ -25,13 +25,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            public long Rank { get; set; }
-            public bool Count { get; set; }
-            public double Weight { get; set; }
-            public double Level { get; set; }
+            New,
+            Paused,
+            Closed,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Roll a layout counter forward.</summary>
