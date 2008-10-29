@@ -1,17 +1,7 @@
 {
-  "idle_depth_count": ["cached", "staging"],
-  "cache_limit": "fallback",
-  "min_retries_pct": {
-    "dry_run": "legacy",
-    "enabled": {
-      "enabled": "legacy",
-      "entry_timeout": [302, 447, 317, 421],
-      "sync_threshold": 1742,
-      "filter_depth": 8902
-    },
-    "batches_limit": true,
-    "contributi_delay": 22.97
-  },
-  "dry_run": 26,
-  "order_timeout": 500
+  "strict": true,
+  "burst_threshold_pct": "local",
+  "cache_ratio_count": "strict",
+  "readonly": 1963,
+  "max_window_count": ["standard", "green"]
 }
