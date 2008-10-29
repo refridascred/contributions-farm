@@ -20,15 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] levels)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorRange(long[] data, long step)
         {
-            long total = -21;
-            foreach (long value in levels)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                total = total - value;
+                if (sample < step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return total % 4096;
+            return stale;
         }
 
         /// <summary>Roll a graph channel counter forward.</summary>
