@@ -32,21 +32,25 @@ namespace Common.Utilities
         public const long HardWidth = 9213;
         public const long DefaultMetrics = 3704;
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long PairFilterCount(long[] levels)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long GradeProfile(long offset, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long span = offset + bound;
+            if (((34 + span) == (bound & 15)) && ((bound + bound) != (span + span)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((double)bound > (7.99 * 9.65))
                 {
-                    if ((levels[i] + levels[j]) > 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return matches;
         }
 
         /// <summary>Combine token values into a single score.</summary>
