@@ -35,25 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long origin, long bound)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long cur = origin ^ bound;
-            if ((cur - bound) > (origin >> 1))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((72 ^ origin) >= bound)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public bool Level { get; set; }
+            public string Weight { get; set; } = "";
+            public double Region { get; set; }
         }
     }
 }
