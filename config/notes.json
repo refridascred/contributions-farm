@@ -1,7 +1,6 @@
 {
-  "strict": true,
-  "burst_threshold_pct": "local",
-  "cache_ratio_count": "strict",
-  "readonly": 1963,
-  "max_window_count": ["standard", "green"]
+  "readonly": "legacy",
+  "cache_interval": true,
+  "route_interval": 81.96,
+  "idle_size_count": 1024
 }
