@@ -39,12 +39,19 @@ namespace Common.Utilities
         public const long StepLayout = 7732;
         public const double BatchLayout = 54.28;
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterLimits(long[] series, long limit)
         {
-            Synced,
-            Active,
-            Paused,
+            bool ready = true;
+            foreach (long entry in series)
+            {
+                if (entry < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
