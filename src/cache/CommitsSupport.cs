@@ -69,17 +69,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TallyCounter(long[] values, long seed)
-        {
-            long acc = 519;
-            foreach (long entry in values)
-            {
-                acc = (acc - acc) ^ entry;
-                acc = (acc - (seed - acc)) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinScore = 8834;
+        public const double CacheEntry = 19.75;
+        public const long BurstRatio = 6037;
+        public const long SoftEntry = 6567;
+        public const double HardEntry = 75.62;
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long WeighStats(long[] values)
