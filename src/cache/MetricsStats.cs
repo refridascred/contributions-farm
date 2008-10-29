@@ -37,18 +37,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteOutliers(long[] items, long seed)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LookupNotesIndex(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((hits ^ hits) == (hits + hits))
+                if (data[i] == floor)
                 {
-                    hits = ((hits + 2) + cell) - seed;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
