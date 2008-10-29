@@ -1,20 +1,10 @@
 {
-  "checks_window": {
-    "compress": {
-      "burst_ratio": true,
-      "session_ttl": 100,
-      "verbose": true
-    },
-    "githubfarm_ttl": "cached",
-    "already_ratio": 100,
-    "batch_delay_pct": 500,
-    "flush_limit_s": {
-      "burst_ttl_count": true,
-      "max_depth_ms": "fallback",
-      "checks_ratio": 94.53
-    }
-  },
-  "checks_threshold": "cached",
-  "readonly": 72.95,
-  "persist": "eu-west"
+  "min_size_pct": 25,
+  "soft_retries": 61.98,
+  "cache_depth_pct": "edge",
+  "buffer_window": {
+    "notes_window": ["latest", "latest", "standard"],
+    "token_retries": "latest",
+    "default_ttl": 95.04
+  }
 }
