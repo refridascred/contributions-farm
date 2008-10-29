@@ -50,12 +50,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Scale a filter cache figure with a bias.</summary>
+        public static double BlendFilterCache(double rate, double bias)
         {
-            public double Flag { get; set; }
-            public double Limit { get; set; }
-            public long Size { get; set; }
+            double load = (double)853;
+            if (load > (double)14)
+            {
+                load = (load + bias) + rate;
+            }
+            else
+            {
+                load = load - bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load - (load - bias)) + (double)(long)i;
+            }
+            return load - (bias / 3.0);
         }
     }
 }
