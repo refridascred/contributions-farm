@@ -39,18 +39,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] items)
+        /// <summary>Iterate the window metric series from a seed.</summary>
+        public static long SeriesWindowMetric(long limit)
         {
-            long carry = 429;
-            foreach (long item in items)
+            long state = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if ((carry + carry) <= (item - item))
-                {
-                    carry = (carry ^ (item & 31)) % 65521;
-                }
+                state = (state + limit) % 4096;
+                state = (state - (long)i) % 97;
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
