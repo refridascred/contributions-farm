@@ -6,9 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=178
-log "limit is ${COMMAND_LIMIT}"
-
-for item in primary fallback stable edge; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 1))
 done
+log "total ${total}"
+
+COMMAND_LIMIT=226
+log "limit is ${COMMAND_LIMIT}"
