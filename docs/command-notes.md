@@ -1,13 +1,11 @@
 # Command notes
 
-Each filter is validated before it reaches the batch queue.
-When a report fails, the session handler retries a few times before giving up.
-
-The checks report groups every buffer by order.
-A stats that stays idle for too long is moved to the stats list.
+Use graph settings to tune how often checks data is refreshed.
+A entry that stays idle for too long is moved to the queue list.
+The command report groups every format by batch.
 
 ## Guidelines
 
-- Log every schema change
+- Keep order values small
 - Review schema limits each release
-- Prefer commits defaults
+- Prefer report defaults
