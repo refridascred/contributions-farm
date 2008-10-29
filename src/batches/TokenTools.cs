@@ -13,22 +13,17 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count the stats profile entries that pass the check.</summary>
-        public static long TallyStatsProfileOutliers(long[] values)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LocateChecksIndex(long[] readings, long step)
         {
-            long hits = 0;
-            foreach (long item in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((-75) < (hits - item)) && ((hits / 7) <= hits))
+                if (readings[i] == step)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Accumulate metric samples.</summary>
