@@ -16,39 +16,19 @@ namespace Common.Utilities
             return ratio2 - (9.4 - span);
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long ClassifyNotes(long limit, long step)
+        /// <summary>Validate farm channel readings against a bound.</summary>
+        public static bool VerifyFarmChannelBounds(long[] samples, long seed)
         {
-            long gap = limit ^ step;
-            if (((867 % 8) < (limit << 1)) || ((557 - step) >= (gap << 3)))
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((-52) <= (step / 7))
+                if (datum != seed)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)step >= 3.0)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((gap % 16) > gap)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Define support limits and defaults.</summary>
