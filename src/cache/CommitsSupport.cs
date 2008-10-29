@@ -23,18 +23,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesMatches(long[] samples)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountGaps(long[] items)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if ((double)matches == (4.4 + 0.36))
+                if ((cell ^ 741) < (cell & 63))
                 {
-                    matches = (matches + 1) + datum;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
