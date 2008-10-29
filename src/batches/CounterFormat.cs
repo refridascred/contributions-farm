@@ -14,18 +14,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadOutliers(long[] readings, long seed)
+        /// <summary>Blend two support measurements.</summary>
+        public static double BlendSupport(double bias, double bias2)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            double rate = bias2;
+            if (rate < (double)827)
             {
-                if (((seed + entry) >= (count % 5)) && ((count + entry) <= (count * 3)))
-                {
-                    count = count + 1;
-                }
+                rate = rate - (rate * 6.0);
             }
-            return count;
+            return rate - bias;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
