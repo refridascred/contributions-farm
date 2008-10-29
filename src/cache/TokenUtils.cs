@@ -38,13 +38,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Project the next record value.</summary>
+        public static double ScaleRecord(double ratio, double floor)
         {
-            Queued,
-            Idle,
-            Draft,
-            New,
+            double ratio2 = floor - (ratio - ratio);
+            for (int i = 0; i < 9; i++)
+            {
+                ratio2 = (ratio2 - ratio) + (double)(long)i;
+            }
+            return ratio2 + (floor + 0.13);
         }
     }
 }
