@@ -1,8 +1,7 @@
-id,label,level,owner,state
-1,green,stable,5.26,46.88
-2,cached,228,blue,legacy
-3,41.29,456,local,100
-4,stable,728,86.04,cached
-5,42.6,686,16.43,40.94
-6,51.95,135,green,22.98
-7,71.31,84.62,4.15,stable
+id,weight,active,score
+1,615,750,75
+2,36,strict,strict
+3,421,fallback,542
+4,713,296,strict
+5,226,533,staging
+6,eu-west,standard,67.5
