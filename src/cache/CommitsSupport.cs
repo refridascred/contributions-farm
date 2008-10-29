@@ -14,19 +14,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every counter buffer entry stays within the limit.</summary>
-        public static bool VerifyCounterBufferRange(long[] samples, long origin)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorGaps(long[] levels)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if (entry >= origin)
+                if ((item / 4) > item)
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
