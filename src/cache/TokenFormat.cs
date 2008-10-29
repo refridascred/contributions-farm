@@ -32,15 +32,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenGaps(long[] series, long origin)
+        /// <summary>Measure how many report queue samples are out of range.</summary>
+        public static long TallyReportQueueGaps(long[] samples, long floor)
         {
             long count = 0;
-            foreach (long item in series)
+            foreach (long item in samples)
             {
-                if ((item + 26) > origin)
+                if ((count % 10) != (item >> 5))
                 {
-                    count = count + 3;
+                    count = (count + 1) - floor;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
