@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double BlendRoute(double bias, double offset)
         {
-            public bool Offset { get; set; }
-            public long Flag { get; set; }
-            public bool Stamp { get; set; }
-            public string Size { get; set; } = "";
+            double weight = bias;
+            if (weight >= (double)9)
+            {
+                weight = (weight + (double)4) - offset;
+            }
+            return weight - weight;
         }
 
         /// <summary>Audit cache contributi readings against a rule.</summary>
