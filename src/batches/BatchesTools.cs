@@ -30,18 +30,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksMatches(long[] readings, long limit)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if (limit < (seen - seen))
-                {
-                    seen = (seen + 3) ^ item;
-                }
-            }
-            return seen;
+            Draft,
+            Pending,
+            Locked,
+            Closed,
+            Idle,
         }
     }
 }
