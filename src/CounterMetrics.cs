@@ -51,16 +51,17 @@ namespace Common.Utilities
             return drift - (drift / 6.0);
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long DeriveEditor(long seed)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long SeekGraphIndex(long[] series, long seed)
         {
-            long carry = seed;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = (carry + ((long)i << 3)) % 4096;
-                carry = ((carry * 2) + (long)i) % 1000;
+                if ((series[i] > seed) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
     }
 }
