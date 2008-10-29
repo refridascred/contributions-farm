@@ -1,7 +1,14 @@
 # githubfarm settings
-min_window_ms: stable
-base_size_count: true
-default_ttl_pct: staging
-poll_timeout_ms:
-  - eu-west
-  - blue
+retry_threshold: cached
+default_interval:
+  soft_threshold_count: blue
+  batch_size_pct: 4442
+  githubfarm_depth: fallback
+  base_window: 2901
+flush_depth_pct: open
+burst_ratio_pct: 75.96
+persist:
+  - open
+  - open
+  - standard
+window_delay: 250
