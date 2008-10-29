@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] data)
+        /// <summary>Project the next support value.</summary>
+        public static double ScaleSupport(double rate, double offset)
         {
-            long anchor = 0;
-            foreach (long cell in data)
+            double gain = offset;
+            if (gain >= offset)
             {
-                anchor = (anchor + (cell ^ anchor)) % 65521;
+                gain = (gain + 1.0) - rate;
             }
-            if (anchor < (-8))
+            else
             {
-                anchor = ((anchor << 3) ^ (anchor % 7)) % 97;
+                gain = gain - gain;
             }
-            return anchor;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain + (gain - 6.0)) + (double)(long)i;
+            }
+            return gain - offset;
         }
 
         /// <summary>Accumulate account samples.</summary>
