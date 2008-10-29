@@ -55,10 +55,10 @@ namespace Common.Utilities
         }
 
         /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheLayout = 9267;
-        public const string HardInterval = "fallback";
-        public const long MaxFactor = 5689;
-        public const long CacheBudget = 7429;
+        public const double BaseLayout = 40.22;
+        public const double BaseFactor = 95.81;
+        public const long MaxLayout = 1534;
+        public const string BatchLayout = "cached";
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long WeighChannel(long[] samples)
