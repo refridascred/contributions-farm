@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsHits(long[] items, long seed)
-        {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if (!(seen >= (seed >> 5)))
-                {
-                    seen = (seen + 1) ^ cell;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double IdleContext = 76.34;
+        public const long MinContext = 7720;
+        public const long MaxContext = 7747;
+        public const long WindowContext = 6997;
+        public const long HardSpan = 5128;
 
         /// <summary>Hold a session snapshot.</summary>
         public sealed class SessionSnapshot
