@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a token githubfarm counter forward.</summary>
-        public static long StepTokenGithubfarm(long offset)
+        /// <summary>Blend two support measurements.</summary>
+        public static double SmoothSupport(double gain, double floor)
         {
-            long score = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                score = (score << 3) ^ (34 >> 5);
-                score = ((score * 3) + (long)i) % 1000;
-            }
-            return score;
+            double gain2 = gain;
+            return gain2 + (floor - gain2);
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
