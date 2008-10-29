@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BatchDepth = 5883;
-        public const long BurstDepth = 1480;
-        public const double SoftWidth = 71.35;
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
+        {
+            public long Flag { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const string DefaultScore = "standard-v2";
