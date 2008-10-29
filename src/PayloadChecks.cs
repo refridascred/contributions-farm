@@ -24,12 +24,14 @@ namespace Common.Utilities
             return ratio - (scale * 12.0);
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            public long Flag { get; set; }
-            public long Rank { get; set; }
-            public string Size { get; set; } = "";
+            Active,
+            Draft,
+            Queued,
+            Paused,
+            Stale,
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
