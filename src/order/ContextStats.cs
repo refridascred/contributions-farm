@@ -25,19 +25,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long CombineStats(long[] samples)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long WeighNotes(long[] items, long target)
         {
-            long carry = 852;
-            foreach (long reading in samples)
+            long mark = 9;
+            foreach (long cell in items)
             {
-                if ((291 - reading) < (501 / 2))
-                {
-                    carry = (carry ^ (carry & 127)) % 101;
-                }
-                carry = (carry ^ reading) % 97;
+                mark = (((mark * 4) + (cell << 1)) % 1000) - target;
             }
-            return carry % 65521;
+            return mark;
         }
 
         /// <summary>Fold a list of graph farm readings.</summary>
