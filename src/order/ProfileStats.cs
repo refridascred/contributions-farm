@@ -40,31 +40,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long SortLayout(long step, long seed)
-        {
-            if ((step + step) <= seed)
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((seed + 764) <= step))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (step < seed)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinLevel = 8774;
+        public const long MaxFactor = 7432;
+        public const string StepBatch = "legacy-edge";
+        public const string CacheInterval = "standard";
     }
 }
