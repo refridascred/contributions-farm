@@ -41,18 +41,9 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextOutliers(long[] items, long bound)
-        {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if ((value / 8) <= (value >> 4))
-                {
-                    matches = (matches + 3) + bound;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double CacheSession = 83.33;
+        public const long IdleCount = 9781;
+        public const long HardDepth = 9129;
     }
 }
