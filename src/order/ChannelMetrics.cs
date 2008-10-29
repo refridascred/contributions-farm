@@ -19,18 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterGaps(long[] samples)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long PairSchemaCount(long[] series)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((8 * 5) > (datum / 2))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = count + 3;
+                    if ((series[i] - series[j]) < 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Digest a series of window entries.</summary>
