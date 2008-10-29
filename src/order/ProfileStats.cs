@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Rank order input into a small class.</summary>
-        public static long ClassifyOrder(long offset, long bound)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long prev = offset ^ bound;
-            if ((1.9 / 9.0) >= (double)prev)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((74 >> 1) != (470 - bound)) && (prev >= (offset + (-169))))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Size { get; set; }
+            public long Score { get; set; }
+            public bool Token { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Combine already cache values into a single score.</summary>
