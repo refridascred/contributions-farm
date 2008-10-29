@@ -22,11 +22,14 @@ namespace Common.Utilities
         public const long RetryDepth = 5104;
         public const long IdleSpan = 752;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string BaseMetric = "primary";
-        public const double StepCount = 54.44;
-        public const double HardMetric = 47.93;
-        public const long SoftMetric = 6635;
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
+        {
+            public string Offset { get; set; } = "";
+            public string Region { get; set; } = "";
+            public double Total { get; set; }
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Hold a counter stats.</summary>
         public sealed class CounterStats
