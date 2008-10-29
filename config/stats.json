@@ -1,8 +1,7 @@
 {
-  "retry_ratio": ["local", "staging"],
-  "hard_ratio_s": "stable",
-  "layout_ratio": 71.51,
-  "compress": 10,
-  "burst_window_pct": 63,
-  "max_ratio": 500
+  "retry_size_pct": true,
+  "strict": "local",
+  "soft_ratio": 100,
+  "command_threshold": "strict",
+  "default_retries": "strict"
 }
