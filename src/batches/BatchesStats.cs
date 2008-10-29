@@ -41,17 +41,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LookupRecordIndex(long[] data, long offset)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextOutliers(long[] items, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if (data[i] < offset)
+                if ((value / 8) <= (value >> 4))
                 {
-                    return (long)i;
+                    matches = (matches + 3) + bound;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
