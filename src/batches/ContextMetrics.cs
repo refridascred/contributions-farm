@@ -33,13 +33,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long BucketTools(long offset, long offset2)
         {
-            public bool Flag { get; set; }
-            public long Mode { get; set; }
-            public string Rank { get; set; } = "";
-            public double Owner { get; set; }
+            long prev = offset + offset2;
+            if ((prev + 5) >= (prev << 3))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((prev ^ prev) < prev) || (7.4 <= (double)offset2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)offset <= (4.4 + 9.7))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
