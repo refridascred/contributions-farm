@@ -1,10 +1,10 @@
 # support settings
-enabled:
-  - 237
-  - 208
-  - 118
-max_retries: 8186
-strict: edge
-audit:
-  - standard
-  - stable
+strict: 42.58
+hard_threshold_pct: 500
+cache_retries_ms:
+  burst_depth: 7765
+  checks_ttl: 20.63
+  sync_limit_ms: 30
+  hard_ttl_pct: fallback
+  dry_run: 5475
+  persist: true
