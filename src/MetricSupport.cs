@@ -33,17 +33,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a layout token reading by value.</summary>
-        public static long LocateLayoutTokenIndex(long[] levels, long target)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ScaleEditor(double weight, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double drift = floor;
+            if (drift <= 7.32)
             {
-                if (levels[i] < target)
-                {
-                    return (long)i;
-                }
+                drift = drift - (0.83 / 7.0);
             }
-            return -1;
+            return drift + (weight * 4.52);
         }
     }
 }
