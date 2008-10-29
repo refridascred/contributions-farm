@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Match up commits samples.</summary>
-        public static long OverlapCommitsCount(long[] series)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long RollSchema(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = origin;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Hold a channel header.</summary>
