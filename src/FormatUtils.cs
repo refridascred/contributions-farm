@@ -58,14 +58,23 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ProjectSupport(double scale, double offset)
         {
-            Locked,
-            Synced,
-            Stale,
-            Retry,
-            Dropped,
+            double bias = (double)(751 & 3);
+            if (bias > scale)
+            {
+                bias = bias + offset;
+            }
+            else
+            {
+                bias = bias - (offset / 8.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias - (bias + scale)) + (double)(long)i;
+            }
+            return bias - (bias / 8.0);
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
