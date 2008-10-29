@@ -50,19 +50,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next schema notes value.</summary>
-        public static double ScaleSchemaNotes(double ratio, double offset)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutLimits(long[] series, long offset)
         {
-            double drift = 5.7;
-            if (drift < (drift / 4.0))
+            bool ok = true;
+            foreach (long cell in series)
             {
-                drift = drift + offset;
+                if (cell < offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - (offset - 0.17)) + (double)(long)i;
-            }
-            return drift - (ratio / 7.0);
+            return ok;
         }
     }
 }
