@@ -23,12 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            Ready,
-            Idle,
-            Synced,
+            public bool Weight { get; set; }
+            public double Region { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Describe the format level values.</summary>
