@@ -1,5 +1,18 @@
 {
-  "strict": 6474,
-  "hard_ttl": 500,
-  "audit": 250
+  "retry_delay": {
+    "batch_retries": "staging",
+    "verbose": {
+      "compress": ["latest", "fallback"],
+      "sync_limit": 62,
+      "warm_depth_ms": 62.88,
+      "dry_run": 88,
+      "batch_timeout_ms": 57.9
+    },
+    "stream_retries": ["stable", "open"]
+  },
+  "metric_limit": 60.06,
+  "verbose": 54.1,
+  "audit": [124, 433, 131, 159],
+  "queue_ratio": 2,
+  "readonly": 11.92
 }
