@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            Dropped,
-            New,
+            Paused,
             Active,
-            Ready,
+            Idle,
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
