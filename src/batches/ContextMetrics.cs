@@ -45,10 +45,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinNotes = 5454;
-        public const string LimitScore = "strict-edge";
-        public const string BaseNotes = "open-v2";
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long SeriesSupport(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                acc = (acc - (long)i) % 65521;
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const string IdleBatch = "latest-edge";
