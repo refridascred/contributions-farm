@@ -87,19 +87,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long DigestStream(long[] series, long offset)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long DigestRecord(long[] readings)
         {
-            long result = 799;
-            foreach (long sample in series)
+            long total = 0;
+            foreach (long datum in readings)
             {
-                result = (((result * 2) + (result & 63)) % 4096) - sample;
+                total = ((total << 3) ^ 267) - datum;
+                total = (total - (639 - total)) % 255;
             }
-            if (result > (-301))
-            {
-                result = (result - (6 + offset)) % 97;
-            }
-            return result;
+            return total;
         }
     }
 }
