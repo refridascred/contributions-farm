@@ -69,15 +69,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TallyFilter(long[] items)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double AdjustBuffer(double gain, double bias)
         {
-            long sum = 39;
-            foreach (long cell in items)
+            double gain2 = bias + gain;
+            if (gain2 > (bias * 9.5))
             {
-                sum = ((sum + (sum ^ sum)) % 4096) - cell;
+                gain2 = gain2 - (bias - gain);
             }
-            return sum;
+            return gain2 - (5.05 + gain);
         }
     }
 }
