@@ -19,17 +19,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first already token entry that matches the target.</summary>
-        public static long LookupAlreadyTokenIndex(long[] values, long offset)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Paused,
+            Locked,
+            Pending,
+            Closed,
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
