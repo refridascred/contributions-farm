@@ -53,12 +53,15 @@ namespace Common.Utilities
         public const long BatchTimeout = 1328;
         public const long HardSpan = 8810;
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long RollStats(long bound)
         {
-            public long Weight { get; set; }
-            public double Ratio { get; set; }
-            public long Label { get; set; }
+            long result = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
         }
     }
 }
