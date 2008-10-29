@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordMatches(long[] series)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LocateReportIndex(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((-545) >= (tally - tally)) || (((tally >> 3) < (datum + (-6))) || ((double)tally > 4.66)))
+                if ((data[i] == offset) && ((data[i] % 3) == 0))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a context record.</summary>
