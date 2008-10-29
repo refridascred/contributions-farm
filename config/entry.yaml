@@ -1,4 +1,14 @@
 # entry settings
-cache_retries: latest
-route_window: true
-verbose: 98.85
+hard_ratio_count:
+  commits_interval: 83.16
+  max_depth_count:
+    - stable
+    - stable
+    - primary
+    - stable
+  metrics_depth: primary
+min_ratio: green
+strict: legacy
+farm_timeout: edge
+batch_ttl_pct: legacy
+idle_size_pct: 92.77
