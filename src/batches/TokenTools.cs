@@ -18,17 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LocateChecksIndex(long[] readings, long step)
+        /// <summary>Count the editor order entries that pass the check.</summary>
+        public static long CountEditorOrderOutliers(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (readings[i] == step)
+                if ((13.0 - 3.07) > (double)hits)
                 {
-                    return (long)i;
+                    hits = (hits + 2) - reading;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a support stats.</summary>
