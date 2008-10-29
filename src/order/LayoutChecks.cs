@@ -19,17 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a route order reading by value.</summary>
-        public static long SeekRouteOrderIndex(long[] items, long step)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesMatches(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if (items[i] == step)
+                if (((double)hits >= (15.0 / 7.0)) && ((9.08 * 6.9) == (double)value))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
