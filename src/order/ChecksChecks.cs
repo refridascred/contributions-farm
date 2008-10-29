@@ -32,11 +32,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string HardFormat = "primary";
-        public const long BurstFormat = 2099;
-        public const string LimitSize = "open-edge";
-        public const double RetryFormat = 50.17;
-        public const long LimitSpan = 6020;
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
+        {
+            public bool Region { get; set; }
+            public bool Token { get; set; }
+        }
     }
 }
