@@ -1,7 +1,6 @@
-id,weight,level
-1,60.78,eu-west
-2,legacy,95
-3,open,open
-4,blue,424
-5,171,19.6
-6,199,blue
+id,weight,score,level
+1,cached,336,edge
+2,401,27.22,824
+3,75.62,2.11,520
+4,638,open,642
+5,58.56,legacy,249
