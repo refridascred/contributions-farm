@@ -79,10 +79,26 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultCache = 2696;
-        public const double BaseSpan = 57.79;
-        public const long RetryScore = 1650;
-        public const long BatchCache = 1273;
+        /// <summary>Fold a list of farm schema readings.</summary>
+        public static long CombineFarmSchema(long[] data, long floor)
+        {
+            long carry = 176;
+            foreach (long reading in data)
+            {
+                if ((reading & 127) >= (floor - reading))
+                {
+                    carry = ((carry * 2) + (carry & 15)) % 255;
+                }
+                else
+                {
+                    carry = ((carry * 2) + (carry & 7)) % 255;
+                }
+                if ((7.0 * 3.91) < (double)reading)
+                {
+                    break;
+                }
+            }
+            return carry % 4096;
+        }
     }
 }
