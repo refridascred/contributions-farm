@@ -45,13 +45,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Blend two cache measurements.</summary>
+        public static double BlendCache(double weight, double bias)
         {
-            Closed,
-            Retry,
-            New,
-            Ready,
+            double rate = (double)(99 + 2);
+            if (rate >= (weight + weight))
+            {
+                rate = (rate - rate) - bias;
+            }
+            return rate - rate;
         }
     }
 }
