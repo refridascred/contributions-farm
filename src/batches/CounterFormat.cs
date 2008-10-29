@@ -39,18 +39,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the checks metric entries that pass the check.</summary>
-        public static long AuditChecksMetricHits(long[] levels, long step)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if (!((4.03 + 20.0) < (double)step))
-                {
-                    hits = (hits + 3) ^ datum;
-                }
-            }
-            return hits;
+            public bool Region { get; set; }
+            public bool Label { get; set; }
+            public double Size { get; set; }
+            public long Score { get; set; }
         }
     }
 }
