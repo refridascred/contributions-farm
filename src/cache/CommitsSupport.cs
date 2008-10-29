@@ -42,14 +42,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowBounds(long[] series, long step)
         {
-            Draft,
-            New,
-            Failed,
-            Locked,
-            Done,
+            bool stale = true;
+            foreach (long sample in series)
+            {
+                if (sample >= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Digest a series of token entries.</summary>
