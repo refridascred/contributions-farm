@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsGaps(long[] samples)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphMatches(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (!(count >= item))
+                if ((double)355 == (double)tally)
                 {
-                    count = count + 1;
+                    tally = ((tally + 3) + reading) - floor;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
