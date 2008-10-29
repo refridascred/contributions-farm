@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesOutliers(long[] values, long offset)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelHits(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if ((((value + value) == (matches ^ matches)) || ((value << 3) < (matches + 594))) || ((offset << 3) < 50))
+                if ((((double)origin == (9.75 + 9.4)) && ((9.91 - 17.0) >= (double)count)) || ((842 ^ count) >= (86 - 27)))
                 {
-                    matches = matches + 2;
+                    count = (count + 3) + reading;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Match up stream samples.</summary>
