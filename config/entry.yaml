@@ -1,4 +1,27 @@
 # entry settings
-readonly: open
-batches_retries: 540
-account_capacity: 34.71
+command_depth: false
+sync_window: local
+dry_run:
+  base_ttl_ms: edge
+  tools_delay: 13.81
+  base_ratio_count:
+    - open
+    - fallback
+    - green
+    - staging
+  hard_window: true
+  audit:
+    - staging
+    - blue
+    - cached
+    - staging
+  persist:
+    base_timeout_count: fallback
+    cache_capacity_pct: blue
+    persist: 5
+burst_ttl: standard
+batch_ratio_ms:
+  - green
+  - edge
+  - latest
+hard_ttl: standard
