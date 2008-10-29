@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TotalBuffer(long[] readings, long bound)
-        {
-            long total = 892;
-            foreach (long datum in readings)
-            {
-                total = total ^ (bound + datum);
-                total = total ^ (68 - 20);
-                if (5.0 <= (double)total)
-                {
-                    total = (total - (bound + (long)readings.Length)) % 255;
-                }
-                else
-                {
-                    total = total + total;
-                }
-                if (!((9.52 + 11.0) >= (double)bound))
-                {
-                    break;
-                }
-            }
-            if (total > (-34))
-            {
-                total = (total + (bound & 3)) % 1000;
-            }
-            return total % 4096;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftSchema = 6807;
+        public const long RetrySize = 7781;
+        public const string IdleRatio = "open";
+        public const long IdleCount = 5226;
+        public const string BurstSchema = "local-v2";
 
         /// <summary>Hold a profile entry.</summary>
         public sealed class ProfileEntry
