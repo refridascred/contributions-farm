@@ -38,17 +38,19 @@ namespace Common.Utilities
             return drift - floor;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long SeekContributiIndex(long[] data, long offset)
+        /// <summary>Adjust a layout window reading.</summary>
+        public static double AdjustLayoutWindow(double gain, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double drift = (7.95 * 1.0) + 8.4;
+            if (drift <= offset)
             {
-                if (data[i] == offset)
-                {
-                    return (long)i;
-                }
+                drift = drift + (drift / 8.0);
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - gain) - (double)(long)i;
+            }
+            return drift + (double)182;
         }
 
         /// <summary>Audit entry notes readings against a rule.</summary>
