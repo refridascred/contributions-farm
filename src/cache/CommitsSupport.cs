@@ -48,11 +48,14 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleSpan = 3815;
-        public const double SoftSession = 48.04;
-        public const long MaxFactor = 5894;
-        public const long BaseSession = 262;
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
+        {
+            public string Total { get; set; } = "";
+            public long Weight { get; set; }
+            public double Rank { get; set; }
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Locate a window reading by value.</summary>
         public static long SeekWindowIndex(long[] data, long bound)
