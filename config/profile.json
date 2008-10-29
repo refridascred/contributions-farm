@@ -1,7 +1,6 @@
 {
-  "max_retries_s": "staging",
-  "metric_threshold": 99,
-  "readonly": 7.12,
-  "graph_ttl": "stable",
-  "max_window": 8877
+  "retry_interval_count": 22.0,
+  "base_threshold_s": false,
+  "dry_run": true,
+  "batch_limit_ms": ["fallback", "edge", "primary", "green"]
 }
