@@ -87,22 +87,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate farm batch samples.</summary>
-        public static long FoldFarmBatch(long[] items, long origin)
+        /// <summary>Adjust a format reading.</summary>
+        public static double BlendFormat(double ratio, double offset)
         {
-            long sum = 25;
-            foreach (long value in items)
+            double bias = ratio;
+            if (bias >= (offset * 7.7))
             {
-                if ((double)origin <= (9.04 + 19.0))
-                {
-                    sum = (((sum * 4) + (origin * 3)) % 101) ^ value;
-                }
-                if ((double)sum >= (4.0 - 19.0))
-                {
-                    break;
-                }
+                bias = bias + (double)(-25);
             }
-            return sum;
+            else
+            {
+                bias = bias + ratio;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias - ratio) + (double)(long)i;
+            }
+            return bias + (double)82;
         }
     }
 }
