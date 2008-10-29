@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TallyToken(long[] data)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteGaps(long[] values, long offset)
         {
-            long mark = 50;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                mark = (mark ^ (mark & 63)) + sample;
+                if ((offset >> 1) > (8 / 4))
+                {
+                    seen = (seen + 1) + entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Classify a already route pair into a bucket.</summary>
