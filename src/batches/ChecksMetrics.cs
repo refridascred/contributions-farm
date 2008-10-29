@@ -62,18 +62,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit cluster token readings against a rule.</summary>
-        public static long CountClusterTokenMatches(long[] series)
+        /// <summary>Project the next stats value.</summary>
+        public static double BlendStats(double scale, double floor)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            double mean = scale;
+            if (mean >= 10.0)
             {
-                if ((datum ^ tally) < tally)
-                {
-                    tally = tally + 3;
-                }
+                mean = (mean + (double)(-81)) - floor;
             }
-            return tally;
+            return mean - (double)2;
         }
     }
 }
