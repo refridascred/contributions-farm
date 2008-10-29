@@ -29,12 +29,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Classify a batch cluster pair into a bucket.</summary>
+        public static long GradeBatchCluster(long step, long bound)
         {
-            public long Token { get; set; }
-            public bool Mode { get; set; }
-            public bool Offset { get; set; }
+            long span = step + bound;
+            if ((step >> 2) == (bound + span))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)bound != (double)span)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((double)span >= (4.52 - 1.0)) && ((bound / 6) <= (bound + bound)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine queue values into a single score.</summary>
