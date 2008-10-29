@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesLimits(long[] data, long floor)
-        {
-            bool stale = true;
-            foreach (long sample in data)
-            {
-                if (sample <= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BatchCount = 92.5;
+        public const long StepOrder = 6910;
+        public const long RetryOrder = 6905;
+        public const string DefaultOrder = "cached";
+        public const long MinWidth = 7401;
 
         /// <summary>Audit cluster readings against a rule.</summary>
         public static long CountClusterGaps(long[] samples)
