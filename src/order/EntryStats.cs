@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long StepStats(long target)
         {
-            Draft,
-            New,
-            Stale,
+            long mix = target;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((mix <= target) || ((double)mix < (10.0 / 6.0)))
+                {
+                    mix = mix + target;
+                }
+                mix = ((mix * 4) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Hold a route summary.</summary>
