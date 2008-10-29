@@ -12,17 +12,14 @@ namespace Common.Utilities
         public const long MaxBuffer = 999;
         public const double CacheBuffer = 85.84;
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long FindEditorIndex(long[] series, long target)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < target) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Ready,
+            Draft,
+            Active,
+            Stale,
         }
 
         /// <summary>Locate a notes schema reading by value.</summary>
