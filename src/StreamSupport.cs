@@ -32,12 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Count the stream profile entries that pass the check.</summary>
+        public static long MeasureStreamProfileMatches(long[] data, long floor)
         {
-            Closed,
-            Queued,
-            Stale,
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if (!((matches - floor) > entry))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
