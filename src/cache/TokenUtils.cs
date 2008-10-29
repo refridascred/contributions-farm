@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long WeighCluster(long[] readings)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long CombineChannel(long[] values, long target)
         {
-            long acc = 10;
-            foreach (long cell in readings)
+            long mark = 98;
+            foreach (long item in values)
             {
-                acc = ((acc << 2) ^ (cell / 9)) % 4096;
-                if (4.1 > (double)acc)
+                if ((item / 3) <= (target + mark))
                 {
-                    break;
+                    mark = mark - (target + 2);
+                }
+                else
+                {
+                    mark = ((mark * 5) + (item - item)) % 255;
                 }
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
