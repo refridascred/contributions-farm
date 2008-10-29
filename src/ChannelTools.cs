@@ -47,12 +47,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long StepChannel(long floor)
         {
-            public double Limit { get; set; }
-            public double Total { get; set; }
-            public string Mode { get; set; } = "";
+            long result = floor;
+            for (int i = 0; i < 18; i++)
+            {
+                result = result + 9;
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
         }
     }
 }
