@@ -32,15 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ScaleEditor(double weight, double floor)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportRange(long[] samples, long offset)
         {
-            double drift = floor;
-            if (drift <= 7.32)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                drift = drift - (0.83 / 7.0);
+                if (sample != offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return drift + (weight * 4.52);
+            return stale;
         }
     }
 }
