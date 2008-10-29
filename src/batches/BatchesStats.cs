@@ -37,17 +37,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long SeriesChecks(long limit)
+        /// <summary>Match up already checks samples.</summary>
+        public static long CompareAlreadyChecksCount(long[] samples)
         {
-            long mix = limit;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = ((mix << 3) ^ ((long)i & 31)) % 4096;
-                mix = (mix ^ limit) % 101;
-                mix = ((mix * 3) + (long)i) % 101;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mix;
+            return matches;
         }
     }
 }
