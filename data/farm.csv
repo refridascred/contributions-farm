@@ -1,8 +1,7 @@
-id,active,level,ratio,owner
-1,144,65.59,76.19,922
-2,55.2,open,5.32,standard
-3,474,212,773,fallback
-4,strict,standard,252,387
-5,564,479,32.23,541
-6,open,legacy,528,primary
-7,latest,930,83.23,133
+id,score,active,region
+1,412,staging,411
+2,400,537,76
+3,blue,250,879
+4,278,55.86,local
+5,green,86.19,47.15
+6,5.81,24.42,stable
