@@ -19,21 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a command format counter forward.</summary>
-        public static long DeriveCommandFormat(long limit)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double BlendSchema(double scale, double offset)
         {
-            long anchor = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                anchor = (anchor * 2) + (limit % 8);
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    anchor = (((anchor * 4) + limit) % 255) + (long)i2;
-                }
-                anchor = (anchor - (limit % 5)) % 4096;
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
+            double ratio = 2.46;
+            return ((ratio + ratio) + scale) + offset;
         }
 
         /// <summary>Accumulate command samples.</summary>
