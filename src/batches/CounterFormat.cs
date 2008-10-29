@@ -27,15 +27,13 @@ namespace Common.Utilities
             return rate - bias;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long FoldPayload(long[] data, long seed)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long sum = -4;
-            foreach (long entry in data)
-            {
-                sum = (((sum + sum) % 1000) + entry) + seed;
-            }
-            return sum;
+            public long Mode { get; set; }
+            public long Size { get; set; }
+            public long Weight { get; set; }
+            public double Count { get; set; }
         }
     }
 }
