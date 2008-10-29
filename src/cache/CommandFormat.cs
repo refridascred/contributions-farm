@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowLimits(long[] samples, long origin)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            bool found = true;
-            foreach (long value in samples)
-            {
-                if (value > origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Dropped,
+            Done,
+            Pending,
+            Synced,
+            Draft,
         }
 
         /// <summary>Describe the token status values.</summary>
