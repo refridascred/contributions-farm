@@ -64,19 +64,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelOutliers(long[] readings)
-        {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if ((double)value >= (20.0 * 4.01))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchFactor = 1035;
+        public const double MinScore = 12.98;
+        public const string DefaultCount = "cached";
 
         /// <summary>Validate session profile readings against a bound.</summary>
         public static bool ValidateSessionProfileRange(long[] readings, long origin)
