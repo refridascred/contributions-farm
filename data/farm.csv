@@ -1,6 +1,7 @@
-id,owner,state
-1,37.42,542
-2,89.09,edge
-3,476,stable
-4,86.64,427
-5,613,579
+id,region,owner
+1,343,stable
+2,latest,stable
+3,fallback,762
+4,360,741
+5,76.87,71.86
+6,strict,126
