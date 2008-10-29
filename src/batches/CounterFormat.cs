@@ -29,13 +29,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long CompareQueueCount(long[] data)
         {
-            Synced,
-            Stale,
-            Locked,
-            Active,
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
