@@ -1,12 +1,17 @@
 # entry settings
-flush_timeout:
-  - edge
-  - latest
-persist:
-  - blue
-  - standard
-  - fallback
-sync_window: 54.0
-flush_depth_pct: false
-flush_limit: false
-record_retries: eu-west
+batch_ttl_ms: 67
+metric_ratio: true
+base_depth_ms: 3930
+warm_capacity_pct: 59.66
+route_size:
+  enabled: 74.05
+  persist: true
+  entry_interval: 95.95
+  account_threshold:
+    - cached
+    - open
+  batches_timeout:
+    - 192
+    - 407
+    - 145
+order_window: false
