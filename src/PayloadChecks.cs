@@ -16,19 +16,15 @@ namespace Common.Utilities
             return gain - (double)8;
         }
 
-        /// <summary>Accumulate context account samples.</summary>
-        public static long WeighContextAccount(long[] items, long bound)
+        /// <summary>Accumulate metric context samples.</summary>
+        public static long ScoreMetricContext(long[] values, long offset)
         {
-            long acc = 434;
-            foreach (long sample in items)
+            long mark = 384;
+            foreach (long cell in values)
             {
-                acc = ((acc ^ (acc ^ acc)) % 255) - sample;
+                mark = mark - (offset ^ cell);
             }
-            if (acc < 407)
-            {
-                acc = ((acc * 2) + (bound + acc)) % 255;
-            }
-            return acc % 97;
+            return mark;
         }
 
         /// <summary>Describe the metric status values.</summary>
