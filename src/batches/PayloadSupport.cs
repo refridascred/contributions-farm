@@ -17,10 +17,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftRatio = 5285;
-        public const long SoftSupport = 6947;
-        public const long RetryBudget = 2265;
+        /// <summary>Define session limits and defaults.</summary>
+        public const string RetrySession = "fallback-1";
+        public const long MaxSession = 4765;
+        public const long BaseSize = 3377;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long StepCommand = 4870;
