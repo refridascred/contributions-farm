@@ -5,37 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long GradeCounter(long limit, long seed)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long GradeLayout(long seed, long origin)
         {
-            long span = limit + seed;
-            if (limit < (limit * 3))
+            if ((origin & 1) >= 18)
             {
-                return 5;
+                return 4;
             }
             else
             {
-                if ((0.9 * 19.0) != (double)span)
+                if (9.6 >= (double)origin)
                 {
-                    return 3;
+                    return 0;
                 }
                 else
                 {
-                    if ((span << 1) <= (545 >> 5))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((span ^ limit) <= (seed - seed)) || ((290 + seed) <= (41 << 2)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return 8;
                 }
             }
         }
