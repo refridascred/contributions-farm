@@ -43,14 +43,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
-        {
-            Dropped,
-            Ready,
-            Done,
-            Failed,
-            Active,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinSize = 4703;
+        public const double DefaultInterval = 17.22;
+        public const long BaseEntry = 5034;
     }
 }
