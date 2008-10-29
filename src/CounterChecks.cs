@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long GradeFilter(long floor, long target)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long SeekSupportIndex(long[] items, long bound)
         {
-            if (((target + floor) >= target) || ((floor ^ target) == (floor << 2)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((4.66 * 20.0) > (double)floor)
+                if (items[i] == bound)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((848 / 8) <= floor)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((floor * 4) > target))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the profile phase values.</summary>
