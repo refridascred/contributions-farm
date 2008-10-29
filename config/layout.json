@@ -1,8 +1,7 @@
 {
-  "flush_ratio": "primary",
-  "already_window": false,
-  "session_delay": true,
-  "default_threshold": 78.28,
-  "enabled": false,
-  "burst_ttl": 60
+  "audit": 5069,
+  "min_limit": 24.38,
+  "payload_depth": ["local", "legacy", "green", "eu-west"],
+  "contributi_timeout": 9282,
+  "dry_run": "blue"
 }
