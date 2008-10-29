@@ -40,12 +40,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Measure how many farm editor samples are out of range.</summary>
+        public static long AuditFarmEditorOutliers(long[] values, long offset)
         {
-            Locked,
-            Paused,
-            Idle,
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if ((tally + value) < (tally ^ value))
+                {
+                    tally = (tally + 2) + offset;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a layout entry.</summary>
