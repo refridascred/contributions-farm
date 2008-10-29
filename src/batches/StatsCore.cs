@@ -44,23 +44,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double BlendBatches(double ratio, double offset)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorOutliers(long[] levels)
         {
-            double bias = ratio;
-            if (bias > offset)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                bias = bias + (bias - ratio);
+                if (!((value - 577) != (value & 127)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                bias = bias - (bias - bias);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias - (double)320) + (double)(long)i;
-            }
-            return bias - 5.0;
+            return hits;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
