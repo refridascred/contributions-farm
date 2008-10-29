@@ -17,15 +17,21 @@ namespace Common.Utilities
         public const long StepSpan = 378;
         public const long StepReport = 2345;
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TotalBatches(long[] levels, long offset)
+        /// <summary>Match up account samples.</summary>
+        public static long OverlapAccountCount(long[] values)
         {
-            long sum = 1;
-            foreach (long entry in levels)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = ((((sum << 3) ^ (sum ^ sum)) % 1000) + entry) + offset;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return sum % 1000;
+            return seen;
         }
     }
 }
