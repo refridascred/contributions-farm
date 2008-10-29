@@ -1,7 +1,7 @@
 {
-  "cache_limit_count": 55.57,
-  "batch_delay_count": "standard",
-  "report_capacity": "legacy",
-  "soft_delay": 250,
-  "dry_run": 9757
+  "readonly": 500,
+  "schema_window": ["local", "strict", "primary"],
+  "soft_ttl": "latest",
+  "max_threshold_ms": "primary",
+  "graph_limit": 30
 }
