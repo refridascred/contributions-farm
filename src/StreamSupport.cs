@@ -32,10 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double SoftToken = 23.53;
-        public const string BaseToken = "strict-edge";
-        public const long BatchToken = 9073;
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
+        {
+            public double Limit { get; set; }
+            public bool Stamp { get; set; }
+            public long Offset { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool GuardCommandLimits(long[] levels, long origin)
