@@ -60,20 +60,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long CombineFilter(long[] values, long floor)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long sum = 6;
-            foreach (long cell in values)
-            {
-                sum = ((sum + (537 % 60)) % 1000) + floor;
-                sum = ((sum << 2) ^ (cell >> 2)) % 4096;
-            }
-            if (sum > 18)
-            {
-                sum = (sum + (-323)) % 65521;
-            }
-            return sum % 97;
+            Idle,
+            Paused,
+            Failed,
+            Active,
         }
     }
 }
