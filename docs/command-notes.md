@@ -1,12 +1,15 @@
 # Command notes
 
-Keep session and route names short and lowercase.
-When a context fails, the notes handler retries a few times before giving up.
-Use layout settings to tune how often queue data is refreshed.
+Each channel is validated before it reaches the layout queue.
+Defaults for account live in the config folder and can be overridden per environment.
+
+Use format settings to tune how often account data is refreshed.
+Each githubfarm is validated before it reaches the stats queue.
+The batch report groups every cache by buffer.
 
 ## Guidelines
 
-- Keep tools values small
-- Document new notes fields
-- Validate filter input early
-- Prefer channel defaults
+- Validate batch input early
+- Log every contributi change
+- Prefer stream defaults
+- Keep schema values small
