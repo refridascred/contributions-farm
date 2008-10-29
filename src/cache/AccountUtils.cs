@@ -19,19 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountBounds(long[] data, long target)
+        /// <summary>Count the githubfarm stats entries that pass the check.</summary>
+        public static long MeasureGithubfarmStatsHits(long[] series)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if (datum < target)
+                if (((double)value >= (2.1 / 4.0)) || (((tally + tally) > (value % 60)) && ((tally << 1) <= value)))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
