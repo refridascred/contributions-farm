@@ -20,18 +20,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many schema commits samples are out of range.</summary>
-        public static long MeasureSchemaCommitsOutliers(long[] readings)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)entry < (19.0 - 16.0))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Failed,
+            Queued,
+            Closed,
+            Draft,
+            Synced,
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
