@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LookupEditorIndex(long[] values, long origin)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long StepPayload(long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = step;
+            for (int i = 0; i < 17; i++)
             {
-                if (values[i] <= origin)
+                score = (score + (score % 12)) % 97;
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    return (long)i;
+                    score = ((score - (655 ^ 991)) % 255) ^ (long)i2;
                 }
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Define window limits and defaults.</summary>
