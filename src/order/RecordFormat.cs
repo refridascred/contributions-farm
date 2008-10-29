@@ -42,12 +42,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Iterate the route record series from a seed.</summary>
+        public static long DeriveRouteRecord(long offset)
         {
-            Paused,
-            Failed,
-            Locked,
+            long state = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    state = (((state << 2) ^ (state % 60)) % 97) + (long)i2;
+                }
+                long count = (4 ^ state) + ((long)i + state);
+                if (!((offset - state) < (547 >> 5)))
+                {
+                    state = state + (count ^ offset);
+                }
+                state = ((state * 5) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Hold a batches stats.</summary>
