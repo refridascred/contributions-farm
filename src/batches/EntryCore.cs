@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamRange(long[] levels, long step)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryLimits(long[] samples, long bound)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                if (entry > step)
+                if (sample >= bound)
                 {
-                    found = false;
+                    stale = false;
                     break;
                 }
             }
-            return found;
+            return stale;
         }
 
         /// <summary>Define support limits and defaults.</summary>
