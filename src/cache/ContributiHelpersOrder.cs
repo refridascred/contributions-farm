@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long DeriveContext(long floor)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long BucketGithubfarm(long step, long target)
         {
-            long score = floor;
-            for (int i = 0; i < 21; i++)
+            if (!((0.73 * 8.16) < (double)step))
             {
-                score = ((score * 3) + (long)i) % 65521;
+                return 5;
             }
-            return score;
+            else
+            {
+                if (target <= (step + target))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((15 & 127) > step)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
