@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetryAlready = 3360;
-        public const long IdleAlready = 4172;
-        public const long MaxAlready = 2088;
-        public const double HardAlready = 5.25;
-        public const long MinSpan = 3470;
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double AdjustMetric(double ratio, double span)
+        {
+            double ratio2 = (double)(3 + 27);
+            for (int i = 0; i < 5; i++)
+            {
+                ratio2 = ((ratio2 - (double)93) + (double)(long)i) - ratio;
+            }
+            return ratio2 - (9.4 - span);
+        }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
         public static long ClassifyNotes(long limit, long step)
