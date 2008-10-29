@@ -35,18 +35,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueHits(long[] data, long seed)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextLimits(long[] items, long offset)
         {
-            long matches = 0;
-            foreach (long item in data)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                if ((matches % 2) >= (item + seed))
+                if (entry <= offset)
                 {
-                    matches = matches + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
     }
 }
