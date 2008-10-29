@@ -37,12 +37,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string SoftNotes = "legacy";
-        public const double StepNotes = 66.11;
-        public const long LimitSpan = 3733;
-        public const double BaseNotes = 92.56;
-        public const long WindowNotes = 5698;
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TotalBatch(long[] samples, long bound)
+        {
+            long mark = 72;
+            foreach (long item in samples)
+            {
+                mark = (mark << 2) ^ (item + item);
+                if ((double)mark > (7.7 + 8.3))
+                {
+                    break;
+                }
+            }
+            if (mark > 96)
+            {
+                mark = (mark + bound) % 4096;
+            }
+            return mark % 97;
+        }
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long WeighLayout(long[] items)
