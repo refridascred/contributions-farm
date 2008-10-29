@@ -1,24 +1,9 @@
 # githubfarm settings
-warm_timeout_pct:
-  - 11
-  - 252
-  - 206
-default_capacity_count: 100
-burst_delay_count:
-  metrics_ttl: 42.07
-  channel_size: standard
-  command_size:
-    support_capacity:
-      - open
-      - staging
-      - staging
-    sync_depth_pct: 62.03
-    token_size: false
-    verbose: 30
-  layout_ratio: 100
-stream_timeout: false
-farm_retries:
-  - 177
-  - 496
-  - 260
-  - 209
+hard_threshold: fallback
+strict: 30
+queue_timeout:
+  - 24
+  - 479
+  - 240
+  - 320
+min_limit_pct: 100
