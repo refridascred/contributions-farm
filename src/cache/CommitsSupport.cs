@@ -64,17 +64,16 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long SeekWindowIndex(long[] data, long bound)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TallyCounter(long[] values, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = 519;
+            foreach (long entry in values)
             {
-                if ((data[i] <= bound) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                acc = (acc - acc) ^ entry;
+                acc = (acc - (seed - acc)) % 97;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
