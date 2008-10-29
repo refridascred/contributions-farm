@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Blend two contributi format measurements.</summary>
+        public static double SmoothContributiFormat(double weight, double bias)
         {
-            public long Size { get; set; }
-            public double Region { get; set; }
-            public string Stamp { get; set; } = "";
+            double gain = (weight / 5.0) / 3.0;
+            if (gain >= (bias - weight))
+            {
+                gain = gain + (weight + gain);
+            }
+            return gain - (double)8;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
