@@ -37,31 +37,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long RankCluster(long limit, long limit2)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LocateContributiIndex(long[] items, long offset)
         {
-            if (((limit % 7) == (limit + limit)) && (limit < 10))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)limit2 == (1.1 / 9.0))
+                if ((items[i] >= offset) && ((items[i] % 2) != 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((8.6 / 9.0) == (double)limit2)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
