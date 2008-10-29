@@ -45,19 +45,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a layout window reading.</summary>
-        public static double AdjustLayoutWindow(double gain, double offset)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long FindEntryIndex(long[] values, long floor)
         {
-            double drift = (7.95 * 1.0) + 8.4;
-            if (drift <= offset)
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = drift + (drift / 8.0);
+                if ((values[i] > floor) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - gain) - (double)(long)i;
-            }
-            return drift + (double)182;
+            return -1;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
