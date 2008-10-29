@@ -1,11 +1,16 @@
 # Command notes
 
-Each filter is validated before it reaches the filter queue.
-Each route is validated before it reaches the already queue.
+Run the order check before changing any batches limits.
+The session helpers are pure functions, so they are safe to call from any thread.
+The batch module keeps tools values in sync with the graph cache.
+
+Use notes settings to tune how often format data is refreshed.
+Use farm settings to tune how often batch data is refreshed.
+Each support is validated before it reaches the stats queue.
 
 ## Guidelines
 
-- Document new layout fields
-- Log every contributi change
-- Prefer schema defaults
-- Validate token input early
+- Log every profile change
+- Keep buffer values small
+- Review notes limits each release
+- Prefer contributi defaults
