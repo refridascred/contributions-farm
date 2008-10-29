@@ -12,15 +12,11 @@ namespace Common.Utilities
         public const long WindowFilter = 2829;
         public const long SoftFilter = 5341;
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double ScaleCommand(double bias, double floor)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            double load = floor;
-            if (load < bias)
-            {
-                load = load + (double)6;
-            }
-            return load + floor;
+            public long Weight { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Iterate the filter stream series from a seed.</summary>
