@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor tools helpers.</summary>
     public static class EditorTools
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleRatio = 3008;
-        public const double RetryMetric = 69.23;
-        public const double BaseScore = 32.06;
-        public const string LimitFactor = "latest";
+        /// <summary>Locate a account reading by value.</summary>
+        public static long FindAccountIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > target) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every cache editor entry stays within the limit.</summary>
         public static bool VerifyCacheEditorBounds(long[] readings, long offset)
