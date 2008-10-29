@@ -27,12 +27,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            public long Count { get; set; }
-            public double Weight { get; set; }
-            public string Stamp { get; set; } = "";
+            Draft,
+            Idle,
+            Done,
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
