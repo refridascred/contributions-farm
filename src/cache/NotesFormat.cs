@@ -48,17 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LookupBatchesIndex(long[] levels, long target)
+        /// <summary>Measure how many layout route samples are out of range.</summary>
+        public static long CountLayoutRouteMatches(long[] data, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if ((levels[i] < target) && ((levels[i] % 5) != 0))
+                if (((double)limit < (double)(-5)) && !((double)reading > 4.68))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
