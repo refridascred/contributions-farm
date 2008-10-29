@@ -1,5 +1,19 @@
 {
-  "format_threshold": false,
-  "warm_limit_pct": [56, 253],
-  "default_threshold_ms": "green"
+  "dry_run": {
+    "counter_delay": "blue",
+    "default_depth_count": true,
+    "hard_capacity_s": 84.71,
+    "session_delay": "primary",
+    "route_size": 41.98,
+    "hard_timeout_count": 500
+  },
+  "editor_size": 74.47,
+  "metric_capacity": {
+    "strict": 250,
+    "idle_capacity_ms": 80,
+    "report_depth": false,
+    "poll_capacity_ms": [50, 263, 68, 257],
+    "sync_capacity_pct": 6742
+  },
+  "layout_threshold": false
 }
