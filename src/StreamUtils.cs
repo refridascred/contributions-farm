@@ -13,12 +13,20 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleMetrics = 4840;
-        public const string StepDepth = "primary-v2";
-        public const long HardMetrics = 6527;
-        public const long LimitMetrics = 8577;
-        public const long CacheRatio = 4183;
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long DigestFarm(long[] series)
+        {
+            long sum = 323;
+            foreach (long sample in series)
+            {
+                sum = sum + (572 / 6);
+                if ((sample / 7) <= sample)
+                {
+                    sum = ((sum * 5) + (sample + sum)) % 255;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long AuditSupportMatches(long[] readings)
