@@ -32,13 +32,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteOutliers(long[] data)
         {
-            Paused,
-            Failed,
-            Ready,
-            Locked,
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((tally + tally) == (value << 2))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up report checks samples.</summary>
