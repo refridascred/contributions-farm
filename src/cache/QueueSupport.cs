@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string MaxCount = "local-1";
-        public const long BurstAccount = 8331;
-        public const double IdleAccount = 16.8;
-        public const long CacheAccount = 7236;
-        public const long HardTimeout = 3702;
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long StepToken(long step)
+        {
+            long mark = step;
+            for (int i = 0; i < 20; i++)
+            {
+                mark = (mark * 2) + ((long)i + mark);
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Fold a list of already channel readings.</summary>
         public static long ScoreAlreadyChannel(long[] readings)
