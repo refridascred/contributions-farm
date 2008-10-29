@@ -35,38 +35,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long SortBatch(long bound, long floor)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long SeekEntryIndex(long[] series, long step)
         {
-            if ((floor * 2) <= (688 + bound))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor << 3) > bound)
+                if (series[i] <= step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((3 - 897) != (bound % 8)) && ((double)floor < 3.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (floor < (bound + 8))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
