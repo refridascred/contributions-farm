@@ -16,15 +16,12 @@ namespace Common.Utilities
             return gain - (double)8;
         }
 
-        /// <summary>Accumulate metric context samples.</summary>
-        public static long ScoreMetricContext(long[] values, long offset)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long mark = 384;
-            foreach (long cell in values)
-            {
-                mark = mark - (offset ^ cell);
-            }
-            return mark;
+            public long Flag { get; set; }
+            public long Rank { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Match up entry samples.</summary>
