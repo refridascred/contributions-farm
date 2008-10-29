@@ -57,10 +57,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardChecks = 5160;
-        public const long BatchSpan = 680;
-        public const long MinRatio = 1769;
+        /// <summary>Validate layout graph readings against a bound.</summary>
+        public static bool CheckLayoutGraphLimits(long[] series, long bound)
+        {
+            bool stale = true;
+            foreach (long sample in series)
+            {
+                if (sample >= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long CountFormatHits(long[] items, long seed)
