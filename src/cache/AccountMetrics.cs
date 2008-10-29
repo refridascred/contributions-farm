@@ -64,11 +64,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double LimitContext = 54.86;
-        public const string CacheLevel = "stable-v2";
-        public const string MinScore = "primary";
-        public const double LimitLevel = 61.13;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftBudget = 710;
+        public const long StepNotes = 3747;
+        public const long IdleNotes = 307;
+        public const double StepWidth = 66.37;
+        public const string BatchNotes = "cached-1";
 
         /// <summary>Fold a list of stream readings.</summary>
         public static long ScoreStream(long[] values)
