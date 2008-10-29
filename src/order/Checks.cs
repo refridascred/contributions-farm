@@ -52,16 +52,32 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Derive the next context token value from a seed.</summary>
-        public static long RollContextToken(long origin)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long GradeAccount(long bound, long step)
         {
-            long anchor = origin;
-            for (int i = 0; i < 14; i++)
+            long edge = bound ^ step;
+            if (((step ^ 24) != (bound & 1)) && ((241 % 64) > (bound - 385)))
             {
-                anchor = anchor - (origin & 31);
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                return 4;
             }
-            return anchor;
+            else
+            {
+                if ((bound + bound) > 612)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((edge % 60) == (step / 3)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
