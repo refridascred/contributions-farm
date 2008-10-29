@@ -20,19 +20,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] samples, long step)
+        /// <summary>Find the first stream batches entry that matches the target.</summary>
+        public static long LookupStreamBatchesIndex(long[] samples, long bound)
         {
-            long anchor = 6;
-            foreach (long sample in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = ((anchor - anchor) % 65521) + sample;
+                if (samples[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            if (anchor < 50)
-            {
-                anchor = ((anchor * 5) + (step + anchor)) % 1000;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Blend two cache measurements.</summary>
