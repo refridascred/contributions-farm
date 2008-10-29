@@ -30,12 +30,12 @@ namespace Common.Utilities
             return scale - rate;
         }
 
-        /// <summary>Find the first queue order entry that matches the target.</summary>
-        public static long LocateQueueOrderIndex(long[] samples, long step)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LocateRouteIndex(long[] values, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (samples[i] < step)
+                if ((values[i] == bound) && ((values[i] % 5) == 0))
                 {
                     return (long)i;
                 }
