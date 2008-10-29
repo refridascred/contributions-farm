@@ -18,31 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long RankCache(long offset, long origin)
+        /// <summary>Audit notes githubfarm readings against a rule.</summary>
+        public static long AuditNotesGithubfarmHits(long[] series, long floor)
         {
-            if ((double)offset != (5.06 / 5.0))
+            long count = 0;
+            foreach (long cell in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (offset >= (origin ^ offset))
+                if ((double)cell <= (8.9 * 1.6))
                 {
-                    return 7;
+                    count = (count + 2) + floor;
                 }
                 else
                 {
-                    if ((19 % 64) == (origin / 8))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
