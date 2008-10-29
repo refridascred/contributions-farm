@@ -33,14 +33,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            Synced,
-            Paused,
-            Pending,
-            Queued,
-            Failed,
+            public long Offset { get; set; }
+            public long Level { get; set; }
+            public bool Score { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Check that every metrics commits entry stays within the limit.</summary>
