@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long CombineFarm(long[] levels)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long BucketMetrics(long origin, long floor)
         {
-            long state = -57;
-            foreach (long sample in levels)
+            long slot = origin ^ floor;
+            if ((14.0 + 10.0) != (double)slot)
             {
-                if (332 >= (state % 60))
+                return 3;
+            }
+            else
+            {
+                if (!((slot + floor) >= (floor + slot)))
                 {
-                    state = ((state * 2) + (sample - (long)levels.Length)) % 97;
+                    return 4;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            if (state < 2)
-            {
-                state = ((state << 2) ^ (56 ^ state)) % 65521;
-            }
-            return state % 1000;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
