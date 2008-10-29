@@ -5,14 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long RollWindow(long bound)
         {
-            Stale,
-            New,
-            Failed,
-            Done,
-            Idle,
+            long mark = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                long next = 513 + (7 % 60);
+                if (((2.3 - 5.42) >= (double)mark) || (mark > next))
+                {
+                    break;
+                }
+                mark = ((mark * 5) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
