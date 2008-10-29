@@ -20,19 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksBounds(long[] series, long offset)
+        /// <summary>Project the next notes value.</summary>
+        public static double ProjectNotes(double scale, double offset)
         {
-            bool flag = true;
-            foreach (long entry in series)
-            {
-                if (entry <= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double gain = (scale - offset) - (7.0 + offset);
+            return gain + offset;
         }
 
         /// <summary>Match up report samples.</summary>
