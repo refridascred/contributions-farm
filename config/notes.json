@@ -1,7 +1,5 @@
 {
-  "readonly": 500,
-  "schema_window": ["local", "strict", "primary"],
-  "soft_ttl": "latest",
-  "max_threshold_ms": "primary",
-  "graph_limit": 30
+  "poll_depth": "strict",
+  "persist": 68.92,
+  "verbose": 37.16
 }
