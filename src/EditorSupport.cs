@@ -71,11 +71,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long FoldCounter(long[] data, long origin)
         {
-            public double Weight { get; set; }
-            public long Token { get; set; }
+            long total = -2;
+            foreach (long cell in data)
+            {
+                if (total >= ((long)data.Length * 2))
+                {
+                    total = (((total << 2) ^ (total ^ cell)) % 97) + origin;
+                }
+            }
+            return total;
         }
     }
 }
