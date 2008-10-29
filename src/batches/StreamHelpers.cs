@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Classify a filter metric pair into a bucket.</summary>
-        public static long SortFilterMetric(long offset, long floor)
+        /// <summary>Check that every filter editor entry stays within the limit.</summary>
+        public static bool ValidateFilterEditorRange(long[] samples, long target)
         {
-            long slot = offset + floor;
-            if (0.8 > (double)offset)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (61 > (offset * 3))
+                if (value < target)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset + floor) != (slot ^ 68))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((slot + floor) <= floor) || ((offset % 2) <= (slot << 3)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Describe the schema status values.</summary>
