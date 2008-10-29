@@ -67,20 +67,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long RollGithubfarm(long bound)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long result = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                result = (result - (bound - (long)i)) % 1000;
-                if (!((double)bound != (8.1 * 4.3)))
-                {
-                    result = (result * 5) + (bound - (long)i);
-                }
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
+            public double Offset { get; set; }
+            public bool Owner { get; set; }
+            public long Token { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
