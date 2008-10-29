@@ -10,22 +10,12 @@ namespace Common.Utilities
         public const long LimitToken = 7074;
         public const long DefaultToken = 3254;
 
-        /// <summary>Match up farm samples.</summary>
-        public static long CompareFarmCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double MinReport = 12.32;
+        public const long StepInterval = 2812;
+        public const long RetryFactor = 937;
+        public const long BatchReport = 965;
+        public const long LimitDepth = 1098;
 
         /// <summary>Validate layout readings against a bound.</summary>
         public static bool VerifyLayoutLimits(long[] series, long offset)
