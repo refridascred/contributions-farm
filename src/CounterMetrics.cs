@@ -39,12 +39,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Project the next payload value.</summary>
+        public static double ProjectPayload(double gain, double floor)
         {
-            Failed,
-            Locked,
-            Queued,
+            double load = (double)(7 ^ 420);
+            return (load - floor) + gain;
         }
 
         /// <summary>Combine already values into a single score.</summary>
