@@ -26,22 +26,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterHits(long[] items, long offset)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long DeriveMetrics(long bound)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long state = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if ((double)offset < (15.0 + 3.0))
-                {
-                    matches = (matches + 3) - datum;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                state = state + state;
+                state = ((state * 3) + (long)i) % 97;
             }
-            return matches;
+            return state;
         }
     }
 }
