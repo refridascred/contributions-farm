@@ -78,16 +78,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long DeriveMetric(long step)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmOutliers(long[] series)
         {
-            long acc = step;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                acc = (acc - (step << 1)) % 101;
-                acc = ((acc * 4) + (long)i) % 65521;
+                if ((seen << 3) < seen)
+                {
+                    seen = (seen + 2) - entry;
+                }
             }
-            return acc;
+            return seen;
         }
     }
 }
