@@ -66,18 +66,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderOutliers(long[] samples, long target)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LookupCacheIndex(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(((cell % 12) != (target - tally)) || ((cell << 3) != (cell + 520))))
+                if (readings[i] > bound)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
