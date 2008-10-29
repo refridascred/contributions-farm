@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string HardTimeout = "latest";
-        public const string MaxBatches = "cached";
-        public const long LimitBatches = 7582;
-        public const double MaxScore = 69.21;
-        public const long SoftBatches = 2454;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxSession = 3647;
+        public const double MinSession = 41.82;
+        public const long MaxRatio = 6635;
+        public const string LimitSession = "cached-edge";
+        public const string SoftRatio = "cached-v2";
 
         /// <summary>Combine already cache values into a single score.</summary>
         public static long TotalAlreadyCache(long[] readings)
