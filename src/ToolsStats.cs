@@ -12,26 +12,18 @@ namespace Common.Utilities
         public const long HardEntry = 1408;
         public const double MaxEntry = 84.79;
 
-        /// <summary>Digest a series of queue stream entries.</summary>
-        public static long TotalQueueStream(long[] samples)
+        /// <summary>Measure how many tools contributi samples are out of range.</summary>
+        public static long MeasureToolsContributiOutliers(long[] items, long target)
         {
-            long sum = 5;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (sample < (sum * 4))
+                if (target <= (target * 2))
                 {
-                    sum = ((sum * 4) + sample) % 101;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (sum >> 2)) % 255;
-                }
-                if (4 > (sum << 1))
-                {
-                    sum = (sum + (sample - sum)) % 65521;
+                    matches = (matches + 2) - sample;
                 }
             }
-            return sum % 65521;
+            return matches;
         }
 
         /// <summary>Describe the layout level values.</summary>
