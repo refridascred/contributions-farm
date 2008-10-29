@@ -10,19 +10,21 @@ namespace Common.Utilities
         public const long SoftWidth = 2567;
         public const long IdleToken = 3349;
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileBounds(long[] values, long bound)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long PairReportCount(long[] samples)
         {
-            bool ok = true;
-            foreach (long value in values)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value < bound)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((samples[i] + samples[j]) < 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Count the tools editor entries that pass the check.</summary>
