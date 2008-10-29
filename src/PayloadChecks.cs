@@ -55,18 +55,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many metric token samples are out of range.</summary>
-        public static long TallyMetricTokenMatches(long[] data)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if (((cell + cell) != (cell << 2)) && ((matches <= (matches % 60)) && ((cell / 7) >= ((-6) + cell))))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public bool Region { get; set; }
+            public double Total { get; set; }
+            public long Mode { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Describe the stats level values.</summary>
