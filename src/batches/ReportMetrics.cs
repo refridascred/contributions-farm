@@ -22,24 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of contributi stream readings.</summary>
-        public static long CombineContributiStream(long[] levels, long offset)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long SeekEntryIndex(long[] items, long bound)
         {
-            long anchor = -273;
-            foreach (long value in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = (anchor + anchor) % 4096;
-                anchor = (anchor * 3) + (anchor & 63);
-                if (anchor >= (offset + value))
+                if ((items[i] > bound) && ((items[i] % 5) != 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (anchor > 13)
-            {
-                anchor = ((anchor << 3) ^ 7) % 101;
-            }
-            return anchor % 4096;
+            return -1;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
