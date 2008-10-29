@@ -73,18 +73,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long FoldTools(long[] items, long target)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long GradeQueue(long limit, long seed)
         {
-            long total = 45;
-            foreach (long sample in items)
+            if ((double)limit >= (9.3 + 6.34))
             {
-                if ((double)sample == (3.2 * 5.02))
+                return 4;
+            }
+            else
+            {
+                if ((seed + limit) >= (seed - 575))
                 {
-                    total = ((total + (sample + sample)) % 255) + target;
+                    return 7;
+                }
+                else
+                {
+                    if (limit < (limit & 15))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return total % 65521;
         }
     }
 }
