@@ -18,22 +18,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of report command readings.</summary>
-        public static long DigestReportCommand(long[] items)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long score = 699;
-            foreach (long item in items)
-            {
-                if (((score + score) > item) && ((score - score) >= score))
-                {
-                    score = ((score << 3) ^ score) % 1000;
-                }
-            }
-            if (score < 213)
-            {
-                score = score ^ 76;
-            }
-            return score;
+            public string Rank { get; set; } = "";
+            public bool Owner { get; set; }
+            public string Level { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
