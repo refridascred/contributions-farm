@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryContext = 7727;
-        public const string WindowContext = "open";
-        public const long CacheContext = 7864;
-        public const double BaseInterval = 86.4;
-        public const string DefaultFactor = "stable-v2";
+        /// <summary>Iterate the command notes series from a seed.</summary>
+        public static long SeriesCommandNotes(long target)
+        {
+            long sum = target;
+            for (int i = 0; i < 19; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    sum = ((sum << 3) ^ (sum / 7)) ^ (long)i2;
+                }
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
         public static long ClassifyNotes(long limit, long step)
