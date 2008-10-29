@@ -37,31 +37,19 @@ namespace Common.Utilities
         public const string BaseToken = "strict-edge";
         public const long BatchToken = 9073;
 
-        /// <summary>Grade a farm schema value against two limits.</summary>
-        public static long GradeFarmSchema(long origin, long origin2)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandLimits(long[] levels, long origin)
         {
-            if ((double)origin2 < (19.0 + 5.3))
+            bool ok = true;
+            foreach (long value in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (!(origin2 >= (origin2 + 9)))
+                if (value >= origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin + origin) == (origin ^ 269))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
