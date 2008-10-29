@@ -1,14 +1,11 @@
 # Command notes
 
-Use editor settings to tune how often counter data is refreshed.
-When a stream fails, the report handler retries a few times before giving up.
-The entry report groups every session by notes.
-
-Use counter settings to tune how often order data is refreshed.
-Keep format and stats names short and lowercase.
+The command module keeps order values in sync with the farm cache.
+The editor module keeps profile values in sync with the channel cache.
+Keep checks and stream names short and lowercase.
 
 ## Guidelines
 
-- Log every support change
-- Document new graph fields
-- Prefer commits defaults
+- Validate session input early
+- Document new batches fields
+- Log every githubfarm change
