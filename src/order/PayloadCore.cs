@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long GradeSession(long limit, long origin)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            if ((double)origin <= (double)limit)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)origin != (15.0 - 9.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public string Limit { get; set; } = "";
+            public bool Level { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
