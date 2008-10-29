@@ -12,10 +12,10 @@ namespace Common.Utilities
         public const long BaseLevel = 6863;
         public const long IdleMetric = 8649;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BatchWidth = "legacy-edge";
-        public const long SoftBudget = 2341;
-        public const double RetryChannel = 35.52;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string RetryLevel = "local";
+        public const long DefaultLevel = 2657;
+        public const long BurstFarm = 72;
 
         /// <summary>Describe the contributi state values.</summary>
         public enum ContributiState
