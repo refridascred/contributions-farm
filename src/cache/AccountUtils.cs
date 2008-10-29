@@ -17,13 +17,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountBounds(long[] data, long target)
         {
-            public bool Offset { get; set; }
-            public string Count { get; set; } = "";
-            public bool Rank { get; set; }
-            public long Total { get; set; }
+            bool ready = true;
+            foreach (long datum in data)
+            {
+                if (datum < target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
