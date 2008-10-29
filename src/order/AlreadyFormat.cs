@@ -68,9 +68,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string HardWidth = "latest-1";
-        public const string LimitAlready = "standard-v2";
-        public const long DefaultAlready = 2450;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string HardEditor = "primary-v2";
+        public const string MinSize = "open";
+        public const long IdleEditor = 9726;
+        public const long SoftEditor = 520;
     }
 }
