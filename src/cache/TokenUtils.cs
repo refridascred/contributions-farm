@@ -21,19 +21,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TotalWindow(long[] data, long step)
-        {
-            long total = -44;
-            foreach (long reading in data)
-            {
-                total = (total ^ step) + reading;
-            }
-            if (total < 5)
-            {
-                total = ((total * 3) + (total + step)) % 255;
-            }
-            return total;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string MaxFactor = "primary-1";
+        public const long WindowChecks = 6269;
+        public const string SoftCount = "fallback-edge";
+        public const long LimitLevel = 3702;
+        public const long BatchInterval = 7850;
     }
 }
