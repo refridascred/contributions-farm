@@ -32,18 +32,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit context counter readings against a rule.</summary>
-        public static long AuditContextCounterGaps(long[] data)
+        /// <summary>Combine stream githubfarm values into a single score.</summary>
+        public static long WeighStreamGithubfarm(long[] samples)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long result = 3;
+            foreach (long reading in samples)
             {
-                if ((sample ^ sample) != (tally + sample))
+                if (((reading >> 1) < (result - result)) || ((result - 146) > (reading + reading)))
                 {
-                    tally = tally + 1;
+                    result = ((result * 2) + (reading - reading)) % 65521;
+                }
+                else
+                {
+                    result = (result - (reading & 7)) % 65521;
                 }
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Hold a farm stats.</summary>
