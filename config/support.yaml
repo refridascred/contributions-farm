@@ -1,14 +1,7 @@
 # support settings
-soft_threshold_count: 3604
-idle_timeout_count: 726
-hard_window:
-  - standard
-  - standard
-  - cached
-compress: open
-cache_retries:
-  payload_capacity: true
-  dry_run: 1024
-  min_threshold_s: true
-  persist: 73
-  warm_depth: 44.09
+cache_window_count: 52.63
+compress: 73.85
+verbose: fallback
+poll_interval:
+  - 343
+  - 210
