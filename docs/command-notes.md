@@ -1,12 +1,12 @@
 # Command notes
 
-When a layout fails, the route handler retries a few times before giving up.
-The support module keeps route values in sync with the graph cache.
-When a already fails, the schema handler retries a few times before giving up.
+Keep session and route names short and lowercase.
+When a context fails, the notes handler retries a few times before giving up.
+Use layout settings to tune how often queue data is refreshed.
 
 ## Guidelines
 
-- Review batch limits each release
-- Prefer record defaults
-- Document new format fields
-- Keep entry values small
+- Keep tools values small
+- Document new notes fields
+- Validate filter input early
+- Prefer channel defaults
