@@ -58,22 +58,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmHits(long[] levels, long offset)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if (3.0 >= (double)offset)
-                {
-                    seen = (seen + 2) - sample;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Offset { get; set; }
+            public string Rank { get; set; } = "";
+            public long Size { get; set; }
+            public long Region { get; set; }
         }
     }
 }
