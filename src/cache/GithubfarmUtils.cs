@@ -16,13 +16,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ScaleLayout(double rate, double floor)
         {
-            public double Flag { get; set; }
-            public long Ratio { get; set; }
-            public long Region { get; set; }
-            public string Offset { get; set; } = "";
+            double drift = floor;
+            if (drift < rate)
+            {
+                drift = drift - (double)5;
+            }
+            return drift - floor;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
