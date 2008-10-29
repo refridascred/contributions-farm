@@ -12,17 +12,23 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LocateSupportIndex(long[] values, long floor)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TotalBatch(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = -1;
+            foreach (long cell in items)
             {
-                if (values[i] == floor)
+                carry = (carry + (331 * 3)) % 4096;
+                if (((0.3 - 1.7) == (double)cell) && ((carry - (-86)) < (carry + carry)))
                 {
-                    return (long)i;
+                    carry = (carry + cell) % 255;
+                }
+                else
+                {
+                    carry = carry ^ (cell % 60);
                 }
             }
-            return -1;
+            return carry % 1000;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
