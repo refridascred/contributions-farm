@@ -42,21 +42,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long PairOrderCount(long[] values)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long FindQueueIndex(long[] items, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (items[i] == seed)
                 {
-                    if ((values[i] + values[j]) < 14)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
