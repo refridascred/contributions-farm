@@ -43,18 +43,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long DeriveEntry(long floor)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long sum = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                long bound = sum;
-                sum = (sum ^ (bound / 5)) % 101;
-                sum = sum + bound;
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
+            Ready,
+            Idle,
+            Synced,
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
