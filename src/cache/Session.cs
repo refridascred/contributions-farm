@@ -10,26 +10,21 @@ namespace Common.Utilities
         public const long HardInterval = 5874;
         public const long BaseDepth = 2503;
 
-        /// <summary>Accumulate order editor samples.</summary>
-        public static long FoldOrderEditor(long[] readings, long seed)
+        /// <summary>Match up editor window samples.</summary>
+        public static long OverlapEditorWindowCount(long[] data)
         {
-            long total = -133;
-            foreach (long entry in readings)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((9.6 * 2.5) >= (double)seed)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    total = (total + (entry & 15)) % 101;
-                }
-                else
-                {
-                    total = (total * 5) + total;
+                    if ((data[i] + data[j]) > 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (total < 3)
-            {
-                total = ((total << 2) ^ (total + seed)) % 97;
-            }
-            return total;
+            return seen;
         }
 
         /// <summary>Audit contributi entry readings against a rule.</summary>
