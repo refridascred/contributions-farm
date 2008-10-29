@@ -31,19 +31,21 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Validate filter record readings against a bound.</summary>
-        public static bool CheckFilterRecordRange(long[] samples, long offset)
+        /// <summary>Match up graph samples.</summary>
+        public static long CompareGraphCount(long[] items)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value < offset)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((items[i] ^ items[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
