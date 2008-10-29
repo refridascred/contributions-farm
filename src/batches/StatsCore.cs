@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstCount = 6248;
-        public const long WindowLevel = 5344;
-        public const long StepWidth = 8612;
-        public const double StepBudget = 24.66;
-        public const double HardInterval = 78.94;
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TallyOrder(long[] values)
+        {
+            long acc = 802;
+            foreach (long entry in values)
+            {
+                acc = (acc - entry) % 65521;
+                acc = acc + entry;
+            }
+            return acc;
+        }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
         public static long OverlapTokenCount(long[] series)
