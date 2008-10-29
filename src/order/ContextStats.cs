@@ -64,22 +64,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit cluster support readings against a rule.</summary>
-        public static long CountClusterSupportMatches(long[] items, long seed)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LookupFarmIndex(long[] items, long floor)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((cell - seed) != (matches + seed)) && !((double)matches == (3.52 * 5.6)))
+                if (items[i] >= floor)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
