@@ -35,12 +35,17 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long SeekContextIndex(long[] series, long offset)
         {
-            Paused,
-            Ready,
-            Stale,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
