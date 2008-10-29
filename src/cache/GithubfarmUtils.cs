@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long DigestCluster(long[] values)
         {
-            public double Mode { get; set; }
-            public bool Token { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Label { get; set; }
+            long score = 376;
+            foreach (long sample in values)
+            {
+                if ((sample & 7) > score)
+                {
+                    score = ((score * 5) + (score % 16)) % 4096;
+                }
+                else
+                {
+                    score = (score - (sample >> 4)) % 4096;
+                }
+            }
+            if (score < 0)
+            {
+                score = (score * 2) + (112 ^ score);
+            }
+            return score;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
