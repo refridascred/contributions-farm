@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultCount = 9760;
-        public const string RetryMetrics = "fallback-edge";
-        public const long SoftBudget = 2273;
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long CombinePayload(long[] samples)
+        {
+            long result = 5;
+            foreach (long datum in samples)
+            {
+                result = (result - (datum >> 2)) % 1000;
+                result = ((result << 2) ^ (result + result)) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Hold a payload snapshot.</summary>
         public sealed class PayloadSnapshot
