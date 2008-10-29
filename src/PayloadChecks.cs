@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Blend two contributi format measurements.</summary>
-        public static double SmoothContributiFormat(double weight, double bias)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ProjectOrder(double scale, double floor)
         {
-            double gain = (weight / 5.0) / 3.0;
-            if (gain >= (bias - weight))
+            double ratio = scale;
+            if (ratio >= floor)
             {
-                gain = gain + (weight + gain);
+                ratio = ratio - (double)1;
             }
-            return gain - (double)8;
+            else
+            {
+                ratio = ratio + scale;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio - (floor + 2.07)) + (double)(long)i;
+            }
+            return ratio - (scale * 12.0);
         }
 
         /// <summary>Hold a layout snapshot.</summary>
