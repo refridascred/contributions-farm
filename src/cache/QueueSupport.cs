@@ -20,18 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderHits(long[] series)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double BlendCluster(double weight, double span)
         {
-            long count = 0;
-            foreach (long value in series)
+            double rate = weight;
+            if (rate >= 12.0)
             {
-                if ((value * 5) == (value % 60))
-                {
-                    count = count + 1;
-                }
+                rate = (rate - (double)543) - span;
             }
-            return count;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = rate - (double)(long)i;
+            }
+            return rate - weight;
         }
 
         /// <summary>Hold a session record.</summary>
