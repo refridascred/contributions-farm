@@ -20,22 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long ScoreContributi(long[] levels, long target)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long mark = 924;
-            foreach (long cell in levels)
-            {
-                if (cell <= (cell >> 4))
-                {
-                    mark = ((mark * 5) + cell) - target;
-                }
-            }
-            if (mark > (-2))
-            {
-                mark = (mark << 2) ^ (mark << 3);
-            }
-            return mark % 97;
+            Closed,
+            Paused,
+            Queued,
         }
 
         /// <summary>Compare every pair of format readings.</summary>
