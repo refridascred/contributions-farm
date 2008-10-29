@@ -32,13 +32,12 @@ namespace Common.Utilities
         public const long RetryNotes = 466;
         public const string HardNotes = "staging-1";
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            Locked,
-            Ready,
-            New,
             Stale,
+            Draft,
+            Retry,
         }
 
         /// <summary>Check that every command support entry stays within the limit.</summary>
