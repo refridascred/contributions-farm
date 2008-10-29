@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftSchema = 6807;
-        public const long RetrySize = 7781;
-        public const string IdleRatio = "open";
-        public const long IdleCount = 5226;
-        public const string BurstSchema = "local-v2";
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
+        {
+            public double Size { get; set; }
+            public string Limit { get; set; } = "";
+        }
 
         /// <summary>Find the first order entry that matches the target.</summary>
         public static long LocateOrderIndex(long[] data, long origin)
