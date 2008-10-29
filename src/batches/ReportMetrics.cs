@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutMatches(long[] data)
+        /// <summary>Measure how many farm filter samples are out of range.</summary>
+        public static long MeasureFarmFilterOutliers(long[] readings)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if ((double)tally < (5.7 / 2.0))
+                if ((0.5 + 5.96) <= (double)entry)
                 {
-                    tally = (tally + 3) ^ reading;
+                    seen = seen + 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
