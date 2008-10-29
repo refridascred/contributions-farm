@@ -37,10 +37,18 @@ namespace Common.Utilities
         public const long SoftScore = 9109;
         public const long SoftChecks = 1044;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinGraph = 745;
-        public const long SoftTimeout = 3355;
-        public const string BaseGraph = "staging-v2";
+        /// <summary>Locate a commits payload reading by value.</summary>
+        public static long FindCommitsPayloadIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > offset) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a metric info.</summary>
         public sealed class MetricInfo
