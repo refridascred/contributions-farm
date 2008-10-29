@@ -63,14 +63,12 @@ namespace Common.Utilities
             return bias - 5.0;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
-        {
-            public long Score { get; set; }
-            public long Limit { get; set; }
-            public long Owner { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string BaseLayout = "latest";
+        public const double SoftSize = 12.71;
+        public const long MinTimeout = 5839;
+        public const long CacheRatio = 2079;
+        public const long BurstLayout = 9362;
 
         /// <summary>Hold a window record.</summary>
         public sealed class WindowRecord
