@@ -41,15 +41,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next farm tools value.</summary>
-        public static double BlendFarmTools(double ratio, double offset)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            double load = (double)(223 * 4);
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - (offset - ratio)) + (double)(long)i;
-            }
-            return load - (8.9 + 3.5);
+            Draft,
+            Stale,
+            Retry,
+            Synced,
         }
 
         /// <summary>Find the first route entry entry that matches the target.</summary>
