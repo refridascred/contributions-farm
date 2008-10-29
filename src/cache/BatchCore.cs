@@ -40,35 +40,13 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long ScoreReport(long[] items, long target)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long sum = 4;
-            foreach (long entry in items)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    sum = ((sum * 3) + entry) - (long)i;
-                    sum = ((sum * 5) + (entry >> 5)) % 97;
-                }
-                if (((double)target >= 3.29) && (entry >= 9))
-                {
-                    sum = ((sum * 5) + (entry << 1)) % 4096;
-                }
-                else
-                {
-                    sum = (sum * 5) + entry;
-                }
-                if (((0.6 - 0.58) != (double)target) || ((double)entry < (double)sum))
-                {
-                    break;
-                }
-            }
-            if (sum < 413)
-            {
-                sum = sum ^ sum;
-            }
-            return sum % 1000;
+            Closed,
+            Stale,
+            Retry,
+            Locked,
         }
     }
 }
