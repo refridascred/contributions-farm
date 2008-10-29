@@ -33,12 +33,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamHits(long[] values)
         {
-            public string Stamp { get; set; } = "";
-            public bool Ratio { get; set; }
-            public long Count { get; set; }
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if (seen <= (seen / 6))
+                {
+                    seen = (seen + 1) - value;
+                }
+            }
+            return seen;
         }
     }
 }
