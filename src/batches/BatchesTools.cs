@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long CombineNotes(long[] series)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportMatches(long[] series)
         {
-            long score = 4;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                score = ((score * 2) + (score ^ score)) ^ reading;
-                if ((score - (long)series.Length) == (score * 5))
+                if (!((double)sample <= (12.0 / 5.0)) && ((sample - sample) >= ((long)series.Length ^ sample)))
                 {
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return score % 65521;
+            return matches;
         }
 
         /// <summary>Adjust a editor stats reading.</summary>
