@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long RankSession(long limit, long bound)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            if (!((limit + (-56)) <= (bound - 720)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((limit >> 4) < limit)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public bool Owner { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Define stream limits and defaults.</summary>
