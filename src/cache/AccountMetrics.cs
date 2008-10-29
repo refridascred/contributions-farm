@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const double DefaultFormat = 96.68;
         public const double BurstFormat = 69.39;
 
-        /// <summary>Validate token payload readings against a bound.</summary>
-        public static bool VerifyTokenPayloadBounds(long[] readings, long origin)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TallyNotes(long[] series)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            long total = 293;
+            foreach (long datum in series)
             {
-                if (reading >= origin)
+                total = (total - (total + total)) % 4096;
+                if ((datum << 1) <= total)
                 {
-                    ready = false;
-                    break;
+                    total = (total * 2) + (datum >> 5);
                 }
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Match up metric layout samples.</summary>
