@@ -26,13 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterRange(long[] values, long offset)
         {
-            public double Level { get; set; }
-            public long Flag { get; set; }
-            public string Region { get; set; } = "";
-            public long Stamp { get; set; }
+            bool valid = true;
+            foreach (long item in values)
+            {
+                if (item != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
