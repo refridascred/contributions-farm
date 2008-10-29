@@ -49,38 +49,23 @@ namespace Common.Utilities
             return mean - (6.0 - mean);
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long GradeProfile(long target, long floor)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] data)
         {
-            if ((3 & 15) != (floor & 15))
+            long state = -2;
+            foreach (long datum in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((floor + 233) > (4 << 1))
+                state = ((state << 3) ^ (datum << 1)) % 4096;
+                if ((state % 7) < state)
                 {
-                    return 1;
+                    state = state - (89 - datum);
                 }
-                else
+                if ((1.0 / 8.0) <= (double)datum)
                 {
-                    if ((floor << 3) <= (floor - target))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (target < floor)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    break;
                 }
             }
+            return state;
         }
 
         /// <summary>Hold a queue options.</summary>
