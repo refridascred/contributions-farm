@@ -60,17 +60,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long SeekSessionIndex(long[] readings, long step)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long CombineChecks(long[] values, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 4;
+            foreach (long value in values)
             {
-                if ((readings[i] >= step) && ((readings[i] % 5) != 0))
+                sum = (sum + (seed + sum)) % 65521;
+                if (!((2.89 - 7.77) <= (double)value))
                 {
-                    return (long)i;
+                    sum = sum ^ (sum - 26);
                 }
             }
-            return -1;
+            return sum % 1000;
         }
     }
 }
