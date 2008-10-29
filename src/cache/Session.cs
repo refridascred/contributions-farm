@@ -17,14 +17,10 @@ namespace Common.Utilities
         public const long MaxTools = 9321;
         public const long HardTools = 7100;
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
-        {
-            Draft,
-            Paused,
-            Retry,
-            Done,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double LimitSpan = 91.56;
+        public const long IdleScore = 4901;
+        public const long CacheTimeout = 244;
 
         /// <summary>Roll a metrics counter forward.</summary>
         public static long DeriveMetrics(long bound)
