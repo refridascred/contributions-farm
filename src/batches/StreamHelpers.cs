@@ -31,21 +31,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long CompareGraphCount(long[] items)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long WeighFormat(long[] items, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 982;
+            foreach (long item in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)offset != (5.21 - 9.5))
                 {
-                    if ((items[i] ^ items[j]) > 13)
-                    {
-                        count = count + 1;
-                    }
+                    acc = ((acc + (offset >> 3)) % 65521) - item;
                 }
             }
-            return count;
+            if (acc > 7)
+            {
+                acc = ((acc << 3) ^ (acc % 10)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
