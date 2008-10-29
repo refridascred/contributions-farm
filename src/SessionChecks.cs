@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Validate batch channel readings against a bound.</summary>
-        public static bool CheckBatchChannelBounds(long[] samples, long limit)
+        /// <summary>Project the next cache value.</summary>
+        public static double ProjectCache(double bias, double floor)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            double ratio = 9.8;
+            if (ratio > (double)0)
             {
-                if (reading <= limit)
-                {
-                    ready = false;
-                    break;
-                }
+                ratio = ratio + (ratio - 6.71);
             }
-            return ready;
+            else
+            {
+                ratio = ratio - 3.3;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - (8.0 - bias)) + (double)(long)i;
+            }
+            return ratio + floor;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
