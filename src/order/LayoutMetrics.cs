@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordHits(long[] samples)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if (!((tally * 3) >= item))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Synced,
+            Stale,
+            Paused,
+            Pending,
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
