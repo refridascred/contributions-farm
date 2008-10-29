@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank support input into a small class.</summary>
-        public static long BucketSupport(long seed, long bound)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            if ((double)bound <= (0.5 - 0.8))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((seed >> 3) < (seed % 100))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (3.9 > (double)bound)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((689 - seed) <= seed)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public bool Mode { get; set; }
+            public double Limit { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
