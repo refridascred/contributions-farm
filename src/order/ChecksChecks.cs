@@ -14,13 +14,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            Stale,
-            Dropped,
-            Closed,
-            Idle,
+            public double Total { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Grade a stats report value against two limits.</summary>
