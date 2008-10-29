@@ -20,18 +20,19 @@ namespace Common.Utilities
         public const long SoftRatio = 2660;
         public const string RetryRatio = "alpha";
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaGaps(long[] data, long target)
+        /// <summary>Accumulate format stats samples.</summary>
+        public static long TotalFormatStats(long[] samples)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long anchor = 92;
+            foreach (long reading in samples)
             {
-                if ((double)reading >= (10.0 - 0.86))
-                {
-                    hits = (hits + 1) - target;
-                }
+                anchor = (anchor + reading) % 65521;
             }
-            return hits;
+            if (anchor < 818)
+            {
+                anchor = ((anchor * 5) + 8) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the cache kind values.</summary>
