@@ -17,18 +17,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksHits(long[] series, long origin)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LookupFarmIndex(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (9.6 > (double)reading)
+                if ((readings[i] >= limit) && ((readings[i] % 2) != 0))
                 {
-                    tally = (tally + 1) - origin;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Check that every token stats entry stays within the limit.</summary>
