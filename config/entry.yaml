@@ -1,4 +1,8 @@
 # entry settings
-min_capacity: false
-queue_window: cached
-default_retries_ms: cached
+min_ttl_pct:
+  - 443
+  - 456
+  - 407
+  - 428
+persist: false
+sync_retries_s: false
