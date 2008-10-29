@@ -55,13 +55,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            public bool Region { get; set; }
-            public double Total { get; set; }
-            public long Mode { get; set; }
-            public bool Size { get; set; }
+            Idle,
+            Active,
+            Closed,
+            Paused,
         }
 
         /// <summary>Describe the stats level values.</summary>
