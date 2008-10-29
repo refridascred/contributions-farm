@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many support order samples are out of range.</summary>
-        public static long TallySupportOrderGaps(long[] levels, long bound)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long SortFilter(long target, long seed)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            if (((target - seed) <= seed) || ((target + target) < (15 ^ seed)))
             {
-                if (datum > matches)
+                return 2;
+            }
+            else
+            {
+                if (((target >> 3) >= ((-44) ^ seed)) && (target > (9 - target)))
                 {
-                    matches = (matches + 1) + bound;
+                    return 6;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (target < (target << 1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((seed << 3) == (seed - seed)) || ((target - 570) > (target - seed)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the stats state values.</summary>
