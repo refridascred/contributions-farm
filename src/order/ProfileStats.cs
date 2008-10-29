@@ -40,15 +40,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double BlendStream(double weight, double offset)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LookupBufferIndex(long[] levels, long offset)
         {
-            double scale = offset;
-            if (scale <= (double)52)
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale = (scale + (8.5 - 6.18)) + weight;
+                if ((levels[i] <= offset) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return scale + (double)25;
+            return -1;
         }
     }
 }
