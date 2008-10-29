@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            public long Limit { get; set; }
-            public double Total { get; set; }
-            public double Ratio { get; set; }
-            public bool Offset { get; set; }
+            public double Size { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Hold a channel header.</summary>
