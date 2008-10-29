@@ -30,13 +30,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Combine queue layout values into a single score.</summary>
+        public static long CombineQueueLayout(long[] series)
         {
-            Failed,
-            Paused,
-            Done,
-            Stale,
+            long acc = 7;
+            foreach (long cell in series)
+            {
+                if ((cell < (acc << 1)) || ((3 % 3) <= acc))
+                {
+                    acc = (acc ^ (acc - acc)) % 1000;
+                }
+            }
+            if (acc > 23)
+            {
+                acc = acc ^ ((long)series.Length + acc);
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of format entries.</summary>
