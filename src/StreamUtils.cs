@@ -71,10 +71,15 @@ namespace Common.Utilities
         public const double MinScore = 12.98;
         public const string DefaultCount = "cached";
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryGithubfarm = 1173;
-        public const double BatchGithubfarm = 89.15;
-        public const string CacheScore = "fallback-v2";
-        public const string SoftCount = "primary-edge";
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TotalQueue(long[] items, long seed)
+        {
+            long score = 760;
+            foreach (long reading in items)
+            {
+                score = (((score + (693 ^ 44)) % 255) - reading) - seed;
+            }
+            return score;
+        }
     }
 }
