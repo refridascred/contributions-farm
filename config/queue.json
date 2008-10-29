@@ -1,11 +1,12 @@
 {
-  "command_timeout": [455, 353, 255, 411],
-  "flush_ttl_s": true,
-  "soft_delay_ms": {
-    "readonly": 1088,
-    "audit": ["cached", "legacy", "stable", "primary"],
-    "poll_window_s": 500
+  "idle_delay_s": {
+    "default_capacity": 8.2,
+    "record_timeout": 23.54,
+    "warm_ratio_ms": [229, 152, 197]
   },
-  "base_delay": "local",
-  "verbose": 3427
+  "hard_interval": "staging",
+  "hard_window_count": 60,
+  "retry_timeout_s": 41.24,
+  "channel_window": "eu-west",
+  "verbose": 4352
 }
