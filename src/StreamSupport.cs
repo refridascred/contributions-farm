@@ -32,19 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double AdjustContext(double scale, double span)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            double mean = (4.0 + scale) + (19.0 + span);
-            if (mean <= (span / 9.0))
-            {
-                mean = mean + (double)0;
-            }
-            else
-            {
-                mean = mean + (span * 2.5);
-            }
-            return mean + span;
+            Closed,
+            Queued,
+            Stale,
         }
 
         /// <summary>Validate command readings against a bound.</summary>
