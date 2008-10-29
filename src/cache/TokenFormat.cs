@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksGaps(long[] series)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long RankSession(long limit, long bound)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            if (!((limit + (-56)) <= (bound - 720)))
             {
-                if ((8.0 - 0.5) >= (double)seen)
+                return 4;
+            }
+            else
+            {
+                if ((limit >> 4) < limit)
                 {
-                    seen = (seen + 2) ^ reading;
+                    return 8;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return seen;
         }
 
         /// <summary>Compare every pair of support batches readings.</summary>
