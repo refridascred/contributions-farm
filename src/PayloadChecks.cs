@@ -53,19 +53,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountRange(long[] samples, long seed)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long IterateWindow(long bound)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            long anchor = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if (cell > seed)
+                if ((bound - bound) > 8)
                 {
-                    stale = false;
-                    break;
+                    anchor = anchor - (68 % 60);
                 }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (anchor << 1)) % 101;
+                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return stale;
+            return anchor;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
