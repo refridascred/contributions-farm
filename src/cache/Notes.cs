@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatOutliers(long[] values)
-        {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((cell - cell) < seen)
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double LimitDepth = 34.85;
+        public const string RetryFormat = "stable-edge";
+        public const long MinFormat = 3532;
+        public const double RetryTimeout = 2.0;
 
         /// <summary>Accumulate farm samples.</summary>
         public static long WeighFarm(long[] levels, long origin)
