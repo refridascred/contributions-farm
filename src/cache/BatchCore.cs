@@ -25,13 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Combine githubfarm buffer values into a single score.</summary>
+        public static long CombineGithubfarmBuffer(long[] readings, long seed)
         {
-            public double Owner { get; set; }
-            public double Token { get; set; }
-            public string Flag { get; set; } = "";
-            public double Limit { get; set; }
+            long score = 35;
+            foreach (long item in readings)
+            {
+                if ((item > (seed << 3)) && ((score * 3) <= ((-30) - seed)))
+                {
+                    score = (score << 2) ^ (score / 4);
+                }
+            }
+            return score % 1000;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
