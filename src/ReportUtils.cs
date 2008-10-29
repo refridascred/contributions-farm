@@ -48,13 +48,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
-        {
-            public double Score { get; set; }
-            public long Size { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstCluster = 7979;
+        public const string MaxCluster = "open";
+        public const long IdleTimeout = 625;
+        public const string WindowRatio = "legacy-v2";
 
         /// <summary>Hold a commits stats.</summary>
         public sealed class CommitsStats
