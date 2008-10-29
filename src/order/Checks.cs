@@ -12,10 +12,10 @@ namespace Common.Utilities
         public const long BaseLevel = 6863;
         public const long IdleMetric = 8649;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string RetryLevel = "local";
-        public const long DefaultLevel = 2657;
-        public const long BurstFarm = 72;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double MaxInterval = 61.15;
+        public const long BatchScore = 6735;
+        public const long HardCount = 6828;
 
         /// <summary>Describe the contributi state values.</summary>
         public enum ContributiState
