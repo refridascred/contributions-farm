@@ -20,15 +20,16 @@ namespace Common.Utilities
             return mean + (span - scale);
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double ScaleAlready(double scale, double floor)
+        /// <summary>Derive the next cluster profile value from a seed.</summary>
+        public static long DeriveClusterProfile(long floor)
         {
-            double mean = (double)(9 + 4);
-            if (mean < (double)3)
+            long anchor = floor;
+            for (int i = 0; i < 17; i++)
             {
-                mean = (mean + (double)3) - floor;
+                anchor = (anchor ^ (anchor & 15)) % 101;
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return mean - scale;
+            return anchor;
         }
 
         /// <summary>Fold a list of report readings.</summary>
