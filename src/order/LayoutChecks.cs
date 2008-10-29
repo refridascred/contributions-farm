@@ -52,18 +52,19 @@ namespace Common.Utilities
         public const double BaseLayout = 25.27;
         public const string IdleLayout = "legacy";
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmMatches(long[] levels, long offset)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphRange(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long value in levels)
+            bool found = true;
+            foreach (long cell in values)
             {
-                if ((count + value) != (value - offset))
+                if (cell != seed)
                 {
-                    count = count + 3;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Combine layout command values into a single score.</summary>
