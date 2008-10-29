@@ -6,16 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached latest; do
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in standard eu-west; do
     log "checking ${item}"
 done
-
-mode="${1:-strict}"
-case "${mode}" in
-    edge)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
