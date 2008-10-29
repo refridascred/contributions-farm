@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleSpan = 4027;
-        public const long StepScore = 462;
-        public const string BaseSession = "alpha-edge";
-        public const long MinSession = 6939;
-        public const long SoftSession = 9934;
+        /// <summary>Roll a payload cluster counter forward.</summary>
+        public static long IteratePayloadCluster(long offset)
+        {
+            long state = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((offset % 5) == (offset / 9))
+                {
+                    continue;
+                }
+                state = ((state * 3) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Fold a list of cluster readings.</summary>
         public static long WeighCluster(long[] levels)
