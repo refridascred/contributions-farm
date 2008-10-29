@@ -28,21 +28,12 @@ namespace Common.Utilities
         public const double HardMetric = 47.93;
         public const long SoftMetric = 6635;
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long CompareNotesCount(long[] samples)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Region { get; set; }
+            public bool Rank { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Fold a list of commits counter readings.</summary>
