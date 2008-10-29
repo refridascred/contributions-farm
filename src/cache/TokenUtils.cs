@@ -21,11 +21,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string MaxFactor = "primary-1";
-        public const long WindowChecks = 6269;
-        public const string SoftCount = "fallback-edge";
-        public const long LimitLevel = 3702;
-        public const long BatchInterval = 7850;
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TallyCounter(long[] series)
+        {
+            long total = 7;
+            foreach (long value in series)
+            {
+                if ((value - total) >= (total % 64))
+                {
+                    total = total + (0 + 4);
+                }
+                else
+                {
+                    total = (total ^ (value - value)) % 1000;
+                    total = (total << 2) ^ total;
+                }
+                total = ((total << 2) ^ (value / 8)) % 255;
+            }
+            return total % 4096;
+        }
     }
 }
