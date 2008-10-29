@@ -11,22 +11,11 @@ namespace Common.Utilities
         public const long IdleLevel = 2612;
         public const long HardFactor = 7303;
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderMatches(long[] items)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if (!((39 + 6) > (reading ^ reading)) && (((long)items.Length - hits) >= (hits % 97)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Total { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
