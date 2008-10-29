@@ -19,25 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long BucketEditor(long offset, long bound)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long edge = offset ^ bound;
-            if ((6.0 * 5.1) >= (double)edge)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)offset <= (double)428)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Active,
+            Dropped,
+            Retry,
+            Stale,
         }
 
         /// <summary>Digest a series of stats entries.</summary>
