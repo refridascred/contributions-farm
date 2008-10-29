@@ -28,12 +28,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long GradeTools(long limit, long target)
         {
-            Idle,
-            Paused,
-            Stale,
+            long cur = limit - target;
+            if ((limit ^ target) <= (cur * 5))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((cur >> 5) != (8 + limit))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Derive the next tools order value from a seed.</summary>
