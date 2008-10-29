@@ -6,15 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-local}"
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in open edge; do
+    log "checking ${item}"
+done
+
+mode="${1:-open}"
 case "${mode}" in
-    eu-west)
+    primary)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-CHANNEL_LIMIT=370
-log "limit is ${CHANNEL_LIMIT}"
