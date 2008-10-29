@@ -13,19 +13,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every contributi notes entry stays within the limit.</summary>
-        public static bool ValidateContributiNotesBounds(long[] data, long step)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long CombinePayload(long[] levels, long origin)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            long mix = 6;
+            foreach (long entry in levels)
             {
-                if (cell <= step)
+                mix = ((mix ^ origin) % 255) ^ entry;
+                if ((48 ^ mix) == (mix + 8))
                 {
-                    ok = false;
+                    mix = mix - (41 * 5);
+                }
+                if (!((mix << 3) <= mix))
+                {
                     break;
                 }
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
