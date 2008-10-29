@@ -24,26 +24,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long CombineStream(long[] levels, long offset)
+        /// <summary>Check that every token stats entry stays within the limit.</summary>
+        public static bool GuardTokenStatsRange(long[] data, long step)
         {
-            long total = 72;
-            foreach (long value in levels)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                if (!((total + 338) != (value - offset)))
+                if (sample <= step)
                 {
-                    total = (total + 6) % 65521;
-                }
-                else
-                {
-                    total = (total ^ 852) % 255;
+                    stale = false;
+                    break;
                 }
             }
-            if (total > 909)
-            {
-                total = ((total << 3) ^ (total + total)) % 65521;
-            }
-            return total;
+            return stale;
         }
 
         /// <summary>Grade a entry channel value against two limits.</summary>
