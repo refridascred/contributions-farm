@@ -10,15 +10,10 @@ namespace Common.Utilities
         public const string CacheBatch = "alpha-edge";
         public const string SoftBatch = "staging-v2";
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
-        {
-            Queued,
-            Ready,
-            Draft,
-            Active,
-            Synced,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepInterval = 2399;
+        public const long StepBatch = 9572;
+        public const double BaseRatio = 15.81;
 
         /// <summary>Hold a account snapshot.</summary>
         public sealed class AccountSnapshot
