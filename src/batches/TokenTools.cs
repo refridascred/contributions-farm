@@ -13,21 +13,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long StepTools(long seed)
+        /// <summary>Count the stats profile entries that pass the check.</summary>
+        public static long TallyStatsProfileOutliers(long[] values)
         {
-            long acc = seed;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if ((19.0 - 15.0) <= (double)(long)i)
+                if (((-75) < (hits - item)) && ((hits / 7) <= hits))
                 {
-                    acc = ((acc << 3) ^ (9 * 3)) % 101;
-                    acc = (acc + acc) % 4096;
-                    break;
+                    hits = hits + 2;
                 }
-                acc = ((acc * 4) + (long)i) % 97;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Accumulate metric samples.</summary>
