@@ -20,14 +20,13 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            Draft,
-            Queued,
-            Stale,
-            Idle,
-            Retry,
+            public double Flag { get; set; }
+            public long Ratio { get; set; }
+            public long Region { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Accumulate queue batch samples.</summary>
