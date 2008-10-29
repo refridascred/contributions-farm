@@ -21,26 +21,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate farm batch samples.</summary>
-        public static long TotalFarmBatch(long[] series, long target)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterLimits(long[] series, long step)
         {
-            long anchor = 0;
-            foreach (long value in series)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                if ((value + 479) >= (target * 4))
+                if (sample != step)
                 {
-                    anchor = (anchor - (anchor - anchor)) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor + (value >> 5)) % 97;
+                    stale = false;
+                    break;
                 }
             }
-            if (anchor > 19)
-            {
-                anchor = ((anchor * 3) + (target & 127)) % 101;
-            }
-            return anchor % 97;
+            return stale;
         }
 
         /// <summary>Describe the tools status values.</summary>
