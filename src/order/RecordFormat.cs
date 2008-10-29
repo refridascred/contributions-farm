@@ -50,23 +50,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a filter cache figure with a bias.</summary>
-        public static double BlendFilterCache(double rate, double bias)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double BlendStream(double gain, double offset)
         {
-            double load = (double)853;
-            if (load > (double)14)
+            double load = 9.1;
+            if (load >= gain)
             {
-                load = (load + bias) + rate;
+                load = load - (offset * 11.0);
             }
-            else
-            {
-                load = load - bias;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - (load - bias)) + (double)(long)i;
-            }
-            return load - (bias / 3.0);
+            return load + offset;
         }
     }
 }
