@@ -44,12 +44,13 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double LimitScore = 9.13;
-        public const long LimitSupport = 7666;
-        public const long CacheSupport = 6443;
-        public const long HardFactor = 482;
-        public const long DefaultCount = 5010;
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
+        {
+            public long Region { get; set; }
+            public string Level { get; set; } = "";
+            public double Count { get; set; }
+        }
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long TallyMetricHits(long[] samples, long limit)
