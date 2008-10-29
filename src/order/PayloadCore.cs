@@ -20,16 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long RollWindow(long origin)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long acc = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                acc = acc ^ (origin / 4);
-                acc = ((acc * 2) + (long)i) % 1000;
-            }
-            return acc;
+            Locked,
+            Failed,
+            Active,
+            Synced,
         }
 
         /// <summary>Combine stream githubfarm values into a single score.</summary>
