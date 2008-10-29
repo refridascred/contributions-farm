@@ -38,21 +38,15 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long SeriesOrder(long origin)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double AdjustNotes(double weight, double span)
         {
-            long acc = origin;
-            for (int i = 0; i < 11; i++)
+            double load = (span * 10.0) + (double)9;
+            for (int i = 0; i < 2; i++)
             {
-                acc = (acc << 2) ^ (origin + 79);
-                if (!((double)origin >= 2.43))
-                {
-                    acc = (acc * 4) + acc;
-                    acc = acc - (acc + (-9));
-                }
-                acc = ((acc * 5) + (long)i) % 101;
+                load = ((load + 7.4) + (double)(long)i) + weight;
             }
-            return acc;
+            return load - 9.48;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
