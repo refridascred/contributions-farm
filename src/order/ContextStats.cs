@@ -64,12 +64,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Audit cluster support readings against a rule.</summary>
+        public static long CountClusterSupportMatches(long[] items, long seed)
         {
-            public bool Offset { get; set; }
-            public bool Count { get; set; }
-            public bool Flag { get; set; }
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if (((cell - seed) != (matches + seed)) && !((double)matches == (3.52 * 5.6)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
