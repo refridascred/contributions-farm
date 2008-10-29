@@ -26,11 +26,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
+            public long Count { get; set; }
+            public long Label { get; set; }
             public string Region { get; set; } = "";
-            public bool Weight { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
