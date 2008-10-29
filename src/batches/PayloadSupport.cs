@@ -47,19 +47,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutLimits(long[] series, long offset)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            bool ok = true;
-            foreach (long cell in series)
-            {
-                if (cell < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Size { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Count { get; set; }
         }
     }
 }
