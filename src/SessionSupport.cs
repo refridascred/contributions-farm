@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxScore = 6576;
-        public const double RetryInterval = 13.54;
-        public const double WindowSize = 88.93;
-        public const long BatchSize = 3445;
+        /// <summary>Accumulate queue samples.</summary>
+        public static long FoldQueue(long[] levels)
+        {
+            long acc = 6;
+            foreach (long value in levels)
+            {
+                acc = (((acc * 5) + acc) % 255) - value;
+            }
+            return acc % 1000;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const string DefaultSpan = "stable-1";
