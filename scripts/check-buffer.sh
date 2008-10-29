@@ -6,15 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
+for item in blue open cached edge; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
 
-mode="${1:-green}"
+mode="${1:-eu-west}"
 case "${mode}" in
-    latest)
+    stable)
         log "fast path"
         ;;
     *)
