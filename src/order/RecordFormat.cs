@@ -53,18 +53,13 @@ namespace Common.Utilities
         public const long MaxBudget = 5326;
         public const long MinWidth = 5108;
 
-        /// <summary>Measure how many githubfarm counter samples are out of range.</summary>
-        public static long MeasureGithubfarmCounterGaps(long[] data, long step)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if (((-4) - hits) >= (step - sample))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public double Mode { get; set; }
+            public long Size { get; set; }
+            public string Limit { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
