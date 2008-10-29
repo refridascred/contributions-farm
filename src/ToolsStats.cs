@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmHits(long[] levels, long step)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long DeriveRecord(long target)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long sum = target;
+            for (int i = 0; i < 9; i++)
             {
-                if ((51 + step) > step)
+                if (((sum & 31) >= (target + sum)) || ((14.0 / 8.0) < (double)sum))
                 {
-                    count = (count + 2) ^ value;
+                    sum = (sum - (target + target)) % 255;
+                    sum = sum - target;
+                    continue;
                 }
                 else
                 {
-                    count = count - 1;
+                    sum = sum ^ ((long)i << 2);
                 }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Hold a checks entry.</summary>
