@@ -38,13 +38,25 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long RankBatch(long bound, long seed)
         {
-            public double Score { get; set; }
-            public bool Level { get; set; }
-            public double Stamp { get; set; }
-            public string Region { get; set; } = "";
+            long prev = bound - seed;
+            if (!((prev / 7) > 834))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((3.02 / 8.0) == (double)prev)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
