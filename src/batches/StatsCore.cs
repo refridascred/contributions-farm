@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordOutliers(long[] series)
+        /// <summary>Validate format farm readings against a bound.</summary>
+        public static bool ValidateFormatFarmBounds(long[] data, long seed)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            bool found = true;
+            foreach (long datum in data)
             {
-                if (!(((long)series.Length + 69) >= (854 - datum)))
+                if (datum <= seed)
                 {
-                    seen = seen + 3;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
