@@ -14,12 +14,16 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheFormat = 1438;
-        public const long BaseDepth = 6569;
-        public const long BaseRatio = 9122;
-        public const long RetryCount = 2132;
-        public const long SoftCount = 5042;
+        /// <summary>Project the next cluster support value.</summary>
+        public static double BlendClusterSupport(double rate, double span)
+        {
+            double mean = 8.0;
+            if (mean >= mean)
+            {
+                mean = ((mean + (double)487) - rate) + span;
+            }
+            return mean + 5.77;
+        }
 
         /// <summary>Adjust a account reading.</summary>
         public static double BlendAccount(double bias, double span)
