@@ -35,9 +35,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchLevel = 6618;
-        public const long IdleProfile = 8748;
-        public const long LimitProfile = 1605;
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountRange(long[] series, long seed)
+        {
+            bool ok = true;
+            foreach (long item in series)
+            {
+                if (item < seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
