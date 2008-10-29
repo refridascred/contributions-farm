@@ -40,19 +40,31 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every command support entry stays within the limit.</summary>
-        public static bool CheckCommandSupportRange(long[] readings, long bound)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long SortLayout(long step, long seed)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            if ((step + step) <= seed)
             {
-                if (entry >= bound)
+                return 0;
+            }
+            else
+            {
+                if (!((seed + 764) <= step))
                 {
-                    found = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (step < seed)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return found;
         }
     }
 }
