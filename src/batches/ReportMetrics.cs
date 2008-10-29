@@ -22,17 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long SeekEntryIndex(long[] items, long bound)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long StepGraph(long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if ((items[i] > bound) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Hold a graph summary.</summary>
