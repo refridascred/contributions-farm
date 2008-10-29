@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmOutliers(long[] values)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if (sample > hits)
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Draft,
+            Paused,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Hold a already info.</summary>
