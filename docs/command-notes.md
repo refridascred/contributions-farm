@@ -1,15 +1,15 @@
 # Command notes
 
-Each channel is validated before it reaches the layout queue.
-Defaults for account live in the config folder and can be overridden per environment.
+Use commits settings to tune how often profile data is refreshed.
+The buffer report groups every cache by tools.
 
-Use format settings to tune how often account data is refreshed.
-Each githubfarm is validated before it reaches the stats queue.
-The batch report groups every cache by buffer.
+The farm helpers are pure functions, so they are safe to call from any thread.
+Keep schema and order names short and lowercase.
+Each tools is validated before it reaches the support queue.
 
 ## Guidelines
 
-- Validate batch input early
-- Log every contributi change
-- Prefer stream defaults
-- Keep schema values small
+- Keep filter values small
+- Log every session change
+- Validate contributi input early
+- Document new already fields
