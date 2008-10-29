@@ -48,15 +48,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next notes session value from a seed.</summary>
-        public static long DeriveNotesSession(long floor)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double SmoothAccount(double bias, double bias2)
         {
-            long sum = floor;
-            for (int i = 0; i < 14; i++)
+            double weight = bias;
+            if (weight < (double)382)
             {
-                sum = ((sum * 3) + (long)i) % 65521;
+                weight = (weight + (weight / 2.0)) - bias2;
             }
-            return sum;
+            return weight + (double)621;
         }
 
         /// <summary>Digest a series of queue support entries.</summary>
