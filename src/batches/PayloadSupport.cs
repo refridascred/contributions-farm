@@ -32,9 +32,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepCommand = 4870;
-        public const string DefaultScore = "fallback-edge";
-        public const string BurstCommand = "standard-v2";
+        /// <summary>Project the next schema notes value.</summary>
+        public static double ScaleSchemaNotes(double ratio, double offset)
+        {
+            double drift = 5.7;
+            if (drift < (drift / 4.0))
+            {
+                drift = drift + offset;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - (offset - 0.17)) + (double)(long)i;
+            }
+            return drift - (ratio / 7.0);
+        }
     }
 }
