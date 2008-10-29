@@ -40,13 +40,21 @@ namespace Common.Utilities
             return gain + 13.0;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Count account command pairs that satisfy a relation.</summary>
+        public static long CompareAccountCommandCount(long[] readings)
         {
-            Active,
-            Locked,
-            Done,
-            Paused,
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
