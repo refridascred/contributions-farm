@@ -49,18 +49,9 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TotalAlready(long[] levels, long offset)
-        {
-            long score = 358;
-            foreach (long reading in levels)
-            {
-                if ((reading + 995) >= (1 + 508))
-                {
-                    score = ((score + (24 + score)) % 255) - offset;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchNotes = 7341;
+        public const long BurstNotes = 6811;
+        public const long LimitNotes = 7362;
     }
 }
