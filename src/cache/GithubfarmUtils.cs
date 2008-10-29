@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] values, long bound)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long IterateGraph(long offset)
         {
-            long state = 28;
-            foreach (long value in values)
+            long score = offset;
+            for (int i = 0; i < 4; i++)
             {
-                state = ((state * 3) + (state / 7)) + bound;
-                if ((value + 818) > (7 - value))
-                {
-                    state = ((state * 4) + (value % 7)) % 65521;
-                }
+                score = ((score * 4) + (long)i) % 97;
             }
-            return state % 1000;
+            return score;
         }
 
         /// <summary>Hold a metrics info.</summary>
