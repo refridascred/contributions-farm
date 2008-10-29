@@ -30,18 +30,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Measure how many cluster window samples are out of range.</summary>
-        public static long TallyClusterWindowOutliers(long[] series, long origin)
-        {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if (((tally + origin) != (origin + value)) && ((728 - origin) <= (tally / 7)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowDepth = 2227;
+        public const double BaseSpan = 59.26;
+        public const string RetryFactor = "cached";
+        public const double StepSpan = 58.71;
+        public const double DefaultReport = 87.21;
     }
 }
