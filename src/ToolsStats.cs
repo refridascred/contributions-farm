@@ -26,13 +26,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
-            public long Owner { get; set; }
-            public bool Token { get; set; }
+            public double Score { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
