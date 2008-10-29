@@ -64,23 +64,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long IterateWindow(long bound)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueGaps(long[] values, long floor)
         {
-            long anchor = bound;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if ((bound - bound) > 8)
+                if ((seen & 7) < floor)
                 {
-                    anchor = anchor - (68 % 60);
+                    seen = (seen + 3) + sample;
                 }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (anchor << 1)) % 101;
-                }
-                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
