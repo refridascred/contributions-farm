@@ -20,25 +20,30 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long IterateToken(long seed)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long ScoreCommand(long[] items, long floor)
         {
-            long state = seed;
-            for (int i = 0; i < 17; i++)
+            long carry = 74;
+            foreach (long sample in items)
             {
-                state = ((state << 3) ^ state) % 101;
-                if ((state ^ (long)i) >= seed)
+                for (int i = 0; i < 8; i++)
                 {
-                    state = (state + (state & 1)) % 101;
-                    continue;
+                    carry = carry - ((long)i >> 3);
+                }
+                if ((2 & 15) >= (carry + carry))
+                {
+                    carry = ((carry * 5) + sample) % 101;
                 }
                 else
                 {
-                    state = state - ((-435) + seed);
+                    carry = (carry + sample) % 101;
                 }
-                state = ((state * 5) + (long)i) % 101;
             }
-            return state;
+            if (carry > 47)
+            {
+                carry = carry + (floor + carry);
+            }
+            return carry % 4096;
         }
 
         /// <summary>Describe the order class values.</summary>
