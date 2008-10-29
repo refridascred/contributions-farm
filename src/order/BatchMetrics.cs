@@ -39,15 +39,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyOutliers(long[] items, long target)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiHits(long[] series)
         {
             long count = 0;
-            foreach (long entry in items)
+            foreach (long cell in series)
             {
-                if (!((double)target <= (14.0 / 7.0)))
+                if ((((3.88 - 11.0) > (double)cell) && ((9.68 - 7.31) != (double)cell)) && ((count % 12) >= (count ^ cell)))
                 {
-                    count = (count + 2) + entry;
+                    count = count + 3;
                 }
             }
             return count;
