@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
-        {
-            public long Size { get; set; }
-            public long Score { get; set; }
-            public bool Token { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string HardTimeout = "latest";
+        public const string MaxBatches = "cached";
+        public const long LimitBatches = 7582;
+        public const double MaxScore = 69.21;
+        public const long SoftBatches = 2454;
 
         /// <summary>Combine already cache values into a single score.</summary>
         public static long TotalAlreadyCache(long[] readings)
