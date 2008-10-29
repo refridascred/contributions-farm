@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Record checks helpers.</summary>
     public static class RecordChecks
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] items, long offset)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long anchor = 79;
-            foreach (long item in items)
-            {
-                if ((anchor + 91) <= item)
-                {
-                    anchor = anchor ^ item;
-                }
-                else
-                {
-                    anchor = (anchor - offset) % 97;
-                }
-            }
-            return anchor;
+            public double Region { get; set; }
+            public bool Flag { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Hold a layout record.</summary>
