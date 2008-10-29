@@ -22,21 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long CompareEditorCount(long[] readings)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long FindEditorIndex(long[] series, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((series[i] < target) && ((series[i] % 2) == 0))
                 {
-                    if ((readings[i] + readings[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
