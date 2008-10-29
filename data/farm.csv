@@ -1,6 +1,11 @@
-id,region
-1,83.43
-2,38
-3,green
-4,682
-5,28.08
+id,owner,count,rank
+1,827,primary,blue
+2,461,30.95,55.29
+3,26.86,cached,62.37
+4,79.74,381,146
+5,132,staging,31.04
+6,233,primary,39.02
+7,305,655,362
+8,9.52,green,open
+9,standard,372,168
+10,608,120,primary
