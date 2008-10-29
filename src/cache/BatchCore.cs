@@ -24,13 +24,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterLimits(long[] samples, long origin)
         {
-            Stale,
-            Locked,
-            Done,
-            Failed,
+            bool ready = true;
+            foreach (long datum in samples)
+            {
+                if (datum > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a report entry.</summary>
