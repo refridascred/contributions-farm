@@ -33,21 +33,12 @@ namespace Common.Utilities
             return weight - (span * 1.3);
         }
 
-        /// <summary>Count notes githubfarm pairs that satisfy a relation.</summary>
-        public static long OverlapNotesGithubfarmCount(long[] values)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Owner { get; set; }
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
