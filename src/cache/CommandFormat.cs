@@ -55,19 +55,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long WeighToken(long[] items)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] samples)
         {
-            long result = 78;
-            foreach (long entry in items)
+            long score = 879;
+            foreach (long cell in samples)
             {
-                result = ((result << 3) ^ entry) % 255;
+                score = ((score + 311) % 4096) - cell;
             }
-            if (result < 6)
+            if (score > 941)
             {
-                result = (result - (result - result)) % 1000;
+                score = ((score * 2) + score) % 4096;
             }
-            return result % 97;
+            return score;
         }
     }
 }
