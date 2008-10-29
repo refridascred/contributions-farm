@@ -61,12 +61,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            public long Level { get; set; }
-            public long Score { get; set; }
-            public double Label { get; set; }
+            Dropped,
+            Paused,
+            New,
+            Active,
         }
 
         /// <summary>Roll a metric counter forward.</summary>
