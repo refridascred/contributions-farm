@@ -38,12 +38,10 @@ namespace Common.Utilities
         public const double IdleInterval = 30.27;
         public const string SoftFilter = "legacy-v2";
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchMetric = 4127;
-        public const long BurstMetric = 1563;
-        public const long DefaultMetric = 6496;
-        public const string CacheInterval = "staging";
-        public const long SoftMetric = 6053;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleLevel = 7352;
+        public const double StepBudget = 92.58;
+        public const string BatchGraph = "standard-v2";
 
         /// <summary>Combine filter values into a single score.</summary>
         public static long TallyFilter(long[] items)
