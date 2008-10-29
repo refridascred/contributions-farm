@@ -67,12 +67,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
-        {
-            public long Rank { get; set; }
-            public bool Size { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long HardPayload = 3421;
+        public const long MinWidth = 384;
+        public const string BatchScore = "strict-1";
+        public const double BatchPayload = 28.56;
+        public const long DefaultWidth = 3070;
     }
 }
