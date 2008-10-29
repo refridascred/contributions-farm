@@ -45,23 +45,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long ScoreWindow(long[] data)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long ClassifyFarm(long origin, long seed)
         {
-            long sum = -27;
-            foreach (long entry in data)
+            long lane = origin + seed;
+            if (!(origin <= (origin + lane)))
             {
-                sum = (sum << 3) ^ (sum - entry);
-                if (!((entry + entry) != (entry * 3)))
+                return 6;
+            }
+            else
+            {
+                if ((origin + origin) == (lane ^ lane))
                 {
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            if (sum > 956)
-            {
-                sum = (sum * 5) + (658 & 255);
-            }
-            return sum;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
