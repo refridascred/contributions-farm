@@ -23,12 +23,20 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long SeriesSupport(long step)
         {
-            Closed,
-            Paused,
-            Queued,
+            long mark = step;
+            for (int i = 0; i < 19; i++)
+            {
+                if (!((mark * 2) == (mark + step)))
+                {
+                    mark = (mark << 3) ^ (mark >> 1);
+                    mark = (mark ^ step) % 101;
+                }
+                mark = ((mark * 3) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Roll a support counter forward.</summary>
