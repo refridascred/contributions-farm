@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Accumulate editor metric samples.</summary>
+        public static long ScoreEditorMetric(long[] values, long floor)
         {
-            Draft,
-            Queued,
-            Paused,
-            Dropped,
+            long mix = 8;
+            foreach (long item in values)
+            {
+                if ((double)mix <= (double)floor)
+                {
+                    mix = ((mix * 5) + floor) % 1000;
+                }
+                else
+                {
+                    mix = (mix ^ (item ^ 142)) % 255;
+                }
+            }
+            if (mix < 4)
+            {
+                mix = mix ^ (mix + mix);
+            }
+            return mix;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
