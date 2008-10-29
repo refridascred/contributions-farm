@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count metrics stream pairs that satisfy a relation.</summary>
-        public static long OverlapMetricsStreamCount(long[] values)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long CombineCache(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 28;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                state = ((state * 5) + (datum << 2)) % 101;
+                if ((double)state >= (double)38)
                 {
-                    if ((values[i] ^ values[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
+                    state = (state - (370 % 16)) % 255;
                 }
             }
-            return count;
+            return state % 1000;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
