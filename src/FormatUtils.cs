@@ -80,11 +80,31 @@ namespace Common.Utilities
             return mean + (double)31;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long GradeCommits(long limit, long target)
         {
-            public bool Total { get; set; }
-            public long Region { get; set; }
+            if ((target < (70 >> 2)) && ((limit / 3) > target))
+            {
+                return 5;
+            }
+            else
+            {
+                if (93 <= (target + limit))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((target % 16) > limit) || ((target & 31) > limit))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
