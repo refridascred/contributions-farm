@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Accumulate session samples.</summary>
+        public static long TallySession(long[] data)
         {
-            Draft,
-            Paused,
-            Dropped,
-            Locked,
+            long mix = 94;
+            foreach (long reading in data)
+            {
+                mix = ((mix << 2) ^ (reading << 1)) % 1000;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Blend two support measurements.</summary>
