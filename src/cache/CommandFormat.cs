@@ -19,13 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterRange(long[] series, long limit)
         {
-            public long Mode { get; set; }
-            public long Token { get; set; }
-            public long Size { get; set; }
-            public double Level { get; set; }
+            bool ready = true;
+            foreach (long datum in series)
+            {
+                if (datum > limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
