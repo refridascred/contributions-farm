@@ -54,20 +54,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double BlendBuffer(double gain, double offset)
-        {
-            double weight = gain;
-            if (weight < (offset * 14.0))
-            {
-                weight = weight + gain;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + (offset / 5.0)) + (double)(long)i;
-            }
-            return weight - weight;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BaseQueue = 3.55;
+        public const long BurstQueue = 4389;
+        public const double LimitCount = 76.84;
+        public const long DefaultRatio = 8790;
+        public const long MaxQueue = 1829;
 
         /// <summary>Hold a batch info.</summary>
         public sealed class BatchInfo
