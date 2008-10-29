@@ -1,19 +1,9 @@
 # entry settings
-cluster_depth: 42.09
-burst_ttl:
-  - 287
-  - 400
-  - 11
-  - 147
-poll_depth_s: 8.9
-default_depth_ms: true
-poll_limit_pct: 65
-soft_ratio_s:
-  warm_threshold_pct: 76
-  warm_size: primary
-  poll_ttl:
-    cluster_depth: 41.33
-    soft_limit: eu-west
-    retry_threshold_count: 47
-  batch_interval_pct: legacy
-  retry_retries: blue
+schema_limit: latest
+compress:
+  - 496
+  - 53
+flush_ttl:
+  - 151
+  - 450
+cache_capacity_s: staging
