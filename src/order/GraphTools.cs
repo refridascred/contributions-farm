@@ -24,19 +24,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long WeighProfile(long[] series, long bound)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long mark = 478;
-            foreach (long value in series)
-            {
-                mark = ((mark << 2) ^ mark) % 65521;
-                if (((bound & 127) == (4 - mark)) || ((value + value) >= (value >> 3)))
-                {
-                    mark = (mark - (bound ^ value)) % 65521;
-                }
-            }
-            return mark;
+            Pending,
+            Queued,
+            Idle,
         }
 
         /// <summary>Rank notes input into a small class.</summary>
