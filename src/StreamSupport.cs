@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long MatchChannelCount(long[] levels)
+        /// <summary>Rank report cache input into a small class.</summary>
+        public static long ClassifyReportCache(long step, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long diff = step ^ target;
+            if (((step ^ diff) > target) && (target <= (target - 70)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (diff <= step)
                 {
-                    if ((levels[i] - levels[j]) == 18)
+                    return 6;
+                }
+                else
+                {
+                    if ((diff + target) < (target - target))
                     {
-                        hits = hits + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if (diff < 7)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
