@@ -39,22 +39,21 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Fold a list of commits counter readings.</summary>
-        public static long WeighCommitsCounter(long[] levels, long floor)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long PairOrderCount(long[] values)
         {
-            long carry = 598;
-            foreach (long entry in levels)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry > (entry >> 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    carry = (carry - (floor + 793)) % 65521;
-                }
-                else
-                {
-                    carry = carry - (entry - 735);
+                    if ((values[i] + values[j]) < 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return carry;
+            return count;
         }
     }
 }
