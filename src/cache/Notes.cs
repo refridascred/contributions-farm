@@ -63,11 +63,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowScore = 8789;
-        public const long IdleFactor = 465;
-        public const long RetryPayload = 5764;
-        public const double BurstSpan = 41.49;
-        public const long BatchPayload = 4247;
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long FindReportIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < target) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
