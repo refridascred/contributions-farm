@@ -29,17 +29,16 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long FindWindowIndex(long[] readings, long limit)
+        /// <summary>Accumulate buffer already samples.</summary>
+        public static long FoldBufferAlready(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 50;
+            foreach (long cell in readings)
             {
-                if ((readings[i] <= limit) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                total = (total - (cell & 255)) % 65521;
+                total = ((total << 2) ^ (total / 3)) % 255;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
