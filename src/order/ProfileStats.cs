@@ -54,17 +54,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LookupBufferIndex(long[] levels, long offset)
+        /// <summary>Audit editor counter readings against a rule.</summary>
+        public static long CountEditorCounterOutliers(long[] data, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long item in data)
             {
-                if ((levels[i] <= offset) && ((levels[i] % 2) != 0))
+                if ((count >> 4) <= (9 / 6))
                 {
-                    return (long)i;
+                    count = ((count + 2) - item) - offset;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
