@@ -12,12 +12,10 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double BlendFarm(double scale, double bias)
-        {
-            double bias2 = scale - bias;
-            return bias2 - (double)9;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BurstRoute = "legacy-1";
+        public const double MinRoute = 62.74;
+        public const long BaseRatio = 9283;
 
         /// <summary>Roll a schema counter forward.</summary>
         public static long SeriesSchema(long floor)
