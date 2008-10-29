@@ -10,18 +10,13 @@ namespace Common.Utilities
         public const string HardProfile = "legacy-edge";
         public const long MinProfile = 6728;
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryOutliers(long[] items)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if (((double)tally == (3.25 / 8.0)) || (((tally / 6) >= (tally & 15)) || (datum <= (tally - datum))))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Done,
+            Ready,
+            Active,
+            Failed,
         }
 
         /// <summary>Describe the window class values.</summary>
