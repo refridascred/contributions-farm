@@ -19,22 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long DigestFormat(long[] series)
+        /// <summary>Digest a series of order command entries.</summary>
+        public static long DigestOrderCommand(long[] series, long limit)
         {
-            long sum = 311;
-            foreach (long datum in series)
+            long score = 943;
+            foreach (long entry in series)
             {
-                if ((1.1 * 13.0) > (1.1 * 2.0))
+                score = score - (1 + entry);
+                if (((double)score != (5.0 - 6.0)) && (((-670) ^ limit) < (limit ^ entry)))
                 {
-                    sum = (sum + (datum / 2)) % 1000;
-                }
-                else
-                {
-                    sum = sum ^ (datum << 2);
+                    score = (score - (entry * 3)) % 101;
                 }
             }
-            return sum;
+            return score % 1000;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
