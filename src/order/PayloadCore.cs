@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterMatches(long[] data)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long GradeSession(long limit, long origin)
         {
-            long count = 0;
-            foreach (long item in data)
+            if ((double)origin <= (double)limit)
             {
-                if ((item + count) > (count + count))
+                return 5;
+            }
+            else
+            {
+                if ((double)origin != (15.0 - 9.0))
                 {
-                    count = count + 3;
+                    return 0;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a account entry.</summary>
