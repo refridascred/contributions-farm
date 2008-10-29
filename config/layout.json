@@ -1,7 +1,5 @@
 {
-  "soft_threshold_count": "local",
-  "channel_retries": true,
-  "readonly": "staging",
-  "order_limit": 250,
-  "audit": 30
+  "audit": 29.47,
+  "batch_limit_ms": false,
+  "filter_retries": true
 }
