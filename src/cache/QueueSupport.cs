@@ -35,15 +35,31 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a graph channel counter forward.</summary>
-        public static long IterateGraphChannel(long limit)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long SortChannel(long bound, long limit)
         {
-            long total = limit;
-            for (int i = 0; i < 10; i++)
+            if ((bound ^ limit) >= (limit * 3))
             {
-                total = ((total * 2) + (long)i) % 4093;
+                return 7;
             }
-            return total;
+            else
+            {
+                if ((limit + limit) >= 976)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((bound << 2) != (27 / 9))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
