@@ -65,12 +65,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Adjust a context batch reading.</summary>
+        public static double AdjustContextBatch(double bias, double span)
         {
-            public string Total { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public long Stamp { get; set; }
+            double mean = span - (bias - 15.0);
+            if (mean <= mean)
+            {
+                mean = mean + mean;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - 4.6) - (double)(long)i;
+            }
+            return mean + (double)31;
         }
 
         /// <summary>Hold a commits header.</summary>
