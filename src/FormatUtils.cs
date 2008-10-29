@@ -50,16 +50,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the layout tools series from a seed.</summary>
-        public static long SeriesLayoutTools(long bound)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            long mark = bound;
-            for (int i = 0; i < 24; i++)
-            {
-                mark = (mark + bound) % 4096;
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
+            public string Total { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the commits phase values.</summary>
