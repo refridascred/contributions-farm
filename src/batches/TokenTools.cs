@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Look up the position of a editor session sample.</summary>
-        public static long FindEditorSessionIndex(long[] series, long target)
+        /// <summary>Accumulate session record samples.</summary>
+        public static long ScoreSessionRecord(long[] values, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 5;
+            foreach (long cell in values)
             {
-                if (series[i] >= target)
+                if ((state % 16) >= (502 - 51))
                 {
-                    return (long)i;
+                    state = ((state << 3) ^ (cell - target)) % 101;
                 }
             }
-            return -1;
+            return state % 97;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
