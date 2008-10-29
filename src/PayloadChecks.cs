@@ -70,22 +70,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many commits schema samples are out of range.</summary>
-        public static long AuditCommitsSchemaMatches(long[] samples, long offset)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if ((0 < (offset + offset)) || (74 > (cell / 5)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Retry,
+            Active,
+            Synced,
+            Ready,
+            Done,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
