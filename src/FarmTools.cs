@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphMatches(long[] levels, long offset)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if (offset <= (372 + offset))
-                {
-                    seen = (seen + 1) + item;
-                }
-            }
-            return seen;
+            public double Owner { get; set; }
+            public string Label { get; set; } = "";
+            public double Limit { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Grade a channel cache value against two limits.</summary>
