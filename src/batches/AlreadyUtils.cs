@@ -27,19 +27,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiBounds(long[] samples, long seed)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            bool flag = true;
-            foreach (long value in samples)
-            {
-                if (value != seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Size { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Describe the entry kind values.</summary>
