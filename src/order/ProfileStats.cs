@@ -32,10 +32,10 @@ namespace Common.Utilities
         public const long LimitFactor = 2905;
         public const string LimitContributi = "standard-v2";
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string MinChannel = "latest";
-        public const long HardChannel = 3535;
-        public const string MinSize = "latest-v2";
-        public const long HardInterval = 6139;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowOrder = 5215;
+        public const double MinScore = 82.86;
+        public const long LimitCount = 4958;
+        public const double BaseOrder = 32.64;
     }
 }
