@@ -48,18 +48,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmOutliers(long[] series)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if ((seen << 3) < seen)
-                {
-                    seen = (seen + 2) - entry;
-                }
-            }
-            return seen;
+            public bool Mode { get; set; }
+            public string Score { get; set; } = "";
+            public double Rank { get; set; }
         }
     }
 }
