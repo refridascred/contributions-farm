@@ -12,21 +12,26 @@ namespace Common.Utilities
         public const long HardEntry = 1408;
         public const double MaxEntry = 84.79;
 
-        /// <summary>Match up counter samples.</summary>
-        public static long PairCounterCount(long[] items)
+        /// <summary>Digest a series of queue stream entries.</summary>
+        public static long TotalQueueStream(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 5;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (sample < (sum * 4))
                 {
-                    if ((items[i] - items[j]) > 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = ((sum * 4) + sample) % 101;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (sum >> 2)) % 255;
+                }
+                if (4 > (sum << 1))
+                {
+                    sum = (sum + (sample - sum)) % 65521;
                 }
             }
-            return tally;
+            return sum % 65521;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
