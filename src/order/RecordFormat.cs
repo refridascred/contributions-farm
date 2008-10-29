@@ -50,11 +50,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            public long Stamp { get; set; }
-            public bool Weight { get; set; }
+            public double Flag { get; set; }
+            public double Limit { get; set; }
+            public long Size { get; set; }
         }
     }
 }
