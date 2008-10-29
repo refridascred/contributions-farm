@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultFactor = 6150;
-        public const long IdleCommand = 1439;
-        public const string HardCommand = "staging-edge";
-        public const long WindowCommand = 97;
-        public const string LimitRatio = "primary-1";
+        /// <summary>Measure how many cluster filter samples are out of range.</summary>
+        public static long CountClusterFilterHits(long[] data)
+        {
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if (hits < (1 + entry))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Roll a contributi counter forward.</summary>
         public static long RollContributi(long bound)
