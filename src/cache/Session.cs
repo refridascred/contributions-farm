@@ -15,12 +15,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MinWindow = 6092;
-        public const long LimitWindow = 7290;
-        public const string RetryWindow = "fallback";
-        public const double LimitWidth = 60.57;
-        public const long BurstWindow = 3330;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheFactor = 1459;
+        public const long MaxTools = 9321;
+        public const long HardTools = 7100;
 
         /// <summary>Describe the buffer state values.</summary>
         public enum BufferState
