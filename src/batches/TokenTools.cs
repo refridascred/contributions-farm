@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            Paused,
-            Retry,
-            Dropped,
-            Done,
+            public bool Rank { get; set; }
+            public double Count { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Roll a tools counter forward.</summary>
