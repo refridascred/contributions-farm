@@ -24,18 +24,15 @@ namespace Common.Utilities
         public const long IdleWidth = 5816;
         public const long WindowInterval = 5179;
 
-        /// <summary>Audit batches cache readings against a rule.</summary>
-        public static long AuditBatchesCacheMatches(long[] levels, long offset)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double AdjustChannel(double weight, double bias)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            double load = (bias * 8.9) * 9.31;
+            for (int i = 0; i < 6; i++)
             {
-                if ((((offset + 620) <= (offset + offset)) || ((double)seen >= (8.32 + 20.0))) && ((double)item <= (double)17))
-                {
-                    seen = seen + 2;
-                }
+                load = ((load + bias) - (double)(long)i) - weight;
             }
-            return seen;
+            return load + (double)69;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
