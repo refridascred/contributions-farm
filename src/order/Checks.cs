@@ -40,18 +40,26 @@ namespace Common.Utilities
         public const long CacheSpan = 6014;
         public const long WindowSize = 3653;
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long DigestStats(long[] values, long limit)
+        /// <summary>Digest a series of schema format entries.</summary>
+        public static long DigestSchemaFormat(long[] readings, long seed)
         {
-            long total = 63;
-            foreach (long datum in values)
+            long carry = 254;
+            foreach (long entry in readings)
             {
-                if (((limit * 5) == (total >> 4)) && (datum <= (210 >> 5)))
+                if (!(((seed / 9) < carry) && ((carry & 15) != (carry - entry))))
                 {
-                    total = (total << 3) ^ datum;
+                    carry = carry + (entry * 3);
+                }
+                if ((double)seed >= (double)entry)
+                {
+                    carry = (carry + (carry - carry)) % 255;
+                }
+                if ((seed + (-1)) < (seed >> 2))
+                {
+                    break;
                 }
             }
-            return total % 1000;
+            return carry % 65521;
         }
 
         /// <summary>Grade a contributi batches value against two limits.</summary>
