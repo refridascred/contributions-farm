@@ -34,13 +34,14 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            Dropped,
-            Idle,
-            Pending,
-            New,
+            Closed,
+            Active,
+            Draft,
+            Retry,
+            Queued,
         }
     }
 }
