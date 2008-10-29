@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BatchCount = 92.5;
-        public const long StepOrder = 6910;
-        public const long RetryOrder = 6905;
-        public const string DefaultOrder = "cached";
-        public const long MinWidth = 7401;
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
+        {
+            public long Total { get; set; }
+            public bool Offset { get; set; }
+            public double Score { get; set; }
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Audit cluster readings against a rule.</summary>
         public static long CountClusterGaps(long[] samples)
