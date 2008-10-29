@@ -12,15 +12,19 @@ namespace Common.Utilities
             return (mean + (double)(-76)) + bias;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long FoldCommits(long[] readings, long origin)
+        /// <summary>Combine metrics tools values into a single score.</summary>
+        public static long CombineMetricsTools(long[] readings)
         {
-            long sum = 14;
+            long acc = 3;
             foreach (long entry in readings)
             {
-                sum = ((sum + ((-2) >> 3)) ^ entry) + origin;
+                acc = ((acc + (acc << 3)) % 1000) ^ entry;
             }
-            return sum % 4096;
+            if (acc > 9)
+            {
+                acc = (acc - (acc - acc)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
