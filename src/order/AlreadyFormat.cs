@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate order session samples.</summary>
-        public static long DigestOrderSession(long[] series, long origin)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TallyCounter(long[] readings)
         {
-            long total = 234;
-            foreach (long reading in series)
+            long mix = 193;
+            foreach (long datum in readings)
             {
-                total = (((total << 3) ^ (5 << 1)) - reading) + origin;
+                mix = ((mix << 3) ^ (mix + mix)) % 97;
+                if ((mix % 8) <= (mix - (long)readings.Length))
+                {
+                    mix = (mix ^ (datum << 2)) % 1000;
+                }
             }
-            return total % 65521;
+            return mix % 65521;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
