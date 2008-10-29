@@ -36,18 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many farm editor samples are out of range.</summary>
-        public static long AuditFarmEditorOutliers(long[] values, long offset)
+        /// <summary>Measure how many githubfarm counter samples are out of range.</summary>
+        public static long MeasureGithubfarmCounterGaps(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if ((tally + value) < (tally ^ value))
+                if (((-4) - hits) >= (step - sample))
                 {
-                    tally = (tally + 2) + offset;
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
