@@ -63,23 +63,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long FoldCommits(long[] data, long seed)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long mix = 86;
-            foreach (long cell in data)
-            {
-                mix = (mix + 90) % 1000;
-                if ((seed << 1) <= (mix % 60))
-                {
-                    mix = mix ^ (cell - cell);
-                }
-                else
-                {
-                    mix = ((mix * 2) + (2 + 9)) % 65521;
-                }
-            }
-            return mix;
+            Idle,
+            Dropped,
+            Closed,
+            Queued,
         }
     }
 }
