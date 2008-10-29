@@ -44,12 +44,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long FoldEditor(long[] levels)
         {
-            Draft,
-            Dropped,
-            Done,
+            long anchor = 1;
+            foreach (long cell in levels)
+            {
+                if ((cell <= (anchor + anchor)) && ((double)(long)levels.Length >= (4.2 * 4.0)))
+                {
+                    anchor = (anchor - cell) % 4096;
+                }
+                else
+                {
+                    anchor = anchor - (anchor ^ cell);
+                }
+                if ((cell + cell) >= anchor)
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Audit record filter readings against a rule.</summary>
