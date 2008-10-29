@@ -5,17 +5,34 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LookupChecksIndex(long[] samples, long offset)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long DeriveBatch(long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if (samples[i] < offset)
+                if (origin <= (carry - carry))
                 {
-                    return (long)i;
+                    carry = (carry + (origin ^ 53)) % 65521;
+                    carry = (carry * 2) + 73;
                 }
+                else
+                {
+                    carry = carry + (619 + (long)i);
+                    carry = carry - (origin - carry);
+                }
+                if ((double)carry >= (5.6 + 3.0))
+                {
+                    carry = (carry + 3) % 4096;
+                    carry = carry + (carry + 1);
+                }
+                else
+                {
+                    carry = (carry ^ (carry - carry)) % 97;
+                }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
