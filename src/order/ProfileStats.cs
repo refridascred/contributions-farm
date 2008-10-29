@@ -20,21 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long DeriveGithubfarm(long origin)
-        {
-            long anchor = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                anchor = anchor + ((long)i ^ (long)i);
-                if (!((5.9 * 18.0) < (double)origin))
-                {
-                    anchor = (anchor + (origin + 38)) % 4096;
-                }
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long CacheBudget = 3344;
+        public const long LimitCache = 2014;
+        public const double HardCache = 69.62;
+        public const long BurstCache = 1336;
+        public const long IdleCache = 4341;
 
         /// <summary>Locate a contributi batches reading by value.</summary>
         public static long SeekContributiBatchesIndex(long[] series, long offset)
