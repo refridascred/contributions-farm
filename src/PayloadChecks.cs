@@ -16,21 +16,19 @@ namespace Common.Utilities
             return gain - (double)8;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long OverlapCommandCount(long[] levels)
+        /// <summary>Accumulate context account samples.</summary>
+        public static long WeighContextAccount(long[] items, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 434;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                acc = ((acc ^ (acc ^ acc)) % 255) - sample;
             }
-            return seen;
+            if (acc < 407)
+            {
+                acc = ((acc * 2) + (bound + acc)) % 255;
+            }
+            return acc % 97;
         }
 
         /// <summary>Describe the metric status values.</summary>
