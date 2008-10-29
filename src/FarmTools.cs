@@ -18,17 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LookupFarmIndex(long[] readings, long origin)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long ScoreRoute(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 408;
+            foreach (long entry in items)
             {
-                if ((readings[i] <= origin) && ((readings[i] % 5) != 0))
+                if ((total - total) < (total + entry))
                 {
-                    return (long)i;
+                    total = (total + (total >> 4)) % 65521;
                 }
+                else
+                {
+                    total = ((total * 3) + (total << 2)) % 255;
+                }
+                total = (total - (entry & 1)) % 4096;
             }
-            return -1;
+            if (total < (-92))
+            {
+                total = (total + (total >> 4)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Define already limits and defaults.</summary>
