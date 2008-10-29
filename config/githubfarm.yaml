@@ -1,25 +1,5 @@
 # githubfarm settings
-warm_retries_ms:
-  base_ratio_count: 1476
-  soft_threshold_ms: 68.4
-  batch_interval_s: 24.99
-  hard_capacity: 100
-warm_size: 1267
-githubfarm_size:
-  - 359
-  - 134
-token_interval:
-  soft_retries: true
-  poll_ratio_s: latest
-  flush_retries:
-    min_size_pct: standard
-    cache_timeout_s:
-      - green
-      - fallback
-    warm_ratio_count: 100
-  batch_size_pct: fallback
-  burst_ttl:
-    batches_interval: blue
-    hard_retries_pct: green
-    order_ttl: 78.35
-    order_limit: local
+entry_size: cached
+notes_size: fallback
+context_capacity: primary
+strict: 3.67
