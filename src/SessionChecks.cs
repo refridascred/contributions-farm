@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long FoldMetrics(long[] samples, long origin)
         {
-            Ready,
-            Locked,
-            New,
+            long anchor = 77;
+            foreach (long datum in samples)
+            {
+                if ((origin / 9) >= (8 << 1))
+                {
+                    anchor = (((anchor << 3) ^ anchor) % 101) ^ datum;
+                }
+            }
+            if (anchor > (-19))
+            {
+                anchor = ((anchor * 5) + origin) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
