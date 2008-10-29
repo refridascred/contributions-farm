@@ -32,11 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstLayout = 5275;
-        public const long BatchSize = 7908;
-        public const long RetryFactor = 5533;
-        public const double MinLayout = 71.6;
-        public const long BurstWidth = 3513;
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
+        {
+            Paused,
+            Dropped,
+            Idle,
+            Draft,
+        }
     }
 }
