@@ -20,15 +20,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TotalFarm(long[] values)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmRange(long[] series, long origin)
         {
-            long state = 8;
-            foreach (long reading in values)
+            bool stale = true;
+            foreach (long value in series)
             {
-                state = (state + (state >> 4)) ^ reading;
+                if (value != origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return state;
+            return stale;
         }
 
         /// <summary>Combine batches session values into a single score.</summary>
