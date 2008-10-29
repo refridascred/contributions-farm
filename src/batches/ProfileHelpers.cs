@@ -26,20 +26,10 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Adjust a contributi support reading.</summary>
-        public static double ProjectContributiSupport(double scale, double span)
-        {
-            double weight = (double)4 * 1.44;
-            if (weight < (scale + scale))
-            {
-                weight = weight + (16.0 / 4.0);
-            }
-            else
-            {
-                weight = weight - (weight + 9.8);
-            }
-            return weight - span;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long StepDepth = 9405;
+        public const long IdleWidth = 5816;
+        public const long WindowInterval = 5179;
 
         /// <summary>Describe the layout level values.</summary>
         public enum LayoutLevel
