@@ -1,10 +1,6 @@
-id,active,level,ratio,count
-1,standard,43.88,open,311
-2,93,63.36,green,54.21
-3,legacy,413,26.57,117
-4,6,49.58,strict,fallback
-5,51,blue,445,588
-6,64.1,22.03,latest,18.37
-7,147,24.1,805,blue
-8,cached,25.36,local,standard
-9,legacy,992,612,698
+id,weight,state,active,label
+1,394,open,stable,155
+2,latest,98.75,6.56,77.41
+3,676,279,42.66,fallback
+4,79.07,80.21,primary,381
+5,274,933,873,32.42
