@@ -1,16 +1,5 @@
 {
-  "warm_capacity": 50,
-  "burst_capacity_count": {
-    "min_retries_pct": "strict",
-    "audit": 41.73,
-    "poll_capacity_count": 8.2,
-    "cache_retries_ms": 7271
-  },
-  "default_capacity": 96,
-  "burst_threshold_ms": 1024,
-  "max_ttl_ms": {
-    "hard_threshold_ms": 8,
-    "soft_delay_ms": 89.23,
-    "base_threshold_pct": 44.92
-  }
+  "verbose": 8531,
+  "audit": 60,
+  "dry_run": 30
 }
