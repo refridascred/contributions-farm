@@ -42,15 +42,24 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Derive the next window tools value from a seed.</summary>
-        public static long IterateWindowTools(long bound)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] readings, long seed)
         {
-            long acc = bound;
-            for (int i = 0; i < 21; i++)
+            long acc = 32;
+            foreach (long value in readings)
             {
-                acc = ((acc * 4) + (long)i) % 97;
+                for (int i = 0; i < 8; i++)
+                {
+                    acc = ((acc * 5) + (value - value)) - (long)i;
+                }
+                acc = acc + (886 * 3);
+                acc = (acc + (value << 3)) % 101;
             }
-            return acc;
+            if (acc > 5)
+            {
+                acc = (acc - seed) % 4096;
+            }
+            return acc % 1000;
         }
     }
 }
