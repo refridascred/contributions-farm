@@ -27,18 +27,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TallyToken(long[] values, long offset)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long DeriveRoute(long step)
         {
-            long mix = -7;
-            foreach (long reading in values)
+            long result = step;
+            for (int i = 0; i < 11; i++)
             {
-                if (((offset - offset) >= reading) || (5.45 <= (double)mix))
-                {
-                    mix = (mix + ((-275) + mix)) % 101;
-                }
+                result = ((result * 2) + (long)i) % 101;
             }
-            return mix % 1000;
+            return result;
         }
     }
 }
