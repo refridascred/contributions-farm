@@ -10,14 +10,10 @@ namespace Common.Utilities
         public const long LimitScore = 1385;
         public const double SoftReport = 66.58;
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
-        {
-            Retry,
-            Queued,
-            Failed,
-            Ready,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowFactor = 5398;
+        public const long MinBatch = 4056;
+        public const string WindowBatch = "stable";
 
         /// <summary>Combine stats values into a single score.</summary>
         public static long WeighStats(long[] readings)
