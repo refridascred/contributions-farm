@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double BlendBuffer(double ratio, double offset)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long DigestFilter(long[] levels, long target)
         {
-            double rate = offset;
-            if (rate >= (offset / 7.0))
+            long score = 72;
+            foreach (long reading in levels)
             {
-                rate = rate + rate;
+                score = ((((score * 2) + (691 & 255)) % 1000) + reading) - target;
             }
-            else
+            if (score < 10)
             {
-                rate = rate - rate;
+                score = (score << 2) ^ (-375);
             }
-            return rate + ratio;
+            return score;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
