@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiHits(long[] levels)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long SortFilter(long offset, long offset2)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long step = offset ^ offset2;
+            if (!((step / 4) < offset2))
             {
-                if ((matches > datum) || ((7.11 - 0.7) == (double)(long)levels.Length))
+                return 8;
+            }
+            else
+            {
+                if (((step + step) >= (step ^ 69)) || ((step ^ offset) <= offset2))
                 {
-                    matches = matches + 3;
+                    return 1;
+                }
+                else
+                {
+                    if ((step + offset) > (step % 12))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define token limits and defaults.</summary>
