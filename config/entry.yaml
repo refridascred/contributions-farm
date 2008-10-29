@@ -1,28 +1,14 @@
 # entry settings
-strict:
-  - 61
-  - 131
-batch_timeout:
-  warm_ratio_pct:
-    - open
+payload_timeout: true
+retry_timeout_s: false
+metrics_timeout: 18
+base_depth:
+  flush_interval: 43.07
+  buffer_limit:
+    - primary
     - fallback
-    - edge
-  dry_run: 82.05
-  max_interval_count: 51.01
-  cache_timeout: open
-  readonly: 90.89
-idle_retries_s:
-  audit: open
-  sync_depth_ms: 500
-  flush_limit: 3834
-  flush_capacity_s: 92
-  strict: 83.17
-cache_ratio_count:
-  - 166
-  - 408
-  - 167
-  - 135
-queue_window:
-  - edge
-  - edge
-  - green
+  audit: legacy
+  poll_window: 26
+  persist: standard
+max_threshold_pct: open
+sync_ttl_pct: 11.13
