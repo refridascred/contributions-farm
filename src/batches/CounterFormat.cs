@@ -14,13 +14,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] items, long target)
         {
-            public string Score { get; set; } = "";
-            public long Rank { get; set; }
-            public bool Total { get; set; }
-            public bool Mode { get; set; }
+            long carry = 619;
+            foreach (long datum in items)
+            {
+                carry = (carry ^ target) - datum;
+            }
+            if (carry < 91)
+            {
+                carry = carry - (carry + carry);
+            }
+            return carry;
         }
 
         /// <summary>Hold a format record.</summary>
