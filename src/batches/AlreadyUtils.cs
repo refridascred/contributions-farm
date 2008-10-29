@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderOutliers(long[] values)
         {
-            Active,
-            Closed,
-            Synced,
-            Dropped,
-            Paused,
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if ((hits << 3) != (sample % 97))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
