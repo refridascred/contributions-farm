@@ -21,24 +21,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long StepRecord(long floor)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long SortChannel(long floor, long offset)
         {
-            long acc = floor;
-            for (int i = 0; i < 9; i++)
+            long edge = floor ^ offset;
+            if ((double)edge <= (2.2 / 5.0))
             {
-                if ((long)i > acc)
-                {
-                    acc = (acc + (acc + acc)) % 97;
-                }
-                long span = floor + (floor / 2);
-                if (!((7.2 + 9.8) < (double)span))
-                {
-                    acc = (acc * 5) + acc;
-                }
-                acc = ((acc * 5) + (long)i) % 4093;
+                return 4;
             }
-            return acc;
+            else
+            {
+                if (((floor - offset) != (edge / 8)) || (26 < (offset + floor)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((floor % 24) <= (edge / 7))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (60 < (2 + floor))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate account readings against a bound.</summary>
