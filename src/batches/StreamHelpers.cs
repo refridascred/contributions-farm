@@ -61,32 +61,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long SortProfile(long bound, long seed)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long diff = bound + seed;
-            if ((seed % 3) < (seed >> 4))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((746 ^ bound) == (seed >> 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound + 9) == (diff % 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public double Weight { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Hold a batch info.</summary>
