@@ -16,15 +16,18 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TotalTools(long[] values, long floor)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long FoldAlready(long[] samples, long origin)
         {
-            long sum = 348;
-            foreach (long cell in values)
+            long acc = -55;
+            foreach (long sample in samples)
             {
-                sum = sum ^ (floor ^ cell);
+                if ((41 ^ sample) != (acc + acc))
+                {
+                    acc = ((acc ^ (sample + acc)) % 1000) + origin;
+                }
             }
-            return sum;
+            return acc % 1000;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
