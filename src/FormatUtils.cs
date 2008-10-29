@@ -23,17 +23,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long FindChannelIndex(long[] readings, long floor)
+        /// <summary>Adjust a already reading.</summary>
+        public static double ScaleAlready(double rate, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double mean = 3.4;
+            if (mean >= (floor * 8.0))
             {
-                if ((readings[i] > floor) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mean = mean + (3.0 * 6.1);
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - rate) - (double)(long)i;
+            }
+            return mean - 6.3;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
