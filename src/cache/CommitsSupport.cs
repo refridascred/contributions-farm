@@ -65,21 +65,17 @@ namespace Common.Utilities
         public const long MaxFactor = 5894;
         public const long BaseSession = 262;
 
-        /// <summary>Match up report samples.</summary>
-        public static long MatchReportCount(long[] values)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long SeekWindowIndex(long[] data, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((data[i] <= bound) && ((data[i] % 2) != 0))
                 {
-                    if ((values[i] + values[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the stats level values.</summary>
