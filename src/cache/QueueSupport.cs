@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueRange(long[] items, long floor)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiHits(long[] levels)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if (datum <= floor)
+                if ((matches > datum) || ((7.11 - 0.7) == (double)(long)levels.Length))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
