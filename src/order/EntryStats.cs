@@ -31,21 +31,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] levels)
-        {
-            long total = -60;
-            foreach (long datum in levels)
-            {
-                total = ((total - 3) % 4096) ^ datum;
-                total = ((total * 3) + (total << 2)) % 101;
-            }
-            if (total > 47)
-            {
-                total = ((total * 5) + (total % 16)) % 4096;
-            }
-            return total;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long DefaultLayout = 7366;
+        public const long StepSpan = 4286;
+        public const long WindowLevel = 6533;
 
         /// <summary>Classify a queue pair into a bucket.</summary>
         public static long GradeQueue(long limit, long seed)
