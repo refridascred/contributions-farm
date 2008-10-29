@@ -20,21 +20,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long OverlapFarmCount(long[] levels)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long DeriveGithubfarm(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                anchor = anchor + ((long)i ^ (long)i);
+                if (!((5.9 * 18.0) < (double)origin))
                 {
-                    if ((levels[i] - levels[j]) > 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = (anchor + (origin + 38)) % 4096;
                 }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Locate a contributi batches reading by value.</summary>
