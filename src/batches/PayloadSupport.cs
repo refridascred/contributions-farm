@@ -31,10 +31,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseBudget = 2689;
-        public const double BurstBatches = 86.36;
-        public const long BaseBatches = 6038;
-        public const long SoftFactor = 991;
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksGaps(long[] data)
+        {
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((seen & 15) > ((-7) - 2))
+                {
+                    seen = (seen + 1) ^ value;
+                }
+            }
+            return seen;
+        }
     }
 }
