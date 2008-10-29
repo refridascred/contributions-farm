@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiMatches(long[] levels)
+        /// <summary>Measure how many githubfarm filter samples are out of range.</summary>
+        public static long TallyGithubfarmFilterGaps(long[] data, long limit)
         {
             long hits = 0;
-            foreach (long entry in levels)
+            foreach (long reading in data)
             {
-                if ((double)hits < (7.1 - 0.6))
+                if (17.0 > (double)limit)
                 {
-                    hits = (hits + 3) ^ entry;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = (hits + 2) + reading;
                 }
             }
             return hits;
