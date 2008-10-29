@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsOutliers(long[] items)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if ((matches - matches) <= cell)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Pending,
+            Ready,
+            Queued,
+            Retry,
+            Synced,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
