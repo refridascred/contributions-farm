@@ -1,6 +1,10 @@
-id,owner,weight,ratio
-1,59,639,63.85
-2,517,102,253
-3,944,208,232
-4,267,11.77,blue
-5,standard,50.44,local
+id,score,ratio
+1,blue,838
+2,strict,281
+3,staging,4.06
+4,85.69,106
+5,primary,43.7
+6,573,893
+7,37,open
+8,381,698
+9,507,933
