@@ -30,19 +30,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long SeriesQueue(long floor)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long anchor = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                if (9 >= (floor << 1))
-                {
-                    anchor = (anchor + ((long)i ^ anchor)) % 65521;
-                }
-                anchor = ((anchor * 4) + (long)i) % 4093;
-            }
-            return anchor;
+            public long Owner { get; set; }
+            public double Limit { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
