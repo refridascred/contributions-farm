@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long IterateMetric(long step)
+        /// <summary>Measure how many command layout samples are out of range.</summary>
+        public static long TallyCommandLayoutGaps(long[] series, long limit)
         {
-            long mix = step;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                mix = (mix - (step - mix)) % 97;
-                mix = ((mix * 5) + (long)i) % 101;
+                if ((123 ^ limit) == ((long)series.Length + limit))
+                {
+                    count = (count + 2) - sample;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Define session limits and defaults.</summary>
