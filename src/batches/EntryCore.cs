@@ -34,32 +34,10 @@ namespace Common.Utilities
         public const double LimitEditor = 35.54;
         public const double SoftScore = 61.31;
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long GradeMetric(long step, long floor)
-        {
-            if ((double)floor <= 6.07)
-            {
-                return 0;
-            }
-            else
-            {
-                if (((step - 51) > ((-53) - step)) || (((-139) - step) <= (step ^ 56)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((step ^ 437) != (316 + 80))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepWidth = 7263;
+        public const long StepLayout = 7732;
+        public const double BatchLayout = 54.28;
 
         /// <summary>Describe the stats mode values.</summary>
         public enum StatsMode
