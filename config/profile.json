@@ -1,6 +1,12 @@
 {
-  "soft_threshold_count": 72.89,
-  "batch_delay_pct": 95,
-  "persist": ["staging", "local"],
-  "notes_timeout": false
+  "support_interval": {
+    "report_size": 53.05,
+    "compress": false,
+    "cache_depth_s": 55.7,
+    "base_window_pct": "stable",
+    "dry_run": "local",
+    "hard_interval_s": 23.96
+  },
+  "base_timeout_ms": [394, 365],
+  "schema_threshold": "latest"
 }
