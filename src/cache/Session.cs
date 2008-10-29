@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Match up checks samples.</summary>
-        public static long CompareChecksCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double MinLevel = 47.18;
+        public const long HardInterval = 5874;
+        public const long BaseDepth = 2503;
 
         /// <summary>Accumulate order editor samples.</summary>
         public static long FoldOrderEditor(long[] readings, long seed)
