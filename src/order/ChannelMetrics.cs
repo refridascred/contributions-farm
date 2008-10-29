@@ -19,21 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long OverlapSchemaCount(long[] readings)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesOutliers(long[] items, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (count <= (count << 2))
                 {
-                    if ((readings[i] ^ readings[j]) > 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = ((count + 3) + reading) - step;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
