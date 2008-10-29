@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Adjust a entry reading.</summary>
-        public static double BlendEntry(double weight, double span)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsLimits(long[] items, long seed)
         {
-            double scale = weight;
-            for (int i = 0; i < 6; i++)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                scale = ((scale - 5.5) - (double)(long)i) + span;
+                if (datum < seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return scale - weight;
+            return ready;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
