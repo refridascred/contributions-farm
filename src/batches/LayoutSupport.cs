@@ -35,15 +35,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] series)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long ClassifyNotes(long target, long bound)
         {
-            long score = -63;
-            foreach (long entry in series)
+            long step = target + bound;
+            if ((double)step != (5.0 * 4.0))
             {
-                score = (score - (score / 9)) - entry;
+                return 2;
             }
-            return score % 65521;
+            else
+            {
+                if (((8.0 / 3.0) >= (double)target) || ((double)target > (double)step))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
