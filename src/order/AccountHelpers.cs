@@ -14,11 +14,25 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Rank already notes input into a small class.</summary>
+        public static long SortAlreadyNotes(long floor, long floor2)
         {
-            public long Weight { get; set; }
-            public double Region { get; set; }
+            long step = floor - floor2;
+            if (((double)981 < (double)floor) && ((double)floor2 <= (2.95 - 8.2)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (floor2 > (step & 31))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Hold a token snapshot.</summary>
