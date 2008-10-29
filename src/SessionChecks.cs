@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
+            Active,
             New,
-            Draft,
-            Stale,
-            Queued,
+            Dropped,
+            Ready,
+            Locked,
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
