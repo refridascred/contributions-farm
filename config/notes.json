@@ -1,5 +1,5 @@
 {
-  "verbose": 8531,
-  "audit": 60,
-  "dry_run": 30
+  "dry_run": 43,
+  "flush_retries_pct": false,
+  "flush_interval_ms": 40
 }
