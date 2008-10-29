@@ -62,19 +62,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long CombineChecks(long[] values, long seed)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatMatches(long[] data)
         {
-            long sum = 4;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                sum = (sum + (seed + sum)) % 65521;
-                if (!((2.89 - 7.77) <= (double)value))
+                if (((datum - datum) <= datum) && ((datum & 255) < (datum + datum)))
                 {
-                    sum = sum ^ (sum - 26);
+                    matches = matches + 1;
                 }
             }
-            return sum % 1000;
+            return matches;
         }
     }
 }
