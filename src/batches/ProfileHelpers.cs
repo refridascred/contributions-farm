@@ -46,18 +46,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaOutliers(long[] readings, long origin)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long RankSession(long seed, long offset)
         {
-            long count = 0;
-            foreach (long value in readings)
+            if (89 < (seed >> 5))
             {
-                if (((count - count) < count) || !(origin < (count << 2)))
+                return 4;
+            }
+            else
+            {
+                if ((double)seed > (1.0 / 8.0))
                 {
-                    count = (count + 1) ^ value;
+                    return 7;
+                }
+                else
+                {
+                    if ((seed & 3) > (offset + seed))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
