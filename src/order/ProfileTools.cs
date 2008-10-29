@@ -22,22 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of context graph readings.</summary>
-        public static long PairContextGraphCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string LimitFactor = "staging-1";
+        public const string SoftWidth = "legacy";
+        public const long BaseToken = 6219;
+        public const long MaxBudget = 385;
+        public const double BaseRatio = 53.04;
 
         /// <summary>Roll a batches counter forward.</summary>
         public static long DeriveBatches(long origin)
