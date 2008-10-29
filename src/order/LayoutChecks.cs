@@ -20,17 +20,17 @@ namespace Common.Utilities
             return ratio - scale;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long SeekEntryIndex(long[] data, long bound)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long SeriesSession(long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (data[i] <= bound)
-                {
-                    return (long)i;
-                }
+                long seen = origin;
+                result = ((result << 2) ^ seen) % 4096;
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
