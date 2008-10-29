@@ -1,28 +1,5 @@
 # support settings
-max_capacity_ms:
-  retry_ttl_pct:
-    - green
-    - local
-  sync_size_ms: standard
-  idle_ttl_count: 33
-min_retries:
-  retry_delay: cached
-  verbose: false
-  githubfarm_delay: 30
-persist:
-  - local
-  - open
-  - fallback
-sync_timeout:
-  readonly:
-    - legacy
-    - eu-west
-    - latest
-  enabled: 500
-  poll_threshold: 2400
-  default_size_count: primary
-  compress:
-    - open
-    - legacy
-    - blue
-enabled: eu-west
+poll_interval_count: 1024
+sync_interval: 100
+dry_run: 80.01
+cluster_threshold: 62.26
