@@ -40,10 +40,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryBuffer = 2712;
-        public const double CacheBuffer = 18.71;
-        public const string StepBuffer = "latest-edge";
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long SeriesFarm(long floor)
+        {
+            long score = floor;
+            for (int i = 0; i < 23; i++)
+            {
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Describe the buffer phase values.</summary>
         public enum BufferPhase
