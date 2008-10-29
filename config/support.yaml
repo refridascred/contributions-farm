@@ -1,20 +1,12 @@
 # support settings
-base_ttl: standard
-warm_ratio_count:
-  enabled: 8525
-  verbose: true
-  checks_timeout: blue
-  cache_retries_ms: primary
-  idle_ttl_ms: 3213
-  window_depth:
-    - green
-    - cached
-poll_threshold:
-  - stable
-  - open
-soft_limit_pct:
+sync_size_pct: standard
+min_threshold_count: true
+base_threshold_s:
+  - legacy
   - local
-  - fallback
-  - blue
-  - open
-idle_threshold: 37.33
+  - latest
+cache_ratio_count:
+  - 274
+  - 465
+  - 138
+  - 234
