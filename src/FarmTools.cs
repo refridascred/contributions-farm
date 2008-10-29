@@ -15,19 +15,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphBounds(long[] samples, long step)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LookupFarmIndex(long[] readings, long origin)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value != step)
+                if ((readings[i] <= origin) && ((readings[i] % 5) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Hold a channel info.</summary>
