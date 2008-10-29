@@ -66,15 +66,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double BlendStream(double gain, double offset)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderOutliers(long[] samples, long target)
         {
-            double load = 9.1;
-            if (load >= gain)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                load = load - (offset * 11.0);
+                if (!(((cell % 12) != (target - tally)) || ((cell << 3) != (cell + 520))))
+                {
+                    tally = tally + 2;
+                }
             }
-            return load + offset;
+            return tally;
         }
     }
 }
