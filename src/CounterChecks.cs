@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesGaps(long[] readings, long offset)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long GradeFilter(long floor, long target)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            if (((target + floor) >= target) || ((floor ^ target) == (floor << 2)))
             {
-                if (((offset >> 2) <= (entry & 63)) && ((5 / 6) != (entry - entry)))
+                return 6;
+            }
+            else
+            {
+                if ((4.66 * 20.0) > (double)floor)
                 {
-                    matches = matches + 1;
+                    return 5;
+                }
+                else
+                {
+                    if ((848 / 8) <= floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((floor * 4) > target))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the profile phase values.</summary>
