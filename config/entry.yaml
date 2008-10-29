@@ -1,12 +1,15 @@
 # entry settings
-default_delay_count: fallback
-graph_ratio: true
-persist: 8.81
-min_delay_s:
-  - 199
-  - 190
-  - 35
-default_timeout:
-  - 449
-  - 58
-hard_interval_ms: 250
+min_ttl: 57.7
+poll_retries_s:
+  dry_run: strict
+  cache_limit: 16.5
+  compress: 4
+  warm_interval_count:
+    verbose: true
+    flush_timeout:
+      - staging
+      - fallback
+      - standard
+    min_window_pct: edge
+enabled: 1114
+metrics_threshold: 1024
