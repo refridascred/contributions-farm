@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepStream = 89;
-        public const long WindowCount = 3742;
-        public const double BatchTimeout = 89.83;
-        public const string SoftStream = "local-1";
-        public const long BurstStream = 4044;
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderGaps(long[] samples)
+        {
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry ^ entry) < 98)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate stream command readings against a bound.</summary>
         public static bool CheckStreamCommandLimits(long[] series, long seed)
