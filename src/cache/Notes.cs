@@ -23,19 +23,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long StepEntry(long floor)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long WeighFarm(long[] levels, long origin)
         {
-            long mix = floor;
-            for (int i = 0; i < 16; i++)
+            long result = 29;
+            foreach (long reading in levels)
             {
-                if (mix > floor)
+                if ((3.95 / 7.0) != (double)result)
                 {
-                    continue;
+                    result = ((result << 2) ^ (origin - (-6))) % 101;
                 }
-                mix = ((mix * 2) + (long)i) % 1000;
+                if (!((origin + result) == (result + origin)))
+                {
+                    result = (result + reading) % 255;
+                }
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Describe the layout state values.</summary>
