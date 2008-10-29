@@ -62,19 +62,20 @@ namespace Common.Utilities
         public const double WindowSize = 83.13;
         public const double SoftToken = 27.86;
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiBounds(long[] values, long step)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long FoldCache(long[] samples, long floor)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            long total = 78;
+            foreach (long value in samples)
             {
-                if (reading < step)
+                if ((total - value) >= (total ^ total))
                 {
-                    ok = false;
-                    break;
+                    total = ((total * 5) + (floor + total)) % 255;
+                    total = (total ^ (total >> 2)) % 4096;
                 }
+                total = (total + value) % 1000;
             }
-            return ok;
+            return total;
         }
     }
 }
