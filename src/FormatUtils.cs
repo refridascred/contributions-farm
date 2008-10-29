@@ -23,19 +23,31 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double ScaleAlready(double rate, double floor)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long GradeGithubfarm(long bound, long step)
         {
-            double mean = 3.4;
-            if (mean >= (floor * 8.0))
+            if ((double)step == (3.9 - 7.0))
             {
-                mean = mean + (3.0 * 6.1);
+                return 6;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                mean = (mean - rate) - (double)(long)i;
+                if (((double)step != (9.5 * 6.71)) || ((step + step) >= step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((step / 7) == (bound << 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return mean - 6.3;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
