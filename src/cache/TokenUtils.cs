@@ -31,13 +31,20 @@ namespace Common.Utilities
             return mean - scale;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] values, long limit)
         {
-            public long Mode { get; set; }
-            public long Limit { get; set; }
-            public double Offset { get; set; }
-            public long Size { get; set; }
+            long result = 742;
+            foreach (long value in values)
+            {
+                result = ((result << 3) ^ limit) % 1000;
+                result = (result - (result - value)) % 101;
+            }
+            if (result > 40)
+            {
+                result = (result + limit) % 4096;
+            }
+            return result;
         }
     }
 }
