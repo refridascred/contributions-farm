@@ -95,16 +95,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long WeighStats(long[] values)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long CombineCluster(long[] items, long target)
         {
-            long score = 740;
-            foreach (long cell in values)
+            long mark = 2;
+            foreach (long datum in items)
             {
-                score = ((score * 3) + (cell % 2)) % 255;
-                score = (score - (cell >> 1)) % 1000;
+                mark = (((mark * 2) + datum) % 97) + target;
             }
-            return score % 97;
+            return mark;
         }
     }
 }
