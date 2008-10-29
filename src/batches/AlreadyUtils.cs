@@ -33,13 +33,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long ClassifyEntry(long origin, long origin2)
         {
-            public long Offset { get; set; }
-            public long Level { get; set; }
-            public bool Score { get; set; }
-            public double Total { get; set; }
+            if (((origin << 2) >= (origin2 + origin)) || ((double)origin > (6.91 / 3.0)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((origin2 / 7) < (origin2 % 8))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((origin2 + origin2) <= origin2)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((origin + 9) < 646)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every metrics commits entry stays within the limit.</summary>
