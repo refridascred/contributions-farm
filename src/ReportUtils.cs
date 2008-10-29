@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
-        {
-            Pending,
-            Ready,
-            Queued,
-            Retry,
-            Synced,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftTimeout = 5761;
+        public const long HardCluster = 8742;
+        public const string IdleCount = "local";
+        public const long SoftCluster = 3659;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long HardEditor = 9984;
