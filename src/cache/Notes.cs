@@ -19,22 +19,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricMatches(long[] series, long step)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if (((value + value) >= step) && ((value - value) <= (81 >> 5)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Queued,
+            Synced,
+            Active,
+            Paused,
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
