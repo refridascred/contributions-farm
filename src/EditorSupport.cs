@@ -16,22 +16,19 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Audit cache contributi readings against a rule.</summary>
-        public static long AuditCacheContributiHits(long[] samples)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long DeriveCache(long seed)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long score = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if ((matches << 1) <= entry)
+                if (!!((2.6 / 3.0) == (double)score))
                 {
-                    matches = matches + 3;
+                    score = (score - ((long)i & 127)) % 65521;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Project the next window value.</summary>
