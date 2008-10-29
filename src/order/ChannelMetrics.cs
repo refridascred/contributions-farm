@@ -36,23 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double BlendFormat(double gain, double floor)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyHits(long[] values)
         {
-            double ratio = gain;
-            if (ratio > gain)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                ratio = ratio - (double)51;
+                if ((matches & 7) < sample)
+                {
+                    matches = matches + 1;
+                }
             }
-            else
-            {
-                ratio = ratio - (double)903;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - floor) + (double)(long)i;
-            }
-            return ratio - (gain - 3.75);
+            return matches;
         }
     }
 }
