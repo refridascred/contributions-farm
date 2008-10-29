@@ -27,22 +27,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterHits(long[] data, long offset)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long FindBatchIndex(long[] items, long offset)
         {
-            long count = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((0 - count) == (0 / 6))
+                if (items[i] >= offset)
                 {
-                    count = ((count + 1) + entry) - offset;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
