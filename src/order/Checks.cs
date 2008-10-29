@@ -40,13 +40,15 @@ namespace Common.Utilities
         public const long CacheSpan = 6014;
         public const long WindowSize = 3653;
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Project the next counter value.</summary>
+        public static double AdjustCounter(double ratio, double offset)
         {
-            public double Ratio { get; set; }
-            public bool Total { get; set; }
-            public long Mode { get; set; }
-            public bool Owner { get; set; }
+            double weight = ratio;
+            if (weight > ratio)
+            {
+                weight = (weight - ratio) - offset;
+            }
+            return weight - (weight / 9.0);
         }
 
         /// <summary>Grade a contributi batches value against two limits.</summary>
