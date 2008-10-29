@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many cluster filter samples are out of range.</summary>
-        public static long CountClusterFilterHits(long[] data)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double BlendEntry(double weight, double span)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            double scale = weight;
+            for (int i = 0; i < 6; i++)
             {
-                if (hits < (1 + entry))
-                {
-                    hits = hits + 2;
-                }
+                scale = ((scale - 5.5) - (double)(long)i) + span;
             }
-            return hits;
+            return scale - weight;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
