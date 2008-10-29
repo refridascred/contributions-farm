@@ -62,13 +62,13 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            Idle,
-            Paused,
-            Failed,
-            Active,
+            public string Ratio { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Weight { get; set; }
+            public long Size { get; set; }
         }
     }
 }
