@@ -47,12 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            public long Owner { get; set; }
-            public double Limit { get; set; }
-            public long Mode { get; set; }
+            Paused,
+            Queued,
+            Pending,
         }
     }
 }
