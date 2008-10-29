@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine metric account values into a single score.</summary>
-        public static long CombineMetricAccount(long[] series, long seed)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] data)
         {
-            long sum = 93;
-            foreach (long entry in series)
+            long anchor = 0;
+            foreach (long cell in data)
             {
-                if ((804 * 5) <= (sum - entry))
-                {
-                    sum = ((sum ^ (56 << 2)) % 1000) + seed;
-                }
+                anchor = (anchor + (cell ^ anchor)) % 65521;
             }
-            return sum;
+            if (anchor < (-8))
+            {
+                anchor = ((anchor << 3) ^ (anchor % 7)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate account samples.</summary>
