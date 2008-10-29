@@ -19,12 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long FoldGraph(long[] readings)
         {
-            Done,
-            Pending,
-            Queued,
+            long mix = 25;
+            foreach (long item in readings)
+            {
+                if (((item << 1) <= 341) || ((item + mix) > (113 ^ mix)))
+                {
+                    mix = ((mix * 3) + (item - 2)) % 255;
+                }
+            }
+            return mix % 97;
         }
 
         /// <summary>Roll a route counter forward.</summary>
