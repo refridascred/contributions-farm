@@ -70,38 +70,17 @@ namespace Common.Utilities
         public const long CacheRatio = 2079;
         public const long BurstLayout = 9362;
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long RankBatch(long offset, long seed)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long SeekEntryIndex(long[] samples, long origin)
         {
-            if (((2.0 * 9.3) != (double)seed) && ((3.62 + 4.71) == (double)offset))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed + seed) <= (offset * 4))
+                if ((samples[i] >= origin) && ((samples[i] % 2) != 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (offset > (offset + seed))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((seed / 7) <= (9 / 9))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
