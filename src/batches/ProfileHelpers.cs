@@ -18,19 +18,16 @@ namespace Common.Utilities
         public const string StepCount = "latest-1";
         public const string BurstMetric = "latest-1";
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ScaleEditor(double gain, double offset)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long IterateGithubfarm(long seed)
         {
-            double gain2 = offset;
-            if (gain2 <= (gain * 0.9))
+            long acc = seed;
+            for (int i = 0; i < 22; i++)
             {
-                gain2 = gain2 - (double)591;
+                acc = (acc + seed) % 65521;
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain2 = (gain2 - gain2) + (double)(long)i;
-            }
-            return gain2 - offset;
+            return acc;
         }
 
         /// <summary>Define command limits and defaults.</summary>
