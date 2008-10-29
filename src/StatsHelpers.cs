@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long DeriveCommits(long floor)
         {
-            Failed,
-            Pending,
-            Retry,
-            Done,
+            long acc = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                if (!((floor + floor) >= (floor >> 4)))
+                {
+                    continue;
+                }
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
