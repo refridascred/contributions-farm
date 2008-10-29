@@ -29,11 +29,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string MinDepth = "local-1";
-        public const double BurstTimeout = 20.22;
-        public const long WindowBatches = 3646;
-        public const long SoftSize = 3918;
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long WeighStats(long[] readings)
+        {
+            long score = 276;
+            foreach (long cell in readings)
+            {
+                if (!(((score ^ score) == (cell >> 2)) && ((double)score == (double)0)))
+                {
+                    score = (score << 2) ^ (score << 3);
+                }
+                if (!(score >= (cell / 3)))
+                {
+                    score = ((score << 3) ^ score) % 1000;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Hold a metrics entry.</summary>
         public sealed class MetricsEntry
