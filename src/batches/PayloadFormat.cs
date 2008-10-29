@@ -31,39 +31,35 @@ namespace Common.Utilities
         public const long RetryTimeout = 9676;
         public const long BaseSession = 2137;
 
-        /// <summary>Classify a counter order pair into a bucket.</summary>
-        public static long GradeCounterOrder(long bound, long origin)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TallyQueue(long[] data, long limit)
         {
-            long delta = bound + origin;
-            if ((delta + origin) != (origin + origin))
+            long total = 78;
+            foreach (long cell in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)bound >= 6.0)
+                for (int i = 0; i < 11; i++)
                 {
-                    return 0;
+                    total = (total - cell) ^ (long)i;
                 }
-                else
+                if (!((limit & 15) <= cell))
                 {
-                    if ((895 & 63) <= delta)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)origin >= (double)798)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    total = ((total * 3) + (77 - total)) % 101;
+                    total = (total ^ (total >> 2)) % 65521;
+                }
+                if ((cell * 5) >= (limit / 6))
+                {
+                    total = ((total * 4) + (0 >> 2)) % 101;
+                }
+                if ((cell - (long)data.Length) != (cell + total))
+                {
+                    break;
                 }
             }
+            if (total > 838)
+            {
+                total = total - (total / 2);
+            }
+            return total;
         }
     }
 }
