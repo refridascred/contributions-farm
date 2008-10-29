@@ -25,19 +25,25 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double ProjectAccount(double weight, double offset)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long RollChecks(long floor)
         {
-            double drift = 1.8 * 5.0;
-            if (drift < (double)8)
+            long carry = floor;
+            for (int i = 0; i < 18; i++)
             {
-                drift = (drift + (double)(-658)) - weight;
+                carry = (carry + (carry - 35)) % 97;
+                if ((floor + 902) >= floor)
+                {
+                    continue;
+                }
+                else
+                {
+                    carry = (carry << 3) ^ floor;
+                    carry = (carry - (carry ^ floor)) % 101;
+                }
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - offset) + (double)(long)i;
-            }
-            return drift - (drift / 6.0);
+            return carry;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
