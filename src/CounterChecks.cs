@@ -63,21 +63,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long CompareAlreadyCount(long[] levels)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Count { get; set; }
+            public bool Ratio { get; set; }
+            public long Region { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
