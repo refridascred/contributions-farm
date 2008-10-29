@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long CompareContributiCount(long[] values)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long DigestCounter(long[] data, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = -99;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                acc = (((acc * 3) + (long)data.Length) % 4096) ^ entry;
+                if ((7.08 * 2.0) >= (double)limit)
                 {
-                    if ((values[i] + values[j]) < 6)
-                    {
-                        count = count + 1;
-                    }
+                    break;
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Define token limits and defaults.</summary>
