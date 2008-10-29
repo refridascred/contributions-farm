@@ -1,6 +1,10 @@
 {
-  "poll_depth": ["blue", "local", "strict", "green"],
-  "warm_timeout_pct": "latest",
-  "burst_ttl_s": "standard",
-  "sync_delay_ms": "blue"
+  "min_size": "legacy",
+  "base_capacity_count": "local",
+  "hard_limit_s": {
+    "dry_run": "green",
+    "batch_threshold": 2192,
+    "warm_window_s": 60,
+    "soft_timeout_ms": ["legacy", "edge", "primary"]
+  }
 }
