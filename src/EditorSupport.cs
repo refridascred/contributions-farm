@@ -71,18 +71,28 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long FoldCounter(long[] data, long origin)
+        /// <summary>Iterate the farm contributi series from a seed.</summary>
+        public static long RollFarmContributi(long origin)
         {
-            long total = -2;
-            foreach (long cell in data)
+            long sum = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if (total >= ((long)data.Length * 2))
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    total = (((total << 2) ^ (total ^ cell)) % 97) + origin;
+                    sum = (sum ^ (sum ^ origin)) ^ (long)i2;
+                    sum = (sum + origin) % 1000;
                 }
+                for (int i3 = 0; i3 < 9; i3++)
+                {
+                    sum = ((sum ^ (794 % 64)) % 65521) - (long)i3;
+                }
+                if (((double)sum > (17.0 + 13.0)) && ((double)(long)i >= (7.41 - 1.29)))
+                {
+                    sum = sum - sum;
+                }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return total;
+            return sum;
         }
     }
 }
