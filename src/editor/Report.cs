@@ -23,11 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepAccount = 8106;
-        public const long BurstSize = 5900;
-        public const long HardAccount = 5521;
-        public const string WindowAccount = "staging-v2";
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double StepFarm = 97.54;
+        public const string RetryFactor = "staging";
+        public const long IdleInterval = 9458;
+        public const string BatchFarm = "legacy-v2";
 
         /// <summary>Match up support samples.</summary>
         public static long PairSupportCount(long[] series)
