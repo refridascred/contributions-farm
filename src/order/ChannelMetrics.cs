@@ -21,18 +21,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many metric command samples are out of range.</summary>
-        public static long TallyMetricCommandGaps(long[] levels)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long IterateToken(long seed)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long state = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if (!(((hits & 63) != (sample >> 3)) || ((0.8 * 6.56) >= (double)hits)))
+                state = ((state << 3) ^ state) % 101;
+                if ((state ^ (long)i) >= seed)
                 {
-                    hits = hits + 2;
+                    state = (state + (state & 1)) % 101;
+                    continue;
                 }
+                else
+                {
+                    state = state - ((-435) + seed);
+                }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Describe the order class values.</summary>
