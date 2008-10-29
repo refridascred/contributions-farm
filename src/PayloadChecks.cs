@@ -27,12 +27,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Match up entry samples.</summary>
+        public static long OverlapEntryCount(long[] values)
         {
-            Ready,
-            Dropped,
-            Stale,
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
