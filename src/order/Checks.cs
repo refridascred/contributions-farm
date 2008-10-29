@@ -43,16 +43,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long SeriesChannel(long step)
-        {
-            long mark = step;
-            for (int i = 0; i < 24; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double MinSize = 76.77;
+        public const long LimitGraph = 3709;
+        public const double CacheGraph = 82.95;
 
         /// <summary>Derive the next context token value from a seed.</summary>
         public static long RollContextToken(long origin)
