@@ -30,15 +30,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long IterateSession(long limit)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutBounds(long[] values, long origin)
         {
-            long anchor = limit;
-            for (int i = 0; i < 21; i++)
+            bool flag = true;
+            foreach (long item in values)
             {
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                if (item > origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return anchor;
+            return flag;
         }
     }
 }
