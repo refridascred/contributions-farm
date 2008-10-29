@@ -21,17 +21,9 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Roll a metric batches counter forward.</summary>
-        public static long DeriveMetricBatches(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 21; i++)
-            {
-                state = ((state * 5) + (94 % 7)) % 1000;
-                state = ((state * 4) + (state + (long)i)) % 255;
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MaxInterval = 3458;
+        public const long DefaultMetric = 3343;
+        public const long WindowBudget = 3211;
     }
 }
