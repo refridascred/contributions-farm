@@ -60,31 +60,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long GradeQueue(long limit, long seed)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            if ((double)limit >= (9.3 + 6.34))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((seed + limit) >= (seed - 575))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (limit < (limit & 15))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public long Level { get; set; }
+            public double Weight { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
