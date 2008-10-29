@@ -27,32 +27,10 @@ namespace Common.Utilities
         public const long BurstCache = 1336;
         public const long IdleCache = 4341;
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long RankEditor(long floor, long offset)
-        {
-            if (!((double)floor > (5.7 * 5.9)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((floor + floor) == (offset + offset)) && ((5.9 / 2.0) == (double)floor))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (floor > (floor >> 4))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double RetryContributi = 9.78;
+        public const long LimitFactor = 2905;
+        public const string LimitContributi = "standard-v2";
 
         /// <summary>Audit editor counter readings against a rule.</summary>
         public static long CountEditorCounterOutliers(long[] data, long offset)
