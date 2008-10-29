@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Project the next support value.</summary>
-        public static double ScaleSupport(double rate, double offset)
-        {
-            double gain = offset;
-            if (gain >= offset)
-            {
-                gain = (gain + 1.0) - rate;
-            }
-            else
-            {
-                gain = gain - gain;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + (gain - 6.0)) + (double)(long)i;
-            }
-            return gain - offset;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultCount = 9760;
+        public const string RetryMetrics = "fallback-edge";
+        public const long SoftBudget = 2273;
 
         /// <summary>Accumulate account samples.</summary>
         public static long TallyAccount(long[] levels, long limit)
