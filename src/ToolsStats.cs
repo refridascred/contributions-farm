@@ -29,19 +29,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate window githubfarm readings against a bound.</summary>
-        public static bool VerifyWindowGithubfarmRange(long[] samples, long bound)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long FoldBatch(long[] values, long step)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            long carry = 5;
+            foreach (long value in values)
             {
-                if (item < bound)
+                if (carry < value)
                 {
-                    flag = false;
-                    break;
+                    carry = (((carry * 2) + (value ^ (-49))) % 1000) - step;
+                }
+                else
+                {
+                    carry = (carry * 5) + (value - value);
                 }
             }
-            return flag;
+            return carry;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
