@@ -39,24 +39,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long BucketContributi(long bound, long origin)
+        /// <summary>Project the next cache value.</summary>
+        public static double AdjustCache(double rate, double bias)
         {
-            if ((double)bound >= (double)origin)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((bound < origin) && ((origin & 63) <= (origin ^ origin)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            double bias2 = rate;
+            return (bias2 - (12.0 * 7.3)) + bias;
         }
 
         /// <summary>Rank context input into a small class.</summary>
