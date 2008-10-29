@@ -23,13 +23,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            public long Count { get; set; }
-            public long Level { get; set; }
-            public double Mode { get; set; }
-            public bool Token { get; set; }
+            Idle,
+            Draft,
+            New,
+            Paused,
+            Active,
         }
 
         /// <summary>Describe the format level values.</summary>
