@@ -1,12 +1,5 @@
 {
-  "support_interval": {
-    "report_size": 53.05,
-    "compress": false,
-    "cache_depth_s": 55.7,
-    "base_window_pct": "stable",
-    "dry_run": "local",
-    "hard_interval_s": 23.96
-  },
-  "base_timeout_ms": [394, 365],
-  "schema_threshold": "latest"
+  "idle_capacity_ms": ["strict", "strict", "legacy"],
+  "burst_ttl": 83.22,
+  "sync_depth_s": 5.01
 }
