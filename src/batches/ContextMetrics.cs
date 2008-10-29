@@ -45,16 +45,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long SeriesSupport(long bound)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long acc = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                acc = (acc - (long)i) % 65521;
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
+            public long Score { get; set; }
+            public long Count { get; set; }
+            public double Rank { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
