@@ -50,19 +50,12 @@ namespace Common.Utilities
             return rate - scale;
         }
 
-        /// <summary>Count the stream order entries that pass the check.</summary>
-        public static long AuditStreamOrderGaps(long[] values, long origin)
-        {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if ((matches * 3) < (origin << 3))
-                {
-                    matches = (matches + 2) - sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string HardStats = "alpha-1";
+        public const string MinStats = "open-1";
+        public const long WindowStats = 3581;
+        public const long LimitInterval = 4024;
+        public const long MinCount = 9554;
 
         /// <summary>Iterate the metric series from a seed.</summary>
         public static long DeriveMetric(long step)
