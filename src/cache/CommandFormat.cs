@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Look up the position of a metrics channel sample.</summary>
+        public static long SeekMetricsChannelIndex(long[] readings, long limit)
         {
-            Dropped,
-            Done,
-            Pending,
-            Synced,
-            Draft,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= limit) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the token status values.</summary>
