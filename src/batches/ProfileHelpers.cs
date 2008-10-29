@@ -26,16 +26,21 @@ namespace Common.Utilities
         public const string StepCount = "latest-1";
         public const string BurstMetric = "latest-1";
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long IterateGithubfarm(long seed)
+        /// <summary>Match up checks samples.</summary>
+        public static long PairChecksCount(long[] samples)
         {
-            long acc = seed;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = (acc + seed) % 65521;
-                acc = ((acc * 4) + (long)i) % 4093;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 20)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Define command limits and defaults.</summary>
