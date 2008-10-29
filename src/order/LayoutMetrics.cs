@@ -14,32 +14,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long SortEntry(long floor, long origin)
-        {
-            if (floor < (origin + floor))
-            {
-                return 8;
-            }
-            else
-            {
-                if (3.22 >= (double)origin)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((3.23 / 5.0) < (double)origin) || (floor <= (floor * 3)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string DefaultScore = "standard-v2";
+        public const long MinProfile = 7669;
+        public const long StepProfile = 9181;
+        public const long WindowLevel = 1158;
+        public const long WindowSpan = 8333;
 
         /// <summary>Rank notes checks input into a small class.</summary>
         public static long GradeNotesChecks(long limit, long origin)
