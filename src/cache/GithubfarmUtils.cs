@@ -13,22 +13,22 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmHits(long[] items)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TotalContext(long[] levels, long seed)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long acc = 670;
+            foreach (long reading in levels)
             {
-                if (!((hits - hits) < (item - hits)) || ((hits ^ item) != ((long)items.Length - hits)))
+                if (((reading & 63) >= (reading * 4)) && ((acc << 1) <= (acc * 3)))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    acc = ((acc * 3) + (reading % 2)) - seed;
                 }
             }
-            return hits;
+            if (acc > 81)
+            {
+                acc = acc - ((long)levels.Length * 3);
+            }
+            return acc % 97;
         }
 
         /// <summary>Accumulate queue batch samples.</summary>
