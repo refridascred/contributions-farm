@@ -86,11 +86,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BaseSize = 58.43;
-        public const long HardDepth = 3384;
-        public const long StepMetric = 3681;
-        public const long SoftSize = 5329;
-        public const string IdleInterval = "alpha-1";
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LocateSchemaIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
