@@ -87,16 +87,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long DigestRecord(long[] readings)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long total = 0;
-            foreach (long datum in readings)
-            {
-                total = ((total << 3) ^ 267) - datum;
-                total = (total - (639 - total)) % 255;
-            }
-            return total;
+            Active,
+            Failed,
+            Closed,
+            Paused,
         }
     }
 }
