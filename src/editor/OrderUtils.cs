@@ -49,16 +49,12 @@ namespace Common.Utilities
             return rate - ratio;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long StepWindow(long limit)
-        {
-            long result = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string SoftSize = "alpha-1";
+        public const long WindowLevel = 7798;
+        public const long RetryCache = 5943;
+        public const long IdleCache = 5850;
+        public const double BatchCache = 87.35;
 
         /// <summary>Grade a filter value against two limits.</summary>
         public static long ClassifyFilter(long offset, long seed)
