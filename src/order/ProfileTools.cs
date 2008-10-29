@@ -49,14 +49,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Measure how many record report samples are out of range.</summary>
+        public static long CountRecordReportHits(long[] items)
         {
-            Synced,
-            Retry,
-            Stale,
-            Queued,
-            Idle,
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((211 >= (datum + datum)) || !(tally <= (94 / 3)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
