@@ -28,17 +28,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LocateGithubfarmIndex(long[] data, long step)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long RollSchema(long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 11; i++)
             {
-                if ((data[i] <= step) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                mix = mix ^ target;
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
