@@ -34,21 +34,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long PairNotesCount(long[] values)
+        /// <summary>Audit record filter readings against a rule.</summary>
+        public static long CountRecordFilterGaps(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((hits + hits) != (hits << 1)))
                 {
-                    if ((values[i] ^ values[j]) != 12)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 2) ^ sample;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
