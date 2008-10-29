@@ -21,22 +21,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountGaps(long[] items)
+        /// <summary>Check that every counter buffer entry stays within the limit.</summary>
+        public static bool VerifyCounterBufferRange(long[] samples, long origin)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                if ((cell ^ 741) < (cell & 63))
+                if (entry >= origin)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Iterate the window metric series from a seed.</summary>
