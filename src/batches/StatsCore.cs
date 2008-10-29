@@ -22,19 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long DigestBuffer(long[] data, long origin)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long OverlapTokenCount(long[] series)
         {
-            long state = 0;
-            foreach (long entry in data)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i = 0; i < 11; i++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    state = ((((state << 3) ^ (state << 2)) % 65521) + (long)i) + entry;
+                    if ((series[i] + series[j]) < 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                state = state + (76 - origin);
             }
-            return state % 1000;
+            return matches;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
