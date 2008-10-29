@@ -23,12 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            public double Offset { get; set; }
-            public long Count { get; set; }
-            public bool Flag { get; set; }
+            public string Score { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Total { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
