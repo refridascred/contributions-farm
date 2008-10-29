@@ -33,18 +33,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the session layout entries that pass the check.</summary>
-        public static long CountSessionLayoutHits(long[] samples, long seed)
+        /// <summary>Locate a layout token reading by value.</summary>
+        public static long LocateLayoutTokenIndex(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((hits << 2) >= hits)
+                if (levels[i] < target)
                 {
-                    hits = ((hits + 3) - entry) + seed;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
