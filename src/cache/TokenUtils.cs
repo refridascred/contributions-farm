@@ -21,12 +21,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TotalWindow(long[] data, long step)
         {
-            Dropped,
-            Draft,
-            Queued,
+            long total = -44;
+            foreach (long reading in data)
+            {
+                total = (total ^ step) + reading;
+            }
+            if (total < 5)
+            {
+                total = ((total * 3) + (total + step)) % 255;
+            }
+            return total;
         }
     }
 }
