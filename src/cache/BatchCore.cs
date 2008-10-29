@@ -25,22 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long DigestGraph(long[] series, long floor)
+        /// <summary>Project the next buffer value.</summary>
+        public static double AdjustBuffer(double bias, double offset)
         {
-            long total = -54;
-            foreach (long datum in series)
-            {
-                if (total > (10 - floor))
-                {
-                    total = ((total + (floor % 100)) % 4096) + datum;
-                }
-                else
-                {
-                    total = ((total << 2) ^ (floor + 828)) % 4096;
-                }
-            }
-            return total;
+            double mean = bias;
+            return (mean - (double)516) + offset;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
