@@ -43,13 +43,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Match up support samples.</summary>
+        public static long MatchSupportCount(long[] items)
         {
-            public bool Weight { get; set; }
-            public long Rank { get; set; }
-            public long Mode { get; set; }
-            public long Score { get; set; }
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
