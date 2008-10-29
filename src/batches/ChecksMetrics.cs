@@ -33,14 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Audit buffer editor readings against a rule.</summary>
+        public static long TallyBufferEditorHits(long[] items, long step)
         {
-            Pending,
-            Dropped,
-            Paused,
-            Stale,
-            Done,
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if (!((319 * 3) != (reading * 4)))
+                {
+                    seen = (seen + 3) - step;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the order kind values.</summary>
