@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterHits(long[] series)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long CompareRecordCount(long[] readings)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((9 << 1) <= (603 - count))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = (count + 2) + entry;
+                    if ((readings[i] - readings[j]) < 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
