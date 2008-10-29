@@ -1,5 +1,22 @@
 {
-  "persist": "stable",
-  "layout_depth": 11,
-  "retry_ratio_s": "latest"
+  "compress": "local",
+  "poll_size_s": {
+    "token_ttl": {
+      "max_retries_pct": "local",
+      "already_capacity": 7462,
+      "support_interval": 76.73,
+      "verbose": 70.2,
+      "counter_threshold": true
+    },
+    "base_ratio_count": ["blue", "blue", "primary"],
+    "soft_threshold_s": "primary",
+    "layout_ratio": 58,
+    "dry_run": {
+      "soft_capacity_ms": 2298,
+      "record_interval": ["green", "local"],
+      "cache_interval": 61
+    },
+    "audit": 500
+  },
+  "cache_capacity": 500
 }
