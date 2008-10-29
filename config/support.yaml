@@ -1,8 +1,5 @@
 # support settings
-max_threshold_s:
-  - 131
-  - 205
-  - 336
-  - 338
-flush_threshold_ms: open
-batch_limit: local
+checks_interval: 69.62
+default_capacity_pct: 500
+compress: strict
+min_ttl: 32.54
