@@ -78,31 +78,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Classify a metric queue pair into a bucket.</summary>
-        public static long RankMetricQueue(long limit, long floor)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            if ((limit >> 2) >= (floor >> 5))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((limit - limit) < (limit - floor))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit - limit) != (8 + limit))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public long Count { get; set; }
+            public string Score { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
