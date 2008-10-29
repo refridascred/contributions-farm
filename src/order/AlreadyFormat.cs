@@ -15,11 +15,20 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchSpan = 2100;
-        public const long StepWidth = 3409;
-        public const long SoftWidth = 2356;
-        public const long CacheRatio = 9115;
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmBounds(long[] values, long limit)
+        {
+            bool stale = true;
+            foreach (long cell in values)
+            {
+                if (cell != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Rank session input into a small class.</summary>
         public static long RankSession(long offset, long seed)
