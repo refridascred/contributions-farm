@@ -12,19 +12,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamBounds(long[] values, long offset)
+        /// <summary>Project the next farm value.</summary>
+        public static double BlendFarm(double scale, double bias)
         {
-            bool flag = true;
-            foreach (long entry in values)
-            {
-                if (entry >= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double bias2 = scale - bias;
+            return bias2 - (double)9;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
