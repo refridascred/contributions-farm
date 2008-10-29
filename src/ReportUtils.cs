@@ -22,22 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long PairReportCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardEditor = 9984;
+        public const string WindowEditor = "staging";
+        public const string CacheInterval = "cached-edge";
+        public const long RetryDepth = 5104;
+        public const long IdleSpan = 752;
 
         /// <summary>Count the tools editor entries that pass the check.</summary>
         public static long CountToolsEditorMatches(long[] levels)
