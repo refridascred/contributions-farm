@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksHits(long[] data, long bound)
         {
-            New,
-            Locked,
-            Dropped,
-            Synced,
-            Closed,
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((hits / 8) >= (hits ^ hits))
+                {
+                    hits = ((hits + 2) - value) - bound;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
