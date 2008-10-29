@@ -20,11 +20,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleFactor = 5709;
-        public const double WindowLevel = 84.26;
-        public const long DefaultCluster = 6789;
-        public const long BaseCluster = 1667;
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long DigestBuffer(long[] data, long origin)
+        {
+            long state = 0;
+            foreach (long entry in data)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    state = ((((state << 3) ^ (state << 2)) % 65521) + (long)i) + entry;
+                }
+                state = state + (76 - origin);
+            }
+            return state % 1000;
+        }
 
         /// <summary>Grade a contributi value against two limits.</summary>
         public static long BucketContributi(long bound, long origin)
