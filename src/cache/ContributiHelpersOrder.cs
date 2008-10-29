@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next batches entry value.</summary>
-        public static double SmoothBatchesEntry(double scale, double bias)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            double mean = (scale + 4.1) - (scale + scale);
-            return (mean + (double)(-76)) + bias;
+            public long Stamp { get; set; }
+            public double Offset { get; set; }
+            public long Weight { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Combine metrics tools values into a single score.</summary>
