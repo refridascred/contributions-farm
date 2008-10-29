@@ -20,11 +20,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            public bool Offset { get; set; }
-            public string Limit { get; set; } = "";
+            public double Owner { get; set; }
+            public bool Total { get; set; }
+            public double Label { get; set; }
         }
     }
 }
