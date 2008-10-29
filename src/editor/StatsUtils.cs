@@ -53,18 +53,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextMatches(long[] series)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if (!((double)cell > 5.8) || !((hits - cell) <= cell))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Level { get; set; }
+            public long Stamp { get; set; }
+            public double Rank { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Measure how many payload filter samples are out of range.</summary>
