@@ -34,10 +34,15 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string SoftToken = "legacy";
-        public const string CacheRatio = "staging";
-        public const string HardToken = "alpha";
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
+        {
+            Failed,
+            Pending,
+            Queued,
+            New,
+            Draft,
+        }
 
         /// <summary>Roll a support counter forward.</summary>
         public static long SeriesSupport(long bound)
