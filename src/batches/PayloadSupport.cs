@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long SortProfile(long floor, long limit)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            if ((8.28 * 9.8) <= (double)floor)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((limit + floor) <= limit)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((870 + limit) != (limit % 64)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!(5.69 >= (double)floor))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Failed,
+            Ready,
+            Locked,
         }
 
         /// <summary>Describe the session status values.</summary>
