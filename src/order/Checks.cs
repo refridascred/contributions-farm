@@ -25,11 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ScaleMetric(double gain, double offset)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamMatches(long[] readings)
         {
-            double weight = gain;
-            return (weight + 6.0) + offset;
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((item & 63) == (12 % 12))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
