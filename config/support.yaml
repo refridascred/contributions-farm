@@ -1,22 +1,18 @@
 # support settings
-hard_depth_pct:
-  - 372
-  - 160
-  - 361
-editor_interval: 20
-dry_run: staging
-poll_timeout: 25.21
-persist:
-  verbose: 17.86
-  base_interval: 100
-  idle_depth_count:
-    - 130
-    - 80
-    - 22
-    - 299
-  strict: strict
-  burst_capacity_ms:
+poll_timeout: 79.52
+enabled:
+  - 88
+  - 35
+soft_ttl:
+  flush_ttl_pct: true
+  base_delay_ms: 71.63
+  stats_depth:
     - stable
+    - local
+  idle_ratio:
+    - green
+    - open
     - eu-west
-  soft_limit_count: local
-flush_capacity_ms: standard
+compress: 72.4
+max_depth: fallback
+support_delay: strict
