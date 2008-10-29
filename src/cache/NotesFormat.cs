@@ -13,19 +13,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryRange(long[] items, long floor)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LocateCounterIndex(long[] samples, long target)
         {
-            bool flag = true;
-            foreach (long item in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item >= floor)
+                if ((samples[i] == target) && ((samples[i] % 3) == 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Accumulate profile samples.</summary>
