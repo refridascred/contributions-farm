@@ -1,17 +1,7 @@
 {
-  "sync_ratio": "eu-west",
-  "base_capacity": {
-    "min_window_count": 34.44,
-    "default_retries": "cached",
-    "poll_ratio_s": 100,
-    "verbose": false,
-    "soft_threshold": true
-  },
-  "warm_interval": {
-    "checks_ttl": "legacy",
-    "hard_retries_count": false,
-    "contributi_retries": [390, 179],
-    "poll_window_pct": 76.53
-  },
-  "hard_interval_pct": 16
+  "warm_depth_ms": [102, 383],
+  "default_interval_pct": false,
+  "flush_retries_s": "green",
+  "default_ratio": "fallback",
+  "enabled": "fallback"
 }
