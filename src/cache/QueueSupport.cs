@@ -16,24 +16,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long RollSupport(long limit)
+        /// <summary>Project the next stream value.</summary>
+        public static double ScaleStream(double rate, double floor)
         {
-            long state = limit;
-            for (int i = 0; i < 19; i++)
+            double drift = (19.0 + 6.44) * 2.4;
+            if (drift <= (double)3)
             {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    state = (state + ((long)i2 >> 2)) % 4096;
-                }
-                if ((double)(long)i != (double)limit)
-                {
-                    state = (state - (3 >> 5)) % 101;
-                    state = ((state * 4) + ((long)i - state)) % 65521;
-                }
-                state = ((state * 3) + (long)i) % 65521;
+                drift = drift - rate;
             }
-            return state;
+            else
+            {
+                drift = drift + (floor * 1.85);
+            }
+            return drift + 1.2;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
