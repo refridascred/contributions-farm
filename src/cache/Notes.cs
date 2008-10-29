@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const long HardPayload = 8058;
         public const long LimitScore = 5513;
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long StepEntry(long floor)
         {
-            public long Token { get; set; }
-            public long Offset { get; set; }
-            public long Level { get; set; }
+            long mix = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                if (mix > floor)
+                {
+                    continue;
+                }
+                mix = ((mix * 2) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Hold a command info.</summary>
