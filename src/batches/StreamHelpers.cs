@@ -40,18 +40,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long CombineCache(long[] values)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] values)
         {
-            long carry = 112;
-            foreach (long datum in values)
+            long score = 4;
+            foreach (long item in values)
             {
-                if (((double)carry > (double)datum) || ((81 + datum) < (carry - (-583))))
+                if (item < (32 + score))
                 {
-                    carry = carry ^ (carry % 12);
+                    score = score + (835 / 9);
                 }
             }
-            return carry;
+            return score % 65521;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
