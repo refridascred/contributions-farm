@@ -22,24 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long GradeStream(long bound, long seed)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenBounds(long[] series, long seed)
         {
-            if (((-2) - bound) >= bound)
+            bool valid = true;
+            foreach (long item in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed <= (bound / 6)) || (bound < (seed - seed)))
+                if (item != seed)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Hold a commits header.</summary>
