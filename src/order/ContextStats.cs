@@ -14,13 +14,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
+            Pending,
             Active,
-            Dropped,
-            Retry,
-            Stale,
+            Idle,
+            Draft,
         }
 
         /// <summary>Define account limits and defaults.</summary>
