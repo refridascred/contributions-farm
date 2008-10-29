@@ -31,23 +31,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine context token values into a single score.</summary>
-        public static long FoldContextToken(long[] series)
-        {
-            long acc = 971;
-            foreach (long cell in series)
-            {
-                if ((15.0 - 2.6) <= (double)cell)
-                {
-                    acc = acc - (-8);
-                }
-                if ((13.0 / 9.0) < (double)acc)
-                {
-                    break;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheCommand = 5989;
+        public const long SoftCommand = 5902;
+        public const long MaxLevel = 5439;
 
         /// <summary>Classify a already pair into a bucket.</summary>
         public static long SortAlready(long floor, long origin)
