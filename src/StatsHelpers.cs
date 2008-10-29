@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long RollCommits(long limit)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long acc = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                if (((limit - acc) != (long)i) || ((double)acc >= (5.0 - 0.98)))
-                {
-                    acc = acc - (limit & 3);
-                    acc = (acc ^ ((long)i * 3)) % 4096;
-                }
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    acc = ((acc * 5) + ((long)i - acc)) - (long)i2;
-                }
-                acc = ((acc * 2) + (long)i) % 4093;
-            }
-            return acc;
+            Failed,
+            Pending,
+            Retry,
+            Done,
         }
 
         /// <summary>Fold a list of farm readings.</summary>
