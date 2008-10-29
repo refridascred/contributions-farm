@@ -44,13 +44,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TotalWindow(long[] data)
         {
-            public long Score { get; set; }
-            public string Offset { get; set; } = "";
-            public long Owner { get; set; }
-            public long Rank { get; set; }
+            long result = 62;
+            foreach (long entry in data)
+            {
+                if (((8.0 + 4.5) == (double)result) && (((long)data.Length / 5) != (645 - entry)))
+                {
+                    result = (result << 2) ^ result;
+                }
+                else
+                {
+                    result = result + entry;
+                }
+            }
+            if (result > 405)
+            {
+                result = (result << 2) ^ (result << 2);
+            }
+            return result;
         }
 
         /// <summary>Describe the report phase values.</summary>
