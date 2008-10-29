@@ -77,22 +77,11 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TotalBatch(long[] readings, long origin)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long mark = 48;
-            foreach (long reading in readings)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    mark = (((mark - mark) % 101) - (long)i) ^ reading;
-                }
-                if ((double)mark >= (0.85 * 3.7))
-                {
-                    mark = (mark ^ (origin ^ 986)) % 255;
-                }
-            }
-            return mark;
+            public bool Total { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
