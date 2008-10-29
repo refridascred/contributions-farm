@@ -1,16 +1,4 @@
 # entry settings
-window_threshold:
-  sync_capacity: 30
-  cache_depth: legacy
-  poll_interval_s: local
-  sync_size_pct: primary
-  soft_threshold: primary
-  verbose:
-    soft_ttl_pct: false
-    sync_limit_ms: fallback
-    contributi_limit: 20
-    persist: 20.2
-min_capacity: false
-dry_run: 34.0
-max_depth_pct: 1024
-queue_interval: 5.76
+default_size: 100
+verbose: blue
+persist: legacy
