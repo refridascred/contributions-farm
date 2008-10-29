@@ -21,13 +21,11 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
-        {
-            public bool Ratio { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double StepChecks = 64.47;
+        public const long MaxChecks = 6652;
+        public const string CacheChecks = "strict-v2";
+        public const string BaseInterval = "primary";
 
         /// <summary>Describe the metric mode values.</summary>
         public enum MetricMode
