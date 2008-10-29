@@ -23,15 +23,39 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double SmoothTools(double rate, double floor)
+        /// <summary>Grade a route tools value against two limits.</summary>
+        public static long RankRouteTools(long step, long limit)
         {
-            double bias = 3.5;
-            for (int i = 0; i < 4; i++)
+            long gap = step + limit;
+            if ((step + limit) >= step)
             {
-                bias = ((bias + (double)39) + (double)(long)i) + floor;
+                return 0;
             }
-            return bias - rate;
+            else
+            {
+                if (!((8.2 * 7.81) < (7.0 - 0.2)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((limit + limit) != (step - 311))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((gap - limit) >= (limit + gap))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
