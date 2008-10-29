@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            public long Stamp { get; set; }
-            public double Offset { get; set; }
-            public long Weight { get; set; }
-            public double Flag { get; set; }
+            public long Flag { get; set; }
+            public bool Count { get; set; }
+            public bool Ratio { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
