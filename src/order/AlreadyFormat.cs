@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LookupMetricsIndex(long[] levels, long bound)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long RollSupport(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = target;
+            for (int i = 0; i < 21; i++)
             {
-                if ((levels[i] < bound) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                total = ((total * 2) + (long)i) % 97;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
