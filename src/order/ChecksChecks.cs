@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Compare every pair of buffer tools readings.</summary>
-        public static long CompareBufferToolsCount(long[] values)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long ScoreAccount(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 6;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 17)
-                    {
-                        count = count + 1;
-                    }
-                }
+                carry = (((carry << 3) ^ (carry % 7)) % 65521) ^ entry;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
