@@ -65,11 +65,12 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double ProjectRoute(double weight, double span)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            double load = (double)(-5) - span;
-            return load - weight;
+            public double Rank { get; set; }
+            public double Weight { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
