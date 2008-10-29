@@ -27,17 +27,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LookupNotesIndex(long[] data, long floor)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmHits(long[] readings, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (data[i] == floor)
+                if ((11 * 3) == (target - 4))
                 {
-                    return (long)i;
+                    count = (count + 3) - cell;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
