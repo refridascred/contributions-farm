@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
-        {
-            Queued,
-            Retry,
-            Pending,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchDepth = 5883;
+        public const long BurstDepth = 1480;
+        public const double SoftWidth = 71.35;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const string DefaultScore = "standard-v2";
