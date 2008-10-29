@@ -32,11 +32,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
-        {
-            public bool Region { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string MaxLevel = "fallback-1";
+        public const string RetrySpan = "strict-v2";
+        public const long MaxCommand = 1433;
     }
 }
