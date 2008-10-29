@@ -32,13 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            Paused,
-            Dropped,
-            Idle,
-            Draft,
+            public bool Region { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
