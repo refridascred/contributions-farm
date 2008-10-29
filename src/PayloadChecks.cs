@@ -64,12 +64,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
-        {
-            Locked,
-            Synced,
-            Done,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultCache = 2696;
+        public const double BaseSpan = 57.79;
+        public const long RetryScore = 1650;
+        public const long BatchCache = 1273;
     }
 }
