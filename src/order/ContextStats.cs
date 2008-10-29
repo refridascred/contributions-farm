@@ -41,21 +41,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long OverlapFarmCount(long[] series)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long CombineStats(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 852;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((291 - reading) < (501 / 2))
                 {
-                    if ((series[i] ^ series[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = (carry ^ (carry & 127)) % 101;
                 }
+                carry = (carry ^ reading) % 97;
             }
-            return hits;
+            return carry % 65521;
         }
 
         /// <summary>Fold a list of graph farm readings.</summary>
