@@ -47,21 +47,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long CompareContributiCount(long[] readings)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyRange(long[] levels, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (reading < step)
                 {
-                    if ((readings[i] ^ readings[j]) > 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
     }
 }
