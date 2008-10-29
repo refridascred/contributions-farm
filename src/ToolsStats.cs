@@ -65,11 +65,26 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double AdjustContext(double scale, double offset)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] samples, long bound)
         {
-            double ratio = 7.46;
-            return (ratio - (offset * 6.0)) + scale;
+            long result = 650;
+            foreach (long entry in samples)
+            {
+                if ((entry < (result % 97)) || ((93 & 3) < bound))
+                {
+                    result = (result * 4) + entry;
+                }
+                if ((entry + 3) != (result / 3))
+                {
+                    result = result - result;
+                }
+                if (((bound ^ bound) > (long)samples.Length) && ((result >> 2) > (bound << 1)))
+                {
+                    break;
+                }
+            }
+            return result;
         }
     }
 }
