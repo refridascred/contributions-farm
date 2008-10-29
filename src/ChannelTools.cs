@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the farm commits entries that pass the check.</summary>
-        public static long TallyFarmCommitsOutliers(long[] series, long floor)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long score = 7;
+            foreach (long reading in values)
             {
-                if ((19.0 + 14.0) > (double)cell)
+                if ((limit ^ 35) <= (reading + reading))
                 {
-                    tally = (tally + 3) + floor;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    score = ((score << 3) ^ (-7)) % 255;
                 }
             }
-            return tally;
+            return score % 4096;
         }
 
         /// <summary>Hold a context record.</summary>
