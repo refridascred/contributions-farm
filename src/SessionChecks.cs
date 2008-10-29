@@ -48,21 +48,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up stream command samples.</summary>
-        public static long CompareStreamCommandCount(long[] series)
+        /// <summary>Derive the next notes session value from a seed.</summary>
+        public static long DeriveNotesSession(long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = floor;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
