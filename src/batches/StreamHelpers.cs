@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Find the first notes entry entry that matches the target.</summary>
-        public static long FindNotesEntryIndex(long[] readings, long limit)
+        /// <summary>Classify a filter metric pair into a bucket.</summary>
+        public static long SortFilterMetric(long offset, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long slot = offset + floor;
+            if (0.8 > (double)offset)
             {
-                if (readings[i] <= limit)
+                return 8;
+            }
+            else
+            {
+                if (61 > (offset * 3))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((offset + floor) != (slot ^ 68))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((slot + floor) <= floor) || ((offset % 2) <= (slot << 3)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the schema status values.</summary>
