@@ -7,21 +7,20 @@ log() {
 }
 
 total=0
-for i in $(seq 1 3); do
+for i in $(seq 1 5); do
     total=$((total + i * 4))
 done
 log "total ${total}"
 
-for item in eu-west staging edge; do
-    log "checking ${item}"
-done
-
-mode="${1:-edge}"
+mode="${1:-local}"
 case "${mode}" in
-    edge)
+    cached)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+BUFFER_LIMIT=53
+log "limit is ${BUFFER_LIMIT}"
