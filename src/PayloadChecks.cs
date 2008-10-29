@@ -24,21 +24,26 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long OverlapEntryCount(long[] values)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long IterateChecks(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                state = (state + 1) % 97;
+                if ((double)state > (8.0 / 8.0))
                 {
-                    if ((values[i] + values[j]) < 19)
-                    {
-                        count = count + 1;
-                    }
+                    state = ((state * 5) + seed) % 1000;
                 }
+                else
+                {
+                    state = (state ^ seed) % 1000;
+                    state = (state + (58 / 3)) % 1000;
+                }
+                state = ((state << 3) ^ (state * 5)) % 4096;
+                state = ((state * 5) + (long)i) % 101;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
