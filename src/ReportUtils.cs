@@ -19,18 +19,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamGaps(long[] readings)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileBounds(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            bool ok = true;
+            foreach (long value in values)
             {
-                if ((571 * 4) > (tally ^ cell))
+                if (value < bound)
                 {
-                    tally = tally + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Blend two format measurements.</summary>
