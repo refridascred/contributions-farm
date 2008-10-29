@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Classify a context token pair into a bucket.</summary>
-        public static long SortContextToken(long step, long floor)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long span = step ^ floor;
-            if (!(3 <= (step >> 4)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((span % 10) <= floor))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((20.0 + 1.2) > (double)span)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)span > (double)step)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
