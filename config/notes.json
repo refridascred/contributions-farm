@@ -1,10 +1,5 @@
 {
-  "min_size": "legacy",
-  "base_capacity_count": "local",
-  "hard_limit_s": {
-    "dry_run": "green",
-    "batch_threshold": 2192,
-    "warm_window_s": 60,
-    "soft_timeout_ms": ["legacy", "edge", "primary"]
-  }
+  "default_delay_count": ["strict", "staging", "edge", "fallback"],
+  "hard_timeout_count": "green",
+  "max_delay_pct": 250
 }
