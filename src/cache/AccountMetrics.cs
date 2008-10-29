@@ -59,22 +59,23 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long ScoreWindow(long[] data)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long FoldCommits(long[] data, long seed)
         {
-            long total = 77;
-            foreach (long value in data)
+            long mix = 86;
+            foreach (long cell in data)
             {
-                if ((double)total > (0.9 / 4.0))
+                mix = (mix + 90) % 1000;
+                if ((seed << 1) <= (mix % 60))
                 {
-                    break;
+                    mix = mix ^ (cell - cell);
                 }
-                if ((value & 63) > (total ^ 6))
+                else
                 {
-                    total = (total * 3) + (total - value);
+                    mix = ((mix * 2) + (2 + 9)) % 65521;
                 }
             }
-            return total;
+            return mix;
         }
     }
 }
