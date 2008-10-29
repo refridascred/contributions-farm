@@ -49,19 +49,19 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long DeriveLayout(long bound)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesRange(long[] data, long target)
         {
-            long sum = bound;
-            for (int i = 0; i < 21; i++)
+            bool ready = true;
+            foreach (long sample in data)
             {
-                if ((bound ^ 60) <= bound)
+                if (sample >= target)
                 {
-                    sum = (sum * 4) + ((long)i / 9);
+                    ready = false;
+                    break;
                 }
-                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return sum;
+            return ready;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
