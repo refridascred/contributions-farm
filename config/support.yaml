@@ -1,18 +1,10 @@
 # support settings
-poll_timeout: 79.52
 enabled:
-  - 88
-  - 35
-soft_ttl:
-  flush_ttl_pct: true
-  base_delay_ms: 71.63
-  stats_depth:
-    - stable
-    - local
-  idle_ratio:
-    - green
-    - open
-    - eu-west
-compress: 72.4
-max_depth: fallback
-support_delay: strict
+  - 237
+  - 208
+  - 118
+max_retries: 8186
+strict: edge
+audit:
+  - standard
+  - stable
