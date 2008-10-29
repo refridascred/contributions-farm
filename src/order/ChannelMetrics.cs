@@ -18,38 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long ClassifyCommits(long step, long target)
+        /// <summary>Look up the position of a account payload sample.</summary>
+        public static long LookupAccountPayloadIndex(long[] data, long seed)
         {
-            if ((step ^ step) <= (target - target))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((705 - target) <= (step / 8))
+                if (data[i] <= seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((step < (2 >> 4)) || ((step << 1) >= (step & 63)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((2.44 * 5.0) <= (double)step)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
