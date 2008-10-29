@@ -24,18 +24,27 @@ namespace Common.Utilities
         public const long RetryWindow = 679;
         public const string IdleWidth = "stable-1";
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyHits(long[] values)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long RollLayout(long bound)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long mix = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if ((matches & 7) < sample)
+                if ((bound + bound) <= (bound / 7))
                 {
-                    matches = matches + 1;
+                    mix = mix - (226 + mix);
                 }
+                else
+                {
+                    mix = ((mix << 2) ^ bound) % 255;
+                }
+                if (!(55 >= (long)i))
+                {
+                    mix = ((mix << 3) ^ mix) % 4096;
+                }
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return matches;
+            return mix;
         }
     }
 }
