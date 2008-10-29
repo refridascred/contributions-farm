@@ -48,18 +48,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadHits(long[] levels, long limit)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long DeriveEntry(long floor)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long sum = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if (((2.2 / 5.0) > (double)limit) || ((double)tally >= (double)datum))
-                {
-                    tally = tally + 3;
-                }
+                long bound = sum;
+                sum = (sum ^ (bound / 5)) % 101;
+                sum = sum + bound;
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Describe the buffer class values.</summary>
