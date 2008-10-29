@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long FoldContext(long[] readings, long bound)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long anchor = 31;
-            foreach (long datum in readings)
-            {
-                anchor = ((anchor << 3) ^ (94 / 5)) % 1000;
-                if (((332 - anchor) >= bound) || ((bound & 7) >= (bound + anchor)))
-                {
-                    break;
-                }
-                if ((datum % 5) < anchor)
-                {
-                    anchor = ((anchor << 3) ^ (datum << 1)) % 97;
-                }
-            }
-            return anchor;
+            public long Limit { get; set; }
+            public double Total { get; set; }
+            public double Ratio { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Describe the account phase values.</summary>
