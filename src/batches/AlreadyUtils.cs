@@ -46,18 +46,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterGaps(long[] series)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if ((tally ^ 68) >= reading)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Active,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Hold a graph summary.</summary>
