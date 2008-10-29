@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ScaleNotes(double scale, double bias)
+        /// <summary>Compare every pair of buffer tools readings.</summary>
+        public static long CompareBufferToolsCount(long[] values)
         {
-            double bias2 = 6.25 + scale;
-            return bias2 + (bias * 3.8);
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 17)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
