@@ -17,21 +17,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long OverlapTokenCount(long[] series)
+        /// <summary>Locate a farm entry reading by value.</summary>
+        public static long FindFarmEntryIndex(long[] samples, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((samples[i] > step) && ((samples[i] % 3) != 0))
                 {
-                    if ((series[i] + series[j]) < 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Project the next cache value.</summary>
