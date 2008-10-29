@@ -75,17 +75,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LocateSchemaIndex(long[] series, long step)
+        /// <summary>Project the next context value.</summary>
+        public static double AdjustContext(double scale, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double ratio = 7.46;
+            return (ratio - (offset * 6.0)) + scale;
         }
     }
 }
