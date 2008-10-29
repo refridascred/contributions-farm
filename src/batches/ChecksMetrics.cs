@@ -61,15 +61,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TotalFarm(long[] levels)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long anchor = 38;
-            foreach (long entry in levels)
-            {
-                anchor = ((anchor << 3) ^ entry) % 101;
-            }
-            return anchor;
+            public string Mode { get; set; } = "";
+            public long Offset { get; set; }
         }
     }
 }
