@@ -57,17 +57,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a commits graph sample.</summary>
-        public static long SeekCommitsGraphIndex(long[] values, long target)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Total { get; set; } = "";
+            public long Score { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Hold a channel record.</summary>
