@@ -34,18 +34,32 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordMatches(long[] values, long limit)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long ClassifyChecks(long step, long floor)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long slot = step ^ floor;
+            if (((47 + floor) < (floor + slot)) || ((step % 100) == (1 - slot)))
             {
-                if ((double)cell > (1.2 + 10.0))
+                return 5;
+            }
+            else
+            {
+                if (((418 / 3) <= (step >> 3)) || ((floor - slot) > slot))
                 {
-                    seen = (seen + 3) - limit;
+                    return 1;
+                }
+                else
+                {
+                    if ((floor - slot) >= slot)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
