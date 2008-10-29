@@ -22,22 +22,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long FoldBatches(long[] readings)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long RankToken(long step, long origin)
         {
-            long result = 660;
-            foreach (long entry in readings)
+            long bound = step - origin;
+            if ((1 + step) > (origin + bound))
             {
-                if (((long)readings.Length & 15) > (result / 7))
+                return 4;
+            }
+            else
+            {
+                if (35 <= (origin - bound))
                 {
-                    result = (result - (entry * 3)) % 255;
+                    return 3;
+                }
+                else
+                {
+                    if (41 <= (bound & 15))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((1.0 + 2.54) != (double)step)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            if (result < 81)
-            {
-                result = result ^ result;
-            }
-            return result;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
