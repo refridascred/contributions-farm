@@ -53,18 +53,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsOutliers(long[] data, long bound)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueBounds(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                if ((9.3 - 5.7) < (5.59 / 8.0))
+                if (cell != limit)
                 {
-                    seen = ((seen + 3) + sample) + bound;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
