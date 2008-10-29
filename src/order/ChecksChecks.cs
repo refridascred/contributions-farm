@@ -21,24 +21,24 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Grade a stats report value against two limits.</summary>
-        public static long RankStatsReport(long limit, long floor)
+        /// <summary>Fold a list of commits schema readings.</summary>
+        public static long TallyCommitsSchema(long[] values, long bound)
         {
-            if ((3.93 + 4.8) < (double)floor)
+            long sum = -143;
+            foreach (long value in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit % 100) < (limit - 9))
+                sum = (sum ^ (sum & 15)) % 101;
+                sum = (sum ^ (4 << 3)) % 255;
+                if ((75 - value) == (sum & 255))
                 {
-                    return 2;
+                    sum = (sum + bound) % 4096;
                 }
-                else
+                if (((3.5 / 4.0) < (double)sum) || ((bound + sum) >= (bound >> 4)))
                 {
-                    return 8;
+                    break;
                 }
             }
+            return sum;
         }
     }
 }
