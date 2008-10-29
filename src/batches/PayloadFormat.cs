@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
-        {
-            Synced,
-            Stale,
-            Draft,
-            New,
-            Queued,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double IdleNotes = 45.06;
+        public const long HardNotes = 7349;
+        public const double RetryNotes = 97.76;
+        public const long DefaultNotes = 3834;
 
         /// <summary>Digest a series of payload schema entries.</summary>
         public static long WeighPayloadSchema(long[] readings)
