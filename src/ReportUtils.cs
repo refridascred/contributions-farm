@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Accumulate report session samples.</summary>
-        public static long DigestReportSession(long[] items)
-        {
-            long sum = 165;
-            foreach (long reading in items)
-            {
-                if ((sum << 3) < (sum & 31))
-                {
-                    sum = ((sum * 5) + (sum - reading)) % 65521;
-                }
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BatchToken = 70.62;
+        public const long SoftWidth = 2567;
+        public const long IdleToken = 3349;
 
         /// <summary>Validate profile readings against a bound.</summary>
         public static bool GuardProfileBounds(long[] values, long bound)
