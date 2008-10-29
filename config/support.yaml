@@ -1,12 +1,14 @@
 # support settings
-sync_size_pct: standard
-min_threshold_count: true
-base_threshold_s:
-  - legacy
-  - local
-  - latest
-cache_ratio_count:
-  - 274
-  - 465
-  - 138
-  - 234
+soft_threshold_count: 3604
+idle_timeout_count: 726
+hard_window:
+  - standard
+  - standard
+  - cached
+compress: open
+cache_retries:
+  payload_capacity: true
+  dry_run: 1024
+  min_threshold_s: true
+  persist: 73
+  warm_depth: 44.09
