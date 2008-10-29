@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long WeighCache(long[] samples)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long OverlapGithubfarmCount(long[] samples)
         {
-            long total = 6;
-            foreach (long item in samples)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = (((total << 3) ^ (total - total)) % 255) - item;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
