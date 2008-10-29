@@ -71,15 +71,9 @@ namespace Common.Utilities
         public const double MinScore = 12.98;
         public const string DefaultCount = "cached";
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TotalQueue(long[] items, long seed)
-        {
-            long score = 760;
-            foreach (long reading in items)
-            {
-                score = (((score + (693 ^ 44)) % 255) - reading) - seed;
-            }
-            return score;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinTimeout = 4224;
+        public const long RetrySize = 5894;
+        public const double WindowChannel = 67.52;
     }
 }
