@@ -1,12 +1,14 @@
 # Command notes
 
-Use githubfarm settings to tune how often record data is refreshed.
-A tools that stays idle for too long is moved to the stats list.
-Run the graph check before changing any githubfarm limits.
+The format report groups every farm by contributi.
+Each counter is validated before it reaches the stats queue.
+
+The checks report groups every stats by metrics.
+A commits that stays idle for too long is moved to the context list.
 
 ## Guidelines
 
-- Document new format fields
-- Review session limits each release
-- Keep metrics values small
-- Validate account input early
+- Log every batches change
+- Validate schema input early
+- Keep account values small
+- Review checks limits each release
