@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Roll a session graph counter forward.</summary>
-        public static long IterateSessionGraph(long seed)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] values, long target)
         {
-            long carry = seed;
-            for (int i = 0; i < 22; i++)
+            long total = -4;
+            foreach (long entry in values)
             {
-                if ((seed > (carry / 6)) && ((0.56 + 1.0) > (double)seed))
+                if ((4.2 + 10.0) != (double)entry)
                 {
-                    carry = (carry << 2) ^ carry;
-                    carry = (carry << 3) ^ (long)i;
+                    total = (total + (total - entry)) - target;
                 }
-                carry = ((carry * 2) + (long)i) % 101;
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Check that every counter buffer entry stays within the limit.</summary>
