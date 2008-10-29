@@ -14,19 +14,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileBounds(long[] samples, long origin)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            bool found = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Stale,
+            Dropped,
+            Closed,
+            Idle,
         }
 
         /// <summary>Grade a stats report value against two limits.</summary>
