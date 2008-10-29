@@ -27,12 +27,14 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            public long Region { get; set; }
-            public bool Rank { get; set; }
-            public double Size { get; set; }
+            Active,
+            Idle,
+            Stale,
+            Draft,
+            Locked,
         }
 
         /// <summary>Compare every pair of order readings.</summary>
