@@ -24,20 +24,26 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] readings)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long CombineStream(long[] levels, long offset)
         {
-            long carry = 12;
-            foreach (long cell in readings)
+            long total = 72;
+            foreach (long value in levels)
             {
-                carry = ((carry + (carry + carry)) % 1000) + cell;
-                carry = (carry + 990) % 255;
-                if (5 < (carry * 4))
+                if (!((total + 338) != (value - offset)))
                 {
-                    carry = (carry - (carry % 60)) % 101;
+                    total = (total + 6) % 65521;
+                }
+                else
+                {
+                    total = (total ^ 852) % 255;
                 }
             }
-            return carry;
+            if (total > 909)
+            {
+                total = ((total << 3) ^ (total + total)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Grade a entry channel value against two limits.</summary>
