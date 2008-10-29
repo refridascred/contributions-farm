@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultSize = 8966;
-        public const long StepGraph = 7725;
-        public const long BaseSize = 8292;
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksGaps(long[] series)
+        {
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((8.0 - 0.5) >= (double)seen)
+                {
+                    seen = (seen + 2) ^ reading;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Compare every pair of support batches readings.</summary>
         public static long CompareSupportBatchesCount(long[] readings)
