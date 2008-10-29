@@ -36,25 +36,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a buffer githubfarm value against two limits.</summary>
-        public static long GradeBufferGithubfarm(long floor, long origin)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long MatchGithubfarmCount(long[] readings)
         {
-            long span = floor + origin;
-            if (((floor * 4) == (span - span)) || ((floor - span) != (origin - span)))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((6.7 + 5.05) > (double)span) || ((327 >> 1) == (span - 545)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
+                    if ((readings[i] + readings[j]) != 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
