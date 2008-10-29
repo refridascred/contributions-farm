@@ -56,20 +56,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every report filter entry stays within the limit.</summary>
-        public static bool CheckReportFilterLimits(long[] data, long offset)
-        {
-            bool ok = true;
-            foreach (long datum in data)
-            {
-                if (datum > offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultSchema = 3743;
+        public const long SoftRatio = 490;
+        public const long BatchRatio = 3602;
+        public const long BatchSchema = 2779;
 
         /// <summary>Hold a notes info.</summary>
         public sealed class NotesInfo
