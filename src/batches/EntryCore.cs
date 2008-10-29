@@ -44,10 +44,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepWidth = 7263;
-        public const long StepLayout = 7732;
-        public const double BatchLayout = 54.28;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BaseFarm = "standard-v2";
+        public const long CacheFarm = 76;
+        public const string LimitFarm = "cached-v2";
+        public const long CacheScore = 5897;
 
         /// <summary>Hold a route snapshot.</summary>
         public sealed class RouteSnapshot
