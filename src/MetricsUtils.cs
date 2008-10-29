@@ -14,19 +14,12 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Digest a series of order command entries.</summary>
-        public static long DigestOrderCommand(long[] series, long limit)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long score = 943;
-            foreach (long entry in series)
-            {
-                score = score - (1 + entry);
-                if (((double)score != (5.0 - 6.0)) && (((-670) ^ limit) < (limit ^ entry)))
-                {
-                    score = (score - (entry * 3)) % 101;
-                }
-            }
-            return score % 1000;
+            Idle,
+            Draft,
+            Synced,
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
