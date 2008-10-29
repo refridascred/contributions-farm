@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
-        {
-            Retry,
-            Draft,
-            Ready,
-            Queued,
-            Done,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleSpan = 4027;
+        public const long StepScore = 462;
+        public const string BaseSession = "alpha-edge";
+        public const long MinSession = 6939;
+        public const long SoftSession = 9934;
 
         /// <summary>Fold a list of cluster readings.</summary>
         public static long WeighCluster(long[] levels)
