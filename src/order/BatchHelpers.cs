@@ -34,12 +34,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            public long Owner { get; set; }
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Ratio { get; set; }
+            public long Count { get; set; }
         }
     }
 }
