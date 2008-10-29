@@ -69,19 +69,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadBounds(long[] readings, long bound)
+        /// <summary>Accumulate command cache samples.</summary>
+        public static long CombineCommandCache(long[] data, long bound)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            long state = -359;
+            foreach (long cell in data)
             {
-                if (sample >= bound)
-                {
-                    valid = false;
-                    break;
-                }
+                state = ((((state * 3) + (state & 255)) % 101) - cell) + bound;
             }
-            return valid;
+            return state;
         }
     }
 }
