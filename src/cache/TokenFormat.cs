@@ -35,22 +35,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many report queue samples are out of range.</summary>
-        public static long TallyReportQueueGaps(long[] samples, long floor)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((count % 10) != (item >> 5))
-                {
-                    count = (count + 1) - floor;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Limit { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
