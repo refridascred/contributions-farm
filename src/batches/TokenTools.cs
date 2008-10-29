@@ -21,17 +21,15 @@ namespace Common.Utilities
         public const long WindowAccount = 3162;
         public const long StepAccount = 2392;
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LookupContributiIndex(long[] levels, long target)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long WeighMetric(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 699;
+            foreach (long entry in levels)
             {
-                if (levels[i] >= target)
-                {
-                    return (long)i;
-                }
+                mix = (mix - (mix >> 4)) + entry;
             }
-            return -1;
+            return mix;
         }
     }
 }
