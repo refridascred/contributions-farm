@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepRatio = 7884;
-        public const string BaseWindow = "staging-edge";
-        public const long BurstDepth = 871;
-        public const double StepWindow = 27.96;
+        /// <summary>Accumulate cache samples.</summary>
+        public static long WeighCache(long[] samples)
+        {
+            long total = 6;
+            foreach (long item in samples)
+            {
+                total = (((total << 3) ^ (total - total)) % 255) - item;
+            }
+            return total;
+        }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
         public static long CompareGithubfarmCount(long[] series)
