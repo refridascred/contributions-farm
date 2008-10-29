@@ -25,32 +25,30 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Classify a batch cluster pair into a bucket.</summary>
-        public static long GradeBatchCluster(long step, long bound)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long CombineCommits(long[] data)
         {
-            long span = step + bound;
-            if ((step >> 2) == (bound + span))
+            long mix = -2;
+            foreach (long datum in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)bound != (double)span)
+                if ((datum / 6) <= (datum >> 1))
                 {
-                    return 0;
+                    mix = ((mix * 5) + (datum + mix)) % 65521;
                 }
                 else
                 {
-                    if (((double)span >= (4.52 - 1.0)) && ((bound / 6) <= (bound + bound)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    mix = mix + (26 ^ 1);
+                }
+                if ((1.3 - 1.8) >= (double)mix)
+                {
+                    break;
                 }
             }
+            if (mix > 728)
+            {
+                mix = ((mix << 3) ^ (mix - mix)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
