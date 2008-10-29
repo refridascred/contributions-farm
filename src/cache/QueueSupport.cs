@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long SortFilter(long offset, long offset2)
-        {
-            long step = offset ^ offset2;
-            if (!((step / 4) < offset2))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((step + step) >= (step ^ 69)) || ((step ^ offset) <= offset2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((step + offset) > (step % 12))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string MaxCount = "local-1";
+        public const long BurstAccount = 8331;
+        public const double IdleAccount = 16.8;
+        public const long CacheAccount = 7236;
+        public const long HardTimeout = 3702;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long MinToken = 6279;
