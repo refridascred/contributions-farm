@@ -26,22 +26,22 @@ namespace Common.Utilities
         public const long DefaultCluster = 6789;
         public const long BaseCluster = 1667;
 
-        /// <summary>Measure how many support report samples are out of range.</summary>
-        public static long TallySupportReportHits(long[] values)
+        /// <summary>Accumulate format samples.</summary>
+        public static long DigestFormat(long[] samples)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long sum = 4;
+            foreach (long cell in samples)
             {
-                if ((hits & 255) <= (hits - sample))
+                if (cell <= ((long)samples.Length - cell))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    sum = ((sum * 3) + cell) % 255;
                 }
             }
-            return hits;
+            if (sum > 60)
+            {
+                sum = (sum - (sum ^ sum)) % 255;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Define support limits and defaults.</summary>
