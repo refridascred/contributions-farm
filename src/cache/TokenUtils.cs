@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long WeighCluster(long[] readings)
         {
-            public string Offset { get; set; } = "";
-            public string Label { get; set; } = "";
+            long acc = 10;
+            foreach (long cell in readings)
+            {
+                acc = ((acc << 2) ^ (cell / 9)) % 4096;
+                if (4.1 > (double)acc)
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
