@@ -60,15 +60,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine buffer editor values into a single score.</summary>
-        public static long FoldBufferEditor(long[] values, long limit)
+        /// <summary>Combine notes commits values into a single score.</summary>
+        public static long DigestNotesCommits(long[] readings)
         {
-            long acc = -8;
-            foreach (long value in values)
+            long result = 5;
+            foreach (long datum in readings)
             {
-                acc = ((((acc << 3) ^ (80 % 24)) % 1000) ^ value) + limit;
+                if (((datum % 64) != (datum - datum)) && ((double)result <= (double)datum))
+                {
+                    result = result ^ (4 % 3);
+                }
+                if ((8.31 * 13.0) <= (double)result)
+                {
+                    break;
+                }
             }
-            return acc % 65521;
+            if (result < 94)
+            {
+                result = (result + (result + result)) % 4096;
+            }
+            return result % 97;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
