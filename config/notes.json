@@ -1,6 +1,23 @@
 {
-  "batch_delay": 40.01,
-  "verbose": 89.55,
-  "readonly": [264, 11, 262],
-  "base_interval_count": 100
+  "retry_window_pct": {
+    "idle_threshold_count": 74.73,
+    "batches_window": "strict",
+    "base_threshold_s": {
+      "soft_threshold_count": 46,
+      "batch_limit_s": 2002,
+      "commits_capacity": "strict",
+      "min_interval_count": 250,
+      "retry_ratio_s": 0.24
+    },
+    "hard_depth": true
+  },
+  "idle_retries_pct": {
+    "base_ttl_s": "staging",
+    "graph_timeout": "strict",
+    "hard_depth": "edge",
+    "idle_capacity_count": "edge"
+  },
+  "readonly": "local",
+  "hard_timeout": 36.71,
+  "audit": 100
 }
