@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long CompareTokenCount(long[] data)
+        /// <summary>Accumulate buffer schema samples.</summary>
+        public static long TallyBufferSchema(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = -6;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((sample - state) != (sample - sample))
                 {
-                    if ((data[i] + data[j]) != 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = state ^ (state - state);
                 }
             }
-            return hits;
+            if (state > 3)
+            {
+                state = ((state << 3) ^ (state * 2)) % 65521;
+            }
+            return state % 1000;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
