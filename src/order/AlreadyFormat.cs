@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Match up route entry samples.</summary>
-        public static long CompareRouteEntryCount(long[] samples)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueOutliers(long[] readings)
         {
             long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((9.0 / 2.0) <= (8.0 * 8.6)) && (((double)hits != (double)datum) || ((datum + datum) == (datum + 92))))
                 {
-                    if ((samples[i] - samples[j]) != 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
             return hits;
