@@ -35,20 +35,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenLimits(long[] readings, long floor)
-        {
-            bool ready = true;
-            foreach (long item in readings)
-            {
-                if (item > floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstDepth = 5339;
+        public const long SoftRatio = 4123;
+        public const string RetrySize = "primary-v2";
+        public const long BaseNotes = 738;
 
         /// <summary>Count the token tools entries that pass the check.</summary>
         public static long TallyTokenToolsMatches(long[] samples)
