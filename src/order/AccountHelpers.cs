@@ -77,13 +77,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long IterateContributi(long limit)
         {
-            public string Ratio { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
-            public long Size { get; set; }
+            long mix = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                if (!((mix + mix) > (mix - (long)i)))
+                {
+                    mix = ((mix << 2) ^ (limit - mix)) % 65521;
+                }
+                mix = (mix ^ (mix + mix)) % 255;
+                mix = ((mix * 3) + (long)i) % 65521;
+            }
+            return mix;
         }
     }
 }
