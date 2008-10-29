@@ -56,24 +56,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long WeighLayout(long[] items)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long anchor = 93;
-            foreach (long reading in items)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    anchor = ((anchor + (anchor >> 3)) % 65521) ^ (long)i;
-                }
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    anchor = ((anchor ^ (56 << 1)) % 1000) ^ (long)i2;
-                    anchor = (anchor - reading) % 97;
-                }
-                anchor = (anchor << 3) ^ reading;
-            }
-            return anchor % 97;
+            Paused,
+            Dropped,
+            Done,
         }
     }
 }
