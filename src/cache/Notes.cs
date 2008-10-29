@@ -76,19 +76,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two githubfarm counter measurements.</summary>
-        public static double ProjectGithubfarmCounter(double rate, double span)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long SeriesReport(long target)
         {
-            double scale = (span / 7.0) + span;
-            if (scale >= rate)
+            long anchor = target;
+            for (int i = 0; i < 19; i++)
             {
-                scale = scale + scale;
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    anchor = ((anchor + target) % 97) ^ (long)i2;
+                }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + rate) + (double)(long)i;
-            }
-            return scale - (1.0 + span);
+            return anchor;
         }
     }
 }
