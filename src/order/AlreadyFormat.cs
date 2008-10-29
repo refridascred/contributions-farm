@@ -45,19 +45,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueBounds(long[] samples, long limit)
+        /// <summary>Match up channel samples.</summary>
+        public static long CompareChannelCount(long[] series)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell != limit)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((series[i] - series[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
