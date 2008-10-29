@@ -1,10 +1,19 @@
 # githubfarm settings
-min_threshold: fallback
-enabled: 12
-default_capacity_pct: edge
-graph_retries:
-  - 426
-  - 425
-  - 445
-  - 131
-base_capacity: 14.8
+dry_run:
+  - stable
+  - eu-west
+  - blue
+  - legacy
+cache_threshold: true
+batch_limit_pct:
+  - blue
+  - edge
+  - blue
+  - open
+cache_delay:
+  - 45
+  - 102
+  - 21
+  - 243
+soft_ratio_ms: primary
+token_delay: 76.44
