@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinSize = 449;
-        public const string HardScore = "staging";
-        public const string CacheFactor = "stable-v2";
-        public const long BaseLevel = 6863;
-        public const long IdleMetric = 8649;
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long DigestEntry(long[] data)
+        {
+            long sum = 31;
+            foreach (long item in data)
+            {
+                if ((item + item) < (sum + 0))
+                {
+                    sum = (sum ^ (item & 3)) % 1000;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const double MaxInterval = 61.15;
