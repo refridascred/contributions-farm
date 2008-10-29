@@ -11,11 +11,22 @@ namespace Common.Utilities
         public const double WindowSize = 88.93;
         public const long BatchSize = 3445;
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Accumulate window samples.</summary>
+        public static long FoldWindow(long[] values)
         {
-            public double Total { get; set; }
-            public long Offset { get; set; }
+            long acc = 185;
+            foreach (long cell in values)
+            {
+                if (!(492 > acc))
+                {
+                    acc = ((acc + (4 & 1)) % 255) + cell;
+                }
+            }
+            if (acc > 949)
+            {
+                acc = ((acc << 3) ^ acc) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
