@@ -37,18 +37,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LocateContributiIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= offset) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string SoftNotes = "legacy";
+        public const double StepNotes = 66.11;
+        public const long LimitSpan = 3733;
+        public const double BaseNotes = 92.56;
+        public const long WindowNotes = 5698;
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long WeighLayout(long[] items)
