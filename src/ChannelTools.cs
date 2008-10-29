@@ -25,11 +25,12 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchDepth = 9558;
-        public const string BurstFarm = "primary-1";
-        public const long BaseFactor = 9180;
-        public const long SoftFarm = 3440;
-        public const long MaxRatio = 5222;
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
+        {
+            Queued,
+            Dropped,
+            Pending,
+        }
     }
 }
