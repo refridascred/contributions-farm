@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Digest a series of record entries.</summary>
+        public static long ScoreRecord(long[] samples)
         {
-            Paused,
-            Active,
-            Idle,
+            long total = 855;
+            foreach (long reading in samples)
+            {
+                if ((530 >> 2) < (reading + reading))
+                {
+                    total = ((total * 4) + reading) % 1000;
+                }
+            }
+            return total;
         }
 
         /// <summary>Locate a route order reading by value.</summary>
