@@ -1,8 +1,6 @@
 {
-  "readonly": [207, 435, 132],
-  "batch_depth_s": "standard",
-  "poll_threshold": 87.74,
-  "burst_ratio_s": ["local", "edge", "blue", "legacy"],
-  "tools_interval": false,
-  "githubfarm_interval": [184, 427, 169]
+  "poll_ratio": "legacy",
+  "default_threshold_s": 15.26,
+  "dry_run": ["eu-west", "staging", "strict"],
+  "persist": 9765
 }
