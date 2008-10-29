@@ -31,14 +31,10 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
-        {
-            Closed,
-            Retry,
-            Synced,
-            Idle,
-            Failed,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseBudget = 2689;
+        public const double BurstBatches = 86.36;
+        public const long BaseBatches = 6038;
+        public const long SoftFactor = 991;
     }
 }
