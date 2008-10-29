@@ -27,18 +27,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountMatches(long[] data, long step)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if ((double)tally >= (double)cell)
-                {
-                    tally = (tally + 1) + step;
-                }
-            }
-            return tally;
+            public long Label { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Describe the stats kind values.</summary>
