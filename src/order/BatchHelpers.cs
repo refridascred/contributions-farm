@@ -13,22 +13,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchGaps(long[] items, long bound)
+        /// <summary>Iterate the already metric series from a seed.</summary>
+        public static long DeriveAlreadyMetric(long offset)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long mix = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (((7.0 - 6.45) > (double)bound) || ((cell + (-58)) < (bound + cell)))
+                if (!!(((long)i - (long)i) >= 92))
                 {
-                    tally = tally + 3;
+                    mix = mix - (long)i;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Hold a cluster header.</summary>
