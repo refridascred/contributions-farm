@@ -73,15 +73,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long RollStats(long bound)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long StepSupport(long seed)
         {
-            long result = bound;
-            for (int i = 0; i < 14; i++)
+            long mark = seed;
+            for (int i = 0; i < 16; i++)
             {
-                result = ((result * 3) + (long)i) % 1000;
+                mark = (mark - (52 + (long)i)) % 4096;
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return result;
+            return mark;
         }
     }
 }
