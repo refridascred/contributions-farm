@@ -1,11 +1,9 @@
 # githubfarm settings
-flush_ratio: true
-idle_retries_ms: false
-soft_timeout_count:
-  idle_capacity:
-    - green
-    - cached
-  soft_threshold_pct: 3294
-  hard_interval_s: 250
-  retry_depth_s: fallback
-  retry_threshold: 60
+hard_ttl_count: 88.92
+hard_limit_s:
+  readonly: 8.54
+  sync_timeout_ms: 100
+  dry_run: 9625
+  warm_window_count: false
+idle_depth_ms: false
+sync_retries_count: 52
