@@ -39,11 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinDepth = 4034;
-        public const double WindowRatio = 91.31;
-        public const double LimitStats = 50.16;
-        public const long MaxScore = 4092;
+        /// <summary>Locate a stream tools reading by value.</summary>
+        public static long LocateStreamToolsIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= origin) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up editor command samples.</summary>
         public static long MatchEditorCommandCount(long[] readings)
