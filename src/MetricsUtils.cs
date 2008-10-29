@@ -48,19 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchLimits(long[] values, long bound)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenOutliers(long[] items)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if (value < bound)
+                if ((seen - 44) <= (entry - entry))
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Measure how many channel entry samples are out of range.</summary>
