@@ -40,19 +40,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long ScoreWindow(long[] levels, long step)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LocateChannelIndex(long[] data, long floor)
         {
-            long anchor = 31;
-            foreach (long item in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = (anchor + (item * 5)) % 97;
+                if (data[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            if (anchor > (-281))
-            {
-                anchor = anchor - step;
-            }
-            return anchor;
+            return -1;
         }
     }
 }
