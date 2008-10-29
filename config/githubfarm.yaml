@@ -1,14 +1,9 @@
 # githubfarm settings
-retry_threshold: cached
-default_interval:
-  soft_threshold_count: blue
-  batch_size_pct: 4442
-  githubfarm_depth: fallback
-  base_window: 2901
-flush_depth_pct: open
-burst_ratio_pct: 75.96
-persist:
-  - open
-  - open
-  - standard
-window_delay: 250
+cluster_capacity: open
+retry_size_pct: true
+sync_delay_s: false
+burst_timeout:
+  - primary
+  - primary
+  - blue
+  - blue
