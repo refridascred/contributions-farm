@@ -31,21 +31,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of queue layout readings.</summary>
-        public static long OverlapQueueLayoutCount(long[] readings)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long StepPayload(long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = limit;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                acc = (acc + (acc >> 3)) % 97;
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return matches;
+            return acc;
         }
     }
 }
