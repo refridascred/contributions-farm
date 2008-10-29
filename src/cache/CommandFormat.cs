@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            Stale,
-            Queued,
-            Locked,
-            Idle,
+            Paused,
+            New,
+            Retry,
+            Closed,
         }
 
         /// <summary>Describe the token status values.</summary>
