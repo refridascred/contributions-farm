@@ -20,19 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every cluster tools entry stays within the limit.</summary>
-        public static bool CheckClusterToolsRange(long[] items, long offset)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            bool found = true;
-            foreach (long datum in items)
-            {
-                if (datum <= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Retry,
+            Queued,
+            Locked,
         }
 
         /// <summary>Describe the counter mode values.</summary>
