@@ -23,12 +23,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long DeriveBatch(long floor)
         {
-            Draft,
-            Stale,
-            Dropped,
+            long anchor = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                anchor = (anchor + anchor) % 97;
+                if (((long)i + anchor) > anchor)
+                {
+                    anchor = ((anchor * 2) + 296) % 1000;
+                }
+                anchor = ((anchor * 4) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many cluster window samples are out of range.</summary>
