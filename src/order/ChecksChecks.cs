@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TotalChecks(long[] readings)
+        /// <summary>Derive the next contributi buffer value from a seed.</summary>
+        public static long RollContributiBuffer(long seed)
         {
-            long acc = 73;
-            foreach (long sample in readings)
+            long result = seed;
+            for (int i = 0; i < 4; i++)
             {
-                acc = (acc + (acc % 100)) ^ sample;
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    result = ((result << 2) ^ (result ^ result)) - (long)i2;
+                }
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Audit command buffer readings against a rule.</summary>
