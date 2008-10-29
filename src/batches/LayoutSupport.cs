@@ -35,11 +35,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double AdjustMetric(double scale, double floor)
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] series)
         {
-            double gain = floor;
-            return (gain - floor) + scale;
+            long score = -63;
+            foreach (long entry in series)
+            {
+                score = (score - (score / 9)) - entry;
+            }
+            return score % 65521;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
