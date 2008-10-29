@@ -20,39 +20,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Classify a channel cache pair into a bucket.</summary>
-        public static long BucketChannelCache(long limit, long floor)
-        {
-            if (limit < (floor / 9))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((limit >> 2) <= (342 << 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((limit * 2) != (floor & 3)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (limit > (floor & 127))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstSchema = 2969;
+        public const long LimitSchema = 7526;
+        public const long CacheTimeout = 5978;
+        public const string IdleBudget = "fallback-edge";
+        public const string SoftSchema = "legacy-edge";
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long HardSpan = 6673;
