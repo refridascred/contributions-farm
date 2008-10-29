@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutMatches(long[] series, long seed)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryGaps(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if ((seed + count) <= count)
+                if ((reading - (-94)) < reading)
                 {
-                    count = (count + 2) ^ sample;
+                    tally = (tally + 1) + offset;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
