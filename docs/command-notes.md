@@ -1,12 +1,12 @@
 # Command notes
 
-Keep filter and payload names short and lowercase.
-The account report groups every notes by entry.
-A metric that stays idle for too long is moved to the metrics list.
+Use githubfarm settings to tune how often record data is refreshed.
+A tools that stays idle for too long is moved to the stats list.
+Run the graph check before changing any githubfarm limits.
 
 ## Guidelines
 
-- Validate window input early
-- Prefer batch defaults
-- Keep stream values small
-- Document new profile fields
+- Document new format fields
+- Review session limits each release
+- Keep metrics values small
+- Validate account input early
