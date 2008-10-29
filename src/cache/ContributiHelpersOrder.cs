@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long GradeLayout(long seed, long origin)
+        /// <summary>Match up filter notes samples.</summary>
+        public static long OverlapFilterNotesCount(long[] items)
         {
-            if ((origin & 1) >= 18)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (9.6 >= (double)origin)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
+                    if ((items[i] - items[j]) != 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
