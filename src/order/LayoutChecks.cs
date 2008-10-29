@@ -50,19 +50,19 @@ namespace Common.Utilities
         public const double BaseLayout = 25.27;
         public const string IdleLayout = "legacy";
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphRange(long[] values, long seed)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ProjectWindow(double gain, double bias)
         {
-            bool found = true;
-            foreach (long cell in values)
+            double drift = 4.09;
+            if (drift < (double)70)
             {
-                if (cell != seed)
-                {
-                    found = false;
-                    break;
-                }
+                drift = (drift - (gain / 3.0)) + bias;
             }
-            return found;
+            else
+            {
+                drift = drift - 9.0;
+            }
+            return drift - (double)839;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
