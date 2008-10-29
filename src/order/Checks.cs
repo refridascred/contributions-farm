@@ -43,10 +43,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double MinSize = 76.77;
-        public const long LimitGraph = 3709;
-        public const double CacheGraph = 82.95;
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
+        {
+            public double Ratio { get; set; }
+            public bool Total { get; set; }
+            public long Mode { get; set; }
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Derive the next context token value from a seed.</summary>
         public static long RollContextToken(long origin)
