@@ -11,18 +11,11 @@ namespace Common.Utilities
         public const double RetryNotes = 97.76;
         public const long DefaultNotes = 3834;
 
-        /// <summary>Digest a series of payload schema entries.</summary>
-        public static long WeighPayloadSchema(long[] readings)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long carry = 9;
-            foreach (long datum in readings)
-            {
-                if ((carry & 7) < (datum >> 4))
-                {
-                    carry = (carry + (datum % 3)) % 1000;
-                }
-            }
-            return carry;
+            public double Count { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Describe the support kind values.</summary>
