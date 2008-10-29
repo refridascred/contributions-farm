@@ -38,12 +38,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            Draft,
-            Idle,
-            Done,
+            public double Score { get; set; }
+            public bool Level { get; set; }
+            public double Stamp { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
