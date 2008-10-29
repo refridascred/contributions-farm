@@ -59,10 +59,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowCount = 8660;
-        public const string LimitLevel = "local-1";
-        public const string CacheCount = "cached";
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountRange(long[] samples, long seed)
+        {
+            bool stale = true;
+            foreach (long cell in samples)
+            {
+                if (cell > seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long DefaultCache = 2696;
