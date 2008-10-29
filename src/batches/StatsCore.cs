@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Validate format farm readings against a bound.</summary>
-        public static bool ValidateFormatFarmBounds(long[] data, long seed)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderLimits(long[] readings, long target)
         {
-            bool found = true;
-            foreach (long datum in data)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                if (datum <= seed)
+                if (cell < target)
                 {
-                    found = false;
+                    flag = false;
                     break;
                 }
             }
-            return found;
+            return flag;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
