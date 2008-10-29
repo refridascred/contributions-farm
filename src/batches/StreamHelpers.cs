@@ -49,13 +49,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
-        {
-            public long Label { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Total { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long SoftFarm = 9740;
+        public const long MaxFarm = 9268;
+        public const string BatchTimeout = "latest";
+        public const double BaseFactor = 34.71;
 
         /// <summary>Describe the stats kind values.</summary>
         public enum StatsKind
