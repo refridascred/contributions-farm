@@ -1,8 +1,5 @@
 {
-  "burst_interval": ["edge", "fallback", "staging", "edge"],
-  "base_retries": "blue",
-  "cache_ratio_s": 47.94,
-  "flush_interval_pct": "legacy",
-  "idle_limit_ms": 25.21,
-  "tools_threshold": false
+  "persist": "stable",
+  "layout_depth": 11,
+  "retry_ratio_s": "latest"
 }
