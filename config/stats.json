@@ -1,8 +1,8 @@
 {
-  "min_ttl": "local",
-  "sync_interval": 27.82,
-  "verbose": true,
-  "readonly": 4650,
-  "sync_window_pct": 3570,
-  "soft_limit_count": "strict"
+  "batch_delay": [290, 367],
+  "compress": "eu-west",
+  "stream_capacity": "stable",
+  "filter_delay": 39,
+  "max_retries_count": "fallback",
+  "burst_threshold_count": 55.42
 }
