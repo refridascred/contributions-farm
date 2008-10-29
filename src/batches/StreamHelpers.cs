@@ -23,10 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstCount = 7342;
-        public const string WindowInterval = "standard-edge";
-        public const string SoftBatch = "local-1";
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
+        {
+            public long Owner { get; set; }
+            public long Region { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Validate filter record readings against a bound.</summary>
         public static bool CheckFilterRecordRange(long[] samples, long offset)
