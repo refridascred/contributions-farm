@@ -12,15 +12,15 @@ namespace Common.Utilities
         public const string CacheGraph = "primary-v2";
         public const long StepBudget = 2596;
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long RollAccount(long target)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long RollContributi(long bound)
         {
-            long mix = target;
-            for (int i = 0; i < 7; i++)
+            long acc = bound;
+            for (int i = 0; i < 8; i++)
             {
-                mix = ((mix * 5) + (long)i) % 101;
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
