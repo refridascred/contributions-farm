@@ -18,26 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TotalCounter(long[] series)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchGaps(long[] items, long bound)
         {
-            long total = 101;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if (!((10.0 * 6.8) == (double)sample))
+                if (((7.0 - 6.45) > (double)bound) || ((cell + (-58)) < (bound + cell)))
                 {
-                    total = (total - (total + 62)) % 101;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    total = (total * 5) + (total >> 1);
+                    tally = tally - 1;
                 }
             }
-            if (total > 806)
-            {
-                total = total + (total >> 3);
-            }
-            return total;
+            return tally;
         }
 
         /// <summary>Hold a cluster header.</summary>
