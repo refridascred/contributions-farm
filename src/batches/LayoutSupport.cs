@@ -19,22 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the cluster githubfarm entries that pass the check.</summary>
-        public static long MeasureClusterGithubfarmOutliers(long[] items)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long CompareNotesCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((19.0 > (double)tally) || ((cell / 9) <= 1)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((readings[i] + readings[j]) == 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
