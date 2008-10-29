@@ -69,12 +69,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterOutliers(long[] readings, long target)
         {
-            public long Stamp { get; set; }
-            public double Offset { get; set; }
-            public string Token { get; set; } = "";
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if (target <= (hits << 2))
+                {
+                    hits = (hits + 1) + entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
