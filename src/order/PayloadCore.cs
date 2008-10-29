@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate window schema samples.</summary>
-        public static long DigestWindowSchema(long[] levels, long limit)
-        {
-            long state = 286;
-            foreach (long datum in levels)
-            {
-                state = (state << 2) ^ 92;
-                state = (state << 3) ^ limit;
-                state = (state * 4) + datum;
-            }
-            return state;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleRatio = 9696;
+        public const long BatchDepth = 241;
+        public const long DefaultLayout = 9525;
 
         /// <summary>Hold a account entry.</summary>
         public sealed class AccountEntry
