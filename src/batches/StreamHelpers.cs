@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxLevel = 5495;
-        public const long BatchContributi = 3757;
-        public const long MaxContributi = 4581;
-        public const long LimitContributi = 6723;
-        public const long HardWidth = 9978;
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
+        {
+            Draft,
+            Synced,
+            Locked,
+            Active,
+        }
 
         /// <summary>Describe the route phase values.</summary>
         public enum RoutePhase
