@@ -77,11 +77,19 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Validate checks schema readings against a bound.</summary>
+        public static bool CheckChecksSchemaRange(long[] levels, long origin)
         {
-            public bool Total { get; set; }
-            public long Offset { get; set; }
+            bool valid = true;
+            foreach (long entry in levels)
+            {
+                if (entry >= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
