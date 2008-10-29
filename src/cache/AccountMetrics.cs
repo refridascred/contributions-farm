@@ -64,12 +64,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftBudget = 710;
-        public const long StepNotes = 3747;
-        public const long IdleNotes = 307;
-        public const double StepWidth = 66.37;
-        public const string BatchNotes = "cached-1";
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteBounds(long[] values, long target)
+        {
+            bool stale = true;
+            foreach (long entry in values)
+            {
+                if (entry > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Hold a metric info.</summary>
         public sealed class MetricInfo
