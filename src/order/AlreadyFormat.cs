@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueOutliers(long[] readings)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double SmoothCache(double scale, double floor)
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if (((9.0 / 2.0) <= (8.0 * 8.6)) && (((double)hits != (double)datum) || ((datum + datum) == (datum + 92))))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            double scale2 = floor;
+            return (scale2 - (double)0) + scale;
         }
 
         /// <summary>Blend two schema measurements.</summary>
