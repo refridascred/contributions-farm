@@ -26,15 +26,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double BlendRoute(double weight, double span)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportOutliers(long[] items, long seed)
         {
-            double mean = span * 4.26;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                mean = (mean + (weight * 3.1)) + (double)(long)i;
+                if (!(((20.0 * 2.4) <= (double)reading) || (reading >= (reading & 31))))
+                {
+                    hits = (hits + 3) - seed;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mean - (double)1;
+            return hits;
         }
     }
 }
