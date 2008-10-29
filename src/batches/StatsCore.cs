@@ -46,12 +46,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Project the next batches value.</summary>
+        public static double BlendBatches(double ratio, double span)
         {
-            public long Region { get; set; }
-            public string Level { get; set; } = "";
-            public double Count { get; set; }
+            double ratio2 = (double)(624 * 2);
+            for (int i = 0; i < 7; i++)
+            {
+                ratio2 = ((ratio2 - ratio) + (double)(long)i) - span;
+            }
+            return ratio2 + (ratio * 0.55);
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
