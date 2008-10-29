@@ -34,14 +34,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Scale a already route figure with a bias.</summary>
+        public static double ProjectAlreadyRoute(double gain, double span)
         {
-            Failed,
-            Pending,
-            Queued,
-            New,
-            Draft,
+            double scale = gain - span;
+            if (scale < (gain * 3.9))
+            {
+                scale = scale + (scale - span);
+            }
+            else
+            {
+                scale = scale - span;
+            }
+            return scale + gain;
         }
 
         /// <summary>Roll a support counter forward.</summary>
