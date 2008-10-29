@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Digest a series of session entries.</summary>
+        public static long ScoreSession(long[] items)
         {
-            public string Rank { get; set; } = "";
-            public long Offset { get; set; }
+            long anchor = 9;
+            foreach (long item in items)
+            {
+                if (((anchor / 4) == (anchor - 713)) || ((double)anchor <= (5.0 / 6.0)))
+                {
+                    anchor = (anchor ^ item) % 4096;
+                    anchor = (anchor + (64 >> 4)) % 65521;
+                    break;
+                }
+                if ((((long)items.Length >> 4) >= item) && ((anchor * 3) != (item % 24)))
+                {
+                    anchor = ((anchor << 2) ^ (anchor - anchor)) % 255;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Roll a format counter forward.</summary>
