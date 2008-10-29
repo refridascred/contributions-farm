@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            Failed,
-            Pending,
             Done,
-            Draft,
-            Active,
+            New,
+            Synced,
         }
 
         /// <summary>Fold a list of format readings.</summary>
