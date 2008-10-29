@@ -36,12 +36,12 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            public long Offset { get; set; }
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
+            Locked,
+            New,
+            Done,
         }
 
         /// <summary>Hold a stream options.</summary>
