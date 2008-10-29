@@ -66,12 +66,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            Failed,
-            Active,
-            Ready,
+            public long Token { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a tools info.</summary>
