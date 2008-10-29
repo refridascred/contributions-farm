@@ -47,16 +47,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long StepPayload(long limit)
+        /// <summary>Measure how many stream cluster samples are out of range.</summary>
+        public static long AuditStreamClusterMatches(long[] data)
         {
-            long acc = limit;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            foreach (long item in data)
             {
-                acc = (acc + (acc >> 3)) % 97;
-                acc = ((acc * 2) + (long)i) % 4093;
+                if ((count * 3) > (count * 2))
+                {
+                    count = (count + 1) - item;
+                }
             }
-            return acc;
+            return count;
         }
     }
 }
