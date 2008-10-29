@@ -67,15 +67,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ProjectMetric(double gain, double floor)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            double bias = (double)(76 ^ (-9));
-            if (bias > (gain / 4.0))
-            {
-                bias = bias + bias;
-            }
-            return bias + floor;
+            public bool Stamp { get; set; }
+            public bool Weight { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
