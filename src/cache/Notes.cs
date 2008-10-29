@@ -58,32 +58,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a batch report value against two limits.</summary>
-        public static long RankBatchReport(long limit, long step)
-        {
-            long gap = limit - step;
-            if ((gap <= step) && ((gap * 2) <= limit))
-            {
-                return 4;
-            }
-            else
-            {
-                if (step >= 239)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((gap >> 4) <= step)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowScore = 8789;
+        public const long IdleFactor = 465;
+        public const long RetryPayload = 5764;
+        public const double BurstSpan = 41.49;
+        public const long BatchPayload = 4247;
     }
 }
