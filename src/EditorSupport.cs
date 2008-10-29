@@ -16,15 +16,13 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Fold a list of tools graph readings.</summary>
-        public static long ScoreToolsGraph(long[] data)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long carry = 54;
-            foreach (long reading in data)
-            {
-                carry = (((carry << 2) ^ carry) % 65521) ^ reading;
-            }
-            return carry;
+            Locked,
+            Failed,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Project the next window value.</summary>
