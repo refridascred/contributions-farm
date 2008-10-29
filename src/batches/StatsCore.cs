@@ -52,18 +52,18 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricHits(long[] samples, long limit)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionHits(long[] readings)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (!((2.59 + 9.3) > (double)limit))
+                if ((double)count >= (double)cell)
                 {
-                    tally = (tally + 1) ^ cell;
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Describe the stream phase values.</summary>
