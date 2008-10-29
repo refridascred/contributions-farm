@@ -48,11 +48,19 @@ namespace Common.Utilities
             return mean - (6.0 - mean);
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleCounter = 8515;
-        public const double LimitWidth = 67.27;
-        public const string SoftCounter = "legacy-v2";
-        public const long StepDepth = 8925;
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamHits(long[] samples, long seed)
+        {
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if (!(item > seed))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long CacheLayout = 9267;
