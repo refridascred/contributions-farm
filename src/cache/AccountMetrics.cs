@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountRange(long[] items, long step)
-        {
-            bool flag = true;
-            foreach (long reading in items)
-            {
-                if (reading <= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double RetryTimeout = 77.51;
+        public const double DefaultFormat = 96.68;
+        public const double BurstFormat = 69.39;
 
         /// <summary>Validate token payload readings against a bound.</summary>
         public static bool VerifyTokenPayloadBounds(long[] readings, long origin)
