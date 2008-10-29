@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsHits(long[] data, long origin)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long BucketSupport(long seed, long bound)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            if ((double)bound <= (0.5 - 0.8))
             {
-                if ((19.0 / 6.0) <= (double)origin)
+                return 4;
+            }
+            else
+            {
+                if ((seed >> 3) < (seed % 100))
                 {
-                    hits = (hits + 2) + cell;
+                    return 1;
+                }
+                else
+                {
+                    if (3.9 > (double)bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((689 - seed) <= seed)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
