@@ -38,14 +38,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
-        {
-            Done,
-            Failed,
-            Dropped,
-            Idle,
-            Retry,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstSize = 4339;
+        public const double BurstLevel = 58.07;
+        public const long HardFactor = 7944;
     }
 }
