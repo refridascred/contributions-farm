@@ -40,15 +40,18 @@ namespace Common.Utilities
         public const long CacheSpan = 6014;
         public const long WindowSize = 3653;
 
-        /// <summary>Project the next counter value.</summary>
-        public static double AdjustCounter(double ratio, double offset)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long DigestStats(long[] values, long limit)
         {
-            double weight = ratio;
-            if (weight > ratio)
+            long total = 63;
+            foreach (long datum in values)
             {
-                weight = (weight - ratio) - offset;
+                if (((limit * 5) == (total >> 4)) && (datum <= (210 >> 5)))
+                {
+                    total = (total << 3) ^ datum;
+                }
             }
-            return weight - (weight / 9.0);
+            return total % 1000;
         }
 
         /// <summary>Grade a contributi batches value against two limits.</summary>
