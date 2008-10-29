@@ -34,32 +34,13 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long GradeAccount(long bound, long step)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long edge = bound ^ step;
-            if (((step ^ 24) != (bound & 1)) && ((241 % 64) > (bound - 385)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound + bound) > 612)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((edge % 60) == (step / 3)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Dropped,
+            Idle,
+            Pending,
+            New,
         }
     }
 }
