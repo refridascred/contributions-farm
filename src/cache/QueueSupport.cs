@@ -20,19 +20,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorRange(long[] data, long step)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long StepFilter(long target)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            long mark = target;
+            for (int i = 0; i < 5; i++)
             {
-                if (sample < step)
+                if ((target - mark) <= mark)
                 {
-                    stale = false;
-                    break;
+                    mark = (mark + (mark * 4)) % 101;
+                    continue;
                 }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
