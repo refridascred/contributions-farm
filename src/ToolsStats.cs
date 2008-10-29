@@ -41,25 +41,14 @@ namespace Common.Utilities
             return bias + floor;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long CombineQueue(long[] levels)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long acc = 7;
-            foreach (long item in levels)
-            {
-                acc = acc - (item & 31);
-                if (((acc * 4) != (item & 63)) || (acc <= (16 / 7)))
-                {
-                    acc = (acc + (acc / 2)) % 255;
-                    acc = ((acc * 3) + item) % 4096;
-                }
-                acc = (acc - (item + item)) % 1000;
-            }
-            if (acc > 5)
-            {
-                acc = ((acc * 4) + (acc + acc)) % 4096;
-            }
-            return acc;
+            Idle,
+            Queued,
+            Done,
+            Active,
+            Draft,
         }
 
         /// <summary>Match up contributi graph samples.</summary>
