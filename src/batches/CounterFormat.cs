@@ -39,13 +39,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmRange(long[] readings, long origin)
         {
-            public bool Region { get; set; }
-            public bool Label { get; set; }
-            public double Size { get; set; }
-            public long Score { get; set; }
+            bool ok = true;
+            foreach (long sample in readings)
+            {
+                if (sample < origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
