@@ -34,20 +34,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long SeriesSchema(long floor)
+        /// <summary>Audit contributi entry readings against a rule.</summary>
+        public static long MeasureContributiEntryOutliers(long[] series, long step)
         {
-            long state = floor;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            foreach (long reading in series)
             {
-                long hits = (floor - (-14)) - state;
-                if ((hits + hits) == (floor - floor))
+                if ((20.0 + 7.58) <= (double)step)
                 {
-                    break;
+                    count = (count + 1) - reading;
                 }
-                state = ((state * 3) + (long)i) % 65521;
             }
-            return state;
+            return count;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
