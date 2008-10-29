@@ -55,39 +55,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank schema profile input into a small class.</summary>
-        public static long GradeSchemaProfile(long offset, long floor)
-        {
-            if (((floor + offset) > offset) && ((double)offset > (double)36))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((2.0 + 4.9) >= (double)floor) || ((6.05 + 4.0) != (double)offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((482 + offset) < floor) && (offset > (floor % 16)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((floor % 10) >= (4 / 2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double MaxBatches = 46.53;
+        public const string WindowTimeout = "strict";
+        public const long MaxSize = 3295;
 
         /// <summary>Derive the next report value from a seed.</summary>
         public static long SeriesReport(long target)
