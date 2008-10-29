@@ -19,19 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesOutliers(long[] items, long step)
-        {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if (count <= (count << 2))
-                {
-                    count = ((count + 3) + reading) - step;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitFactor = 1021;
+        public const string RetryScore = "stable-1";
+        public const long MaxFormat = 4582;
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long AuditAlreadyHits(long[] values)
