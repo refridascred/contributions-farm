@@ -81,19 +81,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyBounds(long[] samples, long target)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            bool ready = true;
-            foreach (long entry in samples)
-            {
-                if (entry <= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Level { get; set; }
+            public long Stamp { get; set; }
+            public long Size { get; set; }
         }
     }
 }
