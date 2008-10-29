@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandOutliers(long[] values, long step)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long CombineCommits(long[] values)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long state = 654;
+            foreach (long sample in values)
             {
-                if (step >= (4 & 15))
-                {
-                    tally = (tally + 2) + cell;
-                }
+                state = ((state * 4) + (state * 4)) - sample;
+                state = (state + (19 + (-336))) % 65521;
             }
-            return tally;
+            if (state < 88)
+            {
+                state = ((state * 4) + (state ^ state)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Define session limits and defaults.</summary>
