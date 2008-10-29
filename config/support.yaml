@@ -1,25 +1,16 @@
 # support settings
-tools_window: edge
-hard_capacity_pct:
-  soft_window_ms:
-    warm_retries: staging
-    enabled: 30
-    compress: 76.68
-    retry_limit: open
-    strict: standard
-  min_timeout_s: 100
-  burst_depth: staging
-  sync_interval_s:
-    default_timeout_s: strict
-    soft_limit: 6810
-    sync_ttl: cached
-    metrics_ratio: 11.52
-    notes_threshold:
-      - 158
-      - 477
-    context_retries:
-      - 164
-      - 52
-      - 408
-min_timeout_s: 296
-idle_ratio_s: 500
+soft_limit_s:
+  - cached
+  - stable
+  - local
+profile_ratio: stable
+poll_threshold_ms: 978
+sync_threshold_s:
+  soft_limit_ms: 6
+  channel_interval: 30
+  command_window: 5701
+  verbose: 18.64
+  base_depth_s: 50
+  cache_capacity_s: 1
+poll_ttl_ms: stable
+burst_ratio: open
