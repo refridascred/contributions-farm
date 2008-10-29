@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate editor githubfarm samples.</summary>
-        public static long CombineEditorGithubfarm(long[] items)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long anchor = 10;
-            foreach (long cell in items)
-            {
-                if (anchor > (anchor >> 3))
-                {
-                    anchor = (((anchor * 4) + anchor) % 255) - cell;
-                }
-            }
-            if (anchor < 517)
-            {
-                anchor = anchor - (anchor + anchor);
-            }
-            return anchor;
+            Pending,
+            Done,
+            Closed,
+            Idle,
+            Paused,
         }
 
         /// <summary>Accumulate batches samples.</summary>
