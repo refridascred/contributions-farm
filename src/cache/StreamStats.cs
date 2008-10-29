@@ -13,18 +13,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine channel account values into a single score.</summary>
-        public static long DigestChannelAccount(long[] samples, long offset)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TotalGithubfarm(long[] readings)
         {
-            long acc = 5;
-            foreach (long cell in samples)
+            long sum = 81;
+            foreach (long reading in readings)
             {
-                if ((78 & 255) > acc)
+                if (!(reading <= (sum + sum)))
                 {
-                    acc = ((((acc * 4) + (acc << 3)) % 97) ^ cell) - offset;
+                    sum = ((sum << 3) ^ (8 * 4)) % 1000;
+                }
+                else
+                {
+                    sum = (sum ^ (reading / 5)) % 97;
                 }
             }
-            return acc % 1000;
+            return sum % 4096;
         }
 
         /// <summary>Hold a batches stats.</summary>
