@@ -26,32 +26,11 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long RankChecks(long offset, long step)
-        {
-            long cur = offset - step;
-            if ((0.25 + 1.0) <= (double)cur)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((offset << 1) < (step + cur))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((step % 8) != (offset >> 2)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitFarm = 7508;
+        public const long CacheScore = 3943;
+        public const long MaxFarm = 8506;
+        public const long IdleFarm = 8791;
+        public const double StepFarm = 68.44;
     }
 }
