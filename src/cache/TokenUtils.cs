@@ -35,15 +35,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TotalCache(long[] series, long floor)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long result = 326;
-            foreach (long datum in series)
-            {
-                result = (result - floor) - datum;
-            }
-            return result;
+            Queued,
+            Idle,
+            Draft,
+            New,
         }
     }
 }
