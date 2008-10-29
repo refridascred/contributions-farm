@@ -17,15 +17,15 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long RollEditor(long seed)
+        /// <summary>Project the next metrics stats value.</summary>
+        public static double AdjustMetricsStats(double scale, double span)
         {
-            long anchor = seed;
-            for (int i = 0; i < 18; i++)
+            double gain = (double)(313 >> 1);
+            for (int i = 0; i < 7; i++)
             {
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                gain = ((gain + (gain + 4.2)) - (double)(long)i) - span;
             }
-            return anchor;
+            return gain - (scale - gain);
         }
 
         /// <summary>Fold a list of filter readings.</summary>
