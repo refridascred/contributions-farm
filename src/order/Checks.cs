@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Rank token graph input into a small class.</summary>
-        public static long BucketTokenGraph(long origin, long origin2)
-        {
-            if (origin2 > (origin2 % 24))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((double)origin2 >= (double)9) || ((double)origin < (3.0 + 4.8)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinSize = 449;
+        public const string HardScore = "staging";
+        public const string CacheFactor = "stable-v2";
+        public const long BaseLevel = 6863;
+        public const long IdleMetric = 8649;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string BatchWidth = "legacy-edge";
