@@ -48,20 +48,11 @@ namespace Common.Utilities
             return mean - (6.0 - mean);
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsBounds(long[] data, long seed)
-        {
-            bool flag = true;
-            foreach (long entry in data)
-            {
-                if (entry < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleCounter = 8515;
+        public const double LimitWidth = 67.27;
+        public const string SoftCounter = "legacy-v2";
+        public const long StepDepth = 8925;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long CacheLayout = 9267;
