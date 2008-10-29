@@ -1,20 +1,6 @@
 {
-  "retry_ttl": true,
-  "verbose": true,
-  "enabled": {
-    "burst_ttl_ms": {
-      "token_retries": ["staging", "edge"],
-      "hard_capacity_count": 32,
-      "editor_interval": ["cached", "open"],
-      "route_size": "eu-west",
-      "idle_retries": 1024
-    },
-    "enabled": "staging",
-    "idle_ratio_pct": [499, 357, 187, 90],
-    "cache_threshold": false,
-    "retry_ttl_pct": true
-  },
-  "warm_threshold_s": [348, 381],
-  "base_ratio_count": "fallback",
-  "entry_interval": 250
+  "base_depth_ms": ["open", "fallback", "cached"],
+  "contributi_timeout": 55,
+  "readonly": "eu-west",
+  "default_limit_s": 98.91
 }
