@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const long RetryFactor = 1157;
         public const long DefaultContributi = 3054;
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorGaps(long[] levels)
-        {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((item / 4) > item)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BatchFactor = 43.23;
+        public const double MinScore = 91.81;
+        public const string RetryLevel = "cached-1";
+        public const long MinLayout = 6314;
+        public const long LimitLayout = 8344;
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
         public static long CompareQueueCount(long[] series)
