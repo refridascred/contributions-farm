@@ -1,5 +1,20 @@
 {
-  "default_delay": true,
-  "idle_threshold_pct": [80, 122],
-  "batch_window_s": true
+  "checks_window": {
+    "compress": {
+      "burst_ratio": true,
+      "session_ttl": 100,
+      "verbose": true
+    },
+    "githubfarm_ttl": "cached",
+    "already_ratio": 100,
+    "batch_delay_pct": 500,
+    "flush_limit_s": {
+      "burst_ttl_count": true,
+      "max_depth_ms": "fallback",
+      "checks_ratio": 94.53
+    }
+  },
+  "checks_threshold": "cached",
+  "readonly": 72.95,
+  "persist": "eu-west"
 }
