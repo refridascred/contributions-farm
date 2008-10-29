@@ -35,18 +35,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many batch account samples are out of range.</summary>
-        public static long MeasureBatchAccountGaps(long[] values)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if (6.0 > (double)tally)
-                {
-                    tally = (tally + 1) + cell;
-                }
-            }
-            return tally;
+            public long Score { get; set; }
+            public double Region { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Project the next farm tools value.</summary>
