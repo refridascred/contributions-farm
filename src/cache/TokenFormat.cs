@@ -42,18 +42,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesMatches(long[] levels, long origin)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)cell < (7.0 - 12.0))
-                {
-                    matches = (matches + 3) + origin;
-                }
-            }
-            return matches;
+            New,
+            Synced,
+            Closed,
         }
     }
 }
