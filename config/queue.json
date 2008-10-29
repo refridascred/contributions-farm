@@ -1,13 +1,6 @@
 {
-  "entry_limit": 1024,
-  "filter_delay": [144, 267],
-  "soft_ttl_count": 33.05,
-  "batch_timeout": 96.72,
-  "report_ratio": {
-    "soft_size": "green",
-    "soft_size_count": 250,
-    "sync_limit_pct": [35, 375, 230, 193],
-    "strict": true
-  },
-  "session_interval": "edge"
+  "batch_size_s": 60,
+  "audit": false,
+  "persist": 9,
+  "editor_capacity": [105, 61, 199, 361]
 }
