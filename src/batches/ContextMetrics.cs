@@ -45,13 +45,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            public long Score { get; set; }
-            public long Count { get; set; }
-            public double Rank { get; set; }
-            public long Flag { get; set; }
+            public bool Flag { get; set; }
+            public long Mode { get; set; }
+            public string Rank { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
