@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiMatches(long[] levels)
+        /// <summary>Project the next contributi already value.</summary>
+        public static double AdjustContributiAlready(double gain, double bias)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            double gain2 = (double)(97 & 7);
+            for (int i = 0; i < 5; i++)
             {
-                if ((((tally - datum) >= (datum >> 4)) || (datum > (0 + datum))) && (((54 >> 3) <= datum) || ((datum & 15) < (tally >> 3))))
-                {
-                    tally = tally + 3;
-                }
+                gain2 = (((gain2 - (6.46 / 2.0)) + (double)(long)i) + gain) + bias;
             }
-            return tally;
+            return gain2 + (7.2 * 2.2);
         }
 
         /// <summary>Digest a series of cache entries.</summary>
