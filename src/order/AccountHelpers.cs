@@ -44,29 +44,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long BucketFormat(long seed, long step)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long SortCache(long target, long target2)
         {
-            if ((seed + step) != (step - seed))
+            if ((9.0 - 5.39) != (double)target2)
             {
-                return 6;
+                return 4;
             }
             else
             {
-                if (step >= 7)
+                if (((target & 7) > target) && (target2 > (target % 2)))
                 {
-                    return 4;
+                    return 5;
                 }
                 else
                 {
-                    if (65 >= (seed & 255))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return 3;
                 }
             }
         }
