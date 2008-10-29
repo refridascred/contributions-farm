@@ -5,16 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long IterateMetric(long offset)
+        /// <summary>Classify a batch record pair into a bucket.</summary>
+        public static long BucketBatchRecord(long floor, long step)
         {
-            long result = offset;
-            for (int i = 0; i < 15; i++)
+            if ((floor + floor) <= 118)
             {
-                result = result ^ ((long)i / 2);
-                result = ((result * 4) + (long)i) % 97;
+                return 4;
             }
-            return result;
+            else
+            {
+                if ((floor + 71) <= (step & 127))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)floor < 11.0)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
