@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderGaps(long[] samples)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LookupReportIndex(long[] values, long target)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((entry ^ entry) < 98)
+                if (values[i] <= target)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
