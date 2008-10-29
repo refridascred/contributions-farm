@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionGaps(long[] series)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double AdjustCommand(double ratio, double offset)
         {
-            long count = 0;
-            foreach (long datum in series)
+            double bias = (double)(85 - 5);
+            if (bias <= ratio)
             {
-                if (datum <= (count - count))
-                {
-                    count = count + 2;
-                }
+                bias = bias + offset;
             }
-            return count;
+            return bias - (double)94;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
