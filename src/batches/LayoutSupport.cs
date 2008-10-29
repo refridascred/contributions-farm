@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long RollEditor(long step)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double SmoothMetric(double weight, double offset)
         {
-            long mark = step;
-            for (int i = 0; i < 19; i++)
+            double drift = (double)((-43) << 3);
+            if (drift >= (offset * 2.41))
             {
-                mark = ((mark * 5) + (long)i) % 4093;
+                drift = drift + weight;
             }
-            return mark;
+            return drift - (drift / 3.0);
         }
 
         /// <summary>Accumulate cache samples.</summary>
