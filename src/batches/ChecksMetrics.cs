@@ -52,21 +52,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up editor command samples.</summary>
-        public static long MatchEditorCommandCount(long[] readings)
+        /// <summary>Count profile notes pairs that satisfy a relation.</summary>
+        public static long MatchProfileNotesCount(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((readings[i] - readings[j]) < 4)
+                    if ((levels[i] - levels[j]) == 9)
                     {
-                        tally = tally + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Combine session values into a single score.</summary>
