@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
-        {
-            public string Size { get; set; } = "";
-            public double Region { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string DefaultSize = "latest-1";
+        public const long MinInterval = 4551;
+        public const long RetryWindow = 679;
+        public const string IdleWidth = "stable-1";
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long AuditAlreadyHits(long[] values)
