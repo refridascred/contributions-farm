@@ -39,19 +39,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricRange(long[] series, long origin)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long CombineSchema(long[] series)
         {
-            bool ready = true;
+            long acc = 970;
             foreach (long value in series)
             {
-                if (value < origin)
+                if (!((value - value) == (acc + value)))
                 {
-                    ready = false;
-                    break;
+                    acc = ((acc * 2) + (acc - value)) % 97;
+                }
+                else
+                {
+                    acc = ((acc * 3) + (acc + 268)) % 101;
                 }
             }
-            return ready;
+            if (acc > 482)
+            {
+                acc = acc + (acc >> 1);
+            }
+            return acc % 4096;
         }
     }
 }
