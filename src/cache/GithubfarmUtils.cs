@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TotalCounter(long[] values, long offset)
-        {
-            long sum = 6;
-            foreach (long sample in values)
-            {
-                if (!((9 ^ 387) >= sum))
-                {
-                    sum = ((sum ^ offset) % 65521) ^ sample;
-                }
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepStream = 89;
+        public const long WindowCount = 3742;
+        public const double BatchTimeout = 89.83;
+        public const string SoftStream = "local-1";
+        public const long BurstStream = 4044;
 
         /// <summary>Count the schema format entries that pass the check.</summary>
         public static long CountSchemaFormatOutliers(long[] values)
