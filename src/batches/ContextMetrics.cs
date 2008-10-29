@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileBounds(long[] levels, long seed)
-        {
-            bool flag = true;
-            foreach (long entry in levels)
-            {
-                if (entry >= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryReport = 6835;
+        public const long LimitScore = 1385;
+        public const double SoftReport = 66.58;
 
         /// <summary>Describe the batch level values.</summary>
         public enum BatchLevel
