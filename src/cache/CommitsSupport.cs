@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long FoldFarm(long[] values, long target)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long total = -4;
-            foreach (long entry in values)
-            {
-                if ((4.2 + 10.0) != (double)entry)
-                {
-                    total = (total + (total - entry)) - target;
-                }
-            }
-            return total;
+            New,
+            Ready,
+            Draft,
+            Active,
         }
 
         /// <summary>Check that every counter buffer entry stays within the limit.</summary>
