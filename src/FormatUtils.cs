@@ -62,12 +62,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            public bool Stamp { get; set; }
-            public bool Weight { get; set; }
-            public bool Label { get; set; }
+            Locked,
+            Synced,
+            Stale,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
