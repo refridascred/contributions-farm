@@ -20,19 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long FoldWindow(long[] series)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long OverlapFarmCount(long[] levels)
         {
-            long acc = -22;
-            foreach (long entry in series)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = (acc - (acc ^ entry)) % 101;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (acc > 909)
-            {
-                acc = (acc + (acc - acc)) % 97;
-            }
-            return acc % 65521;
+            return hits;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
