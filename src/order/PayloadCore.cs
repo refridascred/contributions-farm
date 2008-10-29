@@ -43,14 +43,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long DeriveQueue(long seed)
         {
-            Retry,
-            Idle,
-            Draft,
-            Dropped,
-            Pending,
+            long result = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                result = ((result << 3) ^ (seed * 2)) % 1000;
+                result = ((result * 5) + (long)i) % 97;
+            }
+            return result;
         }
     }
 }
