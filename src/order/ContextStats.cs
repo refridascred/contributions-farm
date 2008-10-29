@@ -23,11 +23,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstAccount = 9335;
-        public const string CacheAccount = "open-1";
-        public const long BatchAccount = 3614;
-        public const string IdleRatio = "cached-v2";
+        /// <summary>Accumulate context samples.</summary>
+        public static long WeighContext(long[] levels)
+        {
+            long score = 257;
+            foreach (long entry in levels)
+            {
+                if ((4.9 / 7.0) == (double)score)
+                {
+                    score = (score - (score + score)) - entry;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Fold a list of graph farm readings.</summary>
         public static long TotalGraphFarm(long[] data, long target)
