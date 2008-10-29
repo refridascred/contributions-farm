@@ -1,4 +1,31 @@
 # githubfarm settings
-retry_capacity_count: edge
-record_size: 89.03
-readonly: green
+entry_limit: open
+readonly:
+  - local
+  - stable
+hard_depth_ms:
+  profile_timeout: stable
+  checks_interval: standard
+  cache_depth: open
+  warm_ratio: standard
+  batch_delay_ms: 3830
+  strict:
+    idle_retries_count:
+      - 263
+      - 160
+      - 166
+    cluster_timeout: latest
+    enabled:
+      - legacy
+      - staging
+      - eu-west
+      - strict
+    retry_interval_ms: 88.08
+    strict: 87
+schema_ratio: 30
+strict:
+  - blue
+  - eu-west
+  - latest
+  - blue
+base_ratio: stable
