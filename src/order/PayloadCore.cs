@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleRatio = 9696;
-        public const long BatchDepth = 241;
-        public const long DefaultLayout = 9525;
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterMatches(long[] data)
+        {
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((item + count) > (count + count))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a account entry.</summary>
         public sealed class AccountEntry
