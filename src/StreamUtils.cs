@@ -73,26 +73,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine notes commits values into a single score.</summary>
-        public static long DigestNotesCommits(long[] readings)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long result = 5;
-            foreach (long datum in readings)
-            {
-                if (((datum % 64) != (datum - datum)) && ((double)result <= (double)datum))
-                {
-                    result = result ^ (4 % 3);
-                }
-                if ((8.31 * 13.0) <= (double)result)
-                {
-                    break;
-                }
-            }
-            if (result < 94)
-            {
-                result = (result + (result + result)) % 4096;
-            }
-            return result % 97;
+            public bool Rank { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
