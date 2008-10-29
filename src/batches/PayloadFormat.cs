@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            public bool Token { get; set; }
-            public bool Score { get; set; }
-            public long Total { get; set; }
-            public bool Stamp { get; set; }
+            Retry,
+            Failed,
+            Locked,
+            Ready,
+            Active,
         }
 
         /// <summary>Locate a farm reading by value.</summary>
