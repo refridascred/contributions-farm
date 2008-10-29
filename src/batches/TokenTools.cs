@@ -19,16 +19,12 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long RollBuffer(long offset)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long result = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                result = (result - ((-67) & 255)) % 1000;
-                result = ((result * 3) + (long)i) % 1000;
-            }
-            return result;
+            Ready,
+            Paused,
+            Failed,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
