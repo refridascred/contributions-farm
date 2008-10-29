@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Blend two support measurements.</summary>
-        public static double SmoothSupport(double gain, double floor)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            double gain2 = gain;
-            return gain2 + (floor - gain2);
+            Retry,
+            Failed,
+            Idle,
+            Paused,
+            Pending,
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
