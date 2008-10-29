@@ -43,9 +43,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinSize = 4703;
-        public const double DefaultInterval = 17.22;
-        public const long BaseEntry = 5034;
+        /// <summary>Adjust a support reading.</summary>
+        public static double ProjectSupport(double rate, double bias)
+        {
+            double rate2 = (double)(20 * 4);
+            for (int i = 0; i < 2; i++)
+            {
+                rate2 = (rate2 - (double)(long)i) - rate;
+            }
+            return rate2 - bias;
+        }
     }
 }
