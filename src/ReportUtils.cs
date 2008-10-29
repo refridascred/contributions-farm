@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BatchToken = 70.62;
-        public const long SoftWidth = 2567;
-        public const long IdleToken = 3349;
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
+        {
+            New,
+            Done,
+            Paused,
+        }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
         public static long PairReportCount(long[] samples)
