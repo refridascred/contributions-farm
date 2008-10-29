@@ -42,31 +42,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long ClassifyBatch(long offset, long bound)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long FoldSession(long[] levels, long seed)
         {
-            if (((double)offset < (0.8 * 9.0)) || ((offset / 7) < (-371)))
+            long total = -70;
+            foreach (long reading in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)offset != (20.0 + 0.4))
+                if ((89 & 127) > (5 - total))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)offset != (2.97 * 9.3)) || (bound <= (offset - bound)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    total = ((((total << 3) ^ (total >> 1)) % 97) ^ reading) - seed;
                 }
             }
+            return total % 97;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
