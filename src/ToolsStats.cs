@@ -118,12 +118,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
-        {
-            Ready,
-            Done,
-            Queued,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BaseSize = 58.43;
+        public const long HardDepth = 3384;
+        public const long StepMetric = 3681;
+        public const long SoftSize = 5329;
+        public const string IdleInterval = "alpha-1";
     }
 }
