@@ -12,10 +12,14 @@ namespace Common.Utilities
         public const long CacheAccount = 7236;
         public const long HardTimeout = 3702;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double MinChecks = 38.0;
-        public const string StepChecks = "primary-edge";
-        public const long BatchSize = 1276;
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
+        {
+            public string Weight { get; set; } = "";
+            public double Level { get; set; }
+            public long Count { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Roll a metric batches counter forward.</summary>
         public static long DeriveMetricBatches(long target)
