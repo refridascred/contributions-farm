@@ -69,19 +69,19 @@ namespace Common.Utilities
         public const double MinScore = 12.98;
         public const string DefaultCount = "cached";
 
-        /// <summary>Validate session profile readings against a bound.</summary>
-        public static bool ValidateSessionProfileRange(long[] readings, long origin)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionLimits(long[] data, long seed)
         {
-            bool found = true;
-            foreach (long value in readings)
+            bool stale = true;
+            foreach (long entry in data)
             {
-                if (value != origin)
+                if (entry <= seed)
                 {
-                    found = false;
+                    stale = false;
                     break;
                 }
             }
-            return found;
+            return stale;
         }
     }
 }
