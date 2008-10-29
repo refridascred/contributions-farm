@@ -45,17 +45,18 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long SeriesFormat(long limit)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportHits(long[] items, long origin)
         {
-            long state = limit;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            foreach (long item in items)
             {
-                state = state ^ 35;
-                state = (state ^ (state & 15)) % 97;
-                state = ((state * 4) + (long)i) % 65521;
+                if (!(((double)item != (9.82 - 2.8)) || ((double)item < (double)52)))
+                {
+                    seen = (seen + 2) + origin;
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
