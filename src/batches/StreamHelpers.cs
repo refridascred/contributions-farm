@@ -29,17 +29,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long SeekFilterIndex(long[] levels, long target)
+        /// <summary>Validate filter record readings against a bound.</summary>
+        public static bool CheckFilterRecordRange(long[] samples, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                if (levels[i] <= target)
+                if (value < offset)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Describe the stats kind values.</summary>
