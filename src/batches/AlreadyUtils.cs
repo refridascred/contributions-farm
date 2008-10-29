@@ -5,26 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate editor metric samples.</summary>
-        public static long ScoreEditorMetric(long[] values, long floor)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long mix = 8;
-            foreach (long item in values)
-            {
-                if ((double)mix <= (double)floor)
-                {
-                    mix = ((mix * 5) + floor) % 1000;
-                }
-                else
-                {
-                    mix = (mix ^ (item ^ 142)) % 255;
-                }
-            }
-            if (mix < 4)
-            {
-                mix = mix ^ (mix + mix);
-            }
-            return mix;
+            Active,
+            Closed,
+            Synced,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Hold a checks info.</summary>
