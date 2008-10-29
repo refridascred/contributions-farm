@@ -58,11 +58,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Fold a list of commits counter readings.</summary>
+        public static long WeighCommitsCounter(long[] levels, long floor)
         {
-            public bool Count { get; set; }
-            public long Total { get; set; }
+            long carry = 598;
+            foreach (long entry in levels)
+            {
+                if (entry > (entry >> 3))
+                {
+                    carry = (carry - (floor + 793)) % 65521;
+                }
+                else
+                {
+                    carry = carry - (entry - 735);
+                }
+            }
+            return carry;
         }
     }
 }
