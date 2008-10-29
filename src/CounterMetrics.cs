@@ -23,19 +23,24 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheLimits(long[] readings, long limit)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long step, long offset)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            if ((5.5 - 9.5) <= (6.0 - 5.8))
             {
-                if (sample != limit)
+                return 3;
+            }
+            else
+            {
+                if (step <= (offset - offset))
                 {
-                    valid = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return valid;
         }
 
         /// <summary>Accumulate batch samples.</summary>
