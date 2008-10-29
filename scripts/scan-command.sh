@@ -6,19 +6,17 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-eu-west}"
-case "${mode}" in
-    open)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-COMMAND_LIMIT=243
-log "limit is ${COMMAND_LIMIT}"
-
-for item in legacy stable; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 3))
 done
+log "total ${total}"
+
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+COMMAND_LIMIT=347
+log "limit is ${COMMAND_LIMIT}"
