@@ -30,14 +30,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordMatches(long[] values, long limit)
         {
-            Draft,
-            Pending,
-            Locked,
-            Closed,
-            Idle,
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((double)cell > (1.2 + 10.0))
+                {
+                    seen = (seen + 3) - limit;
+                }
+            }
+            return seen;
         }
     }
 }
