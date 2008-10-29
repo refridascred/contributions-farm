@@ -53,13 +53,9 @@ namespace Common.Utilities
         public const double CacheBuffer = 18.71;
         public const string StepBuffer = "latest-edge";
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
-        {
-            public long Offset { get; set; }
-            public string Rank { get; set; } = "";
-            public long Size { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string LimitContributi = "open-edge";
+        public const string CacheContributi = "local-1";
+        public const long CacheRatio = 7454;
     }
 }
