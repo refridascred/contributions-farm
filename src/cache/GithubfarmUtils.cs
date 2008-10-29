@@ -60,18 +60,13 @@ namespace Common.Utilities
             return drift + (double)182;
         }
 
-        /// <summary>Audit entry notes readings against a rule.</summary>
-        public static long TallyEntryNotesHits(long[] readings, long target)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if (!(((621 + target) < hits) && ((hits / 4) >= (sample + hits))))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public string Offset { get; set; } = "";
+            public long Ratio { get; set; }
+            public double Score { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
