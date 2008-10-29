@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long StepToken(long step)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksLimits(long[] levels, long offset)
         {
-            long mark = step;
-            for (int i = 0; i < 20; i++)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                mark = (mark * 2) + ((long)i + mark);
-                mark = ((mark * 4) + (long)i) % 1000;
+                if (value < offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Fold a list of already channel readings.</summary>
