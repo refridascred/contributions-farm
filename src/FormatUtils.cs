@@ -83,17 +83,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LookupSchemaIndex(long[] samples, long origin)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long ScoreContributi(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 744;
+            foreach (long value in values)
             {
-                if (samples[i] > origin)
-                {
-                    return (long)i;
-                }
+                sum = sum - (sum + value);
             }
-            return -1;
+            return sum % 4096;
         }
     }
 }
