@@ -6,13 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green fallback local; do
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in local stable cached eu-west; do
     log "checking ${item}"
 done
 
-mode="${1:-stable}"
+mode="${1:-primary}"
 case "${mode}" in
-    standard)
+    eu-west)
         log "fast path"
         ;;
     *)
