@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] values, long bound)
         {
-            public string Level { get; set; } = "";
-            public double Rank { get; set; }
-            public string Flag { get; set; } = "";
+            long state = 28;
+            foreach (long value in values)
+            {
+                state = ((state * 3) + (state / 7)) + bound;
+                if ((value + 818) > (7 - value))
+                {
+                    state = ((state * 4) + (value % 7)) % 65521;
+                }
+            }
+            return state % 1000;
         }
 
         /// <summary>Digest a series of context entries.</summary>
