@@ -20,21 +20,9 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Iterate the metrics stats series from a seed.</summary>
-        public static long StepMetricsStats(long floor)
-        {
-            long mix = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                mix = (mix ^ (floor >> 3)) % 4096;
-                if ((floor + floor) > mix)
-                {
-                    mix = (mix << 2) ^ floor;
-                    continue;
-                }
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BatchSession = "primary-v2";
+        public const long CacheScore = 9935;
+        public const double DefaultCount = 9.66;
     }
 }
