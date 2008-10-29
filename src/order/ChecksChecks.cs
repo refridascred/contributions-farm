@@ -21,11 +21,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
-        {
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string HardFormat = "primary";
+        public const long BurstFormat = 2099;
+        public const string LimitSize = "open-edge";
+        public const double RetryFormat = 50.17;
+        public const long LimitSpan = 6020;
     }
 }
