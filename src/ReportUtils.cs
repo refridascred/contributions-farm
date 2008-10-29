@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long CompareContributiCount(long[] levels)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long RankAccount(long limit, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (3.15 >= (double)limit)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (464 <= (limit + limit))
                 {
-                    if ((levels[i] - levels[j]) != 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return tally;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
