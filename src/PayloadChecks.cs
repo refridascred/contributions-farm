@@ -98,26 +98,18 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Fold a list of farm schema readings.</summary>
-        public static long CombineFarmSchema(long[] data, long floor)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatHits(long[] items, long seed)
         {
-            long carry = 176;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if ((reading & 127) >= (floor - reading))
+                if ((335 + seed) != (seed << 2))
                 {
-                    carry = ((carry * 2) + (carry & 15)) % 255;
-                }
-                else
-                {
-                    carry = ((carry * 2) + (carry & 7)) % 255;
-                }
-                if ((7.0 * 3.91) < (double)reading)
-                {
-                    break;
+                    count = (count + 2) - entry;
                 }
             }
-            return carry % 4096;
+            return count;
         }
     }
 }
