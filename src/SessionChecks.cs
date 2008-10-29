@@ -13,25 +13,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Grade a queue context value against two limits.</summary>
-        public static long SortQueueContext(long seed, long target)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LocateContributiIndex(long[] values, long target)
         {
-            long span = seed ^ target;
-            if ((seed + span) < (900 >> 1))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (span <= (4 >> 1))
+                if (values[i] >= target)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Digest a series of context entries.</summary>
