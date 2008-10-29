@@ -40,17 +40,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LocateChannelIndex(long[] data, long floor)
+        /// <summary>Grade a entry channel value against two limits.</summary>
+        public static long SortEntryChannel(long seed, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (seed <= (offset - 522))
             {
-                if (data[i] < floor)
+                return 7;
+            }
+            else
+            {
+                if ((double)seed != (double)offset)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (seed <= (180 % 64))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((1.31 / 3.0) == (double)seed)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
