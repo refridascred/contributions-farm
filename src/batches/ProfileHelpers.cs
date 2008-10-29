@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long StepCounter(long seed)
+        /// <summary>Project the next channel value.</summary>
+        public static double ProjectChannel(double scale, double bias)
         {
-            long sum = seed;
-            for (int i = 0; i < 6; i++)
+            double load = bias - (scale / 5.0);
+            if (load >= (double)7)
             {
-                sum = ((sum * 4) + (long)i) % 1000;
+                load = load - (double)1;
             }
-            return sum;
+            else
+            {
+                load = load + (bias - scale);
+            }
+            return load + (load - bias);
         }
 
         /// <summary>Define metric limits and defaults.</summary>
