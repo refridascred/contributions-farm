@@ -64,21 +64,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long OverlapCounterCount(long[] levels)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Stale,
+            Ready,
+            Pending,
+            Dropped,
         }
     }
 }
