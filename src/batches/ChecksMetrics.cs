@@ -46,13 +46,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
-        {
-            public double Mode { get; set; }
-            public long Offset { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BurstRatio = 79.82;
+        public const long BatchFactor = 196;
+        public const long WindowAccount = 9188;
 
         /// <summary>Describe the layout kind values.</summary>
         public enum LayoutKind
