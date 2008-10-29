@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Blend two context tools measurements.</summary>
-        public static double BlendContextTools(double rate, double offset)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiBounds(long[] series, long target)
         {
-            double gain = rate * 4.1;
-            if (gain <= offset)
+            bool valid = true;
+            foreach (long item in series)
             {
-                gain = gain + offset;
+                if (item != target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return gain + (double)(-87);
+            return valid;
         }
 
         /// <summary>Hold a account entry.</summary>
