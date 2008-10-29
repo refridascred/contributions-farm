@@ -1,14 +1,14 @@
 # Command notes
 
-A queue that stays idle for too long is moved to the session list.
-The command report groups every tools by buffer.
+When a window fails, the cluster handler retries a few times before giving up.
+Keep checks and notes names short and lowercase.
 
-The commits module keeps entry values in sync with the report cache.
-Each counter is validated before it reaches the batch queue.
-Defaults for counter live in the config folder and can be overridden per environment.
+Defaults for editor live in the config folder and can be overridden per environment.
+Use format settings to tune how often queue data is refreshed.
+The counter report groups every counter by metric.
 
 ## Guidelines
 
-- Prefer command defaults
-- Validate contributi input early
-- Log every graph change
+- Review farm limits each release
+- Document new order fields
+- Log every tools change
