@@ -1,6 +1,5 @@
 {
-  "githubfarm_ttl": 36,
-  "dry_run": 1024,
-  "retry_retries_s": [19, 72],
-  "idle_timeout_pct": 2989
+  "poll_limit_count": "fallback",
+  "idle_timeout_s": "legacy",
+  "max_ratio_pct": 5580
 }
