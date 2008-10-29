@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Adjust a already reading.</summary>
+        public static double BlendAlready(double bias, double floor)
         {
-            public double Total { get; set; }
-            public bool Rank { get; set; }
-            public bool Stamp { get; set; }
-            public long Label { get; set; }
+            double load = bias / 8.0;
+            if (load < (load * 9.0))
+            {
+                load = load - floor;
+            }
+            else
+            {
+                load = load - (load * 0.87);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + 14.0) - (double)(long)i;
+            }
+            return load + 10.0;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
