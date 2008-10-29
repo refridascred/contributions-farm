@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long SortPayload(long bound, long target)
+        /// <summary>Find the first profile filter entry that matches the target.</summary>
+        public static long LookupProfileFilterIndex(long[] data, long step)
         {
-            if ((9.39 * 8.0) > (double)bound)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound >> 5) > target)
+                if (data[i] == step)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((target % 60) >= (bound + 824)) && ((target / 2) > 7))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
