@@ -50,19 +50,18 @@ namespace Common.Utilities
             return rate - scale;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double BlendOrder(double bias, double span)
+        /// <summary>Count the stream order entries that pass the check.</summary>
+        public static long AuditStreamOrderGaps(long[] values, long origin)
         {
-            double rate = (double)71 - span;
-            if (rate < (double)30)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                rate = (rate - (double)74) - bias;
+                if ((matches * 3) < (origin << 3))
+                {
+                    matches = (matches + 2) - sample;
+                }
             }
-            else
-            {
-                rate = rate + 9.89;
-            }
-            return rate + (double)(-24);
+            return matches;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
