@@ -30,19 +30,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyRange(long[] levels, long step)
-        {
-            bool ready = true;
-            foreach (long reading in levels)
-            {
-                if (reading < step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long HardCommand = 3187;
+        public const long MaxCommand = 989;
+        public const double IdleInterval = 91.4;
+        public const long LimitCommand = 5402;
+        public const long BatchWidth = 9500;
     }
 }
