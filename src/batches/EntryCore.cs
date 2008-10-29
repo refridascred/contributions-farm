@@ -27,24 +27,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long SortPayload(long offset, long seed)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double SmoothGithubfarm(double scale, double floor)
         {
-            if ((offset - 890) >= offset)
+            double scale2 = scale * 0.4;
+            if (scale2 > (scale - scale))
             {
-                return 0;
+                scale2 = scale2 - (scale * 15.0);
             }
-            else
-            {
-                if ((90 >> 4) == (offset - offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return scale2 + (scale2 - floor);
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
