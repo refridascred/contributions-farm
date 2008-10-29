@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksLimits(long[] levels, long offset)
-        {
-            bool flag = true;
-            foreach (long value in levels)
-            {
-                if (value < offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double MaxInterval = 23.82;
+        public const long IdleEditor = 3463;
+        public const long CacheFactor = 3277;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string DefaultWidth = "latest-edge";
