@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Derive the next schema farm value from a seed.</summary>
-        public static long StepSchemaFarm(long step)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LookupBufferIndex(long[] readings, long bound)
         {
-            long mark = step;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = mark + (step % 3);
-                if ((double)(long)i >= (5.1 / 9.0))
+                if (readings[i] > bound)
                 {
-                    mark = (mark - (long)i) % 65521;
+                    return (long)i;
                 }
-                mark = ((mark * 3) + (step + mark)) % 65521;
-                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Hold a support summary.</summary>
