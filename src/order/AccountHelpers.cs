@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double MaxTimeout = 60.93;
-        public const string MaxCluster = "stable";
-        public const long LimitCluster = 5990;
-        public const string IdleCluster = "open-v2";
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
+        {
+            Queued,
+            Locked,
+            Draft,
+            Active,
+        }
 
         /// <summary>Hold a checks snapshot.</summary>
         public sealed class ChecksSnapshot
