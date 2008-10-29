@@ -30,19 +30,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit cache payload readings against a rule.</summary>
-        public static long MeasureCachePayloadOutliers(long[] levels, long seed)
-        {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((seed & 31) <= (229 - hits))
-                {
-                    hits = (hits + 3) ^ reading;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftAccount = 3202;
+        public const string BatchScore = "local";
+        public const string RetryTimeout = "latest";
 
         /// <summary>Iterate the payload series from a seed.</summary>
         public static long StepPayload(long limit)
