@@ -26,9 +26,12 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BurstBudget = 61.88;
-        public const long RetrySpan = 9192;
-        public const long MinBuffer = 5001;
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
+        {
+            public double Limit { get; set; }
+            public double Total { get; set; }
+            public string Mode { get; set; } = "";
+        }
     }
 }
