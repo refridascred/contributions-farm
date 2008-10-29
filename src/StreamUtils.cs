@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Iterate the stream batch series from a seed.</summary>
-        public static long DeriveStreamBatch(long limit)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long anchor = limit;
-            for (int i = 0; i < 8; i++)
-            {
-                anchor = (anchor * 2) + ((long)i + (long)i);
-                if (!!((double)anchor == (8.6 * 9.28)))
-                {
-                    anchor = ((anchor * 5) + ((long)i >> 3)) % 255;
-                }
-                if (!((limit + anchor) != ((long)i + limit)))
-                {
-                    anchor = anchor ^ (limit - limit);
-                }
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
+            public string Region { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a contributi options.</summary>
