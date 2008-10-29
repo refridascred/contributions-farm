@@ -18,12 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Match up format samples.</summary>
+        public static long PairFormatCount(long[] levels)
         {
-            Active,
-            Locked,
-            Closed,
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a tools entry.</summary>
