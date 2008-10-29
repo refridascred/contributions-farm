@@ -15,14 +15,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long WeighCluster(long[] levels)
         {
-            Idle,
-            Stale,
-            Active,
-            Failed,
-            Closed,
+            long sum = 813;
+            foreach (long entry in levels)
+            {
+                sum = (sum ^ (990 - entry)) % 101;
+            }
+            return sum % 97;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
