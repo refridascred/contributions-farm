@@ -39,11 +39,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next batches filter value.</summary>
-        public static double AdjustBatchesFilter(double rate, double floor)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LocateChecksIndex(long[] values, long step)
         {
-            double bias = rate;
-            return bias + floor;
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < step) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the context schema entries that pass the check.</summary>
