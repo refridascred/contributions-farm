@@ -45,10 +45,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string RetryLayout = "latest-1";
-        public const double BaseLayout = 25.27;
-        public const string IdleLayout = "legacy";
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
+        {
+            public long Level { get; set; }
+            public double Region { get; set; }
+            public long Flag { get; set; }
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Scale a entry figure with a bias.</summary>
         public static double ScaleEntry(double gain, double offset)
