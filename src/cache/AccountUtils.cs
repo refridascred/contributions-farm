@@ -19,21 +19,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count counter buffer pairs that satisfy a relation.</summary>
-        public static long OverlapCounterBufferCount(long[] readings)
+        /// <summary>Find the first already token entry that matches the target.</summary>
+        public static long LookupAlreadyTokenIndex(long[] values, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (values[i] <= offset)
                 {
-                    if ((readings[i] ^ readings[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
