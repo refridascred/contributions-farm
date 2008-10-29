@@ -32,14 +32,21 @@ namespace Common.Utilities
         public const double MinFactor = 65.29;
         public const long BurstInterval = 3249;
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Match up entry samples.</summary>
+        public static long OverlapEntryCount(long[] levels)
         {
-            Active,
-            Stale,
-            Queued,
-            Closed,
-            Draft,
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the notes mode values.</summary>
