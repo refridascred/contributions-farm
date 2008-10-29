@@ -27,18 +27,12 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountGaps(long[] samples, long seed)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((double)76 >= (double)count)
-                {
-                    count = ((count + 2) + sample) + seed;
-                }
-            }
-            return count;
+            public double Limit { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
