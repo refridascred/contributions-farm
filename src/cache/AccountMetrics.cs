@@ -37,17 +37,19 @@ namespace Common.Utilities
         public const long SoftScore = 9109;
         public const long SoftChecks = 1044;
 
-        /// <summary>Locate a commits payload reading by value.</summary>
-        public static long FindCommitsPayloadIndex(long[] data, long offset)
+        /// <summary>Validate githubfarm metrics readings against a bound.</summary>
+        public static bool GuardGithubfarmMetricsBounds(long[] values, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                if ((data[i] > offset) && ((data[i] % 5) != 0))
+                if (cell <= target)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Hold a metric info.</summary>
