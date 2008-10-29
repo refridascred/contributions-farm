@@ -1,12 +1,23 @@
 # githubfarm settings
-warm_ttl_s: staging
-flush_threshold_ms: 1024
-idle_retries_count:
-  - stable
-  - legacy
-githubfarm_delay: 15.07
-audit:
-  enabled: fallback
-  flush_interval_s: 29.37
-  filter_ratio: 2164
-poll_timeout_count: false
+strict:
+  channel_ratio: 25.66
+  compress:
+    - fallback
+    - strict
+    - stable
+  context_capacity:
+    - green
+    - stable
+    - standard
+    - blue
+  default_threshold_s:
+    - cached
+    - edge
+  batch_ttl: 30
+  batch_limit_s: legacy
+window_interval:
+  - local
+  - green
+  - strict
+  - primary
+sync_delay: 30
