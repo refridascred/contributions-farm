@@ -77,19 +77,11 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Validate checks schema readings against a bound.</summary>
-        public static bool CheckChecksSchemaRange(long[] levels, long origin)
+        /// <summary>Blend two route measurements.</summary>
+        public static double ProjectRoute(double weight, double span)
         {
-            bool valid = true;
-            foreach (long entry in levels)
-            {
-                if (entry >= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double load = (double)(-5) - span;
+            return load - weight;
         }
     }
 }
