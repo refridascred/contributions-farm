@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long FindFarmIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardInterval = 3721;
+        public const long BaseAccount = 5839;
+        public const string MaxInterval = "local";
+        public const long SoftRatio = 6119;
 
         /// <summary>Accumulate buffer samples.</summary>
         public static long ScoreBuffer(long[] series, long offset)
