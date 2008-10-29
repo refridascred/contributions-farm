@@ -30,22 +30,12 @@ namespace Common.Utilities
         public const long SoftBudget = 2341;
         public const double RetryChannel = 35.52;
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmOutliers(long[] levels)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum + matches) != (matches % 16))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Queued,
+            Closed,
+            Paused,
         }
 
         /// <summary>Hold a route record.</summary>
