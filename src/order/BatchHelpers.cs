@@ -19,19 +19,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the already metric series from a seed.</summary>
-        public static long DeriveAlreadyMetric(long offset)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheOutliers(long[] levels, long offset)
         {
-            long mix = offset;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if (!!(((long)i - (long)i) >= 92))
+                if ((offset ^ entry) >= (-2))
                 {
-                    mix = mix - (long)i;
+                    matches = matches + 2;
                 }
-                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Hold a schema info.</summary>
