@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long MatchSessionCount(long[] values)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long StepAccount(long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = offset;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Define support limits and defaults.</summary>
