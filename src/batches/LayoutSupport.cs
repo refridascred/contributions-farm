@@ -19,19 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TotalCache(long[] levels, long offset)
+        /// <summary>Count the cluster githubfarm entries that pass the check.</summary>
+        public static long MeasureClusterGithubfarmOutliers(long[] items)
         {
-            long mix = 58;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                mix = (mix + (value & 15)) % 65521;
+                if (!((19.0 > (double)tally) || ((cell / 9) <= 1)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (mix < 338)
-            {
-                mix = (mix * 2) + offset;
-            }
-            return mix;
+            return tally;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
