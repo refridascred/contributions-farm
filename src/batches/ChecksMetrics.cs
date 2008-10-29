@@ -41,21 +41,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count profile notes pairs that satisfy a relation.</summary>
-        public static long MatchProfileNotesCount(long[] levels)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Pending,
+            Dropped,
+            Paused,
+            Stale,
+            Done,
         }
 
         /// <summary>Describe the order kind values.</summary>
