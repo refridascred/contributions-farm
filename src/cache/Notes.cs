@@ -13,21 +13,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long OverlapSupportCount(long[] items)
+        /// <summary>Check that every contributi notes entry stays within the limit.</summary>
+        public static bool ValidateContributiNotesBounds(long[] data, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (cell <= step)
                 {
-                    if ((items[i] + items[j]) < 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
