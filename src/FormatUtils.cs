@@ -69,18 +69,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Measure how many layout support samples are out of range.</summary>
-        public static long MeasureLayoutSupportHits(long[] items, long target)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamMatches(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if (!!((1.47 / 4.0) >= (double)count))
+                if ((cell ^ matches) < (747 >> 1))
                 {
-                    count = ((count + 1) - item) + target;
+                    matches = (matches + 1) - bound;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
