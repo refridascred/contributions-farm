@@ -1,5 +1,8 @@
 {
-  "audit": 29.47,
-  "batch_limit_ms": false,
-  "filter_retries": true
+  "flush_ratio": "primary",
+  "already_window": false,
+  "session_delay": true,
+  "default_threshold": 78.28,
+  "enabled": false,
+  "burst_ttl": 60
 }
