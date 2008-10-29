@@ -32,14 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
-        {
-            public double Limit { get; set; }
-            public bool Stamp { get; set; }
-            public long Offset { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxCount = 7520;
+        public const string MinAccount = "staging-edge";
+        public const string MaxAccount = "open-edge";
+        public const long WindowRatio = 4948;
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool GuardCommandLimits(long[] levels, long origin)
