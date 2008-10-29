@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Digest a series of context entries.</summary>
+        public static long FoldContext(long[] readings, long bound)
         {
-            public long Total { get; set; }
-            public bool Label { get; set; }
-            public string Level { get; set; } = "";
+            long anchor = 31;
+            foreach (long datum in readings)
+            {
+                anchor = ((anchor << 3) ^ (94 / 5)) % 1000;
+                if (((332 - anchor) >= bound) || ((bound & 7) >= (bound + anchor)))
+                {
+                    break;
+                }
+                if ((datum % 5) < anchor)
+                {
+                    anchor = ((anchor << 3) ^ (datum << 1)) % 97;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate profile samples.</summary>
