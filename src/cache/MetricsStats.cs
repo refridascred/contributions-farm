@@ -32,21 +32,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long CompareNotesCount(long[] data)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Size { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Count the commits farm entries that pass the check.</summary>
