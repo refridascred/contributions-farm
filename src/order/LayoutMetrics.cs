@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            public long Flag { get; set; }
-            public long Limit { get; set; }
+            public bool Total { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Define profile limits and defaults.</summary>
