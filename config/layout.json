@@ -1,5 +1,17 @@
 {
-  "channel_depth": false,
-  "enabled": "stable",
-  "schema_limit": true
+  "default_ratio_pct": 2,
+  "warm_size_s": [369, 159],
+  "flush_retries": 74,
+  "idle_retries": "cached",
+  "compress": {
+    "readonly": {
+      "command_timeout": ["latest", "strict", "latest", "standard"],
+      "dry_run": 83.92,
+      "persist": 69.52
+    },
+    "report_size": 3.2,
+    "idle_timeout": "latest",
+    "sync_interval_pct": 3204
+  },
+  "cache_depth": 79
 }
