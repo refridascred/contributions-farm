@@ -29,13 +29,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricLimits(long[] values, long target)
         {
-            Paused,
-            New,
-            Failed,
-            Closed,
+            bool valid = true;
+            foreach (long item in values)
+            {
+                if (item != target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
