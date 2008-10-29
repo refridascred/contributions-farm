@@ -37,18 +37,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmOutliers(long[] data, long offset)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long ClassifyRoute(long floor, long floor2)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long diff = floor - floor2;
+            if ((5.2 + 2.57) <= (double)floor)
             {
-                if ((double)offset != (5.0 * 0.9))
+                return 0;
+            }
+            else
+            {
+                if (((diff + floor2) <= floor2) && ((floor2 >> 2) >= (diff % 60)))
                 {
-                    count = (count + 1) - reading;
+                    return 4;
+                }
+                else
+                {
+                    if (((0.7 * 2.2) > (double)floor2) && (((-2) >> 5) != (floor2 << 3)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((floor ^ floor) != (46 - floor))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
