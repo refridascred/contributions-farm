@@ -33,11 +33,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            public double Size { get; set; }
-            public bool Total { get; set; }
+            public string Owner { get; set; } = "";
+            public long Token { get; set; }
+            public double Total { get; set; }
         }
     }
 }
