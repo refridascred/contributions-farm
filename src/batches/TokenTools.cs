@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate session record samples.</summary>
-        public static long ScoreSessionRecord(long[] values, long target)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchRange(long[] data, long step)
         {
-            long state = 5;
-            foreach (long cell in values)
+            bool flag = true;
+            foreach (long reading in data)
             {
-                if ((state % 16) >= (502 - 51))
+                if (reading >= step)
                 {
-                    state = ((state << 3) ^ (cell - target)) % 101;
+                    flag = false;
+                    break;
                 }
             }
-            return state % 97;
+            return flag;
         }
 
         /// <summary>Describe the filter mode values.</summary>
