@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long CombineTools(long[] series, long bound)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long IterateSchema(long seed)
         {
-            long score = -416;
-            foreach (long cell in series)
+            long state = seed;
+            for (int i = 0; i < 21; i++)
             {
-                score = (score * 3) + (bound % 64);
-                if (((double)score <= (19.0 + 9.9)) || ((score ^ score) < (65 + cell)))
-                {
-                    break;
-                }
+                state = ((state * 4) + (long)i) % 65521;
             }
-            if (score < 5)
-            {
-                score = score + (bound - score);
-            }
-            return score;
+            return state;
         }
 
         /// <summary>Describe the token kind values.</summary>
