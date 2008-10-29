@@ -48,11 +48,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstCluster = 7979;
-        public const string MaxCluster = "open";
-        public const long IdleTimeout = 625;
-        public const string WindowRatio = "legacy-v2";
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LookupWindowIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a commits stats.</summary>
         public sealed class CommitsStats
