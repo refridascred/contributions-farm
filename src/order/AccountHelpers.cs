@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double MinInterval = 13.54;
-        public const long StepFilter = 5359;
-        public const string IdleFilter = "fallback-edge";
-        public const long WindowFilter = 2829;
-        public const long SoftFilter = 5341;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double MaxTimeout = 60.93;
+        public const string MaxCluster = "stable";
+        public const long LimitCluster = 5990;
+        public const string IdleCluster = "open-v2";
 
         /// <summary>Hold a checks snapshot.</summary>
         public sealed class ChecksSnapshot
