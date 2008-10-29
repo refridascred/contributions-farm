@@ -37,12 +37,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadBounds(long[] values, long seed)
         {
-            Stale,
-            Draft,
-            Retry,
+            bool found = true;
+            foreach (long reading in values)
+            {
+                if (reading >= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
