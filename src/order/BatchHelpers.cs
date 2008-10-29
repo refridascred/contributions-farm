@@ -18,15 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long FoldContext(long[] items, long step)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TotalCounter(long[] series)
         {
-            long score = 6;
-            foreach (long entry in items)
+            long total = 101;
+            foreach (long sample in series)
             {
-                score = ((((score << 3) ^ (score * 5)) % 65521) ^ entry) + step;
+                if (!((10.0 * 6.8) == (double)sample))
+                {
+                    total = (total - (total + 62)) % 101;
+                }
+                else
+                {
+                    total = (total * 5) + (total >> 1);
+                }
             }
-            return score % 65521;
+            if (total > 806)
+            {
+                total = total + (total >> 3);
+            }
+            return total;
         }
 
         /// <summary>Hold a cluster header.</summary>
