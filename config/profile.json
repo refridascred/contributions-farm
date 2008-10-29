@@ -1,6 +1,16 @@
 {
-  "warm_threshold_s": 28,
-  "max_size_pct": 8,
-  "warm_depth_s": 88.7,
-  "persist": ["blue", "fallback", "green", "blue"]
+  "batch_limit": [479, 162, 324],
+  "base_delay_s": 500,
+  "audit": {
+    "flush_retries_pct": "open",
+    "payload_interval": true,
+    "readonly": 27.62,
+    "flush_size": 79.68
+  },
+  "command_window": 32.83,
+  "soft_size_ms": {
+    "enabled": false,
+    "min_threshold": 6,
+    "dry_run": 34
+  }
 }
