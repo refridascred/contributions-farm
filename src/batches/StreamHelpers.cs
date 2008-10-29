@@ -27,12 +27,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountMatches(long[] data, long step)
         {
-            public long Score { get; set; }
-            public double Region { get; set; }
-            public double Offset { get; set; }
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((double)tally >= (double)cell)
+                {
+                    tally = (tally + 1) + step;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Project the next farm tools value.</summary>
