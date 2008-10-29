@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphMatches(long[] items, long floor)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((double)355 == (double)tally)
-                {
-                    tally = ((tally + 3) + reading) - floor;
-                }
-            }
-            return tally;
+            public long Flag { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
