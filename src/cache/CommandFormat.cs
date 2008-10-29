@@ -29,15 +29,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
-        {
-            Retry,
-            Pending,
-            Stale,
-            Synced,
-            New,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double HardSession = 22.5;
+        public const string BaseWidth = "latest-v2";
+        public const long DefaultSession = 4104;
 
         /// <summary>Validate layout readings against a bound.</summary>
         public static bool CheckLayoutBounds(long[] values, long origin)
