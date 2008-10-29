@@ -27,11 +27,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long SeriesSchema(long floor)
         {
-            public long Rank { get; set; }
-            public long Region { get; set; }
+            long state = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                long hits = (floor - (-14)) - state;
+                if ((hits + hits) == (floor - floor))
+                {
+                    break;
+                }
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
