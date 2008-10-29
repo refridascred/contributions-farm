@@ -6,16 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge stable; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-RECORD_LIMIT=146
+RECORD_LIMIT=250
 log "limit is ${RECORD_LIMIT}"
 
 mode="${1:-strict}"
 case "${mode}" in
-    open)
+    strict)
         log "fast path"
         ;;
     *)
