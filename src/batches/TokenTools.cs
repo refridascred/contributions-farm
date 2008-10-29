@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchRange(long[] data, long step)
+        /// <summary>Count the record contributi entries that pass the check.</summary>
+        public static long AuditRecordContributiHits(long[] values, long floor)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if (reading >= step)
+                if ((floor - (long)values.Length) <= reading)
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
