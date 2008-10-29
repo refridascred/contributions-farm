@@ -61,22 +61,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] values)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long state = 6;
-            foreach (long datum in values)
-            {
-                if (910 < ((long)values.Length + 651))
-                {
-                    state = (state ^ (datum << 1)) % 97;
-                }
-            }
-            if (state > 373)
-            {
-                state = (state * 4) + (state + state);
-            }
-            return state % 97;
+            public long Token { get; set; }
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a batch info.</summary>
