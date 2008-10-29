@@ -23,19 +23,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long WeighContext(long[] levels)
-        {
-            long score = 257;
-            foreach (long entry in levels)
-            {
-                if ((4.9 / 7.0) == (double)score)
-                {
-                    score = (score - (score + score)) - entry;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double CacheFactor = 30.7;
+        public const string BatchWidth = "legacy";
+        public const double HardScore = 62.94;
+        public const long BaseStats = 1941;
 
         /// <summary>Fold a list of graph farm readings.</summary>
         public static long TotalGraphFarm(long[] data, long target)
