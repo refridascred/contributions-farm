@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long ScoreChannel(long[] series, long bound)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] data)
         {
-            long acc = 30;
-            foreach (long reading in series)
+            long mark = 50;
+            foreach (long sample in data)
             {
-                if ((bound <= (79 & 127)) && (8 > (reading % 10)))
-                {
-                    acc = acc ^ (acc + reading);
-                }
+                mark = (mark ^ (mark & 63)) + sample;
             }
-            if (acc > 597)
-            {
-                acc = acc + (bound * 3);
-            }
-            return acc % 97;
+            return mark;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
