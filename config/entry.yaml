@@ -1,10 +1,4 @@
 # entry settings
-soft_depth:
-  - 372
-  - 472
-idle_capacity_s: 6471
-batch_retries_s:
-  - 359
-  - 46
-poll_ttl_count: 2
-idle_size_pct: primary
+min_capacity: false
+queue_window: cached
+default_retries_ms: cached
