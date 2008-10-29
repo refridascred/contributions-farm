@@ -44,26 +44,24 @@ namespace Common.Utilities
             return (load - floor) + gain;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TotalAlready(long[] levels)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long WeighLayout(long[] items)
         {
-            long result = 997;
-            foreach (long sample in levels)
+            long anchor = 93;
+            foreach (long reading in items)
             {
-                if ((sample / 9) <= result)
+                for (int i = 0; i < 12; i++)
                 {
-                    result = (result ^ (long)levels.Length) % 4096;
+                    anchor = ((anchor + (anchor >> 3)) % 65521) ^ (long)i;
                 }
-                else
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    result = (result - sample) % 1000;
+                    anchor = ((anchor ^ (56 << 1)) % 1000) ^ (long)i2;
+                    anchor = (anchor - reading) % 97;
                 }
+                anchor = (anchor << 3) ^ reading;
             }
-            if (result < 14)
-            {
-                result = (result ^ result) % 4096;
-            }
-            return result;
+            return anchor % 97;
         }
     }
 }
