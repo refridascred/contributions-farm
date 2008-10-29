@@ -49,19 +49,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsHits(long[] values, long floor)
-        {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((value >> 3) != (count + value))
-                {
-                    count = (count + 3) + floor;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long CacheSize = 4314;
+        public const long BaseCache = 8011;
+        public const double RetryCache = 19.24;
+        public const long BurstSpan = 4687;
 
         /// <summary>Blend two window channel measurements.</summary>
         public static double BlendWindowChannel(double rate, double bias)
