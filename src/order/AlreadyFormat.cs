@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Adjust a cache reading.</summary>
-        public static double SmoothCache(double scale, double floor)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long FoldCommits(long[] samples, long offset)
         {
-            double scale2 = floor;
-            return (scale2 - (double)0) + scale;
+            long total = 8;
+            foreach (long reading in samples)
+            {
+                total = ((total ^ (offset + 4)) % 97) + reading;
+            }
+            return total;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
