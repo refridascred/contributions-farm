@@ -19,15 +19,31 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Iterate the filter stream series from a seed.</summary>
-        public static long RollFilterStream(long limit)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long SortFormat(long bound, long limit)
         {
-            long acc = limit;
-            for (int i = 0; i < 17; i++)
+            if (18 >= (bound + 98))
             {
-                acc = ((acc * 5) + (long)i) % 4093;
+                return 0;
             }
-            return acc;
+            else
+            {
+                if ((limit + bound) >= (66 + limit))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (115 > (bound >> 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine queue layout values into a single score.</summary>
