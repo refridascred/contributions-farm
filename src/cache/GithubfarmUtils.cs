@@ -20,22 +20,14 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TotalContext(long[] levels, long seed)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long acc = 670;
-            foreach (long reading in levels)
-            {
-                if (((reading & 63) >= (reading * 4)) && ((acc << 1) <= (acc * 3)))
-                {
-                    acc = ((acc * 3) + (reading % 2)) - seed;
-                }
-            }
-            if (acc > 81)
-            {
-                acc = acc - ((long)levels.Length * 3);
-            }
-            return acc % 97;
+            Draft,
+            Queued,
+            Stale,
+            Idle,
+            Retry,
         }
 
         /// <summary>Accumulate queue batch samples.</summary>
