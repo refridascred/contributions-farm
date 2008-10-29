@@ -35,24 +35,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] readings, long seed)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long origin, long bound)
         {
-            long acc = 32;
-            foreach (long value in readings)
+            long cur = origin ^ bound;
+            if ((cur - bound) > (origin >> 1))
             {
-                for (int i = 0; i < 8; i++)
+                return 6;
+            }
+            else
+            {
+                if ((72 ^ origin) >= bound)
                 {
-                    acc = ((acc * 5) + (value - value)) - (long)i;
+                    return 8;
                 }
-                acc = acc + (886 * 3);
-                acc = (acc + (value << 3)) % 101;
+                else
+                {
+                    return 1;
+                }
             }
-            if (acc > 5)
-            {
-                acc = (acc - seed) % 4096;
-            }
-            return acc % 1000;
         }
     }
 }
