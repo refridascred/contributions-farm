@@ -25,15 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long limit)
+        /// <summary>Audit githubfarm stream readings against a rule.</summary>
+        public static long CountGithubfarmStreamGaps(long[] data)
         {
-            long carry = limit;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                carry = ((carry * 4) + (long)i) % 97;
+                if ((double)sample < (8.84 / 4.0))
+                {
+                    hits = hits + 1;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Rank report input into a small class.</summary>
