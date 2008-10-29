@@ -1,6 +1,7 @@
 {
-  "batch_ttl": 85,
-  "farm_capacity": ["primary", "open", "primary", "strict"],
-  "filter_capacity": 250,
-  "poll_limit_count": 56.12
+  "max_threshold_pct": 78.93,
+  "burst_size_s": "staging",
+  "context_timeout": "latest",
+  "warm_threshold_s": ["primary", "strict"],
+  "idle_retries_s": "green"
 }
