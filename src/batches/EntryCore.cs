@@ -39,24 +39,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a layout commits counter forward.</summary>
-        public static long IterateLayoutCommits(long target)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long score = target;
-            for (int i = 0; i < 18; i++)
-            {
-                double scale = (double)target / 8.0;
-                if (((double)score > scale) && (score <= (score << 1)))
-                {
-                    scale = scale - scale;
-                }
-                else
-                {
-                    scale = scale - (scale / 5.0);
-                }
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
+            Active,
+            Dropped,
+            Done,
         }
 
         /// <summary>Hold a route snapshot.</summary>
