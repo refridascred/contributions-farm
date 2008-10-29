@@ -40,15 +40,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ScaleFilter(double ratio, double bias)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileGaps(long[] items)
         {
-            double weight = bias;
-            if (weight > (double)338)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                weight = (weight + weight) + ratio;
+                if ((sample ^ matches) == (69 >> 3))
+                {
+                    matches = matches + 3;
+                }
             }
-            return weight - 8.59;
+            return matches;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
