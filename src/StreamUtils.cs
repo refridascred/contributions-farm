@@ -41,32 +41,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long GradeStream(long bound, long target)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long offset = bound - target;
-            if (bound > offset)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((5.47 - 3.28) <= (double)offset)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound >> 4) >= 55)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Draft,
+            Pending,
+            Locked,
+            Stale,
+            Done,
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
