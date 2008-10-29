@@ -27,18 +27,13 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmHits(long[] readings, long target)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((11 * 3) == (target - 4))
-                {
-                    count = (count + 3) - cell;
-                }
-            }
-            return count;
+            public double Offset { get; set; }
+            public bool Weight { get; set; }
+            public double Stamp { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
