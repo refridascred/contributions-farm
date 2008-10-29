@@ -23,22 +23,9 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Count the schema already entries that pass the check.</summary>
-        public static long TallySchemaAlreadyGaps(long[] series)
-        {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((double)value != (8.36 + 4.7))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchLevel = 6618;
+        public const long IdleProfile = 8748;
+        public const long LimitProfile = 1605;
     }
 }
