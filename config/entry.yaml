@@ -1,14 +1,17 @@
 # entry settings
-payload_timeout: true
-retry_timeout_s: false
-metrics_timeout: 18
-base_depth:
-  flush_interval: 43.07
-  buffer_limit:
-    - primary
-    - fallback
-  audit: legacy
-  poll_window: 26
-  persist: standard
-max_threshold_pct: open
-sync_ttl_pct: 11.13
+min_capacity_s:
+  sync_capacity_s:
+    - local
+    - stable
+    - staging
+  flush_limit: 4664
+  soft_threshold: 30
+  readonly: true
+  warm_retries: 500
+  editor_ttl: 60
+githubfarm_size:
+  - 250
+  - 112
+  - 429
+  - 306
+enabled: true
