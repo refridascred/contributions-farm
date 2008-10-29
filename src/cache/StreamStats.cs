@@ -22,19 +22,11 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double BlendAccount(double bias, double span)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            double gain = bias * 0.73;
-            if (gain >= bias)
-            {
-                gain = gain + bias;
-            }
-            else
-            {
-                gain = gain - (7.24 * 1.4);
-            }
-            return gain - (5.4 - span);
+            public long Score { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
