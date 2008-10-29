@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Grade a account already value against two limits.</summary>
-        public static long SortAccountAlready(long offset, long target)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamHits(long[] readings)
         {
-            long diff = offset + target;
-            if (!((49 + offset) >= (offset + offset)))
+            long tally = 0;
+            foreach (long item in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((461 % 7) <= (diff << 3))
+                if ((tally + tally) < (50 * 3))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((40 - offset) > 82)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (target > diff)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    tally = (tally + 1) ^ item;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the graph state values.</summary>
