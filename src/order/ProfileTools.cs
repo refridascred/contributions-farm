@@ -39,15 +39,33 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long FoldFilter(long[] items)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long DeriveBatches(long origin)
         {
-            long result = 0;
-            foreach (long reading in items)
+            long acc = origin;
+            for (int i = 0; i < 20; i++)
             {
-                result = ((result + 894) % 255) - reading;
+                if (origin < ((long)i - origin))
+                {
+                    acc = (acc - (acc + 7)) % 1000;
+                }
+                if (acc >= (origin - origin))
+                {
+                    acc = acc ^ (origin ^ acc);
+                    acc = (acc - (long)i) % 97;
+                }
+                if ((origin * 5) > (9 >> 4))
+                {
+                    acc = ((acc * 3) + ((long)i - origin)) % 255;
+                    continue;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ 51) % 255;
+                }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
