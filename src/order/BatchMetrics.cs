@@ -26,19 +26,18 @@ namespace Common.Utilities
         public const long IdleSession = 8626;
         public const double WindowSession = 78.09;
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsBounds(long[] data, long seed)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatMatches(long[] readings, long floor)
         {
-            bool found = true;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (cell >= seed)
+                if ((value % 12) <= value)
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 3) - floor;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
