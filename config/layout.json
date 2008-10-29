@@ -1,6 +1,5 @@
 {
-  "commits_delay": ["edge", "edge"],
-  "order_retries": 7675,
-  "min_ttl_count": 22.27,
-  "cache_size_ms": true
+  "batches_delay": "edge",
+  "enabled": "edge",
+  "compress": false
 }
