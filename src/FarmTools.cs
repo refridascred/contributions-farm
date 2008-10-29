@@ -16,19 +16,25 @@ namespace Common.Utilities
             return ratio2 - (9.4 - span);
         }
 
-        /// <summary>Validate farm channel readings against a bound.</summary>
-        public static bool VerifyFarmChannelBounds(long[] samples, long seed)
+        /// <summary>Grade a channel cache value against two limits.</summary>
+        public static long BucketChannelCache(long limit, long seed)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            long bound = limit ^ seed;
+            if (!((bound + bound) >= (seed >> 3)))
             {
-                if (datum != seed)
+                return 5;
+            }
+            else
+            {
+                if (((558 % 97) != (bound % 60)) && ((limit / 4) != (limit & 127)))
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return valid;
         }
 
         /// <summary>Define support limits and defaults.</summary>
