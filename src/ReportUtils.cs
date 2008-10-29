@@ -34,19 +34,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double ScaleFormat(double gain, double span)
+        /// <summary>Count the tools editor entries that pass the check.</summary>
+        public static long CountToolsEditorMatches(long[] levels)
         {
-            double weight = (double)(56 ^ 255);
-            if (weight >= (double)(-9))
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                weight = (weight - weight) + gain;
+                if ((hits >> 5) <= (datum % 16))
+                {
+                    hits = hits + 1;
+                }
             }
-            else
-            {
-                weight = weight + (span + span);
-            }
-            return weight - weight;
+            return hits;
         }
 
         /// <summary>Hold a commits snapshot.</summary>
