@@ -1,22 +1,5 @@
 # support settings
-sync_ratio_count: 500
-idle_timeout: 47.3
-checks_timeout:
-  compress: 30
-  batch_interval_pct: standard
-  warm_depth_pct:
-    dry_run: 3761
-    queue_threshold: 100
-    idle_window_ms: 38.0
-    min_depth_s: open
-    readonly:
-      - 434
-      - 50
-    notes_depth: stable
-  persist:
-    - 292
-    - 69
-    - 481
-    - 239
-session_interval: stable
-soft_window_s: staging
+batch_limit_ms: false
+filter_retries: eu-west
+compress: 2.72
+flush_interval_pct: primary
