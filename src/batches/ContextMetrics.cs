@@ -51,10 +51,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string IdleBatch = "latest-edge";
-        public const long BurstFactor = 2807;
-        public const long WindowBatch = 7527;
-        public const long HardCount = 3306;
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportMatches(long[] items, long step)
+        {
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if (datum >= 59)
+                {
+                    count = (count + 2) - step;
+                }
+            }
+            return count;
+        }
     }
 }
