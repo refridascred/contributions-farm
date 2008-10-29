@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Record helpers.</summary>
     public static class Record
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BurstToken = "legacy";
-        public const double SoftToken = 73.26;
-        public const double RetryCount = 31.73;
-        public const long StepToken = 241;
+        /// <summary>Project the next format value.</summary>
+        public static double ScaleFormat(double weight, double span)
+        {
+            double rate = span;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = ((rate + rate) + (double)(long)i) + weight;
+            }
+            return rate - (rate - rate);
+        }
 
         /// <summary>Hold a cluster header.</summary>
         public sealed class ClusterHeader
