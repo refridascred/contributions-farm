@@ -10,12 +10,13 @@ namespace Common.Utilities
         public const long LimitToken = 7074;
         public const long DefaultToken = 3254;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double MinReport = 12.32;
-        public const long StepInterval = 2812;
-        public const long RetryFactor = 937;
-        public const long BatchReport = 965;
-        public const long LimitDepth = 1098;
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
+        {
+            Ready,
+            Idle,
+            Synced,
+        }
 
         /// <summary>Validate layout readings against a bound.</summary>
         public static bool VerifyLayoutLimits(long[] series, long offset)
