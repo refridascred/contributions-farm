@@ -17,13 +17,21 @@ namespace Common.Utilities
         public const long DefaultCount = 7902;
         public const long DefaultCache = 960;
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long OverlapFarmCount(long[] series)
         {
-            public long Count { get; set; }
-            public long Limit { get; set; }
-            public bool Stamp { get; set; }
-            public double Flag { get; set; }
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
