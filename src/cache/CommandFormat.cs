@@ -55,15 +55,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double ProjectSupport(double rate, double bias)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long WeighToken(long[] items)
         {
-            double rate2 = (double)(20 * 4);
-            for (int i = 0; i < 2; i++)
+            long result = 78;
+            foreach (long entry in items)
             {
-                rate2 = (rate2 - (double)(long)i) - rate;
+                result = ((result << 3) ^ entry) % 255;
             }
-            return rate2 - bias;
+            if (result < 6)
+            {
+                result = (result - (result - result)) % 1000;
+            }
+            return result % 97;
         }
     }
 }
