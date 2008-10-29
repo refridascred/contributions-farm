@@ -1,6 +1,12 @@
 {
-  "base_depth_ms": ["open", "fallback", "cached"],
-  "contributi_timeout": 55,
-  "readonly": "eu-west",
-  "default_limit_s": 98.91
+  "record_limit": 500,
+  "hard_delay_count": 36,
+  "burst_threshold_s": {
+    "hard_ttl": 100,
+    "hard_capacity_count": ["stable", "open", "stable"],
+    "payload_delay": ["stable", "primary", "fallback", "strict"]
+  },
+  "queue_capacity": true,
+  "max_timeout": 60,
+  "cache_size_ms": ["cached", "stable"]
 }
