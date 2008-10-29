@@ -25,21 +25,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long PairPayloadCount(long[] samples)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long GradeChecks(long seed, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((origin - origin) > (origin * 2))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (!((seed & 31) != (seed - 841)))
                 {
-                    if ((samples[i] - samples[j]) > 18)
+                    return 7;
+                }
+                else
+                {
+                    if ((72 + origin) <= 410)
                     {
-                        matches = matches + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if (seed > (origin + seed))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define context limits and defaults.</summary>
