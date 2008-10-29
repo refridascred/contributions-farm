@@ -37,15 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double AdjustCluster(double weight, double bias)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricGaps(long[] readings)
         {
-            double mean = 1.98 * 2.0;
-            if (mean >= weight)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                mean = mean + (mean / 2.0);
+                if ((302 + count) < (cell ^ cell))
+                {
+                    count = count + 2;
+                }
             }
-            return mean + bias;
+            return count;
         }
 
         /// <summary>Classify a route schema pair into a bucket.</summary>
