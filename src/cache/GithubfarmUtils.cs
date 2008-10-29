@@ -27,17 +27,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long FindEntryIndex(long[] values, long floor)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > floor) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Count { get; set; }
+            public double Weight { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
