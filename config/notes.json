@@ -1,5 +1,6 @@
 {
-  "poll_depth": "strict",
-  "persist": 68.92,
-  "verbose": 37.16
+  "session_depth": 36.69,
+  "sync_retries_s": "legacy",
+  "report_retries": "local",
+  "idle_interval": 1024
 }
