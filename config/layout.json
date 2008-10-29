@@ -1,5 +1,7 @@
 {
-  "strict": 2967,
-  "verbose": "primary",
-  "format_timeout": 100
+  "soft_threshold_count": "local",
+  "channel_retries": true,
+  "readonly": "staging",
+  "order_limit": 250,
+  "audit": 30
 }
