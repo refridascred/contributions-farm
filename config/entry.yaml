@@ -1,28 +1,18 @@
 # entry settings
-soft_capacity_s:
-  base_size_ms: local
-  min_limit:
-    base_limit_ms: green
-    batch_timeout: fallback
-    min_capacity_count: open
-    warm_retries: false
-  idle_ratio_pct: true
-  batch_ratio_ms:
-    sync_delay_count: latest
-    report_capacity:
-      - 218
-      - 283
-      - 203
-    audit: 19
-    cache_size_ms: 91
-    poll_depth_s: false
-    burst_delay_pct: 33.19
-  verbose: 28
-  default_limit_count: latest
-audit: 78.68
-enabled: strict
-githubfarm_ratio:
-  - cached
-  - blue
-  - cached
-max_ttl_count: 71.3
+farm_threshold: 97
+enabled: 63.6
+sync_threshold:
+  - 351
+  - 1
+  - 42
+default_limit_count:
+  contributi_ratio:
+    - 327
+    - 47
+    - 278
+    - 92
+  base_timeout_count: 0.66
+  schema_timeout: staging
+  retry_capacity_count: false
+  hard_ttl_s: standard
+max_delay: local
