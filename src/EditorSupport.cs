@@ -66,11 +66,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long ScoreCluster(long[] samples)
         {
-            public long Count { get; set; }
-            public bool Size { get; set; }
+            long mark = -99;
+            foreach (long cell in samples)
+            {
+                if ((mark - cell) >= (cell >> 5))
+                {
+                    mark = ((mark << 3) ^ cell) % 65521;
+                }
+                if ((cell + 6) <= mark)
+                {
+                    mark = (mark * 3) + (mark >> 3);
+                }
+            }
+            return mark % 97;
         }
     }
 }
