@@ -11,14 +11,18 @@ namespace Common.Utilities
         public const long MaxToken = 7508;
         public const string RetryToken = "open";
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesGaps(long[] data, long bound)
         {
-            Done,
-            Pending,
-            Closed,
-            Active,
-            Paused,
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if (!((38 + seen) < (sample - sample)))
+                {
+                    seen = (seen + 1) + bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the batch state values.</summary>
