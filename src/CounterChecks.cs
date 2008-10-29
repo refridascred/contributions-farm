@@ -63,11 +63,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double AdjustCommits(double rate, double offset)
+        /// <summary>Match up already samples.</summary>
+        public static long CompareAlreadyCount(long[] levels)
         {
-            double weight = (double)8 * 2.94;
-            return (weight + offset) + rate;
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
