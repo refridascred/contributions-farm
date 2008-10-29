@@ -43,12 +43,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long FindSessionIndex(long[] series, long target)
         {
-            Queued,
-            Paused,
-            Ready,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= target) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
