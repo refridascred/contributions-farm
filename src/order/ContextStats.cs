@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinRoute = 2342;
-        public const long IdleRoute = 5039;
-        public const long WindowSize = 426;
+        /// <summary>Derive the next report route value from a seed.</summary>
+        public static long IterateReportRoute(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long CacheBudget = 3044;
