@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double AdjustCommand(double ratio, double offset)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long CombineToken(long[] levels)
         {
-            double bias = (double)(85 - 5);
-            if (bias <= ratio)
+            long total = 80;
+            foreach (long item in levels)
             {
-                bias = bias + offset;
+                total = (total + (item - total)) % 4096;
+                total = (total ^ (9 / 9)) % 255;
             }
-            return bias - (double)94;
+            return total % 65521;
         }
 
         /// <summary>Describe the window level values.</summary>
