@@ -26,22 +26,24 @@ namespace Common.Utilities
         public const long DefaultCluster = 6789;
         public const long BaseCluster = 1667;
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long DigestFormat(long[] samples)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long BucketContributi(long bound, long origin)
         {
-            long sum = 4;
-            foreach (long cell in samples)
+            if ((double)bound >= (double)origin)
             {
-                if (cell <= ((long)samples.Length - cell))
+                return 8;
+            }
+            else
+            {
+                if ((bound < origin) && ((origin & 63) <= (origin ^ origin)))
                 {
-                    sum = ((sum * 3) + cell) % 255;
+                    return 0;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            if (sum > 60)
-            {
-                sum = (sum - (sum ^ sum)) % 255;
-            }
-            return sum % 65521;
         }
 
         /// <summary>Hold a order summary.</summary>
