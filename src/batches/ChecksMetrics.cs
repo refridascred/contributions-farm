@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Blend two checks measurements.</summary>
-        public static double AdjustChecks(double gain, double offset)
-        {
-            double rate = (gain * 9.7) + (offset / 4.0);
-            if (rate <= 8.1)
-            {
-                rate = rate + gain;
-            }
-            else
-            {
-                rate = rate + (double)(-8);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - (offset + gain)) + (double)(long)i;
-            }
-            return rate - offset;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepRatio = 7884;
+        public const string BaseWindow = "staging-edge";
+        public const long BurstDepth = 871;
+        public const double StepWindow = 27.96;
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
         public static long CompareGithubfarmCount(long[] series)
