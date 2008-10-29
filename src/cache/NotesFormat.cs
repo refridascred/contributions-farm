@@ -21,23 +21,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long WeighCounter(long[] samples)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderMatches(long[] items)
         {
-            long total = 9;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long value in items)
             {
-                total = ((total << 3) ^ (total - total)) % 65521;
-                if ((total + item) < (total + total))
+                if ((double)count != (double)value)
                 {
-                    break;
+                    count = count + 1;
                 }
             }
-            if (total > 837)
-            {
-                total = (total ^ total) % 101;
-            }
-            return total;
+            return count;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
