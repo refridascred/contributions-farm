@@ -67,16 +67,21 @@ namespace Common.Utilities
         public const long RetryScore = 5813;
         public const long StepLayout = 4454;
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long IterateMetric(long origin)
+        /// <summary>Count window filter pairs that satisfy a relation.</summary>
+        public static long CompareWindowFilterCount(long[] values)
         {
-            long carry = origin;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = (carry * 3) + (long)i;
-                carry = ((carry * 4) + (long)i) % 4093;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Describe the notes class values.</summary>
