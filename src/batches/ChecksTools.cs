@@ -18,21 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long MatchClusterCount(long[] samples)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] values, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 570;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((origin & 255) < score)
                 {
-                    if ((samples[i] ^ samples[j]) < 5)
-                    {
-                        count = count + 1;
-                    }
+                    score = (score ^ (origin + score)) + reading;
                 }
             }
-            return count;
+            if (score > (-44))
+            {
+                score = (score + (4 / 3)) % 255;
+            }
+            return score % 4096;
         }
 
         /// <summary>Hold a route header.</summary>
