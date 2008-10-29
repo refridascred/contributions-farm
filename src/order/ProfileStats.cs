@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxSession = 3647;
-        public const double MinSession = 41.82;
-        public const long MaxRatio = 6635;
-        public const string LimitSession = "cached-edge";
-        public const string SoftRatio = "cached-v2";
+        /// <summary>Fold a list of format layout readings.</summary>
+        public static long ScoreFormatLayout(long[] readings)
+        {
+            long mark = 57;
+            foreach (long item in readings)
+            {
+                if ((mark << 3) >= mark)
+                {
+                    mark = ((mark * 4) + item) % 4096;
+                }
+            }
+            if (mark < 85)
+            {
+                mark = ((mark << 2) ^ (26 ^ mark)) % 4096;
+            }
+            return mark;
+        }
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long ScoreBuffer(long[] levels, long limit)
