@@ -32,12 +32,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportBounds(long[] values, long bound)
         {
-            Locked,
-            New,
-            Done,
+            bool valid = true;
+            foreach (long sample in values)
+            {
+                if (sample > bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a stream options.</summary>
