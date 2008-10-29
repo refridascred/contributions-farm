@@ -1,6 +1,6 @@
-id,count,region,state,active
-1,stable,23.05,127,open
-2,61,207,995,259
-3,latest,823,426,fallback
-4,804,0.91,487,cached
-5,68.03,55.44,98.57,64.07
+id,region,active,ratio
+1,605,845,legacy
+2,83.75,standard,blue
+3,fallback,115,931
+4,76.5,372,128
+5,659,81.79,546
