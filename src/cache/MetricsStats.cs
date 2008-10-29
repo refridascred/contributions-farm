@@ -53,9 +53,18 @@ namespace Common.Utilities
         public const double CacheBuffer = 18.71;
         public const string StepBuffer = "latest-edge";
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string LimitContributi = "open-edge";
-        public const string CacheContributi = "local-1";
-        public const long CacheRatio = 7454;
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutMatches(long[] values)
+        {
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if (!((double)datum > (2.8 / 8.0)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
     }
 }
