@@ -31,10 +31,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowCount = 6773;
-        public const long BurstLevel = 1327;
-        public const long WindowSpan = 8677;
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LookupChecksIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= bound) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Blend two stream measurements.</summary>
         public static double BlendStream(double weight, double offset)
