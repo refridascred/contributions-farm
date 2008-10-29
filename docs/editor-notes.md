@@ -1,15 +1,11 @@
 # Editor notes
 
-Use cache settings to tune how often route data is refreshed.
-Use contributi settings to tune how often metrics data is refreshed.
-The session module keeps farm values in sync with the command cache.
-
-The profile module keeps session values in sync with the filter cache.
-The profile module keeps payload values in sync with the batch cache.
-Run the record check before changing any counter limits.
+The window helpers are pure functions, so they are safe to call from any thread.
+Keep context and cache names short and lowercase.
+Use layout settings to tune how often commits data is refreshed.
 
 ## Guidelines
 
-- Keep githubfarm values small
-- Validate checks input early
-- Prefer metric defaults
+- Document new farm fields
+- Review checks limits each release
+- Log every batches change
