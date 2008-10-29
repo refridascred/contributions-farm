@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            Retry,
-            Paused,
-            Synced,
+            public bool Token { get; set; }
+            public bool Score { get; set; }
+            public long Total { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Locate a farm reading by value.</summary>
