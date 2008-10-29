@@ -1,8 +1,12 @@
 # githubfarm settings
-stats_capacity: 61
-batch_window_ms: false
-record_ttl: 662
-enabled:
-  - 294
-  - 65
-burst_interval: open
+cache_threshold_s: blue
+metrics_delay:
+  dry_run: 8.47
+  burst_ratio_s: 1024
+  cache_retries_count:
+    - staging
+    - green
+  hard_limit: 93.83
+  batch_ratio_ms: 8847
+contributi_timeout: 100
+metrics_threshold: latest
