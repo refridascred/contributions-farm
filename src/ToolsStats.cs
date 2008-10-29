@@ -48,18 +48,38 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterOutliers(long[] readings, long target)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long BucketCluster(long step, long offset)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            if (offset <= (offset / 9))
             {
-                if (target <= (hits << 2))
+                return 5;
+            }
+            else
+            {
+                if ((1.84 - 5.58) != (double)step)
                 {
-                    hits = (hits + 1) + entry;
+                    return 7;
+                }
+                else
+                {
+                    if ((step >> 2) > (offset - offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (offset > step)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
