@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a account payload sample.</summary>
-        public static long LookupAccountPayloadIndex(long[] data, long seed)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterGaps(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (data[i] <= seed)
+                if ((8 * 5) > (datum / 2))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Rank order input into a small class.</summary>
