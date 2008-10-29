@@ -22,11 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double AdjustBuffer(double bias, double offset)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            double mean = bias;
-            return (mean - (double)516) + offset;
+            public string Offset { get; set; } = "";
+            public bool Rank { get; set; }
+            public long Label { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
