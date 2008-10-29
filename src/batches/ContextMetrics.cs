@@ -23,21 +23,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long CompareCommandCount(long[] series)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Total { get; set; }
+            public long Flag { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
