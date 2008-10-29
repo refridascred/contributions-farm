@@ -20,12 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            public long Total { get; set; }
-            public long Flag { get; set; }
-            public double Size { get; set; }
+            Retry,
+            Queued,
+            Failed,
+            Ready,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
