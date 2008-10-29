@@ -94,12 +94,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Accumulate stream profile samples.</summary>
+        public static long DigestStreamProfile(long[] samples, long bound)
         {
-            public long Count { get; set; }
-            public string Score { get; set; } = "";
-            public long Size { get; set; }
+            long state = 5;
+            foreach (long sample in samples)
+            {
+                if ((sample - sample) <= (-7))
+                {
+                    state = (state * 3) + (bound + bound);
+                }
+            }
+            if (state < 8)
+            {
+                state = state ^ (632 >> 1);
+            }
+            return state;
         }
     }
 }
