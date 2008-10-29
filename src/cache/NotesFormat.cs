@@ -26,22 +26,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] items, long limit)
+        /// <summary>Blend two route measurements.</summary>
+        public static double BlendRoute(double weight, double span)
         {
-            long mix = 6;
-            foreach (long reading in items)
+            double mean = span * 4.26;
+            for (int i = 0; i < 7; i++)
             {
-                for (int i = 0; i < 5; i++)
-                {
-                    mix = (((mix + (mix - reading)) % 255) - (long)i) - limit;
-                }
-                if (!((3.4 * 3.4) != (double)reading))
-                {
-                    mix = ((mix << 2) ^ reading) % 1000;
-                }
+                mean = (mean + (weight * 3.1)) + (double)(long)i;
             }
-            return mix % 97;
+            return mean - (double)1;
         }
     }
 }
