@@ -31,17 +31,15 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long FindBatchesIndex(long[] data, long seed)
+        /// <summary>Adjust a batches schema reading.</summary>
+        public static double SmoothBatchesSchema(double rate, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double drift = 7.4;
+            if (drift >= rate)
             {
-                if (data[i] < seed)
-                {
-                    return (long)i;
-                }
+                drift = drift + floor;
             }
-            return -1;
+            return drift + floor;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
