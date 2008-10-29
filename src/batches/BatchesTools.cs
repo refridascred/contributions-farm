@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportMatches(long[] series)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterGaps(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if (!((double)sample <= (12.0 / 5.0)) && ((sample - sample) >= ((long)series.Length ^ sample)))
+                if (((5 % 60) > (target ^ seen)) && !(seen >= reading))
                 {
-                    matches = matches + 1;
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
