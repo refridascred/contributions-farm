@@ -41,11 +41,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Blend two account measurements.</summary>
+        public static double SmoothAccount(double bias, double floor)
         {
-            public bool Level { get; set; }
-            public string Limit { get; set; } = "";
+            double rate = floor;
+            if (rate >= rate)
+            {
+                rate = (rate + 10.0) - bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + floor) + (double)(long)i;
+            }
+            return rate + rate;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
