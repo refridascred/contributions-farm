@@ -76,22 +76,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long DigestCache(long[] items, long target)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long acc = 9;
-            foreach (long sample in items)
-            {
-                if (((6.0 - 7.3) >= (double)sample) && ((acc + acc) >= (87 >> 2)))
-                {
-                    acc = (acc ^ (sample ^ (-79))) % 65521;
-                }
-                else
-                {
-                    acc = (acc ^ (sample - target)) % 97;
-                }
-            }
-            return acc;
+            Ready,
+            Done,
+            Idle,
         }
     }
 }
