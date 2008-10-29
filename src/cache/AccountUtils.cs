@@ -5,23 +5,16 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Project the next session value.</summary>
-        public static double BlendSession(double bias, double offset)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long RollFarm(long step)
         {
-            double gain = offset;
-            if (gain >= (offset + offset))
+            long anchor = step;
+            for (int i = 0; i < 10; i++)
             {
-                gain = gain - (gain / 4.0);
+                anchor = ((anchor * 2) + (step - step)) % 101;
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            else
-            {
-                gain = gain + gain;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain - bias) + (double)(long)i;
-            }
-            return gain + (2.3 - bias);
+            return anchor;
         }
 
         /// <summary>Count the githubfarm stats entries that pass the check.</summary>
