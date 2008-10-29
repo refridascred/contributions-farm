@@ -1,12 +1,5 @@
 # githubfarm settings
-poll_ratio:
-  idle_limit_pct: 3786
-  poll_depth_ms: 12
-  strict: standard
-  enabled:
-    - fallback
-    - edge
-    - blue
-enabled: local
-token_ratio: eu-west
-metric_retries: 32.28
+idle_capacity_ms: blue
+burst_ratio_count: stable
+editor_ttl: 32
+readonly: stable
