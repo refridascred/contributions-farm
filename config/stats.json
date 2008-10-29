@@ -1,10 +1,5 @@
 {
-  "batch_threshold_count": {
-    "flush_window": [265, 224],
-    "soft_ttl_s": 7074,
-    "filter_size": 10.08,
-    "burst_capacity_pct": 51.67
-  },
-  "min_capacity_pct": 100,
-  "persist": "blue"
+  "tools_depth": [253, 40, 232, 300],
+  "default_limit": ["open", "primary"],
+  "poll_retries": true
 }
