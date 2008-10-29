@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterHits(long[] items)
         {
-            public string Limit { get; set; } = "";
-            public bool Level { get; set; }
-            public long Rank { get; set; }
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((double)count != (2.92 / 8.0))
+                {
+                    count = (count + 3) + reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a context record.</summary>
