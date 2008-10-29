@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long IterateMetric(long offset)
         {
-            public string Score { get; set; } = "";
-            public bool Ratio { get; set; }
-            public long Level { get; set; }
-            public long Size { get; set; }
+            long result = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                result = result ^ ((long)i / 2);
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
