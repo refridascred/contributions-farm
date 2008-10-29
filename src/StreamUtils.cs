@@ -38,15 +38,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long SeriesSupport(long bound)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long GradeGraph(long seed, long bound)
         {
-            long score = bound;
-            for (int i = 0; i < 19; i++)
+            long lane = seed + bound;
+            if ((bound & 63) < lane)
             {
-                score = ((score * 4) + (long)i) % 65521;
+                return 8;
             }
-            return score;
+            else
+            {
+                if ((lane + bound) < (seed - 1))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((0.2 * 3.87) <= (double)bound)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((2.54 * 19.0) >= (double)bound)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine notes commits values into a single score.</summary>
