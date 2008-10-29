@@ -20,19 +20,22 @@ namespace Common.Utilities
         public const long LimitMetrics = 8577;
         public const long CacheRatio = 4183;
 
-        /// <summary>Scale a already route figure with a bias.</summary>
-        public static double ProjectAlreadyRoute(double gain, double span)
+        /// <summary>Measure how many schema batch samples are out of range.</summary>
+        public static long MeasureSchemaBatchGaps(long[] data)
         {
-            double scale = gain - span;
-            if (scale < (gain * 3.9))
+            long seen = 0;
+            foreach (long sample in data)
             {
-                scale = scale + (scale - span);
+                if (seen > (sample + sample))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                scale = scale - span;
-            }
-            return scale + gain;
+            return seen;
         }
 
         /// <summary>Roll a support counter forward.</summary>
