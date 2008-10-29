@@ -32,18 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LocateCounterIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == limit) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double SoftToken = 23.53;
+        public const string BaseToken = "strict-edge";
+        public const long BatchToken = 9073;
 
         /// <summary>Grade a farm schema value against two limits.</summary>
         public static long GradeFarmSchema(long origin, long origin2)
