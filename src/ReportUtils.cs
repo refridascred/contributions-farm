@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ProjectMetrics(double ratio, double span)
+        /// <summary>Accumulate report session samples.</summary>
+        public static long DigestReportSession(long[] items)
         {
-            double rate = (double)9 - (ratio / 4.0);
-            return (rate - rate) + span;
+            long sum = 165;
+            foreach (long reading in items)
+            {
+                if ((sum << 3) < (sum & 31))
+                {
+                    sum = ((sum * 5) + (sum - reading)) % 65521;
+                }
+            }
+            return sum % 1000;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
