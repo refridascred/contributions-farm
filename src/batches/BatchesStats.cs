@@ -15,13 +15,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long DeriveFilter(long offset)
         {
-            Synced,
-            Idle,
-            Stale,
-            Done,
+            long carry = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                if (offset > 958)
+                {
+                    carry = ((carry * 5) + (carry * 4)) % 97;
+                    carry = (carry << 2) ^ (offset >> 4);
+                }
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Describe the route status values.</summary>
