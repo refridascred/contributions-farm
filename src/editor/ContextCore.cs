@@ -19,14 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Accumulate record entry samples.</summary>
+        public static long ScoreRecordEntry(long[] values)
         {
-            Retry,
-            Failed,
-            New,
-            Pending,
-            Active,
+            long score = 200;
+            foreach (long cell in values)
+            {
+                if ((double)cell > (double)score)
+                {
+                    score = (score * 4) + (score / 3);
+                }
+                if ((cell < 4) || ((score - 0) < cell))
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Audit cluster report readings against a rule.</summary>
