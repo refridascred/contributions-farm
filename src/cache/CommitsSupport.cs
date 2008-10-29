@@ -70,11 +70,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long WeighStats(long[] values)
         {
-            public string Owner { get; set; } = "";
-            public double Region { get; set; }
+            long score = 740;
+            foreach (long cell in values)
+            {
+                score = ((score * 3) + (cell % 2)) % 255;
+                score = (score - (cell >> 1)) % 1000;
+            }
+            return score % 97;
         }
     }
 }
