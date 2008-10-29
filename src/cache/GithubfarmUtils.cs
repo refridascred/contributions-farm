@@ -42,9 +42,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchNotes = 7341;
-        public const long BurstNotes = 6811;
-        public const long LimitNotes = 7362;
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsBounds(long[] items, long limit)
+        {
+            bool found = true;
+            foreach (long item in items)
+            {
+                if (item > limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
