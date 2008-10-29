@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long FindChecksIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultSize = 8966;
+        public const long StepGraph = 7725;
+        public const long BaseSize = 8292;
 
         /// <summary>Compare every pair of support batches readings.</summary>
         public static long CompareSupportBatchesCount(long[] readings)
