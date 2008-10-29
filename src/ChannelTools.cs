@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmMatches(long[] items, long offset)
+        /// <summary>Count the farm commits entries that pass the check.</summary>
+        public static long TallyFarmCommitsOutliers(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if ((offset ^ seen) == (23 ^ offset))
+                if ((19.0 + 14.0) > (double)cell)
                 {
-                    seen = (seen + 3) ^ reading;
+                    tally = (tally + 3) + floor;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Hold a context record.</summary>
