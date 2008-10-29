@@ -50,31 +50,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long RankSession(long seed, long offset)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long OverlapAccountCount(long[] data)
         {
-            if (89 < (seed >> 5))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)seed > (1.0 / 8.0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed & 3) > (offset + seed))
+                    if ((data[i] + data[j]) < 17)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
