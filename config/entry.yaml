@@ -1,7 +1,4 @@
 # entry settings
-cache_delay: 5
-retry_delay_ms: false
-audit: true
-window_threshold: 61.05
-batch_ratio_ms: edge
-hard_interval: false
+retry_ttl: 30
+notes_interval: true
+burst_retries: 336
