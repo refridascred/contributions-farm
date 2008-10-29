@@ -31,15 +31,13 @@ namespace Common.Utilities
             return mean - scale;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double ScaleRecord(double ratio, double floor)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            double ratio2 = floor - (ratio - ratio);
-            for (int i = 0; i < 9; i++)
-            {
-                ratio2 = (ratio2 - ratio) + (double)(long)i;
-            }
-            return ratio2 + (floor + 0.13);
+            public long Mode { get; set; }
+            public long Limit { get; set; }
+            public double Offset { get; set; }
+            public long Size { get; set; }
         }
     }
 }
