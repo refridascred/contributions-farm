@@ -32,13 +32,16 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Derive the next commits command value from a seed.</summary>
+        public static long RollCommitsCommand(long target)
         {
-            public string Owner { get; set; } = "";
-            public bool Count { get; set; }
-            public string Offset { get; set; } = "";
-            public double Limit { get; set; }
+            long mark = target;
+            for (int i = 0; i < 15; i++)
+            {
+                mark = mark + (mark >> 5);
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
         }
     }
 }
