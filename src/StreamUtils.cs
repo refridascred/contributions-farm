@@ -78,11 +78,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Validate session profile readings against a bound.</summary>
+        public static bool ValidateSessionProfileRange(long[] readings, long origin)
         {
-            public long Flag { get; set; }
-            public long Score { get; set; }
+            bool found = true;
+            foreach (long value in readings)
+            {
+                if (value != origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
