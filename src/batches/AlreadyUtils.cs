@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderOutliers(long[] values)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if ((hits << 3) != (sample % 97))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Paused,
+            New,
+            Retry,
+            Pending,
         }
 
         /// <summary>Fold a list of editor readings.</summary>
