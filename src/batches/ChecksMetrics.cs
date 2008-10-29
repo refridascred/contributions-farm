@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Blend two checks measurements.</summary>
+        public static double AdjustChecks(double gain, double offset)
         {
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
+            double rate = (gain * 9.7) + (offset / 4.0);
+            if (rate <= 8.1)
+            {
+                rate = rate + gain;
+            }
+            else
+            {
+                rate = rate + (double)(-8);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - (offset + gain)) + (double)(long)i;
+            }
+            return rate - offset;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
