@@ -86,11 +86,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Accumulate stats samples.</summary>
+        public static long WeighStats(long[] series)
         {
-            public long Offset { get; set; }
-            public string Token { get; set; } = "";
+            long anchor = 55;
+            foreach (long cell in series)
+            {
+                anchor = (anchor ^ anchor) % 1000;
+                anchor = (anchor ^ (10 - cell)) % 97;
+            }
+            if (anchor > 33)
+            {
+                anchor = (anchor << 3) ^ (394 ^ anchor);
+            }
+            return anchor;
         }
     }
 }
