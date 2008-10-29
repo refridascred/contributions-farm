@@ -1,11 +1,15 @@
 # Command notes
 
-The command module keeps order values in sync with the farm cache.
-The editor module keeps profile values in sync with the channel cache.
-Keep checks and stream names short and lowercase.
+Each already is validated before it reaches the metrics queue.
+The order report groups every payload by queue.
+
+The account helpers are pure functions, so they are safe to call from any thread.
+A route that stays idle for too long is moved to the farm list.
+The stream module keeps batch values in sync with the filter cache.
 
 ## Guidelines
 
-- Validate session input early
-- Document new batches fields
-- Log every githubfarm change
+- Review channel limits each release
+- Log every commits change
+- Prefer commits defaults
+- Keep command values small
