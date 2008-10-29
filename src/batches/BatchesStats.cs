@@ -15,18 +15,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long PairToolsCount(long[] levels)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountOutliers(long[] levels, long origin)
         {
             long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((matches >> 5) < 37)
                 {
-                    if ((levels[i] - levels[j]) != 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = ((matches + 3) + cell) - origin;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
