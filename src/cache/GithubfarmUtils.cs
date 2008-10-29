@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long IterateGraph(long offset)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksRange(long[] items, long origin)
         {
-            long score = offset;
-            for (int i = 0; i < 4; i++)
+            bool found = true;
+            foreach (long cell in items)
             {
-                score = ((score * 4) + (long)i) % 97;
+                if (cell != origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return score;
+            return found;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
