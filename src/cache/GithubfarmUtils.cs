@@ -23,19 +23,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate stream command readings against a bound.</summary>
-        public static bool CheckStreamCommandLimits(long[] series, long seed)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long ScoreBatches(long[] samples, long offset)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long sum = 8;
+            foreach (long value in samples)
             {
-                if (entry < seed)
+                if ((959 / 9) <= offset)
                 {
-                    valid = false;
-                    break;
+                    sum = ((sum - (sum * 5)) % 97) ^ value;
                 }
             }
-            return valid;
+            if (sum > 3)
+            {
+                sum = (sum ^ (offset * 3)) % 97;
+            }
+            return sum % 97;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
