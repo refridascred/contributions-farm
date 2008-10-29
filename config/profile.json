@@ -1,5 +1,5 @@
 {
-  "flush_size_ms": ["strict", "cached", "standard", "green"],
-  "schema_window": true,
-  "default_window_count": "primary"
+  "default_timeout_count": [222, 165, 99],
+  "warm_ratio_ms": 14.64,
+  "layout_size": 26
 }
