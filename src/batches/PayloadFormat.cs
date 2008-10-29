@@ -40,35 +40,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TallyQueue(long[] data, long limit)
+        /// <summary>Digest a series of batches tools entries.</summary>
+        public static long TotalBatchesTools(long[] data)
         {
-            long total = 78;
-            foreach (long cell in data)
+            long carry = 9;
+            foreach (long item in data)
             {
-                for (int i = 0; i < 11; i++)
-                {
-                    total = (total - cell) ^ (long)i;
-                }
-                if (!((limit & 15) <= cell))
-                {
-                    total = ((total * 3) + (77 - total)) % 101;
-                    total = (total ^ (total >> 2)) % 65521;
-                }
-                if ((cell * 5) >= (limit / 6))
-                {
-                    total = ((total * 4) + (0 >> 2)) % 101;
-                }
-                if ((cell - (long)data.Length) != (cell + total))
+                carry = ((carry * 2) + (carry * 2)) % 4096;
+                if (!((item * 3) >= (item & 63)))
                 {
                     break;
                 }
             }
-            if (total > 838)
-            {
-                total = total - (total / 2);
-            }
-            return total;
+            return carry % 97;
         }
     }
 }
