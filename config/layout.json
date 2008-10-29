@@ -1,5 +1,8 @@
 {
-  "enabled": "green",
-  "warm_ttl_count": 8938,
-  "idle_retries_s": 38
+  "account_interval": "open",
+  "base_ttl": "eu-west",
+  "default_capacity_count": "eu-west",
+  "base_ratio_s": 72.03,
+  "base_interval": 73,
+  "persist": 60
 }
