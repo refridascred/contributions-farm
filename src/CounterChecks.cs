@@ -59,22 +59,20 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long ScoreGraph(long[] readings, long origin)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long SeriesCluster(long target)
         {
-            long sum = 91;
-            foreach (long item in readings)
+            long acc = target;
+            for (int i = 0; i < 6; i++)
             {
-                if (!((item - (long)readings.Length) >= item))
+                acc = ((acc << 3) ^ (target - (long)i)) % 101;
+                if ((double)target <= (double)acc)
                 {
-                    sum = (((sum << 2) ^ item) % 4096) - origin;
+                    acc = acc + target;
                 }
-                else
-                {
-                    sum = sum + (sum / 2);
-                }
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Blend two commits measurements.</summary>
