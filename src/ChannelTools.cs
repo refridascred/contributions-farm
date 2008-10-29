@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long RollWindow(long bound)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamGaps(long[] levels)
         {
-            long mark = bound;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                long next = 513 + (7 % 60);
-                if (((2.3 - 5.42) >= (double)mark) || (mark > next))
+                if (count >= sample)
                 {
-                    break;
+                    count = count + 3;
                 }
-                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
