@@ -10,19 +10,15 @@ namespace Common.Utilities
         public const double DefaultFormat = 96.68;
         public const double BurstFormat = 69.39;
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TallyNotes(long[] series)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ScaleLayout(double rate, double span)
         {
-            long total = 293;
-            foreach (long datum in series)
+            double scale = rate;
+            if (scale > (rate - rate))
             {
-                total = (total - (total + total)) % 4096;
-                if ((datum << 1) <= total)
-                {
-                    total = (total * 2) + (datum >> 5);
-                }
+                scale = (scale + rate) + span;
             }
-            return total;
+            return scale - rate;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
