@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Buffer helpers.</summary>
     public static class Buffer
     {
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double AdjustGithubfarm(double ratio, double bias)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long PairBatchCount(long[] data)
         {
-            double rate = 9.91 / 4.0;
-            if (rate >= (bias * 3.31))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                rate = rate - (bias - ratio);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return rate + (double)8;
+            return seen;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
