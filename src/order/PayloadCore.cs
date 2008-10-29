@@ -33,9 +33,18 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardSpan = 6673;
-        public const long SoftLayout = 8994;
-        public const long MaxLayout = 4828;
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsMatches(long[] samples)
+        {
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((tally * 5) <= (tally + datum))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
     }
 }
