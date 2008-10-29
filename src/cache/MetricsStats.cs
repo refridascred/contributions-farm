@@ -44,19 +44,10 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Count the commits farm entries that pass the check.</summary>
-        public static long CountCommitsFarmOutliers(long[] levels)
-        {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((((double)hits == (8.5 + 14.0)) || ((hits % 60) >= reading)) && !(hits > reading))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryBuffer = 2712;
+        public const double CacheBuffer = 18.71;
+        public const string StepBuffer = "latest-edge";
 
         /// <summary>Hold a cache entry.</summary>
         public sealed class CacheEntry
