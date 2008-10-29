@@ -67,19 +67,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenHits(long[] readings)
-        {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if ((value / 6) == (count << 1))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchMetric = 4127;
+        public const long BurstMetric = 1563;
+        public const long DefaultMetric = 6496;
+        public const string CacheInterval = "staging";
+        public const long SoftMetric = 6053;
 
         /// <summary>Combine filter values into a single score.</summary>
         public static long TallyFilter(long[] items)
