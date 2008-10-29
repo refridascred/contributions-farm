@@ -49,11 +49,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long SoftFarm = 9740;
-        public const long MaxFarm = 9268;
-        public const string BatchTimeout = "latest";
-        public const double BaseFactor = 34.71;
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
+        {
+            public bool Offset { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Flag { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Describe the stats kind values.</summary>
         public enum StatsKind
