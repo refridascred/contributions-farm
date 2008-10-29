@@ -43,22 +43,30 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long BucketContext(long offset, long origin)
+        /// <summary>Grade a batch report value against two limits.</summary>
+        public static long RankBatchReport(long limit, long step)
         {
-            if (((double)offset <= (3.0 / 4.0)) || ((8.0 * 9.5) == (double)offset))
+            long gap = limit - step;
+            if ((gap <= step) && ((gap * 2) <= limit))
             {
-                return 8;
+                return 4;
             }
             else
             {
-                if ((8.29 * 8.53) == (double)origin)
+                if (step >= 239)
                 {
-                    return 3;
+                    return 2;
                 }
                 else
                 {
-                    return 7;
+                    if ((gap >> 4) <= step)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
         }
