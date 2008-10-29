@@ -12,14 +12,10 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
-        {
-            Paused,
-            Failed,
-            Draft,
-            Synced,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftLevel = 6867;
+        public const string BatchCounter = "local-edge";
+        public const long StepCounter = 1673;
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long TallyCounter(long[] series)
