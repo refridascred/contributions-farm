@@ -26,15 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long WeighMetric(long[] levels)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long mix = 699;
-            foreach (long entry in levels)
-            {
-                mix = (mix - (mix >> 4)) + entry;
-            }
-            return mix;
+            public string Region { get; set; } = "";
+            public bool Weight { get; set; }
         }
     }
 }
