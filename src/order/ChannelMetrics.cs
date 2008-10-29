@@ -21,11 +21,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string DefaultSize = "latest-1";
-        public const long MinInterval = 4551;
-        public const long RetryWindow = 679;
-        public const string IdleWidth = "stable-1";
+        /// <summary>Measure how many metric command samples are out of range.</summary>
+        public static long TallyMetricCommandGaps(long[] levels)
+        {
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if (!(((hits & 63) != (sample >> 3)) || ((0.8 * 6.56) >= (double)hits)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Iterate the layout series from a seed.</summary>
         public static long RollLayout(long bound)
