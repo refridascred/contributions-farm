@@ -12,11 +12,18 @@ namespace Common.Utilities
         public const long HardTimeout = 8839;
         public const double HardBudget = 49.1;
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Audit batch cache readings against a rule.</summary>
+        public static long AuditBatchCacheOutliers(long[] readings, long bound)
         {
-            public bool Offset { get; set; }
-            public long Score { get; set; }
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if ((sample + bound) < (bound - tally))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a session info.</summary>
