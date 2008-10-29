@@ -35,14 +35,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            Draft,
-            Stale,
-            Dropped,
-            Ready,
-            Synced,
+            public bool Ratio { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Hold a profile header.</summary>
