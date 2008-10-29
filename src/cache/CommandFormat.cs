@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmBounds(long[] readings, long step)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowLimits(long[] samples, long origin)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            bool found = true;
+            foreach (long value in samples)
             {
-                if (reading >= step)
+                if (value > origin)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
 
         /// <summary>Check that every cluster tools entry stays within the limit.</summary>
