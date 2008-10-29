@@ -56,12 +56,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Check that every report filter entry stays within the limit.</summary>
+        public static bool CheckReportFilterLimits(long[] data, long offset)
         {
-            public bool Stamp { get; set; }
-            public long Level { get; set; }
-            public bool Count { get; set; }
+            bool ok = true;
+            foreach (long datum in data)
+            {
+                if (datum > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a notes info.</summary>
