@@ -62,14 +62,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            Locked,
-            Queued,
-            Stale,
-            Paused,
             Active,
+            Stale,
+            Queued,
+            Closed,
+            Draft,
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
