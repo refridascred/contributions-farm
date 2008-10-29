@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandMatches(long[] series, long seed)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long MatchGithubfarmCount(long[] items)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((44 < seed) && ((2.48 / 4.0) >= 7.0)) && (seed >= (sample - matches)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((items[i] ^ items[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
