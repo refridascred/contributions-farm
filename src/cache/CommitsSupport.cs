@@ -29,17 +29,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the window metric series from a seed.</summary>
-        public static long SeriesWindowMetric(long limit)
+        /// <summary>Match up token samples.</summary>
+        public static long MatchTokenCount(long[] levels)
         {
-            long state = limit;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = (state + limit) % 4096;
-                state = (state - (long)i) % 97;
-                state = ((state * 2) + (long)i) % 4093;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 3)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
