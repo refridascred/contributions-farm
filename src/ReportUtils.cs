@@ -26,22 +26,11 @@ namespace Common.Utilities
         public const long RetryDepth = 5104;
         public const long IdleSpan = 752;
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long OverlapRecordCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string BaseMetric = "primary";
+        public const double StepCount = 54.44;
+        public const double HardMetric = 47.93;
+        public const long SoftMetric = 6635;
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
         public static long CompareNotesCount(long[] samples)
