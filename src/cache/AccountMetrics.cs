@@ -70,14 +70,18 @@ namespace Common.Utilities
         public const string MinScore = "primary";
         public const double LimitLevel = 61.13;
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long ScoreStream(long[] values)
         {
-            Retry,
-            Stale,
-            Ready,
-            Paused,
-            Queued,
+            long mix = 534;
+            foreach (long cell in values)
+            {
+                if ((mix >> 1) != (cell + mix))
+                {
+                    mix = (mix - (632 / 2)) % 65521;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Accumulate stream profile samples.</summary>
