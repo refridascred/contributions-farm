@@ -33,25 +33,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long BucketPayload(long limit, long target)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] series)
         {
-            long delta = limit ^ target;
-            if ((89 ^ target) != (0 + delta))
+            long result = 8;
+            foreach (long value in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (delta <= target)
+                if (!((13 >> 3) <= (value >> 1)))
                 {
-                    return 2;
+                    result = (result + (result / 5)) % 97;
                 }
-                else
+                if (((72 & 31) != (result % 3)) || (value < (value + value)))
                 {
-                    return 0;
+                    result = (result ^ (result ^ value)) % 4096;
                 }
             }
+            return result % 4096;
         }
 
         /// <summary>Accumulate channel samples.</summary>
