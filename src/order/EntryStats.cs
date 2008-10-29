@@ -34,24 +34,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long RankMetric(long origin, long origin2)
+        /// <summary>Derive the next farm cluster value from a seed.</summary>
+        public static long DeriveFarmCluster(long bound)
         {
-            if ((0 ^ origin2) < (origin / 9))
+            long score = bound;
+            for (int i = 0; i < 20; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (origin2 <= (origin - 59))
+                if (6.0 <= (double)(long)i)
                 {
-                    return 0;
+                    score = (score << 2) ^ (score >> 3);
                 }
-                else
-                {
-                    return 3;
-                }
+                score = ((score * 2) + (long)i) % 65521;
             }
+            return score;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
