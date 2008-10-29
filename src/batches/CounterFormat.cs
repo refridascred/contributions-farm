@@ -14,19 +14,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] items, long target)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorRange(long[] levels, long seed)
         {
-            long carry = 619;
-            foreach (long datum in items)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                carry = (carry ^ target) - datum;
+                if (value >= seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (carry < 91)
-            {
-                carry = carry - (carry + carry);
-            }
-            return carry;
+            return ok;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
