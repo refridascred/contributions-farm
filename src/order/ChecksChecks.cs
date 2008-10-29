@@ -20,23 +20,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit command buffer readings against a rule.</summary>
-        public static long AuditCommandBufferGaps(long[] values, long seed)
-        {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if (seed >= (seed >> 1))
-                {
-                    matches = (matches + 1) - entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardTimeout = 4605;
+        public const string SoftWidth = "stable-edge";
+        public const long RetryLevel = 9209;
+        public const string BatchCache = "cached-edge";
+        public const string BurstLevel = "latest-edge";
 
         /// <summary>Fold a list of metric readings.</summary>
         public static long TallyMetric(long[] samples, long offset)
