@@ -1,18 +1,4 @@
 # entry settings
-farm_threshold: 97
-enabled: 63.6
-sync_threshold:
-  - 351
-  - 1
-  - 42
-default_limit_count:
-  contributi_ratio:
-    - 327
-    - 47
-    - 278
-    - 92
-  base_timeout_count: 0.66
-  schema_timeout: staging
-  retry_capacity_count: false
-  hard_ttl_s: standard
-max_delay: local
+window_threshold: false
+batch_ratio_count: 45.32
+retry_depth_count: true
