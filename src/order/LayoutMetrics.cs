@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Find the first profile filter entry that matches the target.</summary>
-        public static long LookupProfileFilterIndex(long[] data, long step)
+        /// <summary>Measure how many token record samples are out of range.</summary>
+        public static long TallyTokenRecordHits(long[] items, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if (data[i] == step)
+                if ((target << 3) > (seen * 2))
                 {
-                    return (long)i;
+                    seen = (seen + 2) - sample;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the metric status values.</summary>
