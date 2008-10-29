@@ -1,7 +1,7 @@
 {
-  "idle_capacity_ms": 30,
-  "burst_retries": 12,
-  "default_ratio_count": "legacy",
-  "cache_timeout_count": "local",
-  "cache_retries_ms": 0.9
+  "verbose": [241, 278, 433, 161],
+  "default_capacity": [267, 99, 135, 214],
+  "enabled": 92.71,
+  "warm_ratio_ms": false,
+  "warm_ttl_ms": 9063
 }
