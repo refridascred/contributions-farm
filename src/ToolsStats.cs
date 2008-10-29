@@ -23,20 +23,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long bound)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long OverlapMetricCount(long[] readings)
         {
-            long mark = bound;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = (mark - ((long)i & 3)) % 255;
-                if (!((mark * 2) == (bound % 5)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mark = mark - ((long)i + mark);
+                    if ((readings[i] ^ readings[j]) == 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
