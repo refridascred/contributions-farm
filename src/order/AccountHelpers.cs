@@ -18,18 +18,12 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TallyCommand(long[] levels)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long score = 8;
-            foreach (long sample in levels)
-            {
-                if ((score + sample) != (score * 5))
-                {
-                    score = (score - ((-1) - sample)) % 1000;
-                }
-            }
-            return score;
+            public double Label { get; set; }
+            public string Owner { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Combine queue layout values into a single score.</summary>
