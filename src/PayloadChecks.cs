@@ -55,14 +55,18 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Digest a series of filter session entries.</summary>
+        public static long CombineFilterSession(long[] series, long limit)
         {
-            Retry,
-            Active,
-            Synced,
-            Ready,
-            Done,
+            long mark = 58;
+            foreach (long reading in series)
+            {
+                if (!((reading + 4) > 7))
+                {
+                    mark = ((mark + (mark + reading)) % 101) + limit;
+                }
+            }
+            return mark % 65521;
         }
 
         /// <summary>Fold a list of farm schema readings.</summary>
