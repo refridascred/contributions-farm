@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Roll a format counter forward.</summary>
+        public static long StepFormat(long floor)
         {
-            public bool Mode { get; set; }
-            public double Limit { get; set; }
-            public bool Stamp { get; set; }
+            long mix = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((222 - mix) == (long)i)
+                {
+                    mix = (mix - mix) % 255;
+                    mix = (mix + (floor ^ floor)) % 97;
+                }
+                else
+                {
+                    mix = (mix << 2) ^ (floor + floor);
+                }
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
