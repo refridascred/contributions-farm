@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long SeriesNotes(long offset)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long RollCommits(long limit)
         {
-            long acc = offset;
-            for (int i = 0; i < 9; i++)
+            long acc = limit;
+            for (int i = 0; i < 22; i++)
             {
-                acc = (acc + (offset / 6)) % 65521;
-                acc = acc - ((long)i ^ acc);
-                acc = ((acc * 2) + (long)i) % 1000;
+                if (((limit - acc) != (long)i) || ((double)acc >= (5.0 - 0.98)))
+                {
+                    acc = acc - (limit & 3);
+                    acc = (acc ^ ((long)i * 3)) % 4096;
+                }
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    acc = ((acc * 5) + ((long)i - acc)) - (long)i2;
+                }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
             return acc;
         }
