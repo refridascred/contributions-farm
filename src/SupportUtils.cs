@@ -44,19 +44,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate contributi buffer readings against a bound.</summary>
-        public static bool ValidateContributiBufferBounds(long[] items, long bound)
+        /// <summary>Iterate the checks context series from a seed.</summary>
+        public static long SeriesChecksContext(long floor)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            long mix = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if (sample < bound)
-                {
-                    ready = false;
-                    break;
-                }
+                mix = ((mix * 2) + (floor & 63)) % 101;
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return ready;
+            return mix;
         }
     }
 }
