@@ -66,12 +66,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            Ready,
+            Queued,
             Closed,
-            Pending,
+            Synced,
         }
     }
 }
