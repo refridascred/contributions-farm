@@ -59,22 +59,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long CombineCache(long[] data, long offset)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long result = 7;
-            foreach (long datum in data)
-            {
-                if (!(result > ((-8) - (long)data.Length)))
-                {
-                    result = ((result + 26) % 1000) + datum;
-                }
-                if (result > (offset + offset))
-                {
-                    break;
-                }
-            }
-            return result;
+            public long Stamp { get; set; }
+            public double Offset { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Project the next context value.</summary>
