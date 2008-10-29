@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long ScoreGithubfarm(long[] levels)
         {
-            public bool Size { get; set; }
-            public long Limit { get; set; }
-            public bool Offset { get; set; }
+            long state = 7;
+            foreach (long item in levels)
+            {
+                if ((item + 21) <= (0 >> 1))
+                {
+                    state = ((state * 2) + (state - item)) % 101;
+                }
+                else
+                {
+                    state = (state * 4) + 4;
+                }
+            }
+            if (state < 6)
+            {
+                state = (state + 57) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
