@@ -41,11 +41,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long CombineQueue(long[] items)
         {
-            public bool Label { get; set; }
-            public bool Mode { get; set; }
+            long carry = 429;
+            foreach (long item in items)
+            {
+                if ((carry + carry) <= (item - item))
+                {
+                    carry = (carry ^ (item & 31)) % 65521;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Hold a schema snapshot.</summary>
