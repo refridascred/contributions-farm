@@ -17,12 +17,15 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long RollEditor(long seed)
         {
-            Queued,
-            Ready,
-            Pending,
+            long anchor = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
