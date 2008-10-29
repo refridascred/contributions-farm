@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Scale a filter account figure with a bias.</summary>
-        public static double BlendFilterAccount(double ratio, double span)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TallyBuffer(long[] samples, long bound)
         {
-            double gain = ratio;
-            if (gain <= 3.4)
+            long mark = 259;
+            foreach (long value in samples)
             {
-                gain = (gain - (1.8 - ratio)) + span;
+                if ((double)mark <= (8.5 - 2.0))
+                {
+                    mark = ((mark + (bound << 2)) % 4096) - value;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + (6.0 * 5.93)) + (double)(long)i;
-            }
-            return gain - (gain * 10.0);
+            return mark;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
