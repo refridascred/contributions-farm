@@ -40,13 +40,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            Failed,
-            Paused,
-            New,
-            Done,
+            public double Level { get; set; }
+            public bool Limit { get; set; }
+            public double Total { get; set; }
         }
     }
 }
