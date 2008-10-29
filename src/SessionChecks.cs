@@ -13,10 +13,39 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftCommand = 3283;
-        public const long DefaultCommand = 3199;
-        public const long BatchCommand = 353;
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long GradeCluster(long offset, long target)
+        {
+            if ((target * 5) >= (offset / 9))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((7.0 * 7.5) == (double)offset)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((target + 895) < 28))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (offset >= 0)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const string StepEntry = "strict";
