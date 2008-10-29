@@ -12,19 +12,15 @@ namespace Common.Utilities
         public const long WindowFilter = 2829;
         public const long SoftFilter = 5341;
 
-        /// <summary>Project the next window value.</summary>
-        public static double BlendWindow(double scale, double floor)
+        /// <summary>Adjust a command reading.</summary>
+        public static double ScaleCommand(double bias, double floor)
         {
-            double scale2 = (double)30 - floor;
-            if (scale2 >= (double)77)
+            double load = floor;
+            if (load < bias)
             {
-                scale2 = scale2 + scale;
+                load = load + (double)6;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale2 = (scale2 - (scale2 - scale2)) + (double)(long)i;
-            }
-            return scale2 + (double)1;
+            return load + floor;
         }
 
         /// <summary>Iterate the filter stream series from a seed.</summary>
