@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            Synced,
-            Retry,
-            Idle,
-            Locked,
-            Draft,
+            New,
+            Active,
+            Failed,
+            Paused,
+            Ready,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
