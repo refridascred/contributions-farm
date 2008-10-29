@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] items, long seed)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long state = 4;
-            foreach (long entry in items)
-            {
-                state = ((((state << 2) ^ (state + state)) % 1000) + entry) - seed;
-            }
-            if (state < 357)
-            {
-                state = (state << 3) ^ state;
-            }
-            return state;
+            public bool Offset { get; set; }
+            public long Flag { get; set; }
+            public bool Stamp { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
