@@ -29,22 +29,18 @@ namespace Common.Utilities
         public const double HardScore = 62.94;
         public const long BaseStats = 1941;
 
-        /// <summary>Fold a list of graph farm readings.</summary>
-        public static long TotalGraphFarm(long[] data, long target)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricHits(long[] values, long origin)
         {
-            long result = 53;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if ((target <= (result * 3)) || (datum > (result - datum)))
+                if ((origin / 3) <= (value - 2))
                 {
-                    result = (result - (datum + datum)) % 65521;
-                }
-                else
-                {
-                    result = (result ^ (datum % 12)) % 1000;
+                    tally = tally + 2;
                 }
             }
-            return result % 65521;
+            return tally;
         }
     }
 }
