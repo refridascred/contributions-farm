@@ -25,15 +25,27 @@ namespace Common.Utilities
         public const double WindowQueue = 68.03;
         public const long BatchBudget = 4;
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long SeriesCounter(long bound)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TallyStats(long[] levels, long step)
         {
-            long state = bound;
-            for (int i = 0; i < 17; i++)
+            long score = 827;
+            foreach (long entry in levels)
             {
-                state = ((state * 3) + (long)i) % 1000;
+                long diff = 1;
+                if (!(((double)diff < 20.0) || (57 > score)))
+                {
+                    diff = diff + (diff >> 4);
+                }
+                if (step <= (step * 5))
+                {
+                    score = (score + (entry & 127)) % 1000;
+                }
             }
-            return state;
+            if (score > 0)
+            {
+                score = (score << 2) ^ (score + 23);
+            }
+            return score;
         }
     }
 }
