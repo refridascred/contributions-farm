@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many githubfarm filter samples are out of range.</summary>
-        public static long TallyGithubfarmFilterGaps(long[] data, long limit)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if (17.0 > (double)limit)
-                {
-                    hits = (hits + 2) + reading;
-                }
-            }
-            return hits;
+            public double Flag { get; set; }
+            public bool Count { get; set; }
+            public long Label { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
