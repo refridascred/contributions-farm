@@ -20,24 +20,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long GradeStream(long floor, long step)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long RankNotes(long offset, long bound)
         {
-            if ((double)floor < (12.0 + 19.0))
+            long next = offset ^ bound;
+            if (bound < (offset << 3))
             {
-                return 2;
+                return 6;
             }
             else
             {
-                if (step <= floor)
+                if ((double)bound < (double)31)
                 {
                     return 8;
                 }
                 else
                 {
-                    if (floor >= 73)
+                    if ((next >> 4) == (next / 6))
                     {
-                        return 6;
+                        return 0;
                     }
                     else
                     {
