@@ -16,21 +16,15 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long OverlapRouteCount(long[] levels)
+        /// <summary>Fold a list of tools graph readings.</summary>
+        public static long ScoreToolsGraph(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 54;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                carry = (((carry << 2) ^ carry) % 65521) ^ reading;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Project the next window value.</summary>
