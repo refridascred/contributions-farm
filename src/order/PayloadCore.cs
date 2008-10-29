@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long StepGithubfarm(long bound)
+        /// <summary>Blend two context tools measurements.</summary>
+        public static double BlendContextTools(double rate, double offset)
         {
-            long mark = bound;
-            for (int i = 0; i < 20; i++)
+            double gain = rate * 4.1;
+            if (gain <= offset)
             {
-                mark = mark - (mark * 2);
-                mark = ((mark * 4) + (long)i) % 1000;
+                gain = gain + offset;
             }
-            return mark;
+            return gain + (double)(-87);
         }
 
         /// <summary>Hold a account entry.</summary>
