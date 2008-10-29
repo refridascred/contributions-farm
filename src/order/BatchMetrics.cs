@@ -21,10 +21,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string MaxSession = "legacy";
-        public const long IdleSession = 8626;
-        public const double WindowSession = 78.09;
+        /// <summary>Look up the position of a channel tools sample.</summary>
+        public static long SeekChannelToolsIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate tools readings against a bound.</summary>
         public static bool ValidateToolsBounds(long[] items, long limit)
