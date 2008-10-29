@@ -41,21 +41,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count batches context pairs that satisfy a relation.</summary>
-        public static long CompareBatchesContextCount(long[] values)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelMatches(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((tally / 7) != (tally * 3))
                 {
-                    if ((values[i] - values[j]) == 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 1) + sample;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define session limits and defaults.</summary>
