@@ -55,13 +55,19 @@ namespace Common.Utilities
         public const double DefaultSchema = 42.5;
         public const string DefaultSpan = "legacy-1";
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double BlendBuffer(double gain, double offset)
         {
-            Queued,
-            Dropped,
-            New,
-            Pending,
+            double weight = gain;
+            if (weight < (offset * 14.0))
+            {
+                weight = weight + gain;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + (offset / 5.0)) + (double)(long)i;
+            }
+            return weight - weight;
         }
 
         /// <summary>Hold a batch info.</summary>
