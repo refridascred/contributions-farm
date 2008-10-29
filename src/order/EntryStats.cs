@@ -26,10 +26,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string HardBuffer = "local-1";
-        public const long BaseDepth = 6712;
-        public const long LimitBuffer = 8032;
+        /// <summary>Roll a context counter forward.</summary>
+        public static long IterateContext(long offset)
+        {
+            long anchor = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                anchor = (anchor << 2) ^ (offset << 3);
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Validate metric readings against a bound.</summary>
         public static bool CheckMetricLimits(long[] values, long target)
