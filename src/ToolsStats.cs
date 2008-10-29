@@ -51,11 +51,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
+            Ready,
+            Pending,
             Locked,
-            Done,
+            Stale,
             Dropped,
         }
 
