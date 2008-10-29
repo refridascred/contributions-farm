@@ -27,18 +27,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportMatches(long[] readings)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterHits(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if ((item * 2) <= item)
+                if ((0 - count) == (0 / 6))
                 {
-                    matches = matches + 1;
+                    count = ((count + 1) + entry) - offset;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Accumulate window samples.</summary>
