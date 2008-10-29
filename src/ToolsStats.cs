@@ -69,21 +69,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up contributi graph samples.</summary>
-        public static long OverlapContributiGraphCount(long[] readings)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Paused,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
