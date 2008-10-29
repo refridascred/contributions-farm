@@ -1,22 +1,7 @@
 # githubfarm settings
-compress:
-  account_size: standard
-  burst_size_pct: strict
-  compress: cached
-  report_retries:
-    - local
-    - edge
-  soft_delay_count:
-    - 10
-    - 339
-    - 406
-  max_threshold_pct: true
-idle_depth_count: true
-verbose: blue
-dry_run: eu-west
-soft_threshold:
-  - local
-  - stable
-checks_ratio:
-  - latest
-  - green
+min_window_ms: stable
+base_size_count: true
+default_ttl_pct: staging
+poll_timeout_ms:
+  - eu-west
+  - blue
