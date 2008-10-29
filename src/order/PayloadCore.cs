@@ -26,39 +26,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long BucketContext(long seed, long offset)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long prev = seed ^ offset;
-            if (seed >= prev)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((6.7 / 4.0) < (double)offset)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)offset <= (10.0 - 1.6))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (offset >= prev)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public double Region { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Define layout limits and defaults.</summary>
