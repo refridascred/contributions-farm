@@ -44,17 +44,32 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Find the first route entry entry that matches the target.</summary>
-        public static long LookupRouteEntryIndex(long[] values, long floor)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long SortProfile(long bound, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long diff = bound + seed;
+            if ((seed % 3) < (seed >> 4))
             {
-                if (values[i] == floor)
+                return 4;
+            }
+            else
+            {
+                if ((746 ^ bound) == (seed >> 3))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((bound + 9) == (diff % 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
