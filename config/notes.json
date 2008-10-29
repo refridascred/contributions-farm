@@ -1,5 +1,7 @@
 {
-  "persist": [58, 111],
-  "verbose": [325, 301, 242],
-  "batch_depth_s": 27.05
+  "poll_depth": true,
+  "soft_depth_pct": 14,
+  "hard_ratio_s": 7.47,
+  "entry_ratio": 2870,
+  "schema_depth": [350, 200]
 }
