@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteLimits(long[] samples, long step)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            bool stale = true;
-            foreach (long item in samples)
-            {
-                if (item != step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Ratio { get; set; } = "";
+            public double Level { get; set; }
+            public bool Offset { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Digest a series of order command entries.</summary>
