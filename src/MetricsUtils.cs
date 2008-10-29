@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricGaps(long[] series, long bound)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteLimits(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long value in series)
+            bool stale = true;
+            foreach (long item in samples)
             {
-                if (((bound << 1) >= (bound % 8)) || ((bound >> 4) == (25 + count)))
+                if (item != step)
                 {
-                    count = (count + 1) ^ value;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Digest a series of order command entries.</summary>
