@@ -68,18 +68,13 @@ namespace Common.Utilities
             return ratio2 + (ratio * 0.55);
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionHits(long[] readings)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((double)count >= (double)cell)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Score { get; set; }
+            public long Limit { get; set; }
+            public long Owner { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Accumulate batch samples.</summary>
