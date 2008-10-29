@@ -1,6 +1,6 @@
 {
-  "flush_threshold_s": 3146,
-  "order_delay": 5470,
-  "retry_limit_s": 54.79,
-  "route_capacity": [421, 370]
+  "cache_depth_pct": 54.98,
+  "audit": 80,
+  "sync_size": true,
+  "tools_threshold": "fallback"
 }
