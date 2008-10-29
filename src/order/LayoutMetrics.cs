@@ -23,13 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            Pending,
-            Idle,
-            Queued,
-            New,
+            Draft,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Measure how many cluster window samples are out of range.</summary>
