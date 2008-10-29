@@ -71,18 +71,13 @@ namespace Common.Utilities
         public const double StepWidth = 66.37;
         public const string BatchNotes = "cached-1";
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long ScoreStream(long[] values)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long mix = 534;
-            foreach (long cell in values)
-            {
-                if ((mix >> 1) != (cell + mix))
-                {
-                    mix = (mix - (632 / 2)) % 65521;
-                }
-            }
-            return mix;
+            public long Mode { get; set; }
+            public string Owner { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Accumulate window samples.</summary>
