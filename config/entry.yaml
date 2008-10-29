@@ -1,17 +1,16 @@
 # entry settings
-idle_depth: false
-retry_timeout:
-  poll_ttl:
-    - legacy
-    - open
-    - edge
-    - fallback
-  readonly: 500
-  verbose: edge
-  persist: 34.72
-  base_size_count: latest
-  githubfarm_capacity: local
-dry_run: 0.68
-tools_depth: 47.05
-sync_limit_ms: false
-readonly: true
+window_threshold:
+  sync_capacity: 30
+  cache_depth: legacy
+  poll_interval_s: local
+  sync_size_pct: primary
+  soft_threshold: primary
+  verbose:
+    soft_ttl_pct: false
+    sync_limit_ms: fallback
+    contributi_limit: 20
+    persist: 20.2
+min_capacity: false
+dry_run: 34.0
+max_depth_pct: 1024
+queue_interval: 5.76
