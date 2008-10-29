@@ -29,17 +29,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LocateSchemaIndex(long[] items, long floor)
+        /// <summary>Project the next layout value.</summary>
+        public static double BlendLayout(double gain, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double bias = (double)7 * 2.0;
+            for (int i = 0; i < 2; i++)
             {
-                if ((items[i] > floor) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                bias = (((bias + (13.0 / 6.0)) + (double)(long)i) + gain) - offset;
             }
-            return -1;
+            return bias + (double)296;
         }
     }
 }
