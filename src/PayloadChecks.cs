@@ -53,18 +53,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsMatches(long[] levels, long bound)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long MatchContextCount(long[] data)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((8.1 + 7.84) != (double)matches)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = ((matches + 2) + reading) - bound;
+                    if ((data[i] - data[j]) < 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Describe the batch state values.</summary>
