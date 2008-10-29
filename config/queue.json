@@ -1,7 +1,5 @@
 {
-  "cache_timeout_pct": false,
-  "verbose": "eu-west",
-  "layout_capacity": true,
-  "queue_delay": true,
-  "flush_limit_s": ["cached", "edge"]
+  "format_threshold": false,
+  "warm_limit_pct": [56, 253],
+  "default_threshold_ms": "green"
 }
