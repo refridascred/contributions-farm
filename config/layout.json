@@ -1,6 +1,17 @@
 {
-  "compress": "strict",
-  "base_capacity_pct": ["edge", "standard", "cached", "open"],
-  "already_timeout": "cached",
-  "batch_size_count": false
+  "default_delay_s": false,
+  "commits_limit": 207,
+  "flush_window_count": {
+    "command_depth": 56.16,
+    "contributi_threshold": "blue",
+    "already_size": 36,
+    "warm_depth": {
+      "idle_retries_pct": 57,
+      "strict": true,
+      "retry_window_pct": 8461,
+      "counter_limit": 500,
+      "already_window": "strict",
+      "order_ratio": "fallback"
+    }
+  }
 }
