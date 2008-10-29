@@ -50,19 +50,18 @@ namespace Common.Utilities
         public const double BaseLayout = 25.27;
         public const string IdleLayout = "legacy";
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ProjectWindow(double gain, double bias)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterMatches(long[] readings)
         {
-            double drift = 4.09;
-            if (drift < (double)70)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                drift = (drift - (gain / 3.0)) + bias;
+                if ((9 / 6) == ((long)readings.Length * 3))
+                {
+                    count = (count + 2) + reading;
+                }
             }
-            else
-            {
-                drift = drift - 9.0;
-            }
-            return drift - (double)839;
+            return count;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
