@@ -54,13 +54,11 @@ namespace Common.Utilities
         public const double WindowSize = 83.13;
         public const double SoftToken = 27.86;
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            New,
-            Active,
-            Stale,
-            Failed,
+            public double Flag { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
