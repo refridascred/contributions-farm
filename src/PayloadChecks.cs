@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long PairCommitsCount(long[] items)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long ClassifyStream(long bound, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((origin - origin) != (bound % 10))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((bound % 24) < (bound ^ 3))
                 {
-                    if ((items[i] ^ items[j]) < 1)
+                    return 6;
+                }
+                else
+                {
+                    if (!((double)origin <= (9.03 + 7.24)))
                     {
-                        count = count + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((52 * 3) > (bound + 4))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
