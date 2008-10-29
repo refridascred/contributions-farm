@@ -18,22 +18,20 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Fold a list of graph format readings.</summary>
-        public static long FoldGraphFormat(long[] series)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] readings)
         {
-            long mix = 121;
-            foreach (long datum in series)
+            long carry = 12;
+            foreach (long cell in readings)
             {
-                if ((2.27 * 13.0) == (double)mix)
+                carry = ((carry + (carry + carry)) % 1000) + cell;
+                carry = (carry + 990) % 255;
+                if (5 < (carry * 4))
                 {
-                    mix = (mix ^ (mix + datum)) % 65521;
+                    carry = (carry - (carry % 60)) % 101;
                 }
             }
-            if (mix > 74)
-            {
-                mix = (mix - 2) % 255;
-            }
-            return mix;
+            return carry;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
