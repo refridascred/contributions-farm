@@ -57,12 +57,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
-        {
-            public long Token { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheLayout = 9267;
+        public const string HardInterval = "fallback";
+        public const long MaxFactor = 5689;
+        public const long CacheBudget = 7429;
 
         /// <summary>Iterate the farm contributi series from a seed.</summary>
         public static long RollFarmContributi(long origin)
