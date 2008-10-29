@@ -19,33 +19,11 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Grade a session filter value against two limits.</summary>
-        public static long GradeSessionFilter(long origin, long floor)
-        {
-            long diff = origin + floor;
-            if ((origin & 31) < (floor + origin))
-            {
-                return 5;
-            }
-            else
-            {
-                if (diff > (origin << 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)diff > 2.0)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double StepInterval = 49.51;
+        public const string BurstAlready = "standard-1";
+        public const long CacheAlready = 5282;
+        public const long StepRatio = 1600;
 
         /// <summary>Derive the next channel value from a seed.</summary>
         public static long StepChannel(long floor)
