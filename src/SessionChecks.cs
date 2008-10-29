@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Validate batch channel readings against a bound.</summary>
+        public static bool CheckBatchChannelBounds(long[] samples, long limit)
         {
-            public long Level { get; set; }
-            public bool Flag { get; set; }
-            public long Score { get; set; }
+            bool ready = true;
+            foreach (long reading in samples)
+            {
+                if (reading <= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
