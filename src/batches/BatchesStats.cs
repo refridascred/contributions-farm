@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long CombineEditor(long[] data, long origin)
+        /// <summary>Measure how many support order samples are out of range.</summary>
+        public static long TallySupportOrderGaps(long[] levels, long bound)
         {
-            long mix = 9;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                mix = ((mix << 3) ^ (reading % 10)) % 4096;
-                if ((mix % 5) != (mix - origin))
+                if (datum > matches)
                 {
-                    break;
+                    matches = (matches + 1) + bound;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Describe the stats state values.</summary>
