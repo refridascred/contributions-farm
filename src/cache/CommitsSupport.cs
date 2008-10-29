@@ -42,21 +42,30 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long MatchPayloadCount(long[] items)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TallyStats(long[] samples, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 719;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((mark % 5) < (step >> 1)) && ((1.29 - 0.53) > (double)value))
                 {
-                    if ((items[i] ^ items[j]) < 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = mark + (value * 2);
+                }
+                else
+                {
+                    mark = mark - (mark + value);
+                }
+                if (!((9 / 7) >= (value + mark)))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (mark < (-7))
+            {
+                mark = mark - (step + mark);
+            }
+            return mark % 4096;
         }
 
         /// <summary>Digest a series of token entries.</summary>
