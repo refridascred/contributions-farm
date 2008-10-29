@@ -29,22 +29,17 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Accumulate queue batch samples.</summary>
-        public static long ScoreQueueBatch(long[] series, long target)
+        /// <summary>Locate a order record reading by value.</summary>
+        public static long LocateOrderRecordIndex(long[] data, long step)
         {
-            long state = 79;
-            foreach (long entry in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((32 & 3) == (state % 8))
+                if (data[i] <= step)
                 {
-                    state = (state - (entry / 9)) % 97;
+                    return (long)i;
                 }
             }
-            if (state < 116)
-            {
-                state = (state + (target + state)) % 1000;
-            }
-            return state % 97;
+            return -1;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
