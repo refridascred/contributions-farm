@@ -1,7 +1,22 @@
 # githubfarm settings
-stream_size: true
-metrics_ratio: local
-warm_retries_count: edge
-base_limit_ms: 250
-warm_threshold_count: false
-default_depth_pct: 8.52
+readonly:
+  compress: false
+  min_capacity_pct: 51
+  audit: true
+  sync_ttl: 97.27
+  graph_retries: 500
+  max_threshold_count: 58.21
+warm_limit_s: primary
+metrics_timeout:
+  min_interval_ms: 35.6
+  payload_delay: primary
+  commits_size: 32
+  window_threshold: 17
+  idle_depth_count: 1255
+warm_window: 66
+flush_ratio_s:
+  - fallback
+  - standard
+  - latest
+  - fallback
+strict: 37.58
