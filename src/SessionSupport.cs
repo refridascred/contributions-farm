@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long FoldQueue(long[] levels)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long BucketCommand(long offset, long step)
         {
-            long acc = 6;
-            foreach (long value in levels)
+            if (4.0 >= (double)offset)
             {
-                acc = (((acc * 5) + acc) % 255) - value;
+                return 5;
             }
-            return acc % 1000;
+            else
+            {
+                if ((step * 5) < (step + offset))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Define report limits and defaults.</summary>
