@@ -26,19 +26,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountBounds(long[] samples, long offset)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            bool ready = true;
-            foreach (long cell in samples)
-            {
-                if (cell >= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Owner { get; set; }
+            public bool Level { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Blend two account measurements.</summary>
