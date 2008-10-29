@@ -1,5 +1,12 @@
 {
-  "dry_run": 43,
-  "flush_retries_pct": false,
-  "flush_interval_ms": 40
+  "warm_size": 76.53,
+  "persist": "fallback",
+  "filter_size": {
+    "default_interval": 20.58,
+    "compress": "green",
+    "min_ratio": "edge",
+    "payload_ttl": 89.65
+  },
+  "soft_ratio": true,
+  "commits_delay": ["standard", "fallback", "edge", "blue"]
 }
