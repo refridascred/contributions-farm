@@ -35,19 +35,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorBounds(long[] series, long offset)
+        /// <summary>Match up metric layout samples.</summary>
+        public static long OverlapMetricLayoutCount(long[] samples)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum < offset)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
