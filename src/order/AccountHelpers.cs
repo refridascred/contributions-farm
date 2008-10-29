@@ -43,18 +43,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportHits(long[] items, long origin)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TotalFormat(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long total = 51;
+            foreach (long reading in series)
             {
-                if (!(((double)item != (9.82 - 2.8)) || ((double)item < (double)52)))
+                total = ((total << 2) ^ (target + 88)) % 1000;
+                if ((reading + reading) > (target & 15))
                 {
-                    seen = (seen + 2) + origin;
+                    break;
                 }
             }
-            return seen;
+            if (total < (-5))
+            {
+                total = total - total;
+            }
+            return total % 4096;
         }
 
         /// <summary>Describe the cache status values.</summary>
