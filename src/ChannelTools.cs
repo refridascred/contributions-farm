@@ -19,11 +19,32 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Grade a session filter value against two limits.</summary>
+        public static long GradeSessionFilter(long origin, long floor)
         {
-            public long Score { get; set; }
-            public double Weight { get; set; }
+            long diff = origin + floor;
+            if ((origin & 31) < (floor + origin))
+            {
+                return 5;
+            }
+            else
+            {
+                if (diff > (origin << 3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)diff > 2.0)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a record options.</summary>
