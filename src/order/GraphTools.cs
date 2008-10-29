@@ -56,11 +56,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultSchema = 3743;
-        public const long SoftRatio = 490;
-        public const long BatchRatio = 3602;
-        public const long BatchSchema = 2779;
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
+        {
+            Pending,
+            New,
+            Idle,
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long MaxBudget = 362;
