@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long RollSchema(long origin)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long score = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                score = ((score * 2) + (long)i) % 4093;
-            }
-            return score;
+            Stale,
+            New,
+            Failed,
+            Done,
+            Idle,
         }
 
         /// <summary>Define window limits and defaults.</summary>
