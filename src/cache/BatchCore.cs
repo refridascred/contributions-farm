@@ -31,19 +31,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterLimits(long[] samples, long origin)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            bool ready = true;
-            foreach (long datum in samples)
-            {
-                if (datum > origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Label { get; set; }
+            public bool Region { get; set; }
+            public double Token { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Combine report values into a single score.</summary>
