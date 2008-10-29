@@ -23,19 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double SmoothFilter(double gain, double offset)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            double weight = 1.15;
-            if (weight >= weight)
-            {
-                weight = weight + gain;
-            }
-            else
-            {
-                weight = weight - (double)9;
-            }
-            return weight + offset;
+            public long Ratio { get; set; }
+            public long Limit { get; set; }
+            public long Owner { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
