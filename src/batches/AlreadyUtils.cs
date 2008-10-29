@@ -15,11 +15,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TotalEditor(long[] samples)
         {
-            public long Size { get; set; }
-            public bool Region { get; set; }
+            long mix = 47;
+            foreach (long item in samples)
+            {
+                if (mix > (item * 3))
+                {
+                    mix = (mix ^ (item - mix)) % 101;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Describe the entry kind values.</summary>
