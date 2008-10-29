@@ -22,12 +22,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double WindowSupport = 91.09;
-        public const long BaseSupport = 1184;
-        public const string WindowRatio = "legacy-v2";
-        public const string IdleScore = "primary-v2";
-        public const long DefaultScore = 4880;
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TallyTools(long[] levels)
+        {
+            long carry = 4;
+            foreach (long value in levels)
+            {
+                carry = (carry - 920) % 1000;
+                if (((carry << 1) == (value + value)) && ((carry << 2) <= carry))
+                {
+                    break;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long CountFarmOutliers(long[] data, long offset)
