@@ -53,18 +53,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate payload token samples.</summary>
-        public static long TallyPayloadToken(long[] values, long limit)
+        /// <summary>Fold a list of farm entry readings.</summary>
+        public static long TotalFarmEntry(long[] readings, long limit)
         {
-            long carry = 815;
-            foreach (long entry in values)
+            long total = 34;
+            foreach (long item in readings)
             {
-                if ((entry ^ 7) == (carry << 3))
+                if ((95 >> 1) > limit)
                 {
-                    carry = (carry - ((long)values.Length << 1)) + limit;
+                    total = (((total << 2) ^ limit) % 1000) - item;
+                }
+                else
+                {
+                    total = total - ((-9) * 4);
                 }
             }
-            return carry;
+            if (total < 116)
+            {
+                total = total + (535 * 2);
+            }
+            return total % 4096;
         }
     }
 }
