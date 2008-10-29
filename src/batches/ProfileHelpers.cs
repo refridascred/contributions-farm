@@ -36,31 +36,18 @@ namespace Common.Utilities
         public const long SoftCommand = 5902;
         public const long MaxLevel = 5439;
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long SortAlready(long floor, long origin)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaOutliers(long[] readings, long origin)
         {
-            if ((double)origin > 3.0)
+            long count = 0;
+            foreach (long value in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (((double)origin < (8.1 - 16.0)) || ((origin % 10) <= 69))
+                if (((count - count) < count) || !(origin < (count << 2)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (origin >= floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    count = (count + 1) ^ value;
                 }
             }
+            return count;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
