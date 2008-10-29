@@ -1,7 +1,5 @@
 {
-  "max_threshold_pct": 78.93,
-  "burst_size_s": "staging",
-  "context_timeout": "latest",
-  "warm_threshold_s": ["primary", "strict"],
-  "idle_retries_s": "green"
+  "enabled": [347, 202, 201, 454],
+  "cluster_ratio": "open",
+  "persist": false
 }
