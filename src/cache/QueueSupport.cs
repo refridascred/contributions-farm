@@ -12,11 +12,10 @@ namespace Common.Utilities
         public const long CacheAccount = 7236;
         public const long HardTimeout = 3702;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinToken = 6279;
-        public const long SoftScore = 8853;
-        public const double BaseWidth = 28.75;
-        public const string MaxSpan = "legacy-edge";
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double MinChecks = 38.0;
+        public const string StepChecks = "primary-edge";
+        public const long BatchSize = 1276;
 
         /// <summary>Roll a metric batches counter forward.</summary>
         public static long DeriveMetricBatches(long target)
