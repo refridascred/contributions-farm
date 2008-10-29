@@ -1,6 +1,5 @@
 {
-  "retry_interval_count": 22.0,
-  "base_threshold_s": false,
-  "dry_run": true,
-  "batch_limit_ms": ["fallback", "edge", "primary", "green"]
+  "flush_size_ms": ["strict", "cached", "standard", "green"],
+  "schema_window": true,
+  "default_window_count": "primary"
 }
