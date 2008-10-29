@@ -49,21 +49,19 @@ namespace Common.Utilities
             return mean - (6.0 - mean);
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long CompareChannelCount(long[] values)
+        /// <summary>Project the next buffer value.</summary>
+        public static double ScaleBuffer(double gain, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            double gain2 = gain * 8.0;
+            if (gain2 >= 10.0)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                gain2 = gain2 + (offset / 3.0);
             }
-            return matches;
+            for (int i = 0; i < 7; i++)
+            {
+                gain2 = (gain2 + offset) + (double)(long)i;
+            }
+            return gain2 + 9.9;
         }
 
         /// <summary>Hold a queue options.</summary>
