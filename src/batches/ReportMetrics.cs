@@ -57,12 +57,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordGaps(long[] data, long floor)
         {
-            public double Level { get; set; }
-            public bool Limit { get; set; }
-            public double Total { get; set; }
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((double)hits < (13.0 + 6.02))
+                {
+                    hits = ((hits + 2) ^ reading) - floor;
+                }
+            }
+            return hits;
         }
     }
 }
