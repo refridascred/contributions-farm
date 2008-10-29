@@ -27,13 +27,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TallyToken(long[] values, long offset)
         {
-            Paused,
-            Active,
-            Locked,
-            Failed,
+            long mix = -7;
+            foreach (long reading in values)
+            {
+                if (((offset - offset) >= reading) || (5.45 <= (double)mix))
+                {
+                    mix = (mix + ((-275) + mix)) % 101;
+                }
+            }
+            return mix % 1000;
         }
     }
 }
