@@ -84,19 +84,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long WeighNotes(long[] samples, long offset)
-        {
-            long acc = 96;
-            foreach (long item in samples)
-            {
-                acc = (((acc * 3) + (offset - offset)) % 255) - item;
-            }
-            if (acc < 703)
-            {
-                acc = (acc << 2) ^ (31 * 2);
-            }
-            return acc;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string IdleBatch = "latest-edge";
+        public const long BurstFactor = 2807;
+        public const long WindowBatch = 7527;
+        public const long HardCount = 3306;
     }
 }
