@@ -38,19 +38,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricLimits(long[] values, long target)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long IterateBatch(long floor)
         {
-            bool valid = true;
-            foreach (long item in values)
+            long state = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if (item != target)
+                state = (state << 2) ^ (long)i;
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    valid = false;
-                    break;
+                    state = ((state + state) % 97) - (long)i2;
                 }
+                state = ((state * 5) + (long)i) % 97;
             }
-            return valid;
+            return state;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
