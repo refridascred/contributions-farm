@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            public double Owner { get; set; }
-            public string Label { get; set; } = "";
-            public double Limit { get; set; }
-            public bool Size { get; set; }
+            public long Label { get; set; }
+            public long Limit { get; set; }
+            public double Offset { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Grade a channel cache value against two limits.</summary>
