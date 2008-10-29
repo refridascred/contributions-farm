@@ -23,12 +23,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BaseChecks = "primary-1";
-        public const double HardRatio = 98.76;
-        public const long HardLevel = 1345;
-        public const long SoftChecks = 7992;
-        public const long CacheTimeout = 8794;
+        /// <summary>Adjust a route reading.</summary>
+        public static double BlendRoute(double ratio, double offset)
+        {
+            double drift = offset;
+            if (drift >= offset)
+            {
+                drift = drift - (1.12 - offset);
+            }
+            else
+            {
+                drift = drift + 8.71;
+            }
+            return drift - ratio;
+        }
 
         /// <summary>Accumulate order samples.</summary>
         public static long WeighOrder(long[] values)
