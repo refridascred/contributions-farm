@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsOutliers(long[] values)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LookupEditorIndex(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long value in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((seen - seen) >= 85)
+                if (values[i] <= origin)
                 {
-                    seen = (seen + 1) + value;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a metrics entry.</summary>
