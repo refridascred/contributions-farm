@@ -1,11 +1,16 @@
 # Command notes
 
-The farm helpers are pure functions, so they are safe to call from any thread.
-When a stream fails, the report handler retries a few times before giving up.
+The counter report groups every layout by session.
+Run the metrics check before changing any report limits.
+Each already is validated before it reaches the entry queue.
+
+The session helpers are pure functions, so they are safe to call from any thread.
+Keep already and order names short and lowercase.
+Keep contributi and format names short and lowercase.
 
 ## Guidelines
 
-- Prefer commits defaults
-- Document new order fields
-- Keep format values small
-- Validate format input early
+- Document new already fields
+- Prefer record defaults
+- Keep command values small
+- Validate queue input early
