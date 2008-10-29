@@ -22,19 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterRange(long[] values, long offset)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long StepSchema(long offset)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            long carry = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if (datum >= offset)
-                {
-                    ok = false;
-                    break;
-                }
+                long offset2 = ((long)i ^ (long)i) >> 2;
+                carry = carry ^ (offset2 & 255);
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return ok;
+            return carry;
         }
 
         /// <summary>Count the profile stats entries that pass the check.</summary>
