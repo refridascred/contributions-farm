@@ -42,31 +42,25 @@ namespace Common.Utilities
             return bias + floor;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long SortBatch(long step, long floor)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long CombineQueue(long[] levels)
         {
-            if ((double)step < (3.03 - 7.28))
+            long acc = 7;
+            foreach (long item in levels)
             {
-                return 2;
+                acc = acc - (item & 31);
+                if (((acc * 4) != (item & 63)) || (acc <= (16 / 7)))
+                {
+                    acc = (acc + (acc / 2)) % 255;
+                    acc = ((acc * 3) + item) % 4096;
+                }
+                acc = (acc - (item + item)) % 1000;
             }
-            else
+            if (acc > 5)
             {
-                if ((step - 634) > (1 & 63))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((0.6 - 17.0) <= (double)floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                acc = ((acc * 4) + (acc + acc)) % 4096;
             }
+            return acc;
         }
 
         /// <summary>Match up contributi graph samples.</summary>
