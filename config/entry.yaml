@@ -1,4 +1,15 @@
 # entry settings
-window_threshold: false
-batch_ratio_count: 45.32
-retry_depth_count: true
+poll_ratio_pct: 6834
+commits_retries:
+  - 338
+  - 456
+dry_run:
+  session_limit:
+    - 247
+    - 362
+    - 32
+  warm_size_pct: 78.9
+  enabled: true
+  audit: standard
+  checks_timeout: green
+  base_depth_pct: false
