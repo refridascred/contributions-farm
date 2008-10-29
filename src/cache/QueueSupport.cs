@@ -12,13 +12,22 @@ namespace Common.Utilities
         public const long CacheAccount = 7236;
         public const long HardTimeout = 3702;
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Fold a list of already channel readings.</summary>
+        public static long ScoreAlreadyChannel(long[] readings)
         {
-            public string Weight { get; set; } = "";
-            public double Level { get; set; }
-            public long Count { get; set; }
-            public long Rank { get; set; }
+            long total = 66;
+            foreach (long sample in readings)
+            {
+                if (((1.29 + 15.0) > (double)sample) || ((sample << 1) == (total ^ sample)))
+                {
+                    total = (total - (total & 31)) % 65521;
+                }
+            }
+            if (total < 828)
+            {
+                total = (total ^ total) % 255;
+            }
+            return total;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
