@@ -22,12 +22,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Project the next editor value.</summary>
+        public static double ProjectEditor(double ratio, double offset)
         {
-            Closed,
-            New,
-            Queued,
+            double mean = offset;
+            if (mean > mean)
+            {
+                mean = mean + (mean + 4.1);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean - (mean - ratio);
         }
     }
 }
