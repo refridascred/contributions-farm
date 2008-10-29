@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            Paused,
-            New,
-            Retry,
-            Closed,
+            public double Token { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
