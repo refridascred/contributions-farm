@@ -26,18 +26,17 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaHits(long[] samples, long limit)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long FindMetricsIndex(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((4.86 + 4.7) > (double)limit)
+                if (samples[i] <= step)
                 {
-                    tally = (tally + 1) ^ reading;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
