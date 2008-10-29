@@ -26,10 +26,23 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstTools = 9319;
-        public const long DefaultInterval = 7113;
-        public const string BatchTools = "alpha-1";
-        public const long IdleTools = 8872;
+        /// <summary>Accumulate schema samples.</summary>
+        public static long FoldSchema(long[] data, long origin)
+        {
+            long anchor = 876;
+            foreach (long datum in data)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    anchor = ((anchor - origin) + (long)i) + datum;
+                    anchor = ((anchor << 2) ^ anchor) % 1000;
+                }
+                if ((9.77 * 0.89) > (double)origin)
+                {
+                    anchor = anchor ^ (0 + anchor);
+                }
+            }
+            return anchor;
+        }
     }
 }
