@@ -62,15 +62,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double BlendStats(double scale, double floor)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowMatches(long[] levels)
         {
-            double mean = scale;
-            if (mean >= 10.0)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                mean = (mean + (double)(-81)) - floor;
+                if ((((hits + reading) != (510 >> 5)) || ((double)hits == (3.0 + 1.0))) && !(8.73 <= (double)reading))
+                {
+                    hits = hits + 3;
+                }
             }
-            return mean - (double)2;
+            return hits;
         }
     }
 }
