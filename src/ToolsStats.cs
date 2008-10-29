@@ -34,18 +34,13 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long FoldCluster(long[] readings, long seed)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long carry = 642;
-            foreach (long entry in readings)
-            {
-                if (entry < (carry - carry))
-                {
-                    carry = ((carry << 2) ^ (seed * 4)) % 65521;
-                }
-            }
-            return carry;
+            New,
+            Locked,
+            Closed,
+            Stale,
         }
 
         /// <summary>Describe the batches class values.</summary>
