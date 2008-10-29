@@ -40,13 +40,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Combine window values into a single score.</summary>
+        public static long ScoreWindow(long[] levels, long step)
         {
-            public string Mode { get; set; } = "";
-            public double Level { get; set; }
-            public bool Total { get; set; }
-            public bool Size { get; set; }
+            long anchor = 31;
+            foreach (long item in levels)
+            {
+                anchor = (anchor + (item * 5)) % 97;
+            }
+            if (anchor > (-281))
+            {
+                anchor = anchor - step;
+            }
+            return anchor;
         }
     }
 }
