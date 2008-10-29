@@ -16,32 +16,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long BucketRecord(long bound, long origin)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long next = bound + origin;
-            if ((bound + bound) > (origin + bound))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((next & 63) >= bound)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((14.0 * 18.0) > (double)next)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Synced,
+            Idle,
+            Stale,
+            Done,
         }
 
         /// <summary>Describe the route status values.</summary>
