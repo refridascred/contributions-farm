@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordMatches(long[] series, long origin)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if ((8.9 > (double)count) && (origin < (count - origin)))
-                {
-                    count = (count + 2) - entry;
-                }
-            }
-            return count;
+            Closed,
+            Draft,
+            Queued,
+            Active,
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
