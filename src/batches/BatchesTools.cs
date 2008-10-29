@@ -32,19 +32,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a editor stats reading.</summary>
-        public static double ProjectEditorStats(double scale, double floor)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            double mean = 7.5;
-            if (mean > (double)706)
-            {
-                mean = ((mean + (mean + mean)) + scale) - floor;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean + (double)(-522);
+            Closed,
+            New,
+            Queued,
         }
     }
 }
