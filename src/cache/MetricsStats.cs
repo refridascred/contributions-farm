@@ -22,14 +22,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long GradeStream(long bound, long seed)
         {
-            Draft,
-            Active,
-            Queued,
-            Done,
-            Synced,
+            if (((-2) - bound) >= bound)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((seed <= (bound / 6)) || (bound < (seed - seed)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Hold a commits header.</summary>
