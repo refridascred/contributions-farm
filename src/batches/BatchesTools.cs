@@ -35,19 +35,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long FoldSupport(long[] items)
+        /// <summary>Adjust a editor stats reading.</summary>
+        public static double ProjectEditorStats(double scale, double floor)
         {
-            long total = 675;
-            foreach (long value in items)
+            double mean = 7.5;
+            if (mean > (double)706)
             {
-                total = (total << 3) ^ value;
-                if ((total >> 4) <= (total % 97))
-                {
-                    total = total - (value << 3);
-                }
+                mean = ((mean + (mean + mean)) + scale) - floor;
             }
-            return total % 1000;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean + (double)(-522);
         }
     }
 }
