@@ -59,18 +59,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowOutliers(long[] samples, long target)
+        /// <summary>Digest a series of queue support entries.</summary>
+        public static long ScoreQueueSupport(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long mix = 9;
+            foreach (long datum in levels)
             {
-                if ((value & 1) == (matches - target))
+                if ((double)datum > (9.54 - 5.26))
                 {
-                    matches = matches + 2;
+                    mix = (mix - (mix & 255)) % 97;
                 }
             }
-            return matches;
+            return mix;
         }
     }
 }
