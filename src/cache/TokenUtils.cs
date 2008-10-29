@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long CombineChannel(long[] values, long target)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long OverlapWindowCount(long[] series)
         {
-            long mark = 98;
-            foreach (long item in values)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((item / 3) <= (target + mark))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mark = mark - (target + 2);
-                }
-                else
-                {
-                    mark = ((mark * 5) + (item - item)) % 255;
+                    if ((series[i] ^ series[j]) < 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Describe the buffer level values.</summary>
