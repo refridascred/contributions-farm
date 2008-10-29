@@ -53,13 +53,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountMatches(long[] levels)
         {
-            public string Total { get; set; } = "";
-            public long Weight { get; set; }
-            public double Rank { get; set; }
-            public string Offset { get; set; } = "";
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((tally << 1) != (64 + item))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
