@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsBounds(long[] values, long step)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandGaps(long[] samples, long step)
         {
-            bool found = true;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if (entry != step)
+                if ((18.0 - 7.79) != (double)hits)
                 {
-                    found = false;
-                    break;
+                    hits = ((hits + 1) + cell) + step;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Combine channel account values into a single score.</summary>
