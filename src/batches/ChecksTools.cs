@@ -41,31 +41,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long ClassifyFilter(long seed, long bound)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            if (14 <= seed)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((bound > seed) || ((double)bound >= (double)seed))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (seed <= (seed - bound))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public long Limit { get; set; }
+            public long Owner { get; set; }
+            public long Size { get; set; }
         }
     }
 }
