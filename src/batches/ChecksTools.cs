@@ -31,14 +31,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            Active,
-            Closed,
-            Failed,
-            New,
-            Draft,
+            public string Size { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a stream options.</summary>
