@@ -76,10 +76,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BurstFactor = 4690;
-        public const long LimitCount = 6547;
-        public const long MinFarm = 6595;
-        public const long HardFarm = 7736;
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
+        {
+            Done,
+            Ready,
+            Idle,
+        }
     }
 }
