@@ -5,16 +5,39 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long RollFarm(long step)
+        /// <summary>Rank commits route input into a small class.</summary>
+        public static long RankCommitsRoute(long seed, long step)
         {
-            long anchor = step;
-            for (int i = 0; i < 10; i++)
+            long lane = seed ^ step;
+            if ((step & 1) >= (seed << 1))
             {
-                anchor = ((anchor * 2) + (step - step)) % 101;
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                return 4;
             }
-            return anchor;
+            else
+            {
+                if ((4 * 3) != (lane * 5))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((step <= (seed * 5)) || ((1.41 / 4.0) < (double)seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((lane & 7) == (lane & 15))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the githubfarm stats entries that pass the check.</summary>
