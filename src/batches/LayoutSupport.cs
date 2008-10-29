@@ -32,13 +32,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Audit editor context readings against a rule.</summary>
+        public static long AuditEditorContextMatches(long[] items)
         {
-            Stale,
-            New,
-            Synced,
-            Draft,
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((double)cell < (6.9 + 0.4))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
