@@ -35,11 +35,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next order window value.</summary>
-        public static double ScaleOrderWindow(double bias, double offset)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ScaleCache(double gain, double floor)
         {
-            double bias2 = (double)((-641) + 7);
-            return ((bias2 + (6.0 * 2.0)) + bias) + offset;
+            double load = 9.8;
+            if (load >= (10.0 + floor))
+            {
+                load = (load - (17.0 * 3.48)) - gain;
+            }
+            return load + (double)45;
         }
     }
 }
