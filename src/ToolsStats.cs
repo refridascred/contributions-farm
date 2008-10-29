@@ -47,26 +47,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long WeighMetrics(long[] items, long bound)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long SortBatch(long step, long floor)
         {
-            long acc = 615;
-            foreach (long value in items)
+            if ((double)step < (3.03 - 7.28))
             {
-                if (((double)value == (double)13) && ((12.0 * 8.4) >= (double)bound))
+                return 2;
+            }
+            else
+            {
+                if ((step - 634) > (1 & 63))
                 {
-                    acc = ((acc << 2) ^ (value - value)) % 4096;
+                    return 4;
                 }
                 else
                 {
-                    acc = ((acc * 3) + bound) % 97;
-                }
-                if (((double)value > (5.6 / 5.0)) || ((bound ^ bound) < (value - value)))
-                {
-                    break;
+                    if ((0.6 - 17.0) <= (double)floor)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Match up contributi graph samples.</summary>
