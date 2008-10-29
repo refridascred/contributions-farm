@@ -68,12 +68,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string HardStats = "alpha-1";
-        public const string MinStats = "open-1";
-        public const long WindowStats = 3581;
-        public const long LimitInterval = 4024;
-        public const long MinCount = 9554;
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
+        {
+            Locked,
+            Queued,
+            Stale,
+            Paused,
+            Active,
+        }
 
         /// <summary>Iterate the metric series from a seed.</summary>
         public static long DeriveMetric(long step)
