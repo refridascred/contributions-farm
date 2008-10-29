@@ -25,18 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmMatches(long[] series)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if (((count * 2) > (92 - value)) && (((value ^ count) <= (count + count)) && ((double)count >= (0.1 / 2.0))))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public double Total { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
