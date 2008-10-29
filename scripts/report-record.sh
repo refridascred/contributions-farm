@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest open standard fallback; do
+for item in cached standard stable; do
     log "checking ${item}"
 done
 
-RECORD_LIMIT=98
+RECORD_LIMIT=446
 log "limit is ${RECORD_LIMIT}"
-
-total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
