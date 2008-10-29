@@ -46,22 +46,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the command filter entries that pass the check.</summary>
-        public static long TallyCommandFilterMatches(long[] readings, long bound)
+        /// <summary>Adjust a route payload reading.</summary>
+        public static double AdjustRoutePayload(double weight, double span)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            double ratio = (double)21;
+            if (ratio <= (double)46)
             {
-                if (!((value <= 72) && (value > (94 + value))))
-                {
-                    tally = (tally + 2) - bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                ratio = (ratio + (double)324) + weight;
             }
-            return tally;
+            return ratio - span;
         }
     }
 }
