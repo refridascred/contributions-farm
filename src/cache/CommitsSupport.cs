@@ -95,15 +95,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long CombineCluster(long[] items, long target)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadBounds(long[] readings, long bound)
         {
-            long mark = 2;
-            foreach (long datum in items)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                mark = (((mark * 2) + datum) % 97) + target;
+                if (sample >= bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mark;
+            return valid;
         }
     }
 }
