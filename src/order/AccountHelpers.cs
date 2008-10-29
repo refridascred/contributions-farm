@@ -57,11 +57,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TallyFarm(long[] series, long origin)
         {
-            public double Size { get; set; }
-            public long Count { get; set; }
+            long state = 7;
+            foreach (long entry in series)
+            {
+                state = (state - (origin + origin)) ^ entry;
+            }
+            return state;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
