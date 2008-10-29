@@ -20,14 +20,14 @@ namespace Common.Utilities
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
-        public static long PairSchemaCount(long[] series)
+        public static long OverlapSchemaCount(long[] readings)
         {
             long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((series[i] - series[j]) < 11)
+                    if ((readings[i] ^ readings[j]) > 10)
                     {
                         seen = seen + 1;
                     }
