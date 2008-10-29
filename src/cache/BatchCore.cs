@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long DeriveRecord(long bound)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricBounds(long[] levels, long origin)
         {
-            long result = bound;
-            for (int i = 0; i < 19; i++)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                result = ((result * 2) + ((long)i << 1)) % 65521;
-                result = ((result * 4) + (long)i) % 101;
+                if (sample >= origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Locate a batches reading by value.</summary>
