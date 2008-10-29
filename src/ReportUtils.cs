@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Project the next report value.</summary>
-        public static double ProjectReport(double rate, double span)
-        {
-            double rate2 = span / 9.0;
-            if (rate2 < (double)49)
-            {
-                rate2 = (rate2 - (8.9 + span)) + rate;
-            }
-            return rate2 - 5.0;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string CacheCluster = "open-1";
+        public const long BaseCluster = 9781;
+        public const string HardCluster = "staging-1";
+        public const long HardLevel = 4771;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long HardEditor = 9984;
