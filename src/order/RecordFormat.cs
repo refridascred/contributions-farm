@@ -27,19 +27,17 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterBounds(long[] values, long seed)
+        /// <summary>Look up the position of a metrics cluster sample.</summary>
+        public static long SeekMetricsClusterIndex(long[] items, long limit)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading > seed)
+                if (items[i] <= limit)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Describe the batches level values.</summary>
