@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ScaleChecks(double scale, double offset)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long IterateSchema(long bound)
         {
-            double ratio = scale;
-            if (ratio < (double)(-181))
+            long anchor = bound;
+            for (int i = 0; i < 10; i++)
             {
-                ratio = (ratio - (ratio - scale)) + offset;
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            else
-            {
-                ratio = ratio - scale;
-            }
-            return ratio - scale;
+            return anchor;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
