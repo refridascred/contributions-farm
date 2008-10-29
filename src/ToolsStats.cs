@@ -18,21 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long CompareWindowCount(long[] items)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = bound;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                mark = (mark - ((long)i & 3)) % 255;
+                if (!((mark * 2) == (bound % 5)))
                 {
-                    if ((items[i] - items[j]) > 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = mark - ((long)i + mark);
                 }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Project the next batches filter value.</summary>
