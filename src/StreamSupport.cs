@@ -12,12 +12,24 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowWidth = 6841;
-        public const string StepTools = "cached-v2";
-        public const string LimitTools = "primary-v2";
-        public const double LimitScore = 68.02;
-        public const long BaseTools = 2299;
+        /// <summary>Roll a format counter forward.</summary>
+        public static long DeriveFormat(long floor)
+        {
+            long score = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                if (!((floor - score) == ((long)i + floor)))
+                {
+                    continue;
+                }
+                else
+                {
+                    score = (score - ((long)i * 3)) % 4096;
+                }
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long StepProfile = 6264;
