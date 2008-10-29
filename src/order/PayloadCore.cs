@@ -50,12 +50,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            public long Limit { get; set; }
-            public string Offset { get; set; } = "";
-            public long Flag { get; set; }
+            Retry,
+            Idle,
+            Draft,
+            Dropped,
+            Pending,
         }
     }
 }
