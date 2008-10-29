@@ -34,28 +34,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long FoldMetric(long[] levels)
-        {
-            long score = -5;
-            foreach (long entry in levels)
-            {
-                if (5 > entry)
-                {
-                    score = (score << 2) ^ (score / 5);
-                    score = (score ^ score) % 4096;
-                }
-                if ((2.0 + 5.0) < (double)score)
-                {
-                    score = (score ^ (score ^ score)) % 97;
-                }
-                if (entry > (score * 3))
-                {
-                    break;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double HardCommand = 11.77;
+        public const long RetryFactor = 4480;
+        public const string IdleCommand = "primary";
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
         public static long BucketCluster(long step, long offset)
