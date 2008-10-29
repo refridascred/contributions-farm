@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
-        {
-            public bool Owner { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryInterval = 7981;
+        public const double LimitToken = 10.37;
+        public const string RetryToken = "open";
 
         /// <summary>Define stream limits and defaults.</summary>
         public const string BurstRatio = "local-v2";
