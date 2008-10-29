@@ -53,18 +53,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TallyToken(long[] data, long step)
+        /// <summary>Accumulate payload token samples.</summary>
+        public static long TallyPayloadToken(long[] values, long limit)
         {
-            long state = 43;
-            foreach (long datum in data)
+            long carry = 815;
+            foreach (long entry in values)
             {
-                if (step >= (step - state))
+                if ((entry ^ 7) == (carry << 3))
                 {
-                    state = (state + 364) ^ datum;
+                    carry = (carry - ((long)values.Length << 1)) + limit;
                 }
             }
-            return state % 4096;
+            return carry;
         }
     }
 }
