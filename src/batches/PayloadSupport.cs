@@ -21,9 +21,9 @@ namespace Common.Utilities
         public const long SoftSupport = 6947;
         public const long RetryBudget = 2265;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheMetrics = 8350;
-        public const double BaseFactor = 70.75;
-        public const long BurstMetrics = 7002;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepCommand = 4870;
+        public const string DefaultScore = "fallback-edge";
+        public const string BurstCommand = "standard-v2";
     }
 }
