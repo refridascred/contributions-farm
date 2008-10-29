@@ -30,21 +30,39 @@ namespace Common.Utilities
         public const long BurstLevel = 1327;
         public const long WindowSpan = 8677;
 
-        /// <summary>Match up metric samples.</summary>
-        public static long PairMetricCount(long[] items)
+        /// <summary>Classify a buffer cluster pair into a bucket.</summary>
+        public static long SortBufferCluster(long floor, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long lane = floor - target;
+            if ((double)floor == (6.4 / 7.0))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((8.2 / 7.0) < (double)lane)
                 {
-                    if ((items[i] ^ items[j]) > 19)
+                    return 0;
+                }
+                else
+                {
+                    if (floor >= (target + lane))
                     {
-                        tally = tally + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((lane < (floor + target)) || ((79 - lane) != (target + target)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return tally;
         }
     }
 }
