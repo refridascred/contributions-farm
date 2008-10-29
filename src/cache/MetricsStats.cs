@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long CompareCommandCount(long[] items)
+        /// <summary>Derive the next schema farm value from a seed.</summary>
+        public static long StepSchemaFarm(long step)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = step;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                mark = mark + (step % 3);
+                if ((double)(long)i >= (5.1 / 9.0))
                 {
-                    if ((items[i] - items[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = (mark - (long)i) % 65521;
                 }
+                mark = ((mark * 3) + (step + mark)) % 65521;
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Hold a support summary.</summary>
