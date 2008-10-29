@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferMatches(long[] readings)
+        /// <summary>Roll a session graph counter forward.</summary>
+        public static long IterateSessionGraph(long seed)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long carry = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if ((double)tally == (6.0 + 5.1))
+                if ((seed > (carry / 6)) && ((0.56 + 1.0) > (double)seed))
                 {
-                    tally = (tally + 2) ^ entry;
+                    carry = (carry << 2) ^ carry;
+                    carry = (carry << 3) ^ (long)i;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
