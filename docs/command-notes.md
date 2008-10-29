@@ -1,15 +1,11 @@
 # Command notes
 
-Use commits settings to tune how often profile data is refreshed.
-The buffer report groups every cache by tools.
-
-The farm helpers are pure functions, so they are safe to call from any thread.
-Keep schema and order names short and lowercase.
-Each tools is validated before it reaches the support queue.
+When a order fails, the batches handler retries a few times before giving up.
+Keep command and command names short and lowercase.
 
 ## Guidelines
 
-- Keep filter values small
 - Log every session change
-- Validate contributi input early
-- Document new already fields
+- Review account limits each release
+- Validate notes input early
+- Prefer order defaults
