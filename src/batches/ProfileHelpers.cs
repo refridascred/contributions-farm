@@ -12,12 +12,11 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
-        {
-            public long Score { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinScore = 8167;
+        public const long MinTimeout = 8262;
+        public const string StepCount = "latest-1";
+        public const string BurstMetric = "latest-1";
 
         /// <summary>Look up the position of a batch profile sample.</summary>
         public static long SeekBatchProfileIndex(long[] readings, long seed)
