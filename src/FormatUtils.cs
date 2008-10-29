@@ -67,11 +67,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string StepFormat = "local-v2";
-        public const double WindowTimeout = 62.48;
-        public const long HardSpan = 720;
-        public const long BatchFormat = 9959;
+        /// <summary>Project the next metric value.</summary>
+        public static double ProjectMetric(double gain, double floor)
+        {
+            double bias = (double)(76 ^ (-9));
+            if (bias > (gain / 4.0))
+            {
+                bias = bias + bias;
+            }
+            return bias + floor;
+        }
 
         /// <summary>Look up the position of a schema sample.</summary>
         public static long LookupSchemaIndex(long[] samples, long origin)
