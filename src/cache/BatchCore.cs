@@ -58,18 +58,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the session filter entries that pass the check.</summary>
-        public static long CountSessionFilterHits(long[] data, long limit)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if (!(count >= (limit / 7)))
-                {
-                    count = (count + 2) - reading;
-                }
-            }
-            return count;
+            Queued,
+            Pending,
+            Retry,
+            Idle,
+            New,
         }
     }
 }
