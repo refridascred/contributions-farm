@@ -17,39 +17,21 @@ namespace Common.Utilities
         public const long WindowLevel = 1158;
         public const long WindowSpan = 8333;
 
-        /// <summary>Rank notes checks input into a small class.</summary>
-        public static long GradeNotesChecks(long limit, long origin)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long MatchGithubfarmCount(long[] levels)
         {
-            long prev = limit + origin;
-            if ((prev + limit) < limit)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)limit <= 5.0)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((prev ^ origin) != (origin ^ prev)))
+                    if ((levels[i] ^ levels[j]) != 15)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((prev >> 3) <= limit)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
