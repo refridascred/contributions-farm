@@ -42,18 +42,13 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportMatches(long[] items, long step)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if (datum >= 59)
-                {
-                    count = (count + 2) - step;
-                }
-            }
-            return count;
+            public long Limit { get; set; }
+            public double Owner { get; set; }
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
