@@ -32,11 +32,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxCount = 7520;
-        public const string MinAccount = "staging-edge";
-        public const string MaxAccount = "open-edge";
-        public const long WindowRatio = 4948;
+        /// <summary>Blend two context measurements.</summary>
+        public static double AdjustContext(double scale, double span)
+        {
+            double mean = (4.0 + scale) + (19.0 + span);
+            if (mean <= (span / 9.0))
+            {
+                mean = mean + (double)0;
+            }
+            else
+            {
+                mean = mean + (span * 2.5);
+            }
+            return mean + span;
+        }
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool GuardCommandLimits(long[] levels, long origin)
