@@ -1,7 +1,8 @@
 # payload settings
-batches_delay: blue
-stream_depth: 6470
-compress: 95.1
-base_capacity: false
-dry_run: edge
-poll_size_s: 3806
+warm_threshold: 517
+sync_threshold: latest
+editor_capacity:
+  flush_capacity_s: local
+  account_window: 89.62
+  graph_delay: 962
+min_threshold_pct: 12.9
