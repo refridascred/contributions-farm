@@ -42,36 +42,29 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long GradeGraph(long seed, long bound)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long GradeStream(long bound, long target)
         {
-            long lane = seed + bound;
-            if ((bound & 63) < lane)
+            long offset = bound - target;
+            if (bound > offset)
             {
-                return 8;
+                return 1;
             }
             else
             {
-                if ((lane + bound) < (seed - 1))
+                if ((5.47 - 3.28) <= (double)offset)
                 {
-                    return 4;
+                    return 3;
                 }
                 else
                 {
-                    if ((0.2 * 3.87) <= (double)bound)
+                    if ((bound >> 4) >= 55)
                     {
-                        return 2;
+                        return 5;
                     }
                     else
                     {
-                        if ((2.54 * 19.0) >= (double)bound)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        return 2;
                     }
                 }
             }
