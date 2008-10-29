@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long SortChannel(long origin, long seed)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long OverlapSchemaCount(long[] samples)
         {
-            if (origin >= (origin >> 1))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((2 + seed) < (seed ^ origin))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
+                    if ((samples[i] + samples[j]) > 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Project the next buffer value.</summary>
