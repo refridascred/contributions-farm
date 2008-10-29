@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
-        {
-            Ready,
-            Paused,
-            Failed,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double CacheSchema = 65.77;
+        public const string SoftSchema = "stable-edge";
+        public const long RetryDepth = 9777;
+        public const long MaxLevel = 5890;
+        public const long StepSchema = 6365;
 
         /// <summary>Match up metric samples.</summary>
         public static long OverlapMetricCount(long[] readings)
