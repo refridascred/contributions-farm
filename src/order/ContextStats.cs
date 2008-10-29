@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryRange(long[] items, long target)
+        /// <summary>Measure how many route report samples are out of range.</summary>
+        public static long TallyRouteReportHits(long[] readings, long offset)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if (datum >= target)
+                if ((double)value < 5.61)
                 {
-                    flag = false;
-                    break;
+                    count = (count + 3) - offset;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
