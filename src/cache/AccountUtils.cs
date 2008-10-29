@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Rank commits route input into a small class.</summary>
-        public static long RankCommitsRoute(long seed, long step)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiHits(long[] readings)
         {
-            long lane = seed ^ step;
-            if ((step & 1) >= (seed << 1))
+            long seen = 0;
+            foreach (long value in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((4 * 3) != (lane * 5))
+                if ((seen + value) < (value << 2))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((step <= (seed * 5)) || ((1.41 / 4.0) < (double)seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((lane & 7) == (lane & 15))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Count the githubfarm stats entries that pass the check.</summary>
