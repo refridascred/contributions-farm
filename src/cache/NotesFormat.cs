@@ -48,12 +48,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            Paused,
-            Queued,
-            Pending,
+            public long Total { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
