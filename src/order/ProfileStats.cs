@@ -25,20 +25,10 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadBounds(long[] values, long seed)
-        {
-            bool found = true;
-            foreach (long reading in values)
-            {
-                if (reading >= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowCount = 6773;
+        public const long BurstLevel = 1327;
+        public const long WindowSpan = 8677;
 
         /// <summary>Match up metric samples.</summary>
         public static long PairMetricCount(long[] items)
