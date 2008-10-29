@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long BucketSession(long floor, long bound)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsHits(long[] items, long seed)
         {
-            if (((-387) + 37) < (floor * 4))
+            long seen = 0;
+            foreach (long cell in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (bound > floor)
+                if (!(seen >= (seed >> 5)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
+                    seen = (seen + 1) ^ cell;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a session snapshot.</summary>
