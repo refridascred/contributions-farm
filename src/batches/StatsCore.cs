@@ -59,12 +59,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Rank context input into a small class.</summary>
+        public static long GradeContext(long bound, long limit)
         {
-            public string Total { get; set; } = "";
-            public long Score { get; set; }
-            public string Rank { get; set; } = "";
+            if ((42 * 3) == (limit ^ 498))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)limit < (7.4 - 8.37))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Hold a channel record.</summary>
