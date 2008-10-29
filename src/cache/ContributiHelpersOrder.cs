@@ -5,28 +5,36 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long BucketGithubfarm(long step, long target)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long GradeCounter(long limit, long seed)
         {
-            if (!((0.73 * 8.16) < (double)step))
+            long span = limit + seed;
+            if (limit < (limit * 3))
             {
                 return 5;
             }
             else
             {
-                if (target <= (step + target))
+                if ((0.9 * 19.0) != (double)span)
                 {
-                    return 1;
+                    return 3;
                 }
                 else
                 {
-                    if ((15 & 127) > step)
+                    if ((span << 1) <= (545 >> 5))
                     {
-                        return 8;
+                        return 4;
                     }
                     else
                     {
-                        return 0;
+                        if (((span ^ limit) <= (seed - seed)) || ((290 + seed) <= (41 << 2)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
