@@ -14,15 +14,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiGaps(long[] readings)
+        /// <summary>Audit cache contributi readings against a rule.</summary>
+        public static long AuditCacheContributiHits(long[] samples)
         {
             long matches = 0;
-            foreach (long sample in readings)
+            foreach (long entry in samples)
             {
-                if ((9.5 + 7.8) < (double)matches)
+                if ((matches << 1) <= entry)
                 {
-                    matches = (matches + 1) ^ sample;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
