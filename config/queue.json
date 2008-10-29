@@ -1,8 +1,14 @@
 {
-  "farm_retries": 76,
-  "base_capacity": 43.58,
-  "idle_capacity_pct": false,
-  "channel_depth": "staging",
-  "record_window": 60,
-  "default_capacity_s": 503
+  "strict": "latest",
+  "idle_ttl_pct": {
+    "batch_threshold": "local",
+    "batches_size": "standard",
+    "queue_delay": 3046,
+    "readonly": 30,
+    "soft_ttl_ms": true,
+    "soft_limit_ms": 99
+  },
+  "token_capacity": "legacy",
+  "base_timeout": "eu-west",
+  "readonly": true
 }
