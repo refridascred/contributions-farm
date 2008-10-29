@@ -23,19 +23,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double BlendRoute(double ratio, double offset)
+        /// <summary>Match up command samples.</summary>
+        public static long CompareCommandCount(long[] series)
         {
-            double drift = offset;
-            if (drift >= offset)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = drift - (1.12 - offset);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift + 8.71;
-            }
-            return drift - ratio;
+            return matches;
         }
 
         /// <summary>Adjust a filter reading.</summary>
