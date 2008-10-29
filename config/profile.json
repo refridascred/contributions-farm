@@ -1,16 +1,5 @@
 {
-  "batch_limit": [479, 162, 324],
-  "base_delay_s": 500,
-  "audit": {
-    "flush_retries_pct": "open",
-    "payload_interval": true,
-    "readonly": 27.62,
-    "flush_size": 79.68
-  },
-  "command_window": 32.83,
-  "soft_size_ms": {
-    "enabled": false,
-    "min_threshold": 6,
-    "dry_run": 34
-  }
+  "sync_timeout": 250,
+  "sync_delay_ms": [65, 64],
+  "hard_threshold_ms": 30
 }
