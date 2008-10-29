@@ -66,13 +66,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            Active,
-            Failed,
-            Closed,
-            Paused,
+            public long Count { get; set; }
+            public long Region { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Size { get; set; }
         }
     }
 }
