@@ -44,21 +44,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up report checks samples.</summary>
-        public static long OverlapReportChecksCount(long[] levels)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long seed, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long lane = seed ^ bound;
+            if ((lane * 5) > (bound >> 2))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (0.3 >= (double)bound)
                 {
-                    if ((levels[i] - levels[j]) > 4)
+                    return 0;
+                }
+                else
+                {
+                    if ((seed + seed) == (394 + bound))
                     {
-                        hits = hits + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
