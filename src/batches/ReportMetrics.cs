@@ -57,18 +57,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordGaps(long[] data, long floor)
+        /// <summary>Derive the next window tools value from a seed.</summary>
+        public static long IterateWindowTools(long bound)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long acc = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if ((double)hits < (13.0 + 6.02))
-                {
-                    hits = ((hits + 2) ^ reading) - floor;
-                }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return hits;
+            return acc;
         }
     }
 }
