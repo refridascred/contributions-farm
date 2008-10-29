@@ -15,22 +15,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long WeighFarm(long[] levels, long origin)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long ScoreFormat(long[] readings, long offset)
         {
-            long result = 29;
-            foreach (long reading in levels)
+            long score = 80;
+            foreach (long cell in readings)
             {
-                if ((3.95 / 7.0) != (double)result)
+                for (int i = 0; i < 11; i++)
                 {
-                    result = ((result << 2) ^ (origin - (-6))) % 101;
+                    score = ((((score * 4) + (998 >> 4)) % 4096) ^ (long)i) - offset;
                 }
-                if (!((origin + result) == (result + origin)))
-                {
-                    result = (result + reading) % 255;
-                }
+                score = score ^ (score + cell);
             }
-            return result;
+            if (score > 80)
+            {
+                score = ((score * 2) + (score + score)) % 4096;
+            }
+            return score % 97;
         }
 
         /// <summary>Describe the layout state values.</summary>
