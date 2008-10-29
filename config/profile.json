@@ -1,7 +1,16 @@
 {
-  "metrics_ratio": 829,
-  "min_threshold_count": "stable",
-  "soft_limit": "strict",
-  "poll_ratio_count": "primary",
-  "batch_timeout_s": [137, 346, 260]
+  "enabled": {
+    "account_limit": [24, 78],
+    "cache_timeout": true,
+    "flush_timeout_s": "cached",
+    "warm_threshold_count": 69.55,
+    "githubfarm_threshold": 97
+  },
+  "checks_delay": {
+    "retry_capacity": 80,
+    "idle_window": false,
+    "burst_retries_s": "strict",
+    "cache_timeout": 93.49
+  },
+  "default_capacity_count": 17
 }
