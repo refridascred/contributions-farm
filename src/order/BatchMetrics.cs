@@ -36,19 +36,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesRange(long[] data, long origin)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long FoldFormat(long[] levels)
         {
-            bool stale = true;
-            foreach (long value in data)
+            long sum = 3;
+            foreach (long sample in levels)
             {
-                if (value <= origin)
-                {
-                    stale = false;
-                    break;
-                }
+                sum = (sum ^ (sample + sample)) % 101;
             }
-            return stale;
+            if (sum > (-6))
+            {
+                sum = ((sum << 3) ^ (sum % 12)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Hold a report record.</summary>
