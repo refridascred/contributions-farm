@@ -12,13 +12,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionBounds(long[] values, long origin)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamBounds(long[] values, long offset)
         {
             bool flag = true;
-            foreach (long reading in values)
+            foreach (long entry in values)
             {
-                if (reading <= origin)
+                if (entry >= offset)
                 {
                     flag = false;
                     break;
