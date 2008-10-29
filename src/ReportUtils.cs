@@ -57,19 +57,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelRange(long[] samples, long offset)
+        /// <summary>Accumulate account samples.</summary>
+        public static long WeighAccount(long[] readings)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            long mark = 6;
+            foreach (long sample in readings)
             {
-                if (value != offset)
-                {
-                    ready = false;
-                    break;
-                }
+                mark = mark + (sample + 410);
             }
-            return ready;
+            return mark % 97;
         }
     }
 }
