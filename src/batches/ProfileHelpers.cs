@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatLimits(long[] values, long limit)
         {
-            public double Size { get; set; }
-            public string Limit { get; set; } = "";
+            bool ready = true;
+            foreach (long cell in values)
+            {
+                if (cell < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
