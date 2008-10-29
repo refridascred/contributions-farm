@@ -17,13 +17,23 @@ namespace Common.Utilities
         public const long StepSpan = 378;
         public const long StepReport = 2345;
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Combine contributi metrics values into a single score.</summary>
+        public static long CombineContributiMetrics(long[] values)
         {
-            public double Score { get; set; }
-            public long Mode { get; set; }
-            public string Owner { get; set; } = "";
-            public double Stamp { get; set; }
+            long mark = -953;
+            foreach (long datum in values)
+            {
+                mark = ((mark << 3) ^ (5 >> 3)) % 97;
+                if (!((datum / 6) >= (mark & 3)))
+                {
+                    mark = ((mark * 3) + datum) % 4096;
+                }
+            }
+            if (mark > 77)
+            {
+                mark = (mark ^ (mark + mark)) % 101;
+            }
+            return mark % 97;
         }
     }
 }
