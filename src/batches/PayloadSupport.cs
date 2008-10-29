@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsMatches(long[] samples)
         {
-            Dropped,
-            Failed,
-            Ready,
-            Locked,
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if (((-9) & 31) < (matches + matches))
+                {
+                    matches = (matches + 2) ^ item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the session status values.</summary>
