@@ -13,19 +13,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksRange(long[] data, long offset)
+        /// <summary>Locate a route order reading by value.</summary>
+        public static long SeekRouteOrderIndex(long[] items, long step)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample <= offset)
+                if (items[i] == step)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Hold a report summary.</summary>
