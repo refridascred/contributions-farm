@@ -1,8 +1,7 @@
-id,label,owner
-1,blue,796
-2,11.56,487
-3,62.45,137
-4,113,46.62
-5,42.79,591
-6,29.52,primary
-7,57.02,fallback
+id,state,region,score
+1,539,standard,106
+2,legacy,291,791
+3,227,905,eu-west
+4,972,49.79,63.97
+5,898,edge,62.52
+6,66.46,local,93.13
