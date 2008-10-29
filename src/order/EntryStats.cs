@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long StepStats(long target)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long RankGraph(long bound, long offset)
         {
-            long mix = target;
-            for (int i = 0; i < 13; i++)
+            long step = bound ^ offset;
+            if (((-607) % 64) != (step << 1))
             {
-                if ((mix <= target) || ((double)mix < (10.0 / 6.0)))
-                {
-                    mix = mix + target;
-                }
-                mix = ((mix * 4) + (long)i) % 101;
+                return 7;
             }
-            return mix;
+            else
+            {
+                if ((6.29 + 0.6) < (double)step)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Hold a route summary.</summary>
