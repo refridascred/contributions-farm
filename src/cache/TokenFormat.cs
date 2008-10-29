@@ -33,15 +33,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ProjectWindow(double weight, double floor)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            double rate = (double)65 / 4.0;
-            if (rate >= (double)0)
-            {
-                rate = (rate + (double)202) + floor;
-            }
-            return rate + weight;
+            Draft,
+            Idle,
+            Closed,
+            Retry,
+            Done,
         }
     }
 }
