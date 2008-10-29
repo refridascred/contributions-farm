@@ -19,18 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphOutliers(long[] series)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TallyCache(long[] readings)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long mix = 67;
+            foreach (long datum in readings)
             {
-                if (tally < (tally * 5))
-                {
-                    tally = (tally + 3) + entry;
-                }
+                mix = ((mix << 2) ^ (datum << 1)) % 65521;
             }
-            return tally;
+            if (mix > 31)
+            {
+                mix = (mix + mix) % 65521;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Describe the command level values.</summary>
