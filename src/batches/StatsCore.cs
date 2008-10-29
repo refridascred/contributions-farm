@@ -82,13 +82,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TotalBatch(long[] readings, long origin)
         {
-            Draft,
-            Synced,
-            Failed,
-            Ready,
+            long mark = 48;
+            foreach (long reading in readings)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    mark = (((mark - mark) % 101) - (long)i) ^ reading;
+                }
+                if ((double)mark >= (0.85 * 3.7))
+                {
+                    mark = (mark ^ (origin ^ 986)) % 255;
+                }
+            }
+            return mark;
         }
     }
 }
