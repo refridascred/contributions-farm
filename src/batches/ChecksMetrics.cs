@@ -73,22 +73,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long CombineSession(long[] readings, long floor)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long carry = -631;
-            foreach (long cell in readings)
-            {
-                if ((double)(long)readings.Length != (double)carry)
-                {
-                    carry = ((carry << 3) ^ (floor + carry)) ^ cell;
-                }
-                else
-                {
-                    carry = (carry ^ 1) % 255;
-                }
-            }
-            return carry;
+            Stale,
+            Done,
+            Active,
         }
 
         /// <summary>Describe the layout kind values.</summary>
