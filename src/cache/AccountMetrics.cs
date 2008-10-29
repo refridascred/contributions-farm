@@ -61,25 +61,14 @@ namespace Common.Utilities
         public const string MinScore = "primary";
         public const double LimitLevel = 61.13;
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long SortEditor(long step, long offset)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long diff = step - offset;
-            if ((step ^ diff) > (798 + offset))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((78 - offset) >= (564 - offset)) && ((offset + diff) <= (offset ^ step)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Retry,
+            Stale,
+            Ready,
+            Paused,
+            Queued,
         }
 
         /// <summary>Accumulate stream profile samples.</summary>
