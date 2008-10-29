@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long RankGithubfarm(long origin, long offset)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LookupBatchIndex(long[] levels, long seed)
         {
-            long prev = origin ^ offset;
-            if ((origin - origin) > (offset + prev))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((11 ^ prev) < (offset - origin)) || ((613 - origin) < offset))
+                if ((levels[i] > seed) && ((levels[i] % 5) != 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin * 4) < (offset / 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((8.65 + 9.72) != (double)offset)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Match up window samples.</summary>
