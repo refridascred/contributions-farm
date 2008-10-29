@@ -27,12 +27,13 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            public double Limit { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Offset { get; set; }
+            Queued,
+            Active,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Define token limits and defaults.</summary>
