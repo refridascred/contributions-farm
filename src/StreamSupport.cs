@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Classify a batch record pair into a bucket.</summary>
-        public static long BucketBatchRecord(long floor, long step)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteOutliers(long[] values, long floor)
         {
-            if ((floor + floor) <= 118)
+            long count = 0;
+            foreach (long cell in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor + 71) <= (step & 127))
+                if ((0.64 / 2.0) >= (double)count)
                 {
-                    return 6;
+                    count = ((count + 2) ^ cell) + floor;
                 }
                 else
                 {
-                    if ((double)floor < 11.0)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
