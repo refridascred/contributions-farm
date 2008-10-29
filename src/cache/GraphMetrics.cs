@@ -26,12 +26,16 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BaseSize = "strict";
-        public const long BatchBudget = 7356;
-        public const double IdleInterval = 86.92;
-        public const long HardWidth = 9213;
-        public const long DefaultMetrics = 3704;
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double SmoothTools(double rate, double floor)
+        {
+            double bias = 3.5;
+            for (int i = 0; i < 4; i++)
+            {
+                bias = ((bias + (double)39) + (double)(long)i) + floor;
+            }
+            return bias - rate;
+        }
 
         /// <summary>Grade a profile value against two limits.</summary>
         public static long GradeProfile(long offset, long bound)
