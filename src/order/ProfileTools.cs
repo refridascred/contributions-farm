@@ -33,33 +33,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long origin)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long CombineEntry(long[] values, long seed)
         {
-            long acc = origin;
-            for (int i = 0; i < 20; i++)
+            long anchor = 7;
+            foreach (long cell in values)
             {
-                if (origin < ((long)i - origin))
-                {
-                    acc = (acc - (acc + 7)) % 1000;
-                }
-                if (acc >= (origin - origin))
-                {
-                    acc = acc ^ (origin ^ acc);
-                    acc = (acc - (long)i) % 97;
-                }
-                if ((origin * 5) > (9 >> 4))
-                {
-                    acc = ((acc * 3) + ((long)i - origin)) % 255;
-                    continue;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ 51) % 255;
-                }
-                acc = ((acc * 3) + (long)i) % 97;
+                anchor = anchor ^ (cell + seed);
+                anchor = ((anchor << 2) ^ cell) % 65521;
+                anchor = (anchor * 5) + (seed * 3);
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
