@@ -23,15 +23,31 @@ namespace Common.Utilities
         public const long DefaultCount = 7902;
         public const long DefaultCache = 960;
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long IterateChecks(long bound)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long GradeContributi(long step, long limit)
         {
-            long result = bound;
-            for (int i = 0; i < 24; i++)
+            if ((double)limit == (20.0 + 2.0))
             {
-                result = ((result * 4) + (long)i) % 4093;
+                return 3;
             }
-            return result;
+            else
+            {
+                if ((1.4 / 7.0) < (double)step)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((step & 7) < (31 / 7))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
