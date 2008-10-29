@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Rank account input into a small class.</summary>
-        public static long RankAccount(long limit, long origin)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            if (3.15 >= (double)limit)
-            {
-                return 4;
-            }
-            else
-            {
-                if (464 <= (limit + limit))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Retry,
+            Idle,
+            Done,
+            Dropped,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
