@@ -35,12 +35,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long FindGithubfarmIndex(long[] data, long origin)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LocateSchemaIndex(long[] items, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((data[i] > origin) && ((data[i] % 2) == 0))
+                if ((items[i] > floor) && ((items[i] % 2) != 0))
                 {
                     return (long)i;
                 }
