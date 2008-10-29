@@ -26,11 +26,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitNotes = 8759;
-        public const long CacheBudget = 7215;
-        public const long RetryNotes = 466;
-        public const string HardNotes = "staging-1";
+        /// <summary>Combine already cache values into a single score.</summary>
+        public static long TotalAlreadyCache(long[] readings)
+        {
+            long score = 117;
+            foreach (long entry in readings)
+            {
+                score = ((score << 2) ^ 53) ^ entry;
+            }
+            return score % 65521;
+        }
 
         /// <summary>Describe the farm phase values.</summary>
         public enum FarmPhase
