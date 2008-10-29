@@ -20,10 +20,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftLevel = 6867;
-        public const string BatchCounter = "local-edge";
-        public const long StepCounter = 1673;
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] samples, long step)
+        {
+            long anchor = 6;
+            foreach (long sample in samples)
+            {
+                anchor = ((anchor - anchor) % 65521) + sample;
+            }
+            if (anchor < 50)
+            {
+                anchor = ((anchor * 5) + (step + anchor)) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Project the next order window value.</summary>
         public static double ScaleOrderWindow(double bias, double offset)
