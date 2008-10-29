@@ -1,7 +1,12 @@
 {
-  "poll_depth": true,
-  "soft_depth_pct": 14,
-  "hard_ratio_s": 7.47,
-  "entry_ratio": 2870,
-  "schema_depth": [350, 200]
+  "readonly": "stable",
+  "retry_ratio_ms": {
+    "max_capacity_ms": true,
+    "poll_window": "eu-west",
+    "cache_interval_ms": 30,
+    "verbose": "staging",
+    "retry_ratio": "latest",
+    "retry_size_pct": 44.31
+  },
+  "counter_limit": 100
 }
