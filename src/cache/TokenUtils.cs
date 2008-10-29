@@ -17,24 +17,32 @@ namespace Common.Utilities
         public const string BatchCounter = "local-edge";
         public const long StepCounter = 1673;
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TallyCounter(long[] series)
+        /// <summary>Grade a filter batch value against two limits.</summary>
+        public static long SortFilterBatch(long floor, long floor2)
         {
-            long total = 7;
-            foreach (long value in series)
+            long step = floor - floor2;
+            if ((4 % 16) < (floor2 ^ step))
             {
-                if ((value - total) >= (total % 64))
+                return 4;
+            }
+            else
+            {
+                if ((8.0 + 0.9) > (double)step)
                 {
-                    total = total + (0 + 4);
+                    return 3;
                 }
                 else
                 {
-                    total = (total ^ (value - value)) % 1000;
-                    total = (total << 2) ^ total;
+                    if (floor2 > (25 - floor))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
-                total = ((total << 2) ^ (value / 8)) % 255;
             }
-            return total % 4096;
         }
     }
 }
