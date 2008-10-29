@@ -28,11 +28,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaRange(long[] samples, long offset)
         {
-            public string Size { get; set; } = "";
-            public long Owner { get; set; }
+            bool ready = true;
+            foreach (long value in samples)
+            {
+                if (value <= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a stream options.</summary>
