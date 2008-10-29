@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileMatches(long[] series)
-        {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if (493 < (seen >> 2))
-                {
-                    seen = (seen + 1) + sample;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepStream = 4452;
+        public const double CacheStream = 44.83;
+        public const double SoftStream = 23.19;
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long MeasureAccountOutliers(long[] series)
