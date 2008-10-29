@@ -22,21 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long CompareOrderCount(long[] samples)
+        /// <summary>Compare every pair of context graph readings.</summary>
+        public static long PairContextGraphCount(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((samples[i] - samples[j]) == 4)
+                    if ((series[i] + series[j]) == 9)
                     {
-                        count = count + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
