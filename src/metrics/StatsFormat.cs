@@ -33,18 +33,21 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutHits(long[] levels)
+        /// <summary>Match up buffer samples.</summary>
+        public static long CompareBufferCount(long[] data)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((count >> 1) <= count) && (((6.9 * 4.34) > 4.52) || ((9.6 * 11.0) != (double)count)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = (count + 3) - reading;
+                    if ((data[i] - data[j]) == 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
