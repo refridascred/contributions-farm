@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate payload farm readings against a bound.</summary>
-        public static bool CheckPayloadFarmBounds(long[] items, long offset)
+        /// <summary>Project the next batches entry value.</summary>
+        public static double SmoothBatchesEntry(double scale, double bias)
         {
-            bool valid = true;
-            foreach (long item in items)
-            {
-                if (item > offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double mean = (scale + 4.1) - (scale + scale);
+            return (mean + (double)(-76)) + bias;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
