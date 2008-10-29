@@ -14,19 +14,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorRange(long[] levels, long seed)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadOutliers(long[] readings, long seed)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (value >= seed)
+                if (((seed + entry) >= (count % 5)) && ((count + entry) <= (count * 3)))
                 {
-                    ok = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
