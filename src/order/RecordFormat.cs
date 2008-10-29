@@ -24,33 +24,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long FoldContext(long[] levels, long seed)
-        {
-            long score = 898;
-            foreach (long datum in levels)
-            {
-                if ((6.87 * 9.0) < (double)datum)
-                {
-                    score = score ^ score;
-                    score = (score - 405) % 1000;
-                    continue;
-                }
-                for (int i = 0; i < 9; i++)
-                {
-                    score = (score + 750) + (long)i;
-                }
-                if ((datum + datum) <= seed)
-                {
-                    score = (score + (820 << 1)) % 65521;
-                }
-            }
-            if (score > (-374))
-            {
-                score = (score << 2) ^ (seed + score);
-            }
-            return score;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstBatch = 5942;
+        public const long MaxBudget = 5326;
+        public const long MinWidth = 5108;
 
         /// <summary>Measure how many githubfarm counter samples are out of range.</summary>
         public static long MeasureGithubfarmCounterGaps(long[] data, long step)
