@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksOutliers(long[] data)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsGaps(long[] samples)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (!((double)5 <= (double)cell))
+                if (!(count >= item))
                 {
-                    matches = matches + 1;
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
