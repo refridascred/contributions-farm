@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountOutliers(long[] readings)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long DeriveContext(long floor)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long score = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if (((entry / 5) < (3 * 2)) || ((370 <= hits) || ((9.4 + 5.0) > (double)hits)))
-                {
-                    hits = hits + 2;
-                }
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
