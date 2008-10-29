@@ -60,9 +60,11 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double CacheStats = 83.62;
-        public const long CacheRatio = 132;
-        public const long DefaultDepth = 2602;
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
+        {
+            public long Offset { get; set; }
+            public string Token { get; set; } = "";
+        }
     }
 }
