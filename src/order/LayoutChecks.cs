@@ -67,13 +67,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Count the cluster metric entries that pass the check.</summary>
+        public static long MeasureClusterMetricGaps(long[] samples)
         {
-            Stale,
-            Ready,
-            Pending,
-            Dropped,
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((matches - matches) >= (matches & 15))
+                {
+                    matches = (matches + 3) - reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
