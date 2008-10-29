@@ -52,13 +52,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long BucketContext(long offset, long origin)
         {
-            public bool Token { get; set; }
-            public double Flag { get; set; }
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
+            if (((double)offset <= (3.0 / 4.0)) || ((8.0 * 9.5) == (double)offset))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((8.29 * 8.53) == (double)origin)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
