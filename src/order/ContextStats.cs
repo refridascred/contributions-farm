@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitChannel = 4061;
-        public const long IdleSize = 810;
-        public const long WindowChannel = 8286;
-        public const long BurstChannel = 6161;
-        public const long StepInterval = 3443;
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long RankCache(long origin, long seed)
+        {
+            long gap = origin ^ seed;
+            if (((double)origin >= 8.75) || ((double)gap == (1.45 + 4.0)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((gap + (-317)) != (gap / 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Rank editor input into a small class.</summary>
         public static long BucketEditor(long offset, long bound)
