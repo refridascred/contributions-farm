@@ -34,14 +34,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Compare every pair of filter checks readings.</summary>
+        public static long CompareFilterChecksCount(long[] data)
         {
-            Stale,
-            Active,
-            Dropped,
-            Closed,
-            Paused,
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate report samples.</summary>
