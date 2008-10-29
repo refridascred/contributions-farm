@@ -16,19 +16,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every commits route entry stays within the limit.</summary>
-        public static bool CheckCommitsRouteRange(long[] series, long seed)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            bool valid = true;
-            foreach (long datum in series)
-            {
-                if (datum >= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Offset { get; set; }
+            public string Token { get; set; } = "";
+            public long Rank { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a checks info.</summary>
