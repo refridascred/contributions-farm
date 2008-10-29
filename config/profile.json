@@ -1,8 +1,7 @@
 {
-  "order_window": 11.79,
-  "batches_retries": "edge",
-  "burst_ratio_s": 4,
-  "flush_retries_count": 8786,
-  "report_depth": "edge",
-  "payload_interval": 94.74
+  "soft_ttl_pct": 77.49,
+  "verbose": "legacy",
+  "max_threshold_count": false,
+  "poll_ttl_count": [245, 85, 12],
+  "readonly": true
 }
