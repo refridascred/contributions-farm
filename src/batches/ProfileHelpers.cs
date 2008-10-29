@@ -34,21 +34,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long StepReport(long seed)
-        {
-            long state = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                if (((double)seed < (double)state) && (((long)i - (long)i) > state))
-                {
-                    long step = 84;
-                    state = (state * 3) + step;
-                }
-                state = ((state * 5) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftCommand = 9251;
+        public const long WindowCommand = 4632;
+        public const double LimitBudget = 69.53;
+        public const long MinFactor = 7620;
 
         /// <summary>Compare every pair of account readings.</summary>
         public static long OverlapAccountCount(long[] data)
