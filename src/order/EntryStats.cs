@@ -16,13 +16,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            public long Flag { get; set; }
-            public string Owner { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public bool Stamp { get; set; }
+            public long Mode { get; set; }
+            public long Level { get; set; }
+            public long Size { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Accumulate commits samples.</summary>
