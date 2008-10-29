@@ -23,19 +23,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterLimits(long[] values, long bound)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            bool valid = true;
-            foreach (long cell in values)
-            {
-                if (cell <= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Count { get; set; }
+            public long Level { get; set; }
+            public double Mode { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Describe the format level values.</summary>
