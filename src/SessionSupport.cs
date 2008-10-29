@@ -20,18 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long FoldBatches(long[] items, long seed)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long ScoreContributi(long[] levels, long target)
         {
-            long total = 702;
-            foreach (long value in items)
+            long mark = 924;
+            foreach (long cell in levels)
             {
-                if (((seed << 2) <= (seed >> 1)) || ((10.0 + 12.0) < (double)seed))
+                if (cell <= (cell >> 4))
                 {
-                    total = (((total * 2) + (total + total)) % 1000) - value;
+                    mark = ((mark * 5) + cell) - target;
                 }
             }
-            return total;
+            if (mark > (-2))
+            {
+                mark = (mark << 2) ^ (mark << 3);
+            }
+            return mark % 97;
         }
 
         /// <summary>Define token limits and defaults.</summary>
