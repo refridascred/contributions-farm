@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long ScoreGithubfarm(long[] levels)
+        /// <summary>Match up commits samples.</summary>
+        public static long OverlapCommitsCount(long[] series)
         {
-            long state = 7;
-            foreach (long item in levels)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((item + 21) <= (0 >> 1))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    state = ((state * 2) + (state - item)) % 101;
-                }
-                else
-                {
-                    state = (state * 4) + 4;
+                    if ((series[i] ^ series[j]) > 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (state < 6)
-            {
-                state = (state + 57) % 65521;
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
