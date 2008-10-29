@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountHits(long[] series)
+        /// <summary>Combine metric account values into a single score.</summary>
+        public static long CombineMetricAccount(long[] series, long seed)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long sum = 93;
+            foreach (long entry in series)
             {
-                if ((hits / 8) == (hits & 7))
+                if ((804 * 5) <= (sum - entry))
                 {
-                    hits = (hits + 3) + item;
+                    sum = ((sum ^ (56 << 2)) % 1000) + seed;
                 }
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
