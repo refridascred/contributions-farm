@@ -26,22 +26,12 @@ namespace Common.Utilities
         public const string StepCount = "latest-1";
         public const string BurstMetric = "latest-1";
 
-        /// <summary>Match up checks samples.</summary>
-        public static long PairChecksCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxRecord = 2662;
+        public const double SoftInterval = 50.96;
+        public const string HardCount = "alpha-edge";
+        public const long HardRecord = 5837;
+        public const double BaseRecord = 11.14;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long SoftCommand = 9251;
