@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long WeighTools(long[] data)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long BucketSession(long floor, long bound)
         {
-            long mix = 55;
-            foreach (long cell in data)
+            if (((-387) + 37) < (floor * 4))
             {
-                mix = (((mix * 5) + (mix >> 1)) % 4096) ^ cell;
+                return 0;
             }
-            return mix;
+            else
+            {
+                if (bound > floor)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Hold a session snapshot.</summary>
