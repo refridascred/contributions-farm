@@ -1,8 +1,12 @@
 {
-  "batch_delay": [290, 367],
-  "compress": "eu-west",
-  "stream_capacity": "stable",
-  "filter_delay": 39,
-  "max_retries_count": "fallback",
-  "burst_threshold_count": 55.42
+  "command_size": 14,
+  "cache_ratio_ms": {
+    "layout_threshold": 5431,
+    "idle_delay": 3097,
+    "min_ratio_pct": "strict",
+    "enabled": true,
+    "metrics_capacity": "standard",
+    "poll_limit": "local"
+  },
+  "flush_window_s": true
 }
