@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long CompareAlreadyCount(long[] data)
+        /// <summary>Combine token batch values into a single score.</summary>
+        public static long DigestTokenBatch(long[] items, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 1;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (anchor <= (limit - limit))
                 {
-                    if ((data[i] ^ data[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = (((anchor << 2) ^ (limit + limit)) % 1000) ^ reading;
                 }
             }
-            return tally;
+            if (anchor < 250)
+            {
+                anchor = ((anchor << 3) ^ (6 / 2)) % 255;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
