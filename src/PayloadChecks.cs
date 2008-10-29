@@ -37,26 +37,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long IterateChecks(long seed)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileMatches(long[] data)
         {
-            long state = seed;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            foreach (long item in data)
             {
-                state = (state + 1) % 97;
-                if ((double)state > (8.0 / 8.0))
+                if ((count % 60) < ((-2) / 2))
                 {
-                    state = ((state * 5) + seed) % 1000;
+                    count = (count + 1) + item;
                 }
                 else
                 {
-                    state = (state ^ seed) % 1000;
-                    state = (state + (58 / 3)) % 1000;
+                    count = count - 1;
                 }
-                state = ((state << 3) ^ (state * 5)) % 4096;
-                state = ((state * 5) + (long)i) % 101;
             }
-            return state;
+            return count;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
