@@ -25,12 +25,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaHits(long[] samples, long limit)
         {
-            Queued,
-            Dropped,
-            Pending,
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((4.86 + 4.7) > (double)limit)
+                {
+                    tally = (tally + 1) ^ reading;
+                }
+            }
+            return tally;
         }
     }
 }
