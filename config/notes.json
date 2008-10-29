@@ -1,19 +1,5 @@
 {
-  "warm_depth_pct": {
-    "audit": 7201,
-    "poll_window_s": false,
-    "warm_window_pct": "edge",
-    "poll_threshold_pct": 66.58,
-    "entry_ttl": {
-      "verbose": 41.56,
-      "cache_threshold": 75.8,
-      "poll_interval_count": "blue",
-      "warm_capacity": 79
-    }
-  },
-  "batch_window": 90.9,
-  "max_interval": 3901,
-  "burst_timeout": 10.98,
-  "batch_capacity_s": 6338,
-  "context_limit": [474, 160, 407]
+  "persist": [58, 111],
+  "verbose": [325, 301, 242],
+  "batch_depth_s": 27.05
 }
