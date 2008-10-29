@@ -24,10 +24,20 @@ namespace Common.Utilities
         public const long BatchScore = 6735;
         public const long HardCount = 6828;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string HardSize = "alpha-edge";
-        public const long DefaultMetrics = 6275;
-        public const string WindowMetrics = "cached-1";
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferLimits(long[] samples, long step)
+        {
+            bool ready = true;
+            foreach (long entry in samples)
+            {
+                if (entry > step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a route record.</summary>
         public sealed class RouteRecord
