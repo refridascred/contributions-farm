@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryLimits(long[] samples, long bound)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            bool stale = true;
-            foreach (long sample in samples)
-            {
-                if (sample >= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Stamp { get; set; }
+            public string Limit { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
