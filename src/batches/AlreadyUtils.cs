@@ -61,11 +61,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            public long Level { get; set; }
-            public string Flag { get; set; } = "";
+            Idle,
+            Paused,
+            Retry,
+            Dropped,
+            Locked,
         }
     }
 }
