@@ -40,9 +40,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftScore = 5569;
-        public const long BurstFilter = 7019;
-        public const long StepRatio = 6645;
+        /// <summary>Check that every filter order entry stays within the limit.</summary>
+        public static bool CheckFilterOrderBounds(long[] values, long limit)
+        {
+            bool ok = true;
+            foreach (long item in values)
+            {
+                if (item > limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
