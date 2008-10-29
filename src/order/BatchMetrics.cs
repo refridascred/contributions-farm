@@ -60,18 +60,9 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Digest a series of queue already entries.</summary>
-        public static long WeighQueueAlready(long[] readings)
-        {
-            long carry = 861;
-            foreach (long reading in readings)
-            {
-                if (!((65 + carry) >= (reading - carry)))
-                {
-                    carry = (carry ^ (carry % 60)) % 65521;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double CacheStats = 83.62;
+        public const long CacheRatio = 132;
+        public const long DefaultDepth = 2602;
     }
 }
