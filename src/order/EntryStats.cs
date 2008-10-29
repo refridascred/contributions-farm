@@ -34,20 +34,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long IterateBatch(long floor)
+        /// <summary>Measure how many editor context samples are out of range.</summary>
+        public static long TallyEditorContextMatches(long[] values, long offset)
         {
-            long state = floor;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            foreach (long item in values)
             {
-                state = (state << 2) ^ (long)i;
-                for (int i2 = 0; i2 < 4; i2++)
+                if ((matches - matches) <= (49 >> 5))
                 {
-                    state = ((state + state) % 97) - (long)i2;
+                    matches = ((matches + 2) - item) + offset;
                 }
-                state = ((state * 5) + (long)i) % 97;
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
