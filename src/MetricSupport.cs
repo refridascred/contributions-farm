@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepStream = 4452;
-        public const double CacheStream = 44.83;
-        public const double SoftStream = 23.19;
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksOutliers(long[] data)
+        {
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if (!((double)5 <= (double)cell))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long MeasureAccountOutliers(long[] series)
