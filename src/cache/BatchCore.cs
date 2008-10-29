@@ -25,18 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine githubfarm buffer values into a single score.</summary>
-        public static long CombineGithubfarmBuffer(long[] readings, long seed)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long DigestGraph(long[] series, long floor)
         {
-            long score = 35;
-            foreach (long item in readings)
+            long total = -54;
+            foreach (long datum in series)
             {
-                if ((item > (seed << 3)) && ((score * 3) <= ((-30) - seed)))
+                if (total > (10 - floor))
                 {
-                    score = (score << 2) ^ (score / 4);
+                    total = ((total + (floor % 100)) % 4096) + datum;
+                }
+                else
+                {
+                    total = ((total << 2) ^ (floor + 828)) % 4096;
                 }
             }
-            return score % 1000;
+            return total;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
