@@ -32,26 +32,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long FoldEditor(long[] levels)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long anchor = 1;
-            foreach (long cell in levels)
-            {
-                if ((cell <= (anchor + anchor)) && ((double)(long)levels.Length >= (4.2 * 4.0)))
-                {
-                    anchor = (anchor - cell) % 4096;
-                }
-                else
-                {
-                    anchor = anchor - (anchor ^ cell);
-                }
-                if ((cell + cell) >= anchor)
-                {
-                    break;
-                }
-            }
-            return anchor;
+            public double Offset { get; set; }
+            public long Region { get; set; }
+            public double Weight { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
