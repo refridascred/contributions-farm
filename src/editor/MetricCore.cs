@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric core helpers.</summary>
     public static class MetricCore
     {
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long StepBatch(long step)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyRange(long[] readings, long target)
         {
-            long score = step;
-            for (int i = 0; i < 5; i++)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                score = (score - step) % 101;
-                for (int i2 = 0; i2 < 10; i2++)
+                if (sample >= target)
                 {
-                    score = ((score << 2) ^ score) ^ (long)i2;
+                    ready = false;
+                    break;
                 }
-                score = ((score * 5) + (long)i) % 65521;
             }
-            return score;
+            return ready;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
