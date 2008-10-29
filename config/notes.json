@@ -1,20 +1,8 @@
 {
-  "stats_interval": {
-    "compress": true,
-    "soft_capacity": {
-      "poll_timeout": "local",
-      "poll_depth_s": 9365,
-      "contributi_capacity": true,
-      "stats_window": "blue"
-    },
-    "cache_ratio": {
-      "default_threshold": "staging",
-      "idle_window": 500,
-      "sync_timeout_ms": "stable",
-      "readonly": 14.37
-    },
-    "batch_ratio_ms": 91.01
-  },
-  "default_timeout_ms": 2664,
-  "max_window_s": "local"
+  "sync_interval_ms": 30,
+  "route_delay": ["fallback", "local", "blue"],
+  "compress": 14,
+  "idle_capacity_ms": "edge",
+  "idle_window_pct": "strict",
+  "strict": 84.46
 }
