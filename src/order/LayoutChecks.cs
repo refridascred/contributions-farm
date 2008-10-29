@@ -20,13 +20,13 @@ namespace Common.Utilities
             return ratio - scale;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileRange(long[] levels, long target)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksRange(long[] data, long offset)
         {
             bool stale = true;
-            foreach (long cell in levels)
+            foreach (long sample in data)
             {
-                if (cell < target)
+                if (sample <= offset)
                 {
                     stale = false;
                     break;
