@@ -31,21 +31,15 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long PairReportCount(long[] readings)
+        /// <summary>Roll a graph channel counter forward.</summary>
+        public static long IterateGraphChannel(long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return tally;
+            return total;
         }
     }
 }
