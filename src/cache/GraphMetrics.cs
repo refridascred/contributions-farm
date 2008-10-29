@@ -67,21 +67,35 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long PairCommandCount(long[] items)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TallyStats(long[] data, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = 1;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((7.5 + 8.0) > (double)mix)
                 {
-                    if ((items[i] + items[j]) != 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = (mix - (datum >> 1)) % 97;
+                    mix = (mix + datum) % 101;
+                }
+                else
+                {
+                    mix = (mix * 4) + (mix & 63);
+                }
+                if (floor < (mix + mix))
+                {
+                    mix = ((mix << 2) ^ ((long)data.Length >> 1)) % 101;
+                }
+                else
+                {
+                    mix = mix + (mix - datum);
                 }
             }
-            return seen;
+            if (mix < 837)
+            {
+                mix = (mix + 624) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
