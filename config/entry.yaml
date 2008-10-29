@@ -1,9 +1,6 @@
 # entry settings
-context_window: 23
-cache_limit_count:
-  - strict
-  - legacy
-retry_retries: eu-west
-cache_interval_ms: edge
-account_ratio: 13.38
-cache_size_ms: false
+hard_retries: legacy
+default_threshold: green
+base_timeout_ms: latest
+base_retries_ms: 30
+readonly: primary
