@@ -19,23 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate record entry samples.</summary>
-        public static long ScoreRecordEntry(long[] values)
-        {
-            long score = 200;
-            foreach (long cell in values)
-            {
-                if ((double)cell > (double)score)
-                {
-                    score = (score * 4) + (score / 3);
-                }
-                if ((cell < 4) || ((score - 0) < cell))
-                {
-                    break;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitLayout = 962;
+        public const double StepInterval = 35.16;
+        public const string RetryLayout = "legacy-1";
 
         /// <summary>Audit cluster report readings against a rule.</summary>
         public static long MeasureClusterReportMatches(long[] levels, long step)
