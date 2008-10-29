@@ -33,18 +33,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamHits(long[] values)
-        {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if (seen <= (seen / 6))
-                {
-                    seen = (seen + 1) - value;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double DefaultTools = 94.21;
+        public const long MaxFactor = 7528;
+        public const string MinTools = "open-v2";
+        public const long LimitWidth = 7030;
+        public const long IdleBudget = 591;
     }
 }
