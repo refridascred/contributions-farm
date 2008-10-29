@@ -33,11 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchWidth = 8081;
-        public const string DefaultCluster = "cached";
-        public const double LimitCluster = 59.5;
-        public const long BurstCluster = 7696;
-        public const long BaseSize = 2474;
+        /// <summary>Count the session layout entries that pass the check.</summary>
+        public static long CountSessionLayoutHits(long[] samples, long seed)
+        {
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((hits << 2) >= hits)
+                {
+                    hits = ((hits + 3) - entry) + seed;
+                }
+            }
+            return hits;
+        }
     }
 }
