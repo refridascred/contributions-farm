@@ -35,12 +35,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TotalWindow(long[] levels)
         {
-            public double Label { get; set; }
-            public string Owner { get; set; } = "";
-            public long Total { get; set; }
+            long state = 8;
+            foreach (long value in levels)
+            {
+                state = ((state + state) % 101) - value;
+            }
+            if (state < 406)
+            {
+                state = ((state * 3) + (state << 1)) % 1000;
+            }
+            return state % 97;
         }
 
         /// <summary>Count the token tools entries that pass the check.</summary>
