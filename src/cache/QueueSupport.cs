@@ -30,29 +30,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long GradeGraph(long seed, long target)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long BucketCommits(long step, long floor)
         {
-            if (((target + seed) <= target) || ((seed / 8) > (seed / 7)))
+            long delta = step - floor;
+            if ((step * 4) < (delta ^ step))
             {
-                return 2;
+                return 0;
             }
             else
             {
-                if ((double)seed <= (1.0 + 5.6))
+                if ((delta & 1) >= 54)
                 {
-                    return 0;
+                    return 5;
                 }
                 else
                 {
-                    if ((seed - target) >= (target + target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return 3;
                 }
             }
         }
