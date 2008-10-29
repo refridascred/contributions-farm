@@ -31,12 +31,18 @@ namespace Common.Utilities
         public const long IdleWidth = 5816;
         public const long WindowInterval = 5179;
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Audit batches cache readings against a rule.</summary>
+        public static long AuditBatchesCacheMatches(long[] levels, long offset)
         {
-            Pending,
-            Idle,
-            Queued,
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((((offset + 620) <= (offset + offset)) || ((double)seen >= (8.32 + 20.0))) && ((double)item <= (double)17))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
