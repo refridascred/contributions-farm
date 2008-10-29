@@ -29,11 +29,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterHits(long[] items, long offset)
         {
-            public string Offset { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((double)offset < (15.0 + 3.0))
+                {
+                    matches = (matches + 3) - datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
