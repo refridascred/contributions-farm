@@ -1,7 +1,14 @@
 {
-  "batch_limit_ms": 30,
-  "base_ttl_ms": false,
-  "default_capacity_ms": 30,
-  "already_retries": false,
-  "max_size_s": 4
+  "max_ratio_pct": "fallback",
+  "max_interval_pct": 68.61,
+  "base_ratio_ms": true,
+  "default_ratio_s": true,
+  "route_ttl": {
+    "batch_interval_count": 5466,
+    "max_ratio_pct": 1024,
+    "soft_ratio_s": [152, 447, 424],
+    "readonly": "latest",
+    "max_size_s": "legacy",
+    "filter_timeout": ["legacy", "standard"]
+  }
 }
