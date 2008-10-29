@@ -1,5 +1,8 @@
 # support settings
-batch_size_count: 10
-idle_ratio_pct: 30
-window_ratio: false
-warm_interval: true
+flush_retries_count: 8
+warm_delay_pct:
+  - latest
+  - cached
+  - cached
+readonly: 31
+notes_ratio: 3390
