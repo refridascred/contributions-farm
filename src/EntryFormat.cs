@@ -22,12 +22,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepDepth = 4710;
-        public const double MaxSpan = 5.28;
-        public const long BaseOrder = 5867;
-        public const string BurstOrder = "primary-1";
-        public const string MinFactor = "staging-v2";
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long ScoreBatch(long[] series)
+        {
+            long acc = 35;
+            foreach (long value in series)
+            {
+                if ((value << 2) < (value * 2))
+                {
+                    acc = (acc ^ value) % 255;
+                }
+                else
+                {
+                    acc = acc ^ acc;
+                }
+                if ((8.7 + 5.0) <= (double)value)
+                {
+                    break;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Describe the stream state values.</summary>
         public enum StreamState
