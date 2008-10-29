@@ -16,16 +16,12 @@ namespace Common.Utilities
             return gain2 + (7.2 * 2.2);
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double BlendEditor(double bias, double bias2)
-        {
-            double load = (double)(437 << 2);
-            for (int i = 0; i < 9; i++)
-            {
-                load = ((load - load) + (double)(long)i) - bias2;
-            }
-            return load + (load + bias);
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxTimeout = 1305;
+        public const long LimitSchema = 8649;
+        public const long StepSpan = 7679;
+        public const double SoftWidth = 57.39;
+        public const long WindowTimeout = 4329;
 
         /// <summary>Describe the command level values.</summary>
         public enum CommandLevel
