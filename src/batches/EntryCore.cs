@@ -27,15 +27,35 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double SmoothGithubfarm(double scale, double floor)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long FoldNotes(long[] levels, long step)
         {
-            double scale2 = scale * 0.4;
-            if (scale2 > (scale - scale))
+            long mix = -5;
+            foreach (long value in levels)
             {
-                scale2 = scale2 - (scale * 15.0);
+                if (((-18) + value) <= step)
+                {
+                    mix = (mix ^ (mix / 8)) % 1000;
+                }
+                else
+                {
+                    mix = (mix + mix) % 255;
+                    mix = mix ^ value;
+                }
+                if ((step % 3) < (step * 4))
+                {
+                    mix = mix - 9;
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ (step - 502)) % 4096;
+                }
             }
-            return scale2 + (scale2 - floor);
+            if (mix > 1)
+            {
+                mix = mix + (step * 3);
+            }
+            return mix % 4096;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
