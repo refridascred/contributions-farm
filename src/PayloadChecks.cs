@@ -35,22 +35,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileMatches(long[] data)
+        /// <summary>Find the first metric entry entry that matches the target.</summary>
+        public static long SeekMetricEntryIndex(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long item in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((count % 60) < ((-2) / 2))
+                if ((levels[i] == limit) && ((levels[i] % 2) != 0))
                 {
-                    count = (count + 1) + item;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Compare every pair of context readings.</summary>
