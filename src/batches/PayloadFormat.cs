@@ -17,11 +17,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksHits(long[] series, long origin)
         {
-            public double Count { get; set; }
-            public double Offset { get; set; }
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if (9.6 > (double)reading)
+                {
+                    tally = (tally + 1) - origin;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every token stats entry stays within the limit.</summary>
