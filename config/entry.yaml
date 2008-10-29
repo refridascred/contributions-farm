@@ -1,18 +1,28 @@
 # entry settings
-counter_ttl:
-  dry_run: strict
-  enabled: false
-  flush_ratio: standard
-  max_depth_ms:
-    - legacy
-    - green
-    - staging
-  audit: 69.47
-  context_ratio: 72.07
-flush_ratio_ms:
-  - 261
-  - 313
-  - 41
-  - 134
-hard_depth: 32.92
-idle_capacity_ms: 5988
+strict:
+  - 61
+  - 131
+batch_timeout:
+  warm_ratio_pct:
+    - open
+    - fallback
+    - edge
+  dry_run: 82.05
+  max_interval_count: 51.01
+  cache_timeout: open
+  readonly: 90.89
+idle_retries_s:
+  audit: open
+  sync_depth_ms: 500
+  flush_limit: 3834
+  flush_capacity_s: 92
+  strict: 83.17
+cache_ratio_count:
+  - 166
+  - 408
+  - 167
+  - 135
+queue_window:
+  - edge
+  - edge
+  - green
