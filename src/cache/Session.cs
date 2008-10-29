@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            New,
-            Active,
-            Failed,
-            Paused,
-            Ready,
+            public bool Size { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
