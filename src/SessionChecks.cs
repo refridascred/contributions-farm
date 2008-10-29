@@ -13,26 +13,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long RankRoute(long seed, long limit)
-        {
-            long offset = seed ^ limit;
-            if (((seed >> 4) <= (limit << 2)) || ((offset % 7) > seed))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((double)limit < (8.44 * 9.03)) || ((seed ^ seed) < offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftCommand = 3283;
+        public const long DefaultCommand = 3199;
+        public const long BatchCommand = 353;
 
         /// <summary>Digest a series of context entries.</summary>
         public static long CombineContext(long[] samples)
