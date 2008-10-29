@@ -55,13 +55,13 @@ namespace Common.Utilities
         public const double DefaultSchema = 42.5;
         public const string DefaultSpan = "legacy-1";
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            public long Token { get; set; }
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
-            public long Limit { get; set; }
+            Queued,
+            Dropped,
+            New,
+            Pending,
         }
 
         /// <summary>Hold a batch info.</summary>
