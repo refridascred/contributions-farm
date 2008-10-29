@@ -1,5 +1,5 @@
 {
-  "batches_delay": "edge",
-  "enabled": "edge",
-  "compress": false
+  "strict": 2967,
+  "verbose": "primary",
+  "format_timeout": 100
 }
