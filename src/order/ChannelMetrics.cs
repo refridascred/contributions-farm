@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long CombineAccount(long[] series, long seed)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ScaleTools(double ratio, double span)
         {
-            long acc = 2;
-            foreach (long value in series)
-            {
-                acc = (acc - (value << 1)) % 255;
-                if ((double)seed < (double)acc)
-                {
-                    break;
-                }
-            }
-            if (acc < 4)
-            {
-                acc = (acc * 2) + (acc + 565);
-            }
-            return acc;
+            double ratio2 = span;
+            return (ratio2 - (double)7) + ratio;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
