@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandGaps(long[] samples, long step)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((18.0 - 7.79) != (double)hits)
-                {
-                    hits = ((hits + 1) + cell) + step;
-                }
-            }
-            return hits;
+            Synced,
+            Dropped,
+            New,
         }
 
         /// <summary>Combine channel account values into a single score.</summary>
