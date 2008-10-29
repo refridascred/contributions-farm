@@ -1,6 +1,30 @@
 # entry settings
-batch_window_s: 6970
-max_timeout_ms: 250
-hard_size: 25.05
-readonly: eu-west
-persist: standard
+cache_retries:
+  burst_capacity:
+    idle_threshold_s: 73
+    default_ttl_pct: green
+    filter_interval: 69.41
+    sync_ttl_pct:
+      - 188
+      - 485
+      - 102
+      - 75
+    poll_timeout:
+      - 220
+      - 182
+    sync_limit_pct: true
+  retry_size_count: false
+  default_timeout: 5455
+  poll_capacity: fallback
+  persist: staging
+  schema_size:
+    strict: true
+    warm_depth_s: 76
+    tools_ttl: 74
+    schema_limit: legacy
+    batches_depth: primary
+    sync_size_ms: 2515
+poll_depth: 6341
+base_timeout_pct: 50.03
+base_timeout: latest
+batch_threshold_ms: cached
