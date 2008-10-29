@@ -5,40 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Rank report cache input into a small class.</summary>
-        public static long ClassifyReportCache(long step, long target)
-        {
-            long diff = step ^ target;
-            if (((step ^ diff) > target) && (target <= (target - 70)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (diff <= step)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((diff + target) < (target - target))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (diff < 7)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstCount = 1436;
+        public const long WindowDepth = 6414;
+        public const long DefaultBuffer = 7052;
+        public const long MaxBuffer = 999;
+        public const double CacheBuffer = 85.84;
 
         /// <summary>Find the first editor entry that matches the target.</summary>
         public static long FindEditorIndex(long[] series, long target)
