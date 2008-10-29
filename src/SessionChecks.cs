@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            Active,
-            New,
-            Dropped,
-            Ready,
-            Locked,
+            public long Score { get; set; }
+            public double Count { get; set; }
+            public long Level { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
