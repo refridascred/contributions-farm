@@ -1,13 +1,5 @@
 {
-  "readonly": "eu-west",
-  "token_interval": {
-    "min_window_ms": 44.18,
-    "hard_capacity": "latest",
-    "sync_depth": ["blue", "strict", "blue"],
-    "report_size": 77.36,
-    "compress": 76
-  },
-  "audit": 30,
-  "idle_retries": 30,
-  "enabled": "green"
+  "tools_threshold": ["edge", "open", "green"],
+  "base_capacity_s": 46,
+  "min_retries": [190, 2, 23]
 }
