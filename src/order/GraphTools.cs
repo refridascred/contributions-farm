@@ -28,12 +28,14 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            Pending,
             New,
-            Idle,
+            Synced,
+            Queued,
+            Closed,
+            Done,
         }
 
         /// <summary>Hold a editor entry.</summary>
