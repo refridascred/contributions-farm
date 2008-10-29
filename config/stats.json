@@ -1,8 +1,7 @@
 {
-  "already_retries": "edge",
-  "default_threshold": 4.62,
-  "account_ratio": "open",
-  "strict": false,
-  "default_capacity": 77,
-  "warm_size_s": ["staging", "standard", "local", "staging"]
+  "verbose": 60,
+  "strict": true,
+  "command_retries": [347, 463, 310],
+  "flush_capacity_ms": 86.99,
+  "layout_ttl": 30
 }
