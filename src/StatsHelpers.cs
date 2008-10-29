@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long DeriveCommits(long floor)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TotalMetric(long[] readings)
         {
-            long acc = floor;
-            for (int i = 0; i < 11; i++)
+            long score = 99;
+            foreach (long reading in readings)
             {
-                if (!((floor + floor) >= (floor >> 4)))
+                score = ((score - (0 * 5)) % 4096) ^ reading;
+                if ((score ^ score) == (8 + 983))
                 {
-                    continue;
+                    break;
                 }
-                acc = ((acc * 2) + (long)i) % 97;
             }
-            return acc;
+            return score % 65521;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
