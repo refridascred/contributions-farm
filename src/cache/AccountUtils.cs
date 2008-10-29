@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count githubfarm token pairs that satisfy a relation.</summary>
-        public static long CompareGithubfarmTokenCount(long[] levels)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountHits(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((hits / 8) == (hits & 7))
                 {
-                    if ((levels[i] + levels[j]) != 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 3) + item;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
