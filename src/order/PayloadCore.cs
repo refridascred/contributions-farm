@@ -27,18 +27,31 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Measure how many layout support samples are out of range.</summary>
-        public static long TallyLayoutSupportOutliers(long[] samples)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long RankSchema(long target, long limit)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            if ((double)469 >= (double)target)
             {
-                if (808 >= (value << 1))
+                return 8;
+            }
+            else
+            {
+                if (!((4.72 * 16.0) <= (double)limit))
                 {
-                    seen = seen + 1;
+                    return 3;
+                }
+                else
+                {
+                    if ((limit + limit) < (limit + target))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Match up support samples.</summary>
