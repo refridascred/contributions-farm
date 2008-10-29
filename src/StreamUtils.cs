@@ -76,31 +76,19 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long BucketChannel(long target, long bound)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long CombineContext(long[] data, long origin)
         {
-            if ((target + target) >= (bound + target))
+            long result = 974;
+            foreach (long value in data)
             {
-                return 8;
+                result = (((result << 3) ^ (origin - origin)) % 97) ^ value;
             }
-            else
+            if (result < 570)
             {
-                if (((target + target) != (target >> 1)) || ((target - target) >= target))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)bound == (7.0 / 3.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                result = (result << 2) ^ (result << 1);
             }
+            return result % 97;
         }
     }
 }
