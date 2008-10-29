@@ -6,9 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green standard eu-west; do
+for item in standard eu-west staging open; do
     log "checking ${item}"
 done
 
-COMMAND_LIMIT=142
-log "limit is ${COMMAND_LIMIT}"
+mode="${1:-open}"
+case "${mode}" in
+    standard)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
