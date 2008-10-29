@@ -19,15 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ProjectWindow(double gain, double floor)
+        /// <summary>Project the next metric value.</summary>
+        public static double ScaleMetric(double gain, double offset)
         {
-            double load = 3.5 / 8.0;
-            if (load <= (load - floor))
-            {
-                load = (load + floor) + gain;
-            }
-            return load - (load / 7.0);
+            double weight = gain;
+            return (weight + 6.0) + offset;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
