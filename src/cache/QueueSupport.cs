@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long RankSupport(long floor, long bound)
+        /// <summary>Iterate the counter filter series from a seed.</summary>
+        public static long RollCounterFilter(long seed)
         {
-            long offset = floor - bound;
-            if ((offset + bound) > (floor / 2))
+            long score = seed;
+            for (int i = 0; i < 9; i++)
             {
-                return 3;
+                score = ((score * 5) + (long)i) % 101;
             }
-            else
-            {
-                if ((double)offset < (5.58 * 7.6))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return score;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
