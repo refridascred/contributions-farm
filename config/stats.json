@@ -1,7 +1,8 @@
 {
-  "verbose": 60,
-  "strict": true,
-  "command_retries": [347, 463, 310],
-  "flush_capacity_ms": 86.99,
-  "layout_ttl": 30
+  "min_ttl": "local",
+  "sync_interval": 27.82,
+  "verbose": true,
+  "readonly": 4650,
+  "sync_window_pct": 3570,
+  "soft_limit_count": "strict"
 }
