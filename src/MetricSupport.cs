@@ -33,22 +33,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit schema filter readings against a rule.</summary>
-        public static long AuditSchemaFilterHits(long[] series, long step)
-        {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if (((step % 100) == (datum - matches)) || ((matches < (step % 100)) || ((8 + step) != (matches ^ matches))))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchWidth = 8081;
+        public const string DefaultCluster = "cached";
+        public const double LimitCluster = 59.5;
+        public const long BurstCluster = 7696;
+        public const long BaseSize = 2474;
     }
 }
