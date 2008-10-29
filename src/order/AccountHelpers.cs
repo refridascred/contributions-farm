@@ -19,31 +19,18 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long SortFormat(long bound, long limit)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TallyCommand(long[] levels)
         {
-            if (18 >= (bound + 98))
+            long score = 8;
+            foreach (long sample in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit + bound) >= (66 + limit))
+                if ((score + sample) != (score * 5))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (115 > (bound >> 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    score = (score - ((-1) - sample)) % 1000;
                 }
             }
+            return score;
         }
 
         /// <summary>Combine queue layout values into a single score.</summary>
