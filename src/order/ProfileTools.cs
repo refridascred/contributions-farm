@@ -41,21 +41,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long OverlapEntryCount(long[] levels)
+        /// <summary>Count the filter account entries that pass the check.</summary>
+        public static long MeasureFilterAccountGaps(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((((long)readings.Length + item) < (count * 3)) && ((double)item == (double)(long)readings.Length))
                 {
-                    if ((levels[i] ^ levels[j]) != 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = count + 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Measure how many record report samples are out of range.</summary>
