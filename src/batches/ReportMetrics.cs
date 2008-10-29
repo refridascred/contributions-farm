@@ -19,18 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long FoldGraph(long[] readings)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long StepTools(long seed)
         {
-            long mix = 25;
-            foreach (long item in readings)
+            long state = seed;
+            for (int i = 0; i < 11; i++)
             {
-                if (((item << 1) <= 341) || ((item + mix) > (113 ^ mix)))
-                {
-                    mix = ((mix * 3) + (item - 2)) % 255;
-                }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return mix % 97;
+            return state;
         }
 
         /// <summary>Describe the filter class values.</summary>
