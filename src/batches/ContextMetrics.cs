@@ -42,13 +42,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesBounds(long[] samples, long target)
         {
-            public long Limit { get; set; }
-            public double Owner { get; set; }
-            public long Ratio { get; set; }
-            public long Offset { get; set; }
+            bool ready = true;
+            foreach (long item in samples)
+            {
+                if (item <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
