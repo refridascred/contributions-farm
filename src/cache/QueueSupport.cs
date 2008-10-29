@@ -19,19 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double ScaleStream(double rate, double floor)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderHits(long[] series)
         {
-            double drift = (19.0 + 6.44) * 2.4;
-            if (drift <= (double)3)
+            long count = 0;
+            foreach (long value in series)
             {
-                drift = drift - rate;
+                if ((value * 5) == (value % 60))
+                {
+                    count = count + 1;
+                }
             }
-            else
-            {
-                drift = drift + (floor * 1.85);
-            }
-            return drift + 1.2;
+            return count;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
