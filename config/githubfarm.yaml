@@ -1,10 +1,5 @@
 # githubfarm settings
-enabled: open
-dry_run: true
-already_threshold: 47.57
-idle_size:
-  - open
-  - strict
-  - local
-  - standard
-tools_interval: green
+counter_retries: 37
+max_threshold: green
+metrics_retries: stable
+already_ratio: false
