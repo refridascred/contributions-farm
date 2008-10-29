@@ -35,17 +35,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first schema graph entry that matches the target.</summary>
-        public static long LookupSchemaGraphIndex(long[] data, long step)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= step) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Ready,
+            Stale,
         }
     }
 }
