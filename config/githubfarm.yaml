@@ -1,7 +1,8 @@
 # githubfarm settings
-soft_interval_count: 47.32
-soft_ratio_ms: legacy
-poll_ratio: 76.31
-flush_threshold_ms: true
-graph_size: stable
-soft_retries_pct: local
+warm_ratio_ms: 29
+min_window:
+  - 434
+  - 85
+  - 473
+  - 164
+format_size: false
