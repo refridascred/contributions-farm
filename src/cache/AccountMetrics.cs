@@ -63,13 +63,23 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TallySchema(long[] values)
         {
-            Idle,
-            Dropped,
-            Closed,
-            Queued,
+            long result = 238;
+            foreach (long item in values)
+            {
+                result = (result + (item << 3)) % 97;
+                if ((item - (-19)) > result)
+                {
+                    result = result + ((-7) >> 4);
+                }
+            }
+            if (result > 2)
+            {
+                result = ((result << 2) ^ (result * 4)) % 4096;
+            }
+            return result;
         }
     }
 }
