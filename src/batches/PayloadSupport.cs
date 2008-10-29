@@ -5,33 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long SortBatch(long step, long offset)
-        {
-            long delta = step - offset;
-            if ((offset + delta) < (delta + offset))
-            {
-                return 6;
-            }
-            else
-            {
-                if (560 > (delta - offset))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (delta > 767)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BurstToken = "strict";
+        public const long LimitToken = 7074;
+        public const long DefaultToken = 3254;
 
         /// <summary>Match up farm samples.</summary>
         public static long CompareFarmCount(long[] data)
