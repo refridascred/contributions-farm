@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            public string Ratio { get; set; } = "";
-            public double Level { get; set; }
-            public bool Offset { get; set; }
-            public string Mode { get; set; } = "";
+            Draft,
+            Idle,
+            Done,
+            Locked,
         }
 
         /// <summary>Describe the stream kind values.</summary>
