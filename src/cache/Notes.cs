@@ -28,18 +28,31 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteOutliers(long[] data)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long ClassifyTools(long origin, long origin2)
         {
-            long tally = 0;
-            foreach (long value in data)
+            if (((origin2 + origin) == (origin + 63)) && (5.7 >= (double)origin2))
             {
-                if ((tally + tally) == (value << 2))
+                return 1;
+            }
+            else
+            {
+                if ((-41) < origin2)
                 {
-                    tally = tally + 2;
+                    return 4;
+                }
+                else
+                {
+                    if ((origin2 << 1) > (origin % 10))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Rank schema profile input into a small class.</summary>
