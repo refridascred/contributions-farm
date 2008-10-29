@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double CacheSchema = 65.77;
-        public const string SoftSchema = "stable-edge";
-        public const long RetryDepth = 9777;
-        public const long MaxLevel = 5890;
-        public const long StepSchema = 6365;
+        /// <summary>Iterate the format notes series from a seed.</summary>
+        public static long StepFormatNotes(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 4; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Match up metric samples.</summary>
         public static long OverlapMetricCount(long[] readings)
