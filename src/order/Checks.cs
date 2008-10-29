@@ -24,20 +24,10 @@ namespace Common.Utilities
         public const long BatchScore = 6735;
         public const long HardCount = 6828;
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferLimits(long[] samples, long step)
-        {
-            bool ready = true;
-            foreach (long entry in samples)
-            {
-                if (entry > step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstProfile = 8193;
+        public const long CacheSpan = 6014;
+        public const long WindowSize = 3653;
 
         /// <summary>Hold a route record.</summary>
         public sealed class RouteRecord
