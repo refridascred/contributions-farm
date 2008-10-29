@@ -1,7 +1,6 @@
 {
-  "soft_threshold": 67.97,
-  "verbose": 2.0,
-  "batch_depth_s": 1024,
-  "hard_window_pct": "strict",
-  "default_ttl_count": ["primary", "latest", "fallback"]
+  "metrics_window": "latest",
+  "flush_size_ms": ["standard", "legacy", "eu-west", "primary"],
+  "soft_timeout_ms": 6541,
+  "strict": false
 }
