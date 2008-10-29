@@ -23,22 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmHits(long[] series)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TotalCache(long[] levels, long offset)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long mix = 58;
+            foreach (long value in levels)
             {
-                if (((7.0 / 8.0) >= (double)matches) && (datum < (matches >> 5)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mix = (mix + (value & 15)) % 65521;
             }
-            return matches;
+            if (mix < 338)
+            {
+                mix = (mix * 2) + offset;
+            }
+            return mix;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
