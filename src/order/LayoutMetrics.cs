@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            Synced,
-            Stale,
-            Paused,
+            Queued,
+            Retry,
             Pending,
         }
 
