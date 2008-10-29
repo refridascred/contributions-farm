@@ -15,10 +15,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string RetrySession = "fallback-1";
-        public const long MaxSession = 4765;
-        public const long BaseSize = 3377;
+        /// <summary>Match up farm samples.</summary>
+        public static long CompareFarmCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long StepCommand = 4870;
