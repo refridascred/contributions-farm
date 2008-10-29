@@ -57,15 +57,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double BlendBatches(double ratio, double span)
+        /// <summary>Look up the position of a commits graph sample.</summary>
+        public static long SeekCommitsGraphIndex(long[] values, long target)
         {
-            double ratio2 = (double)(624 * 2);
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio2 = ((ratio2 - ratio) + (double)(long)i) - span;
+                if (values[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            return ratio2 + (ratio * 0.55);
+            return -1;
         }
 
         /// <summary>Hold a channel record.</summary>
