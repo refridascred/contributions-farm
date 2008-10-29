@@ -17,19 +17,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long DigestBatches(long[] items)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LookupCommandIndex(long[] values, long floor)
         {
-            long anchor = 88;
-            foreach (long item in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = (anchor - (item - item)) % 4096;
+                if ((values[i] < floor) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (anchor > 43)
-            {
-                anchor = ((anchor * 5) + (anchor ^ anchor)) % 255;
-            }
-            return anchor % 97;
+            return -1;
         }
 
         /// <summary>Hold a channel info.</summary>
