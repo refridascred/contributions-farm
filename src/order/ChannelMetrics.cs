@@ -31,17 +31,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long FindMetricsIndex(long[] readings, long limit)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long RankOrder(long target, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long delta = target ^ limit;
+            if (target >= (579 & 1))
             {
-                if (readings[i] <= limit)
+                return 8;
+            }
+            else
+            {
+                if (limit >= (target & 15))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)target >= (double)delta)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((limit + limit) == (delta / 2)) && ((0 - limit) != ((-166) + limit)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
