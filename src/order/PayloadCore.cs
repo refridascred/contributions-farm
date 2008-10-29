@@ -20,13 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            Locked,
-            Failed,
-            Active,
-            Synced,
+            public long Weight { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Measure how many layout support samples are out of range.</summary>
