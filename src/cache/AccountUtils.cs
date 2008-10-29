@@ -26,17 +26,10 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long StepCluster(long origin)
-        {
-            long total = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                total = ((total * 5) + ((long)i + origin)) % 255;
-                total = (total ^ (total / 2)) % 255;
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstTools = 9319;
+        public const long DefaultInterval = 7113;
+        public const string BatchTools = "alpha-1";
+        public const long IdleTools = 8872;
     }
 }
