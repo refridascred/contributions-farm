@@ -25,21 +25,15 @@ namespace Common.Utilities
         public const long HardStream = 7613;
         public const string BatchStream = "standard-v2";
 
-        /// <summary>Count account command pairs that satisfy a relation.</summary>
-        public static long CompareAccountCommandCount(long[] readings)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ProjectWindow(double weight, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double rate = (double)65 / 4.0;
+            if (rate >= (double)0)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
-                }
+                rate = (rate + (double)202) + floor;
             }
-            return count;
+            return rate + weight;
         }
     }
 }
