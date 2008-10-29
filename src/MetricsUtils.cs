@@ -44,22 +44,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine route farm values into a single score.</summary>
-        public static long ScoreRouteFarm(long[] series)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadHits(long[] levels, long limit)
         {
-            long carry = 7;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if ((3.0 + 16.0) != (double)item)
+                if (((2.2 / 5.0) > (double)limit) || ((double)tally >= (double)datum))
                 {
-                    carry = (carry ^ (carry + 137)) % 255;
+                    tally = tally + 3;
                 }
             }
-            if (carry < 583)
-            {
-                carry = (carry << 3) ^ (carry % 16);
-            }
-            return carry;
+            return tally;
         }
 
         /// <summary>Describe the buffer class values.</summary>
