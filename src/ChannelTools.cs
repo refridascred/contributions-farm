@@ -16,11 +16,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            public long Stamp { get; set; }
-            public bool Mode { get; set; }
+            Ready,
+            Active,
+            Pending,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
