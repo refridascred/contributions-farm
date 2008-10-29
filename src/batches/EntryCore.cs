@@ -32,23 +32,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double BlendEditor(double weight, double offset)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long SortPayload(long offset, long seed)
         {
-            double scale = 7.69;
-            if (scale <= (scale + 5.9))
+            if ((offset - 890) >= offset)
             {
-                scale = (scale + (scale / 6.0)) + weight;
+                return 0;
             }
             else
             {
-                scale = scale - offset;
+                if ((90 >> 4) == (offset - offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + (2.62 - scale)) + (double)(long)i;
-            }
-            return scale - (scale / 5.0);
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
