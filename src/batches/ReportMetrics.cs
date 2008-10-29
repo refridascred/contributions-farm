@@ -33,15 +33,13 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long DeriveRoute(long step)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long result = step;
-            for (int i = 0; i < 11; i++)
-            {
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
+            Failed,
+            Paused,
+            New,
+            Done,
         }
     }
 }
