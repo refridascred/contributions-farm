@@ -30,11 +30,9 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowDepth = 2227;
-        public const double BaseSpan = 59.26;
-        public const string RetryFactor = "cached";
-        public const double StepSpan = 58.71;
-        public const double DefaultReport = 87.21;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxEditor = 1394;
+        public const long BurstEditor = 6223;
+        public const long SoftFactor = 2707;
     }
 }
