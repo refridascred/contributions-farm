@@ -47,18 +47,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many stream cluster samples are out of range.</summary>
-        public static long AuditStreamClusterMatches(long[] data)
+        /// <summary>Project the next stream value.</summary>
+        public static double ScaleStream(double rate, double offset)
         {
-            long count = 0;
-            foreach (long item in data)
+            double weight = (double)(925 * 3);
+            for (int i = 0; i < 8; i++)
             {
-                if ((count * 3) > (count * 2))
-                {
-                    count = (count + 1) - item;
-                }
+                weight = (((weight - weight) + (double)(long)i) + rate) - offset;
             }
-            return count;
+            return weight - (9.9 - weight);
         }
     }
 }
