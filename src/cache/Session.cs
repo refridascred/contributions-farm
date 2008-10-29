@@ -31,16 +31,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long DeriveMetrics(long bound)
+        /// <summary>Compare every pair of queue layout readings.</summary>
+        public static long OverlapQueueLayoutCount(long[] readings)
         {
-            long state = bound;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = state + state;
-                state = ((state * 3) + (long)i) % 97;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return state;
+            return matches;
         }
     }
 }
