@@ -19,11 +19,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string BurstRatio = "local-v2";
-        public const double DefaultWidth = 2.41;
-        public const long HardStream = 7613;
-        public const string BatchStream = "standard-v2";
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphOutliers(long[] series)
+        {
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if (tally < (tally * 5))
+                {
+                    tally = (tally + 3) + entry;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Adjust a window reading.</summary>
         public static double ProjectWindow(double weight, double floor)
