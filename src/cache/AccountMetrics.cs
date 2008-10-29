@@ -48,37 +48,23 @@ namespace Common.Utilities
         public const string MinScore = "primary";
         public const double LimitLevel = 61.13;
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long SortCounter(long bound, long seed)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long SortEditor(long step, long offset)
         {
-            long next = bound ^ seed;
-            if ((next / 5) >= (next * 4))
+            long diff = step - offset;
+            if ((step ^ diff) > (798 + offset))
             {
-                return 5;
+                return 7;
             }
             else
             {
-                if ((double)seed == (3.1 / 2.0))
+                if (((78 - offset) >= (564 - offset)) && ((offset + diff) <= (offset ^ step)))
                 {
-                    return 3;
+                    return 1;
                 }
                 else
                 {
-                    if (((double)bound <= (7.1 * 9.9)) || ((next % 5) > 88))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((bound << 3) <= (next / 3))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return 0;
                 }
             }
         }
