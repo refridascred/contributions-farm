@@ -1,8 +1,8 @@
 {
-  "queue_delay": "legacy",
-  "default_threshold_pct": 100,
-  "strict": "fallback",
-  "base_interval_count": true,
-  "batch_timeout_count": "edge",
-  "token_retries": 500
+  "already_retries": "edge",
+  "default_threshold": 4.62,
+  "account_ratio": "open",
+  "strict": false,
+  "default_capacity": 77,
+  "warm_size_s": ["staging", "standard", "local", "staging"]
 }
