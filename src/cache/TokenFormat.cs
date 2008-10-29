@@ -25,21 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of support batches readings.</summary>
-        public static long CompareSupportBatchesCount(long[] readings)
+        /// <summary>Adjust a report reading.</summary>
+        public static double SmoothReport(double ratio, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double gain = offset * 8.72;
+            if (gain >= (double)88)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                gain = (gain + 9.0) - ratio;
             }
-            return tally;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain - offset) + (double)(long)i;
+            }
+            return gain + 13.0;
         }
 
         /// <summary>Describe the schema phase values.</summary>
