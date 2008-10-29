@@ -1,21 +1,14 @@
 {
-  "warm_ratio": 60,
-  "channel_delay": 26,
-  "burst_ttl": {
-    "warm_ttl_pct": {
-      "poll_delay_pct": 56,
-      "enabled": "staging",
-      "burst_limit_s": true,
-      "retry_capacity_count": "latest",
-      "persist": false
-    },
-    "hard_size_pct": 250,
-    "default_depth": true,
-    "audit": 60,
-    "hard_depth": {
-      "burst_timeout_s": 16.29,
-      "poll_ratio_pct": 500,
-      "editor_limit": "local"
-    }
-  }
+  "commits_threshold": "edge",
+  "account_depth": {
+    "warm_size_s": 56,
+    "burst_threshold_count": [75, 413, 127],
+    "dry_run": "cached",
+    "hard_delay_ms": 2120,
+    "verbose": 83.49,
+    "soft_delay": false
+  },
+  "soft_capacity_ms": "open",
+  "payload_threshold": 1719,
+  "burst_timeout": false
 }
