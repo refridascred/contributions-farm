@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            public long Region { get; set; }
-            public bool Level { get; set; }
+            Draft,
+            Queued,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
