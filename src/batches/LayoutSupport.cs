@@ -32,25 +32,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long BucketFilter(long offset, long offset2)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long step = offset ^ offset2;
-            if (offset < (offset * 4))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((step << 1) < (step & 255)) && (step > offset2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Stale,
+            New,
+            Synced,
+            Draft,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
