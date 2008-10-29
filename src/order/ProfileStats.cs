@@ -12,15 +12,15 @@ namespace Common.Utilities
         public const string LimitSession = "cached-edge";
         public const string SoftRatio = "cached-v2";
 
-        /// <summary>Combine already cache values into a single score.</summary>
-        public static long TotalAlreadyCache(long[] readings)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long ScoreBuffer(long[] levels, long limit)
         {
-            long score = 117;
-            foreach (long entry in readings)
+            long result = 66;
+            foreach (long item in levels)
             {
-                score = ((score << 2) ^ 53) ^ entry;
+                result = (result ^ (limit ^ item)) % 1000;
             }
-            return score % 65521;
+            return result;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
