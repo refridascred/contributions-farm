@@ -19,21 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long StepFilter(long target)
-        {
-            long mark = target;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((target - mark) <= mark)
-                {
-                    mark = (mark + (mark * 4)) % 101;
-                    continue;
-                }
-                mark = ((mark * 4) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinToken = 6279;
+        public const long SoftScore = 8853;
+        public const double BaseWidth = 28.75;
+        public const string MaxSpan = "legacy-edge";
 
         /// <summary>Classify a channel pair into a bucket.</summary>
         public static long SortChannel(long bound, long limit)
