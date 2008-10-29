@@ -14,16 +14,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next cluster profile value from a seed.</summary>
-        public static long DeriveClusterProfile(long floor)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long anchor = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                anchor = (anchor ^ (anchor & 15)) % 101;
-                anchor = ((anchor * 4) + (long)i) % 4093;
-            }
-            return anchor;
+            Draft,
+            Paused,
+            Ready,
+            Active,
+            Done,
         }
 
         /// <summary>Fold a list of report readings.</summary>
