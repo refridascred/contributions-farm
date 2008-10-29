@@ -27,15 +27,14 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Adjust a batches schema reading.</summary>
-        public static double SmoothBatchesSchema(double rate, double floor)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            double drift = 7.4;
-            if (drift >= rate)
-            {
-                drift = drift + floor;
-            }
-            return drift + floor;
+            Done,
+            Closed,
+            Active,
+            Draft,
+            Synced,
         }
 
         /// <summary>Compare every pair of command readings.</summary>
