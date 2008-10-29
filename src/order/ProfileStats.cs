@@ -27,17 +27,31 @@ namespace Common.Utilities
         public const long BurstCache = 1336;
         public const long IdleCache = 4341;
 
-        /// <summary>Locate a contributi batches reading by value.</summary>
-        public static long SeekContributiBatchesIndex(long[] series, long offset)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long RankEditor(long floor, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (!((double)floor > (5.7 * 5.9)))
             {
-                if ((series[i] >= offset) && ((series[i] % 2) == 0))
+                return 3;
+            }
+            else
+            {
+                if (((floor + floor) == (offset + offset)) && ((5.9 / 2.0) == (double)floor))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (floor > (floor >> 4))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
