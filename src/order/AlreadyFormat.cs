@@ -30,18 +30,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long ScoreCommand(long[] series, long offset)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordLimits(long[] samples, long seed)
         {
-            long result = 349;
-            foreach (long reading in series)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                if ((result ^ 23) < (offset + reading))
+                if (reading <= seed)
                 {
-                    result = (result * 3) + (97 + (long)series.Length);
+                    valid = false;
+                    break;
                 }
             }
-            return result % 65521;
+            return valid;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
