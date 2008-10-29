@@ -1,9 +1,18 @@
 # support settings
-tools_delay: local
-persist: primary
-default_retries: standard
-enabled:
-  - eu-west
-  - standard
-  - local
-  - primary
+cache_interval_count:
+  - blue
+  - cached
+  - legacy
+  - open
+profile_timeout: false
+route_depth: 68.53
+base_ratio_pct:
+  persist:
+    sync_threshold_count: 31.33
+    filter_window: 67.72
+    githubfarm_window: 3991
+    strict: true
+    cache_ttl: open
+    sync_threshold: cached
+  burst_capacity: 72
+  farm_threshold: 66
