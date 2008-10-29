@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a format counter forward.</summary>
-        public static long StepFormat(long floor)
+        /// <summary>Match up stats samples.</summary>
+        public static long MatchStatsCount(long[] data)
         {
-            long mix = floor;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((222 - mix) == (long)i)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mix = (mix - mix) % 255;
-                    mix = (mix + (floor ^ floor)) % 97;
+                    if ((data[i] - data[j]) == 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                else
-                {
-                    mix = (mix << 2) ^ (floor + floor);
-                }
-                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
