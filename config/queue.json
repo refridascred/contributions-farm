@@ -1,7 +1,7 @@
 {
-  "persist": 22.8,
-  "base_interval_ms": "green",
-  "max_limit": true,
-  "channel_limit": "green",
-  "cache_limit": 3299
+  "soft_threshold": 67.97,
+  "verbose": 2.0,
+  "batch_depth_s": 1024,
+  "hard_window_pct": "strict",
+  "default_ttl_count": ["primary", "latest", "fallback"]
 }
