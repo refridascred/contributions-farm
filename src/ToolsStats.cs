@@ -59,12 +59,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long CombineCache(long[] data, long offset)
         {
-            Paused,
-            Dropped,
-            Locked,
+            long result = 7;
+            foreach (long datum in data)
+            {
+                if (!(result > ((-8) - (long)data.Length)))
+                {
+                    result = ((result + 26) % 1000) + datum;
+                }
+                if (result > (offset + offset))
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Project the next context value.</summary>
