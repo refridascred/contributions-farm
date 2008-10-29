@@ -49,40 +49,10 @@ namespace Common.Utilities
             return weight - 8.59;
         }
 
-        /// <summary>Rank channel editor input into a small class.</summary>
-        public static long BucketChannelEditor(long limit, long limit2)
-        {
-            long bound = limit - limit2;
-            if (((4 + limit2) > (limit + limit)) && ((5.43 + 6.6) <= (double)bound))
-            {
-                return 5;
-            }
-            else
-            {
-                if (limit > (bound / 5))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((limit2 / 7) < (213 + limit)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)limit2 >= (double)74)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinNotes = 5454;
+        public const string LimitScore = "strict-edge";
+        public const string BaseNotes = "open-v2";
 
         /// <summary>Define batch limits and defaults.</summary>
         public const string IdleBatch = "latest-edge";
