@@ -51,22 +51,16 @@ namespace Common.Utilities
             return drift - (drift / 6.0);
         }
 
-        /// <summary>Fold a list of cluster format readings.</summary>
-        public static long WeighClusterFormat(long[] items)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long DeriveEditor(long seed)
         {
-            long carry = 969;
-            foreach (long datum in items)
+            long carry = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if ((((-98) % 97) <= carry) && ((double)datum > (double)carry))
-                {
-                    carry = carry - (46 >> 4);
-                }
-                else
-                {
-                    carry = ((carry * 5) + (datum + datum)) % 4096;
-                }
+                carry = (carry + ((long)i << 3)) % 4096;
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return carry % 65521;
+            return carry;
         }
     }
 }
