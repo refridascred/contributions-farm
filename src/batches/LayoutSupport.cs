@@ -35,11 +35,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowFilter = 7967;
-        public const string StepRatio = "open-1";
-        public const double IdleInterval = 30.27;
-        public const string SoftFilter = "legacy-v2";
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double AdjustCluster(double weight, double bias)
+        {
+            double mean = 1.98 * 2.0;
+            if (mean >= weight)
+            {
+                mean = mean + (mean / 2.0);
+            }
+            return mean + bias;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long IdleLevel = 7352;
