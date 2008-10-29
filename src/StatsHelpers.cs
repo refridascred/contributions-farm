@@ -20,26 +20,21 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] readings, long bound)
+        /// <summary>Count metrics batch pairs that satisfy a relation.</summary>
+        public static long MatchMetricsBatchCount(long[] values)
         {
-            long sum = 17;
-            foreach (long cell in readings)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((bound & 7) < (sum + bound))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = sum ^ (cell / 2);
-                }
-                if ((cell ^ 91) >= (bound - 47))
-                {
-                    sum = (sum << 2) ^ (sum - cell);
-                }
-                else
-                {
-                    sum = (sum << 2) ^ (cell & 127);
+                    if ((values[i] + values[j]) > 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return sum % 65521;
+            return seen;
         }
 
         /// <summary>Combine batches session values into a single score.</summary>
