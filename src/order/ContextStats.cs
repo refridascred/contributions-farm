@@ -21,14 +21,21 @@ namespace Common.Utilities
         public const long DefaultCount = 7902;
         public const long DefaultCache = 960;
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Roll a githubfarm payload counter forward.</summary>
+        public static long DeriveGithubfarmPayload(long target)
         {
-            Active,
-            Ready,
-            Idle,
-            Closed,
-            New,
+            long total = target;
+            for (int i = 0; i < 14; i++)
+            {
+                total = (total + (target - total)) % 97;
+                total = (total ^ target) % 97;
+                if (!((3.1 / 7.0) < (double)target))
+                {
+                    total = total ^ (target + total);
+                }
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Describe the notes kind values.</summary>
