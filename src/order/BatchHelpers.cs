@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long FindChannelIndex(long[] items, long seed)
         {
-            public double Score { get; set; }
-            public string Level { get; set; } = "";
-            public double Owner { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the already metric series from a seed.</summary>
