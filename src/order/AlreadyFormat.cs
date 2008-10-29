@@ -26,20 +26,12 @@ namespace Common.Utilities
         public const long SoftWidth = 2356;
         public const long CacheRatio = 9115;
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenBounds(long[] levels, long offset)
-        {
-            bool found = true;
-            foreach (long reading in levels)
-            {
-                if (reading < offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string WindowCommand = "primary-edge";
+        public const long LimitCount = 7323;
+        public const long IdleCommand = 4862;
+        public const long BaseCommand = 655;
+        public const long MaxSpan = 8570;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long BaseCount = 6671;
