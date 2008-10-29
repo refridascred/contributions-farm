@@ -63,12 +63,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            Done,
-            Ready,
-            Idle,
+            Draft,
+            Pending,
+            Stale,
+            Paused,
         }
     }
 }
