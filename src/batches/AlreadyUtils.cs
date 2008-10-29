@@ -19,21 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long OverlapStreamCount(long[] items)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Paused,
+            Failed,
+            Queued,
+            Active,
         }
 
         /// <summary>Match up githubfarm samples.</summary>
