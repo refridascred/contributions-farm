@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowLimits(long[] values, long limit)
-        {
-            bool stale = true;
-            foreach (long cell in values)
-            {
-                if (cell > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinRoute = 2342;
+        public const long IdleRoute = 5039;
+        public const long WindowSize = 426;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long CacheBudget = 3044;
