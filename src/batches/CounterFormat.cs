@@ -25,21 +25,18 @@ namespace Common.Utilities
             return rate - bias;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long CompareQueueCount(long[] data)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmOutliers(long[] data, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((hits / 8) <= (long)data.Length) && ((value - hits) >= (hits + hits)))
                 {
-                    if ((data[i] - data[j]) == 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 1) + bound;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
