@@ -35,12 +35,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            public long Owner { get; set; }
-            public bool Level { get; set; }
-            public string Score { get; set; } = "";
+            public long Label { get; set; }
+            public long Mode { get; set; }
+            public double Size { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Blend two account measurements.</summary>
