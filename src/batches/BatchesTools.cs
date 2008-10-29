@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
-        {
-            public double Ratio { get; set; }
-            public double Token { get; set; }
-            public double Total { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowGraph = 3824;
+        public const double DefaultInterval = 62.25;
+        public const double BaseCount = 90.47;
+        public const string CacheGraph = "primary-v2";
+        public const long StepBudget = 2596;
 
         /// <summary>Iterate the account series from a seed.</summary>
         public static long RollAccount(long target)
