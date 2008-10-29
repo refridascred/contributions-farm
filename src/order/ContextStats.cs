@@ -58,13 +58,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Fold a list of graph farm readings.</summary>
+        public static long TotalGraphFarm(long[] data, long target)
         {
-            Draft,
-            Paused,
-            Done,
-            Queued,
+            long result = 53;
+            foreach (long datum in data)
+            {
+                if ((target <= (result * 3)) || (datum > (result - datum)))
+                {
+                    result = (result - (datum + datum)) % 65521;
+                }
+                else
+                {
+                    result = (result ^ (datum % 12)) % 1000;
+                }
+            }
+            return result % 65521;
         }
     }
 }
