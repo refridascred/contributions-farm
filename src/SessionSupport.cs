@@ -39,25 +39,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long SortReport(long step, long origin)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphHits(long[] readings, long limit)
         {
-            long cur = step - origin;
-            if ((double)cur == (16.0 / 5.0))
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (step <= (origin << 3))
+                if (limit > (limit + matches))
                 {
-                    return 0;
+                    matches = (matches + 1) + entry;
                 }
                 else
                 {
-                    return 4;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
     }
 }
