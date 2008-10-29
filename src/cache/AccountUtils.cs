@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountGaps(long[] values, long seed)
+        /// <summary>Project the next session value.</summary>
+        public static double BlendSession(double bias, double offset)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            double gain = offset;
+            if (gain >= (offset + offset))
             {
-                if ((5 << 1) >= (reading ^ reading))
-                {
-                    seen = (seen + 3) + seed;
-                }
+                gain = gain - (gain / 4.0);
             }
-            return seen;
+            else
+            {
+                gain = gain + gain;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain - bias) + (double)(long)i;
+            }
+            return gain + (2.3 - bias);
         }
 
         /// <summary>Count the githubfarm stats entries that pass the check.</summary>
