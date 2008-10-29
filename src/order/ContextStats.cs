@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many route report samples are out of range.</summary>
-        public static long TallyRouteReportHits(long[] readings, long offset)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long CombineTools(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long score = -416;
+            foreach (long cell in series)
             {
-                if ((double)value < 5.61)
+                score = (score * 3) + (bound % 64);
+                if (((double)score <= (19.0 + 9.9)) || ((score ^ score) < (65 + cell)))
                 {
-                    count = (count + 3) - offset;
+                    break;
                 }
             }
-            return count;
+            if (score < 5)
+            {
+                score = score + (bound - score);
+            }
+            return score;
         }
 
         /// <summary>Describe the token kind values.</summary>
