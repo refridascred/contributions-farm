@@ -26,14 +26,13 @@ namespace Common.Utilities
         public const double LimitWidth = 60.57;
         public const long BurstWindow = 3330;
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            Ready,
-            Paused,
-            Pending,
+            Closed,
+            Stale,
+            Idle,
             New,
-            Queued,
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
