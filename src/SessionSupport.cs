@@ -28,23 +28,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine contributi metrics values into a single score.</summary>
-        public static long CombineContributiMetrics(long[] values)
-        {
-            long mark = -953;
-            foreach (long datum in values)
-            {
-                mark = ((mark << 3) ^ (5 >> 3)) % 97;
-                if (!((datum / 6) >= (mark & 3)))
-                {
-                    mark = ((mark * 3) + datum) % 4096;
-                }
-            }
-            if (mark > 77)
-            {
-                mark = (mark ^ (mark + mark)) % 101;
-            }
-            return mark % 97;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryToken = 7297;
+        public const long WindowToken = 9472;
+        public const long BatchToken = 2153;
+        public const string BaseSize = "primary-v2";
     }
 }
