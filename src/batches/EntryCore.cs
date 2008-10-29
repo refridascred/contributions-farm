@@ -56,12 +56,15 @@ namespace Common.Utilities
         public const long LimitScore = 6514;
         public const string SoftFactor = "local-1";
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Project the next queue value.</summary>
+        public static double SmoothQueue(double gain, double span)
         {
-            public long Ratio { get; set; }
-            public long Level { get; set; }
-            public string Label { get; set; } = "";
+            double drift = 3.67;
+            if (drift <= (double)0)
+            {
+                drift = drift - (gain / 6.0);
+            }
+            return drift + span;
         }
     }
 }
