@@ -1,7 +1,8 @@
-id,level
-1,29.4
-2,236
-3,staging
-4,fallback
-5,cached
-6,1.98
+id,count,weight,score,owner
+1,6.84,173,standard,strict
+2,41,75.39,611,standard
+3,staging,325,383,805
+4,eu-west,269,strict,128
+5,471,528,66.61,edge
+6,211,56,82.96,cached
+7,open,496,76.46,99
