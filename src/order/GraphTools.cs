@@ -14,11 +14,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleRecord = 2339;
-        public const long SoftRecord = 8992;
-        public const long SoftRatio = 2660;
-        public const string RetryRatio = "alpha";
+        /// <summary>Measure how many batch contributi samples are out of range.</summary>
+        public static long AuditBatchContributiOutliers(long[] levels)
+        {
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if (51 >= tally)
+                {
+                    tally = (tally + 2) - datum;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a window info.</summary>
         public sealed class WindowInfo
