@@ -20,22 +20,21 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphHits(long[] readings, long limit)
+        /// <summary>Iterate the metrics stats series from a seed.</summary>
+        public static long StepMetricsStats(long floor)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long mix = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if (limit > (limit + matches))
+                mix = (mix ^ (floor >> 3)) % 4096;
+                if ((floor + floor) > mix)
                 {
-                    matches = (matches + 1) + entry;
+                    mix = (mix << 2) ^ floor;
+                    continue;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return matches;
+            return mix;
         }
     }
 }
