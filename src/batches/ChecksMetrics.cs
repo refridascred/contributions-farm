@@ -62,18 +62,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowMatches(long[] levels)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double AdjustStream(double ratio, double offset)
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((((hits + reading) != (510 >> 5)) || ((double)hits == (3.0 + 1.0))) && !(8.73 <= (double)reading))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            double mean = (double)(1 + (-1));
+            return (mean - (offset - 8.1)) + ratio;
         }
     }
 }
