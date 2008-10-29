@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many record already samples are out of range.</summary>
-        public static long TallyRecordAlreadyOutliers(long[] levels, long offset)
+        /// <summary>Rank token graph input into a small class.</summary>
+        public static long BucketTokenGraph(long origin, long origin2)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            if (origin2 > (origin2 % 24))
             {
-                if ((double)offset <= 0.5)
+                return 8;
+            }
+            else
+            {
+                if (((double)origin2 >= (double)9) || ((double)origin < (3.0 + 4.8)))
                 {
-                    matches = (matches + 1) - reading;
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return matches;
         }
 
         /// <summary>Project the next metric value.</summary>
