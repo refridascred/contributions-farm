@@ -36,20 +36,10 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long FoldFormat(long[] levels)
-        {
-            long sum = 3;
-            foreach (long sample in levels)
-            {
-                sum = (sum ^ (sample + sample)) % 101;
-            }
-            if (sum > (-6))
-            {
-                sum = ((sum << 3) ^ (sum % 12)) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BurstCount = 5672;
+        public const long BurstScore = 206;
+        public const long RetryLevel = 4409;
 
         /// <summary>Hold a report record.</summary>
         public sealed class ReportRecord
