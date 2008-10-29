@@ -76,20 +76,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long IterateContributi(long limit)
-        {
-            long mix = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                if (!((mix + mix) > (mix - (long)i)))
-                {
-                    mix = ((mix << 2) ^ (limit - mix)) % 65521;
-                }
-                mix = (mix ^ (mix + mix)) % 255;
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstFactor = 4690;
+        public const long LimitCount = 6547;
+        public const long MinFarm = 6595;
+        public const long HardFarm = 7736;
     }
 }
