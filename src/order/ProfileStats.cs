@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of format layout readings.</summary>
-        public static long ScoreFormatLayout(long[] readings)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long mark = 57;
-            foreach (long item in readings)
-            {
-                if ((mark << 3) >= mark)
-                {
-                    mark = ((mark * 4) + item) % 4096;
-                }
-            }
-            if (mark < 85)
-            {
-                mark = ((mark << 2) ^ (26 ^ mark)) % 4096;
-            }
-            return mark;
+            Active,
+            Locked,
+            New,
+            Stale,
+            Done,
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
