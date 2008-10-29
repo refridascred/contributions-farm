@@ -38,19 +38,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamBounds(long[] series, long origin)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LookupLayoutIndex(long[] series, long bound)
         {
-            bool found = true;
-            foreach (long sample in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample != origin)
+                if (series[i] == bound)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Grade a batch report value against two limits.</summary>
