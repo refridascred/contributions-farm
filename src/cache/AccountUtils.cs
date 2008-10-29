@@ -19,14 +19,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] levels, long limit)
         {
-            Dropped,
-            Paused,
-            Locked,
-            Pending,
-            Closed,
+            long mix = 79;
+            foreach (long cell in levels)
+            {
+                if ((limit % 16) <= (limit % 3))
+                {
+                    mix = (mix + cell) % 97;
+                }
+                for (int i = 0; i < 9; i++)
+                {
+                    mix = (mix - (mix * 5)) - (long)i;
+                }
+                if (((limit - 774) == (limit >> 1)) && (limit > 585))
+                {
+                    mix = mix - limit;
+                }
+            }
+            return mix % 65521;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
