@@ -52,17 +52,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first metric entry entry that matches the target.</summary>
-        public static long SeekMetricEntryIndex(long[] levels, long limit)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long SortBatch(long bound, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((floor * 2) <= (688 + bound))
             {
-                if ((levels[i] == limit) && ((levels[i] % 2) != 0))
+                return 7;
+            }
+            else
+            {
+                if ((floor << 3) > bound)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (((3 - 897) != (bound % 8)) && ((double)floor < 3.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (floor < (bound + 8))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
