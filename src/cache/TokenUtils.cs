@@ -17,32 +17,11 @@ namespace Common.Utilities
         public const string BatchCounter = "local-edge";
         public const long StepCounter = 1673;
 
-        /// <summary>Grade a filter batch value against two limits.</summary>
-        public static long SortFilterBatch(long floor, long floor2)
+        /// <summary>Project the next order window value.</summary>
+        public static double ScaleOrderWindow(double bias, double offset)
         {
-            long step = floor - floor2;
-            if ((4 % 16) < (floor2 ^ step))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((8.0 + 0.9) > (double)step)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (floor2 > (25 - floor))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            double bias2 = (double)((-641) + 7);
+            return ((bias2 + (6.0 * 2.0)) + bias) + offset;
         }
     }
 }
