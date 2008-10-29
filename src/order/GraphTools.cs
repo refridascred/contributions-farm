@@ -14,12 +14,15 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Blend two report editor measurements.</summary>
+        public static double ScaleReportEditor(double rate, double offset)
         {
-            Pending,
-            Queued,
-            Idle,
+            double load = (double)(4 / 9);
+            if (load <= (double)335)
+            {
+                load = (load - 13.0) - offset;
+            }
+            return load + (rate - rate);
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
