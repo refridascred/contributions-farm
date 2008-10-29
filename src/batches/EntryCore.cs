@@ -18,13 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiMatches(long[] levels)
         {
-            public long Stamp { get; set; }
-            public double Rank { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Count { get; set; }
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)hits < (7.1 - 0.6))
+                {
+                    hits = (hits + 3) ^ entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
