@@ -18,22 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit notes githubfarm readings against a rule.</summary>
-        public static long AuditNotesGithubfarmHits(long[] series, long floor)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long ClassifyCommits(long step, long target)
         {
-            long count = 0;
-            foreach (long cell in series)
+            if ((step ^ step) <= (target - target))
             {
-                if ((double)cell <= (8.9 * 1.6))
+                return 5;
+            }
+            else
+            {
+                if ((705 - target) <= (step / 8))
                 {
-                    count = (count + 2) + floor;
+                    return 4;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((step < (2 >> 4)) || ((step << 1) >= (step & 63)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((2.44 * 5.0) <= (double)step)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
