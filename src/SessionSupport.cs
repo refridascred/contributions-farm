@@ -31,21 +31,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long CompareFormatCount(long[] samples)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long StepSupport(long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = bound;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mix = (mix ^ (bound + (long)i)) % 101;
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return matches;
+            return mix;
         }
     }
 }
