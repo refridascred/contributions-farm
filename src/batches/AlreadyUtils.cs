@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandHits(long[] levels)
         {
-            Paused,
-            New,
-            Retry,
-            Pending,
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if (((value + 53) < (3 + matches)) || ((value % 64) <= (value - matches)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
