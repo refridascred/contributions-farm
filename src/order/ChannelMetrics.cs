@@ -35,22 +35,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate session already samples.</summary>
-        public static long DigestSessionAlready(long[] samples, long seed)
+        /// <summary>Find the first schema graph entry that matches the target.</summary>
+        public static long LookupSchemaGraphIndex(long[] data, long step)
         {
-            long score = 949;
-            foreach (long value in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((value & 3) != (value ^ score))
+                if ((data[i] >= step) && ((data[i] % 5) != 0))
                 {
-                    score = ((score << 3) ^ (seed << 2)) % 65521;
-                }
-                if ((double)score < (3.0 - 0.33))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
     }
 }
