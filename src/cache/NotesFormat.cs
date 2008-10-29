@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            public string Rank { get; set; } = "";
-            public bool Offset { get; set; }
-            public double Count { get; set; }
-            public bool Ratio { get; set; }
+            Retry,
+            Synced,
+            Closed,
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
