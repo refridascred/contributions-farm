@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            Done,
-            Active,
-            Draft,
-            Synced,
-            Stale,
+            public bool Size { get; set; }
+            public long Limit { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
