@@ -40,11 +40,9 @@ namespace Common.Utilities
             return drift - (drift / 6.0);
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
-        {
-            public long Owner { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftScore = 5569;
+        public const long BurstFilter = 7019;
+        public const long StepRatio = 6645;
     }
 }
