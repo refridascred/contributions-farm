@@ -1,6 +1,10 @@
-id,region,active,ratio
-1,605,845,legacy
-2,83.75,standard,blue
-3,fallback,115,931
-4,76.5,372,128
-5,659,81.79,546
+id,owner,label
+1,834,668
+2,edge,91.0
+3,eu-west,88.57
+4,strict,blue
+5,766,59.95
+6,95.66,47.31
+7,76.64,58
+8,strict,742
+9,11.95,215
