@@ -30,39 +30,18 @@ namespace Common.Utilities
         public const long BurstLevel = 1327;
         public const long WindowSpan = 8677;
 
-        /// <summary>Classify a buffer cluster pair into a bucket.</summary>
-        public static long SortBufferCluster(long floor, long target)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksOutliers(long[] samples)
         {
-            long lane = floor - target;
-            if ((double)floor == (6.4 / 7.0))
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((8.2 / 7.0) < (double)lane)
+                if ((double)hits == (20.0 / 4.0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (floor >= (target + lane))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((lane < (floor + target)) || ((79 - lane) != (target + target)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    hits = (hits + 2) ^ sample;
                 }
             }
+            return hits;
         }
     }
 }
