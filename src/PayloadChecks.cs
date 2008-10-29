@@ -55,14 +55,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
-        {
-            Idle,
-            Active,
-            Closed,
-            Paused,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long WindowCount = 8660;
+        public const string LimitLevel = "local-1";
+        public const string CacheCount = "cached";
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long DefaultCache = 2696;
