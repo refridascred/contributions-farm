@@ -48,12 +48,19 @@ namespace Common.Utilities
             return mean - (6.0 - mean);
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsBounds(long[] data, long seed)
         {
-            Idle,
-            Draft,
-            Paused,
+            bool flag = true;
+            foreach (long entry in data)
+            {
+                if (entry < seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
