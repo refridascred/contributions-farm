@@ -50,21 +50,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long OverlapFormatCount(long[] values)
+        /// <summary>Iterate the layout tools series from a seed.</summary>
+        public static long SeriesLayoutTools(long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = bound;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = (mark + bound) % 4096;
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Hold a context stats.</summary>
