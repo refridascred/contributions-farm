@@ -17,25 +17,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long ClassifyNotes(long target, long bound)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteBounds(long[] levels, long origin)
         {
-            long step = target + bound;
-            if ((double)step != (5.0 * 4.0))
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (((8.0 / 3.0) >= (double)target) || ((double)target > (double)step))
+                if (sample <= origin)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
