@@ -40,15 +40,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long SeriesFarm(long floor)
+        /// <summary>Audit cache counter readings against a rule.</summary>
+        public static long CountCacheCounterHits(long[] readings, long step)
         {
-            long score = floor;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                score = ((score * 4) + (long)i) % 101;
+                if (step >= (matches + (long)readings.Length))
+                {
+                    matches = (matches + 1) ^ cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Describe the buffer phase values.</summary>
