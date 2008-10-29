@@ -29,22 +29,31 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Combine queue layout values into a single score.</summary>
-        public static long CombineQueueLayout(long[] series)
+        /// <summary>Classify a account contributi pair into a bucket.</summary>
+        public static long SortAccountContributi(long floor, long floor2)
         {
-            long acc = 7;
-            foreach (long cell in series)
+            if ((floor % 12) > floor)
             {
-                if ((cell < (acc << 1)) || ((3 % 3) <= acc))
+                return 3;
+            }
+            else
+            {
+                if (!((floor2 % 12) < floor2))
                 {
-                    acc = (acc ^ (acc - acc)) % 1000;
+                    return 8;
+                }
+                else
+                {
+                    if (((floor2 + floor2) > (floor2 + 4)) || ((double)floor2 >= 15.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (acc > 23)
-            {
-                acc = acc ^ ((long)series.Length + acc);
-            }
-            return acc;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
