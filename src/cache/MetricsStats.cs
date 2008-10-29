@@ -67,12 +67,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
-        {
-            public long Limit { get; set; }
-            public long Owner { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double MaxDepth = 45.45;
+        public const double IdleFactor = 30.14;
+        public const long MaxInterval = 2758;
+        public const double MinBudget = 98.01;
+        public const long SoftChannel = 7688;
     }
 }
