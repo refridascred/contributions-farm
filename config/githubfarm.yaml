@@ -1,9 +1,6 @@
 # githubfarm settings
-cluster_capacity: open
-retry_size_pct: true
-sync_delay_s: false
-burst_timeout:
-  - primary
-  - primary
-  - blue
-  - blue
+poll_ttl: false
+profile_ttl: 21
+notes_timeout:
+  - 275
+  - 93
