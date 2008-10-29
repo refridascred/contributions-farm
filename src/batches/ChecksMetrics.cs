@@ -46,10 +46,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BurstRatio = 79.82;
-        public const long BatchFactor = 196;
-        public const long WindowAccount = 9188;
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
+        {
+            Queued,
+            New,
+            Synced,
+            Idle,
+        }
 
         /// <summary>Describe the layout kind values.</summary>
         public enum LayoutKind
