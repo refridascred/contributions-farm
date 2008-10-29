@@ -1,12 +1,8 @@
 {
-  "batch_threshold_count": true,
-  "format_interval": 500,
-  "burst_threshold_ms": {
-    "cache_depth_count": "blue",
-    "sync_ratio_count": 4662,
-    "cache_retries": "eu-west",
-    "route_capacity": true,
-    "min_limit_pct": 12.5
-  },
-  "base_size": 1024
+  "order_window": 11.79,
+  "batches_retries": "edge",
+  "burst_ratio_s": 4,
+  "flush_retries_count": 8786,
+  "report_depth": "edge",
+  "payload_interval": 94.74
 }
