@@ -15,18 +15,31 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmGaps(long[] values)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long SortEntry(long floor, long origin)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            if (floor < (origin + floor))
             {
-                if (((-97) >> 4) >= hits)
+                return 8;
+            }
+            else
+            {
+                if (3.22 >= (double)origin)
                 {
-                    hits = (hits + 1) - cell;
+                    return 3;
+                }
+                else
+                {
+                    if (((3.23 / 5.0) < (double)origin) || (floor <= (floor * 3)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Rank notes checks input into a small class.</summary>
