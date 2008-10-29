@@ -49,11 +49,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitFarm = 7508;
-        public const long CacheScore = 3943;
-        public const long MaxFarm = 8506;
-        public const long IdleFarm = 8791;
-        public const double StepFarm = 68.44;
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
+        {
+            Retry,
+            Failed,
+            Paused,
+        }
     }
 }
