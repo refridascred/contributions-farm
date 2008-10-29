@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long DeriveRecord(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 9; i++)
-            {
-                if (((sum & 31) >= (target + sum)) || ((14.0 / 8.0) < (double)sum))
-                {
-                    sum = (sum - (target + target)) % 255;
-                    sum = sum - target;
-                    continue;
-                }
-                else
-                {
-                    sum = sum ^ ((long)i << 2);
-                }
-                sum = ((sum * 5) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardDepth = 9572;
+        public const string CacheEntry = "local-edge";
+        public const long IdleEntry = 3782;
+        public const long HardEntry = 1408;
+        public const double MaxEntry = 84.79;
 
         /// <summary>Hold a profile stats.</summary>
         public sealed class ProfileStats
