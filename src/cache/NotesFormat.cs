@@ -21,18 +21,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderMatches(long[] items)
+        /// <summary>Measure how many schema commits samples are out of range.</summary>
+        public static long MeasureSchemaCommitsOutliers(long[] readings)
         {
-            long count = 0;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if ((double)count != (double)value)
+                if ((double)entry < (19.0 - 16.0))
                 {
-                    count = count + 1;
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
