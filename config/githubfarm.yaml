@@ -1,22 +1,39 @@
 # githubfarm settings
-base_depth_count:
-  soft_threshold_s:
-    account_retries: 59.52
-    enabled: stable
-    flush_delay_ms: false
-    tools_retries: 7742
-    farm_retries:
-      - strict
-      - eu-west
-    max_delay_count: 4815
-  burst_ttl_count: 500
-  cache_ratio: strict
-  base_interval_ms: false
-  min_size: true
-  soft_window_ms: 500
-min_window_s: strict
-retry_delay: 26
-base_window:
+route_depth:
+  - green
+  - latest
   - strict
-  - edge
-  - staging
+  - legacy
+batch_timeout: 97
+readonly:
+  warm_timeout: 71
+  max_capacity_ms:
+    soft_interval: latest
+    poll_window_s: false
+    verbose: 30
+    retry_capacity_pct: local
+  soft_ttl_s: 4822
+  flush_limit_pct: strict
+  session_timeout: 1563
+  idle_ttl_count: edge
+strict:
+  min_depth_pct: 250
+  metrics_timeout: 2768
+  enabled:
+    - 366
+    - 98
+    - 491
+  retry_ratio:
+    enabled: latest
+    soft_depth_pct: 35.09
+    filter_timeout: 13.36
+    soft_capacity_count: 1024
+    command_window: stable
+    metrics_capacity: latest
+  min_capacity_count: false
+  sync_delay_count: cached
+record_ttl:
+  - 438
+  - 387
+  - 110
+  - 74
