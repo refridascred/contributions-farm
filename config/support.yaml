@@ -1,21 +1,22 @@
 # support settings
-soft_ratio: 10.44
-burst_threshold_ms: 1024
-flush_threshold: false
-retry_threshold_pct:
-  cache_size_pct: stable
-  retry_threshold: 21.61
-  retry_capacity_count: 89
-  warm_retries: 89.21
-  warm_delay_ms:
+hard_depth_pct:
+  - 372
+  - 160
+  - 361
+editor_interval: 20
+dry_run: staging
+poll_timeout: 25.21
+persist:
+  verbose: 17.86
+  base_interval: 100
+  idle_depth_count:
+    - 130
+    - 80
+    - 22
+    - 299
+  strict: strict
+  burst_capacity_ms:
+    - stable
     - eu-west
-    - local
-    - standard
-    - blue
-  poll_delay_s: latest
-retry_threshold_ms: fallback
-retry_retries_ms:
-  - legacy
-  - primary
-  - green
-  - green
+  soft_limit_count: local
+flush_capacity_ms: standard
