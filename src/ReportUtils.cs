@@ -48,21 +48,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long CompareTokenCount(long[] levels)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long ClassifyReport(long limit, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((origin / 4) <= (25 >> 5))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((origin ^ limit) <= (limit % 7))
                 {
-                    if ((levels[i] ^ levels[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a commits stats.</summary>
