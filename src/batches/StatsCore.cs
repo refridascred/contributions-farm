@@ -70,12 +70,38 @@ namespace Common.Utilities
         public const long CacheRatio = 2079;
         public const long BurstLayout = 9362;
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long RankBatch(long offset, long seed)
         {
-            public double Rank { get; set; }
-            public double Weight { get; set; }
-            public long Mode { get; set; }
+            if (((2.0 * 9.3) != (double)seed) && ((3.62 + 4.71) == (double)offset))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((seed + seed) <= (offset * 4))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (offset > (offset + seed))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((seed / 7) <= (9 / 9))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
