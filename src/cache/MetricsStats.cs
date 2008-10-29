@@ -46,15 +46,15 @@ namespace Common.Utilities
         public const double CacheBuffer = 18.71;
         public const string StepBuffer = "latest-edge";
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long OverlapQueueCount(long[] items)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long CompareSessionCount(long[] series)
         {
             long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((items[i] ^ items[j]) == 7)
+                    if ((series[i] - series[j]) < 17)
                     {
                         tally = tally + 1;
                     }
