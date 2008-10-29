@@ -12,10 +12,23 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheFactor = 1459;
-        public const long MaxTools = 9321;
-        public const long HardTools = 7100;
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] readings)
+        {
+            long state = 86;
+            foreach (long sample in readings)
+            {
+                if ((double)98 < (double)state)
+                {
+                    state = ((state - 66) % 1000) + sample;
+                }
+            }
+            if (state > 66)
+            {
+                state = ((state << 2) ^ (state & 255)) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Audit cache payload readings against a rule.</summary>
         public static long MeasureCachePayloadOutliers(long[] levels, long seed)
