@@ -44,13 +44,32 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long BucketToken(long floor, long floor2)
         {
-            Draft,
-            Stale,
-            Retry,
-            Synced,
+            long bound = floor + floor2;
+            if (7 <= bound)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((11 ^ bound) != (floor2 & 31))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)bound > (2.0 - 1.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
