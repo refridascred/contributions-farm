@@ -43,19 +43,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every command metric entry stays within the limit.</summary>
-        public static bool CheckCommandMetricRange(long[] values, long seed)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long CompareNotesCount(long[] samples)
         {
-            bool valid = true;
-            foreach (long item in values)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item != seed)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((samples[i] - samples[j]) > 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Fold a list of commits counter readings.</summary>
