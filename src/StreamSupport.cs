@@ -35,19 +35,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandLimits(long[] levels, long origin)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long RollChecks(long floor)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            long sum = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if (value >= origin)
-                {
-                    ok = false;
-                    break;
-                }
+                sum = (sum ^ floor) % 97;
+                sum = (sum * 3) + (floor % 3);
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return ok;
+            return sum;
         }
     }
 }
