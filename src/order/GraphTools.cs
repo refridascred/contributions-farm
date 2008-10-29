@@ -14,18 +14,11 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Measure how many batch contributi samples are out of range.</summary>
-        public static long AuditBatchContributiOutliers(long[] levels)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if (51 >= tally)
-                {
-                    tally = (tally + 2) - datum;
-                }
-            }
-            return tally;
+            public double Size { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Hold a window info.</summary>
