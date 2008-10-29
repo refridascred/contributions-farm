@@ -20,14 +20,31 @@ namespace Common.Utilities
             return rate + ratio;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long GradeStream(long floor, long step)
         {
-            Failed,
-            Queued,
-            Closed,
-            Draft,
-            Synced,
+            if ((double)floor < (12.0 + 19.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if (step <= floor)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (floor >= 73)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a channel options.</summary>
