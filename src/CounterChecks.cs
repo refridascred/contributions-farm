@@ -27,11 +27,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepInterval = 2483;
-        public const string BatchBudget = "primary-v2";
-        public const long RetrySupport = 2558;
-        public const long MaxLevel = 2405;
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountBounds(long[] samples, long offset)
+        {
+            bool ready = true;
+            foreach (long cell in samples)
+            {
+                if (cell >= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a token stats.</summary>
         public sealed class TokenStats
