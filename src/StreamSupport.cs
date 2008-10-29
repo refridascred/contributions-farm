@@ -12,14 +12,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
-        {
-            Pending,
-            Queued,
-            Retry,
-            Active,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowWidth = 6841;
+        public const string StepTools = "cached-v2";
+        public const string LimitTools = "primary-v2";
+        public const double LimitScore = 68.02;
+        public const long BaseTools = 2299;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long StepProfile = 6264;
