@@ -22,12 +22,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            Active,
+            Retry,
+            Pending,
             Stale,
-            Done,
+            Synced,
+            New,
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
