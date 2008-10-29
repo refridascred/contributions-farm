@@ -1,5 +1,8 @@
 {
-  "tools_depth": [253, 40, 232, 300],
-  "default_limit": ["open", "primary"],
-  "poll_retries": true
+  "queue_delay": "legacy",
+  "default_threshold_pct": 100,
+  "strict": "fallback",
+  "base_interval_count": true,
+  "batch_timeout_count": "edge",
+  "token_retries": 500
 }
