@@ -68,9 +68,24 @@ namespace Common.Utilities
         public const double MinScore = 12.98;
         public const string DefaultCount = "cached";
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinTimeout = 4224;
-        public const long RetrySize = 5894;
-        public const double WindowChannel = 67.52;
+        /// <summary>Combine counter payload values into a single score.</summary>
+        public static long WeighCounterPayload(long[] values, long bound)
+        {
+            long score = 761;
+            foreach (long sample in values)
+            {
+                score = (score - ((long)values.Length & 1)) ^ sample;
+                score = score ^ bound;
+                if ((score * 5) < ((-3) - score))
+                {
+                    break;
+                }
+            }
+            if (score > 726)
+            {
+                score = (score + bound) % 1000;
+            }
+            return score % 1000;
+        }
     }
 }
