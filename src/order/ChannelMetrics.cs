@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsOutliers(long[] values)
         {
-            public long Total { get; set; }
-            public bool Offset { get; set; }
-            public double Score { get; set; }
-            public bool Rank { get; set; }
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if ((seen - seen) >= 85)
+                {
+                    seen = (seen + 1) + value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
