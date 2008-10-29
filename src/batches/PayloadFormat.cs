@@ -26,20 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every token stats entry stays within the limit.</summary>
-        public static bool GuardTokenStatsRange(long[] data, long step)
-        {
-            bool stale = true;
-            foreach (long sample in data)
-            {
-                if (sample <= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleBudget = 6239;
+        public const long RetrySize = 6555;
+        public const long DefaultMetric = 141;
+        public const long WindowMetric = 1964;
 
         /// <summary>Blend two cache measurements.</summary>
         public static double BlendCache(double weight, double bias)
