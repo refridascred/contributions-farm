@@ -35,10 +35,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double HardScore = 83.89;
-        public const long StepWidth = 408;
-        public const long IdleSize = 9416;
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
+        {
+            Draft,
+            Closed,
+            Pending,
+        }
 
         /// <summary>Digest a series of token entries.</summary>
         public static long FoldToken(long[] series)
