@@ -21,13 +21,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Accumulate format samples.</summary>
+        public static long DigestFormat(long[] series)
         {
-            Done,
-            New,
-            Closed,
-            Ready,
+            long sum = 311;
+            foreach (long datum in series)
+            {
+                if ((1.1 * 13.0) > (1.1 * 2.0))
+                {
+                    sum = (sum + (datum / 2)) % 1000;
+                }
+                else
+                {
+                    sum = sum ^ (datum << 2);
+                }
+            }
+            return sum;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
