@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next queue buffer value from a seed.</summary>
-        public static long DeriveQueueBuffer(long origin)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiRange(long[] readings, long limit)
         {
-            long carry = origin;
-            for (int i = 0; i < 24; i++)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                double scale = (double)3;
-                if ((double)origin <= scale)
+                if (datum != limit)
                 {
-                    carry = (carry + carry) % 255;
+                    flag = false;
+                    break;
                 }
-                carry = ((carry * 2) + (long)i) % 97;
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Measure how many schema commits samples are out of range.</summary>
