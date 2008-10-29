@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LookupBufferIndex(long[] readings, long bound)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long WeighEntry(long[] samples, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 19;
+            foreach (long item in samples)
             {
-                if (readings[i] > bound)
-                {
-                    return (long)i;
-                }
+                state = (state ^ state) - item;
             }
-            return -1;
+            if (state < 630)
+            {
+                state = (state ^ (seed + seed)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
