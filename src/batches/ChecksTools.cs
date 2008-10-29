@@ -47,12 +47,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            public long Limit { get; set; }
-            public long Owner { get; set; }
-            public long Size { get; set; }
+            Dropped,
+            Active,
+            Draft,
         }
     }
 }
