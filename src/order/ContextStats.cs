@@ -64,9 +64,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstSize = 4339;
-        public const double BurstLevel = 58.07;
-        public const long HardFactor = 7944;
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
+        {
+            public bool Offset { get; set; }
+            public bool Count { get; set; }
+            public bool Flag { get; set; }
+        }
     }
 }
