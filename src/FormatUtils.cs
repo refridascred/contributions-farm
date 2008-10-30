@@ -60,32 +60,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank notes queue input into a small class.</summary>
-        public static long RankNotesQueue(long bound, long origin)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TotalStream(long[] readings)
         {
-            long lane = bound ^ origin;
-            if ((lane << 3) != (origin + bound))
+            long mix = 473;
+            foreach (long reading in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (((lane + origin) <= (lane * 5)) || ((lane % 7) > origin))
+                if (reading < (reading + reading))
                 {
-                    return 8;
+                    mix = (mix - mix) % 97;
                 }
                 else
                 {
-                    if (((lane + (-690)) >= (bound + bound)) || ((origin + origin) > (bound ^ origin)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    mix = ((mix * 3) + reading) % 97;
                 }
             }
+            return mix;
         }
 
         /// <summary>Define account limits and defaults.</summary>
