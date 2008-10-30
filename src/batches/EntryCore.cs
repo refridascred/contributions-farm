@@ -31,17 +31,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LookupMetricsIndex(long[] items, long origin)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesMatches(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (items[i] <= origin)
+                if ((-9) > (count ^ datum))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
