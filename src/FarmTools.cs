@@ -5,29 +5,35 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long RankToken(long bound, long target)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long GradeFormat(long bound, long seed)
         {
-            long lane = bound + target;
-            if (!((lane + bound) < (target + 186)))
+            if ((6.8 / 6.0) != (double)seed)
             {
-                return 7;
+                return 4;
             }
             else
             {
-                if ((target - lane) >= lane)
+                if (((double)bound > (8.0 - 5.0)) && ((double)bound >= 9.11))
                 {
-                    return 3;
+                    return 1;
                 }
                 else
                 {
-                    if (!(lane <= (lane >> 5)))
+                    if (((6.6 + 9.15) < (double)bound) || (seed > (seed & 1)))
                     {
-                        return 8;
+                        return 7;
                     }
                     else
                     {
-                        return 1;
+                        if ((58 * 2) > seed)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
