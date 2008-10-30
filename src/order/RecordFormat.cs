@@ -28,12 +28,12 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Locate a profile tools reading by value.</summary>
-        public static long SeekProfileToolsIndex(long[] series, long limit)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LookupCommitsIndex(long[] levels, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((series[i] == limit) && ((series[i] % 3) == 0))
+                if ((levels[i] == offset) && ((levels[i] % 3) == 0))
                 {
                     return (long)i;
                 }
