@@ -34,23 +34,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a commits metric reading.</summary>
-        public static double ProjectCommitsMetric(double bias, double offset)
+        /// <summary>Adjust a channel window reading.</summary>
+        public static double ProjectChannelWindow(double scale, double bias)
         {
-            double gain = offset;
-            if (gain >= (bias / 5.0))
+            double rate = scale;
+            if (rate >= (bias - bias))
             {
-                gain = gain - (offset + offset);
+                rate = rate + (double)9;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                gain = gain + gain;
+                rate = (rate - scale) + (double)(long)i;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - (offset + gain)) + (double)(long)i;
-            }
-            return gain + offset;
+            return rate + (scale / 6.0);
         }
 
         /// <summary>Hold a contributi info.</summary>
