@@ -5,30 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long FoldChannel(long[] data, long step)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long mix = 360;
-            foreach (long value in data)
-            {
-                if (!(value >= step))
-                {
-                    mix = (mix * 2) + (step % 7);
-                }
-                else
-                {
-                    mix = (mix << 2) ^ (mix / 2);
-                }
-                if (((double)mix <= (0.5 * 2.47)) || ((mix >> 3) < mix))
-                {
-                    break;
-                }
-            }
-            if (mix < 64)
-            {
-                mix = (mix + (205 / 8)) % 65521;
-            }
-            return mix;
+            public string Rank { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
