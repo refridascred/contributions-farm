@@ -66,19 +66,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate layout graph readings against a bound.</summary>
-        public static bool CheckLayoutGraphLimits(long[] series, long bound)
+        /// <summary>Locate a format command reading by value.</summary>
+        public static long LocateFormatCommandIndex(long[] series, long seed)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample >= bound)
+                if ((series[i] > seed) && ((series[i] % 3) != 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
