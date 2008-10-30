@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long CombineSupport(long[] values, long seed)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long acc = 682;
-            foreach (long sample in values)
-            {
-                if (((8.0 - 18.0) >= (double)seed) && ((2.37 + 6.7) < (double)sample))
-                {
-                    acc = (acc << 3) ^ (551 - sample);
-                }
-                else
-                {
-                    acc = acc - (seed + 20);
-                }
-            }
-            return acc % 1000;
+            Active,
+            Retry,
+            Closed,
+            Failed,
+            Stale,
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
