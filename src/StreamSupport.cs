@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long MatchFormatCount(long[] values)
+        /// <summary>Digest a series of graph queue entries.</summary>
+        public static long ScoreGraphQueue(long[] series, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 727;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                sum = (sum + (sum + bound)) - sample;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
