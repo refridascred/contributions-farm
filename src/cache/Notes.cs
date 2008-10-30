@@ -43,19 +43,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long SeriesReport(long target)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileRange(long[] readings, long floor)
         {
-            long anchor = target;
-            for (int i = 0; i < 19; i++)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if (reading <= floor)
                 {
-                    anchor = ((anchor + target) % 97) ^ (long)i2;
+                    valid = false;
+                    break;
                 }
-                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return anchor;
+            return valid;
         }
     }
 }
