@@ -1,6 +1,5 @@
 {
-  "readonly": "legacy",
-  "cache_interval": true,
-  "route_interval": 81.96,
-  "idle_size_count": 1024
+  "metric_delay": 500,
+  "poll_size_pct": 6.63,
+  "persist": 53.13
 }
