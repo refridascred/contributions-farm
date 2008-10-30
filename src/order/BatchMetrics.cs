@@ -85,20 +85,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long IterateChecks(long seed)
+        /// <summary>Look up the position of a order route sample.</summary>
+        public static long SeekOrderRouteIndex(long[] values, long bound)
         {
-            long carry = seed;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((carry + carry) <= 78))
+                if ((values[i] < bound) && ((values[i] % 2) == 0))
                 {
-                    carry = (carry ^ (seed + (long)i)) % 97;
+                    return (long)i;
                 }
-                carry = carry + (seed >> 4);
-                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return carry;
+            return -1;
         }
     }
 }
