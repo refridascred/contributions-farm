@@ -38,23 +38,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate channel commits samples.</summary>
-        public static long CombineChannelCommits(long[] series)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long acc = 568;
-            foreach (long value in series)
-            {
-                acc = acc ^ value;
-                if (!((double)(long)series.Length == (1.0 * 3.8)))
-                {
-                    acc = acc - value;
-                }
-                if ((acc >> 1) != (acc + acc))
-                {
-                    break;
-                }
-            }
-            return acc;
+            public string Rank { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Project the next counter value.</summary>
