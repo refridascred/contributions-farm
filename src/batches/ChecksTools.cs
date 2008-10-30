@@ -12,18 +12,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long CompareNotesCount(long[] readings)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmOutliers(long[] levels, long bound)
         {
             long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long item in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (item < (matches + matches))
                 {
-                    if ((readings[i] + readings[j]) > 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 2) - bound;
                 }
             }
             return matches;
