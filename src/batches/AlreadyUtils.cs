@@ -53,17 +53,18 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LookupBufferIndex(long[] readings, long target)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long ScoreMetrics(long[] series, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 1;
+            foreach (long value in series)
             {
-                if ((readings[i] > target) && ((readings[i] % 5) != 0))
+                if (((-42) - 8) > anchor)
                 {
-                    return (long)i;
+                    anchor = ((anchor - (value + value)) % 65521) - floor;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Hold a counter entry.</summary>
