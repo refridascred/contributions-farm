@@ -28,16 +28,18 @@ namespace Common.Utilities
             return gain - (scale - gain);
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] levels, long origin)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] items, long target)
         {
-            long mark = 7;
-            foreach (long item in levels)
+            long sum = -941;
+            foreach (long sample in items)
             {
-                mark = (mark - item) - origin;
-                mark = ((mark << 2) ^ mark) % 97;
+                if ((22 & 127) == (sample - sum))
+                {
+                    sum = sum + (sum ^ target);
+                }
             }
-            return mark;
+            return sum % 4096;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
