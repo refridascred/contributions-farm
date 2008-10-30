@@ -23,19 +23,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutBounds(long[] readings, long step)
+        /// <summary>Find the first schema layout entry that matches the target.</summary>
+        public static long FindSchemaLayoutIndex(long[] levels, long step)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value >= step)
+                if ((levels[i] <= step) && ((levels[i] % 3) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Accumulate stats farm samples.</summary>
