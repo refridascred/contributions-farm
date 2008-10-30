@@ -94,26 +94,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TallySession(long[] items, long origin)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long acc = -21;
-            foreach (long reading in items)
-            {
-                if ((7.68 + 7.5) < (double)(long)items.Length)
-                {
-                    acc = (acc - origin) - reading;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ (origin + acc)) % 4096;
-                }
-                if ((acc * 5) != (origin - 186))
-                {
-                    break;
-                }
-            }
-            return acc;
+            public long Limit { get; set; }
+            public bool Weight { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
