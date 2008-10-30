@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Editor tools helpers.</summary>
     public static class EditorTools
     {
-        /// <summary>Locate a account reading by value.</summary>
-        public static long FindAccountIndex(long[] items, long target)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > target) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Closed,
+            Failed,
+            Dropped,
+            Done,
         }
 
         /// <summary>Check that every cache editor entry stays within the limit.</summary>
