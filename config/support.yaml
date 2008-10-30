@@ -1,24 +1,32 @@
 # support settings
-cache_threshold: primary
-route_ttl: open
-retry_limit: 45
-cluster_capacity:
-  - primary
-  - local
-min_limit_pct:
-  flush_window: 7.4
-  verbose:
-    retry_window_ms: edge
-    batch_size_ms: 81
-    readonly: 23
+batch_ttl_count: standard
+readonly:
+  githubfarm_depth:
+    - primary
+    - legacy
+    - legacy
+    - cached
+  audit: 55
+  cache_limit: green
+  base_interval_ms: latest
+  hard_retries:
+    soft_threshold: 9119
+    format_window: 100
+    idle_depth: staging
+  strict:
+    verbose: 24.45
+    soft_threshold: 500
     audit:
-      - open
-      - eu-west
-      - local
-      - cached
-    warm_window_pct: latest
-    cluster_size: 54.75
-  dry_run: 250
-  poll_limit: 36.35
-  max_depth_pct: 98.62
-  idle_depth_pct: false
+      - 395
+      - 89
+    burst_threshold: false
+    burst_limit: 100
+counter_capacity:
+  - 146
+  - 325
+  - 425
+warm_ratio_s:
+  - 308
+  - 257
+  - 280
+  - 307
