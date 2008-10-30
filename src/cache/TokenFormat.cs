@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryHits(long[] series)
+        /// <summary>Iterate the report stream series from a seed.</summary>
+        public static long StepReportStream(long floor)
         {
-            long count = 0;
-            foreach (long value in series)
+            long mark = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if ((value % 3) != (value / 7))
-                {
-                    count = count + 2;
-                }
+                mark = (mark * 3) + (floor - 64);
+                mark = (mark + (floor + mark)) % 1000;
+                mark = (mark ^ ((-2) - floor)) % 255;
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Accumulate batch editor samples.</summary>
