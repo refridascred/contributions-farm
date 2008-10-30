@@ -45,19 +45,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every command record entry stays within the limit.</summary>
-        public static bool VerifyCommandRecordRange(long[] data, long offset)
+        /// <summary>Find the first schema buffer entry that matches the target.</summary>
+        public static long LookupSchemaBufferIndex(long[] levels, long step)
         {
-            bool stale = true;
-            foreach (long value in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value <= offset)
+                if (levels[i] == step)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Check that every metrics checks entry stays within the limit.</summary>
