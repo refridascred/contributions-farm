@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardSize = 1237;
-        public const double WindowFactor = 84.89;
-        public const long MaxEditor = 662;
-        public const double StepWidth = 4.98;
-        public const long RetryEditor = 3065;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double RetrySchema = 2.55;
+        public const long IdleSpan = 5427;
+        public const long DefaultSchema = 8902;
+        public const string HardCount = "cached-edge";
 
         /// <summary>Hold a counter snapshot.</summary>
         public sealed class CounterSnapshot
