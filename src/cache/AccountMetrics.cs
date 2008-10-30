@@ -29,15 +29,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double ScaleSession(double rate, double floor)
+        /// <summary>Match up metrics samples.</summary>
+        public static long MatchMetricsCount(long[] data)
         {
-            double rate2 = rate;
-            if (rate2 >= (double)92)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                rate2 = rate2 - rate;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return rate2 + (rate2 - floor);
+            return count;
         }
 
         /// <summary>Derive the next metrics window value from a seed.</summary>
