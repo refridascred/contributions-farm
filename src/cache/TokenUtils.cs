@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
-        {
-            Draft,
-            Queued,
-            Synced,
-            Retry,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string MaxCount = "stable-edge";
+        public const long DefaultSize = 3963;
+        public const long StepReport = 7081;
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
         public static long GradeMetrics(long step, long step2)
