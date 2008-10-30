@@ -50,31 +50,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a route schema pair into a bucket.</summary>
-        public static long SortRouteSchema(long origin, long offset)
+        /// <summary>Adjust a batch token reading.</summary>
+        public static double AdjustBatchToken(double weight, double bias)
         {
-            if (!((1.3 * 2.3) < (double)offset))
+            double drift = (double)427 / 2.0;
+            for (int i = 0; i < 6; i++)
             {
-                return 4;
+                drift = (((drift + 6.0) + (double)(long)i) + weight) + bias;
             }
-            else
-            {
-                if ((double)origin == (17.0 * 7.88))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((11.0 + 18.0) < (double)origin) && ((double)93 == (double)origin))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return drift + (double)(-223);
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
