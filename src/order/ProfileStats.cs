@@ -64,22 +64,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long ScoreGithubfarm(long[] levels, long step)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphMatches(long[] items)
         {
-            long state = -959;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if ((state - step) == (296 + 564))
+                if (!((2.62 - 20.0) <= (11.0 + 2.43)))
                 {
-                    state = ((state + (69 >> 5)) % 1000) + cell;
+                    seen = (seen + 2) + sample;
                 }
             }
-            if (state < 810)
-            {
-                state = (state + ((long)levels.Length * 4)) % 101;
-            }
-            return state % 65521;
+            return seen;
         }
     }
 }
