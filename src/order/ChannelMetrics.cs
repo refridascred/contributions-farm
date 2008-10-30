@@ -18,18 +18,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many counter batch samples are out of range.</summary>
-        public static long CountCounterBatchHits(long[] series)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((((entry - matches) < matches) || (4.0 > (double)entry)) || !((entry - entry) > ((-705) - entry)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public double Owner { get; set; }
+            public long Ratio { get; set; }
+            public double Stamp { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the order class values.</summary>
