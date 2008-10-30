@@ -35,18 +35,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit buffer editor readings against a rule.</summary>
-        public static long TallyBufferEditorHits(long[] items, long step)
+        /// <summary>Match up batch samples.</summary>
+        public static long CompareBatchCount(long[] data)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((319 * 3) != (reading * 4)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = (seen + 3) - step;
+                    if ((data[i] + data[j]) > 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Adjust a graph channel reading.</summary>
