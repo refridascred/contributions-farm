@@ -50,32 +50,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long BucketBatch(long bound, long origin)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            long next = bound + origin;
-            if (next < bound)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((next << 1) >= (origin - next))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound <= (origin - bound)) || (origin <= (next + bound)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public long Flag { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a token stats.</summary>
