@@ -35,20 +35,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long StepProfile(long bound)
+        /// <summary>Look up the position of a session queue sample.</summary>
+        public static long FindSessionQueueIndex(long[] samples, long limit)
         {
-            long acc = bound;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((bound % 100) > bound)
+                if ((samples[i] >= limit) && ((samples[i] % 2) != 0))
                 {
-                    acc = ((acc * 4) + ((long)i - bound)) % 101;
-                    continue;
+                    return (long)i;
                 }
-                acc = ((acc * 3) + (long)i) % 97;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
