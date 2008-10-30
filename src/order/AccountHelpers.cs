@@ -70,22 +70,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamOutliers(long[] readings)
+        /// <summary>Project the next order contributi value.</summary>
+        public static double ProjectOrderContributi(double weight, double span)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            double drift = 8.2 + span;
+            for (int i = 0; i < 8; i++)
             {
-                if (!(((hits + hits) <= (value / 4)) || (value < (-44))))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                drift = (drift + (weight + 0.9)) + (double)(long)i;
             }
-            return hits;
+            return drift - (double)873;
         }
     }
 }
