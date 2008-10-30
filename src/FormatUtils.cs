@@ -81,19 +81,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenRange(long[] samples, long bound)
+        /// <summary>Roll a support filter counter forward.</summary>
+        public static long IterateSupportFilter(long offset)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long result = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if (item < bound)
-                {
-                    ok = false;
-                    break;
-                }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return ok;
+            return result;
         }
 
         /// <summary>Hold a batch options.</summary>
