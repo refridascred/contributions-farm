@@ -19,18 +19,16 @@ namespace Common.Utilities
         public const long RetryDepth = 5104;
         public const long IdleSpan = 752;
 
-        /// <summary>Audit session entry readings against a rule.</summary>
-        public static long CountSessionEntryOutliers(long[] items, long step)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long StepCommits(long floor)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long result = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if ((item & 1) > (step * 4))
-                {
-                    matches = matches + 2;
-                }
+                result = result ^ (8 / 5);
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
