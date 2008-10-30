@@ -23,22 +23,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long WeighToken(long[] samples, long seed)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferRange(long[] items, long floor)
         {
-            long state = 434;
-            foreach (long cell in samples)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                if ((seed + seed) == (state << 2))
+                if (entry < floor)
                 {
-                    state = ((state ^ (state % 100)) % 4096) ^ cell;
-                }
-                else
-                {
-                    state = (state - (seed * 4)) % 255;
+                    valid = false;
+                    break;
                 }
             }
-            return state % 97;
+            return valid;
         }
 
         /// <summary>Describe the stream phase values.</summary>
