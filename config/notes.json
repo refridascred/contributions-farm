@@ -1,8 +1,13 @@
 {
-  "notes_retries": 36,
-  "cluster_depth": false,
-  "burst_limit_pct": [157, 150, 82, 260],
-  "burst_timeout": false,
-  "burst_size_ms": false,
-  "persist": [414, 170, 170]
+  "readonly": false,
+  "enabled": {
+    "base_ttl_pct": [50, 211, 21],
+    "command_timeout": "edge",
+    "flush_depth_ms": 500,
+    "payload_capacity": true,
+    "flush_depth_pct": false
+  },
+  "soft_window": ["primary", "local"],
+  "burst_ttl": [112, 340, 387],
+  "route_delay": "blue"
 }
