@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every support tools entry stays within the limit.</summary>
-        public static bool CheckSupportToolsRange(long[] samples, long step)
-        {
-            bool ready = true;
-            foreach (long cell in samples)
-            {
-                if (cell >= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long RetryRecord = 5126;
+        public const long DefaultRecord = 7343;
+        public const long BurstBudget = 4713;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long StepCounter = 653;
