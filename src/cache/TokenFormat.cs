@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportGaps(long[] levels)
         {
-            New,
-            Ready,
-            Queued,
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((double)seen >= (9.4 - 2.03))
+                {
+                    seen = (seen + 1) + sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a editor already reading by value.</summary>
