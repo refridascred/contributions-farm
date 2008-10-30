@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
-        {
-            public bool Mode { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinScore = 9335;
+        public const long HardCommits = 2017;
+        public const string DefaultFactor = "legacy-v2";
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long MeasureCommandMatches(long[] items)
