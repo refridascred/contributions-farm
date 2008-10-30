@@ -19,19 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit editor contributi readings against a rule.</summary>
-        public static long CountEditorContributiHits(long[] items)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long MatchBufferCount(long[] values)
         {
             long hits = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((37 + 716) > (hits - hits))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = (hits + 2) ^ cell;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((values[i] ^ values[j]) < 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
