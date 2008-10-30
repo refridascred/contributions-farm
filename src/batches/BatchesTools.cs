@@ -28,9 +28,19 @@ namespace Common.Utilities
         public const string LimitSize = "stable";
         public const long LimitCommits = 7265;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleCluster = 7767;
-        public const double IdleLevel = 64.4;
-        public const long LimitLevel = 8810;
+        /// <summary>Blend two githubfarm editor measurements.</summary>
+        public static double SmoothGithubfarmEditor(double weight, double offset)
+        {
+            double ratio = (5.7 * 9.72) + offset;
+            if (ratio < (ratio * 1.23))
+            {
+                ratio = (ratio + (double)684) - weight;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - (ratio - ratio)) - (double)(long)i;
+            }
+            return ratio - 15.0;
+        }
     }
 }
