@@ -19,12 +19,17 @@ namespace Common.Utilities
             return ((mean - 2.65) + bias) + floor;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long SeekClusterIndex(long[] data, long origin)
         {
-            Synced,
-            Done,
-            Stale,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
