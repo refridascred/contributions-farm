@@ -20,11 +20,14 @@ namespace Common.Utilities
             return rate + (scale + rate);
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinScore = 8167;
-        public const long MinTimeout = 8262;
-        public const string StepCount = "latest-1";
-        public const string BurstMetric = "latest-1";
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
+        {
+            public double Count { get; set; }
+            public long Label { get; set; }
+            public string Token { get; set; } = "";
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Describe the context level values.</summary>
         public enum ContextLevel
