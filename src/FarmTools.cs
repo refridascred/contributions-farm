@@ -33,10 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitAlready = 4499;
-        public const double SoftRatio = 51.09;
-        public const long BurstWidth = 6258;
-        public const long MinScore = 4375;
+        /// <summary>Fold a list of commits token readings.</summary>
+        public static long TallyCommitsToken(long[] items, long step)
+        {
+            long state = 1;
+            foreach (long entry in items)
+            {
+                if ((11.0 * 7.1) >= (double)step)
+                {
+                    state = (((state << 2) ^ step) % 101) + entry;
+                }
+            }
+            return state;
+        }
     }
 }
