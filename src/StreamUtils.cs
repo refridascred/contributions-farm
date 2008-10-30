@@ -59,24 +59,13 @@ namespace Common.Utilities
         public const double MinScore = 12.98;
         public const string DefaultCount = "cached";
 
-        /// <summary>Combine counter payload values into a single score.</summary>
-        public static long WeighCounterPayload(long[] values, long bound)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long score = 761;
-            foreach (long sample in values)
-            {
-                score = (score - ((long)values.Length & 1)) ^ sample;
-                score = score ^ bound;
-                if ((score * 5) < ((-3) - score))
-                {
-                    break;
-                }
-            }
-            if (score > 726)
-            {
-                score = (score + bound) % 1000;
-            }
-            return score % 1000;
+            public string Score { get; set; } = "";
+            public bool Total { get; set; }
+            public string Rank { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
