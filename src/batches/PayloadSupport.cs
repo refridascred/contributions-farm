@@ -27,39 +27,13 @@ namespace Common.Utilities
             return (rate + (13.0 / 8.0)) + scale;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long BucketContributi(long floor, long floor2)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long prev = floor - floor2;
-            if (!((10.0 + 8.0) >= (double)prev))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((1.0 / 3.0) <= (double)prev))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (floor2 > 597)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((prev % 24) == (floor2 << 3))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Retry,
+            Locked,
+            Pending,
         }
     }
 }
