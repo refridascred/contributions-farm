@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
-        {
-            public string Rank { get; set; } = "";
-            public long Level { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultReport = 5345;
+        public const long BatchDepth = 7120;
+        public const long MinReport = 4758;
+        public const double MaxReport = 34.04;
 
         /// <summary>Compare every pair of buffer readings.</summary>
         public static long PairBufferCount(long[] levels)
