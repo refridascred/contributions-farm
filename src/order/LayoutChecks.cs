@@ -64,21 +64,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long MatchNotesCount(long[] items)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ScaleGraph(double rate, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            double load = (double)2 + floor;
+            for (int i = 0; i < 2; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                load = (load - (double)(long)i) - rate;
             }
-            return matches;
+            return load + (double)406;
         }
     }
 }
