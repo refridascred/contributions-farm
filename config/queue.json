@@ -1,19 +1,8 @@
 {
-  "batch_size_pct": {
-    "already_window": ["blue", "eu-west", "open", "blue"],
-    "retry_retries_ms": 36.92,
-    "compress": "standard",
-    "contributi_ttl": 48,
-    "cache_timeout_s": "fallback"
-  },
-  "counter_ttl": [83, 50, 296],
-  "hard_interval": "blue",
-  "cache_timeout_pct": "fallback",
-  "batches_window": {
-    "verbose": ["edge", "fallback", "edge", "cached"],
-    "flush_threshold": 4205,
-    "poll_size": 6290,
-    "farm_timeout": [493, 16],
-    "readonly": "edge"
-  }
+  "audit": 30,
+  "retry_depth_pct": 77,
+  "poll_window_ms": 1024,
+  "default_size": "fallback",
+  "dry_run": "standard",
+  "base_threshold_s": [414, 82, 207, 383]
 }
