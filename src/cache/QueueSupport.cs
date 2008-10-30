@@ -38,19 +38,21 @@ namespace Common.Utilities
             return rate + (rate - ratio);
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesBounds(long[] samples, long limit)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long ComparePayloadCount(long[] items)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell < limit)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((items[i] ^ items[j]) > 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ok;
+            return hits;
         }
     }
 }
