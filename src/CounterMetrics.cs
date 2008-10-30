@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the buffer queue entries that pass the check.</summary>
-        public static long AuditBufferQueueOutliers(long[] levels, long floor)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long PairFarmCount(long[] series)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((item - (long)levels.Length) < (matches / 5))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = (matches + 2) + floor;
+                    if ((series[i] ^ series[j]) == 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
