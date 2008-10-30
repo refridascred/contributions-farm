@@ -20,19 +20,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long WeighAlready(long[] items)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsBounds(long[] items, long origin)
         {
-            long carry = 941;
-            foreach (long item in items)
+            bool stale = true;
+            foreach (long value in items)
             {
-                carry = ((carry - carry) % 1000) + item;
-                if ((double)carry <= 1.2)
+                if (value < origin)
                 {
-                    carry = (carry << 2) ^ (carry << 3);
+                    stale = false;
+                    break;
                 }
             }
-            return carry;
+            return stale;
         }
 
         /// <summary>Describe the tools kind values.</summary>
