@@ -47,13 +47,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Iterate the report githubfarm series from a seed.</summary>
+        public static long RollReportGithubfarm(long target)
         {
-            public double Mode { get; set; }
-            public long Size { get; set; }
-            public string Limit { get; set; } = "";
-            public string Count { get; set; } = "";
+            long mix = target;
+            for (int i = 0; i < 5; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Describe the editor class values.</summary>
