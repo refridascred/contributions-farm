@@ -37,18 +37,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsMatches(long[] samples)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileBounds(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                if ((tally * 5) <= (tally + datum))
+                if (reading < bound)
                 {
-                    tally = tally + 1;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
     }
 }
