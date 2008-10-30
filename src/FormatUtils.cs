@@ -42,20 +42,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsBounds(long[] data, long bound)
-        {
-            bool ok = true;
-            foreach (long cell in data)
-            {
-                if (cell >= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double DefaultAlready = 75.3;
+        public const long MinScore = 2938;
+        public const long DefaultTimeout = 4888;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long CacheWidth = 6550;
