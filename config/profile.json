@@ -1,6 +1,13 @@
 {
-  "strict": 66.7,
-  "audit": 59,
-  "compress": 25.83,
-  "batch_size_pct": 84.96
+  "hard_ratio_count": ["legacy", "legacy", "legacy", "local"],
+  "cache_retries_pct": {
+    "flush_retries_pct": 30,
+    "token_window": 44.01,
+    "default_capacity": "cached",
+    "persist": 81.29,
+    "max_ratio_s": "latest",
+    "cache_limit": 1024
+  },
+  "max_threshold": "stable",
+  "default_capacity_ms": "latest"
 }
