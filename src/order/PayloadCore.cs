@@ -23,19 +23,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] data, long bound)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadLimits(long[] levels, long floor)
         {
-            long acc = 2;
-            foreach (long sample in data)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                acc = ((acc + (bound ^ bound)) % 1000) ^ sample;
+                if (entry <= floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (acc > 34)
-            {
-                acc = (acc << 2) ^ (acc & 127);
-            }
-            return acc % 65521;
+            return flag;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
