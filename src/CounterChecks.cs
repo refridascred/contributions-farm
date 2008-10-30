@@ -38,19 +38,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double SmoothAlready(double ratio, double span)
+        /// <summary>Adjust a commits metric reading.</summary>
+        public static double ProjectCommitsMetric(double bias, double offset)
         {
-            double load = (double)7 * 19.0;
-            if (load <= (load / 6.0))
+            double gain = offset;
+            if (gain >= (bias / 5.0))
             {
-                load = load - ratio;
+                gain = gain - (offset + offset);
             }
             else
             {
-                load = load - load;
+                gain = gain + gain;
             }
-            return load - (15.0 - span);
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - (offset + gain)) + (double)(long)i;
+            }
+            return gain + offset;
         }
 
         /// <summary>Hold a format stats.</summary>
