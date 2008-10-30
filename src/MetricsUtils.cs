@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many session commits samples are out of range.</summary>
-        public static long CountSessionCommitsGaps(long[] series)
+        /// <summary>Derive the next account session value from a seed.</summary>
+        public static long IterateAccountSession(long target)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long carry = target;
+            for (int i = 0; i < 18; i++)
             {
-                if (datum <= tally)
+                carry = (carry * 4) + carry;
+                if ((target ^ target) >= (target * 4))
                 {
-                    tally = tally + 3;
+                    continue;
                 }
+                carry = (carry - ((long)i & 63)) % 4096;
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Hold a farm summary.</summary>
