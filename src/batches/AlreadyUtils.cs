@@ -17,11 +17,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowGaps(long[] levels)
         {
-            public bool Owner { get; set; }
-            public bool Score { get; set; }
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if (((sample / 7) >= 20) && ((double)sample != (1.8 * 11.0)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
