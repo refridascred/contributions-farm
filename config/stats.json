@@ -1,6 +1,8 @@
 {
-  "burst_interval": "legacy",
-  "cache_size": "blue",
-  "readonly": "local",
-  "base_ttl_s": "edge"
+  "retry_ttl_count": 30,
+  "warm_ttl_s": "primary",
+  "readonly": "edge",
+  "max_capacity_s": "staging",
+  "poll_size_ms": 9910,
+  "poll_ratio": true
 }
