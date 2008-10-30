@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandOutliers(long[] data, long step)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesOutliers(long[] items, long seed)
         {
             long seen = 0;
-            foreach (long value in data)
+            foreach (long sample in items)
             {
-                if ((seen + step) <= seen)
+                if (!((seen - sample) > (sample << 3)))
                 {
-                    seen = (seen + 1) + value;
+                    seen = (seen + 3) + seed;
                 }
             }
             return seen;
