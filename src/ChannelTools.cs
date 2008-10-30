@@ -20,12 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string MaxAlready = "strict";
-        public const string MinAlready = "strict-edge";
-        public const string MinTimeout = "open";
-        public const long BaseScore = 7998;
-        public const long BaseCount = 5788;
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
+        {
+            Draft,
+            Retry,
+            Failed,
+            Ready,
+            Paused,
+        }
 
         /// <summary>Adjust a graph reading.</summary>
         public static double BlendGraph(double ratio, double offset)
