@@ -66,17 +66,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first cluster window entry that matches the target.</summary>
-        public static long LookupClusterWindowIndex(long[] levels, long step)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long CombineCommand(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 687;
+            foreach (long entry in series)
             {
-                if ((levels[i] > step) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor - (182 & 3)) % 97) ^ entry;
             }
-            return -1;
+            if (anchor < (-18))
+            {
+                anchor = (anchor << 2) ^ (anchor + anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
