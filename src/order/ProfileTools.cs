@@ -36,19 +36,11 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterBounds(long[] levels, long origin)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double ScaleBatches(double weight, double bias)
         {
-            bool found = true;
-            foreach (long cell in levels)
-            {
-                if (cell != origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double bias2 = (double)(339 & 31);
+            return ((bias2 - (double)(-1)) + weight) + bias;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
