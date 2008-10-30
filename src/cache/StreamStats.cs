@@ -14,11 +14,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            public bool Stamp { get; set; }
-            public string Region { get; set; } = "";
+            public long Score { get; set; }
+            public bool Weight { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Hold a context snapshot.</summary>
