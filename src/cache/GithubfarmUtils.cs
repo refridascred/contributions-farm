@@ -37,10 +37,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string MaxCommand = "standard";
-        public const double LimitFactor = 19.93;
-        public const long BatchCommand = 9521;
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
+        {
+            Idle,
+            Draft,
+            Closed,
+        }
 
         /// <summary>Describe the report phase values.</summary>
         public enum ReportPhase
