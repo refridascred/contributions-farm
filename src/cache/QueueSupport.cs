@@ -13,14 +13,32 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long GradeEditor(long seed, long seed2)
         {
-            Done,
-            Retry,
-            Active,
-            Locked,
-            Synced,
+            long lane = seed + seed2;
+            if (((-940) + seed2) < (seed2 >> 4))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((-359) >= seed)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((86 << 3) < lane)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate stats samples.</summary>
