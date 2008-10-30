@@ -1,12 +1,18 @@
 # entry settings
-base_capacity_s: eu-west
-batch_limit_ms:
-  - 375
-  - 128
-  - 442
-  - 76
-command_ttl:
-  - local
-  - local
-token_capacity: 9126
-already_capacity: blue
+contributi_delay: false
+verbose: green
+retry_interval: true
+report_capacity:
+  min_interval: 56
+  retry_capacity_count: 3439
+  flush_limit:
+    poll_ratio_pct: cached
+    soft_ratio: eu-west
+    hard_limit_pct: 37
+    metric_capacity: 4372
+    session_interval: false
+    strict:
+      - 316
+      - 208
+      - 294
+      - 151
