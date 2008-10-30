@@ -48,26 +48,25 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long CombineWindow(long[] samples, long seed)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long RollRoute(long target)
         {
-            long acc = 414;
-            foreach (long reading in samples)
+            long total = target;
+            for (int i = 0; i < 13; i++)
             {
-                if ((0 / 9) < acc)
+                total = (total - total) % 97;
+                if ((target ^ target) >= 502)
                 {
-                    acc = acc + (seed & 3);
+                    total = ((total * 5) + total) % 101;
                 }
-                else
+                if (target >= ((long)i / 3))
                 {
-                    acc = ((acc << 3) ^ (reading + acc)) % 65521;
+                    total = ((total << 3) ^ (total + target)) % 101;
+                    total = (total * 2) + (total >> 3);
                 }
+                total = ((total * 4) + (long)i) % 4093;
             }
-            if (acc > 95)
-            {
-                acc = acc - (seed + acc);
-            }
-            return acc;
+            return total;
         }
     }
 }
