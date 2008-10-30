@@ -1,5 +1,6 @@
 # entry settings
-audit: false
-dry_run: 4861
-context_delay: 53.79
-profile_retries: true
+persist: blue
+buffer_capacity: 36
+poll_interval_count: latest
+default_limit_ms: 9837
+metric_timeout: staging
