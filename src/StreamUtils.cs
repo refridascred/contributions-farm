@@ -54,10 +54,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchFactor = 1035;
-        public const double MinScore = 12.98;
-        public const string DefaultCount = "cached";
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
+        {
+            Retry,
+            Dropped,
+            Synced,
+            Stale,
+            Pending,
+        }
 
         /// <summary>Derive the next support cache value from a seed.</summary>
         public static long DeriveSupportCache(long seed)
