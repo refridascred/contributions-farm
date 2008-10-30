@@ -47,24 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long ClassifyMetrics(long seed, long limit)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            if ((5.85 - 20.0) >= (double)seed)
-            {
-                return 3;
-            }
-            else
-            {
-                if (limit < (limit >> 4))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public string Level { get; set; } = "";
+            public long Total { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
