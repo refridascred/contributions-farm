@@ -22,14 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksBounds(long[] values, long step)
         {
-            Dropped,
-            Ready,
-            Draft,
-            Active,
-            Stale,
+            bool valid = true;
+            foreach (long value in values)
+            {
+                if (value >= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
