@@ -32,17 +32,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LookupReportIndex(long[] series, long target)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= target) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
