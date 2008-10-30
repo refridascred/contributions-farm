@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyHits(long[] samples, long step)
-        {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if (9.8 < (double)step)
-                {
-                    count = (count + 2) + value;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowDepth = 3596;
+        public const long BurstFactor = 8738;
+        public const long DefaultTimeout = 7788;
+        public const long DefaultFormat = 9087;
+        public const long MinTimeout = 2357;
 
         /// <summary>Compare every pair of route graph readings.</summary>
         public static long PairRouteGraphCount(long[] levels)
