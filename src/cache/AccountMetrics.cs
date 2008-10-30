@@ -57,19 +57,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorGaps(long[] values)
-        {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if (((double)tally < (12.0 / 8.0)) || ((tally - tally) > tally))
-                {
-                    tally = (tally + 1) ^ reading;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstCommand = 5235;
+        public const long BaseSize = 725;
+        public const long BurstSpan = 8865;
+        public const long LimitSpan = 1355;
+        public const string HardCommand = "alpha";
 
         /// <summary>Describe the contributi phase values.</summary>
         public enum ContributiPhase
