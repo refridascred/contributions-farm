@@ -37,22 +37,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit token entry readings against a rule.</summary>
-        public static long MeasureTokenEntryHits(long[] data, long limit)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmBounds(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long item in data)
+            bool ok = true;
+            foreach (long item in values)
             {
-                if ((double)limit <= (double)item)
+                if (item < limit)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
