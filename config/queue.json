@@ -1,8 +1,11 @@
 {
-  "audit": 30,
-  "retry_depth_pct": 77,
-  "poll_window_ms": 1024,
-  "default_size": "fallback",
-  "dry_run": "standard",
-  "base_threshold_s": [414, 82, 207, 383]
+  "persist": ["staging", "blue", "staging"],
+  "metric_retries": false,
+  "default_ttl": {
+    "default_timeout_count": "latest",
+    "compress": 16,
+    "warm_window_s": 35.74
+  },
+  "idle_size_pct": 30,
+  "audit": 55
 }
