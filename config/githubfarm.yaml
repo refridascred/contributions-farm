@@ -1,7 +1,13 @@
 # githubfarm settings
-batches_retries: legacy
-contributi_retries: 57.36
-soft_size_s: standard
-burst_capacity_pct: 43.9
-verbose: 14.97
-max_depth: 84.91
+min_timeout_ms: 2634
+order_ratio: local
+readonly: 6176
+sync_size: 7775
+batch_ratio:
+  graph_interval: 78.49
+  flush_threshold_ms: false
+  buffer_delay: false
+  idle_window: fallback
+  sync_interval_pct: 68.64
+  base_delay: green
+audit: true
