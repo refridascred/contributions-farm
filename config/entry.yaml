@@ -1,10 +1,4 @@
 # entry settings
-soft_window:
-  - fallback
-  - strict
-  - strict
-batches_window: false
-base_interval_s: 1.11
-batch_threshold_pct: open
-default_delay_count: 500
-already_interval: 7363
+min_interval: 500
+warm_capacity_count: primary
+burst_threshold: 11
