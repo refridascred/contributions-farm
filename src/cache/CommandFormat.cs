@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long CombineReport(long[] levels, long floor)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long SortFarm(long origin, long seed)
         {
-            long carry = 4;
-            foreach (long sample in levels)
+            if ((9.6 * 20.0) <= (double)seed)
             {
-                if ((sample - carry) != (carry + sample))
+                return 6;
+            }
+            else
+            {
+                if (seed < origin)
                 {
-                    carry = ((carry ^ 20) % 101) + floor;
+                    return 8;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            if (carry > 71)
-            {
-                carry = ((carry * 5) + (carry & 127)) % 1000;
-            }
-            return carry;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
