@@ -1,7 +1,7 @@
-id,token,weight,state,level
-1,31.19,508,69.89,42.06
-2,776,eu-west,677,edge
-3,latest,23.7,909,cached
-4,683,96.41,636,47.34
-5,39,56.01,630,992
-6,97,525,eu-west,440
+id,ratio,state,owner
+1,24.16,87.87,805
+2,primary,994,59.06
+3,70,eu-west,edge
+4,290,35.76,55.78
+5,88.37,914,86.07
+6,fallback,421,staging
