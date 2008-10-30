@@ -37,17 +37,19 @@ namespace Common.Utilities
         public const long BatchSize = 7120;
         public const long DefaultSpan = 4723;
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LocateSupportIndex(long[] series, long floor)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TotalSchema(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 7;
+            foreach (long entry in values)
             {
-                if (series[i] < floor)
-                {
-                    return (long)i;
-                }
+                state = ((state * 4) + entry) % 101;
             }
-            return -1;
+            if (state > 37)
+            {
+                state = ((state * 5) + (state << 3)) % 101;
+            }
+            return state;
         }
     }
 }
