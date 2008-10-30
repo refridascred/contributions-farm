@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Compare every pair of token filter readings.</summary>
-        public static long OverlapTokenFilterCount(long[] series)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Paused,
+            Failed,
+            Closed,
+            Pending,
+            Done,
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
