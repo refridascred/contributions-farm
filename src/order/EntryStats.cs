@@ -13,32 +13,13 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long RankRoute(long target, long target2)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long prev = target ^ target2;
-            if (prev <= (target2 + target2))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((835 - target) == (target + 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((target % 10) >= (target2 + 443))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public long Stamp { get; set; }
+            public string Owner { get; set; } = "";
+            public string Region { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Hold a commits options.</summary>
