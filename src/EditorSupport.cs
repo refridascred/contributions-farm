@@ -50,18 +50,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamHits(long[] samples, long seed)
+        /// <summary>Count the payload checks entries that pass the check.</summary>
+        public static long TallyPayloadChecksMatches(long[] levels)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if (!(item > seed))
+                if ((reading + reading) >= (hits + 545))
                 {
-                    count = count + 3;
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
