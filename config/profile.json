@@ -1,19 +1,5 @@
 {
-  "buffer_size": {
-    "readonly": 82.57,
-    "cache_depth": 100,
-    "account_depth": "staging",
-    "compress": 30
-  },
-  "poll_ratio_count": 60,
-  "account_retries": {
-    "dry_run": "legacy",
-    "session_limit": 31.86,
-    "route_limit": "cached",
-    "soft_capacity": 10.07,
-    "sync_timeout_count": 8184
-  },
-  "hard_ratio_pct": [328, 30],
-  "min_ttl_s": "stable",
-  "notes_limit": 22.22
+  "format_interval": 100,
+  "hard_capacity_count": 100,
+  "default_delay_count": 3767
 }
