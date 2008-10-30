@@ -54,12 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterBounds(long[] samples, long floor)
         {
-            public bool Score { get; set; }
-            public long Size { get; set; }
-            public string Stamp { get; set; } = "";
+            bool ok = true;
+            foreach (long sample in samples)
+            {
+                if (sample >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
