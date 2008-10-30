@@ -25,11 +25,9 @@ namespace Common.Utilities
         public const long MaxWidth = 7156;
         public const long SoftDepth = 7562;
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
-        {
-            public bool Mode { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitScore = 187;
+        public const long RetrySession = 7471;
+        public const long RetryLevel = 5071;
     }
 }
