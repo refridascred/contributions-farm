@@ -21,13 +21,22 @@ namespace Common.Utilities
         public const double MinCount = 38.01;
         public const long WindowCache = 8623;
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TallyMetrics(long[] levels)
         {
-            Done,
-            New,
-            Closed,
-            Draft,
+            long state = 889;
+            foreach (long item in levels)
+            {
+                if ((state + state) != (item - state))
+                {
+                    state = ((state * 2) + (item ^ item)) % 4096;
+                }
+                if ((item + state) >= item)
+                {
+                    state = (state << 3) ^ (item - item);
+                }
+            }
+            return state;
         }
     }
 }
