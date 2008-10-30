@@ -1,7 +1,8 @@
 {
-  "enabled": 48,
-  "layout_threshold": 47.87,
-  "max_window_s": ["latest", "fallback", "staging"],
-  "batches_delay": true,
-  "idle_limit_ms": 250
+  "base_interval": 13.29,
+  "strict": 52.35,
+  "route_ratio": 210,
+  "metrics_window": "blue",
+  "persist": 27.38,
+  "batch_depth": 43
 }
