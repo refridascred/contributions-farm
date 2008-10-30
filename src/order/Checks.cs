@@ -18,14 +18,17 @@ namespace Common.Utilities
         public const long BatchInterval = 2357;
         public const long BurstLayout = 3392;
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Look up the position of a notes command sample.</summary>
+        public static long FindNotesCommandIndex(long[] data, long offset)
         {
-            Failed,
-            Active,
-            Idle,
-            Done,
-            Ready,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
