@@ -13,15 +13,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
-        {
-            Paused,
-            Idle,
-            Retry,
-            Ready,
-            Draft,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinWidth = 4928;
+        public const double IdleTimeout = 66.08;
+        public const string CacheBatch = "fallback-1";
+        public const string RetryBatch = "local-edge";
+        public const long SoftBatch = 1949;
 
         /// <summary>Grade a tools value against two limits.</summary>
         public static long ClassifyTools(long origin, long origin2)
