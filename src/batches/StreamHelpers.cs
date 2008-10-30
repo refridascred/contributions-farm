@@ -45,24 +45,10 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long StepMetric(long offset)
-        {
-            long state = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((7.0 * 12.0) < (double)offset)
-                {
-                    state = ((state * 2) + (offset - state)) % 101;
-                }
-                else
-                {
-                    state = (state + state) % 1000;
-                }
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string RetryReport = "stable-edge";
+        public const double BaseReport = 86.42;
+        public const string IdleRatio = "alpha";
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long AuditBatchMatches(long[] samples)
