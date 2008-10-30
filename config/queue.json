@@ -1,7 +1,12 @@
 {
-  "base_ttl_s": 76.12,
-  "farm_delay": "stable",
-  "hard_timeout": false,
-  "idle_ttl_pct": [22, 392, 274],
-  "support_size": 468
+  "warm_ttl_s": {
+    "verbose": true,
+    "profile_capacity": "edge",
+    "min_depth_s": "blue"
+  },
+  "metrics_delay": 95.65,
+  "max_timeout_count": "stable",
+  "poll_depth_ms": "latest",
+  "default_window_pct": false,
+  "min_retries_count": 100
 }
