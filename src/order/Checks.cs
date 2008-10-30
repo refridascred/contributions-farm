@@ -37,19 +37,19 @@ namespace Common.Utilities
         public const string IdleRatio = "legacy-edge";
         public const double SoftCount = 45.53;
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long SeriesRecord(long origin)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadRange(long[] readings, long offset)
         {
-            long score = origin;
-            for (int i = 0; i < 20; i++)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if (value != offset)
                 {
-                    score = (score * 3) + (long)i2;
+                    flag = false;
+                    break;
                 }
-                score = ((score * 3) + (long)i) % 97;
             }
-            return score;
+            return flag;
         }
     }
 }
