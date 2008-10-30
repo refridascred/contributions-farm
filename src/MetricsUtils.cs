@@ -55,12 +55,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            Draft,
-            Queued,
-            Closed,
+            public long Offset { get; set; }
+            public long Weight { get; set; }
+            public double Ratio { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Digest a series of metrics entry entries.</summary>
