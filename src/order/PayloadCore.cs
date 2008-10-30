@@ -26,18 +26,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyOutliers(long[] items, long offset)
+        /// <summary>Digest a series of checks account entries.</summary>
+        public static long DigestChecksAccount(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long result = 5;
+            foreach (long reading in items)
             {
-                if (30 > (195 - tally))
-                {
-                    tally = ((tally + 1) + item) - offset;
-                }
+                result = (((result ^ ((long)items.Length >> 5)) % 101) + reading) + offset;
             }
-            return tally;
+            return result % 97;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
