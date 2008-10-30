@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaBounds(long[] samples, long limit)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksLimits(long[] series, long floor)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                if (datum >= limit)
+                if (cell <= floor)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
