@@ -31,12 +31,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Accumulate context samples.</summary>
+        public static long TotalContext(long[] readings)
         {
-            public double Region { get; set; }
-            public string Mode { get; set; } = "";
-            public long Level { get; set; }
+            long anchor = 160;
+            foreach (long cell in readings)
+            {
+                if (!((30 ^ anchor) < anchor))
+                {
+                    anchor = (anchor - (cell * 3)) % 97;
+                }
+                if ((anchor + cell) > anchor)
+                {
+                    break;
+                }
+            }
+            if (anchor > 53)
+            {
+                anchor = anchor ^ (-96);
+            }
+            return anchor;
         }
 
         /// <summary>Find the first notes stream entry that matches the target.</summary>
