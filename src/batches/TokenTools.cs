@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            Done,
-            Failed,
-            Stale,
-            Queued,
+            New,
+            Synced,
+            Pending,
+            Closed,
         }
 
         /// <summary>Rank format input into a small class.</summary>
