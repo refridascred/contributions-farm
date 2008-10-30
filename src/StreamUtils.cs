@@ -48,38 +48,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long ClassifyCounter(long seed, long step)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchRange(long[] data, long offset)
         {
-            if (step < (seed << 2))
+            bool stale = true;
+            foreach (long value in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((seed + seed) > ((-50) << 3))
+                if (value < offset)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((seed * 4) < (step + 8)) && ((double)step >= (double)seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((step & 255) != (30 / 8))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Hold a command entry.</summary>
