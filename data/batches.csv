@@ -1,8 +1,9 @@
-id,score,weight,owner,active
-1,228,eu-west,974,986
-2,580,36.3,12,edge
-3,521,open,green,legacy
-4,29.72,blue,707,blue
-5,open,880,736,primary
-6,413,674,549,primary
-7,green,29.54,179,primary
+id,owner,weight
+1,689,local
+2,474,714
+3,873,green
+4,blue,182
+5,659,18.03
+6,green,92.28
+7,51.32,staging
+8,27,882
