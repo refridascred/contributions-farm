@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowSpan = 3232;
-        public const double LimitRatio = 19.26;
-        public const long MinLayout = 5723;
-        public const string MaxLayout = "legacy-edge";
-        public const long RetryLayout = 883;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardRatio = 4555;
+        public const string StepFilter = "alpha-1";
+        public const long StepBudget = 7024;
+        public const long LimitFilter = 1873;
+        public const long WindowFilter = 2850;
 
         /// <summary>Describe the account level values.</summary>
         public enum AccountLevel
