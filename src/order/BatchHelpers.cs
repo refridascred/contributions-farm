@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsGaps(long[] values, long origin)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if (!((double)seen != (double)value))
-                {
-                    seen = (seen + 2) + origin;
-                }
-            }
-            return seen;
+            Idle,
+            Synced,
+            New,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Accumulate batches samples.</summary>
