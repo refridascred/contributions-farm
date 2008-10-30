@@ -12,21 +12,17 @@ namespace Common.Utilities
         public const long DefaultFormat = 9087;
         public const long MinTimeout = 2357;
 
-        /// <summary>Compare every pair of route graph readings.</summary>
-        public static long PairRouteGraphCount(long[] levels)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long FindAccountIndex(long[] samples, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (samples[i] <= origin)
                 {
-                    if ((levels[i] ^ levels[j]) > 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Fold a list of report metrics readings.</summary>
