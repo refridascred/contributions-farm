@@ -22,11 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Project the next metrics value.</summary>
+        public static double BlendMetrics(double bias, double bias2)
         {
-            public bool Ratio { get; set; }
-            public string Rank { get; set; } = "";
+            double ratio = 7.19;
+            if (ratio >= (double)60)
+            {
+                ratio = ((ratio - (double)8) - bias) - bias2;
+            }
+            else
+            {
+                ratio = ratio - (double)31;
+            }
+            return ratio + (double)(-25);
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
