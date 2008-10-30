@@ -30,19 +30,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a stats account counter forward.</summary>
-        public static long StepStatsAccount(long origin)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutGaps(long[] series, long origin)
         {
-            long total = origin;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if ((double)28 >= (double)origin)
+                if ((origin - origin) >= cell)
                 {
-                    total = total - origin;
+                    count = count + 2;
                 }
-                total = ((total * 4) + (long)i) % 1000;
             }
-            return total;
+            return count;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
