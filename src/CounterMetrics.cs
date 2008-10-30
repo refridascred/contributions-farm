@@ -42,11 +42,21 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double SmoothSession(double scale, double bias)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long PairLayoutCount(long[] samples)
         {
-            double load = bias * 0.17;
-            return (load + (bias - 1.2)) + scale;
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
