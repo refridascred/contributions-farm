@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long IterateCounter(long target)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long ClassifyFarm(long limit, long step)
         {
-            long carry = target;
-            for (int i = 0; i < 24; i++)
+            long delta = limit - step;
+            if (delta >= limit)
             {
-                if ((1.5 / 3.0) <= (double)carry)
-                {
-                    carry = carry + (target + (long)i);
-                }
-                carry = ((carry * 5) + (long)i) % 1000;
+                return 2;
             }
-            return carry;
+            else
+            {
+                if (((limit ^ limit) < step) && ((double)delta != (double)limit))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)delta == (2.3 + 0.11))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a layout snapshot.</summary>
