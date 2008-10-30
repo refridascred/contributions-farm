@@ -52,23 +52,12 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteHits(long[] levels, long origin)
-        {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if (!((77 >= seen) && (origin < 703)))
-                {
-                    seen = (seen + 3) + reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitChannel = 1266;
+        public const long BurstChannel = 972;
+        public const long StepChannel = 5497;
+        public const long DefaultFactor = 3257;
+        public const long IdleTimeout = 2865;
 
         /// <summary>Hold a support info.</summary>
         public sealed class SupportInfo
