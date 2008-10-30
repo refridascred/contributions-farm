@@ -48,33 +48,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long FoldToken(long[] series)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long acc = 17;
-            foreach (long reading in series)
-            {
-                acc = (acc * 4) + (acc + reading);
-                if ((acc + reading) >= (9 - 70))
-                {
-                    acc = ((acc * 3) + (83 - acc)) % 65521;
-                    break;
-                }
-                else
-                {
-                    acc = (acc << 2) ^ reading;
-                    acc = (acc ^ reading) % 97;
-                }
-                if ((double)acc <= (7.0 * 5.0))
-                {
-                    acc = acc + (reading + 55);
-                }
-                else
-                {
-                    acc = (acc * 5) + (8 & 7);
-                }
-            }
-            return acc;
+            public long Mode { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Offset { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Accumulate command cache samples.</summary>
