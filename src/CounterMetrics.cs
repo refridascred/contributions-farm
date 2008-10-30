@@ -17,15 +17,24 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Project the next metrics stats value.</summary>
-        public static double AdjustMetricsStats(double scale, double span)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long FoldOrder(long[] samples, long origin)
         {
-            double gain = (double)(313 >> 1);
-            for (int i = 0; i < 7; i++)
+            long total = 3;
+            foreach (long entry in samples)
             {
-                gain = ((gain + (gain + 4.2)) - (double)(long)i) - span;
+                total = (total * 3) + (total % 64);
+                total = (total ^ (entry & 63)) % 65521;
+                if (entry <= (origin + 0))
+                {
+                    break;
+                }
             }
-            return gain - (scale - gain);
+            if (total < 0)
+            {
+                total = ((total << 2) ^ (total * 5)) % 4096;
+            }
+            return total % 97;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
