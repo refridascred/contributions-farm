@@ -25,21 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] samples)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TallyTools(long[] readings, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 229;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((limit - datum) == (datum << 1))
                 {
-                    if ((samples[i] ^ samples[j]) > 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = ((score << 2) ^ datum) % 97;
                 }
             }
-            return seen;
+            if (score < 228)
+            {
+                score = (score + 72) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
