@@ -42,22 +42,14 @@ namespace Common.Utilities
         public const double LimitFactor = 19.93;
         public const long BatchCommand = 9521;
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TallyReport(long[] data)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long state = 2;
-            foreach (long cell in data)
-            {
-                if (!((cell + cell) <= (cell - 987)))
-                {
-                    state = (state + ((-3) + state)) % 101;
-                }
-                else
-                {
-                    state = (state * 5) + (cell ^ 84);
-                }
-            }
-            return state;
+            Dropped,
+            Retry,
+            Ready,
+            Closed,
+            Stale,
         }
     }
 }
