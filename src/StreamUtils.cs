@@ -35,16 +35,12 @@ namespace Common.Utilities
             return scale + (span - span);
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long IterateFarm(long step)
-        {
-            long mix = step;
-            for (int i = 0; i < 23; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinCounter = 6069;
+        public const long BurstCounter = 6763;
+        public const long WindowFactor = 968;
+        public const string RetryScore = "local-v2";
+        public const long HardFactor = 8818;
 
         /// <summary>Derive the next already value from a seed.</summary>
         public static long StepAlready(long seed)
