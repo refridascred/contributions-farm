@@ -24,15 +24,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TallySchema(long[] samples)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long mark = 797;
-            foreach (long datum in samples)
-            {
-                mark = ((mark * 2) + datum) % 101;
-            }
-            return mark;
+            Retry,
+            Idle,
+            Stale,
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
