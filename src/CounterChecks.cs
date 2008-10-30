@@ -57,13 +57,13 @@ namespace Common.Utilities
             return gain + offset;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            public double Offset { get; set; }
-            public long Total { get; set; }
-            public long Count { get; set; }
-            public long Level { get; set; }
+            public long Limit { get; set; }
+            public bool Flag { get; set; }
+            public long Score { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
