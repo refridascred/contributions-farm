@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LookupStreamIndex(long[] values, long limit)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == limit) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Paused,
+            Active,
         }
 
         /// <summary>Look up the position of a format sample.</summary>
