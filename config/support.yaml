@@ -1,6 +1,31 @@
 # support settings
-strict: standard
-route_ratio: 5.77
-context_ratio: 7.06
-max_interval_s: 27.24
-retry_size: 100
+max_window_s: 48.78
+readonly:
+  - cached
+  - standard
+  - legacy
+batches_delay:
+  notes_timeout:
+    verbose: 60
+    idle_interval_ms: local
+    stats_delay: 250
+    poll_limit_count: 500
+  poll_retries_count:
+    - primary
+    - primary
+  readonly: 7035
+  poll_interval: 8032
+notes_timeout: local
+burst_interval_s: false
+batch_depth_s:
+  dry_run: false
+  channel_capacity:
+    command_window: 60
+    sync_depth: 41
+    audit: cached
+    burst_ratio: 81
+    schema_threshold: 9829
+  payload_delay:
+    - 178
+    - 212
+  verbose: 9991
