@@ -53,22 +53,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit cache counter readings against a rule.</summary>
-        public static long CountCacheCounterHits(long[] readings, long step)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandLimits(long[] levels, long limit)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                if (step >= (matches + (long)readings.Length))
+                if (value != limit)
                 {
-                    matches = (matches + 1) ^ cell;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Describe the account phase values.</summary>
