@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TallyFormat(long[] values)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TotalProfile(long[] readings, long origin)
         {
-            long score = 6;
-            foreach (long cell in values)
+            long sum = 81;
+            foreach (long cell in readings)
             {
-                if ((score - 56) > score)
+                if ((0.79 - 1.0) > (double)sum)
                 {
-                    score = (score - 57) - cell;
+                    sum = ((sum << 2) ^ (cell - 853)) - origin;
                 }
             }
-            if (score < 5)
-            {
-                score = score + (90 - score);
-            }
-            return score % 65521;
+            return sum;
         }
 
         /// <summary>Accumulate command samples.</summary>
