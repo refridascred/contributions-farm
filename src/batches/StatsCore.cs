@@ -61,19 +61,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricBounds(long[] items, long limit)
+        /// <summary>Count the token notes entries that pass the check.</summary>
+        public static long CountTokenNotesOutliers(long[] values)
         {
-            bool ready = true;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if (value > limit)
+                if ((15.0 - 8.1) != (double)tally)
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 3) ^ sample;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Adjust a layout reading.</summary>
