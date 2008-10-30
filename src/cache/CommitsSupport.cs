@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Iterate the metrics profile series from a seed.</summary>
-        public static long DeriveMetricsProfile(long seed)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double SmoothLayout(double ratio, double offset)
         {
-            long result = seed;
-            for (int i = 0; i < 24; i++)
+            double load = (offset * 7.0) / 3.0;
+            if (load >= 0.32)
             {
-                long delta = result;
-                double ratio = 6.7 - (7.4 / 8.0);
-                if (!(((double)delta >= ratio) || ((seed + delta) != ((-844) ^ (long)i))))
-                {
-                    delta = (delta << 2) ^ seed;
-                }
-                result = ((result * 5) + (long)i) % 4093;
+                load = load + (ratio + ratio);
             }
-            return result;
+            else
+            {
+                load = load - load;
+            }
+            return load + (ratio * 11.0);
         }
 
         /// <summary>Define editor limits and defaults.</summary>
