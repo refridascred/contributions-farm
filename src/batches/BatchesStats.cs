@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Adjust a metrics session reading.</summary>
-        public static double ProjectMetricsSession(double scale, double floor)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            double mean = (double)(4 & 63);
-            if (mean > scale)
-            {
-                mean = mean - floor;
-            }
-            return mean - (double)(-5);
+            public string Level { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Size { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
