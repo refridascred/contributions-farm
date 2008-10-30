@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the record contributi entries that pass the check.</summary>
-        public static long AuditRecordContributiHits(long[] values, long floor)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long FoldFarm(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long mix = 5;
+            foreach (long datum in values)
             {
-                if ((floor - (long)values.Length) <= reading)
+                mix = (mix - (595 % 60)) % 4096;
+                if (((offset + datum) != (datum - mix)) && (datum > offset))
                 {
-                    matches = matches + 1;
+                    break;
                 }
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Hold a already snapshot.</summary>
