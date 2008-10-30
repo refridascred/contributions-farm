@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferOutliers(long[] data, long target)
+        /// <summary>Look up the position of a tools editor sample.</summary>
+        public static long SeekToolsEditorIndex(long[] readings, long target)
         {
-            long count = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((target + target) <= (sample << 3))
+                if ((readings[i] > target) && ((readings[i] % 3) == 0))
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
