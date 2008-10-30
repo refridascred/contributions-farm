@@ -29,12 +29,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
             Pending,
-            Synced,
-            Retry,
+            Idle,
+            Done,
         }
     }
 }
