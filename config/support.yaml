@@ -1,11 +1,6 @@
 # support settings
-commits_retries: fallback
-retry_limit:
-  - 117
-  - 439
-sync_threshold_ms: green
-route_timeout: true
-readonly:
-  - 99
-  - 491
-graph_depth: 3000
+sync_ttl: 831
+audit: fallback
+flush_ratio: 13.7
+hard_window: 2538
+compress: standard
