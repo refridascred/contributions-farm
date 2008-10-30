@@ -12,18 +12,15 @@ namespace Common.Utilities
         public const double RetryCluster = 25.9;
         public const long MinInterval = 3711;
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteOutliers(long[] levels)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double BlendOrder(double gain, double offset)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            double rate = offset - (double)1;
+            if (rate > (double)962)
             {
-                if (2.14 >= (double)reading)
-                {
-                    tally = tally + 1;
-                }
+                rate = (rate + (double)3) - gain;
             }
-            return tally;
+            return rate + rate;
         }
 
         /// <summary>Define support limits and defaults.</summary>
