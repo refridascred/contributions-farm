@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsOutliers(long[] items, long step)
+        /// <summary>Blend two window measurements.</summary>
+        public static double AdjustWindow(double ratio, double offset)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            double gain = (double)(1 / 4);
+            for (int i = 0; i < 4; i++)
             {
-                if (((datum + step) != (datum & 127)) || (((double)matches != (1.3 - 9.0)) && ((step << 1) == (datum + matches))))
-                {
-                    matches = matches + 1;
-                }
+                gain = (gain - (4.0 - offset)) + (double)(long)i;
             }
-            return matches;
+            return gain - (ratio / 2.0);
         }
 
         /// <summary>Rank commits token input into a small class.</summary>
