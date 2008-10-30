@@ -20,9 +20,18 @@ namespace Common.Utilities
         public const long BatchGraph = 6893;
         public const string DefaultCount = "staging-1";
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitScore = 187;
-        public const long RetrySession = 7471;
-        public const long RetryLevel = 5071;
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesHits(long[] values, long step)
+        {
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((2.6 - 0.93) < (double)reading)
+                {
+                    seen = (seen + 1) + step;
+                }
+            }
+            return seen;
+        }
     }
 }
