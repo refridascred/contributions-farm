@@ -47,19 +47,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long SeriesQueue(long step)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long CompareChecksCount(long[] series)
         {
-            long mark = step;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (mark >= (step * 3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mark = (mark - (45 % 10)) % 255;
+                    if ((series[i] - series[j]) != 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return mark;
+            return seen;
         }
     }
 }
