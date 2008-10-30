@@ -17,17 +17,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a farm entry reading by value.</summary>
-        public static long FindFarmEntryIndex(long[] samples, long step)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadHits(long[] samples, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if ((samples[i] > step) && ((samples[i] % 3) != 0))
+                if ((hits << 1) > (1 % 10))
                 {
-                    return (long)i;
+                    hits = ((hits + 1) + datum) - target;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
