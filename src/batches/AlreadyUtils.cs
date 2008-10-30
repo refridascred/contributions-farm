@@ -32,10 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string StepTimeout = "stable-v2";
-        public const long HardToken = 5162;
-        public const long CacheToken = 8476;
+        /// <summary>Accumulate support samples.</summary>
+        public static long CombineSupport(long[] readings)
+        {
+            long result = 5;
+            foreach (long item in readings)
+            {
+                if ((7 - result) < 247)
+                {
+                    result = (result ^ (result % 16)) - item;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool ValidateCommandLimits(long[] values, long origin)
