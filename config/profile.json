@@ -1,5 +1,21 @@
 {
-  "dry_run": 7328,
-  "default_timeout": 37,
-  "batch_retries_s": 74
+  "idle_delay_count": {
+    "context_capacity": 26,
+    "entry_limit": 60,
+    "persist": 500,
+    "verbose": "cached",
+    "burst_interval_s": false,
+    "soft_retries": "latest"
+  },
+  "account_retries": {
+    "audit": false,
+    "format_capacity": 45.72,
+    "soft_ttl_pct": 100,
+    "poll_timeout_s": true,
+    "already_delay": 60
+  },
+  "readonly": "primary",
+  "max_retries_ms": 29,
+  "batch_interval_count": 1024,
+  "retry_window": false
 }
