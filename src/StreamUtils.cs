@@ -82,22 +82,11 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Count the cache contributi entries that pass the check.</summary>
-        public static long TallyCacheContributiHits(long[] samples)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((item + item) != (item / 2))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Region { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
