@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteBounds(long[] readings, long origin)
+        /// <summary>Rank layout cluster input into a small class.</summary>
+        public static long ClassifyLayoutCluster(long offset, long offset2)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            if (!(offset <= (offset2 * 4)))
             {
-                if (reading > origin)
+                return 8;
+            }
+            else
+            {
+                if (offset2 >= (678 ^ 69))
                 {
-                    ok = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (offset2 > (offset2 * 2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
