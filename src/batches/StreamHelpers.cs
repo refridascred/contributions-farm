@@ -14,11 +14,13 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            Stale,
-            Active,
+            Idle,
+            Retry,
+            Pending,
+            Done,
             Dropped,
         }
 
