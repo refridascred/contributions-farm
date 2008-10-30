@@ -18,11 +18,15 @@ namespace Common.Utilities
         public const long BatchInterval = 2357;
         public const long BurstLayout = 3392;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinSize = 8436;
-        public const long RetryToken = 3522;
-        public const string HardScore = "alpha-v2";
-        public const double WindowDepth = 68.49;
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
+        {
+            Failed,
+            Active,
+            Idle,
+            Done,
+            Ready,
+        }
 
         /// <summary>Describe the filter phase values.</summary>
         public enum FilterPhase
