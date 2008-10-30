@@ -39,14 +39,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            Locked,
-            Retry,
-            Stale,
-            Active,
-            Draft,
+            public long Weight { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
