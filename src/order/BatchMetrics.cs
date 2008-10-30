@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesLimits(long[] readings, long origin)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long SeriesProfile(long limit)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            long score = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if (sample >= origin)
+                score = ((score * 3) + (limit << 2)) % 4096;
+                if ((score & 31) >= score)
                 {
-                    valid = false;
-                    break;
+                    score = ((score * 3) + (limit << 1)) % 65521;
                 }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return valid;
+            return score;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
