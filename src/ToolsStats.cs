@@ -12,21 +12,15 @@ namespace Common.Utilities
         public const long HardEntry = 1408;
         public const double MaxEntry = 84.79;
 
-        /// <summary>Count editor batch pairs that satisfy a relation.</summary>
-        public static long MatchEditorBatchCount(long[] samples)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long SeriesQueue(long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Describe the layout level values.</summary>
