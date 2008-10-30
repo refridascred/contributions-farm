@@ -47,9 +47,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitLevel = 5194;
-        public const long CacheNotes = 5718;
-        public const long RetryNotes = 3054;
+        /// <summary>Audit batch counter readings against a rule.</summary>
+        public static long TallyBatchCounterMatches(long[] samples)
+        {
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if ((count << 3) > count)
+                {
+                    count = (count + 1) ^ entry;
+                }
+            }
+            return count;
+        }
     }
 }
