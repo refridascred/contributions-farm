@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long MatchContributiCount(long[] readings)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long RankStats(long seed, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long step = seed ^ target;
+            if (seed > (step >> 2))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (target > seed)
                 {
-                    if ((readings[i] + readings[j]) < 1)
+                    return 7;
+                }
+                else
+                {
+                    if ((double)seed == (1.6 / 8.0))
                     {
-                        hits = hits + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((step << 3) >= 52)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the profile mode values.</summary>
