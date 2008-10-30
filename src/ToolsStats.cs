@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardDepth = 9572;
-        public const string CacheEntry = "local-edge";
-        public const long IdleEntry = 3782;
-        public const long HardEntry = 1408;
-        public const double MaxEntry = 84.79;
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmHits(long[] levels, long offset)
+        {
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((offset >> 2) < (matches + offset))
+                {
+                    matches = (matches + 2) ^ entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Iterate the queue series from a seed.</summary>
         public static long SeriesQueue(long offset)
