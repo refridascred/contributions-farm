@@ -46,21 +46,11 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long OverlapContextCount(long[] data)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Token { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
