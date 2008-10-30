@@ -50,13 +50,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
-        {
-            Active,
-            Draft,
-            New,
-            Idle,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long RetryFormat = 6688;
+        public const long IdleScore = 3863;
+        public const double CacheFormat = 87.07;
+        public const string CacheRatio = "legacy-edge";
+        public const long StepFormat = 1780;
     }
 }
