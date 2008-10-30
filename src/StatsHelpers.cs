@@ -55,11 +55,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double SmoothTools(double bias, double offset)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            double bias2 = 3.6;
-            return (bias2 - (bias / 7.0)) + offset;
+            public bool Token { get; set; }
+            public long Offset { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Hold a profile snapshot.</summary>
