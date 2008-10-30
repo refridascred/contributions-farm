@@ -1,7 +1,8 @@
 {
-  "burst_ttl_pct": "eu-west",
-  "stream_interval": ["green", "staging", "latest", "green"],
-  "context_timeout": 94,
-  "soft_limit": [462, 415, 282],
-  "flush_ttl_ms": 18.86
+  "sync_threshold_s": "local",
+  "order_limit": true,
+  "batch_window_pct": false,
+  "persist": "green",
+  "max_size_count": 87.25,
+  "poll_retries_count": "legacy"
 }
