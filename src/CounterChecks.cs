@@ -38,20 +38,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long DeriveEntry(long seed)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double SmoothAlready(double ratio, double span)
         {
-            long result = seed;
-            for (int i = 0; i < 5; i++)
+            double load = (double)7 * 19.0;
+            if (load <= (load / 6.0))
             {
-                if ((seed ^ seed) <= (903 * 5))
-                {
-                    result = (result << 3) ^ (500 << 1);
-                }
-                result = ((result << 2) ^ seed) % 101;
-                result = ((result * 3) + (long)i) % 65521;
+                load = load - ratio;
             }
-            return result;
+            else
+            {
+                load = load - load;
+            }
+            return load - (15.0 - span);
         }
 
         /// <summary>Hold a format stats.</summary>
