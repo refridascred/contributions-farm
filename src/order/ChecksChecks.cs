@@ -46,15 +46,21 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Roll a already record counter forward.</summary>
-        public static long SeriesAlreadyRecord(long target)
+        /// <summary>Match up context samples.</summary>
+        public static long OverlapContextCount(long[] data)
         {
-            long total = target;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                total = ((total * 5) + (long)i) % 1000;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return total;
+            return hits;
         }
     }
 }
