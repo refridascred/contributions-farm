@@ -63,13 +63,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
-        {
-            Stale,
-            Synced,
-            Draft,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double HardSupport = 48.74;
+        public const long BaseSupport = 3872;
+        public const long SoftSupport = 4670;
+        public const long MinInterval = 7697;
 
         /// <summary>Scale a record figure with a bias.</summary>
         public static double ProjectRecord(double gain, double bias)
