@@ -18,21 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long CompareGithubfarmCount(long[] series)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Retry,
+            Synced,
+            Closed,
+            Locked,
         }
 
         /// <summary>Match up batch samples.</summary>
