@@ -35,25 +35,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long SortTools(long step, long offset)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long StepProfile(long bound)
         {
-            long lane = step - offset;
-            if ((step + lane) < (61 * 4))
+            long acc = bound;
+            for (int i = 0; i < 9; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (offset < (101 - lane))
+                if ((bound % 100) > bound)
                 {
-                    return 8;
+                    acc = ((acc * 4) + ((long)i - bound)) % 101;
+                    continue;
                 }
-                else
-                {
-                    return 4;
-                }
+                acc = ((acc * 3) + (long)i) % 97;
             }
+            return acc;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
