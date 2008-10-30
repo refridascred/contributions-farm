@@ -50,19 +50,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileRange(long[] series, long bound)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long DeriveEntry(long seed)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            long result = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if (sample <= bound)
+                if ((seed ^ seed) <= (903 * 5))
                 {
-                    valid = false;
-                    break;
+                    result = (result << 3) ^ (500 << 1);
                 }
+                result = ((result << 2) ^ seed) % 101;
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return valid;
+            return result;
         }
 
         /// <summary>Derive the next session window value from a seed.</summary>
