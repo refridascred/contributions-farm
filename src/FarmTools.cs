@@ -23,11 +23,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double BlendStream(double scale, double offset)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            double scale2 = (double)(19 / 6);
-            return ((scale2 - (double)837) + scale) + offset;
+            public double Score { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
