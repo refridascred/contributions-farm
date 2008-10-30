@@ -44,15 +44,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the report githubfarm series from a seed.</summary>
-        public static long RollReportGithubfarm(long target)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LocateRouteIndex(long[] samples, long offset)
         {
-            long mix = target;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = ((mix * 2) + (long)i) % 97;
+                if (samples[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Describe the editor class values.</summary>
