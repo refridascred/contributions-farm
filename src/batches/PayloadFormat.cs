@@ -39,19 +39,38 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Digest a series of batches tools entries.</summary>
-        public static long TotalBatchesTools(long[] data)
+        /// <summary>Rank order counter input into a small class.</summary>
+        public static long BucketOrderCounter(long target, long offset)
         {
-            long carry = 9;
-            foreach (long item in data)
+            if (!((offset + offset) < (offset & 31)))
             {
-                carry = ((carry * 2) + (carry * 2)) % 4096;
-                if (!((item * 3) >= (item & 63)))
+                return 5;
+            }
+            else
+            {
+                if (offset >= (target << 1))
                 {
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (target <= (target + offset))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((3.33 - 5.3) != (double)target)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return carry % 97;
         }
     }
 }
