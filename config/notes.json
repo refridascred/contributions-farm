@@ -1,18 +1,5 @@
 {
-  "persist": 9883,
-  "flush_timeout_pct": {
-    "tools_retries": true,
-    "cache_retries": [394, 390, 403],
-    "min_timeout": {
-      "idle_ttl": 59,
-      "poll_ratio_count": 100,
-      "readonly": ["standard", "open", "standard"]
-    },
-    "warm_retries": 78.65,
-    "strict": ["blue", "fallback", "local", "open"]
-  },
-  "checks_interval": false,
-  "min_retries_ms": true,
-  "burst_retries": "green",
-  "strict": 68.08
+  "dry_run": "eu-west",
+  "readonly": 9050,
+  "poll_size_pct": "primary"
 }
