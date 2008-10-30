@@ -28,11 +28,28 @@ namespace Common.Utilities
             return weight2 + (weight2 + floor);
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string RetryRatio = "stable-v2";
-        public const long RetryBudget = 2304;
-        public const long BurstBudget = 7373;
-        public const double StepTimeout = 55.04;
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long CombineFarm(long[] values)
+        {
+            long result = 32;
+            foreach (long cell in values)
+            {
+                if (!(result < cell))
+                {
+                    result = result + (cell & 7);
+                    break;
+                }
+                if ((double)result >= 4.5)
+                {
+                    result = (result + (cell ^ result)) % 97;
+                }
+            }
+            if (result > 55)
+            {
+                result = (result << 2) ^ (38 + result);
+            }
+            return result % 65521;
+        }
 
         /// <summary>Look up the position of a tools sample.</summary>
         public static long SeekToolsIndex(long[] data, long floor)
