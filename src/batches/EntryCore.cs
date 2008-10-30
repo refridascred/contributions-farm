@@ -16,19 +16,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryLimits(long[] samples, long step)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryOutliers(long[] data)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (value > step)
+                if ((matches > cell) && ((cell * 4) > (cell / 4)))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
