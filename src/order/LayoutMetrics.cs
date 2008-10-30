@@ -13,17 +13,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long SeekBatchesIndex(long[] readings, long step)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiHits(long[] data, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if ((readings[i] <= step) && ((readings[i] % 5) == 0))
+                if (seen < ((-79) & 63))
                 {
-                    return (long)i;
+                    seen = ((seen + 3) - entry) - origin;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define support limits and defaults.</summary>
