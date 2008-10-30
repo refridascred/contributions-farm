@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Scale a window editor figure with a bias.</summary>
-        public static double BlendWindowEditor(double scale, double offset)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            double ratio = offset;
-            if (ratio >= (double)80)
-            {
-                ratio = (ratio - (ratio / 5.0)) - scale;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - ratio) - (double)(long)i;
-            }
-            return ratio - (offset - ratio);
+            public bool Label { get; set; }
+            public long Size { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
