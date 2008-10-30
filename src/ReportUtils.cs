@@ -48,19 +48,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate window counter readings against a bound.</summary>
-        public static bool ValidateWindowCounterLimits(long[] data, long limit)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long FoldProfile(long[] values)
         {
-            bool found = true;
-            foreach (long reading in data)
+            long total = 2;
+            foreach (long sample in values)
             {
-                if (reading <= limit)
+                if (sample > (sample + total))
                 {
-                    found = false;
-                    break;
+                    total = (total - (sample + sample)) % 65521;
+                }
+                else
+                {
+                    total = total ^ (total / 9);
                 }
             }
-            return found;
+            if (total > 80)
+            {
+                total = (total * 2) + (total + total);
+            }
+            return total;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
