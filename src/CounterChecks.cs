@@ -5,31 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Fold a list of farm token readings.</summary>
-        public static long DigestFarmToken(long[] levels)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long result = 498;
-            foreach (long sample in levels)
-            {
-                if ((sample - 2) <= result)
-                {
-                    result = (result * 4) + result;
-                    break;
-                }
-                if (((-62) ^ sample) == (60 + sample))
-                {
-                    result = (result ^ (sample + result)) % 65521;
-                }
-                else
-                {
-                    result = ((result << 3) ^ (sample + result)) % 255;
-                }
-            }
-            if (result < 365)
-            {
-                result = result ^ (result + result);
-            }
-            return result;
+            Closed,
+            Idle,
+            Dropped,
+            Stale,
+            Synced,
         }
 
         /// <summary>Audit channel metrics readings against a rule.</summary>
