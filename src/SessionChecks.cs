@@ -45,20 +45,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long DeriveSession(long step)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long sum = step;
-            for (int i = 0; i < 24; i++)
-            {
-                sum = (sum - ((long)i + sum)) % 97;
-                if ((step / 8) == (step ^ step))
-                {
-                    sum = (sum ^ (long)i) % 4096;
-                }
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
+            Active,
+            Draft,
+            New,
+            Idle,
         }
     }
 }
