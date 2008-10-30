@@ -57,12 +57,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstCommand = 5235;
-        public const long BaseSize = 725;
-        public const long BurstSpan = 8865;
-        public const long LimitSpan = 1355;
-        public const string HardCommand = "alpha";
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
+        {
+            public long Score { get; set; }
+            public string Level { get; set; } = "";
+            public long Count { get; set; }
+        }
 
         /// <summary>Combine schema format values into a single score.</summary>
         public static long FoldSchemaFormat(long[] data, long target)
