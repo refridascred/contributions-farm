@@ -35,18 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many metric record samples are out of range.</summary>
-        public static long MeasureMetricRecordHits(long[] series)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountOutliers(long[] levels)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (((cell + cell) >= (cell % 7)) && ((tally & 255) > tally))
+                if ((6.9 + 7.2) < (double)reading)
                 {
-                    tally = tally + 1;
+                    seen = seen + 3;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
