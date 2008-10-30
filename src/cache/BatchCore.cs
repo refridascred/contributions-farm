@@ -42,9 +42,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double MinChannel = 64.73;
-        public const double LimitWidth = 46.37;
-        public const long BatchCount = 8048;
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksLimits(long[] items, long origin)
+        {
+            bool ok = true;
+            foreach (long reading in items)
+            {
+                if (reading > origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
