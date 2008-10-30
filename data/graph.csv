@@ -1,11 +1,6 @@
-id,level,token,score
-1,stable,2,standard
-2,blue,77.88,blue
-3,edge,280,blue
-4,238,27,994
-5,253,standard,7.79
-6,standard,latest,256
-7,277,284,496
-8,edge,edge,open
-9,stable,49.27,staging
-10,fallback,913,eu-west
+id,state,label,rank,level
+1,12.85,82.91,602,104
+2,497,982,edge,47.13
+3,16.28,624,139,639
+4,17,blue,77.91,40.86
+5,742,23.55,cached,primary
