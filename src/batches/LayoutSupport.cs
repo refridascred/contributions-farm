@@ -53,18 +53,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordHits(long[] data, long bound)
-        {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if (84 > (matches % 97))
-                {
-                    matches = ((matches + 3) - entry) - bound;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchSpan = 2068;
+        public const long SoftRatio = 9025;
+        public const long HardSpan = 8044;
+        public const long IdleAccount = 7232;
+        public const long BaseAccount = 9609;
     }
 }
