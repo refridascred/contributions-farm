@@ -29,18 +29,21 @@ namespace Common.Utilities
         public const long BatchCount = 8028;
         public const double RetryBudget = 6.09;
 
-        /// <summary>Audit queue batch readings against a rule.</summary>
-        public static long AuditQueueBatchOutliers(long[] series)
+        /// <summary>Match up queue samples.</summary>
+        public static long OverlapQueueCount(long[] series)
         {
-            long count = 0;
-            foreach (long value in series)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((count << 2) >= count) || (value > count))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = count + 3;
+                    if ((series[i] - series[j]) == 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
