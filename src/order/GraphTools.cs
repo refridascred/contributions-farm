@@ -14,13 +14,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            Stale,
-            Locked,
-            Active,
+            Retry,
+            Queued,
             Synced,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Define record limits and defaults.</summary>
