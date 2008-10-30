@@ -20,21 +20,32 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long MatchGraphCount(long[] series)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long RankRoute(long target, long target2)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long prev = target ^ target2;
+            if (prev <= (target2 + target2))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((835 - target) == (target + 3))
                 {
-                    if ((series[i] ^ series[j]) > 7)
+                    return 7;
+                }
+                else
+                {
+                    if ((target % 10) >= (target2 + 443))
                     {
-                        matches = matches + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Derive the next farm cluster value from a seed.</summary>
