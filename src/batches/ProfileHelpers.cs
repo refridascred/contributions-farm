@@ -39,22 +39,12 @@ namespace Common.Utilities
         public const double LimitBudget = 69.53;
         public const long MinFactor = 7620;
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long MatchCommitsCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxScore = 1208;
+        public const double StepSpan = 72.55;
+        public const long IdleNotes = 3719;
+        public const long BaseNotes = 4784;
+        public const long LimitCount = 8662;
 
         /// <summary>Describe the record status values.</summary>
         public enum RecordStatus
