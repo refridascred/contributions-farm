@@ -28,13 +28,14 @@ namespace Common.Utilities
         public const long DefaultFactor = 3257;
         public const long IdleTimeout = 2865;
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            public bool Weight { get; set; }
-            public long Score { get; set; }
-            public bool Total { get; set; }
-            public double Rank { get; set; }
+            New,
+            Dropped,
+            Closed,
+            Locked,
+            Pending,
         }
 
         /// <summary>Hold a cluster info.</summary>
