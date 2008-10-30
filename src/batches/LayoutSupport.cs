@@ -55,25 +55,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long IterateWindow(long limit)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TallyChannel(long[] items)
         {
-            long score = limit;
-            for (int i = 0; i < 10; i++)
+            long mark = 6;
+            foreach (long cell in items)
             {
-                score = score + ((long)i - limit);
-                if (((long)i + limit) != (limit + limit))
+                if ((mark + mark) <= cell)
                 {
-                    score = (score - (long)i) % 1000;
-                    score = ((score << 2) ^ (limit + (-740))) % 4096;
+                    mark = ((mark * 2) + (mark + mark)) % 97;
                 }
-                else
+                if ((mark + mark) != (7 + cell))
                 {
-                    score = (score + ((long)i * 3)) % 255;
+                    mark = mark + ((long)items.Length & 1);
                 }
-                score = ((score * 4) + (long)i) % 65521;
+                if (mark <= cell)
+                {
+                    break;
+                }
             }
-            return score;
+            return mark;
         }
     }
 }
