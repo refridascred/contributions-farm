@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TallyToken(long[] samples, long offset)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LocateStreamIndex(long[] data, long seed)
         {
-            long total = 3;
-            foreach (long entry in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((6.79 + 1.8) <= (double)total)
+                if (data[i] == seed)
                 {
-                    total = (((total << 2) ^ (total + 59)) ^ entry) + offset;
+                    return (long)i;
                 }
             }
-            return total % 97;
+            return -1;
         }
 
         /// <summary>Blend two context measurements.</summary>
