@@ -76,21 +76,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long DeriveFormat(long limit)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long IterateAccount(long origin)
         {
-            long score = limit;
-            for (int i = 0; i < 20; i++)
+            long result = origin;
+            for (int i = 0; i < 11; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    score = ((score + (limit % 64)) % 1000) - (long)i2;
-                    score = ((score * 3) + (limit + score)) % 65521;
-                }
-                score = (score - (limit ^ limit)) % 255;
-                score = ((score * 4) + (long)i) % 4093;
+                long matches = origin;
+                result = ((result << 3) ^ (result - matches)) % 255;
+                matches = matches ^ (origin + (long)i);
+                result = ((result * 3) + (long)i) % 101;
             }
-            return score;
+            return result;
         }
     }
 }
