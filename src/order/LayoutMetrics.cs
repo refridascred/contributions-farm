@@ -13,32 +13,17 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long RankReport(long seed, long target)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long SeekBatchesIndex(long[] readings, long step)
         {
-            long lane = seed ^ target;
-            if (lane > (lane / 9))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target >= (lane & 31)) || ((double)lane < (5.8 - 0.41)))
+                if ((readings[i] <= step) && ((readings[i] % 5) == 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((target << 2) == (target - 638))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define support limits and defaults.</summary>
