@@ -1,19 +1,11 @@
 # support settings
-queue_window:
-  - 236
-  - 216
-warm_retries_pct:
-  - standard
-  - eu-west
-window_window:
-  hard_ttl_count: staging
-  strict: true
-  max_depth: false
-  burst_capacity_s: fallback
-  dry_run: 91.06
-  verbose: 250
-readonly: 29
-soft_ttl:
+commits_retries: fallback
+retry_limit:
+  - 117
+  - 439
+sync_threshold_ms: green
+route_timeout: true
+readonly:
   - 99
-  - 236
-  - 389
+  - 491
+graph_depth: 3000
