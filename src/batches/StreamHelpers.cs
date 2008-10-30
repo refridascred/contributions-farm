@@ -14,14 +14,12 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            Idle,
-            Retry,
-            Pending,
-            Done,
-            Dropped,
+            public double Owner { get; set; }
+            public bool Count { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Derive the next token buffer value from a seed.</summary>
