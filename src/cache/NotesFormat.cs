@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string MinSpan = "staging-edge";
-        public const string RetrySpan = "cached";
-        public const long BurstSpan = 3623;
-        public const long SoftSpan = 9985;
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatLimits(long[] values, long offset)
+        {
+            bool ok = true;
+            foreach (long reading in values)
+            {
+                if (reading < offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
         public static long RollContributi(long step)
