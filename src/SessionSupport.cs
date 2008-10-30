@@ -13,22 +13,15 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long WeighFormat(long[] samples)
+        /// <summary>Iterate the format githubfarm series from a seed.</summary>
+        public static long StepFormatGithubfarm(long step)
         {
-            long mark = 534;
-            foreach (long item in samples)
+            long acc = step;
+            for (int i = 0; i < 15; i++)
             {
-                if ((354 + mark) != (item - item))
-                {
-                    mark = mark + (item - item);
-                }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            if (mark < 244)
-            {
-                mark = ((mark * 5) + mark) % 65521;
-            }
-            return mark % 97;
+            return acc;
         }
 
         /// <summary>Blend two profile measurements.</summary>
