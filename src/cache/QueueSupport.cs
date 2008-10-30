@@ -32,19 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesLimits(long[] data, long step)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long RollAlready(long origin)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            long carry = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if (datum >= step)
-                {
-                    flag = false;
-                    break;
-                }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return flag;
+            return carry;
         }
     }
 }
