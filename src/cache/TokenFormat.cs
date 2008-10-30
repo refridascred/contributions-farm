@@ -13,12 +13,33 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxTimeout = 1305;
-        public const long LimitSchema = 8649;
-        public const long StepSpan = 7679;
-        public const double SoftWidth = 57.39;
-        public const long WindowTimeout = 4329;
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long SortCluster(long seed, long seed2)
+        {
+            long gap = seed ^ seed2;
+            if (!((gap + gap) >= (111 + 468)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((31 + seed2) >= (158 << 1))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((seed2 % 12) <= 781)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the command level values.</summary>
         public enum CommandLevel
