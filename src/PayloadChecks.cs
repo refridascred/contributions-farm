@@ -20,11 +20,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleEditor = 1273;
-        public const long MinRatio = 7845;
-        public const double SoftEditor = 87.16;
-        public const string MaxEditor = "legacy-edge";
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordOutliers(long[] readings, long floor)
+        {
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if ((((hits / 5) == (floor + hits)) || (sample <= (sample + floor))) && ((11 / 7) <= hits))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Find the first context entry that matches the target.</summary>
         public static long SeekContextIndex(long[] series, long offset)
