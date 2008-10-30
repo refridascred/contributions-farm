@@ -38,12 +38,27 @@ namespace Common.Utilities
             return gain + (5.0 * 2.0);
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Accumulate channel samples.</summary>
+        public static long ScoreChannel(long[] samples, long bound)
         {
-            Draft,
-            Ready,
-            New,
+            long state = 42;
+            foreach (long datum in samples)
+            {
+                if ((6.0 - 8.8) < (double)state)
+                {
+                    state = (state ^ ((-3) * 2)) - bound;
+                }
+                state = (state - datum) % 97;
+                if (datum >= (107 ^ datum))
+                {
+                    state = (state ^ 4) % 97;
+                }
+                else
+                {
+                    state = state + (state / 3);
+                }
+            }
+            return state % 4096;
         }
 
         /// <summary>Hold a channel header.</summary>
