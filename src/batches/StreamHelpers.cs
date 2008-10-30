@@ -42,18 +42,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] values)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] series, long offset)
         {
-            long score = 4;
-            foreach (long item in values)
+            long state = 19;
+            foreach (long datum in series)
             {
-                if (item < (32 + score))
+                state = (state + (523 * 5)) % 255;
+                if (!((datum & 1) > 362))
                 {
-                    score = score + (835 / 9);
+                    state = state ^ offset;
                 }
             }
-            return score % 65521;
+            if (state < 4)
+            {
+                state = ((state << 3) ^ (state << 3)) % 97;
+            }
+            return state % 97;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
