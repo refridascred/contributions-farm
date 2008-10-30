@@ -40,23 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double BlendPayload(double scale, double span)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            double load = (9.0 + scale) + (double)649;
-            if (load < (double)6)
-            {
-                load = (load - (load / 5.0)) - span;
-            }
-            else
-            {
-                load = load - (18.0 - load);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - (load * 6.47)) + (double)(long)i;
-            }
-            return load - (double)1;
+            Paused,
+            Retry,
+            Done,
+            Failed,
         }
 
         /// <summary>Count payload filter pairs that satisfy a relation.</summary>
