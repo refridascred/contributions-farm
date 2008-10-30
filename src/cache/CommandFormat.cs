@@ -34,19 +34,14 @@ namespace Common.Utilities
         public const string BaseWidth = "latest-v2";
         public const long DefaultSession = 4104;
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutBounds(long[] values, long origin)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            bool flag = true;
-            foreach (long item in values)
-            {
-                if (item > origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Queued,
+            Failed,
+            Paused,
+            Pending,
+            Synced,
         }
     }
 }
