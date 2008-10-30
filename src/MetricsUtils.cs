@@ -69,15 +69,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long SeriesMetrics(long limit)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            long result = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
+            public double Mode { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
