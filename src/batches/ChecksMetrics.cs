@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LookupStatsIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepDepth = 7157;
+        public const string IdleRatio = "alpha-edge";
+        public const double HardCount = 45.84;
+        public const double BaseInterval = 50.43;
+        public const long MaxGithubfarm = 69;
 
         /// <summary>Describe the channel level values.</summary>
         public enum ChannelLevel
