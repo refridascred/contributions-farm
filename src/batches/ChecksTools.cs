@@ -56,18 +56,13 @@ namespace Common.Utilities
             return drift + (double)17;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutGaps(long[] samples, long target)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((item - seen) > target)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Done,
+            New,
+            Closed,
+            Draft,
         }
     }
 }
