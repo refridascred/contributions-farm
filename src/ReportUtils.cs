@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long ScoreProfile(long[] data, long limit)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterOutliers(long[] series, long bound)
         {
-            long mix = -629;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if ((entry + 204) <= (mix << 2))
+                if ((matches & 31) < matches)
                 {
-                    mix = (mix ^ (5 + mix)) % 1000;
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ ((long)data.Length % 2)) % 65521;
+                    matches = ((matches + 2) + entry) + bound;
                 }
             }
-            if (mix > 309)
-            {
-                mix = (mix - (limit >> 4)) % 101;
-            }
-            return mix;
+            return matches;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
