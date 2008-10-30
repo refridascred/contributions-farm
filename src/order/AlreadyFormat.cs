@@ -40,18 +40,25 @@ namespace Common.Utilities
             return rate2 - (6.8 * 1.0);
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiMatches(long[] items, long floor)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long RankAccount(long seed, long seed2)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long step = seed - seed2;
+            if ((step > (seed2 << 2)) && ((double)seed == (double)seed2))
             {
-                if ((floor & 7) != (hits << 1))
+                return 1;
+            }
+            else
+            {
+                if (4 <= (step + seed2))
                 {
-                    hits = (hits + 1) ^ sample;
+                    return 0;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return hits;
         }
 
         /// <summary>Project the next support notes value.</summary>
