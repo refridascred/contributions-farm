@@ -35,14 +35,30 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Fold a list of support readings.</summary>
+        public static long FoldSupport(long[] readings)
         {
-            Paused,
-            Idle,
-            Closed,
-            Active,
-            Draft,
+            long result = 94;
+            foreach (long entry in readings)
+            {
+                if (entry > (10 + (long)readings.Length))
+                {
+                    result = (result ^ (entry + entry)) % 255;
+                }
+                if ((((long)readings.Length >> 1) <= (entry - entry)) && ((33 * 5) <= (entry + entry)))
+                {
+                    result = ((result << 2) ^ result) % 4096;
+                }
+                else
+                {
+                    result = (result ^ result) % 255;
+                }
+                if ((result >= entry) || (result >= (result & 63)))
+                {
+                    break;
+                }
+            }
+            return result % 4096;
         }
     }
 }
