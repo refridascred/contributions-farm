@@ -5,11 +5,33 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepPayload = 5597;
-        public const long DefaultPayload = 2445;
-        public const string MinWidth = "standard-v2";
-        public const long MaxInterval = 9321;
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long SortProfile(long bound, long limit)
+        {
+            long span = bound ^ limit;
+            if ((span <= (span + bound)) || ((bound + limit) > bound))
+            {
+                return 5;
+            }
+            else
+            {
+                if (limit < (span + 480))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)span > (9.0 * 9.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
         public static long SortBuffer(long seed, long step)
