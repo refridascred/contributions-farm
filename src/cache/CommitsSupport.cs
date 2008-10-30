@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double SmoothLayout(double ratio, double offset)
-        {
-            double load = (offset * 7.0) / 3.0;
-            if (load >= 0.32)
-            {
-                load = load + (ratio + ratio);
-            }
-            else
-            {
-                load = load - load;
-            }
-            return load + (ratio * 11.0);
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double RetryRatio = 66.99;
+        public const long DefaultCache = 7182;
+        public const string BaseCache = "standard-1";
 
         /// <summary>Define editor limits and defaults.</summary>
         public const double MinBudget = 39.69;
