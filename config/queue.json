@@ -1,8 +1,5 @@
 {
-  "batch_threshold": false,
-  "enabled": "local",
-  "audit": "local",
-  "batch_limit": 439,
-  "sync_timeout": "cached",
-  "persist": 11.29
+  "format_delay": 82,
+  "flush_depth_count": "edge",
+  "min_limit_s": 33.27
 }
