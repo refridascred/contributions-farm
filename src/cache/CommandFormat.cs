@@ -33,18 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutGaps(long[] values)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long DigestEditor(long[] levels, long seed)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long score = 4;
+            foreach (long cell in levels)
             {
-                if (hits > (hits - value))
+                if (!(cell > (score & 3)))
                 {
-                    hits = hits + 2;
+                    score = (score * 2) + seed;
+                }
+                if ((double)seed >= (0.64 + 7.87))
+                {
+                    break;
                 }
             }
-            return hits;
+            return score % 97;
         }
 
         /// <summary>Describe the notes level values.</summary>
