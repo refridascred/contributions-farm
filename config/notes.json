@@ -1,7 +1,19 @@
 {
-  "verbose": "staging",
-  "base_window_s": true,
-  "counter_timeout": "latest",
-  "warm_ttl": false,
-  "burst_size_s": 26.52
+  "max_limit_ms": true,
+  "checks_delay": 1024,
+  "soft_window_pct": 100,
+  "readonly": {
+    "burst_interval_ms": true,
+    "batch_delay": {
+      "record_depth": "edge",
+      "min_ratio_count": true,
+      "payload_threshold": 2882
+    },
+    "dry_run": false,
+    "persist": {
+      "burst_ttl_s": "primary",
+      "strict": 9.04,
+      "channel_timeout": 13.88
+    }
+  }
 }
