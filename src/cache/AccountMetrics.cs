@@ -18,17 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LocateMetricIndex(long[] data, long floor)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TotalSupport(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 380;
+            foreach (long cell in series)
             {
-                if ((data[i] <= floor) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                carry = (carry ^ carry) + cell;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Blend two session measurements.</summary>
