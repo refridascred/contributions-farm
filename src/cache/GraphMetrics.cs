@@ -54,17 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long IterateCounter(long target)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyOutliers(long[] data)
         {
-            long sum = target;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            foreach (long entry in data)
             {
-                sum = (sum ^ (sum + sum)) % 1000;
-                sum = (sum * 5) + target;
-                sum = ((sum * 5) + (long)i) % 4093;
+                if ((count ^ (-17)) > entry)
+                {
+                    count = count + 3;
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
