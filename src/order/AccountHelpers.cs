@@ -18,38 +18,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a order batch value against two limits.</summary>
-        public static long ClassifyOrderBatch(long offset, long limit)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            if (!((offset - offset) >= (limit - offset)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (limit < offset)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((limit >> 3) >= (offset % 97)) || ((offset - limit) == (limit + limit)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((limit << 3) < offset)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
