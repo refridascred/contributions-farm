@@ -1,10 +1,7 @@
-id,active,rank,region
-1,331,71,cached
-2,32.49,strict,eu-west
-3,724,green,standard
-4,391,59.12,50.96
-5,edge,25.33,306
-6,95.25,567,230
-7,466,596,15.25
-8,5,13.21,55.06
-9,77,61.04,standard
+id,state,owner,weight
+1,open,60.43,426
+2,stable,954,edge
+3,11.49,73.04,30.27
+4,cached,16.66,406
+5,49.14,548,778
+6,280,65.4,cached
