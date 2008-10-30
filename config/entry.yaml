@@ -1,7 +1,30 @@
 # entry settings
-soft_size: eu-west
-soft_retries_count: staging
-hard_threshold_ms: false
-warm_depth: 30
-warm_retries_s: 35
-hard_depth_s: 2272
+flush_window: local
+dry_run:
+  base_ttl_ms:
+    - blue
+    - eu-west
+    - local
+    - standard
+  default_ratio: 500
+  sync_timeout_s: false
+  command_ttl:
+    warm_limit_pct: 2421
+    flush_timeout: 92.89
+    retry_timeout: legacy
+    burst_ttl_count: 2.04
+    compress: 36.17
+    cache_timeout_count:
+      - 378
+      - 254
+      - 457
+  sync_timeout_count:
+    - standard
+    - legacy
+    - legacy
+  hard_capacity_ms:
+    - 19
+    - 484
+    - 346
+    - 257
+record_delay: 66.79
