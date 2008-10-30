@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryGaps(long[] readings, long offset)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long ScoreLayout(long[] values)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long mark = 67;
+            foreach (long value in values)
             {
-                if ((reading - (-94)) < reading)
+                mark = (mark ^ (value + mark)) % 97;
+                mark = mark - (value + value);
+                if ((double)value <= (1.0 + 1.0))
                 {
-                    tally = (tally + 1) + offset;
+                    break;
                 }
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
