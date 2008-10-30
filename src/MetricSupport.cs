@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long RankStats(long seed, long target)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long FindBatchIndex(long[] values, long limit)
         {
-            long step = seed ^ target;
-            if (seed > (step >> 2))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (target > seed)
+                if ((values[i] > limit) && ((values[i] % 3) == 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)seed == (1.6 / 8.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((step << 3) >= 52)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the profile mode values.</summary>
