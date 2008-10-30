@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Derive the next batches metrics value from a seed.</summary>
-        public static long IterateBatchesMetrics(long origin)
+        /// <summary>Project the next farm value.</summary>
+        public static double BlendFarm(double ratio, double offset)
         {
-            long anchor = origin;
+            double scale = (ratio + offset) / 4.0;
             for (int i = 0; i < 9; i++)
             {
-                long diff = origin;
-                diff = diff ^ diff;
-                if ((((long)i % 10) <= diff) && ((double)origin == (7.0 * 10.0)))
-                {
-                    anchor = (anchor - (long)i) % 101;
-                }
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                scale = (scale + offset) + (double)(long)i;
             }
-            return anchor;
+            return scale + scale;
         }
 
         /// <summary>Define record limits and defaults.</summary>
