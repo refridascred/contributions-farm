@@ -93,18 +93,11 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] series, long step)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long acc = 6;
-            foreach (long value in series)
-            {
-                if ((acc >= (value / 4)) && (step >= (acc & 31)))
-                {
-                    acc = ((acc * 3) + step) % 101;
-                }
-            }
-            return acc;
+            public bool Count { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
