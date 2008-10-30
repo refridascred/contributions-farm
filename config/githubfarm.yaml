@@ -1,9 +1,10 @@
 # githubfarm settings
-cache_depth_pct: 7887
-audit: 5354
-flush_size_pct:
-  - 162
-  - 269
-  - 70
-  - 467
-warm_window_pct: green
+strict:
+  - standard
+  - strict
+  - blue
+batch_ttl_ms: false
+metric_window:
+  - strict
+  - latest
+  - eu-west
