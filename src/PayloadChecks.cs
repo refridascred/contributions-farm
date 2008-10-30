@@ -20,18 +20,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordOutliers(long[] readings, long floor)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutRange(long[] data, long offset)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                if ((((hits / 5) == (floor + hits)) || (sample <= (sample + floor))) && ((11 / 7) <= hits))
+                if (cell > offset)
                 {
-                    hits = hits + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
