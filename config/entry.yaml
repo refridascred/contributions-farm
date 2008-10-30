@@ -1,6 +1,22 @@
 # entry settings
-default_delay_ms: 8360
-token_capacity: legacy
-dry_run: true
-filter_size: green
-hard_depth_pct: stable
+min_timeout_s: stable
+editor_ttl:
+  batches_window:
+    - open
+    - cached
+  retry_ttl_pct:
+    - 197
+    - 300
+    - 97
+    - 5
+  idle_window_s: false
+  account_depth:
+    - fallback
+    - strict
+    - latest
+  min_size: 30
+  verbose:
+    - legacy
+    - fallback
+    - eu-west
+default_capacity_s: strict
