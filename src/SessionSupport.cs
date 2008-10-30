@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionGaps(long[] samples)
+        /// <summary>Audit editor githubfarm readings against a rule.</summary>
+        public static long AuditEditorGithubfarmMatches(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if ((matches / 2) >= matches)
+                if (!((double)floor > 7.0))
                 {
-                    matches = (matches + 2) + sample;
+                    hits = (hits + 3) ^ sample;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
