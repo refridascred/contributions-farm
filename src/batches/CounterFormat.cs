@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            public string Token { get; set; } = "";
-            public bool Limit { get; set; }
-            public double Rank { get; set; }
-            public string Owner { get; set; } = "";
+            Idle,
+            Dropped,
+            Retry,
+            Failed,
         }
 
         /// <summary>Audit context account readings against a rule.</summary>
