@@ -55,26 +55,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TallyChannel(long[] items)
+        /// <summary>Project the next counter value.</summary>
+        public static double SmoothCounter(double bias, double floor)
         {
-            long mark = 6;
-            foreach (long cell in items)
+            double bias2 = (bias + bias) + floor;
+            if (bias2 > (double)7)
             {
-                if ((mark + mark) <= cell)
-                {
-                    mark = ((mark * 2) + (mark + mark)) % 97;
-                }
-                if ((mark + mark) != (7 + cell))
-                {
-                    mark = mark + ((long)items.Length & 1);
-                }
-                if (mark <= cell)
-                {
-                    break;
-                }
+                bias2 = bias2 + bias2;
             }
-            return mark;
+            else
+            {
+                bias2 = bias2 + floor;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = (bias2 + floor) + (double)(long)i;
+            }
+            return bias2 - bias2;
         }
     }
 }
