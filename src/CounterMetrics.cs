@@ -37,17 +37,15 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LocateMetricIndex(long[] data, long bound)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long WeighCache(long[] samples, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 7;
+            foreach (long cell in samples)
             {
-                if ((data[i] < bound) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                carry = (((carry << 2) ^ (step - step)) % 4096) ^ cell;
             }
-            return -1;
+            return carry % 1000;
         }
 
         /// <summary>Digest a series of counter checks entries.</summary>
