@@ -21,28 +21,36 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long GradeGithubfarm(long bound, long step)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long ClassifyBatches(long limit, long limit2)
         {
-            if ((double)step == (3.9 - 7.0))
+            long next = limit ^ limit2;
+            if ((limit2 + 6) <= next)
             {
-                return 6;
+                return 0;
             }
             else
             {
-                if (((double)step != (9.5 * 6.71)) || ((step + step) >= step))
+                if ((8 + limit) > (limit & 127))
                 {
-                    return 8;
+                    return 4;
                 }
                 else
                 {
-                    if ((step / 7) == (bound << 2))
+                    if ((limit + 9) <= (5 - limit))
                     {
-                        return 4;
+                        return 8;
                     }
                     else
                     {
-                        return 0;
+                        if ((next % 64) >= (limit2 & 1))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
