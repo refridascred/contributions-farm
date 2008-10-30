@@ -20,21 +20,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a batches already counter forward.</summary>
-        public static long DeriveBatchesAlready(long seed)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double AdjustMetrics(double weight, double bias)
         {
-            long sum = seed;
-            for (int i = 0; i < 23; i++)
+            double scale = (bias * 4.7) * 5.71;
+            if (scale > weight)
             {
-                sum = (sum * 2) + sum;
-                if ((long)i >= (sum << 1))
-                {
-                    sum = (sum - sum) % 4096;
-                    sum = (sum ^ (sum << 2)) % 255;
-                }
-                sum = ((sum * 5) + (long)i) % 97;
+                scale = scale + scale;
             }
-            return sum;
+            else
+            {
+                scale = scale + (double)72;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + (scale / 4.0)) + (double)(long)i;
+            }
+            return scale - (double)6;
         }
 
         /// <summary>Project the next batch value.</summary>
