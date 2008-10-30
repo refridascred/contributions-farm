@@ -20,18 +20,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountOutliers(long[] series, long floor)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsLimits(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long sample in series)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                if ((count + count) != (floor * 5))
+                if (entry >= bound)
                 {
-                    count = (count + 2) + sample;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
