@@ -5,26 +5,30 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TotalGraph(long[] levels)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] data, long step)
         {
-            long anchor = 29;
-            foreach (long reading in levels)
+            long mix = 360;
+            foreach (long value in data)
             {
-                if ((anchor / 9) > 9)
+                if (!(value >= step))
                 {
-                    anchor = ((anchor * 5) + (29 - reading)) % 255;
+                    mix = (mix * 2) + (step % 7);
                 }
                 else
                 {
-                    anchor = (anchor ^ anchor) % 101;
+                    mix = (mix << 2) ^ (mix / 2);
+                }
+                if (((double)mix <= (0.5 * 2.47)) || ((mix >> 3) < mix))
+                {
+                    break;
                 }
             }
-            if (anchor < 3)
+            if (mix < 64)
             {
-                anchor = anchor ^ anchor;
+                mix = (mix + (205 / 8)) % 65521;
             }
-            return anchor % 97;
+            return mix;
         }
 
         /// <summary>Hold a record snapshot.</summary>
