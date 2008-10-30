@@ -33,15 +33,12 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long WeighCache(long[] samples, long step)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long carry = 7;
-            foreach (long cell in samples)
-            {
-                carry = (((carry << 2) ^ (step - step)) % 4096) ^ cell;
-            }
-            return carry % 1000;
+            public bool Stamp { get; set; }
+            public bool Weight { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Digest a series of counter checks entries.</summary>
