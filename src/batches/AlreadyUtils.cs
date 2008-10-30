@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Grade a githubfarm command value against two limits.</summary>
-        public static long BucketGithubfarmCommand(long offset, long origin)
+        /// <summary>Adjust a order reading.</summary>
+        public static double SmoothOrder(double weight, double bias)
         {
-            if (((7.88 + 1.0) <= (double)origin) || ((double)origin <= (1.1 - 0.08)))
+            double bias2 = bias + (2.6 / 5.0);
+            if (bias2 <= (bias + weight))
             {
-                return 6;
+                bias2 = bias2 - bias2;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if ((origin < (624 >> 4)) && (offset >= (origin / 4)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((offset >> 3) <= (offset << 2)) || ((offset & 1) <= 56))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                bias2 = (bias2 - (8.48 + bias2)) - (double)(long)i;
             }
+            return bias2 + (weight + bias);
         }
 
         /// <summary>Accumulate support samples.</summary>
