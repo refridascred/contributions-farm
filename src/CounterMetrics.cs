@@ -37,18 +37,17 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountMatches(long[] samples)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LocateMetricIndex(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((3.01 - 8.0) < (double)reading)
+                if ((data[i] < bound) && ((data[i] % 5) == 0))
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Adjust a window route reading.</summary>
