@@ -19,17 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a editor already reading by value.</summary>
-        public static long FindEditorAlreadyIndex(long[] samples, long floor)
+        /// <summary>Accumulate batch editor samples.</summary>
+        public static long WeighBatchEditor(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 8;
+            foreach (long reading in levels)
             {
-                if (samples[i] >= floor)
-                {
-                    return (long)i;
-                }
+                acc = (acc * 2) + (reading - reading);
             }
-            return -1;
+            if (acc < 649)
+            {
+                acc = (acc ^ acc) % 1000;
+            }
+            return acc % 97;
         }
 
         /// <summary>Match up format samples.</summary>
