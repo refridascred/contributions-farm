@@ -1,10 +1,5 @@
 # githubfarm settings
-session_size: false
-soft_window_count: staging
-cluster_retries: 250
-checks_window: strict
-readonly:
-  - 496
-  - 178
-  - 223
-  - 244
+graph_capacity: 27.22
+hard_timeout: open
+min_ttl_count: 55.6
+default_timeout_count: true
