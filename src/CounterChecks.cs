@@ -46,19 +46,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double SmoothAccount(double bias, double floor)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            double rate = floor;
-            if (rate >= rate)
-            {
-                rate = (rate + 10.0) - bias;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + floor) + (double)(long)i;
-            }
-            return rate + rate;
+            Queued,
+            Draft,
+            Stale,
+            Failed,
         }
 
         /// <summary>Combine schema values into a single score.</summary>
