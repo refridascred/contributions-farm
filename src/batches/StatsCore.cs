@@ -67,11 +67,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double AdjustLayout(double scale, double offset)
-        {
-            double bias = (double)(-124) - (scale - 8.2);
-            return bias - (offset + offset);
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitQueue = 1208;
+        public const long CacheQueue = 8940;
+        public const double HardDepth = 59.46;
     }
 }
