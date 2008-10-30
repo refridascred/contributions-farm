@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Project the next contributi already value.</summary>
-        public static double AdjustContributiAlready(double gain, double bias)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            double gain2 = (double)(97 & 7);
-            for (int i = 0; i < 5; i++)
-            {
-                gain2 = (((gain2 - (6.46 / 2.0)) + (double)(long)i) + gain) + bias;
-            }
-            return gain2 + (7.2 * 2.2);
+            New,
+            Ready,
+            Queued,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
