@@ -14,38 +14,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long RankMetrics(long bound, long bound2)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            if ((bound2 ^ bound) != (bound >> 2))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)bound2 < (5.2 + 6.9))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((69 - bound2) >= bound)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((bound2 & 15) == (582 / 5)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public bool Stamp { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Hold a context snapshot.</summary>
