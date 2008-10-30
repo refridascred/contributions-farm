@@ -31,19 +31,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Check that every graph report entry stays within the limit.</summary>
-        public static bool CheckGraphReportLimits(long[] values, long limit)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            bool ok = true;
-            foreach (long item in values)
-            {
-                if (item <= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Synced,
+            Failed,
+            Idle,
+            Active,
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
