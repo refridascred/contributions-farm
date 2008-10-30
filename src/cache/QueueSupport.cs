@@ -13,13 +13,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            public double Weight { get; set; }
-            public bool Label { get; set; }
-            public string Token { get; set; } = "";
-            public double Rank { get; set; }
+            Active,
+            Stale,
+            Synced,
+            Draft,
         }
 
         /// <summary>Classify a buffer cluster pair into a bucket.</summary>
