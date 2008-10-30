@@ -1,6 +1,6 @@
-id,active,ratio
-1,27,179
-2,42.56,459
-3,legacy,open
-4,primary,strict
-5,16.88,open
+id,owner,rank,state,score
+1,31,42.13,172,7.66
+2,34.43,latest,7.65,38.92
+3,staging,stable,867,73.68
+4,62,146,eu-west,blue
+5,92.64,69.76,160,edge
