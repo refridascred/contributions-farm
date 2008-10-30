@@ -5,28 +5,35 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long GradeChecks(long floor, long offset)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long GradeCache(long floor, long bound)
         {
-            if ((floor % 10) == (10 & 63))
+            if ((5 * 5) >= (bound * 3))
             {
-                return 1;
+                return 3;
             }
             else
             {
-                if (offset >= (floor & 3))
+                if ((floor ^ 940) == (floor << 1))
                 {
-                    return 8;
+                    return 0;
                 }
                 else
                 {
-                    if (((floor * 4) != (offset ^ offset)) || ((floor - 34) <= 11))
+                    if (!(0 >= (floor & 63)))
                     {
-                        return 5;
+                        return 4;
                     }
                     else
                     {
-                        return 6;
+                        if (bound > 869)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
