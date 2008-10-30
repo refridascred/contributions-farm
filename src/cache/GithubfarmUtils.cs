@@ -20,24 +20,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long RankGraph(long offset, long offset2)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyBounds(long[] values, long target)
         {
-            if (((-92) ^ offset2) >= offset)
+            bool found = true;
+            foreach (long value in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((offset % 97) >= (6 >> 2)))
+                if (value >= target)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
