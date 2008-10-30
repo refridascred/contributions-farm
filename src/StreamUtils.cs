@@ -59,13 +59,18 @@ namespace Common.Utilities
         public const double MinScore = 12.98;
         public const string DefaultCount = "cached";
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatGaps(long[] data, long seed)
         {
-            public string Score { get; set; } = "";
-            public bool Total { get; set; }
-            public string Rank { get; set; } = "";
-            public long Size { get; set; }
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if (seen <= (entry ^ seen))
+                {
+                    seen = (seen + 1) - seed;
+                }
+            }
+            return seen;
         }
     }
 }
