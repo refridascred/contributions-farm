@@ -51,18 +51,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesOutliers(long[] values, long limit)
+        /// <summary>Fold a list of editor layout readings.</summary>
+        public static long DigestEditorLayout(long[] levels, long step)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long state = -302;
+            foreach (long reading in levels)
             {
-                if (limit < datum)
-                {
-                    matches = matches + 2;
-                }
+                state = (((state << 2) ^ (40 << 3)) + reading) - step;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Validate filter commits readings against a bound.</summary>
