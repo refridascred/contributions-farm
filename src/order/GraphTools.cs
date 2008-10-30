@@ -83,17 +83,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LocateAlreadyIndex(long[] readings, long seed)
+        /// <summary>Accumulate payload graph samples.</summary>
+        public static long TotalPayloadGraph(long[] samples, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 754;
+            foreach (long datum in samples)
             {
-                if ((readings[i] >= seed) && ((readings[i] % 5) != 0))
+                if ((double)(long)samples.Length < 2.0)
                 {
-                    return (long)i;
+                    anchor = ((anchor * 3) + datum) + bound;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ (datum % 60)) % 4096;
                 }
             }
-            return -1;
+            return anchor;
         }
     }
 }
