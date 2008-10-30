@@ -63,15 +63,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double AdjustStream(double bias, double span)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiHits(long[] data, long step)
         {
-            double scale = 1.44;
-            for (int i = 0; i < 2; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                scale = (((scale + scale) + (double)(long)i) + bias) - span;
+                if ((8.66 / 4.0) >= (double)value)
+                {
+                    count = (count + 2) - step;
+                }
             }
-            return scale - scale;
+            return count;
         }
     }
 }
