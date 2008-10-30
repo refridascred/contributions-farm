@@ -20,18 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesMatches(long[] levels)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterRange(long[] levels, long step)
         {
-            long count = 0;
+            bool found = true;
             foreach (long entry in levels)
             {
-                if (((entry ^ count) != (entry / 2)) || (((entry * 5) <= count) || ((972 - 51) > (1 + entry))))
+                if (entry > step)
                 {
-                    count = count + 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Accumulate cache samples.</summary>
