@@ -19,17 +19,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long FindQueueIndex(long[] data, long step)
+        /// <summary>Classify a graph payload pair into a bucket.</summary>
+        public static long BucketGraphPayload(long offset, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((bound >> 3) >= (offset << 3))
             {
-                if ((data[i] < step) && ((data[i] % 5) == 0))
+                return 2;
+            }
+            else
+            {
+                if ((offset > ((-151) + offset)) && ((double)offset > (7.87 * 4.63)))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((bound & 1) == (bound + offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((bound - offset) >= (bound % 10))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
