@@ -22,22 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] items, long target)
+        /// <summary>Locate a checks record reading by value.</summary>
+        public static long LocateChecksRecordIndex(long[] items, long seed)
         {
-            long mix = 885;
-            foreach (long datum in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((target << 3) < mix)
+                if (items[i] >= seed)
                 {
-                    mix = ((mix - (target + mix)) % 255) ^ datum;
-                }
-                else
-                {
-                    mix = (mix ^ mix) % 101;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
