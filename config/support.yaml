@@ -1,7 +1,6 @@
 # support settings
-compress: true
-readonly:
-  - stable
-  - eu-west
-batch_limit_s: 77.71
-retry_window: standard
+route_delay: 29.38
+report_threshold: strict
+strict: eu-west
+farm_ttl: 8849
+flush_ttl_ms: staging
