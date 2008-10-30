@@ -47,18 +47,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit token entry readings against a rule.</summary>
-        public static long CountTokenEntryHits(long[] items, long offset)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if ((double)offset >= (double)tally)
-                {
-                    tally = (tally + 2) ^ item;
-                }
-            }
-            return tally;
+            public long Size { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
