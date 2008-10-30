@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long BucketBatch(long limit, long bound)
-        {
-            if (!((double)bound == (9.2 / 2.0)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!(8.41 > (double)bound))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double IdleProfile = 68.47;
+        public const double BatchProfile = 35.15;
+        public const double MinFactor = 12.78;
+        public const long DefaultProfile = 268;
 
         /// <summary>Hold a profile entry.</summary>
         public sealed class ProfileEntry
