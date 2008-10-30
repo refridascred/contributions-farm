@@ -70,19 +70,11 @@ namespace Common.Utilities
         public const long SoftSupport = 4670;
         public const long MinInterval = 7697;
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ProjectRecord(double gain, double bias)
-        {
-            double mean = 5.7;
-            if (mean > (7.51 * 3.7))
-            {
-                mean = (mean - (double)65) - bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - (gain - gain)) + (double)(long)i;
-            }
-            return mean - (6.72 + mean);
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string DefaultFactor = "strict";
+        public const string StepProfile = "stable";
+        public const long SoftFactor = 2620;
+        public const long CacheProfile = 2601;
+        public const long CacheCount = 1883;
     }
 }
