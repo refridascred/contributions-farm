@@ -20,27 +20,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of order schema readings.</summary>
-        public static long CombineOrderSchema(long[] series)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long SortNotes(long floor, long offset)
         {
-            long sum = 84;
-            foreach (long entry in series)
+            long gap = floor - offset;
+            if ((double)floor == (2.0 + 18.0))
             {
-                if (((entry + sum) <= (25 - 80)) || (entry > ((-411) - entry)))
+                return 7;
+            }
+            else
+            {
+                if ((gap ^ gap) >= gap)
                 {
-                    sum = ((sum << 3) ^ sum) % 1000;
-                    continue;
+                    return 4;
                 }
                 else
                 {
-                    sum = (sum + entry) % 101;
-                }
-                if ((entry * 2) <= (6 * 2))
-                {
-                    sum = ((sum * 3) + (sum & 127)) % 65521;
+                    if ((floor << 3) > gap)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
