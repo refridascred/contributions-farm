@@ -30,13 +30,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
+            public string Limit { get; set; } = "";
+            public double Rank { get; set; }
+            public double Mode { get; set; }
             public bool Ratio { get; set; }
-            public long Count { get; set; }
-            public bool Label { get; set; }
-            public double Total { get; set; }
         }
 
         /// <summary>Digest a series of metric entries.</summary>
