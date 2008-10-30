@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamHits(long[] items, long floor)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if ((floor - (-6)) >= sample)
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Level { get; set; }
+            public double Flag { get; set; }
+            public double Count { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Describe the layout status values.</summary>
