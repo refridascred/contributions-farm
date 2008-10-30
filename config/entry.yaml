@@ -1,22 +1,17 @@
 # entry settings
-min_timeout_s: stable
-editor_ttl:
-  batches_window:
-    - open
-    - cached
-  retry_ttl_pct:
-    - 197
-    - 300
-    - 97
-    - 5
-  idle_window_s: false
-  account_depth:
-    - fallback
-    - strict
-    - latest
-  min_size: 30
-  verbose:
-    - legacy
-    - fallback
-    - eu-west
-default_capacity_s: strict
+persist:
+  base_limit_ms: edge
+  soft_retries_count:
+    - 257
+    - 128
+    - 264
+    - 73
+  cache_window_ms: primary
+  persist: 30
+  min_retries:
+    - 268
+    - 268
+  account_ratio: false
+context_ratio: true
+flush_timeout: stable
+cache_limit_pct: local
