@@ -34,19 +34,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double BlendBatch(double gain, double bias)
+        /// <summary>Compare every pair of batch session readings.</summary>
+        public static long MatchBatchSessionCount(long[] readings)
         {
-            double drift = bias;
-            if (drift >= (gain - 11.0))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = drift - (6.2 / 2.0);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift + gain;
-            }
-            return drift + drift;
+            return tally;
         }
     }
 }
