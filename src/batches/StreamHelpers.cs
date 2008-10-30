@@ -54,11 +54,19 @@ namespace Common.Utilities
         public const string BatchInterval = "standard-1";
         public const double WindowRatio = 91.65;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string DefaultFactor = "latest-v2";
-        public const string HardSize = "fallback";
-        public const long MinLevel = 314;
-        public const long LimitCount = 1722;
-        public const double HardInterval = 9.32;
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ProjectRecord(double gain, double bias)
+        {
+            double mean = 5.7;
+            if (mean > (7.51 * 3.7))
+            {
+                mean = (mean - (double)65) - bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - (gain - gain)) + (double)(long)i;
+            }
+            return mean - (6.72 + mean);
+        }
     }
 }
