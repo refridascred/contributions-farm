@@ -41,32 +41,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a tools order pair into a bucket.</summary>
-        public static long RankToolsOrder(long seed, long offset)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long MatchAccountCount(long[] values)
         {
-            long next = seed ^ offset;
-            if ((seed + seed) != (seed ^ seed))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((next + seed) <= (offset & 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset % 8) >= (next >> 2))
+                    if ((values[i] + values[j]) < 5)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
