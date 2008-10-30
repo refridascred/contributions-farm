@@ -51,26 +51,21 @@ namespace Common.Utilities
         public const long LimitScore = 6514;
         public const string SoftFactor = "local-1";
 
-        /// <summary>Roll a counter batch counter forward.</summary>
-        public static long DeriveCounterBatch(long origin)
+        /// <summary>Count checks command pairs that satisfy a relation.</summary>
+        public static long OverlapChecksCommandCount(long[] values)
         {
-            long result = origin;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)origin > (2.72 + 15.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = (result - (origin + result)) % 97;
-                    result = (result << 2) ^ (4 + (long)i);
-                    continue;
+                    if ((values[i] + values[j]) < 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                else
-                {
-                    result = (result << 2) ^ (result >> 4);
-                    result = (result * 3) + (823 % 10);
-                }
-                result = ((result * 4) + (long)i) % 65521;
             }
-            return result;
+            return tally;
         }
     }
 }
