@@ -38,15 +38,18 @@ namespace Common.Utilities
             return weight - (scale / 4.0);
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double AdjustBuffer(double ratio, double span)
+        /// <summary>Audit support batches readings against a rule.</summary>
+        public static long TallySupportBatchesGaps(long[] samples, long step)
         {
-            double load = (double)(8 - 1);
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                load = (load - (ratio * 1.8)) + (double)(long)i;
+                if (item <= (item + tally))
+                {
+                    tally = (tally + 1) - step;
+                }
             }
-            return load + (6.0 + span);
+            return tally;
         }
     }
 }
