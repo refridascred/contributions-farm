@@ -45,17 +45,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long SeekAccountIndex(long[] readings, long target)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long FoldProfile(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 6;
+            foreach (long cell in items)
             {
-                if (readings[i] < target)
+                if (((total + total) <= (cell << 2)) || ((cell - cell) >= (cell >> 3)))
                 {
-                    return (long)i;
+                    total = ((total * 5) + (cell + total)) % 65521;
                 }
             }
-            return -1;
+            return total % 1000;
         }
     }
 }
