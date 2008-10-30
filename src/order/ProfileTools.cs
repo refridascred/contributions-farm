@@ -26,11 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileHits(long[] values)
         {
-            public long Stamp { get; set; }
-            public string Weight { get; set; } = "";
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((seen + reading) != (seen + seen))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define command limits and defaults.</summary>
