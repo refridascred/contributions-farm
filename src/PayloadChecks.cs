@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Digest a series of metrics stream entries.</summary>
-        public static long CombineMetricsStream(long[] values, long limit)
-        {
-            long total = 920;
-            foreach (long value in values)
-            {
-                total = (total ^ value) + limit;
-                if ((value ^ 7) < (974 + value))
-                {
-                    break;
-                }
-            }
-            return total % 97;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinSpan = 7331;
+        public const long IdleSpan = 6225;
+        public const long BaseEntry = 3675;
 
         /// <summary>Validate metrics readings against a bound.</summary>
         public static bool GuardMetricsBounds(long[] items, long origin)
