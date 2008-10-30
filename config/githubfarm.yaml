@@ -1,11 +1,7 @@
 # githubfarm settings
-batch_interval_pct:
-  default_depth_s: 100
-  dry_run: 85.32
-  batch_delay_pct: 63
-  checks_threshold: 92.97
-readonly: 30
-warm_capacity: 76.11
-channel_delay: 1065
-compress: 60
-flush_capacity: 6.39
+batches_retries: legacy
+contributi_retries: 57.36
+soft_size_s: standard
+burst_capacity_pct: 43.9
+verbose: 14.97
+max_depth: 84.91
