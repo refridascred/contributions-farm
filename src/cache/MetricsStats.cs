@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TallyRecord(long[] levels, long step)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesBounds(long[] levels, long offset)
         {
-            long mark = 97;
-            foreach (long sample in levels)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                if ((sample <= (step & 31)) || ((double)sample < (7.0 - 2.9)))
+                if (cell > offset)
                 {
-                    mark = (mark + (sample & 15)) % 1000;
-                }
-                if ((step << 1) >= (512 + mark))
-                {
+                    ready = false;
                     break;
                 }
             }
-            return mark;
+            return ready;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
