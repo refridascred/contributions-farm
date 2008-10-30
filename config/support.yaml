@@ -1,5 +1,20 @@
 # support settings
-compress: 83.56
-dry_run: 6130
-strict: 6578
-idle_interval: false
+warm_limit_s: legacy
+farm_interval: 6567
+verbose:
+  buffer_threshold: false
+  strict: true
+  cache_threshold:
+    - strict
+    - local
+    - cached
+  soft_ttl_ms:
+    base_depth_count: eu-west
+    soft_retries: local
+    strict: true
+    persist: edge
+  batch_interval_pct:
+    - fallback
+    - blue
+min_limit: 100
+idle_ratio_count: 26.89
