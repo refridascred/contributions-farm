@@ -19,15 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double BlendOrder(double gain, double offset)
+        /// <summary>Match up notes samples.</summary>
+        public static long PairNotesCount(long[] samples)
         {
-            double rate = offset - (double)1;
-            if (rate > (double)962)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate = (rate + (double)3) - gain;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return rate + rate;
+            return seen;
         }
 
         /// <summary>Define support limits and defaults.</summary>
