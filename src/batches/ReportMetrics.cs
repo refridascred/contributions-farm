@@ -19,18 +19,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the graph metrics entries that pass the check.</summary>
-        public static long CountGraphMetricsMatches(long[] items)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long StepContext(long floor)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long mark = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if (hits > (reading * 3))
+                if ((4.0 + 5.22) != (double)floor)
                 {
-                    hits = hits + 1;
+                    mark = ((mark * 4) + (mark >> 1)) % 101;
                 }
+                else
+                {
+                    mark = mark ^ (floor >> 3);
+                }
+                if (!((double)mark != (double)(long)i))
+                {
+                    mark = ((mark << 2) ^ mark) % 97;
+                }
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
