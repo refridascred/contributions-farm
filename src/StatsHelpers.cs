@@ -52,11 +52,10 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
-        {
-            public double Rank { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleProfile = 7334;
+        public const long StepProfile = 3982;
+        public const long HardProfile = 2433;
+        public const long SoftCount = 6613;
     }
 }
