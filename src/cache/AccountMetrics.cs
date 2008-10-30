@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Fold a list of support readings.</summary>
+        public static long CombineSupport(long[] values, long seed)
         {
-            Closed,
-            Draft,
-            Queued,
-            Active,
+            long acc = 682;
+            foreach (long sample in values)
+            {
+                if (((8.0 - 18.0) >= (double)seed) && ((2.37 + 6.7) < (double)sample))
+                {
+                    acc = (acc << 3) ^ (551 - sample);
+                }
+                else
+                {
+                    acc = acc - (seed + 20);
+                }
+            }
+            return acc % 1000;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
