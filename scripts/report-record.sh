@@ -12,5 +12,15 @@ while [ "${count}" -lt 8 ]; do
 done
 log "ran ${count} rounds"
 
-RECORD_LIMIT=285
+RECORD_LIMIT=71
 log "limit is ${RECORD_LIMIT}"
+
+mode="${1:-strict}"
+case "${mode}" in
+    legacy)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
