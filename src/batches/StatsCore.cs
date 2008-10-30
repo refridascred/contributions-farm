@@ -64,18 +64,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of layout metric readings.</summary>
-        public static long FoldLayoutMetric(long[] items)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long total = 864;
-            foreach (long reading in items)
-            {
-                if ((double)total >= (3.28 / 5.0))
-                {
-                    total = (total ^ (total + total)) + reading;
-                }
-            }
-            return total;
+            New,
+            Retry,
+            Stale,
+            Ready,
+            Paused,
         }
 
         /// <summary>Locate a entry reading by value.</summary>
