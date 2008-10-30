@@ -89,12 +89,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Blend two batch window measurements.</summary>
+        public static double SmoothBatchWindow(double weight, double offset)
         {
-            public long Level { get; set; }
-            public long Flag { get; set; }
-            public long Count { get; set; }
+            double bias = (double)((-80) + 6);
+            if (bias <= (offset / 8.0))
+            {
+                bias = bias - (weight + bias);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias - offset) + (double)(long)i;
+            }
+            return bias - 2.2;
         }
     }
 }
