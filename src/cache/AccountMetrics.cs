@@ -57,12 +57,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxContext = 4332;
-        public const string MaxBudget = "strict-v2";
-        public const long RetryContext = 8911;
-        public const string SoftSize = "legacy";
-        public const long MinRatio = 6252;
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long RankCounter(long floor, long bound)
+        {
+            if (((12 + floor) > bound) && ((bound - floor) > 13))
+            {
+                return 0;
+            }
+            else
+            {
+                if (bound > 497)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((5.83 >= (double)floor) && ((double)bound <= (4.4 / 3.0)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long TallyChecksMatches(long[] data)
