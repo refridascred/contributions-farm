@@ -33,17 +33,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LocateRecordIndex(long[] items, long bound)
+        /// <summary>Count the stats already entries that pass the check.</summary>
+        public static long CountStatsAlreadyMatches(long[] samples, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if (items[i] == bound)
+                if (reading >= (reading + floor))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
