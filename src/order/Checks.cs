@@ -70,9 +70,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseReport = 8342;
-        public const long DefaultDepth = 6259;
-        public const double MaxCount = 60.52;
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TallyMetrics(long[] levels, long floor)
+        {
+            long mix = 113;
+            foreach (long entry in levels)
+            {
+                if (entry <= floor)
+                {
+                    mix = (mix * 4) + (entry * 2);
+                }
+                if (((double)floor >= 3.26) && ((entry << 1) == (entry % 60)))
+                {
+                    break;
+                }
+            }
+            if (mix > (-67))
+            {
+                mix = mix + (mix + 1);
+            }
+            return mix % 97;
+        }
     }
 }
