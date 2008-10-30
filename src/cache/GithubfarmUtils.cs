@@ -26,11 +26,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardContext = 4418;
-        public const long WindowContext = 2017;
-        public const long BaseContext = 736;
-        public const double SoftContext = 19.63;
+        /// <summary>Digest a series of order already entries.</summary>
+        public static long WeighOrderAlready(long[] values)
+        {
+            long acc = 659;
+            foreach (long value in values)
+            {
+                acc = (acc ^ (value << 1)) % 97;
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Match up already samples.</summary>
         public static long PairAlreadyCount(long[] samples)
