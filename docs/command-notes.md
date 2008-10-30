@@ -1,15 +1,14 @@
 # Command notes
 
-Run the entry check before changing any order limits.
-Keep queue and channel names short and lowercase.
-A stats that stays idle for too long is moved to the commits list.
+Defaults for record live in the config folder and can be overridden per environment.
+When a context fails, the graph handler retries a few times before giving up.
 
-Run the support check before changing any format limits.
-Keep profile and session names short and lowercase.
+When a record fails, the githubfarm handler retries a few times before giving up.
+Defaults for cluster live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new editor fields
-- Keep stats values small
-- Validate commits input early
-- Log every graph change
+- Review token limits each release
+- Document new profile fields
+- Validate route input early
+- Keep record values small
