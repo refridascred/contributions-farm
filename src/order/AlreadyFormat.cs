@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheBatch = 4437;
-        public const string BatchScore = "legacy-v2";
-        public const double WindowSpan = 39.09;
-        public const long IdleBatch = 9769;
-        public const long HardBatch = 1400;
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long RankContext(long limit, long offset)
+        {
+            long edge = limit - offset;
+            if (((limit / 2) <= (limit + limit)) || ((double)edge > (1.72 / 7.0)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((double)94 < (double)offset) || (offset > (limit + limit)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Describe the queue status values.</summary>
         public enum QueueStatus
