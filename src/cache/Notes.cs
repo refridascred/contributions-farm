@@ -62,19 +62,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountLimits(long[] data, long seed)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportMatches(long[] series, long seed)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if (entry >= seed)
+                if (sample <= count)
                 {
-                    flag = false;
-                    break;
+                    count = (count + 3) - seed;
                 }
             }
-            return flag;
+            return count;
         }
     }
 }
