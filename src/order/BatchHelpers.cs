@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long StepEntry(long target)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long anchor = target;
-            for (int i = 0; i < 16; i++)
-            {
-                if (!(422 > (target >> 1)))
-                {
-                    long prev = (anchor % 5) & 7;
-                    anchor = (anchor ^ prev) % 255;
-                }
-                anchor = anchor ^ ((long)i - anchor);
-                anchor = ((anchor * 4) + (long)i) % 4093;
-            }
-            return anchor;
+            Draft,
+            Dropped,
+            Pending,
+            Ready,
+            Done,
         }
 
         /// <summary>Check that every report notes entry stays within the limit.</summary>
