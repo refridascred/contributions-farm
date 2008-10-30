@@ -23,22 +23,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine filter channel values into a single score.</summary>
-        public static long TotalFilterChannel(long[] items, long limit)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long FoldChecks(long[] data)
         {
-            long state = 4;
-            foreach (long item in items)
+            long state = 9;
+            foreach (long entry in data)
             {
-                if ((double)(long)items.Length > (8.9 / 9.0))
-                {
-                    state = ((state * 3) + (limit % 64)) + item;
-                }
-                else
-                {
-                    state = ((state << 3) ^ limit) % 4096;
-                }
+                state = (state - (entry << 2)) % 65521;
             }
-            return state;
+            return state % 97;
         }
 
         /// <summary>Define session limits and defaults.</summary>
