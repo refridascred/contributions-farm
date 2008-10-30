@@ -37,18 +37,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordOutliers(long[] levels)
-        {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((2.11 / 5.0) <= (double)count)
-                {
-                    count = (count + 2) ^ entry;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double MinSchema = 83.6;
+        public const double BurstTimeout = 17.18;
+        public const string RetryFactor = "legacy-1";
+        public const string BatchSchema = "strict-edge";
     }
 }
