@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterHits(long[] items, long origin)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long StepMetric(long floor)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long carry = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if (((4.61 + 2.45) < (double)origin) || ((double)tally > (1.67 * 13.0)))
+                if ((((long)i << 1) < (carry / 3)) && ((floor << 3) >= ((long)i << 2)))
                 {
-                    tally = (tally + 3) + item;
+                    carry = ((carry << 3) ^ (floor - floor)) % 65521;
+                    carry = (carry - ((long)i - (long)i)) % 255;
                 }
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Define already limits and defaults.</summary>
