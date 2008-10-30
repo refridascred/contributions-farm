@@ -10,13 +10,21 @@ namespace Common.Utilities
         public const long HardInterval = 5874;
         public const long BaseDepth = 2503;
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Roll a batches already counter forward.</summary>
+        public static long DeriveBatchesAlready(long seed)
         {
-            public long Stamp { get; set; }
-            public string Count { get; set; } = "";
-            public bool Mode { get; set; }
-            public bool Label { get; set; }
+            long sum = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                sum = (sum * 2) + sum;
+                if ((long)i >= (sum << 1))
+                {
+                    sum = (sum - sum) % 4096;
+                    sum = (sum ^ (sum << 2)) % 255;
+                }
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
