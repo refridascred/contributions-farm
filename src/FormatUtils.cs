@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheGaps(long[] items, long target)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((matches * 4) != (matches << 2))
-                {
-                    matches = ((matches + 1) + datum) - target;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Pending,
+            Synced,
+            Active,
+            Queued,
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
