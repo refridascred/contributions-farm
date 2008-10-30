@@ -42,19 +42,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesRange(long[] samples, long seed)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long SeekFilterIndex(long[] series, long origin)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading != seed)
+                if ((series[i] >= origin) && ((series[i] % 3) == 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
