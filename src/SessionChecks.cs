@@ -41,12 +41,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryLimits(long[] readings, long limit)
         {
-            Active,
-            Queued,
-            Done,
+            bool found = true;
+            foreach (long item in readings)
+            {
+                if (item != limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the cluster level values.</summary>
