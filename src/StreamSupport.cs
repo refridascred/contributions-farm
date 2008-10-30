@@ -19,21 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long PairToolsCount(long[] samples)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Offset { get; set; }
+            public double Stamp { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
