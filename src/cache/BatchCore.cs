@@ -43,18 +43,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsGaps(long[] values)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileOutliers(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if ((cell * 4) <= (0 + cell))
+                if ((entry - entry) >= entry)
                 {
-                    matches = matches + 1;
+                    tally = (tally + 3) + seed;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Describe the payload phase values.</summary>
