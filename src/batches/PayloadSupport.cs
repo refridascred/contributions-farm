@@ -10,10 +10,14 @@ namespace Common.Utilities
         public const long DefaultRecord = 7343;
         public const long BurstBudget = 4713;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepCounter = 653;
-        public const double CacheCounter = 45.57;
-        public const string MinBudget = "standard-1";
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
+        {
+            public long Region { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Flag { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Classify a route pair into a bucket.</summary>
         public static long RankRoute(long origin, long target)
