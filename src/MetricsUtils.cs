@@ -14,32 +14,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long RankToken(long floor, long step)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long span = floor - step;
-            if (!((double)step == (9.32 / 6.0)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (span > (step & 255))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((step & 7) <= floor)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Synced,
+            Done,
+            Idle,
         }
 
         /// <summary>Hold a token stats.</summary>
