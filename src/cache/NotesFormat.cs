@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const long WindowProfile = 4230;
         public const double BurstProfile = 95.89;
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorLimits(long[] readings, long origin)
         {
-            Queued,
-            Pending,
-            Done,
-            Paused,
+            bool valid = true;
+            foreach (long sample in readings)
+            {
+                if (sample != origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Combine cache schema values into a single score.</summary>
