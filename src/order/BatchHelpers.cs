@@ -22,18 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterMatches(long[] readings)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if (((cell & 1) < tally) && (((cell + cell) > (18 + tally)) || ((double)cell < (0.6 * 3.6))))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public bool Ratio { get; set; }
+            public long Label { get; set; }
+            public double Rank { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Digest a series of context entries.</summary>
