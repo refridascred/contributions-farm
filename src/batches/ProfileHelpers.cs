@@ -20,11 +20,19 @@ namespace Common.Utilities
             return rate + (scale + rate);
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryLimits(long[] items, long floor)
         {
-            public long Stamp { get; set; }
-            public bool Weight { get; set; }
+            bool flag = true;
+            foreach (long cell in items)
+            {
+                if (cell > floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
