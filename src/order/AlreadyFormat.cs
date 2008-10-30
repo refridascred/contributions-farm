@@ -43,21 +43,25 @@ namespace Common.Utilities
             return drift - (rate / 6.0);
         }
 
-        /// <summary>Compare every pair of counter report readings.</summary>
-        public static long CompareCounterReportCount(long[] series)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long ClassifyOrder(long seed, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long step2 = seed - step;
+            if (seed >= (step2 >> 2))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((double)step2 != (4.0 * 5.9))
                 {
-                    if ((series[i] + series[j]) == 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return hits;
         }
     }
 }
