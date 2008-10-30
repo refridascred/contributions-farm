@@ -35,15 +35,18 @@ namespace Common.Utilities
         public const double BatchRecord = 3.62;
         public const string CacheScore = "fallback-edge";
 
-        /// <summary>Combine stats filter values into a single score.</summary>
-        public static long CombineStatsFilter(long[] data, long limit)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricOutliers(long[] items)
         {
-            long anchor = 501;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                anchor = (anchor + (value + value)) + limit;
+                if ((hits / 6) != (reading * 2))
+                {
+                    hits = hits + 3;
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
