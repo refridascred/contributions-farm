@@ -1,14 +1,14 @@
 # Command notes
 
-The payload helpers are pure functions, so they are safe to call from any thread.
-When a stats fails, the cluster handler retries a few times before giving up.
-The githubfarm module keeps layout values in sync with the cluster cache.
+Use metrics settings to tune how often metrics data is refreshed.
+The graph module keeps session values in sync with the session cache.
 
-The farm helpers are pure functions, so they are safe to call from any thread.
-Keep farm and command names short and lowercase.
+Keep editor and metric names short and lowercase.
+Run the metric check before changing any filter limits.
 
 ## Guidelines
 
-- Prefer record defaults
-- Validate contributi input early
-- Review stats limits each release
+- Review order limits each release
+- Keep filter values small
+- Prefer batch defaults
+- Validate layout input early
