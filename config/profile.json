@@ -1,6 +1,14 @@
 {
-  "sync_retries": [249, 39, 136, 56],
-  "stream_ratio": 2.35,
-  "poll_ttl": 7719,
-  "commits_interval": "legacy"
+  "route_limit": 29.83,
+  "batch_interval_count": [202, 31, 377],
+  "base_ttl": {
+    "retry_delay": ["green", "stable", "blue"],
+    "farm_timeout": false,
+    "notes_retries": [233, 399],
+    "soft_threshold": "eu-west",
+    "base_timeout": 77.32
+  },
+  "soft_timeout_s": "edge",
+  "retry_window": false,
+  "audit": "legacy"
 }
