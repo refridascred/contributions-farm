@@ -1,13 +1,11 @@
 {
-  "audit": 5623,
-  "metric_window": false,
-  "poll_interval_count": 21,
-  "counter_ttl": 0.33,
-  "token_limit": {
-    "dry_run": 250,
-    "min_size": true,
-    "support_ttl": 8945,
-    "max_delay_s": 35
+  "sync_limit_ms": 2333,
+  "poll_limit_count": {
+    "warm_ratio_count": 98,
+    "batch_ttl_ms": true,
+    "base_delay_s": "legacy",
+    "audit": false
   },
-  "default_capacity_s": "stable"
+  "cache_timeout": 70.8,
+  "default_window_count": 1196
 }
