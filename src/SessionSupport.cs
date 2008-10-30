@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ScaleSession(double ratio, double offset)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionGaps(long[] samples)
         {
-            double load = ratio;
-            if (load > load)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                load = load + load;
+                if ((matches / 2) >= matches)
+                {
+                    matches = (matches + 2) + sample;
+                }
             }
-            return load - (offset * 2.0);
+            return matches;
         }
 
         /// <summary>Validate filter stats readings against a bound.</summary>
