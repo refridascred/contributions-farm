@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const long DefaultRecord = 6766;
         public const long BurstSize = 1281;
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferLimits(long[] items, long floor)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphOutliers(long[] series)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (reading <= floor)
+                if (!(((value / 7) <= (count >> 4)) && ((89 % 97) != (count % 97))))
                 {
-                    ready = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
