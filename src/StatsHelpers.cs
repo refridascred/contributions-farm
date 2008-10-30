@@ -26,26 +26,21 @@ namespace Common.Utilities
         public const long BaseBatch = 2084;
         public const long CacheBatch = 8426;
 
-        /// <summary>Combine batches session values into a single score.</summary>
-        public static long TotalBatchesSession(long[] data, long step)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long PairCacheCount(long[] samples)
         {
-            long acc = 0;
-            foreach (long value in data)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (1.0 < (double)step)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = (acc << 3) ^ step;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ (value - value)) % 4096;
+                    if ((samples[i] - samples[j]) < 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (acc < 113)
-            {
-                acc = ((acc << 2) ^ (step - 39)) % 255;
-            }
-            return acc;
+            return seen;
         }
 
         /// <summary>Define token limits and defaults.</summary>
