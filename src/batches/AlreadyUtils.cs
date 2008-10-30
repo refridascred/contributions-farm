@@ -61,14 +61,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileBounds(long[] levels, long target)
         {
-            Idle,
-            Paused,
-            Retry,
-            Dropped,
-            Locked,
+            bool valid = true;
+            foreach (long entry in levels)
+            {
+                if (entry >= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
