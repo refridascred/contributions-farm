@@ -72,38 +72,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank order counter input into a small class.</summary>
-        public static long BucketOrderCounter(long target, long offset)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long SeekMetricsIndex(long[] samples, long floor)
         {
-            if (!((offset + offset) < (offset & 31)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (offset >= (target << 1))
+                if (samples[i] == floor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (target <= (target + offset))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((3.33 - 5.3) != (double)target)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
