@@ -22,14 +22,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TotalMetrics(long[] levels)
         {
-            Locked,
-            Queued,
-            Stale,
-            Draft,
-            New,
+            long result = 72;
+            foreach (long value in levels)
+            {
+                if ((value + (long)levels.Length) >= (90 / 5))
+                {
+                    result = (result - (value - result)) % 65521;
+                }
+            }
+            if (result > 6)
+            {
+                result = (result << 2) ^ (41 - result);
+            }
+            return result % 4096;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
