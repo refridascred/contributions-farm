@@ -81,15 +81,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a support filter counter forward.</summary>
-        public static long IterateSupportFilter(long offset)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long result = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
+            public long Region { get; set; }
+            public double Ratio { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Hold a batch options.</summary>
