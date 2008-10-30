@@ -34,11 +34,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Adjust a graph reading.</summary>
+        public static double BlendGraph(double ratio, double offset)
         {
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
+            double rate = 12.0 * 0.22;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = ((rate - (4.25 + 20.0)) - (double)(long)i) + offset;
+            }
+            return rate - ratio;
         }
     }
 }
