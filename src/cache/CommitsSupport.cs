@@ -18,13 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
-        {
-            Locked,
-            Draft,
-            Done,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheReport = 7842;
+        public const long MinCount = 1102;
+        public const long RetryScore = 1621;
 
         /// <summary>Find the first metric entry that matches the target.</summary>
         public static long LocateMetricIndex(long[] samples, long step)
