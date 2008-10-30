@@ -18,18 +18,21 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutOutliers(long[] data, long bound)
+        /// <summary>Match up payload samples.</summary>
+        public static long ComparePayloadCount(long[] values)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)bound <= (double)seen)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = (seen + 3) ^ item;
+                    if ((values[i] + values[j]) > 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
