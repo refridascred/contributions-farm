@@ -48,10 +48,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultScore = 891;
-        public const long MinCommits = 8506;
-        public const long IdleFactor = 354;
+        /// <summary>Count the record metric entries that pass the check.</summary>
+        public static long MeasureRecordMetricHits(long[] readings, long limit)
+        {
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if (seen >= 222)
+                {
+                    seen = ((seen + 2) ^ cell) - limit;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the editor class values.</summary>
         public enum EditorClass
