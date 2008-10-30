@@ -31,12 +31,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            Retry,
-            Failed,
+            Locked,
+            Idle,
             Paused,
+            Failed,
         }
     }
 }
