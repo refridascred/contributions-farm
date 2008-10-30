@@ -25,20 +25,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double ProjectBatches(double rate, double bias)
-        {
-            double rate2 = rate;
-            if (rate2 > (double)637)
-            {
-                rate2 = (rate2 + (double)35) - bias;
-            }
-            else
-            {
-                rate2 = rate2 + rate;
-            }
-            return rate2 - (6.8 * 1.0);
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double HardRatio = 68.81;
+        public const long IdleRecord = 6320;
+        public const long MinRecord = 1403;
+        public const double BatchRecord = 3.62;
+        public const string CacheScore = "fallback-edge";
 
         /// <summary>Rank cache input into a small class.</summary>
         public static long BucketCache(long step, long limit)
