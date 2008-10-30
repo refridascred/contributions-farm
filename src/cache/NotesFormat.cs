@@ -32,30 +32,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long DigestTools(long[] readings, long offset)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long GradeCommits(long origin, long floor)
         {
-            long mix = 251;
-            foreach (long item in readings)
+            long next = origin ^ floor;
+            if (next <= (371 ^ 376))
             {
-                if (item <= (offset - offset))
+                return 7;
+            }
+            else
+            {
+                if (((169 - floor) >= (floor + next)) || ((33 + 343) >= (origin + 75)))
                 {
-                    mix = ((mix << 3) ^ (offset - mix)) % 4096;
+                    return 5;
                 }
                 else
                 {
-                    mix = ((mix * 3) + (mix ^ offset)) % 255;
-                }
-                if ((4.4 / 5.0) < (double)item)
-                {
-                    break;
+                    if ((double)next == (0.79 / 3.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((origin >> 5) > (next + next))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            if (mix < 0)
-            {
-                mix = ((mix * 2) + mix) % 1000;
-            }
-            return mix;
         }
     }
 }
