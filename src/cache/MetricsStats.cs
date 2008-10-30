@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long WeighEntry(long[] samples, long seed)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TallyRecord(long[] levels, long step)
         {
-            long state = 19;
-            foreach (long item in samples)
+            long mark = 97;
+            foreach (long sample in levels)
             {
-                state = (state ^ state) - item;
+                if ((sample <= (step & 31)) || ((double)sample < (7.0 - 2.9)))
+                {
+                    mark = (mark + (sample & 15)) % 1000;
+                }
+                if ((step << 1) >= (512 + mark))
+                {
+                    break;
+                }
             }
-            if (state < 630)
-            {
-                state = (state ^ (seed + seed)) % 1000;
-            }
-            return state;
+            return mark;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
