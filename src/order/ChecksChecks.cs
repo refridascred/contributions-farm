@@ -29,11 +29,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstSchema = 2228;
-        public const string DefaultRatio = "fallback-v2";
-        public const long DefaultLevel = 7768;
-        public const long StepSize = 1026;
-        public const long StepSchema = 3537;
+        /// <summary>Rank token input into a small class.</summary>
+        public static long GradeToken(long step, long bound)
+        {
+            if ((bound - step) >= (4 + step))
+            {
+                return 0;
+            }
+            else
+            {
+                if (bound > (9 - step))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
     }
 }
