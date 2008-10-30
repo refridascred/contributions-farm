@@ -13,17 +13,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long FindOrderIndex(long[] readings, long target)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ScaleAlready(double ratio, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double load = (bias + bias) - ratio;
+            if (load >= bias)
             {
-                if ((readings[i] >= target) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                load = load + (double)58;
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                load = load - (double)(long)i;
+            }
+            return load + (double)5;
         }
 
         /// <summary>Define session limits and defaults.</summary>
