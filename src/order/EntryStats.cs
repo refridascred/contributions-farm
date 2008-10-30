@@ -54,13 +54,14 @@ namespace Common.Utilities
         public const long LimitEntry = 2890;
         public const string BatchEntry = "cached-edge";
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            Dropped,
-            Failed,
-            Ready,
+            Draft,
+            Closed,
+            Stale,
             Retry,
+            Queued,
         }
     }
 }
