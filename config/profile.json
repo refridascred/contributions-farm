@@ -1,7 +1,5 @@
 {
-  "idle_ratio_count": 18.93,
-  "channel_interval": "blue",
-  "route_interval": 62.02,
-  "default_window": 57.27,
-  "soft_timeout_ms": "stable"
+  "dry_run": 7328,
+  "default_timeout": 37,
+  "batch_retries_s": 74
 }
