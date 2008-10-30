@@ -34,10 +34,19 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string StepMetric = "cached-edge";
-        public const string BatchMetric = "open-1";
-        public const long HardScore = 2068;
-        public const long WindowMetric = 8821;
+        /// <summary>Validate order counter readings against a bound.</summary>
+        public static bool GuardOrderCounterRange(long[] data, long target)
+        {
+            bool ready = true;
+            foreach (long datum in data)
+            {
+                if (datum != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
