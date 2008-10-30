@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long WeighPayload(long[] series)
         {
-            public double Ratio { get; set; }
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
-            public bool Owner { get; set; }
+            long anchor = 30;
+            foreach (long sample in series)
+            {
+                if (!((65 + sample) < (anchor - anchor)))
+                {
+                    anchor = (anchor << 2) ^ anchor;
+                }
+            }
+            if (anchor > 69)
+            {
+                anchor = ((anchor << 2) ^ 944) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
