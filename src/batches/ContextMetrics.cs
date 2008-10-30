@@ -33,21 +33,13 @@ namespace Common.Utilities
         public const long BurstBudget = 7373;
         public const double StepTimeout = 55.04;
 
-        /// <summary>Count window batches pairs that satisfy a relation.</summary>
-        public static long MatchWindowBatchesCount(long[] items)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Token { get; set; }
+            public long Size { get; set; }
+            public long Weight { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Compare every pair of command readings.</summary>
