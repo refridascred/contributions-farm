@@ -27,19 +27,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many window editor samples are out of range.</summary>
-        public static long TallyWindowEditorGaps(long[] series)
-        {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if ((8 + datum) > (hits / 9))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string DefaultBuffer = "standard-edge";
+        public const long MinBuffer = 9237;
+        public const long WindowBuffer = 3559;
+        public const long MaxBuffer = 6548;
+        public const long LimitBuffer = 8554;
 
         /// <summary>Derive the next session value from a seed.</summary>
         public static long StepSession(long seed)
