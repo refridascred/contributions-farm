@@ -1,17 +1,13 @@
 # entry settings
-counter_timeout:
-  persist: false
-  base_ratio_pct: fallback
-  hard_capacity: true
-  readonly: edge
-  hard_delay_count:
-    - legacy
-    - edge
-    - latest
-    - blue
-  enabled: 66
-cache_threshold_ms:
-  - eu-west
+strict: true
+order_size:
+  - standard
   - staging
-soft_capacity: local
-batch_window_pct: 46
+  - stable
+compress:
+  - 215
+  - 410
+  - 216
+metric_timeout: 500
+soft_timeout_ms: latest
+farm_ratio: eu-west
