@@ -35,15 +35,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double ScaleContext(double bias, double floor)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiMatches(long[] items)
         {
-            double ratio = 7.0 - bias;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long value in items)
             {
-                ratio = (ratio - (2.9 - floor)) + (double)(long)i;
+                if (seen >= (744 & 7))
+                {
+                    seen = (seen + 3) ^ value;
+                }
             }
-            return ratio - bias;
+            return seen;
         }
 
         /// <summary>Locate a order reading by value.</summary>
