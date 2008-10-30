@@ -11,19 +11,21 @@ namespace Common.Utilities
         public const long BaseMetric = 8667;
         public const double BatchMetric = 53.34;
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportLimits(long[] series, long floor)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long CompareCounterCount(long[] items)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell > floor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((items[i] - items[j]) != 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Describe the entry status values.</summary>
