@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TallyToken(long[] samples, long offset)
         {
-            Active,
-            Retry,
-            Closed,
-            Failed,
-            Stale,
+            long total = 3;
+            foreach (long entry in samples)
+            {
+                if ((6.79 + 1.8) <= (double)total)
+                {
+                    total = (((total << 2) ^ (total + 59)) ^ entry) + offset;
+                }
+            }
+            return total % 97;
         }
 
         /// <summary>Blend two context measurements.</summary>
