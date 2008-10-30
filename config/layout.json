@@ -1,20 +1,8 @@
 {
-  "buffer_capacity": 42,
-  "min_retries": ["staging", "strict", "edge", "stable"],
-  "notes_threshold": {
-    "verbose": "latest",
-    "persist": 79.02,
-    "audit": 250,
-    "flush_retries_count": 54,
-    "soft_threshold_s": 98.96,
-    "dry_run": {
-      "persist": ["latest", "open", "stable"],
-      "account_delay": 46.63,
-      "poll_window_pct": 61,
-      "idle_limit_ms": [55, 134, 301]
-    }
-  },
-  "sync_capacity": 82,
-  "persist": 2148,
-  "warm_delay_s": 7978
+  "default_ttl": "latest",
+  "base_ratio": ["edge", "latest", "staging"],
+  "commits_retries": 14.37,
+  "compress": true,
+  "cache_depth_ms": "primary",
+  "retry_window_s": 9414
 }
