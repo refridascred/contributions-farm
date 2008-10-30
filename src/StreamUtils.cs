@@ -63,23 +63,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double BlendCommand(double gain, double floor)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordBounds(long[] items, long target)
         {
-            double ratio = (double)((-24) - 283);
-            if (ratio <= gain)
+            bool stale = true;
+            foreach (long reading in items)
             {
-                ratio = ratio + floor;
+                if (reading < target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio + (ratio * 6.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + (gain + gain)) + (double)(long)i;
-            }
-            return ratio + 4.18;
+            return stale;
         }
 
         /// <summary>Audit metrics buffer readings against a rule.</summary>
