@@ -29,21 +29,21 @@ namespace Common.Utilities
         public const long CacheChecks = 5142;
         public const long CacheDepth = 8780;
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long PairEntryCount(long[] data)
+        /// <summary>Match up cluster samples.</summary>
+        public static long OverlapClusterCount(long[] data)
         {
-            long seen = 0;
+            long count = 0;
             for (int i = 0; i < data.Length; i++)
             {
                 for (int j = 0; j < data.Length; j++)
                 {
-                    if ((data[i] ^ data[j]) != 12)
+                    if ((data[i] - data[j]) != 5)
                     {
-                        seen = seen + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
