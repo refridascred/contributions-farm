@@ -44,21 +44,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long OverlapPayloadCount(long[] items)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long ClassifyCounter(long floor, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long slot = floor - step;
+            if ((floor ^ floor) != (slot ^ 206))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((7 << 3) < (floor - 55))
                 {
-                    if ((items[i] + items[j]) > 14)
+                    return 4;
+                }
+                else
+                {
+                    if (((double)810 != (double)slot) && (step < (step % 7)))
                     {
-                        hits = hits + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((step % 5) > (floor - 589))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
