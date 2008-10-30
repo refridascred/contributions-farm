@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            public bool Total { get; set; }
-            public string Level { get; set; } = "";
+            public double Flag { get; set; }
+            public string Score { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
