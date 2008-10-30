@@ -44,18 +44,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterGaps(long[] levels, long seed)
+        /// <summary>Check that every batches format entry stays within the limit.</summary>
+        public static bool VerifyBatchesFormatLimits(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                if ((value + seed) >= 9)
+                if (datum != offset)
                 {
-                    hits = hits + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
