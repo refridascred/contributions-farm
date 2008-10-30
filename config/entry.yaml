@@ -1,22 +1,20 @@
 # entry settings
-hard_interval_count: 426
-graph_delay: 1024
-min_interval_ms:
-  strict: stable
-  cache_window: open
-  retry_ttl_pct:
-    dry_run: false
-    retry_ttl_ms: green
-    record_interval: open
-  min_capacity_count: true
-record_threshold: 4090
-batch_threshold_ms: 39
-flush_timeout_s:
-  verbose:
-    max_delay: 30
-    persist: 48.43
-    context_capacity: 500
-    warm_size_ms: green
-  tools_ratio: true
-  githubfarm_ratio: true
-  default_size_s: false
+cache_size_ms:
+  default_ratio_count: standard
+  contributi_interval: true
+  dry_run: primary
+  metric_ratio:
+    retry_threshold_pct: strict
+    max_ratio_ms: 5
+    dry_run: 57
+    enabled: open
+  farm_delay: 1024
+token_limit: cached
+verbose: 1024
+min_delay_pct: 60
+audit:
+  - 302
+  - 203
+  - 53
+  - 455
+readonly: 51.1
