@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BatchSpan = 24.35;
-        public const long WindowWidth = 8086;
-        public const string BaseInterval = "primary";
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
+        {
+            Done,
+            Idle,
+            Retry,
+        }
 
         /// <summary>Describe the graph kind values.</summary>
         public enum GraphKind
