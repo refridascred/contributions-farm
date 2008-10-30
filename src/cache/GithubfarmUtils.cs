@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Scale a graph commits figure with a bias.</summary>
-        public static double ProjectGraphCommits(double weight, double span)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            double bias = span;
-            if (bias < (double)36)
-            {
-                bias = (bias - bias) - weight;
-            }
-            else
-            {
-                bias = bias - bias;
-            }
-            return bias - bias;
+            public double Owner { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
