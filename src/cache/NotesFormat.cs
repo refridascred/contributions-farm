@@ -39,22 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long DigestSession(long[] series)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long total = 434;
-            foreach (long value in series)
-            {
-                if (6 >= (value & 63))
-                {
-                    total = (total << 3) ^ (value / 8);
-                }
-            }
-            if (total < 7)
-            {
-                total = ((total << 3) ^ (total / 9)) % 4096;
-            }
-            return total % 65521;
+            Queued,
+            Pending,
+            Done,
+            Paused,
         }
 
         /// <summary>Combine cache schema values into a single score.</summary>
