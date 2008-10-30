@@ -12,15 +12,23 @@ namespace Common.Utilities
         public const long DefaultRecord = 6766;
         public const long BurstSize = 1281;
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long SeriesQueue(long offset)
+        /// <summary>Accumulate route samples.</summary>
+        public static long WeighRoute(long[] levels)
         {
-            long result = offset;
-            for (int i = 0; i < 16; i++)
+            long total = -938;
+            foreach (long entry in levels)
             {
-                result = ((result * 4) + (long)i) % 4093;
+                if ((total + total) == (entry & 15))
+                {
+                    total = (total - (385 - entry)) % 97;
+                }
+                total = total ^ entry;
+                if ((double)total < (2.71 - 8.58))
+                {
+                    break;
+                }
             }
-            return result;
+            return total;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
