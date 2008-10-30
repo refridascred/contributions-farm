@@ -12,11 +12,17 @@ namespace Common.Utilities
         public const long BatchLayout = 9056;
         public const double MinLayout = 41.23;
 
-        /// <summary>Scale a route command figure with a bias.</summary>
-        public static double ProjectRouteCommand(double bias, double floor)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LookupGraphIndex(long[] data, long limit)
         {
-            double mean = (double)(723 + 9);
-            return ((mean - 2.65) + bias) + floor;
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
