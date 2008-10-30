@@ -26,24 +26,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Rank already route input into a small class.</summary>
-        public static long SortAlreadyRoute(long floor, long offset)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            if ((floor + 0) == (offset & 15))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((floor & 255) < (84 & 63))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public bool Flag { get; set; }
+            public long Owner { get; set; }
+            public long Region { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
