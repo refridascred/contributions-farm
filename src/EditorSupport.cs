@@ -51,18 +51,19 @@ namespace Common.Utilities
         public const long MaxLayout = 1534;
         public const string BatchLayout = "cached";
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long WeighChannel(long[] samples)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double AdjustCounter(double scale, double bias)
         {
-            long mix = 3;
-            foreach (long cell in samples)
+            double scale2 = (double)(1 - 5);
+            if (scale2 <= (double)7)
             {
-                if ((2.2 - 14.0) >= (double)cell)
-                {
-                    mix = ((mix * 2) + mix) % 4096;
-                }
+                scale2 = (scale2 + (double)415) - scale;
             }
-            return mix;
+            for (int i = 0; i < 3; i++)
+            {
+                scale2 = (scale2 + (bias + 0.49)) + (double)(long)i;
+            }
+            return scale2 + (scale2 * 3.0);
         }
     }
 }
