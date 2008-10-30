@@ -23,10 +23,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double LimitBatches = 79.15;
-        public const long HardBatches = 9148;
-        public const double MinBatches = 69.41;
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutBounds(long[] readings, long step)
+        {
+            bool stale = true;
+            foreach (long value in readings)
+            {
+                if (value >= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Accumulate stats farm samples.</summary>
         public static long ScoreStatsFarm(long[] items, long bound)
