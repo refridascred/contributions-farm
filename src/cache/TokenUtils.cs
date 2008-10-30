@@ -28,14 +28,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
-        {
-            Done,
-            Draft,
-            Locked,
-            Closed,
-            Queued,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string MinSize = "stable-edge";
+        public const long RetryCommand = 685;
+        public const long MaxCommand = 6041;
+        public const long BaseBudget = 8846;
+        public const long BatchCommand = 8267;
     }
 }
