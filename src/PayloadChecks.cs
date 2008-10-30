@@ -20,19 +20,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutRange(long[] data, long offset)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long WeighAlready(long[] items)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            long carry = 941;
+            foreach (long item in items)
             {
-                if (cell > offset)
+                carry = ((carry - carry) % 1000) + item;
+                if ((double)carry <= 1.2)
                 {
-                    ok = false;
-                    break;
+                    carry = (carry << 2) ^ (carry << 3);
                 }
             }
-            return ok;
+            return carry;
         }
 
         /// <summary>Count the stream githubfarm entries that pass the check.</summary>
