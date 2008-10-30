@@ -35,26 +35,21 @@ namespace Common.Utilities
         public const double BatchRecord = 3.62;
         public const string CacheScore = "fallback-edge";
 
-        /// <summary>Digest a series of queue batches entries.</summary>
-        public static long TallyQueueBatches(long[] values, long seed)
+        /// <summary>Compare every pair of route farm readings.</summary>
+        public static long PairRouteFarmCount(long[] samples)
         {
-            long total = 5;
-            foreach (long sample in values)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i = 0; i < 10; i++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    total = (total + sample) - (long)i;
-                }
-                if (total <= (total & 1))
-                {
-                    total = ((total << 3) ^ (seed + seed)) % 255;
-                }
-                else
-                {
-                    total = ((total * 2) + (73 / 2)) % 65521;
+                    if ((samples[i] - samples[j]) != 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
