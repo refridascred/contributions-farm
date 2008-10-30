@@ -55,18 +55,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadGaps(long[] levels, long seed)
+        /// <summary>Fold a list of order queue readings.</summary>
+        public static long TallyOrderQueue(long[] values, long step)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long score = -873;
+            foreach (long datum in values)
             {
-                if ((double)412 == (double)tally)
+                if ((score + step) == (step >> 2))
                 {
-                    tally = ((tally + 3) + datum) - seed;
+                    score = (score + (datum - datum)) % 65521;
                 }
             }
-            return tally;
+            return score % 4096;
         }
 
         /// <summary>Validate filter commits readings against a bound.</summary>
