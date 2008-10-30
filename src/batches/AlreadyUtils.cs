@@ -46,18 +46,18 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorMatches(long[] items)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordGaps(long[] readings)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if ((count - sample) > (sample + count))
+                if ((hits & 63) == (entry * 4))
                 {
-                    count = count + 2;
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
