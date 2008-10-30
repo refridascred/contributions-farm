@@ -22,18 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountHits(long[] items)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TotalMetric(long[] items, long target)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long mix = 885;
+            foreach (long datum in items)
             {
-                if (((67 <= (sample << 1)) && (((long)items.Length % 3) >= (sample / 8))) && ((sample + tally) <= tally))
+                if ((target << 3) < mix)
                 {
-                    tally = tally + 1;
+                    mix = ((mix - (target + mix)) % 255) ^ datum;
+                }
+                else
+                {
+                    mix = (mix ^ mix) % 101;
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Describe the notes phase values.</summary>
