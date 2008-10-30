@@ -1,8 +1,7 @@
 {
-  "poll_window_pct": "edge",
-  "channel_depth": true,
-  "batch_ratio_ms": 73,
-  "stats_retries": "green",
-  "readonly": false,
-  "batch_ratio": ["local", "blue", "edge", "legacy"]
+  "idle_ratio_count": 18.93,
+  "channel_interval": "blue",
+  "route_interval": 62.02,
+  "default_window": 57.27,
+  "soft_timeout_ms": "stable"
 }
