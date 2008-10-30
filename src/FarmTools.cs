@@ -33,11 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            public double Limit { get; set; }
-            public long Flag { get; set; }
+            Stale,
+            Synced,
+            Idle,
         }
     }
 }
