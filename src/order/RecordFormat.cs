@@ -44,17 +44,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] samples, long offset)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesOutliers(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if (samples[i] == offset)
+                if ((((4.0 / 9.0) >= (double)reading) || ((7.7 + 2.4) <= (double)count)) || ((76 - count) <= (89 * 2)))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the editor class values.</summary>
