@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Find the first editor metric entry that matches the target.</summary>
-        public static long FindEditorMetricIndex(long[] readings, long bound)
+        /// <summary>Digest a series of commits token entries.</summary>
+        public static long TotalCommitsToken(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 4;
+            foreach (long entry in series)
             {
-                if (readings[i] <= bound)
-                {
-                    return (long)i;
-                }
+                anchor = (anchor + entry) % 97;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Hold a record snapshot.</summary>
