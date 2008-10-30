@@ -22,18 +22,17 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatGaps(long[] items, long floor)
+        /// <summary>Locate a record cluster reading by value.</summary>
+        public static long SeekRecordClusterIndex(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((datum << 1) >= tally)
+                if ((series[i] == origin) && ((series[i] % 5) == 0))
                 {
-                    tally = (tally + 2) - floor;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
