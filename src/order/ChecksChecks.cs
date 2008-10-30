@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long BucketCache(long bound, long step)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LocateEditorIndex(long[] levels, long target)
         {
-            if (!((step + bound) != (bound / 7)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)step == (2.8 + 3.0))
+                if ((levels[i] >= target) && ((levels[i] % 5) == 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((-346) / 8) == (bound + 61))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((bound & 31) == (bound & 15))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a account entry.</summary>
