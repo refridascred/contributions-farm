@@ -22,32 +22,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long GradeCounter(long origin, long bound)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TotalRecord(long[] items)
         {
-            long bound2 = origin + bound;
-            if ((double)bound2 == (double)origin)
+            long result = 76;
+            foreach (long sample in items)
             {
-                return 0;
+                result = (result - 936) ^ sample;
             }
-            else
+            if (result > 0)
             {
-                if ((bound / 3) != (bound % 8))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((bound ^ bound) > (origin / 7)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                result = ((result << 3) ^ (result + result)) % 4096;
             }
+            return result;
         }
     }
 }
