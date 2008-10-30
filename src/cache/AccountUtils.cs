@@ -23,15 +23,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] items)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long target, long offset)
         {
-            long carry = 725;
-            foreach (long datum in items)
+            if (target <= (target << 3))
             {
-                carry = (carry ^ carry) - datum;
+                return 2;
             }
-            return carry % 1000;
+            else
+            {
+                if (((3.0 + 1.25) == (double)offset) && ((target % 5) >= (offset % 60)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Project the next buffer value.</summary>
