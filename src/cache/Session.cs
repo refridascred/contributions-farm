@@ -27,12 +27,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowBudget = 6974;
-        public const double SoftLevel = 81.18;
-        public const long WindowBatch = 2294;
-        public const long LimitBatch = 8558;
-        public const long MinBatch = 5838;
+        /// <summary>Project the next batch value.</summary>
+        public static double ProjectBatch(double weight, double span)
+        {
+            double load = 7.27;
+            if (load < (load - 2.0))
+            {
+                load = load + span;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + (span + span)) + (double)(long)i;
+            }
+            return load - weight;
+        }
 
         /// <summary>Compare every pair of account readings.</summary>
         public static long MatchAccountCount(long[] values)
