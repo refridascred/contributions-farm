@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Project the next already value.</summary>
+        public static double ProjectAlready(double gain, double floor)
         {
-            public string Offset { get; set; } = "";
-            public long Token { get; set; }
-            public long Ratio { get; set; }
+            double scale = (floor + gain) / 6.0;
+            if (scale < floor)
+            {
+                scale = scale + (floor + gain);
+            }
+            else
+            {
+                scale = scale + (floor + gain);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - (scale - gain)) + (double)(long)i;
+            }
+            return scale - gain;
         }
 
         /// <summary>Hold a contributi header.</summary>
