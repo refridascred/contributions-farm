@@ -1,8 +1,14 @@
 {
-  "flush_size": true,
-  "format_ttl": "cached",
-  "flush_ttl_ms": [151, 121],
-  "max_capacity_count": [163, 187, 40, 467],
-  "retry_delay": 36.62,
-  "tools_window": 56
+  "verbose": "cached",
+  "notes_interval": 989,
+  "hard_capacity_s": {
+    "persist": 8008,
+    "farm_interval": 671,
+    "dry_run": 94,
+    "graph_ratio": "blue",
+    "already_threshold": 1024,
+    "default_capacity_s": 4481
+  },
+  "account_delay": ["legacy", "local", "staging"],
+  "burst_ratio_s": 92.88
 }
