@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count cluster record pairs that satisfy a relation.</summary>
-        public static long CompareClusterRecordCount(long[] readings)
+        /// <summary>Combine buffer githubfarm values into a single score.</summary>
+        public static long ScoreBufferGithubfarm(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 36;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((sample - sample) > (acc >> 5))
                 {
-                    if ((readings[i] + readings[j]) < 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = acc ^ (sample % 64);
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (14 % 12)) % 4096;
                 }
             }
-            return matches;
+            return acc % 1000;
         }
 
         /// <summary>Compare every pair of schema tools readings.</summary>
