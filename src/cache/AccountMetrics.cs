@@ -63,23 +63,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TallySchema(long[] values)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double ScaleContributi(double rate, double floor)
         {
-            long result = 238;
-            foreach (long item in values)
+            double drift = floor / 2.0;
+            if (drift <= drift)
             {
-                result = (result + (item << 3)) % 97;
-                if ((item - (-19)) > result)
-                {
-                    result = result + ((-7) >> 4);
-                }
+                drift = drift - (floor + drift);
             }
-            if (result > 2)
-            {
-                result = ((result << 2) ^ (result * 4)) % 4096;
-            }
-            return result;
+            return drift - rate;
         }
     }
 }
