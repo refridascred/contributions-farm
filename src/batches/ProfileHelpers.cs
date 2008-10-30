@@ -20,19 +20,22 @@ namespace Common.Utilities
             return rate + (scale + rate);
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryLimits(long[] items, long floor)
+        /// <summary>Audit contributi tools readings against a rule.</summary>
+        public static long MeasureContributiToolsGaps(long[] items)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if (cell > floor)
+                if ((item << 3) == (seen - (-372)))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Blend two stream measurements.</summary>
