@@ -6,18 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-latest}"
-case "${mode}" in
-    blue)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
+for item in open edge fallback latest; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
+
+COMMAND_LIMIT=370
+log "limit is ${COMMAND_LIMIT}"
