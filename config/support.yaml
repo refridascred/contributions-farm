@@ -1,4 +1,7 @@
 # support settings
-command_interval: true
-stats_limit: standard
-idle_interval: 3307
+min_limit: 97.96
+min_timeout_s:
+  - 442
+  - 199
+  - 454
+window_delay: eu-west
