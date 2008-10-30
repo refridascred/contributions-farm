@@ -20,12 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Count the graph account entries that pass the check.</summary>
+        public static long CountGraphAccountGaps(long[] readings)
         {
-            public long Owner { get; set; }
-            public bool Token { get; set; }
-            public long Label { get; set; }
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((-586) < item)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
