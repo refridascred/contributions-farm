@@ -37,18 +37,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Audit support batches readings against a rule.</summary>
-        public static long TallySupportBatchesGaps(long[] samples, long step)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if (item <= (item + tally))
-                {
-                    tally = (tally + 1) - step;
-                }
-            }
-            return tally;
+            New,
+            Stale,
+            Retry,
         }
     }
 }
