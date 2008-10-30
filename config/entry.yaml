@@ -1,39 +1,26 @@
 # entry settings
-cache_interval_count: false
-schema_size: 51.14
-dry_run:
-  schema_ttl:
-    - blue
-    - legacy
-    - standard
-    - local
-  min_limit_ms: 37
-  batch_size:
-    idle_limit_ms: staging
-    dry_run:
-      - stable
-      - edge
-    idle_ttl_count: 18
-    max_retries_s: 15
-    idle_timeout_pct: blue
-  entry_limit: strict
-  sync_depth_count: local
-  poll_retries:
-    warm_window_pct: 30
-    strict: false
-    max_capacity_count: 89.71
-    hard_timeout_count: 3.87
-    base_threshold_ms: local
-min_window:
-  - 386
-  - 24
-  - 323
-  - 52
-warm_size_pct: edge
-queue_limit:
-  notes_window: standard
-  token_timeout: blue
-  cache_capacity_ms: 19
-  min_threshold_count: true
-  metrics_retries: 7266
-  readonly: 39.41
+default_threshold_s: staging
+retry_timeout_pct: 88.99
+commits_ratio:
+  route_delay: true
+  sync_delay_pct: 100
+  strict:
+    commits_depth: 79.7
+    batch_timeout: 4915
+    flush_window_ms: latest
+  window_capacity:
+    queue_capacity:
+      - 409
+      - 190
+      - 225
+    flush_window_count: 9654
+    persist: standard
+    readonly: 55.56
+  filter_threshold:
+    - 122
+    - 117
+    - 428
+  hard_ratio_count: 32.36
+compress:
+  - 214
+  - 419
