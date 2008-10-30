@@ -1,5 +1,9 @@
 {
-  "warm_size_ms": 10,
-  "compress": 1643,
-  "idle_size_pct": 100
+  "soft_threshold_count": "fallback",
+  "audit": 5936,
+  "base_limit_pct": {
+    "base_capacity_ms": 1024,
+    "enabled": true,
+    "record_threshold": 250
+  }
 }
