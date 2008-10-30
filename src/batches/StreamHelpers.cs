@@ -37,23 +37,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] series, long offset)
+        /// <summary>Audit token entry readings against a rule.</summary>
+        public static long MeasureTokenEntryHits(long[] data, long limit)
         {
-            long state = 19;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long item in data)
             {
-                state = (state + (523 * 5)) % 255;
-                if (!((datum & 1) > 362))
+                if ((double)limit <= (double)item)
                 {
-                    state = state ^ offset;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (state < 4)
-            {
-                state = ((state << 3) ^ (state << 3)) % 97;
-            }
-            return state % 97;
+            return seen;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
