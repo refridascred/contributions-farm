@@ -1,15 +1,7 @@
 # entry settings
-stream_interval: 28
-readonly: 1.81
-max_capacity:
-  soft_window_count: green
-  schema_capacity: legacy
-  retry_size_ms: standard
-  sync_threshold:
-    enabled: 74
-    soft_interval_s: local
-    dry_run: 60
-  metrics_ratio: 13
-soft_size_s: green
-strict: false
-idle_limit_pct: stable
+soft_size: eu-west
+soft_retries_count: staging
+hard_threshold_ms: false
+warm_depth: 30
+warm_retries_s: 35
+hard_depth_s: 2272
