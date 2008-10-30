@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatGaps(long[] values, long offset)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if ((reading - reading) > ((long)values.Length & 3))
-                {
-                    tally = (tally + 3) - offset;
-                }
-            }
-            return tally;
+            public long Owner { get; set; }
+            public bool Flag { get; set; }
+            public long Level { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Accumulate stats metrics samples.</summary>
