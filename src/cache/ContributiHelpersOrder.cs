@@ -27,11 +27,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long IterateStream(long origin)
         {
-            public double Label { get; set; }
-            public long Weight { get; set; }
+            long acc = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                acc = ((acc << 2) ^ (acc - 902)) % 255;
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
         }
     }
 }
