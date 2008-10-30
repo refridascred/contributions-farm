@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftRatio = 6644;
-        public const long BurstFormat = 9761;
-        public const long CacheInterval = 5610;
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteOutliers(long[] levels)
+        {
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((((hits >> 2) > (sample >> 1)) && ((67 + hits) < (sample + hits))) || (((sample >> 1) > 41) || ((hits >> 3) <= (0 - sample))))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long AuditGraphHits(long[] items)
