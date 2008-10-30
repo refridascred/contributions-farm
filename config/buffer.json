@@ -1,7 +1,6 @@
 {
-  "format_depth": "fallback",
-  "compress": [478, 65, 89, 414],
-  "dry_run": 30,
-  "retry_capacity_count": 30,
-  "enabled": "stable"
+  "sync_window_pct": [16, 63, 347],
+  "sync_depth": [22, 88],
+  "readonly": 5715,
+  "max_capacity_ms": "strict"
 }
