@@ -26,18 +26,17 @@ namespace Common.Utilities
             return scale - rate;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionMatches(long[] items)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long SeekBatchesIndex(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long item in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)matches <= (6.5 + 17.0))
+                if ((samples[i] == bound) && ((samples[i] % 5) != 0))
                 {
-                    matches = (matches + 1) + item;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Validate githubfarm metrics readings against a bound.</summary>
