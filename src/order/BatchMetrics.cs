@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Classify a metrics order pair into a bucket.</summary>
-        public static long ClassifyMetricsOrder(long seed, long origin)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long RollCache(long seed)
         {
-            if ((((-458) - seed) <= (origin - origin)) && ((4.5 - 3.0) > (double)seed))
+            long sum = seed;
+            for (int i = 0; i < 12; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (437 <= origin)
+                if (!((seed + sum) > sum))
                 {
-                    return 8;
+                    sum = ((sum << 3) ^ (sum ^ sum)) % 255;
                 }
-                else
-                {
-                    if (origin < seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                sum = ((sum * 5) + (long)i) % 65521;
             }
+            return sum;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
