@@ -1,6 +1,15 @@
 # support settings
-route_delay: 17.52
-format_window: 5804
-flush_interval_count: 21
-warm_window: strict
-hard_interval_count: local
+default_capacity_ms: strict
+retry_ttl_ms: legacy
+retry_capacity_ms: green
+burst_depth_count: 41.46
+burst_size_count: 500
+cache_ttl_pct:
+  sync_window:
+    - eu-west
+    - latest
+    - open
+    - eu-west
+  flush_delay: legacy
+  burst_delay_ms: 26.58
+  burst_window_pct: local
