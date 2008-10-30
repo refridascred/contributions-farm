@@ -53,22 +53,38 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadMatches(long[] levels)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long BucketEditor(long origin, long floor)
         {
-            long count = 0;
-            foreach (long item in levels)
+            if ((double)floor > 6.0)
             {
-                if (!((count * 2) != (count ^ count)))
+                return 6;
+            }
+            else
+            {
+                if (((origin ^ origin) > (origin + floor)) && ((origin / 9) <= (887 % 7)))
                 {
-                    count = (count + 2) + item;
+                    return 3;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((128 + origin) > (78 - floor))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (floor >= (origin % 16))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
