@@ -67,13 +67,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            Locked,
-            Idle,
-            Paused,
-            Failed,
+            public bool Weight { get; set; }
+            public long Label { get; set; }
+            public double Region { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
