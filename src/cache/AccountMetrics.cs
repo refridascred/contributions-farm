@@ -44,22 +44,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long DigestEntry(long[] levels)
+        /// <summary>Derive the next metrics window value from a seed.</summary>
+        public static long IterateMetricsWindow(long seed)
         {
-            long score = 3;
-            foreach (long item in levels)
+            long carry = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if ((19.0 + 5.48) > (double)score)
-                {
-                    score = ((score ^ ((-882) % 7)) % 101) ^ item;
-                }
-                else
-                {
-                    score = ((score << 3) ^ score) % 97;
-                }
+                carry = (carry - ((long)i + carry)) % 97;
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Adjust a commits reading.</summary>
