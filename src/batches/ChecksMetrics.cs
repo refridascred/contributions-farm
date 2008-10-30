@@ -64,13 +64,12 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            public long Rank { get; set; }
-            public long Total { get; set; }
-            public long Owner { get; set; }
-            public long Count { get; set; }
+            public long Level { get; set; }
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
