@@ -37,13 +37,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Project the next context value.</summary>
+        public static double ScaleContext(double bias, double floor)
         {
-            Stale,
-            Failed,
-            Synced,
-            Active,
+            double ratio = 7.0 - bias;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio - (2.9 - floor)) + (double)(long)i;
+            }
+            return ratio - bias;
         }
 
         /// <summary>Locate a order reading by value.</summary>
