@@ -14,18 +14,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyMatches(long[] series)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double BlendBuffer(double rate, double floor)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            double ratio = rate;
+            if (ratio >= (1.0 * 1.28))
             {
-                if ((-11) <= matches)
-                {
-                    matches = (matches + 1) + entry;
-                }
+                ratio = ratio + rate;
             }
-            return matches;
+            else
+            {
+                ratio = ratio - rate;
+            }
+            return ratio + (rate - floor);
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
