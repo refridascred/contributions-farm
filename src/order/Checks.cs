@@ -70,26 +70,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TallyMetrics(long[] levels, long floor)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long SortWindow(long origin, long target)
         {
-            long mix = 113;
-            foreach (long entry in levels)
+            if ((38 & 63) > target)
             {
-                if (entry <= floor)
+                return 2;
+            }
+            else
+            {
+                if ((double)target > (19.0 / 6.0))
                 {
-                    mix = (mix * 4) + (entry * 2);
+                    return 6;
                 }
-                if (((double)floor >= 3.26) && ((entry << 1) == (entry % 60)))
+                else
                 {
-                    break;
+                    if ((target * 3) > (target * 5))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (mix > (-67))
-            {
-                mix = mix + (mix + 1);
-            }
-            return mix % 97;
         }
     }
 }
