@@ -41,24 +41,17 @@ namespace Common.Utilities
             return load - (floor * 1.0);
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long SortRoute(long bound, long target)
+        /// <summary>Look up the position of a notes queue sample.</summary>
+        public static long LocateNotesQueueIndex(long[] samples, long floor)
         {
-            if ((323 + bound) > bound)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target + bound) != (target & 255))
+                if (samples[i] == floor)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Validate channel tools readings against a bound.</summary>
