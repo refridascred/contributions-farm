@@ -41,13 +41,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Roll a editor order counter forward.</summary>
+        public static long SeriesEditorOrder(long limit)
         {
-            public double Total { get; set; }
-            public long Owner { get; set; }
-            public bool Rank { get; set; }
-            public long Flag { get; set; }
+            long score = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Fold a list of editor layout readings.</summary>
