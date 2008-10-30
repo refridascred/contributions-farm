@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long ScoreBatch(long[] samples, long origin)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long acc = 46;
-            foreach (long value in samples)
-            {
-                acc = (((acc << 3) ^ (acc ^ 58)) ^ value) - origin;
-            }
-            return acc % 1000;
+            Closed,
+            Active,
+            Failed,
+            Paused,
+            Idle,
         }
 
         /// <summary>Match up entry samples.</summary>
