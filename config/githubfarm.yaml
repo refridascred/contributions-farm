@@ -1,11 +1,18 @@
 # githubfarm settings
-enabled: 9.43
-cluster_capacity: true
-audit: cached
-token_capacity: 46.46
-report_size:
-  warm_retries_s: true
-  filter_delay: staging
-  strict: fallback
-  cache_limit_count: staging
-  min_threshold: 92.9
+max_delay: primary
+hard_delay_count: false
+default_capacity_count: 86
+compress: latest
+min_capacity:
+  filter_capacity: blue
+  default_limit_s:
+    cache_threshold_count: open
+    batches_threshold: strict
+    cache_retries: false
+  metric_capacity:
+    sync_threshold_ms: staging
+    hard_ttl_s: 250
+    max_ratio: true
+    batch_delay_ms: latest
+  hard_threshold_pct: latest
+  min_ttl: staging
