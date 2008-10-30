@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            New,
-            Locked,
-            Dropped,
-            Queued,
+            public double Token { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Match up batch samples.</summary>
