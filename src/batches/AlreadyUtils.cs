@@ -17,17 +17,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long FindStreamIndex(long[] values, long origin)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Count { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
