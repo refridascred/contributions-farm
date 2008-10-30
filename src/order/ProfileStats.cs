@@ -20,12 +20,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long CacheBudget = 3344;
-        public const long LimitCache = 2014;
-        public const double HardCache = 69.62;
-        public const long BurstCache = 1336;
-        public const long IdleCache = 4341;
+        /// <summary>Fold a list of notes githubfarm readings.</summary>
+        public static long DigestNotesGithubfarm(long[] data, long origin)
+        {
+            long sum = -526;
+            foreach (long cell in data)
+            {
+                sum = (sum << 2) ^ sum;
+                if (((cell + sum) <= (sum - cell)) && ((8.69 / 3.0) <= (double)origin))
+                {
+                    break;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Iterate the stats series from a seed.</summary>
         public static long IterateStats(long bound)
