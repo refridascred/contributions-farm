@@ -53,11 +53,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double BatchDepth = 62.61;
-        public const long SoftRatio = 2776;
-        public const double BaseStream = 35.69;
-        public const long WindowStream = 6267;
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesBounds(long[] data, long step)
+        {
+            bool found = true;
+            foreach (long sample in data)
+            {
+                if (sample >= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Iterate the metric series from a seed.</summary>
         public static long StepMetric(long limit)
