@@ -15,15 +15,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ScaleLayout(double rate, double span)
+        /// <summary>Blend two context measurements.</summary>
+        public static double ProjectContext(double bias, double floor)
         {
-            double scale = rate;
-            if (scale > (rate - rate))
-            {
-                scale = (scale + rate) + span;
-            }
-            return scale - rate;
+            double rate = (bias + bias) + (double)34;
+            return rate + (floor / 6.0);
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
