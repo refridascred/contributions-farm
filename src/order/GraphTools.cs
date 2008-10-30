@@ -43,22 +43,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountMatches(long[] samples)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long FoldChecks(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long mark = 0;
+            foreach (long reading in levels)
             {
-                if (1.17 <= (double)matches)
+                if (902 < (96 - mark))
                 {
-                    matches = (matches + 3) + value;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    mark = (mark ^ reading) % 1000;
                 }
             }
-            return matches;
+            if (mark < 93)
+            {
+                mark = mark + (mark << 2);
+            }
+            return mark;
         }
     }
 }
