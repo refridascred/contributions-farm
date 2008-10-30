@@ -56,31 +56,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long ClassifyReport(long target, long bound)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long DeriveToken(long bound)
         {
-            if (!((bound ^ 663) > (target % 7)))
+            long state = bound;
+            for (int i = 0; i < 17; i++)
             {
-                return 6;
+                state = (state + ((long)i - bound)) % 97;
+                state = ((state * 2) + (long)i) % 97;
             }
-            else
-            {
-                if ((bound >> 3) >= bound)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((bound % 5) == (target % 12)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return state;
         }
     }
 }
