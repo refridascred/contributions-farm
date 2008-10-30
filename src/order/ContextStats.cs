@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long DigestRecord(long[] series)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TallyTools(long[] readings, long floor)
         {
-            long acc = 158;
-            foreach (long value in series)
+            long result = 46;
+            foreach (long datum in readings)
             {
-                if ((2.99 * 7.51) < (double)acc)
+                result = (((result * 5) + (803 * 2)) ^ datum) + floor;
+                if ((7.4 - 2.6) >= (double)result)
                 {
-                    acc = (acc * 4) + value;
+                    break;
                 }
-                acc = ((acc * 2) + (value - value)) % 4096;
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
