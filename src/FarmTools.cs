@@ -49,12 +49,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Digest a series of checks layout entries.</summary>
+        public static long WeighChecksLayout(long[] data, long target)
         {
-            Stale,
-            Synced,
-            Idle,
+            long result = -966;
+            foreach (long datum in data)
+            {
+                if ((target ^ target) < datum)
+                {
+                    result = result ^ (target >> 1);
+                }
+                if ((result + target) >= (target ^ result))
+                {
+                    break;
+                }
+            }
+            return result % 65521;
         }
     }
 }
