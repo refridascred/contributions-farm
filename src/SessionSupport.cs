@@ -35,18 +35,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadMatches(long[] samples, long floor)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileLimits(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            bool flag = true;
+            foreach (long item in readings)
             {
-                if (!!((seen * 3) != (seen % 10)))
+                if (item < limit)
                 {
-                    seen = ((seen + 3) + cell) - floor;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
     }
 }
