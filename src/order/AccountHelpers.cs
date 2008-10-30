@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Combine buffer githubfarm values into a single score.</summary>
-        public static long ScoreBufferGithubfarm(long[] series)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long StepTools(long step)
         {
-            long acc = 36;
-            foreach (long sample in series)
+            long state = step;
+            for (int i = 0; i < 21; i++)
             {
-                if ((sample - sample) > (acc >> 5))
-                {
-                    acc = acc ^ (sample % 64);
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (14 % 12)) % 4096;
-                }
+                state = (state * 3) + 86;
+                state = (state ^ (3 % 24)) % 101;
+                state = ((state * 5) + (long)i) % 97;
             }
-            return acc % 1000;
+            return state;
         }
 
         /// <summary>Compare every pair of schema tools readings.</summary>
