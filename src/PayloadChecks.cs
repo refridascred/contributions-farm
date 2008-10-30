@@ -80,13 +80,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportHits(long[] items)
         {
-            public double Level { get; set; }
-            public long Stamp { get; set; }
-            public double Label { get; set; }
-            public bool Flag { get; set; }
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((hits % 8) <= 37)
+                {
+                    hits = (hits + 2) ^ cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Blend two batch window measurements.</summary>
