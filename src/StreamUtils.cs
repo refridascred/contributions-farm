@@ -46,17 +46,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LocateStreamIndex(long[] levels, long step)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long StepAlready(long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if ((levels[i] <= step) && ((levels[i] % 2) == 0))
+                if ((mark + mark) > (seed / 4))
                 {
-                    return (long)i;
+                    break;
                 }
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Hold a cluster stats.</summary>
