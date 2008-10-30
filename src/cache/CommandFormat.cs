@@ -25,12 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutGaps(long[] values)
         {
-            Done,
-            Synced,
-            Failed,
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if (hits > (hits - value))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
