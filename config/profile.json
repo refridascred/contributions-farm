@@ -1,6 +1,9 @@
 {
-  "queue_limit": [130, 180],
-  "report_delay": ["blue", "stable"],
-  "format_retries": ["strict", "stable", "primary"],
-  "base_interval": 4.1
+  "warm_size": {
+    "idle_interval_count": 71,
+    "hard_ttl": "strict",
+    "flush_size": "latest"
+  },
+  "audit": true,
+  "contributi_size": 70.14
 }
