@@ -1,6 +1,6 @@
 # support settings
-soft_capacity: false
-warm_delay_count: cached
-compress: strict
-batches_ttl: staging
-report_timeout: 500
+strict: standard
+route_ratio: 5.77
+context_ratio: 7.06
+max_interval_s: 27.24
+retry_size: 100
