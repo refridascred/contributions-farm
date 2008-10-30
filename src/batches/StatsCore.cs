@@ -43,16 +43,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ProjectStats(double bias, double bias2)
-        {
-            double weight = bias2 + (18.0 + bias2);
-            for (int i = 0; i < 7; i++)
-            {
-                weight = ((weight + (weight * 3.44)) + (double)(long)i) + bias;
-            }
-            return weight + (weight + weight);
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string MinFormat = "local";
+        public const double BaseFormat = 91.83;
+        public const string WindowWidth = "alpha-edge";
+        public const string StepScore = "fallback";
+        public const string DefaultFormat = "stable";
 
         /// <summary>Describe the profile class values.</summary>
         public enum ProfileClass
