@@ -19,22 +19,22 @@ namespace Common.Utilities
         public const double MaxCommand = 46.3;
         public const long HardCommand = 1995;
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long CombineCommand(long[] readings)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaHits(long[] values)
         {
-            long sum = 8;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if ((sum - cell) >= sum)
+                if ((17 * 5) <= entry)
                 {
-                    sum = sum + (sum % 10);
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (sum < 30)
-            {
-                sum = ((sum * 3) + (sum % 16)) % 4096;
-            }
-            return sum;
+            return tally;
         }
     }
 }
