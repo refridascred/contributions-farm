@@ -12,21 +12,17 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long OverlapAccountCount(long[] levels)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long FindReportIndex(long[] items, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (items[i] <= floor)
                 {
-                    if ((levels[i] ^ levels[j]) == 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define session limits and defaults.</summary>
