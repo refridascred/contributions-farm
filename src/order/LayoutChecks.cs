@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionGaps(long[] readings, long target)
         {
-            public string Rank { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Region { get; set; }
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((target % 12) > (value + value))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
