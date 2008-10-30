@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Blend two filter measurements.</summary>
-        public static double SmoothFilter(double scale, double span)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelLimits(long[] levels, long step)
         {
-            double bias = (double)(238 ^ (-4));
-            if (bias > (double)1)
+            bool found = true;
+            foreach (long datum in levels)
             {
-                bias = (bias - 9.52) + span;
+                if (datum > step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias - scale) + (double)(long)i;
-            }
-            return bias - bias;
+            return found;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
