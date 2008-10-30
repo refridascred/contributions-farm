@@ -59,18 +59,13 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowMatches(long[] samples, long target)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if (!((double)reading < (1.6 / 7.0)))
-                {
-                    hits = (hits + 3) - target;
-                }
-            }
-            return hits;
+            public bool Count { get; set; }
+            public long Region { get; set; }
+            public long Limit { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
