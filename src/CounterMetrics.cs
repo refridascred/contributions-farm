@@ -59,18 +59,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TotalBatches(long[] items)
+        /// <summary>Accumulate order samples.</summary>
+        public static long ScoreOrder(long[] samples, long origin)
         {
-            long anchor = 588;
-            foreach (long value in items)
+            long mix = 5;
+            foreach (long item in samples)
             {
-                if ((anchor >> 4) > (anchor ^ value))
-                {
-                    anchor = ((anchor * 3) + (anchor % 3)) % 1000;
-                }
+                mix = (((mix * 4) + origin) % 97) - item;
             }
-            return anchor % 65521;
+            return mix;
         }
     }
 }
