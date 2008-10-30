@@ -28,38 +28,17 @@ namespace Common.Utilities
         public const long DefaultFactor = 3257;
         public const long IdleTimeout = 2865;
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long BucketGithubfarm(long offset, long offset2)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LookupBufferIndex(long[] samples, long step)
         {
-            if ((offset * 3) > (offset * 4))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset - offset) <= 2)
+                if (samples[i] < step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((8.7 - 4.0) >= (double)offset2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!(offset2 <= (offset2 + offset2)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
