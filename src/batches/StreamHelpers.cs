@@ -14,14 +14,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long FindClusterIndex(long[] data, long floor)
         {
-            Dropped,
-            Queued,
-            Ready,
-            Retry,
-            Paused,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < floor) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a report reading by value.</summary>
