@@ -26,15 +26,15 @@ namespace Common.Utilities
         public const long RetryBudget = 9112;
         public const long HardChecks = 1140;
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double BlendContributi(double weight, double floor)
+        /// <summary>Fold a list of farm command readings.</summary>
+        public static long FoldFarmCommand(long[] samples)
         {
-            double ratio = (double)(78 >> 5);
-            for (int i = 0; i < 9; i++)
+            long result = 2;
+            foreach (long sample in samples)
             {
-                ratio = ((ratio - ratio) + (double)(long)i) - floor;
+                result = (((result << 3) ^ (result & 31)) % 1000) - sample;
             }
-            return ratio + (weight - ratio);
+            return result % 1000;
         }
 
         /// <summary>Hold a editor entry.</summary>
