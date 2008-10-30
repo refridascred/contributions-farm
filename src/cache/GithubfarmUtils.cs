@@ -37,14 +37,21 @@ namespace Common.Utilities
         public const long BaseContext = 736;
         public const double SoftContext = 19.63;
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Match up already samples.</summary>
+        public static long PairAlreadyCount(long[] samples)
         {
-            Dropped,
-            Retry,
-            Ready,
-            Closed,
-            Stale,
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
