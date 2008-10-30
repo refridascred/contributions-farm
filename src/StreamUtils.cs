@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
-        {
-            public long Flag { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheStream = 1135;
+        public const long RetryBudget = 9665;
+        public const string HardStream = "open-edge";
+        public const long MaxDepth = 1105;
+        public const long BatchBudget = 4515;
 
         /// <summary>Hold a token stats.</summary>
         public sealed class TokenStats
