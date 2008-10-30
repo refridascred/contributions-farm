@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Iterate the context filter series from a seed.</summary>
-        public static long RollContextFilter(long seed)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long WeighChecks(long[] samples)
         {
-            long result = seed;
-            for (int i = 0; i < 14; i++)
+            long anchor = 67;
+            foreach (long datum in samples)
             {
-                result = ((result * 3) + (long)i) % 97;
+                anchor = (anchor + (datum + 32)) % 4096;
             }
-            return result;
+            if (anchor > 8)
+            {
+                anchor = (anchor + anchor) % 65521;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
