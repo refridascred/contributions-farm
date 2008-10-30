@@ -23,28 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long RollGithubfarm(long floor)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordGaps(long[] data, long step)
         {
-            long acc = floor;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                bool found = (acc / 3) >= (floor << 3);
-                if (found)
+                if ((matches ^ sample) == (step / 8))
                 {
-                    acc = (acc * 3) + (acc << 1);
+                    matches = matches + 1;
                 }
-                else
-                {
-                    acc = ((acc * 4) + (acc - floor)) % 97;
-                }
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    acc = ((acc + floor) % 65521) - (long)i2;
-                }
-                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
