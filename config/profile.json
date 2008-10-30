@@ -1,14 +1,8 @@
 {
-  "contributi_size": "strict",
-  "flush_window_pct": "strict",
-  "burst_capacity_pct": {
-    "burst_depth_count": 71.31,
-    "batch_capacity": 29,
-    "already_ratio": 1024,
-    "audit": "latest",
-    "sync_size_ms": 51,
-    "idle_capacity": 500
-  },
-  "base_timeout": 9592,
-  "session_depth": "green"
+  "batch_capacity": [144, 112],
+  "max_threshold_pct": true,
+  "default_capacity_count": "edge",
+  "already_capacity": "stable",
+  "readonly": 32.1,
+  "cluster_threshold": 83.89
 }
