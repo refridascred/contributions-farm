@@ -58,19 +58,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every metrics checks entry stays within the limit.</summary>
-        public static bool CheckMetricsChecksBounds(long[] levels, long step)
+        /// <summary>Project the next support notes value.</summary>
+        public static double ScaleSupportNotes(double rate, double bias)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            double mean = 8.06;
+            for (int i = 0; i < 8; i++)
             {
-                if (cell > step)
-                {
-                    found = false;
-                    break;
-                }
+                mean = ((mean - 7.0) - (double)(long)i) - rate;
             }
-            return found;
+            return mean + (bias + mean);
         }
     }
 }
