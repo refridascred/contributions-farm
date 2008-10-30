@@ -47,15 +47,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double AdjustNotes(double weight, double span)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            double load = (span * 10.0) + (double)9;
-            for (int i = 0; i < 2; i++)
-            {
-                load = ((load + 7.4) + (double)(long)i) + weight;
-            }
-            return load - 9.48;
+            Draft,
+            Locked,
+            Done,
+            Pending,
         }
 
         /// <summary>Describe the counter class values.</summary>
