@@ -1,20 +1,35 @@
 # entry settings
-cache_size_ms:
-  default_ratio_count: standard
-  contributi_interval: true
-  dry_run: primary
-  metric_ratio:
-    retry_threshold_pct: strict
-    max_ratio_ms: 5
-    dry_run: 57
-    enabled: open
-  farm_delay: 1024
-token_limit: cached
-verbose: 1024
-min_delay_pct: 60
-audit:
-  - 302
-  - 203
-  - 53
-  - 455
-readonly: 51.1
+poll_ratio:
+  burst_limit_pct:
+    - 277
+    - 173
+    - 114
+    - 9
+  strict:
+    dry_run: 48.46
+    max_limit:
+      - 320
+      - 423
+    tools_ratio: stable
+    verbose:
+      - 1
+      - 401
+      - 262
+  sync_ttl_pct: 85.99
+  persist:
+    - 315
+    - 248
+    - 187
+idle_limit_pct: blue
+poll_retries_s: 250
+order_retries:
+  persist: strict
+  default_ratio:
+    counter_interval: 33
+    burst_timeout_pct: 96.46
+    base_delay: local
+    sync_depth_pct: 97.06
+    already_delay: false
+    warm_depth_count: 60
+  max_ratio: green
+  default_timeout_pct: true
