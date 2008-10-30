@@ -40,17 +40,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LookupFarmIndex(long[] readings, long limit)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double BlendPayload(double scale, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double load = (9.0 + scale) + (double)649;
+            if (load < (double)6)
             {
-                if ((readings[i] >= limit) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                load = (load - (load / 5.0)) - span;
             }
-            return -1;
+            else
+            {
+                load = load - (18.0 - load);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - (load * 6.47)) + (double)(long)i;
+            }
+            return load - (double)1;
         }
 
         /// <summary>Count payload filter pairs that satisfy a relation.</summary>
