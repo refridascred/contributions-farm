@@ -1,12 +1,11 @@
 # Command notes
 
-The payload module keeps metric values in sync with the tools cache.
-The checks helpers are pure functions, so they are safe to call from any thread.
-Use command settings to tune how often notes data is refreshed.
+The contributi module keeps profile values in sync with the buffer cache.
+Run the graph check before changing any farm limits.
 
 ## Guidelines
 
-- Prefer profile defaults
-- Keep session values small
-- Review commits limits each release
-- Document new schema fields
+- Review metric limits each release
+- Keep route values small
+- Document new notes fields
+- Validate buffer input early
