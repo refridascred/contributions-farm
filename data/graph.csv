@@ -1,6 +1,8 @@
-id,count,ratio
-1,14.62,standard
-2,6,standard
-3,930,3
-4,local,staging
-5,staging,legacy
+id,token,score
+1,50.05,867
+2,408,latest
+3,65.57,9.52
+4,standard,57.0
+5,486,staging
+6,915,239
+7,51.98,blue
