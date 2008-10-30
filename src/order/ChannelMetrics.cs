@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long SeriesMetric(long bound)
+        /// <summary>Derive the next order cluster value from a seed.</summary>
+        public static long DeriveOrderCluster(long bound)
         {
             long result = bound;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 12; i++)
             {
-                if (result >= (result % 16))
-                {
-                    break;
-                }
-                result = ((result * 3) + (long)i) % 101;
+                result = (result - (result << 1)) % 65521;
+                result = (result + result) % 4096;
+                result = ((result * 4) + (long)i) % 4093;
             }
             return result;
         }
