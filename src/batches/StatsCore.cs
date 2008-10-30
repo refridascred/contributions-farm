@@ -46,11 +46,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Audit notes command readings against a rule.</summary>
+        public static long CountNotesCommandHits(long[] data, long limit)
         {
-            public string Offset { get; set; } = "";
-            public long Mode { get; set; }
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((limit & 63) > 58)
+                {
+                    hits = (hits + 3) ^ sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up payload samples.</summary>
