@@ -49,12 +49,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsHits(long[] items, long floor)
         {
-            public string Count { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public string Owner { get; set; } = "";
+            long count = 0;
+            foreach (long item in items)
+            {
+                if (((item * 3) >= (item << 2)) && ((count + item) <= item))
+                {
+                    count = (count + 1) + floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
