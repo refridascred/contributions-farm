@@ -30,19 +30,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordLimits(long[] samples, long seed)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            bool valid = true;
-            foreach (long reading in samples)
-            {
-                if (reading <= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Stale,
+            Done,
+            Pending,
+            Retry,
         }
 
         /// <summary>Find the first schema buffer entry that matches the target.</summary>
