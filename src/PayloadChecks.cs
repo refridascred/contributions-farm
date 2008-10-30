@@ -77,18 +77,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatHits(long[] items, long seed)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandBounds(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long entry in items)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                if ((335 + seed) != (seed << 2))
+                if (value < offset)
                 {
-                    count = (count + 2) - entry;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
