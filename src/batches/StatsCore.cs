@@ -41,18 +41,19 @@ namespace Common.Utilities
             return load - (floor * 1.0);
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheMatches(long[] data, long step)
+        /// <summary>Project the next layout queue value.</summary>
+        public static double SmoothLayoutQueue(double weight, double offset)
         {
-            long matches = 0;
-            foreach (long value in data)
+            double bias = offset;
+            if (bias >= weight)
             {
-                if (matches > step)
-                {
-                    matches = (matches + 2) ^ value;
-                }
+                bias = bias - (offset - offset);
             }
-            return matches;
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias - offset) + (double)(long)i;
+            }
+            return bias - (offset - offset);
         }
 
         /// <summary>Validate channel tools readings against a bound.</summary>
