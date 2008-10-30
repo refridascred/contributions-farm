@@ -1,7 +1,7 @@
-id,state,owner,weight
-1,open,60.43,426
-2,stable,954,edge
-3,11.49,73.04,30.27
-4,cached,16.66,406
-5,49.14,548,778
-6,280,65.4,cached
+id,owner,token,active
+1,48.74,67.82,718
+2,open,257,22.89
+3,standard,27.02,67.08
+4,stable,95.99,912
+5,431,558,13.87
+6,eu-west,80.25,primary
