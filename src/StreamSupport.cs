@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphOutliers(long[] values)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long MatchFormatCount(long[] values)
         {
             long tally = 0;
-            foreach (long item in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((((864 + item) >= tally) || ((item >> 4) > item)) && (tally >= 898))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((values[i] ^ values[j]) > 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
