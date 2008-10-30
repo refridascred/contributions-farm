@@ -48,11 +48,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Validate token checks readings against a bound.</summary>
+        public static bool CheckTokenChecksLimits(long[] data, long bound)
         {
-            public double Size { get; set; }
-            public long Ratio { get; set; }
+            bool found = true;
+            foreach (long cell in data)
+            {
+                if (cell >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
