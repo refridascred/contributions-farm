@@ -58,14 +58,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            Retry,
-            Ready,
-            Active,
-            Locked,
+            Paused,
             New,
+            Failed,
+            Closed,
         }
     }
 }
