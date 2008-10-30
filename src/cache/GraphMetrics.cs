@@ -28,19 +28,38 @@ namespace Common.Utilities
         public const long DefaultFactor = 3257;
         public const long IdleTimeout = 2865;
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportBounds(long[] values, long step)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long BucketGithubfarm(long offset, long offset2)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            if ((offset * 3) > (offset * 4))
             {
-                if (entry >= step)
+                return 1;
+            }
+            else
+            {
+                if ((offset - offset) <= 2)
                 {
-                    flag = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (!((8.7 - 4.0) >= (double)offset2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!(offset2 <= (offset2 + offset2)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
