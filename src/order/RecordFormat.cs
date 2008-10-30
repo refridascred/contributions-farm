@@ -19,14 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Digest a series of already entries.</summary>
+        public static long DigestAlready(long[] items, long limit)
         {
-            Idle,
-            Done,
-            Failed,
-            Ready,
-            Queued,
+            long acc = 600;
+            foreach (long item in items)
+            {
+                if (((double)limit != (9.66 * 0.71)) && (((-95) + 8) >= (acc - limit)))
+                {
+                    acc = ((acc * 2) + (item % 60)) % 97;
+                }
+            }
+            if (acc < 284)
+            {
+                acc = acc ^ (limit >> 3);
+            }
+            return acc;
         }
 
         /// <summary>Locate a profile tools reading by value.</summary>
