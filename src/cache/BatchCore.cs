@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long PairEditorCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftWindow = 5264;
+        public const long RetrySpan = 8167;
+        public const long MaxSize = 8805;
+        public const long HardWindow = 343;
+        public const long StepSize = 5945;
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
         public static long PairGraphCount(long[] levels)
