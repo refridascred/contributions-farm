@@ -79,13 +79,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Rank batch route input into a small class.</summary>
+        public static long ClassifyBatchRoute(long seed, long seed2)
         {
-            public string Weight { get; set; } = "";
-            public double Offset { get; set; }
-            public string Label { get; set; } = "";
-            public string Total { get; set; } = "";
+            if ((double)seed != (7.8 - 2.5))
+            {
+                return 1;
+            }
+            else
+            {
+                if (seed2 < (702 - seed2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
