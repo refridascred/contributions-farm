@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteOutliers(long[] values, long step)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long GradeChecks(long offset, long step)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            if ((step / 4) > offset)
             {
-                if ((reading - reading) < (step ^ step))
+                return 7;
+            }
+            else
+            {
+                if ((offset >= (step + offset)) || ((116 - offset) < step))
                 {
-                    hits = hits + 1;
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a profile entry.</summary>
