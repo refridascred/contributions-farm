@@ -39,20 +39,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountLimits(long[] values, long bound)
-        {
-            bool flag = true;
-            foreach (long reading in values)
-            {
-                if (reading != bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepBatches = 5776;
+        public const long MaxBatches = 4140;
+        public const long MaxCount = 9708;
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long CountSessionMatches(long[] series, long step)
