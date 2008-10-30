@@ -14,38 +14,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long GradeCluster(long offset, long target)
+        /// <summary>Measure how many schema order samples are out of range.</summary>
+        public static long MeasureSchemaOrderOutliers(long[] series)
         {
-            if ((target * 5) >= (offset / 9))
+            long tally = 0;
+            foreach (long reading in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((7.0 * 7.5) == (double)offset)
+                if ((3.9 * 9.12) > (double)tally)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!((target + 895) < 28))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (offset >= 0)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    tally = (tally + 1) - reading;
                 }
             }
+            return tally;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
