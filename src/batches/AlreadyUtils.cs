@@ -46,11 +46,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountOutliers(long[] levels, long step)
         {
-            public long Size { get; set; }
-            public string Flag { get; set; } = "";
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if ((tally % 10) == (reading + tally))
+                {
+                    tally = (tally + 2) + step;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
