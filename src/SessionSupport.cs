@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit editor githubfarm readings against a rule.</summary>
-        public static long AuditEditorGithubfarmMatches(long[] readings, long floor)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheLimits(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            bool stale = true;
+            foreach (long value in series)
             {
-                if (!((double)floor > 7.0))
+                if (value <= step)
                 {
-                    hits = (hits + 3) ^ sample;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
