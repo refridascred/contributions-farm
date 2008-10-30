@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long RankContext(long limit, long offset)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamGaps(long[] values, long bound)
         {
-            long edge = limit - offset;
-            if (((limit / 2) <= (limit + limit)) || ((double)edge > (1.72 / 7.0)))
+            long hits = 0;
+            foreach (long sample in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (((double)94 < (double)offset) || (offset > (limit + limit)))
+                if ((1.0 * 1.01) < (double)bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    hits = (hits + 2) ^ sample;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the queue status values.</summary>
