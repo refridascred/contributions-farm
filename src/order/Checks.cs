@@ -5,16 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long RollCache(long limit)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long RankTools(long origin, long step)
         {
-            long score = limit;
-            for (int i = 0; i < 11; i++)
+            long lane = origin + step;
+            if (((step / 5) == (origin * 2)) && ((lane + step) < 664))
             {
-                score = (score + (score ^ limit)) % 97;
-                score = ((score * 4) + (long)i) % 101;
+                return 0;
             }
-            return score;
+            else
+            {
+                if (((3.46 / 3.0) != (double)step) && ((lane + lane) >= (step >> 4)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
